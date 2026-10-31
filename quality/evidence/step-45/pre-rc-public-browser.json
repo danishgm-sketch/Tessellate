@@ -1,0 +1,603 @@
+{
+  "capturedAt": "2026-10-24T06:31:46.393Z",
+  "siteVersion": 20,
+  "sourceCommitPrefix": "50a2c7f",
+  "browser": "Playwright Chromium",
+  "cleanBrowserContexts": true,
+  "captures": [
+    {
+      "viewportName": "desktop",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "status": 200,
+      "responseHeaders": {
+        "cache-control": "no-transform",
+        "cf-cache-status": "HIT",
+        "cf-ray": "a4f6f0abf8052718-MAN",
+        "content-length": "84920",
+        "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.tessellate.design http://localhost:8787 https://api.github.com; frame-src 'self' https://preview.tessellate.design http://localhost:4321 http://localhost:5173; object-src 'none'; base-uri 'self'; frame-ancestors 'self';",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Sat, 24 Oct 2026 06:31:43 GMT",
+        "etag": "\"dc8f2bf3617c34645dd376f415b6c414\"",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "cloudflare",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN"
+      },
+      "layout": {
+        "viewport": "1440x900",
+        "documentWidth": 1440,
+        "mainHeading": "Describe the product.Get the interface.",
+        "defaultBrief": "An AI market-intelligence platform for procurement teams. Serious and technical in the app, premium and cinematic on marketing pages…",
+        "heroBounds": {
+          "x": 0,
+          "y": 64,
+          "width": 1440,
+          "height": 768.25,
+          "bottom": 832.25
+        },
+        "composeBounds": {
+          "x": 907.265625,
+          "y": 619,
+          "width": 123.734375,
+          "height": 40,
+          "bottom": 659
+        },
+        "fieldsWithoutIdentity": [
+          {
+            "tag": "textarea",
+            "type": null,
+            "ariaLabel": "Product description and requirements"
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ariaLabel": "Interface feel"
+          },
+          {
+            "tag": "input",
+            "type": "range",
+            "ariaLabel": "Visual ambition level"
+          },
+          {
+            "tag": "input",
+            "type": "range",
+            "ariaLabel": "Structural creativity level"
+          },
+          {
+            "tag": "select",
+            "type": null,
+            "ariaLabel": "Target technical stack"
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ariaLabel": "Product brief"
+          }
+        ],
+        "localStorageKeys": []
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "responses": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+          "method": "GET",
+          "resourceType": "document",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8",
+          "contentLength": "84920"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/style.RWED2-xG.css",
+          "method": "GET",
+          "resourceType": "stylesheet",
+          "status": 200,
+          "contentType": "text/css",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/SiteHeader.Drp-XvCJ.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ThreeDirectionsDemo.B84KDpSD.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/HeroComposer.DxPKGXu4.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/sliders.CRoCwMhL.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/compass.B6j8ZAtH.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/sliders-vertical.pWv7lYEM.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/sliders-horizontal.CNfcMmIy.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.BlTxHScW.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/jsx-runtime.D_zvdyIk.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.CHQCpkZ9.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/use-dialog-focus.Dx4AAyKA.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/CommandPalette.5UorwhSU.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/select.BIqT08Pb.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/github.BEKZXaMq.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/createLucideIcon.CKwyFV_x.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/arrow-right.DCnLzGjB.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/search.C9HoDFjH.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/sparkles.gqHQXRUX.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/x.CdPDMMs3.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/FinalComposerFooter.BfjHa-Ge.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/feel-mapping.DeVj_uh3.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/strategies.ClxjUdG_.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/showcases.DitHERDA.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/string.DhboK2p2.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        }
+      ],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshot": "pre-rc-home-desktop.png"
+    },
+    {
+      "viewportName": "mobile",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "status": 200,
+      "responseHeaders": {
+        "cache-control": "no-transform",
+        "cf-cache-status": "HIT",
+        "cf-ray": "a4f6f0bb5e972581-MAN",
+        "content-length": "84920",
+        "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.tessellate.design http://localhost:8787 https://api.github.com; frame-src 'self' https://preview.tessellate.design http://localhost:4321 http://localhost:5173; object-src 'none'; base-uri 'self'; frame-ancestors 'self';",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Sat, 24 Oct 2026 06:31:45 GMT",
+        "etag": "\"dc8f2bf3617c34645dd376f415b6c414\"",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "cloudflare",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN"
+      },
+      "layout": {
+        "viewport": "390x844",
+        "documentWidth": 390,
+        "mainHeading": "Describe the product.Get the interface.",
+        "defaultBrief": "An AI market-intelligence platform for procurement teams. Serious and technical in the app, premium and cinematic on marketing pages…",
+        "heroBounds": {
+          "x": 0,
+          "y": 64,
+          "width": 390,
+          "height": 1452.109375,
+          "bottom": 1516.109375
+        },
+        "composeBounds": {
+          "x": 217.265625,
+          "y": 1017.609375,
+          "width": 123.734375,
+          "height": 40,
+          "bottom": 1057.609375
+        },
+        "fieldsWithoutIdentity": [
+          {
+            "tag": "textarea",
+            "type": null,
+            "ariaLabel": "Product description and requirements"
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ariaLabel": "Interface feel"
+          },
+          {
+            "tag": "input",
+            "type": "range",
+            "ariaLabel": "Visual ambition level"
+          },
+          {
+            "tag": "input",
+            "type": "range",
+            "ariaLabel": "Structural creativity level"
+          },
+          {
+            "tag": "select",
+            "type": null,
+            "ariaLabel": "Target technical stack"
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ariaLabel": "Product brief"
+          }
+        ],
+        "localStorageKeys": []
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "responses": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+          "method": "GET",
+          "resourceType": "document",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8",
+          "contentLength": "84920"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/style.RWED2-xG.css",
+          "method": "GET",
+          "resourceType": "stylesheet",
+          "status": 200,
+          "contentType": "text/css",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/SiteHeader.Drp-XvCJ.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ThreeDirectionsDemo.B84KDpSD.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/HeroComposer.DxPKGXu4.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/jsx-runtime.D_zvdyIk.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.CHQCpkZ9.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/strategies.ClxjUdG_.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/CommandPalette.5UorwhSU.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/use-dialog-focus.Dx4AAyKA.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/FinalComposerFooter.BfjHa-Ge.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/createLucideIcon.CKwyFV_x.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/search.C9HoDFjH.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/arrow-right.DCnLzGjB.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/x.CdPDMMs3.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.BlTxHScW.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/sliders.CRoCwMhL.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/github.BEKZXaMq.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/sliders-horizontal.CNfcMmIy.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/select.BIqT08Pb.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/compass.B6j8ZAtH.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/feel-mapping.DeVj_uh3.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/sliders-vertical.pWv7lYEM.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/sparkles.gqHQXRUX.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/string.DhboK2p2.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/showcases.DitHERDA.js",
+          "method": "GET",
+          "resourceType": "script",
+          "status": 200,
+          "contentType": "text/javascript",
+          "contentLength": null
+        }
+      ],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshot": "pre-rc-home-mobile.png"
+    }
+  ]
+}

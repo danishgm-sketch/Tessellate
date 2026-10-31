@@ -1,0 +1,44 @@
+{
+  "deployment": {
+    "siteVersion": 58,
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "canonicalCommit": "43b80d4f7f39e092d060086959ee0c745c3f87cb",
+    "sitesSourceCommit": "14ffc8484fb28de26878700383005d7a578e7d77"
+  },
+  "trace": {
+    "tool": "Chrome DevTools MCP performance trace",
+    "viewport": "1440x900",
+    "cpuThrottling": "1x",
+    "network": "Fast 4G",
+    "cache": "ignored on cold reload",
+    "prefersReducedMotion": "reduce",
+    "metrics": {
+      "lcpMs": 547,
+      "ttfbMs": 48,
+      "lcpRenderDelayMs": 499,
+      "cls": 0.0,
+      "inp": null,
+      "fcpMs": null,
+      "tbtMs": null,
+      "speedIndexMs": null,
+      "fieldData": null
+    },
+    "lcpElement": "Homepage H1 text; no network image resource",
+    "renderBlocking": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/style.B91OJ-K3.css",
+        "status": 200,
+        "totalDurationMs": 205,
+        "downloadMs": 16,
+        "mainThreadMs": 3,
+        "estimatedFcpSavingsMs": 0
+      }
+    ],
+    "layoutShiftInsight": "No layout shifts found",
+    "notes": [
+      "This is a lab trace for public review v58, not field data.",
+      "The available trace reported no estimated rendering savings for the blocking stylesheet.",
+      "A network dependency graph insight was not available in this Chrome DevTools build."
+    ]
+  }
+}

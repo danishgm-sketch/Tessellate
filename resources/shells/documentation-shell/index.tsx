@@ -15,8 +15,8 @@ export function DocumentationShell({
   if (variant === 'nocturne') theme = 'bg-[#0B0D10] text-neutral-100';
 
   return (
-    <div className={`min-h-screen flex divide-x text-xs ${theme}`}>
-      <aside className="w-56 p-6 space-y-4 shrink-0">
+    <div className={`@container min-h-screen flex flex-col @lg:flex-row divide-y @lg:divide-y-0 @lg:divide-x text-xs ${theme}`}>
+      <aside className="w-full @lg:w-56 p-4 @sm:p-6 space-y-4 shrink-0">
         <span className="font-bold text-sm block">Documentation</span>
         <div className="space-y-1 opacity-80">
           <p className="font-medium">Overview</p>
@@ -25,8 +25,8 @@ export function DocumentationShell({
           <p>CLI & MCP</p>
         </div>
       </aside>
-      <main className="flex-1 max-w-3xl p-10">{children}</main>
-      <aside className="hidden lg:block w-48 p-6 opacity-60 text-[11px] shrink-0">
+      <main className="min-w-0 flex-1 max-w-3xl p-4 @sm:p-6 @lg:p-10">{children}</main>
+      <aside className="hidden @lg:block w-48 p-6 opacity-60 text-[11px] shrink-0">
         <span className="font-semibold block mb-2">On This Page</span>
         <p>Installation</p>
         <p>First Resource</p>

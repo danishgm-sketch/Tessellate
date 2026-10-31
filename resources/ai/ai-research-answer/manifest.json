@@ -5,7 +5,7 @@
   "name": "AI Research Answer",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Comprehensive synthesized research summary with executive takeaway, numbered key points, and confidence meter.",
+  "description": "Research answer layout with example findings; it does not retrieve sources or calculate confidence.",
   "resourceType": "ai-pattern",
   "categories": [
     "ai",
@@ -17,9 +17,8 @@
     "research"
   ],
   "purposes": [
-    "synthesis-summary",
-    "deep-research",
-    "confidence-scoring"
+    "research-answer-layout",
+    "example-findings-presentation"
   ],
   "productArchetypes": [
     {
@@ -102,7 +101,7 @@
     {
       "id": "quiet",
       "name": "Quiet",
-      "description": "Subtle slate borders, minimal badge accents, calm tool call telemetry for deep work.",
+      "description": "Low-emphasis neutral styling with restrained borders and accent color.",
       "props": {
         "variant": "quiet"
       }
@@ -110,7 +109,7 @@
     {
       "id": "expressive",
       "name": "Expressive",
-      "description": "Vibrant cobalt highlights, fluid gradient thinking indicators, and rich model card pills.",
+      "description": "More prominent color contrast and emphasis for key controls.",
       "props": {
         "variant": "expressive"
       }
@@ -118,7 +117,7 @@
     {
       "id": "nocturne",
       "name": "Nocturne",
-      "description": "Obsidian dark canvas, electric cyan luminescence, and high-contrast monospace code surfaces.",
+      "description": "Dark surface with high-contrast text and a restrained accent color.",
       "props": {
         "variant": "nocturne"
       }
@@ -127,29 +126,27 @@
   "tags": [
     "ai",
     "research",
-    "synthesis",
-    "confidence",
+    "example",
     "summary"
   ],
   "intent": {
-    "summary": "Comprehensive synthesized research summary with executive takeaway, numbered key points, and confidence meter.",
+    "summary": "Research answer layout with example findings; it does not retrieve sources or calculate confidence.",
     "idealFor": [
-      "Deep research question answers",
-      "Literature review summaries",
-      "Technical architectural evaluations"
+      "Example research answer layout",
+      "Structured summary presentation"
     ],
     "avoidFor": [
       "One-word autocomplete prompts",
       "High-frequency logging terminal"
     ],
     "jobs": [
-      "Deliver deep synthesized research answers with structured takeaway blocks and confidence indicators"
+      "Present an illustrative answer summary and example findings without implying retrieved evidence"
     ],
     "contentRequirements": [
-      "Model state reflection, streaming message blocks, citation cards, human-in-the-loop approvals"
+      "Disclose when sources were not retrieved and confidence was not measured."
     ],
     "notes": [
-      "Local state mockable, BYO endpoint compatible, zero lock-in contracts"
+      "The displayed findings are examples; connect retrieval and confidence measurement in the host application if required."
     ]
   },
   "visualDNA": {
@@ -214,7 +211,7 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
+    "levelTarget": "AA",
     "keyboardVerified": true,
     "screenReaderSemantics": true,
     "reducedMotionVerified": true,
@@ -242,7 +239,11 @@
     "composability": 96,
     "visualCraft": 96,
     "dependencyCleanliness": 100,
-    "documentation": 96
+    "documentation": 96,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

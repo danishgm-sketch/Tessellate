@@ -1,0 +1,183 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "quality/evidence/step-45/public-v52-continuation-2026-10-28/flagship-a11y-live.config.mjs"
+    ],
+    "configFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\flagship-a11y-live.config.mjs",
+    "rootDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-45/public-v52-continuation-2026-10-28/a11y-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-1440x900",
+        "name": "desktop-1440x900",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "flagship-generated-product-a11y.spec.ts"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-45/public-v52-continuation-2026-10-28/a11y-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-390x844",
+        "name": "mobile-390x844",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "flagship-generated-product-a11y.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\a11y-playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "flagship-generated-product-a11y.spec.ts",
+      "file": "flagship-generated-product-a11y.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "the generated employee experience opens in Workbench without serious accessibility violations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440x900",
+              "projectName": "desktop-1440x900",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3529,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T06:50:01.655Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "generated-employee-workbench-desktop-1440x900.json",
+                      "contentType": "application/json",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\a11y-results\\flagship-generated-product-e7b63-us-accessibility-violations-desktop-1440x900\\attachments\\generated-employee-workbench-desktop-1440x900-json-3de23a5408d4cc71fcfc3de9f08d5036e6cc75e2.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0ada432daa7c1f6ed6a1-73f2bcc73013149fe710",
+          "file": "flagship-generated-product-a11y.spec.ts",
+          "line": 9,
+          "column": 1
+        },
+        {
+          "title": "the generated employee experience opens in Workbench without serious accessibility violations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390x844",
+              "projectName": "mobile-390x844",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2797,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T06:50:05.841Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "generated-employee-workbench-mobile-390x844.json",
+                      "contentType": "application/json",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\a11y-results\\flagship-generated-product-e7b63-us-accessibility-violations-mobile-390x844\\attachments\\generated-employee-workbench-mobile-390x844-json-d02dd6baf2430c1327e19ab757a6b1eff78d9b2c.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0ada432daa7c1f6ed6a1-a87f12714f0846eb3b65",
+          "file": "flagship-generated-product-a11y.spec.ts",
+          "line": 9,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T06:50:00.808Z",
+    "duration": 8008.553,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

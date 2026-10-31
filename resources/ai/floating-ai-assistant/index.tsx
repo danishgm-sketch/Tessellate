@@ -24,9 +24,9 @@ export function FloatingAIAssistant({ variant = 'quiet' }: FloatingAIAssistantPr
       : 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900';
 
   return (
-    <div className="relative inline-flex flex-col items-end">
+    <div className="relative flex w-full max-w-80 flex-col items-end">
       {isOpen && (
-        <div className={`w-80 p-4 rounded-xl border mb-3 flex flex-col gap-3 transition-all ${cardBg}`}>
+        <div className={`w-full p-4 rounded-xl border mb-3 flex flex-col gap-3 transition-all ${cardBg}`}>
           <div className="flex items-center justify-between pb-2 border-b border-neutral-100 dark:border-neutral-800">
             <span className="text-xs font-semibold">Tessellate Assistant</span>
             <button onClick={() => setIsOpen(false)} className="text-xs text-neutral-400 hover:text-current">

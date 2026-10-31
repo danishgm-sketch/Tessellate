@@ -1,0 +1,27 @@
+{
+  "step": 42,
+  "id": "corrupt-catalogue-recovers",
+  "status": "pass",
+  "url": "http://127.0.0.1:4413/compose/",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "browser": "Chromium",
+  "injectedFailures": [
+    "First /data/catalog.json response returned HTTP 200 with a schema-invalid resource."
+  ],
+  "checks": {
+    "invalid200Rejected": true,
+    "composeDisabledUntilReady": true,
+    "retryReloadedCatalogue": true,
+    "threeDirectionsRendered": true
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "quality/evidence/step-42/corrupt-catalogue-recovers-sites-mobile-chromium.png"
+}

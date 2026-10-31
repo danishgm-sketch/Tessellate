@@ -1,0 +1,43 @@
+{
+  "findingId": "SEC-37-059",
+  "severity": "high",
+  "title": "Resource manifests could read and publish files outside their directory",
+  "scope": [
+    "packages/schemas/src/resource.ts",
+    "packages/catalog/src/validator.ts",
+    "packages/registry/src/generator.ts"
+  ],
+  "reproductions": [
+    {
+      "boundary": "registry generator lexical traversal",
+      "test": "packages/registry/src/__tests__/registry.test.ts > rejects a resource file path that escapes the resource directory",
+      "beforeFix": "Failed: expected generateRegistryItem to throw, but it returned normally after packaging a sibling secret.tsx file.",
+      "afterFix": "Passed: generation rejects the path before reading or serializing the file."
+    },
+    {
+      "boundary": "catalog validator external junction/symlink",
+      "test": "packages/catalog/src/__tests__/catalog.test.ts > rejects resource files that resolve through a symlink outside their directory",
+      "beforeFix": "Failed: the expected outside-directory containment error was absent; the validator followed the link into the sibling directory.",
+      "afterFix": "Passed: the canonical target is rejected before the import scanner reads it."
+    },
+    {
+      "boundary": "registry generator external junction/symlink",
+      "test": "packages/registry/src/__tests__/registry.test.ts > rejects resource files that resolve through a symlink outside their directory",
+      "beforeFix": "Not run before implementation; added to cover the shared filesystem boundary.",
+      "afterFix": "Passed: the canonical target is rejected before content is added to the registry item."
+    },
+    {
+      "boundary": "resource manifest schema",
+      "test": "packages/schemas/src/__tests__/leaf-contracts.test.ts > rejects absolute and traversal paths in resource file contracts",
+      "beforeFix": "Not run before implementation; added as a schema contract regression.",
+      "afterFix": "Passed for POSIX traversal, nested traversal, POSIX absolute, Windows absolute, Windows traversal, and UNC paths."
+    }
+  ],
+  "verification": {
+    "command": "pnpm exec vitest run packages/catalog/src/__tests__/catalog.test.ts packages/registry/src/__tests__/registry.test.ts packages/schemas/src/__tests__/leaf-contracts.test.ts packages/exporter/src/__tests__/node-disk-resolver-security.test.ts",
+    "result": "passed",
+    "testFiles": 4,
+    "testsPassed": 110,
+    "deployedVerification": "pending"
+  }
+}

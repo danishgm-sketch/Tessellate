@@ -4,9 +4,17 @@ export type FooterSitemapVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface FooterSitemapProps {
   variant?: FooterSitemapVariant;
+  columns?: Array<{ title: string; links: Array<{ label: string; href?: string }> }>;
 }
 
-export function FooterSitemap({ variant = 'quiet' }: FooterSitemapProps) {
+const defaultColumns = [
+  { title: 'Resources', links: ['Primitives', 'Shells', 'Sections', 'Blocks', 'Data Vis'] },
+  { title: 'Platform', links: ['Workbench', 'Design DNA Lab', 'MCP Server', 'CLI Tools'] },
+  { title: 'Community', links: ['GitHub', 'Discord', 'Docs', 'Contributing'] },
+  { title: 'Legal', links: ['Privacy Policy', 'Terms of Service', 'Security', 'License'] },
+].map((column) => ({ title: column.title, links: column.links.map((label) => ({ label })) }));
+
+export function FooterSitemap({ variant = 'quiet', columns = defaultColumns }: FooterSitemapProps) {
   let bg = 'bg-white text-neutral-900 border-neutral-200';
 
   if (variant === 'expressive') {
@@ -15,23 +23,16 @@ export function FooterSitemap({ variant = 'quiet' }: FooterSitemapProps) {
     bg = 'bg-[#0B0D10] text-white border-[#2E3440]';
   }
 
-  const cols = [
-    { title: 'Resources', links: ['Primitives', 'Shells', 'Sections', 'Blocks', 'Data Vis'] },
-    { title: 'Platform', links: ['Workbench', 'Design DNA Lab', 'MCP Server', 'CLI Tools'] },
-    { title: 'Community', links: ['GitHub', 'Discord', 'Docs', 'Contributing'] },
-    { title: 'Legal', links: ['Privacy Policy', 'Terms of Service', 'Security', 'License'] },
-  ];
-
   return (
     <footer className={`w-full py-16 px-6 sm:px-12 border-t transition-colors ${bg}`}>
       <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10">
-        {cols.map((col) => (
+        {columns.map((col) => (
           <div key={col.title}>
             <div className="font-bold text-xs uppercase tracking-wider mb-4 font-mono opacity-80">{col.title}</div>
             <ul className="space-y-2 text-xs opacity-70">
               {col.links.map((link) => (
-                <li key={link}>
-                  <a href="#" className="hover:underline">{link}</a>
+                <li key={link.label}>
+                  {link.href ? <a href={link.href} className="hover:underline">{link.label}</a> : <span>{link.label}</span>}
                 </li>
               ))}
             </ul>

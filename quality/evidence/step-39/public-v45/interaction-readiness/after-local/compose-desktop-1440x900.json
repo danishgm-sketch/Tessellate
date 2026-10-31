@@ -1,0 +1,26 @@
+{
+  "url": "http://127.0.0.1:49823/compose",
+  "viewport": "desktop-1440x900",
+  "geometry": {
+    "viewportWidth": 1440,
+    "documentWidth": 1440
+  },
+  "axeViolations": 0,
+  "runtime": {
+    "successfulResponses": [
+      {
+        "url": "http://127.0.0.1:49823/compose",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:49823/data/catalog.json",
+        "status": 200
+      }
+    ],
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

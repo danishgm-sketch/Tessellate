@@ -29,7 +29,7 @@ export function Select({ variant = 'quiet', label, options = [], className = '',
       <div className="relative">
         <select
           id={selectId}
-          className={`w-full appearance-none rounded-lg border px-3 py-2 pr-8 text-sm outline-none transition-all focus:ring-1 ${theme} ${className}`}
+          className={`w-full appearance-none rounded-[var(--tess-radius-lg,8px)] border px-3 py-2 pr-8 text-sm outline-none transition-all focus:ring-1 ${theme} ${className}`}
           {...rest}
         >
           {options.map((opt) => (
@@ -38,7 +38,7 @@ export function Select({ variant = 'quiet', label, options = [], className = '',
             </option>
           ))}
         </select>
-        <span className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 opacity-50">
+        <span className={`pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 ${variant === 'nocturne' ? 'text-neutral-200 bg-[#11141B]' : 'text-neutral-700 bg-white'}`}>
           ▼
         </span>
       </div>

@@ -1,0 +1,166 @@
+[
+  {
+    "route": "/",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "axe": [],
+    "runtime": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshot": "desktop-chrome--.png"
+  },
+  {
+    "route": "/explore/",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "axe": [],
+    "runtime": {
+      "consoleErrors": [
+        "Access to script at 'http://localhost:4321/_astro/client.OPlYM6bF.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.OPlYM6bF.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.OPlYM6bF.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.OPlYM6bF.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.B2XDBxgs.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.OPlYM6bF.js",
+        "Access to script at 'http://localhost:4321/_astro/client.OPlYM6bF.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.OPlYM6bF.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.OPlYM6bF.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.B2XDBxgs.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.OPlYM6bF.js",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.OPlYM6bF.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.B2XDBxgs.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.OPlYM6bF.js",
+        "[astro-island] Error hydrating /_astro/PreviewHost.B2XDBxgs.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.OPlYM6bF.js",
+        "Access to script at 'http://localhost:4321/_astro/client.OPlYM6bF.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.B2XDBxgs.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.OPlYM6bF.js",
+        "[astro-island] Error hydrating /_astro/PreviewHost.B2XDBxgs.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.OPlYM6bF.js",
+        "[astro-island] Error hydrating /_astro/PreviewHost.B2XDBxgs.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.OPlYM6bF.js",
+        "[astro-island] Error hydrating /_astro/PreviewHost.B2XDBxgs.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.OPlYM6bF.js",
+        "[astro-island] Error hydrating /_astro/PreviewHost.B2XDBxgs.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.OPlYM6bF.js"
+      ],
+      "pageErrors": [],
+      "failedRequests": [
+        "GET http://localhost:4321/_astro/client.OPlYM6bF.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/client.OPlYM6bF.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/client.OPlYM6bF.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/client.OPlYM6bF.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/client.OPlYM6bF.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/client.OPlYM6bF.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/client.OPlYM6bF.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/client.OPlYM6bF.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/client.OPlYM6bF.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js: net::ERR_FAILED"
+      ],
+      "httpErrors": []
+    },
+    "screenshot": "desktop-chrome--explore-.png"
+  },
+  {
+    "route": "/compose/",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "axe": [],
+    "runtime": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshot": "desktop-chrome--compose-.png"
+  },
+  {
+    "route": "/workbench/",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "axe": [],
+    "runtime": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshot": "desktop-chrome--workbench-.png"
+  },
+  {
+    "route": "/r/button/",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "axe": [],
+    "runtime": {
+      "consoleErrors": [
+        "Access to script at 'http://localhost:4321/_astro/client.OPlYM6bF.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.B2XDBxgs.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.OPlYM6bF.js",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ],
+      "pageErrors": [],
+      "failedRequests": [
+        "GET http://localhost:4321/_astro/client.OPlYM6bF.js: net::ERR_FAILED",
+        "GET http://localhost:4321/_astro/PreviewHost.B2XDBxgs.js: net::ERR_FAILED"
+      ],
+      "httpErrors": []
+    },
+    "screenshot": "desktop-chrome--r-button-.png"
+  },
+  {
+    "route": "/showcase/showcase-playful-hr/",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "axe": [],
+    "runtime": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshot": "desktop-chrome--showcase-showcase-playful-hr-.png"
+  }
+]

@@ -19,7 +19,7 @@ export function AICommandBar({ variant = 'quiet' }: AICommandBarProps) {
   const commands = [
     { title: 'Switch to Nocturne visual mode', category: 'Theme', shortcut: '⌘ T' },
     { title: 'Export current workspace as standalone Vite project', category: 'Export', shortcut: '⌘ E' },
-    { title: 'Audit contrast against WCAG 2.2 AA', category: 'Audit', shortcut: '⌘ A' },
+    { title: 'Review contrast for selected colors', category: 'Review', shortcut: '⌘ A' },
     { title: 'Generate Shadcn registry manifest', category: 'Registry', shortcut: '⌘ G' },
   ];
 
@@ -32,10 +32,11 @@ export function AICommandBar({ variant = 'quiet' }: AICommandBarProps) {
       <div className="flex items-center gap-3 px-2 pb-2 border-b border-neutral-100 dark:border-neutral-800">
         <span className="text-neutral-400">✦</span>
         <input
-          type="text"
+          type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Ask AI or type an action (e.g. switch theme, export)..."
+          aria-label="Filter sample commands"
+          placeholder="Filter sample commands..."
           className="flex-1 text-sm bg-transparent focus:outline-none placeholder:text-neutral-400"
           autoFocus
         />
@@ -44,11 +45,16 @@ export function AICommandBar({ variant = 'quiet' }: AICommandBarProps) {
         </kbd>
       </div>
 
-      <div className="space-y-1">
+      <p className="px-2 text-xs text-neutral-500">
+        Demo only. Typing filters the sample list; commands are not run here.
+      </p>
+
+      <div className="space-y-1" aria-label="Sample commands">
         {filtered.map((cmd) => (
           <div
             key={cmd.title}
-            className="flex items-center justify-between p-2.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/60 cursor-pointer transition-colors text-xs group"
+            data-command-sample
+            className="flex items-center justify-between p-2.5 rounded-lg text-xs group"
           >
             <div className="flex items-center gap-2.5">
               <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500">

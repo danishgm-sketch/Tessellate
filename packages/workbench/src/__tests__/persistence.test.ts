@@ -7,6 +7,8 @@ import {
   deleteLocalProject,
   saveLocalCheckpoint,
   listLocalCheckpoints,
+  saveLocalHistoryState,
+  loadLocalHistoryState,
   clearLocalMemoryStorage,
 } from '../persistence/storage.js';
 import { safelyLoadProjectRecord } from '../persistence/recovery.js';
@@ -93,6 +95,44 @@ describe('Phase 11: Local Persistence & Recovery Gate', () => {
     expect(list).toHaveLength(1);
     expect(list[0]?.id).toBe('proj-two');
     expect(await listLocalCheckpoints(p1.id)).toHaveLength(0);
+  });
+
+  it('round-trips bounded undo and redo snapshots without sharing mutable records', async () => {
+    const original = createSampleProject();
+    const edited = {
+      ...original,
+      updatedAt: new Date(Date.parse(original.updatedAt) + 1_000).toISOString(),
+      designDNA: { ...original.designDNA, visualAmbition: 71 },
+    };
+    const undone = {
+      ...original,
+      updatedAt: new Date(Date.parse(original.updatedAt) + 2_000).toISOString(),
+      designDNA: { ...original.designDNA, visualAmbition: 42 },
+    };
+
+    await saveLocalHistoryState(original.id, edited, [original], [undone]);
+    const loaded = await loadLocalHistoryState(original.id);
+
+    expect(loaded).toEqual({ history: [original], future: [undone] });
+    expect(loaded?.history[0]).not.toBe(original);
+    expect(loaded?.future[0]).not.toBe(undone);
+  });
+
+  it('keeps history snapshots across project identity transitions such as a blend', async () => {
+    const original = createSampleProject();
+    const blended = { ...original, id: 'project-blend-test', name: 'Blended project' };
+
+    await saveLocalHistoryState(blended.id, blended, [original], []);
+    const loaded = await loadLocalHistoryState(blended.id);
+
+    expect(loaded).toEqual({ history: [original], future: [] });
+  });
+
+  it('rejects undo/redo stacks larger than the Workbench retention limit', async () => {
+    const manifest = createSampleProject();
+    await expect(saveLocalHistoryState(manifest.id, manifest, Array.from({ length: 51 }, () => manifest), [])).rejects.toThrow(
+      'Local undo history exceeds the supported 50-step limit.'
+    );
   });
 
   describe('Recovery Mode', () => {

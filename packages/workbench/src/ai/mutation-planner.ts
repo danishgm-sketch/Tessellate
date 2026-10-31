@@ -153,7 +153,8 @@ export function planMutationsFromIntent(
       props: {
         ...node.props,
         replacedByAI: true,
-        catalogSlug: command.replacementResourceSlug ?? (node.props['catalogSlug'] as string | undefined),
+        catalogSlug:
+          command.replacementResourceSlug ?? (node.props['catalogSlug'] as string | undefined),
       },
     };
 
@@ -221,7 +222,7 @@ export function planMutationsFromIntent(
         plannedMutations.push({
           id: createMutationId('set-intent'),
           type: 'SET_INTENT',
-          targetId: manifest.id,
+          targetId: 'project',
           payload: { dimensions },
           actor: 'ai',
           timestamp: new Date().toISOString(),
@@ -245,7 +246,7 @@ export function planMutationsFromIntent(
           plannedMutations.push({
             id: createMutationId('set-intent-feel'),
             type: 'SET_INTENT',
-            targetId: manifest.id,
+            targetId: 'project',
             payload: { dimensions: feelDimensions },
             actor: 'ai',
             timestamp: new Date().toISOString(),
@@ -258,7 +259,7 @@ export function planMutationsFromIntent(
           plannedMutations.push({
             id: createMutationId('token-cat'),
             type: 'SET_DESIGN_TOKEN',
-            targetId: manifest.id,
+            targetId: 'project',
             payload: {
               key: catKey,
               value: String(catVal),
@@ -278,7 +279,7 @@ export function planMutationsFromIntent(
             plannedMutations.push({
               id: createMutationId('token-cat-explicit'),
               type: 'SET_DESIGN_TOKEN',
-              targetId: manifest.id,
+              targetId: 'project',
               payload: {
                 key: k,
                 value: String(v),

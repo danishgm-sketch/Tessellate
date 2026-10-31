@@ -1,0 +1,95 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=local-2daf1478-cb0c-4cec-9ab7-f1c76232d19b",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "checks": {
+    "lockedNode": {
+      "id": "node-screen-overview-metric-cards-3",
+      "subtreeHash": "5f2f23ca1b048a2673fecfba0be067840d393d0e24fdde204c16fe0b24e8b3ec",
+      "resourceRef": {
+        "id": "res_blk_dashboard_kpi_grid",
+        "slug": "dashboard-kpi-grid",
+        "version": "1.0.0"
+      },
+      "variant": "nocturne",
+      "props": {
+        "title": "Your organisation at a glance",
+        "cards": [
+          {
+            "label": "People",
+            "val": "—",
+            "status": "No connected data"
+          },
+          {
+            "label": "Onboarding",
+            "val": "—",
+            "status": "No connected data"
+          },
+          {
+            "label": "Team pulse",
+            "val": "—",
+            "status": "No connected data"
+          }
+        ]
+      },
+      "dnaOverrides": {
+        "professionalism": 85,
+        "playfulness": 75,
+        "luxury": 30,
+        "warmth": 85,
+        "technicality": 50,
+        "editorial": 60,
+        "futurism": 40,
+        "visualAmbition": 70,
+        "structuralCreativity": 65,
+        "density": 55,
+        "whitespace": 65,
+        "contrast": 80,
+        "colourfulness": 80,
+        "curvature": 65,
+        "depth": 45,
+        "motion": 65,
+        "motionPlayfulness": 70,
+        "typographicExpression": 70,
+        "imageryIntensity": 35,
+        "videoIntensity": 10,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 75,
+        "asymmetry": 25,
+        "conversionIntensity": 50,
+        "trust": 90,
+        "accessibilityPriority": 98,
+        "performancePriority": 96,
+        "primaryArchetype": "hr",
+        "visualMode": "light",
+        "geometryFamily": "soft-pill",
+        "navigationModel": "rail",
+        "responsivePhilosophy": "equal-capability-adaptive",
+        "contentTone": "encouraging-joyful",
+        "primaryStack": "react-tailwind",
+        "motionPersonality": "playful-spring",
+        "typographyPersonality": "friendly-sans",
+        "surfacePersonality": "pastel-cards"
+      }
+    },
+    "divergenceLevel": 95,
+    "rootRoleAfter": "workspace-dock-shell",
+    "compoundWorkspacePaneCount": 1,
+    "originalNodeIdsPreserved": 45,
+    "duplicateNodeIds": [],
+    "resourceRefCount": 32,
+    "resolvedCatalogueResources": 324,
+    "undoRestoredRoot": true,
+    "redoRestoredRoot": true,
+    "mobileFeedbackVisible": true
+  },
+  "screenshot": "quality\\evidence\\step-20\\after\\radical-recompose-mobile-390.png"
+}

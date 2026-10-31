@@ -1,0 +1,46 @@
+{
+  "capturedAt": "2026-10-23T14:57:27.7456155Z",
+  "computer": "DANISH",
+  "runningContainers": [
+    {
+      "name": "mgiquantlabs-trader-1",
+      "state": "running",
+      "status": "Up 47 minutes"
+    },
+    {
+      "name": "mgiquantlabs-api-1",
+      "state": "running",
+      "status": "Up 47 minutes"
+    },
+    {
+      "name": "mgiquantlabs-marketdata_service-1",
+      "state": "running",
+      "status": "Up 47 minutes"
+    },
+    {
+      "name": "tessellate-laptop-api-1",
+      "state": "running",
+      "status": "Up 47 minutes (healthy)"
+    },
+    {
+      "name": "tessellate-laptop-host-1",
+      "state": "running",
+      "status": "Up 47 minutes (healthy)"
+    },
+    {
+      "name": "mgiquantlabs-web-1",
+      "state": "running",
+      "status": "Up 47 minutes"
+    },
+    {
+      "name": "mgiquantlabs-postgres-1",
+      "state": "running",
+      "status": "Up 47 minutes (healthy)"
+    },
+    {
+      "name": "mgiquantlabs-cloudflared-1",
+      "state": "running",
+      "status": "Up 47 minutes"
+    }
+  ]
+}

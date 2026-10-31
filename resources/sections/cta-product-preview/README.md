@@ -1,3 +1,3 @@
 # CTA Product Preview
 
-Action callout with peek preview of the live Workbench canvas.
+Action callout with an illustrative Workbench preview. Provide composeHref to enable its composition link; the preview points to Tessellate Compose and clearly states that no project is connected.

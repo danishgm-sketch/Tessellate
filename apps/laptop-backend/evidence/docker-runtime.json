@@ -1,0 +1,47 @@
+{
+  "recordedAt": "2026-10-30T16:18:20.973Z",
+  "checks": [
+    {
+      "check": "real-model-completion",
+      "result": "PASS",
+      "action": "adjust-dna",
+      "preserveLockedNodes": true
+    },
+    {
+      "check": "host-control-authentication",
+      "result": "PASS"
+    },
+    {
+      "check": "local-worker-rate-limit-simulation",
+      "result": "PASS",
+      "allowed": 20,
+      "rejected": 1,
+      "route": "/api/reports"
+    },
+    {
+      "check": "queue-survives-api-container-restart",
+      "result": "PASS",
+      "recoveryAttempts": 10
+    },
+    {
+      "check": "host-stopped-features-unavailable",
+      "result": "PASS",
+      "status": 503,
+      "maximumHeartbeatGraceMs": 15000
+    },
+    {
+      "check": "pending-task-recovers-on-host-resume",
+      "result": "PASS"
+    },
+    {
+      "check": "inference-recovers-after-host-container-restart",
+      "result": "PASS",
+      "action": "adjust-dna",
+      "recoveryAttempts": 1
+    },
+    {
+      "check": "backend-stopped-network-unavailable",
+      "result": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/section-planner",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "disclaimer": "Template descriptions are planning prompts, not implementation or verified proof. Replace sample claims with sourced product details before publishing.",
+  "actionLabel": "Copy Section Graph JSON",
+  "output": [
+    {
+      "objective": "B2B SaaS Conversion Landing",
+      "project": "saas-conversion",
+      "descriptions": [
+        "State the product’s value and link to an implemented primary action.",
+        "Use certifications and customer references only when they are documented and approved.",
+        "Add a product demo; connect a working sandbox before presenting it as interactive.",
+        "Compare product capabilities using criteria that are specific and supported.",
+        "Include measured benchmarks and their methodology, or omit this section.",
+        "List current plan names and terms supplied by the product owner.",
+        "Answer security, hosting, and export questions from verified product documentation.",
+        "Use configured URLs or actions for web and CLI entry points."
+      ]
+    },
+    {
+      "objective": "Developer Documentation Hub",
+      "project": "developer-platform",
+      "descriptions": [
+        "Show a verified install command and a first task that works with the current package.",
+        "Link to current endpoints, request schemas, and response schemas.",
+        "Show a code sample; add an executable sandbox only when one is connected.",
+        "Describe the security boundaries and data flows that have been verified.",
+        "List only packages and integrations that are currently supported.",
+        "Link to active repository or discussion destinations that are maintained."
+      ]
+    },
+    {
+      "objective": "Fintech Analytics Cockpit",
+      "project": "fintech-analytics",
+      "descriptions": [
+        "Show organization-approved measures from the selected data source.",
+        "Plot the selected series and state its update cadence only when measured.",
+        "Present transaction records and disclose whether data is sample, delayed, or live.",
+        "Summarize risk measures with their source, scope, and update time.",
+        "Link to reporting formats the product actually provides; describe signing only when verified."
+      ]
+    },
+    {
+      "objective": "Luxury Editorial Sanctuary",
+      "project": "luxury-marketplace",
+      "descriptions": [
+        "Use licensed imagery with meaningful alt text and reduced-motion support for entrances.",
+        "Describe craftsmanship and origin using details supplied by the product owner.",
+        "If using a moving image reel, support keyboard, touch, and reduced-motion preferences.",
+        "Connect an appointment form or booking service before promising a reservation."
+      ]
+    },
+    {
+      "objective": "Operational Triage & Admin Tool",
+      "project": "internal-tool",
+      "descriptions": [
+        "Expose keyboard commands only when the application handles them.",
+        "Describe available bulk actions and confirm high-impact changes.",
+        "Show fields authorized for the current user and handle sensitive values carefully.",
+        "List supported audit events with their access and retention rules."
+      ]
+    }
+  ],
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-39\\public-v51-copy-2026-10-28\\after\\desktop\\section-planner.png"
+}

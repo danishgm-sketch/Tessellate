@@ -1,0 +1,3632 @@
+{
+  "schemaVersion": "1.0.0",
+  "browserProject": "sites-chromium",
+  "widths": [
+    360,
+    390,
+    430,
+    768,
+    1024,
+    1280,
+    1440
+  ],
+  "resourceCount": 324,
+  "findings": 0,
+  "resources": [
+    {
+      "slug": "accessibility-commitment-section",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/accessibility-commitment-section/"
+    },
+    {
+      "slug": "accordion",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/accordion/"
+    },
+    {
+      "slug": "accordion-spring",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/accordion-spring/"
+    },
+    {
+      "slug": "activity-feed",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/activity-feed/"
+    },
+    {
+      "slug": "admin-console-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/admin-console-shell/"
+    },
+    {
+      "slug": "advanced-data-table",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/advanced-data-table/"
+    },
+    {
+      "slug": "ai-agent-activity-feed",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-agent-activity-feed/"
+    },
+    {
+      "slug": "ai-approval-request",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-approval-request/"
+    },
+    {
+      "slug": "ai-chat-panel",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-chat-panel/"
+    },
+    {
+      "slug": "ai-command-bar",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-command-bar/"
+    },
+    {
+      "slug": "ai-copilot-sidebar",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-copilot-sidebar/"
+    },
+    {
+      "slug": "ai-empty-state",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-empty-state/"
+    },
+    {
+      "slug": "ai-file-context-picker",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-file-context-picker/"
+    },
+    {
+      "slug": "ai-generation-compare",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-generation-compare/"
+    },
+    {
+      "slug": "ai-memory-context-panel",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-memory-context-panel/"
+    },
+    {
+      "slug": "ai-model-mode-switcher",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-model-mode-switcher/"
+    },
+    {
+      "slug": "ai-multi-agent-board",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-multi-agent-board/"
+    },
+    {
+      "slug": "ai-plan-review",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-plan-review/"
+    },
+    {
+      "slug": "ai-prompt-composer",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-prompt-composer/"
+    },
+    {
+      "slug": "ai-prompt-hero",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-360.png",
+        "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-390.png",
+        "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-1280.png",
+        "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/ai-prompt-hero/"
+    },
+    {
+      "slug": "ai-prompt-history",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-prompt-history/"
+    },
+    {
+      "slug": "ai-research-answer",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-research-answer/"
+    },
+    {
+      "slug": "ai-source-citations",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-source-citations/"
+    },
+    {
+      "slug": "ai-suggested-actions",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-suggested-actions/"
+    },
+    {
+      "slug": "ai-tool-execution-timeline",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-tool-execution-timeline/"
+    },
+    {
+      "slug": "alert-dialog",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/alert-dialog/"
+    },
+    {
+      "slug": "analytics-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/analytics-shell/"
+    },
+    {
+      "slug": "animated-border-trace",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/animated-border-trace/"
+    },
+    {
+      "slug": "animated-gradient-line",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/animated-gradient-line/"
+    },
+    {
+      "slug": "animated-wave-field",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/animated-wave-field/"
+    },
+    {
+      "slug": "api-capability-section",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/api-capability-section/"
+    },
+    {
+      "slug": "api-key-management",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/api-key-management/"
+    },
+    {
+      "slug": "app-sidebar-compact",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/app-sidebar-compact/"
+    },
+    {
+      "slug": "app-sidebar-expanded",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/app-sidebar-expanded-1440-after.png",
+        "test-results/resource-certification/catalog-324/app-sidebar-expanded-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/app-sidebar-expanded/"
+    },
+    {
+      "slug": "approval-queue",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/approval-queue/"
+    },
+    {
+      "slug": "architecture-diagram-section",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/architecture-diagram-section/"
+    },
+    {
+      "slug": "area-chart",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/area-chart/"
+    },
+    {
+      "slug": "audit-log",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/audit-log/"
+    },
+    {
+      "slug": "aurora-field",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/aurora-field/"
+    },
+    {
+      "slug": "autocomplete",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/autocomplete/"
+    },
+    {
+      "slug": "avatar",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/avatar/"
+    },
+    {
+      "slug": "avatar-group",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/avatar-group/"
+    },
+    {
+      "slug": "badge",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/badge/"
+    },
+    {
+      "slug": "bar-chart",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/bar-chart/"
+    },
+    {
+      "slug": "beam-grid",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/beam-grid/"
+    },
+    {
+      "slug": "billing-overview",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/billing-overview/"
+    },
+    {
+      "slug": "blur-to-sharp-reveal",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/blur-to-sharp-reveal/"
+    },
+    {
+      "slug": "bottom-sheet",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/bottom-sheet/"
+    },
+    {
+      "slug": "breadcrumb",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/breadcrumb/"
+    },
+    {
+      "slug": "breadcrumb-header",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/breadcrumb-header-1440-after.png",
+        "test-results/resource-certification/catalog-324/breadcrumb-header-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/breadcrumb-header/"
+    },
+    {
+      "slug": "bubble-plot",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/bubble-plot/"
+    },
+    {
+      "slug": "button",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/button/"
+    },
+    {
+      "slug": "button-group",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/button-group/"
+    },
+    {
+      "slug": "calendar-month",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/calendar-month/"
+    },
+    {
+      "slug": "calendar-week",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/calendar-week/"
+    },
+    {
+      "slug": "canvas-workspace-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/canvas-workspace-shell/"
+    },
+    {
+      "slug": "card-grid-skeleton",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/card-grid-skeleton/"
+    },
+    {
+      "slug": "card-hover-lift",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/card-hover-lift/"
+    },
+    {
+      "slug": "card-tilt",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/card-tilt/"
+    },
+    {
+      "slug": "case-study-spotlight",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/case-study-spotlight/"
+    },
+    {
+      "slug": "centered-top-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/centered-top-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/centered-top-nav-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/centered-top-nav/"
+    },
+    {
+      "slug": "character-stagger-reveal",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/character-stagger-reveal/"
+    },
+    {
+      "slug": "checkbox",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/checkbox/"
+    },
+    {
+      "slug": "cinematic-media-hero",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/cinematic-media-hero/"
+    },
+    {
+      "slug": "code-hero",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/code-hero/"
+    },
+    {
+      "slug": "cohort-matrix",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/cohort-matrix/"
+    },
+    {
+      "slug": "collapsible-sidebar",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/collapsible-sidebar-1440-after.png",
+        "test-results/resource-certification/catalog-324/collapsible-sidebar-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/collapsible-sidebar/"
+    },
+    {
+      "slug": "combobox",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/combobox/"
+    },
+    {
+      "slug": "command-centre-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/command-centre-shell/"
+    },
+    {
+      "slug": "command-first-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/command-first-nav/"
+    },
+    {
+      "slug": "command-menu",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/command-menu/"
+    },
+    {
+      "slug": "command-results",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/command-results/"
+    },
+    {
+      "slug": "commerce-management-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/commerce-management-shell/"
+    },
+    {
+      "slug": "compact-data-table",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/compact-data-table/"
+    },
+    {
+      "slug": "comparison-table",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/comparison-table/"
+    },
+    {
+      "slug": "compliance-proof",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/compliance-proof/"
+    },
+    {
+      "slug": "conic-light-field",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/conic-light-field/"
+    },
+    {
+      "slug": "connection-lost-state",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/connection-lost-state/"
+    },
+    {
+      "slug": "context-menu",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/context-menu/"
+    },
+    {
+      "slug": "context-rail",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/context-rail/"
+    },
+    {
+      "slug": "conversation-list",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/conversation-list/"
+    },
+    {
+      "slug": "counter-typography",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/counter-typography/"
+    },
+    {
+      "slug": "cta-community",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/cta-community/"
+    },
+    {
+      "slug": "cta-demo-booking",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/cta-demo-booking/"
+    },
+    {
+      "slug": "cta-download",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/cta-download/"
+    },
+    {
+      "slug": "cta-minimal",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/cta-minimal/"
+    },
+    {
+      "slug": "cta-product-preview",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/cta-product-preview/"
+    },
+    {
+      "slug": "cta-split",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/cta-split/"
+    },
+    {
+      "slug": "cursor-reactive-field",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/cursor-reactive-field/"
+    },
+    {
+      "slug": "cursor-spotlight",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/cursor-spotlight/"
+    },
+    {
+      "slug": "customer-metrics-strip",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/customer-metrics-strip/"
+    },
+    {
+      "slug": "customer-story-split",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/customer-story-split/"
+    },
+    {
+      "slug": "dashboard-kpi-grid",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/dashboard-kpi-grid/"
+    },
+    {
+      "slug": "dashboard-kpi-strip",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/dashboard-kpi-strip/"
+    },
+    {
+      "slug": "dashboard-skeleton",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/dashboard-skeleton/"
+    },
+    {
+      "slug": "data-hero",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/data-hero/"
+    },
+    {
+      "slug": "data-stream-field",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/data-stream-field/"
+    },
+    {
+      "slug": "data-terminal-header",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/data-terminal-header/"
+    },
+    {
+      "slug": "dialog",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/dialog/"
+    },
+    {
+      "slug": "disclosure",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/disclosure/"
+    },
+    {
+      "slug": "document-detail",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/document-detail/"
+    },
+    {
+      "slug": "documentation-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/documentation-shell-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/documentation-shell/"
+    },
+    {
+      "slug": "donut-chart",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/donut-chart/"
+    },
+    {
+      "slug": "dot-matrix-field",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/dot-matrix-field/"
+    },
+    {
+      "slug": "drawer",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/drawer/"
+    },
+    {
+      "slug": "drawer-spring",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/drawer-spring/"
+    },
+    {
+      "slug": "dropdown-menu",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/dropdown-menu/"
+    },
+    {
+      "slug": "dual-rail-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/dual-rail-nav/"
+    },
+    {
+      "slug": "editor-workspace-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/editor-workspace-shell/"
+    },
+    {
+      "slug": "editorial-display-stack",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/editorial-display-stack/"
+    },
+    {
+      "slug": "editorial-grain",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/editorial-grain/"
+    },
+    {
+      "slug": "editorial-hero",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/editorial-hero/"
+    },
+    {
+      "slug": "empty-collection-state",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/empty-collection-state/"
+    },
+    {
+      "slug": "empty-dashboard-state",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/empty-dashboard-state/"
+    },
+    {
+      "slug": "empty-search-state",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/empty-search-state/"
+    },
+    {
+      "slug": "empty-workspace",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/empty-workspace/"
+    },
+    {
+      "slug": "entity-list",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/entity-list/"
+    },
+    {
+      "slug": "entity-overview",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/entity-overview/"
+    },
+    {
+      "slug": "entity-profile-header",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/entity-profile-header/"
+    },
+    {
+      "slug": "entity-search",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/entity-search/"
+    },
+    {
+      "slug": "error-state",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/error-state/"
+    },
+    {
+      "slug": "executive-summary-panel",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/executive-summary-panel/"
+    },
+    {
+      "slug": "expandable-data-table",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/expandable-data-table/"
+    },
+    {
+      "slug": "faceted-search-results",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/faceted-search-results/"
+    },
+    {
+      "slug": "fade-up-reveal",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/fade-up-reveal/"
+    },
+    {
+      "slug": "faq-accordion",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/faq-accordion/"
+    },
+    {
+      "slug": "faq-searchable",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/faq-searchable/"
+    },
+    {
+      "slug": "faq-two-column",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/faq-two-column/"
+    },
+    {
+      "slug": "feature-alternating-rows",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/feature-alternating-rows/"
+    },
+    {
+      "slug": "feature-bento",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/feature-bento/"
+    },
+    {
+      "slug": "feature-carousel",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/feature-carousel/"
+    },
+    {
+      "slug": "feature-comparison",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/feature-comparison/"
+    },
+    {
+      "slug": "feature-grid-3x2",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/feature-grid-3x2/"
+    },
+    {
+      "slug": "feature-matrix",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/feature-matrix/"
+    },
+    {
+      "slug": "feature-metrics",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/feature-metrics/"
+    },
+    {
+      "slug": "feature-spotlight",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/feature-spotlight/"
+    },
+    {
+      "slug": "feature-steps",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/feature-steps/"
+    },
+    {
+      "slug": "feature-sticky-narrative",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/feature-sticky-narrative/"
+    },
+    {
+      "slug": "feature-tabs",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/feature-tabs/"
+    },
+    {
+      "slug": "feature-timeline",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/feature-timeline/"
+    },
+    {
+      "slug": "feature-with-code",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/feature-with-code/"
+    },
+    {
+      "slug": "feature-with-live-demo",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/feature-with-live-demo/"
+    },
+    {
+      "slug": "file-browser",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/file-browser/"
+    },
+    {
+      "slug": "filter-builder",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/filter-builder/"
+    },
+    {
+      "slug": "financial-candlestick-chart",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/financial-candlestick-chart/"
+    },
+    {
+      "slug": "first-run-state",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/first-run-state/"
+    },
+    {
+      "slug": "floating-ai-assistant",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/floating-ai-assistant/"
+    },
+    {
+      "slug": "floating-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/floating-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/floating-nav-390-after.png",
+        "test-results/resource-certification/catalog-324/floating-nav-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/floating-nav/"
+    },
+    {
+      "slug": "footer-developer",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/footer-developer/"
+    },
+    {
+      "slug": "footer-minimal",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/footer-minimal-1440-after.png",
+        "test-results/resource-certification/catalog-324/footer-minimal-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/footer-minimal/"
+    },
+    {
+      "slug": "footer-newsletter",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/footer-newsletter/"
+    },
+    {
+      "slug": "footer-product",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/footer-product/"
+    },
+    {
+      "slug": "footer-sitemap",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/footer-sitemap-1440-after.png",
+        "test-results/resource-certification/catalog-324/footer-sitemap-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/footer-sitemap/"
+    },
+    {
+      "slug": "funnel-chart",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/funnel-chart/"
+    },
+    {
+      "slug": "gauge",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/gauge/"
+    },
+    {
+      "slug": "geographic-map",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/geographic-map/"
+    },
+    {
+      "slug": "glass-refraction-panel",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/glass-refraction-panel/"
+    },
+    {
+      "slug": "global-search-results",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/global-search-results/"
+    },
+    {
+      "slug": "gradient-accent-text",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/gradient-accent-text/"
+    },
+    {
+      "slug": "grouped-data-table",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/grouped-data-table/"
+    },
+    {
+      "slug": "heatmap",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/heatmap/"
+    },
+    {
+      "slug": "horizontal-bar-chart",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/horizontal-bar-chart/"
+    },
+    {
+      "slug": "horizontal-scroll-story",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/horizontal-scroll-story/"
+    },
+    {
+      "slug": "how-it-works-interactive",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/how-it-works-interactive/"
+    },
+    {
+      "slug": "how-it-works-steps",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/how-it-works-steps/"
+    },
+    {
+      "slug": "how-it-works-timeline",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/how-it-works-timeline/"
+    },
+    {
+      "slug": "icon-button",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/icon-button/"
+    },
+    {
+      "slug": "icon-rail",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/icon-rail/"
+    },
+    {
+      "slug": "immersive-fullscreen-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/immersive-fullscreen-shell/"
+    },
+    {
+      "slug": "import-data-flow",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/import-data-flow/"
+    },
+    {
+      "slug": "inline-ai-rewrite",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/inline-ai-rewrite/"
+    },
+    {
+      "slug": "inline-alert",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/inline-alert/"
+    },
+    {
+      "slug": "inline-spinner",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/inline-spinner/"
+    },
+    {
+      "slug": "input",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/input/"
+    },
+    {
+      "slug": "integration-directory-preview",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/integration-directory-preview/"
+    },
+    {
+      "slug": "integration-grid",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/integration-grid/"
+    },
+    {
+      "slug": "integration-orbit",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/integration-orbit/"
+    },
+    {
+      "slug": "interactive-demo-hero",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/interactive-demo-hero/"
+    },
+    {
+      "slug": "interactive-globe",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/interactive-globe/"
+    },
+    {
+      "slug": "kanban-board",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/kanban-board/"
+    },
+    {
+      "slug": "kinetic-word-swap",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/kinetic-word-swap/"
+    },
+    {
+      "slug": "kiosk-display-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/kiosk-display-shell/"
+    },
+    {
+      "slug": "kpi-delta-card",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/kpi-delta-card/"
+    },
+    {
+      "slug": "kpi-delta-motion",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/kpi-delta-motion/"
+    },
+    {
+      "slug": "link",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/link/"
+    },
+    {
+      "slug": "loading-orbit",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/loading-orbit/"
+    },
+    {
+      "slug": "logo-cloud-marquee",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/logo-cloud-marquee/"
+    },
+    {
+      "slug": "logo-cloud-minimal",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/logo-cloud-minimal/"
+    },
+    {
+      "slug": "magnetic-button",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/magnetic-button/"
+    },
+    {
+      "slug": "marketing-nav-cta",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/marketing-nav-cta-1440-after.png",
+        "test-results/resource-certification/catalog-324/marketing-nav-cta-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/marketing-nav-cta/"
+    },
+    {
+      "slug": "marquee-typography",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/marquee-typography/"
+    },
+    {
+      "slug": "masked-headline-reveal",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/masked-headline-reveal/"
+    },
+    {
+      "slug": "masked-text-reveal",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/masked-text-reveal/"
+    },
+    {
+      "slug": "mega-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/mega-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/mega-nav-disclosure-after.png",
+        "test-results/resource-certification/catalog-324/mega-nav-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/mega-nav/"
+    },
+    {
+      "slug": "messaging-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/messaging-shell/"
+    },
+    {
+      "slug": "messaging-thread",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/messaging-thread/"
+    },
+    {
+      "slug": "metadata-panel",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/metadata-panel/"
+    },
+    {
+      "slug": "metallic-sheen",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/metallic-sheen/"
+    },
+    {
+      "slug": "mini-sparkline",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/mini-sparkline/"
+    },
+    {
+      "slug": "minimal-statement-hero",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/minimal-statement-hero/"
+    },
+    {
+      "slug": "minimal-top-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/minimal-top-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/minimal-top-nav-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/minimal-top-nav/"
+    },
+    {
+      "slug": "mobile-bottom-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/mobile-bottom-nav/"
+    },
+    {
+      "slug": "mobile-drawer-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/mobile-drawer-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/mobile-drawer-nav-menu-390-after.png",
+        "test-results/resource-certification/catalog-324/mobile-drawer-nav-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/mobile-drawer-nav/"
+    },
+    {
+      "slug": "monospace-data-headline",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/monospace-data-headline/"
+    },
+    {
+      "slug": "multi-select",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/multi-select/"
+    },
+    {
+      "slug": "multi-series-line-chart",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/multi-series-line-chart/"
+    },
+    {
+      "slug": "network-graph",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/network-graph/"
+    },
+    {
+      "slug": "noise-gradient",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/noise-gradient/"
+    },
+    {
+      "slug": "notification-centre",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/notification-centre/"
+    },
+    {
+      "slug": "number-count-up",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/number-count-up/"
+    },
+    {
+      "slug": "number-input",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/number-input/"
+    },
+    {
+      "slug": "offline-state",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/offline-state/"
+    },
+    {
+      "slug": "onboarding-checklist",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/onboarding-checklist/"
+    },
+    {
+      "slug": "onboarding-role-select",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/onboarding-role-select/"
+    },
+    {
+      "slug": "onboarding-wizard",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/onboarding-wizard/"
+    },
+    {
+      "slug": "order-book-depth-chart",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/order-book-depth-chart/"
+    },
+    {
+      "slug": "organization-settings",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/organization-settings/"
+    },
+    {
+      "slug": "outlined-display-text",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/outlined-display-text/"
+    },
+    {
+      "slug": "page-skeleton",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/page-skeleton/"
+    },
+    {
+      "slug": "pagination",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/pagination/"
+    },
+    {
+      "slug": "paper-texture",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/paper-texture/"
+    },
+    {
+      "slug": "parallax-media",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/parallax-media/"
+    },
+    {
+      "slug": "particle-constellation",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/particle-constellation/"
+    },
+    {
+      "slug": "password-input",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/password-input/"
+    },
+    {
+      "slug": "performance-benchmark-section",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/performance-benchmark-section/"
+    },
+    {
+      "slug": "permission-denied-state",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/permission-denied-state/"
+    },
+    {
+      "slug": "pinned-items",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/pinned-items/"
+    },
+    {
+      "slug": "plan-feature-matrix",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/plan-feature-matrix/"
+    },
+    {
+      "slug": "popover",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/popover/"
+    },
+    {
+      "slug": "press-mentions-strip",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/press-mentions-strip/"
+    },
+    {
+      "slug": "pricing-calculator-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/pricing-calculator-shell/"
+    },
+    {
+      "slug": "pricing-comparison-table",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/pricing-comparison-table/"
+    },
+    {
+      "slug": "pricing-enterprise",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/pricing-enterprise/"
+    },
+    {
+      "slug": "pricing-three-tier",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/pricing-three-tier/"
+    },
+    {
+      "slug": "pricing-toggle",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/pricing-toggle/"
+    },
+    {
+      "slug": "pricing-two-tier",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/pricing-two-tier/"
+    },
+    {
+      "slug": "pricing-usage-based",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/pricing-usage-based/"
+    },
+    {
+      "slug": "process-diagram",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/process-diagram/"
+    },
+    {
+      "slug": "processing-queued-state",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/processing-queued-state/"
+    },
+    {
+      "slug": "product-screenshot-hero",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/product-screenshot-hero/"
+    },
+    {
+      "slug": "profile-settings",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/profile-settings/"
+    },
+    {
+      "slug": "progress-bar",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/progress-bar/"
+    },
+    {
+      "slug": "progress-ring",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/progress-ring/"
+    },
+    {
+      "slug": "progressive-loader",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/progressive-loader/"
+    },
+    {
+      "slug": "project-switcher",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/project-switcher/"
+    },
+    {
+      "slug": "query-builder",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/query-builder/"
+    },
+    {
+      "slug": "quick-actions-panel",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/quick-actions-panel/"
+    },
+    {
+      "slug": "radar-chart",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/radar-chart/"
+    },
+    {
+      "slug": "radial-spotlight",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/radial-spotlight/"
+    },
+    {
+      "slug": "radio-group",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/radio-group/"
+    },
+    {
+      "slug": "range-slider",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/range-slider/"
+    },
+    {
+      "slug": "recent-items",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/recent-items/"
+    },
+    {
+      "slug": "relationship-panel",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/relationship-panel/"
+    },
+    {
+      "slug": "research-terminal-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/research-terminal-shell/"
+    },
+    {
+      "slug": "responsive-app-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/responsive-app-shell-1440-after.png",
+        "test-results/resource-certification/catalog-324/responsive-app-shell-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/responsive-app-shell/"
+    },
+    {
+      "slug": "role-permissions",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/role-permissions/"
+    },
+    {
+      "slug": "sankey-diagram",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/sankey-diagram/"
+    },
+    {
+      "slug": "saved-views",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/saved-views/"
+    },
+    {
+      "slug": "scale-reveal",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/scale-reveal/"
+    },
+    {
+      "slug": "scatter-plot",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/scatter-plot/"
+    },
+    {
+      "slug": "schedule-agenda",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/schedule-agenda/"
+    },
+    {
+      "slug": "scroll-progress",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/scroll-progress/"
+    },
+    {
+      "slug": "search-first-header",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/search-first-header/"
+    },
+    {
+      "slug": "search-first-hero",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/search-first-hero/"
+    },
+    {
+      "slug": "search-input",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/search-input/"
+    },
+    {
+      "slug": "security-proof",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/security-proof/"
+    },
+    {
+      "slug": "segmented-control",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/segmented-control/"
+    },
+    {
+      "slug": "select",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/select/"
+    },
+    {
+      "slug": "separator",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/separator/"
+    },
+    {
+      "slug": "settings-navigation",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/settings-navigation/"
+    },
+    {
+      "slug": "settings-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/settings-shell/"
+    },
+    {
+      "slug": "shader-liquid-field",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/shader-liquid-field/"
+    },
+    {
+      "slug": "shader-noise-field",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/shader-noise-field/"
+    },
+    {
+      "slug": "shared-element-transition",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/shared-element-transition/"
+    },
+    {
+      "slug": "skeleton",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/skeleton/"
+    },
+    {
+      "slug": "slide-clip-reveal",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/slide-clip-reveal/"
+    },
+    {
+      "slug": "slider",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/slider/"
+    },
+    {
+      "slug": "social-proof-hero",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/social-proof-hero/"
+    },
+    {
+      "slug": "soft-mesh-gradient",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/soft-mesh-gradient/"
+    },
+    {
+      "slug": "split-button",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/split-button/"
+    },
+    {
+      "slug": "split-line-headline",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/split-line-headline/"
+    },
+    {
+      "slug": "split-product-hero",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/split-product-hero/"
+    },
+    {
+      "slug": "stacked-area-chart",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/stacked-area-chart/"
+    },
+    {
+      "slug": "stacked-bar-chart",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/stacked-bar-chart/"
+    },
+    {
+      "slug": "status-overview",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/status-overview/"
+    },
+    {
+      "slug": "sticky-scroll-story",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/sticky-scroll-story/"
+    },
+    {
+      "slug": "subtle-grid-field",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/subtle-grid-field/"
+    },
+    {
+      "slug": "success-celebration",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/success-celebration/"
+    },
+    {
+      "slug": "success-state",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/success-state/"
+    },
+    {
+      "slug": "switch",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/switch/"
+    },
+    {
+      "slug": "tab-workspace-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/tab-workspace-nav/"
+    },
+    {
+      "slug": "table-skeleton",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/table-skeleton/"
+    },
+    {
+      "slug": "tabs",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/tabs/"
+    },
+    {
+      "slug": "tag-chip",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/tag-chip/"
+    },
+    {
+      "slug": "task-detail",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/task-detail/"
+    },
+    {
+      "slug": "team-management",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/team-management/"
+    },
+    {
+      "slug": "testimonial-carousel",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/testimonial-carousel/"
+    },
+    {
+      "slug": "testimonial-grid",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/testimonial-grid/"
+    },
+    {
+      "slug": "testimonial-quote",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/testimonial-quote/"
+    },
+    {
+      "slug": "text-path-arc",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/text-path-arc/"
+    },
+    {
+      "slug": "textarea",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/textarea/"
+    },
+    {
+      "slug": "three-d-orbital-field",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/three-d-orbital-field/"
+    },
+    {
+      "slug": "three-pane-app-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/three-pane-app-shell/"
+    },
+    {
+      "slug": "time-series-chart",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/time-series-chart/"
+    },
+    {
+      "slug": "timeline",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/timeline/"
+    },
+    {
+      "slug": "toast",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/toast/"
+    },
+    {
+      "slug": "tooltip",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/tooltip/"
+    },
+    {
+      "slug": "topographic-lines",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/topographic-lines/"
+    },
+    {
+      "slug": "transparent-solid-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/transparent-solid-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/transparent-solid-nav-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/transparent-solid-nav/"
+    },
+    {
+      "slug": "treemap",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/treemap/"
+    },
+    {
+      "slug": "trust-badges-strip",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/trust-badges-strip/"
+    },
+    {
+      "slug": "two-pane-master-detail-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/two-pane-master-detail-shell/"
+    },
+    {
+      "slug": "upgrade-prompt",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/upgrade-prompt/"
+    },
+    {
+      "slug": "usage-overview",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/usage-overview/"
+    },
+    {
+      "slug": "variable-weight-hover",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/variable-weight-hover/"
+    },
+    {
+      "slug": "version-history",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/version-history/"
+    },
+    {
+      "slug": "vertical-label-system",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/vertical-label-system/"
+    },
+    {
+      "slug": "video-hero",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/video-hero/"
+    },
+    {
+      "slug": "watchlist-panel",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/watchlist-panel/"
+    },
+    {
+      "slug": "webhook-management",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/webhook-management-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/webhook-management/"
+    },
+    {
+      "slug": "word-stagger-reveal",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/word-stagger-reveal/"
+    },
+    {
+      "slug": "workflow-builder",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/workflow-builder/"
+    },
+    {
+      "slug": "workflow-narrative",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/workflow-narrative/"
+    },
+    {
+      "slug": "workspace-switcher",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/workspace-switcher/"
+    }
+  ]
+}

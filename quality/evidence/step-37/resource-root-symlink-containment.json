@@ -1,0 +1,51 @@
+{
+  "findingId": "SEC-37-062",
+  "severity": "high",
+  "title": "Resource readers accepted symlinked roots",
+  "scope": [
+    "packages/catalog/src/discovery.ts",
+    "packages/catalog/src/validator.ts",
+    "packages/registry/src/generator.ts",
+    "packages/exporter/src/node-disk-resolver.ts"
+  ],
+  "reproductions": [
+    {
+      "boundary": "catalogue root discovery",
+      "test": "rejects a symlink passed as the catalogue root instead of traversing its target",
+      "beforeFix": "Failed: discovery followed the symlink and did not throw.",
+      "afterFix": "Passed: a symlinked resource root is rejected before traversal."
+    },
+    {
+      "boundary": "resource validator root",
+      "test": "rejects a symlink passed as an individual resource directory",
+      "beforeFix": "Failed: validateResource returned valid=true for a symlink to an external resource directory.",
+      "afterFix": "Passed: validation reports that the resource directory cannot be a symlink."
+    },
+    {
+      "boundary": "registry generator root",
+      "test": "rejects a symlink passed as the resource directory root",
+      "beforeFix": "Failed: generateRegistryItem followed the linked root and returned its component source.",
+      "afterFix": "Passed: generation rejects the symlinked resource root."
+    },
+    {
+      "boundary": "registry generator index fallback",
+      "test": "rejects a symlink root when only the index fallback could provide source",
+      "beforeFix": "Failed: the fallback read index.tsx through the linked root because no packaged file spec entered the guarded resolver.",
+      "afterFix": "Passed: the index fallback now uses the canonical contained-file resolver and rejects the linked root."
+    },
+    {
+      "boundary": "Node export resolver search root",
+      "test": "does not traverse a symlink used as the resources search root",
+      "beforeFix": "Failed: resolveResourceFromDisk returned source from the linked resources tree.",
+      "afterFix": "Passed: linked search roots are skipped and no external source is returned."
+    }
+  ],
+  "verification": {
+    "command": "pnpm exec vitest run packages/catalog/src/__tests__/catalog.test.ts packages/registry/src/__tests__/registry.test.ts packages/exporter/src/__tests__/node-disk-resolver-security.test.ts",
+    "result": "passed",
+    "testFiles": 3,
+    "testsPassed": 26,
+    "redToGreenRegressions": 5,
+    "deployedVerification": "pending"
+  }
+}

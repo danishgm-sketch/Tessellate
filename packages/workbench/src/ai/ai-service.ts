@@ -1,6 +1,7 @@
 import {
   type ProjectManifest,
   type ProjectMutation,
+  isNonActionableIntentPrompt,
 } from '@tessellate/schemas';
 import { credentialStore } from './credential-store.js';
 import { getProviderAdapter } from './adapters/index.js';
@@ -150,6 +151,10 @@ export function tryDeterministicCommandMatch(
   prompt: string
 ): IntentCommand | null {
   const lower = prompt.toLowerCase().trim();
+
+  // This small parser cannot safely determine intent scope for questions,
+  // negations, or prompts that explicitly preserve the current design.
+  if (isNonActionableIntentPrompt(lower)) return null;
 
   if (lower.includes('recompose') || lower.includes('rethink structure') || lower.includes('rethink')) {
     return {

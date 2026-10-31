@@ -1,8 +1,4 @@
-"""
-Tessellate Bespoke ML Engine - Graph-Recurrent Intent Network
-Pure mathematical implementation of Tree-GNN + Bi-directional Sequence Model.
-Zero external LLM or transformer dependencies.
-"""
+"""Small experimental graph-message-passing and bidirectional recurrent model."""
 
 import math
 import os
@@ -250,7 +246,7 @@ class BespokeIntentNetwork:
         """Serializes trained weights to a portable JSON format."""
         return {
             "version": "1.0.0",
-            "architecture": "TreeGNN-BiGRU-Bespoke",
+            "architecture": "TreeMessagePassing-BiRNN-Lab-v1",
             "vocab_size": self.vocab_size,
             "embed_dim": self.embed_dim,
             "hidden_dim": self.hidden_dim,

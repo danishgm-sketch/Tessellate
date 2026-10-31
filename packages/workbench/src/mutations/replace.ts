@@ -6,11 +6,19 @@ import type {
   ProjectMutation,
 } from '@tessellate/schemas';
 import {
+  bindResourceContent,
   calculateCompatibilityScore,
   evaluateHardConstraints,
+  resourceMatchesRole,
+  runtimeVariant,
+  isResourceComposerEligible,
 } from '@tessellate/compatibility';
+import {isScopeLocked} from '../utils/dna-helpers.js';
 import { findNodeById } from '../utils/tree-helpers.js';
 import { createHistoryOperation } from '../history/history-manager.js';
+import { getAvailableResources } from './runtime-catalog.js';
+
+export { getAvailableResources, setActiveCatalog } from './runtime-catalog.js';
 
 export interface ReplaceCandidate {
   resource: ResourceManifest;
@@ -26,188 +34,6 @@ export interface AlternativeCandidate {
   relationType: string;
   compatibilityScore: number;
   variant?: string;
-}
-
-/**
- * Curated in-memory catalog resources for the workbench composition and replace flows.
- */
-export const SAMPLE_RESOURCES: ResourceManifest[] = [
-  {
-    schemaVersion: '0.1.0',
-    id: 'res-button-01',
-    slug: 'button',
-    name: 'Command Button',
-    version: '1.0.0',
-    status: 'verified',
-    description: 'Precision typographic button with subtle hairline border and tactile press feedback.',
-    resourceType: 'primitive',
-    categories: ['primitives', 'buttons'],
-    roles: ['action-button', 'primary-action', 'secondary-action'],
-    purposes: ['marketing', 'application'],
-    productArchetypes: [{ tag: 'fintech', weight: 95 }, { tag: 'saas', weight: 90 }],
-    creator: { id: 'tess-core', displayName: 'Tessellate Core', handle: 'tessellate' },
-    provenance: { origin: 'tessellate', derivative: false, aiAssistance: 'none' },
-    license: { spdx: 'MIT', name: 'MIT', redistributionVerified: true, attributionRequired: false },
-    framework: 'react',
-    language: 'typescript',
-    styling: 'tailwind',
-    dependencies: [],
-    files: [{ path: 'index.tsx', kind: 'component', required: true }],
-    registry: { name: '@tess/button', dependencies: [], devDependencies: [], registryDependencies: [] },
-    preview: { component: 'ButtonPreview', defaultProps: { label: 'Submit' }, viewport: 360 },
-    slots: [{ id: 'label', name: 'Button Label', type: 'text', required: true, defaultValue: 'Execute' }],
-    variants: [{ id: 'var-btn-primary', name: 'primary', description: 'Solid primary accent' }, { id: 'var-btn-outline', name: 'outline', description: 'Bordered hairline' }],
-    tags: ['button', 'action'],
-    intent: { summary: 'Standard interactive button trigger', idealFor: ['fintech', 'saas'], avoidFor: [], jobs: ['action-button', 'execute-action'], contentRequirements: [] },
-    visualDNA: { visualAmbition: 40, curvature: 20 },
-    interactionDNA: { interactionDensity: 60, motionIntensity: 25, keyboardComplexity: 'low', hoverDependency: 'none', directManipulation: false },
-    layoutDNA: { density: 75, whitespace: 40, asymmetry: 0, preferredWidths: ['narrow'], layoutFamilies: ['standard'] },
-    responsive: { verifiedWidths: [360, 768, 1440], defaultStrategy: 'compress' },
-    accessibility: { levelTarget: 'AA', keyboardVerified: true, screenReaderSemantics: true, reducedMotionVerified: true, contrastTokenCompatible: true, focusVisible: true },
-    performance: { jsCost: 'tiny', gpuCost: 'none', mediaCost: 'none', runtimeComplexity: 'low', lazyRecommended: false, continuousAnimation: false },
-    complexity: 'low',
-    customizability: 'high',
-    compatibility: {},
-    relationships: [
-      { type: 'ALTERNATIVE_TO', target: 'res-button-ghost-02', notes: 'Ghost alternative' },
-    ],
-    quality: { overall: 92, accessibility: 95, responsive: 95, performance: 98, codeQuality: 95, composability: 95, visualCraft: 90, dependencyCleanliness: 100, documentation: 90 },
-    createdAt: '2026-03-01T00:00:00Z',
-    updatedAt: '2026-03-01T00:00:00Z',
-  },
-  {
-    schemaVersion: '0.1.0',
-    id: 'res-button-ghost-02',
-    slug: 'ghost-button',
-    name: 'Ghost Pill Action',
-    version: '1.0.0',
-    status: 'verified',
-    description: 'Subtle transparent button with pill curvature and soft hover state.',
-    resourceType: 'primitive',
-    categories: ['primitives', 'buttons'],
-    roles: ['action-button', 'secondary-action'],
-    purposes: ['application'],
-    productArchetypes: [{ tag: 'fintech', weight: 80 }, { tag: 'saas', weight: 85 }],
-    creator: { id: 'tess-core', displayName: 'Tessellate Core', handle: 'tessellate' },
-    provenance: { origin: 'tessellate', derivative: false, aiAssistance: 'none' },
-    license: { spdx: 'MIT', name: 'MIT', redistributionVerified: true, attributionRequired: false },
-    framework: 'react',
-    language: 'typescript',
-    styling: 'tailwind',
-    dependencies: [],
-    files: [{ path: 'index.tsx', kind: 'component', required: true }],
-    registry: { name: '@tess/ghost-button', dependencies: [], devDependencies: [], registryDependencies: [] },
-    preview: { component: 'GhostButtonPreview', defaultProps: { label: 'Cancel' }, viewport: 360 },
-    slots: [{ id: 'label', name: 'Button Label', type: 'text', required: true, defaultValue: 'Cancel' }],
-    variants: [{ id: 'var-btn-ghost', name: 'ghost', description: 'Transparent with soft border' }],
-    tags: ['button', 'ghost'],
-    intent: { summary: 'Subtle secondary action trigger', idealFor: ['fintech', 'saas'], avoidFor: [], jobs: ['action-button'], contentRequirements: [] },
-    visualDNA: { visualAmbition: 65, curvature: 100 },
-    interactionDNA: { interactionDensity: 50, motionIntensity: 20, keyboardComplexity: 'low', hoverDependency: 'none', directManipulation: false },
-    layoutDNA: { density: 60, whitespace: 50, asymmetry: 0, preferredWidths: ['narrow'], layoutFamilies: ['standard'] },
-    responsive: { verifiedWidths: [360, 768, 1440], defaultStrategy: 'compress' },
-    accessibility: { levelTarget: 'AA', keyboardVerified: true, screenReaderSemantics: true, reducedMotionVerified: true, contrastTokenCompatible: true, focusVisible: true },
-    performance: { jsCost: 'tiny', gpuCost: 'none', mediaCost: 'none', runtimeComplexity: 'low', lazyRecommended: false, continuousAnimation: false },
-    complexity: 'low',
-    customizability: 'high',
-    compatibility: {},
-    relationships: [{ type: 'ALTERNATIVE_TO', target: 'res-button-01' }],
-    quality: { overall: 90, accessibility: 92, responsive: 95, performance: 98, codeQuality: 92, composability: 95, visualCraft: 90, dependencyCleanliness: 100, documentation: 90 },
-    createdAt: '2026-03-01T00:00:00Z',
-    updatedAt: '2026-03-01T00:00:00Z',
-  },
-  {
-    schemaVersion: '0.1.0',
-    id: 'res-metric-card-01',
-    slug: 'metric-card',
-    name: 'Executive Metric Card',
-    version: '1.0.0',
-    status: 'verified',
-    description: 'High-density numeric KPI card with trend chip and baseline context.',
-    resourceType: 'component',
-    categories: ['data', 'cards'],
-    roles: ['metric-kpi', 'kpi-summary-grid'],
-    purposes: ['application', 'dashboard'],
-    productArchetypes: [{ tag: 'fintech', weight: 95 }, { tag: 'analytics', weight: 90 }],
-    creator: { id: 'tess-core', displayName: 'Tessellate Core', handle: 'tessellate' },
-    provenance: { origin: 'tessellate', derivative: false, aiAssistance: 'none' },
-    license: { spdx: 'MIT', name: 'MIT', redistributionVerified: true, attributionRequired: false },
-    framework: 'react',
-    language: 'typescript',
-    styling: 'tailwind',
-    dependencies: [],
-    files: [{ path: 'index.tsx', kind: 'component', required: true }],
-    registry: { name: '@tess/metric-card', dependencies: [], devDependencies: [], registryDependencies: [] },
-    preview: { component: 'MetricCardPreview', defaultProps: { label: 'ARR', value: '$10M' }, viewport: 360 },
-    slots: [{ id: 'title', name: 'KPI Title', type: 'text', required: true }, { id: 'value', name: 'Primary Metric', type: 'text', required: true }],
-    variants: [{ id: 'var-metric-default', name: 'default', description: 'Standard metric card' }, { id: 'var-metric-dense', name: 'dense', description: 'Ultra-compact terminal view' }],
-    tags: ['metric', 'kpi'],
-    intent: { summary: 'Display headline metric with delta indicator', idealFor: ['fintech', 'analytics'], avoidFor: [], jobs: ['metric-kpi'], contentRequirements: [] },
-    visualDNA: { visualAmbition: 50, curvature: 25 },
-    interactionDNA: { interactionDensity: 70, motionIntensity: 20, keyboardComplexity: 'low', hoverDependency: 'none', directManipulation: false },
-    layoutDNA: { density: 85, whitespace: 35, asymmetry: 0, preferredWidths: ['narrow', 'content'], layoutFamilies: ['standard'] },
-    responsive: { verifiedWidths: [360, 768, 1440], defaultStrategy: 'compress' },
-    accessibility: { levelTarget: 'AA', keyboardVerified: true, screenReaderSemantics: true, reducedMotionVerified: true, contrastTokenCompatible: true, focusVisible: true },
-    performance: { jsCost: 'low', gpuCost: 'none', mediaCost: 'none', runtimeComplexity: 'low', lazyRecommended: false, continuousAnimation: false },
-    complexity: 'medium',
-    customizability: 'medium',
-    compatibility: {},
-    relationships: [{ type: 'SAME_FAMILY', target: 'res-chart-area-01' }],
-    quality: { overall: 94, accessibility: 95, responsive: 95, performance: 95, codeQuality: 95, composability: 95, visualCraft: 94, dependencyCleanliness: 100, documentation: 92 },
-    createdAt: '2026-03-01T00:00:00Z',
-    updatedAt: '2026-03-01T00:00:00Z',
-  },
-  {
-    schemaVersion: '0.1.0',
-    id: 'res-chart-area-01',
-    slug: 'area-chart',
-    name: 'Sparkline Area Horizon',
-    version: '1.0.0',
-    status: 'verified',
-    description: 'Gradient fill continuous timeline chart with hover tooltip crosshair.',
-    resourceType: 'section',
-    categories: ['data', 'charts'],
-    roles: ['data-chart', 'chart-panel'],
-    purposes: ['dashboard', 'analytics'],
-    productArchetypes: [{ tag: 'fintech', weight: 95 }, { tag: 'analytics', weight: 95 }],
-    creator: { id: 'tess-core', displayName: 'Tessellate Core', handle: 'tessellate' },
-    provenance: { origin: 'tessellate', derivative: false, aiAssistance: 'none' },
-    license: { spdx: 'MIT', name: 'MIT', redistributionVerified: true, attributionRequired: false },
-    framework: 'react',
-    language: 'typescript',
-    styling: 'tailwind',
-    dependencies: [],
-    files: [{ path: 'index.tsx', kind: 'component', required: true }],
-    registry: { name: '@tess/area-chart', dependencies: [], devDependencies: [], registryDependencies: [] },
-    preview: { component: 'AreaChartPreview', defaultProps: { title: 'Performance' }, viewport: 768 },
-    slots: [{ id: 'title', name: 'Chart Title', type: 'text', required: true }],
-    variants: [{ id: 'var-chart-gradient', name: 'gradient-fill', description: 'Smooth gradient fill under curve' }],
-    tags: ['chart', 'data', 'area'],
-    intent: { summary: 'Historical timeline trend visualization', idealFor: ['fintech', 'analytics'], avoidFor: [], jobs: ['data-chart'], contentRequirements: [] },
-    visualDNA: { visualAmbition: 70, curvature: 20 },
-    interactionDNA: { interactionDensity: 80, motionIntensity: 35, keyboardComplexity: 'medium', hoverDependency: 'optional', directManipulation: true },
-    layoutDNA: { density: 80, whitespace: 40, asymmetry: 0, preferredWidths: ['wide', 'full'], layoutFamilies: ['standard'] },
-    responsive: { verifiedWidths: [360, 768, 1440], defaultStrategy: 'compress' },
-    accessibility: { levelTarget: 'AA', keyboardVerified: true, screenReaderSemantics: true, reducedMotionVerified: true, contrastTokenCompatible: true, focusVisible: true },
-    performance: { jsCost: 'low', gpuCost: 'low', mediaCost: 'none', runtimeComplexity: 'medium', lazyRecommended: true, continuousAnimation: false },
-    complexity: 'medium',
-    customizability: 'high',
-    compatibility: {},
-    relationships: [{ type: 'SAME_FAMILY', target: 'res-metric-card-01' }],
-    quality: { overall: 91, accessibility: 90, responsive: 92, performance: 90, codeQuality: 92, composability: 92, visualCraft: 94, dependencyCleanliness: 100, documentation: 90 },
-    createdAt: '2026-03-01T00:00:00Z',
-    updatedAt: '2026-03-01T00:00:00Z',
-  },
-];
-
-let _activeCatalog: ResourceManifest[] = SAMPLE_RESOURCES;
-
-export function setActiveCatalog(catalog: ResourceManifest[]): void {
-  _activeCatalog = catalog;
-}
-
-export function getAvailableResources(): ResourceManifest[] {
-  return _activeCatalog;
 }
 
 /**
@@ -229,6 +55,8 @@ export function getReplaceCandidates(
   }
 
   if (!targetNode) return [];
+  const screenId=manifest.screens.find(screen=>findNodeById(screen.rootNode,nodeId))?.id ?? '';
+  if(isScopeLocked(manifest,screenId,nodeId,'structure')) return [];
 
   const currentResource = activeCatalog.find((r: ResourceManifest) => r.id === targetNode?.resourceRef?.id);
   const currentAmbition = currentResource?.visualDNA?.visualAmbition ?? manifest.designDNA.visualAmbition;
@@ -238,7 +66,7 @@ export function getReplaceCandidates(
 
   for (const res of activeCatalog) {
     // Skip if it's the current exact resource
-    if (res.id === targetNode.resourceRef?.id) continue;
+    if (!isResourceComposerEligible(res) || res.id === targetNode.resourceRef?.id || res.slug===targetNode.resourceRef?.slug) continue;
 
     // 1. Evaluate hard constraints
     const hardCheck = evaluateHardConstraints({
@@ -252,14 +80,7 @@ export function getReplaceCandidates(
     }
 
     // 2. Check role and structural type match
-    const targetRoleLower = targetNode.semanticRole.toLowerCase();
-    const roleMatch =
-      res.roles.includes(targetNode.semanticRole) ||
-      res.roles.some((r: string) => r.toLowerCase() === targetRoleLower) ||
-      res.roles.some((r: string) => r.toLowerCase().includes(targetRoleLower) || targetRoleLower.includes(r.toLowerCase())) ||
-      (targetNode.nodeType === 'element' && res.resourceType === 'primitive') ||
-      (targetNode.nodeType === 'section' && res.resourceType === 'section') ||
-      (targetNode.nodeType === 'component' && (res.resourceType === 'block' || res.resourceType === 'primitive' || res.resourceType === 'ai-pattern' || res.resourceType === 'data-visualization' || res.resourceType === 'state'));
+    const roleMatch = resourceMatchesRole(res, targetNode.semanticRole);
 
     if (!roleMatch) continue;
 
@@ -281,7 +102,7 @@ export function getReplaceCandidates(
       rationale: scoreResult.rationale[0] ?? `Matches role "${targetNode.semanticRole}"`,
       performanceDelta: resPerf - currentPerfScore,
       ambitionDelta: resAmbition - currentAmbition,
-      defaultVariant: res.variants[0]?.name ?? 'default',
+      defaultVariant: runtimeVariant(res),
     });
   }
 
@@ -307,6 +128,8 @@ export function getAlternativeCandidates(
   }
 
   if (!targetNode) return [];
+  const screenId=manifest.screens.find(screen=>findNodeById(screen.rootNode,nodeId))?.id ?? '';
+  if(isScopeLocked(manifest,screenId,nodeId,'structure')) return [];
 
   const currentResource = activeCatalog.find((r: ResourceManifest) => r.id === targetNode?.resourceRef?.id);
   const results: AlternativeCandidate[] = [];
@@ -314,12 +137,13 @@ export function getAlternativeCandidates(
   if (currentResource) {
     // 1. Other variants of the current resource
     for (const v of currentResource.variants) {
-      if (v.name !== targetNode.variant) {
+      const variant = runtimeVariant(currentResource, v.id || v.name);
+      if (variant !== targetNode.variant) {
         results.push({
           resource: currentResource,
           relationType: 'VARIANT',
           compatibilityScore: 95,
-          variant: v.name,
+          variant,
         });
       }
     }
@@ -327,12 +151,12 @@ export function getAlternativeCandidates(
     // 2. Direct relationships declared in resource manifest
     for (const rel of currentResource.relationships) {
       const related = activeCatalog.find((r: ResourceManifest) => r.id === rel.target || r.slug === rel.target);
-      if (related) {
+      if (related && isResourceComposerEligible(related) && getReplaceCandidates(manifest,nodeId,activeCatalog).some(candidate=>candidate.resource.id===related.id)) {
         results.push({
           resource: related,
           relationType: rel.type,
           compatibilityScore: 85,
-          variant: related.variants[0]?.name ?? 'default',
+          variant: runtimeVariant(related),
         });
       }
     }
@@ -372,6 +196,10 @@ export function createReplaceOperation(
     }
   }
 
+  if(!originalNode) throw new Error(`Node ${nodeId} does not exist.`);
+  const hardCheck=evaluateHardConstraints({resource:replacementResource,constraints:manifest.constraints,requiredAccessibilityFloor:manifest.constraints.accessibilityFloor,performanceCeiling:manifest.constraints.performanceCeiling,targetDevices:manifest.constraints.targetDevices});
+  if(!isResourceComposerEligible(replacementResource) || !resourceMatchesRole(replacementResource,originalNode.semanticRole) || !hardCheck.pass) throw new Error('Replacement does not satisfy this semantic role and the project hard constraints.');
+
   const defaultSlots: Record<string, unknown> = {};
   for (const slot of replacementResource.slots ?? []) {
     if (slot.defaultValue !== undefined) {
@@ -379,26 +207,33 @@ export function createReplaceOperation(
     }
   }
 
+  const ownerScreen=manifest.screens.find(screen=>findNodeById(screen.rootNode,nodeId));
+  const graphNodes=manifest.screenGraph.groups.flatMap(group=>group.screens);
+  const screenNode=graphNodes.find(screen=>screen.id===ownerScreen?.screenNodeId);
+  const boundContent=screenNode?bindResourceContent(manifest.productModel,screenNode,originalNode.semanticRole,graphNodes,replacementResource.slug,manifest.description):{};
   const replacementNode: ProjectNode = {
     id: nodeId, // preserve ID so tree references and locks stay stable
-    nodeType: replacementResource.resourceType === 'primitive' ? 'element' : (replacementResource.resourceType as ProjectNode['nodeType']),
+    nodeType: originalNode?.nodeType ?? 'component',
     semanticRole: originalNode?.semanticRole ?? replacementResource.roles[0] ?? 'component',
     resourceRef: {
       id: replacementResource.id,
       slug: replacementResource.slug,
       version: replacementResource.version,
     },
-    variant: variant ?? replacementResource.variants[0]?.name ?? 'default',
+    variant: runtimeVariant(replacementResource, variant),
     slots: {
       ...defaultSlots,
       ...(originalNode?.slots ?? {}),
     },
     props: {
-      ...(originalNode?.props ?? {}),
+      ...(replacementResource.preview?.defaultProps ?? {}),
+      ...boundContent,
+      ...Object.fromEntries(Object.entries(originalNode.props ?? {}).filter(([key])=>key in boundContent)),
     },
     children: originalNode?.children ?? [],
     locks: originalNode?.locks,
-    dnaOverrides: originalNode?.dnaOverrides,
+    tokenOverrides: originalNode.tokenOverrides,
+    dnaOverrides: {...originalNode?.dnaOverrides,visualMode:runtimeVariant(replacementResource,variant)==='nocturne' ? 'dark' : 'light'},
   };
 
   const mutation: ProjectMutation = {

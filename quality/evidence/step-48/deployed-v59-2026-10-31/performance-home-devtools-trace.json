@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "deployment": {
+    "siteVersion": 59,
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "viewport": "1440x900",
+    "network": "Fast 4G",
+    "cpuThrottle": "1x",
+    "traceKind": "Chrome DevTools lab navigation trace",
+    "fieldCruxAvailable": false,
+    "rawTraceSaved": false,
+    "rawTraceLimitation": "Chrome DevTools MCP denied filesystem paths outside its configured roots; metric and insight summaries were captured directly from the trace response."
+  },
+  "metrics": {
+    "lcpMs": 565,
+    "lcpElement": "Homepage H1 text",
+    "ttfbMs": 68,
+    "lcpRenderDelayMs": 497,
+    "lcpRenderDelayPercent": 87.9,
+    "cls": 0.0,
+    "inp": null
+  },
+  "insights": {
+    "estimatedSavings": "none",
+    "renderBlocking": {
+      "stylesheet": "/_astro/style.B91OJ-K3.css",
+      "status": 200,
+      "durationMs": 222,
+      "estimatedFcpSavingsMs": 0,
+      "estimatedLcpSavingsMs": 0
+    },
+    "networkDependencyTree": {
+      "maxCriticalPathLatencyMs": 690,
+      "externalOriginsPreconnected": 0,
+      "criticalClientChunk": "/_astro/client.CZ5CiHPg.js",
+      "largestCriticalPath": "document → Astro client → lazy home demo chunks"
+    },
+    "domSize": {
+      "totalElements": 856,
+      "maximumDepth": 13,
+      "maximumChildren": 14,
+      "largestObservedLayoutUpdateMs": 99
+    }
+  },
+  "assessment": "Lab LCP and CLS are below current Core Web Vitals thresholds, but this trace is not field data and did not observe INP. The main LCP contributor is rendering delay, not TTFB. DevTools estimated no improvement from removing the observed stylesheet or dependency chain."
+}

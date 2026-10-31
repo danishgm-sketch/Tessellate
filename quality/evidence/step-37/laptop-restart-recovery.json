@@ -1,0 +1,47 @@
+{
+  "capturedAt": "2026-10-25T14:38:34.7114192Z",
+  "scope": "Approved Windows restart recovery check for the laptop-hosted Tessellate backend.",
+  "restartAuthorized": true,
+  "beforeRestart": {
+    "apiContainer": {
+      "name": "tessellate-laptop-api-1",
+      "dockerStatus": "running, unhealthy",
+      "healthCheck": "Repeated health probes timed out after 3 seconds.",
+      "hostProbe": "GET http://127.0.0.1:8788/health timed out after 5 seconds."
+    },
+    "hostContainer": {
+      "name": "tessellate-laptop-host-1",
+      "dockerStatus": "running, unhealthy",
+      "healthCheck": "The /tmp/host-heartbeat file was missing or older than 20 seconds."
+    }
+  },
+  "restart": {
+    "command": "shutdown.exe /r /t 0",
+    "windowsBootTime": "2026-10-25T14:15:40.5000000Z",
+    "manualContainerStartRequired": false
+  },
+  "afterRestart": {
+    "observedAt": "2026-10-25T14:38:34.7114192Z",
+    "apiContainer": {
+      "name": "tessellate-laptop-api-1",
+      "dockerStatus": "running, healthy",
+      "recentHealthChecks": "Five consecutive health checks exited successfully.",
+      "hostProbe": "GET http://127.0.0.1:8788/health returned HTTP 200."
+    },
+    "hostContainer": {
+      "name": "tessellate-laptop-host-1",
+      "dockerStatus": "running, healthy",
+      "recentHealthChecks": "Five consecutive heartbeat freshness checks exited successfully."
+    },
+    "inferenceHealthProbe": {
+      "result": "Not queried without the required gateway credential.",
+      "security": "No gateway or host secret was read, logged, or exposed. The API endpoint returned HTTP 401 when called without its required gateway header."
+    },
+    "hostPortProbe": {
+      "result": "Not applicable from the host network.",
+      "reason": "The host daemon listens on the Docker network and its port is not published on the laptop host. Its Docker health check is the supported liveness signal."
+    }
+  },
+  "result": "PASS",
+  "conclusion": "Docker restart policy recovered both Tessellate containers after Windows boot. API and host were healthy without manual intervention."
+}

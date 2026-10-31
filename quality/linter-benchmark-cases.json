@@ -1,0 +1,189 @@
+[
+  {
+    "id": "color-positive-bg",
+    "rule": "no-hardcoded-colors",
+    "file": "src/components/Button.tsx",
+    "code": "export function Button(){return <button className=\"bg-[#2547E8]\" />}",
+    "expected": true,
+    "scope": "included"
+  },
+  {
+    "id": "color-comment-negative",
+    "rule": "no-hardcoded-colors",
+    "file": "src/components/Example.tsx",
+    "code": "// className=\"bg-[#2547E8]\"\nexport const Example = () => <div />;",
+    "expected": false,
+    "scope": "included"
+  },
+  {
+    "id": "color-inline-style-out-of-scope",
+    "rule": "no-hardcoded-colors",
+    "file": "src/components/Brand.tsx",
+    "code": "export const Brand = () => <div style={{ color: '#2547E8' }} />;",
+    "expected": false,
+    "scope": "excluded",
+    "limitation": "The rule currently scans Tailwind arbitrary hex utility text, not CSS or inline styles."
+  },
+  {
+    "id": "spacing-positive",
+    "rule": "no-arbitrary-spacing",
+    "file": "src/components/Card.tsx",
+    "code": "export const Card = () => <div className=\"p-[17px]\" />;",
+    "expected": true,
+    "scope": "included"
+  },
+  {
+    "id": "spacing-near-zero-positive",
+    "rule": "no-arbitrary-spacing",
+    "file": "src/components/Divider.tsx",
+    "code": "export const Divider = () => <div className=\"mb-[1px]\" />;",
+    "expected": true,
+    "scope": "included"
+  },
+  {
+    "id": "spacing-token-negative",
+    "rule": "no-arbitrary-spacing",
+    "file": "src/components/Card.tsx",
+    "code": "export const Card = () => <div className=\"p-4\" />;",
+    "expected": false,
+    "scope": "included"
+  },
+  {
+    "id": "spacing-comment-negative",
+    "rule": "no-arbitrary-spacing",
+    "file": "src/components/Example.tsx",
+    "code": "/* className=\"gap-[29px]\" */\nexport const Example = () => <div />;",
+    "expected": false,
+    "scope": "included"
+  },
+  {
+    "id": "contrast-explicit-hex-low",
+    "rule": "enforce-accessible-contrast",
+    "file": "src/components/Label.tsx",
+    "code": "export const Label = () => <p className=\"bg-[#ffffff] text-[#b8b8b8]\">Hello</p>;",
+    "expected": true,
+    "scope": "included"
+  },
+  {
+    "id": "contrast-selected-gray-low",
+    "rule": "enforce-accessible-contrast",
+    "file": "src/components/Label.tsx",
+    "code": "export const Label = () => <p className=\"text-zinc-300 bg-white\">Hello</p>;",
+    "expected": true,
+    "scope": "included"
+  },
+  {
+    "id": "contrast-explicit-hex-readable",
+    "rule": "enforce-accessible-contrast",
+    "file": "src/components/Label.tsx",
+    "code": "export const Label = () => <p className=\"bg-[#ffffff] text-[#111217]\">Hello</p>;",
+    "expected": false,
+    "scope": "included"
+  },
+  {
+    "id": "contrast-readable-gray-black",
+    "rule": "enforce-accessible-contrast",
+    "file": "src/components/Label.tsx",
+    "code": "export const Label = () => <p className=\"bg-black text-gray-400\">Hello</p>;",
+    "expected": false,
+    "scope": "included"
+  },
+  {
+    "id": "contrast-dark-variant-low",
+    "rule": "enforce-accessible-contrast",
+    "file": "src/components/Label.tsx",
+    "code": "export const Label = () => <p className=\"dark:text-gray-300 dark:bg-white\">Hello</p>;",
+    "expected": true,
+    "scope": "included"
+  },
+  {
+    "id": "contrast-opacity-out-of-scope",
+    "rule": "enforce-accessible-contrast",
+    "file": "src/components/Label.tsx",
+    "code": "export const Label = () => <p className=\"bg-black/50 text-gray-300\">Hello</p>;",
+    "expected": false,
+    "scope": "excluded",
+    "limitation": "Opacity and composited colors are not modeled."
+  },
+  {
+    "id": "motion-positive",
+    "rule": "enforce-reduced-motion",
+    "file": "src/components/Spinner.tsx",
+    "code": "export const Spinner = () => <div className=\"animate-spin\" />;",
+    "expected": true,
+    "scope": "included"
+  },
+  {
+    "id": "motion-reduce-fallback-negative",
+    "rule": "enforce-reduced-motion",
+    "file": "src/components/Spinner.tsx",
+    "code": "export const Spinner = () => <div className=\"animate-spin motion-reduce:animate-none\" />;",
+    "expected": false,
+    "scope": "included"
+  },
+  {
+    "id": "motion-safe-fallback-negative",
+    "rule": "enforce-reduced-motion",
+    "file": "src/components/Spinner.tsx",
+    "code": "export const Spinner = () => <div className=\"motion-safe:animate-spin\" />;",
+    "expected": false,
+    "scope": "included"
+  },
+  {
+    "id": "motion-separate-element-positive",
+    "rule": "enforce-reduced-motion",
+    "file": "src/components/Loading.tsx",
+    "code": "export const Loading = () => <><i className=\"animate-pulse\" /><i className=\"motion-reduce:animate-none\" /></>;",
+    "expected": true,
+    "scope": "included"
+  },
+  {
+    "id": "motion-comment-negative",
+    "rule": "enforce-reduced-motion",
+    "file": "src/components/Example.tsx",
+    "code": "// className=\"animate-spin\"\nexport const Example = () => <div />;",
+    "expected": false,
+    "scope": "included"
+  },
+  {
+    "id": "landmark-route-missing-main-positive",
+    "rule": "enforce-semantic-landmarks",
+    "file": "src/pages/dashboard/index.tsx",
+    "code": "export default function Dashboard(){return <div />;}",
+    "expected": true,
+    "scope": "included"
+  },
+  {
+    "id": "landmark-route-present-main-negative",
+    "rule": "enforce-semantic-landmarks",
+    "file": "src/pages/dashboard/index.tsx",
+    "code": "export default function Dashboard(){return <main />;}",
+    "expected": false,
+    "scope": "included"
+  },
+  {
+    "id": "landmark-component-name-negative",
+    "rule": "enforce-semantic-landmarks",
+    "file": "src/components/Page.tsx",
+    "code": "export function Page(){return <div />;}",
+    "expected": false,
+    "scope": "included"
+  },
+  {
+    "id": "landmark-routes-directory-positive",
+    "rule": "enforce-semantic-landmarks",
+    "file": "src/routes/settings/index.tsx",
+    "code": "export function Settings(){return <section />;}",
+    "expected": true,
+    "scope": "included"
+  },
+  {
+    "id": "motion-computed-expression-out-of-scope",
+    "rule": "enforce-reduced-motion",
+    "file": "src/components/Spinner.tsx",
+    "code": "export const Spinner = ({className}) => <div className={className} />;",
+    "expected": false,
+    "scope": "excluded",
+    "limitation": "Computed class values are not analyzed."
+  }
+]

@@ -2,8 +2,9 @@ import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import type { ProjectManifest, ProjectNode } from '@tessellate/schemas';
-import { GOLD_40_SLUGS } from '@tessellate/catalog';
-import { ManifestRenderer, NodeRenderer } from '../index.js';
+import { GOLD_40_SLUGS, isGoldResource } from '@tessellate/catalog';
+import { createGoldResourceVariantParityNodes } from '@tessellate/testing';
+import { DEFAULT_RESOURCE_RENDERERS, ManifestRenderer, NodeRenderer } from '../index.js';
 
 function createTestNode(slug: string, props: Record<string, unknown> = {}): ProjectNode {
   return {
@@ -54,6 +55,62 @@ function createTestManifest(slug: string, node: ProjectNode): ProjectManifest {
 }
 
 describe('Requirement 4 & 6: Runtime Resource Registry for Gold 40 with Family Semantics', () => {
+  it('preserves resource prop children and nested manifest children in the same rendered slot', () => {
+    const node = createTestNode('dashboard-skeleton', { children: 'Content from resource props' });
+    node.children = [{
+      id: 'nested-content',
+      nodeType: 'element',
+      semanticRole: 'content',
+      props: { children: 'Content from nested manifest node' },
+      slots: {},
+      children: [],
+    }];
+
+    const html = renderToString(<ManifestRenderer manifest={createTestManifest('canvas', node)} activeScreenId="screen_1" />);
+
+    expect(html).toContain('Content from resource props');
+    expect(html).toContain('Content from nested manifest node');
+  });
+
+  it('preserves a declared resource children slot alongside nested manifest children', () => {
+    const node = createTestNode('dashboard-skeleton');
+    node.slots = { children: 'Content from declared resource slot' };
+    node.children = [{
+      id: 'nested-slot-content',
+      nodeType: 'element',
+      semanticRole: 'content',
+      props: { children: 'Content from nested manifest node' },
+      slots: {},
+      children: [],
+    }];
+
+    const html = renderToString(<ManifestRenderer manifest={createTestManifest('canvas', node)} activeScreenId="screen_1" />);
+
+    expect(html).toContain('Content from declared resource slot');
+    expect(html).toContain('Content from nested manifest node');
+  });
+
+  it('shows a recoverable diagnostic instead of rendering an unsupported resource variant', () => {
+    const node = createTestNode('button');
+    node.variant = 'unsupported-variant';
+
+    const html = renderToString(<NodeRenderer node={node} />);
+
+    expect(html).toContain('data-testid="unsupported-resource-variant"');
+    expect(html).toContain('unsupported-variant');
+    expect(html).not.toContain('<button');
+  });
+
+  it('does not execute non-Gold catalogue resources in the authenticated app renderer', () => {
+    const nonGoldSlug = 'ai-chat-panel';
+
+    expect(isGoldResource(nonGoldSlug)).toBe(false);
+    expect(DEFAULT_RESOURCE_RENDERERS[nonGoldSlug]).toBeUndefined();
+
+    const html = renderToString(<NodeRenderer node={createTestNode(nonGoldSlug)} />);
+    expect(html).toContain('data-testid="missing-resource-recovery"');
+  });
+
   it.each(GOLD_40_SLUGS.map((slug) => [slug]))(
     'renders Gold resource slug "%s" without missing-resource-recovery fallback',
     (slug) => {
@@ -75,6 +132,18 @@ describe('Requirement 4 & 6: Runtime Resource Registry for Gold 40 with Family S
       expect(manifestHtml).toContain(`data-node-id="node_test_${slug}"`);
     }
   );
+
+  it('renders every declared Gold variant through the same manifest renderer contract', () => {
+    const nodes = createGoldResourceVariantParityNodes();
+
+    expect(nodes).toHaveLength(GOLD_40_SLUGS.length * 3);
+    for (const node of nodes) {
+      const html = renderToString(<NodeRenderer node={node} />);
+      expect(html, `${node.resourceRef?.slug}/${node.variant}`).toContain(`data-resource-variant="${node.variant}"`);
+      expect(html, `${node.resourceRef?.slug}/${node.variant}`).not.toContain('unsupported-resource-variant');
+      expect(html, `${node.resourceRef?.slug}/${node.variant}`).toContain(`data-node-id="${node.id}"`);
+    }
+  });
 
   describe('Family-Level Semantic Assertions', () => {
     it('verifies Usable Controls family renders interactive elements', () => {

@@ -5,7 +5,7 @@ export type CenteredTopNavVariant = 'quiet' | 'expressive' | 'nocturne';
 export interface CenteredTopNavProps {
   variant?: CenteredTopNavVariant;
   brand?: React.ReactNode;
-  links?: Array<{ label: string; href: string }>;
+  links?: Array<{ label: string; href?: string }>;
   cta?: React.ReactNode;
 }
 
@@ -13,12 +13,12 @@ export function CenteredTopNav({
   variant = 'quiet',
   brand = 'Tessellate',
   links = [
-    { label: 'Features', href: '#' },
-    { label: 'Showcase', href: '#' },
-    { label: 'Pricing', href: '#' },
-    { label: 'Blog', href: '#' },
+    { label: 'Features' },
+    { label: 'Showcase' },
+    { label: 'Pricing' },
+    { label: 'Blog' },
   ],
-  cta = <button className="px-3 py-1.5 text-xs bg-neutral-900 text-white rounded-lg">Get Started</button>,
+  cta,
 }: CenteredTopNavProps) {
   let bar = 'bg-white border-b border-neutral-200 text-neutral-900';
   if (variant === 'expressive') bar = 'bg-white border-b border-[#D9D6CF] text-neutral-900';
@@ -29,12 +29,12 @@ export function CenteredTopNav({
       <div className="font-semibold text-sm">{brand}</div>
       <div className="hidden md:flex items-center gap-6 text-xs">
         {links.map((l) => (
-          <a key={l.label} href={l.href} className="opacity-70 hover:opacity-100 transition-opacity">
-            {l.label}
-          </a>
+          l.href
+            ? <a key={l.label} href={l.href} className="opacity-70 hover:opacity-100 transition-opacity">{l.label}</a>
+            : <span key={l.label} className="opacity-70">{l.label}</span>
         ))}
       </div>
-      <div>{cta}</div>
+      {cta && <div>{cta}</div>}
     </nav>
   );
 }

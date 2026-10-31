@@ -3,14 +3,14 @@
   "name": "footer-minimal",
   "type": "registry:block",
   "title": "Footer Minimal",
-  "description": "Single-line copyright, status indicator, and legal links with minimal footprint.",
+  "description": "Compact copyright footer with optional links for the project.",
   "dependencies": [],
   "devDependencies": [],
   "registryDependencies": [],
   "files": [
     {
       "path": "index.tsx",
-      "content": "import React from 'react';\n\nexport type FooterMinimalVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FooterMinimalProps {\n  variant?: FooterMinimalVariant;\n}\n\nexport function FooterMinimal({ variant = 'quiet' }: FooterMinimalProps) {\n  let bg = 'bg-[#FAF8F5] text-neutral-600 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-white text-neutral-700 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-neutral-400 border-[#2E3440]';\n  }\n\n  return (\n    <footer className={`w-full py-8 px-6 sm:px-12 border-t text-xs transition-colors ${bg}`}>\n      <div className=\"max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4\">\n        <div className=\"flex items-center gap-2\">\n          <span className=\"font-semibold tracking-tight text-neutral-900 dark:text-white\">Tessellate</span>\n          <span>© {new Date().getFullYear()} Tessellate Core. MIT License.</span>\n        </div>\n        <div className=\"flex items-center gap-6\">\n          <a href=\"#\" className=\"hover:underline\">Privacy</a>\n          <a href=\"#\" className=\"hover:underline\">Terms</a>\n          <a href=\"#\" className=\"hover:underline\">Status: Operational</a>\n        </div>\n      </div>\n    </footer>\n  );\n}\n",
+      "content": "import React from 'react';\n\nexport type FooterMinimalVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FooterMinimalProps {\n  variant?: FooterMinimalVariant;\n  links?: Array<{ label: string; href?: string }>;\n}\n\nexport function FooterMinimal({ variant = 'quiet', links = [] }: FooterMinimalProps) {\n  let bg = 'bg-[#FAF8F5] text-neutral-600 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-white text-neutral-700 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-neutral-400 border-[#2E3440]';\n  }\n\n  return (\n    <footer className={`w-full py-8 px-6 sm:px-12 border-t text-xs transition-colors ${bg}`}>\n      <div className=\"max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4\">\n        <div className=\"flex items-center gap-2\">\n          <span className=\"font-semibold tracking-tight text-neutral-900 dark:text-white\">Tessellate</span>\n          <span>© {new Date().getFullYear()} Tessellate Core. MIT License.</span>\n        </div>\n        <div className=\"flex items-center gap-6\">\n          {links.map((link) => link.href\n            ? <a key={link.label} href={link.href} className=\"hover:underline\">{link.label}</a>\n            : <span key={link.label}>{link.label}</span>)}\n        </div>\n      </div>\n    </footer>\n  );\n}\n",
       "type": "registry:block",
       "target": "components/ui/index.tsx"
     },

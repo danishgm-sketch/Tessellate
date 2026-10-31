@@ -1,0 +1,62 @@
+{
+  "capturedAt": "2026-10-24T19:23:42.230Z",
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "results": [
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=button",
+      "viewport": "1440x900",
+      "console": [
+        {
+          "type": "error",
+          "text": "Blocked opening 'https://example.invalid/popup' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set."
+        },
+        {
+          "type": "error",
+          "text": "Framing 'https://example.invalid/' violates the following Content Security Policy directive: \"frame-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site\". The request has been blocked.\n"
+        }
+      ],
+      "uncaught": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "externalRequests": [],
+      "status": 200,
+      "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src 'none'; frame-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site; sandbox allow-scripts; frame-ancestors 'self'; object-src 'none'; base-uri 'self';",
+      "sandbox": "allow-scripts",
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\continued-v24\\preview-isolation-1440x900.png",
+      "opaqueOriginAndStorage": {
+        "origin": "null",
+        "localStorageBlocked": true
+      },
+      "popupOpened": false,
+      "topLevelNavigationPrevented": true
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=button",
+      "viewport": "390x844",
+      "console": [
+        {
+          "type": "error",
+          "text": "Blocked opening 'https://example.invalid/popup' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set."
+        },
+        {
+          "type": "error",
+          "text": "Framing 'https://example.invalid/' violates the following Content Security Policy directive: \"frame-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site\". The request has been blocked.\n"
+        }
+      ],
+      "uncaught": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "externalRequests": [],
+      "status": 200,
+      "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src 'none'; frame-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site; sandbox allow-scripts; frame-ancestors 'self'; object-src 'none'; base-uri 'self';",
+      "sandbox": "allow-scripts",
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\continued-v24\\preview-isolation-390x844.png",
+      "opaqueOriginAndStorage": {
+        "origin": "null",
+        "localStorageBlocked": true
+      },
+      "popupOpened": false,
+      "topLevelNavigationPrevented": true
+    }
+  ]
+}

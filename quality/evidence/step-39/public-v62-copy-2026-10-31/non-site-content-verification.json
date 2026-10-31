@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0.0",
+  "verifiedAt": "2026-10-31T16:58:26Z",
+  "verificationHead": "38e421bb4681dcb2e0d3e36746f1c0dd2c75857c",
+  "fixSourceCommit": "ba3175a42c2b78151bf7c48505e842fedc672394",
+  "siteVersion": 62,
+  "siteVerification": "not applicable for CLI and MCP process behavior",
+  "findings": [
+    {
+      "id": "AUD-232",
+      "status": "closed",
+      "test": "packages/mcp/src/__tests__/client-workflow.test.ts",
+      "report": "mcp-client-workflow-report.json",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "proof": "All 7 MCP SDK client-process workflows passed. The stdio client lists actual server tools and verifies recommend_resources discloses lexical token-overlap ranking and does not claim best/semantic fit."
+    },
+    {
+      "id": "AUD-234",
+      "status": "closed",
+      "test": "packages/cli/src/__tests__/black-box.test.ts",
+      "testTitle": "CLI black-box workflows does not present an unpublished resource scaffold as installable",
+      "report": "cli-black-box-scaffold-report.json",
+      "passed": 1,
+      "failed": 0,
+      "proof": "The test launches the CLI child process in a fresh temporary directory. It confirms the created manifest stays draft, the README says it is not registered, review guidance is present, and tess add/shadcn install claims are absent."
+    }
+  ]
+}

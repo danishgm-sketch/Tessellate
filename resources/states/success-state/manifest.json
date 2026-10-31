@@ -5,7 +5,7 @@
   "name": "Success State",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Completed transaction confirmation panel with verified checkmark, output artifact links, and next step suggestions.",
+  "description": "Completion message with an optional host-provided next action.",
   "resourceType": "state",
   "categories": [
     "states",
@@ -118,7 +118,7 @@
     {
       "id": "nocturne",
       "name": "Nocturne",
-      "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+      "description": "Dark canvas with cyan accents and a clear completion message.",
       "props": {
         "variant": "nocturne"
       }
@@ -132,21 +132,20 @@
     "done"
   ],
   "intent": {
-    "summary": "Completed transaction confirmation panel with verified checkmark, output artifact links, and next step suggestions.",
+    "summary": "Completion message with an optional host-provided next action.",
     "idealFor": [
-      "Project export completion",
-      "Cloud checkpoint saves",
-      "Publishing workflows"
+      "Confirming a task completed in the host application",
+      "Showing a next action when the host provides one"
     ],
     "avoidFor": [
       "Pending background queues",
       "Incomplete validation forms"
     ],
     "jobs": [
-      "Celebrate task completion and deliver immediate access to finished artifacts"
+      "Confirm a completed action and expose a next step when one is connected"
     ],
     "contentRequirements": [
-      "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+      "A truthful completion message, announced status, and a connected or explicitly disabled action"
     ],
     "notes": [
       "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
@@ -214,12 +213,12 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -242,7 +241,11 @@
     "composability": 97,
     "visualCraft": 98,
     "dependencyCleanliness": 100,
-    "documentation": 96
+    "documentation": 96,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

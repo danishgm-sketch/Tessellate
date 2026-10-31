@@ -1,11 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import {
-  Copy,
-  Check,
-  ShieldCheck,
-  RotateCcw,
-  Sliders,
-} from 'lucide-react';
+import { Copy, Check, ShieldCheck, RotateCcw, Sliders } from 'lucide-react';
+import { CopyFailureNotice, useToolClipboard } from './useToolClipboard';
 
 export interface SemanticPaletteTokens {
   canvas: string;
@@ -46,7 +41,7 @@ const THEME_PRESETS: PaletteThemePreset[] = [
       hairlineStrong: '#C7C3BA',
       ink: '#111217',
       inkSecondary: '#62666F',
-      inkMuted: '#8B8F97',
+      inkMuted: '#62666F',
       accent: '#2547E8',
       accentHover: '#1E3CCD',
       accentSoft: '#E7EBFF',
@@ -59,7 +54,8 @@ const THEME_PRESETS: PaletteThemePreset[] = [
     id: 'deep-command',
     name: 'Deep Future Command (Dark Studio)',
     category: 'Technical',
-    description: 'High-contrast midnight studio canvas with luminous cobalt and phosphor neon highlights.',
+    description:
+      'High-contrast midnight studio canvas with luminous cobalt and phosphor neon highlights.',
     tokens: {
       canvas: '#0B0D10',
       surface: '#11141A',
@@ -81,7 +77,8 @@ const THEME_PRESETS: PaletteThemePreset[] = [
     id: 'parchment-humanist',
     name: 'Warm Parchment & Espresso',
     category: 'Warm / Luxury',
-    description: 'Bespoke literary warmth for luxury commerce, hospitality, and editorial publishing.',
+    description:
+      'Bespoke literary warmth for luxury commerce, hospitality, and editorial publishing.',
     tokens: {
       canvas: '#F7F4EE',
       surface: '#FFFDF9',
@@ -123,9 +120,10 @@ const THEME_PRESETS: PaletteThemePreset[] = [
   },
   {
     id: 'pure-contrast',
-    name: 'Pure Monochrome High Contrast',
-    category: 'Accessible / Minimal',
-    description: 'Uncompromising 18:1+ contrast floor adhering strictly to WCAG 2.2 AAA guidelines.',
+    name: 'Pure Monochrome',
+    category: 'Minimal',
+    description:
+        'Dark neutral text on white with monochrome accents. Check the listed token pairs; test component states separately.',
     tokens: {
       canvas: '#FFFFFF',
       surface: '#FFFFFF',
@@ -154,7 +152,7 @@ function getLuminance(hex: string): number {
   const b = parseInt(clean.substring(4, 6), 16) / 255;
 
   const a = [r, g, b].map((v) => {
-    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
   });
 
   return (a[0] ?? 0) * 0.2126 + (a[1] ?? 0) * 0.7152 + (a[2] ?? 0) * 0.0722;
@@ -170,9 +168,11 @@ function getContrastRatio(hex1: string, hex2: string): number {
 }
 
 export function PaletteStudio() {
+  const [actionPreviewed, setActionPreviewed] = useState(false);
   const [selectedPresetId, setSelectedPresetId] = useState<string>('zinc-editorial');
   const [tokens, setTokens] = useState<SemanticPaletteTokens>({ ...THEME_PRESETS[0]!.tokens });
   const [copiedFormat, setCopiedFormat] = useState<'css' | 'tailwind' | 'json' | null>(null);
+  const { copyText, copyFailed } = useToolClipboard();
 
   const applyPreset = (p: PaletteThemePreset) => {
     setSelectedPresetId(p.id);
@@ -185,8 +185,14 @@ export function PaletteStudio() {
 
   // Contrast calculations
   const contrastInkOnCanvas = useMemo(() => getContrastRatio(tokens.ink, tokens.canvas), [tokens]);
-  const contrastSecondaryOnSurface = useMemo(() => getContrastRatio(tokens.inkSecondary, tokens.surface), [tokens]);
-  const contrastAccentOnCanvas = useMemo(() => getContrastRatio(tokens.accent, tokens.canvas), [tokens]);
+  const contrastSecondaryOnSurface = useMemo(
+    () => getContrastRatio(tokens.inkSecondary, tokens.surface),
+    [tokens]
+  );
+  const contrastAccentOnCanvas = useMemo(
+    () => getContrastRatio(tokens.accent, tokens.canvas),
+    [tokens]
+  );
   const contrastWhiteOnAccent = useMemo(() => getContrastRatio('#FFFFFF', tokens.accent), [tokens]);
 
   // CSS variables output
@@ -199,14 +205,14 @@ export function PaletteStudio() {
     return `@theme {\n  --color-canvas: ${tokens.canvas};\n  --color-surface: ${tokens.surface};\n  --color-surface-raised: ${tokens.surfaceRaised};\n  --color-hairline: ${tokens.hairline};\n  --color-ink: ${tokens.ink};\n  --color-ink-secondary: ${tokens.inkSecondary};\n  --color-accent: ${tokens.accent};\n}`;
   }, [tokens]);
 
-  const copyToClipboard = (text: string, format: 'css' | 'tailwind' | 'json') => {
-    navigator.clipboard.writeText(text);
-    setCopiedFormat(format);
-    setTimeout(() => setCopiedFormat(null), 2000);
+  const copyToClipboard = async (text: string, format: 'css' | 'tailwind' | 'json') => {
+    const copied = await copyText(text);
+    setCopiedFormat(copied ? format : null);
+    if (copied) setTimeout(() => setCopiedFormat(null), 2000);
   };
 
   return (
-    <div className="space-y-8 select-none">
+    <div className="space-y-8">
       {/* Header Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#D9D6CF] pb-6">
         <div>
@@ -222,7 +228,7 @@ export function PaletteStudio() {
             Palette Studio
           </h1>
           <p className="text-sm text-[#62666F] mt-1">
-            Synthesize semantic, accessible palette tokens with live WCAG 2.2 contrast validation.
+            Set semantic colour tokens and inspect calculated contrast for selected colour pairs.
           </p>
         </div>
 
@@ -233,7 +239,11 @@ export function PaletteStudio() {
             onClick={() => copyToClipboard(generatedCss, 'css')}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#D9D6CF] bg-white text-xs font-semibold text-[#111217] hover:border-[#111217] transition-all"
           >
-            {copiedFormat === 'css' ? <Check className="h-3.5 w-3.5 text-[#177B55]" /> : <Copy className="h-3.5 w-3.5" />}
+            {copiedFormat === 'css' ? (
+              <Check className="h-3.5 w-3.5 text-[#12603F]" />
+            ) : (
+              <Copy className="h-3.5 w-3.5" />
+            )}
             <span>Copy CSS Variables</span>
           </button>
           <button
@@ -241,16 +251,22 @@ export function PaletteStudio() {
             onClick={() => copyToClipboard(generatedTailwind, 'tailwind')}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#2547E8] text-white text-xs font-semibold hover:bg-[#1E3CCD] transition-all shadow-sm"
           >
-            {copiedFormat === 'tailwind' ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+            {copiedFormat === 'tailwind' ? (
+              <Check className="h-3.5 w-3.5" />
+            ) : (
+              <Copy className="h-3.5 w-3.5" />
+            )}
             <span>Copy Tailwind @theme</span>
           </button>
         </div>
       </div>
 
+      <CopyFailureNotice failed={copyFailed} />
+
       {/* Theme Presets */}
       <div className="space-y-2">
-        <span className="block font-mono text-xs font-semibold uppercase text-[#8B8F97]">
-          Calibrated Theme Archetypes
+        <span className="block font-mono text-xs font-semibold uppercase text-[var(--text-muted)]">
+          Theme Presets
         </span>
         <div className="flex flex-wrap gap-2">
           {THEME_PRESETS.map((p) => (
@@ -258,16 +274,20 @@ export function PaletteStudio() {
               key={p.id}
               type="button"
               onClick={() => applyPreset(p)}
+              aria-pressed={selectedPresetId === p.id}
               className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                 selectedPresetId === p.id
                   ? 'border-[#111217] bg-[#111217] text-white shadow-sm'
-                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#8B8F97]'
+                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#62666F]'
               }`}
             >
               {p.name}
             </button>
           ))}
         </div>
+        <p className="text-xs text-[#62666F]" role="note">
+          {THEME_PRESETS.find((preset) => preset.id === selectedPresetId)?.description}
+        </p>
       </div>
 
       {/* Main Grid: Token Inputs (Left 5) & Contrast + Live Mockup (Right 7) */}
@@ -282,7 +302,7 @@ export function PaletteStudio() {
             <button
               type="button"
               onClick={() => applyPreset(THEME_PRESETS[0]!)}
-              className="text-xs font-mono text-[#8B8F97] hover:text-[#111217] flex items-center gap-1"
+              className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
             >
               <RotateCcw className="h-3 w-3" />
               <span>Reset</span>
@@ -291,7 +311,7 @@ export function PaletteStudio() {
 
           {/* Group 1: Surfaces & Canvases */}
           <div className="space-y-2">
-            <span className="block font-mono text-[11px] font-semibold uppercase text-[#8B8F97]">
+            <span className="block font-mono text-[11px] font-semibold uppercase text-[var(--text-muted)]">
               Surfaces & Canvases
             </span>
             <div className="space-y-2">
@@ -302,12 +322,14 @@ export function PaletteStudio() {
                   </span>
                   <div className="flex items-center gap-2">
                     <input
+                      aria-label={`${key} colour picker`}
                       type="color"
                       value={tokens[key]}
                       onChange={(e) => updateToken(key, e.target.value)}
                       className="h-6 w-6 rounded cursor-pointer border border-[#D9D6CF]"
                     />
                     <input
+                      aria-label={`${key} hex value`}
                       type="text"
                       value={tokens[key]}
                       onChange={(e) => updateToken(key, e.target.value)}
@@ -321,7 +343,7 @@ export function PaletteStudio() {
 
           {/* Group 2: Typography & Inks */}
           <div className="space-y-2 pt-2 border-t border-[#D9D6CF]">
-            <span className="block font-mono text-[11px] font-semibold uppercase text-[#8B8F97]">
+            <span className="block font-mono text-[11px] font-semibold uppercase text-[var(--text-muted)]">
               Typography & Inks
             </span>
             <div className="space-y-2">
@@ -332,12 +354,14 @@ export function PaletteStudio() {
                   </span>
                   <div className="flex items-center gap-2">
                     <input
+                      aria-label={`${key} colour picker`}
                       type="color"
                       value={tokens[key]}
                       onChange={(e) => updateToken(key, e.target.value)}
                       className="h-6 w-6 rounded cursor-pointer border border-[#D9D6CF]"
                     />
                     <input
+                      aria-label={`${key} hex value`}
                       type="text"
                       value={tokens[key]}
                       onChange={(e) => updateToken(key, e.target.value)}
@@ -351,7 +375,7 @@ export function PaletteStudio() {
 
           {/* Group 3: Accents & Borders */}
           <div className="space-y-2 pt-2 border-t border-[#D9D6CF]">
-            <span className="block font-mono text-[11px] font-semibold uppercase text-[#8B8F97]">
+            <span className="block font-mono text-[11px] font-semibold uppercase text-[var(--text-muted)]">
               Accents & Structural Borders
             </span>
             <div className="space-y-2">
@@ -362,12 +386,14 @@ export function PaletteStudio() {
                   </span>
                   <div className="flex items-center gap-2">
                     <input
+                      aria-label={`${key} colour picker`}
                       type="color"
                       value={tokens[key]}
                       onChange={(e) => updateToken(key, e.target.value)}
                       className="h-6 w-6 rounded cursor-pointer border border-[#D9D6CF]"
                     />
                     <input
+                      aria-label={`${key} hex value`}
                       type="text"
                       value={tokens[key]}
                       onChange={(e) => updateToken(key, e.target.value)}
@@ -386,57 +412,88 @@ export function PaletteStudio() {
           <div className="rounded-2xl border border-[#D9D6CF] bg-white p-5 shadow-sm space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF]">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-[#177B55]" />
+                <ShieldCheck className="h-4 w-4 text-[#12603F]" />
                 <h3 className="text-sm font-semibold text-[#111217]">
-                  WCAG 2.2 Contrast Floor Audit
+                  Selected Pair Contrast Check
                 </h3>
               </div>
               <span className="font-mono text-[11px] text-[#62666F]">
-                Target: 4.5:1 (AA) / 7.0:1 (AAA)
+                Reference: 4.5:1 (AA) / 7.0:1 (AAA)
               </span>
             </div>
 
+            <p className="text-xs text-[#62666F]">
+              Checks these four token pairs only. It does not audit rendered components, states, or every color combination.
+            </p>
+
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div className="p-3 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] space-y-1">
-                <span className="block text-[10px] font-mono text-[#8B8F97]">Ink / Canvas</span>
+                <span className="block text-[10px] font-mono text-[var(--text-muted)]">
+                  Ink / Canvas
+                </span>
                 <span className="text-base font-bold text-[#111217]">
                   {contrastInkOnCanvas.toFixed(1)}:1
                 </span>
-                <span className={`block text-[10px] font-mono font-semibold ${contrastInkOnCanvas >= 4.5 ? 'text-[#177B55]' : 'text-[#C83D48]'}`}>
-                  {contrastInkOnCanvas >= 7 ? 'AAA PASS' : contrastInkOnCanvas >= 4.5 ? 'AA PASS' : 'FAIL'}
+                <span
+                  className={`block text-[10px] font-mono font-semibold ${contrastInkOnCanvas >= 4.5 ? 'text-[#12603F]' : 'text-[#C83D48]'}`}
+                >
+                  {contrastInkOnCanvas >= 7
+                    ? 'AAA PASS'
+                    : contrastInkOnCanvas >= 4.5
+                      ? 'AA PASS'
+                      : 'FAIL'}
                 </span>
               </div>
 
               <div className="p-3 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] space-y-1">
-                <span className="block text-[10px] font-mono text-[#8B8F97]">Ink-Sec / Surface</span>
+                <span className="block text-[10px] font-mono text-[var(--text-muted)]">
+                  Ink-Sec / Surface
+                </span>
                 <span className="text-base font-bold text-[#111217]">
                   {contrastSecondaryOnSurface.toFixed(1)}:1
                 </span>
-                <span className={`block text-[10px] font-mono font-semibold ${contrastSecondaryOnSurface >= 4.5 ? 'text-[#177B55]' : 'text-[#C83D48]'}`}>
-                  {contrastSecondaryOnSurface >= 7 ? 'AAA PASS' : contrastSecondaryOnSurface >= 4.5 ? 'AA PASS' : 'FAIL'}
+                <span
+                  className={`block text-[10px] font-mono font-semibold ${contrastSecondaryOnSurface >= 4.5 ? 'text-[#12603F]' : 'text-[#C83D48]'}`}
+                >
+                  {contrastSecondaryOnSurface >= 7
+                    ? 'AAA PASS'
+                    : contrastSecondaryOnSurface >= 4.5
+                      ? 'AA PASS'
+                      : 'FAIL'}
                 </span>
               </div>
 
               <div className="p-3 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] space-y-1">
-                <span className="block text-[10px] font-mono text-[#8B8F97]">Accent / Canvas</span>
+                <span className="block text-[10px] font-mono text-[var(--text-muted)]">
+                  Accent / Canvas
+                </span>
                 <span className="text-base font-bold text-[#111217]">
                   {contrastAccentOnCanvas.toFixed(1)}:1
                 </span>
-                <span className={`block text-[10px] font-mono font-semibold ${contrastAccentOnCanvas >= 3.0 ? 'text-[#177B55]' : 'text-[#C83D48]'}`}>
+                <span
+                  className={`block text-[10px] font-mono font-semibold ${contrastAccentOnCanvas >= 3.0 ? 'text-[#12603F]' : 'text-[#C83D48]'}`}
+                >
                   {contrastAccentOnCanvas >= 3.0 ? 'AA (UI) PASS' : 'LOW CONTRAST'}
                 </span>
               </div>
 
               <div className="p-3 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] space-y-1">
-                <span className="block text-[10px] font-mono text-[#8B8F97]">White on Accent</span>
+                <span className="block text-[10px] font-mono text-[var(--text-muted)]">
+                  White on Accent
+                </span>
                 <span className="text-base font-bold text-[#111217]">
                   {contrastWhiteOnAccent.toFixed(1)}:1
                 </span>
-                <span className={`block text-[10px] font-mono font-semibold ${contrastWhiteOnAccent >= 4.5 ? 'text-[#177B55]' : 'text-[#A66A15]'}`}>
+                <span
+                  className={`block text-[10px] font-mono font-semibold ${contrastWhiteOnAccent >= 4.5 ? 'text-[#12603F]' : 'text-[#A66A15]'}`}
+                >
                   {contrastWhiteOnAccent >= 4.5 ? 'AA PASS' : 'USE DARK INK'}
                 </span>
               </div>
             </div>
+            <p className="text-xs text-[#62666F]">
+              These calculations cover the listed token pairs; they do not certify a full interface.
+            </p>
           </div>
 
           {/* Dynamic Component Mockup Preview Stage */}
@@ -448,9 +505,20 @@ export function PaletteStudio() {
               color: tokens.ink,
             }}
           >
-            <div className="flex items-center justify-between pb-3 border-b" style={{ borderColor: tokens.hairline }}>
+            <div
+              className="flex items-center justify-between pb-3 border-b"
+              style={{ borderColor: tokens.hairline }}
+            >
               <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-full" style={{ backgroundColor: tokens.accent }} />
+                <div
+                  className="h-3 w-3 rounded-full"
+                  onClick={() => setActionPreviewed(true)}
+                  style={{
+                    backgroundColor: tokens.accent,
+                    color:
+                      getContrastRatio('#FFFFFF', tokens.accent) >= 4.5 ? '#FFFFFF' : '#111217',
+                  }}
+                />
                 <span className="text-xs font-bold tracking-tight">Active Surface Preview</span>
               </div>
               <span className="text-[10px] font-mono" style={{ color: tokens.inkMuted }}>
@@ -467,7 +535,7 @@ export function PaletteStudio() {
               }}
             >
               <div className="flex justify-between items-center">
-                <h4 className="text-sm font-semibold">Institutional Ledger Card</h4>
+                <h4 className="text-sm font-semibold">Sample token preview</h4>
                 <span
                   className="text-[10px] font-mono px-2 py-0.5 rounded font-semibold"
                   style={{
@@ -475,24 +543,38 @@ export function PaletteStudio() {
                     color: tokens.accent,
                   }}
                 >
-                  VERIFIED
+                  EXAMPLE
                 </span>
               </div>
 
               <p className="text-xs leading-relaxed" style={{ color: tokens.inkSecondary }}>
-                Real-time token rendering proof. Notice how primary ink, secondary explanation text, and accent boundaries remain harmonized across both light and dark foundations.
+                Example text for previewing the selected colours together. This is a static sample,
+                not a live product screen.
               </p>
 
-              <div className="flex items-center justify-between pt-2 border-t" style={{ borderColor: tokens.hairline }}>
-                <span className="text-xs font-mono font-bold">£2,450,000.00</span>
+              <div
+                className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t"
+                style={{ borderColor: tokens.hairline }}
+              >
+                <span className="text-xs font-mono font-bold">Sample value: 1,284</span>
                 <button
                   type="button"
                   className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white shadow-sm transition-all"
-                  style={{ backgroundColor: tokens.accent }}
+                  onClick={() => setActionPreviewed(true)}
+                  style={{
+                    backgroundColor: tokens.accent,
+                    color:
+                      getContrastRatio('#FFFFFF', tokens.accent) >= 4.5 ? '#FFFFFF' : '#111217',
+                  }}
                 >
-                  Execute Action
+                  Try sample action
                 </button>
               </div>
+              {actionPreviewed && (
+                <p role="status" className="text-xs">
+                  Example interaction — current tokens applied. No transaction was submitted.
+                </p>
+              )}
             </div>
           </div>
         </div>

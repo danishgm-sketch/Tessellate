@@ -1,0 +1,27 @@
+{
+  "capturedAt": "2026-10-26T19:29:46.981Z",
+  "route": "http://127.0.0.1:4413/docs/mcp",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "status": 200,
+  "layout": {
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "horizontalOverflow": false
+  },
+  "visibleText": "BETA\nLocal stdio resource discovery and manifest tools are the supported core boundary. Remote HTTP/SSE, recommendations and advanced mutation workflows are Beta; this public Site does not host an MCP process.\n← Back to Documentation\nModel Context Protocol (MCP)\n\nConnect a local MCP client to search resources, read manifests and source, compose projects, validate or audit manifests, and generate export files.\n\nConfiguration\n\nThe MCP server is a private workspace package, not an npm download. Clone Tessellate locally, then point your agent at that checkout:\n\n{\n  \"mcpServers\": {\n    \"tessellate\": {\n      \"command\": \"pnpm\",\n      \"args\": [\"--dir\", \"C:\\\\path\\\\to\\\\Tessellate\", \"exec\", \"tsx\", \"packages/mcp/src/index.ts\"]\n    }\n  }\n}\n\nUse the absolute path to your checkout. Keep the local catalogue and resource source in that checkout; stdio is the supported local transport.\n\nAvailable MCP Tools\nsearch_resources: Searches the validated catalogue by query and category.\nget_resource: Retrieves the complete validated ResourceManifest for a given component slug.\nget_resource_code: Reads the resource source from the local checkout. A missing local file returns an explicit tool error.\nrecommend_resources BETA: Ranks candidates by lexical token overlap. It does not perform semantic ranking or guarantee a fit.\nfind_alternatives BETA: Lists same-type resources with a shared category. These candidates are not guaranteed drop-in replacements.\ncompose_screen and compose_product BETA: Call the shared deterministic product pipeline; a fixed seed reproduces a direction.\nvalidate_project, mutate_screen_ast, and export_project_code BETA: Validate manifests, apply supported atomic edits, and generate source files. Export generation does not install or build the result.\naudit_project and audit_project_accessibility BETA: Manifest heuristics only; neither tool certifies rendered WCAG conformance.\nget_resource_metadata, get_design_dna, and list_design_directions: Return canonical metadata, preset IDs, and the stable A/B/C composition approaches.\n\nThe optional HTTP/SSE helper is Beta, has no authentication, and binds to loopback by default. Do not expose it through a tunnel or network interface. Browser origins require an explicit allowlist.",
+  "accessibility": {
+    "totalViolations": 0,
+    "seriousOrCritical": []
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-39\\after\\mobile\\mcp-reference.png"
+}

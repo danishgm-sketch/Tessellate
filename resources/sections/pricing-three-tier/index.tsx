@@ -4,9 +4,10 @@ export type PricingThreeTierVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface PricingThreeTierProps {
   variant?: PricingThreeTierVariant;
+  onSelectPlan?: (plan: string) => void;
 }
 
-export function PricingThreeTier({ variant = 'quiet' }: PricingThreeTierProps) {
+export function PricingThreeTier({ variant = 'quiet', onSelectPlan }: PricingThreeTierProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
   let card = 'bg-white border-neutral-200';
   let featuredCard = 'bg-white border-neutral-900 shadow-lg ring-1 ring-neutral-900';
@@ -28,29 +29,33 @@ export function PricingThreeTier({ variant = 'quiet' }: PricingThreeTierProps) {
   ];
 
   return (
-    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
+    <section className={`relative w-full py-20 px-6 @sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-center mb-16">Simple, Honest Pricing</h2>
+        <h2 className="text-3xl @sm:text-5xl font-bold tracking-tight text-center mb-16">Simple, Honest Pricing</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 @md:grid-cols-3 gap-8 items-stretch">
           {tiers.map((t) => (
-            <div key={t.name} className={`p-8 rounded-2xl border flex flex-col justify-between transition-all ${t.featured ? featuredCard : card}`}>
+            <div key={t.name} className={`p-8 rounded-[var(--tess-radius-xl,8px)] border flex flex-col justify-between transition-all ${t.featured ? featuredCard : card}`}>
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-bold text-lg">{t.name}</span>
-                  {t.featured && <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold">Recommended</span>}
+                  {t.featured && <span className={`text-[10px] font-mono uppercase px-2 py-0.5 rounded font-bold ${variant === 'nocturne' ? 'bg-emerald-500/20 text-emerald-300' : 'bg-emerald-500/10 text-emerald-800'}`}>Recommended</span>}
                 </div>
                 <div className="text-4xl font-mono font-bold mb-4">{t.price}</div>
-                <p className="text-xs sm:text-sm opacity-75 mb-6">{t.desc}</p>
+                <p className="text-xs @sm:text-sm opacity-75 mb-6">{t.desc}</p>
               </div>
               <button
                 type="button"
-                className={`w-full py-3 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors ${
+                onClick={() => onSelectPlan?.(t.name)}
+                disabled={!onSelectPlan}
+                aria-describedby={!onSelectPlan ? `pricing-${t.name.toLowerCase().replaceAll(' ', '-')}-action-help` : undefined}
+                className={`w-full py-3 rounded-[var(--tess-radius-lg,8px)] text-xs font-semibold uppercase tracking-wider transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${
                   t.featured ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'border hover:bg-neutral-100 dark:hover:bg-neutral-800'
                 }`}
               >
                 Get Started
               </button>
+              {!onSelectPlan && <span id={`pricing-${t.name.toLowerCase().replaceAll(' ', '-')}-action-help`} className="sr-only">Connect a plan selection action before enabling checkout.</span>}
             </div>
           ))}
         </div>

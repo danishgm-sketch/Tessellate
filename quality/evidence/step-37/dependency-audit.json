@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0.0",
+  "step": 37,
+  "audit": "pnpm audit",
+  "before": {
+    "exitCode": 1,
+    "advisoryOccurrences": 48,
+    "severityCounts": {
+      "critical": 4,
+      "high": 14,
+      "moderate": 22,
+      "low": 8
+    },
+    "productionAudit": {
+      "exitCode": 1,
+      "advisoryOccurrences": 18,
+      "severityCounts": {
+        "critical": 3,
+        "high": 5,
+        "moderate": 7,
+        "low": 3
+      }
+    },
+    "reviewedAt": "2026-10-20"
+  },
+  "after": {
+    "command": "pnpm audit",
+    "exitCode": 0,
+    "advisoryOccurrences": 0,
+    "output": "No known vulnerabilities found",
+    "reviewedAt": "2026-10-20"
+  },
+  "changes": [
+    "Astro 5.18.2 to 7.2.8; React integration to 7.1.0; preserve Astro + React static architecture",
+    "Vitest 2.1.9 and 3.2.7 to 4.1.11; Vite 5.4.21, 8.0.13, and 8.0.16 to 8.3.4",
+    "Patch Miniflare transitive sharp 0.34.5, undici 7.24.8, and ws 8.18.0 with compatible secure releases",
+    "Patch Wrangler transitive esbuild 0.27.3 to 0.28.2 without changing pinned Wrangler 4.92.0 runtime",
+    "Remove unused direct Miniflare dependency from API workspace",
+    "Migrate Astro rehype plugin configuration to unified() from @astrojs/markdown-remark",
+    "Add pnpm audit:dependencies to pnpm audit:all and CI"
+  ],
+  "verification": {
+    "frozenInstall": "passed",
+    "astroStaticBuild": {
+      "status": "passed",
+      "routes": 717,
+      "deprecatedMarkdownWarning": false,
+      "largeChunkWarning": "tracked for Step 38 performance audit"
+    },
+    "sitesWorkerBuild": "passed",
+    "previewCspBrowser": "passed",
+    "allResourceCertification": "passed 324/324 resources and 972/972 declared variants at seven certified widths; zero findings and zero cancelled requests"
+  }
+}

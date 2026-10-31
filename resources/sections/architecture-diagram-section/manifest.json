@@ -5,7 +5,7 @@
   "name": "Architecture Diagram Section",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Technical blueprint illustrating client-edge-database infrastructure topology.",
+  "description": "Reference topology diagram for client, edge, and optional storage services.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,7 +130,7 @@
     "infrastructure"
   ],
   "intent": {
-    "summary": "Technical blueprint illustrating client-edge-database infrastructure topology.",
+    "summary": "Illustrative architecture; optional storage may not be provisioned in the deployment.",
     "idealFor": [
       "Engineering decision-makers evaluating platform architecture"
     ],
@@ -138,7 +138,7 @@
       "Casual marketing landing pages"
     ],
     "jobs": [
-      "Map out client, worker, and database boundaries clearly"
+      "Explain deployment boundaries and optional services"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"
@@ -209,12 +209,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

@@ -1,0 +1,16 @@
+---
+import PublicLayout from '../layouts/PublicLayout.astro';
+import {ExploreView} from '../components/ExploreView';
+export function getStaticPaths(){return [
+ ['components','Components','Controls and primitives for product interfaces.','primitives'],
+ ['sections','Sections','Editorial heroes, features, pricing and other marketing sections.','sections'],
+ ['blocks','Application blocks','Tables, workflows, profiles and application blocks.','blocks'],
+ ['effects','Effects','Motion, typography treatments and visual fields for expressive interfaces.','effects'],
+ ['motion','Motion','Motion resources with reduced-motion strategies.','motion'],
+ ['backgrounds','Backgrounds','CSS fields and visual surfaces with declared performance metadata.','backgrounds'],
+ ['ai','AI patterns','Interaction resources for AI products. Core composition does not require a provider.','ai'],
+ ['data','Data visualisation','Charts and data displays with declared input contracts.','data'],
+].map(([category,title,description,catalogCategory])=>({params:{category},props:{title,description,catalogCategory}}));}
+const {title,description,catalogCategory}=Astro.props;
+---
+<PublicLayout title={title} description={description}><ExploreView catalogCategory={catalogCategory} client:load/></PublicLayout>

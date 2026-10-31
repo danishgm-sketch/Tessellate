@@ -1,0 +1,66 @@
+{
+  "route": "http://127.0.0.1:4413/",
+  "widths": [
+    {
+      "width": 360,
+      "geometry": {
+        "clientWidth": 252,
+        "scrollWidth": 252,
+        "clientHeight": 550,
+        "scrollHeight": 550
+      }
+    },
+    {
+      "width": 390,
+      "geometry": {
+        "clientWidth": 282,
+        "scrollWidth": 282,
+        "clientHeight": 550,
+        "scrollHeight": 550
+      }
+    },
+    {
+      "width": 430,
+      "geometry": {
+        "clientWidth": 322,
+        "scrollWidth": 322,
+        "clientHeight": 550,
+        "scrollHeight": 550
+      }
+    },
+    {
+      "width": 768,
+      "geometry": {
+        "clientWidth": 604,
+        "scrollWidth": 604,
+        "clientHeight": 550,
+        "scrollHeight": 550
+      },
+      "mainContentWidth": 604
+    },
+    {
+      "width": 1024,
+      "geometry": {
+        "clientWidth": 860,
+        "scrollWidth": 860,
+        "clientHeight": 272,
+        "scrollHeight": 272
+      }
+    },
+    {
+      "width": 1440,
+      "geometry": {
+        "clientWidth": 1276,
+        "scrollWidth": 1276,
+        "clientHeight": 450,
+        "scrollHeight": 450
+      }
+    }
+  ],
+  "audit": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

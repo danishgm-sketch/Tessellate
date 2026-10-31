@@ -1,0 +1,469 @@
+{
+  "target": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+  "siteVersion": 16,
+  "desktopViewport": "1440x900",
+  "mobileViewport": "390x844",
+  "catalogResponse": {
+    "status": 200,
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/data/catalog.json"
+  },
+  "visibleInitialCount": 50,
+  "queries": [
+    "pricing",
+    "sidebar",
+    "dashboard",
+    "command palette",
+    "data table",
+    "empty state",
+    "onboarding",
+    "AI answer",
+    "checkout",
+    "settings",
+    "navigation",
+    "hero"
+  ],
+  "results": [
+    {
+      "query": "pricing",
+      "resultCount": 8,
+      "first": "/r/pricing-usage-based",
+      "firstEight": [
+        "/r/pricing-usage-based",
+        "/r/pricing-usage-based",
+        "/r/pricing-three-tier",
+        "/r/pricing-three-tier",
+        "/r/pricing-enterprise",
+        "/r/pricing-enterprise",
+        "/r/pricing-toggle",
+        "/r/pricing-toggle"
+      ],
+      "titles": [
+        "Preview",
+        "Pricing Usage Based",
+        "Preview",
+        "Pricing Three Tier",
+        "Preview",
+        "Pricing Enterprise",
+        "Preview",
+        "Pricing Toggle"
+      ]
+    },
+    {
+      "query": "sidebar",
+      "resultCount": 10,
+      "first": "/r/collapsible-sidebar",
+      "firstEight": [
+        "/r/collapsible-sidebar",
+        "/r/collapsible-sidebar",
+        "/r/app-sidebar-compact",
+        "/r/app-sidebar-compact",
+        "/r/app-sidebar-expanded",
+        "/r/app-sidebar-expanded",
+        "/r/ai-copilot-sidebar",
+        "/r/ai-copilot-sidebar"
+      ],
+      "titles": [
+        "Preview",
+        "Collapsible Sidebar",
+        "Preview",
+        "App Sidebar Compact",
+        "Preview",
+        "App Sidebar Expanded",
+        "Preview",
+        "AI Copilot Sidebar"
+      ]
+    },
+    {
+      "query": "dashboard",
+      "resultCount": 15,
+      "first": "/r/dashboard-skeleton",
+      "firstEight": [
+        "/r/dashboard-skeleton",
+        "/r/dashboard-skeleton",
+        "/r/dashboard-kpi-strip",
+        "/r/dashboard-kpi-strip",
+        "/r/dashboard-kpi-grid",
+        "/r/dashboard-kpi-grid",
+        "/r/empty-dashboard-state",
+        "/r/empty-dashboard-state"
+      ],
+      "titles": [
+        "Preview",
+        "Dashboard Skeleton",
+        "Preview",
+        "Dashboard KPI Strip",
+        "Preview",
+        "Dashboard KPI Grid",
+        "Preview",
+        "Empty Dashboard State"
+      ]
+    },
+    {
+      "query": "command palette",
+      "resultCount": 11,
+      "first": "/r/command-results",
+      "firstEight": [
+        "/r/command-results",
+        "/r/command-results",
+        "/r/ai-command-bar",
+        "/r/ai-command-bar",
+        "/r/command-menu",
+        "/r/command-menu",
+        "/r/command-first-nav",
+        "/r/command-first-nav"
+      ],
+      "titles": [
+        "Preview",
+        "Command Results",
+        "Preview",
+        "AI Command Bar",
+        "Preview",
+        "Command Menu",
+        "Preview",
+        "Command-First Navigation"
+      ]
+    },
+    {
+      "query": "data table",
+      "resultCount": 50,
+      "first": "/r/advanced-data-table",
+      "firstEight": [
+        "/r/advanced-data-table",
+        "/r/advanced-data-table",
+        "/r/expandable-data-table",
+        "/r/expandable-data-table",
+        "/r/table-skeleton",
+        "/r/table-skeleton",
+        "/r/data-hero",
+        "/r/data-hero"
+      ],
+      "titles": [
+        "Preview",
+        "Advanced Data Table",
+        "Preview",
+        "Expandable Data Table",
+        "Preview",
+        "Table Skeleton",
+        "Preview",
+        "Data Hero"
+      ]
+    },
+    {
+      "query": "empty state",
+      "resultCount": 28,
+      "first": "/r/empty-collection-state",
+      "firstEight": [
+        "/r/empty-collection-state",
+        "/r/empty-collection-state",
+        "/r/empty-search-state",
+        "/r/empty-search-state",
+        "/r/empty-workspace",
+        "/r/empty-workspace",
+        "/r/empty-dashboard-state",
+        "/r/empty-dashboard-state"
+      ],
+      "titles": [
+        "Preview",
+        "Empty Collection State",
+        "Preview",
+        "Empty Search State",
+        "Preview",
+        "Empty Workspace",
+        "Preview",
+        "Empty Dashboard State"
+      ]
+    },
+    {
+      "query": "onboarding",
+      "resultCount": 8,
+      "first": "/r/onboarding-role-select",
+      "firstEight": [
+        "/r/onboarding-role-select",
+        "/r/onboarding-role-select",
+        "/r/onboarding-wizard",
+        "/r/onboarding-wizard",
+        "/r/onboarding-checklist",
+        "/r/onboarding-checklist",
+        "/r/ai-empty-state",
+        "/r/ai-empty-state"
+      ],
+      "titles": [
+        "Preview",
+        "Onboarding Role Select",
+        "Preview",
+        "Onboarding Wizard",
+        "Preview",
+        "Onboarding Checklist",
+        "Preview",
+        "AI Empty State"
+      ]
+    },
+    {
+      "query": "AI answer",
+      "resultCount": 24,
+      "first": "/r/faq-two-column",
+      "firstEight": [
+        "/r/faq-two-column",
+        "/r/faq-two-column",
+        "/r/ai-prompt-hero",
+        "/r/ai-prompt-hero",
+        "/r/ai-research-answer",
+        "/r/ai-research-answer",
+        "/r/ai-empty-state",
+        "/r/ai-empty-state"
+      ],
+      "titles": [
+        "Preview",
+        "FAQ Two Column",
+        "Preview",
+        "AI Prompt Hero",
+        "Preview",
+        "AI Research Answer",
+        "Preview",
+        "AI Empty State"
+      ]
+    },
+    {
+      "query": "checkout",
+      "resultCount": 0,
+      "first": null,
+      "firstEight": [],
+      "titles": []
+    },
+    {
+      "query": "settings",
+      "resultCount": 17,
+      "first": "/r/profile-settings",
+      "firstEight": [
+        "/r/profile-settings",
+        "/r/profile-settings",
+        "/r/settings-shell",
+        "/r/settings-shell",
+        "/r/organization-settings",
+        "/r/organization-settings",
+        "/r/settings-navigation",
+        "/r/settings-navigation"
+      ],
+      "titles": [
+        "Preview",
+        "Profile Settings",
+        "Preview",
+        "Settings Shell",
+        "Preview",
+        "Organization Settings",
+        "Preview",
+        "Settings Navigation"
+      ]
+    },
+    {
+      "query": "navigation",
+      "resultCount": 30,
+      "first": "/r/mobile-drawer-nav",
+      "firstEight": [
+        "/r/mobile-drawer-nav",
+        "/r/mobile-drawer-nav",
+        "/r/dual-rail-nav",
+        "/r/dual-rail-nav",
+        "/r/settings-navigation",
+        "/r/settings-navigation",
+        "/r/minimal-top-nav",
+        "/r/minimal-top-nav"
+      ],
+      "titles": [
+        "Preview",
+        "Mobile Drawer Navigation",
+        "Preview",
+        "Dual-Rail Navigation",
+        "Preview",
+        "Settings Navigation",
+        "Preview",
+        "Minimal Top Navigation"
+      ]
+    },
+    {
+      "query": "hero",
+      "resultCount": 39,
+      "first": "/r/radial-spotlight",
+      "firstEight": [
+        "/r/radial-spotlight",
+        "/r/radial-spotlight",
+        "/r/editorial-hero",
+        "/r/editorial-hero",
+        "/r/search-first-hero",
+        "/r/search-first-hero",
+        "/r/code-hero",
+        "/r/code-hero"
+      ],
+      "titles": [
+        "Preview",
+        "Radial Spotlight",
+        "Preview",
+        "Editorial Hero",
+        "Preview",
+        "Search-First Hero",
+        "Preview",
+        "Code Hero"
+      ]
+    }
+  ],
+  "desktop": {
+    "errors": [],
+    "warnings": [],
+    "pageErrors": [],
+    "failedRequests": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.Dr32vOTg.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.XuvJjzZn.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.DdoNfUa2.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.DsSGXD9-.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.a95UPmGj.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.El9Q6zjR.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.aEIRECW7.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.DkUeuMdN.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.Cc4sJYyP.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.Xz_6FjNm.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.DSbDk5ii.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.CaeLNl7q.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.DgtGSL9C.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.DpkJMvx9.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.DS9kxj6b.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.Dpda3RPd.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.Bk-J_OE8.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.aNJMX-AG.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.e2suH670.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.Ca32mH7j.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.B5626PAO.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.BuZi6c2z.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.CUvCy6rT.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.BM40OBd7.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.TQi3yUCn.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.B_AfS6so.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.Cis5z3rs.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.D8IvZH4P.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.B9EvFXcc.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.CDhuNywP.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.BZV7miKD.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.Y4-JqyuG.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.MdeXB-wS.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.CZB_s9L8.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.CDMuTjVR.js",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "httpErrors": []
+  },
+  "mobile": {
+    "filterDrawerOpen": true,
+    "overflow": {
+      "documentWidth": 390,
+      "viewportWidth": 390
+    },
+    "console": [],
+    "page": [],
+    "failed": [],
+    "http": []
+  },
+  "capturedAt": "2026-10-18T03:06:14.220Z"
+}

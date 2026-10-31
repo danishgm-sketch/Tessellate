@@ -1,0 +1,94 @@
+{
+  "capturedAt": "2026-10-26T19:26:06.746Z",
+  "method": "Visible Playwright UI workflow on the local ChatGPT Sites compatibility Worker preview, unthrottled laptop CPU/network. Timings run from user action to visible completion; they are lab observations, not field metrics.",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "browserProject": "sites-chromium",
+  "url": "http://127.0.0.1:4413/workbench?project=proj-direction-c-febccb47c60343aeb765e73c93f804d5dirc",
+  "interactions": {
+    "catalogueSearchAndFirstPreviewMs": 731,
+    "threeDirectionCompositionMs": 207,
+    "directionCWorkbenchReadyMs": 377,
+    "recomposeVisibleResultMs": 56,
+    "standaloneZipReadyMs": 193,
+    "standaloneZipBytes": 41318
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "browserCancellations": [],
+    "httpErrors": [],
+    "previewPolicies": [
+      {
+        "url": "http://127.0.0.1:4413/preview-content/?resource=accessibility-commitment-section",
+        "status": 200,
+        "policy": "default-src 'none'; form-action 'none'; script-src http://127.0.0.1:4413/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4413 data:; font-src http://127.0.0.1:4413 data:; connect-src http://127.0.0.1:4413/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "http://127.0.0.1:4413/preview-content/?resource=accordion",
+        "status": 200,
+        "policy": "default-src 'none'; form-action 'none'; script-src http://127.0.0.1:4413/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4413 data:; font-src http://127.0.0.1:4413 data:; connect-src http://127.0.0.1:4413/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "http://127.0.0.1:4413/preview-content/?resource=advanced-data-table",
+        "status": 200,
+        "policy": "default-src 'none'; form-action 'none'; script-src http://127.0.0.1:4413/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4413 data:; font-src http://127.0.0.1:4413 data:; connect-src http://127.0.0.1:4413/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "http://127.0.0.1:4413/preview-content/?resource=activity-feed",
+        "status": 200,
+        "policy": "default-src 'none'; form-action 'none'; script-src http://127.0.0.1:4413/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4413 data:; font-src http://127.0.0.1:4413 data:; connect-src http://127.0.0.1:4413/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "http://127.0.0.1:4413/preview-content/?resource=admin-console-shell",
+        "status": 200,
+        "policy": "default-src 'none'; form-action 'none'; script-src http://127.0.0.1:4413/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4413 data:; font-src http://127.0.0.1:4413 data:; connect-src http://127.0.0.1:4413/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "http://127.0.0.1:4413/preview-content/?resource=accordion-spring",
+        "status": 200,
+        "policy": "default-src 'none'; form-action 'none'; script-src http://127.0.0.1:4413/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4413 data:; font-src http://127.0.0.1:4413 data:; connect-src http://127.0.0.1:4413/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "http://127.0.0.1:4413/preview-content/?resource=ai-empty-state",
+        "status": 200,
+        "policy": "default-src 'none'; form-action 'none'; script-src http://127.0.0.1:4413/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4413 data:; font-src http://127.0.0.1:4413 data:; connect-src http://127.0.0.1:4413/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "http://127.0.0.1:4413/preview-content/?resource=onboarding-role-select",
+        "status": 200,
+        "policy": "default-src 'none'; form-action 'none'; script-src http://127.0.0.1:4413/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4413 data:; font-src http://127.0.0.1:4413 data:; connect-src http://127.0.0.1:4413/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "http://127.0.0.1:4413/preview-content/?resource=feature-steps",
+        "status": 200,
+        "policy": "default-src 'none'; form-action 'none'; script-src http://127.0.0.1:4413/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4413 data:; font-src http://127.0.0.1:4413 data:; connect-src http://127.0.0.1:4413/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "http://127.0.0.1:4413/preview-content/?resource=onboarding-wizard",
+        "status": 200,
+        "policy": "default-src 'none'; form-action 'none'; script-src http://127.0.0.1:4413/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4413 data:; font-src http://127.0.0.1:4413 data:; connect-src http://127.0.0.1:4413/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "http://127.0.0.1:4413/preview-content/?resource=onboarding-checklist",
+        "status": 200,
+        "policy": "default-src 'none'; form-action 'none'; script-src http://127.0.0.1:4413/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4413 data:; font-src http://127.0.0.1:4413 data:; connect-src http://127.0.0.1:4413/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "http://127.0.0.1:4413/preview-content/?resource=first-run-state",
+        "status": 200,
+        "policy": "default-src 'none'; form-action 'none'; script-src http://127.0.0.1:4413/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4413/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4413 data:; font-src http://127.0.0.1:4413 data:; connect-src http://127.0.0.1:4413/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      }
+    ],
+    "cspViolationEvents": [],
+    "inlineStyles": []
+  },
+  "screenshots": [
+    "quality/evidence/step-38/after/workload-explore-sites-chromium.png",
+    "quality/evidence/step-38/after/workload-compose-sites-chromium.png",
+    "quality/evidence/step-38/after/workload-workbench-sites-chromium.png"
+  ]
+}

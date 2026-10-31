@@ -1,0 +1,61 @@
+{
+  "id": "AUD-346",
+  "phase": "deployed-before-fix",
+  "siteVersion": 30,
+  "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "projectId": "proj-direction-c-a7137dc84068487aa7df43cc88d109f0dirc",
+  "category": "state",
+  "expected": "A saved browser-local project should render independently of the full catalogue; catalogue-backed panels may load it on demand.",
+  "actual": "The saved Direction C project fails to open when /data/catalog.json returns an injected HTTP 503. Workbench shows Local project Recovery and says no project was opened, while stating saved browser records remain unchanged.",
+  "captures": [
+    {
+      "viewport": "1440x900",
+      "screenshot": "audit/evidence/step-39/live-v30-aud346-2026-10-26/desktop-1440x900-failure.png",
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": "390x844",
+      "devicePixelRatio": 3,
+      "screenshot": "audit/evidence/step-39/live-v30-aud346-2026-10-26/mobile-390x844-failure.png",
+      "horizontalOverflow": false
+    }
+  ],
+  "reproduction": [
+    "On the live v30 Site, enter the exact 500-person employee-experience brief through the visible Compose form.",
+    "Generate three directions, open Direction C in Workbench, and confirm the project shows Local SAVED.",
+    "Reload the same Workbench URL with a pre-document fetch wrapper returning HTTP 503 for /data/catalog.json.",
+    "At both 1440x900 and 390x844, observe the Local project Recovery page instead of the saved project."
+  ],
+  "console": [
+    {
+      "type": "error",
+      "source": "ChatGPT Sites injected bootstrap",
+      "message": "The platform's inline bootstrap is blocked by the strict response CSP; this is separately tracked as AUD-342."
+    }
+  ],
+  "network": [
+    {
+      "url": "/workbench?project=proj-direction-c-a7137dc84068487aa7df43cc88d109f0dirc",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "url": "/data/catalog.json",
+      "method": "GET",
+      "status": 503,
+      "injected": true,
+      "detail": "Synthetic HTTP 503 returned by a pre-document fetch wrapper; it was not an upstream request."
+    }
+  ],
+  "rootCause": "Deployed v30 couples full catalogue loading and validation with saved-project restoration, making catalogue availability a prerequisite to rendering an already saved manifest.",
+  "affectedCode": [
+    "apps/site/src/components/workbench/WorkbenchShell.tsx",
+    "tests/e2e/performance-stress-step-38.spec.ts"
+  ],
+  "fixCommit": "ad735b37cdc81966ff1ce5fe6d727e4fd7cba959",
+  "status": "reproduced-on-deployed-v30",
+  "limitations": [
+    "The 503 is intentional fault injection; no real upstream outage occurred.",
+    "The CSP console error is platform-injected and unrelated to the saved-project failure."
+  ]
+}

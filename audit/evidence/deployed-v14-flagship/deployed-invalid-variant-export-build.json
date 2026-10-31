@@ -1,0 +1,31 @@
+{
+  "siteVersion": 14,
+  "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "canonicalGitCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
+  "projectId": "deployed-unsupported-variant-diagnostic",
+  "projectName": "Unsupported variant diagnostic",
+  "schemaValidated": true,
+  "invalidVariant": "deliberately-unsupported",
+  "exportUi": {
+    "expected": "Reject the invalid resource variant with a visible error before downloading source.",
+    "actual": "The deployed Export control downloaded unsupported-variant-diagnostic.zip without a visible error.",
+    "download": "deployed-invalid-variant-export.zip",
+    "sha256": "a81bb71b2f77c1deb04264275dc7031f233921b7f37ee43312e9c9b9830786b2"
+  },
+  "cleanInstall": {
+    "directory": "%TEMP%\\tessellate-v14-invalid-export-6423b73a3965485b8790aec8a82492ac",
+    "repositoryNodeModulesReused": false,
+    "command": "npm install --no-audit --no-fund",
+    "exitCode": 0,
+    "tessellateRuntimeDependencyCount": 0
+  },
+  "productionBuild": {
+    "command": "npm run build",
+    "exitCode": 2,
+    "failedStage": "TypeScript",
+    "error": "src/screens/Overview.tsx(17,253): error TS2322: Type \"deliberately-unsupported\" is not assignable to type \"primary\" | \"outline\" | \"ghost\" | \"quiet\" | \"expressive\" | \"nocturne\" | undefined."
+  },
+  "browserRuntime": "Not run because the exported app failed its TypeScript build.",
+  "diagnosticReport": "deployed-renderer-parity-audit.json",
+  "screenshotBeforeExport": "deployed-unsupported-variant-1440x900.png"
+}

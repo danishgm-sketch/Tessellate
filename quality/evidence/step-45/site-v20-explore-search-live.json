@@ -1,0 +1,46 @@
+{
+  "capturedAt": "2026-10-24T10:12:43Z",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+  "deployment": "public Site v20",
+  "viewport": "929x861",
+  "interaction": {
+    "method": "Typed onboarding through the visible Search catalogue field",
+    "initialStatus": "Showing 50 of 324 resources",
+    "initialResourceLinks": 100,
+    "initialPreviewFrames": 4,
+    "samples": [
+      { "elapsedMs": 6, "status": "Showing 50 of 324 resources", "resourceLinks": 100, "previewFrames": 4, "originalFramesRetained": 4 },
+      { "elapsedMs": 67, "status": "Showing 50 of 324 resources", "resourceLinks": 100, "previewFrames": 4, "originalFramesRetained": 4 },
+      { "elapsedMs": 103, "status": "Showing 50 of 324 resources", "resourceLinks": 100, "previewFrames": 4, "originalFramesRetained": 4 },
+      { "elapsedMs": 211, "status": "Showing 50 of 324 resources", "resourceLinks": 100, "previewFrames": 4, "originalFramesRetained": 4 },
+      { "elapsedMs": 273, "status": "Showing 50 of 324 resources", "resourceLinks": 100, "previewFrames": 4, "originalFramesRetained": 4 },
+      { "elapsedMs": 353, "status": "Showing 15 of 15 resources", "resourceLinks": 30, "previewFrames": 4, "originalFramesRetained": 0 }
+    ],
+    "finalUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+    "result": "The previous populated result cards and the same preview iframe nodes remained mounted through the debounce. The 15 matching onboarding resources replaced them after the query committed."
+  },
+  "network": {
+    "requestCount": 128,
+    "catalogueStatus": 200,
+    "essentialRequestsFailed": 0,
+    "httpErrors": [
+      { "url": "/favicon.ico", "status": 404, "trackedFinding": "AUD-291" }
+    ]
+  },
+  "console": {
+    "errors": ["Failed to load resource: the server responded with a status of 404 ()"],
+    "warnings": [],
+    "browserIssues": [
+      { "message": "A form field element should have an id or name attribute", "count": 1, "trackedFinding": "AUD-318" }
+    ]
+  },
+  "layout": {
+    "documentScrollWidth": 914,
+    "documentClientWidth": 914,
+    "horizontalOverflow": false
+  },
+  "screenshots": [
+    "quality/evidence/step-45/site-v20-explore-before-desktop.png",
+    "quality/evidence/step-45/site-v20-explore-before-mobile.png"
+  ]
+}

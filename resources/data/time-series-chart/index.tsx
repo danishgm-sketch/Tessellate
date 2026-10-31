@@ -26,16 +26,17 @@ const DEFAULT_DATA: DataPoint[] = [
 export function TimeSeriesChart({
   variant = 'quiet',
   data = DEFAULT_DATA,
-  title = 'API Throughput (req/s)',
+  title = 'Sample API throughput (req/s)',
 }: TimeSeriesChartProps) {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const hasData = data.length > 0;
 
   const cardBg =
     variant === 'nocturne'
       ? 'bg-[#0B0D10] border-[#2E3440] text-white'
       : variant === 'expressive'
-      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'
-      : 'bg-white border-neutral-200 text-neutral-900';
+      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm dark:bg-[#0B0D10] dark:border-[#2E3440] dark:text-white'
+      : 'bg-white border-neutral-200 text-neutral-900 dark:bg-[#0B0D10] dark:border-[#2E3440] dark:text-white';
 
   const lineColor =
     variant === 'nocturne'
@@ -67,21 +68,29 @@ export function TimeSeriesChart({
   const activePoint = hoveredIdx !== null && hoveredIdx >= 0 && hoveredIdx < points.length ? points[hoveredIdx] : null;
 
   return (
-    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>
+    <div
+      style={{
+        ...(variant === 'nocturne' ? { '--tess-ink-muted': '#A8AFBA', '--tess-ink-secondary': '#D1D5DB' } : {}),
+      } as React.CSSProperties}
+      className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col transition-colors ${cardBg}`}
+    >
       <div className="flex items-center justify-between mb-4">
         <div>
           <h4 className="text-sm font-semibold tracking-tight">{title}</h4>
-          <p className="text-xs text-neutral-500">Real-time sampling window</p>
+          {hasData && <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Illustrative sample data — not live measurements.</p>}
         </div>
-        <div className="text-right">
-          <span className="text-lg font-mono font-semibold">
-            {activePoint ? activePoint.value : points[points.length - 1]?.value ?? 0}
-          </span>
-          <span className="text-xs text-neutral-400 ml-1">req/s</span>
-        </div>
+        {hasData && (
+          <div className="text-right">
+            <span className="text-lg font-mono font-semibold">
+              {activePoint ? activePoint.value : points[points.length - 1]?.value}
+            </span>
+            <span className="text-xs text-neutral-600 dark:text-neutral-400 ml-1">req/s</span>
+          </div>
+        )}
       </div>
 
       <div className="relative w-full overflow-hidden">
+        {hasData ? (
         <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto overflow-visible select-none">
           <defs>
             <linearGradient id={`ts-grad-${variant}`} x1="0" y1="0" x2="0" y2="1">
@@ -125,6 +134,12 @@ export function TimeSeriesChart({
             </g>
           ))}
         </svg>
+        ) : (
+          <p role="status" aria-live="polite" className="rounded border border-dashed border-neutral-300 p-6 text-center text-sm opacity-75 dark:border-neutral-700">
+            <span className="block font-semibold">No data yet</span>
+            <span className="mt-1 block">No time-series data available for this period.</span>
+          </p>
+        )}
       </div>
     </div>
   );

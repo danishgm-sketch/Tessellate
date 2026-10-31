@@ -1,0 +1,262 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "quality/evidence/step-45/public-v32/live-playwright.config.ts",
+      "--grep",
+      "flagship employee experience journey uses the visible UI through independent React export"
+    ],
+    "configFile": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v32\\live-playwright.config.ts",
+    "rootDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/quality/evidence/step-45/public-v32/flagship/playwright-output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-1440",
+        "name": "desktop-1440",
+        "testDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "flagship-acceptance-live-v26.spec.ts"
+        ],
+        "timeout": 300000
+      },
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/quality/evidence/step-45/public-v32/flagship/playwright-output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-390",
+        "name": "mobile-390",
+        "testDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "flagship-acceptance-live-v26.spec.ts"
+        ],
+        "timeout": 300000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v32\\flagship\\playwright-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "flagship-acceptance-live-v26.spec.ts",
+      "file": "flagship-acceptance-live-v26.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Flagship Acceptance & Merge Gate Verification",
+          "file": "flagship-acceptance-live-v26.spec.ts",
+          "line": 181,
+          "column": 6,
+          "specs": [
+            {
+              "title": "flagship employee experience journey uses the visible UI through independent React export",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-1440",
+                  "projectName": "desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 147191,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-znVwrcoSrlHZhfm2FY1DvMZFOT/oApCkA7xY7nlJ/QY='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-QTQYjGj3g2cCGewyJkG/+K9wmGN3BJAPT4OlEgNnCuc='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-bmfZZn/CRZIjHI7CAA+jlNGEXGUnxVx+0pG/UIn8uEk='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-znVwrcoSrlHZhfm2FY1DvMZFOT/oApCkA7xY7nlJ/QY='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-QTQYjGj3g2cCGewyJkG/+K9wmGN3BJAPT4OlEgNnCuc='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-bmfZZn/CRZIjHI7CAA+jlNGEXGUnxVx+0pG/UIn8uEk='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\tests\\e2e\\flagship-acceptance-live-v26.spec.ts:696:27",
+                        "location": {
+                          "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\tests\\e2e\\flagship-acceptance-live-v26.spec.ts",
+                          "column": 27,
+                          "line": 696
+                        },
+                        "snippet": "  694 |       )}\\n`\n  695 |     );\n> 696 |     expect(consoleErrors).toEqual([]);\n      |                           ^\n  697 |     expect(consoleWarnings).toEqual([]);\n  698 |     expect(uncaughtExceptions).toEqual([]);\n  699 |     expect(failedRequests).toEqual([]);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\tests\\e2e\\flagship-acceptance-live-v26.spec.ts",
+                            "column": 27,
+                            "line": 696
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-znVwrcoSrlHZhfm2FY1DvMZFOT/oApCkA7xY7nlJ/QY='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-QTQYjGj3g2cCGewyJkG/+K9wmGN3BJAPT4OlEgNnCuc='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-bmfZZn/CRZIjHI7CAA+jlNGEXGUnxVx+0pG/UIn8uEk='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  694 |       )}\\n`\n  695 |     );\n> 696 |     expect(consoleErrors).toEqual([]);\n      |                           ^\n  697 |     expect(consoleWarnings).toEqual([]);\n  698 |     expect(uncaughtExceptions).toEqual([]);\n  699 |     expect(failedRequests).toEqual([]);\n    at C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\tests\\e2e\\flagship-acceptance-live-v26.spec.ts:696:27"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-26T13:21:41.853Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v32\\flagship\\playwright-output\\flagship-acceptance-live-v-2b85b-gh-independent-React-export-desktop-1440\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v32\\flagship\\playwright-output\\flagship-acceptance-live-v-2b85b-gh-independent-React-export-desktop-1440\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v32\\flagship\\playwright-output\\flagship-acceptance-live-v-2b85b-gh-independent-React-export-desktop-1440\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\tests\\e2e\\flagship-acceptance-live-v26.spec.ts",
+                        "column": 27,
+                        "line": 696
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "14ce2235c1253e80a1c4-a53857249ecbe5024788",
+              "file": "flagship-acceptance-live-v26.spec.ts",
+              "line": 183,
+              "column": 3
+            },
+            {
+              "title": "flagship employee experience journey uses the visible UI through independent React export",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-390",
+                  "projectName": "mobile-390",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 45469,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-hJ+K5wc80hiVQqRihh8bjx3CLzcFYPGCDsFK1nMjVPo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-R4BV6+9MTkZOVCTsSDR0kzKpCMY7XG7RNK0nNIxemeo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-HOlcOXuKUNtxEdoukmkCky3cX+pYV8QjYkLQIDg4obs='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-hJ+K5wc80hiVQqRihh8bjx3CLzcFYPGCDsFK1nMjVPo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-R4BV6+9MTkZOVCTsSDR0kzKpCMY7XG7RNK0nNIxemeo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-HOlcOXuKUNtxEdoukmkCky3cX+pYV8QjYkLQIDg4obs='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\tests\\e2e\\flagship-acceptance-live-v26.spec.ts:696:27",
+                        "location": {
+                          "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\tests\\e2e\\flagship-acceptance-live-v26.spec.ts",
+                          "column": 27,
+                          "line": 696
+                        },
+                        "snippet": "  694 |       )}\\n`\n  695 |     );\n> 696 |     expect(consoleErrors).toEqual([]);\n      |                           ^\n  697 |     expect(consoleWarnings).toEqual([]);\n  698 |     expect(uncaughtExceptions).toEqual([]);\n  699 |     expect(failedRequests).toEqual([]);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\tests\\e2e\\flagship-acceptance-live-v26.spec.ts",
+                            "column": 27,
+                            "line": 696
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-hJ+K5wc80hiVQqRihh8bjx3CLzcFYPGCDsFK1nMjVPo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-R4BV6+9MTkZOVCTsSDR0kzKpCMY7XG7RNK0nNIxemeo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+   \"Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-HOlcOXuKUNtxEdoukmkCky3cX+pYV8QjYkLQIDg4obs='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  694 |       )}\\n`\n  695 |     );\n> 696 |     expect(consoleErrors).toEqual([]);\n      |                           ^\n  697 |     expect(consoleWarnings).toEqual([]);\n  698 |     expect(uncaughtExceptions).toEqual([]);\n  699 |     expect(failedRequests).toEqual([]);\n    at C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\tests\\e2e\\flagship-acceptance-live-v26.spec.ts:696:27"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-26T13:24:20.701Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v32\\flagship\\playwright-output\\flagship-acceptance-live-v-2b85b-gh-independent-React-export-mobile-390\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v32\\flagship\\playwright-output\\flagship-acceptance-live-v-2b85b-gh-independent-React-export-mobile-390\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v32\\flagship\\playwright-output\\flagship-acceptance-live-v-2b85b-gh-independent-React-export-mobile-390\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\tests\\e2e\\flagship-acceptance-live-v26.spec.ts",
+                        "column": 27,
+                        "line": 696
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "14ce2235c1253e80a1c4-e2c1eb3812ad31be3320",
+              "file": "flagship-acceptance-live-v26.spec.ts",
+              "line": 183,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T13:21:37.909Z",
+    "duration": 214381.882,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

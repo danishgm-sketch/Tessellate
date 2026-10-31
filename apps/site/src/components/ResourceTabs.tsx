@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { ResourceManifest } from '@tessellate/schemas';
+import { isGoldResource } from '@tessellate/catalog/gold';
 import {
   Code,
   Layers,
@@ -11,10 +12,12 @@ import {
   History,
   CheckCircle2,
   XCircle,
+  CircleHelp,
 } from 'lucide-react';
 
 export interface ResourceTabsProps {
   manifest: ResourceManifest;
+  sourceCode: string;
 }
 
 export type TabId =
@@ -27,7 +30,17 @@ export type TabId =
   | 'dependencies'
   | 'versions';
 
-export function ResourceTabs({ manifest }: ResourceTabsProps) {
+export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
+  const [origin, setOrigin] = useState('');
+  const [copyStatus, setCopyStatus] = useState('');
+  useEffect(() => setOrigin(window.location.origin), []);
+  const install = `npx shadcn@latest add ${origin}/r/${manifest.slug}.json`;
+  const copy = () => {
+    void navigator.clipboard
+      .writeText(install)
+      .then(() => setCopyStatus('Install command copied.'))
+      .catch((cause) => setCopyStatus(`Copy failed: ${String(cause)}`));
+  };
   const [activeTab, setActiveTab] = useState<TabId>('intent');
 
   const tabs: Array<{ id: TabId; label: string; icon: React.ReactNode }> = [
@@ -41,16 +54,54 @@ export function ResourceTabs({ manifest }: ResourceTabsProps) {
     { id: 'versions', label: 'Versions', icon: <History className="w-3.5 h-3.5" /> },
   ];
 
+  const handleTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, currentIndex: number) => {
+    let nextIndex: number;
+    switch (event.key) {
+      case 'ArrowRight':
+        nextIndex = (currentIndex + 1) % tabs.length;
+        break;
+      case 'ArrowLeft':
+        nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        break;
+      case 'Home':
+        nextIndex = 0;
+        break;
+      case 'End':
+        nextIndex = tabs.length - 1;
+        break;
+      default:
+        return;
+    }
+
+    const nextTab = tabs[nextIndex];
+    if (!nextTab) return;
+
+    event.preventDefault();
+    setActiveTab(nextTab.id);
+    document.getElementById(`resource-tab-${nextTab.id}`)?.focus();
+  };
+
   return (
     <div className="flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] overflow-hidden shadow-xs">
       {/* Tab Navigation Header */}
-      <div className="flex items-center gap-1 overflow-x-auto border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] px-3 pt-2">
-        {tabs.map((tab) => {
+      <div
+        role="tablist"
+        aria-label="Resource information"
+        aria-orientation="horizontal"
+        className="flex items-center gap-1 overflow-x-auto border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] px-3 pt-2"
+      >
+        {tabs.map((tab, index) => {
           const isActive = activeTab === tab.id;
           return (
             <button
               key={tab.id}
               type="button"
+              role="tab"
+              id={`resource-tab-${tab.id}`}
+              aria-selected={isActive}
+              aria-controls="resource-detail-tabpanel"
+              tabIndex={isActive ? 0 : -1}
+              onKeyDown={(event) => handleTabKeyDown(event, index)}
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-1.5 px-3 py-2 text-xs font-medium rounded-t-lg transition-all border-b-2 -mb-[1px] select-none ${
                 isActive
@@ -60,25 +111,26 @@ export function ResourceTabs({ manifest }: ResourceTabsProps) {
             >
               {tab.icon}
               <span>{tab.label}</span>
-              {tab.id === 'intent' && (
-                <span className="ml-1 text-[9px] font-mono px-1 py-0.2 rounded bg-amber-100 text-amber-800 font-bold">
-                  Core
-                </span>
-              )}
             </button>
           );
         })}
       </div>
 
       {/* Tab Content Body */}
-      <div className="p-6 text-sm text-[var(--tess-ink,#111217)] leading-relaxed">
+      <div
+        id="resource-detail-tabpanel"
+        role="tabpanel"
+        aria-labelledby={`resource-tab-${activeTab}`}
+        tabIndex={0}
+        className="p-6 text-sm text-[var(--tess-ink,#111217)] leading-relaxed"
+      >
         {/* INTENT TAB (Mandatory) */}
         {activeTab === 'intent' && (
           <div className="space-y-6">
             <div>
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)] mb-1">
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)] mb-1">
                 Summary & Purpose
-              </h4>
+              </h2>
               <p className="text-base text-[var(--tess-ink,#111217)] font-medium">
                 {manifest.intent.summary}
               </p>
@@ -88,13 +140,13 @@ export function ResourceTabs({ manifest }: ResourceTabsProps) {
               {/* Ideal For */}
               <div className="rounded-xl border border-emerald-200 bg-emerald-50/50 p-4 space-y-2">
                 <div className="flex items-center gap-2 text-emerald-800 font-semibold text-xs uppercase tracking-wider">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700" />
                   <span>When It Works (Ideal For)</span>
                 </div>
                 <ul className="space-y-1 text-xs text-emerald-950">
                   {manifest.intent.idealFor.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-1.5">
-                      <span className="font-bold text-emerald-600">•</span>
+                      <span className="font-bold text-emerald-700">•</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -120,9 +172,9 @@ export function ResourceTabs({ manifest }: ResourceTabsProps) {
 
             {/* Jobs to be done */}
             <div className="space-y-2">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)]">
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
                 Jobs To Be Done
-              </h4>
+              </h2>
               <div className="flex flex-wrap gap-2">
                 {manifest.intent.jobs.map((job, idx) => (
                   <span
@@ -137,9 +189,9 @@ export function ResourceTabs({ manifest }: ResourceTabsProps) {
 
             {/* Content Requirements */}
             <div className="space-y-2">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)]">
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
                 Expected Content Requirements
-              </h4>
+              </h2>
               <ul className="list-disc list-inside text-xs space-y-1 text-[var(--tess-ink-secondary,#62666F)]">
                 {manifest.intent.contentRequirements.map((req, idx) => (
                   <li key={idx}>{req}</li>
@@ -150,9 +202,9 @@ export function ResourceTabs({ manifest }: ResourceTabsProps) {
             {/* Product Archetypes */}
             {manifest.productArchetypes.length > 0 && (
               <div className="space-y-2">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)]">
+                <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
                   Target Product Archetypes
-                </h4>
+                </h2>
                 <div className="flex flex-wrap gap-2">
                   {manifest.productArchetypes.map((arch, idx) => (
                     <span
@@ -169,51 +221,49 @@ export function ResourceTabs({ manifest }: ResourceTabsProps) {
         )}
 
         {/* CODE TAB */}
-        {activeTab === 'code' && (() => {
-          const safeComp = manifest.name.replace(/[^a-zA-Z0-9]/g, '') || 'Component';
-          const installCmd = `npx shadcn@latest add https://tessellate.design/r/${manifest.slug}.json`;
-
-          return (
-            <div className="space-y-4 font-mono text-xs">
-              <div className="flex items-center justify-between">
-                <span className="text-[var(--tess-ink-secondary,#62666F)]">
-                  Install component via CLI:
-                </span>
-                <button
-                  type="button"
-                  onClick={() => navigator.clipboard.writeText(installCmd)}
-                  className="px-2 py-1 rounded bg-[var(--tess-canvas,#F4F2ED)] border border-[var(--tess-hairline,#D9D6CF)] text-[11px] hover:bg-white"
-                >
-                  Copy
-                </button>
-              </div>
-              <pre className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]">
-                <code>{installCmd}</code>
-              </pre>
-
-              <span className="text-[var(--tess-ink-secondary,#62666F)] block pt-2">
-                Usage Example (React + Tailwind):
+        {activeTab === 'code' && (
+          <div className="space-y-4 font-mono text-xs">
+            <div className="flex items-center justify-between">
+              <span className="text-[var(--tess-ink-secondary,#62666F)]">
+                Install component via CLI:
               </span>
-              <pre className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]">
-                <code>{`import { ${safeComp} } from "@/components/ui/${manifest.slug}";
-
-export default function Example() {
-  return (
-    <${safeComp} variant="expressive">
-      Content
-    </${safeComp}>
-  );
-}`}</code>
-              </pre>
+              <button
+                type="button"
+                onClick={copy}
+                className="px-2 py-1 rounded bg-[var(--tess-canvas,#F4F2ED)] border border-[var(--tess-hairline,#D9D6CF)] text-[11px] hover:bg-white"
+              >
+                Copy
+              </button>
             </div>
-          );
-        })()}
+            <pre
+              tabIndex={0}
+              className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]"
+            >
+              <code>{install}</code>
+            </pre>
 
+            <span className="text-[var(--tess-ink-secondary,#62666F)] block pt-2">
+              Actual published source (React + Tailwind):
+            </span>
+            <pre
+              tabIndex={0}
+              className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]"
+            >
+              <code>{sourceCode}</code>
+            </pre>
+          </div>
+        )}
+
+        <p role="status">{copyStatus}</p>
         {/* VARIANTS TAB */}
         {activeTab === 'variants' && (
           <div className="space-y-4">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
+              Declared Variants
+            </h2>
             <p className="text-xs text-[var(--tess-ink-secondary,#62666F)]">
-              Every canonical Tessellate resource receives three curated configurations designed to suit different software archetypes.
+              The configurations declared by this resource are listed below. Inspect them in the
+              live preview.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {manifest.variants.map((v) => (
@@ -222,7 +272,7 @@ export default function Example() {
                   className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-4 space-y-2 shadow-2xs"
                 >
                   <div className="flex items-center justify-between">
-                    <h5 className="font-semibold text-sm">{v.name}</h5>
+                    <h3 className="font-semibold text-sm">{v.name}</h3>
                     <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--tess-canvas,#F4F2ED)] text-[var(--tess-ink-secondary,#62666F)]">
                       {v.id}
                     </span>
@@ -239,9 +289,9 @@ export default function Example() {
         {/* ANATOMY TAB */}
         {activeTab === 'anatomy' && (
           <div className="space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)]">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
               Configurable Slots & Props
-            </h4>
+            </h2>
             <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white overflow-hidden">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
@@ -255,10 +305,14 @@ export default function Example() {
                 <tbody className="divide-y divide-[var(--tess-hairline,#D9D6CF)]">
                   {manifest.slots.map((slot) => (
                     <tr key={slot.id} className="hover:bg-neutral-50/50">
-                      <td className="p-3 font-mono font-medium">{slot.name} ({slot.id})</td>
-                      <td className="p-3 font-mono text-[var(--tess-cobalt,#2547E8)]">{slot.type}</td>
+                      <td className="p-3 font-mono font-medium">
+                        {slot.name} ({slot.id})
+                      </td>
+                      <td className="p-3 font-mono text-[var(--tess-cobalt,#2547E8)]">
+                        {slot.type}
+                      </td>
                       <td className="p-3">{slot.required ? 'Yes' : 'No'}</td>
-                      <td className="p-3 font-mono text-[var(--tess-ink-muted,#8B8F97)]">
+                      <td className="p-3 font-mono text-[var(--tess-ink-muted,#62666F)]">
                         {String(slot.defaultValue ?? '—')}
                       </td>
                     </tr>
@@ -272,32 +326,53 @@ export default function Example() {
         {/* ACCESSIBILITY TAB */}
         {activeTab === 'accessibility' && (
           <div className="space-y-4">
+            <p role="note" className="text-xs leading-relaxed text-[var(--tess-ink-secondary,#62666F)]">
+              This shows resource-manifest declarations. Gold browser checks provide independent evidence for the validated runtime set; other resource claims remain unverified. Test the rendered component in your application.
+            </p>
             <div className="flex items-center gap-3">
               <span className="text-xs font-semibold text-[var(--tess-ink-secondary,#62666F)]">
-                Compliance Level Target:
+                WCAG target:
               </span>
-              <span className="px-2 py-0.5 rounded font-mono font-bold text-xs bg-emerald-100 text-emerald-800">
-                WCAG {manifest.accessibility.levelTarget}
+              <span className="px-2 py-0.5 rounded font-mono font-bold text-xs bg-[var(--tess-canvas,#F4F2ED)] text-[var(--tess-ink-secondary,#62666F)]">
+                {manifest.accessibility.levelTarget === 'none'
+                  ? 'No WCAG target declared'
+                  : `WCAG ${manifest.accessibility.levelTarget} target`}
               </span>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {[
                 { label: 'Keyboard Navigation', verified: manifest.accessibility.keyboardVerified },
-                { label: 'Screen Reader Semantics', verified: manifest.accessibility.screenReaderSemantics },
-                { label: 'Reduced Motion Verified', verified: manifest.accessibility.reducedMotionVerified },
-                { label: 'Contrast Compatible', verified: manifest.accessibility.contrastTokenCompatible },
+                {
+                  label: 'Screen Reader Semantics',
+                  verified: manifest.accessibility.screenReaderSemantics,
+                },
+                {
+                  label: 'Reduced Motion Verified',
+                  verified: manifest.accessibility.reducedMotionVerified,
+                },
+                {
+                  label: 'Contrast Compatible',
+                  verified: manifest.accessibility.contrastTokenCompatible,
+                },
                 { label: 'Visible Focus State', verified: manifest.accessibility.focusVisible },
               ].map((item, idx) => (
                 <div
                   key={idx}
+                  data-accessibility-assessment-card
                   className="rounded-lg border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3 flex items-center justify-between text-xs"
                 >
                   <span>{item.label}</span>
-                  {item.verified ? (
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  {isGoldResource(manifest.slug) && item.verified ? (
+                    <span className="flex items-center gap-1 text-[var(--tess-ink-secondary,#62666F)]">
+                      <CheckCircle2 aria-hidden="true" className="w-4 h-4 text-emerald-700 shrink-0" />
+                      <span>Gold browser checked</span>
+                    </span>
                   ) : (
-                    <XCircle className="w-4 h-4 text-rose-500 shrink-0" />
+                    <span className="flex items-center gap-1 text-[var(--tess-ink-muted,#62666F)]">
+                      <CircleHelp aria-hidden="true" className="w-4 h-4 text-[var(--tess-ink-muted,#62666F)] shrink-0" />
+                      <span>{item.verified ? 'Manifest claim only' : 'Not independently verified'}</span>
+                    </span>
                   )}
                 </div>
               ))}
@@ -310,25 +385,33 @@ export default function Example() {
           <div className="space-y-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3">
-                <span className="text-[11px] text-[var(--tess-ink-muted,#8B8F97)] block">JS Payload</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">
+                  JS Payload
+                </span>
                 <span className="text-sm font-semibold uppercase font-mono text-[var(--tess-cobalt,#2547E8)]">
                   {manifest.performance.jsCost}
                 </span>
               </div>
               <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3">
-                <span className="text-[11px] text-[var(--tess-ink-muted,#8B8F97)] block">GPU Overhead</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">
+                  GPU Overhead
+                </span>
                 <span className="text-sm font-semibold uppercase font-mono">
                   {manifest.performance.gpuCost}
                 </span>
               </div>
               <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3">
-                <span className="text-[11px] text-[var(--tess-ink-muted,#8B8F97)] block">Runtime Complexity</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">
+                  Runtime Complexity
+                </span>
                 <span className="text-sm font-semibold uppercase font-mono">
                   {manifest.performance.runtimeComplexity}
                 </span>
               </div>
               <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3">
-                <span className="text-[11px] text-[var(--tess-ink-muted,#8B8F97)] block">Lazy Load Recommended</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">
+                  Lazy Load Recommended
+                </span>
                 <span className="text-sm font-semibold font-mono">
                   {manifest.performance.lazyRecommended ? 'Yes' : 'No'}
                 </span>
@@ -355,7 +438,9 @@ export default function Example() {
                     className="p-3 rounded-lg border border-[var(--tess-hairline,#D9D6CF)] bg-white flex items-center justify-between text-xs"
                   >
                     <span className="font-mono font-semibold">{dep.package}</span>
-                    <span className="font-mono text-[var(--tess-ink-muted,#8B8F97)]">{dep.range}</span>
+                    <span className="font-mono text-[var(--tess-ink-muted,#62666F)]">
+                      {dep.range}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -369,7 +454,9 @@ export default function Example() {
             <div className="p-4 rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white space-y-1">
               <div className="flex items-center justify-between">
                 <span className="font-mono font-bold text-sm">v{manifest.version}</span>
-                <span className="text-[11px] text-[var(--tess-ink-muted,#8B8F97)]">Initial Release</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)]">
+                  Initial Release
+                </span>
               </div>
               <p className="text-xs text-[var(--tess-ink-secondary,#62666F)]">
                 Launch release with verified Quiet, Expressive, and Nocturne variants.

@@ -1,0 +1,28 @@
+{
+  "step": 42,
+  "id": "zip-download-failure-visible",
+  "status": "pass",
+  "url": "http://127.0.0.1:4413/workbench/?project=local-20289dc8-1afa-4744-ad93-dd5731bc42c7",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "browser": "Chromium",
+  "injectedFailures": [
+    "URL.createObjectURL throws only for the generated application/zip Blob."
+  ],
+  "checks": {
+    "browserDownloadFailureShownToUser": true,
+    "failureDetailsPreserved": true,
+    "uncaughtExceptions": 0
+  },
+  "runtime": {
+    "consoleErrors": [
+      "Failed to generate standalone ZIP project: Error: Injected ZIP download creation failure\n    at URL.createObjectURL (<anonymous>:6:15)\n    at ie (http://127.0.0.1:4413/_astro/index.BcrThWbC.js:19121:4411)\n    at onClick (http://127.0.0.1:4413/_astro/index.BcrThWbC.js:19121:15338)\n    at Vf (http://127.0.0.1:4413/_astro/client.CZ5CiHPg.js:8:138618)\n    at http://127.0.0.1:4413/_astro/client.CZ5CiHPg.js:8:143350\n    at Rn (http://127.0.0.1:4413/_astro/client.CZ5CiHPg.js:8:15177)\n    at Kf (http://127.0.0.1:4413/_astro/client.CZ5CiHPg.js:8:139845)\n    at yh (http://127.0.0.1:4413/_astro/client.CZ5CiHPg.js:9:42534)\n    at _h (http://127.0.0.1:4413/_astro/client.CZ5CiHPg.js:9:42356)"
+    ],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "quality/evidence/step-42/zip-download-failure-visible-sites-mobile-chromium.png"
+}

@@ -1,0 +1,28 @@
+{
+  "step": 42,
+  "id": "stale-project-safe-recovery",
+  "status": "pass",
+  "url": "http://127.0.0.1:4413/workbench/?project=stale-step-42-c086fab2-3a26-4504-898e-474877262607",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "browser": "Chromium",
+  "injectedFailures": [],
+  "checks": {
+    "missingProjectReported": true,
+    "editingPaused": true,
+    "starterProjectNotCreated": true,
+    "retryKeepsMissingProjectIdentity": true,
+    "unrelatedManifestExportNotOffered": true,
+    "axeViolations": 0,
+    "noHorizontalOverflow": true
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "quality/evidence/step-42/stale-project-safe-recovery-sites-mobile-chromium.png"
+}

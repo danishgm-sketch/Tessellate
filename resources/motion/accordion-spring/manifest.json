@@ -2,10 +2,10 @@
   "schemaVersion": "1.0.0",
   "id": "res_mot_accordion_spring",
   "slug": "accordion-spring",
-  "name": "Accordion Spring",
+  "name": "Animated Disclosure Accordion",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Spring-animated expandable panel expanding height from 0 to auto without layout jank.",
+  "description": "Disclosure accordion with an expanding CSS panel, rotating chevron, and reduced-motion support.",
   "resourceType": "motion",
   "categories": [
     "motion",
@@ -102,7 +102,7 @@
     {
       "id": "quiet",
       "name": "Quiet",
-      "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+      "description": "Neutral panel with a short disclosure transition.",
       "props": {
         "variant": "quiet"
       }
@@ -110,7 +110,7 @@
     {
       "id": "expressive",
       "name": "Expressive",
-      "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+      "description": "Brighter panel styling with the same reduced-motion-aware disclosure transition.",
       "props": {
         "variant": "expressive"
       }
@@ -118,7 +118,7 @@
     {
       "id": "nocturne",
       "name": "Nocturne",
-      "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+      "description": "Dark panel styling with the same reduced-motion-aware disclosure transition.",
       "props": {
         "variant": "nocturne"
       }
@@ -132,7 +132,7 @@
     "expansion"
   ],
   "intent": {
-    "summary": "Spring-animated expandable panel expanding height from 0 to auto without layout jank.",
+    "summary": "Disclosure accordion with an expanding CSS panel, rotating chevron, and reduced-motion support.",
     "idealFor": [
       "FAQ questions",
       "Collapsible settings groups",
@@ -143,7 +143,7 @@
       "Plain button clicks"
     ],
     "jobs": [
-      "Expand and collapse child content with smooth springy height interpolation"
+      "Show and hide explanatory content with a keyboard-operable disclosure control"
     ],
     "contentRequirements": [
       "CSS transition and animation transforms, reduced-motion fallbacks"
@@ -214,12 +214,12 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -242,7 +242,11 @@
     "composability": 96,
     "visualCraft": 97,
     "dependencyCleanliness": 100,
-    "documentation": 96
+    "documentation": 96,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

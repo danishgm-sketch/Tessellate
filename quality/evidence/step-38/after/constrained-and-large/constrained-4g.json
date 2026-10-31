@@ -1,0 +1,71 @@
+{
+  "capturedAt": "2026-10-26T19:25:58.597Z",
+  "route": "http://127.0.0.1:4413/explore?q=onboarding",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "throttle": {
+    "latencyMs": 150,
+    "downloadBitsPerSecond": 1600000,
+    "uploadBitsPerSecond": 750000,
+    "cpuSlowdownFactor": 4
+  },
+  "routeReadyMs": 4626,
+  "firstPreviewReadyMs": 3574,
+  "browserMetrics": {
+    "lcpMs": 856,
+    "cls": 0.02761042524005487,
+    "longTaskMs": 1602,
+    "longTaskCount": 13,
+    "catalogueTransferBytes": 145527,
+    "documentWidth": 1440,
+    "viewportWidth": 1440
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "browserCancellations": [
+      {
+        "url": "http://127.0.0.1:4413/_astro/src.Cj1YM3rf.js",
+        "error": "net::ERR_ABORTED",
+        "frameUrl": "http://127.0.0.1:4413/preview-content/?resource=accessibility-commitment-section",
+        "phase": "user-filtered-catalogue"
+      },
+      {
+        "url": "http://127.0.0.1:4413/_astro/src.Cj1YM3rf.js",
+        "error": "net::ERR_ABORTED",
+        "frameUrl": "http://127.0.0.1:4413/preview-content/?resource=accordion",
+        "phase": "user-filtered-catalogue"
+      },
+      {
+        "url": "http://127.0.0.1:4413/_astro/src.Cj1YM3rf.js",
+        "error": "net::ERR_ABORTED",
+        "frameUrl": "http://127.0.0.1:4413/preview-content/?resource=accordion-spring",
+        "phase": "user-filtered-catalogue"
+      },
+      {
+        "url": "http://127.0.0.1:4413/_astro/src.Cj1YM3rf.js",
+        "error": "net::ERR_ABORTED",
+        "frameUrl": "http://127.0.0.1:4413/preview-content/?resource=activity-feed",
+        "phase": "user-filtered-catalogue"
+      },
+      {
+        "url": "http://127.0.0.1:4413/_astro/src.Cj1YM3rf.js",
+        "error": "net::ERR_ABORTED",
+        "frameUrl": "http://127.0.0.1:4413/preview-content/?resource=admin-console-shell",
+        "phase": "user-filtered-catalogue"
+      },
+      {
+        "url": "http://127.0.0.1:4413/_astro/src.Cj1YM3rf.js",
+        "error": "net::ERR_ABORTED",
+        "frameUrl": "http://127.0.0.1:4413/preview-content/?resource=advanced-data-table",
+        "phase": "user-filtered-catalogue"
+      }
+    ],
+    "httpErrors": []
+  },
+  "cancellationDisposition": "Preview module requests aborted when nonmatching preview iframes unmount after the user filters the catalogue; recorded separately from failed network requests.",
+  "screenshot": "quality\\evidence\\step-38\\after\\constrained-and-large\\explore-slow-4g-cpu4.png"
+}

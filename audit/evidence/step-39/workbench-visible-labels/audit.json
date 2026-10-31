@@ -1,0 +1,70 @@
+{
+  "route": "/workbench",
+  "findings": [
+    "AUD-349",
+    "AUD-350"
+  ],
+  "regression": "tests/e2e/workbench-visible-label-accessibility-step-39.spec.ts",
+  "testedStates": [
+    "Layers selected actions at desktop",
+    "Content inspector at desktop and mobile",
+    "Mobile Workbench Command panel"
+  ],
+  "desktop": {
+    "capturedAt": "2026-10-26T03:35:58.316Z",
+    "route": "http://127.0.0.1:4325/workbench?project=visible-control-labels",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "axe": {
+      "rule": "label-content-name-mismatch",
+      "violations": []
+    },
+    "visibleNames": {
+      "moveUp": 1,
+      "moveDown": 1,
+      "laptopSwitch": 1
+    },
+    "runtime": {
+      "consoleErrors": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\step-39\\workbench-visible-labels\\sites-chromium-after.png"
+  },
+  "mobile": {
+    "capturedAt": "2026-10-26T03:36:01.264Z",
+    "route": "http://127.0.0.1:4325/workbench?project=visible-control-labels",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "axe": {
+      "rule": "label-content-name-mismatch",
+      "violations": []
+    },
+    "visibleNames": {
+      "moveUp": 0,
+      "moveDown": 0,
+      "laptopSwitch": 1
+    },
+    "runtime": {
+      "consoleErrors": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\step-39\\workbench-visible-labels\\sites-mobile-chromium-after.png"
+  },
+  "before": {
+    "axeRule": "label-content-name-mismatch",
+    "targets": [
+      "button[aria-label=\"Move selected layer up\"]",
+      "button[aria-label=\"Move selected layer down\"]",
+      ".disabled\\:opacity-60"
+    ],
+    "regression": "The new Playwright test failed before removing the accessible-name overrides."
+  }
+}

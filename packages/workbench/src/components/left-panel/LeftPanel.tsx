@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import type { LeftTab } from '../../types.js';
-import { BriefTab } from './BriefTab.js';
-import { PagesTab } from './PagesTab.js';
-import { LayersTab } from './LayersTab.js';
-import { LibraryTab } from './LibraryTab.js';
 import { FileText, Layers, Grid, BookOpen } from 'lucide-react';
+
+const BriefTab = lazy(() => import('./BriefTab.js').then((module) => ({ default: module.BriefTab })));
+const PagesTab = lazy(() => import('./PagesTab.js').then((module) => ({ default: module.PagesTab })));
+const LayersTab = lazy(() => import('./LayersTab.js').then((module) => ({ default: module.LayersTab })));
+const LibraryTab = lazy(() => import('./LibraryTab.js').then((module) => ({ default: module.LibraryTab })));
 
 export function LeftPanel() {
   const activeLeftTab = useWorkbenchStore((state) => state.activeLeftTab);
@@ -17,11 +18,13 @@ export function LeftPanel() {
     { id: 'library', label: 'Library', icon: <Grid className="h-3.5 w-3.5" /> },
     { id: 'brief', label: 'Brief', icon: <BookOpen className="h-3.5 w-3.5" /> },
   ];
+  const activeTabLabel = tabs.find((tab) => tab.id === activeLeftTab)?.label ?? 'Workbench';
 
   return (
     <aside
       data-testid="left-panel"
-      className="w-[280px] shrink-0 border-r border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#0E1015] flex flex-col h-full select-none"
+      aria-label="Workbench navigation"
+      className="dark w-[280px] shrink-0 border-r border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#111419] flex flex-col h-full select-none"
     >
       {/* Tab Switcher Header */}
       <div className="flex items-center border-b border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#111217] p-1">
@@ -33,7 +36,7 @@ export function LeftPanel() {
               onClick={() => setActiveLeftTab(tab.id)}
               className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                 isActive
-                  ? 'bg-[#FAF9F6] dark:bg-[#171B21] text-[#2547E8] dark:text-[#6782FF] shadow-xs'
+                  ? 'bg-[#FAF9F6] dark:bg-[#171B21] text-[#2547E8] dark:text-[#879DFF] shadow-xs'
                   : 'text-[#62666F] dark:text-[#A8AFBA] hover:text-[#111217] dark:hover:text-[#F5F7FA]'
               }`}
             >
@@ -45,11 +48,18 @@ export function LeftPanel() {
       </div>
 
       {/* Active Tab View */}
-      <div className="flex-1 overflow-y-auto">
-        {activeLeftTab === 'brief' && <BriefTab />}
-        {activeLeftTab === 'pages' && <PagesTab />}
-        {activeLeftTab === 'layers' && <LayersTab />}
-        {activeLeftTab === 'library' && <LibraryTab />}
+      <div
+        role="region"
+        aria-label={`${activeTabLabel} panel`}
+        tabIndex={0}
+        className="flex-1 overflow-y-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--tess-cobalt,#2547E8)]"
+      >
+        <Suspense fallback={<div role="status" className="p-4 text-xs text-[var(--text-muted)]">Loading {activeLeftTab}…</div>}>
+          {activeLeftTab === 'brief' && <BriefTab />}
+          {activeLeftTab === 'pages' && <PagesTab />}
+          {activeLeftTab === 'layers' && <LayersTab />}
+          {activeLeftTab === 'library' && <LibraryTab />}
+        </Suspense>
       </div>
     </aside>
   );

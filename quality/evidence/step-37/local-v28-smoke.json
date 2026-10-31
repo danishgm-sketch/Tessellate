@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "SITES-LOCAL-V28-SMOKE-2026-10-25",
+  "sourceCommit": "e574bb0aa012fd412487f586a75ccead0ca12b13",
+  "builtFromCleanDetachedWorktree": true,
+  "command": "pnpm install --frozen-lockfile && pnpm build",
+  "routes": [
+    {
+      "path": "/",
+      "viewports": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Tessellate — Describe the product. Get the interface.",
+          "h1": "Describe the product.\nGet the interface.",
+          "scrollWidth": 1440,
+          "viewportWidth": 1440,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "connectSrc": "connect-src 'self' https://api.tessellate.design https://api.github.com",
+          "frameSrc": "frame-src 'self' https://preview.tessellate.design",
+          "loopbackInCsp": false,
+          "screenshot": "C:/Users/ismay/Development/Tessellate/quality/evidence/step-37/local-v28-home-1440-viewport.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Tessellate — Describe the product. Get the interface.",
+          "h1": "Describe the product.\nGet the interface.",
+          "scrollWidth": 390,
+          "viewportWidth": 390,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "connectSrc": "connect-src 'self' https://api.tessellate.design https://api.github.com",
+          "frameSrc": "frame-src 'self' https://preview.tessellate.design",
+          "loopbackInCsp": false,
+          "screenshot": "C:/Users/ismay/Development/Tessellate/quality/evidence/step-37/local-v28-home-390-viewport.png"
+        }
+      ]
+    },
+    {
+      "path": "/explore",
+      "viewport": "1440x900",
+      "status": 200,
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "failedRequests": 0,
+      "httpErrors": 0
+    },
+    {
+      "path": "/compose",
+      "viewport": "1440x900",
+      "status": 200,
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "failedRequests": 0,
+      "httpErrors": 0
+    }
+  ],
+  "disposition": "Local artifact smoke only; not a deployed verification. style-src-attr unsafe-inline remains explicitly allowed by the current app-shell policy."
+}

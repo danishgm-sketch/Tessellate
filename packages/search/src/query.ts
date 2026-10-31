@@ -1,141 +1,161 @@
-import { search } from '@orama/orama';
+import { count, search } from '@orama/orama';
 import type { ResourceOramaDb } from './indexer.js';
-import type { SearchFilters, SearchResponse, SearchResultItem, SearchResultGroup, SearchDocument } from './types.js';
+import type {
+  SearchDocument,
+  SearchFilters,
+  SearchResponse,
+  SearchResultGroup,
+  SearchResultItem,
+} from './types.js';
 
+const STOP_WORDS = new Set(['a', 'an', 'and', 'as', 'at', 'be', 'but', 'by', 'for', 'from', 'in', 'into', 'of', 'on', 'or', 'the', 'to', 'with']);
+
+function normalizeToken(token: string): string {
+  const lower = token.toLocaleLowerCase();
+  if (lower.length > 4 && lower.endsWith('ies')) return `${lower.slice(0, -3)}y`;
+  if (lower.length > 4 && lower.endsWith('s') && !lower.endsWith('ss')) return lower.slice(0, -1);
+  return lower;
+}
+
+function tokens(value: string): string[] {
+  return (value.toLocaleLowerCase().match(/[\p{L}\p{N}]+/gu) ?? [])
+    .map(normalizeToken)
+    .filter((token) => token.length > 1 && !STOP_WORDS.has(token));
+}
+
+function searchableText(document: SearchDocument): string {
+  return [
+    document.name,
+    document.description,
+    ...document.categories,
+    ...document.roles,
+    ...document.purposes,
+    ...document.tags,
+    ...document.contentRequirements,
+    document.intentSummary,
+    ...document.intentJobs,
+    ...document.intentIdealFor,
+    ...document.archetypes,
+    ...document.feel,
+  ].join(' ');
+}
+
+function matchesFacet(selected: string[] | undefined, values: string[]): boolean {
+  if (!selected?.length) return true;
+  const normalizedValues = new Set(values.map((value) => value.toLocaleLowerCase()));
+  return selected.some((value) => normalizedValues.has(value.toLocaleLowerCase()));
+}
+
+function matchesFilters(document: SearchDocument, filters?: SearchFilters): boolean {
+  if (!filters) return true;
+  if (!matchesFacet(filters.resourceTypes, [document.resourceType])) return false;
+  if (!matchesFacet(filters.purposes, document.purposes)) return false;
+  if (!matchesFacet(filters.feel, document.feel)) return false;
+  if (!matchesFacet(filters.intensity, document.intensity)) return false;
+  if (!matchesFacet(filters.motion, document.motion)) return false;
+  if (!matchesFacet(filters.density, document.density)) return false;
+  if (!matchesFacet(filters.performance, document.performance)) return false;
+  if (!matchesFacet(filters.accessibility, document.accessibility)) return false;
+  if (!matchesFacet(filters.dependencies, document.dependencies)) return false;
+  if (!matchesFacet(filters.license, [document.license])) return false;
+  return typeof filters.minQuality !== 'number' ||
+    (document.qualityAssessed && document.qualityScore >= filters.minQuality);
+}
+
+/**
+ * Searches the full indexed catalogue, applies every declared facet before
+ * pagination, and returns a truthful total for the current query and filters.
+ */
 export async function executeSearch(
   db: ResourceOramaDb,
   queryTerm: string,
   filters?: SearchFilters,
-  limit = 50
+  limit = 50,
+  offset = 0
 ): Promise<SearchResponse> {
   const start = performance.now();
   const trimmed = queryTerm.trim();
+  const queryTokens = [...new Set(tokens(trimmed))];
+  const indexedCount = count(db);
 
-  let rawHits: Array<{ id: string; score: number; document: SearchDocument }> = [];
-
-  if (trimmed.length > 0) {
-    const searchResult = await search(db, {
-      term: trimmed,
-      properties: [
-        'name',
-        'description',
-        'tags',
-        'roles',
-        'purposes',
-        'intentSummary',
-        'archetypes',
-        'feel',
-      ],
-      boost: {
-        name: 3,
-        tags: 2,
-        roles: 1.5,
-        purposes: 1.2,
-        intentSummary: 1.5,
-      },
-      limit: 100,
-    });
-
-    rawHits = searchResult.hits.map((h) => ({
-      id: h.id,
-      score: h.score,
-      document: h.document as unknown as SearchDocument,
-    }));
-  } else {
-    // If query term is empty, search with empty term to get all documents
-    const allResult = await search(db, {
-      limit: 100,
-    });
-    rawHits = allResult.hits.map((h) => ({
-      id: h.id,
-      score: 1.0,
-      document: h.document as unknown as SearchDocument,
-    }));
-  }
-
-  // Apply strict filters
-  const filteredItems: SearchResultItem[] = [];
-
-  for (const hit of rawHits) {
-    const doc = hit.document;
-
-    if (filters) {
-      // Filter: resourceTypes
-      if (filters.resourceTypes && filters.resourceTypes.length > 0) {
-        if (!filters.resourceTypes.includes(doc.resourceType)) {
-          continue;
-        }
+  const searchResult = await search(db, trimmed
+    ? {
+        term: trimmed,
+        properties: [
+          'name',
+          'description',
+          'categories',
+          'tags',
+          'roles',
+          'purposes',
+          'contentRequirements',
+          'intentSummary',
+          'intentJobs',
+          'intentIdealFor',
+          'archetypes',
+          'feel',
+        ],
+        boost: {
+          name: 3,
+          tags: 2,
+          roles: 1.5,
+          purposes: 1.2,
+          contentRequirements: 1.5,
+          intentSummary: 1.5,
+        },
+        limit: indexedCount,
       }
+    : { limit: indexedCount });
 
-      // Filter: purposes
-      if (filters.purposes && filters.purposes.length > 0) {
-        const matchesPurpose = doc.purposes.some((p) =>
-          filters.purposes?.some((fp) => fp.toLowerCase() === p.toLowerCase())
-        );
-        if (!matchesPurpose) {
-          continue;
-        }
-      }
+  const candidates = searchResult.hits
+    .map((hit) => {
+      const document = hit.document as unknown as SearchDocument;
+      const documentTokens = new Set(tokens(searchableText(document)));
+      const matchedTerms = queryTokens.filter((token) => documentTokens.has(token)).length;
+      return { id: hit.id, score: hit.score, document, matchedTerms };
+    })
+    .filter(({ document, matchedTerms }) => {
+      if (!matchesFilters(document, filters)) return false;
+      if (queryTokens.length === 0) return true;
 
-      // Filter: feel
-      if (filters.feel && filters.feel.length > 0) {
-        const matchesFeel = doc.feel.some((f) =>
-          filters.feel?.some((ff) => ff.toLowerCase() === f.toLowerCase())
-        );
-        if (!matchesFeel) {
-          continue;
-        }
-      }
+      // Short queries are precise only when every meaningful term is present.
+      // Longer natural-language queries can omit low-value descriptors, but
+      // must still match at least 60% of their meaningful terms (minimum two).
+      const requiredTerms = queryTokens.length <= 2
+        ? queryTokens.length
+        : Math.max(2, Math.ceil(queryTokens.length * 0.6));
+      return matchedTerms >= requiredTerms;
+    })
+    .sort((left, right) => right.matchedTerms - left.matchedTerms || right.score - left.score);
 
-      // Filter: license
-      if (filters.license && filters.license.length > 0) {
-        if (!filters.license.includes(doc.license)) {
-          continue;
-        }
-      }
+  const totalHits = candidates.length;
+  const page = candidates.slice(Math.max(0, offset), Math.max(0, offset) + Math.max(0, limit));
+  const items: SearchResultItem[] = page.map(({ id, score, document }) => ({
+    id: document.id || id,
+    slug: document.slug,
+    score,
+    document,
+  }));
 
-      // Filter: minQuality
-      if (typeof filters.minQuality === 'number') {
-        if (doc.qualityScore < filters.minQuality) {
-          continue;
-        }
-      }
-    }
-
-    filteredItems.push({
-      id: doc.id,
-      slug: doc.slug,
-      score: hit.score,
-      document: doc,
-    });
-
-    if (filteredItems.length >= limit) {
-      break;
-    }
-  }
-
-  // Group results by resourceType
   const groupMap = new Map<string, SearchResultItem[]>();
-  for (const item of filteredItems) {
+  for (const item of items) {
     const key = item.document.resourceType;
     const existing = groupMap.get(key) ?? [];
     existing.push(item);
     groupMap.set(key, existing);
   }
 
-  const groups: SearchResultGroup[] = Array.from(groupMap.entries()).map(([groupName, items]) => ({
+  const groups: SearchResultGroup[] = Array.from(groupMap.entries()).map(([groupName, groupItems]) => ({
     groupName,
-    count: items.length,
-    items,
+    count: groupItems.length,
+    items: groupItems,
   }));
-
-  const elapsedMs = performance.now() - start;
 
   return {
     query: queryTerm,
-    totalHits: filteredItems.length,
-    elapsedMs: Math.round(elapsedMs * 100) / 100,
+    totalHits,
+    elapsedMs: Math.round((performance.now() - start) * 100) / 100,
     groups,
-    items: filteredItems,
+    items,
   };
 }

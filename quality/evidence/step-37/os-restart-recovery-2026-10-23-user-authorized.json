@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "id": "STEP-37-OS-RESTART-2026-10-23-USER-AUTHORIZED",
+  "capturedAtUtc": "2026-10-23T17:44:25.9606593Z",
+  "branch": "consolidation/product-hardening",
+  "head": "76812fb26211a779ca93279ec49b7df2d5d02243",
+  "computer": "DANISH",
+  "windowsLastBootUpTimeLocal": "2026-10-23T15:58:13.5+01:00",
+  "before": {
+    "runningContainerCount": 8,
+    "containers": [
+      {
+        "name": "mgiquantlabs-trader-1",
+        "state": "running",
+        "health": null,
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T14:59:26.026462758Z"
+      },
+      {
+        "name": "mgiquantlabs-api-1",
+        "state": "running",
+        "health": null,
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T14:59:26.09936208Z"
+      },
+      {
+        "name": "mgiquantlabs-marketdata_service-1",
+        "state": "running",
+        "health": null,
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T14:59:26.052492595Z"
+      },
+      {
+        "name": "tessellate-laptop-api-1",
+        "state": "running",
+        "health": "healthy",
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T14:59:26.144247378Z"
+      },
+      {
+        "name": "tessellate-laptop-host-1",
+        "state": "running",
+        "health": "healthy",
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T14:59:25.877305721Z"
+      },
+      {
+        "name": "mgiquantlabs-web-1",
+        "state": "running",
+        "health": null,
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T14:59:25.990103248Z"
+      },
+      {
+        "name": "mgiquantlabs-postgres-1",
+        "state": "running",
+        "health": "healthy",
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T14:59:26.119277289Z"
+      },
+      {
+        "name": "mgiquantlabs-cloudflared-1",
+        "state": "running",
+        "health": null,
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T14:59:26.152903799Z"
+      }
+    ]
+  },
+  "serviceChecks": [
+    {
+      "url": "http://127.0.0.1:8788/health",
+      "statusCode": 200,
+      "body": {
+        "status": "ok",
+        "service": "tessellate-api",
+        "timestamp": "2026-10-23T17:44:25.895Z"
+      }
+    }
+  ],
+  "dockerDesktopRunning": true,
+  "result": "passed_with_limitations",
+  "after": {
+    "observedAtUtc": "2026-10-23T17:54:28.5964175Z",
+    "windowsLastBootUpTimeLocal": "2026-10-23T18:45:28.5000000+01:00",
+    "runningContainerCount": 8,
+    "allPriorContainersRecovered": true,
+    "dockerDesktopRunning": true,
+    "dockerDesktopManuallyStartedAfterBoot": false,
+    "containers": [
+      {
+        "name": "mgiquantlabs-trader-1",
+        "state": "running",
+        "health": null,
+        "restartCount": 0,
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T17:46:51.75689654Z"
+      },
+      {
+        "name": "mgiquantlabs-api-1",
+        "state": "running",
+        "health": null,
+        "restartCount": 0,
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T17:46:51.725381929Z"
+      },
+      {
+        "name": "mgiquantlabs-marketdata_service-1",
+        "state": "running",
+        "health": null,
+        "restartCount": 0,
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T17:46:51.744189992Z"
+      },
+      {
+        "name": "tessellate-laptop-api-1",
+        "state": "running",
+        "health": "healthy",
+        "restartCount": 0,
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T17:53:57.010719392Z"
+      },
+      {
+        "name": "tessellate-laptop-host-1",
+        "state": "running",
+        "health": "healthy",
+        "restartCount": 0,
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T17:53:55.391279991Z"
+      },
+      {
+        "name": "mgiquantlabs-web-1",
+        "state": "running",
+        "health": null,
+        "restartCount": 0,
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T17:46:51.785582222Z"
+      },
+      {
+        "name": "mgiquantlabs-postgres-1",
+        "state": "running",
+        "health": "healthy",
+        "restartCount": 0,
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T17:46:51.71810382Z"
+      },
+      {
+        "name": "mgiquantlabs-cloudflared-1",
+        "state": "running",
+        "health": null,
+        "restartCount": 0,
+        "restartPolicy": "unless-stopped",
+        "startedAt": "2026-10-23T17:46:51.801645159Z"
+      }
+    ],
+    "serviceChecks": [
+      {
+        "url": "http://127.0.0.1:8788/health",
+        "statusCode": 200,
+        "body": {
+          "status": "ok",
+          "service": "tessellate-api",
+          "timestamp": "2026-10-23T17:54:28.536Z"
+        }
+      }
+    ],
+    "lifecycleVerifier": {
+      "result": "PASS",
+      "checks": 8,
+      "evidence": "apps/laptop-backend/evidence/docker-runtime.json"
+    }
+  },
+  "limitations": [
+    "No inference ticket was deliberately held across this OS restart; queue persistence across a complete Windows restart remains unverified.",
+    "All six MGI and both Tessellate containers recovered automatically with Docker Desktop; Tessellate API and host reported healthy.",
+    "Post-boot laptop-backend lifecycle verifier passed all eight checks, including 503 host-offline behavior and recovery after container restart."
+  ]
+}

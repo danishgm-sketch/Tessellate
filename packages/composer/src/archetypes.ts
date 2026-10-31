@@ -1,3 +1,5 @@
+import { isEmployeeExperienceBrief } from './domain-context.js';
+
 export interface ArchetypeDefinition {
   id: string;
   name: string;
@@ -33,7 +35,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
     id: 'saas',
     name: 'B2B SaaS',
     description: 'Cloud software applications serving business operational workflows and subscriptions.',
-    keywords: ['saas', 'b2b', 'software', 'cloud', 'subscription', 'workspace', 'tenant', 'enterprise'],
+    keywords: ['saas', 'b2b', 'software', 'cloud', 'subscription', 'workspace', 'tenant', 'enterprise', 'employee experience', 'employee engagement', 'people operations', 'hr management'],
     primaryAudience: 'Business teams, managers, and operators',
     userSophistication: 65,
     trustRequirement: 85,
@@ -217,10 +219,10 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
       { id: 'track-order', name: 'Check courier tracking and fulfillment status', steps: ['enter-order-id', 'view-milestones', 'receipt'] },
     ],
     recommendedScreens: [
-      { name: 'Storefront Catalog', screenType: 'marketing', purpose: 'Featured collections and hero promotions', jobs: ['browse-catalog', 'filter-categories'], required: true },
+      { name: 'Product Catalog', screenType: 'search-explore', purpose: 'Search products, compare details, and browse collections', jobs: ['search-products', 'compare-products', 'filter-categories'], required: true },
       { name: 'Product Detail', screenType: 'detail-entity', purpose: 'Gallery, specs, variant selector, and Add to Cart', jobs: ['inspect-photos', 'add-to-cart'], required: true },
       { name: 'Checkout', screenType: 'checkout-transaction', purpose: 'Frictionless payment and address capture', jobs: ['enter-shipping', 'submit-payment'], required: true },
-      { name: 'Order Confirmation', screenType: 'support', purpose: 'Tracking link and receipt confirmation', jobs: ['view-tracking', 'download-receipt'], required: true },
+      { name: 'Order Confirmation', screenType: 'detail-entity', purpose: 'Confirmed order details, delivery status, and receipt', jobs: ['view-tracking', 'download-receipt'], required: true },
     ],
     requiredCapabilities: ['responsive-image-gallery', 'persistent-cart-state', 'secure-payment-fields'],
     forbiddenPatterns: ['unclear-shipping-costs-at-final-step', 'broken-mobile-checkout-forms'],
@@ -532,7 +534,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
     name: 'Media & Publishing',
     description: 'Newsrooms, digital magazines, video streaming, and high-volume article feeds.',
     keywords: ['media', 'news', 'publishing', 'article', 'editorial', 'magazine', 'journalism', 'stream', 'broadcast'],
-    primaryAudience: 'Readers, viewers, editors, and digital journalists',
+    primaryAudience: 'Readers, listeners, editors, and digital journalists',
     userSophistication: 50,
     trustRequirement: 85,
     informationComplexity: 65,
@@ -541,7 +543,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
     transactionCriticality: 40,
     navigationComplexity: 60,
     mobileImportance: 90,
-    primaryObjective: 'Deliver breaking journalism, compelling editorial reads, and immersive streaming',
+    primaryObjective: 'Deliver timely journalism, compelling editorial reads, and clear topic discovery',
     defaultEntities: [
       { name: 'Article', description: 'Published story with byline, hero media, and body', fields: ['id', 'headline', 'author', 'section', 'publishedAt'] },
       { name: 'Section', description: 'Category vertical (e.g. Technology, Opinion)', fields: ['id', 'name', 'slug', 'editor'] },
@@ -552,7 +554,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
       { id: 'curate-frontpage', name: 'Editor adjusts top headline placement and Breaking ticker', steps: ['drag-stories', 'set-breaking-flag', 'publish-edition'] },
     ],
     recommendedScreens: [
-      { name: 'Front Page Feed', screenType: 'marketing', purpose: 'Grid of hero top stories and section rivers', jobs: ['scan-breaking-news', 'choose-article'], required: true },
+      { name: 'Front Page Feed', screenType: 'marketing', purpose: 'Grid of leading stories and editorial sections', jobs: ['scan-breaking-news', 'choose-article'], required: true },
       { name: 'Article Reader', screenType: 'detail-entity', purpose: 'High-readability serif column with photo galleries and pullquotes', jobs: ['read-story', 'share'], required: true },
       { name: 'Section Explorer', screenType: 'index-list', purpose: 'Archive by topic and author bylines', jobs: ['filter-by-topic', 'search-archives'], required: false },
     ],
@@ -622,7 +624,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
       { id: 'schedule-viewing', name: 'Select available open house slot and confirm with agent', steps: ['pick-time', 'enter-contact', 'calendar-invite'] },
     ],
     recommendedScreens: [
-      { name: 'Search & Map Explorer', screenType: 'search-explore', purpose: 'Synchronized split view of property cards and neighborhood map', jobs: ['draw-map-boundary', 'filter-listings'], required: true },
+      { name: 'Property Search', screenType: 'search-explore', purpose: 'Search property listings, compare key details, and arrange a viewing', jobs: ['filter-listings', 'compare-properties'], required: true },
       { name: 'Property Profile', screenType: 'detail-entity', purpose: 'Virtual 3D tour, tax history, floorplans, and agent card', jobs: ['view-floorplan', 'calculate-mortgage'], required: true },
       { name: 'Saved Homes', screenType: 'index-list', purpose: 'Comparison matrix of favorited properties', jobs: ['compare-sqft-cost', 'share-with-partner'], required: false },
     ],
@@ -636,7 +638,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
     id: 'recruitment',
     name: 'Recruitment & People Operations',
     description: 'Applicant tracking (ATS), candidate pipelines, interview scorecards, and onboarding.',
-    keywords: ['recruitment', 'hr', 'hiring', 'ats', 'candidates', 'jobs', 'interviews', 'onboarding', 'employees', 'people'],
+    keywords: ['recruitment', 'recruiter', 'hiring', 'ats', 'candidate', 'applicant', 'job requisition', 'interview', 'onboarding'],
     primaryAudience: 'Recruiters, hiring managers, candidates, and HR directors',
     userSophistication: 60,
     trustRequirement: 88,
@@ -703,6 +705,42 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
 };
 
 /**
+ * High-information phrases that identify a product domain more reliably than
+ * broad words such as "workspace", "stream", or "order". The general keyword
+ * lists above remain useful supporting evidence, while these signals anchor
+ * primary archetype selection.
+ */
+const ARCHETYPE_PRIMARY_SIGNALS: Record<string, string[]> = {
+  saas: ['saas', 'software as a service', 'b2b software', 'business software', 'subscription software', 'multi-tenant', 'employee experience', 'employee engagement', 'people operations', 'hr management'],
+  ai: ['artificial intelligence', 'large language model', 'generative', 'generative audio', 'image generation', 'image-generation', 'autonomous agent', 'ai agent', 'agentic', 'copilot', 'llm', 'prompt'],
+  'developer-tools': ['developer tool', 'developer portal', 'software engineer', 'platform engineer', 'devops', 'api', 'sdk', 'cli', 'command-line', 'kubernetes', 'source control', 'source-control', 'pull request', 'continuous integration', 'feature flag', 'feature-flag', 'distributed tracing', 'observability', 'webhook', 'deployment monitor'],
+  fintech: ['fintech', 'financial service', 'financial account', 'banking', 'wealth management', 'asset allocation', 'corporate card', 'reimbursement', 'payment processing', 'money transfer', 'ledger', 'portfolio', 'market data'],
+  ecommerce: ['e-commerce', 'ecommerce', 'online store', 'online shopping', 'shopping cart', 'product catalog', 'storefront', 'returns portal', 'checkout', 'retail'],
+  marketplace: ['marketplace', 'two-sided platform', 'two-sided marketplace', 'buyers and sellers', 'seller marketplace', 'booking marketplace', 'independent suppliers'],
+  analytics: ['analytics', 'business intelligence', 'business-intelligence', 'data visualization', 'experiment analysis', 'cohort analysis', 'metrics dashboard', 'kpi', 'warehouse tables', 'saved reports'],
+  'intelligence-research': ['research platform', 'scientific research', 'climate science', 'field research', 'literature review', 'evidence dossier', 'intelligence research', 'investigative research', 'investigative newsroom', 'research analyst', 'provenance'],
+  crm: ['crm', 'customer relationship', 'customer relationship management', 'sales pipeline', 'sales crm', 'customer success', 'account management', 'renewal management', 'contact management'],
+  'erp-operations': ['erp', 'enterprise resource planning', 'supply chain', 'manufacturing', 'facilities management', 'field service', 'work order', 'work-order', 'inventory management', 'procurement', 'warehouse operations', 'maintenance operations', 'production facilities'],
+  productivity: ['productivity app', 'task management', 'note-taking', 'notes app', 'personal planner', 'to-do', 'todo app', 'habit journal', 'daily journal', 'personal knowledge base', 'agenda planner'],
+  education: ['education platform', 'learning platform', 'learning management system', 'lms', 'online course', 'cohort learning', 'classroom', 'course catalog', 'lesson classroom'],
+  creator: ['creator platform', 'creator economy', 'independent creator', 'creator tools', 'newsletter platform', 'subscriber membership', 'digital illustration', 'artist portfolio'],
+  media: ['media platform', 'newsroom', 'news publication', 'digital magazine', 'journalism', 'public radio', 'radio service', 'episode archive', 'editorial publication', 'broadcast service'],
+  travel: ['travel service', 'travel planning', 'trip planner', 'trip-planning', 'travel itinerary', 'hotel booking', 'flight booking', 'destination guide', 'travelers', 'hospitality'],
+  'real-estate': ['real estate', 'real-estate', 'home search', 'home-search', 'property management', 'property listing', 'commercial leasing', 'residential manager', 'mortgage', 'realtor', 'realty'],
+  recruitment: ['recruitment', 'recruiting', 'talent acquisition', 'applicant tracking', 'candidate pipeline', 'candidate portal', 'hiring workspace', 'interview panel'],
+  consumer: ['consumer app', 'consumer application', 'social network', 'social app', 'neighborhood social', 'community app', 'social feed', 'mobile-first consumer'],
+};
+
+function matchesKeyword(normalizedText: string, keyword: string): boolean {
+  const normalizedKeyword = keyword.toLowerCase().replace(/[-_]+/g, ' ');
+  const escaped = normalizedKeyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`\\b${escaped}\\b`, 'i').test(normalizedText);
+}
+
+const MIN_SECONDARY_ARCHETYPE_SCORE = 28;
+const MIN_SECONDARY_ARCHETYPE_SHARE = 0.45;
+
+/**
  * Detects matching product archetypes from a natural language text brief.
  * Returns array of matched archetypes with weights between 0 and 100.
  */
@@ -713,18 +751,24 @@ export function detectProductArchetypes(
   if (explicitOverride && PRODUCT_ARCHETYPES[explicitOverride]) {
     return [{ tag: explicitOverride, weight: 100 }];
   }
+  if (isEmployeeExperienceBrief(briefText)) {
+    return [{ tag: 'saas', weight: 100 }];
+  }
 
-  const normalized = briefText.toLowerCase();
+  const normalized = briefText.toLowerCase().replace(/[-_]+/g, ' ');
   const scores: Record<string, number> = {};
 
   for (const [key, arch] of Object.entries(PRODUCT_ARCHETYPES)) {
     let score = 0;
+    const primarySignals = ARCHETYPE_PRIMARY_SIGNALS[key] ?? [];
+    const matchedPrimarySignals = primarySignals.filter((signal) => matchesKeyword(normalized, signal));
+
+    // Specific language is stronger evidence than a collection of generic
+    // cues. Multi-word signals receive a small additional weight.
+    score += matchedPrimarySignals.reduce((total, signal) => total + (signal.includes(' ') || signal.includes('-') ? 60 : 48), 0);
 
     for (const kw of arch.keywords) {
-      if (normalized.includes(kw)) {
-        // Boost longer keyword matches
-        score += kw.includes(' ') ? 35 : 20;
-      }
+      if (!matchedPrimarySignals.includes(kw) && matchesKeyword(normalized, kw)) score += kw.includes(' ') ? 16 : 8;
     }
 
     if (score > 0) {
@@ -740,10 +784,13 @@ export function detectProductArchetypes(
   }
 
   const topScore = entries[0][1];
-  return entries.slice(0, 3).map(([tag, score]) => ({
-    tag,
-    weight: Math.min(100, Math.max(20, Math.round((score / topScore) * 100))),
-  }));
+  return entries
+    .filter(([, score], index) => index === 0 || (score >= MIN_SECONDARY_ARCHETYPE_SCORE && score >= topScore * MIN_SECONDARY_ARCHETYPE_SHARE))
+    .slice(0, 3)
+    .map(([tag, score]) => ({
+      tag,
+      weight: Math.min(100, Math.max(20, Math.round((score / topScore) * 100))),
+    }));
 }
 
 /**

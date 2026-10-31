@@ -1,0 +1,29 @@
+{
+  "step": 42,
+  "id": "api-offline-deterministic-core",
+  "status": "pass",
+  "url": "http://127.0.0.1:4413/workbench/?project=local-709c5835-eba9-4d5a-b883-ca5e5f75122f",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "browser": "Chromium",
+  "injectedFailures": [
+    "The laptop backend health probe returned the Sites adapter’s normal HTTP 200 offline response."
+  ],
+  "checks": {
+    "hostLabDisabled": true,
+    "deterministicMutationCompleted": true,
+    "projectIdentityPreserved": true,
+    "motionReduced": true,
+    "offlineHealthResponsesObserved": 0,
+    "deterministicCommandMadeNoBackendRequest": true
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "quality/evidence/step-42/api-offline-deterministic-core-sites-chromium.png"
+}

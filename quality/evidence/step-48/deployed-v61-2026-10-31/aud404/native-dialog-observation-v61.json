@@ -1,0 +1,16 @@
+{
+  "siteVersion": 61,
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench/?showcase=showcase-playful-hr",
+  "viewport": "1440x900",
+  "injectedFailure": "URL.createObjectURL throws only for application/zip Blobs",
+  "visibleStateScreenshot": "quality/evidence/step-48/deployed-v61-2026-10-31/aud404/zip-export-preparing-state-v61.png",
+  "visibleState": "Preparing standalone React project… remained visible while the dynamic exporter loaded; the product did not render an in-app role=alert error.",
+  "observedBrowserDialog": "Export failed: Injected ZIP download creation failure.",
+  "observedConsole": [
+    "Failed to generate standalone ZIP project: Error: Injected ZIP download creation failure"
+  ],
+  "networkErrors": [],
+  "httpErrors": [],
+  "consoleErrorOrigin": "Expected console.error call for the injected download exception; no uncaught exception was observed.",
+  "source": "Manual Chrome DevTools interaction on public v61, corroborated by Playwright UI fault injection"
+}

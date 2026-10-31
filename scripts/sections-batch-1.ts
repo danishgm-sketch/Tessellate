@@ -5,7 +5,8 @@ export const SECTIONS_BATCH_1: SectionDef[] = [
   {
     slug: 'editorial-hero',
     name: 'Editorial Hero',
-    description: 'Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs.',
+    description:
+      'Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'headline'],
     purposes: ['Product launches', 'SaaS homepages', 'Creative studio landing pages'],
@@ -154,7 +155,8 @@ Commanding typographic header section designed for high-craft tech and design pr
   {
     slug: 'product-screenshot-hero',
     name: 'Product Screenshot Hero',
-    description: 'Centered headline with perspective tilted application screenshot frame and browser chrome.',
+    description:
+      'Centered headline with perspective tilted application screenshot frame and browser chrome.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'showcase'],
     purposes: ['SaaS marketing', 'Developer tool showcase', 'Web app launch'],
@@ -281,7 +283,8 @@ Showcases software UI with authentic browser chrome and responsive perspective c
   {
     slug: 'split-product-hero',
     name: 'Split Product Hero',
-    description: '50/50 split layout with narrative copy on left and live interactive widget on right.',
+    description:
+      '50/50 split layout with narrative copy on left and live interactive widget on right.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'split-view'],
     purposes: ['SaaS feature launches', 'Conversion-focused homepages'],
@@ -434,7 +437,8 @@ Balanced two-column hero uniting persuasive narrative with interactive token ins
   {
     slug: 'video-hero',
     name: 'Video Hero',
-    description: 'Cinematic header with ambient video background placeholder, gradient veil, and play trigger.',
+    description:
+      'Cinematic header with ambient video background placeholder, gradient veil, and play trigger.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'media'],
     purposes: ['Product launches', 'Showreels', 'Design agency portfolios'],
@@ -552,7 +556,8 @@ Ambient media showcase hero with accessible play/pause states and WCAG AA contra
   {
     slug: 'cinematic-media-hero',
     name: 'Cinematic Media Hero',
-    description: 'Full-bleed immersive atmospheric hero with dark contrast, floating badge, and headline.',
+    description:
+      'Full-bleed immersive atmospheric hero with dark contrast, floating badge, and headline.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'cinematic'],
     purposes: ['Flagship product drops', 'Next-gen enterprise software'],
@@ -654,7 +659,8 @@ Full-bleed atmospheric presentation section with subtle radial illumination.`,
   {
     slug: 'interactive-demo-hero',
     name: 'Interactive Demo Hero',
-    description: 'Hero with inline interactive tabbed preview allowing immediate hands-on feature exploration.',
+    description:
+      'Hero with inline interactive tabbed preview allowing immediate hands-on feature exploration.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'interactive'],
     purposes: ['Product walkthroughs', 'Developer conversion', 'Interactive demos'],
@@ -785,7 +791,8 @@ Hero with embedded stateful preview allowing visitors to manipulate tokens and i
   {
     slug: 'search-first-hero',
     name: 'Search-First Hero',
-    description: 'Command-bar-centric hero with prominent search input, trending suggestions, and category chips.',
+    description:
+      'Command-bar-centric hero with prominent search input, trending suggestions, and category chips.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'search'],
     purposes: ['Resource catalogues', 'Documentation hubs', 'Marketplaces'],
@@ -907,15 +914,16 @@ Primary exploration hero designed for extensive component registries and documen
   {
     slug: 'ai-prompt-hero',
     name: 'AI Prompt Hero',
-    description: 'Conversational prompt bar with preset suggestions, model picker pill, and generate CTA.',
+    description:
+      'Prompt input section with local example prompts and an optional host-provided generation callback. It includes no model or generation service.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'ai'],
     purposes: ['AI products', 'Generative UI tools', 'Autonomous developer engines'],
     componentName: 'AiPromptHero',
     tags: ['ai-prompt-hero', 'hero', 'ai', 'prompt', 'marketing'],
-    idealFor: ['Next-gen AI assistant tools and generative software platforms'],
+    idealFor: ['Applications that collect a product brief before a host-defined action'],
     avoidFor: ['Standard brochureware sites'],
-    jobs: ['Prompt the user to express natural-language intent for interface generation'],
+    jobs: ['Collect a short product brief before a host-defined action'],
     indexCode: `import React, { useState } from 'react';
 
 export type AiPromptHeroVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -924,18 +932,22 @@ export interface AiPromptHeroProps {
   variant?: AiPromptHeroVariant;
   headline?: string;
   subheadline?: string;
+  onGenerate?: (prompt: string) => void;
 }
 
 export function AiPromptHero({
   variant = 'quiet',
-  headline = 'Describe your product. Generate the entire interface system.',
-  subheadline = 'Tessellate pairs natural language intent with deterministic layout grammars and accessible schemas.',
+  headline = 'Describe the product you want to shape.',
+  subheadline = 'Start with a plain-language brief. Connect this pattern to your own generation flow when you use it in an application.',
+  onGenerate,
 }: AiPromptHeroProps) {
   const [prompt, setPrompt] = useState('');
+  const inputId = React.useId();
+  const instructionsId = inputId + '-instructions';
   const presets = [
-    'A high-density trading terminal with Nocturne styling',
-    'A modern B2B SaaS analytics dashboard with 3-tier pricing',
-    'A minimalist developer documentation portal',
+    'An employee onboarding workspace for a growing team',
+    'A developer documentation portal with searchable guides',
+    'A subscription billing dashboard for small businesses',
   ];
 
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
@@ -960,19 +972,29 @@ export function AiPromptHero({
 
         <div className={\`w-full rounded-2xl border p-4 text-left transition-all \${box}\`}>
           <textarea
+            id={inputId}
             rows={3}
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
-            placeholder="E.g. Create a healthcare admin console with patient timeline and audit log..."
-            className="w-full bg-transparent text-sm sm:text-base outline-none resize-none placeholder:text-neutral-400"
+            aria-label="Describe the product or workflow"
+            aria-describedby={instructionsId}
+            placeholder="Describe the product or workflow you have in mind..."
+            className="w-full bg-transparent text-sm sm:text-base outline-none resize-none placeholder:text-neutral-400 focus-visible:ring-2 focus-visible:ring-blue-600"
           />
           <div className="flex items-center justify-between pt-3 border-t border-neutral-100 dark:border-neutral-800">
-            <span className="text-xs font-mono opacity-60">Engine: Gemini 2.5 Flash / BYO Key</span>
+            <p id={instructionsId} className="min-w-0 flex-1 text-xs opacity-75">
+              {onGenerate
+                ? 'This example sends the prompt only to the onGenerate handler supplied by its host.'
+                : 'Preview only. This example keeps your prompt on this page and does not generate a blueprint.'}
+            </p>
             <button
               type="button"
+              disabled={!onGenerate || !prompt.trim()}
+              onClick={() => onGenerate?.(prompt.trim())}
+              aria-describedby={instructionsId}
               className={\`px-4 py-2 rounded-lg text-xs font-semibold transition-all \${btn}\`}
             >
-              Synthesize Blueprint →
+              Generate Blueprint
             </button>
           </div>
         </div>
@@ -1023,18 +1045,21 @@ export function AiPromptHeroPreview() {
   );
 }`,
     fixturesCode: `export const aiPromptHeroFixtures = {
-  headline: 'Describe your product. Generate the entire interface system.',
+  headline: 'Describe the product you want to shape.',
 };`,
     readmeCode: `# AI Prompt Hero
 
-Natural-language generative interface prompt section with multi-line input and instant presets.`,
+A responsive prompt-input section with local example prompts. It does not include an AI model, send network requests, or generate a blueprint.
+
+Pass an optional onGenerate(prompt) callback to connect the button to a host application's existing workflow. Without that callback, the button stays disabled and the prompt remains in the component's page state.`,
   },
 
   // 9. Code Hero
   {
     slug: 'code-hero',
     name: 'Code Hero',
-    description: 'Developer-focused hero with syntax-highlighted editor preview, copy button, and package manager tabs.',
+    description:
+      'Developer-focused hero with syntax-highlighted editor preview, copy button, and package manager tabs.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'developer'],
     purposes: ['Developer tools', 'CLI tools', 'Open-source libraries'],
@@ -1142,7 +1167,8 @@ Terminal-styled developer hero prioritizing one-line package installation.`,
   {
     slug: 'data-hero',
     name: 'Data Hero',
-    description: 'Financial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.',
+    description:
+      'Financial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'data'],
     purposes: ['Fintech platforms', 'Trading terminals', 'Telemetry portals'],
@@ -1329,7 +1355,8 @@ Oversized typography statement hero maximizing negative space and editorial grav
   {
     slug: 'social-proof-hero',
     name: 'Social Proof Hero',
-    description: 'Headline anchored by trust metrics, customer avatar stack, and star review rating strip.',
+    description:
+      'Headline anchored by trust metrics, customer avatar stack, and star review rating strip.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'social-proof'],
     purposes: ['Consumer SaaS', 'Growth landing pages', 'High-conversion funnels'],
@@ -1618,7 +1645,8 @@ Horizontal partner wordmark strip supporting smooth responsive containment.`,
   {
     slug: 'customer-metrics-strip',
     name: 'Customer Metrics Strip',
-    description: 'Four-column KPI impact bar highlighting uptime, volume, latency, and scale numbers.',
+    description:
+      'Four-column KPI impact bar highlighting uptime, volume, latency, and scale numbers.',
     categories: ['sections', 'marketing', 'trust'],
     roles: ['trust', 'metrics'],
     purposes: ['Quantifiable business impact', 'Infrastructure credibility'],
@@ -1714,7 +1742,8 @@ Four-column KPI strip proving enterprise scale and performance.`,
   {
     slug: 'press-mentions-strip',
     name: 'Press Mentions Strip',
-    description: 'Curated editorial press quote row with publication logos and external publication links.',
+    description:
+      'Curated editorial press quote row with publication logos and external publication links.',
     categories: ['sections', 'marketing', 'trust'],
     roles: ['trust', 'press'],
     purposes: ['Media coverage', 'Third-party editorial recognition'],
@@ -1896,7 +1925,8 @@ Security and regulatory certification chips assuring prospective enterprise buye
   {
     slug: 'testimonial-quote',
     name: 'Testimonial Quote',
-    description: 'Featured customer pull-quote with oversized quotation mark, portrait avatar, and bio.',
+    description:
+      'Featured customer pull-quote with oversized quotation mark, portrait avatar, and bio.',
     categories: ['sections', 'marketing', 'trust'],
     roles: ['trust', 'testimonial'],
     purposes: ['High-impact customer endorsement', 'Case study preview'],

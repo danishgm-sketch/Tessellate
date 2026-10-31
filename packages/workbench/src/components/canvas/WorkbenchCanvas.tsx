@@ -1,6 +1,6 @@
 import React from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
-import { ManifestRenderer } from '@tessellate/renderer';
+import { BrowserManifestRenderer as ManifestRenderer } from '@tessellate/renderer/browser';
 import { DeviceFrame } from './DeviceFrame.js';
 import { CanvasToolbar } from './CanvasToolbar.js';
 import { BreadcrumbBar } from './BreadcrumbBar.js';
@@ -31,7 +31,7 @@ export function WorkbenchCanvas() {
     <div
       data-testid="workbench-canvas"
       onClick={handleCanvasClick}
-      className="relative flex-1 h-full w-full overflow-auto bg-[#F4F2ED] dark:bg-[#07090C] p-8 flex flex-col items-center justify-start select-none"
+      className="relative flex-1 min-w-0 h-full w-full overflow-auto bg-[#07090C] p-8 flex flex-col items-center justify-start select-none"
     >
       {/* Top Floating Breadcrumbs */}
       <div className="absolute top-4 left-4 z-20 pointer-events-auto">

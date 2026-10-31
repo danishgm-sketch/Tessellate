@@ -5,7 +5,7 @@
   "name": "Inline AI Rewrite",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Inline text selection overlay offering tone adjustments, shortening, expansion, and diff acceptance.",
+  "description": "Inline rewrite pattern with fixed tone examples and local preview state; it does not call an AI provider or change content outside the preview.",
   "resourceType": "ai-pattern",
   "categories": [
     "ai",
@@ -19,7 +19,7 @@
   "purposes": [
     "copy-editing",
     "tone-transformation",
-    "inline-generation"
+    "preview-only"
   ],
   "productArchetypes": [
     {
@@ -102,7 +102,7 @@
     {
       "id": "quiet",
       "name": "Quiet",
-      "description": "Subtle slate borders, minimal badge accents, calm tool call telemetry for deep work.",
+      "description": "Low-emphasis neutral styling with restrained borders and accent color.",
       "props": {
         "variant": "quiet"
       }
@@ -110,7 +110,7 @@
     {
       "id": "expressive",
       "name": "Expressive",
-      "description": "Vibrant cobalt highlights, fluid gradient thinking indicators, and rich model card pills.",
+      "description": "More prominent color contrast and emphasis for key controls.",
       "props": {
         "variant": "expressive"
       }
@@ -118,7 +118,7 @@
     {
       "id": "nocturne",
       "name": "Nocturne",
-      "description": "Obsidian dark canvas, electric cyan luminescence, and high-contrast monospace code surfaces.",
+      "description": "Dark surface with high-contrast text and a restrained accent color.",
       "props": {
         "variant": "nocturne"
       }
@@ -132,7 +132,7 @@
     "tone"
   ],
   "intent": {
-    "summary": "Inline text selection overlay offering tone adjustments, shortening, expansion, and diff acceptance.",
+    "summary": "Inline rewrite pattern with fixed tone examples and local preview state; it does not call an AI provider or change content outside the preview.",
     "idealFor": [
       "Rich text editors",
       "Markdown document writing",
@@ -143,13 +143,13 @@
       "Pure numerical tables"
     ],
     "jobs": [
-      "Refine selected prose inline with tone options and instant accept/reject diffs"
+      "Preview how tone choices can be presented in an inline rewrite interface"
     ],
     "contentRequirements": [
-      "Model state reflection, streaming message blocks, citation cards, human-in-the-loop approvals"
+      "Label the rewrite choices as fixed examples and disclose that no AI request is made."
     ],
     "notes": [
-      "Local state mockable, BYO endpoint compatible, zero lock-in contracts"
+      "Tone selection and apply state are local preview interactions; they do not generate or edit external content."
     ]
   },
   "visualDNA": {
@@ -214,12 +214,12 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -242,7 +242,11 @@
     "composability": 96,
     "visualCraft": 96,
     "dependencyCleanliness": 100,
-    "documentation": 96
+    "documentation": 96,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

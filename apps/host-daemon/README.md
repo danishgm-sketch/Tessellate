@@ -1,53 +1,61 @@
-# Tessellate Host-Hardware Bespoke DL Inference Daemon
+# Experimental laptop inference Lab
 
-The Tessellate Host Daemon is an autonomous, bespoke deep learning worker that runs directly on the owner/host machine (local workstation or private server) with **zero cloud LLM API cost** and **no third-party AI token dependency**.
+The laptop worker is an optional Lab. Compose, deterministic Workbench commands,
+local saving and export do not depend on it. Workbench requires an explicit Lab
+opt-in and presents every proposal for review before applying it.
 
-## Architectural Highlights
+The current Python prototype has not met Core quality. Its action head was fit
+against ten synthetic prompt/action pairs; the node-selection, Design DNA and
+divergence outputs are not trained or calibrated. It also has no abstention
+output. The repeatable benchmark records 80% action accuracy on those training
+examples, 62.5% on validation, 68.75% on held-out prompts, 0/6 named-node
+selections, 0/24 requested DNA directions, a 30-point divergence error across
+two held-out cases, and proposals for all 16 adversarial prompts. The actual
+deterministic Workbench parser reaches 8/8 on the validation split and abstains
+on the adversarial split after the shared prompt guard. Keep the model isolated
+as research; these results are not a quality claim.
 
-- **Bespoke Neural Topology**: Custom Tree-GNN (Graph Neural Network) + Bidirectional GRU trained specifically on AST mutations, Design DNA parameters, and interface layout semantics.
-- **Strict Privacy & Zero Cloud Egress**: Prompts and ASTs are processed exclusively on the host hardware. No data is sent to external commercial model vendors.
-- **Token Queue Number System**: When users submit natural-language intent commands in the Workbench, requests receive a unique queue token (`Token #1042`) and position (`Pos: 1`) with an estimated wait time.
-- **Fail-Closed Fallback**: If the host daemon is offline or disconnected, the Workbench automatically detects worker unavailability via `/api/inference/health` and seamlessly switches to the deterministic local composition rule engine.
-- **Firewall & NAT Agnostic**: Uses an outbound HTTPS long-polling mechanism (`/api/inference/poll`, `/api/inference/heartbeat`, `/api/inference/complete`). Requires no open inbound ports or static public IP.
+The cases and machine-readable result are in
+[`quality/evidence/step-32/`](../../quality/evidence/step-32/). Re-run the
+comparison from the repository root with:
 
-## Installation & Setup
-
-### Prerequisites
-- Python 3.10+
-- Optional: NVIDIA CUDA or Apple Silicon Metal for accelerated tensor ops (falls back seamlessly to CPU)
-
-### Setup
-```bash
-cd apps/host-daemon
-pip install -r requirements.txt
+```powershell
+pnpm exec tsx scripts/evaluate-host-model.ts
 ```
 
-### Run Tests
-```bash
-python -m unittest tests/test_model.py
+The host process does not call an external model provider. Its prompt and screen
+fragment pass through the configured Site/API connection and are queued in the
+laptop's local D1 volume. A Site connection uses its configured server-side
+gateway and tunnel, so the network transport is not described as zero-egress.
+Never enable the host on a shared or untrusted backend.
+
+## Run on the owner laptop
+
+From the repository root in PowerShell:
+
+```powershell
+./scripts/Start-LaptopBackend.ps1
 ```
 
-### Launch Daemon
-```bash
-# Set your Cloud API endpoint and host secret
-export TESSELLATE_API_URL="https://api.tessellate.design"
-export TESSELLATE_HOST_SECRET="your_secure_host_secret"
+Docker Desktop must be running. The script builds the API and CPU worker
+containers, generates local service secrets under
+`$env:USERPROFILE\.tessellate\secrets`, and binds the API only to
+`127.0.0.1:8788`. Stop the services with:
 
-# Start the worker
-python daemon.py
+```powershell
+./scripts/Start-LaptopBackend.ps1 -Stop
 ```
 
-When connected, the daemon logs task executions and heartbeats:
-```
-=================================================================
-       TESSELLATE BESPOKE ML HOST INFERENCE DAEMON       
-   Zero-LLM Architecture · Tree-GNN + Bi-GRU Neural Model 
-=================================================================
-[Host Daemon] Target Cloud API: https://api.tessellate.design
-[Host Daemon] Initializing bespoke inference engine...
-[Host Daemon] Online and polling queue for tasks. Press Ctrl+C to exit.
+The UI reports the Lab unavailable whenever Docker, the API, or the worker is
+offline. Host commands require a current heartbeat. Unfinished work remains in
+the local D1 volume and can be reclaimed after the worker returns; timed-out
+client requests are cancelled when the laptop is reachable. Public transport
+requires HTTPS. Cleartext is accepted only for loopback development or the
+`api:8787` Docker service address, and redirects are not followed with the host
+secret attached.
 
-[Host Daemon] ⚡ Task Received! Token #1042 (ID: ticket_172900...)
-              Prompt: "surprise me with rich visual ambition"
-[Host Daemon] Inferred action: "surprise-me" (8.4ms)
+Run the daemon and model unit checks with:
+
+```powershell
+python -m unittest discover -s apps/host-daemon/tests
 ```

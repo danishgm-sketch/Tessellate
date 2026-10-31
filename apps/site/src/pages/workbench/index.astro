@@ -1,6 +1,6 @@
 ---
 import '../../styles/global.css';
-import { WorkbenchShell } from '@tessellate/workbench';
+import { WorkbenchShell } from '@tessellate/workbench/shell';
 ---
 
 <!doctype html>
@@ -15,6 +15,36 @@ import { WorkbenchShell } from '@tessellate/workbench';
     />
   </head>
   <body class="h-full overflow-hidden bg-[#FAF9F6] text-[#111217] dark:bg-[#0B0D10] dark:text-[#F5F7FA] antialiased font-sans">
-    <WorkbenchShell client:only="react" />
+    <WorkbenchShell client:only="react">
+      <main
+        slot="fallback"
+        id="workbench-startup"
+        aria-busy="true"
+        class="flex min-h-screen flex-col bg-[#FAF9F6] text-[#111217] dark:bg-[#0B0D10] dark:text-[#F5F7FA]"
+      >
+        <div class="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center px-5 py-10 sm:px-8">
+          <div class="mb-6 flex items-center gap-3">
+            <span
+              aria-hidden="true"
+              class="grid size-10 place-items-center rounded-md bg-[#2547E8] text-lg font-bold text-white dark:bg-[#6782FF] dark:text-[#0B0D10]"
+            >T</span>
+            <span class="font-semibold tracking-tight">Tessellate Workbench</span>
+          </div>
+          <section class="max-w-2xl border border-[#D9D6CF] bg-white p-6 shadow-sm dark:border-[#272C34] dark:bg-[#171B21] sm:p-8">
+            <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-[#62666F] dark:text-[#A8AFBA]">
+              Local workspace
+            </p>
+            <h1 class="text-2xl font-bold tracking-tight sm:text-3xl">Preparing your local workspace</h1>
+            <p role="status" aria-live="polite" class="mt-3 max-w-xl text-sm leading-6 text-[#62666F] dark:text-[#A8AFBA]">
+              Loading your project and verified resource catalogue. Projects stay in this browser.
+            </p>
+          </section>
+          <a
+            href="/compose"
+            class="mt-5 inline-flex min-h-11 w-fit items-center border border-[#D9D6CF] px-4 py-2 text-sm font-semibold hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2547E8] dark:border-[#272C34] dark:hover:bg-[#171B21]"
+          >Open Compose</a>
+        </div>
+      </main>
+    </WorkbenchShell>
   </body>
 </html>

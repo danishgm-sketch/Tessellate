@@ -1,0 +1,30 @@
+{
+  "siteVersion": 62,
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-copilot-sidebar/",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "project": "sites-chromium",
+  "visibleDescriptionClaims": [
+    "real-time AI suggestions",
+    "file diffs",
+    "inline run triggers"
+  ],
+  "applyButton": {
+    "label": "Apply All Recommended Fixes",
+    "initiallyEnabled": true,
+    "textBeforeClick": "AI Copilot Sidebar preview\nActive Context Copilot\nCollapse\nInspecting DashboardView.tsx. Found 2 token inconsistencies in border contrast.\nFix border contrast token\nReplaces hardcoded border-slate-300 with semantic border-border-default.\nAdd keyboard shortcuts\nRegisters ArrowUp / ArrowDown navigation for search table results.\nApply All Recommended Fixes",
+    "textAfterClick": "AI Copilot Sidebar preview\nActive Context Copilot\nCollapse\nInspecting DashboardView.tsx. Found 2 token inconsistencies in border contrast.\nFix border contrast token\nReplaces hardcoded border-slate-300 with semantic border-border-default.\nAdd keyboard shortcuts\nRegisters ArrowUp / ArrowDown navigation for search table results.\nApply All Recommended Fixes",
+    "visibleOutcome": "No visible action or result follows the click."
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "before-v62/ai-copilot-sidebar-sites-chromium.png"
+}

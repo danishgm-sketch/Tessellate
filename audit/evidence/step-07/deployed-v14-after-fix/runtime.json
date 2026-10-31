@@ -1,0 +1,227 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/resources/fade-up-reveal/",
+  "viewport": "1440x900",
+  "routeStatus": 200,
+  "catalogueStatus": 200,
+  "catalogueCount": 324,
+  "before": {
+    "transitionDuration": "0.3s",
+    "opacity": "1",
+    "reducedMotionPreference": false
+  },
+  "reducedMotionOn": {
+    "transitionDuration": "0s",
+    "animationDuration": "0s",
+    "reducedMotionPreference": false,
+    "rootAttribute": "true"
+  },
+  "reducedMotionReplay": {
+    "opacity": "1",
+    "status": "Entrance animation skipped because reduced motion is enabled."
+  },
+  "reducedMotionOff": {
+    "transitionDuration": "0.3s",
+    "rootAttribute": null
+  },
+  "reducedMotionToggleEffective": true,
+  "replayOpacity": {
+    "probeDurationMs": 1577,
+    "sampleCount": 40,
+    "minimum": {
+      "elapsedMs": 310,
+      "opacity": 0
+    },
+    "zeroOpacitySamples": 4,
+    "final": {
+      "elapsedMs": 1577,
+      "opacity": 1
+    },
+    "samples": [
+      {
+        "elapsedMs": 34,
+        "opacity": 0.944417
+      },
+      {
+        "elapsedMs": 79,
+        "opacity": 0.77797
+      },
+      {
+        "elapsedMs": 124,
+        "opacity": 0.611083
+      },
+      {
+        "elapsedMs": 156,
+        "opacity": 0.555637
+      },
+      {
+        "elapsedMs": 202,
+        "opacity": 0.38875
+      },
+      {
+        "elapsedMs": 233,
+        "opacity": 0.27775
+      },
+      {
+        "elapsedMs": 278,
+        "opacity": 0.11097
+      },
+      {
+        "elapsedMs": 310,
+        "opacity": 0
+      },
+      {
+        "elapsedMs": 356,
+        "opacity": 0
+      },
+      {
+        "elapsedMs": 402,
+        "opacity": 0
+      },
+      {
+        "elapsedMs": 435,
+        "opacity": 0
+      },
+      {
+        "elapsedMs": 480,
+        "opacity": 0.166637
+      },
+      {
+        "elapsedMs": 511,
+        "opacity": 0.27775
+      },
+      {
+        "elapsedMs": 544,
+        "opacity": 0.389083
+      },
+      {
+        "elapsedMs": 576,
+        "opacity": 0.500083
+      },
+      {
+        "elapsedMs": 607,
+        "opacity": 0.55553
+      },
+      {
+        "elapsedMs": 639,
+        "opacity": 0.666637
+      },
+      {
+        "elapsedMs": 670,
+        "opacity": 0.77775
+      },
+      {
+        "elapsedMs": 717,
+        "opacity": 0.94453
+      },
+      {
+        "elapsedMs": 763,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 794,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 826,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 859,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 906,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 950,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 984,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 1030,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 1077,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 1108,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 1139,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 1185,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 1233,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 1277,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 1309,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 1341,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 1387,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 1433,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 1481,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 1528,
+        "opacity": 1
+      },
+      {
+        "elapsedMs": 1577,
+        "opacity": 1
+      }
+    ]
+  },
+  "standardReplayCompletes": true,
+  "console": [],
+  "uncaught": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "screenshots": [
+    "audit/evidence/step-07/deployed-v14-after-fix/fade-up-initial-1440x900.png",
+    "audit/evidence/step-07/deployed-v14-after-fix/fade-up-reduced-motion-on-1440x900.png",
+    "audit/evidence/step-07/deployed-v14-after-fix/fade-up-reduced-motion-replay-80ms-1440x900.png",
+    "audit/evidence/step-07/deployed-v14-after-fix/fade-up-replay-final-1440x900.png"
+  ],
+  "mobile": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/resources/fade-up-reveal/",
+    "viewport": "390x844",
+    "routeStatus": 200,
+    "innerWidth": 390,
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "horizontalOverflow": false,
+    "console": [],
+    "uncaught": [],
+    "failedRequests": [],
+    "httpErrors": [],
+    "screenshot": "audit/evidence/step-07/deployed-v14-after-fix/fade-up-resource-390x844.png"
+  }
+}

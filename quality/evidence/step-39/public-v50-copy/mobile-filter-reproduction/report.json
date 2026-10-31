@@ -1,0 +1,752 @@
+{
+  "capturedAt": "2026-10-27T23:19:17.120Z",
+  "sourceVersion": 50,
+  "origin": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "issue": "Homepage resource category control may accept a tap before the CatalogueMosaic island hydrates.",
+  "runs": [
+    {
+      "run": 1,
+      "status": 200,
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "before": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "readyState": "complete",
+        "ssrAttribute": false,
+        "pressed": "false",
+        "disabled": false,
+        "events": [
+          {
+            "type": "astro:hydrate",
+            "component": "HeroComposer",
+            "at": 1312.7000000178814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "CatalogueMosaic",
+            "at": 1313.1000000238419
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "FinalComposerFooter",
+            "at": 1319.2000000178814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "ThreeDirectionsDemo",
+            "at": 1324.4000000059605
+          }
+        ]
+      },
+      "afterFirst": "true",
+      "afterFirstState": {
+        "ssrAttribute": false,
+        "pressed": "true",
+        "disabled": false,
+        "events": [
+          {
+            "type": "astro:hydrate",
+            "component": "HeroComposer",
+            "at": 1312.7000000178814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "CatalogueMosaic",
+            "at": 1313.1000000238419
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "FinalComposerFooter",
+            "at": 1319.2000000178814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "ThreeDirectionsDemo",
+            "at": 1324.4000000059605
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "SiteHeader",
+            "at": 1374.6000000238419
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "NotComponentLibrary",
+            "at": 1449.9000000059605
+          },
+          {
+            "type": "data-click",
+            "trusted": true,
+            "at": 1454.9000000059605
+          }
+        ]
+      },
+      "recoveryClick": null,
+      "final": {
+        "pressed": "true",
+        "cards": [
+          "Area Chart"
+        ],
+        "events": [
+          {
+            "type": "astro:hydrate",
+            "component": "HeroComposer",
+            "at": 1312.7000000178814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "CatalogueMosaic",
+            "at": 1313.1000000238419
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "FinalComposerFooter",
+            "at": 1319.2000000178814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "ThreeDirectionsDemo",
+            "at": 1324.4000000059605
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "SiteHeader",
+            "at": 1374.6000000238419
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "NotComponentLibrary",
+            "at": 1449.9000000059605
+          },
+          {
+            "type": "data-click",
+            "trusted": true,
+            "at": 1454.9000000059605
+          }
+        ]
+      },
+      "elapsedToClickMs": 1310,
+      "runtime": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": []
+      },
+      "screenshotBefore": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-39\\public-v50-copy\\mobile-filter-reproduction\\run-1-before.jpg",
+      "screenshotAfter": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-39\\public-v50-copy\\mobile-filter-reproduction\\run-1-after.jpg"
+    },
+    {
+      "run": 2,
+      "status": 200,
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "before": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "readyState": "complete",
+        "ssrAttribute": false,
+        "pressed": "false",
+        "disabled": false,
+        "events": [
+          {
+            "type": "astro:hydrate",
+            "component": "CatalogueMosaic",
+            "at": 359.39999997615814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "ThreeDirectionsDemo",
+            "at": 365.59999999403954
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "FinalComposerFooter",
+            "at": 372
+          }
+        ]
+      },
+      "afterFirst": "true",
+      "afterFirstState": {
+        "ssrAttribute": false,
+        "pressed": "true",
+        "disabled": false,
+        "events": [
+          {
+            "type": "astro:hydrate",
+            "component": "CatalogueMosaic",
+            "at": 359.39999997615814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "ThreeDirectionsDemo",
+            "at": 365.59999999403954
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "FinalComposerFooter",
+            "at": 372
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "HeroComposer",
+            "at": 376.7999999821186
+          },
+          {
+            "type": "data-click",
+            "trusted": true,
+            "at": 485.2999999821186
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "SiteHeader",
+            "at": 500.59999999403954
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "NotComponentLibrary",
+            "at": 500.7999999821186
+          }
+        ]
+      },
+      "recoveryClick": null,
+      "final": {
+        "pressed": "true",
+        "cards": [
+          "Area Chart"
+        ],
+        "events": [
+          {
+            "type": "astro:hydrate",
+            "component": "CatalogueMosaic",
+            "at": 359.39999997615814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "ThreeDirectionsDemo",
+            "at": 365.59999999403954
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "FinalComposerFooter",
+            "at": 372
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "HeroComposer",
+            "at": 376.7999999821186
+          },
+          {
+            "type": "data-click",
+            "trusted": true,
+            "at": 485.2999999821186
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "SiteHeader",
+            "at": 500.59999999403954
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "NotComponentLibrary",
+            "at": 500.7999999821186
+          }
+        ]
+      },
+      "elapsedToClickMs": 1317,
+      "runtime": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": []
+      },
+      "screenshotBefore": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-39\\public-v50-copy\\mobile-filter-reproduction\\run-2-before.jpg",
+      "screenshotAfter": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-39\\public-v50-copy\\mobile-filter-reproduction\\run-2-after.jpg"
+    },
+    {
+      "run": 3,
+      "status": 200,
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "before": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "readyState": "complete",
+        "ssrAttribute": true,
+        "pressed": "false",
+        "disabled": false,
+        "events": []
+      },
+      "afterFirst": "true",
+      "afterFirstState": {
+        "ssrAttribute": false,
+        "pressed": "true",
+        "disabled": false,
+        "events": [
+          {
+            "type": "astro:hydrate",
+            "component": "ThreeDirectionsDemo",
+            "at": 626.3000000119209
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "CatalogueMosaic",
+            "at": 627.2000000178814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "HeroComposer",
+            "at": 627.8000000119209
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "FinalComposerFooter",
+            "at": 632.4000000059605
+          },
+          {
+            "type": "data-click",
+            "trusted": true,
+            "at": 690.4000000059605
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "NotComponentLibrary",
+            "at": 704.3000000119209
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "SiteHeader",
+            "at": 705.7000000178814
+          }
+        ]
+      },
+      "recoveryClick": null,
+      "final": {
+        "pressed": "true",
+        "cards": [
+          "Area Chart"
+        ],
+        "events": [
+          {
+            "type": "astro:hydrate",
+            "component": "ThreeDirectionsDemo",
+            "at": 626.3000000119209
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "CatalogueMosaic",
+            "at": 627.2000000178814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "HeroComposer",
+            "at": 627.8000000119209
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "FinalComposerFooter",
+            "at": 632.4000000059605
+          },
+          {
+            "type": "data-click",
+            "trusted": true,
+            "at": 690.4000000059605
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "NotComponentLibrary",
+            "at": 704.3000000119209
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "SiteHeader",
+            "at": 705.7000000178814
+          }
+        ]
+      },
+      "elapsedToClickMs": 1323,
+      "runtime": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": []
+      },
+      "screenshotBefore": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-39\\public-v50-copy\\mobile-filter-reproduction\\run-3-before.jpg",
+      "screenshotAfter": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-39\\public-v50-copy\\mobile-filter-reproduction\\run-3-after.jpg"
+    },
+    {
+      "run": 4,
+      "status": 200,
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "before": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "readyState": "complete",
+        "ssrAttribute": true,
+        "pressed": "false",
+        "disabled": false,
+        "events": []
+      },
+      "afterFirst": "false",
+      "afterFirstState": {
+        "ssrAttribute": false,
+        "pressed": "false",
+        "disabled": false,
+        "events": [
+          {
+            "type": "data-click",
+            "trusted": true,
+            "at": 651
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "ThreeDirectionsDemo",
+            "at": 747.1000000238419
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "CatalogueMosaic",
+            "at": 860.2000000178814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "FinalComposerFooter",
+            "at": 860.7000000178814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "HeroComposer",
+            "at": 861
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "NotComponentLibrary",
+            "at": 863.3000000119209
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "SiteHeader",
+            "at": 1087
+          }
+        ]
+      },
+      "recoveryClick": "true",
+      "final": {
+        "pressed": "true",
+        "cards": [
+          "Area Chart"
+        ],
+        "events": [
+          {
+            "type": "data-click",
+            "trusted": true,
+            "at": 651
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "ThreeDirectionsDemo",
+            "at": 747.1000000238419
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "CatalogueMosaic",
+            "at": 860.2000000178814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "FinalComposerFooter",
+            "at": 860.7000000178814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "HeroComposer",
+            "at": 861
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "NotComponentLibrary",
+            "at": 863.3000000119209
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "SiteHeader",
+            "at": 1087
+          },
+          {
+            "type": "data-click",
+            "trusted": true,
+            "at": 3897.7000000178814
+          }
+        ]
+      },
+      "elapsedToClickMs": 3556,
+      "runtime": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": []
+      },
+      "screenshotBefore": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-39\\public-v50-copy\\mobile-filter-reproduction\\run-4-before.jpg",
+      "screenshotAfter": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-39\\public-v50-copy\\mobile-filter-reproduction\\run-4-after.jpg"
+    },
+    {
+      "run": 5,
+      "status": 200,
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "before": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "readyState": "complete",
+        "ssrAttribute": true,
+        "pressed": "false",
+        "disabled": false,
+        "events": [
+          {
+            "type": "astro:hydrate",
+            "component": "HeroComposer",
+            "at": 366.2999999821186
+          }
+        ]
+      },
+      "afterFirst": "true",
+      "afterFirstState": {
+        "ssrAttribute": false,
+        "pressed": "true",
+        "disabled": false,
+        "events": [
+          {
+            "type": "astro:hydrate",
+            "component": "HeroComposer",
+            "at": 366.2999999821186
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "CatalogueMosaic",
+            "at": 464.19999998807907
+          },
+          {
+            "type": "data-click",
+            "trusted": true,
+            "at": 474.09999999403954
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "SiteHeader",
+            "at": 881.7999999821186
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "FinalComposerFooter",
+            "at": 882.1999999880791
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "ThreeDirectionsDemo",
+            "at": 884.5999999940395
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "NotComponentLibrary",
+            "at": 886.0999999940395
+          }
+        ]
+      },
+      "recoveryClick": null,
+      "final": {
+        "pressed": "true",
+        "cards": [
+          "Area Chart"
+        ],
+        "events": [
+          {
+            "type": "astro:hydrate",
+            "component": "HeroComposer",
+            "at": 366.2999999821186
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "CatalogueMosaic",
+            "at": 464.19999998807907
+          },
+          {
+            "type": "data-click",
+            "trusted": true,
+            "at": 474.09999999403954
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "SiteHeader",
+            "at": 881.7999999821186
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "FinalComposerFooter",
+            "at": 882.1999999880791
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "ThreeDirectionsDemo",
+            "at": 884.5999999940395
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "NotComponentLibrary",
+            "at": 886.0999999940395
+          }
+        ]
+      },
+      "elapsedToClickMs": 1307,
+      "runtime": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": []
+      },
+      "screenshotBefore": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-39\\public-v50-copy\\mobile-filter-reproduction\\run-5-before.jpg",
+      "screenshotAfter": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-39\\public-v50-copy\\mobile-filter-reproduction\\run-5-after.jpg"
+    },
+    {
+      "run": 6,
+      "status": 200,
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "before": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "readyState": "complete",
+        "ssrAttribute": true,
+        "pressed": "false",
+        "disabled": false,
+        "events": []
+      },
+      "afterFirst": "false",
+      "afterFirstState": {
+        "ssrAttribute": false,
+        "pressed": "false",
+        "disabled": false,
+        "events": [
+          {
+            "type": "astro:hydrate",
+            "component": "ThreeDirectionsDemo",
+            "at": 452.2000000178814
+          },
+          {
+            "type": "data-click",
+            "trusted": true,
+            "at": 511.09999999403954
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "NotComponentLibrary",
+            "at": 524.2000000178814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "SiteHeader",
+            "at": 524.5999999940395
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "HeroComposer",
+            "at": 524.9000000059605
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "FinalComposerFooter",
+            "at": 525.0999999940395
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "CatalogueMosaic",
+            "at": 525.4000000059605
+          }
+        ]
+      },
+      "recoveryClick": "true",
+      "final": {
+        "pressed": "true",
+        "cards": [
+          "Area Chart"
+        ],
+        "events": [
+          {
+            "type": "astro:hydrate",
+            "component": "ThreeDirectionsDemo",
+            "at": 452.2000000178814
+          },
+          {
+            "type": "data-click",
+            "trusted": true,
+            "at": 511.09999999403954
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "NotComponentLibrary",
+            "at": 524.2000000178814
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "SiteHeader",
+            "at": 524.5999999940395
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "HeroComposer",
+            "at": 524.9000000059605
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "FinalComposerFooter",
+            "at": 525.0999999940395
+          },
+          {
+            "type": "astro:hydrate",
+            "component": "CatalogueMosaic",
+            "at": 525.4000000059605
+          },
+          {
+            "type": "data-click",
+            "trusted": true,
+            "at": 3760.300000011921
+          }
+        ]
+      },
+      "elapsedToClickMs": 3563,
+      "runtime": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": []
+      },
+      "screenshotBefore": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-39\\public-v50-copy\\mobile-filter-reproduction\\run-6-before.jpg",
+      "screenshotAfter": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-39\\public-v50-copy\\mobile-filter-reproduction\\run-6-after.jpg"
+    }
+  ],
+  "failedFirstAttempts": 2
+}

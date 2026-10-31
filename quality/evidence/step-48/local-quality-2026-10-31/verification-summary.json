@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "1.0.0",
+  "branch": "codex/step-48-review-fixes",
+  "sourceHead": "310570e94ea1e603f767b4a179bbea23f51ec4bf",
+  "capturedAt": "2026-10-31",
+  "checks": {
+    "frozenInstall": {
+      "command": "pnpm install --frozen-lockfile",
+      "result": "PASS"
+    },
+    "catalogueBuild": {
+      "command": "pnpm build:catalog",
+      "result": "PASS",
+      "resources": 324,
+      "goldResources": 40
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "result": "PASS"
+    },
+    "lint": {
+      "command": "pnpm lint",
+      "result": "PASS"
+    },
+    "unitTests": {
+      "command": "pnpm test",
+      "result": "PASS",
+      "passed": 1238,
+      "skipped": 1,
+      "failed": 0
+    },
+    "releaseGate": {
+      "command": "pnpm audit:release-gate",
+      "result": "PASS",
+      "checksPassed": 16,
+      "checksTotal": 16
+    },
+    "resourceIsolation": {
+      "command": "pnpm audit:resource-isolation",
+      "result": "PASS",
+      "resourcesScanned": 324,
+      "passed": 324,
+      "failed": 0
+    },
+    "productionBuild": {
+      "command": "pnpm build",
+      "result": "PASS",
+      "astroPages": 733,
+      "sitesAdapter": "PASS"
+    },
+    "bundleBudgets": {
+      "command": "pnpm audit:budgets",
+      "result": "PASS",
+      "measurements": [
+        {
+          "route": "homepage",
+          "gzipKB": 99.43,
+          "budgetKB": 150
+        },
+        {
+          "route": "explore",
+          "gzipKB": 177.59,
+          "budgetKB": 200
+        },
+        {
+          "route": "compose",
+          "gzipKB": 254.62,
+          "budgetKB": 750
+        },
+        {
+          "route": "workbench",
+          "gzipKB": 74.32,
+          "budgetKB": 750
+        },
+        {
+          "route": "catalogue",
+          "gzipKB": 112.52,
+          "budgetKB": 2048
+        }
+      ]
+    },
+    "licenceAndProvenance": {
+      "command": "pnpm audit:licenses",
+      "result": "PASS",
+      "resources": 324,
+      "schemaFailures": 0,
+      "invalidLicences": 0,
+      "missingProvenance": 0,
+      "qualityBelow80": 0
+    },
+    "securityAndSecrets": {
+      "command": "pnpm audit:secrets",
+      "result": "PASS",
+      "violations": 0,
+      "previewIsolation": "PASS",
+      "goldRegistryCount": 40
+    },
+    "dependencyAudit": {
+      "command": "pnpm audit:dependencies",
+      "result": "PASS",
+      "knownVulnerabilities": 0
+    },
+    "employeeStandaloneExport": {
+      "test": "tests/employee-export-runtime.test.ts",
+      "result": "PASS",
+      "install": "npm install in clean temporary export directory",
+      "build": "npm run build",
+      "browser": "Chromium interaction and zero runtime errors/network failures"
+    }
+  },
+  "playwright": {
+    "command": "pnpm test:e2e project suites; final complete reruns executed per project",
+    "result": "PASS",
+    "passed": 704,
+    "configuredSkipped": 167,
+    "unexpectedFailures": 0,
+    "suites": [
+      {
+        "suite": "root desktop/mobile Chromium (initial complete run)",
+        "passed": 359,
+        "skipped": 121
+      },
+      {
+        "suite": "Sites Chromium (complete isolated rerun)",
+        "passed": 188,
+        "skipped": 6
+      },
+      {
+        "suite": "Sites mobile Chromium (complete isolated rerun)",
+        "passed": 154,
+        "skipped": 40
+      },
+      {
+        "suite": "preview app Chromium",
+        "passed": 3,
+        "skipped": 0
+      }
+    ]
+  },
+  "notes": [
+    "One Sites Chromium large-Workbench startup assertion timed out during the first chained E2E invocation. The exact test then passed alone in 2.3s and passed again within the full 194-test desktop Sites rerun; the complete desktop and mobile Sites project reruns had no unexpected failures.",
+    "Playwright rewrote evidence files across historical hardening steps; incidental generated screenshot/report changes were restored. v57 homepage and Workbench before-state evidence was retained.",
+    "Vite emitted existing large-chunk advisories. The configured eager-route bundle budgets passed.",
+    "The pre-deployment public v57 browser audit recorded three Cloudflare challenge-script deprecation warnings and no Workbench application console errors or essential request failures."
+  ],
+  "pending": [
+    "Exact-head GitHub CI",
+    "Public v58 issue-specific deployed re-audit"
+  ],
+  "finalTargetedBrowserRerun": {
+    "command": "pnpm exec playwright test tests/e2e/flagship-generated-product-a11y.spec.ts tests/e2e/showcase-content-copy-regression.spec.ts",
+    "result": "PASS",
+    "passed": 6,
+    "projects": [
+      "desktop-chrome",
+      "mobile-chrome"
+    ]
+  }
+}

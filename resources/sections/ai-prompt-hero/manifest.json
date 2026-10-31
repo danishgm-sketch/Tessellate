@@ -5,7 +5,7 @@
   "name": "AI Prompt Hero",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Conversational prompt bar with preset suggestions, model picker pill, and generate CTA.",
+  "description": "Prompt input section with local example prompts and an optional host-provided generation callback. It includes no model or generation service.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -132,18 +132,18 @@
     "marketing"
   ],
   "intent": {
-    "summary": "Conversational prompt bar with preset suggestions, model picker pill, and generate CTA.",
+    "summary": "Collect a product brief with local example prompts, then optionally pass it to a host-provided callback.",
     "idealFor": [
-      "Next-gen AI assistant tools and generative software platforms"
+      "Applications that collect a product brief before a host-defined action"
     ],
     "avoidFor": [
       "Standard brochureware sites"
     ],
     "jobs": [
-      "Prompt the user to express natural-language intent for interface generation"
+      "Collect a short product brief before a host-defined action"
     ],
     "contentRequirements": [
-      "Clear hierarchy, responsive layout, accessible typography"
+      "Clear hierarchy, responsive layout, a labelled input, and truthful helper text"
     ],
     "notes": [
       "Responsive stacking down to 360px with reduced-motion support"
@@ -211,12 +211,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -239,7 +239,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"
