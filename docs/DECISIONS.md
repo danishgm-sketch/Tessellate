@@ -636,3 +636,12 @@ documented and covered by header and browser tests.
 **Product impact:** Automated and expert-run browser evidence remains useful for technical acceptance but is not described as human validation. The separate usability study can be run later without blocking this owner-waived gate.
 **Evidence:** `quality/STEP_46_EVIDENCE.md`; owner instruction received 2026-10-30.
 **Status:** Applied to the current hardening release gate only.
+
+### D-065 — Patch newly disclosed glob traversal advisories
+
+**Date:** 2026-10-31
+**Context:** A fresh GitHub Actions advisory audit found moderate denial-of-service advisories in `minimatch` versions below 11.0.1 and filesystem traversal after timeout cancellation in `glob` versions through 14.0.1. The locked tree contained `minimatch` 3.1.5 and 10.2.6 plus `glob` 11.1.0.
+**Decision:** Upgrade the CLI, ingestion, and linter's direct `glob` dependency to 14.0.2 and pin all transitive `minimatch` resolutions below 11.0.1 to 11.0.1 in the workspace overrides. The patched packages retain the repository's supported Node 18, 20, and 22+ ranges. Keep `pnpm audit:dependencies` as the regression gate.
+**Security and compatibility impact:** Closes the reported filesystem traversal and resource-amplification advisories without changing Tessellate's application runtime, architecture, or supported Node versions. The CLI, ingestion, linter, dependency audit, and repository quality checks must pass against the updated frozen lockfile before publication.
+**Evidence:** GitHub Actions run 41153302233 on PR head `bb064ce4c327e4777b84ef1ff4d8c333774358db` failed its `pnpm audit:all` step with GHSA-g3hv-75wg-m249 and GHSA-3g3m-2fjr-6pw4. Local `pnpm audit` reproduced both advisories before the update. After-fix results are recorded in `quality/evidence/step-48/security/dependency-audit-2026-10-31.json`.
+**Status:** Implemented; automated and deployed review verification pending.

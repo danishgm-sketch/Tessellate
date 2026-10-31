@@ -15199,7 +15199,33 @@
         "regressionEvidence": "tests/e2e/showcase-content-copy-regression.spec.ts: homepage employee experience example uses the SaaS taxonomy",
         "result": "The regression failed against v57 and passes on the local production build in desktop and mobile projects. Full local production audit and browser project reruns pass; the v58 deployed verification remains pending."
       }
+  },
+  {
+    "id": "AUD-394",
+    "severity": "medium",
+    "route": "Repository dependency audit (pnpm audit:dependencies)",
+    "viewport": "not applicable",
+    "category": "security",
+    "title": "The locked dependency graph contained current glob and minimatch advisories",
+    "expected": "The frozen workspace dependency graph passes the package advisory audit without known vulnerabilities.",
+    "actual": "CI reported moderate GHSA-g3hv-75wg-m249 in minimatch below 11.0.1 and GHSA-3g3m-2fjr-6pw4 in glob through 14.0.1. The locked tree contained minimatch 3.1.5/10.2.6 and glob 11.1.0.",
+    "reproduction": [
+      "Run pnpm install --frozen-lockfile on the affected head.",
+      "Run pnpm audit:dependencies and inspect the reported advisory paths."
+    ],
+    "console": [],
+    "network": [],
+    "screenshot": null,
+    "rootCause": "The CLI, ingestion, and linter declared glob 11.x, and transitive dependency ranges retained minimatch versions below the newly published patched release.",
+    "affectedCode": "packages/cli/package.json; packages/ingest/package.json; packages/linter/package.json; pnpm-workspace.yaml; pnpm-lock.yaml",
+    "remediation": "Upgrade direct glob dependencies to 14.0.2 or newer and pin transitive minimatch resolutions below 11.0.1 to 11.0.1.",
+    "fixCommit": null,
+    "status": "fixed-local-verified",
+    "localVerification": {
+      "regressionEvidence": "quality/evidence/step-48/security/dependency-audit-2026-10-31.json",
+      "result": "The affected 93 CLI, ingest, and linter tests pass; all 1,238 unit/integration tests pass with one configured skip; typecheck, lint, and pnpm audit:all pass; the refreshed audit reports no known vulnerabilities. Exact-head CI is pending."
+    }
     }
   ],
-  "generatedAt": "2026-10-31T00:58:39Z"
+  "generatedAt": "2026-10-31T01:32:34Z"
 }
