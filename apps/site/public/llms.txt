@@ -89,7 +89,7 @@ Tools provided:
 - [AI Approval Request](https://tessellate.design/r/ai-approval-request): Human-in-the-loop intervention card requesting explicit user confirmation before executing irreversible, high-cost, or external operations. (ai, patterns, governance)
 - [AI Chat Panel](https://tessellate.design/r/ai-chat-panel): Chat panel UI pattern with a local example conversation and submission state; it does not connect to an AI service. (ai, patterns, chat)
 - [AI Command Bar](https://tessellate.design/r/ai-command-bar): Spotlight-style command list with a local text filter; the host application supplies any live actions. (ai, patterns, command)
-- [AI Copilot Sidebar](https://tessellate.design/r/ai-copilot-sidebar): Collapsible contextual side pane providing real-time AI suggestions, file diffs, and inline run triggers. (ai, patterns, sidebar)
+- [AI Copilot Sidebar](https://tessellate.design/r/ai-copilot-sidebar): Example copilot sidebar with sample file context and suggested fixes. The preview does not inspect files or change source code; a host must supply its own context and apply action. (ai, patterns, sidebar)
 - [AI Empty State](https://tessellate.design/r/ai-empty-state): First-run prompt layout with sample starters that require a host-provided prompt handler. (ai, patterns, empty)
 - [AI File Context Picker](https://tessellate.design/r/ai-file-context-picker): Multi-select tree picker allowing users to attach specific project files and schemas into prompt context. (ai, patterns, picker)
 - [AI Generation Compare](https://tessellate.design/r/ai-generation-compare): Interactive comparison of two illustrative interface candidates. (ai, patterns, comparison)

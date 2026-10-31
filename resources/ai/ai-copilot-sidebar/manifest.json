@@ -5,7 +5,7 @@
   "name": "AI Copilot Sidebar",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Collapsible contextual side pane providing real-time AI suggestions, file diffs, and inline run triggers.",
+  "description": "Example copilot sidebar with sample file context and suggested fixes. The preview does not inspect files or change source code; a host must supply its own context and apply action.",
   "resourceType": "ai-pattern",
   "categories": [
     "ai",
@@ -132,24 +132,23 @@
     "suggestions"
   ],
   "intent": {
-    "summary": "Collapsible contextual side pane providing real-time AI suggestions, file diffs, and inline run triggers.",
+    "summary": "Example copilot sidebar with sample file context and suggested fixes. The preview does not inspect files or change source code; a host must supply its own context and apply action.",
     "idealFor": [
-      "IDE-style side workspace",
-      "Design editor copilot",
-      "Documentation authoring assistant"
+      "Demonstrating a copilot sidebar layout in a product prototype",
+      "Displaying host-provided suggestions when an integration is connected"
     ],
     "avoidFor": [
-      "Mobile bottom sheets with zero screen width",
-      "Modal confirmations"
+      "Live file analysis without a host integration",
+      "Applying source changes without a validated host action"
     ],
     "jobs": [
-      "Provide always-present contextual intelligence alongside the active document"
+      "Present sample contextual suggestions, or show host-provided suggestions alongside the active document"
     ],
     "contentRequirements": [
-      "Describe the behavior represented by the interface and clearly label any illustrative data."
+      "Label sample context and recommendations; explain that a host integration is required to inspect files or apply changes."
     ],
     "notes": [
-      "This component supplies a UI pattern; the host application connects any live model or data source it needs."
+      "Preview content is illustrative only. The host must supply live context and a validated apply callback; without the callback, Apply is disabled."
     ]
   },
   "visualDNA": {

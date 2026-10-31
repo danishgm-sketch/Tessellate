@@ -145,7 +145,7 @@
       "name": "ai-copilot-sidebar",
       "type": "registry:component",
       "title": "AI Copilot Sidebar",
-      "description": "Collapsible contextual side pane providing real-time AI suggestions, file diffs, and inline run triggers.",
+      "description": "Example copilot sidebar with sample file context and suggested fixes. The preview does not inspect files or change source code; a host must supply its own context and apply action.",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [],
