@@ -39,6 +39,7 @@ export default defineConfig({
     'home-demo-hydration.spec.ts',
     'home-structure-comparison-readiness.spec.ts',
     'home-catalogue-filter-readiness-step-39.spec.ts',
+    'home-filter-hydration-contrast-step-48.spec.ts',
     'performance-workloads-step-38.spec.ts',
     'site-route-performance-step-38.spec.ts',
     'performance-stress-step-38.spec.ts',

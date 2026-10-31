@@ -110,9 +110,9 @@ export function CatalogueMosaic() {
               aria-describedby={!filtersReady ? filterReadinessId : undefined}
               aria-pressed={activeFilter === filter}
               onClick={() => setActiveFilter(filter)}
-              className={`text-xs px-3 py-1.5 rounded-lg capitalize font-medium transition-colors ${
+              className={`text-xs px-3 py-1.5 rounded-lg capitalize font-medium ${
                 !filtersReady
-                  ? 'cursor-not-allowed opacity-60'
+                  ? 'cursor-not-allowed text-[#62666F]'
                   : activeFilter === filter
                     ? 'bg-[#111217] text-white shadow-sm'
                     : 'text-[#62666F] hover:text-[#111217]'
