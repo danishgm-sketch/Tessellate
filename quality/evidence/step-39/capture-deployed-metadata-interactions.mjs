@@ -17,7 +17,7 @@ try {
     await mkdir(directory, { recursive: true });
     for (const scenario of [
       { name: 'palette-preset', path: '/tools/palette', action: async (page) => page.getByRole('button', { name: /Pure Monochrome/ }).click() },
-      { name: 'accessibility-tab', path: '/r/success-state', action: async (page) => page.getByRole('button', { name: 'Accessibility' }).click() },
+      { name: 'accessibility-tab', path: '/r/success-state', action: async (page) => page.getByRole('tab', { name: 'Accessibility' }).click() },
       { name: 'quality-card', path: '/explore?q=success-state', action: async (page) => page.getByRole('link', { name: 'Success State' }).scrollIntoViewIfNeeded() },
     ]) {
       const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height } });

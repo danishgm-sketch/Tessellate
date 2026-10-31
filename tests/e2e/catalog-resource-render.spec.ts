@@ -53,7 +53,7 @@ test('AI agent activity preview labels sample content and follows heading hierar
   await expect(preview.getByText(/real-time telemetry/i)).toHaveCount(0);
   const headingOrderResults: Array<{ tab: string; violations: string[] }> = [];
   for (const tab of ['Intent', 'Code', 'Variants', 'Anatomy', 'Accessibility', 'Performance', 'Dependencies', 'Versions']) {
-    if (tab !== 'Intent') await page.getByRole('button', { name: tab, exact: true }).click();
+    if (tab !== 'Intent') await page.getByRole('tab', { name: tab, exact: true }).click();
     const axe = await new AxeBuilder({ page }).withRules(['heading-order']).analyze();
     headingOrderResults.push({ tab, violations: axe.violations.map(({ id, nodes }) => `${id}: ${nodes.map((node) => node.target.join(' ')).join(', ')}`) });
   }

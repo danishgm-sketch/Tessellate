@@ -333,7 +333,7 @@ test('resource scores and accessibility declarations are identified as manifest 
   await page.goto('/r/success-state');
   await page.waitForLoadState('networkidle');
   await expect(page.getByText('Quality assessment: Not assessed.', { exact: true })).toBeVisible();
-  await page.getByRole('button', { name: 'Accessibility' }).click();
+  await page.getByRole('tab', { name: 'Accessibility' }).click();
   await expect(
     page.getByText(
       'This shows resource-manifest declarations. Gold browser checks provide independent evidence for the validated runtime set; other resource claims remain unverified. Test the rendered component in your application.'
@@ -358,7 +358,7 @@ test('unassessed resources do not present template scores or accessibility decla
   await expect(page.getByText('Quality assessment: Not assessed.', { exact: true })).toBeVisible();
   await expect(page.getByText(/\b(?:96|98)\s*\/\s*100\b/)).toHaveCount(0);
 
-  await page.getByRole('button', { name: 'Accessibility' }).click();
+  await page.getByRole('tab', { name: 'Accessibility' }).click();
   const accessibilityPanel = page.locator('main');
   await expect(accessibilityPanel.getByText('WCAG AA target', { exact: true })).toBeVisible();
   await expect(
@@ -370,7 +370,7 @@ test('unassessed resources do not present template scores or accessibility decla
 
   await page.goto('/r/button');
   await page.waitForLoadState('networkidle');
-  await page.getByRole('button', { name: 'Accessibility' }).click();
+  await page.getByRole('tab', { name: 'Accessibility' }).click();
   await expect(page.getByText('Gold browser checked', { exact: true }).first()).toBeVisible();
 });
 
@@ -384,7 +384,7 @@ test('resource accessibility status cards keep every label and status readable a
     await page.setViewportSize({ width, height: width >= 1280 ? 900 : 844 });
     const response = await page.goto('/r/success-state');
     await page.waitForLoadState('networkidle');
-    await page.getByRole('button', { name: 'Accessibility' }).click();
+    await page.getByRole('tab', { name: 'Accessibility' }).click();
     const cards = page.locator('[data-accessibility-assessment-card]');
     await expect(cards).toHaveCount(5);
     const geometry = await cards.evaluateAll((elements) => {
@@ -421,7 +421,7 @@ test('resource accessibility status cards keep every label and status readable a
   }
 
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.getByRole('button', { name: 'Accessibility' }).scrollIntoViewIfNeeded();
+  await page.getByRole('tab', { name: 'Accessibility' }).scrollIntoViewIfNeeded();
   const cards = page.locator('[data-accessibility-assessment-card]');
   await cards.first().scrollIntoViewIfNeeded();
   const hasOverflow = measurements.some((measurement) =>

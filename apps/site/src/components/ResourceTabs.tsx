@@ -54,16 +54,54 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
     { id: 'versions', label: 'Versions', icon: <History className="w-3.5 h-3.5" /> },
   ];
 
+  const handleTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, currentIndex: number) => {
+    let nextIndex: number;
+    switch (event.key) {
+      case 'ArrowRight':
+        nextIndex = (currentIndex + 1) % tabs.length;
+        break;
+      case 'ArrowLeft':
+        nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        break;
+      case 'Home':
+        nextIndex = 0;
+        break;
+      case 'End':
+        nextIndex = tabs.length - 1;
+        break;
+      default:
+        return;
+    }
+
+    const nextTab = tabs[nextIndex];
+    if (!nextTab) return;
+
+    event.preventDefault();
+    setActiveTab(nextTab.id);
+    document.getElementById(`resource-tab-${nextTab.id}`)?.focus();
+  };
+
   return (
     <div className="flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] overflow-hidden shadow-xs">
       {/* Tab Navigation Header */}
-      <div className="flex items-center gap-1 overflow-x-auto border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] px-3 pt-2">
-        {tabs.map((tab) => {
+      <div
+        role="tablist"
+        aria-label="Resource information"
+        aria-orientation="horizontal"
+        className="flex items-center gap-1 overflow-x-auto border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] px-3 pt-2"
+      >
+        {tabs.map((tab, index) => {
           const isActive = activeTab === tab.id;
           return (
             <button
               key={tab.id}
               type="button"
+              role="tab"
+              id={`resource-tab-${tab.id}`}
+              aria-selected={isActive}
+              aria-controls="resource-detail-tabpanel"
+              tabIndex={isActive ? 0 : -1}
+              onKeyDown={(event) => handleTabKeyDown(event, index)}
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-1.5 px-3 py-2 text-xs font-medium rounded-t-lg transition-all border-b-2 -mb-[1px] select-none ${
                 isActive
@@ -79,7 +117,13 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
       </div>
 
       {/* Tab Content Body */}
-      <div className="p-6 text-sm text-[var(--tess-ink,#111217)] leading-relaxed">
+      <div
+        id="resource-detail-tabpanel"
+        role="tabpanel"
+        aria-labelledby={`resource-tab-${activeTab}`}
+        tabIndex={0}
+        className="p-6 text-sm text-[var(--tess-ink,#111217)] leading-relaxed"
+      >
         {/* INTENT TAB (Mandatory) */}
         {activeTab === 'intent' && (
           <div className="space-y-6">
