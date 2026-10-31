@@ -1,6 +1,6 @@
 # Runtime audit — product hardening and deployed-site verification
 
-This register preserves the historical resource/renderer audit and tracks deployed verification by release. The latest complete full route and accessibility sweep is public Sites v61. Its 44 requested/representative routes passed at 1440×900 and 390×844; the flagship employee workflow, standalone React export, Axe checks, and browser network audit also passed. Sites v62 then rechecked AUD-403 and AUD-404 at desktop and mobile sizes and closed both after deployed UI verification. The broader product-hardening programme remains incomplete. The v61 route matrix is `quality/evidence/step-48/deployed-v61-2026-10-31/route-audit.json`; v62 evidence is in `quality/evidence/step-48/deployed-v62-2026-10-31/browser-recheck/`.
+This register preserves the historical resource/renderer audit and tracks deployed verification by release. The latest complete full route and accessibility sweep is public Sites v61. Its 44 requested/representative routes passed at 1440×900 and 390×844; the flagship employee workflow, standalone React export, Axe checks, and browser network audit also passed. Sites v62 then rechecked AUD-390, AUD-391, AUD-403 and AUD-404 with issue-specific browser tests, and reran the copy/resource suite at desktop and mobile sizes. The v62 targeted checks passed. The broader product-hardening programme remains incomplete. The v61 route matrix is `quality/evidence/step-48/deployed-v61-2026-10-31/route-audit.json`; v62 evidence is in `quality/evidence/step-48/deployed-v62-2026-10-31/` and `quality/evidence/step-39/public-v62-copy-2026-10-31/`.
 
 V40 served application code captured from canonical commit
 `36b873ba9d40380196a78fcabe8977d7aa881e58` (Sites source mirror
@@ -34,7 +34,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 404 findings (0 Critical, 79 High, 301 Medium, 24 Low): 134 closed after issue-specific deployed verification, 7 closed after surface-specific non-Site verification, 186 fixed and awaiting issue-specific deployed checks, 74 fixed and verified locally, 2 legacy fixed records, and 1 documented Sites-host limitation. AUD-403 (High) and AUD-404 (Medium) were closed after v62 deployed checks. The remaining 186-item deployed-verification backlog includes 1 High, 178 Medium and 7 Low findings. Verification debt is not a claim that every item remains broken.
+**Current disposition:** 404 findings (0 Critical, 79 High, 301 Medium, 24 Low): 136 closed after issue-specific deployed verification, 7 closed after surface-specific non-Site verification, 184 fixed and awaiting issue-specific deployed checks, 74 fixed and verified locally, 2 legacy fixed records, and 1 documented Sites-host limitation. AUD-390 (High), AUD-391 (Medium), AUD-403 (High) and AUD-404 (Medium) were closed after v62 deployed checks. The remaining 184-item deployed-verification backlog includes 177 Medium and 7 Low findings; no High findings await deployed verification. Verification debt is not a claim that every item remains broken.
 
 ## Public Sites v51 issue-specific High verification — 2026-10-28
 
@@ -4501,6 +4501,25 @@ At the v61 checkpoint the audit contained 404 distinct findings: 0 Critical, 79 
 
 Sites version 62 is live at the same public review URL. It serves the fixes from canonical commit `64cdf8eb5467e2a870f09d158906652e6449451f`, captured in Sites source commit `d695a5b6e78f5ca7ba53719f1e26fac2c91b522d`; deployment `appgdep_6ae5fcf2ee008191852bbf74a77b369e`. D1/R2 were not provisioned and no recurring infrastructure was added. The source changes are limited to Tessellate's existing browser application, tests, and audit record.
 
+The same live v62 Site then passed the exact employee-experience Compose → Direction C → Workbench regression at desktop and mobile. Direction C's visible manifest reported `primaryArchetype: saas` and no recruitment primary archetype at both sizes. Desktop Workbench Brief displayed `Employee Experience` and `100%`; the generated project had no unresolved resources, WCAG 2.2 A/AA or target-size violations, console errors, uncaught exceptions, failed requests, or bad responses. This closes AUD-390 and AUD-391; machine results and screenshots are under `quality/evidence/step-48/deployed-v62-2026-10-31/`.
+
+The public v62 copy/resource suite passed 113 cases with 9 configured profile skips and zero failures at 1440×900 and 390×844. It covers representative composition content, all ten tool descriptions, CLI/MCP copy, sample-data disclosure, resource metadata and previews, selected accessibility claims, and hosted preview form interactions. The six mobile preview form interactions and desktop/mobile-specific cases are profile-scoped; the permitted desktop and mobile variants ran. This targeted suite is not a manual copy review of every text string in all 324 resources. Evidence and runner are under `quality/evidence/step-39/public-v62-copy-2026-10-31/`.
+
 The visible Workbench regressions passed on Chromium at 1440×900 and 390×844 (4/4). AUD-403 imported the seeded employee SaaS manifest through the UI, clicked Surprise Me, and exported the resulting manifest. Both runs preserved the `saas` archetype, changed `geist-system` to the allowed `technical-mono-geist`, and recorded zero console errors, warnings, uncaught exceptions, failed requests, HTTP errors, or horizontal overflow.
 
 AUD-404 injected a ZIP download creation failure through the browser, then invoked Export → Download Standalone React Project through the UI. Both viewports rendered the in-app error, raised no native dialog, had zero uncaught exceptions and failed/HTTP requests, no horizontal overflow, and no serious/critical Axe violations. The expected handled failure was logged to the console once per run. Before/after screenshots and per-run machine-readable evidence are in [`browser-recheck`](../quality/evidence/step-48/deployed-v62-2026-10-31/browser-recheck/); the reproducible Playwright harness is in the same v62 evidence directory.
+
+## Public Sites v62 copy/resource closeout — 2026-10-31
+
+The public review Site at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ serves canonical commit 64cdf8eb5467e2a870f09d158906652e6449451f from Sites mirror commit d695a5b6e78f5ca7ba53719f1e26fac2c91b522d, deployment appgdep_6ae5fcf2ee008191852bbf74a77b369e. D1/R2 remain unprovisioned.
+
+The complete deployed copy/resource suite passed 113 cases with 9 configured profile skips, zero unexpected failures, and zero flaky results at 1440×900 and 390×844. Each of the 73 content issues closed in this pass has a desktop and mobile result, screenshot, and test report in quality/evidence/step-39/public-v62-copy-2026-10-31/issue-coverage.json. The 73 status transitions are recorded individually in audit/runtime-audit.json, including version, source/deployment identity, viewport, result, screenshot, and report.
+
+Supplemental v62 checks passed community composition at both viewports, AUD-068 mobile input retention, AUD-393 domain taxonomy at both viewports, and Gold resource states at 360px page width. Runtime and network telemetry for the 73 mapped checks contains no uncaught errors or failed requests. The full suite's 9 configured skips are documented and are not counted as passes. Axe CSP style-injection errors observed in four unrelated telemetry cases are harness instrumentation failures; they are not attributed to this closeout and are not represented as successful Axe runs.
+
+After these transitions, 209 findings are closed-deployed-verified; 111 remain fixed-awaiting-deployed-verification (107 medium, 4 low). Other statuses remain unchanged. Step 39 is still open because the manual copy review of all 324 resources and the remaining issue-specific work are incomplete. This scoped closeout is not a new full product route/flagship/Axe/export audit.
+
+Evidence:
+- Full suite report: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json
+- Finding-to-evidence map: quality/evidence/step-39/public-v62-copy-2026-10-31/issue-coverage.json
+- Supplemental checks and screenshots: quality/evidence/step-39/public-v62-copy-2026-10-31/ and quality/evidence/step-48/deployed-v62-2026-10-31/

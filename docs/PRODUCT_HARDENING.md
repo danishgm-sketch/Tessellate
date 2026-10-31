@@ -500,3 +500,7 @@ checks, 89 locally verified, 2 legacy fixed, 2 legacy closed, and 1 documented
 Sites-host limitation. The Step 45 and broader product-hardening release gates
 remain incomplete. See `quality/STEP_45_EVIDENCE.md` and
 `audit/RUNTIME_AUDIT.md` for evidence and limits.
+
+### Step 39 continuation — public Sites v62 copy/resource closeout (2026-10-31)
+
+Sites v62 serves canonical commit 64cdf8eb5467e2a870f09d158906652e6449451f (Sites source mirror d695a5b6e78f5ca7ba53719f1e26fac2c91b522d). The deployed copy/resource suite passed 113 cases with 9 configured profile skips and zero unexpected failures; 73 content findings were closed with desktop/mobile screenshots and machine results. The audit ledger now records 209 closed-deployed-verified findings and 111 still awaiting deployed verification. This is a scoped deployment closeout, not a completion of Step 39: manual copy review of all 324 resources and remaining work are still required. D1/R2 remain unprovisioned. See quality/STEP_39_EVIDENCE.md, audit/RUNTIME_AUDIT.md, and quality/evidence/step-39/public-v62-copy-2026-10-31/.

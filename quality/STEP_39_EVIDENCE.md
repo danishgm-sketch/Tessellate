@@ -1,6 +1,6 @@
 # Step 39 — Language and copy evidence
 
-Step 39 remains in progress. The work below concerns local Sites Worker and Astro build output. None of these fixes is closed as deployed until the published review Site is audited again.
+Step 39 remains in progress. Findings close as deployed only after version-specific browser evidence is recorded in audit/runtime-audit.json. Public Sites v62 closes 73 copy/resource findings with desktop and mobile evidence; the catalogue-wide manual review remains incomplete. Older issue sections below preserve their contemporaneous status and are superseded by the dated v62 closeout at the end of this file.
 
 ## AUD-177 — AI Prompt Hero advertised an unavailable generation service
 
@@ -609,3 +609,15 @@ deployed copy/resource check, not a new full route, flagship, Axe, responsive,
 or export re-audit; v55 remains the latest complete product checkpoint. Step
 39 remains open for the remaining catalogue-wide/manual review and any
 outstanding issue-specific deployed verification.
+
+### 2026-10-31 continuation — public Sites v62 copy/resource closeout
+
+Public review version 62 is live at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. It serves canonical source 64cdf8eb5467e2a870f09d158906652e6449451f, captured in Sites mirror commit d695a5b6e78f5ca7ba53719f1e26fac2c91b522d, deployment appgdep_6ae5fcf2ee008191852bbf74a77b369e. D1/R2 remain unprovisioned.
+
+The deployed copy/resource browser suite passed 113 cases, had 9 configured profile skips, and had zero unexpected failures or flaky results. The suite exercised desktop 1440×900 and mobile 390×844. Each of the 73 content findings that had been awaiting deployed verification now has a result, screenshot, and test-report path for both viewports in quality/evidence/step-39/public-v62-copy-2026-10-31/issue-coverage.json; the exact findings are marked closed-deployed-verified in audit/runtime-audit.json. The deployed verification totals are now 209 closed-deployed-verified; 111 still await deployed verification. The 111 comprise 107 medium and 4 low findings.
+
+Supplemental v62 browser checks passed the community-composition case at desktop and mobile, AUD-068 mobile input retention, AUD-393 employee-domain homepage taxonomy at both viewports, and Gold resource state interactions at 360px page width. These are supplementary checks; the full suite's nine configured skips remain disclosed in its report.
+
+This closes the 73 mapped deployed-verification items only. It does not complete Step 39: a manual copy review of every string across the 324-resource catalogue, remaining unresolved findings, and the broader hardening sequence still need work. Four unrelated telemetry cases logged Axe CSP style-injection errors from the audit harness; their pre-Axe product runtime evidence was clean, and none is being presented here as an Axe pass. The suite is a copy/resource regression suite, not a full route/flagship/accessibility release gate.
+
+Machine-readable closeout: quality/evidence/step-39/public-v62-copy-2026-10-31/issue-coverage.json; full suite: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json; community desktop/mobile targeted reports and captures are in that directory's runner/ and composition-quality/after/ trees. The broader v62 audit record is audit/runtime-audit.json.
