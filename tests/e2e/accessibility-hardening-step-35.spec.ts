@@ -3,6 +3,14 @@ import path from 'node:path';
 import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
+const WCAG_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
+
+async function scanAccessibility(page: import('@playwright/test').Page) {
+  const wcag = await new AxeBuilder({ page }).withTags(WCAG_TAGS).analyze();
+  const targetSize = await new AxeBuilder({ page }).withRules(['target-size']).analyze();
+  return { wcagViolations: wcag.violations, targetSizeViolations: targetSize.violations };
+}
+
 const knownHeadingRoutes = [
   '/showcase/showcase-ai-developer-platform/',
   '/showcase/showcase-luxury-ecommerce/',
@@ -55,20 +63,30 @@ test('showcase previews continue the document heading hierarchy', async ({ page 
         scope: element.closest('.tess-screen') ? 'rendered-product' : 'site-shell',
       })),
     );
-    const axe = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
-      .withRules(['target-size'])
-      .analyze();
-    evidence.push({ route, headings, violations: axe.violations.map(({ id, nodes }) => ({
-      id,
-      nodes: nodes.map(({ target, html, failureSummary }) => ({ target, html, failureSummary })),
-    })) });
+    const axe = await scanAccessibility(page);
+    evidence.push({
+      route,
+      headings,
+      wcagViolations: axe.wcagViolations.map(({ id, impact, nodes }) => ({
+        id,
+        impact,
+        nodes: nodes.map(({ target, html, failureSummary }) => ({ target, html, failureSummary })),
+      })),
+      targetSizeViolations: axe.targetSizeViolations.map(({ id, impact, nodes }) => ({
+        id,
+        impact,
+        nodes: nodes.map(({ target, html, failureSummary }) => ({ target, html, failureSummary })),
+      })),
+    });
   }
 
   const evidenceDir = path.resolve(process.cwd(), 'quality/evidence/step-35/before');
   mkdirSync(evidenceDir, { recursive: true });
   writeFileSync(path.join(evidenceDir, `heading-order-${testInfo.project.name}.json`), `${JSON.stringify(evidence, null, 2)}\n`);
-  expect(evidence.flatMap((entry) => entry.violations as unknown[]), JSON.stringify(evidence, null, 2)).toEqual([]);
+  expect(evidence.filter((entry) =>
+    (entry.wcagViolations as unknown[]).length > 0 ||
+    (entry.targetSizeViolations as unknown[]).length > 0
+  ), JSON.stringify(evidence, null, 2)).toEqual([]);
 });
 
 test('Core surfaces pass WCAG 2.2 A/AA and target-size scans', async ({ page }, testInfo) => {
@@ -79,9 +97,25 @@ test('Core surfaces pass WCAG 2.2 A/AA and target-size scans', async ({ page }, 
 
   for (const route of coreRoutes) {
     const runtime = { consoleErrors: [] as string[], pageErrors: [] as string[], failedRequests: [] as string[], httpErrors: [] as string[] };
-    const onConsole = (message: import('@playwright/test').ConsoleMessage) => { if (message.type() === 'error') runtime.consoleErrors.push(message.text()); };
+    const axeInstrumentation = { cspConsoleErrors: [] as string[], blockedRequests: [] as string[] };
+    let axeScanInProgress = false;
+    const onConsole = (message: import('@playwright/test').ConsoleMessage) => {
+      if (message.type() !== 'error') return;
+      if (axeScanInProgress && /violates the following Content Security Policy directive/.test(message.text())) {
+        axeInstrumentation.cspConsoleErrors.push(message.text());
+        return;
+      }
+      runtime.consoleErrors.push(message.text());
+    };
     const onPageError = (error: Error) => runtime.pageErrors.push(error.message);
-    const onRequestFailed = (request: import('@playwright/test').Request) => runtime.failedRequests.push(`${request.method()} ${request.url()}: ${request.failure()?.errorText ?? 'unknown failure'}`);
+    const onRequestFailed = (request: import('@playwright/test').Request) => {
+      const failure = request.failure()?.errorText ?? 'unknown failure';
+      if (axeScanInProgress && failure === 'csp' && /_astro\/style\./.test(request.url())) {
+        axeInstrumentation.blockedRequests.push(`${request.method()} ${request.url()}: ${failure}`);
+        return;
+      }
+      runtime.failedRequests.push(`${request.method()} ${request.url()}: ${failure}`);
+    };
     const onResponse = (response: import('@playwright/test').Response) => { if (response.status() >= 400) runtime.httpErrors.push(`${response.status()} ${response.url()}`); };
     page.on('console', onConsole);
     page.on('pageerror', onPageError);
@@ -116,21 +150,32 @@ test('Core surfaces pass WCAG 2.2 A/AA and target-size scans', async ({ page }, 
       ).toBeVisible();
     }
 
-    const axe = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
-      .withRules(['target-size'])
-      .analyze();
+    axeScanInProgress = true;
+    let axe: Awaited<ReturnType<typeof scanAccessibility>>;
+    try {
+      axe = await scanAccessibility(page);
+      await page.waitForTimeout(50);
+    } finally {
+      axeScanInProgress = false;
+    }
     const accessibleTreeExcerpt = (await page.locator('body').ariaSnapshot()).split('\n').slice(0, 60).join('\n');
     const finding = {
       route,
       viewport: page.viewportSize(),
       accessibleTreeExcerpt,
-      axe: axe.violations.map(({ id, impact, help, nodes }) => ({
+      wcagViolations: axe.wcagViolations.map(({ id, impact, help, nodes }) => ({
         id,
         impact,
         help,
         nodes: nodes.map(({ target, html, failureSummary }) => ({ target, html, failureSummary })),
       })),
+      targetSizeViolations: axe.targetSizeViolations.map(({ id, impact, help, nodes }) => ({
+        id,
+        impact,
+        help,
+        nodes: nodes.map(({ target, html, failureSummary }) => ({ target, html, failureSummary })),
+      })),
+      axeInstrumentation,
       runtime,
       screenshot: `${testInfo.project.name}-${route.replace(/[^a-z0-9]+/gi, '-')}.png`,
     };
@@ -143,7 +188,10 @@ test('Core surfaces pass WCAG 2.2 A/AA and target-size scans', async ({ page }, 
   }
 
   writeFileSync(path.join(evidenceDir, 'core-route-a11y.json'), `${JSON.stringify(evidence, null, 2)}\n`);
-  expect(evidence.filter((item) => (item.axe as unknown[]).length > 0), JSON.stringify(evidence, null, 2)).toEqual([]);
+  expect(evidence.filter((item) =>
+    (item.wcagViolations as unknown[]).length > 0 ||
+    (item.targetSizeViolations as unknown[]).length > 0
+  ), JSON.stringify(evidence, null, 2)).toEqual([]);
   expect(evidence.filter((item) => {
     const runtime = item.runtime as { consoleErrors: string[]; pageErrors: string[]; failedRequests: string[]; httpErrors: string[] };
     return runtime.consoleErrors.length || runtime.pageErrors.length || runtime.failedRequests.length || runtime.httpErrors.length;
@@ -320,19 +368,26 @@ test('Workbench landmarks and every primary mode pass WCAG 2.2 A/AA', async ({ p
     } else {
       await page.getByRole('button', { name: mode, exact: true }).click();
     }
-    const axe = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
-      .withRules(['target-size'])
-      .analyze();
-    evidence.push({ mode, viewport: page.viewportSize(), violations: axe.violations.map(({ id, impact, help, nodes }) => ({
-      id, impact, help, nodes: nodes.map(({ target, html, failureSummary }) => ({ target, html, failureSummary })),
-    })) });
+    const axe = await scanAccessibility(page);
+    evidence.push({
+      mode,
+      viewport: page.viewportSize(),
+      wcagViolations: axe.wcagViolations.map(({ id, impact, help, nodes }) => ({
+        id, impact, help, nodes: nodes.map(({ target, html, failureSummary }) => ({ target, html, failureSummary })),
+      })),
+      targetSizeViolations: axe.targetSizeViolations.map(({ id, impact, help, nodes }) => ({
+        id, impact, help, nodes: nodes.map(({ target, html, failureSummary }) => ({ target, html, failureSummary })),
+      })),
+    });
   }
 
   const evidenceDir = path.resolve(process.cwd(), `quality/evidence/step-35/${testInfo.project.name}`);
   mkdirSync(evidenceDir, { recursive: true });
   writeFileSync(path.join(evidenceDir, 'workbench-mode-a11y.json'), `${JSON.stringify(evidence, null, 2)}\n`);
-  expect(evidence.filter((item) => (item.violations as unknown[]).length > 0), JSON.stringify(evidence, null, 2)).toEqual([]);
+  expect(evidence.filter((item) =>
+    (item.wcagViolations as unknown[]).length > 0 ||
+    (item.targetSizeViolations as unknown[]).length > 0
+  ), JSON.stringify(evidence, null, 2)).toEqual([]);
 });
 
 test('keyboard users can reorder Workbench layers without drag and drop', async ({ page }, testInfo) => {

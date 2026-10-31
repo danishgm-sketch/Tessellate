@@ -2,6 +2,15 @@ import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import type { Page } from '@playwright/test';
+
+const WCAG_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
+
+async function scanAccessibility(page: Page) {
+  const wcag = await new AxeBuilder({ page }).withTags(WCAG_TAGS).analyze();
+  const targetSize = await new AxeBuilder({ page }).withRules(['target-size']).analyze();
+  return { wcagViolations: wcag.violations, targetSizeViolations: targetSize.violations };
+}
 
 const EMPLOYEE_EXPERIENCE_BRIEF =
   'Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.';
@@ -46,6 +55,14 @@ test('the generated employee experience opens in Workbench without serious acces
   await expect(page.locator('[data-testid="missing-resource-recovery"]')).toHaveCount(0);
   await expect(page.locator('[data-testid="unresolved-required-role-diagnostic"]')).toHaveCount(0);
   if ((page.viewportSize()?.width ?? 0) >= 768) {
+    const layersTab = page.getByTestId('left-panel').getByRole('button', { name: 'Layers', exact: true });
+    const layersPanel = page.getByRole('region', { name: 'Layers panel' });
+    await layersTab.focus();
+    for (let index = 0; index < 4; index += 1) await page.keyboard.press('Tab');
+    await expect(layersPanel).toBeFocused();
+    expect(await layersPanel.evaluate((element) => getComputedStyle(element).outlineStyle)).not.toBe('none');
+  }
+  if ((page.viewportSize()?.width ?? 0) >= 768) {
     await page.getByRole('button', { name: 'Brief', exact: true }).click();
     const briefPanel = page.getByTestId('brief-tab');
     await expect(briefPanel.getByText('Employee Experience', { exact: true })).toBeVisible();
@@ -53,18 +70,16 @@ test('the generated employee experience opens in Workbench without serious acces
     await expect(briefPanel.getByText('100%', { exact: true })).toBeVisible();
   }
 
-  const axe = await new AxeBuilder({ page })
-    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
-    .withRules(['target-size'])
-    .analyze();
+  const axe = await scanAccessibility(page);
   await page.screenshot({ path: testInfo.outputPath(`generated-employee-workbench-${testInfo.project.name}.png`), fullPage: false });
   const evidence = {
     route: page.url(),
     viewport: page.viewportSize(),
     projectName: await page.getByRole('heading', { name: /^Workbench:/ }).innerText(),
-    axeTags: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'],
+    axeTags: WCAG_TAGS,
     axeRules: ['target-size'],
-    violations: axe.violations.map(({ id, impact, help, nodes }) => ({ id, impact, help, targets: nodes.map((node) => node.target) })),
+    wcagViolations: axe.wcagViolations.map(({ id, impact, help, nodes }) => ({ id, impact, help, targets: nodes.map((node) => node.target) })),
+    targetSizeViolations: axe.targetSizeViolations.map(({ id, impact, help, nodes }) => ({ id, impact, help, targets: nodes.map((node) => node.target) })),
     consoleErrors,
     pageErrors,
     failedRequests,
@@ -75,7 +90,8 @@ test('the generated employee experience opens in Workbench without serious acces
   mkdirSync(path.dirname(evidencePath), { recursive: true });
   writeFileSync(evidencePath, `${JSON.stringify(evidence, null, 2)}\n`);
   await testInfo.attach(`generated-employee-workbench-${testInfo.project.name}.json`, { path: evidencePath, contentType: 'application/json' });
-  expect(axe.violations, JSON.stringify(evidence, null, 2)).toEqual([]);
+  expect(axe.wcagViolations, JSON.stringify(evidence, null, 2)).toEqual([]);
+  expect(axe.targetSizeViolations, JSON.stringify(evidence, null, 2)).toEqual([]);
   expect(consoleErrors).toEqual([]);
   expect(pageErrors).toEqual([]);
   expect(failedRequests).toEqual([]);

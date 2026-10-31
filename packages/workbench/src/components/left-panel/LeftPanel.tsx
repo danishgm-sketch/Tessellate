@@ -18,6 +18,7 @@ export function LeftPanel() {
     { id: 'library', label: 'Library', icon: <Grid className="h-3.5 w-3.5" /> },
     { id: 'brief', label: 'Brief', icon: <BookOpen className="h-3.5 w-3.5" /> },
   ];
+  const activeTabLabel = tabs.find((tab) => tab.id === activeLeftTab)?.label ?? 'Workbench';
 
   return (
     <aside
@@ -47,7 +48,12 @@ export function LeftPanel() {
       </div>
 
       {/* Active Tab View */}
-      <div className="flex-1 overflow-y-auto">
+      <div
+        role="region"
+        aria-label={`${activeTabLabel} panel`}
+        tabIndex={0}
+        className="flex-1 overflow-y-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--tess-cobalt,#2547E8)]"
+      >
         <Suspense fallback={<div role="status" className="p-4 text-xs text-[var(--text-muted)]">Loading {activeLeftTab}…</div>}>
           {activeLeftTab === 'brief' && <BriefTab />}
           {activeLeftTab === 'pages' && <PagesTab />}
