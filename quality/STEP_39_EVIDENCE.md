@@ -1,6 +1,6 @@
 # Step 39 — Language and copy evidence
 
-Step 39 remains in progress. Findings close as deployed only after version-specific browser evidence is recorded in audit/runtime-audit.json. Public Sites v62 closes 73 copy/resource findings with desktop and mobile evidence; the catalogue-wide manual review remains incomplete. Older issue sections below preserve their contemporaneous status and are superseded by the dated v62 closeout at the end of this file.
+Step 39 remains in progress. Findings close as deployed only after version-specific browser evidence is recorded in audit/runtime-audit.json. Public Sites v62 closes 73 copy/resource findings with desktop and mobile evidence; the catalogue-wide manual review remains incomplete. The manual review has since reproduced AUD-405 on the AI Copilot Sidebar; its fix now passes on the production-equivalent local Sites Worker and awaits the next public Site re-test. Older issue sections below preserve their contemporaneous status and are superseded by the dated v62 closeout and continuation notes at the end of this file.
 
 ## AUD-177 — AI Prompt Hero advertised an unavailable generation service
 
@@ -675,3 +675,11 @@ Two non-Site copy findings were separately verified at their real process bounda
 The v62 ledger now records 220 issue-specific deployed verifications. The 111 findings that were already awaiting hosted verification remain open and consist of 107 Medium and 4 Low items. The four previously outstanding content findings AUD-155/171/232/234 now have issue-appropriate verification; this does not complete the 324-resource subjective copy review, Step 39, or the wider product-hardening programme.
 
 Evidence: `quality/evidence/step-39/public-v62-copy-2026-10-31/deployed-content-regressions.json`, `non-site-content-verification.json`, `runner/flagship-v62-playwright.json`, the two `flagship/compose-workbench-handoff-sites-*.json` runtime records and screenshots, `mcp-client-workflow-report.json`, and `cli-black-box-scaffold-report.json`.
+
+### 2026-10-31 continuation — AUD-405 AI Copilot Sidebar copy and inert action
+
+Manual review of `/r/ai-copilot-sidebar/` on public v62 found that the preview's fixed `DashboardView.tsx` sample was described as real-time AI analysis and file diffs. “Apply All Recommended Fixes” was enabled without an action and produced no visible result. The public v62 desktop/mobile screenshots and browser reports are preserved under `quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/before-v62/`.
+
+The component and manifest now identify the file context and recommendations as examples, explain that the preview does not inspect or modify source, and disable Apply until a host supplies an action callback. Static recommendation rows no longer show hover behavior. A production-equivalent local Sites Worker test passes at 1440×900 and 390×844 (2/2) with no console errors/warnings, uncaught exceptions, failed requests, HTTP errors or overflow. The first local run caught a missing React `useId` import introduced by the fix; that hydration/runtime error was corrected and the regression now also asserts runtime/network cleanliness.
+
+Evidence: `tests/e2e/ai-copilot-sidebar-truthfulness-step-39.spec.ts`; the focused Sites Worker test passed for desktop and mobile; the complete `pnpm test:e2e` run passed 734 tests with 167 expected profile/environment skips and zero failures across Astro desktop/mobile, Sites desktop/mobile, and the Preview app projects. Focused before/after reports, screenshots and Playwright JSON are in `quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/`. AUD-405 is locally verified and remains open until the same regression passes on the next public Site version. This one-resource fix does not complete the subjective review of all 324 resources or Step 39.

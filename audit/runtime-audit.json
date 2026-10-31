@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed 11 additional content findings. CLI/MCP copy claims have separate local client-process verification. The broader hardening programme and manual copy review remain incomplete.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed 11 additional content findings. CLI/MCP copy claims have separate local client-process verification. The broader hardening programme and manual copy review remain incomplete. AUD-405 was reproduced on public v62, fixed and verified locally, and awaits deployed re-test.",
   "entries": [
     {
       "id": "AUD-001",
@@ -17848,8 +17848,61 @@
           }
         ]
       }
+    },
+    {
+      "id": "AUD-405",
+      "severity": "medium",
+      "route": "/r/ai-copilot-sidebar/",
+      "viewport": "1440x900 and 390x844",
+      "category": "state",
+      "title": "AI Copilot Sidebar exposes a dead apply action and claims live analysis",
+      "expected": "The resource should disclose sample-only context and keep applying disabled until a host-provided action is connected.",
+      "actual": "The deployed description promised real-time AI suggestions, file diffs, and inline run triggers. The preview showed a fabricated DashboardView.tsx analysis and an enabled Apply All Recommended Fixes button with no handler; clicking produced no visible change.",
+      "reproduction": [
+        "Open /r/ai-copilot-sidebar/ on public Sites v62 at desktop or mobile.",
+        "Read the live-analysis and file-diff claim, then click Apply All Recommended Fixes in the sandbox preview.",
+        "Observe that the enabled button produces no visible result and the sample content stays unchanged."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/before-v62/ai-copilot-sidebar-sites-chromium.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/before-v62/ai-copilot-sidebar-sites-chromium.png",
+        "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/before-v62/ai-copilot-sidebar-sites-mobile-chromium.png"
+      ],
+      "afterScreenshots": [],
+      "rootCause": "The resource combines fixed illustrative UI data with live-analysis and patch-application claims, while its primary button is enabled without an action callback.",
+      "affectedFiles": [
+        "resources/ai/ai-copilot-sidebar/index.tsx",
+        "resources/ai/ai-copilot-sidebar/manifest.json",
+        "resources/ai/ai-copilot-sidebar/README.md",
+        "tests/e2e/ai-copilot-sidebar-truthfulness-step-39.spec.ts"
+      ],
+      "remediation": "Label all preview context and suggestions as examples, remove pointer affordances from static suggestion cards, and expose a native disabled Apply button until the host supplies an apply callback.",
+      "fixCommit": "fc87de172f74fa9247e6d721e95f840ae4091ebc",
+      "localVerification": {
+        "evidence": [
+          "tests/e2e/ai-copilot-sidebar-truthfulness-step-39.spec.ts",
+          "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/local-after/playwright.json"
+        ],
+        "result": "The production-equivalent Sites Worker regression passed at 1440x900 and 390x844 (2/2). The sample disclosure is visible, Apply is disabled without a host action, sandbox remains allow-scripts without allow-same-origin, and both viewports record zero console errors or warnings, uncaught exceptions, failed requests, HTTP errors, and horizontal overflow. The complete repository pnpm test:e2e run passed 734 tests with 167 expected profile/environment skips and zero failures across Astro desktop/mobile, Sites desktop/mobile, and the Preview app projects.",
+        "screenshots": [
+          "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/local-after/ai-copilot-sidebar-sites-chromium.png",
+          "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/local-after/ai-copilot-sidebar-sites-mobile-chromium.png"
+        ]
+      },
+      "runtimeReports": [
+        "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/before-v62/ai-copilot-sidebar-sites-chromium.json",
+        "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/before-v62/ai-copilot-sidebar-sites-mobile-chromium.json",
+        "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/before-v62/playwright.json"
+      ],
+      "regression": {
+        "before": "The public v62 browser test fails because the apply button is enabled despite the absent host callback; both viewport reports record no visible change after click.",
+        "after": "The same Playwright assertion passes on the production-equivalent local Sites Worker at desktop and mobile. Public retest on the next Site version is pending."
+      },
+      "status": "fixed-local-verified"
     }
   ],
-  "generatedAt": "2026-10-31T12:42:24Z",
+  "generatedAt": "2026-10-31T17:25:08Z",
   "latestDeploymentEvidence": "quality/evidence/step-48/deployed-v61-2026-10-31/route-audit.json"
 }
