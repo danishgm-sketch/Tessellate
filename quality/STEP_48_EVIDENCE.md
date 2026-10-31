@@ -98,14 +98,17 @@ Before screenshots and machine evidence:
 
 This run reproduced AUD-390 (employee experience labelled Recruitment with recruitment-only hard constraints) and AUD-391 (100 displayed as 10000%). Their regressions failed before the fixes and pass after them. Full-root unit tests also exposed AUD-392: a clean standalone export install resolved `tslib@2.9.1`, whose npm tarball returned 404. The exporter now pins the verified 2.8.1 package when Motion is included. The same clean generated export now installs, builds, and passes its Chromium interaction/runtime assertions. Failure and corrected run evidence is in `export-registry-failure.json`.
 
-### Latest local quality results
+### Latest local quality results — 2026-10-31
 
-All gates passed on code head `680fbe1fab99d913885957bd0bb5dd8c3a55fbe1`:
+The updated employee-experience taxonomy and homepage manifest example pass the local quality gates:
 
-- `pnpm install --frozen-lockfile`, `pnpm build:catalog` (324 resources, 40 Gold), `pnpm typecheck`, and `pnpm lint`.
-- `pnpm test`: 1,236 passed, 1 configured skip, 0 failures.
-- `pnpm audit:all`: 16/16 behavioural release checks, 324/324 source-isolation checks, 733 Astro pages built, bundle budgets passed, 324/324 licence/provenance checks, 0 security violations, and no known dependency vulnerabilities.
-- The export regression completed a fresh npm install, production build, and Chromium browser check outside the repository dependency tree.
-- `pnpm test:e2e`: 700 passed, 167 configured skips, 0 unexpected failures. Suite split: root desktop/mobile 357/121, Sites desktop 187/6, Sites mobile 153/40, preview app 3/0.
+- `pnpm install --frozen-lockfile` and `pnpm build:catalog`: pass; 324 resources, 40 Gold.
+- `pnpm typecheck` and `pnpm lint`: pass.
+- `pnpm test`: 1,238 passed, 1 configured skip, 0 failures.
+- `pnpm audit:all`: 16/16 behavioural release checks; 324/324 resource-isolation checks; 733 Astro pages built; bundle budgets passed; 324/324 licence/provenance checks; 0 security violations; no known dependency vulnerabilities.
+- The independent employee React export regression completed clean install, production build, and Chromium interaction/runtime checks outside the repository dependency tree.
+- Browser project reruns: root desktop/mobile Chromium 359 passed / 121 configured skips; Sites desktop Chromium 188 / 6; Sites mobile Chromium 154 / 40; preview app 3 / 0. Across the completed project runs: 704 passed, 167 configured skips, and no remaining failures.
 
-Exact gate outputs are summarized in `quality/evidence/step-48/local-quality-2026-10-30/verification-summary.json`. The public v58 issue-specific re-audit and exact-head GitHub CI are pending; AUD-390 and AUD-391 are not marked deployed-closed yet. AUD-392 is locally verified through the independent exporter runtime test and awaits exact-head CI before non-Site closure.
+One Sites desktop large-Workbench startup assertion timed out during the first chained E2E invocation. The exact 30-screen case passed on its isolated rerun in 2.3 seconds and passed again inside the complete 194-test desktop Sites rerun. The full desktop, mobile and preview-app project reruns completed cleanly; this isolated timeout did not reproduce.
+
+Exact command results are summarized in `quality/evidence/step-48/local-quality-2026-10-31/verification-summary.json`. Public v58 issue-specific verification and exact-head GitHub CI remain pending. AUD-390, AUD-391 and AUD-393 remain open until the same visible checks pass on the newly published Site; AUD-392 is locally verified through the independent exporter runtime test and awaits exact-head CI for ledger closure. The review Site has no D1/R2 bindings, and no paid infrastructure was introduced.

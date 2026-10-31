@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Latest complete public product checkpoint remains Sites v55. Sites v56 was documentation-only. Public Sites v57 targeted audit reproduced AUD-390 and AUD-391 during the exact flagship Compose-to-Direction-C Workbench journey; initial desktop and mobile screenshots plus workflow evidence are under quality/evidence/step-48/deployed-v57-2026-10-30/. A local full test run also reproduced AUD-392 in the real clean standalone export install. All three defects have local regression coverage; hosted re-verification of the two UI findings remains pending. The wider product-hardening programme remains incomplete.",
+  "scope": "Latest complete public product checkpoint remains Sites v55; public Sites v57 was issue-audited at desktop and mobile for the exact flagship Compose-to-Direction-C workflow and homepage example. AUD-390 and AUD-391 were reproduced in Workbench, AUD-393 in the static homepage manifest excerpt, and AUD-392 in a clean standalone export install. The employee taxonomy correction now classifies employee experience as SaaS while retaining hiring intent under Recruitment. Local gates pass; Sites v58 deployed verification and exact-head CI are pending. Before evidence and browser findings are under quality/evidence/step-48/deployed-v57-2026-10-30/. The wider product-hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -15070,25 +15070,26 @@
       "route": "/workbench?project=proj-direction-c-cc525585148f448eaa84b778996edb59dirc",
       "viewport": "1440x900",
       "category": "data",
-      "title": "Employee experience intent inherited recruitment-only constraints",
-      "expected": "The Product Intent panel should describe an employee experience product and must not inherit recruiting-specific forbidden patterns.",
-      "actual": "Direction C's project description, audience, objective, and screens were employee-focused, but the Workbench labelled the dominant archetype Recruitment and its ProductModel retained hiring-only forbidden patterns.",
+      "title": "Employee experience directions serialized a recruitment archetype",
+      "expected": "The ProductModel and Design DNA for the employee experience brief should use the SaaS taxonomy while retaining the employee-specific audience, entities, workflows, screens and constraints.",
+      "actual": "On v57 the visible architecture and employee-specific screens said Employee Experience, but the opened Direction C manifest serialized designDNA.primaryArchetype as recruitment. The Workbench also rendered the earlier recruitment label and recruiting-only constraints.",
       "reproduction": [
         "Open /compose and enter the exact employee-experience flagship brief.",
         "Compose all three directions and open Direction C in Workbench.",
-        "Open Brief and inspect Identified Archetypes and Hard Constraints."
+        "Open Brief and inspect Identified Archetypes and Hard Constraints.",
+        "Open Direction C's full preview and Design DNA and resource references; inspect the serialized primaryArchetype field."
       ],
       "console": [],
       "network": [],
       "screenshot": "quality/evidence/step-48/deployed-v57-2026-10-30/before-aud390-391-workbench-1440x900.png",
-      "rootCause": "Employee-experience specialization replaced some recruitment profile fields but retained the recruitment definition's forbiddenPatterns; the Workbench also displayed the generic base archetype name instead of the specialized name.",
-      "affectedCode": "packages/composer/src/domain-context.ts; packages/composer/src/index.ts; packages/workbench/src/components/left-panel/BriefTab.tsx",
-      "remediation": "Clear recruitment-only forbidden patterns for employee experience and reuse the shared specialization helper for the user-facing archetype name.",
-      "fixCommit": "88c14f9eecb468b0036dea263469292666149b44",
+      "rootCause": "The recruitment primary-signal list treated employee experience and people-operations language as hiring intent. The specialization changed some user-facing profile fields without changing the archetype ID; the homepage also carried a separate hand-written snippet with the same incorrect recruitment tag.",
+      "affectedCode": "packages/composer/src/archetypes.ts; packages/composer/src/domain-context.ts; packages/composer/src/showcases.ts; packages/compatibility/src/showcase-composition.ts; packages/workbench/src/components/left-panel/BriefTab.tsx",
+      "remediation": "Classify explicit employee-experience and people-operations products under the existing SaaS archetype, specialize their ProductModel from that base, keep explicit recruiting language and overrides on Recruitment, and align showcase metadata and generated starter data.",
+      "fixCommit": "310570e94ea1e603f767b4a179bbea23f51ec4bf",
       "status": "fixed-awaiting-deployed-verification",
       "localVerification": {
-        "regressionEvidence": "packages/composer/src/__tests__/product-interpretation-benchmark.test.ts (REC-02) and packages/workbench/src/__tests__/workbench-ui.test.tsx",
-        "result": "Pre-fix semantic and visible Workbench regressions failed. The REC-02 case and Workbench rendering regression pass after the fix; deployed v58 verification pending."
+        "regressionEvidence": "Pre-fix: product-interpretation-benchmark.test.ts and showcase-composition.test.ts both returned recruitment. Post-fix: composer, 100-brief interpretation, screen-planning, showcase and composition benchmarks pass (241 tests); flagship-generated-product-a11y.spec.ts verifies Direction C JSON and Brief tab on desktop and the direction manifest on mobile.",
+        "result": "The new benchmark expectations failed on the old source, then passed after the taxonomy and specialization correction. The desktop/mobile UI tests pass locally; deployed v58 verification remains pending."
       }
     },
     {
@@ -15153,7 +15154,52 @@
         "regressionEvidence": "tests/employee-export-runtime.test.ts: standalone employee product preserves nested records and CTA content in a real independent runtime",
         "result": "Pre-fix independent npm install failed at the 404 tarball. After pinning tslib 2.8.1, clean npm install, build, Chromium browser interaction, and browser error/network assertions pass. Full unit suite (1236 passed, 1 configured skip), 16-point release audit, production build, bundle/security/licence/provenance audits and complete E2E (700 passed, 167 configured skips) also pass."
       }
+    },
+    {
+      "id": "AUD-393",
+      "severity": "medium",
+      "route": "/",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Homepage employee-experience manifest excerpt used the recruitment tag",
+      "expected": "The illustrative ProductManifest excerpt labelled Employee experience should use an archetype consistent with an internal employee platform.",
+      "actual": "The homepage's agent-handoff code excerpt named Employee experience but assigned productArchetypes.tag to recruitment.",
+      "reproduction": [
+        "Open the public review homepage at 1440x900.",
+        "Scroll to the Built for autonomous agents section.",
+        "Inspect the illustrative ProjectManifest excerpt."
+      ],
+      "console": [],
+      "network": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+          "status": 200
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+          "status": 302,
+          "note": "Cloudflare challenge-script redirect; no failed request or application console error."
+        },
+        {
+          "requestCount": 29,
+          "httpStatusCounts": {
+            "200": 28,
+            "302": 1
+          },
+          "failedRequests": 0
+        }
+      ],
+      "screenshot": "quality/evidence/step-48/deployed-v57-2026-10-30/before-home-employee-taxonomy-1440x900.png",
+      "rootCause": "The agent handoff section contained a static JSX JSON string separate from the composition engine and its regression suite.",
+      "affectedCode": "apps/site/src/components/home/AgentsSection.tsx; tests/e2e/showcase-content-copy-regression.spec.ts",
+      "remediation": "Update the illustrative archetype to SaaS and keep a browser-level regression asserting that the employee example never claims the recruitment archetype.",
+      "fixCommit": "310570e94ea1e603f767b4a179bbea23f51ec4bf",
+      "status": "fixed-awaiting-deployed-verification",
+      "localVerification": {
+        "regressionEvidence": "tests/e2e/showcase-content-copy-regression.spec.ts: homepage employee experience example uses the SaaS taxonomy",
+        "result": "The regression failed against v57 and passes on the local production build in desktop and mobile projects. Full local production audit and browser project reruns pass; the v58 deployed verification remains pending."
+      }
     }
   ],
-  "generatedAt": "2026-10-30T21:11:31.838Z"
+  "generatedAt": "2026-10-31T00:58:39Z"
 }
