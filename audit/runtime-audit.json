@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Latest complete public product checkpoint remains Sites v55; public Sites v57 was issue-audited at desktop and mobile for the exact flagship Compose-to-Direction-C workflow and homepage example. AUD-390 and AUD-391 were reproduced in Workbench, AUD-393 in the static homepage manifest excerpt, and AUD-392 in a clean standalone export install. The employee taxonomy correction now classifies employee experience as SaaS while retaining hiring intent under Recruitment. Local gates pass; Sites v58 deployed verification and exact-head CI are pending. Before evidence and browser findings are under quality/evidence/step-48/deployed-v57-2026-10-30/. The wider product-hardening programme remains incomplete.",
+  "scope": "Public Sites v59 complete deployed audit, 2026-10-31. All 44 requested/representative routes pass at desktop and mobile (88/88). AUD-395–399 closed after live v59 issue-specific checks. Corrected full Axe scans uncovered AUD-401, fixed and locally verified in 5dfb5b7207dd04b007e551add27aad7e5f918d91; pending exact-head CI and v60 deployed re-audit. Full programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -15199,33 +15199,313 @@
         "regressionEvidence": "tests/e2e/showcase-content-copy-regression.spec.ts: homepage employee experience example uses the SaaS taxonomy",
         "result": "The regression failed against v57 and passes on the local production build in desktop and mobile projects. Full local production audit and browser project reruns pass; the v58 deployed verification remains pending."
       }
-  },
-  {
-    "id": "AUD-394",
-    "severity": "medium",
-    "route": "Repository dependency audit (pnpm audit:dependencies)",
-    "viewport": "not applicable",
-    "category": "security",
-    "title": "The locked dependency graph contained current glob and minimatch advisories",
-    "expected": "The frozen workspace dependency graph passes the package advisory audit without known vulnerabilities.",
-    "actual": "CI reported moderate GHSA-g3hv-75wg-m249 in minimatch below 11.0.1 and GHSA-3g3m-2fjr-6pw4 in glob through 14.0.1. The locked tree contained minimatch 3.1.5/10.2.6 and glob 11.1.0.",
-    "reproduction": [
-      "Run pnpm install --frozen-lockfile on the affected head.",
-      "Run pnpm audit:dependencies and inspect the reported advisory paths."
-    ],
-    "console": [],
-    "network": [],
-    "screenshot": null,
-    "rootCause": "The CLI, ingestion, and linter declared glob 11.x, and transitive dependency ranges retained minimatch versions below the newly published patched release.",
-    "affectedCode": "packages/cli/package.json; packages/ingest/package.json; packages/linter/package.json; pnpm-workspace.yaml; pnpm-lock.yaml",
-    "remediation": "Upgrade direct glob dependencies to 14.0.2 or newer and pin transitive minimatch resolutions below 11.0.1 to 11.0.1.",
-    "fixCommit": "e41ccb375a63e48d75888c5f9f0a5ccc0bb21725",
-    "status": "fixed-local-verified",
-    "localVerification": {
-      "regressionEvidence": "quality/evidence/step-48/security/dependency-audit-2026-10-31.json",
-      "result": "The affected 93 CLI, ingest, and linter tests pass; all 1,238 unit/integration tests pass with one configured skip; typecheck, lint, and pnpm audit:all pass; the refreshed audit reports no known vulnerabilities. Exact-head CI is pending."
-    }
+    },
+    {
+      "id": "AUD-394",
+      "severity": "medium",
+      "route": "Repository dependency audit (pnpm audit:dependencies)",
+      "viewport": "not applicable",
+      "category": "security",
+      "title": "The locked dependency graph contained current glob and minimatch advisories",
+      "expected": "The frozen workspace dependency graph passes the package advisory audit without known vulnerabilities.",
+      "actual": "CI reported moderate GHSA-g3hv-75wg-m249 in minimatch below 11.0.1 and GHSA-3g3m-2fjr-6pw4 in glob through 14.0.1. The locked tree contained minimatch 3.1.5/10.2.6 and glob 11.1.0.",
+      "reproduction": [
+        "Run pnpm install --frozen-lockfile on the affected head.",
+        "Run pnpm audit:dependencies and inspect the reported advisory paths."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The CLI, ingestion, and linter declared glob 11.x, and transitive dependency ranges retained minimatch versions below the newly published patched release.",
+      "affectedCode": "packages/cli/package.json; packages/ingest/package.json; packages/linter/package.json; pnpm-workspace.yaml; pnpm-lock.yaml",
+      "remediation": "Upgrade direct glob dependencies to 14.0.2 or newer and pin transitive minimatch resolutions below 11.0.1 to 11.0.1.",
+      "fixCommit": "e41ccb375a63e48d75888c5f9f0a5ccc0bb21725",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionEvidence": "quality/evidence/step-48/security/dependency-audit-2026-10-31.json",
+        "result": "The affected 93 CLI, ingest, and linter tests pass; all 1,238 unit/integration tests pass with one configured skip; typecheck, lint, and pnpm audit:all pass; the refreshed audit reports no known vulnerabilities. Exact-head CI is pending."
+      }
+    },
+    {
+      "id": "AUD-395",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "data",
+      "title": "Hierarchy audit falsely marks every employee-experience screen as missing a header",
+      "expected": "The deterministic audit should recognize the page-heading, hero and navigation semantics that the rendered screen actually contains.",
+      "actual": "The flagship project shows seven warnings and a hierarchy score of 0/10; each of its seven valid screens is reported as lacking a primary focal header or navigation landmark.",
+      "reproduction": [
+        "Open /compose and enter the exact employee-experience brief.",
+        "Compose, inspect the architecture and select Direction C.",
+        "Open Workbench Audit; note the seven HIERARCHY warnings.",
+        "Inspect Team Overview and Marketing Home: each has visible headings and navigation."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/audit-false-hierarchy-flagship.jpg",
+      "rootCause": "packages/workbench/src/audit/audit-engine.ts evaluateHierarchy only accepts semanticRole values navigation-header and hero-section; valid generated roles such as navigation, page-heading and hero are not recognized.",
+      "fixCommit": "9a93b41c080cc214313532807a336b4780ae73e4",
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 59,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_489d5458b5308191a9f064bed6cedecb",
+        "canonicalSourceCommit": "9a93b41c080cc214313532807a336b4780ae73e4",
+        "siteSourceCommit": "1cb4327f8d28d6ee842ac88a80189c872cfa77d6",
+        "checkedAt": "2026-10-31T09:12:06.868Z",
+        "route": "/workbench",
+        "viewportChecks": [
+          "1440x900",
+          "390x844"
+        ],
+        "result": "PASS",
+        "evidence": "quality/evidence/step-48/deployed-v59-2026-10-31/route-audit.json",
+        "issueSpecificVisibleAudit": {
+          "result": "PASS",
+          "direction": "C",
+          "screens": [
+            "Marketing Home",
+            "Team Overview",
+            "People Directory",
+            "Teams",
+            "Engagement",
+            "Onboarding",
+            "Settings & Policies"
+          ],
+          "desktop": {
+            "viewport": "1440x900",
+            "hierarchyScore": "10/10",
+            "falseHierarchyFindings": 0,
+            "consoleErrors": 0,
+            "pageErrors": 0,
+            "failedRequests": 0,
+            "httpErrors": 0,
+            "screenshot": "quality/evidence/step-48/deployed-v59-2026-10-31/flagship-audit-results/flagship-audit-v59-employe-360d4-gation-as-missing-hierarchy-public-v59-desktop-1440/employee-hierarchy-audit-public-v59-desktop-1440.png"
+          },
+          "mobile": {
+            "viewport": "390x844",
+            "hierarchyScore": "10/10",
+            "falseHierarchyFindings": 0,
+            "consoleErrors": 0,
+            "pageErrors": 0,
+            "failedRequests": 0,
+            "httpErrors": 0,
+            "screenshot": "quality/evidence/step-48/deployed-v59-2026-10-31/flagship-audit-results/flagship-audit-v59-employe-360d4-gation-as-missing-hierarchy-public-v59-mobile-390/employee-hierarchy-audit-public-v59-mobile-390.png"
+          },
+          "machineEvidence": "quality/evidence/step-48/deployed-v59-2026-10-31/flagship-audit-playwright.json"
+        }
+      }
+    },
+    {
+      "id": "AUD-396",
+      "severity": "medium",
+      "route": "/tools/accessibility",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Auto-Fix Contrast can leave normal text below WCAG AA",
+      "expected": "Auto-Fix Contrast should choose a foreground/background pair with at least 4.5:1 contrast for normal text.",
+      "actual": "With foreground #777777 and background #888888, Auto-Fix chooses white and reports a 3.54:1 ratio; large text and UI components pass, but normal text still fails.",
+      "reproduction": [
+        "Open /tools/accessibility.",
+        "Set foreground to #777777 and background to #888888.",
+        "Click Auto-Fix Contrast.",
+        "Read the contrast ratio and Normal Text result."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/tool-accessibility-autofix-fails-text.jpg",
+      "rootCause": "apps/site/src/components/tools/AccessibilityLab.tsx chooses white or dark ink using a fixed background-luminance threshold instead of comparing resulting contrast ratios.",
+      "fixCommit": "9a93b41c080cc214313532807a336b4780ae73e4",
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 59,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_489d5458b5308191a9f064bed6cedecb",
+        "canonicalSourceCommit": "9a93b41c080cc214313532807a336b4780ae73e4",
+        "siteSourceCommit": "1cb4327f8d28d6ee842ac88a80189c872cfa77d6",
+        "checkedAt": "2026-10-31T09:12:06.868Z",
+        "route": "/tools/accessibility",
+        "viewportChecks": [
+          "1440x900",
+          "390x844"
+        ],
+        "result": "PASS",
+        "evidence": "quality/evidence/step-48/deployed-v59-2026-10-31/route-audit.json",
+        "issueSpecificEvidence": "quality/evidence/step-48/deployed-v59-2026-10-31/closed-findings-playwright.json"
+      }
+    },
+    {
+      "id": "AUD-397",
+      "severity": "medium",
+      "route": "/r/collapsible-sidebar/",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Resource variant control does not announce its selected state",
+      "expected": "Variant buttons should expose their current selection to assistive technology while keeping the preview synchronized.",
+      "actual": "Keyboard and pointer selection changes the preview and the visual active style, but none of the variant buttons has aria-pressed or equivalent selected-state semantics.",
+      "reproduction": [
+        "Open /r/collapsible-sidebar/.",
+        "Select Expressive, then Nocturne, using both pointer and keyboard.",
+        "Observe the preview changes to the selected dark variant; inspect the buttons' accessible state."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/resource-variant-nocturne-selection.jpg",
+      "rootCause": "apps/site/src/components/ResourcePreviewFrame.tsx uses visual classes to indicate the selected variant but does not expose pressed/selected state on the buttons.",
+      "fixCommit": "9a93b41c080cc214313532807a336b4780ae73e4",
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 59,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_489d5458b5308191a9f064bed6cedecb",
+        "canonicalSourceCommit": "9a93b41c080cc214313532807a336b4780ae73e4",
+        "siteSourceCommit": "1cb4327f8d28d6ee842ac88a80189c872cfa77d6",
+        "checkedAt": "2026-10-31T09:12:06.868Z",
+        "route": "/r/collapsible-sidebar/",
+        "viewportChecks": [
+          "1440x900",
+          "390x844"
+        ],
+        "result": "PASS",
+        "evidence": "quality/evidence/step-48/deployed-v59-2026-10-31/route-audit.json",
+        "issueSpecificEvidence": "quality/evidence/step-48/deployed-v59-2026-10-31/closed-findings-playwright.json"
+      }
+    },
+    {
+      "id": "AUD-398",
+      "severity": "medium",
+      "route": "/explore",
+      "viewport": "1440x900",
+      "category": "network",
+      "title": "One transient catalogue fetch failure requires a manual retry",
+      "expected": "A transient edge/network reset while fetching the static catalogue should recover once automatically before showing a blocking catalogue error.",
+      "actual": "One clean-context Explore load displayed TypeError: Failed to fetch and Catalogue unavailable, with a DevTools ERR_CONNECTION_RESET. The visible Retry loaded the catalogue; three later no-cache reloads and a second clean context passed. DevTools showed HTTP 200 for the catalogue request on the failed load, so exact request attribution of the reset is not established.",
+      "reproduction": [
+        "Open the deployed /explore route in a fresh browser context with no cached catalogue.",
+        "Observe the catalogue error state and browser connection-reset error.",
+        "Click Retry catalogue; verify results and filters load.",
+        "Repeat in three reloads and a separate clean context; these later attempts pass."
+      ],
+      "console": [
+        "Failed to load resource: net::ERR_CONNECTION_RESET",
+        "Could not load the catalogue: TypeError: Failed to fetch"
+      ],
+      "network": [
+        "GET /data/catalog.json recorded HTTP 200 during the failed attempt; visible Retry returned HTTP 304 and loaded the 324-resource catalogue."
+      ],
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/explore-catalogue-transient-error.png",
+      "rootCause": "ExploreView and ComposeView make a single fetch attempt and immediately render an error on rejection; recovery depends on the user clicking Retry, with no automatic transient retry.",
+      "fixCommit": "9a93b41c080cc214313532807a336b4780ae73e4",
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 59,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_489d5458b5308191a9f064bed6cedecb",
+        "canonicalSourceCommit": "9a93b41c080cc214313532807a336b4780ae73e4",
+        "siteSourceCommit": "1cb4327f8d28d6ee842ac88a80189c872cfa77d6",
+        "checkedAt": "2026-10-31T09:12:06.868Z",
+        "route": "/explore",
+        "viewportChecks": [
+          "1440x900",
+          "390x844"
+        ],
+        "result": "PASS",
+        "evidence": "quality/evidence/step-48/deployed-v59-2026-10-31/route-audit.json",
+        "issueSpecificEvidence": "quality/evidence/step-48/deployed-v59-2026-10-31/closed-findings-playwright.json"
+      }
+    },
+    {
+      "id": "AUD-399",
+      "severity": "low",
+      "route": "/robots.txt",
+      "viewport": "1440x900",
+      "category": "network",
+      "title": "The public robots.txt route returns HTTP 404",
+      "expected": "The deployed public shell should serve a valid robots.txt response.",
+      "actual": "Direct navigation to /robots.txt returns HTTP 404 and Chrome's page-not-found response.",
+      "reproduction": [
+        "Navigate directly to https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/robots.txt.",
+        "Inspect the DevTools document request; it returns HTTP 404."
+      ],
+      "console": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "network": [
+        "GET /robots.txt HTTP 404"
+      ],
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/robots-txt-404.png",
+      "rootCause": "The static public directory does not include a robots.txt file.",
+      "fixCommit": "9a93b41c080cc214313532807a336b4780ae73e4",
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 59,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_489d5458b5308191a9f064bed6cedecb",
+        "canonicalSourceCommit": "9a93b41c080cc214313532807a336b4780ae73e4",
+        "siteSourceCommit": "1cb4327f8d28d6ee842ac88a80189c872cfa77d6",
+        "checkedAt": "2026-10-31T09:12:06.868Z",
+        "route": "/robots.txt",
+        "viewportChecks": [
+          "1440x900",
+          "390x844"
+        ],
+        "result": "PASS",
+        "evidence": "quality/evidence/step-48/deployed-v59-2026-10-31/route-audit.json",
+        "issueSpecificEvidence": "quality/evidence/step-48/deployed-v59-2026-10-31/closed-findings-playwright.json"
+      }
+    },
+    {
+      "id": "AUD-400",
+      "severity": "medium",
+      "route": "Automated accessibility suite",
+      "viewport": "not applicable",
+      "category": "accessibility",
+      "title": "Axe regression tests unintentionally scanned only target size",
+      "expected": "The accessibility gate should execute the declared WCAG 2.2 A/AA tags and target-size rule as separate scans.",
+      "actual": "Chaining AxeBuilder.withRules() after withTags() replaces the runOnly filter, so prior tests reported passing target-size results without executing the WCAG tag scan.",
+      "reproduction": [
+        "Inspect tests/e2e/accessibility-hardening-step-35.spec.ts and tests/e2e/flagship-generated-product-a11y.spec.ts: the prior chain called withTags(...).withRules(...).",
+        "Run the separate full WCAG scan on the public v59 generated employee Workbench. It reports scrollable-region-focusable on desktop, while the prior target-size-only scan reported no finding.",
+        "Run the corrected WCAG-tag and target-size scans independently; the remaining product issue is AUD-401."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "AxeBuilder fluent methods replace the runOnly filter rather than merging tags and rules.",
+      "affectedCode": "tests/e2e/accessibility-hardening-step-35.spec.ts; tests/e2e/flagship-generated-product-a11y.spec.ts",
+      "remediation": "Run withTags(WCAG_TAGS).analyze() and withRules(['target-size']).analyze() independently, and keep scanner-generated CSP probe messages separate from product runtime.",
+      "fixCommit": "5dfb5b7207dd04b007e551add27aad7e5f918d91",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "evidence": "quality/evidence/step-48/deployed-v59-2026-10-31/axe/deployed-v59-summary.json",
+        "result": "The corrected live v59 scan passed every core route and Workbench mode except the independently recorded AUD-401. Frozen install, catalogue build, typecheck, lint, all 1,244 unit/integration tests, audit:all, and full pnpm test:e2e passed on the fix commit. GitHub exact-head CI is pending."
+      }
+    },
+    {
+      "id": "AUD-401",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Workbench scrollable left panel cannot receive keyboard focus",
+      "expected": "Keyboard users must be able to move focus into the active left-panel scroll region and scroll its contents.",
+      "actual": "A full deployed WCAG scan on v59 reported serious scrollable-region-focusable on the 280px left-panel scroll container. The mobile viewport did not reproduce it.",
+      "reproduction": [
+        "Open /compose and enter the exact employee-experience brief from the v59 workflow evidence.",
+        "Compose, select Direction C, and open Workbench at 1440x900.",
+        "Run the WCAG 2.2 A/AA Axe scan or Tab through Layers, Pages, Library and Brief into the active Layers panel.",
+        "Before the fix, focus skipped the scrollable region; after the local fix, the Layers panel receives focus and has a visible outline."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-48/deployed-v59-2026-10-31/flagship/employee-workbench-desktop-1440.png",
+      "rootCause": "The active left-panel content wrapper used overflow-y-auto without keyboard focusability, accessible region semantics or a visible focus style.",
+      "affectedCode": "packages/workbench/src/components/left-panel/LeftPanel.tsx",
+      "remediation": "Expose the active panel as a named focusable region with tabIndex=0 and a visible focus-visible outline; verify the key sequence and full Axe scans in a generated employee project.",
+      "fixCommit": "5dfb5b7207dd04b007e551add27aad7e5f918d91",
+      "status": "fixed-local-awaiting-deployed-verification",
+      "localVerification": {
+        "evidence": "quality/evidence/step-48/deployed-v59-2026-10-31/axe/local-after",
+        "result": "Visible generated-product Playwright regression passes at 1440x900 and 390x844: focus enters the named active Layers region with visible outline, full WCAG and target-size scans report zero violations, and console/page/network/HTTP error arrays are empty. Full pnpm test:e2e also passed: 724 passed, 167 configured skips, 0 failures. GitHub exact-head CI and v60 deployed re-audit remain pending."
+      }
     }
   ],
-  "generatedAt": "2026-10-31T01:32:34Z"
+  "generatedAt": "2026-10-31T10:05:05.262Z",
+  "latestDeploymentEvidence": "quality/evidence/step-48/deployed-v59-2026-10-31/route-audit.json"
 }

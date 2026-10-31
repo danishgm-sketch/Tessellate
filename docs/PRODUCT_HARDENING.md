@@ -10,17 +10,23 @@ Canonical integration candidate: `consolidation/product-hardening`. `main` remai
 the protected released branch until a reviewed PR with green CI is merged.
 Legacy branches are evidence/reference, never parallel sources of product truth.
 
-## Current release evidence (2026-10-30)
+## Current release evidence (2026-10-31)
 
-The latest complete deployed product re-audit remains public review Site v55,
-recorded in `quality/STEP_45_EVIDENCE.md` (2026-10-28). Public Site v56 is now
-live with the current product-hardening, decision, and inventory documentation;
-its targeted six-route desktop/mobile smoke passed 12/12 checks. This is a
-documentation publication, not a replacement for the full v55 route, flagship,
-accessibility, responsive, and export audit. Evidence is in
-`quality/evidence/step-48/sites-v56-targeted-smoke-2026-10-30/`. Use current
-Sites metadata for present runtime status. These docs corrections do not close
-unrelated findings that still require issue-specific deployed verification.
+The public review Site is v59 at
+`https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`, built from
+canonical commit `9a93b41c080cc214313532807a336b4780ae73e4` (Sites source
+mirror `1cb4327f8d28d6ee842ac88a80189c872cfa77d6`). The full public route pass
+visited 44 routes at 1440×900 and 390×844; all 88 checks passed with no HTTP,
+console, uncaught-exception, request, or overflow failures. The visible
+employee-experience flagship flow and independent standalone React export also
+passed. A corrected Axe scan found one serious keyboard-accessibility defect in
+the generated desktop Workbench (AUD-401). The fix is committed as
+`5dfb5b7207dd04b007e551add27aad7e5f918d91`; the full local suite passes, and
+the finding remains open until a newly deployed version passes the same scan.
+Full evidence is in
+`quality/evidence/step-48/deployed-v59-2026-10-31/` and
+`audit/RUNTIME_AUDIT.md`.
+
 D1/R2 remain unprovisioned. Step 46 is
 owner-waived, not passed; Step 47 is complete; Step 48 remains open until the
 protected release path and required deployed verification are complete.

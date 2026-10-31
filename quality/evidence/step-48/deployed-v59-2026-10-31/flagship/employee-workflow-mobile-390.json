@@ -1,0 +1,40 @@
+{
+  "brief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=proj-direction-c-fe0f93207d354322b32ea42b23a65577dirc",
+  "projectId": "proj-direction-c-fe0f93207d354322b32ea42b23a65577dirc",
+  "selectedDirection": "C",
+  "screens": [
+    "Marketing Home",
+    "Team Overview",
+    "People Directory",
+    "Teams",
+    "Engagement",
+    "Onboarding",
+    "Settings & Policies"
+  ],
+  "lockedNode": {
+    "id": "node-screen-overview-metric-cards-3",
+    "subtreeSha256": "f23205c7366f907557f65f9b433ad6788ed497044d5defe5248a33350741c560",
+    "resource": "dashboard-kpi-grid"
+  },
+  "replacement": {
+    "nodeId": "node-screen-overview-activity-feed-5",
+    "resource": "notification-centre"
+  },
+  "undoRedo": "surprise, replacement and recomposition restored exactly through exported manifests",
+  "standaloneZip": {
+    "filename": "master-detail-explorer-employee-experience.zip",
+    "files": 34,
+    "builtAndBrowsed": false
+  },
+  "screenshot": "audit\\evidence\\v26\\flagship\\employee-workbench-mobile-390.png",
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

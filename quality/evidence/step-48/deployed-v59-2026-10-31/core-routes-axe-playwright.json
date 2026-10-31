@@ -1,0 +1,667 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "quality/evidence/step-48/deployed-v59-2026-10-31/core-routes-a11y.playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-48\\deployed-v59-2026-10-31\\core-routes-a11y.playwright.config.mjs",
+    "rootDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-48/deployed-v59-2026-10-31/core-axe-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "sites-v59-desktop",
+        "name": "sites-v59-desktop",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "accessibility-hardening-step-35.spec.ts"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-48/deployed-v59-2026-10-31/core-axe-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "sites-v59-mobile",
+        "name": "sites-v59-mobile",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "accessibility-hardening-step-35.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-48\\deployed-v59-2026-10-31\\core-routes-axe-playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "accessibility-hardening-step-35.spec.ts",
+      "file": "accessibility-hardening-step-35.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Compose labels describe form fields rather than styling non-field controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-desktop",
+              "projectName": "sites-v59-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2493,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:03.429Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-b44f933eea56be5f9146",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "showcase previews continue the document heading hierarchy",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-desktop",
+              "projectName": "sites-v59-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4064,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:06.016Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-df622bc9be45f6a0c129",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "Core surfaces pass WCAG 2.2 A/AA and target-size scans",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-desktop",
+              "projectName": "sites-v59-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11446,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:10.087Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-2e887f21cbc3eb9e3bcd",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 92,
+          "column": 1
+        },
+        {
+          "title": "keyboard dialogs trap focus, close with Escape, and return focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-desktop",
+              "projectName": "sites-v59-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1335,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:21.541Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-a9337944889da6d2c212",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 201,
+          "column": 1
+        },
+        {
+          "title": "every public and editing shell exposes a working keyboard skip target",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-desktop",
+              "projectName": "sites-v59-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2076,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:22.884Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-ac53c93c35da503abd33",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 297,
+          "column": 1
+        },
+        {
+          "title": "reduced motion and 200 percent equivalent layout keep Core controls usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-desktop",
+              "projectName": "sites-v59-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1001,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:24.965Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-3ac877e7e1b0f3d8642e",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 327,
+          "column": 1
+        },
+        {
+          "title": "Workbench landmarks and every primary mode pass WCAG 2.2 A/AA",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-desktop",
+              "projectName": "sites-v59-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5487,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:25.975Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-ea9a6a720b6c0a97abee",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 355,
+          "column": 1
+        },
+        {
+          "title": "keyboard users can reorder Workbench layers without drag and drop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-desktop",
+              "projectName": "sites-v59-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1929,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:31.469Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-5f5a0a75fd313156817d",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 393,
+          "column": 1
+        },
+        {
+          "title": "Compose labels describe form fields rather than styling non-field controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-mobile",
+              "projectName": "sites-v59-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 358,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:33.909Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-b4bfeb9d56a21a5166df",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "showcase previews continue the document heading hierarchy",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-mobile",
+              "projectName": "sites-v59-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3192,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:34.365Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-69bce1085506e7407bc5",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "Core surfaces pass WCAG 2.2 A/AA and target-size scans",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-mobile",
+              "projectName": "sites-v59-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13963,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:37.565Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-b06186f365a700404e95",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 92,
+          "column": 1
+        },
+        {
+          "title": "keyboard dialogs trap focus, close with Escape, and return focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-mobile",
+              "projectName": "sites-v59-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2770,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:51.534Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-717e31699cd4fbb31d9f",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 201,
+          "column": 1
+        },
+        {
+          "title": "every public and editing shell exposes a working keyboard skip target",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-mobile",
+              "projectName": "sites-v59-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2510,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:54.312Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-6865338644587d09dea7",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 297,
+          "column": 1
+        },
+        {
+          "title": "reduced motion and 200 percent equivalent layout keep Core controls usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-mobile",
+              "projectName": "sites-v59-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 992,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:56.828Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-01ed75f333769356fe70",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 327,
+          "column": 1
+        },
+        {
+          "title": "Workbench landmarks and every primary mode pass WCAG 2.2 A/AA",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-v59-mobile",
+              "projectName": "sites-v59-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4213,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:25:57.826Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-2d26b2c647e0ed73cee7",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 355,
+          "column": 1
+        },
+        {
+          "title": "keyboard users can reorder Workbench layers without drag and drop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mobile selection and action reachability are covered in the mobile Workbench workflow; this ordering regression targets the desktop Layers panel.",
+                  "location": {
+                    "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\accessibility-hardening-step-35.spec.ts",
+                    "line": 394,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "sites-v59-mobile",
+              "projectName": "sites-v59-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 55,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:26:02.045Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Mobile selection and action reachability are covered in the mobile Workbench workflow; this ordering regression targets the desktop Layers panel.",
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\accessibility-hardening-step-35.spec.ts",
+                        "line": 394,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "9d3ea45a9a2dc6f01dcf-bc0018a5347ef086754a",
+          "file": "accessibility-hardening-step-35.spec.ts",
+          "line": 393,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-31T09:25:02.947Z",
+    "duration": 59255.012,
+    "expected": 15,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
