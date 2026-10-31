@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62 and v63 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed 11 additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. The broader hardening programme and manual copy review remain incomplete.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62 and v63 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed 11 additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. The broader hardening programme and manual copy review remain incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -17941,8 +17941,137 @@
           }
         ]
       }
+    },
+    {
+      "id": "AUD-406",
+      "severity": "medium",
+      "route": "/r/ai-empty-state/ (shared resource detail component also serves /resources/[slug])",
+      "viewport": "1440x900 and 390x844",
+      "category": "accessibility",
+      "title": "Resource detail tabs do not expose selection semantics or keyboard navigation",
+      "expected": "The information selector should expose a named tablist, eight tabs with an accurate selected state and roving focus, a labelled tabpanel, and Arrow/Home/End keyboard navigation.",
+      "actual": "On public Sites v63 the visible controls switched panels by mouse, but the accessibility tree exposed eight generic buttons with no selected state or tab panel relationship. The visual distinction did not tell screen-reader users which panel was active, and the component had no tab-arrow keyboard handling.",
+      "reproduction": [
+        "Open https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-empty-state/ at 1440x900 or 390x844.",
+        "Scroll to the resource information selector and inspect the accessibility tree: the eight selectors are generic buttons with no selected state or tablist/tabpanel semantics.",
+        "The public-v63 regression fails because the named Resource information tablist cannot be found."
+      ],
+      "console": [],
+      "network": [
+        "The resource route, assets, and isolated preview returned successfully; no failed requests or HTTP error responses were recorded. Cloudflare's injected challenge script made an expected 302 redirect before its successful response.",
+        "Axe's injected inline style violates the app CSP; this harness-generated console error and warning are recorded separately in ai-empty-state-report.json and are not application-runtime errors."
+      ],
+      "screenshot": "quality/evidence/step-39/public-v63-manual-review/ai-empty-state-desktop-viewport.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-39/public-v63-manual-review/ai-empty-state-desktop-viewport.png",
+        "quality/evidence/step-39/public-v63-manual-review/ai-empty-state-mobile-viewport.png"
+      ],
+      "rootCause": "ResourceTabs used component state only for visual styling and conditional content. It provided no tablist/tab/tabpanel semantics, selected-state attributes, roving tabindex, or keyboard navigation.",
+      "affectedFiles": [
+        "apps/site/src/components/ResourceTabs.tsx",
+        "apps/site/src/pages/r/[slug].astro",
+        "apps/site/src/pages/resources/[slug].astro"
+      ],
+      "remediation": "Add a named tablist, tab and tabpanel relationships, aria-selected and roving tabindex, then implement ArrowLeft/ArrowRight/Home/End navigation with synchronous focus movement. Keep the existing panel content and visual design.",
+      "fixCommit": "248a2a09c84a0734998850f8f3b85a14ddf3b78c",
+      "localVerification": {
+        "evidence": [
+          "quality/evidence/step-39/public-v63-manual-review/resource-detail-tabs-accessibility-step-39.spec.ts",
+          "quality/evidence/step-39/public-v63-manual-review/after-local/playwright.json"
+        ],
+        "result": "Production-equivalent Sites Worker regression passed 2/2 at 1440x900 and 390x844. All eight tabs expose the selected state, the arrow/Home/End keys move focus and selection, the labelled panel updates, the existing sandbox preview renders, Axe reports zero WCAG 2.2 A/AA violations, and application console, exception, failed-request, and HTTP-error telemetry is empty.",
+        "screenshots": [
+          "quality/evidence/step-39/public-v63-manual-review/after-local/resource-tabs-desktop-1440x900.png",
+          "quality/evidence/step-39/public-v63-manual-review/after-local/resource-tabs-mobile-390x844.png"
+        ]
+      },
+      "regression": {
+        "before": "The same user-facing Playwright regression failed against public Sites v63 because the named tablist and tab roles did not exist.",
+        "after": "The same Playwright regression passed against public Sites v64 at 1440x900 and 390x844 (2/2). Both /r/ai-empty-state/ and /resources/ai-empty-state/ expose the named eight-tab interface, selected state, labelled panel, and keyboard navigation. Axe reports zero WCAG 2.2 A/AA violations; app console errors/warnings, uncaught exceptions, failed requests, HTTP errors, and horizontal overflow are zero."
+      },
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 64,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_47afec8b52c08191b061951c1ae62bb1",
+        "deploymentId": "appgdep_6ae650c685a48191b78c4d41686f5cf7",
+        "canonicalSourceCommit": "248a2a09c84a0734998850f8f3b85a14ddf3b78c",
+        "siteSourceCommit": "8aca504b5d4231509bfd4d90d13aec949e979f58",
+        "checkedAt": "2026-10-31T20:37:39.588Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "playwrightReport": "quality/evidence/step-39/public-v63-manual-review/after-public-v64/playwright.json",
+        "runtimeReports": [
+          "quality/evidence/step-39/public-v63-manual-review/after-public-v64/runtime.json",
+          "quality/evidence/step-39/public-v63-manual-review/after-public-v64/resource-alias-runtime.json"
+        ],
+        "routesVerified": [
+          "/r/ai-empty-state/",
+          "/resources/ai-empty-state/"
+        ],
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+        "axe": {
+          "standard": "WCAG 2.2 A/AA",
+          "violations": 0
+        },
+        "runtimeTelemetry": {
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "horizontalOverflow": false
+        },
+        "evidence": [
+          {
+            "resultId": "AUD-406",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-empty-state/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-39/public-v63-manual-review/after-public-v64/resource-tabs-desktop-1440x900.png",
+            "runtimeReport": "quality/evidence/step-39/public-v63-manual-review/after-public-v64/runtime.json",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-406",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-empty-state/",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-39/public-v63-manual-review/after-public-v64/resource-tabs-mobile-390x844.png",
+            "runtimeReport": "quality/evidence/step-39/public-v63-manual-review/after-public-v64/runtime.json",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-406",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/resources/ai-empty-state/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-39/public-v63-manual-review/after-public-v64/resource-alias-desktop-1440x900.png",
+            "runtimeReport": "quality/evidence/step-39/public-v63-manual-review/after-public-v64/resource-alias-runtime.json",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-406",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/resources/ai-empty-state/",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-39/public-v63-manual-review/after-public-v64/resource-alias-mobile-390x844.png",
+            "runtimeReport": "quality/evidence/step-39/public-v63-manual-review/after-public-v64/resource-alias-runtime.json",
+            "result": "PASS"
+          }
+        ]
+      }
     }
   ],
-  "generatedAt": "2026-10-31T18:55:33Z",
+  "generatedAt": "2026-10-31T20:37:39.588Z",
   "latestDeploymentEvidence": "quality/evidence/step-48/deployed-v61-2026-10-31/route-audit.json"
 }
