@@ -60,12 +60,13 @@ export function AccessibilityLab() {
   // Auto fix contrast if failing
   const autoFixContrast = () => {
     if (!backgroundValid) return;
-    const bgLum = getLuminance(bgColor);
-    if (bgLum > 0.5) {
-      setFgColor('#111217'); // Dark ink on light background
-    } else {
-      setFgColor('#FFFFFF'); // White ink on dark background
-    }
+    const darkCandidate = '#111217';
+    const lightCandidate = '#FFFFFF';
+    setFgColor(
+      getContrastRatio(darkCandidate, bgColor) >= getContrastRatio(lightCandidate, bgColor)
+        ? darkCandidate
+        : lightCandidate
+    );
   };
 
   return (

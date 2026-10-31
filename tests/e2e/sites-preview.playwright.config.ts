@@ -12,6 +12,7 @@ export default defineConfig({
     'section-planner-input-identity.spec.ts',
     'compose-responsiveness-hardening.spec.ts',
     'catalogue-preview-loading-state.spec.ts',
+    'sites-a11y-regressions-step-48.spec.ts',
     'explore-search-hardening.spec.ts',
     'gold-resource-certification.spec.ts',
     'catalog-resource-render.spec.ts',

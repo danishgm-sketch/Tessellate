@@ -121,6 +121,7 @@ export function ResourcePreviewFrame({
               key={v.id}
               type="button"
               onClick={() => setVariant(v.id)}
+              aria-pressed={variant === v.id}
               className={`h-7 px-2.5 rounded-md text-xs font-medium transition-all ${
                 variant === v.id
                   ? 'bg-[var(--tess-cobalt,#2547E8)] text-white shadow-xs'
