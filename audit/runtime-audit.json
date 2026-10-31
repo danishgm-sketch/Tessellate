@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed 11 additional content findings. CLI/MCP copy claims have separate local client-process verification. The broader hardening programme and manual copy review remain incomplete. AUD-405 was reproduced on public v62, fixed and verified locally, and awaits deployed re-test.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62 and v63 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed 11 additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. The broader hardening programme and manual copy review remain incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -17870,7 +17870,10 @@
         "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/before-v62/ai-copilot-sidebar-sites-chromium.png",
         "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/before-v62/ai-copilot-sidebar-sites-mobile-chromium.png"
       ],
-      "afterScreenshots": [],
+      "afterScreenshots": [
+        "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/after-v63/ai-copilot-sidebar-sites-chromium.png",
+        "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/after-v63/ai-copilot-sidebar-sites-mobile-chromium.png"
+      ],
       "rootCause": "The resource combines fixed illustrative UI data with live-analysis and patch-application claims, while its primary button is enabled without an action callback.",
       "affectedFiles": [
         "resources/ai/ai-copilot-sidebar/index.tsx",
@@ -17894,15 +17897,52 @@
       "runtimeReports": [
         "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/before-v62/ai-copilot-sidebar-sites-chromium.json",
         "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/before-v62/ai-copilot-sidebar-sites-mobile-chromium.json",
-        "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/before-v62/playwright.json"
+        "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/before-v62/playwright.json",
+        "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/after-v63/ai-copilot-sidebar-sites-chromium.json",
+        "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/after-v63/ai-copilot-sidebar-sites-mobile-chromium.json",
+        "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/after-v63/playwright.json"
       ],
       "regression": {
         "before": "The public v62 browser test fails because the apply button is enabled despite the absent host callback; both viewport reports record no visible change after click.",
-        "after": "The same Playwright assertion passes on the production-equivalent local Sites Worker at desktop and mobile. Public retest on the next Site version is pending."
+        "after": "The same Playwright regression passed against public Sites v63 at 1440x900 and 390x844 (2/2). The sample-only disclosure is visible, Apply is disabled without a host action, and both browser reports record zero console errors or warnings, uncaught exceptions, failed requests, and HTTP errors."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 63,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_e60b9b3a7b2c8191b56b23802d37293b",
+        "deploymentId": "appgdep_6ae63885bb3481918422880871256018",
+        "canonicalSourceCommit": "9dc6789f60e70315d49e4f589eeb584aa5d0af8e",
+        "siteSourceCommit": "1878a33889ac4d7d47b5e868e931427f9d1b545e",
+        "checkedAt": "2026-10-31T18:55:33Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "playwrightReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/after-v63/playwright.json",
+        "evidence": [
+          {
+            "resultId": "AUD-405",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-copilot-sidebar/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/after-v63/ai-copilot-sidebar-sites-chromium.png",
+            "runtimeReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/after-v63/ai-copilot-sidebar-sites-chromium.json",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-405",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-copilot-sidebar/",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/after-v63/ai-copilot-sidebar-sites-mobile-chromium.png",
+            "runtimeReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/after-v63/ai-copilot-sidebar-sites-mobile-chromium.json",
+            "result": "PASS"
+          }
+        ]
+      }
     }
   ],
-  "generatedAt": "2026-10-31T17:25:08Z",
+  "generatedAt": "2026-10-31T18:55:33Z",
   "latestDeploymentEvidence": "quality/evidence/step-48/deployed-v61-2026-10-31/route-audit.json"
 }
