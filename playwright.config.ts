@@ -31,6 +31,9 @@ export default defineConfig({
     '**/sites-unknown-resource-preview.spec.ts',
     // These content/detail audits need the Pages/Sites asset CORS policy for
     // sandboxed preview iframes; plain `astro preview` does not read `_headers`.
+    // This AI resource detail test inspects content in its opaque preview frame
+    // and therefore belongs to the production-equivalent Sites Worker harness.
+    '**/ai-copilot-sidebar-truthfulness-step-39.spec.ts',
     '**/catalog-resource-render.spec.ts',
     '**/copy-quality-step-39.spec.ts',
     '**/resource-copy-truthfulness-step-39.spec.ts',
