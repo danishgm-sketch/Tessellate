@@ -1,0 +1,68 @@
+{
+  "siteVersion": 14,
+  "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "canonicalGitCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
+  "workbenchProjectId": "proj-direction-c-9b3c5b345658408e8ba3df812b3f3fa8dirc",
+  "manifest": {
+    "file": "adaptive-architecture-—-employee-experience.tess.json",
+    "sha256": "abae74f831a139eaef16407b5e1bcebf2e8b29a0c4fa8f51c8ccbbb9cfe11e0d",
+    "schemaVersion": "1.0.0",
+    "canonicalProjectManifestSchemaValid": true,
+    "idMatchesWorkbenchHandoff": true,
+    "screenCount": 9,
+    "screens": [
+      "Marketing Home",
+      "Team Overview",
+      "People Directory",
+      "Employee Profile",
+      "Teams",
+      "Onboarding",
+      "Engagement",
+      "Settings & Policies",
+      "Sign In"
+    ]
+  },
+  "archive": {
+    "file": "adaptive-architecture-employee-experience.zip",
+    "sha256": "045e138deab390a3cbfb13bc97a360241f5f37d6e30803bdacaec90a3fa05fe4",
+    "sizeBytes": 41699,
+    "zipEntryCount": 34,
+    "unsafePathCount": 0,
+    "hasTessellateRuntimeDependency": false
+  },
+  "cleanInstall": {
+    "location": "%TEMP%\\tessellate-v14-export-verified-693a84d89b20471eabc593bd365c5a66",
+    "repositoryNodeModulesReused": false,
+    "command": "npm install --no-audit --no-fund",
+    "exitCode": 0,
+    "note": "npm reported that it did not run the esbuild postinstall script under its install-script policy; the package includes its platform binary and the production build succeeded."
+  },
+  "productionBuild": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "typescript": "passed",
+    "vite": "6.4.4",
+    "output": {
+      "javascriptBytes": 284810,
+      "javascriptGzipBytes": 79670,
+      "cssBytes": 37740,
+      "cssGzipBytes": 7580
+    }
+  },
+  "runtime": "audit/evidence/deployed-v14-flagship/standalone-runtime-audit.json",
+  "runtimeViewports": [
+    "1440x900",
+    "390x844"
+  ],
+  "runtimeResult": {
+    "nineScreenButtonsVisible": true,
+    "screenSelectorOneRowAt390": true,
+    "teamOverviewAndOnboardingSwitchThroughUI": true,
+    "noUnresolvedResourcePlaceholders": true,
+    "noMobileHorizontalOverflow": true,
+    "consoleErrors": 0,
+    "uncaughtErrors": 0,
+    "failedRequests": 0,
+    "httpErrors": 0
+  }
+}

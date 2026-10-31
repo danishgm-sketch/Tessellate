@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "SEC-DEPLOYED-V26-2026-10-25",
+  "verifiedAt": "2026-10-25T00:27:30Z",
+  "deployment": {
+    "siteVersion": 26,
+    "deploymentId": "appgdep_6add2f20b5f88191828044362a2fbc3e",
+    "status": "succeeded",
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "siteSourceCommit": "94822e00baaefa20dd01895e43469c3c3d9fac9"
+  },
+  "browser": {
+    "name": "Chrome",
+    "version": "156",
+    "host": "Windows 11"
+  },
+  "routes": [
+    {
+      "path": "/",
+      "viewport": "1440x900",
+      "status": 200,
+      "consoleErrors": 0,
+      "failedRequests": 0,
+      "observedRequests": 26,
+      "appShellCsp": {
+        "scriptSrcHasUnsafeInline": false,
+        "styleSrcHasUnsafeInline": false,
+        "styleSrcElemHasUnsafeInline": false,
+        "styleSrcAttr": [
+          "'unsafe-inline'"
+        ],
+        "note": "Inline style attributes remain allowed by a separate directive for current UI styles; this does not permit inline script or style elements."
+      },
+      "injectedProbe": {
+        "payloads": [
+          "script element setting a temporary window flag",
+          "style element adding a temporary body outline"
+        ],
+        "inlineScriptExecuted": false,
+        "inlineStyleApplied": false,
+        "securityPolicyViolationDirectives": [
+          "script-src-elem",
+          "style-src-elem"
+        ],
+        "probeRanInIsolatedBrowserContext": true
+      },
+      "screenshot": "quality/evidence/step-37/deployed-v26-home-1440.png"
+    },
+    {
+      "path": "/r/button",
+      "viewport": "1440x900",
+      "status": 200,
+      "consoleErrors": 0,
+      "failedRequests": 0,
+      "observedRequests": 42,
+      "requestScope": "DevTools retained requests across the homepage and resource-detail navigation; every observed request returned 200.",
+      "iframe": {
+        "title": "Button live preview",
+        "src": "/preview-content/?resource=button&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+        "sandbox": [
+          "allow-scripts"
+        ],
+        "parentDocumentRead": "SecurityError",
+        "previewDocumentStatus": 200,
+        "previewCsp": {
+          "defaultSrc": "'none'",
+          "formAction": "'none'",
+          "scriptSrc": [
+            "same-origin /_astro/ assets",
+            "exact SHA-256 hashes"
+          ],
+          "styleSrc": [
+            "same-origin /_astro/ assets",
+            "exact SHA-256 hashes"
+          ],
+          "styleSrcAttr": [
+            "'unsafe-inline'"
+          ],
+          "connectSrc": [
+            "same-origin /_astro/ assets"
+          ],
+          "frameSrc": "'none'",
+          "sandbox": "allow-scripts",
+          "objectSrc": "'none'"
+        }
+      },
+      "screenshot": "quality/evidence/step-37/deployed-v26-resource-button-1440.png"
+    },
+    {
+      "path": "/",
+      "viewport": "390x844",
+      "screenshot": "quality/evidence/step-37/deployed-v26-home-390.png",
+      "capture": "Playwright screenshot with viewport-size 390,844"
+    },
+    {
+      "path": "/r/button",
+      "viewport": "390x844",
+      "screenshot": "quality/evidence/step-37/deployed-v26-resource-button-390.png",
+      "capture": "Playwright screenshot with viewport-size 390,844"
+    }
+  ],
+  "disposition": {
+    "finding": "AUD-268",
+    "result": "closed-deployed-verified",
+    "fixCommit": "2368c96d9ddea5c92d14591e76d3780a92d2b40c",
+    "remainingGate": "Release-candidate security revalidation remains pending at Step 45."
+  },
+  "credentialAndCookieValuesRecorded": false
+}

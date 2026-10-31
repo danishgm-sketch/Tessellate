@@ -1,0 +1,10 @@
+Clean standalone Vite export build failure (before Dialog fix)
+
+Reproduction: generate a standalone app from a project containing the canonical Dialog resource with the manifest preview defaults open=true, title and children. Install dependencies in a fresh temporary directory, then run pnpm build.
+
+TypeScript output:
+src/screens/Dashboard.tsx(73,209): error TS2741: Property 'onClose' is missing in type '{ children: string; variant: "quiet"; open: true; title: string; }' but required in type 'DialogProps'.
+src/screens/Dashboard.tsx(74,219): error TS2741: Property 'onClose' is missing in type '{ children: string; variant: "expressive"; open: false; title: string; }' but required in type 'DialogProps'.
+src/screens/Dashboard.tsx(75,215): error TS2741: Property 'onClose' is missing in type '{ children: string; variant: "nocturne"; open: false; title: string; }' but required in type 'DialogProps'.
+
+No browser screenshot existed before the fix because the generated application did not compile.

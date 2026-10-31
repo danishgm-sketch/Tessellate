@@ -214,7 +214,7 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
+    "levelTarget": "AA",
     "keyboardVerified": true,
     "screenReaderSemantics": true,
     "reducedMotionVerified": true,
@@ -242,7 +242,11 @@
     "composability": 96,
     "visualCraft": 97,
     "dependencyCleanliness": 100,
-    "documentation": 96
+    "documentation": 96,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

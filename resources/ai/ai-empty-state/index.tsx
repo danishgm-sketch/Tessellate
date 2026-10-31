@@ -17,7 +17,7 @@ export function AIEmptyState({ variant = 'quiet', onSelectPrompt }: AIEmptyState
 
   const starters = [
     { title: 'Compose B2B SaaS Dashboard', prompt: 'Create an analytics dashboard with KPI delta card, time series line chart, and audit log block.' },
-    { title: 'Audit Color Contrast', prompt: 'Validate WCAG 2.2 AA token compliance across Quiet, Expressive, and Nocturne presets.' },
+    { title: 'Review color contrast', prompt: 'Compare these selected color pairs against common contrast thresholds and explain what was checked.' },
     { title: 'Export Standalone Vite App', prompt: 'Export workspace to a pure Vite + React + Tailwind 4 source tree.' },
   ];
 
@@ -30,20 +30,26 @@ export function AIEmptyState({ variant = 'quiet', onSelectPrompt }: AIEmptyState
       <div className="max-w-md space-y-1.5">
         <h4 className="text-base font-semibold tracking-tight">How can Tessellate assist your build?</h4>
         <p className="text-xs text-neutral-500 leading-relaxed">
-          Tessellate composes validated interface systems from canonical resources. Select a starter prompt below to begin:
+          Select a starter prompt to continue. The host application decides how selected text is handled.
         </p>
       </div>
 
+      {!onSelectPrompt && (
+        <p className="text-xs text-neutral-500">Connect a prompt handler to enable these starters.</p>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-2xl text-left">
         {starters.map((s) => (
-          <div
+          <button
             key={s.title}
+            type="button"
+            disabled={!onSelectPrompt}
             onClick={() => onSelectPrompt?.(s.prompt)}
-            className="p-3.5 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 cursor-pointer transition-colors flex flex-col justify-between"
+            className="p-3.5 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current transition-colors flex flex-col justify-between text-left"
           >
             <div className="text-xs font-semibold mb-1 text-neutral-800 dark:text-neutral-200">{s.title}</div>
             <div className="text-[11px] text-neutral-500 leading-snug">{s.prompt}</div>
-          </div>
+          </button>
         ))}
       </div>
     </div>

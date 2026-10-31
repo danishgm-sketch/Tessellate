@@ -30,41 +30,36 @@ export async function runValidate(filePath: string): Promise<ValidateResult> {
     return { valid: false, errors: ['Manifest must be a JSON object'] };
   }
 
-  // Detect manifest type
+  // Parse against both canonical contracts. ProjectManifest uses `screens` and
+  // `designDNA`; it does not have the legacy `nodes` or `canvas` markers.
   const obj = content as Record<string, unknown>;
-  const isResource = 'resourceType' in obj || 'license' in obj;
-  const isProject = 'nodes' in obj || 'canvas' in obj;
-
-  if (isResource) {
-    const parsed = ResourceManifestSchema.safeParse(obj);
-    if (!parsed.success) {
-      console.error(`[tess] Validation failed for ResourceManifest in ${filePath}:`);
-      const errors = parsed.error.issues.map((i) => `  - ${i.path.join('.')}: ${i.message}`);
-      for (const err of errors) {
-        console.error(err);
-      }
-      return { valid: false, type: 'resource', errors };
-    }
-    console.log(`[tess] Valid ResourceManifest: ${parsed.data.name} (${parsed.data.slug}) v${parsed.data.version}`);
+  const resourceResult = ResourceManifestSchema.safeParse(obj);
+  if (resourceResult.success) {
+    const manifest = resourceResult.data;
+    console.log(`[tess] Valid ResourceManifest: ${manifest.name} (${manifest.slug}) v${manifest.version}`);
     return { valid: true, type: 'resource' };
   }
 
-  if (isProject) {
-    const parsed = ProjectManifestSchema.safeParse(obj);
-    if (!parsed.success) {
-      console.error(`[tess] Validation failed for ProjectManifest in ${filePath}:`);
-      const errors = parsed.error.issues.map((i) => `  - ${i.path.join('.')}: ${i.message}`);
-      for (const err of errors) {
-        console.error(err);
-      }
-      return { valid: false, type: 'project', errors };
-    }
-    console.log(`[tess] Valid ProjectManifest: ${parsed.data.name} (${parsed.data.screens.length} screens)`);
+  const projectResult = ProjectManifestSchema.safeParse(obj);
+  if (projectResult.success) {
+    const manifest = projectResult.data;
+    console.log(`[tess] Valid ProjectManifest: ${manifest.name} (${manifest.screens.length} screens)`);
     return { valid: true, type: 'project' };
   }
 
-  console.warn('[tess] Unknown manifest format. Does not appear to be ResourceManifest or ProjectManifest.');
-  return { valid: false, errors: ['Unknown manifest structure'] };
+  const looksLikeResource = 'resourceType' in obj || 'license' in obj || 'slug' in obj;
+  const looksLikeProject = 'screens' in obj || 'productModel' in obj || 'designDNA' in obj;
+  const type = looksLikeResource ? 'resource' : looksLikeProject ? 'project' : undefined;
+  const issues = type === 'resource' ? resourceResult.error.issues : projectResult.error.issues;
+  const errors = issues.map((issue) => `  - ${issue.path.join('.')}: ${issue.message}`);
+
+  if (!type) {
+    errors.unshift('Unknown manifest format. Expected a ResourceManifest or ProjectManifest.');
+  } else {
+    console.error(`[tess] Validation failed for ${type === 'resource' ? 'ResourceManifest' : 'ProjectManifest'} in ${filePath}:`);
+  }
+  for (const error of errors) console.error(error);
+  return { valid: false, type, errors };
 }
 
 export async function runDoctor(cwd = process.cwd()) {

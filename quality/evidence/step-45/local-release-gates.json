@@ -1,0 +1,38 @@
+{
+  "capturedAt": "2026-10-24T08:19:57Z",
+  "branch": "consolidation/product-hardening",
+  "sourceCommit": "38aa6d31",
+  "workingTreeWasDirty": true,
+  "results": {
+    "frozenInstall": { "status": "pass", "packageManager": "pnpm 11.20.0", "workspaceProjects": 23 },
+    "catalogueBuild": { "status": "pass", "resources": 324, "goldResources": 40 },
+    "typecheck": { "status": "pass", "workspacePackages": 22 },
+    "lint": { "status": "pass", "warningLimit": 51 },
+    "unitTests": { "status": "pass", "filesPassed": 77, "testsPassed": 1214, "testsSkipped": 1 },
+    "auditAll": {
+      "status": "pass",
+      "behavioralGates": "16/16",
+      "resourceIsolation": "324/324",
+      "licenseProvenance": "324/324",
+      "securityViolations": 0,
+      "dependencyAdvisories": 0,
+      "bundleBudgets": "pass"
+    },
+    "productionBuild": { "status": "pass", "astroPages": 733, "sitesResources": 324, "sitesPublicHtmlCspRecords": 731 },
+    "e2e": {
+      "status": "pass",
+      "astroChromium": { "passed": 290, "configuredSkips": 108 },
+      "sitesWorkerChromium": { "passed": 255, "configuredSkips": 41 },
+      "isolatedPreviewChromium": { "passed": 3, "configuredSkips": 0 },
+      "totalPassed": 548,
+      "totalConfiguredSkips": 149,
+      "failures": 0,
+      "catalogueResourceCertification": "324 resources rendered at certified widths"
+    }
+  },
+  "limitations": [
+    "This run used a dirty worktree; it is not the clean-checkout proof. Step 44 separately records the sanitized container run and its source snapshot limitation.",
+    "Sites build emits the upstream Vite warning for a minified chunk above 500 kB raw; the gzip bundle budgets pass.",
+    "The Sites Worker browser tests run locally. Public Site version 20 still needs candidate-version browser verification and owner-approved deployment."
+  ]
+}

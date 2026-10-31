@@ -1,0 +1,68 @@
+{
+  "capturedAt": "2026-10-21T08:08:07.075Z",
+  "route": "http://127.0.0.1:4323/r/success-state",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "status": 200,
+  "layout": {
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "horizontalOverflow": false
+  },
+  "geometry": [
+    {
+      "label": "Keyboard Navigation",
+      "left": 41,
+      "right": 349,
+      "scrollWidth": 306,
+      "clientWidth": 306,
+      "overflowingText": []
+    },
+    {
+      "label": "Screen Reader Semantics",
+      "left": 41,
+      "right": 349,
+      "scrollWidth": 306,
+      "clientWidth": 306,
+      "overflowingText": []
+    },
+    {
+      "label": "Reduced Motion Verified",
+      "left": 41,
+      "right": 349,
+      "scrollWidth": 306,
+      "clientWidth": 306,
+      "overflowingText": []
+    },
+    {
+      "label": "Contrast Compatible",
+      "left": 41,
+      "right": 349,
+      "scrollWidth": 306,
+      "clientWidth": 306,
+      "overflowingText": []
+    },
+    {
+      "label": "Visible Focus State",
+      "left": 41,
+      "right": 349,
+      "scrollWidth": 306,
+      "clientWidth": 306,
+      "overflowingText": []
+    }
+  ],
+  "seriousOrCriticalAxe": [],
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "axeInstrumentationConsoleErrors": [
+    "Applying inline style violates the following Content Security Policy directive 'style-src-elem http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-oI/MfL86sxZYMx9aZypS32SwtHe3R/cM5BvcIUtf/e8='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+  ],
+  "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\after\\resource-accessibility-overflow-mobile.png"
+}

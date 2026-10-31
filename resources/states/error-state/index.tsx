@@ -23,7 +23,7 @@ export function ErrorState({
     variant === 'nocturne'
       ? 'bg-[#0B0D10] text-white border-red-900/60'
       : variant === 'expressive'
-      ? 'bg-red-50/50 text-neutral-900 border-red-200'
+      ? 'bg-red-50 text-neutral-900 border-red-200'
       : 'bg-white text-neutral-900 border-neutral-200';
 
   const badgeColor =
@@ -36,33 +36,45 @@ export function ErrorState({
   return (
     <div
       role="alert"
-      className={`p-6 md:p-8 rounded-xl border max-w-4xl mx-auto space-y-4 transition-colors ${containerBg}`}
+      style={{
+        '--tess-ink-muted': variant === 'nocturne' ? '#A8AFBA' : '#62666F',
+        '--tess-ink-secondary': variant === 'nocturne' ? '#D1D5DB' : '#4B5563',
+      } as React.CSSProperties}
+      className={`p-6 @md:p-8 rounded-[var(--tess-radius-xl,8px)] border max-w-4xl mx-auto space-y-4 transition-colors ${containerBg}`}
     >
       <div className="flex items-center gap-3">
-        <span className={`w-10 h-10 rounded-xl flex items-center justify-center border font-bold text-lg ${badgeColor}`}>
+        <span className={`w-10 h-10 rounded-[var(--tess-radius-xl,8px)] flex items-center justify-center border font-bold text-lg ${badgeColor}`}>
           ⚠️
         </span>
         <div>
-          <h3 className="text-base font-bold tracking-tight text-red-600 dark:text-red-400">
+          <h3 className={`text-base font-bold tracking-tight ${variant === 'nocturne' ? 'text-red-400' : 'text-red-700'}`}>
             {title}
           </h3>
-          <p className="text-xs text-neutral-500">{errorMessage}</p>
+          <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">{errorMessage}</p>
         </div>
       </div>
 
       {codeSnippet && (
-        <pre className="p-3 rounded-lg bg-neutral-950 text-neutral-300 text-xs font-mono overflow-x-auto">
+        <pre
+          tabIndex={0}
+          aria-label="Error code sample"
+          className="p-3 rounded-[var(--tess-radius-lg,8px)] bg-neutral-950 text-neutral-300 text-xs font-mono overflow-x-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
+        >
           {codeSnippet}
         </pre>
       )}
 
       <div className="pt-2 flex gap-3">
         <button
+          type="button"
           onClick={onRetry}
-          className="px-4 py-2 text-xs font-semibold rounded-lg bg-red-600 text-white hover:bg-red-700"
+          disabled={!onRetry}
+          aria-describedby={!onRetry ? 'error-state-retry-help' : undefined}
+          className="px-4 py-2 text-xs font-semibold rounded-[var(--tess-radius-lg,8px)] bg-red-600 text-white hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
         >
           Retry Operation
         </button>
+        {!onRetry && <span id="error-state-retry-help" className="sr-only">Retry is unavailable until the operation is connected.</span>}
       </div>
 
       {children}

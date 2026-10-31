@@ -1,0 +1,203 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-10-28T12:08:23.856Z",
+  "site": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "access": "public",
+    "version": 55,
+    "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_f5c1c72071048191896cb4e757a4722f",
+    "deploymentId": "appgdep_6ae1e23c361c819189455436b4d89cb0",
+    "sitesSourceCommit": "b356ef849431d53eda8f5f052ff65bacf0d477d4",
+    "canonicalReleaseCommit": "2ffe98ac669e97f9a766acdcbe71f62c4ea14691",
+    "applicationCodeCommit": "e3eff775b9db83fa240b937f3697d52cebcde8c6",
+    "previousSitesSourceCommit": "9270888d16f69d765d7069b3aa9eb7e17af6892a",
+    "d1Binding": null,
+    "r2Binding": null
+  },
+  "pullRequest": {
+    "url": "https://github.com/danishgm-sketch/Tessellate/pull/5",
+    "state": "OPEN",
+    "draft": true,
+    "headSha": "2ffe98ac669e97f9a766acdcbe71f62c4ea14691",
+    "merged": false
+  },
+  "ci": [
+    {
+      "name": "CI push",
+      "result": "success",
+      "headSha": "2ffe98ac669e97f9a766acdcbe71f62c4ea14691",
+      "url": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40675962407"
+    },
+    {
+      "name": "CI pull_request",
+      "result": "success",
+      "headSha": "2ffe98ac669e97f9a766acdcbe71f62c4ea14691",
+      "url": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40675985399"
+    },
+    {
+      "name": "16-Point Component Quality & Security Sandbox Audit",
+      "result": "success",
+      "headSha": "2ffe98ac669e97f9a766acdcbe71f62c4ea14691",
+      "url": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40675985445"
+    }
+  ],
+  "build": {
+    "frozenInstall": "PASS",
+    "catalogueBuild": "PASS",
+    "catalogueResources": 324,
+    "goldRuntimeResources": 40,
+    "productionBuild": "PASS",
+    "astroPages": 733,
+    "sitesPublicDocuments": 731,
+    "workerBuild": "PASS",
+    "archiveBytes": 7911952,
+    "storedArchiveBytes": 55818240,
+    "notes": [
+      "Vite reported its existing greater-than-500-kB chunk warning while building the separate preview app; repository bundle-budget CI passed.",
+      "No D1 or R2 bindings were provisioned."
+    ]
+  },
+  "routes": {
+    "routeCount": 31,
+    "viewports": ["1440x900", "390x844"],
+    "cases": 62,
+    "httpFailures": 0,
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "badResponses": 0,
+    "horizontalOverflow": 0,
+    "missingMainLandmark": 0,
+    "loadingPreviews": 0,
+    "unavailablePreviews": 0,
+    "result": "PASS"
+  },
+  "showcases": {
+    "detailPages": 8,
+    "viewportsPerPage": 2,
+    "cases": 16,
+    "runtimeOrNetworkFailures": 0,
+    "duplicateHeadings": 0,
+    "horizontalOverflow": 0,
+    "result": "PASS"
+  },
+  "flagshipEmployeeExperience": {
+    "brief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+    "catalogueReady": true,
+    "catalogueResourceCount": 324,
+    "goldRuntimeResourceCount": 40,
+    "directions": 3,
+    "directionCSelected": true,
+    "workbenchHandoff": "exact selected project verified",
+    "screens": [
+      "Marketing Home",
+      "Team Overview",
+      "People Directory",
+      "Teams",
+      "Engagement",
+      "Onboarding",
+      "Settings & Policies"
+    ],
+    "lock": {
+      "nodeId": "node-screen-overview-metric-cards-3",
+      "subtreeSha256": "34f785dbb7562f5287b16b0091ec14785cded809132af918562e1ea4b239a8ce",
+      "resource": "dashboard-kpi-grid"
+    },
+    "replacement": {
+      "nodeId": "node-screen-overview-activity-feed-5",
+      "resource": "notification-centre"
+    },
+    "operations": [
+      "onboarding and settings intent overrides with reload persistence",
+      "radical recomposition at divergence 95 while the lock remains intact",
+      "resource replacement through the UI",
+      "Surprise Me",
+      "exact Undo/Redo for the mutations",
+      "Preview and manifest export"
+    ],
+    "unresolvedResources": 0,
+    "syntheticResourceRefs": 0,
+    "standaloneZip": {
+      "files": 33,
+      "tessellateRuntimeDependencies": 0,
+      "desktopCleanInstallBuildAndPreview": true,
+      "desktopAndMobilePreviewViewports": ["1440x900", "390x844"],
+      "desktopConsoleErrors": 0,
+      "mobileConsoleErrors": 0
+    },
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "badResponses": 0,
+    "unexpectedFailures": 0,
+    "configuredSkips": 2,
+    "result": "PASS"
+  },
+  "responsive": {
+    "widths": [360, 390, 430, 768, 1024, 1280, 1440, 1536],
+    "majorSurfaces": 14,
+    "browserCases": 112,
+    "interactionSuitesPassed": 5,
+    "unexpectedFailures": 0,
+    "result": "PASS"
+  },
+  "accessibility": {
+    "axeRouteScans": 12,
+    "axeRouteViolations": 0,
+    "generatedWorkbenchScans": 2,
+    "generatedWorkbenchViolations": 0,
+    "seriousOrCriticalViolations": 0,
+    "note": "Axe's injected inline styles were blocked by the strict CSP on Explore and one resource detail route (four desktop/mobile scans). This was test instrumentation, not an app-originated style request; the CSP was not weakened."
+  },
+  "webkit": {
+    "route": "/explore?q=onboarding",
+    "viewports": ["1440x900", "390x844"],
+    "cspEvents": 0,
+    "consoleErrors": 0,
+    "pageErrors": 0,
+    "failedRequests": 0,
+    "previewsRendered": [6, 2],
+    "warning": "Playwright WebKit reports its own window.styleMedia deprecation; no app warning or CSP event was observed.",
+    "result": "PASS"
+  },
+  "performance": {
+    "tool": "Chrome DevTools trace",
+    "cpuThrottling": "1x",
+    "networkThrottling": "none",
+    "lcpMs": {"/": 369, "/compose": 203, "/workbench": 670},
+    "cls": {"/": 0, "/compose": 0, "/workbench": 0},
+    "fieldCrux": "unavailable"
+  },
+  "externalWarnings": [
+    "Chrome DevTools issue panel identified three deprecated APIs inside Cloudflare's injected JavaScript-detection challenge script. Playwright app console error/warning counts remained zero."
+  ],
+  "findings": {
+    "newDefectsDiscovered": 0,
+    "ledgerRecords": 377,
+    "severityCounts": {"critical": 0, "high": 69, "medium": 285, "low": 23},
+    "openP0": 0,
+    "openP1": 0,
+    "mediumAwaitingDeployedVerification": 176,
+    "lowAwaitingDeployedVerificationOrHostResolution": 8,
+    "step45PublicRcGate": "PASS",
+    "broaderProductHardeningProgrammeComplete": false
+  },
+  "evidenceFiles": [
+    "route-audit.json",
+    "showcase-audit.json",
+    "flagship-acceptance-v55-verified.json",
+    "flagship-workflow/employee-workbench-desktop-1440.png",
+    "flagship-workflow/employee-workbench-mobile-390.png",
+    "flagship-workflow/employee-workflow-desktop-1440.json",
+    "flagship-workflow/employee-workflow-mobile-390.json",
+    "flagship-workflow/employee-experience-desktop-1440.zip",
+    "flagship-workflow/employee-experience-mobile-390.zip",
+    "responsive-playwright.json",
+    "axe-route-audit.json",
+    "a11y-playwright.json",
+    "webkit-explore-csp-v55.json",
+    "performance-summary.json"
+  ]
+}

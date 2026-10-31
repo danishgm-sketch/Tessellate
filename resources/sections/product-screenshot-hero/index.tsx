@@ -7,14 +7,17 @@ export interface ProductScreenshotHeroProps {
   headline?: string;
   subheadline?: string;
   ctaText?: string;
+  ctaHref?: string;
 }
 
 export function ProductScreenshotHero({
   variant = 'quiet',
   headline = 'The interface workbench for discerning product teams.',
-  subheadline = 'Inspect Design DNA, mutate token systems in real time, and export directly to clean React and Tailwind code.',
+  subheadline = 'Inspect Design DNA and export a standalone React and Tailwind project.',
   ctaText = 'Start Building Free',
+  ctaHref,
 }: ProductScreenshotHeroProps) {
+  const noteId = React.useId();
   let bg = 'bg-white text-neutral-900 border-neutral-200';
   let frame = 'bg-neutral-50 border-neutral-300 shadow-xl';
   let chrome = 'bg-neutral-100 border-b border-neutral-200 text-neutral-500';
@@ -41,12 +44,12 @@ export function ProductScreenshotHero({
         <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mb-8 leading-relaxed">
           {subheadline}
         </p>
-        <button
-          type="button"
-          className={`px-6 py-3 rounded-lg text-sm font-medium transition-all ${btn}`}
-        >
-          {ctaText}
-        </button>
+        {ctaHref ? (
+          <a href={ctaHref} className={`px-6 py-3 rounded-lg text-sm font-medium transition-all ${btn}`}>{ctaText}</a>
+        ) : (
+          <button type="button" disabled aria-describedby={noteId} className={`px-6 py-3 rounded-lg text-sm font-medium transition-all opacity-60 cursor-not-allowed ${btn}`}>{ctaText}</button>
+        )}
+        {!ctaHref && <span id={noteId} className="text-xs text-neutral-500 mt-2">Example CTA. Configure a destination before publishing.</span>}
       </div>
 
       <div className="max-w-5xl mx-auto">
@@ -57,7 +60,7 @@ export function ProductScreenshotHero({
               <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
               <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
             </div>
-            <span className="font-mono text-[11px] opacity-80">https://workbench.tessellate.design</span>
+            <span className="font-mono text-[11px] opacity-80">Example product preview</span>
             <div className="w-10" />
           </div>
           <div className="p-8 sm:p-12 min-h-[320px] flex flex-col justify-center items-center gap-4 text-center">
@@ -66,8 +69,8 @@ export function ProductScreenshotHero({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
               </svg>
             </div>
-            <span className="text-sm font-semibold tracking-wide">Interactive Canvas & Manifest Tree</span>
-            <span className="text-xs opacity-70 max-w-md">324 validated resources loaded into memory. Real-time token synchronization active.</span>
+            <span className="text-sm font-semibold tracking-wide">Illustrative interface preview</span>
+            <span className="text-xs opacity-70 max-w-md">Replace this example with a current product screenshot or working preview.</span>
           </div>
         </div>
       </div>

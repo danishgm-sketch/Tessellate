@@ -5,7 +5,7 @@
   "name": "Offline State",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Local-first offline banner informing the user that cached manifests remain interactive while remote sync is paused.",
+  "description": "Offline status banner that leaves persistence and sync behavior to the host application.",
   "resourceType": "state",
   "categories": [
     "states",
@@ -132,7 +132,7 @@
     "status"
   ],
   "intent": {
-    "summary": "Local-first offline banner informing the user that cached manifests remain interactive while remote sync is paused.",
+    "summary": "Offline state template; local saving and remote sync depend on the host app.",
     "idealFor": [
       "PWA offline modes",
       "Airplane travel composing",
@@ -143,7 +143,7 @@
       "Authentication failures"
     ],
     "jobs": [
-      "Reassure users that local guest composition continues uninterrupted without network connection"
+      "Tell users how the host app behaves offline"
     ],
     "contentRequirements": [
       "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
@@ -214,12 +214,12 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -242,7 +242,11 @@
     "composability": 97,
     "visualCraft": 98,
     "dependencyCleanliness": 100,
-    "documentation": 96
+    "documentation": 96,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

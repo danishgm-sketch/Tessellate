@@ -1,16 +1,28 @@
 import React from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import { Shield, Sparkles, CheckCircle, Ban } from 'lucide-react';
+import { getProductArchetype, specialisePeopleOperations } from '@tessellate/composer';
+import type { ProjectManifest } from '@tessellate/schemas';
 
-export function BriefTab() {
-  const manifest = useWorkbenchStore((state) => state.manifest);
+function getArchetypeDisplayName(tag: string, description: string): string {
+  const definition = getProductArchetype(tag);
+  return definition ? specialisePeopleOperations(definition, description).name : tag;
+}
+
+export function BriefTab({
+  projectManifest,
+}: {
+  projectManifest?: ProjectManifest;
+} = {}) {
+  const storedManifest = useWorkbenchStore((state) => state.manifest);
+  const manifest = projectManifest ?? storedManifest;
   const model = manifest.productModel;
 
   return (
     <div data-testid="brief-tab" className="p-4 space-y-6 text-xs overflow-y-auto">
       {/* Product Overview */}
       <div className="space-y-1.5">
-        <div className="flex items-center gap-1.5 text-[10px] uppercase font-mono tracking-wider text-[#2547E8] dark:text-[#6782FF]">
+        <div className="flex items-center gap-1.5 text-[10px] uppercase font-mono tracking-wider text-[#2547E8] dark:text-[#879DFF]">
           <Sparkles className="h-3 w-3" />
           <span>Product Intent Model</span>
         </div>
@@ -25,13 +37,13 @@ export function BriefTab() {
       {/* Target Audience & Objective */}
       <div className="rounded-xl border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#171B21] p-3 space-y-3">
         <div>
-          <span className="text-[10px] uppercase font-mono text-[#8B8F97]">Target Audience</span>
+          <span className="text-[10px] uppercase font-mono text-[var(--text-muted)]">Target Audience</span>
           <p className="mt-0.5 text-xs font-medium text-[#111217] dark:text-[#F5F7FA]">
             {model.primaryAudience}
           </p>
         </div>
         <div>
-          <span className="text-[10px] uppercase font-mono text-[#8B8F97]">Primary Objective</span>
+          <span className="text-[10px] uppercase font-mono text-[var(--text-muted)]">Primary Objective</span>
           <p className="mt-0.5 text-xs font-medium text-[#111217] dark:text-[#F5F7FA]">
             {model.primaryObjective}
           </p>
@@ -40,7 +52,7 @@ export function BriefTab() {
 
       {/* Prior Dimensions */}
       <div className="space-y-2">
-        <span className="text-[10px] uppercase font-mono text-[#8B8F97] tracking-wider">
+        <span className="text-[10px] uppercase font-mono text-[var(--text-muted)] tracking-wider">
           Inferred Priors & Thresholds
         </span>
         <div className="grid grid-cols-3 gap-2">
@@ -67,7 +79,7 @@ export function BriefTab() {
 
       {/* Primary Archetypes */}
       <div className="space-y-2">
-        <span className="text-[10px] uppercase font-mono text-[#8B8F97] tracking-wider">
+        <span className="text-[10px] uppercase font-mono text-[var(--text-muted)] tracking-wider">
           Identified Archetypes
         </span>
         <div className="space-y-1.5">
@@ -78,11 +90,11 @@ export function BriefTab() {
             >
               <div className="flex items-center gap-2">
                 <span className="font-semibold text-[#111217] dark:text-[#F5F7FA] capitalize">
-                  {arch.tag}
+                  {getArchetypeDisplayName(arch.tag, manifest.description ?? '')}
                 </span>
               </div>
-              <span className="rounded bg-[#E7EBFF] dark:bg-[#1C2752] px-1.5 py-0.5 text-[10px] font-bold text-[#2547E8] dark:text-[#6782FF]">
-                {Math.round(arch.weight * 100)}%
+              <span className="rounded bg-[#E7EBFF] dark:bg-[#1C2752] px-1.5 py-0.5 text-[10px] font-bold text-[#2547E8] dark:text-[#879DFF]">
+                {Math.round(arch.weight)}%
               </span>
             </div>
           ))}
@@ -91,13 +103,13 @@ export function BriefTab() {
 
       {/* Constraints & Prohibited */}
       <div className="space-y-2">
-        <span className="text-[10px] uppercase font-mono text-[#8B8F97] tracking-wider">
+        <span className="text-[10px] uppercase font-mono text-[var(--text-muted)] tracking-wider">
           Hard Constraints
         </span>
         <div className="space-y-2">
           {model.constraints.requiredScreens && (
             <div className="flex items-start gap-2 text-xs text-[#111217] dark:text-[#F5F7FA]">
-              <CheckCircle className="h-3.5 w-3.5 text-emerald-600 mt-0.5 shrink-0" />
+              <CheckCircle className="h-3.5 w-3.5 text-emerald-700 mt-0.5 shrink-0" />
               <div>
                 <span className="font-semibold">Required screens: </span>
                 <span className="text-[#62666F] dark:text-[#A8AFBA]">
@@ -106,7 +118,8 @@ export function BriefTab() {
               </div>
             </div>
           )}
-          {model.constraints.forbiddenPatterns && (
+          {model.constraints.forbiddenPatterns &&
+            model.constraints.forbiddenPatterns.length > 0 && (
             <div className="flex items-start gap-2 text-xs text-[#111217] dark:text-[#F5F7FA]">
               <Ban className="h-3.5 w-3.5 text-rose-500 mt-0.5 shrink-0" />
               <div>

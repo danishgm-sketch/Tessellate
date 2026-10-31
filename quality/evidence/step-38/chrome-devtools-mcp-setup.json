@@ -1,0 +1,21 @@
+{
+  "step": 38,
+  "capturedAt": "2026-10-22T15:55:26Z",
+  "status": "awaiting-codex-restart",
+  "server": {
+    "name": "chrome-devtools",
+    "transport": "stdio",
+    "command": "cmd /d /c npx -y chrome-devtools-mcp@latest --no-usage-statistics",
+    "enabledInCodexConfig": true,
+    "packageVersionInstalled": "1.12.0",
+    "usageStatistics": false,
+    "chromeAvailable": true,
+    "nodeAvailable": true
+  },
+  "currentSession": {
+    "devtoolsToolsAvailable": false,
+    "traceCaptured": false,
+    "reason": "The current Codex session has not reloaded its MCP tool catalog after server registration."
+  },
+  "nextAction": "Restart the Codex desktop app or start a fresh local Codex session, then confirm performance_start_trace is available before measuring Core Web Vitals."
+}

@@ -1,0 +1,45 @@
+{
+  "route": "http://127.0.0.1:4413/workbench?project=proj-direction-c-46925926b36443f59660a247fd954146dirc#screen-teams",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "selectedProjectId": "proj-direction-c-46925926b36443f59660a247fd954146dirc",
+  "handoff": {
+    "filename": "adaptive-architecture-employee-experience-agent-handoff.zip",
+    "files": [
+      "AGENT_PROMPT.md",
+      "COMPONENTS.md",
+      "DESIGN.md",
+      "IMPLEMENTATION.md",
+      "PRODUCT.md",
+      "dependencies.json",
+      "project.tess.json"
+    ],
+    "projectIdMatchesWorkbench": true,
+    "fullManifestMatchesWorkbench": true,
+    "productAudienceMatchesWorkbench": true,
+    "productObjectiveMatchesWorkbench": true,
+    "lockTargets": [],
+    "resourceReferenceCount": 32,
+    "hasTessellateRuntimeDependencies": false,
+    "dependencyPolicyReview": {
+      "status": "review-required",
+      "allowlistScope": "runtimeDependencies only; developmentDependencies are listed for reproducibility and are not checked against this project runtime allowlist",
+      "unapprovedRuntimeDependencies": [
+        "clsx",
+        "react-dom",
+        "tailwind-merge"
+      ],
+      "prohibitedRuntimeDependencies": []
+    },
+    "retainedArchive": null,
+    "screenshot": "quality\\evidence\\step-24\\after\\workbench-agent-handoff-menu-sites-mobile-chromium.png"
+  },
+  "sameProjectMobileEvidence": null,
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

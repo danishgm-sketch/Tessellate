@@ -1,0 +1,72 @@
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import path from 'node:path';
+import { execFileSync } from 'node:child_process';
+import AxeBuilder from '@axe-core/playwright';
+import { expect, test } from '@playwright/test';
+
+type Catalogue = {
+  resources: Array<{ slug: string; name: string; status: string }>;
+};
+
+const cataloguePath = path.resolve(process.cwd(), 'apps/site/public/data/catalog.json');
+const goldResources = (JSON.parse(readFileSync(cataloguePath, 'utf8')) as Catalogue).resources.filter(
+  (resource) => resource.status === 'verified-gold'
+);
+
+test('Gold resources keep expressive variants readable on dark product canvases', async ({ page }, testInfo) => {
+  test.setTimeout(5 * 60 * 1000);
+  const findings: Array<{
+    slug: string;
+    id: string;
+    impact: string | undefined;
+    nodes: Array<{ target: string[]; summary: string; html: string }>;
+  }> = [];
+
+  for (const resource of goldResources) {
+    await page.goto(`/preview-content/?resource=${resource.slug}&variant=expressive&theme=dark`);
+    const previewFrame = page.frames().find((frame) => frame !== page.mainFrame()) ?? page.mainFrame();
+    await expect(previewFrame.locator('h1').first()).toContainText(resource.name);
+    await page.waitForLoadState('networkidle');
+
+    const result = await new AxeBuilder({ page })
+      .options({ preload: false })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+      .analyze();
+
+    for (const violation of result.violations) {
+      findings.push({
+        slug: resource.slug,
+        id: violation.id,
+        impact: violation.impact,
+        nodes: violation.nodes.map((node) => ({
+          target: node.target.map(String),
+          summary: node.failureSummary ?? '',
+          html: node.html,
+        })),
+      });
+    }
+  }
+
+  const outputPath = path.resolve(process.cwd(), `audit/evidence/local-dark-contrast/axe-${testInfo.project.name}.json`);
+  mkdirSync(path.dirname(outputPath), { recursive: true });
+  writeFileSync(
+    outputPath,
+    `${JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        sourceSha:
+          process.env.AUDIT_SOURCE_SHA ??
+          execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+        viewport: page.viewportSize(),
+        resourceCount: goldResources.length,
+        findings,
+      },
+      null,
+      2,
+    )}\n`,
+  );
+
+  expect(goldResources).toHaveLength(40);
+  const failures = findings.map(({ slug, id, impact }) => `${slug}: ${id} (${impact ?? 'unknown'})`);
+  expect(failures, `Gold expressive dark-theme contrast failures:\n${failures.join('\n')}`).toEqual([]);
+});

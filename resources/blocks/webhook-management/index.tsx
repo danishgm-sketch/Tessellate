@@ -20,8 +20,8 @@ export function WebhookManagement({ variant = 'quiet' }: WebhookManagementProps)
   ];
 
   return (
-    <div className={`w-full p-6 sm:p-8 rounded-xl border transition-colors ${bg}`}>
-      <div className="flex justify-between items-center mb-6">
+    <div className={`w-full p-4 @sm:p-6 @md:p-8 rounded-xl border transition-colors ${bg}`}>
+      <div className="flex flex-wrap justify-between items-center gap-3 mb-6">
         <h3 className="text-base font-bold">Configured Webhooks</h3>
         <button type="button" className="px-3 py-1.5 rounded-lg border text-xs font-semibold">
           + Add Endpoint
@@ -30,12 +30,12 @@ export function WebhookManagement({ variant = 'quiet' }: WebhookManagementProps)
 
       <div className="space-y-3 font-mono text-xs">
         {hooks.map((h) => (
-          <div key={h.url} className="p-3 rounded-lg border border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
-            <div>
-              <div className="font-semibold">{h.url}</div>
+          <div key={h.url} className="min-w-0 p-3 rounded-lg border border-neutral-100 dark:border-neutral-800 flex flex-col @sm:flex-row @sm:items-center @sm:justify-between gap-3">
+            <div className="min-w-0">
+              <div className="font-semibold break-all">{h.url}</div>
               <span className="text-[10px] opacity-60">Events: {h.events}</span>
             </div>
-            <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold">
+            <span className="w-fit shrink-0 text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold">
               {h.status}
             </span>
           </div>

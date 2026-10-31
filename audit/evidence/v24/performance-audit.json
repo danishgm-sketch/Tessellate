@@ -1,0 +1,51 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersion": 24,
+  "capturedAt": "2026-10-24",
+  "tool": "Chrome DevTools MCP performance traces",
+  "fieldData": "CrUX field data unavailable for these routes.",
+  "runs": [
+    {
+      "route": "/",
+      "viewport": "1440x900",
+      "profile": "desktop cold; 1x CPU; no network throttle",
+      "ttfbMs": 54,
+      "lcpMs": 306,
+      "lcpRenderDelayMs": 252,
+      "cls": 0,
+      "requests": 25,
+      "maxCriticalPathMs": 593,
+      "consoleMessages": 0,
+      "note": "Render-blocking CSS estimated FCP/LCP savings 0ms. Document response was uncompressed according to an advisory insight; estimated FCP/LCP savings 0ms and TTFB 78ms. Retained as an observation, not a confirmed user-visible defect."
+    },
+    {
+      "route": "/compose",
+      "viewport": "1440x900",
+      "profile": "desktop cold; 1x CPU; no network throttle",
+      "ttfbMs": 48,
+      "lcpMs": 196,
+      "lcpRenderDelayMs": 148,
+      "cls": 0,
+      "note": "No metric improvement opportunities estimated by trace."
+    },
+    {
+      "route": "/compose",
+      "viewport": "390x844",
+      "profile": "mobile emulation; DPR 3; 4x CPU; Fast 4G",
+      "ttfbMs": 49,
+      "lcpMs": 686,
+      "lcpRenderDelayMs": 638,
+      "cls": 0,
+      "forcedReflowMs": 53,
+      "note": "The trace did not attribute forced reflow to a specific function or estimate a saving. Interaction lab INP was 29ms; a separate viewport insight estimated 0ms potential INP savings."
+    },
+    {
+      "route": "/compose",
+      "viewport": "1440x900",
+      "profile": "interaction trace",
+      "labInpMs": 29,
+      "cls": 0,
+      "note": "Lab interaction sample only; no CrUX field INP."
+    }
+  ]
+}

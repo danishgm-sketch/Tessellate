@@ -1,0 +1,101 @@
+{
+  "step": 31,
+  "date": "2026-10-19",
+  "environment": "Miniflare D1 with explicitly configured Better Auth test credentials",
+  "status": "local-hardening-complete-hosted-auth-unverified",
+  "cases": [
+    {
+      "id": "AUTH-001",
+      "severity": "P0",
+      "title": "Unsigned bearer values no longer select an account",
+      "reproduction": ["GET /api/me", "Authorization: Bearer test-user-attacker"],
+      "expected": "200 with authenticated=false and user=null",
+      "actual": "Anonymous response; arbitrary test-user bearer rejected",
+      "status": "fixed",
+      "test": "apps/api/src/__tests__/auth-hardening.test.ts"
+    },
+    {
+      "id": "AUTH-002",
+      "severity": "P0",
+      "title": "Stale cloud writes preserve the winning revision",
+      "reproduction": ["Create a D1-backed project at revision 1", "Send two PUT requests with expectedRevision=1"],
+      "expected": "One write succeeds; the other receives 409 and cannot overwrite the winner",
+      "actual": "One 200 and one 409; latest project and exactly one revision 2 snapshot remain",
+      "status": "fixed",
+      "test": "apps/api/src/__tests__/cloud-sync-d1.test.ts"
+    },
+    {
+      "id": "AUTH-003",
+      "severity": "P1",
+      "title": "Project save and revision snapshot commit atomically",
+      "reproduction": ["Create a D1-backed project", "Install a temporary trigger that rejects revision inserts", "PUT a new project name and revision"],
+      "expected": "503 with the prior project and revision intact",
+      "actual": "503; project remains at its original name and revision 1",
+      "status": "fixed",
+      "test": "apps/api/src/__tests__/cloud-sync-d1.test.ts"
+    },
+    {
+      "id": "AUTH-004",
+      "severity": "P1",
+      "title": "Missing auth configuration fails closed",
+      "reproduction": ["Call /api/auth/get-session without D1, secret, HTTPS base URL, and GitHub OAuth credentials"],
+      "expected": "503 AuthenticationUnavailable; no fallback identity or credentials",
+      "actual": "503 AuthenticationUnavailable",
+      "status": "fixed",
+      "test": "apps/api/src/__tests__/auth-hardening.test.ts"
+    },
+    {
+      "id": "AUTH-005",
+      "severity": "P1",
+      "title": "Session credentials are not serialized in profile responses",
+      "reproduction": ["Read /api/me using a valid D1 Better Auth session"],
+      "expected": "Profile and reduced session metadata without token fields",
+      "actual": "Session token and token property absent",
+      "status": "fixed",
+      "test": "apps/api/src/__tests__/cloud-sync-d1.test.ts"
+    },
+    {
+      "id": "AUTH-006",
+      "severity": "P1",
+      "title": "OAuth callback does not implicitly link a different GitHub identity by email",
+      "reproduction": ["Complete a mocked GitHub callback for a new identity", "Start another callback with the same verified email and a different provider account ID"],
+      "expected": "First identity creates one account; second is rejected without another account or session",
+      "actual": "First sign-in succeeds; second redirects with account_not_linked; one user record remains",
+      "status": "fixed",
+      "test": "apps/api/src/__tests__/cloud-sync-d1.test.ts"
+    },
+    {
+      "id": "AUTH-007",
+      "severity": "P2",
+      "title": "Hosted OAuth and cloud bindings are not verified in the review Site",
+      "reproduction": ["Inspect current Sites adapter configuration and run local D1 auth tests"],
+      "expected": "Live GitHub credentials and D1 binding available for deployed sign-in/cloud verification",
+      "actual": "Local D1 behavior passes; deployed D1 and OAuth are not provisioned or exercised",
+      "status": "open",
+      "test": "No hosted credential or binding test is available in this environment"
+    }
+  ],
+  "verification": {
+    "focusedTestFiles": 3,
+    "focusedTestsPassed": 32,
+    "fullTestFilesPassed": 69,
+    "fullTestsPassed": 1002,
+    "fullTestRun": "passed on isolated rerun; initial run overlapped typecheck and ended with one worker RPC timeout",
+    "apiTypecheck": "passed",
+    "workspaceTypecheck": "passed",
+    "lint": "passed with 33 warnings and 0 errors",
+    "changedApiPrettier": "passed",
+    "auditAll": "passed",
+    "behavioralReleaseGate": "16/16 passed",
+    "astroBuild": "717 static pages passed",
+    "sitesWorkerBuild": "passed",
+    "bundleBudgetAudit": "passed",
+    "licenseProvenanceAudit": "324/324 passed",
+    "securitySecretAudit": "0 violations",
+    "d1RevisionConcurrency": "passed",
+    "d1FailureRollback": "passed",
+    "githubOAuthExchange": "mocked; no external credential or request",
+    "sitesD1Binding": "not provisioned",
+    "sitesR2Binding": "not provisioned"
+  }
+}

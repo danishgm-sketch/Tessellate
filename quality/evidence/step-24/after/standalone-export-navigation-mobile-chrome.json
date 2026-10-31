@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0.0",
+  "issue": "AUD-175",
+  "status": "passed",
+  "project": "Omni Telemetry Suite",
+  "route": "http://localhost:4192/#screen-dashboard",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "checks": {
+    "manifestNavigationLabels": [
+      "Dashboard",
+      "Workspace 1",
+      "Workspace 2",
+      "Workspace 3",
+      "Workspace 4",
+      "Workspace 5",
+      "Workspace 6",
+      "Workspace 7",
+      "Workspace 8"
+    ],
+    "hiddenScreenOmittedFromNavigation": true,
+    "screenNavigationResourceDidNotDuplicateShell": true,
+    "shellNavigationUsedWithoutScreenResource": true,
+    "navigationLinksSwitchScreens": true,
+    "mobileDocumentWidth": 390,
+    "mobileDocumentFitsViewport": true
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "screenshots": [
+    "quality/evidence/step-24/after/standalone-export-navigation-desktop-1440.png",
+    "quality/evidence/step-24/after/standalone-export-navigation-mobile-390.png"
+  ]
+}

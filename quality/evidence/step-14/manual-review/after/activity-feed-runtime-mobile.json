@@ -1,0 +1,68 @@
+{
+  "url": "http://127.0.0.1:4413/compose",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "status": "passed",
+  "reviewed": [
+    {
+      "direction": "01",
+      "screen": "Overview Dashboard",
+      "activityResource": "timeline",
+      "activityTitle": "Recent activity",
+      "events": [
+        {
+          "time": "Today",
+          "title": "Invite and onboard team members",
+          "desc": "Send invites → Assign roles → Configure workspace"
+        }
+      ],
+      "workspaceBrand": "Team Workspace",
+      "avatarInitials": "TW",
+      "metricSectionHeading": "Key metrics",
+      "screenshot": "activity-feed-sas-01-direction-01-mobile.png",
+      "topScreenshot": "activity-feed-sas-01-direction-01-mobile-top.png"
+    },
+    {
+      "direction": "02",
+      "screen": "Overview Dashboard",
+      "activityResource": "timeline",
+      "activityTitle": "Recent activity",
+      "events": [
+        {
+          "time": "Today",
+          "title": "Invite and onboard team members",
+          "desc": "Send invites → Assign roles → Configure workspace"
+        }
+      ],
+      "workspaceBrand": "Team Workspace",
+      "avatarInitials": "TW",
+      "metricSectionHeading": "Key metrics",
+      "screenshot": "activity-feed-sas-01-direction-02-mobile.png",
+      "topScreenshot": "activity-feed-sas-01-direction-02-mobile-top.png"
+    },
+    {
+      "direction": "03",
+      "screen": "Overview Dashboard",
+      "activityResource": "timeline",
+      "activityTitle": "Recent activity",
+      "events": [
+        {
+          "time": "Today",
+          "title": "Invite and onboard team members",
+          "desc": "Send invites → Assign roles → Configure workspace"
+        }
+      ],
+      "workspaceBrand": "Team Workspace",
+      "avatarInitials": "TW",
+      "metricSectionHeading": "Key metrics",
+      "screenshot": "activity-feed-sas-01-direction-03-mobile.png",
+      "topScreenshot": "activity-feed-sas-01-direction-03-mobile-top.png"
+    }
+  ],
+  "consoleErrors": [],
+  "uncaught": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

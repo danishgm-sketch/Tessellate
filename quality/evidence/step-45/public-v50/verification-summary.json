@@ -1,0 +1,113 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersion": 50,
+  "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_90ffb7eea6f0819187554301d0a0011f",
+  "deploymentId": "appgdep_6ae11df145348191884c457f997d6e51",
+  "deploymentStatus": "succeeded",
+  "canonicalSourceCommit": "d4b0fd88a722225c221d8264b89af70525cb1d7d",
+  "sitesMirrorSourceCommit": "11d7a1439caaf641a2d2f78eb2555c00cf30cc34",
+  "exactHeadCi": {
+    "runId": "40585283183",
+    "url": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40585283183",
+    "conclusion": "success",
+    "includes": [
+      "frozen dependency installation",
+      "catalogue and schema validation",
+      "TypeScript typecheck",
+      "ESLint",
+      "unit and integration tests",
+      "licence, provenance, secret, security, and behavioural audits",
+      "production build and bundle budgets",
+      "Playwright and Axe end-to-end checks"
+    ]
+  },
+  "routeMatrix": {
+    "routes": 31,
+    "viewports": ["1440x900", "390x844"],
+    "captures": 62,
+    "pass": 62,
+    "failed": 0,
+    "httpErrors": 0,
+    "horizontalOverflow": 0,
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "readinessTimeouts": 0,
+    "evidence": "route-audit.json and routes/"
+  },
+  "axe": {
+    "routes": ["/", "/explore", "/compose", "/r/button/"],
+    "viewports": ["1440x900", "390x844"],
+    "scans": 8,
+    "passed": 8,
+    "violations": 0,
+    "seriousOrCritical": 0,
+    "incompleteChecks": 7,
+    "productConsoleErrors": 0,
+    "productUncaughtExceptions": 0,
+    "productFailedRequests": 0,
+    "cspInstrumentationMessages": 10,
+    "cspInstrumentationFailedRequests": 0,
+    "securityPolicyChanged": false,
+    "evidence": "axe-core-routes/report.json"
+  },
+  "semanticAccessibilityRegression": {
+    "command": "pnpm exec playwright test --config quality/evidence/step-45/public-v50/semantic-accessibility/live-regression.config.mjs",
+    "passed": 10,
+    "failed": 0,
+    "viewports": ["1440x900", "390x844"],
+    "covers": [
+      "homepage preset group accessible name",
+      "manifest excerpt accessible name",
+      "mobile Explore dialog relationship, Escape dismissal, and focus restoration",
+      "homepage example truthfulness and contrast"
+    ],
+    "evidence": "semantic-accessibility/playwright-output/"
+  },
+  "flagshipWorkflow": {
+    "command": "pnpm exec playwright test --config quality/evidence/step-45/public-v50/flagship-acceptance.config.mjs",
+    "passed": 4,
+    "skipped": 2,
+    "failed": 0,
+    "viewports": ["1440x900", "390x844"],
+    "employeeExperienceJourney": "PASS at desktop and mobile",
+    "directionSelected": "C",
+    "screens": 7,
+    "unresolvedGoldResources": 0,
+    "domainContamination": 0,
+    "verified": [
+      "exact brief and catalogue readiness",
+      "three direction previews and Direction C handoff",
+      "onboarding and settings DNA overrides",
+      "locked dashboard KPI subtree through 95-percent recomposition and Surprise Me",
+      "resource replacement, exact undo and redo",
+      "preview and Tessellate manifest export",
+      "independent React ZIP install, build, and browser smoke outside repository dependencies"
+    ],
+    "evidence": "flagship/playwright-output/"
+  },
+  "directionPreviewReview": {
+    "viewports": ["1440x900", "390x844"],
+    "directionsPerViewport": 3,
+    "allSettled": true,
+    "loadingPlaceholdersAfterSettle": 0,
+    "unresolvedDiagnostics": 0,
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "badResponses": 0,
+    "navigationModels": ["sidebar", "top-nav", "rail"],
+    "compositionGrammars": [
+      "classic-sidebar-dashboard",
+      "product-proof-marketing",
+      "three-pane-intelligence-workspace"
+    ],
+    "evidence": "flagship/directions-review.json and flagship/settled-previews/"
+  },
+  "infrastructure": {
+    "d1Binding": false,
+    "r2Binding": false,
+    "newPaidInfrastructure": false
+  },
+  "scopeNote": "This closes the v50 deployment verification slice and the two issue-specific accessibility findings. The wider product-hardening programme and Step 45 remain incomplete."
+}

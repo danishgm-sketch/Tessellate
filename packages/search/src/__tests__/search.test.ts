@@ -18,7 +18,13 @@ describe('Catalogue Browsing and Search', () => {
 
   beforeEach(async () => {
     db = await createResourceSearchDb();
-    await indexResource(db, buttonManifest);
+    await indexResource(db, {
+      ...buttonManifest,
+      quality: {
+        ...buttonManifest.quality,
+        assessment: { status: 'reviewed', evidence: ['quality/evidence/search-test.json'] },
+      },
+    });
   });
 
   it('finds button by exact name keyword', async () => {
@@ -57,6 +63,17 @@ describe('Catalogue Browsing and Search', () => {
     expect(failResult.totalHits).toBe(0);
   });
 
+  it('does not treat an unassessed template score as a measured quality result', async () => {
+    const unassessedDb = await createResourceSearchDb();
+    await indexResource(unassessedDb, buttonManifest);
+
+    const noMinimum = await executeSearch(unassessedDb, 'button');
+    const minimumQuality = await executeSearch(unassessedDb, 'button', { minQuality: 1 });
+
+    expect(noMinimum.totalHits).toBe(1);
+    expect(minimumQuality.totalHits).toBe(0);
+  });
+
   it('groups search results by resource category / type', async () => {
     const res = await executeSearch(db, '');
     expect(res.groups.length).toBeGreaterThanOrEqual(1);
@@ -73,12 +90,14 @@ describe('Catalogue Browsing and Search', () => {
     expect(cosineSimilarity(vecA, vecC)).toBeCloseTo(0.0);
   });
 
-  it('semantic adapter stays unloaded on init and loads lazily on demand', async () => {
+  it('semantic Lab stays unavailable until a real embedding model is installed', async () => {
     const adapter = new LocalSemanticAdapter();
     expect(adapter.isAvailable()).toBe(false);
 
     const loaded = await adapter.loadModel();
-    expect(loaded).toBe(true);
-    expect(adapter.isAvailable()).toBe(true);
+    expect(loaded).toBe(false);
+    expect(adapter.isAvailable()).toBe(false);
+    expect(adapter.getBackend()).toBe('none');
+    await expect(adapter.embedText('employee onboarding')).resolves.toBeNull();
   });
 });

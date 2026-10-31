@@ -1,0 +1,832 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": 52,
+  "capturedAt": "2026-10-28T06:45:37.578Z",
+  "scope": "Required public route set, desktop/mobile route smoke plus specific visible interactions documented per route. PASS does not claim exhaustive testing of every linked feature.",
+  "classifications": [
+    {
+      "route": "/",
+      "classification": "PASS",
+      "rationale": "Homepage content and first-fold responsive layout reviewed; exact brief composer entry verified in flagship run.",
+      "interactions": "Homepage content and first-fold responsive layout reviewed; exact brief composer entry verified in flagship run.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/explore",
+      "classification": "PASS",
+      "rationale": "Search dashboard, combine Motion facet, clear query while retaining the facet, and clear facet; desktop and mobile.",
+      "interactions": "Search dashboard, combine Motion facet, clear query while retaining the facet, and clear facet; desktop and mobile.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_explore-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_explore-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/components",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_components-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_components-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/sections",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_sections-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_sections-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/blocks",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_blocks-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_blocks-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/pages",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_pages-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_pages-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/effects",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_effects-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_effects-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/motion",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_motion-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_motion-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/backgrounds",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_backgrounds-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_backgrounds-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/ai",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_ai-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_ai-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/data",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_data-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_data-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/compose",
+      "classification": "PASS",
+      "rationale": "Exact employee brief, catalogue ready, three direction previews, selection of Direction C and Workbench handoff.",
+      "interactions": "Exact employee brief, catalogue ready, three direction previews, selection of Direction C and Workbench handoff.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_compose-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_compose-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/workbench",
+      "classification": "PASS",
+      "rationale": "Direction C, all five modes, selection, inheritance, lock, Recompose 95, Replace, Surprise Me, Undo/Redo, responsive views, reload, exports.",
+      "interactions": "Direction C, all five modes, selection, inheritance, lock, Recompose 95, Replace, Surprise Me, Undo/Redo, responsive views, reload, exports.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_workbench-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_workbench-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/blueprints",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_blueprints-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_blueprints-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/collections",
+      "classification": "PASS",
+      "rationale": "Empty state explicitly says resources are browser-local and explains how to start a collection.",
+      "interactions": "Empty state explicitly says resources are browser-local and explains how to start a collection.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_collections-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_collections-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/creators",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_creators-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_creators-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/showcase",
+      "classification": "DEGRADED",
+      "rationale": "The page itself is current, but its public companion JSON index has four stale records; see AUD-377.",
+      "interactions": "Gallery cards and Beta/sample disclosure reviewed; public companion index data is stale for four of eight records.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_showcase-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_showcase-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/trends",
+      "classification": "PASS",
+      "rationale": "Counts and DNA distributions disclose that they come from catalogue metadata, not usage analytics.",
+      "interactions": "Counts and DNA distributions disclose that they come from catalogue metadata, not usage analytics.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_trends-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_trends-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/tools",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_tools-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_tools-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/agents",
+      "classification": "PASS",
+      "rationale": "Beta disclosure says the public Site has no hosted MCP process or API.",
+      "interactions": "Beta disclosure says the public Site has no hosted MCP process or API.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_agents-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_agents-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/docs",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_docs-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_docs-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/sponsor",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_sponsor-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_sponsor-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/about",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_about-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_about-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/license",
+      "classification": "PASS",
+      "rationale": "The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage.",
+      "interactions": "Visible content and responsive first fold reviewed; no route-specific interaction claim.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_license-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_license-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/privacy",
+      "classification": "PASS",
+      "rationale": "Guest/browser storage boundary disclosed.",
+      "interactions": "Guest/browser storage boundary disclosed.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_privacy-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_privacy-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/terms",
+      "classification": "PASS",
+      "rationale": "Review deployment limits, no shared accounts/server retention/uptime, and content safety are stated.",
+      "interactions": "Review deployment limits, no shared accounts/server retention/uptime, and content safety are stated.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_terms-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_terms-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/r/dashboard-kpi-grid/",
+      "classification": "PASS",
+      "rationale": "Representative resource detail, provenance and metadata reviewed; route and preview network smoke passed.",
+      "interactions": "Representative resource detail, provenance and metadata reviewed; route and preview network smoke passed.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_r_dashboard-kpi-grid_-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_r_dashboard-kpi-grid_-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/showcase/showcase-playful-hr/",
+      "classification": "DEGRADED",
+      "rationale": "The same employee marketing headline is rendered as both the hero H1 and the conversion CTA H2; see AUD-375.",
+      "interactions": "Static sample disclosure and eight showcase products audited at desktop/mobile; employee page contains duplicate hero/CTA copy.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_showcase_showcase-playful-hr_-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_showcase_showcase-playful-hr_-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/blueprints/b2b-saas/",
+      "classification": "PASS",
+      "rationale": "Representative blueprint detail reviewed; route and responsive smoke passed.",
+      "interactions": "Representative blueprint detail reviewed; route and responsive smoke passed.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_blueprints_b2b-saas_-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_blueprints_b2b-saas_-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/tools/section-planner/",
+      "classification": "DEGRADED",
+      "rationale": "The add-section action works, but the custom-title textbox has neither id nor name and triggers a Chrome issue; see AUD-376.",
+      "interactions": "Add section through UI at desktop/mobile; stable interaction works, but Chrome reports the custom-title input lacks id/name.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_tools_section-planner_-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_tools_section-planner_-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    },
+    {
+      "route": "/docs/manifest/",
+      "classification": "PASS",
+      "rationale": "Representative documentation page reviewed; route and responsive smoke passed.",
+      "interactions": "Representative documentation page reviewed; route and responsive smoke passed.",
+      "evidence": {
+        "desktop": {
+          "viewport": "1440x900",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_docs_manifest_-desktop-1440x900.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "mobile": {
+          "viewport": "390x844",
+          "status": 200,
+          "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_docs_manifest_-mobile-390x844.png",
+          "horizontalOverflow": false,
+          "consoleErrorsOrWarnings": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        }
+      }
+    }
+  ],
+  "additionalPublicDataArtifacts": [
+    {
+      "route": "/data/showcases/index.json",
+      "classification": "MISLEADING",
+      "rationale": "The JSON returns HTTP 200 but differs from the canonical showcase records in four of eight entries. The visible showcase gallery uses current definitions, so the public JSON and page disagree.",
+      "evidence": {
+        "status": 200,
+        "screenshot": "quality/evidence/step-45/public-v52-continuation-2026-10-28/routes/_showcase-desktop-1440x900.png",
+        "comparison": "quality/evidence/step-45/public-v52-continuation-2026-10-28/compare-showcase-index.ts output",
+        "mismatches": [
+          "showcase-luxury-hospitality tagline",
+          "showcase-playful-hr name and tagline",
+          "showcase-luxury-ecommerce tagline",
+          "showcase-minimal-productivity tagline"
+        ]
+      }
+    }
+  ]
+}

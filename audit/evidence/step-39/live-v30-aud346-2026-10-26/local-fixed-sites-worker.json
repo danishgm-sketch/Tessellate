@@ -1,0 +1,44 @@
+{
+  "id": "AUD-346",
+  "phase": "local-fixed-build-verification",
+  "canonicalCommit": "4eca97890e2d8182bcd72edfe5659997d4317c21",
+  "fixCommit": "ad735b37cdc81966ff1ce5fe6d727e4fd7cba959",
+  "environment": "Built Sites Worker preview at http://127.0.0.1:4323",
+  "projectId": "proj-direction-c-975fe199050c4d1abb6c70e40f1ed48fdirc",
+  "desktop": {
+    "viewport": "1440x900",
+    "result": "A saved Direction C project rendered before any catalogue request. Opening Library issued a catalogue request. A deliberately intercepted first attempt returned synthetic HTTP 503; the project remained rendered and the UI explained that resource discovery and replacement were unavailable. Clicking Retry loaded the catalogue and displayed Gold runtime resources.",
+    "catalogueAttempts": [
+      { "attempt": 1, "status": 503, "source": "synthetic fetch interception; no upstream request" },
+      { "attempt": 2, "status": 304, "source": "local HTTP cache" }
+    ],
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "failedRequests": [],
+    "screenshots": [
+      "audit/evidence/step-39/live-v30-aud346-2026-10-26/local-fixed-sites-worker-1440x900.png"
+    ]
+  },
+  "mobile": {
+    "viewport": "390x844",
+    "devicePixelRatio": 3,
+    "result": "The same saved project reopened in mobile Workbench Preview. The document width remained 390 CSS pixels with no horizontal overflow. The resource inspector and replacement dialog were usable; the full-height dialog kept its close button focused, and its candidate preview was scrollable within the preview frame.",
+    "documentWidth": 390,
+    "horizontalOverflow": false,
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "screenshots": [
+      "audit/evidence/step-39/live-v30-aud346-2026-10-26/local-fixed-sites-worker-390x844.png",
+      "audit/evidence/step-39/live-v30-aud346-2026-10-26/local-replace-drawer-390x844.png"
+    ]
+  },
+  "deployedVerification": {
+    "siteVersion": 30,
+    "result": "The defect remains reproducible on the public v30 Site at both desktop and mobile when the initial catalogue response is synthetically replaced with HTTP 503.",
+    "fixStatus": "awaiting approved deployment of a version containing the fix",
+    "limitations": [
+      "The injected 503 simulates catalogue failure; it is not an upstream service outage.",
+      "The Sites-injected inline bootstrap CSP console error is tracked separately as AUD-342."
+    ]
+  }
+}

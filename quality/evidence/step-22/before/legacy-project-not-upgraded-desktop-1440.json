@@ -1,0 +1,17 @@
+{
+  "url": "http://localhost:4321/workbench?project=proj_fin_intel_01",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "status": "reproduced",
+  "issue": "AUD-162",
+  "expected": "Opening legacy project data upgrades its saved record to schema 1.0.0.",
+  "actual": "Workbench rendered schema 1.0.0 but left browser storage at schema 0.1.0.",
+  "screenshot": "quality/evidence/step-22/before/legacy-project-not-upgraded-desktop-1440.png"
+}

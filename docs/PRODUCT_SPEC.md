@@ -356,7 +356,8 @@ Performance:
 - Heavy
 
 Accessibility:
-- Verified AA
+- AA target or higher
+- AAA target
 - Keyboard verified
 - Reduced-motion verified
 

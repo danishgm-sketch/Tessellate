@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "recordedAt": "2026-10-19T21:16:57.128Z",
+  "completedAt": "2026-10-19T21:41:15Z",
+  "branch": "consolidation/product-hardening",
+  "status": "local-backend-verified-model-remains-lab",
+  "evidence": {
+    "dockerRuntime": "apps/laptop-backend/evidence/docker-runtime.json",
+    "modelBenchmarkCases": "quality/evidence/step-32/model-benchmark-cases.json",
+    "modelEvaluation": "quality/evidence/step-32/model-evaluation.json",
+    "report": "quality/STEP_32_EVIDENCE.md"
+  },
+  "focusedChecks": [
+    { "name": "inference queue API tests", "result": "PASS", "tests": 10 },
+    { "name": "shared intent-language tests", "result": "PASS", "tests": 17 },
+    { "name": "deterministic command parser tests", "result": "PASS", "tests": 2 },
+    { "name": "Workbench queue client tests", "result": "PASS", "tests": 10 },
+    { "name": "Sites backend proxy tests", "result": "PASS", "tests": 5 },
+    { "name": "host daemon and model Python tests", "result": "PASS", "tests": 10 },
+    { "name": "API TypeScript typecheck", "result": "PASS" },
+    { "name": "Docker API and host image build", "result": "PASS", "hostTests": 10 }
+  ],
+  "repositoryChecks": {
+    "typecheck": { "result": "PASS", "workspaces": 22 },
+    "lint": { "result": "PASS", "errors": 0, "warnings": 33 },
+    "unitIntegrationTests": { "result": "PASS", "files": 71, "tests": 1030 },
+    "auditAll": {
+      "result": "PASS",
+      "releaseGateChecks": 16,
+      "catalogResources": 324,
+      "goldResources": 40,
+      "pagesBuilt": 717,
+      "bundleBudget": "PASS",
+      "licenseProvenance": "PASS",
+      "securitySecrets": "PASS"
+    },
+    "playwright": {
+      "result": "PASS",
+      "main": { "passed": 205, "skipped": 67, "failed": 0 },
+      "sitesWorker": {
+        "passed": 45,
+        "skipped": 27,
+        "failed": 0,
+        "allCatalogResourcesRendered": 324
+      },
+      "previewApp": { "passed": 3, "skipped": 0, "failed": 0 }
+    }
+  },
+  "dockerSmoke": {
+    "result": "PASS",
+    "checks": [
+      "real-model-completion",
+      "host-control-authentication",
+      "queue-survives-api-container-restart",
+      "host-stopped-features-unavailable",
+      "pending-task-recovers-on-host-resume",
+      "backend-stopped-network-unavailable"
+    ],
+    "offlineStatus": 503,
+    "heartbeatGraceMs": 15000,
+    "restoredContainersHealthy": true
+  },
+  "modelEvaluation": {
+    "trainingExamples": 10,
+    "validationCases": 8,
+    "validationActionAccuracy": 0.625,
+    "heldOutCases": 16,
+    "heldOutActionAccuracy": 0.6875,
+    "namedNodeCorrect": 0,
+    "namedNodeCases": 6,
+    "dnaDirectionCorrect": 0,
+    "dnaDirectionCases": 24,
+    "adversarialPrompts": 16,
+    "adversarialFalsePositives": 16,
+    "deterministicValidationCorrect": 8,
+    "deterministicValidationCases": 8,
+    "deterministicAdversarialFalsePositives": 0,
+    "tier": "Lab"
+  },
+  "findings": [
+    {
+      "id": "BKI-001",
+      "severity": "P1",
+      "title": "Gateway configuration could be bypassed when unset",
+      "status": "closed",
+      "regression": "inference-queue.test.ts"
+    },
+    {
+      "id": "BKI-002",
+      "severity": "P1",
+      "title": "Non-actionable prompts could enter inference queue",
+      "status": "closed",
+      "regression": "intent-language.test.ts; inference-queue.test.ts"
+    },
+    {
+      "id": "BKI-003",
+      "severity": "P1",
+      "title": "Host model output violated strict command schema and stranded lease",
+      "status": "closed",
+      "regression": "test_daemon.py; inference-queue.test.ts; docker-runtime.json"
+    },
+    {
+      "id": "BKI-004",
+      "severity": "P1",
+      "title": "Host secret could follow redirect or use remote HTTP",
+      "status": "closed",
+      "regression": "test_daemon.py"
+    },
+    {
+      "id": "BKI-005",
+      "severity": "P2",
+      "title": "Client timeout could leave a ticket leased",
+      "status": "closed",
+      "regression": "queue-client.test.ts; inference-queue.test.ts"
+    },
+    {
+      "id": "BKI-006",
+      "severity": "P2",
+      "title": "Host retries could create excessive outage traffic",
+      "status": "closed",
+      "regression": "test_daemon.py"
+    }
+  ],
+  "remaining": [
+    "Public Site tunnel and Cloudflare D1 integration are not configured or verified.",
+    "The local model remains Lab and has no semantic-quality guarantee.",
+    "Long network-loss soak and broader crash, duplicate-ticket, and queue fault injection remain for later gates."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "findingId": "SEC-37-094",
+  "severity": "medium",
+  "title": "Protocol-relative CSS URLs bypassed remote asset detection",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "const css = '.hero { background-image: url(//collector.invalid/pixel) }';",
+      "const css = '@font-face { src: url(\"//collector.invalid/font.woff2\") }';",
+      "CSS hex escapes such as url(\\2f \\2f collector.invalid/pixel)"
+    ],
+    "beforeFix": "The gate's CSS URL pattern required an explicit http or https scheme and returned pass for protocol-relative image and font URLs, including CSS-escaped slashes.",
+    "afterFix": "CSS resource scanning normalizes simple/hex escapes and recognizes explicit http/https URLs and scheme-relative // URLs. The existing URL-constructor exclusion remains in place."
+  },
+  "rootCause": "The lexical CSS resource matcher only accepted the `http://` or `https://` prefix even though browsers resolve `//host/path` as a network request using the current scheme.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Normalize CSS simple/hex escapes before matching scheme-relative URLs, while retaining the separate handling for JavaScript URL constructor text.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"protocol-relative remote CSS\"",
+    "redBeforeFixResult": "failed as expected: url(//host/...) background and font URLs returned pass before the fix",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "65 tests passed",
+    "fullUnitSuite": "pnpm test passed: 1,190 tests across 76 files",
+    "canonicalResourceIsolationMatrix": "Final 324-resource matrix: 324 passed, zero warnings, zero failures (captured 2026-10-21T17:17:42.782Z)",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "This is static CSS source analysis. The CSS text was not loaded by a browser. The preview CSP also restricts external assets; deployed release-candidate verification is pending.",
+  "capturedAt": "2026-10-21T17:08:56Z"
+}

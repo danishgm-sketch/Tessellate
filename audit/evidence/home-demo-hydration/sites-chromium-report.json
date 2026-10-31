@@ -1,0 +1,22 @@
+{
+  "route": "http://127.0.0.1:4413/",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "status": 200,
+  "directions": [
+    "Direction A",
+    "Direction B",
+    "Direction C"
+  ],
+  "navigationModels": [
+    "sidebar",
+    "top-nav",
+    "rail"
+  ],
+  "consoleErrors": [],
+  "uncaught": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

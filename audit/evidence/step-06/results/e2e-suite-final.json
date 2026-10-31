@@ -1,0 +1,185 @@
+{
+  "schemaVersion": "1.0.0",
+  "verifiedDate": "2026-10-17",
+  "command": "pnpm test:e2e",
+  "status": "passed",
+  "regularBrowserSuite": {
+    "total": 124,
+    "passed": 73,
+    "skipped": 51,
+    "failed": 0,
+    "flagshipAcceptance": "passed",
+    "axeChecks": {
+      "desktop": [
+        "homepage",
+        "showcases",
+        "explore"
+      ],
+      "mobile": [
+        "homepage",
+        "showcases",
+        "explore"
+      ]
+    },
+    "responsive": "passed",
+    "standaloneReactExport": "passed"
+  },
+  "sitesWorkerSuite": {
+    "total": 23,
+    "passed": 23,
+    "skipped": 0,
+    "failed": 0
+  },
+  "goldAccessibilityCertification": {
+    "resources": 40,
+    "variants": 120,
+    "violations": 0,
+    "report": "audit/evidence/step-06/after/gold-accessibility-clean.json"
+  },
+  "catalogueCertification": {
+    "resources": 324,
+    "defaultPreviewWidths": [
+      360,
+      390,
+      430,
+      768,
+      1024,
+      1280,
+      1440
+    ],
+    "variantsRenderedAtWidth": 1440,
+    "variantsRendered": 972,
+    "findings": 0,
+    "failedRequests": 0,
+    "cancelledRequests": 0,
+    "report": "audit/evidence/step-06/results/catalog-324-e2e-final.json"
+  },
+  "goldCertification": {
+    "resources": 40,
+    "variants": 120,
+    "widths": [
+      360,
+      390,
+      430,
+      768,
+      1024,
+      1280,
+      1440
+    ],
+    "keyboard": "enabled controls tested for tab reachability, visible focus, Enter activation, and visible response",
+    "reducedMotion": "preference exercised across all 40 renderers",
+    "findings": 0,
+    "report": "audit/evidence/step-06/results/gold-40-e2e-final.json"
+  },
+  "goldStateFixtures": {
+    "resources": 6,
+    "passed": 6,
+    "findings": 0,
+    "consoleErrors": 0,
+    "pageErrors": 0,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "report": "audit/evidence/step-06/results/gold-resource-states-final.json"
+  },
+  "goldStateMatrixFollowup": {
+    "tests": 11,
+    "passed": 11,
+    "failed": 0,
+    "scope": "Eight list-driven resources, fixed-slot partial input, disabled form controls, loading/error announcements, and long text at 390x844.",
+    "additionalCaseAfterFullSuite": "marketing-nav-cta empty and 40-link states",
+    "reportDirectory": "audit/evidence/step-06/results/gold-state-matrix"
+  },
+  "dialogAccessibilityRegression": {
+    "tests": 1,
+    "passed": 1,
+    "checks": [
+      "labelled dialog semantics",
+      "initial focus",
+      "Tab containment",
+      "Escape closes",
+      "zero console, page, HTTP, or failed-request diagnostics"
+    ],
+    "test": "tests/e2e/gold-dialog-accessibility.spec.ts",
+    "screenshots": [
+      "audit/evidence/step-06/before/dialog-accessibility-390.png",
+      "audit/evidence/step-06/after/dialog-accessibility-390.png"
+    ]
+  },
+  "aiPromptActionRegression": {
+    "tests": 1,
+    "passed": 1,
+    "providerRequests": 0,
+    "browserDiagnostics": 0,
+    "report": "audit/evidence/step-06/results/ai-prompt-action.json"
+  },
+  "marketingCtaResponsive": {
+    "route": "/resources/marketing-nav-cta/",
+    "viewports": [
+      "360x844",
+      "390x844"
+    ],
+    "overflow": false,
+    "overlap": false,
+    "consoleErrors": 0,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "report": "audit/evidence/step-06/results/marketing-nav-cta-responsive.json"
+  },
+  "compactResourceOverflowRegression": {
+    "routes": [
+      "/resources/command-first-nav/",
+      "/resources/feature-tabs/",
+      "/resources/gradient-accent-text/"
+    ],
+    "viewport": "360x844",
+    "catalogueFindings": 0,
+    "report": "audit/evidence/step-06/results/catalog-324-e2e-final.json"
+  },
+  "canonicalResourceRoute": {
+    "route": "/r/ai-prompt-hero/",
+    "viewports": [
+      "390x844",
+      "1440x900"
+    ],
+    "status": "passed"
+  },
+  "verifiedCommit": "fcfde05e75e88814f27f021feb2039bc2d8afa96",
+  "verifiedBaseCommit": "3a6ef7f19ff2dfd68ab4fffaa684d4d9838ccdb1",
+  "sampleDataTruth": {
+    "resources": 4,
+    "assertionsPerResource": [
+      "sample-specific title",
+      "illustrative sample-data disclosure"
+    ],
+    "status": "passed"
+  },
+  "previewFormInteractions": {
+    "tests": 4,
+    "passed": 4,
+    "failed": 0,
+    "assertions": [
+      "Input retains text typed into the live preview",
+      "Textarea retains text typed into the live preview",
+      "Select retains its committed option",
+      "Input and Select do not announce a generic action on click",
+      "Button preview retains its example action feedback"
+    ],
+    "beforeScreenshots": [
+      "audit/evidence/step-06/before/form-interactions/input-event-corruption-1440.png",
+      "audit/evidence/step-06/before/form-interactions/select-state-reset-1440.png",
+      "audit/evidence/step-06/before/form-interactions/input-misleading-action-status-1440.png"
+    ],
+    "afterScreenshots": [
+      "audit/evidence/step-06/after/form-interactions/input-retains-value-1440.png",
+      "audit/evidence/step-06/after/form-interactions/textarea-retains-value-1440.png",
+      "audit/evidence/step-06/after/form-interactions/select-retains-choice-1440.png",
+      "audit/evidence/step-06/after/form-interactions/input-no-false-action-status-1440.png"
+    ]
+  },
+  "goldNativeControlFocusCertification": {
+    "goldResourcesWithNativeControls": 4,
+    "tabReachableAndVisibleFocus": 4,
+    "failedResources": [],
+    "deployedStatus": "awaiting public review deployment"
+  }
+}

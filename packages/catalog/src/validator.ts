@@ -18,6 +18,16 @@ export interface ResourceValidationResult {
   manifest?: ResourceManifest;
 }
 
+function isPathWithinDirectory(directory: string, candidate: string): boolean {
+  const relativePath = path.relative(directory, candidate);
+  return (
+    relativePath !== '' &&
+    relativePath !== '..' &&
+    !relativePath.startsWith(`..${path.sep}`) &&
+    !path.isAbsolute(relativePath)
+  );
+}
+
 /**
  * Validates a resource folder and its manifest against all Tessellate launch requirements.
  */
@@ -31,7 +41,7 @@ export function validateResource(
   // 1. Validate Schema
   const parseResult = ResourceManifestSchema.safeParse(rawManifest);
   if (!parseResult.success) {
-    const errorDetails = parseResult.error.errors.map(
+    const errorDetails = parseResult.error.issues.map(
       (e) => `${e.path.join('.')}: ${e.message}`
     );
     return {
@@ -46,6 +56,52 @@ export function validateResource(
   const manifest = parseResult.data;
   const resourceId = manifest.id;
   const slug = manifest.slug;
+  if (fs.existsSync(resourceDir)) {
+    const resourceRootStat = fs.lstatSync(resourceDir);
+    if (resourceRootStat.isSymbolicLink()) {
+      return {
+        valid: false,
+        resourceId,
+        slug,
+        errors: [`Resource directory cannot be a symlink: '${resourceDir}'.`],
+        warnings,
+        manifest,
+      };
+    }
+    if (!resourceRootStat.isDirectory()) {
+      return {
+        valid: false,
+        resourceId,
+        slug,
+        errors: [`Resource path is not a directory: '${resourceDir}'.`],
+        warnings,
+        manifest,
+      };
+    }
+  }
+  const resourceRoot = fs.existsSync(resourceDir)
+    ? fs.realpathSync(resourceDir)
+    : path.resolve(resourceDir);
+  const resolvedResourceFiles = new Map<string, string>();
+
+  const resolveResourceFilePath = (filePath: string): string | undefined => {
+    const candidate = path.resolve(resourceRoot, filePath);
+    if (!isPathWithinDirectory(resourceRoot, candidate)) {
+      errors.push(`Resource file path '${filePath}' escapes the resource directory.`);
+      return undefined;
+    }
+
+    if (fs.existsSync(candidate)) {
+      const realCandidate = fs.realpathSync(candidate);
+      if (!isPathWithinDirectory(resourceRoot, realCandidate)) {
+        errors.push(`Resource file path '${filePath}' resolves outside the resource directory.`);
+        return undefined;
+      }
+      return realCandidate;
+    }
+
+    return candidate;
+  };
 
   // 2. Validate License
   const licenseResult = validateLicense(manifest.license);
@@ -55,7 +111,9 @@ export function validateResource(
 
   // 3. Validate File Existence
   for (const file of manifest.files) {
-    const fullPath = path.join(resourceDir, file.path);
+    const fullPath = resolveResourceFilePath(file.path);
+    if (!fullPath) continue;
+    resolvedResourceFiles.set(file.path, fullPath);
     if (!fs.existsSync(fullPath)) {
       if (file.required) {
         errors.push(`Required file missing: '${file.path}' at ${fullPath}`);
@@ -66,7 +124,10 @@ export function validateResource(
   }
 
   // 4. Validate Quality Score Policy
-  if (manifest.status === 'verified' || manifest.status === 'verified-gold') {
+  if (
+    manifest.quality.assessment.status === 'reviewed' &&
+    (manifest.status === 'verified' || manifest.status === 'verified-gold')
+  ) {
     if (manifest.quality.overall < 80) {
       errors.push(
         `Verified resource must have overall quality >= 80, but found ${manifest.quality.overall}.`
@@ -103,8 +164,8 @@ export function validateResource(
 
   for (const file of manifest.files) {
     if (file.kind === 'component' || file.kind === 'utility') {
-      const fullPath = path.join(resourceDir, file.path);
-      if (fs.existsSync(fullPath)) {
+      const fullPath = resolvedResourceFiles.get(file.path);
+      if (fullPath && fs.existsSync(fullPath)) {
         const content = fs.readFileSync(fullPath, 'utf-8');
         // Simple regex to extract package import specifiers
         const importRegex = /(?:import|export)\s+(?:[\w*\s{},]*\s+from\s+)?['"]([^'"]+)['"]/g;

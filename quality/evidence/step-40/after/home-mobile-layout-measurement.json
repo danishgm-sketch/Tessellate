@@ -1,0 +1,27 @@
+{
+  "capturedAt": "2026-10-23T21:51:18Z",
+  "runtime": "built Sites Worker",
+  "url": "http://127.0.0.1:4323/",
+  "viewport": "390x844",
+  "before": {
+    "heroHeightPx": 1306.78125,
+    "heroPercentViewport": 154.832,
+    "composeButtonBottomY": 1000.28,
+    "composeWithinViewport": false,
+    "evidence": "quality/evidence/step-40/before/home-mobile-regression-red.log"
+  },
+  "after": {
+    "heroHeightPx": 658.53125,
+    "heroPercentViewport": 78.025,
+    "composeButtonBottomY": 665.53125,
+    "composeWithinViewport": true,
+    "consoleErrors": [],
+    "pageErrors": [],
+    "screenshot": "quality/evidence/step-40/after/home-mobile-viewport.png"
+  },
+  "regression": {
+    "test": "tests/e2e/home-visual-rhythm-step-40.spec.ts",
+    "before": "failed in sites-chromium and sites-mobile-chromium at the 90svh hero bound",
+    "after": "passed in both mobile-capable Sites Chromium projects"
+  }
+}

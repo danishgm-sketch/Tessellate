@@ -1,3 +1,3 @@
 # Architecture Diagram Section
 
-Three-tier topology diagram explaining client, edge worker, and storage tiers.
+Reference topology diagram. Optional storage services are illustrative and may not be provisioned in the host deployment.

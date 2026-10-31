@@ -1,0 +1,444 @@
+{
+  "generatedAt": "2026-10-25T23:48:39.272Z",
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "version": 30,
+  "results": [
+    {
+      "id": "ai-prompt-hero",
+      "route": "/r/ai-prompt-hero",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "result": {
+        "presetApplied": "An employee onboarding workspace for a growing team",
+        "presetChanged": true,
+        "generationActionDisabled": true,
+        "disclosure": true
+      },
+      "runtime": {
+        "console": [
+          {
+            "type": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-Og00gOAmlJlWKGWAK50Xi30xAZpoEhKKZ6/9michUiA='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          }
+        ],
+        "uncaught": [],
+        "failed": [],
+        "badResponses": []
+      },
+      "screenshot": "quality\\evidence\\step-39\\deployed-v30-interactions\\ai-prompt-hero-1440x900.png"
+    },
+    {
+      "id": "inline-rewrite",
+      "route": "/r/inline-ai-rewrite",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "result": {
+        "visibleOutputChanged": true,
+        "disclosure": true,
+        "sampleOnly": true
+      },
+      "runtime": {
+        "console": [
+          {
+            "type": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-hrTEeP5h++8kmyG/furH6poBXknGA5AbSkaaYZo8Tnc='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          }
+        ],
+        "uncaught": [],
+        "failed": [],
+        "badResponses": []
+      },
+      "screenshot": "quality\\evidence\\step-39\\deployed-v30-interactions\\inline-rewrite-390x844.png"
+    },
+    {
+      "id": "ai-chat-click-and-enter",
+      "route": "/r/ai-chat-panel",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "result": {
+        "clickMessageAdded": true,
+        "clickInputCleared": true,
+        "enterMessageAdded": true,
+        "replyCount": 1,
+        "enterInputCleared": true,
+        "localOnlyDisclosure": true
+      },
+      "runtime": {
+        "console": [
+          {
+            "type": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-myllk0v96fijxBka0GTbSx+pNeVOZHRljm8XtoizN3w='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          }
+        ],
+        "uncaught": [],
+        "failed": [],
+        "badResponses": []
+      },
+      "screenshot": "quality\\evidence\\step-39\\deployed-v30-interactions\\ai-chat-click-and-enter-390x844.png"
+    },
+    {
+      "id": "mode-switcher-keyboard",
+      "route": "/r/ai-model-mode-switcher",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "result": {
+        "states": [
+          {
+            "label": "Fast\nExample mode for short, quick tasks\nExample",
+            "pressed": "false",
+            "disabled": false
+          },
+          {
+            "label": "Balanced\nExample mode for general tasks\nExample",
+            "pressed": "false",
+            "disabled": false
+          },
+          {
+            "label": "Long context\nExample mode for longer inputs\nExample",
+            "pressed": "true",
+            "disabled": false
+          }
+        ],
+        "keyboardSelected": "true",
+        "disclosure": true
+      },
+      "runtime": {
+        "console": [
+          {
+            "type": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-K80Y4eiPnzWqZt1M8c+wirLtszwsKpetU5ZkAjgONGU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          }
+        ],
+        "uncaught": [],
+        "failed": [],
+        "badResponses": []
+      },
+      "screenshot": "quality\\evidence\\step-39\\deployed-v30-interactions\\mode-switcher-keyboard-390x844.png"
+    },
+    {
+      "id": "citations-keyboard",
+      "route": "/r/ai-source-citations",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "result": {
+        "before": {
+          "pressed": "false",
+          "expanded": null,
+          "className": "w-full text-left p-3 rounded-lg border text-xs transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 border-neutral-200 dark:border-neutral-800 hover:border-neutral-300",
+          "text": "[1] Example product brief\nexample/product-brief.md#overview\n\n\"Example excerpt: teams need a clear place to review the product brief.\""
+        },
+        "afterEnter": {
+          "pressed": "true",
+          "expanded": null,
+          "className": "w-full text-left p-3 rounded-lg border text-xs transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 border-neutral-900 bg-neutral-50 dark:border-white dark:bg-neutral-800",
+          "text": "[1] Example product brief\nexample/product-brief.md#overview\n\n\"Example excerpt: teams need a clear place to review the product brief.\""
+        },
+        "afterSpace": {
+          "pressed": "false",
+          "expanded": null,
+          "className": "w-full text-left p-3 rounded-lg border text-xs transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 border-neutral-200 dark:border-neutral-800 hover:border-neutral-300",
+          "text": "[1] Example product brief\nexample/product-brief.md#overview\n\n\"Example excerpt: teams need a clear place to review the product brief.\""
+        },
+        "disclosure": true
+      },
+      "runtime": {
+        "console": [
+          {
+            "type": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-0AC8Nsz7TMP0FEilajIEXN9YhaRDv8lkl+m3Mg1JIow='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          }
+        ],
+        "uncaught": [],
+        "failed": [],
+        "badResponses": []
+      },
+      "screenshot": "quality\\evidence\\step-39\\deployed-v30-interactions\\citations-keyboard-390x844.png"
+    },
+    {
+      "id": "cta-community-destinations",
+      "route": "/r/cta-community",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "result": {
+        "links": [
+          {
+            "label": "Read contributor guide",
+            "href": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/creators",
+            "target": ""
+          },
+          {
+            "label": "View repository",
+            "href": "https://github.com/danishgm-sketch/Tessellate",
+            "target": ""
+          }
+        ],
+        "body": "CTA Community preview\nContribute to the public commons\n\nRead the contributor guide or browse the source repository to learn how to share a resource.\n\nRead contributor guide\nView repository"
+      },
+      "runtime": {
+        "console": [
+          {
+            "type": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-jyOhsWoCN5m+6B+kHotPibydVKztFdqAVd8ZAeWuzVg='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          }
+        ],
+        "uncaught": [],
+        "failed": [],
+        "badResponses": []
+      },
+      "screenshot": "quality\\evidence\\step-39\\deployed-v30-interactions\\cta-community-destinations-1440x900.png"
+    },
+    {
+      "id": "cta-product-preview-handoff",
+      "route": "/r/cta-product-preview",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "result": {
+        "links": [
+          {
+            "label": "START COMPOSING",
+            "href": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "target": ""
+          }
+        ],
+        "linkCount": 1,
+        "topPageAfterClick": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/cta-product-preview",
+        "frameAfterClick": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+        "disclosure": false
+      },
+      "runtime": {
+        "console": [
+          {
+            "type": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-kgMW9c5JkPgLSgJDovq7VTGm0OsnxX/7kOKRLhfzSLA='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          },
+          {
+            "type": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-alFI3h6Fvz00jqE96IOhCLeuPBkkGC81AdmtO1XSw98='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          },
+          {
+            "type": "error",
+            "text": "Access to fetch at 'https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/data/catalog.json' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: net::ERR_FAILED"
+          }
+        ],
+        "uncaught": [],
+        "failed": [
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/data/catalog.json",
+            "failure": "net::ERR_FAILED"
+          }
+        ],
+        "badResponses": []
+      },
+      "screenshot": "quality\\evidence\\step-39\\deployed-v30-interactions\\cta-product-preview-handoff-1440x900.png"
+    },
+    {
+      "id": "cta-product-preview-handoff-mobile",
+      "route": "/r/cta-product-preview",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "result": {
+        "links": [
+          {
+            "label": "START COMPOSING",
+            "href": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "target": ""
+          }
+        ],
+        "linkCount": 1,
+        "topPageAfterClick": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/cta-product-preview",
+        "frameAfterClick": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+        "disclosure": false
+      },
+      "runtime": {
+        "console": [
+          {
+            "type": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-LCaxSL+B7AB9XrTosqOf7QVACx71ri+oUm22rTuaa/U='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          },
+          {
+            "type": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-gDDLf5rtehG1rikGD7U0R8UlWqN4MstPTSzxPyKJvyw='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          },
+          {
+            "type": "error",
+            "text": "Access to fetch at 'https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/data/catalog.json' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: net::ERR_FAILED"
+          }
+        ],
+        "uncaught": [],
+        "failed": [
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/data/catalog.json",
+            "failure": "net::ERR_FAILED"
+          }
+        ],
+        "badResponses": []
+      },
+      "screenshot": "quality\\evidence\\step-39\\deployed-v30-interactions\\cta-product-preview-handoff-mobile-390x844.png"
+    },
+    {
+      "id": "section-planner-five-archetypes-and-copy",
+      "route": "/tools/section-planner",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "result": {
+        "samples": [
+          {
+            "name": "B2B SaaS Conversion Landing",
+            "text": "BETA Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project. TOOL 07 · PAGE STRUCTURE Client-Side · Zero Login Section Planner Plan and edit example section structures for conversion pages, technical documentation, and editorial sites. The planner does not implement the described sections. Copy Section Graph JSON Template descriptions are planning prompts, not implementation or verified proof. Replace sample claims with sourced product details before publishing. PAGE OBJECTIVE ARCHETYPES B2B SaaS Conversion Landing Developer Documentation Hub Fintech Analytics Cockpit Luxury Editorial Sanctuary Operational Triage & Admin Tool Page Sections (8 active) Reset Blueprint 01 Hero Value Proposition HERO State the product’s value and link to an implemented primary action. Active 02 Evidence and Customer References PROOF Use certifications and customer references only when they are documented and approved. Active 03 Interactive Feature Playground INTERACTIVE Add a product demo; connect a working sandbox before presenting it as interactive. Active 04 Architectural Difference Matrix FEATURE Compare product capabilities using criteria that are specific and supported. Active 05 Measured Performance Evidence PROOF Include measured benchmarks and their methodology, or omit this section. Active 06 Pricing and Plan Details PRICING List current plan names and terms supplied by the produc",
+            "claimMarkers": []
+          },
+          {
+            "name": "Developer Documentation Hub",
+            "text": "BETA Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project. TOOL 07 · PAGE STRUCTURE Client-Side · Zero Login Section Planner Plan and edit example section structures for conversion pages, technical documentation, and editorial sites. The planner does not implement the described sections. Copy Section Graph JSON Template descriptions are planning prompts, not implementation or verified proof. Replace sample claims with sourced product details before publishing. PAGE OBJECTIVE ARCHETYPES B2B SaaS Conversion Landing Developer Documentation Hub Fintech Analytics Cockpit Luxury Editorial Sanctuary Operational Triage & Admin Tool Page Sections (6 active) Reset Blueprint 01 Quickstart Hero & CLI Installation HERO Show a verified install command and a first task that works with the current package. Active 02 API Reference FEATURE Link to current endpoints, request schemas, and response schemas. Active 03 Code Example FEATURE Show a code sample; add an executable sandbox only when one is connected. Active 04 Architecture & Security Spec PROOF Describe the security boundaries and data flows that have been verified. Active 05 Packages and Integrations FEATURE List only packages and integrations that are currently supported. Active 06 Community & GitHub Actions CTA CTA Link to active repository or discussion destinations that are maintained. Active Add Section Mix Guide REVIEW MI",
+            "claimMarkers": []
+          },
+          {
+            "name": "Fintech Analytics Cockpit",
+            "text": "BETA Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project. TOOL 07 · PAGE STRUCTURE Client-Side · Zero Login Section Planner Plan and edit example section structures for conversion pages, technical documentation, and editorial sites. The planner does not implement the described sections. Copy Section Graph JSON Template descriptions are planning prompts, not implementation or verified proof. Replace sample claims with sourced product details before publishing. PAGE OBJECTIVE ARCHETYPES B2B SaaS Conversion Landing Developer Documentation Hub Fintech Analytics Cockpit Luxury Editorial Sanctuary Operational Triage & Admin Tool Page Sections (5 active) Reset Blueprint 01 Financial Overview HERO Show organization-approved measures from the selected data source. Active 02 Time-Series Chart INTERACTIVE Plot the selected series and state its update cadence only when measured. Active 03 Transaction Table FEATURE Present transaction records and disclose whether data is sample, delayed, or live. Active 04 Risk & Compliance Scorecard PROOF Summarize risk measures with their source, scope, and update time. Active 05 Reporting Actions CTA Link to reporting formats the product actually provides; describe signing only when verified. Active Add Section Mix Guide REVIEW MIX Attention (Hero & Visual) 1 section (guide 1-2) Proof & Trust (Audit / Metrics) 1 section (guide 1-3) Interaction",
+            "claimMarkers": []
+          },
+          {
+            "name": "Luxury Editorial Sanctuary",
+            "text": "BETA Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project. TOOL 07 · PAGE STRUCTURE Client-Side · Zero Login Section Planner Plan and edit example section structures for conversion pages, technical documentation, and editorial sites. The planner does not implement the described sections. Copy Section Graph JSON Template descriptions are planning prompts, not implementation or verified proof. Replace sample claims with sourced product details before publishing. PAGE OBJECTIVE ARCHETYPES B2B SaaS Conversion Landing Developer Documentation Hub Fintech Analytics Cockpit Luxury Editorial Sanctuary Operational Triage & Admin Tool Page Sections (4 active) Reset Blueprint 01 Cinematic Visual Hero HERO Use licensed imagery with meaningful alt text and reduced-motion support for entrances. Active 02 Curated Collection Narrative FEATURE Describe craftsmanship and origin using details supplied by the product owner. Active 03 Interactive Lookbook Pacing INTERACTIVE If using a moving image reel, support keyboard, touch, and reduced-motion preferences. Active 04 Private Concierge Reservation CTA Connect an appointment form or booking service before promising a reservation. Active Add Section Mix Guide REVIEW MIX Attention (Hero & Visual) 1 section (guide 1-2) Proof & Trust (Audit / Metrics) 0 sections (guide 1-3) Interaction (Playground / Sandbox) 1 section (guide 1-2) Information (",
+            "claimMarkers": []
+          },
+          {
+            "name": "Operational Triage & Admin Tool",
+            "text": "BETA Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project. TOOL 07 · PAGE STRUCTURE Client-Side · Zero Login Section Planner Plan and edit example section structures for conversion pages, technical documentation, and editorial sites. The planner does not implement the described sections. Copy Section Graph JSON Template descriptions are planning prompts, not implementation or verified proof. Replace sample claims with sourced product details before publishing. PAGE OBJECTIVE ARCHETYPES B2B SaaS Conversion Landing Developer Documentation Hub Fintech Analytics Cockpit Luxury Editorial Sanctuary Operational Triage & Admin Tool Page Sections (4 active) Reset Blueprint 01 Global Command Bar & Filters HERO Expose keyboard commands only when the application handles them. Active 02 Triage Queue Table FEATURE Describe available bulk actions and confirm high-impact changes. Active 03 Side Inspector Panel INTERACTIVE Show fields authorized for the current user and handle sensitive values carefully. Active 04 Audit Action Trail PROOF List supported audit events with their access and retention rules. Active Add Section Mix Guide REVIEW MIX Attention (Hero & Visual) 1 section (guide 1-2) Proof & Trust (Audit / Metrics) 1 section (guide 1-3) Interaction (Playground / Sandbox) 1 section (guide 1-2) Information (Features / FAQ) 1 section (guide 2-4) Action & Conversion (Pricing / CTA)",
+            "claimMarkers": []
+          }
+        ],
+        "moveButtons": [
+          {
+            "label": "Move Global Command Bar & Filters up",
+            "disabled": true
+          },
+          {
+            "label": "Move Global Command Bar & Filters down",
+            "disabled": false
+          },
+          {
+            "label": "Move Triage Queue Table up",
+            "disabled": false
+          },
+          {
+            "label": "Move Triage Queue Table down",
+            "disabled": false
+          },
+          {
+            "label": "Move Side Inspector Panel up",
+            "disabled": false
+          },
+          {
+            "label": "Move Side Inspector Panel down",
+            "disabled": false
+          },
+          {
+            "label": "Move Audit Action Trail up",
+            "disabled": false
+          },
+          {
+            "label": "Move Audit Action Trail down",
+            "disabled": true
+          }
+        ],
+        "movedSection": "Move Global Command Bar & Filters down",
+        "orderBefore": [
+          "Global Command Bar & Filters",
+          "Triage Queue Table",
+          "Side Inspector Panel",
+          "Audit Action Trail"
+        ],
+        "orderAfter": [
+          "Triage Queue Table",
+          "Global Command Bar & Filters",
+          "Side Inspector Panel",
+          "Audit Action Trail"
+        ],
+        "reordered": true,
+        "clipboardJsonValid": true,
+        "copiedContent": "{\r\n  \"pageObjective\": \"internal-tool\",\r\n  \"totalSections\": 4,\r\n  \"grammar\": [\r\n    {\r\n      \"order\": 1,\r\n      \"id\": \"sec-2\",\r\n      \"name\": \"Triage Queue Table\",\r\n      \"semanticRole\": \"feature\",\r\n      \"description\": \"Describe available bulk actions and confirm high-impact changes.\"\r\n    },\r\n    {\r\n      \"order\": 2,\r\n      \"id\": \"sec-1\",\r\n      \"name\": \"Global Command Bar & Filters\",\r\n      \"semanticRole\": \"hero\",\r\n      \"description\": \"Expose keyboard commands only when the application handle",
+        "hasUpdatedOrder": true,
+        "status": []
+      },
+      "runtime": {
+        "console": [
+          {
+            "type": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-6sLLBbNe7xt9+dW4AprNw6gRcTp730/c1wnwdP0TXNM='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          }
+        ],
+        "uncaught": [],
+        "failed": [],
+        "badResponses": []
+      },
+      "screenshot": "quality\\evidence\\step-39\\deployed-v30-interactions\\section-planner-five-archetypes-and-copy-390x844.png"
+    },
+    {
+      "id": "dna-reset-baseline",
+      "route": "/tools/dna",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "result": {
+        "before": {
+          "boldPressed": "true",
+          "heading": "Bold Startup"
+        },
+        "after": {
+          "boldPressed": "false",
+          "baselinePressed": "true",
+          "heading": "Institutional Intelligence",
+          "boldClass": "w-full text-left rounded-lg p-3 text-xs transition-all border border-[#D9D6CF] bg-white hover:bg-[#FAF9F6] dark:border-[#272C34] dark:bg-[#171B21] dark:hover:bg-[#1C2128]",
+          "baselineClass": "w-full text-left rounded-lg p-3 text-xs transition-all border-2 border-[#2547E8] bg-[#E7EBFF] dark:border-[#6782FF] dark:bg-[#1C2752]"
+        }
+      },
+      "runtime": {
+        "console": [
+          {
+            "type": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-Yc5PKdi6Is4wyynd2Sz67v6MycAlJwlKUN5Vf0ckx/8='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          }
+        ],
+        "uncaught": [],
+        "failed": [],
+        "badResponses": []
+      },
+      "screenshot": "quality\\evidence\\step-39\\deployed-v30-interactions\\dna-reset-baseline-1440x900.png"
+    },
+    {
+      "id": "typography-golden-ratio-mobile",
+      "route": "/tools/typography",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "result": {
+        "layout": {
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "bodyWidth": 390
+        },
+        "selected": "true",
+        "text": "face Pairing Archetype\nGeist & System Mono\nPrecision engineering grotesque with geometric optical balance.\nNewsreader Editorial & Inter\nBespoke authorial voice with warm literary serif display titles.\nJetBrains Mono & Sans\nTerminal-first technical platform typography for CLI & developer tools.\nOpenType Numerical Features\nTabular Figures (Mono-width align)\nSlashed Zero (0 vs O distinction)\nHierarchical Scale Ladder\nTabular Figure Sample\nSCALE STEP\nMAXIMUM SIZE\nA product, shaped by people.\n110px max\nWorkspace activity\n68px max\nRecent updates\n42px max\n\nClear type sizes help people scan information and understand how each part of a page fits together.\n\n16px\nCOMPACT METADATA · EXAMPLE STATUS\n10px"
+      },
+      "runtime": {
+        "console": [
+          {
+            "type": "error",
+            "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-UgrKbj0s02r0KrY/Qh9TuuHfqkixhpmBXZW5ulxKWzE='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          }
+        ],
+        "uncaught": [],
+        "failed": [],
+        "badResponses": []
+      },
+      "screenshot": "quality\\evidence\\step-39\\deployed-v30-interactions\\typography-golden-ratio-mobile-390x844.png"
+    }
+  ]
+}

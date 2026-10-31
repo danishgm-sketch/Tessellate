@@ -1,0 +1,110 @@
+{
+  "step": 34,
+  "status": "local-complete-beta",
+  "branch": "consolidation/product-hardening",
+  "viewports": [
+    {
+      "name": "desktop",
+      "size": "1440x900",
+      "routes": 23,
+      "allHttp200": true,
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "uncaughtExceptions": 0,
+      "failedRequests": 0,
+      "httpErrors": 0,
+      "documentOverflow": 0,
+      "screenOverflow": 0,
+      "axeSeriousOrCritical": 0,
+      "axeModerate": 4,
+      "routeEvidence": "desktop-chrome-route-audit.json"
+    },
+    {
+      "name": "mobile",
+      "size": "390x844",
+      "routes": 23,
+      "allHttp200": true,
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "uncaughtExceptions": 0,
+      "failedRequests": 0,
+      "httpErrors": 0,
+      "documentOverflow": 0,
+      "screenOverflow": 0,
+      "axeSeriousOrCritical": 0,
+      "axeModerate": 4,
+      "routeEvidence": "mobile-chrome-route-audit.json"
+    }
+  ],
+  "blueprintGallery": {
+    "detailRoutes": 12,
+    "composedProducts": 12,
+    "directionsPerProduct": 3,
+    "directionCOpenedInWorkbench": 12,
+    "keyboardDnaMutations": 12,
+    "schemaValidManifestExports": 12,
+    "unresolvedResources": 0,
+    "unresolvedRoles": 0,
+    "consoleErrors": 0,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "workflowEvidence": "blueprint-workbench/workflow.json"
+  },
+  "showcases": {
+    "detailRoutes": 8,
+    "exampleScreensRendered": 31,
+    "screenIdSelectionVerified": 31,
+    "localWorkbenchCopies": 8,
+    "sourceProductAndScreensPreserved": 8,
+    "keyboardDnaMutations": 8,
+    "schemaValidManifestExports": 8,
+    "genericUnconnectedButtonsDisabledWithHelp": true,
+    "filterBuilderWorkflows": [
+      "showcase-ai-developer-platform",
+      "showcase-creator-analytics",
+      "showcase-financial-terminal",
+      "showcase-scientific-research"
+    ],
+    "unresolvedResources": 0,
+    "unresolvedRoles": 0,
+    "consoleErrors": 0,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "workflowEvidence": "showcase-workbench/workflow.json"
+  },
+  "fixedDefects": [
+    "Hospitality showcase had generated media/newsroom architecture; it now maps to travel and renders stay, room and reservation screens.",
+    "Employee experience showcase had hiring-focused title/copy; it now describes colleagues, teams, onboarding, engagement and policies.",
+    "Luxury commerce tagline repeated bespoke; productivity copy claimed unmeasured zero cloud latency.",
+    "Global Nocturne token override caused 1.97:1 helper-text contrast on light showcase canvases; page DNA now retains control of semantic text tokens."
+  ],
+  "remainingFindings": [
+    {
+      "id": "STEP34-A11Y-01",
+      "category": "accessibility",
+      "severity": "moderate",
+      "axeRule": "heading-order",
+      "routes": [
+        "/showcase/showcase-ai-developer-platform/",
+        "/showcase/showcase-luxury-ecommerce/",
+        "/showcase/showcase-luxury-hospitality/",
+        "/showcase/showcase-scientific-research/"
+      ],
+      "viewports": ["1440x900", "390x844"],
+      "status": "open",
+      "plannedStep": 35
+    }
+  ],
+  "validation": {
+    "catalogBuild": "passed; 324 resources validated; showcase manifests regenerated",
+    "productionBuild": "passed; 717 static Astro pages generated",
+    "showcaseUnitTests": "12 passed",
+    "blueprintShowcasePlaywright": "4 passed; 2 intentional mobile workflow skips",
+    "publicDeploymentVerification": "pending Step 45"
+  },
+  "evidence": {
+    "before": "before/",
+    "after": "after/",
+    "narrative": "../../STEP_34_EVIDENCE.md"
+  }
+}

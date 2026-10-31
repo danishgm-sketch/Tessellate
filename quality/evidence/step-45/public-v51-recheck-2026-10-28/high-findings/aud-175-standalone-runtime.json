@@ -1,0 +1,76 @@
+{
+  "source": "Standalone ZIP exported from public Sites v51; extracted outside the repository and clean-installed before build.",
+  "sourceSite": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "projectId": "proj-direction-c-3bb055f30fe6458aba758ca8a0b493c6dirc",
+  "manifestPrimaryNavigation": [
+    {
+      "label": "Marketing Home",
+      "href": "#screen-marketing-home"
+    },
+    {
+      "label": "Team Overview",
+      "href": "#screen-overview"
+    },
+    {
+      "label": "People Directory",
+      "href": "#screen-collection-index"
+    },
+    {
+      "label": "Teams",
+      "href": "#screen-teams"
+    },
+    {
+      "label": "Engagement",
+      "href": "#screen-engagement"
+    }
+  ],
+  "desktop": {
+    "title": "Adaptive Workspace — Employee experience",
+    "heading": "A better workday starts with people.",
+    "navigationRegions": 1,
+    "navigationLinks": [
+      {
+        "label": "Marketing Home",
+        "href": "#screen-marketing-home"
+      },
+      {
+        "label": "Team Overview",
+        "href": "#screen-overview"
+      },
+      {
+        "label": "People Directory",
+        "href": "#screen-collection-index"
+      },
+      {
+        "label": "Teams",
+        "href": "#screen-teams"
+      },
+      {
+        "label": "Engagement",
+        "href": "#screen-engagement"
+      }
+    ],
+    "duplicateNavigationLinks": [],
+    "documentWidth": 1440,
+    "viewportWidth": 1440
+  },
+  "undeclaredOnboardingLinkInNavigation": 0,
+  "onboardingDestinationHasContent": true,
+  "mobile": {
+    "documentWidth": 390,
+    "viewportWidth": 390,
+    "navigationRegions": 1,
+    "heading": "A better workday starts with people."
+  },
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "badResponses": [],
+  "cleanBuild": "passed (pnpm build)",
+  "runtime": "passed (Vite preview at 127.0.0.1:4175)",
+  "screenshots": [
+    "aud-175-standalone-desktop-1440.png",
+    "aud-175-standalone-onboarding-1440.png",
+    "aud-175-standalone-mobile-390.png"
+  ]
+}

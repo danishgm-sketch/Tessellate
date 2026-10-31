@@ -1,0 +1,55 @@
+{
+  "siteVersion": 14,
+  "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "canonicalGitCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
+  "projectId": "deployed-renderer-parity-diagnostic",
+  "projectName": "Renderer parity diagnostic",
+  "schemaVersion": "1.0.0",
+  "screenCount": 1,
+  "zip": {
+    "file": "deployed-renderer-parity-export.zip",
+    "bytes": 12639,
+    "sha256": "4889c5b26b309a608ff52b3087ed8eba9f55f7db5c5b01b78ea2ed38db59665d"
+  },
+  "hasTessellateRuntimeDependency": false,
+  "installBuild": {
+    "cleanInstallDirectory": "%TEMP%\\tessellate-v14-parity-clean-911d70ce0420425fb6d500894349f427",
+    "repositoryNodeModulesReused": false,
+    "installCommand": "npm install --no-audit --no-fund",
+    "installExitCode": 0,
+    "buildCommand": "npm run build",
+    "buildExitCode": 0,
+    "viteVersion": "^6.1.0",
+    "assets": [
+      {
+        "name": "index-C7D0AP1N.css",
+        "bytes": 21661
+      },
+      {
+        "name": "index-CZn-zHM4.js",
+        "bytes": 232513
+      }
+    ],
+    "note": "npm warned that esbuild postinstall was not allow-listed by this machine policy; the exported package included its platform binary and the TypeScript plus Vite production build succeeded."
+  },
+  "browserRuntime": {
+    "loadedAtDesktopAndMobile": true,
+    "propAndSlotChildrenPreserved": true,
+    "dataAndAriaAttributesPreserved": true,
+    "dialogClosesWithEscapeWithoutHostCallback": true,
+    "responsiveOmitWorksAt390": true,
+    "responsiveStackWorksAt390": true,
+    "responsiveCollapseWorksAt390": true,
+    "noUnresolvedResources": true,
+    "mobileNoOverflow": true,
+    "zeroConsoleErrors": true,
+    "zeroUncaughtErrors": true,
+    "zeroFailedRequests": true,
+    "zeroHttpErrors": true
+  },
+  "browserRuntimeReport": "deployed-parity-export-runtime.json",
+  "screenshots": [
+    "deployed-parity-export-1440x900.png",
+    "deployed-parity-export-390x844.png"
+  ]
+}

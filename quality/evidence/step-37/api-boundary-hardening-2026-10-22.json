@@ -1,0 +1,30 @@
+{
+  "recordedAt": "2026-10-22T12:58:42Z",
+  "commit": "6f455f1c",
+  "scope": "API authentication, ownership and cloud-write integrity, request bounds, route rate limits, Turnstile fail-closed behavior, and corresponding regression tests.",
+  "checks": [
+    {
+      "command": "pnpm exec vitest run apps/api/src/__tests__",
+      "result": "PASS",
+      "passed": 106,
+      "failed": 0,
+      "files": 7
+    },
+    {
+      "command": "pnpm --filter @tessellate/api typecheck",
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm exec eslint apps/api/src",
+      "result": "PASS"
+    },
+    {
+      "command": "git diff --cached --check",
+      "result": "PASS"
+    }
+  ],
+  "deploymentStatus": "pending_release_candidate_verification",
+  "limitations": [
+    "Does not verify production D1 ownership routes, Cloudflare rate-limit namespace existence, production OAuth credentials, or the deployed Site gateway."
+  ]
+}

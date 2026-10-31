@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "1.0.0",
+  "browserProject": "sites-chromium",
+  "widths": [
+    360,
+    390,
+    430,
+    768,
+    1024,
+    1280,
+    1440
+  ],
+  "resourceCount": 12,
+  "findings": 0,
+  "resources": [
+    {
+      "slug": "ai-agent-activity-feed",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-agent-activity-feed/"
+    },
+    {
+      "slug": "ai-prompt-hero",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-360.png",
+        "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-390.png",
+        "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-1280.png",
+        "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/ai-prompt-hero/"
+    },
+    {
+      "slug": "ai-source-citations",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/ai-source-citations/"
+    },
+    {
+      "slug": "breadcrumb-header",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/breadcrumb-header-1440-after.png",
+        "test-results/resource-certification/catalog-324/breadcrumb-header-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/breadcrumb-header/"
+    },
+    {
+      "slug": "counter-typography",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/counter-typography/"
+    },
+    {
+      "slug": "floating-ai-assistant",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/floating-ai-assistant/"
+    },
+    {
+      "slug": "inline-ai-rewrite",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/inline-ai-rewrite/"
+    },
+    {
+      "slug": "integration-directory-preview",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/integration-directory-preview/"
+    },
+    {
+      "slug": "interactive-demo-hero",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/interactive-demo-hero/"
+    },
+    {
+      "slug": "mega-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/mega-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/mega-nav-disclosure-after.png",
+        "test-results/resource-certification/catalog-324/mega-nav-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/mega-nav/"
+    },
+    {
+      "slug": "multi-series-line-chart",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [],
+      "url": "http://127.0.0.1:4323/resources/multi-series-line-chart/"
+    },
+    {
+      "slug": "transparent-solid-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/transparent-solid-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/transparent-solid-nav-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/transparent-solid-nav/"
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": 54,
+  "capturedAt": "2026-10-28T10:44:13.310Z",
+  "routes": [
+    "/",
+    "/explore",
+    "/compose",
+    "/workbench",
+    "/r/dashboard-kpi-grid/",
+    "/showcase/showcase-playful-hr/"
+  ],
+  "viewports": [
+    {
+      "name": "desktop-1440x900",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "mobile-390x844",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "results": [
+    {
+      "route": "/",
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "status": 200,
+      "navigationError": null,
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds"
+          }
+        ],
+        "error": null
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/axe/_-desktop-1440x900.png"
+    },
+    {
+      "route": "/explore",
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+      "status": 200,
+      "navigationError": null,
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds"
+          }
+        ],
+        "error": null
+      },
+      "consoleErrors": [
+        "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+      ],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/axe/_explore-desktop-1440x900.png"
+    },
+    {
+      "route": "/compose",
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+      "status": 200,
+      "navigationError": null,
+      "axe": {
+        "violations": [],
+        "incomplete": [],
+        "error": null
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/axe/_compose-desktop-1440x900.png"
+    },
+    {
+      "route": "/workbench",
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+      "status": 200,
+      "navigationError": null,
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "help": "Elements must only use permitted ARIA attributes"
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds"
+          }
+        ],
+        "error": null
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/axe/_workbench-desktop-1440x900.png"
+    },
+    {
+      "route": "/r/dashboard-kpi-grid/",
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/dashboard-kpi-grid/",
+      "status": 200,
+      "navigationError": null,
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds"
+          }
+        ],
+        "error": null
+      },
+      "consoleErrors": [
+        "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+      ],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/axe/_r_dashboard-kpi-grid_-desktop-1440x900.png"
+    },
+    {
+      "route": "/showcase/showcase-playful-hr/",
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/showcase/showcase-playful-hr/",
+      "status": 200,
+      "navigationError": null,
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "help": "Elements must only use permitted ARIA attributes"
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds"
+          }
+        ],
+        "error": null
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/axe/_showcase_showcase-playful-hr_-desktop-1440x900.png"
+    },
+    {
+      "route": "/",
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "status": 200,
+      "navigationError": null,
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds"
+          }
+        ],
+        "error": null
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/axe/_-mobile-390x844.png"
+    },
+    {
+      "route": "/explore",
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+      "status": 200,
+      "navigationError": null,
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds"
+          }
+        ],
+        "error": null
+      },
+      "consoleErrors": [
+        "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+      ],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/axe/_explore-mobile-390x844.png"
+    },
+    {
+      "route": "/compose",
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+      "status": 200,
+      "navigationError": null,
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds"
+          }
+        ],
+        "error": null
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/axe/_compose-mobile-390x844.png"
+    },
+    {
+      "route": "/workbench",
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+      "status": 200,
+      "navigationError": null,
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "help": "Elements must only use permitted ARIA attributes"
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds"
+          }
+        ],
+        "error": null
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/axe/_workbench-mobile-390x844.png"
+    },
+    {
+      "route": "/r/dashboard-kpi-grid/",
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/dashboard-kpi-grid/",
+      "status": 200,
+      "navigationError": null,
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds"
+          }
+        ],
+        "error": null
+      },
+      "consoleErrors": [
+        "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+      ],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/axe/_r_dashboard-kpi-grid_-mobile-390x844.png"
+    },
+    {
+      "route": "/showcase/showcase-playful-hr/",
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/showcase/showcase-playful-hr/",
+      "status": 200,
+      "navigationError": null,
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "help": "Elements must only use permitted ARIA attributes"
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds"
+          }
+        ],
+        "error": null
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/axe/_showcase_showcase-playful-hr_-mobile-390x844.png"
+    }
+  ]
+}

@@ -31,7 +31,7 @@ import { FinalComposerFooter } from '../components/home/FinalComposerFooter';
   <body class="min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white">
     <SiteHeader client:load />
 
-    <main id="main-content" class="overflow-x-hidden">
+    <main id="main-content" tabindex="-1" class="overflow-x-hidden">
       <!-- 1. Hero / Real interactive Product Composer -->
       <HeroComposer client:load />
 
@@ -42,7 +42,7 @@ import { FinalComposerFooter } from '../components/home/FinalComposerFooter';
       <NotComponentLibrary client:visible />
 
       <!-- 4. Interactive Catalogue Mosaic -->
-      <CatalogueMosaic client:visible />
+      <CatalogueMosaic client:load />
 
       <!-- 5. Essential vs Refined vs Experimental ambition comparison -->
       <EssentialVsExperimental client:visible />

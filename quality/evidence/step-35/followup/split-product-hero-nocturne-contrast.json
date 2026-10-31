@@ -1,0 +1,39 @@
+{
+  "step": 35,
+  "title": "Split Product Hero Nocturne badge contrast",
+  "date": "2026-10-20",
+  "status": "fixed-and-verified",
+  "runtime": "Sites Worker preview, Chromium 1440x900",
+  "resource": "split-product-hero",
+  "variant": "nocturne",
+  "finding": {
+    "severity": "serious",
+    "axeRule": "color-contrast",
+    "target": ".uppercase",
+    "text": "Validated Composability",
+    "before": {
+      "foreground": "#62666f",
+      "background": "#0b0d10",
+      "contrastRatio": 3.38,
+      "requiredRatio": 4.5
+    },
+    "rootCause": "The badge used the light-surface muted-ink token on the component's dark Nocturne canvas."
+  },
+  "reproduction": [
+    "Open /preview/?resource=split-product-hero&variant=nocturne in the Sites Worker preview.",
+    "Run the WCAG 2.0/2.1/2.2 A/AA Axe scan.",
+    "Observe a serious color-contrast finding on the uppercase badge."
+  ],
+  "fix": {
+    "file": "resources/sections/split-product-hero/index.tsx",
+    "change": "Use neutral-400 text for the badge in the Nocturne variant; retain the semantic muted token for the light variants."
+  },
+  "regressionTest": "tests/e2e/gold-resource-accessibility-certification.spec.ts — Split Product Hero Nocturne keeps its badge readable on the dark canvas",
+  "verification": {
+    "focusedTest": "passed",
+    "allGoldVariants": 120,
+    "allGoldAxeViolations": 0,
+    "afterScreenshot": "quality/evidence/step-35/followup/split-product-hero-nocturne-after.png",
+    "beforeScreenshot": "quality/evidence/step-35/followup/split-product-hero-nocturne-before.png"
+  }
+}

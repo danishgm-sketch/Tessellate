@@ -1,0 +1,453 @@
+{
+  "capturedAt": "2026-10-20T08:42:57.177Z",
+  "method": "Local Astro production preview, Playwright Chromium, standard laptop CPU/network without throttling. LCP/CLS are lab PerformanceObserver values, Long Tasks API is supplemental. No field CWV or DevTools trace is claimed.",
+  "results": [
+    {
+      "route": "/",
+      "viewport": "desktop-1440x900",
+      "url": "http://localhost:4321/",
+      "elapsedMs": 2041,
+      "fcp": 236,
+      "lcp": 236,
+      "cls": 0,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "domContentLoaded": 202,
+      "load": 202.09999999403954,
+      "resourceCount": 23,
+      "jsTransferBytes": 203988,
+      "jsResourceCount": 22,
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "consoleErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    {
+      "route": "/explore",
+      "viewport": "desktop-1440x900",
+      "url": "http://localhost:4321/explore",
+      "elapsedMs": 2102,
+      "fcp": 68,
+      "lcp": 68,
+      "cls": 0.031353515625,
+      "longTaskMs": 73,
+      "longTasks": 1,
+      "domContentLoaded": 20.80000001192093,
+      "load": 22.30000001192093,
+      "resourceCount": 37,
+      "jsTransferBytes": 162752,
+      "jsResourceCount": 26,
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "consoleErrors": [
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763511' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.CLsJ3fvV.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763511",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763510' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763511' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763512' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763512' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763513' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763513' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763511' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763512' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763511' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763512' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.CLsJ3fvV.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763511",
+        "[astro-island] Error hydrating /_astro/PreviewHost.CLsJ3fvV.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763512",
+        "[astro-island] Error hydrating /_astro/PreviewHost.CLsJ3fvV.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763513",
+        "[astro-island] Error hydrating /_astro/PreviewHost.CLsJ3fvV.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763511",
+        "[astro-island] Error hydrating /_astro/PreviewHost.CLsJ3fvV.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763512",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763513' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.CLsJ3fvV.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763513",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763513' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763511' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763512' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.CLsJ3fvV.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763512",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763512' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763512' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.CLsJ3fvV.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763512",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763512' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ],
+      "failedRequests": [
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763511",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763510",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763511",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763512",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763512",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763513",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763513",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763511",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763512",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763511",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763512",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763513",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763513",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763511",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763512",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763512",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485763512",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485763512",
+          "error": "net::ERR_FAILED"
+        }
+      ],
+      "httpErrors": []
+    },
+    {
+      "route": "/compose",
+      "viewport": "desktop-1440x900",
+      "url": "http://localhost:4321/compose",
+      "elapsedMs": 1926,
+      "fcp": 84,
+      "lcp": 84,
+      "cls": 0,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "domContentLoaded": 21.900000005960464,
+      "load": 66.30000001192093,
+      "resourceCount": 42,
+      "jsTransferBytes": 590364,
+      "jsResourceCount": 40,
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "consoleErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    {
+      "route": "/workbench",
+      "viewport": "desktop-1440x900",
+      "url": "http://localhost:4321/workbench",
+      "elapsedMs": 1899,
+      "fcp": 168,
+      "lcp": 332,
+      "cls": 0,
+      "longTaskMs": 54,
+      "longTasks": 1,
+      "domContentLoaded": 21.900000005960464,
+      "load": 21.900000005960464,
+      "resourceCount": 41,
+      "jsTransferBytes": 583610,
+      "jsResourceCount": 39,
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "consoleErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    {
+      "route": "/",
+      "viewport": "mobile-390x844",
+      "url": "http://localhost:4321/",
+      "elapsedMs": 1892,
+      "fcp": 144,
+      "lcp": 144,
+      "cls": 0,
+      "longTaskMs": 102,
+      "longTasks": 1,
+      "domContentLoaded": 27.399999976158142,
+      "load": 39.099999994039536,
+      "resourceCount": 23,
+      "jsTransferBytes": 203988,
+      "jsResourceCount": 22,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    {
+      "route": "/explore",
+      "viewport": "mobile-390x844",
+      "url": "http://localhost:4321/explore",
+      "elapsedMs": 2004,
+      "fcp": 56,
+      "lcp": 56,
+      "cls": 0,
+      "longTaskMs": 61,
+      "longTasks": 1,
+      "domContentLoaded": 21.899999976158142,
+      "load": 24.69999998807907,
+      "resourceCount": 30,
+      "jsTransferBytes": 162752,
+      "jsResourceCount": 26,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485772073' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.CLsJ3fvV.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485772073",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485772074' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485772074' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.CLsJ3fvV.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485772074",
+        "Access to script at 'http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485772074' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ],
+      "failedRequests": [
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485772073",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485772074",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792485772074",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://localhost:4321/_astro/PreviewHost.CLsJ3fvV.js?astro-retry=1792485772074",
+          "error": "net::ERR_FAILED"
+        }
+      ],
+      "httpErrors": []
+    },
+    {
+      "route": "/compose",
+      "viewport": "mobile-390x844",
+      "url": "http://localhost:4321/compose",
+      "elapsedMs": 1911,
+      "fcp": 64,
+      "lcp": 64,
+      "cls": 0,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "domContentLoaded": 57,
+      "load": 57,
+      "resourceCount": 42,
+      "jsTransferBytes": 590364,
+      "jsResourceCount": 40,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    {
+      "route": "/workbench",
+      "viewport": "mobile-390x844",
+      "url": "http://localhost:4321/workbench",
+      "elapsedMs": 1903,
+      "fcp": 156,
+      "lcp": 272,
+      "cls": 0,
+      "longTaskMs": 0,
+      "longTasks": 0,
+      "domContentLoaded": 21.19999998807907,
+      "load": 22.099999994039536,
+      "resourceCount": 41,
+      "jsTransferBytes": 583610,
+      "jsResourceCount": 39,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "capturedAt": "2026-10-26T19:21:49.837Z",
+  "route": "http://127.0.0.1:4413/tools/accessibility",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "status": 200,
+  "layout": {
+    "viewportWidth": 1440,
+    "documentWidth": 1440,
+    "horizontalOverflow": false
+  },
+  "visibleText": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 09 · INCLUSIVE COMPLIANCE\nClient-Side · Zero Login\nAccessibility Lab\n\nCheck colour contrast, focus-ring dimensions, and minimum touch-target size. These checks do not certify a complete interface.\n\nThree checks · Not a full audit\nContrast Matrix\nFocus Ring Studio\nTouch Target Size\nColor Pair Calibration\nAuto-Fix Contrast\nForeground (Text / Icon)\nBackground (Surface / Canvas)\n\nEnter six-digit hex colours in the form #2547E8.\n\nCONTRAST RATIO\n16.72:1\nAAA HIGHEST\nNORMAL TEXT (16px)\nPASS\nReq: 4.5:1\nLARGE TEXT (18pt+)\nPASS\nReq: 3.0:1\nUI COMPONENTS\nPASS\nReq: 3.0:1\nAccessible Typographic Contrast\n\nVerify readability and optical legibility in real conditions. Even when users browse with low screen brightness or high ambient glare, text must remain distinct.\n\nFG: #111217\n·\nBG: #F4F2ED",
+  "accessibility": {
+    "totalViolations": 0,
+    "seriousOrCritical": []
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-39\\after\\desktop\\accessibility-lab-copy.png"
+}

@@ -1,7 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { glob } from 'glob';
-import { mapSourceFilesToProject, type IngestionResult } from '@tessellate/ingest';
+import type { IngestionResult } from '@tessellate/ingest';
 
 export interface CliIngestOptions {
   output?: string;
@@ -13,7 +13,9 @@ export async function runIngest(
   options: CliIngestOptions = {}
 ): Promise<IngestionResult> {
   const dir = path.resolve(targetDir);
-  const outputPath = options.output || path.join(dir, 'tessellate.project.json');
+  const outputPath = options.output
+    ? path.resolve(dir, options.output)
+    : path.join(dir, 'tessellate.project.json');
   const projectName = options.name || path.basename(dir);
 
   console.log(`[tess] Ingesting codebase from: ${dir}...`);
@@ -25,7 +27,9 @@ export async function runIngest(
   });
 
   if (filePaths.length === 0) {
-    console.warn(`[tess] No .tsx or .jsx files found in ${dir}`);
+    throw new Error(
+      `[tess] No React source files (.tsx or .jsx) found in ${dir}; no manifest was written.`
+    );
   }
 
   const files = filePaths.map((relPath) => ({
@@ -33,16 +37,42 @@ export async function runIngest(
     code: fs.readFileSync(path.join(dir, relPath), 'utf-8'),
   }));
 
+  const absoluteSourcePaths = new Set(
+    filePaths.map((filePath) => path.resolve(dir, filePath).toLowerCase())
+  );
+  const realSourcePaths = new Set(
+    filePaths.map((filePath) => fs.realpathSync(path.join(dir, filePath)).toLowerCase())
+  );
+  const realOutputPath = fs.existsSync(outputPath)
+    ? fs.realpathSync(outputPath).toLowerCase()
+    : undefined;
+  if (
+    absoluteSourcePaths.has(outputPath.toLowerCase()) ||
+    (realOutputPath && realSourcePaths.has(realOutputPath))
+  ) {
+    throw new Error(
+      `[tess] Refusing to write the imported manifest over a source file: ${outputPath}`
+    );
+  }
+
+  const { mapSourceFilesToProject } = await import('@tessellate/ingest');
   const result = mapSourceFilesToProject(files, projectName);
 
   fs.writeFileSync(outputPath, JSON.stringify(result.projectManifest, null, 2), 'utf-8');
 
-  console.log(`[tess] Successfully ingested ${result.sourceFileCount} screen file(s)!`);
+  console.log(
+    `[tess] Identified ${result.screens.length} React route(s) across ${result.sourceFileCount} source file(s).`
+  );
   console.log(`  • Detected Palette:   ${result.inferredDna.detectedPalette}`);
   console.log(`  • Curvature Score:    ${result.inferredDna.detectedCurvature}/100`);
   console.log(`  • Visual Mode:        ${result.inferredDna.detectedVisualMode}`);
-  console.log(`  • Extracted Screens:  ${result.screens.length}`);
-  console.log(`[tess] Saved ProjectManifest AST to: ${outputPath}`);
+  console.log(
+    `  • Design DNA evidence: ${result.inferredDna.inferredFields.join(', ') || 'none'}; ${result.inferredDna.defaultedFields.length} schema defaults are not inferred`
+  );
+  console.log(`  • Product intent:     not inferred`);
+  console.log(`  • Original source:    unchanged`);
+  for (const warning of result.warnings) console.log(`[tess] Scope: ${warning}`);
+  console.log(`[tess] Saved partial ProjectManifest to: ${outputPath}`);
 
   return result;
 }

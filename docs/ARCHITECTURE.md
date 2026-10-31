@@ -1,5 +1,8 @@
 # Tessellate Architecture
 
+> Current operating state (2026-10-16): D-041 retains the owner-authorized optional laptop Docker API/local D1/CPU host; D-042 freezes expansion. Static Astro/browser-local Core remains independent. Existing Sites packaging is an isolated hosting adapter, not a new app stack. Cloud D1/R2, GitHub OAuth and a permanent laptop tunnel are configuration-dependent, not proven live by these historical launch plans. All deployment/pricing assertions below are architectural targets until verified.
+
+
 ## 1. Architecture objective
 
 Tessellate must deliver a large, sophisticated product while remaining inexpensive to operate. The architecture therefore maximises:
@@ -146,6 +149,24 @@ IndexedDB adapter writes durable local project state.
 
 Cloud sync adapter only runs for authenticated users.
 
+The API keeps account features unavailable until D1, a 32-character
+`BETTER_AUTH_SECRET`, an HTTPS `BETTER_AUTH_URL` (HTTP is allowed only on
+localhost), and GitHub OAuth credentials are all configured. Missing bindings
+return a clear 503; they never activate a fallback identity or credential.
+Guest `/api/me` remains an anonymous response, while the browser-local Core
+product continues to work without account infrastructure. V1 uses GitHub OAuth
+only, disables implicit account linking, and does not return Better Auth session
+tokens from profile responses. `TEST_AUTH_SECRET` accepts signed fixtures only
+when tests explicitly provide that binding; it is not set in runtime manifests.
+
+Cloud project updates require the revision the client last loaded. Missing
+`expectedRevision` returns 428 and stale writes return 409 with the current
+revision. The compare-and-swap update and history snapshot execute in one D1
+batch, so a checkpoint failure cannot leave the cloud manifest ahead of its
+recoverable history. Storage failures return 503 and preserve the last committed
+revision. Account and cloud paths remain Beta until real GitHub credentials and
+the target D1 binding are exercised in the deployed environment.
+
 ## 5. API Worker
 
 Framework: Hono on Cloudflare Workers.
@@ -215,7 +236,7 @@ Each resource folder contains:
 
 ```text
 resource-slug/
-├── manifest.ts or manifest.json
+├── manifest.ts or manifest.json (static data; module code is never executed)
 ├── index.tsx
 ├── preview.tsx
 ├── fixtures.ts
@@ -252,15 +273,12 @@ Orama index built from:
 Ship compressed browser index.
 
 ### Semantic
-Precompute resource embeddings at build time.
-
-Browser query embedding:
-- use Transformers.js;
-- prefer WebGPU when supported;
-- fall back to WASM;
-- do not load embedding model until semantic search is requested/beneficial.
-
-If semantic is unavailable, full-text and metadata filters remain fully functional.
+Semantic embedding is an experimental Lab and is not connected to Explore or
+Compose. The current adapter reports unavailable until a real embedding model
+and semantic-quality evaluation are supplied. Orama full-text search and
+metadata filters are the only active search path. D-043 records this as a
+deliberate capability boundary; the Transformers.js design in D-012 remains a
+future option, not a current implementation claim.
 
 ## 10. AI provider architecture
 

@@ -1,0 +1,55 @@
+{
+  "id": "SEC-37-085-LIVE-BEFORE",
+  "checkedAt": "2026-10-21T15:34:53.718Z",
+  "baseURL": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "method": "HEAD for response header probe; Chromium DOM script insertion on / for executable-inline verification",
+  "viewport": "1440x900",
+  "routes": [
+    {
+      "route": "/",
+      "status": 200,
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.tessellate.design http://localhost:8787 https://api.github.com; frame-src 'self' https://preview.tessellate.design http://localhost:4321 http://localhost:5173; object-src 'none'; base-uri 'self'; frame-ancestors 'self';",
+      "etag": "\"dc8f2bf3617c34645dd376f415b6c414\"",
+      "serverDate": "Wed, 21 Oct 2026 15:34:53 GMT"
+    },
+    {
+      "route": "/explore",
+      "status": 200,
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.tessellate.design http://localhost:8787 https://api.github.com; frame-src 'self' https://preview.tessellate.design http://localhost:4321 http://localhost:5173; object-src 'none'; base-uri 'self'; frame-ancestors 'self';",
+      "etag": "\"1cf3b6c88bf88846f34d239413b8dd47\"",
+      "serverDate": "Wed, 21 Oct 2026 15:34:53 GMT"
+    },
+    {
+      "route": "/compose",
+      "status": 200,
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.tessellate.design http://localhost:8787 https://api.github.com; frame-src 'self' https://preview.tessellate.design http://localhost:4321 http://localhost:5173; object-src 'none'; base-uri 'self'; frame-ancestors 'self';",
+      "etag": "\"78897efaf2bc8bfe0b5f02c93e00bcd3\"",
+      "serverDate": "Wed, 21 Oct 2026 15:34:53 GMT"
+    },
+    {
+      "route": "/workbench",
+      "status": 200,
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.tessellate.design http://localhost:8787 https://api.github.com; frame-src 'self' https://preview.tessellate.design http://localhost:4321 http://localhost:5173; object-src 'none'; base-uri 'self'; frame-ancestors 'self';",
+      "etag": "\"26a9f52cc7bfd7b1bdfe46e7262f1b26\"",
+      "serverDate": "Wed, 21 Oct 2026 15:34:53 GMT"
+    },
+    {
+      "route": "/r/button",
+      "status": 200,
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.tessellate.design http://localhost:8787 https://api.github.com; frame-src 'self' https://preview.tessellate.design http://localhost:4321 http://localhost:5173; object-src 'none'; base-uri 'self'; frame-ancestors 'self';",
+      "etag": "\"cde4c3f0311394c24acb057fb6a43f2a\"",
+      "serverDate": "Wed, 21 Oct 2026 15:34:53 GMT"
+    }
+  ],
+  "browserProbe": {
+    "route": "/",
+    "status": 200,
+    "injectedScriptRan": true,
+    "consoleErrors": []
+  },
+  "result": "failed: the current deployed app shell permits an arbitrary inline script to execute; local fixed-branch verification is recorded separately and is not deployed",
+  "screenshots": {
+    "desktop": "audit/evidence/step-37/site-shell-csp-before-1440.png",
+    "mobile": "audit/evidence/step-37/site-shell-csp-before-390.png"
+  }
+}

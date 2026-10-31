@@ -17,6 +17,7 @@ export default defineConfig({
       '@tessellate/dna': path.resolve(__dirname, 'packages/dna/src/index.ts'),
       '@tessellate/composer': path.resolve(__dirname, 'packages/composer/src/index.ts'),
       '@tessellate/compatibility': path.resolve(__dirname, 'packages/compatibility/src/index.ts'),
+      '@tessellate/renderer/browser': path.resolve(__dirname, 'packages/renderer/src/browser.ts'),
       '@tessellate/renderer': path.resolve(__dirname, 'packages/renderer/src/index.ts'),
       '@tessellate/workbench': path.resolve(__dirname, 'packages/workbench/src/index.ts'),
       '@tessellate/exporter': path.resolve(__dirname, 'packages/exporter/src/index.ts'),
@@ -27,6 +28,7 @@ export default defineConfig({
     },
   },
   test: {
+    maxWorkers: 4,
     globals: true,
     environment: 'node',
     include: [
@@ -34,6 +36,7 @@ export default defineConfig({
       'packages/**/*.test.tsx',
       'apps/**/*.test.ts',
       'tests/**/*.test.ts',
+      'tests/**/*.test.tsx',
     ],
   },
 });

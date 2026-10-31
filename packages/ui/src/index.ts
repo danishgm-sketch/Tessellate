@@ -7,6 +7,7 @@ export * from './components/input.js';
 export * from './components/textarea.js';
 export * from './components/select.js';
 export * from './components/chip.js';
+export * from './components/capability-badge.js';
 export * from './components/tooltip.js';
 export * from './components/dialog.js';
 export * from './components/sheet.js';
@@ -18,3 +19,5 @@ export * from './components/separator.js';
 export * from './components/skeleton.js';
 export * from './components/header.js';
 export * from './components/workbench-chrome.js';
+
+export * from './use-dialog-focus.js';

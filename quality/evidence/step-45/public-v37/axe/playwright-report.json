@@ -1,0 +1,667 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\node_modules\\.pnpm\\playwright@1.63.0\\node_modules\\playwright\\cli.js",
+      "test",
+      "--config",
+      "quality/evidence/step-45/public-v37/accessibility-live.config.ts"
+    ],
+    "configFile": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\accessibility-live.config.ts",
+    "rootDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/quality/evidence/step-45/public-v37",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/quality/evidence/step-45/public-v37/axe/playwright-output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "sites-live-desktop-1440",
+        "name": "sites-live-desktop-1440",
+        "testDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/quality/evidence/step-45/public-v37",
+        "testIgnore": [],
+        "testMatch": [
+          "accessibility-live.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/quality/evidence/step-45/public-v37/axe/playwright-output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "sites-live-mobile-390",
+        "name": "sites-live-mobile-390",
+        "testDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/quality/evidence/step-45/public-v37",
+        "testIgnore": [],
+        "testMatch": [
+          "accessibility-live.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\axe\\playwright-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "accessibility-live.spec.ts",
+      "file": "accessibility-live.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Compose labels describe form fields rather than styling non-field controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-desktop-1440",
+              "projectName": "sites-live-desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1662,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:35:22.818Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-ff4a6351f75586d00269",
+          "file": "accessibility-live.spec.ts",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "showcase previews continue the document heading hierarchy",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-desktop-1440",
+              "projectName": "sites-live-desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2949,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:35:24.587Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-8652ee306cfb7b3734b4",
+          "file": "accessibility-live.spec.ts",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "Core surfaces pass WCAG 2.2 A/AA and target-size scans",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-desktop-1440",
+              "projectName": "sites-live-desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11100,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:35:27.547Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-33c4f3b3095434c451a5",
+          "file": "accessibility-live.spec.ts",
+          "line": 74,
+          "column": 1
+        },
+        {
+          "title": "keyboard dialogs trap focus, close with Escape, and return focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-desktop-1440",
+              "projectName": "sites-live-desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2156,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:35:38.656Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-f5a3229eb2abb924392c",
+          "file": "accessibility-live.spec.ts",
+          "line": 153,
+          "column": 1
+        },
+        {
+          "title": "every public and editing shell exposes a working keyboard skip target",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-desktop-1440",
+              "projectName": "sites-live-desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3239,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:35:40.820Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-5b5ce43328743771fefa",
+          "file": "accessibility-live.spec.ts",
+          "line": 249,
+          "column": 1
+        },
+        {
+          "title": "reduced motion and 200 percent equivalent layout keep Core controls usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-desktop-1440",
+              "projectName": "sites-live-desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1509,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:35:44.073Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-e564a35e19da7320e5c7",
+          "file": "accessibility-live.spec.ts",
+          "line": 279,
+          "column": 1
+        },
+        {
+          "title": "Workbench landmarks and every primary mode pass WCAG 2.2 A/AA",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-desktop-1440",
+              "projectName": "sites-live-desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4125,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:35:45.593Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-cb855c23dcbfede386fe",
+          "file": "accessibility-live.spec.ts",
+          "line": 307,
+          "column": 1
+        },
+        {
+          "title": "keyboard users can reorder Workbench layers without drag and drop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-desktop-1440",
+              "projectName": "sites-live-desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1513,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:35:49.731Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-e27e8ffe2815b7de4dd8",
+          "file": "accessibility-live.spec.ts",
+          "line": 338,
+          "column": 1
+        },
+        {
+          "title": "Compose labels describe form fields rather than styling non-field controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-mobile-390",
+              "projectName": "sites-live-mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 589,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:35:51.897Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-2cc039bb2427dfb94a37",
+          "file": "accessibility-live.spec.ts",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "showcase previews continue the document heading hierarchy",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-mobile-390",
+              "projectName": "sites-live-mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2254,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:35:52.602Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-6efa55407db375089abc",
+          "file": "accessibility-live.spec.ts",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "Core surfaces pass WCAG 2.2 A/AA and target-size scans",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-mobile-390",
+              "projectName": "sites-live-mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12533,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:35:54.869Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-bc18dd6803508693d98c",
+          "file": "accessibility-live.spec.ts",
+          "line": 74,
+          "column": 1
+        },
+        {
+          "title": "keyboard dialogs trap focus, close with Escape, and return focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-mobile-390",
+              "projectName": "sites-live-mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3015,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:36:07.413Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-cbfb43bd6f36709ef47a",
+          "file": "accessibility-live.spec.ts",
+          "line": 153,
+          "column": 1
+        },
+        {
+          "title": "every public and editing shell exposes a working keyboard skip target",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-mobile-390",
+              "projectName": "sites-live-mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2683,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:36:10.438Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-71484f84973bc8e3cc65",
+          "file": "accessibility-live.spec.ts",
+          "line": 249,
+          "column": 1
+        },
+        {
+          "title": "reduced motion and 200 percent equivalent layout keep Core controls usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-mobile-390",
+              "projectName": "sites-live-mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1777,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:36:13.133Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-f5396c80e5b2a4e43d19",
+          "file": "accessibility-live.spec.ts",
+          "line": 279,
+          "column": 1
+        },
+        {
+          "title": "Workbench landmarks and every primary mode pass WCAG 2.2 A/AA",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-mobile-390",
+              "projectName": "sites-live-mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3387,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:36:14.921Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-4b36fa0be2496e89956b",
+          "file": "accessibility-live.spec.ts",
+          "line": 307,
+          "column": 1
+        },
+        {
+          "title": "keyboard users can reorder Workbench layers without drag and drop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mobile selection and action reachability are covered in the mobile Workbench workflow; this ordering regression targets the desktop Layers panel.",
+                  "location": {
+                    "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\accessibility-live.spec.ts",
+                    "line": 339,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "sites-live-mobile-390",
+              "projectName": "sites-live-mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 143,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:36:18.319Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Mobile selection and action reachability are covered in the mobile Workbench workflow; this ordering regression targets the desktop Layers panel.",
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\accessibility-live.spec.ts",
+                        "line": 339,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "9dafdb101542e36524b0-856e4650b87f7f437881",
+          "file": "accessibility-live.spec.ts",
+          "line": 338,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T20:35:21.984Z",
+    "duration": 56619.899,
+    "expected": 15,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=proj-direction-c-ab6af03ca91e4f30a6aa1f64bb6bff20dirc#screen-teams",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "selectedProjectId": "proj-direction-c-ab6af03ca91e4f30a6aa1f64bb6bff20dirc",
+  "handoff": {
+    "filename": "adaptive-workspace-employee-experience-agent-handoff.zip",
+    "files": [
+      "AGENT_PROMPT.md",
+      "COMPONENTS.md",
+      "DESIGN.md",
+      "IMPLEMENTATION.md",
+      "PRODUCT.md",
+      "dependencies.json",
+      "project.tess.json"
+    ],
+    "projectIdMatchesWorkbench": true,
+    "fullManifestMatchesWorkbench": true,
+    "productAudienceMatchesWorkbench": true,
+    "productObjectiveMatchesWorkbench": true,
+    "lockTargets": [],
+    "resourceReferenceCount": 32,
+    "hasTessellateRuntimeDependencies": false,
+    "dependencyPolicyReview": {
+      "status": "review-required",
+      "allowlistScope": "runtimeDependencies only; developmentDependencies are listed for reproducibility and are not checked against this project runtime allowlist",
+      "unapprovedRuntimeDependencies": [
+        "clsx",
+        "react-dom",
+        "tailwind-merge"
+      ],
+      "prohibitedRuntimeDependencies": []
+    },
+    "retainedArchive": "quality\\evidence\\step-24\\after\\employee-experience-agent-handoff.zip",
+    "screenshot": "quality\\evidence\\step-24\\after\\workbench-agent-handoff-menu-desktop-chrome.png"
+  },
+  "sameProjectMobileEvidence": {
+    "projectId": "proj-direction-c-ab6af03ca91e4f30a6aa1f64bb6bff20dirc",
+    "manifestSha256": "26a15442f74286fe996f7d07f7906c75ed1d5a43aee3b1656a488cd7afd390d4",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "screenshot": "quality\\evidence\\step-24\\after\\employee-workbench-same-project-mobile-390.png",
+    "documentWidth": 390
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

@@ -1,0 +1,34 @@
+{
+  "sourceManifest": {
+    "projectId": "proj-direction-c-2673263c4a154611b76e1b0299063090dirc",
+    "projectName": "Adaptive Architecture — Employee experience",
+    "source": "quality/evidence/step-24/after/employee-experience-agent-handoff.zip#project.tess.json"
+  },
+  "environment": {
+    "cleanDirectoryOutsideRepository": true,
+    "reusedRepositoryNodeModules": false,
+    "packageManager": "npm",
+    "nextVersion": "15.5.28"
+  },
+  "install": {
+    "command": "npm install",
+    "exitCode": 0,
+    "packagesAdded": 47,
+    "auditAdvisories": 0
+  },
+  "audit": {
+    "command": "npm audit --audit-level=moderate",
+    "exitCode": 0,
+    "advisories": 0,
+    "resolvedNextPostcss": "8.5.31"
+  },
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "production": true,
+    "staticRoutes": ["/"],
+    "firstLoadJavaScriptKb": 115,
+    "tessellateRuntimeDependencies": []
+  },
+  "runtime": "runtime-report.json"
+}

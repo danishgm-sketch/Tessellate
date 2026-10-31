@@ -1,37 +1,11 @@
 import React, { useState } from 'react';
-
 export type CollapsibleSidebarVariant = 'quiet' | 'expressive' | 'nocturne';
-
-export interface CollapsibleSidebarProps {
-  variant?: CollapsibleSidebarVariant;
-}
-
-export function CollapsibleSidebar({ variant = 'quiet' }: CollapsibleSidebarProps) {
-  const [collapsed, setCollapsed] = useState(false);
-
-  let theme = 'bg-white border-r border-neutral-200 text-neutral-900';
-  if (variant === 'nocturne') theme = 'bg-[#11141B] border-r border-[#2E3440] text-white';
-
-  return (
-    <aside className={`h-screen transition-all duration-200 p-3 flex flex-col justify-between ${collapsed ? 'w-16' : 'w-56'} ${theme}`}>
-      <div className="space-y-4">
-        <div className="flex items-center justify-between px-2">
-          {!collapsed && <span className="font-semibold text-xs">Workbench</span>}
-          <button type="button" onClick={() => setCollapsed(!collapsed)} className="text-xs p-1 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800">
-            {collapsed ? '→' : '←'}
-          </button>
-        </div>
-        <nav className="space-y-1 text-xs">
-          <div className="flex items-center gap-2 p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800">
-            <span>◫</span>
-            {!collapsed && <span>Canvas</span>}
-          </div>
-          <div className="flex items-center gap-2 p-2 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800/40">
-            <span>⚙</span>
-            {!collapsed && <span>Settings</span>}
-          </div>
-        </nav>
-      </div>
-    </aside>
-  );
+export interface CollapsibleSidebarProps { variant?:CollapsibleSidebarVariant; brand?:string; links?:Array<{label:string;href?:string}>; }
+export function CollapsibleSidebar({variant='quiet',brand='Example workspace',links=[{label:'Overview'},{label:'Settings'}]}:CollapsibleSidebarProps) {
+ const [collapsed,setCollapsed] = useState(false);
+ const dark=variant==='nocturne';
+ return <aside className={`w-full p-3 border rounded-[var(--tess-radius-md,8px)] ${dark?'bg-[#11141B] border-[#2E3440] text-white':'bg-white border-neutral-200 text-neutral-900'}`}>
+  <div className="flex items-center justify-between gap-2 mb-4"><span className="font-semibold text-sm">{brand}</span><button type="button" aria-label={collapsed?'Expand navigation':'Collapse navigation'} aria-expanded={!collapsed} onClick={()=>setCollapsed(!collapsed)} className="p-2 border rounded">{collapsed?'+':'−'}</button></div>
+  {!collapsed && <nav aria-label="Workspace screens" className="flex flex-wrap @3xl:flex-col gap-1">{links.map((link,index)=>{const className=`block rounded px-3 py-2 text-xs ${dark?'hover:bg-[#252C39] text-neutral-200':'hover:bg-neutral-100 text-neutral-700'}`;return link.href?<a key={`${link.label}-${index}`} href={link.href} className={className}>{link.label}</a>:<span key={`${link.label}-${index}`} className={className}>{link.label}</span>;})}</nav>}
+ </aside>;
 }

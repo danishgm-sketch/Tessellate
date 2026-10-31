@@ -16,7 +16,7 @@
     },
     {
       "path": "preview.tsx",
-      "content": "import React from 'react';\nimport { Breadcrumb } from './index.js';\n\nexport function BreadcrumbPreview() {\n  return (\n    <div className=\"p-8 flex justify-center bg-[#FAF9F6]\">\n      <Breadcrumb\n        variant=\"expressive\"\n        items={[\n          { label: 'Workspaces', href: '#' },\n          { label: 'Telemetry Hub', href: '#' },\n          { label: 'Analytics Screen', current: true },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "content": "import React from 'react';\nimport { Breadcrumb } from './index.js';\n\nexport function BreadcrumbPreview() {\n  return (\n    <div className=\"p-8 flex justify-center bg-[#FAF9F6]\">\n      <Breadcrumb\n        variant=\"expressive\"\n        items={[\n          { label: 'Workspaces' },\n          { label: 'Telemetry Hub' },\n          { label: 'Analytics Screen', current: true },\n        ]}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:ui",
       "target": "components/ui/preview.tsx"
     }

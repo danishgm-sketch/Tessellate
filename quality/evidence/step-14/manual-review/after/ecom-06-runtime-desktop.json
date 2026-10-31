@@ -1,0 +1,26 @@
+{
+  "url": "http://127.0.0.1:4413/compose",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "status": "passed",
+  "selectedDirection": "03",
+  "screens": [
+    "Order Lookup",
+    "Refund Status",
+    "Return Request"
+  ],
+  "selectedScreen": "screen-overview",
+  "selectedScreenName": "Refund Status",
+  "disabledSubmitTitle": "Connect a returns service before submitting requests.",
+  "verifiedVisibleStates": [
+    "Order Lookup",
+    "Return Request (truthfully disabled)",
+    "Refund Status timeline"
+  ],
+  "consoleErrors": [],
+  "uncaught": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

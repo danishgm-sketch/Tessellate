@@ -1,0 +1,27 @@
+{
+  "capturedAt": "2026-10-28T05:37:52.731Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/accessibility",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "status": 200,
+  "layout": {
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "horizontalOverflow": false
+  },
+  "visibleText": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 09 · INCLUSIVE COMPLIANCE\nClient-Side · Zero Login\nAccessibility Lab\n\nCheck colour contrast, focus-ring dimensions, and minimum touch-target size. These checks do not certify a complete interface.\n\nThree checks · Not a full audit\nContrast Matrix\nFocus Ring Studio\nTouch Target Size\nColor Pair Calibration\nAuto-Fix Contrast\nForeground (Text / Icon)\nBackground (Surface / Canvas)\n\nEnter six-digit hex colours in the form #2547E8.\n\nCONTRAST RATIO\n16.72:1\nAAA HIGHEST\nNORMAL TEXT (16px)\nPASS\nReq: 4.5:1\nLARGE TEXT (18pt+)\nPASS\nReq: 3.0:1\nUI COMPONENTS\nPASS\nReq: 3.0:1\nAccessible Typographic Contrast\n\nVerify readability and optical legibility in real conditions. Even when users browse with low screen brightness or high ambient glare, text must remain distinct.\n\nFG: #111217\n·\nBG: #F4F2ED",
+  "accessibility": {
+    "totalViolations": 0,
+    "seriousOrCritical": []
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-39\\public-v52-copy-2026-10-28\\after\\mobile\\accessibility-lab-copy.png"
+}

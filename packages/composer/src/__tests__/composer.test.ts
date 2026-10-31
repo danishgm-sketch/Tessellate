@@ -41,6 +41,32 @@ describe('Product Archetypes (18 Categories)', () => {
     const fintechMatches = detectProductArchetypes('treasury banking and wire transfer ledger with instant settlement');
     expect(fintechMatches[0]?.tag).toBe('fintech');
   });
+
+  it('keeps employee experience separate from hiring while respecting explicit overrides', () => {
+    const employeeMatches = detectProductArchetypes(
+      'Employee experience platform for colleagues, teams, onboarding and workplace policies.'
+    );
+    const hiringMatches = detectProductArchetypes(
+      'Applicant tracking platform for recruiters to manage candidates and interview panels.'
+    );
+    const overriddenMatches = detectProductArchetypes(
+      'Employee experience platform for colleagues and teams.',
+      'recruitment'
+    );
+    const overriddenInterpretation = interpretProductBrief({
+      description: 'Employee experience platform for colleagues and teams.',
+      archetypeOverride: 'recruitment',
+    });
+
+    expect(employeeMatches).toEqual([{ tag: 'saas', weight: 100 }]);
+    expect(hiringMatches[0]?.tag).toBe('recruitment');
+    expect(overriddenMatches[0]?.tag).toBe('recruitment');
+    expect(overriddenInterpretation.productModel.productArchetypes[0]?.tag).toBe('recruitment');
+    expect(overriddenInterpretation.initialDesignDna.primaryArchetype).toBe('recruitment');
+    expect(overriddenInterpretation.inferredAssumptions[0]).toContain(
+      'Recruitment & People Operations'
+    );
+  });
 });
 
 describe('Product Blueprints (12 Blueprints)', () => {
@@ -130,10 +156,10 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
 
     const screenIds = plan.screenGraph.groups.flatMap((g) => g.screens.map((s) => s.id));
     expect(screenIds).not.toContain('screen-billing');
-    expect(plan.inferredAssumptions.some((a) => a.includes('Billing and payment screens omitted'))).toBe(true);
+    expect(plan.inferredAssumptions.some((a) => a.includes('Billing omitted because'))).toBe(true);
   });
 
-  it('includes billing screen for commercial SaaS / fintech', () => {
+  it('adds a billing screen only when the brief explicitly describes product monetization', () => {
     const brief = getGoldenBrief('financial-intelligence-terminal');
     expect(brief).toBeDefined();
 
@@ -141,7 +167,15 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
     const plan = planScreenGraph(productModel);
 
     const screenIds = plan.screenGraph.groups.flatMap((g) => g.screens.map((s) => s.id));
-    expect(screenIds).toContain('screen-billing');
+    expect(screenIds).not.toContain('screen-billing');
+
+    const paidWorkspace = interpretProductBrief({
+      description: 'A B2B SaaS workspace for collaborative product teams.',
+      objective: 'Manage paid subscriptions, plans and downloadable invoices.',
+    });
+    const paidScreenIds = planScreenGraph(paidWorkspace.productModel).screenGraph.groups
+      .flatMap((group) => group.screens.map((screen) => screen.id));
+    expect(paidScreenIds).toContain('screen-billing');
   });
 
   it('respects forbiddenScreens constraints strictly', () => {
@@ -154,5 +188,9 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
     const screenIds = plan.screenGraph.groups.flatMap((g) => g.screens.map((s) => s.id));
     expect(screenIds).not.toContain('screen-settings');
     expect(screenIds).not.toContain('screen-sign-in');
+    for (const edge of plan.screenGraph.edges) {
+      expect(screenIds).toContain(edge.fromScreenId);
+      expect(screenIds).toContain(edge.toScreenId);
+    }
   });
 });

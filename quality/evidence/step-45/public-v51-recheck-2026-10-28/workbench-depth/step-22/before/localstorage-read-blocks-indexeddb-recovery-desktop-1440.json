@@ -1,0 +1,17 @@
+{
+  "url": "http://localhost:4321/workbench?project=local-d054e753-04a5-47ad-9d77-efaf1b9ef7ce",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "status": "reproduced",
+  "issue": "AUD-159",
+  "expected": "Load the schema-valid IndexedDB project when the recovery journal is unavailable.",
+  "actual": "SecurityError: Storage access blocked by persistence regression test",
+  "screenshot": "quality/evidence/step-22/before/localstorage-read-blocks-indexeddb-recovery-desktop-1440.png"
+}

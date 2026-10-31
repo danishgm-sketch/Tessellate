@@ -1,0 +1,39 @@
+{
+  "id": "AUD-347",
+  "severity": "medium",
+  "route": "/workbench",
+  "viewports": ["1440x900", "390x844"],
+  "category": "accessibility",
+  "title": "Workbench resource details and replacement skip heading levels",
+  "expected": "Resource details should follow the Workbench page heading, and resource candidate headings should follow the Replace Resource dialog heading without skipped levels.",
+  "actualBeforeFix": "A mobile Lighthouse snapshot scored accessibility 98 and reported heading-order violations for the Resource inspector h3 and the replacement candidate h4. A red-to-green Playwright Axe regression failed on desktop for the replacement h4 and on mobile for both h3 and h4.",
+  "reproduction": [
+    "Open a saved resource-backed employee-experience project in Workbench.",
+    "Select a resource node and open Inspector > Resource.",
+    "Open Replace Resource and run Axe heading-order against the visible page."
+  ],
+  "beforeScreenshots": [
+    "audit/evidence/step-39/live-v30-aud346-2026-10-26/local-replace-drawer-390x844.png"
+  ],
+  "afterScreenshots": [
+    "audit/evidence/step-39/workbench-heading-order/replace-sites-chromium-after.png",
+    "audit/evidence/step-39/workbench-heading-order/replace-sites-mobile-chromium-after.png"
+  ],
+  "rootCause": "ResourceTab used h3 directly below the Workbench h1. ReplaceDrawer candidate cards used h4 directly below the dialog h2. The visual classes were correct, but the semantic heading levels skipped their expected parents.",
+  "affectedCode": [
+    "packages/workbench/src/components/right-inspector/ResourceTab.tsx",
+    "packages/workbench/src/components/replace/ReplaceDrawer.tsx",
+    "tests/e2e/workbench-resource-heading-order-step-39.spec.ts"
+  ],
+  "remediation": "Use h2 for the resource name and h3 for compatible and alternative candidate titles, preserving existing styling. Add a desktop/mobile Sites Worker Playwright Axe regression covering both states.",
+  "fixCommit": null,
+  "status": "fixed-awaiting-deployed-verification",
+  "verification": {
+    "localBuild": "pnpm build passed; Astro built 733 pages and the Sites Worker artifact was generated.",
+    "before": "The new regression failed at both desktop and mobile before the semantic heading correction.",
+    "after": "The regression passed at sites-chromium (1440x900) and sites-mobile-chromium (390x844). Axe heading-order returned zero violations in Resource details and Replace Resource. Runtime console errors, uncaught exceptions, failed requests, and HTTP errors were all zero.",
+    "deployed": "Public v30 is unchanged; deployment verification is pending."
+  },
+  "relatedFinding": "AUD-348",
+  "relatedFindingDisposition": "The separate dialog-host issue was assessed and fixed as AUD-348; its red-to-green desktop/mobile regression now passes."
+}

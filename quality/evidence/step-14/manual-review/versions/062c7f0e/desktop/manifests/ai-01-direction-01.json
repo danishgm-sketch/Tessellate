@@ -1,0 +1,498 @@
+{
+  "id": "proj-direction-a-98cf75cd384c47d0ac0bbe48babcd2d5dira",
+  "dna": {
+    "professionalism": 100,
+    "playfulness": 63,
+    "luxury": 80,
+    "warmth": 35,
+    "technicality": 60,
+    "editorial": 75,
+    "futurism": 80,
+    "visualAmbition": 30,
+    "structuralCreativity": 20,
+    "density": 35,
+    "whitespace": 88,
+    "contrast": 90,
+    "colourfulness": 74,
+    "curvature": 43,
+    "depth": 35,
+    "motion": 35,
+    "motionPlayfulness": 45,
+    "typographicExpression": 43,
+    "imageryIntensity": 35,
+    "videoIntensity": 15,
+    "threeDIntensity": 6,
+    "dataDensity": 30,
+    "interactionDensity": 45,
+    "asymmetry": 24,
+    "conversionIntensity": 70,
+    "trust": 100,
+    "accessibilityPriority": 100,
+    "performancePriority": 85,
+    "primaryArchetype": "ai",
+    "visualMode": "dark",
+    "geometryFamily": "pill",
+    "navigationModel": "sidebar",
+    "responsivePhilosophy": "presentation-large-display",
+    "contentTone": "calm",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "playful-spring",
+    "typographyPersonality": "display-grotesk-geist",
+    "surfacePersonality": "subtle-contrast"
+  },
+  "navigation": {
+    "model": "sidebar",
+    "primaryItems": [
+      {
+        "label": "Prompt Canvas",
+        "targetScreenId": "screen-workspace"
+      },
+      {
+        "label": "History & Generations",
+        "targetScreenId": "screen-collection-index"
+      }
+    ],
+    "secondaryItems": [
+      {
+        "label": "Model & API Settings",
+        "targetScreenId": "screen-settings"
+      }
+    ]
+  },
+  "grammar": "classic-sidebar-dashboard",
+  "screens": [
+    {
+      "id": "screen-workspace",
+      "screenNodeId": "screen-workspace",
+      "name": "Prompt Canvas",
+      "slug": "/prompt-canvas",
+      "rootNode": {
+        "id": "root-screen-workspace",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-workspace-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Prompt Workspace",
+              "links": [
+                {
+                  "label": "Prompt Canvas",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "History & Generations",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Model & API Settings",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-workspace-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-workspace-editor-toolbar-2",
+                "nodeType": "section",
+                "semanticRole": "editor-toolbar",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Prompt Workspace",
+                  "links": [
+                    {
+                      "label": "Prompt Canvas",
+                      "href": "#screen-workspace"
+                    },
+                    {
+                      "label": "History & Generations",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Model & API Settings",
+                      "href": "#screen-settings"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-workspace-canvas-viewport-3",
+                "nodeType": "section",
+                "semanticRole": "canvas-viewport",
+                "resourceRef": {
+                  "id": "res_blk_kanban_board",
+                  "slug": "kanban-board",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Prompt Canvas",
+                  "columns": [
+                    {
+                      "title": "Formulate prompt and inspect generation",
+                      "tasks": [
+                        "compose-prompt",
+                        "stream-response",
+                        "iterate-output"
+                      ]
+                    },
+                    {
+                      "title": "Equip agent with tools and memory",
+                      "tasks": [
+                        "define-role",
+                        "connect-tools",
+                        "test-run"
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-workspace-inspector-panel-4",
+                "nodeType": "section",
+                "semanticRole": "inspector-panel",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Prompt Canvas",
+                  "subtitle": "Interactive prompt formulation and output stream",
+                  "badge": "EXAMPLE",
+                  "initials": "PW"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        }
+      }
+    },
+    {
+      "id": "screen-collection-index",
+      "screenNodeId": "screen-collection-index",
+      "name": "History & Generations",
+      "slug": "/history-and-generations",
+      "rootNode": {
+        "id": "root-screen-collection-index",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-collection-index-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Prompt Workspace",
+              "links": [
+                {
+                  "label": "Prompt Canvas",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "History & Generations",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Model & API Settings",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-collection-index-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-collection-index-index-header-2",
+                "nodeType": "section",
+                "semanticRole": "index-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "History & Generations",
+                  "subtitle": "Browse and fork past generations",
+                  "badge": "EXAMPLE",
+                  "initials": "PW"
+                }
+              },
+              {
+                "id": "node-screen-collection-index-filter-bar-3",
+                "nodeType": "section",
+                "semanticRole": "filter-bar",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-collection-index-data-table-4",
+                "nodeType": "section",
+                "semanticRole": "data-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "History & Generations",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Prompt",
+                      "type": "User instruction and system framing",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Generation",
+                      "type": "Synthesized model output and history",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Agent",
+                      "type": "Configured automated agent instance",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-collection-index-pagination-5",
+                "nodeType": "section",
+                "semanticRole": "pagination",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Continue",
+                  "disabled": false,
+                  "title": "History & Generations"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        }
+      }
+    },
+    {
+      "id": "screen-settings",
+      "screenNodeId": "screen-settings",
+      "name": "Model & API Settings",
+      "slug": "/settings",
+      "rootNode": {
+        "id": "root-screen-settings",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-settings-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Prompt Workspace",
+              "links": [
+                {
+                  "label": "Prompt Canvas",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "History & Generations",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Model & API Settings",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-settings-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-settings-settings-nav-2",
+                "nodeType": "section",
+                "semanticRole": "settings-nav",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Prompt Workspace",
+                  "links": [
+                    {
+                      "label": "Prompt Canvas",
+                      "href": "#screen-workspace"
+                    },
+                    {
+                      "label": "History & Generations",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Model & API Settings",
+                      "href": "#screen-settings"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-settings-settings-form-3",
+                "nodeType": "section",
+                "semanticRole": "settings-form",
+                "resourceRef": {
+                  "id": "res_primitive_input",
+                  "slug": "input",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Notification preferences",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application.",
+                  "disabled": false,
+                  "title": "Model & API Settings"
+                }
+              },
+              {
+                "id": "node-screen-settings-save-footer-4",
+                "nodeType": "section",
+                "semanticRole": "save-footer",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Save preferences",
+                  "disabled": true,
+                  "title": "Connect the exported application to your backend to enable this action."
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        },
+        "dnaOverrides": {
+          "professionalism": 96,
+          "playfulness": 8,
+          "curvature": 12,
+          "motion": 10
+        }
+      }
+    }
+  ],
+  "diagnostics": []
+}

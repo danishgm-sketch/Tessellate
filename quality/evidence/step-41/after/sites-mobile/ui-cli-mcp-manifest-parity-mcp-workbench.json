@@ -1,0 +1,44 @@
+{
+  "route": "/compose -> /workbench",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "direction": "C",
+  "manifestId": "proj-direction-c-f9302d41b90745939470b15c9e853af5dirc",
+  "manifestName": "Adaptive Architecture — Employee experience",
+  "screenNames": [
+    "Marketing Home",
+    "Team Overview",
+    "People Directory",
+    "Teams",
+    "Engagement",
+    "Onboarding",
+    "Settings & Policies"
+  ],
+  "manifestBytes": 59798,
+  "workbench": {
+    "zipFiles": 31
+  },
+  "cli": {
+    "validation": "valid",
+    "exportedFiles": 31
+  },
+  "mcp": {
+    "validation": "valid",
+    "exportedFiles": 31
+  },
+  "generatedFilesMatchExactly": true,
+  "mcpMutation": {
+    "action": "adjust_dna",
+    "designDNAPlayfulness": 74,
+    "cliValidation": "valid",
+    "mcpValidation": "valid",
+    "cliAndMcpFilesMatchExactly": true,
+    "exportedFiles": 31
+  },
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

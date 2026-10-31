@@ -1,0 +1,63 @@
+{
+  "capturedAt": "2026-10-25",
+  "issue": "AUD-338",
+  "tool": "Chrome DevTools Performance MCP",
+  "publicReview": {
+    "siteVersion": 28,
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+    "viewport": "390x844",
+    "network": "Slow 4G",
+    "cpuThrottling": "4x",
+    "lcpMs": 4878,
+    "ttfbMs": 57,
+    "renderDelayMs": 4821,
+    "cls": 0,
+    "lcpElement": "div.p-8 text",
+    "requestsObserved": 44,
+    "http200": 43,
+    "http304": 1,
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "note": "This is a separate warmed DevTools context from the fresh Playwright cold-start capture. The request records are not combined."
+  },
+  "localCandidate": {
+    "commit": "376dd3bfccace863616c23e43853aa285ff6f309",
+    "runtime": "Astro production preview",
+    "url": "http://127.0.0.1:4321/workbench",
+    "mobile": {
+      "viewport": "390x844",
+      "network": "Slow 4G",
+      "cpuThrottling": "4x",
+      "observedLcpMsRange": [1571, 2453],
+      "observedTtfbMsRange": [17, 326],
+      "observedRenderDelayMsRange": [1554, 2128],
+      "cls": 0,
+      "requestsObserved": 45,
+      "httpStatuses": [200, 304],
+      "stylesheetTransferBytes": 27819,
+      "stylesheetEncodedBytes": 27519,
+      "stylesheetDecodedBytes": 203229,
+      "estimatedRenderBlockingSavingsMs": 683,
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "documentWidth": 390
+    },
+    "desktop": {
+      "viewport": "1440x900",
+      "network": "Fast 4G",
+      "cpuThrottling": "1x",
+      "lcpMs": 2653,
+      "ttfbMs": 4,
+      "renderDelayMs": 2648,
+      "cls": 0,
+      "domElements": 563,
+      "maxDomDepth": 18,
+      "largestLayoutUpdateMs": 59,
+      "estimatedRenderBlockingSavingsMs": 178,
+      "consoleErrors": 0,
+      "consoleWarnings": 0
+    },
+    "interpretation": "The local trace confirms a visible Workbench document and no layout shift, but browser asset requests included 304 responses even in separately opened contexts. The traces are diagnostic observations, not a pristine uncached transfer benchmark or field Core Web Vitals. The desktop LCP and render-blocking stylesheet remain a performance follow-up; the startup fallback does not claim to reduce total editor initialization time."
+  },
+  "deploymentStatus": "The local candidate is not deployed. Public v28 remains the current Site until a saved follow-up version is approved and published."
+}

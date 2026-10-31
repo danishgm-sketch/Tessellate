@@ -1,0 +1,27 @@
+{
+  "findingId": "SEC-37-074",
+  "severity": "medium",
+  "title": "Registry gate allowed remote image requests through the Image constructor",
+  "status": "fixed_locally",
+  "reproduction": {
+    "source": "const pixel = new Image('https://collector.invalid/pixel');",
+    "beforeFix": "The source-isolation gate returned pass, although constructing Image with a remote URL starts a browser request.",
+    "afterFix": "Remote URLs passed to Image, window.Image, and statically aliased, computed, or destructured browser Image constructors fail the source-isolation gate. Local asset paths remain allowed."
+  },
+  "rootCause": "Remote URL detection handled new Image() followed by a .src assignment, but did not inspect the URL argument supplied directly to the constructor.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve browser Image and Audio constructors and static aliases in the TypeScript AST, then reject a statically known remote URL argument without executing resource source.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"remote URLs that start loading in the Image constructor\"",
+    "redBeforeFixResult": "failed as expected: a remote Image constructor request returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "40 tests passed",
+    "packageTypecheck": "passed",
+    "focusedLint": "passed",
+    "untrustedCodeExecuted": false,
+    "runtimeBoundary": "This is local source-gate evidence. Isolated-preview and deployed CSP verification remain separate checks."
+  }
+}

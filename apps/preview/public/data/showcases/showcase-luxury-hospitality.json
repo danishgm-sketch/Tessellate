@@ -2,52 +2,152 @@
   "schemaVersion": "1.0.0",
   "id": "showcase-luxury-hospitality",
   "name": "Velluto Private Estate Residences",
-  "description": "Curated 5-star private estate reservations with editorial travel essays.",
+  "description": "Example project. Luxury hospitality for private estate stays, with residence discovery, room details, concierge assistance, and clear reservation terms.",
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z",
-  "catalogVersion": "1.0.0",
-  "seed": "seed_showcase-luxury-hospitality",
+  "catalogVersion": "0.1.0",
+  "seed": "showcase-luxury-hospitality",
   "productModel": {
     "schemaVersion": "1.0.0",
     "productArchetypes": [
       {
-        "tag": "hospitality",
+        "tag": "travel",
         "weight": 100
       }
     ],
-    "primaryAudience": "Domain specialists",
-    "userSophistication": 40,
-    "primaryObjective": "Curated 5-star private estate reservations with editorial travel essays.",
+    "primaryAudience": "Travelers comparing hotel rooms and making reservations",
+    "userSophistication": 50,
+    "primaryObjective": "Help travelers compare hotel rooms, amenities, local guides, and availability before confirming a reservation",
     "secondaryObjectives": [
-      "Maximize workflow speed and cognitive clarity"
+      "Ensure high accessibility standards",
+      "Maintain responsive layout across devices"
     ],
     "jobsToBeDone": [
-      "Analyze domain data",
-      "Execute actions",
-      "Inspect telemetry"
+      "Authenticate and access Hotel Booking",
+      "Review the overview and priority actions",
+      "Create, update, and manage records",
+      "Compare rooms, choose dates, and confirm a hotel reservation"
     ],
-    "entities": [],
-    "workflows": [],
-    "trustRequirement": 98,
-    "informationComplexity": 40,
-    "dataDensity": 40,
-    "collaborationLevel": 50,
-    "transactionCriticality": 70,
+    "entities": [
+      {
+        "name": "Hotel",
+        "description": "A hotel with location, amenities, and guest information",
+        "fields": [
+          "id",
+          "name",
+          "location",
+          "amenities",
+          "rating"
+        ]
+      },
+      {
+        "name": "Room",
+        "description": "A room option with details, capacity, and availability",
+        "fields": [
+          "id",
+          "hotelId",
+          "name",
+          "capacity",
+          "amenities",
+          "availability"
+        ]
+      },
+      {
+        "name": "Reservation",
+        "description": "A confirmed room reservation with dates and guest details",
+        "fields": [
+          "id",
+          "roomId",
+          "dates",
+          "guests",
+          "confirmationCode",
+          "status"
+        ]
+      }
+    ],
+    "workflows": [
+      {
+        "id": "reserve-hotel-room",
+        "name": "Compare rooms, choose dates, and confirm a hotel reservation",
+        "steps": [
+          "search-hotels",
+          "compare-room-details",
+          "choose-dates",
+          "confirm-reservation"
+        ]
+      }
+    ],
+    "trustRequirement": 90,
+    "informationComplexity": 65,
+    "dataDensity": 60,
+    "collaborationLevel": 45,
+    "transactionCriticality": 90,
     "navigationComplexity": 60,
-    "mobileImportance": 50,
-    "likelyScreens": [],
-    "requiredCapabilities": [
-      "export",
-      "search",
-      "audit"
+    "mobileImportance": 90,
+    "likelyScreens": [
+      {
+        "name": "Find a Stay",
+        "screenType": "search-explore",
+        "purpose": "Search boutique hotels by dates, amenities, and location",
+        "jobs": [
+          "search-hotels",
+          "compare-availability"
+        ],
+        "required": true
+      },
+      {
+        "name": "Room Details",
+        "screenType": "detail-entity",
+        "purpose": "Room details, amenities, local guidance, and cancellation terms",
+        "jobs": [
+          "review-room",
+          "check-amenities"
+        ],
+        "required": true
+      },
+      {
+        "name": "Reservation Checkout",
+        "screenType": "checkout-transaction",
+        "purpose": "Review reservation dates, guest details, and clear payment terms",
+        "jobs": [
+          "review-reservation",
+          "confirm-booking"
+        ],
+        "required": true
+      }
     ],
-    "forbiddenPatterns": [],
+    "requiredCapabilities": [
+      "availability-search",
+      "room-details",
+      "reservation-flow"
+    ],
+    "forbiddenPatterns": [
+      "surprise-resort-fees-at-checkout",
+      "missing-cancellation-terms"
+    ],
     "constraints": {
       "accessibilityFloor": "AA",
-      "performanceCeiling": "rich",
+      "performanceCeiling": "balanced",
       "targetDevices": [
         "desktop",
-        "tablet"
+        "tablet",
+        "mobile"
+      ],
+      "allowedDependencies": [
+        "react",
+        "tailwindcss",
+        "lucide-react"
+      ],
+      "prohibitedDependencies": [
+        "jquery",
+        "bootstrap"
+      ],
+      "requiredScreens": [],
+      "forbiddenScreens": [],
+      "requiredPatterns": [],
+      "forbiddenPatterns": [
+        "surprise-resort-fees-at-checkout",
+        "missing-cancellation-terms"
       ]
     }
   },
@@ -83,7 +183,7 @@
     "primaryArchetype": "hospitality",
     "visualMode": "light",
     "geometryFamily": "classic-editorial",
-    "navigationModel": "split-horizontal",
+    "navigationModel": "rail",
     "responsivePhilosophy": "mobile-first-progressive",
     "contentTone": "poetic-refined",
     "primaryStack": "react-tailwind",
@@ -91,348 +191,606 @@
     "typographyPersonality": "editorial-serif",
     "surfacePersonality": "warm-vellum-paper"
   },
+  "brand": {
+    "name": "Hotel Workspace"
+  },
   "constraints": {
     "accessibilityFloor": "AA",
-    "performanceCeiling": "rich",
+    "performanceCeiling": "balanced",
     "targetDevices": [
       "desktop",
-      "tablet"
+      "tablet",
+      "mobile"
+    ],
+    "allowedDependencies": [
+      "react",
+      "tailwindcss",
+      "lucide-react"
+    ],
+    "prohibitedDependencies": [
+      "jquery",
+      "bootstrap"
+    ],
+    "requiredScreens": [],
+    "forbiddenScreens": [],
+    "requiredPatterns": [],
+    "forbiddenPatterns": [
+      "surprise-resort-fees-at-checkout",
+      "missing-cancellation-terms"
     ]
   },
   "screenGraph": {
-    "id": "sg_showcase-luxury-hospitality",
+    "id": "graph-travel-10cmt2t",
     "groups": [
       {
-        "id": "group_main",
-        "name": "Main Workspace",
+        "id": "group-app",
+        "name": "Application",
         "screens": [
           {
-            "id": "node-marketing-home",
-            "name": "Marketing Home",
-            "slug": "/",
-            "screenType": "marketing-home",
-            "purpose": "Marketing Home",
+            "id": "screen-find-a-stay",
+            "name": "Find a Stay",
+            "slug": "/find-a-stay",
+            "screenType": "search-explore",
+            "purpose": "Search boutique hotels by dates, amenities, and location",
             "jobs": [
-              "inspect-view"
+              "search-hotels",
+              "compare-availability"
             ],
             "required": true,
             "navigationVisibility": "primary",
-            "importance": 80,
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Hotel.id",
+              "Hotel.name",
+              "Hotel.location",
+              "Hotel.amenities",
+              "Hotel.rating"
             ],
             "requiredRoles": [
-              "content"
+              "search-header",
+              "facet-rail",
+              "results-grid"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "recent-searches",
+              "active-filter-chips",
+              "empty-state"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           },
           {
-            "id": "node-blog",
-            "name": "Blog/Editorial Index",
-            "slug": "/blog",
-            "screenType": "blog/editorial-index",
-            "purpose": "Blog/Editorial Index",
+            "id": "screen-room-details",
+            "name": "Room Details",
+            "slug": "/rooms/:id",
+            "screenType": "detail-entity",
+            "purpose": "Room details, amenities, local guidance, and cancellation terms",
             "jobs": [
-              "inspect-view"
+              "review-room",
+              "check-amenities"
             ],
-            "required": false,
-            "navigationVisibility": "primary",
-            "importance": 75,
+            "required": true,
+            "navigationVisibility": "secondary",
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Room.id",
+              "Room.hotelId",
+              "Room.name",
+              "Room.capacity",
+              "Room.amenities",
+              "Room.availability"
             ],
             "requiredRoles": [
-              "content"
+              "entity-header",
+              "detail-tabs",
+              "main-content-pane",
+              "metadata-sidebar"
             ],
-            "optionalRoles": []
-          },
+            "optionalRoles": [
+              "activity-timeline",
+              "related-items-carousel",
+              "danger-zone"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "group-utility",
+        "name": "Tasks & support",
+        "screens": [
           {
-            "id": "node-case-study",
-            "name": "Case Study",
-            "slug": "/customers/meridian",
-            "screenType": "case-study",
-            "purpose": "Case Study",
+            "id": "screen-reservation-checkout",
+            "name": "Reservation Checkout",
+            "slug": "/reservation-checkout",
+            "screenType": "checkout-transaction",
+            "purpose": "Review reservation dates, guest details, and clear payment terms",
             "jobs": [
-              "inspect-view"
+              "review-reservation",
+              "confirm-booking"
             ],
-            "required": false,
-            "navigationVisibility": "primary",
-            "importance": 70,
+            "required": true,
+            "navigationVisibility": "hidden",
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Reservation.id",
+              "Reservation.roomId",
+              "Reservation.dates",
+              "Reservation.guests",
+              "Reservation.confirmationCode",
+              "Reservation.status"
             ],
             "requiredRoles": [
-              "content"
+              "order-summary",
+              "payment-fields",
+              "submit-button"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "coupon-input",
+              "shipping-selector",
+              "security-trust-badges"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           }
         ]
       }
     ],
     "edges": [
       {
-        "id": "edge_0",
-        "fromScreenId": "node-marketing-home",
-        "toScreenId": "node-blog"
-      },
-      {
-        "id": "edge_1",
-        "fromScreenId": "node-marketing-home",
-        "toScreenId": "node-case-study"
+        "id": "edge-screen-find-a-stay-to-screen-room-details",
+        "fromScreenId": "screen-find-a-stay",
+        "toScreenId": "screen-room-details",
+        "label": "Room Details"
       }
     ]
   },
   "screens": [
     {
-      "id": "screen-marketing-home",
-      "screenNodeId": "node-marketing-home",
-      "name": "Marketing Home",
-      "slug": "/",
+      "id": "screen-find-a-stay",
+      "screenNodeId": "screen-find-a-stay",
+      "name": "Find a Stay",
+      "slug": "/find-a-stay",
       "rootNode": {
-        "id": "root-marketing-home",
+        "id": "root-screen-find-a-stay",
         "nodeType": "layout",
-        "semanticRole": "page-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-nav",
-            "nodeType": "section",
+            "id": "node-screen-find-a-stay-navigation-1",
+            "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_header_minimal",
-              "slug": "header-minimal",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Hotel Workspace",
+              "links": [
+                {
+                  "label": "Find a Stay",
+                  "href": "#screen-find-a-stay"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-hero",
-            "nodeType": "section",
-            "semanticRole": "hero",
-            "resourceRef": {
-              "id": "res_hero_minimal",
-              "slug": "hero-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-find-a-stay-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-find-a-stay-search-header-2",
+                "nodeType": "element",
+                "semanticRole": "search-header",
+                "resourceRef": {
+                  "id": "res_primitive_input",
+                  "slug": "input",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Search stays",
+                  "helperText": "Example search only. Connect a booking service to search live availability.",
+                  "placeholder": "Search hotels, dates, and amenities",
+                  "disabled": false,
+                  "title": "Find a Stay"
+                }
+              },
+              {
+                "id": "node-screen-find-a-stay-facet-rail-3",
+                "nodeType": "block",
+                "semanticRole": "facet-rail",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-find-a-stay-results-grid-4",
+                "nodeType": "block",
+                "semanticRole": "results-grid",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Search results",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Hotel",
+                      "type": "A hotel with location, amenities, and guest information",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Room",
+                      "type": "A room option with details, capacity, and availability",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Reservation",
+                      "type": "A confirmed room reservation with dates and guest details",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-proof",
-            "nodeType": "section",
-            "semanticRole": "trust-proof",
-            "resourceRef": {
-              "id": "res_logo_cloud_clean",
-              "slug": "logo-cloud-clean",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-features",
-            "nodeType": "section",
-            "semanticRole": "feature-grid",
-            "resourceRef": {
-              "id": "res_feature_grid_cards",
-              "slug": "feature-grid-cards",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-cta",
-            "nodeType": "section",
-            "semanticRole": "conversion-cta",
-            "resourceRef": {
-              "id": "res_cta_minimal",
-              "slug": "cta-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-footer",
-            "nodeType": "section",
-            "semanticRole": "footer",
-            "resourceRef": {
-              "id": "res_footer_minimal",
-              "slug": "footer-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     },
     {
-      "id": "screen-blog",
-      "screenNodeId": "node-blog",
-      "name": "Blog/Editorial Index",
-      "slug": "/blog",
+      "id": "screen-room-details",
+      "screenNodeId": "screen-room-details",
+      "name": "Room Details",
+      "slug": "/rooms/:id",
       "rootNode": {
-        "id": "root-blog",
+        "id": "root-screen-room-details",
         "nodeType": "layout",
-        "semanticRole": "page-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-blog-hero",
-            "nodeType": "section",
-            "semanticRole": "featured-article",
+            "id": "node-screen-room-details-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_hero_split",
-              "slug": "hero-split",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Hotel Workspace",
+              "links": [
+                {
+                  "label": "Find a Stay",
+                  "href": "#screen-find-a-stay"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-blog-grid",
-            "nodeType": "section",
-            "semanticRole": "recent-articles",
-            "resourceRef": {
-              "id": "res_feature_grid_cards",
-              "slug": "feature-grid-cards",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-room-details-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-room-details-entity-header-2",
+                "nodeType": "block",
+                "semanticRole": "entity-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Room Details",
+                  "subtitle": "Room details, amenities, local guidance, and cancellation terms",
+                  "badge": "EXAMPLE",
+                  "initials": "HW"
+                }
+              },
+              {
+                "id": "node-screen-room-details-detail-tabs-3",
+                "nodeType": "block",
+                "semanticRole": "detail-tabs",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Hotel Workspace",
+                  "links": [
+                    {
+                      "label": "Find a Stay",
+                      "href": "#screen-find-a-stay"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-room-details-main-content-pane-4",
+                "nodeType": "block",
+                "semanticRole": "main-content-pane",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Room Details",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Hotel",
+                      "type": "A hotel with location, amenities, and guest information",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Room",
+                      "type": "A room option with details, capacity, and availability",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Reservation",
+                      "type": "A confirmed room reservation with dates and guest details",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-room-details-metadata-sidebar-5",
+                "nodeType": "block",
+                "semanticRole": "metadata-sidebar",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Room Details",
+                  "subtitle": "Room details, amenities, local guidance, and cancellation terms",
+                  "badge": "EXAMPLE",
+                  "initials": "HW"
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-blog-cta",
-            "nodeType": "section",
-            "semanticRole": "newsletter",
-            "resourceRef": {
-              "id": "res_cta_minimal",
-              "slug": "cta-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     },
     {
-      "id": "screen-case-study",
-      "screenNodeId": "node-case-study",
-      "name": "Case Study",
-      "slug": "/customers/meridian",
+      "id": "screen-reservation-checkout",
+      "screenNodeId": "screen-reservation-checkout",
+      "name": "Reservation Checkout",
+      "slug": "/reservation-checkout",
       "rootNode": {
-        "id": "root-case-study",
+        "id": "root-screen-reservation-checkout",
         "nodeType": "layout",
-        "semanticRole": "page-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-cs-hero",
-            "nodeType": "section",
-            "semanticRole": "hero",
+            "id": "node-screen-reservation-checkout-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_hero_headline_only",
-              "slug": "hero-headline-only",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Hotel Workspace",
+              "links": [
+                {
+                  "label": "Find a Stay",
+                  "href": "#screen-find-a-stay"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-cs-stats",
-            "nodeType": "section",
-            "semanticRole": "quant-metrics",
-            "resourceRef": {
-              "id": "res_stats_row_simple",
-              "slug": "stats-row-simple",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-reservation-checkout-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-reservation-checkout-order-summary-2",
+                "nodeType": "block",
+                "semanticRole": "order-summary",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Order summary · example",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example item",
+                      "type": "Sample cart item",
+                      "quality": 0,
+                      "displayValue": "Price from your catalogue",
+                      "status": "Example"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Item",
+                    "type": "Details",
+                    "quality": "Price",
+                    "status": "State"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-reservation-checkout-payment-fields-3",
+                "nodeType": "element",
+                "semanticRole": "payment-fields",
+                "resourceRef": {
+                  "id": "res_primitive_input",
+                  "slug": "input",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Payment provider",
+                  "helperText": "Preview only. This field does not collect or store payment details.",
+                  "placeholder": "Connect a provider to enable checkout",
+                  "disabled": true,
+                  "title": "A payment provider is required before checkout can be enabled."
+                }
+              },
+              {
+                "id": "node-screen-reservation-checkout-submit-button-4",
+                "nodeType": "element",
+                "semanticRole": "submit-button",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Payment provider required",
+                  "disabled": true,
+                  "title": "Connect a payment provider before enabling payment submission.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-cs-quote",
-            "nodeType": "section",
-            "semanticRole": "testimonial",
-            "resourceRef": {
-              "id": "res_testimonial_single_quote",
-              "slug": "testimonial-single-quote",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-cs-cta",
-            "nodeType": "section",
-            "semanticRole": "cta",
-            "resourceRef": {
-              "id": "res_cta_minimal",
-              "slug": "cta-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     }
   ],
   "navigation": {
-    "model": "split-horizontal",
+    "model": "rail",
     "primaryItems": [
       {
-        "label": "Residences",
-        "targetScreenId": "node-marketing-home"
-      },
+        "label": "Find a Stay",
+        "targetScreenId": "screen-find-a-stay"
+      }
+    ],
+    "secondaryItems": [
       {
-        "label": "Editorial",
-        "targetScreenId": "node-blog"
-      },
-      {
-        "label": "Story",
-        "targetScreenId": "node-case-study"
+        "label": "Room Details",
+        "targetScreenId": "screen-room-details"
       }
     ]
   },
   "assets": [],
   "locks": [],
   "historyMeta": {
-    "totalOperations": 12,
-    "headRevision": 1
+    "totalOperations": 0,
+    "headRevision": 0
   },
   "exportSettings": {
     "framework": "react",

@@ -1,0 +1,39 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench/",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "httpStatus": 200,
+  "dialog": {
+    "role": "dialog",
+    "ariaModal": true,
+    "hostIsAside": false
+  },
+  "candidate": {
+    "name": "Split Product Hero",
+    "role": "hero",
+    "status": "Gold",
+    "hasPreview": true
+  },
+  "axeRules": [
+    "heading-order",
+    "label-content-name-mismatch"
+  ],
+  "axeViolations": [],
+  "escape": {
+    "closed": true,
+    "focusReturnedToOpener": true
+  },
+  "moveActionAccessibleNames": [
+    "Move up",
+    "Move down"
+  ],
+  "events": {
+    "consoleErrors": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "badResponses": []
+  },
+  "project": ""
+}

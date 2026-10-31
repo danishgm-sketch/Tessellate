@@ -1,0 +1,111 @@
+{
+  "test": "Compose retries catalogue loading and enables composition only after recovery",
+  "url": "http://127.0.0.1:4412/compose",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "injectedFault": "first catalogue request aborted to exercise retry",
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_FAILED"
+  ],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [
+    {
+      "url": "http://127.0.0.1:4412/data/catalog.json",
+      "error": "net::ERR_FAILED"
+    }
+  ],
+  "httpErrors": [],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:4412/compose",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/style.C6wIKyn4.css",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/index.Bh89wAT3.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/ComposeView.BOumgFoI.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/client.CZ5CiHPg.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/jsx-runtime.BZkYIGyD.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/react.B6PPDU_E.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/src.BX1lhOTL.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/storage.DQkcCoR4.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/createLucideIcon.14lUEEec.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/arrow-right.CrL0QBhc.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/src.BOYsAstn.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/chevron-down.DtfZPbTK.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/cpu.Cewq4aej.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/shield.CClXYlwc.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/smartphone.BKKE0Hdz.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/sparkles.Cox_DJ6k.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/src.DnGFRryG.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/src.B7UrmsMM.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/src.Cj1YM3rf.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/_astro/gold.CeiPxNV6.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4412/data/catalog.json",
+      "status": 200
+    }
+  ]
+}

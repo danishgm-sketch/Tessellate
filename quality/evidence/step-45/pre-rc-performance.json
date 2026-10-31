@@ -1,0 +1,43 @@
+{
+  "capturedAt": "2026-10-24T05:55:50Z",
+  "siteVersion": 20,
+  "sourceCommit": "50a2c7f11dcda22a8bfa61b83e3d687291b35905",
+  "tool": "Chrome DevTools MCP performance trace",
+  "fieldData": "Unavailable; Chrome UX Report has no data for this URL.",
+  "network": "Fast 4G",
+  "desktop": {
+    "viewport": "1440x900",
+    "cpuThrottle": "1x",
+    "lcpMs": 556,
+    "ttfbMs": 38,
+    "renderDelayMs": 518,
+    "cls": 0,
+    "insights": {
+      "renderBlockingEstimatedFcpSavingsMs": 0,
+      "renderBlockingEstimatedLcpSavingsMs": 0,
+      "documentLatencyEstimatedFcpSavingsMs": 0,
+      "documentLatencyEstimatedLcpSavingsMs": 0,
+      "documentLatencyEstimatedWastedBytes": 56900
+    }
+  },
+  "mobile": {
+    "viewport": "390x844",
+    "cpuThrottle": "4x",
+    "lcpMs": 851,
+    "ttfbMs": 169,
+    "renderDelayMs": 682,
+    "cls": 0,
+    "insights": {
+      "renderBlockingEstimatedFcpSavingsMs": 0,
+      "renderBlockingEstimatedLcpSavingsMs": 0,
+      "documentLatencyEstimatedFcpSavingsMs": 0,
+      "documentLatencyEstimatedLcpSavingsMs": 0,
+      "documentLatencyEstimatedWastedBytes": 56900
+    }
+  },
+  "limitations": [
+    "These are one-run lab measurements, not field Core Web Vitals.",
+    "The trace did not include field INP; no user population data is available.",
+    "The trace data itself was not persisted by Chrome DevTools; the reported metrics and insight estimates were transcribed from the tool output."
+  ]
+}

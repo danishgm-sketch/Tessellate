@@ -1,0 +1,203 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersion": 26,
+  "capturedAt": "2026-10-24",
+  "viewports": [
+    "1440x900",
+    "390x844"
+  ],
+  "classificationMeaning": "PASS means the deployed page has coherent, truthful rendered content at both sampled viewports, with no route-level runtime/network/overflow defect. It does not certify every secondary control; interaction depth is stated per route.",
+  "sharedEvidence": [
+    "route-audit.json: 62 route/viewport captures, all HTTP 200, no console errors, uncaught exceptions, failed requests, missing images, or document overflow",
+    "internal-link-audit.json: 630 unique same-origin links, 0 failed responses",
+    "responsive/report.json: seven core routes checked at 360, 390, 430, 768, 1024, 1280, 1440, and 1536 CSS pixels"
+  ],
+  "routes": [
+    {
+      "route": "/",
+      "classification": "DEGRADED",
+      "interactionDepth": "The page content and post-hydration example flow work, but deployed v26 leaves Generate example directions enabled before the React island is ready; an attempted pre-hydration activation is dropped. AUD-335 tracks the fix pending a new deployment.",
+      "evidence": "home-desktop-1440x900.png; home-mobile-390x844.png; home-demo/pre-hydration-desktop-1440.json; home-demo/pre-hydration-mobile-390.json; flagship/employee-workflow-*.json"
+    },
+    {
+      "route": "/explore",
+      "classification": "PASS",
+      "interactionDepth": "Catalogue load, pre-hydration filter disabled state, hydrated filter dialog and keyboard Escape/focus restoration exercised.",
+      "evidence": "route-audit.json; mobile-filter-hydration/report.json; live-mobile-filter-hydration-v26.spec.ts"
+    },
+    {
+      "route": "/components",
+      "classification": "PASS",
+      "interactionDepth": "Catalogue category rendered at both required viewports; card links included in same-origin link audit.",
+      "evidence": "components-desktop-1440x900.png; components-mobile-390x844.png"
+    },
+    {
+      "route": "/sections",
+      "classification": "PASS",
+      "interactionDepth": "Catalogue category rendered at both required viewports; card links included in same-origin link audit.",
+      "evidence": "sections-desktop-1440x900.png; sections-mobile-390x844.png"
+    },
+    {
+      "route": "/blocks",
+      "classification": "PASS",
+      "interactionDepth": "Catalogue category rendered at both required viewports; card links included in same-origin link audit.",
+      "evidence": "blocks-desktop-1440x900.png; blocks-mobile-390x844.png"
+    },
+    {
+      "route": "/pages",
+      "classification": "PASS",
+      "interactionDepth": "Page architecture catalogue rendered at both required viewports; resource links resolve.",
+      "evidence": "pages-desktop-1440x900.png; pages-mobile-390x844.png"
+    },
+    {
+      "route": "/effects",
+      "classification": "PASS",
+      "interactionDepth": "Catalogue page and preview assets rendered without CSP or console errors at both required viewports.",
+      "evidence": "effects-desktop-1440x900.png; effects-mobile-390x844.png"
+    },
+    {
+      "route": "/motion",
+      "classification": "PASS",
+      "interactionDepth": "Catalogue page and preview assets rendered without CSP or console errors at both required viewports.",
+      "evidence": "motion-desktop-1440x900.png; motion-mobile-390x844.png"
+    },
+    {
+      "route": "/backgrounds",
+      "classification": "PASS",
+      "interactionDepth": "Catalogue page and preview assets rendered without CSP or console errors at both required viewports.",
+      "evidence": "backgrounds-desktop-1440x900.png; backgrounds-mobile-390x844.png"
+    },
+    {
+      "route": "/ai",
+      "classification": "PASS",
+      "interactionDepth": "AI-pattern catalogue rendered; page describes resources, not hosted inference.",
+      "evidence": "ai-desktop-1440x900.png; ai-mobile-390x844.png"
+    },
+    {
+      "route": "/data",
+      "classification": "PASS",
+      "interactionDepth": "Data-visualisation catalogue rendered at both required viewports.",
+      "evidence": "data-desktop-1440x900.png; data-mobile-390x844.png"
+    },
+    {
+      "route": "/compose",
+      "classification": "PASS",
+      "interactionDepth": "Exact employee-experience brief composed through visible controls; all directions inspected; C handoff and export covered.",
+      "evidence": "flagship/employee-workflow-*.json; flagship/direction-*.png"
+    },
+    {
+      "route": "/workbench",
+      "classification": "PASS",
+      "interactionDepth": "Direction C opened and mutated through visible UI; lock, 95% recompose, Replace, Surprise Me, exact Undo/Redo and standalone export exercised.",
+      "evidence": "flagship/employee-workflow-*.json; flagship/employee-workbench-*.png"
+    },
+    {
+      "route": "/blueprints",
+      "classification": "PASS",
+      "interactionDepth": "Blueprint index and representative B2B SaaS blueprint inspected; links resolve.",
+      "evidence": "blueprints-desktop-1440x900.png; blueprints__b2b-saas-desktop-1440x900.png"
+    },
+    {
+      "route": "/collections",
+      "classification": "PASS",
+      "interactionDepth": "Truthful browser-local empty state and Beta limitations inspected; no cloud sync claim is made.",
+      "evidence": "collections-desktop-1440x900.png; collections-mobile-390x844.png"
+    },
+    {
+      "route": "/creators",
+      "classification": "PASS",
+      "interactionDepth": "Attribution directory states counts are published catalogue resources, not usage/popularity data.",
+      "evidence": "creators-desktop-1440x900.png; creators-mobile-390x844.png"
+    },
+    {
+      "route": "/showcase",
+      "classification": "PASS",
+      "interactionDepth": "Showcase index and representative employee showcase inspected; sample-content warning is visible.",
+      "evidence": "showcase-desktop-1440x900.png; showcase__showcase-playful-hr-desktop-1440x900.png"
+    },
+    {
+      "route": "/trends",
+      "classification": "PASS",
+      "interactionDepth": "Catalogue tag counts are labelled as catalogue signals and do not claim popularity or customer usage.",
+      "evidence": "trends-desktop-1440x900.png; trends-mobile-390x844.png"
+    },
+    {
+      "route": "/tools",
+      "classification": "PASS",
+      "interactionDepth": "Ten tools are explicitly Beta, client-side, and not represented as mutating/certifying Workbench projects; each tool page has separate live checks.",
+      "evidence": "tools-desktop-1440x900.png; tools-hardening-live-v26.spec.ts"
+    },
+    {
+      "route": "/agents",
+      "classification": "PASS",
+      "interactionDepth": "Page explicitly limits hosted Site scope; CLI/MCP require local installation and no hosted API is implied.",
+      "evidence": "agents-desktop-1440x900.png; agents-mobile-390x844.png"
+    },
+    {
+      "route": "/docs",
+      "classification": "PASS",
+      "interactionDepth": "Repository-derived documentation index rendered; representative CLI child route inspected.",
+      "evidence": "docs-desktop-1440x900.png; docs__cli-desktop-1440x900.png"
+    },
+    {
+      "route": "/sponsor",
+      "classification": "PASS",
+      "interactionDepth": "Page states no payment processor/checkout is configured and preserves free resource access.",
+      "evidence": "sponsor-desktop-1440x900.png; sponsor-mobile-390x844.png"
+    },
+    {
+      "route": "/about",
+      "classification": "PASS",
+      "interactionDepth": "Informational product page rendered at both required viewports.",
+      "evidence": "about-desktop-1440x900.png; about-mobile-390x844.png"
+    },
+    {
+      "route": "/license",
+      "classification": "PASS",
+      "interactionDepth": "Licence and provenance page rendered; internal source links resolve.",
+      "evidence": "license-desktop-1440x900.png; license-mobile-390x844.png"
+    },
+    {
+      "route": "/privacy",
+      "classification": "PASS",
+      "interactionDepth": "Review-specific privacy page rendered at both required viewports.",
+      "evidence": "privacy-desktop-1440x900.png; privacy-mobile-390x844.png"
+    },
+    {
+      "route": "/terms",
+      "classification": "PASS",
+      "interactionDepth": "Review-specific terms page rendered at both required viewports.",
+      "evidence": "terms-desktop-1440x900.png; terms-mobile-390x844.png"
+    },
+    {
+      "route": "/r/advanced-data-table",
+      "classification": "PASS",
+      "interactionDepth": "Representative resource preview and variant controls inspected; all 40 Gold resources were switched to dark Expressive and contrast checked.",
+      "evidence": "r__advanced-data-table-desktop-1440x900.png; gold-dark-contrast-accurate/*/report.json"
+    },
+    {
+      "route": "/showcase/showcase-playful-hr",
+      "classification": "PASS",
+      "interactionDepth": "Representative showcase renders an employee-experience project and marks the content as illustrative sample data.",
+      "evidence": "showcase__showcase-playful-hr-desktop-1440x900.png; showcase__showcase-playful-hr-mobile-390x844.png"
+    },
+    {
+      "route": "/blueprints/b2b-saas",
+      "classification": "PASS",
+      "interactionDepth": "Representative blueprint presents audience, objective, screens, anti-patterns and a Compose action.",
+      "evidence": "blueprints__b2b-saas-desktop-1440x900.png; blueprints__b2b-saas-mobile-390x844.png"
+    },
+    {
+      "route": "/tools/typography",
+      "classification": "PASS",
+      "interactionDepth": "Representative tool controls and preview inspected; all ten tool routes and configured interactions are covered by the live tool suite.",
+      "evidence": "tools__typography-desktop-1440x900.png; tools-hardening-live-v26.spec.ts"
+    },
+    {
+      "route": "/docs/cli",
+      "classification": "PASS",
+      "interactionDepth": "Representative CLI guide renders from the current repository documentation; links resolve.",
+      "evidence": "docs__cli-desktop-1440x900.png; docs__cli-mobile-390x844.png"
+    }
+  ]
+}

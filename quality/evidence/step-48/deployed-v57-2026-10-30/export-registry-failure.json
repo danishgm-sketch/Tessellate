@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "test": "tests/employee-export-runtime.test.ts",
+  "preFixResult": "failed",
+  "reproducedAt": "2026-10-30T20:23:07Z",
+  "reproduction": "Generate a Motion-enabled standalone employee product and run npm install --no-audit --no-fund in a clean temporary directory.",
+  "registryRequests": [
+    {
+      "url": "https://registry.npmjs.org/tslib/-/tslib-2.9.1.tgz",
+      "status": 404
+    },
+    {
+      "url": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz",
+      "status": 200
+    }
+  ],
+  "fix": "Exported packages with Motion pin tslib 2.8.1.",
+  "postFixResult": "passed",
+  "postFixTest": "Standalone project install, build, Chromium browser interaction, and browser error/network assertions passed in 17.24 seconds."
+}

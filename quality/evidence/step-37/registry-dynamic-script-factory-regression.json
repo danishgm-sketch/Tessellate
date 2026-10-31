@@ -1,0 +1,32 @@
+{
+  "findingId": "SEC-37-088",
+  "severity": "high",
+  "title": "Registry isolation allowed scripts created through DOM factory aliases",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "document.createElement('scr' + 'ipt')",
+      "const create = document.createElement; create('script')",
+      "const make = document.createElementNS; make(htmlNamespace, 'script')"
+    ],
+    "beforeFix": "The registry isolation gate returned pass for dynamically created script elements, including computed tag names, aliased factories, and createElementNS.",
+    "afterFix": "The AST gate resolves createElement/createElementNS aliases and computed tag names, then rejects registry-created script elements before source admission."
+  },
+  "rootCause": "Static script checks covered source-level script tags but did not identify script elements materialized through aliased or namespace-aware DOM factory calls.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve DOM factory aliases and computed tag names in the AST visitor; reject script elements produced by either document.createElement or document.createElementNS.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"scripts created through computed and aliased DOM element factories\"",
+    "redBeforeFixResult": "failed as expected: script elements created through direct/computed/aliased factories were accepted before the scanner change",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "59 tests passed",
+    "safeResourceBaseline": "All 324 canonical resources pass the source-isolation matrix; none uses a script factory.",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "This is a static admission-control finding for untrusted registry source. Resource code was parsed for the test and was never executed. Release-candidate deployment verification remains pending.",
+  "capturedAt": "2026-10-21T16:57:33Z"
+}

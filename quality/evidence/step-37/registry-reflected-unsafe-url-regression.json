@@ -1,0 +1,31 @@
+{
+  "findingId": "SEC-37-081",
+  "severity": "medium",
+  "title": "Reflected URL writes bypassed executable and active-document URL checks",
+  "status": "fixed_locally",
+  "reproduction": {
+    "examples": [
+      "Reflect.set(location, 'href', 'javascript:alert(1)');",
+      "Object.defineProperty(location, 'href', { value: 'data:text/html,<script>1</script>' });",
+      "Reflect.apply(location.assign, location, ['javascript:alert(1)']);",
+      "Reflect.set(document.createElement('iframe'), 'src', 'data:text/html,<script>1</script>');",
+      "Object.defineProperty(document.createElement('a'), 'href', { value: 'javascript:alert(1)' });"
+    ],
+    "beforeFix": "Unsafe navigation and active-document URLs assigned through reflection returned pass.",
+    "afterFix": "Executable schemes and active-document URLs written to location or DOM URL attributes fail; ordinary HTTPS navigation remains allowed."
+  },
+  "rootCause": "URL validation covered direct location methods, assignments, JSX, and static resource attributes but not reflective property writes or calls.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve reflected location and resource element targets, property names, and static URL values; reject executable or active-document schemes while preserving HTTPS navigation.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"executable and active-document URLs assigned through reflection\"",
+    "redBeforeFixResult": "failed as expected: reflected location and iframe URL writes returned pass",
+    "targetedAfterFix": "unsafe-scheme regressions pass; safe HTTPS navigation also passes",
+    "fullRegistryGateSuite": "50 tests passed",
+    "fullUnitSuite": "1,175 tests passed across 76 files",
+    "untrustedCodeExecuted": false
+  }
+}

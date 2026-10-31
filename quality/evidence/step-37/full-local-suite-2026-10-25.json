@@ -1,0 +1,32 @@
+{
+  "runDate": "2026-10-25",
+  "baseCommit": "e574bb0aa012fd412487f586a75ccead0ca12b13",
+  "worktreeChangesIncluded": true,
+  "scope": "Full local quality and browser suite after Playwright readiness fixes and before the approved v28 live-site recheck.",
+  "commands": {
+    "pnpm install --frozen-lockfile": { "result": "PASS" },
+    "pnpm build:catalog": { "result": "PASS", "resources": 324, "goldResources": 40 },
+    "pnpm typecheck": { "result": "PASS", "workspaces": 22 },
+    "pnpm lint": { "result": "PASS" },
+    "pnpm test": { "result": "PASS", "testFilesPassed": 77, "testsPassed": 1216, "configuredSkips": 1 },
+    "pnpm audit:all": { "result": "PASS", "releaseGatesPassed": 16, "resourcesIsolated": 324, "dependencyAdvisories": 0 },
+    "pnpm build": { "result": "PASS", "astroPages": 733, "sitesArtifact": true, "bundleBudgets": "PASS" },
+    "pnpm test:e2e": {
+      "result": "PASS",
+      "passed": 612,
+      "configuredSkips": 149,
+      "failures": 0,
+      "profiles": {
+        "astro": { "passed": 314, "configuredSkips": 108 },
+        "sitesWorker": { "passed": 295, "configuredSkips": 41, "resources": 324, "goldResources": 40 },
+        "isolatedPreview": { "passed": 3, "configuredSkips": 0 }
+      }
+    }
+  },
+  "limitations": [
+    "The Playwright results are local browser evidence, not a deployment recheck.",
+    "The previous complete aggregate run had transient harness failures that were resolved with bounded catalogue/readiness waits and transition-state polling; the final aggregate run passed.",
+    "The raw Vite preview chunk warning remains, while measured gzip budgets pass.",
+    "The 149 configured skips are explicit project-scoped skips and are not represented as passing tests."
+  ]
+}

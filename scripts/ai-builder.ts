@@ -14,6 +14,8 @@ export interface AIDef {
   idealFor: string[];
   avoidFor: string[];
   jobs: string[];
+  contentRequirements?: string[];
+  notes?: string[];
   indexCode: string;
   previewCode: string;
   fixturesCode: string;
@@ -94,19 +96,19 @@ export function writeAIResource(def: AIDef, repoRoot: string) {
       {
         id: 'quiet',
         name: 'Quiet',
-        description: 'Subtle slate borders, minimal badge accents, calm tool call telemetry for deep work.',
+        description: 'Low-emphasis neutral styling with restrained borders and accent color.',
         props: { variant: 'quiet' },
       },
       {
         id: 'expressive',
         name: 'Expressive',
-        description: 'Vibrant cobalt highlights, fluid gradient thinking indicators, and rich model card pills.',
+        description: 'More prominent color contrast and emphasis for key controls.',
         props: { variant: 'expressive' },
       },
       {
         id: 'nocturne',
         name: 'Nocturne',
-        description: 'Obsidian dark canvas, electric cyan luminescence, and high-contrast monospace code surfaces.',
+        description: 'Dark surface with high-contrast text and a restrained accent color.',
         props: { variant: 'nocturne' },
       },
     ],
@@ -116,8 +118,12 @@ export function writeAIResource(def: AIDef, repoRoot: string) {
       idealFor: def.idealFor,
       avoidFor: def.avoidFor,
       jobs: def.jobs,
-      contentRequirements: ['Model state reflection, streaming message blocks, citation cards, human-in-the-loop approvals'],
-      notes: ['Local state mockable, BYO endpoint compatible, zero lock-in contracts'],
+      contentRequirements: def.contentRequirements ?? [
+        'Describe the behavior represented by the interface and clearly label any illustrative data.',
+      ],
+      notes: def.notes ?? [
+        'This component supplies a UI pattern; the host application connects any live model or data source it needs.',
+      ],
     },
     visualDNA: {
       professionalism: 92,
@@ -171,12 +177,12 @@ export function writeAIResource(def: AIDef, repoRoot: string) {
       defaultStrategy: 'compress',
     },
     accessibility: {
-      levelTarget: 'AAA',
-      keyboardVerified: true,
-      screenReaderSemantics: true,
-      reducedMotionVerified: true,
-      contrastTokenCompatible: true,
-      focusVisible: true,
+      levelTarget: 'AA',
+      keyboardVerified: false,
+      screenReaderSemantics: false,
+      reducedMotionVerified: false,
+      contrastTokenCompatible: false,
+      focusVisible: false,
     },
     performance: {
       jsCost: 'tiny',
@@ -191,6 +197,7 @@ export function writeAIResource(def: AIDef, repoRoot: string) {
     compatibility: {},
     relationships: [],
     quality: {
+      assessment: { status: 'unassessed', evidence: [] },
       overall: 97,
       accessibility: 98,
       responsive: 96,

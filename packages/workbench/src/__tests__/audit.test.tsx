@@ -64,6 +64,18 @@ describe('Phase 12: Audit System', () => {
   });
 
   describe('Deterministic Category Rules & Violation Detection', () => {
+    it.each(['navigation', 'page-heading', 'hero'])('recognizes the %s focal landmark in the hierarchy score', (role) => {
+      const manifest = createSampleProject();
+      const overview = manifest.screens.find((screen) => screen.id === 'screen-overview');
+      const navigation = overview?.rootNode.children.find((node) => node.semanticRole === 'navigation-header');
+      expect(navigation).toBeDefined();
+      navigation!.semanticRole = role;
+
+      const result = auditProjectManifest(manifest);
+
+      expect(result.issues.find((issue) => issue.id === 'hierarchy-missing-header-screen-overview')).toBeUndefined();
+    });
+
     it('detects accessibility contrast violations and provides deterministic fix', () => {
       const manifest = createSampleProject();
       manifest.constraints.accessibilityFloor = 'AAA';
@@ -125,7 +137,13 @@ describe('Phase 12: Audit System', () => {
 
       expect(perfIssue).toBeDefined();
       expect(perfIssue?.severity).toBe('critical');
+      expect(perfIssue?.suggestedFix).toBeDefined();
       expect(result.scores.performance).toBeLessThan(15);
+
+      const { nextManifest } = executeMutation(manifest, perfIssue!.suggestedFix!.mutations![0]!);
+      expect(nextManifest.designDNA.threeDIntensity).toBe(0);
+      expect(nextManifest.designDNA.videoIntensity).toBe(0);
+      expect(auditProjectManifest(nextManifest).issues.find((issue) => issue.id === perfIssue!.id)).toBeUndefined();
     });
 
     it('detects uncollapsed multi-column grids causing mobile overflow', () => {
@@ -270,6 +288,22 @@ describe('Phase 12: Audit System', () => {
       expect(html).toContain('Action button');
       expect(html).toContain('node-audit-target');
       expect(html).toContain('Fix');
+    });
+
+    it('visibly labels accessibility and performance suggested fixes as Beta', () => {
+      const accessibilityManifest = createSampleProject();
+      accessibilityManifest.constraints.accessibilityFloor = 'AAA';
+      accessibilityManifest.designDNA.contrast = 60;
+      const accessibilityHtml = renderToString(<AuditPanel manifest={accessibilityManifest} />);
+      expect(accessibilityHtml).toContain('data-testid="audit-fix-beta-badge"');
+      expect(accessibilityHtml).toContain('Beta: review the suggested manifest change');
+
+      const performanceManifest = createSampleProject();
+      performanceManifest.constraints.performanceCeiling = 'lightweight';
+      performanceManifest.designDNA.threeDIntensity = 50;
+      const performanceHtml = renderToString(<AuditPanel manifest={performanceManifest} />);
+      expect(performanceHtml).toContain('data-testid="audit-fix-beta-badge"');
+      expect(performanceHtml).toContain('Beta: review the suggested manifest change');
     });
 
     it('applies suggested fix mutations into store accurately', () => {

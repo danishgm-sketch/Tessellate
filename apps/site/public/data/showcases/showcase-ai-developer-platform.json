@@ -2,11 +2,11 @@
   "schemaVersion": "1.0.0",
   "id": "showcase-ai-developer-platform",
   "name": "Synthetix AI Developer Platform",
-  "description": "Autonomous multi-agent orchestration canvas with live streaming telemetry.",
+  "description": "Example project. Autonomous multi-agent orchestration canvas with live streaming telemetry.",
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z",
-  "catalogVersion": "1.0.0",
-  "seed": "seed_showcase-ai-developer-platform",
+  "catalogVersion": "0.1.0",
+  "seed": "showcase-ai-developer-platform",
   "productModel": {
     "schemaVersion": "1.0.0",
     "productArchetypes": [
@@ -15,39 +15,143 @@
         "weight": 100
       }
     ],
-    "primaryAudience": "Domain specialists",
-    "userSophistication": 95,
-    "primaryObjective": "Autonomous multi-agent orchestration canvas with live streaming telemetry.",
+    "primaryAudience": "Knowledge workers, creatives, and technical practitioners",
+    "userSophistication": 75,
+    "primaryObjective": "Amplify human productivity through generative and predictive assistance",
     "secondaryObjectives": [
-      "Maximize workflow speed and cognitive clarity"
+      "Ensure high accessibility standards",
+      "Maintain responsive layout across devices"
     ],
     "jobsToBeDone": [
-      "Analyze domain data",
-      "Execute actions",
-      "Inspect telemetry"
+      "Authenticate and access AI Product",
+      "Review the overview and priority actions",
+      "Create, update, and manage records",
+      "Formulate prompt and inspect generation",
+      "Equip agent with tools and memory"
     ],
-    "entities": [],
-    "workflows": [],
-    "trustRequirement": 92,
-    "informationComplexity": 70,
-    "dataDensity": 70,
-    "collaborationLevel": 50,
-    "transactionCriticality": 70,
-    "navigationComplexity": 60,
-    "mobileImportance": 50,
-    "likelyScreens": [],
+    "entities": [
+      {
+        "name": "Prompt",
+        "description": "User instruction and system framing",
+        "fields": [
+          "id",
+          "text",
+          "model",
+          "createdAt"
+        ]
+      },
+      {
+        "name": "Generation",
+        "description": "Synthesized model output and history",
+        "fields": [
+          "id",
+          "output",
+          "status",
+          "tokens"
+        ]
+      },
+      {
+        "name": "Agent",
+        "description": "Configured automated agent instance",
+        "fields": [
+          "id",
+          "name",
+          "tools",
+          "instructions"
+        ]
+      }
+    ],
+    "workflows": [
+      {
+        "id": "run-generation",
+        "name": "Formulate prompt and inspect generation",
+        "steps": [
+          "compose-prompt",
+          "stream-response",
+          "iterate-output"
+        ]
+      },
+      {
+        "id": "configure-agent",
+        "name": "Equip agent with tools and memory",
+        "steps": [
+          "define-role",
+          "connect-tools",
+          "test-run"
+        ]
+      }
+    ],
+    "trustRequirement": 80,
+    "informationComplexity": 85,
+    "dataDensity": 55,
+    "collaborationLevel": 60,
+    "transactionCriticality": 50,
+    "navigationComplexity": 50,
+    "mobileImportance": 60,
+    "likelyScreens": [
+      {
+        "name": "Prompt Canvas",
+        "screenType": "workspace-editor",
+        "purpose": "Interactive prompt formulation and output stream",
+        "jobs": [
+          "prompt-generation",
+          "compare-variants"
+        ],
+        "required": true
+      },
+      {
+        "name": "History & Generations",
+        "screenType": "index-list",
+        "purpose": "Browse and fork past generations",
+        "jobs": [
+          "search-history",
+          "export-results"
+        ],
+        "required": true
+      },
+      {
+        "name": "Model & API Settings",
+        "screenType": "settings",
+        "purpose": "Configure provider keys and model hyperparameters",
+        "jobs": [
+          "set-api-keys",
+          "tune-parameters"
+        ],
+        "required": true
+      }
+    ],
     "requiredCapabilities": [
-      "export",
-      "search",
-      "audit"
+      "streaming-output",
+      "token-usage-telemetry",
+      "cancelable-requests"
     ],
-    "forbiddenPatterns": [],
+    "forbiddenPatterns": [
+      "blocking-synchronous-waits-without-feedback",
+      "hidden-hallucination-risks"
+    ],
     "constraints": {
       "accessibilityFloor": "AA",
-      "performanceCeiling": "rich",
+      "performanceCeiling": "balanced",
       "targetDevices": [
         "desktop",
-        "tablet"
+        "tablet",
+        "mobile"
+      ],
+      "allowedDependencies": [
+        "react",
+        "tailwindcss",
+        "lucide-react"
+      ],
+      "prohibitedDependencies": [
+        "jquery",
+        "bootstrap"
+      ],
+      "requiredScreens": [],
+      "forbiddenScreens": [],
+      "requiredPatterns": [],
+      "forbiddenPatterns": [
+        "blocking-synchronous-waits-without-feedback",
+        "hidden-hallucination-risks"
       ]
     }
   },
@@ -81,9 +185,9 @@
     "accessibilityPriority": 96,
     "performancePriority": 96,
     "primaryArchetype": "ai",
-    "visualMode": "adaptive",
+    "visualMode": "light",
     "geometryFamily": "rounded",
-    "navigationModel": "command-first",
+    "navigationModel": "rail",
     "responsivePhilosophy": "equal-capability-adaptive",
     "contentTone": "visionary-technical",
     "primaryStack": "react-tailwind",
@@ -91,392 +195,570 @@
     "typographyPersonality": "future-display",
     "surfacePersonality": "luminous-glow"
   },
+  "brand": {
+    "name": "Prompt Workspace"
+  },
   "constraints": {
     "accessibilityFloor": "AA",
-    "performanceCeiling": "rich",
+    "performanceCeiling": "balanced",
     "targetDevices": [
       "desktop",
-      "tablet"
+      "tablet",
+      "mobile"
+    ],
+    "allowedDependencies": [
+      "react",
+      "tailwindcss",
+      "lucide-react"
+    ],
+    "prohibitedDependencies": [
+      "jquery",
+      "bootstrap"
+    ],
+    "requiredScreens": [],
+    "forbiddenScreens": [],
+    "requiredPatterns": [],
+    "forbiddenPatterns": [
+      "blocking-synchronous-waits-without-feedback",
+      "hidden-hallucination-risks"
     ]
   },
   "screenGraph": {
-    "id": "sg_showcase-ai-developer-platform",
+    "id": "graph-ai-18x46ri",
     "groups": [
       {
-        "id": "group_main",
-        "name": "Main Workspace",
+        "id": "group-app",
+        "name": "Application",
         "screens": [
           {
-            "id": "node-marketing-home",
-            "name": "Marketing Home",
-            "slug": "/",
-            "screenType": "marketing-home",
-            "purpose": "Marketing Home",
+            "id": "screen-workspace",
+            "name": "Prompt Canvas",
+            "slug": "/prompt-canvas",
+            "screenType": "workspace-editor",
+            "purpose": "Interactive prompt formulation and output stream",
             "jobs": [
-              "inspect-view"
+              "prompt-generation",
+              "compare-variants"
             ],
             "required": true,
             "navigationVisibility": "primary",
-            "importance": 80,
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Prompt.id",
+              "Prompt.text",
+              "Prompt.model",
+              "Prompt.createdAt"
             ],
             "requiredRoles": [
-              "content"
+              "editor-toolbar",
+              "canvas-viewport",
+              "inspector-panel"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "layers-tree",
+              "version-history",
+              "status-bar"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           },
           {
-            "id": "node-research-workspace",
-            "name": "Research Workspace",
-            "slug": "/research",
-            "screenType": "research-workspace",
-            "purpose": "Research Workspace",
+            "id": "screen-collection-index",
+            "name": "History & Generations",
+            "slug": "/history-and-generations",
+            "screenType": "index-list",
+            "purpose": "Browse and fork past generations",
             "jobs": [
-              "inspect-view"
+              "search-history",
+              "export-results"
             ],
-            "required": false,
+            "required": true,
             "navigationVisibility": "primary",
-            "importance": 75,
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Generation.id",
+              "Generation.output",
+              "Generation.status",
+              "Generation.tokens"
             ],
             "requiredRoles": [
-              "content"
+              "index-header",
+              "filter-bar",
+              "data-table",
+              "pagination"
             ],
-            "optionalRoles": []
-          },
+            "optionalRoles": [
+              "bulk-action-bar",
+              "view-mode-toggle",
+              "stats-summary"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "group-settings",
+        "name": "Settings & administration",
+        "screens": [
           {
-            "id": "node-developers",
-            "name": "Developer/API Landing",
-            "slug": "/developers",
-            "screenType": "developer/api-landing",
-            "purpose": "Developer/API Landing",
+            "id": "screen-settings",
+            "name": "Model & API Settings",
+            "slug": "/settings",
+            "screenType": "settings",
+            "purpose": "Configure provider keys and model hyperparameters",
             "jobs": [
-              "inspect-view"
+              "set-api-keys",
+              "tune-parameters"
             ],
-            "required": false,
-            "navigationVisibility": "primary",
-            "importance": 70,
+            "required": true,
+            "navigationVisibility": "secondary",
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Prompt.id",
+              "Prompt.text",
+              "Prompt.model",
+              "Prompt.createdAt"
             ],
             "requiredRoles": [
-              "content"
+              "settings-form",
+              "save-footer"
             ],
-            "optionalRoles": []
-          },
-          {
-            "id": "node-integrations",
-            "name": "API & Integrations",
-            "slug": "/settings/integrations",
-            "screenType": "api-&-integrations",
-            "purpose": "API & Integrations",
-            "jobs": [
-              "inspect-view"
+            "optionalRoles": [
+              "avatar-uploader",
+              "2fa-toggle",
+              "danger-zone"
             ],
-            "required": false,
-            "navigationVisibility": "primary",
-            "importance": 65,
-            "expectedData": [
-              "records"
-            ],
-            "requiredRoles": [
-              "content"
-            ],
-            "optionalRoles": []
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           }
         ]
       }
     ],
     "edges": [
       {
-        "id": "edge_0",
-        "fromScreenId": "node-marketing-home",
-        "toScreenId": "node-research-workspace"
+        "id": "edge-screen-workspace-to-screen-collection-index",
+        "fromScreenId": "screen-workspace",
+        "toScreenId": "screen-collection-index",
+        "label": "History & Generations"
       },
       {
-        "id": "edge_1",
-        "fromScreenId": "node-marketing-home",
-        "toScreenId": "node-developers"
-      },
-      {
-        "id": "edge_2",
-        "fromScreenId": "node-marketing-home",
-        "toScreenId": "node-integrations"
+        "id": "edge-screen-workspace-to-screen-settings",
+        "fromScreenId": "screen-workspace",
+        "toScreenId": "screen-settings",
+        "label": "Model & API Settings"
       }
     ]
   },
   "screens": [
     {
-      "id": "screen-marketing-home",
-      "screenNodeId": "node-marketing-home",
-      "name": "Marketing Home",
-      "slug": "/",
+      "id": "screen-workspace",
+      "screenNodeId": "screen-workspace",
+      "name": "Prompt Canvas",
+      "slug": "/prompt-canvas",
       "rootNode": {
-        "id": "root-marketing-home",
+        "id": "root-screen-workspace",
         "nodeType": "layout",
-        "semanticRole": "page-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-nav",
-            "nodeType": "section",
+            "id": "node-screen-workspace-navigation-1",
+            "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_header_minimal",
-              "slug": "header-minimal",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Prompt Workspace",
+              "links": [
+                {
+                  "label": "Prompt Canvas",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "History & Generations",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Model & API Settings",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-hero",
-            "nodeType": "section",
-            "semanticRole": "hero",
-            "resourceRef": {
-              "id": "res_hero_minimal",
-              "slug": "hero-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-workspace-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-workspace-canvas-viewport-2",
+                "nodeType": "block",
+                "semanticRole": "canvas-viewport",
+                "resourceRef": {
+                  "id": "res_blk_kanban_board",
+                  "slug": "kanban-board",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Prompt Canvas",
+                  "columns": [
+                    {
+                      "title": "Formulate prompt and inspect generation",
+                      "tasks": [
+                        "Compose prompt",
+                        "Stream response",
+                        "Iterate output"
+                      ]
+                    },
+                    {
+                      "title": "Equip agent with tools and memory",
+                      "tasks": [
+                        "Define role",
+                        "Connect tools",
+                        "Test run"
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-workspace-inspector-panel-3",
+                "nodeType": "block",
+                "semanticRole": "inspector-panel",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Prompt Canvas",
+                  "subtitle": "Interactive prompt formulation and output stream",
+                  "badge": "EXAMPLE",
+                  "initials": "PW"
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-proof",
-            "nodeType": "section",
-            "semanticRole": "trust-proof",
-            "resourceRef": {
-              "id": "res_logo_cloud_clean",
-              "slug": "logo-cloud-clean",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-features",
-            "nodeType": "section",
-            "semanticRole": "feature-grid",
-            "resourceRef": {
-              "id": "res_feature_grid_cards",
-              "slug": "feature-grid-cards",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-cta",
-            "nodeType": "section",
-            "semanticRole": "conversion-cta",
-            "resourceRef": {
-              "id": "res_cta_minimal",
-              "slug": "cta-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-footer",
-            "nodeType": "section",
-            "semanticRole": "footer",
-            "resourceRef": {
-              "id": "res_footer_minimal",
-              "slug": "footer-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     },
     {
-      "id": "screen-research-workspace",
-      "screenNodeId": "node-research-workspace",
-      "name": "Research Workspace",
-      "slug": "/research",
+      "id": "screen-collection-index",
+      "screenNodeId": "screen-collection-index",
+      "name": "History & Generations",
+      "slug": "/history-and-generations",
       "rootNode": {
-        "id": "root-research-workspace",
+        "id": "root-screen-collection-index",
         "nodeType": "layout",
-        "semanticRole": "editor-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-res-copilot",
-            "nodeType": "section",
-            "semanticRole": "copilot",
+            "id": "node-screen-collection-index-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_ai_copilot_sidebar",
-              "slug": "ai-copilot-sidebar",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Prompt Workspace",
+              "links": [
+                {
+                  "label": "Prompt Canvas",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "History & Generations",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Model & API Settings",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-res-citations",
-            "nodeType": "section",
-            "semanticRole": "citations",
-            "resourceRef": {
-              "id": "res_ai_source_citations",
-              "slug": "ai-source-citations",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-collection-index-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-collection-index-index-header-2",
+                "nodeType": "block",
+                "semanticRole": "index-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "History & Generations",
+                  "subtitle": "Browse and fork past generations",
+                  "badge": "EXAMPLE",
+                  "initials": "PW"
+                }
+              },
+              {
+                "id": "node-screen-collection-index-filter-bar-3",
+                "nodeType": "block",
+                "semanticRole": "filter-bar",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-collection-index-data-table-4",
+                "nodeType": "block",
+                "semanticRole": "data-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "History & Generations",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Prompt",
+                      "type": "User instruction and system framing",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Generation",
+                      "type": "Synthesized model output and history",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Agent",
+                      "type": "Configured automated agent instance",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-collection-index-pagination-5",
+                "nodeType": "element",
+                "semanticRole": "pagination",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Paging unavailable",
+                  "disabled": true,
+                  "title": "Connect a paging data source before navigating additional records.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     },
     {
-      "id": "screen-developers",
-      "screenNodeId": "node-developers",
-      "name": "Developer/API Landing",
-      "slug": "/developers",
+      "id": "screen-settings",
+      "screenNodeId": "screen-settings",
+      "name": "Model & API Settings",
+      "slug": "/settings",
       "rootNode": {
-        "id": "root-developers",
+        "id": "root-screen-settings",
         "nodeType": "layout",
-        "semanticRole": "page-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-dev-hero",
-            "nodeType": "section",
-            "semanticRole": "hero",
+            "id": "node-screen-settings-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_hero_split",
-              "slug": "hero-split",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Prompt Workspace",
+              "links": [
+                {
+                  "label": "Prompt Canvas",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "History & Generations",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Model & API Settings",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-dev-code",
-            "nodeType": "section",
-            "semanticRole": "code-snippet",
-            "resourceRef": {
-              "id": "res_code_block_interactive",
-              "slug": "code-block-interactive",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-settings-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-settings-settings-form-2",
+                "nodeType": "element",
+                "semanticRole": "settings-form",
+                "resourceRef": {
+                  "id": "res_primitive_input",
+                  "slug": "input",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Notification preferences",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application.",
+                  "disabled": false,
+                  "title": "Model & API Settings"
+                }
+              },
+              {
+                "id": "node-screen-settings-save-footer-3",
+                "nodeType": "component",
+                "semanticRole": "save-footer",
+                "resourceRef": {
+                  "id": "res_mot_magnetic_button",
+                  "slug": "magnetic-button",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Save changes",
+                  "disabled": true,
+                  "title": "Connect the exported application to your backend to enable this action.",
+                  "helperText": "Connect persistence to save changes."
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-dev-features",
-            "nodeType": "section",
-            "semanticRole": "sdk-features",
-            "resourceRef": {
-              "id": "res_feature_grid_cards",
-              "slug": "feature-grid-cards",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
           }
         ],
         "slots": {},
-        "props": {}
-      }
-    },
-    {
-      "id": "screen-integrations",
-      "screenNodeId": "node-integrations",
-      "name": "API & Integrations",
-      "slug": "/settings/integrations",
-      "rootNode": {
-        "id": "root-integrations",
-        "nodeType": "layout",
-        "semanticRole": "settings-canvas",
-        "children": [
-          {
-            "id": "sec-int-keys",
-            "nodeType": "section",
-            "semanticRole": "keys",
-            "resourceRef": {
-              "id": "res_api_keys_manager",
-              "slug": "api-keys-manager",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-int-apps",
-            "nodeType": "section",
-            "semanticRole": "apps",
-            "resourceRef": {
-              "id": "res_connected_accounts_list",
-              "slug": "connected-accounts-list",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          }
-        ],
-        "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        },
+        "dnaOverrides": {
+          "professionalism": 96,
+          "playfulness": 8,
+          "curvature": 12,
+          "motion": 10
+        }
       }
     }
   ],
   "navigation": {
-    "model": "command-first",
+    "model": "rail",
     "primaryItems": [
       {
-        "label": "Home",
-        "targetScreenId": "node-marketing-home"
+        "label": "Prompt Canvas",
+        "targetScreenId": "screen-workspace"
       },
       {
-        "label": "Workspace",
-        "targetScreenId": "node-research-workspace"
-      },
+        "label": "History & Generations",
+        "targetScreenId": "screen-collection-index"
+      }
+    ],
+    "secondaryItems": [
       {
-        "label": "Developers",
-        "targetScreenId": "node-developers"
-      },
-      {
-        "label": "Integrations",
-        "targetScreenId": "node-integrations"
+        "label": "Model & API Settings",
+        "targetScreenId": "screen-settings"
       }
     ]
   },
   "assets": [],
   "locks": [],
   "historyMeta": {
-    "totalOperations": 12,
-    "headRevision": 1
+    "totalOperations": 0,
+    "headRevision": 0
   },
   "exportSettings": {
     "framework": "react",

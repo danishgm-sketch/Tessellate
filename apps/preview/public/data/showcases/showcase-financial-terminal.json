@@ -2,11 +2,11 @@
   "schemaVersion": "1.0.0",
   "id": "showcase-financial-terminal",
   "name": "Apex Financial Intelligence Terminal",
-  "description": "Institutional trading terminal with real-time order books and risk telemetry.",
+  "description": "Example project. Institutional trading terminal with real-time order books and risk telemetry.",
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z",
-  "catalogVersion": "1.0.0",
-  "seed": "seed_showcase-financial-terminal",
+  "catalogVersion": "0.1.0",
+  "seed": "showcase-financial-terminal",
   "productModel": {
     "schemaVersion": "1.0.0",
     "productArchetypes": [
@@ -15,39 +15,174 @@
         "weight": 100
       }
     ],
-    "primaryAudience": "Domain specialists",
-    "userSophistication": 98,
-    "primaryObjective": "Institutional trading terminal with real-time order books and risk telemetry.",
+    "primaryAudience": "Professional equity dealers and trading teams",
+    "userSophistication": 100,
+    "primaryObjective": "Monitor market depth, assess portfolio exposure, and execute verified trades",
     "secondaryObjectives": [
-      "Maximize workflow speed and cognitive clarity"
+      "Ensure high accessibility standards",
+      "Maintain responsive layout across devices"
     ],
     "jobsToBeDone": [
-      "Analyze domain data",
-      "Execute actions",
-      "Inspect telemetry"
+      "Authenticate and access Trading Terminal",
+      "Review the overview and priority actions",
+      "Create, update, and manage records",
+      "Review market depth and compare liquidity across listed securities",
+      "Prepare and verify an equity trade within risk limits",
+      "Review position exposure and portfolio risk limits"
     ],
-    "entities": [],
-    "workflows": [],
+    "entities": [
+      {
+        "name": "Security",
+        "description": "A listed equity with a ticker, venue, market price, and trading status",
+        "fields": [
+          "id",
+          "ticker",
+          "exchange",
+          "bid",
+          "ask",
+          "currency",
+          "status"
+        ]
+      },
+      {
+        "name": "Order",
+        "description": "A verified market or limit order with quantity, side, and execution state",
+        "fields": [
+          "id",
+          "securityId",
+          "side",
+          "quantity",
+          "orderType",
+          "limitPrice",
+          "status"
+        ]
+      },
+      {
+        "name": "Position",
+        "description": "A trading position with exposure, valuation, and risk limits",
+        "fields": [
+          "id",
+          "securityId",
+          "quantity",
+          "marketValue",
+          "exposure",
+          "riskLimit"
+        ]
+      }
+    ],
+    "workflows": [
+      {
+        "id": "monitor-market-depth",
+        "name": "Review market depth and compare liquidity across listed securities",
+        "steps": [
+          "select-security",
+          "review-market-depth",
+          "compare-liquidity"
+        ]
+      },
+      {
+        "id": "execute-verified-trade",
+        "name": "Prepare and verify an equity trade within risk limits",
+        "steps": [
+          "enter-order-terms",
+          "review-risk-checks",
+          "confirm-trade"
+        ]
+      },
+      {
+        "id": "review-portfolio-risk",
+        "name": "Review position exposure and portfolio risk limits",
+        "steps": [
+          "compare-position-exposure",
+          "review-risk-limits",
+          "resolve-risk-alert"
+        ]
+      }
+    ],
     "trustRequirement": 98,
-    "informationComplexity": 98,
-    "dataDensity": 98,
-    "collaborationLevel": 50,
-    "transactionCriticality": 70,
-    "navigationComplexity": 60,
-    "mobileImportance": 50,
-    "likelyScreens": [],
-    "requiredCapabilities": [
-      "export",
-      "search",
-      "audit"
+    "informationComplexity": 100,
+    "dataDensity": 100,
+    "collaborationLevel": 45,
+    "transactionCriticality": 100,
+    "navigationComplexity": 86,
+    "mobileImportance": 80,
+    "likelyScreens": [
+      {
+        "name": "Market Overview",
+        "screenType": "dashboard",
+        "purpose": "Monitor market breadth, active securities, and high-priority risk changes",
+        "jobs": [
+          "review-market-depth",
+          "review-risk-alerts"
+        ],
+        "required": true
+      },
+      {
+        "name": "Order Book",
+        "screenType": "index-list",
+        "purpose": "Compare bid and ask depth, liquidity, and order status by security",
+        "jobs": [
+          "inspect-order-book",
+          "compare-liquidity"
+        ],
+        "required": true
+      },
+      {
+        "name": "Positions & Risk",
+        "screenType": "dashboard",
+        "purpose": "Review portfolio exposure against documented trading risk limits",
+        "jobs": [
+          "review-position-exposure",
+          "resolve-risk-alert"
+        ],
+        "required": true
+      },
+      {
+        "name": "Trade History",
+        "screenType": "index-list",
+        "purpose": "Inspect verified equity trade executions and their audit trail",
+        "jobs": [
+          "review-executions",
+          "inspect-trade-audit"
+        ],
+        "required": true
+      }
     ],
-    "forbiddenPatterns": [],
+    "requiredCapabilities": [
+      "two-factor-authentication",
+      "audit-trail",
+      "currency-precision-formatting",
+      "market-depth-review",
+      "equity-trade-controls",
+      "portfolio-risk-limits"
+    ],
+    "forbiddenPatterns": [
+      "ambiguous-settlement-states",
+      "silent-fee-deductions"
+    ],
     "constraints": {
       "accessibilityFloor": "AA",
-      "performanceCeiling": "rich",
+      "performanceCeiling": "balanced",
       "targetDevices": [
         "desktop",
-        "tablet"
+        "tablet",
+        "mobile"
+      ],
+      "allowedDependencies": [
+        "react",
+        "tailwindcss",
+        "lucide-react"
+      ],
+      "prohibitedDependencies": [
+        "jquery",
+        "bootstrap"
+      ],
+      "requiredScreens": [],
+      "forbiddenScreens": [],
+      "requiredPatterns": [],
+      "forbiddenPatterns": [
+        "ambiguous-settlement-states",
+        "silent-fee-deductions"
       ]
     }
   },
@@ -83,7 +218,7 @@
     "primaryArchetype": "fintech",
     "visualMode": "dark",
     "geometryFamily": "sharp",
-    "navigationModel": "cockpit-dense",
+    "navigationModel": "rail",
     "responsivePhilosophy": "desktop-dense-mobile-focused",
     "contentTone": "technical-authoritative",
     "primaryStack": "react-tailwind",
@@ -91,364 +226,876 @@
     "typographyPersonality": "monospace-data",
     "surfacePersonality": "obsidian-subtle-borders"
   },
+  "brand": {
+    "name": "Market Workspace"
+  },
   "constraints": {
     "accessibilityFloor": "AA",
-    "performanceCeiling": "rich",
+    "performanceCeiling": "balanced",
     "targetDevices": [
       "desktop",
-      "tablet"
+      "tablet",
+      "mobile"
+    ],
+    "allowedDependencies": [
+      "react",
+      "tailwindcss",
+      "lucide-react"
+    ],
+    "prohibitedDependencies": [
+      "jquery",
+      "bootstrap"
+    ],
+    "requiredScreens": [],
+    "forbiddenScreens": [],
+    "requiredPatterns": [],
+    "forbiddenPatterns": [
+      "ambiguous-settlement-states",
+      "silent-fee-deductions"
     ]
   },
   "screenGraph": {
-    "id": "sg_showcase-financial-terminal",
+    "id": "graph-fintech-13pexei",
     "groups": [
       {
-        "id": "group_main",
-        "name": "Main Workspace",
+        "id": "group-app",
+        "name": "Application",
         "screens": [
           {
-            "id": "node-app-overview",
-            "name": "Application Overview Dashboard",
+            "id": "screen-overview",
+            "name": "Market Overview",
             "slug": "/overview",
-            "screenType": "application-overview-dashboard",
-            "purpose": "Application Overview Dashboard",
+            "screenType": "dashboard",
+            "purpose": "Monitor market breadth, active securities, and high-priority risk changes",
             "jobs": [
-              "inspect-view"
+              "review-market-depth",
+              "review-risk-alerts"
             ],
             "required": true,
             "navigationVisibility": "primary",
-            "importance": 80,
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Security.id",
+              "Security.ticker",
+              "Security.exchange",
+              "Security.bid",
+              "Security.ask",
+              "Security.currency",
+              "Security.status"
             ],
             "requiredRoles": [
-              "content"
+              "overview-header",
+              "metric-cards",
+              "activity-feed"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "quick-action-bar",
+              "data-table",
+              "alert-banner",
+              "insight-rail"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           },
           {
-            "id": "node-analytics-dashboard",
-            "name": "Analytics Dashboard",
-            "slug": "/analytics",
-            "screenType": "analytics-dashboard",
-            "purpose": "Analytics Dashboard",
+            "id": "screen-collection-index",
+            "name": "Order Book",
+            "slug": "/order-book",
+            "screenType": "index-list",
+            "purpose": "Compare bid and ask depth, liquidity, and order status by security",
             "jobs": [
-              "inspect-view"
+              "inspect-order-book",
+              "compare-liquidity"
             ],
-            "required": false,
+            "required": true,
             "navigationVisibility": "primary",
-            "importance": 75,
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Security.id",
+              "Security.ticker",
+              "Security.exchange",
+              "Security.bid",
+              "Security.ask",
+              "Security.currency",
+              "Security.status",
+              "Order.id",
+              "Order.securityId",
+              "Order.side",
+              "Order.quantity",
+              "Order.orderType"
             ],
             "requiredRoles": [
-              "content"
+              "index-header",
+              "filter-bar",
+              "data-table",
+              "pagination"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "bulk-action-bar",
+              "view-mode-toggle",
+              "stats-summary"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           },
           {
-            "id": "node-watchlists",
-            "name": "Watchlists",
-            "slug": "/watchlists",
-            "screenType": "watchlists",
-            "purpose": "Watchlists",
+            "id": "screen-positions-and-risk",
+            "name": "Positions & Risk",
+            "slug": "/positions-and-risk",
+            "screenType": "dashboard",
+            "purpose": "Review portfolio exposure against documented trading risk limits",
             "jobs": [
-              "inspect-view"
+              "review-position-exposure",
+              "resolve-risk-alert"
             ],
-            "required": false,
+            "required": true,
             "navigationVisibility": "primary",
-            "importance": 70,
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Position.id",
+              "Position.securityId",
+              "Position.quantity",
+              "Position.marketValue",
+              "Position.exposure",
+              "Position.riskLimit"
             ],
             "requiredRoles": [
-              "content"
+              "overview-header",
+              "metric-cards",
+              "activity-feed"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "quick-action-bar",
+              "data-table",
+              "alert-banner",
+              "insight-rail"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           },
           {
-            "id": "node-reports-library",
-            "name": "Reports Library",
-            "slug": "/reports",
-            "screenType": "reports-library",
-            "purpose": "Reports Library",
+            "id": "screen-trade-history",
+            "name": "Trade History",
+            "slug": "/trade-history",
+            "screenType": "index-list",
+            "purpose": "Inspect verified equity trade executions and their audit trail",
             "jobs": [
-              "inspect-view"
+              "review-executions",
+              "inspect-trade-audit"
             ],
-            "required": false,
+            "required": true,
             "navigationVisibility": "primary",
-            "importance": 65,
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Security.id",
+              "Security.ticker",
+              "Security.exchange",
+              "Security.bid",
+              "Security.ask",
+              "Security.currency",
+              "Security.status"
             ],
             "requiredRoles": [
-              "content"
+              "index-header",
+              "filter-bar",
+              "data-table",
+              "pagination"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "bulk-action-bar",
+              "view-mode-toggle",
+              "stats-summary"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           }
         ]
       }
     ],
     "edges": [
       {
-        "id": "edge_0",
-        "fromScreenId": "node-app-overview",
-        "toScreenId": "node-analytics-dashboard"
+        "id": "edge-screen-overview-to-screen-collection-index",
+        "fromScreenId": "screen-overview",
+        "toScreenId": "screen-collection-index",
+        "label": "Order Book"
       },
       {
-        "id": "edge_1",
-        "fromScreenId": "node-app-overview",
-        "toScreenId": "node-watchlists"
+        "id": "edge-screen-overview-to-screen-positions-and-risk",
+        "fromScreenId": "screen-overview",
+        "toScreenId": "screen-positions-and-risk",
+        "label": "Positions & Risk"
       },
       {
-        "id": "edge_2",
-        "fromScreenId": "node-app-overview",
-        "toScreenId": "node-reports-library"
+        "id": "edge-screen-overview-to-screen-trade-history",
+        "fromScreenId": "screen-overview",
+        "toScreenId": "screen-trade-history",
+        "label": "Trade History"
       }
     ]
   },
   "screens": [
     {
-      "id": "screen-app-overview",
-      "screenNodeId": "node-app-overview",
-      "name": "Application Overview Dashboard",
+      "id": "screen-overview",
+      "screenNodeId": "screen-overview",
+      "name": "Market Overview",
       "slug": "/overview",
       "rootNode": {
-        "id": "root-app-overview",
+        "id": "root-screen-overview",
         "nodeType": "layout",
-        "semanticRole": "dashboard-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-dash-metrics",
-            "nodeType": "section",
-            "semanticRole": "kpi-metrics",
+            "id": "node-screen-overview-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_metrics_scorecard",
-              "slug": "metrics-scorecard",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Market Workspace",
+              "links": [
+                {
+                  "label": "Market Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Order Book",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Positions & Risk",
+                  "href": "#screen-positions-and-risk"
+                },
+                {
+                  "label": "Trade History",
+                  "href": "#screen-trade-history"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-dash-chart",
-            "nodeType": "section",
-            "semanticRole": "trend-chart",
-            "resourceRef": {
-              "id": "res_time_series_chart",
-              "slug": "time-series-chart",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-overview-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-overview-overview-header-2",
+                "nodeType": "block",
+                "semanticRole": "overview-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Market Overview",
+                  "subtitle": "Monitor market breadth, active securities, and high-priority risk changes",
+                  "badge": "EXAMPLE",
+                  "initials": "MW"
+                }
+              },
+              {
+                "id": "node-screen-overview-metric-cards-3",
+                "nodeType": "block",
+                "semanticRole": "metric-cards",
+                "resourceRef": {
+                  "id": "res_blk_dashboard_kpi_grid",
+                  "slug": "dashboard-kpi-grid",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Key metrics",
+                  "cards": [
+                    {
+                      "label": "Security",
+                      "val": "—",
+                      "status": "Market data not connected"
+                    },
+                    {
+                      "label": "Order",
+                      "val": "—",
+                      "status": "Market data not connected"
+                    },
+                    {
+                      "label": "Position",
+                      "val": "—",
+                      "status": "Market data not connected"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-overview-activity-feed-4",
+                "nodeType": "block",
+                "semanticRole": "activity-feed",
+                "resourceRef": {
+                  "id": "res_blk_timeline",
+                  "slug": "timeline",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Recent activity",
+                  "events": [
+                    {
+                      "time": "Today",
+                      "title": "Review market depth and compare liquidity across listed securities",
+                      "desc": "Select security → Review market depth → Compare liquidity"
+                    },
+                    {
+                      "time": "Yesterday",
+                      "title": "Prepare and verify an equity trade within risk limits",
+                      "desc": "Enter order terms → Review risk checks → Confirm trade"
+                    },
+                    {
+                      "time": "Earlier this week",
+                      "title": "Review position exposure and portfolio risk limits",
+                      "desc": "Compare position exposure → Review risk limits → Resolve risk alert"
+                    }
+                  ]
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-dash-activity",
-            "nodeType": "section",
-            "semanticRole": "recent-activity",
-            "resourceRef": {
-              "id": "res_activity_timeline",
-              "slug": "activity-timeline",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "docked-panes"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     },
     {
-      "id": "screen-analytics-dashboard",
-      "screenNodeId": "node-analytics-dashboard",
-      "name": "Analytics Dashboard",
-      "slug": "/analytics",
+      "id": "screen-collection-index",
+      "screenNodeId": "screen-collection-index",
+      "name": "Order Book",
+      "slug": "/order-book",
       "rootNode": {
-        "id": "root-analytics-dashboard",
+        "id": "root-screen-collection-index",
         "nodeType": "layout",
-        "semanticRole": "analytics-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-an-kpis",
-            "nodeType": "section",
-            "semanticRole": "summary-kpis",
+            "id": "node-screen-collection-index-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_metrics_scorecard",
-              "slug": "metrics-scorecard",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Market Workspace",
+              "links": [
+                {
+                  "label": "Market Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Order Book",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Positions & Risk",
+                  "href": "#screen-positions-and-risk"
+                },
+                {
+                  "label": "Trade History",
+                  "href": "#screen-trade-history"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-an-trend",
-            "nodeType": "section",
-            "semanticRole": "trend-chart",
-            "resourceRef": {
-              "id": "res_time_series_chart",
-              "slug": "time-series-chart",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-collection-index-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-collection-index-index-header-2",
+                "nodeType": "block",
+                "semanticRole": "index-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Order Book",
+                  "subtitle": "Compare bid and ask depth, liquidity, and order status by security",
+                  "badge": "EXAMPLE",
+                  "initials": "MW"
+                }
+              },
+              {
+                "id": "node-screen-collection-index-filter-bar-3",
+                "nodeType": "block",
+                "semanticRole": "filter-bar",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-collection-index-data-table-4",
+                "nodeType": "block",
+                "semanticRole": "data-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Order Book",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Security",
+                      "type": "A listed equity with a ticker, venue, market price, and trading status",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Market data not connected"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Order",
+                      "type": "A verified market or limit order with quantity, side, and execution state",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Market data not connected"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Position",
+                      "type": "A trading position with exposure, valuation, and risk limits",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Market data not connected"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-collection-index-pagination-5",
+                "nodeType": "element",
+                "semanticRole": "pagination",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Paging unavailable",
+                  "disabled": true,
+                  "title": "Connect a paging data source before navigating additional records.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-an-bar",
-            "nodeType": "section",
-            "semanticRole": "distribution",
-            "resourceRef": {
-              "id": "res_bar_chart",
-              "slug": "bar-chart",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-an-cohort",
-            "nodeType": "section",
-            "semanticRole": "retention-cohort",
-            "resourceRef": {
-              "id": "res_cohort_matrix",
-              "slug": "cohort-matrix",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "docked-panes"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     },
     {
-      "id": "screen-watchlists",
-      "screenNodeId": "node-watchlists",
-      "name": "Watchlists",
-      "slug": "/watchlists",
+      "id": "screen-positions-and-risk",
+      "screenNodeId": "screen-positions-and-risk",
+      "name": "Positions & Risk",
+      "slug": "/positions-and-risk",
       "rootNode": {
-        "id": "root-watchlists",
+        "id": "root-screen-positions-and-risk",
         "nodeType": "layout",
-        "semanticRole": "watchlist-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-wl-filters",
-            "nodeType": "section",
-            "semanticRole": "filters",
+            "id": "node-screen-positions-and-risk-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_filter_bar",
-              "slug": "filter-bar",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Market Workspace",
+              "links": [
+                {
+                  "label": "Market Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Order Book",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Positions & Risk",
+                  "href": "#screen-positions-and-risk"
+                },
+                {
+                  "label": "Trade History",
+                  "href": "#screen-trade-history"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-wl-table",
-            "nodeType": "section",
-            "semanticRole": "table",
-            "resourceRef": {
-              "id": "res_data_table",
-              "slug": "data-table",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-positions-and-risk-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-positions-and-risk-overview-header-2",
+                "nodeType": "block",
+                "semanticRole": "overview-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Positions & Risk",
+                  "subtitle": "Review portfolio exposure against documented trading risk limits",
+                  "badge": "EXAMPLE",
+                  "initials": "MW"
+                }
+              },
+              {
+                "id": "node-screen-positions-and-risk-metric-cards-3",
+                "nodeType": "block",
+                "semanticRole": "metric-cards",
+                "resourceRef": {
+                  "id": "res_blk_dashboard_kpi_grid",
+                  "slug": "dashboard-kpi-grid",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Key metrics",
+                  "cards": [
+                    {
+                      "label": "Security",
+                      "val": "—",
+                      "status": "Market data not connected"
+                    },
+                    {
+                      "label": "Order",
+                      "val": "—",
+                      "status": "Market data not connected"
+                    },
+                    {
+                      "label": "Position",
+                      "val": "—",
+                      "status": "Market data not connected"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-positions-and-risk-activity-feed-4",
+                "nodeType": "block",
+                "semanticRole": "activity-feed",
+                "resourceRef": {
+                  "id": "res_blk_timeline",
+                  "slug": "timeline",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Recent activity",
+                  "events": [
+                    {
+                      "time": "Today",
+                      "title": "Review market depth and compare liquidity across listed securities",
+                      "desc": "Select security → Review market depth → Compare liquidity"
+                    },
+                    {
+                      "time": "Yesterday",
+                      "title": "Prepare and verify an equity trade within risk limits",
+                      "desc": "Enter order terms → Review risk checks → Confirm trade"
+                    },
+                    {
+                      "time": "Earlier this week",
+                      "title": "Review position exposure and portfolio risk limits",
+                      "desc": "Compare position exposure → Review risk limits → Resolve risk alert"
+                    }
+                  ]
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "docked-panes"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     },
     {
-      "id": "screen-reports-library",
-      "screenNodeId": "node-reports-library",
-      "name": "Reports Library",
-      "slug": "/reports",
+      "id": "screen-trade-history",
+      "screenNodeId": "screen-trade-history",
+      "name": "Trade History",
+      "slug": "/trade-history",
       "rootNode": {
-        "id": "root-reports-library",
+        "id": "root-screen-trade-history",
         "nodeType": "layout",
-        "semanticRole": "table-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-rep-filters",
-            "nodeType": "section",
-            "semanticRole": "filters",
+            "id": "node-screen-trade-history-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_filter_bar",
-              "slug": "filter-bar",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Market Workspace",
+              "links": [
+                {
+                  "label": "Market Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Order Book",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Positions & Risk",
+                  "href": "#screen-positions-and-risk"
+                },
+                {
+                  "label": "Trade History",
+                  "href": "#screen-trade-history"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-rep-table",
-            "nodeType": "section",
-            "semanticRole": "reports-table",
-            "resourceRef": {
-              "id": "res_data_table",
-              "slug": "data-table",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-trade-history-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-trade-history-index-header-2",
+                "nodeType": "block",
+                "semanticRole": "index-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Trade History",
+                  "subtitle": "Inspect verified equity trade executions and their audit trail",
+                  "badge": "EXAMPLE",
+                  "initials": "MW"
+                }
+              },
+              {
+                "id": "node-screen-trade-history-filter-bar-3",
+                "nodeType": "block",
+                "semanticRole": "filter-bar",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-trade-history-data-table-4",
+                "nodeType": "block",
+                "semanticRole": "data-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Trade History",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Security",
+                      "type": "A listed equity with a ticker, venue, market price, and trading status",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Market data not connected"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Order",
+                      "type": "A verified market or limit order with quantity, side, and execution state",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Market data not connected"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Position",
+                      "type": "A trading position with exposure, valuation, and risk limits",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Market data not connected"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-trade-history-pagination-5",
+                "nodeType": "element",
+                "semanticRole": "pagination",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Paging unavailable",
+                  "disabled": true,
+                  "title": "Connect a paging data source before navigating additional records.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "docked-panes"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     }
   ],
   "navigation": {
-    "model": "cockpit-dense",
+    "model": "rail",
     "primaryItems": [
       {
-        "label": "Overview",
-        "targetScreenId": "node-app-overview"
+        "label": "Market Overview",
+        "targetScreenId": "screen-overview"
       },
       {
-        "label": "Analytics",
-        "targetScreenId": "node-analytics-dashboard"
+        "label": "Order Book",
+        "targetScreenId": "screen-collection-index"
       },
       {
-        "label": "Watchlists",
-        "targetScreenId": "node-watchlists"
+        "label": "Positions & Risk",
+        "targetScreenId": "screen-positions-and-risk"
       },
       {
-        "label": "Reports",
-        "targetScreenId": "node-reports-library"
+        "label": "Trade History",
+        "targetScreenId": "screen-trade-history"
       }
-    ]
+    ],
+    "secondaryItems": []
   },
   "assets": [],
   "locks": [],
   "historyMeta": {
-    "totalOperations": 12,
-    "headRevision": 1
+    "totalOperations": 0,
+    "headRevision": 0
   },
   "exportSettings": {
     "framework": "react",

@@ -1,0 +1,46 @@
+{
+  "capturedAt": "2026-10-31T01:32:34Z",
+  "finding": "AUD-394",
+  "priorHead": "bb064ce4c327e4777b84ef1ff4d8c333774358db",
+  "ciRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/41153302233",
+  "before": {
+    "command": "pnpm audit:dependencies",
+    "result": "failed",
+    "advisories": [
+      {
+        "id": "GHSA-g3hv-75wg-m249",
+        "package": "minimatch",
+        "affected": "<11.0.1",
+        "patched": ">=11.0.1",
+        "lockedVersions": ["3.1.5", "10.2.6"]
+      },
+      {
+        "id": "GHSA-3g3m-2fjr-6pw4",
+        "package": "glob",
+        "affected": ">=9.0.0 <=14.0.1",
+        "patched": ">=14.0.2",
+        "lockedVersion": "11.1.0"
+      }
+    ]
+  },
+  "fix": {
+    "directDependency": "glob ^14.0.2 in CLI, ingest, and linter",
+    "workspaceOverride": "minimatch@<11.0.1 -> 11.0.1",
+    "resolvedVersions": {
+      "glob": "14.0.3",
+      "minimatch": ["11.0.1", "11.0.3"]
+    },
+    "nodeEngineSupport": "Patched glob/minimatch releases declare Node 18, 20, or >=22, matching the repository support range."
+  },
+  "after": {
+    "frozenInstall": "pass",
+    "focusedCliIngestLinterTests": "93 passed across 6 test files",
+    "fullUnitIntegrationTests": "1238 passed, 1 configured skip, 0 failures",
+    "typecheck": "pass across all 22 workspaces",
+    "lint": "pass",
+    "auditAll": "pass: 16/16 behavioural checks, 324/324 isolation, 733 pages built, bundle budgets, licence/provenance, secrets/security, and dependency advisories",
+    "dependencyAudit": "pass: no known vulnerabilities",
+    "exactHeadCi": "pending"
+  },
+  "scopeNote": "The vulnerable packages are in repository CLI/build/lint dependency graphs and are not shipped in the static Sites client bundle. No runtime binding or paid service was added."
+}

@@ -1,0 +1,29 @@
+{
+  "findingId": "SEC-37-080",
+  "severity": "medium",
+  "title": "Reflective document.write and HTML-property mutations bypassed markup sink checks",
+  "status": "fixed_locally",
+  "reproduction": {
+    "examples": [
+      "Reflect.apply(document.write, document, ['<b>unsafe</b>']);",
+      "Reflect.set(document.body, 'innerHTML', userText);",
+      "Object.defineProperty(document.body, 'outerHTML', { value: userText });"
+    ],
+    "beforeFix": "The reflective document.write, innerHTML, and outerHTML sinks returned pass.",
+    "afterFix": "Reflective markup writers and HTML property assignments fail the source-isolation gate."
+  },
+  "rootCause": "Markup protection checked direct document.write/writeln calls and source-text innerHTML patterns, but did not resolve Reflect.apply, Reflect.set, or descriptor-based mutations.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve aliases to document markup writers and statically named reflective DOM sinks in the TypeScript AST, without executing resource source.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"reflective DOM markup injection sinks\"",
+    "redBeforeFixResult": "failed as expected: reflective writes returned pass",
+    "targetedAfterFix": "50 registry-gate tests passed",
+    "fullUnitSuite": "1,175 tests passed across 76 files",
+    "untrustedCodeExecuted": false,
+    "runtimeBoundary": "Sandboxed preview and deployed CSP checks remain independent controls."
+  }
+}

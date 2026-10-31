@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-10-27T16:43:17Z",
+  "siteVersion": 49,
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=sites-live-aud365",
+  "traces": [
+    {
+      "viewport": "1440x900",
+      "context": "Fresh browser context; cache bypassed",
+      "cpuThrottle": 1,
+      "networkThrottle": "none",
+      "lcpMs": 835,
+      "ttfbMs": 84,
+      "renderDelayMs": 751,
+      "cls": 0
+    },
+    {
+      "viewport": "1440x900",
+      "context": "Second fresh browser context; cache bypassed",
+      "cpuThrottle": 1,
+      "networkThrottle": "none",
+      "lcpMs": 757,
+      "ttfbMs": 52,
+      "renderDelayMs": 705,
+      "cls": 0
+    },
+    {
+      "viewport": "1440x900",
+      "context": "Repeated cache-bypassed reload",
+      "cpuThrottle": 1,
+      "networkThrottle": "none",
+      "lcpMs": 715,
+      "ttfbMs": 51,
+      "renderDelayMs": 664,
+      "cls": 0
+    }
+  ],
+  "network": {
+    "requests": 71,
+    "statuses": {
+      "200": 70,
+      "304": 1
+    },
+    "failedOr4xxOr5xx": 0
+  },
+  "console": {
+    "messages": 0,
+    "errors": 0
+  },
+  "notes": [
+    "CrUX field data is unavailable for this page.",
+    "All traces retained zero CLS; render-blocking opportunities reported 0ms estimated FCP/LCP savings."
+  ]
+}

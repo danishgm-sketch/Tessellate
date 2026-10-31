@@ -1,0 +1,39 @@
+{
+  "candidate": "ChatGPT Sites v32 deployed Workbench catalogue outage check",
+  "siteVersion": 32,
+  "canonicalSourceCommit": "4eca97890e2d8182bcd72edfe5659997d4317c21",
+  "sitesSourceCommit": "5533d1082b649ec4429bb356cdc91ab3e2f2daf5",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=public-v32-catalogue-retry-audit",
+  "viewport": "1440x900",
+  "pageStatus": 200,
+  "savedProjectRestoredBeforeCatalogue": true,
+  "startupCatalogRequests": 0,
+  "firstCatalogueFailure": {
+    "status": 503,
+    "retryableMessage": "The catalogue could not be loaded. Resource discovery and replacement are unavailable until it is ready.\n\nRetry catalogue"
+  },
+  "catalogueRequests": 2,
+  "catalogueResponseStatuses": [
+    503,
+    200
+  ],
+  "projectStillVisibleAfterFailureAndRetry": true,
+  "consoleErrors": [
+    "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-mX3kFDlZCmPROx7OOp2eqFdmkyAnyzexyoV7hWm1Ufs='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    "Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+  ],
+  "pageErrors": [],
+  "failedRequests": [],
+  "badResponses": [
+    {
+      "status": 503,
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/data/catalog.json"
+    }
+  ],
+  "screenshots": [
+    "workbench-before-catalogue-1440x900.png",
+    "library-retry-state-1440x900.png",
+    "library-recovered-1440x900.png"
+  ],
+  "capturedAt": "2026-10-26T12:19:57.027Z"
+}

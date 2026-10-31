@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0.0",
+  "benchmark": "quality/PRODUCT_INTERPRETATION_BENCHMARK.json",
+  "evaluatedOn": "2026-10-18",
+  "inputMode": "description-only; no archetype, audience, or objective overrides",
+  "coverage": {
+    "briefs": 100,
+    "archetypes": 18,
+    "includesExactEmployeeExperienceBrief": true
+  },
+  "baseline": {
+    "passedCases": 45,
+    "failedCases": 55,
+    "failedChecks": {
+      "primaryArchetype": 27,
+      "unsupportedSecondaryArchetype": 45,
+      "audience": 28,
+      "objective": 28,
+      "entities": 26,
+      "workflows": 28,
+      "screens": 28,
+      "trustRequirement": 19,
+      "dataDensity": 14,
+      "transactionCriticality": 15
+    }
+  },
+  "final": {
+    "passedCases": 100,
+    "failedCases": 0,
+    "failedChecks": 0,
+    "testCases": 101,
+    "command": "pnpm exec vitest run packages/composer/src/__tests__/product-interpretation-benchmark.test.ts"
+  },
+  "repositoryValidation": {
+    "typecheck": "passed across 22 workspace packages",
+    "lint": "passed with 0 errors and the existing 51-warning baseline",
+    "vitest": "passed: 731 tests across 58 files",
+    "auditAll": "passed: 16/16 behavioral release-gate checks, budgets, licenses, provenance, secrets, and isolation",
+    "productionBuild": "passed: 717 Astro pages and all workspace builds",
+    "playwright": "passed: 135 tests; 56 explicitly skipped; 0 failed"
+  },
+  "coveredAssertions": [
+    "expected primary archetype",
+    "only adjudicated secondary archetypes",
+    "archetype weight range and descending order",
+    "audience and objective signals",
+    "domain entities, workflows, and screens",
+    "trust, information-density, and transaction-criticality ranges",
+    "absence of domain contamination phrases"
+  ],
+  "deploymentVerification": "pending public-RC browser audit; current deployed Site remains v20"
+}

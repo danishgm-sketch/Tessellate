@@ -1,0 +1,51 @@
+{
+  "capturedAt": "2026-10-26T19:26:22.545Z",
+  "runtime": "ChatGPT Sites Worker local preview",
+  "browser": "sites-chromium",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "project": {
+    "id": "step43-scale-30-screens",
+    "screens": 30,
+    "nodes": 1830
+  },
+  "checks": {
+    "loaded": true,
+    "visibleScreenCount": 30,
+    "visitedScreens": [
+      1,
+      15,
+      30
+    ],
+    "reloaded": true,
+    "manifestIdentityPreserved": true,
+    "exportNodeCountPreserved": true
+  },
+  "timingsMs": {
+    "workbenchReady": 883,
+    "screenSwitches": [
+      42,
+      61,
+      46
+    ],
+    "manifestExport": 205
+  },
+  "memory": {
+    "usedHeapBeforeReload": 20500000,
+    "usedHeapAfterReload": 20500000
+  },
+  "layout": {
+    "viewportWidth": 1440,
+    "documentWidth": 1440,
+    "heapBytes": 20500000
+  },
+  "runtimeErrors": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "quality\\evidence\\step-43\\workbench-scale-30-screens-sites-chromium.png"
+}

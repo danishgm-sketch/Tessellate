@@ -1,0 +1,27 @@
+{
+  "recordedAt": "2026-10-22T12:54:19Z",
+  "command": "pnpm exec playwright test tests/e2e/sites-preview-csp.spec.ts --config=tests/e2e/sites-preview.playwright.config.ts",
+  "result": "PASS",
+  "passed": 22,
+  "failed": 0,
+  "projects": [
+    "sites-chromium",
+    "sites-mobile-chromium"
+  ],
+  "casesPerProject": 11,
+  "coverage": [
+    "Opaque preview and Site storage isolation",
+    "Scripted external popup and anchor activation blocked",
+    "Single parent initialization response",
+    "External form submission blocked",
+    "Compiled-asset-only preview connections and inline style compatibility",
+    "Preview external egress blocked",
+    "Preview CSP script/style sources restricted to compiled assets and build-certified hashes",
+    "Public shell blocks newly injected inline scripts and admits only build-certified inline code"
+  ],
+  "runtimeErrors": "Not independently aggregated by this spec; only covered assertions are claimed.",
+  "deploymentStatus": "pending_release_candidate_verification",
+  "limitations": [
+    "Local Sites Worker only; does not verify deployed Cloudflare headers, transformations, gateway configuration, or production routing."
+  ]
+}
