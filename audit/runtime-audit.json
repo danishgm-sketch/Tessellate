@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v59 complete deployed audit, 2026-10-31. All 44 requested/representative routes pass at desktop and mobile (88/88). AUD-395–399 closed after live v59 issue-specific checks. Corrected full Axe scans uncovered AUD-401, fixed and locally verified in 5dfb5b7207dd04b007e551add27aad7e5f918d91; pending exact-head CI and v60 deployed re-audit. Full programme remains incomplete.",
+  "scope": "Public Sites v61 complete deployed re-audit, 2026-10-31. All 44 requested/representative routes passed at desktop and mobile (88/88); the flagship journey, standalone export, Axe checks, and network audit passed. AUD-400–402 are closed. AUD-403 and AUD-404 are fixed locally and await issue-specific v62 deployed verification. The broader product-hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -15471,10 +15471,25 @@
       "affectedCode": "tests/e2e/accessibility-hardening-step-35.spec.ts; tests/e2e/flagship-generated-product-a11y.spec.ts",
       "remediation": "Run withTags(WCAG_TAGS).analyze() and withRules(['target-size']).analyze() independently, and keep scanner-generated CSP probe messages separate from product runtime.",
       "fixCommit": "5dfb5b7207dd04b007e551add27aad7e5f918d91",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "evidence": "quality/evidence/step-48/deployed-v59-2026-10-31/axe/deployed-v59-summary.json",
-        "result": "The corrected live v59 scan passed every core route and Workbench mode except the independently recorded AUD-401. Frozen install, catalogue build, typecheck, lint, all 1,244 unit/integration tests, audit:all, and full pnpm test:e2e passed on the fix commit. GitHub exact-head CI is pending."
+        "result": "The corrected scans execute the WCAG tags and target-size rule independently. Exact-head GitHub CI completed successfully on 39af532f301e438b307cbf412f7fce4fb3873031, and the v61 deployed suite passed 15 accessibility checks with one expected mobile drag-and-drop skip."
+      },
+      "deployedVerification": {
+        "siteVersion": 61,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_912a630f401c8191967cfd306ad63764",
+        "deploymentId": "appgdep_6ae5d2d31ab08191bacc2435e58c8988",
+        "canonicalSourceCommit": "39af532f301e438b307cbf412f7fce4fb3873031",
+        "siteSourceCommit": "34e99faac6d13a9f30d393e600b73efac4783109",
+        "checkedAt": "2026-10-31T11:43:33Z",
+        "route": "Automated accessibility suite",
+        "viewportChecks": [
+          "1440x900",
+          "390x844"
+        ],
+        "result": "PASS",
+        "evidence": "quality/evidence/step-48/deployed-v61-2026-10-31/accessibility-playwright.json"
       }
     },
     {
@@ -15499,13 +15514,136 @@
       "affectedCode": "packages/workbench/src/components/left-panel/LeftPanel.tsx",
       "remediation": "Expose the active panel as a named focusable region with tabIndex=0 and a visible focus-visible outline; verify the key sequence and full Axe scans in a generated employee project.",
       "fixCommit": "5dfb5b7207dd04b007e551add27aad7e5f918d91",
-      "status": "fixed-local-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "evidence": "quality/evidence/step-48/deployed-v59-2026-10-31/axe/local-after",
-        "result": "Visible generated-product Playwright regression passes at 1440x900 and 390x844: focus enters the named active Layers region with visible outline, full WCAG and target-size scans report zero violations, and console/page/network/HTTP error arrays are empty. Full pnpm test:e2e also passed: 724 passed, 167 configured skips, 0 failures. GitHub exact-head CI and v60 deployed re-audit remain pending."
+        "result": "Visible generated-product Playwright regression passes at 1440x900 and 390x844: focus enters the named active Layers region with visible outline, full WCAG and target-size scans report zero violations, and console/page/network/HTTP error arrays are empty."
+      },
+      "deployedVerification": {
+        "siteVersion": 61,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_912a630f401c8191967cfd306ad63764",
+        "deploymentId": "appgdep_6ae5d2d31ab08191bacc2435e58c8988",
+        "canonicalSourceCommit": "39af532f301e438b307cbf412f7fce4fb3873031",
+        "siteSourceCommit": "34e99faac6d13a9f30d393e600b73efac4783109",
+        "checkedAt": "2026-10-31T11:43:33Z",
+        "route": "/workbench",
+        "viewportChecks": [
+          "1440x900",
+          "390x844"
+        ],
+        "result": "PASS",
+        "evidence": "quality/evidence/step-48/deployed-v61-2026-10-31/closed-findings-playwright.json",
+        "issueSpecificEvidence": "quality/evidence/step-48/deployed-v61-2026-10-31/accessibility-playwright.json"
+      }
+    },
+    {
+      "id": "AUD-402",
+      "severity": "high",
+      "route": "/",
+      "viewport": "1440x900 and 390x844",
+      "category": "accessibility",
+      "title": "Homepage resource filters briefly lose text contrast during island hydration",
+      "expected": "Category filter labels remain readable at WCAG AA contrast through initial client hydration on desktop and mobile.",
+      "actual": "On v60 cold loads, the filter labels passed through 1.25:1 contrast at about 34ms and 3.5:1 at about 50ms before settling. The desktop full Axe scan also reported serious color-contrast. The low-contrast transition was brief and absent in settled screenshots.",
+      "reproduction": [
+        "Open a fresh browser context at the public v60 homepage at 1440x900 or 390x844.",
+        "Sample the All category filter foreground/background contrast across animation frames immediately after navigation; the v60 regression evidence records transient failing values.",
+        "Run the full WCAG Axe scan after hydration; desktop v60 reports color-contrast."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-48/deployed-v60-2026-10-31/filter-hydration-regression-before-results/home-filter-hydration-cont-c0ce6-t-through-initial-hydration-v60-desktop/homepage-filter-hydration-v60-desktop.png",
+      "rootCause": "The category buttons used transition-colors while the React island hydrated, animating foreground and background through an unreadable intermediate combination. The initially disabled filters also used opacity-60, reducing text contrast.",
+      "affectedCode": "apps/site/src/components/home/CatalogueMosaic.tsx; tests/e2e/home-filter-hydration-contrast-step-48.spec.ts",
+      "remediation": "Remove the color transition from category filters and give the disabled state an explicit readable foreground instead of lowering opacity. Add a cold-load browser regression that samples hydration frames and scans the settled homepage with Axe.",
+      "fixCommit": "39af532f301e438b307cbf412f7fce4fb3873031",
+      "status": "closed-deployed-verified",
+      "localVerification": {
+        "evidence": "quality/evidence/step-48/deployed-v61-2026-10-31/filter-hydration-regression-after.json",
+        "result": "The cold-load contrast regression passed in the production-like local Sites Worker at desktop and mobile sizes."
+      },
+      "deployedVerification": {
+        "siteVersion": 61,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_912a630f401c8191967cfd306ad63764",
+        "deploymentId": "appgdep_6ae5d2d31ab08191bacc2435e58c8988",
+        "canonicalSourceCommit": "39af532f301e438b307cbf412f7fce4fb3873031",
+        "siteSourceCommit": "34e99faac6d13a9f30d393e600b73efac4783109",
+        "checkedAt": "2026-10-31T11:43:33Z",
+        "route": "/",
+        "viewportChecks": [
+          "1440x900",
+          "390x844"
+        ],
+        "result": "PASS",
+        "evidence": "quality/evidence/step-48/deployed-v61-2026-10-31/filter-hydration-regression-after.json",
+        "issueSpecificEvidence": "quality/evidence/step-48/deployed-v61-2026-10-31/accessibility-playwright.json"
+      }
+    },
+    {
+      "id": "AUD-403",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "data",
+      "title": "Surprise Me applied a finance-specific typography style to an employee SaaS project",
+      "expected": "A project whose primary archetype is saas keeps typography options appropriate to SaaS and employee experience after Surprise Me.",
+      "actual": "On the public v61 Site, the visible Surprise Me action changed a seeded employee SaaS manifest from geist-system to financial-sans-tabular-mono while the archetype remained saas. The test recorded no console errors, page errors, or failed requests.",
+      "reproduction": [
+        "Open the public v61 Workbench and import the seeded employee manifest from the aud403 evidence folder through Export > Open Tessellate Manifest.",
+        "Use seed 22c8a6fd-24fb-4be2-80cc-457350c086b6-dir-c, primary archetype saas, and geist-system typography.",
+        "Click Surprise Me and export the Tessellate manifest.",
+        "Before the fix, the exported manifest selected financial-sans-tabular-mono for the SaaS project."
+      ],
+      "console": [],
+      "network": [
+        "No failed requests were recorded in the deployed interaction."
+      ],
+      "screenshot": "quality/evidence/step-48/deployed-v61-2026-10-31/aud403/deployed-v61-surprise-workbench.png",
+      "evidence": "quality/evidence/step-48/deployed-v61-2026-10-31/aud403/deployed-v61-surprise-evidence.json",
+      "rootCause": "The deterministic Surprise Me typography candidate list offered financial-sans-tabular-mono to every product archetype. It had no eligibility guard for fintech projects.",
+      "affectedCode": "packages/workbench/src/mutations/surprise.ts; packages/workbench/src/__tests__/surprise-me.test.ts; tests/e2e/aud403-surprise-domain.spec.ts",
+      "remediation": "Offer financial-sans-tabular-mono only when the primary product archetype is fintech. Preserve other typography candidates for SaaS and employee experience projects. Lock the captured seed in unit and visible-UI browser regressions.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "localVerification": {
+        "evidence": "tests/e2e/aud403-surprise-domain.spec.ts and packages/workbench/src/__tests__/surprise-me.test.ts",
+        "result": "The captured deterministic unit regression failed before the fix and passes after it. The visible manifest-import and Surprise Me browser regression passes in the local Sites Worker at 1440x900 and 390x844. A separate fintech regression confirms the finance candidate remains available to fintech."
+      }
+    },
+    {
+      "id": "AUD-404",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "ZIP export failures use a blocking native browser dialog instead of an in-app error",
+      "expected": "Export errors are announced in the Workbench and leave the editor available for recovery without a blocking browser modal.",
+      "actual": "On the public v61 Site, an injected ZIP download failure left the toolbar in Preparing state and then opened a native alert with the error. No in-app role=alert was rendered. Repeated Sites Worker runs intermittently timed out while dismissing the native dialog; network requests succeeded and no uncaught exception occurred.",
+      "reproduction": [
+        "Open the public v61 Workbench at 1440x900 with a local employee showcase project.",
+        "Inject a failure from URL.createObjectURL only for application/zip Blobs.",
+        "Choose Export > Download Standalone React Project.",
+        "Observe the Preparing status followed by the blocking browser alert: Export failed: Injected ZIP download creation failure."
+      ],
+      "console": [
+        "Failed to generate standalone ZIP project: Error: Injected ZIP download creation failure"
+      ],
+      "network": [
+        "No failed requests or HTTP errors; Workbench scripts, exporter chunk and health responses returned successfully."
+      ],
+      "screenshot": "quality/evidence/step-48/deployed-v61-2026-10-31/aud404/zip-export-preparing-state-v61.png",
+      "evidence": "quality/evidence/step-48/deployed-v61-2026-10-31/aud404/native-dialog-observation-v61.json",
+      "rootCause": "The ZIP export catch handler called window.alert even though TopToolbar already has the accessible in-app actionError alert state used by other Workbench actions.",
+      "affectedCode": "packages/workbench/src/components/TopToolbar.tsx; tests/e2e/fault-injection-step-42.spec.ts",
+      "remediation": "Route export failures through the existing role=alert state, clear stale errors after a successful export, and assert visible error feedback with no native dialogs under Sites browser tests.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "localVerification": {
+        "evidence": "tests/e2e/fault-injection-step-42.spec.ts",
+        "result": "The production build passed. The browser-level injected ZIP-creation and unresolved-resource failures now produce in-app role=alert messages with no native dialogs; all six targeted Sites Worker checks passed across desktop and mobile."
       }
     }
   ],
-  "generatedAt": "2026-10-31T10:05:05.262Z",
-  "latestDeploymentEvidence": "quality/evidence/step-48/deployed-v59-2026-10-31/route-audit.json"
+  "generatedAt": "2026-10-31T12:42:24.000Z",
+  "latestDeploymentEvidence": "quality/evidence/step-48/deployed-v61-2026-10-31/route-audit.json"
 }

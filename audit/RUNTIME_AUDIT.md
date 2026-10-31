@@ -1,6 +1,6 @@
 # Runtime audit — product hardening and deployed-site verification
 
-This register preserves the historical resource/renderer audit and tracks deployed verification by release. The latest complete full route and accessibility sweep remains public Sites v55. Public v58 received an initial route and flagship workflow audit on 2026-10-31 at 1440×900, with Compose, Workbench and standalone export also exercised at 390×844. Five new findings AUD-395–399 are open pending root-cause remediation and deployed verification. The broader product-hardening programme remains incomplete. The v58 evidence bundle is `quality/evidence/step-48/deployed-v58-2026-10-31/`; its route matrix is `route-audit.json`. Historical checkpoints and issue records remain below.
+This register preserves the historical resource/renderer audit and tracks deployed verification by release. The latest complete full route and accessibility sweep is public Sites v61. Its 44 requested/representative routes passed at 1440×900 and 390×844; the flagship employee workflow, standalone React export, Axe checks, and browser network audit also passed. Two additional defects (AUD-403 and AUD-404) were found during deployed and fault-injection checks; both are fixed locally and await issue-specific v62 verification. The broader product-hardening programme remains incomplete. The v61 evidence bundle is `quality/evidence/step-48/deployed-v61-2026-10-31/`; its route matrix is `route-audit.json`. Historical checkpoints and issue records remain below.
 
 V40 served application code captured from canonical commit
 `36b873ba9d40380196a78fcabe8977d7aa881e58` (Sites source mirror
@@ -34,7 +34,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 393 findings (0 Critical, 75 High, 295 Medium, 23 Low): 124 closed after issue-specific deployed verification, 7 closed after surface-specific non-Site verification, 186 fixed and awaiting issue-specific deployed checks, 73 fixed and verified locally, 2 legacy fixed records, and 1 documented Sites-host limitation. AUD-390 is a locally fixed High employee-experience data defect; AUD-391 is a locally fixed Medium Workbench display defect; AUD-392 is a locally fixed High standalone-export dependency defect; AUD-393 is a locally fixed Medium homepage data-truth defect. The 186-item deployed-verification backlog includes 1 High, 178 Medium and 7 Low findings. Verification debt is not a claim that every item remains broken.
+**Current disposition:** 404 findings (0 Critical, 79 High, 301 Medium, 24 Low): 132 closed after issue-specific deployed verification, 7 closed after surface-specific non-Site verification, 188 fixed and awaiting issue-specific deployed checks, 74 fixed and verified locally, 2 legacy fixed records, and 1 documented Sites-host limitation. AUD-403 is a fixed High employee-experience typography eligibility defect; AUD-404 is a fixed Medium Workbench export-error reporting defect. The 188-item deployed-verification backlog includes 2 High, 179 Medium and 7 Low findings. Verification debt is not a claim that every item remains broken.
 
 ## Public Sites v51 issue-specific High verification — 2026-10-28
 
@@ -4470,3 +4470,29 @@ Chrome DevTools lab navigation trace at desktop 1440×900 on Fast 4G measured LC
 ### v59 disposition
 
 Seven distinct findings are recorded from this continuation: AUD-395–399 were fixed and closed on v59; AUD-400 is corrected locally and awaits exact-head CI; AUD-401 is fixed locally and awaits public v60 re-audit. No Critical issue is open. Current local Site configuration still has no D1/R2 and no new paid infrastructure. Step 48 and PR #5 remain open pending protected merge and deployed acceptance.
+
+## Public Sites v61 complete deployed re-audit and follow-up — 2026-10-31
+
+Deployment: [public review Site](https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/), v61, canonical source `39af532f301e438b307cbf412f7fce4fb3873031`, Sites source mirror `34e99faac6d13a9f30d393e600b73efac4783109`, deployment `appgdep_6ae5d2d31ab08191bacc2435e58c8988`. D1 and R2 bindings remain unprovisioned. The Site remains static and browser-local, with no new paid infrastructure.
+
+### Route and flagship results
+
+The deployed route matrix visited all 44 requested and representative routes at 1440×900 and 390×844 (88/88 PASS). Every route returned its expected content with no failed essential request, uncaught exception, console error, or horizontal document overflow. Machine records and screenshots are under [`deployed-v61-2026-10-31`](../quality/evidence/step-48/deployed-v61-2026-10-31/).
+
+The exact employee-experience brief was entered through `/compose`, the ready catalogue contained 324 resources, and three distinct directions were inspected. Direction C opened the selected project in Workbench. The visible workflow exercised modes, inheritance, locks, divergence-95 recomposition, replacement, Surprise Me, Undo/Redo, responsive viewports, manifest export, and independent React ZIP export at desktop and mobile. The exported project installed, built, and ran outside the repository without a Tessellate runtime dependency. The initial random-seed workflow completed cleanly; a deterministic follow-up later exposed AUD-403, which a non-seeded run had not hit.
+
+### Accessibility, network, and performance
+
+The deployed Axe suite passed 15 accessibility checks with one expected mobile drag-and-drop skip. The deployed homepage Lighthouse accessibility, best-practices, and agentic-browsing scores were 100 on desktop and mobile. SEO scored 63 because this review Site intentionally disallows indexing; that is the staging policy and was left unchanged. Chrome DevTools measured lab LCP 579 ms, TTFB 51 ms, and CLS 0 under Fast 4G at 1440×900. Field INP was unavailable; these are lab measurements. No measured render-blocking resource or layout update had estimated savings. Trace and Lighthouse output are under [`performance`](../quality/evidence/step-48/deployed-v61-2026-10-31/).
+
+### HIGH
+
+- **AUD-403 — Surprise Me applies finance-specific typography to employee SaaS.** Evidence: [`seeded manifest result`](../quality/evidence/step-48/deployed-v61-2026-10-31/aud403/deployed-v61-surprise-evidence.json), [`Workbench screenshot`](../quality/evidence/step-48/deployed-v61-2026-10-31/aud403/deployed-v61-surprise-workbench.png), and [`imported regression manifest`](../quality/evidence/step-48/deployed-v61-2026-10-31/aud403/seeded-employee-experience.tess.json). Reproduction: import the saved employee SaaS manifest through Workbench, click Surprise Me, and export its manifest. With seed `22c8a6fd-24fb-4be2-80cc-457350c086b6-dir-c`, v61 kept archetype `saas` but changed `geist-system` to `financial-sans-tabular-mono`; the run recorded no console, page, or network errors. Root cause: the deterministic candidate list made the finance-specific typography eligible for every archetype. Fix: `packages/workbench/src/mutations/surprise.ts` now offers it only to fintech projects. The exact-seed unit regression and visible manifest-import browser regression pass locally at desktop and mobile. Status: fixed locally; awaiting issue-specific v62 deployed verification.
+
+### MEDIUM
+
+- **AUD-404 — ZIP export failure uses a blocking browser dialog.** Evidence: [`v61 visible state`](../quality/evidence/step-48/deployed-v61-2026-10-31/aud404/zip-export-preparing-state-v61.png), [`state capture`](../quality/evidence/step-48/deployed-v61-2026-10-31/aud404/zip-export-preparing-state-v61.json), and [`DevTools dialog observation`](../quality/evidence/step-48/deployed-v61-2026-10-31/aud404/native-dialog-observation-v61.json). Reproduction: inject a failure for ZIP `URL.createObjectURL`, then choose Export → Download Standalone React Project. On v61, the toolbar showed “Preparing standalone React project…” and the browser then opened a native alert; the editor did not render an in-app error. Root cause: the ZIP error handler used `window.alert` instead of the existing accessible `actionError` state. Fix: `packages/workbench/src/components/TopToolbar.tsx` now reports the failure inline and clears stale errors after a successful export. Both ZIP failure cases pass three repeated local Sites Worker runs at desktop and mobile without native dialogs. Status: fixed locally; awaiting issue-specific v62 deployed verification.
+
+### v61 disposition
+
+At this checkpoint the audit contains 404 distinct findings: 0 Critical, 79 High, 301 Medium, and 24 Low. AUD-403 and AUD-404 are fixed locally but remain open until v62 passes their deployed regressions. The full local E2E rerun and exact-head CI are still pending. The broader 65-step product-hardening programme is not complete; this route/flagship sweep does not certify every subsystem or close unrelated historic findings. The active remediation branch and PR are `codex/step-48-review-fixes`, [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8); the PR is not merged.
