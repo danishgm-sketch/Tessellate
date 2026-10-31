@@ -260,6 +260,37 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     expect(component).not.toContain('Ctrl + Shift + R');
   });
 
+  it('exports the canonical AI Copilot Sidebar source and host-action contract', () => {
+    const copilotProject = structuredClone(testProject);
+    copilotProject.screens[0]!.rootNode.children = [
+      {
+        id: 'node-ai-copilot-sidebar',
+        nodeType: 'component',
+        semanticRole: 'assistant-copilot',
+        resourceRef: {
+          id: 'res-ai-copilot-sidebar',
+          slug: 'ai-copilot-sidebar',
+          version: '1.0.0',
+        },
+        variant: 'quiet',
+        props: {},
+        slots: {},
+        children: [],
+      },
+    ];
+
+    const component = generateSourceTree(copilotProject)['src/components/AICopilotSidebar.tsx'];
+    const canonicalSource = fs.readFileSync(
+      path.resolve(process.cwd(), 'resources/ai/ai-copilot-sidebar/index.tsx'),
+      'utf8',
+    );
+
+    expect(component).toBe(canonicalSource);
+    expect(component).toContain('onApplyRecommendedFixes?: (recommendationIds: readonly string[]) => void;');
+    expect(component).toContain('disabled={!onApplyRecommendedFixes}');
+    expect(component).toContain('Example content only. This preview does not inspect files or change source code.');
+  });
+
   it('fails with a descriptive error when a referenced resource is genuinely unresolved', () => {
     const invalidProject: ProjectManifest = {
       ...testProject,
