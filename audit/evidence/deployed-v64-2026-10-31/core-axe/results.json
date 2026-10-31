@@ -1,0 +1,389 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-10-31T21:49:21.146Z",
+  "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersion": 64,
+  "canonicalCommit": "248a2a09c84a0734998850f8f3b85a14ddf3b78c",
+  "sitesSourceCommit": "8aca504b5d4231509bfd4d90d13aec949e979f58",
+  "axeTags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "instrumentationNote": "AxeBuilder injected inline styles that the deployed CSP correctly blocked, producing CSP console messages and axe preload warnings during scanning. A separate same-route no-Axe browser run and the flagship interaction run reported zero site console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. The Site CSP was not weakened.",
+  "noAxeBrowserRuntimeByViewport": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": []
+    }
+  ],
+  "results": [
+    {
+      "surface": "home",
+      "route": "/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "httpStatus": 200,
+      "axe": {
+        "violations": [],
+        "passes": 26,
+        "incomplete": 1
+      },
+      "productRuntime": {
+        "verifiedSeparatelyWithoutAxe": true,
+        "viewportRunHasZeroConsoleErrors": true,
+        "zeroConsoleWarnings": true,
+        "zeroUncaughtExceptions": true,
+        "zeroFailedRequests": true,
+        "zeroHttpErrors": true
+      },
+      "axeInstrumentation": {
+        "consoleErrorCount": 0,
+        "consoleWarningCount": 0,
+        "exampleConsoleError": null,
+        "exampleConsoleWarning": null
+      },
+      "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\core-axe\\home-desktop-1440.png"
+    },
+    {
+      "surface": "explore",
+      "route": "/explore",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "httpStatus": 200,
+      "axe": {
+        "violations": [],
+        "passes": 28,
+        "incomplete": 1
+      },
+      "productRuntime": {
+        "verifiedSeparatelyWithoutAxe": true,
+        "viewportRunHasZeroConsoleErrors": true,
+        "zeroConsoleWarnings": true,
+        "zeroUncaughtExceptions": true,
+        "zeroFailedRequests": true,
+        "zeroHttpErrors": true
+      },
+      "axeInstrumentation": {
+        "consoleErrorCount": 6,
+        "consoleWarningCount": 6,
+        "exampleConsoleError": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-pvNQDrRvin5SBKn/DOv3KFOpsQ7Ej8F8vpKl481dTaM='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "exampleConsoleWarning": "Couldn't load preload assets:  TypeError: Cannot read properties of null (reading 'href')\n    at parseStylesheet (eval at evaluate (:311:30), <anonymous>:19955:57)\n    at eval (eval at evaluate (:311:30), <anonymous>:19995:16)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)"
+      },
+      "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\core-axe\\explore-desktop-1440.png"
+    },
+    {
+      "surface": "compose",
+      "route": "/compose",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "httpStatus": 200,
+      "axe": {
+        "violations": [],
+        "passes": 25,
+        "incomplete": 0
+      },
+      "productRuntime": {
+        "verifiedSeparatelyWithoutAxe": true,
+        "viewportRunHasZeroConsoleErrors": true,
+        "zeroConsoleWarnings": true,
+        "zeroUncaughtExceptions": true,
+        "zeroFailedRequests": true,
+        "zeroHttpErrors": true
+      },
+      "axeInstrumentation": {
+        "consoleErrorCount": 6,
+        "consoleWarningCount": 6,
+        "exampleConsoleError": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-pvNQDrRvin5SBKn/DOv3KFOpsQ7Ej8F8vpKl481dTaM='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "exampleConsoleWarning": "Couldn't load preload assets:  TypeError: Cannot read properties of null (reading 'href')\n    at parseStylesheet (eval at evaluate (:311:30), <anonymous>:19955:57)\n    at eval (eval at evaluate (:311:30), <anonymous>:19995:16)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)"
+      },
+      "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\core-axe\\compose-desktop-1440.png"
+    },
+    {
+      "surface": "workbench",
+      "route": "/workbench",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "httpStatus": 200,
+      "axe": {
+        "violations": [],
+        "passes": 28,
+        "incomplete": 2
+      },
+      "productRuntime": {
+        "verifiedSeparatelyWithoutAxe": true,
+        "viewportRunHasZeroConsoleErrors": true,
+        "zeroConsoleWarnings": true,
+        "zeroUncaughtExceptions": true,
+        "zeroFailedRequests": true,
+        "zeroHttpErrors": true
+      },
+      "axeInstrumentation": {
+        "consoleErrorCount": 6,
+        "consoleWarningCount": 6,
+        "exampleConsoleError": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-pvNQDrRvin5SBKn/DOv3KFOpsQ7Ej8F8vpKl481dTaM='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "exampleConsoleWarning": "Couldn't load preload assets:  TypeError: Cannot read properties of null (reading 'href')\n    at parseStylesheet (eval at evaluate (:311:30), <anonymous>:19955:57)\n    at eval (eval at evaluate (:311:30), <anonymous>:19995:16)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)"
+      },
+      "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\core-axe\\workbench-desktop-1440.png"
+    },
+    {
+      "surface": "resource-ai-empty-state",
+      "route": "/r/ai-empty-state/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "httpStatus": 200,
+      "axe": {
+        "violations": [],
+        "passes": 28,
+        "incomplete": 1
+      },
+      "productRuntime": {
+        "verifiedSeparatelyWithoutAxe": true,
+        "viewportRunHasZeroConsoleErrors": true,
+        "zeroConsoleWarnings": true,
+        "zeroUncaughtExceptions": true,
+        "zeroFailedRequests": true,
+        "zeroHttpErrors": true
+      },
+      "axeInstrumentation": {
+        "consoleErrorCount": 7,
+        "consoleWarningCount": 7,
+        "exampleConsoleError": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-pvNQDrRvin5SBKn/DOv3KFOpsQ7Ej8F8vpKl481dTaM='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "exampleConsoleWarning": "Couldn't load preload assets:  TypeError: Cannot read properties of null (reading 'href')\n    at parseStylesheet (eval at evaluate (:311:30), <anonymous>:19955:57)\n    at eval (eval at evaluate (:311:30), <anonymous>:19995:16)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)"
+      },
+      "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\core-axe\\resource-ai-empty-state-desktop-1440.png"
+    },
+    {
+      "surface": "generated-employee-workbench",
+      "route": "/workbench",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "httpStatus": 200,
+      "axe": {
+        "violations": [],
+        "passes": 28,
+        "incomplete": 2
+      },
+      "productRuntime": {
+        "verifiedSeparatelyWithoutAxe": true,
+        "viewportRunHasZeroConsoleErrors": true,
+        "zeroConsoleWarnings": true,
+        "zeroUncaughtExceptions": true,
+        "zeroFailedRequests": true,
+        "zeroHttpErrors": true
+      },
+      "axeInstrumentation": {
+        "consoleErrorCount": 7,
+        "consoleWarningCount": 7,
+        "exampleConsoleError": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-pvNQDrRvin5SBKn/DOv3KFOpsQ7Ej8F8vpKl481dTaM='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "exampleConsoleWarning": "Couldn't load preload assets:  TypeError: Cannot read properties of null (reading 'href')\n    at parseStylesheet (eval at evaluate (:311:30), <anonymous>:19955:57)\n    at eval (eval at evaluate (:311:30), <anonymous>:19995:16)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)"
+      },
+      "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\core-axe\\generated-employee-workbench-desktop-1440.png"
+    },
+    {
+      "surface": "home",
+      "route": "/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "axe": {
+        "violations": [],
+        "passes": 28,
+        "incomplete": 1
+      },
+      "productRuntime": {
+        "verifiedSeparatelyWithoutAxe": true,
+        "viewportRunHasZeroConsoleErrors": true,
+        "zeroConsoleWarnings": true,
+        "zeroUncaughtExceptions": true,
+        "zeroFailedRequests": true,
+        "zeroHttpErrors": true
+      },
+      "axeInstrumentation": {
+        "consoleErrorCount": 0,
+        "consoleWarningCount": 0,
+        "exampleConsoleError": null,
+        "exampleConsoleWarning": null
+      },
+      "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\core-axe\\home-mobile-390.png"
+    },
+    {
+      "surface": "explore",
+      "route": "/explore",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "axe": {
+        "violations": [],
+        "passes": 25,
+        "incomplete": 1
+      },
+      "productRuntime": {
+        "verifiedSeparatelyWithoutAxe": true,
+        "viewportRunHasZeroConsoleErrors": true,
+        "zeroConsoleWarnings": true,
+        "zeroUncaughtExceptions": true,
+        "zeroFailedRequests": true,
+        "zeroHttpErrors": true
+      },
+      "axeInstrumentation": {
+        "consoleErrorCount": 2,
+        "consoleWarningCount": 2,
+        "exampleConsoleError": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-pvNQDrRvin5SBKn/DOv3KFOpsQ7Ej8F8vpKl481dTaM='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "exampleConsoleWarning": "Couldn't load preload assets:  TypeError: Cannot read properties of null (reading 'href')\n    at parseStylesheet (eval at evaluate (:311:30), <anonymous>:19955:57)\n    at eval (eval at evaluate (:311:30), <anonymous>:19995:16)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)"
+      },
+      "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\core-axe\\explore-mobile-390.png"
+    },
+    {
+      "surface": "compose",
+      "route": "/compose",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "axe": {
+        "violations": [],
+        "passes": 25,
+        "incomplete": 1
+      },
+      "productRuntime": {
+        "verifiedSeparatelyWithoutAxe": true,
+        "viewportRunHasZeroConsoleErrors": true,
+        "zeroConsoleWarnings": true,
+        "zeroUncaughtExceptions": true,
+        "zeroFailedRequests": true,
+        "zeroHttpErrors": true
+      },
+      "axeInstrumentation": {
+        "consoleErrorCount": 2,
+        "consoleWarningCount": 2,
+        "exampleConsoleError": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-pvNQDrRvin5SBKn/DOv3KFOpsQ7Ej8F8vpKl481dTaM='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "exampleConsoleWarning": "Couldn't load preload assets:  TypeError: Cannot read properties of null (reading 'href')\n    at parseStylesheet (eval at evaluate (:311:30), <anonymous>:19955:57)\n    at eval (eval at evaluate (:311:30), <anonymous>:19995:16)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)"
+      },
+      "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\core-axe\\compose-mobile-390.png"
+    },
+    {
+      "surface": "workbench",
+      "route": "/workbench",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "axe": {
+        "violations": [],
+        "passes": 20,
+        "incomplete": 2
+      },
+      "productRuntime": {
+        "verifiedSeparatelyWithoutAxe": true,
+        "viewportRunHasZeroConsoleErrors": true,
+        "zeroConsoleWarnings": true,
+        "zeroUncaughtExceptions": true,
+        "zeroFailedRequests": true,
+        "zeroHttpErrors": true
+      },
+      "axeInstrumentation": {
+        "consoleErrorCount": 2,
+        "consoleWarningCount": 2,
+        "exampleConsoleError": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-pvNQDrRvin5SBKn/DOv3KFOpsQ7Ej8F8vpKl481dTaM='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "exampleConsoleWarning": "Couldn't load preload assets:  TypeError: Cannot read properties of null (reading 'href')\n    at parseStylesheet (eval at evaluate (:311:30), <anonymous>:19955:57)\n    at eval (eval at evaluate (:311:30), <anonymous>:19995:16)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)"
+      },
+      "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\core-axe\\workbench-mobile-390.png"
+    },
+    {
+      "surface": "resource-ai-empty-state",
+      "route": "/r/ai-empty-state/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "axe": {
+        "violations": [],
+        "passes": 29,
+        "incomplete": 1
+      },
+      "productRuntime": {
+        "verifiedSeparatelyWithoutAxe": true,
+        "viewportRunHasZeroConsoleErrors": true,
+        "zeroConsoleWarnings": true,
+        "zeroUncaughtExceptions": true,
+        "zeroFailedRequests": true,
+        "zeroHttpErrors": true
+      },
+      "axeInstrumentation": {
+        "consoleErrorCount": 3,
+        "consoleWarningCount": 3,
+        "exampleConsoleError": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-pvNQDrRvin5SBKn/DOv3KFOpsQ7Ej8F8vpKl481dTaM='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "exampleConsoleWarning": "Couldn't load preload assets:  TypeError: Cannot read properties of null (reading 'href')\n    at parseStylesheet (eval at evaluate (:311:30), <anonymous>:19955:57)\n    at eval (eval at evaluate (:311:30), <anonymous>:19995:16)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)"
+      },
+      "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\core-axe\\resource-ai-empty-state-mobile-390.png"
+    },
+    {
+      "surface": "generated-employee-workbench",
+      "route": "/workbench",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "axe": {
+        "violations": [],
+        "passes": 20,
+        "incomplete": 2
+      },
+      "productRuntime": {
+        "verifiedSeparatelyWithoutAxe": true,
+        "viewportRunHasZeroConsoleErrors": true,
+        "zeroConsoleWarnings": true,
+        "zeroUncaughtExceptions": true,
+        "zeroFailedRequests": true,
+        "zeroHttpErrors": true
+      },
+      "axeInstrumentation": {
+        "consoleErrorCount": 3,
+        "consoleWarningCount": 3,
+        "exampleConsoleError": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-pvNQDrRvin5SBKn/DOv3KFOpsQ7Ej8F8vpKl481dTaM='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "exampleConsoleWarning": "Couldn't load preload assets:  TypeError: Cannot read properties of null (reading 'href')\n    at parseStylesheet (eval at evaluate (:311:30), <anonymous>:19955:57)\n    at eval (eval at evaluate (:311:30), <anonymous>:19995:16)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)"
+      },
+      "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\core-axe\\generated-employee-workbench-mobile-390.png"
+    }
+  ]
+}

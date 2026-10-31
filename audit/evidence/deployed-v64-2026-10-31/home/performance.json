@@ -1,0 +1,55 @@
+{
+  "capturedAt": "2026-10-31T21:51:05.706Z",
+  "source": "Chrome DevTools Performance trace on public Site v64",
+  "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersion": 64,
+  "canonicalCommit": "248a2a09c84a0734998850f8f3b85a14ddf3b78c",
+  "sitesSourceCommit": "8aca504b5d4231509bfd4d90d13aec949e979f58",
+  "fieldData": {
+    "available": false,
+    "reason": "No CrUX field data was available for this Site."
+  },
+  "results": [
+    {
+      "viewport": "1440x900",
+      "cpuThrottling": 1,
+      "network": "Fast 4G",
+      "reducedMotion": true,
+      "lcpMs": 570,
+      "ttfbMs": 67,
+      "lcpRenderDelayMs": 503,
+      "cls": 0,
+      "inpMs": null,
+      "inpStatus": "Not reported: the captured INP event timestamp preceded the navigation and could not be attributed reliably.",
+      "networkRequestCount": 26,
+      "httpStatusCounts": {
+        "200": 26
+      },
+      "failedRequests": 0,
+      "consoleMessages": 0,
+      "networkCriticalPathMaxMs": 701,
+      "renderBlockingEstimatedSavingsMs": 0,
+      "screenshot": "audit/evidence/deployed-v64-2026-10-31/home/homepage-desktop-1440x900.png"
+    },
+    {
+      "viewport": "390x844",
+      "cpuThrottling": 4,
+      "network": "Fast 4G",
+      "reducedMotion": true,
+      "lcpMs": 749,
+      "ttfbMs": 64,
+      "lcpRenderDelayMs": 685,
+      "cls": 0,
+      "inpMs": null,
+      "inpStatus": "No valid INP interaction was recorded in the navigation trace.",
+      "networkRequestCount": 26,
+      "httpStatusCounts": {
+        "200": 26
+      },
+      "failedRequests": 0,
+      "consoleMessages": 0,
+      "screenshot": "audit/evidence/deployed-v64-2026-10-31/home/homepage-mobile-390x844.png"
+    }
+  ],
+  "interpretation": "Both lab LCP measurements were below 1 second and CLS was zero. INP is intentionally omitted because there was no valid attributable interaction sample; no field data is available. The desktop critical request chain measured 701 ms, but the trace reported zero estimated savings from render-blocking requests."
+}

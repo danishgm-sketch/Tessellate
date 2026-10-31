@@ -34,6 +34,19 @@ export default tseslint.config(
     },
   },
   {
+    files: ['audit/evidence/deployed-v64-2026-10-31/**/*.mjs'],
+    languageOptions: {
+      globals: {
+        URL: 'readonly',
+        console: 'readonly',
+        document: 'readonly',
+        process: 'readonly',
+        structuredClone: 'readonly',
+        window: 'readonly',
+      },
+    },
+  },
+  {
     files: [
       'quality/evidence/step-45/public-v49/high-findings-reaudit/reaudit.mjs',
       'quality/evidence/step-45/public-v49/flagship/inspect-direction-previews.mjs',

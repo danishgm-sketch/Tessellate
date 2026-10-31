@@ -1,0 +1,56 @@
+{
+  "capturedAt": "2026-10-31T21:48:15.546Z",
+  "deployment": {
+    "version": 64,
+    "canonicalCommit": "248a2a09c84a0734998850f8f3b85a14ddf3b78c",
+    "sitesSourceCommit": "8aca504b5d4231509bfd4d90d13aec949e979f58"
+  },
+  "results": [
+    {
+      "route": "/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "httpStatus": 200,
+      "classification": "PASS",
+      "title": "Tessellate — Describe the product. Get the interface.",
+      "h1": "Describe the product.Get the interface.",
+      "viewportWidth": 1440,
+      "documentWidth": 1440,
+      "overflowX": false,
+      "headingCount": 28,
+      "primaryActionCount": 56,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\home\\homepage-desktop-1440x900.png"
+    },
+    {
+      "route": "/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "classification": "PASS",
+      "title": "Tessellate — Describe the product. Get the interface.",
+      "h1": "Describe the product.Get the interface.",
+      "viewportWidth": 390,
+      "documentWidth": 390,
+      "overflowX": false,
+      "headingCount": 28,
+      "primaryActionCount": 47,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\home\\homepage-mobile-390x844.png"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62 and v63 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed 11 additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. The broader hardening programme and manual copy review remain incomplete.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -16888,23 +16888,53 @@
       "id": "AUD-378",
       "severity": "high",
       "route": "/workbench",
-      "viewport": "1440x900",
+      "viewport": "1440x900; 390x844",
       "category": "state",
       "title": "Quota fallback allowed a stale journal to replace the newer IndexedDB project",
       "expected": "After a recovery-journal write exceeds browser quota, reopening must return the newer IndexedDB manifest and preserve its latest edits.",
-      "actual": "The focused persistence regression reproduced the failure against the pre-fix code: when localStorage rejects a newer journal write after IndexedDB accepts the edit, reload can select the older journal. The v56 browser deployment was not fault-injected for this storage edge case.",
+      "actual": "Public v64 browser fault injection rejected localStorage journal writes after a visible Design DNA edit. The UI reported that the project was saved to local database storage; reopening the exact project by ID restored the same project and new value from IndexedDB at desktop and mobile, with clean page-runtime telemetry.",
       "reproduction": "Set up a project with an older synchronous recovery journal. Reject subsequent localStorage writes. Save a newer manifest to IndexedDB and reopen the project by ID.",
       "console": [],
       "network": [],
-      "screenshot": null,
+      "screenshot": "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud378-quota-recovery-desktop-chromium.png",
       "rootCause": "The journal write failure path reported the IndexedDB save but left the older synchronous recovery record eligible to win during load.",
       "affectedCode": "packages/workbench/src/persistence/browser-session.ts; packages/workbench/src/persistence/browser-session.test.ts",
       "remediation": "After IndexedDB accepts a manifest while the journal write fails, invalidate only that project’s older journal. If invalidation fails, warn the user to export before closing.",
       "fixCommit": "ef682a640e5bb97c7180b2bff26efa0b454c3c48",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "regressionEvidence": "packages/workbench/src/persistence/browser-session.test.ts: reloads the newest IndexedDB project when a later localStorage journal write exceeds quota",
         "result": "Pre-fix behavior reproduced; regression passes after the fix. Full local quality suite passed on the current source state. Deployed verification remains pending."
+      },
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersion": 64,
+        "canonicalCommit": "248a2a09c84a0734998850f8f3b85a14ddf3b78c",
+        "sitesSourceCommit": "8aca504b5d4231509bfd4d90d13aec949e979f58",
+        "verifiedAt": "2026-10-31T21:51:53.054Z",
+        "result": "PASS",
+        "checks": {
+          "quotaFaultInjected": true,
+          "visibleEditSavedToIndexedDB": true,
+          "projectReopenedById": true,
+          "newManifestValueRestoredAfterReload": true,
+          "desktopAndMobile": true,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "evidenceFiles": [
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud378-quota-recovery-desktop-chromium.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud378-quota-recovery-mobile-chromium.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud378-before-quota-desktop-chromium.tess.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud378-after-quota-desktop-chromium.tess.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud378-restored-after-reload-desktop-chromium.tess.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud378-before-quota-mobile-chromium.tess.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud378-after-quota-mobile-chromium.tess.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud378-restored-after-reload-mobile-chromium.tess.json"
+        ]
       }
     },
     {
@@ -16957,46 +16987,99 @@
       "id": "AUD-381",
       "severity": "high",
       "route": "/workbench",
-      "viewport": "N/A (store-level regression)",
+      "viewport": "1440x900; 390x844",
       "category": "data",
       "title": "Deleting a page left secondary navigation targeting a missing screen",
       "expected": "Deleting a screen must remove every primary and secondary navigation reference and leave a schema-valid manifest.",
-      "actual": "The pre-fix store regression deleted the target screen and left its secondary navigation item in the manifest, violating the screen-reference contract.",
+      "actual": "On public v64, deleting Settings & Policies through Pages removed the screen and its primary/secondary navigation references. The downloaded manifest passed ProjectManifestSchema at desktop and mobile; no browser/runtime/network errors were recorded.",
       "reproduction": "Delete a screen referenced by secondary navigation. Validate the resulting manifest and inspect the secondary navigation list.",
       "console": [],
       "network": [],
-      "screenshot": null,
+      "screenshot": "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud381-delete-page-desktop-chromium.png",
       "rootCause": "The deletion path filtered primaryItems but did not filter navigation.secondaryItems.",
       "affectedCode": "packages/workbench/src/store/workbench-store.ts; packages/workbench/src/__tests__/workbench-store.test.ts",
       "remediation": "Perform screen deletion through the validated mutation engine, which checks references and locks, and synchronize rendered navigation after the mutation.",
       "fixCommit": "9e34c13fb6bc71c959716b16cbf3f258600e0b63",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "regressionEvidence": "packages/workbench/src/__tests__/workbench-store.test.ts: removes secondary navigation references when a page is deleted",
         "result": "Pre-fix behavior reproduced; regression passes after the fix. Full local quality suite passed on the current source state. Deployed verification remains pending."
+      },
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersion": 64,
+        "canonicalCommit": "248a2a09c84a0734998850f8f3b85a14ddf3b78c",
+        "sitesSourceCommit": "8aca504b5d4231509bfd4d90d13aec949e979f58",
+        "verifiedAt": "2026-10-31T21:51:53.054Z",
+        "result": "PASS",
+        "checks": {
+          "deletedScreenAbsent": true,
+          "primaryNavigationReferencesValid": true,
+          "secondaryNavigationReferencesValid": true,
+          "exportedManifestSchemaValid": true,
+          "desktopAndMobile": true,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "evidenceFiles": [
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud381-delete-page-desktop-chromium.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud381-delete-page-mobile-chromium.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud381-before-desktop-chromium.tess.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud381-after-desktop-chromium.tess.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud381-before-mobile-chromium.tess.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud381-after-mobile-chromium.tess.json"
+        ]
       }
     },
     {
       "id": "AUD-382",
       "severity": "high",
       "route": "/workbench",
-      "viewport": "1440x900",
+      "viewport": "1440x900; 390x844",
       "category": "state",
       "title": "Pages could delete a screen containing a locked descendant",
       "expected": "A page deletion must respect locks anywhere in the page subtree and preserve the project when a descendant is locked.",
-      "actual": "The deployed v56 visible-browser regression deleted Settings & Policies even after its Settings form had been locked. The page disappeared instead of reporting the locked-node constraint.",
+      "actual": "On public v64, locking the Settings form then attempting page deletion kept Settings & Policies and its locked node in the exported manifest and surfaced the locked-node explanation at desktop and mobile. Browser/runtime/network telemetry was clean.",
       "reproduction": "Open Workbench. Select Settings & Policies. Lock its Settings form in Layers. Return to Pages and delete Settings & Policies.",
       "console": [],
       "network": [],
-      "screenshot": "quality/evidence/step-48/pre-fix-v56/locked-page-was-deleted.png",
+      "screenshot": "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud382-locked-page-desktop-chromium.png",
       "rootCause": "The direct deleteScreen implementation bypassed the mutation engine and its lock validation.",
       "affectedCode": "packages/workbench/src/store/workbench-store.ts; packages/workbench/src/__tests__/workbench-store.test.ts; tests/e2e/workbench-page-locks.spec.ts",
       "remediation": "Route page deletion through DELETE_SCREEN mutation validation; keep the page intact and return an actionable lock message on rejection.",
       "fixCommit": "9e34c13fb6bc71c959716b16cbf3f258600e0b63",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "regressionEvidence": "quality/evidence/step-48/pre-fix-v56-playwright.json; tests/e2e/workbench-page-locks.spec.ts",
         "result": "Pre-fix behavior reproduced; regression passes after the fix. Full local quality suite passed on the current source state. Deployed verification remains pending."
+      },
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersion": 64,
+        "canonicalCommit": "248a2a09c84a0734998850f8f3b85a14ddf3b78c",
+        "sitesSourceCommit": "8aca504b5d4231509bfd4d90d13aec949e979f58",
+        "verifiedAt": "2026-10-31T21:51:53.054Z",
+        "result": "PASS",
+        "checks": {
+          "lockedDescendantPreserved": true,
+          "pagePreserved": true,
+          "actionableLockMessage": true,
+          "desktopAndMobile": true,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "evidenceFiles": [
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud382-locked-page-desktop-chromium.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud382-locked-page-mobile-chromium.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud382-locked-page-desktop-chromium.tess.json",
+          "audit/evidence/deployed-v64-2026-10-31/page-deletion/aud382-locked-page-mobile-chromium.tess.json"
+        ]
       }
     },
     {
@@ -17260,36 +17343,55 @@
       "id": "AUD-392",
       "severity": "high",
       "route": "Standalone React ZIP export",
-      "viewport": "Clean temporary install and Chromium runtime",
+      "viewport": "1440x900; 390x844",
       "category": "export",
       "title": "Standalone React export could not install a missing transitive tarball",
       "expected": "A generated employee-experience Vite project should install its declared dependencies from a clean directory, build, and open in a browser.",
-      "actual": "The real-runtime export test failed at npm install because the Motion dependency range selected tslib 2.9.1, while https://registry.npmjs.org/tslib/-/tslib-2.9.1.tgz returned HTTP 404. The same request failed on an immediate clean retry; the verified 2.8.1 tarball returned HTTP 200.",
+      "actual": "The export from the public v64 employee workflow installed from a clean temporary directory without Tessellate runtime packages, built, and ran in Chromium at 1440x900 and 390x844. Screen navigation, Teams data, locked KPI, final replacement, and resource rendering matched the Workbench manifest; zero browser/runtime/network errors were recorded.",
       "reproduction": [
         "Generate the employee-experience standalone Vite source tree with Motion enabled.",
         "Run npm install --no-audit --no-fund in a clean temporary export directory.",
         "Observe the request for tslib-2.9.1.tgz return 404 before build or browser smoke can start."
       ],
       "console": [],
-      "network": [
-        {
-          "url": "https://registry.npmjs.org/tslib/-/tslib-2.9.1.tgz",
-          "status": 404
-        },
-        {
-          "url": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz",
-          "status": 200
-        }
-      ],
-      "screenshot": null,
+      "network": [],
+      "screenshot": "audit/evidence/deployed-v64-2026-10-31/flagship/employee-workbench-desktop-1440.png",
       "rootCause": "The standalone package declared Motion with a broad semver range but did not constrain its tslib transitive dependency; clean installs followed registry metadata to a tarball that was unavailable.",
       "affectedCode": "packages/exporter/src/dependencies.ts; packages/exporter/src/__tests__/exporter.test.ts; tests/employee-export-runtime.test.ts",
       "remediation": "Pin the verified tslib dependency in exported packages whenever Motion is included, and retain the independent npm-install/build/browser runtime regression.",
       "fixCommit": "680fbe1fab99d913885957bd0bb5dd8c3a55fbe1",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "regressionEvidence": "tests/employee-export-runtime.test.ts: standalone employee product preserves nested records and CTA content in a real independent runtime",
         "result": "Pre-fix independent npm install failed at the 404 tarball. After pinning tslib 2.8.1, clean npm install, build, Chromium browser interaction, and browser error/network assertions pass. Full unit suite (1236 passed, 1 configured skip), 16-point release audit, production build, bundle/security/licence/provenance audits and complete E2E (700 passed, 167 configured skips) also pass."
+      },
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersion": 64,
+        "canonicalCommit": "248a2a09c84a0734998850f8f3b85a14ddf3b78c",
+        "sitesSourceCommit": "8aca504b5d4231509bfd4d90d13aec949e979f58",
+        "verifiedAt": "2026-10-31T21:51:53.054Z",
+        "result": "PASS",
+        "checks": {
+          "cleanInstall": true,
+          "build": true,
+          "previewServer": true,
+          "browsedAtDesktopAndMobile": true,
+          "noTessellateRuntimeDependency": true,
+          "projectContentMatchesWorkbench": true,
+          "lockedSubtreePreserved": true,
+          "replacementPresent": true,
+          "consoleErrors": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "evidenceFiles": [
+          "audit/evidence/deployed-v64-2026-10-31/flagship/employee-experience-desktop-1440.zip",
+          "audit/evidence/deployed-v64-2026-10-31/flagship/employee-workflow-desktop-1440.json",
+          "audit/evidence/deployed-v64-2026-10-31/flagship/employee-workbench-desktop-1440.png",
+          "audit/evidence/deployed-v64-2026-10-31/flagship/employee-workbench-mobile-390.png"
+        ]
       }
     },
     {
@@ -18072,6 +18174,6 @@
       }
     }
   ],
-  "generatedAt": "2026-10-31T20:37:39.588Z",
-  "latestDeploymentEvidence": "quality/evidence/step-48/deployed-v61-2026-10-31/route-audit.json"
+  "generatedAt": "2026-10-31T21:51:53.054Z",
+  "latestDeploymentEvidence": "audit/evidence/deployed-v64-2026-10-31/deployed-smoke.json"
 }

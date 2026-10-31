@@ -34,7 +34,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 406 findings (0 Critical, 79 High, 303 Medium, 24 Low): 222 closed after issue-specific deployed verification, 9 closed after surface-specific non-Site verification, 111 fixed and awaiting issue-specific deployed checks, 61 fixed and verified locally, 2 legacy fixed records, and 1 documented Sites-host limitation. AUD-390 (High), AUD-391 (Medium), AUD-403 (High) and AUD-404 (Medium) were closed after v62 deployed checks; AUD-405 (Medium) was closed after its public v63 desktop/mobile regression; AUD-406 (Medium) was closed on v64 after desktop/mobile checks of both resource-detail route families. The 111-item deployed-verification backlog includes 107 Medium and 4 Low findings; no High findings await deployed verification. Verification debt is not a claim that every item remains broken.
+**Current disposition:** 406 findings (0 Critical, 79 High, 303 Medium, 24 Low): 226 closed after issue-specific deployed verification, 9 closed after surface-specific non-Site verification, 111 fixed and awaiting issue-specific deployed checks, 57 fixed and verified locally, 2 legacy fixed records, and 1 documented Sites-host limitation. Public v64 closed AUD-378, AUD-381, AUD-382 and AUD-392 after desktop/mobile browser and export verification; AUD-390, AUD-391, AUD-403 and AUD-404 were closed after v62 deployed checks; AUD-405 after v63; AUD-406 after v64. The 111-item deployed-verification backlog includes 107 Medium and 4 Low findings. AUD-387 is the remaining locally verified High finding because the Sites deployment has no D1 binding; no High finding is marked as deployed-verified without its actual server-side environment. Verification debt is not a claim that every item remains broken.
 
 ## Public Sites v51 issue-specific High verification — 2026-10-28
 
@@ -4587,3 +4587,18 @@ The audit ledger now records 220 deployed-verified findings; 111 other findings 
 - **Before/after evidence:** Before screenshots are linked above. Public v64 screenshots, runtime JSON, and the Playwright report are in quality/evidence/step-39/public-v63-manual-review/after-public-v64/.
 - **Deployment identity:** Public Sites v64 is version appgprj_6acc036de8cc8191a823339566972d85~appgver_47afec8b52c08191b061951c1ae62bb1 and deployment appgdep_6ae650c685a48191b78c4d41686f5cf7. It serves canonical commit 248a2a09c84a0734998850f8f3b85a14ddf3b78c from Sites source mirror 8aca504b5d4231509bfd4d90d13aec949e979f58 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site.
 - **Status:** Closed after issue-specific deployed verification. This shared component fix covers both detail route families but does not complete the full manual catalogue review, Step 39, or the wider hardening programme.
+
+## Public Sites v64 targeted High verification — 2026-10-31
+
+The exact employee-experience journey passed on the public v64 review Site at 1440×900 and 390×844. The visible workflow generated all three directions, selected C, preserved the exact manifest handoff, applied onboarding/settings overrides across reload, locked the dashboard KPI, recomposed at divergence 95, replaced a resource, used Surprise Me, verified exact undo/redo, opened Preview, exported the manifest, and exported a standalone React ZIP. The desktop run installed the ZIP in a clean temporary directory, built it, started Vite preview, and browsed it at both desktop and mobile widths. Runtime reports show zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Evidence and screenshots are indexed in audit/evidence/deployed-v64-2026-10-31/deployed-smoke.json.
+
+The same live Site closed four High findings after targeted browser verification:
+
+- AUD-378: Injected a localStorage quota failure after project initialization, edited Visual Ambition through the UI, and reopened the project by its explicit ID. The visible save warning reported the IndexedDB write; the downloaded manifest retained the new value after reload at both viewports.
+- AUD-381: Deleted Settings & Policies in Pages. The downloaded schema-valid manifest had no remaining primary or secondary navigation reference to the deleted screen.
+- AUD-382: Locked the Settings form, attempted deletion, and confirmed the screen and lock remained in the manifest with an actionable lock message.
+- AUD-392: The standalone export from the live employee workflow installed, built, and ran independently at desktop and mobile sizes with the replacement and lock intact and no Tessellate runtime dependency.
+
+Axe scanned Home, Explore, Compose, Workbench, AI Empty State, and the generated employee Workbench at both sizes. There were zero WCAG 2.2 A/AA violations. AxeBuilder injected a stylesheet that the Site CSP blocked and generated scanner console messages; a separate no-Axe route run and the flagship interaction tests recorded no Site console messages. The CSP was not relaxed. Desktop/mobile lab LCP measured 570/749 ms, CLS 0; no valid INP sample or CrUX field data was available.
+
+AUD-387 remains fixed-local-verified: it concerns inherited project metadata in the D1 API, while this static review Site has no D1 or R2 binding. No live D1 behavior is claimed. The full manual copy review of 324 resource entries and wider hardening release gate remain open.

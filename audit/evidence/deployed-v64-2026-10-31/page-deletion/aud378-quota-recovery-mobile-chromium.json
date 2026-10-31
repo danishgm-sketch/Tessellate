@@ -1,0 +1,22 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=local-f98016a5-07fc-4a06-8ebf-35b72062b70f",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "issue": "AUD-378",
+  "injectedFault": "localStorage.setItem throws QuotaExceededError for Tessellate journal writes after Workbench initialization",
+  "checks": {
+    "visibleEditSavedToIndexedDb": true,
+    "staleJournalInvalidated": true,
+    "exactProjectAndNewDNAValueRestored": true
+  },
+  "restoredProjectId": "local-f98016a5-07fc-4a06-8ebf-35b72062b70f",
+  "restoredVisualAmbition": 31,
+  "screenshot": "audit\\evidence\\deployed-v64-2026-10-31\\page-deletion\\aud378-quota-recovery-mobile-chromium.png"
+}
