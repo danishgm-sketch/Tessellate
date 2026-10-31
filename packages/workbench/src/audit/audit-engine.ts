@@ -487,11 +487,22 @@ function evaluateResponsive(manifest: ProjectManifest, issues: AuditIssue[]): nu
 // ==========================================
 function evaluateHierarchy(manifest: ProjectManifest, issues: AuditIssue[]): number {
   let score = 10;
+  const focalRoles = new Set([
+    'navigation',
+    'navigation-header',
+    'page-heading',
+    'page-header',
+    'overview-header',
+    'index-header',
+    'hero',
+    'hero-section',
+    'editorial-hero',
+  ]);
 
   for (const screen of manifest.screens) {
     let hasHeader = false;
     traverseNodes(screen.rootNode, (node) => {
-      if (node.semanticRole === 'navigation-header' || node.semanticRole === 'hero-section') {
+      if (focalRoles.has(node.semanticRole)) {
         hasHeader = true;
       }
     });

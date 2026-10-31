@@ -64,6 +64,18 @@ describe('Phase 12: Audit System', () => {
   });
 
   describe('Deterministic Category Rules & Violation Detection', () => {
+    it.each(['navigation', 'page-heading', 'hero'])('recognizes the %s focal landmark in the hierarchy score', (role) => {
+      const manifest = createSampleProject();
+      const overview = manifest.screens.find((screen) => screen.id === 'screen-overview');
+      const navigation = overview?.rootNode.children.find((node) => node.semanticRole === 'navigation-header');
+      expect(navigation).toBeDefined();
+      navigation!.semanticRole = role;
+
+      const result = auditProjectManifest(manifest);
+
+      expect(result.issues.find((issue) => issue.id === 'hierarchy-missing-header-screen-overview')).toBeUndefined();
+    });
+
     it('detects accessibility contrast violations and provides deterministic fix', () => {
       const manifest = createSampleProject();
       manifest.constraints.accessibilityFloor = 'AAA';
