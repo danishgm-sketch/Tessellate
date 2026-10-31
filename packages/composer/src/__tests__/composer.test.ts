@@ -41,6 +41,32 @@ describe('Product Archetypes (18 Categories)', () => {
     const fintechMatches = detectProductArchetypes('treasury banking and wire transfer ledger with instant settlement');
     expect(fintechMatches[0]?.tag).toBe('fintech');
   });
+
+  it('keeps employee experience separate from hiring while respecting explicit overrides', () => {
+    const employeeMatches = detectProductArchetypes(
+      'Employee experience platform for colleagues, teams, onboarding and workplace policies.'
+    );
+    const hiringMatches = detectProductArchetypes(
+      'Applicant tracking platform for recruiters to manage candidates and interview panels.'
+    );
+    const overriddenMatches = detectProductArchetypes(
+      'Employee experience platform for colleagues and teams.',
+      'recruitment'
+    );
+    const overriddenInterpretation = interpretProductBrief({
+      description: 'Employee experience platform for colleagues and teams.',
+      archetypeOverride: 'recruitment',
+    });
+
+    expect(employeeMatches).toEqual([{ tag: 'saas', weight: 100 }]);
+    expect(hiringMatches[0]?.tag).toBe('recruitment');
+    expect(overriddenMatches[0]?.tag).toBe('recruitment');
+    expect(overriddenInterpretation.productModel.productArchetypes[0]?.tag).toBe('recruitment');
+    expect(overriddenInterpretation.initialDesignDna.primaryArchetype).toBe('recruitment');
+    expect(overriddenInterpretation.inferredAssumptions[0]).toContain(
+      'Recruitment & People Operations'
+    );
+  });
 });
 
 describe('Product Blueprints (12 Blueprints)', () => {

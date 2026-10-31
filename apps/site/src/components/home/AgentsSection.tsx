@@ -76,7 +76,7 @@ export function AgentsSection() {
   "name": "Employee experience",
   "productModel": {
     "productArchetypes": [
-      { "tag": "recruitment", "weight": 100 }
+      { "tag": "saas", "weight": 100 }
     ]
   },
   "designDNA": {

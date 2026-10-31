@@ -1,3 +1,5 @@
+import { isEmployeeExperienceBrief } from './domain-context.js';
+
 export interface ArchetypeDefinition {
   id: string;
   name: string;
@@ -33,7 +35,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
     id: 'saas',
     name: 'B2B SaaS',
     description: 'Cloud software applications serving business operational workflows and subscriptions.',
-    keywords: ['saas', 'b2b', 'software', 'cloud', 'subscription', 'workspace', 'tenant', 'enterprise'],
+    keywords: ['saas', 'b2b', 'software', 'cloud', 'subscription', 'workspace', 'tenant', 'enterprise', 'employee experience', 'employee engagement', 'people operations', 'hr management'],
     primaryAudience: 'Business teams, managers, and operators',
     userSophistication: 65,
     trustRequirement: 85,
@@ -636,7 +638,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
     id: 'recruitment',
     name: 'Recruitment & People Operations',
     description: 'Applicant tracking (ATS), candidate pipelines, interview scorecards, and onboarding.',
-    keywords: ['employee experience','employee','human resources','people operations','recruitment', 'hr', 'hiring', 'ats', 'candidates', 'jobs', 'interviews', 'onboarding', 'employees', 'people'],
+    keywords: ['recruitment', 'recruiter', 'hiring', 'ats', 'candidate', 'applicant', 'job requisition', 'interview', 'onboarding'],
     primaryAudience: 'Recruiters, hiring managers, candidates, and HR directors',
     userSophistication: 60,
     trustRequirement: 88,
@@ -709,7 +711,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
  * primary archetype selection.
  */
 const ARCHETYPE_PRIMARY_SIGNALS: Record<string, string[]> = {
-  saas: ['saas', 'software as a service', 'b2b software', 'business software', 'subscription software', 'multi-tenant'],
+  saas: ['saas', 'software as a service', 'b2b software', 'business software', 'subscription software', 'multi-tenant', 'employee experience', 'employee engagement', 'people operations', 'hr management'],
   ai: ['artificial intelligence', 'large language model', 'generative', 'generative audio', 'image generation', 'image-generation', 'autonomous agent', 'ai agent', 'agentic', 'copilot', 'llm', 'prompt'],
   'developer-tools': ['developer tool', 'developer portal', 'software engineer', 'platform engineer', 'devops', 'api', 'sdk', 'cli', 'command-line', 'kubernetes', 'source control', 'source-control', 'pull request', 'continuous integration', 'feature flag', 'feature-flag', 'distributed tracing', 'observability', 'webhook', 'deployment monitor'],
   fintech: ['fintech', 'financial service', 'financial account', 'banking', 'wealth management', 'asset allocation', 'corporate card', 'reimbursement', 'payment processing', 'money transfer', 'ledger', 'portfolio', 'market data'],
@@ -725,7 +727,7 @@ const ARCHETYPE_PRIMARY_SIGNALS: Record<string, string[]> = {
   media: ['media platform', 'newsroom', 'news publication', 'digital magazine', 'journalism', 'public radio', 'radio service', 'episode archive', 'editorial publication', 'broadcast service'],
   travel: ['travel service', 'travel planning', 'trip planner', 'trip-planning', 'travel itinerary', 'hotel booking', 'flight booking', 'destination guide', 'travelers', 'hospitality'],
   'real-estate': ['real estate', 'real-estate', 'home search', 'home-search', 'property management', 'property listing', 'commercial leasing', 'residential manager', 'mortgage', 'realtor', 'realty'],
-  recruitment: ['recruitment', 'recruiting', 'talent acquisition', 'applicant tracking', 'candidate pipeline', 'candidate portal', 'hiring workspace', 'interview panel', 'employee experience', 'human resources', 'people operations', 'hr platform'],
+  recruitment: ['recruitment', 'recruiting', 'talent acquisition', 'applicant tracking', 'candidate pipeline', 'candidate portal', 'hiring workspace', 'interview panel'],
   consumer: ['consumer app', 'consumer application', 'social network', 'social app', 'neighborhood social', 'community app', 'social feed', 'mobile-first consumer'],
 };
 
@@ -748,6 +750,9 @@ export function detectProductArchetypes(
 ): Array<{ tag: string; weight: number }> {
   if (explicitOverride && PRODUCT_ARCHETYPES[explicitOverride]) {
     return [{ tag: explicitOverride, weight: 100 }];
+  }
+  if (isEmployeeExperienceBrief(briefText)) {
+    return [{ tag: 'saas', weight: 100 }];
   }
 
   const normalized = briefText.toLowerCase().replace(/[-_]+/g, ' ');

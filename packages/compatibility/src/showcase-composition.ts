@@ -14,10 +14,11 @@ export function composeShowcase(id: string, catalogue: ResourceManifest[]): Proj
       ? 'Employee experience platform for people, teams, playful onboarding and peer recognition.'
       : (showcase.manifest.description ?? showcase.tagline);
   const archetypes: Record<string, string> = {
+    saas: 'saas',
     fintech: 'fintech',
     ai: 'ai',
     hospitality: 'travel',
-    hr: 'recruitment',
+    hr: 'saas',
     ecommerce: 'ecommerce',
     scientific: 'intelligence-research',
     analytics: 'analytics',

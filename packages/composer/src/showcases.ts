@@ -249,7 +249,7 @@ const dnaHospitality: DesignDNA = {
   surfacePersonality: 'warm-vellum-paper',
 };
 
-// 4. Playful Collaborative HR (Professional + Playful, Pill Rail)
+// 4. Employee Experience (Professional + Playful, Pill Rail)
 const dnaHr: DesignDNA = {
   ...DEFAULT_DESIGN_DNA,
   professionalism: 85,
@@ -277,7 +277,7 @@ const dnaHr: DesignDNA = {
   trust: 90,
   accessibilityPriority: 98,
   performancePriority: 96,
-  primaryArchetype: 'hr',
+  primaryArchetype: 'saas',
   visualMode: 'light',
   geometryFamily: 'soft-pill',
   navigationModel: 'pill-rail',
@@ -541,7 +541,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     id: 'showcase-playful-hr',
     name: 'Kudos Employee Experience',
     tagline: 'A warm workspace for colleagues to connect, onboard, and recognise one another',
-    archetypeId: 'hr',
+    archetypeId: 'saas',
     navigationModel: 'pill-rail',
     dnaPresetName: 'professional-playful',
     colorMode: 'light',
@@ -551,7 +551,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
       name: 'Kudos Employee Experience',
       description:
         'A connected employee experience for colleagues, teams, playful onboarding, peer recognition, and trusted workplace policies.',
-      archetypeTag: 'hr',
+      archetypeTag: 'saas',
       dna: dnaHr,
       navigationModel: 'pill-rail',
       navItems: [

@@ -2,18 +2,21 @@ import type { ArchetypeDefinition } from './archetypes.js';
 
 export function isEmployeeExperienceBrief(text: string): boolean {
   return (
-    /\b(employee(?:s| experience)?|human resources|people operations|hr platform|hr management)\b/i.test(
+    /\b(?:employee experience|employee engagement|employee portal|workplace experience|people operations|people ops|human resources|hr management|hr platform)\b/i.test(
       text
-    ) && !/\b(applicant tracking|recruitment pipeline)\b/i.test(text)
+    ) &&
+    !/\b(?:recruit(?:ing|ment|er|ers)|talent acquisition|candidate|applicant|hiring|interview|job opening|open role|job requisition)\b/i.test(
+      text
+    )
   );
 }
 
-/** Specialise the existing people-operations archetype without inventing another stack. */
+/** Apply employee-specific product context to SaaS without overriding an explicit recruitment taxonomy. */
 export function specialisePeopleOperations(
   base: ArchetypeDefinition,
   text: string
 ): ArchetypeDefinition {
-  if (base.id !== 'recruitment' || !isEmployeeExperienceBrief(text)) return base;
+  if (base.id !== 'saas' || !isEmployeeExperienceBrief(text)) return base;
   return {
     ...base,
     name: 'Employee Experience',

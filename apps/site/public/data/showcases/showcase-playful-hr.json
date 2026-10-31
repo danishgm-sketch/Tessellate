@@ -11,7 +11,7 @@
     "schemaVersion": "1.0.0",
     "productArchetypes": [
       {
-        "tag": "recruitment",
+        "tag": "saas",
         "weight": 100
       }
     ],
@@ -93,13 +93,13 @@
         ]
       }
     ],
-    "trustRequirement": 88,
+    "trustRequirement": 85,
     "informationComplexity": 55,
     "dataDensity": 55,
-    "collaborationLevel": 100,
+    "collaborationLevel": 90,
     "transactionCriticality": 30,
-    "navigationComplexity": 65,
-    "mobileImportance": 60,
+    "navigationComplexity": 60,
+    "mobileImportance": 50,
     "likelyScreens": [
       {
         "name": "Marketing Home",
@@ -227,7 +227,7 @@
     "trust": 90,
     "accessibilityPriority": 98,
     "performancePriority": 96,
-    "primaryArchetype": "hr",
+    "primaryArchetype": "saas",
     "visualMode": "light",
     "geometryFamily": "soft-pill",
     "navigationModel": "rail",
@@ -264,7 +264,7 @@
     "forbiddenPatterns": []
   },
   "screenGraph": {
-    "id": "graph-recruitment-8jz435",
+    "id": "graph-saas-hh1ajk",
     "groups": [
       {
         "id": "group-marketing",

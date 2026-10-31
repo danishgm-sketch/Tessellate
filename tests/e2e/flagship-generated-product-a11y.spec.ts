@@ -31,12 +31,27 @@ test('the generated employee experience opens in Workbench without serious acces
   await expect(directionC.getByTestId('direction-preview-03')).toBeVisible();
   await expect(directionC.locator('[data-testid="missing-resource-recovery"]')).toHaveCount(0);
   await expect(directionC.locator('[data-testid="unresolved-required-role-diagnostic"]')).toHaveCount(0);
+  await directionC.getByRole('button', { name: 'Inspect full preview and DNA' }).click();
+  const directionInspection = page.getByRole('dialog', { name: /Direction 03/ });
+  await expect(directionInspection).toBeVisible();
+  await directionInspection.getByText('Design DNA and resource references').click();
+  await expect(directionInspection.locator('pre')).toContainText('"primaryArchetype": "saas"');
+  await expect(directionInspection.locator('pre')).not.toContainText('"primaryArchetype": "recruitment"');
+  await page.keyboard.press('Escape');
+
   await directionC.getByTestId('open-workbench-dir-03').click();
   await page.waitForURL(/\/workbench\?project=/);
   await expect(page.getByTestId('top-toolbar')).toBeVisible();
   await expect(page.getByRole('heading', { name: /^Workbench:/ })).toBeVisible();
   await expect(page.locator('[data-testid="missing-resource-recovery"]')).toHaveCount(0);
   await expect(page.locator('[data-testid="unresolved-required-role-diagnostic"]')).toHaveCount(0);
+  if ((page.viewportSize()?.width ?? 0) >= 768) {
+    await page.getByRole('button', { name: 'Brief', exact: true }).click();
+    const briefPanel = page.getByTestId('brief-tab');
+    await expect(briefPanel.getByText('Employee Experience', { exact: true })).toBeVisible();
+    await expect(briefPanel.getByText('Recruitment', { exact: true })).toHaveCount(0);
+    await expect(briefPanel.getByText('100%', { exact: true })).toBeVisible();
+  }
 
   const axe = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])

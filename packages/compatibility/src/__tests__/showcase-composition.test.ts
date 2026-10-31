@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import type { ProjectNode, ResourceManifest } from '@tessellate/schemas';
 import { composeShowcase } from '../showcase-composition.js';
+import { composeProjectPipeline } from '../compose-pipeline.js';
 
 const catalogue: ResourceManifest[] = JSON.parse(
   readFileSync('apps/site/public/data/catalog.json', 'utf8')
@@ -64,6 +65,8 @@ describe('showcase composition stability', () => {
     const serialized = JSON.stringify(manifest).toLocaleLowerCase();
 
     expect(manifest.name).toBe('Kudos Employee Experience');
+    expect(manifest.productModel.productArchetypes[0]?.tag).toBe('saas');
+    expect(manifest.designDNA.primaryArchetype).toBe('saas');
     expect(manifest.screens.map((screen) => screen.name)).toEqual(
       expect.arrayContaining([
         'People Directory',
@@ -74,6 +77,32 @@ describe('showcase composition stability', () => {
       ])
     );
     expect(serialized).toMatch(/employee|colleague|onboarding|policy/);
-    expect(serialized).not.toMatch(/applicant pipeline|recruiting dashboard|candidate sourcing/);
+    expect(serialized).not.toMatch(/applicant|recruit|candidate/);
+  });
+
+  it('keeps all flagship directions on the employee-experience SaaS taxonomy', () => {
+    const result = composeProjectPipeline(
+      {
+        description:
+          'Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.',
+        feel: 'professional but playful',
+        visualAmbition: 40,
+        structuralCreativity: 55,
+      },
+      { catalogResources: catalogue, seed: 'employee-experience-taxonomy-regression' }
+    );
+
+    expect(result.productModel.productArchetypes[0]?.tag).toBe('saas');
+    for (const direction of [result.directionA, result.directionB, result.directionC]) {
+      expect(direction.manifest.productModel.productArchetypes[0]?.tag).toBe('saas');
+      expect(direction.manifest.designDNA.primaryArchetype).toBe('saas');
+      expect(direction.manifest.screens.map((screen) => screen.name)).toEqual(
+        expect.arrayContaining(['People Directory', 'Onboarding', 'Settings & Policies'])
+      );
+      expect(JSON.stringify(direction.manifest.productModel).toLocaleLowerCase()).not.toMatch(
+        /recruitment|recruiting|candidate|applicant|scorecard/
+      );
+      expect(direction.diagnostics).toEqual([]);
+    }
   });
 });

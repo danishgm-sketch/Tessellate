@@ -57,7 +57,9 @@ describe('Product Interpreter semantic quality benchmark', () => {
 
   for (const brief of dataset.briefs) {
     it(`${brief.id} infers a coherent ${brief.domain} product without overrides`, () => {
-      const { productModel } = interpretProductBrief({ description: brief.description });
+      const { productModel, initialDesignDna } = interpretProductBrief({
+        description: brief.description,
+      });
       const archetypes = productModel.productArchetypes;
       const tags = archetypes.map((archetype) => archetype.tag);
       const profile = dataset.semanticProfiles[brief.semanticProfile];
@@ -96,6 +98,7 @@ describe('Product Interpreter semantic quality benchmark', () => {
       }
 
       if (brief.id === 'REC-02') {
+        expect(initialDesignDna.primaryArchetype).toBe('saas');
         expect(productModel.forbiddenPatterns).not.toContain(
           'unblinded-evaluations-causing-bias'
         );

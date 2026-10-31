@@ -18,3 +18,12 @@ test('employee showcase gives the conversion CTA distinct copy from its hero', a
     })
   ).toBeVisible();
 });
+
+test('homepage employee experience example uses the SaaS taxonomy', async ({ page }) => {
+  await page.goto('/');
+
+  const example = page.locator('pre[aria-labelledby="agent-handoff-json-specification-label"]');
+  await expect(example).toContainText('"name": "Employee experience"');
+  await expect(example).toContainText('"tag": "saas"');
+  await expect(example).not.toContainText('"tag": "recruitment"');
+});
