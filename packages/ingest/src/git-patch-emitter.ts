@@ -67,14 +67,20 @@ function collectDirectJsxChildren(
       return;
     }
     if (ts.isJsxExpression(child) && child.expression) {
-      ts.forEachChild(child.expression, visit);
+      visit(child.expression);
       return;
     }
     if (
       ts.isCallExpression(child) ||
       ts.isArrowFunction(child) ||
       ts.isConditionalExpression(child) ||
-      ts.isArrayLiteralExpression(child)
+      ts.isArrayLiteralExpression(child) ||
+      ts.isParenthesizedExpression(child) ||
+      (ts.isBinaryExpression(child) && [
+        ts.SyntaxKind.AmpersandAmpersandToken,
+        ts.SyntaxKind.BarBarToken,
+        ts.SyntaxKind.QuestionQuestionToken,
+      ].includes(child.operatorToken.kind))
     ) {
       ts.forEachChild(child, visit);
     }
@@ -136,13 +142,17 @@ function jsxElementPath(
   return segments.join('/');
 }
 
-function escapeAttributeValue(value: string, quote: string): string {
-  return value
-    .replaceAll('\\', '\\\\')
-    .replaceAll(quote, `\\${quote}`)
-    .replaceAll('\r', ' ')
-    .replaceAll('\n', ' ')
-    .replaceAll('\0', ' ');
+function staticStringValue(initializer: ts.JsxAttributeValue | undefined): string | undefined {
+  if (initializer && ts.isStringLiteral(initializer)) return initializer.text;
+  if (
+    initializer &&
+    ts.isJsxExpression(initializer) &&
+    initializer.expression &&
+    (ts.isStringLiteral(initializer.expression) || ts.isNoSubstitutionTemplateLiteral(initializer.expression))
+  ) {
+    return initializer.expression.text;
+  }
+  return undefined;
 }
 
 function review(sourceCode: string, reason: string): VisualMutationResult {
@@ -231,13 +241,14 @@ export function applyVisualMutationToSource(
     return review(sourceCode, 'The requested static className attribute was missing or ambiguous.');
 
   const attribute = attributes[0]!;
-  if (!attribute.initializer || !ts.isStringLiteral(attribute.initializer)) {
+  const currentValue = staticStringValue(attribute.initializer);
+  if (currentValue === undefined) {
     return review(
       sourceCode,
       'Computed or expression-based className values require manual review.'
     );
   }
-  if (attribute.initializer.text !== mutation.expectedValue) {
+  if (currentValue !== mutation.expectedValue) {
     return review(
       sourceCode,
       'The current className differs from the expected source value; the project may have changed since analysis.'
@@ -252,13 +263,19 @@ export function applyVisualMutationToSource(
     };
   }
 
-  const literal = attribute.initializer;
-  const quote = sourceCode[literal.getStart(sourceFile)]!;
-  const replacementLiteral = `${quote}${escapeAttributeValue(mutation.replacementValue, quote)}${quote}`;
+  const originalQuote = attribute.initializer && ts.isStringLiteral(attribute.initializer)
+    ? sourceCode[attribute.initializer.getStart(sourceFile)]
+    : undefined;
+  const needsJsxExpression = originalQuote === undefined ||
+    mutation.replacementValue.includes(originalQuote) ||
+    /[\\\r\n\0]/.test(mutation.replacementValue);
+  const replacementLiteral = needsJsxExpression
+    ? `{${JSON.stringify(mutation.replacementValue)}}`
+    : `${originalQuote}${mutation.replacementValue}${originalQuote}`;
   const modifiedCode =
-    sourceCode.slice(0, literal.getStart(sourceFile)) +
+    sourceCode.slice(0, attribute.initializer!.getStart(sourceFile)) +
     replacementLiteral +
-    sourceCode.slice(literal.end);
+    sourceCode.slice(attribute.initializer!.end);
   const postEditError = sourceSyntaxError(modifiedCode, mutation.fileName);
   if (postEditError)
     return review(
@@ -358,7 +375,7 @@ export function generateAstDiff(
     ...trailingContext,
   ];
   // Counts describe source lines, excluding the metadata marker lines.
-  const unifiedDiff = [`--- a/${safePath}`, `+++ b/${safePath}`, ...hunk].join('\n');
+  const unifiedDiff = `${[`--- a/${safePath}`, `+++ b/${safePath}`, ...hunk].join('\n')}\n`;
 
   return { filePath: safePath, originalContent, modifiedContent, hasChanges: true, unifiedDiff };
 }

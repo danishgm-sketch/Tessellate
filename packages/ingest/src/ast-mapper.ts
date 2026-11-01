@@ -112,11 +112,11 @@ function getComponentDetails(
   requireDefaultExport = false
 ): { name: string; node: ts.Node } | undefined {
   for (const statement of sourceFile.statements) {
-    if (ts.isFunctionDeclaration(statement) && statement.name && nodeContainsJsx(statement)) {
+    if (ts.isFunctionDeclaration(statement) && nodeContainsJsx(statement)) {
       const isDefault = statement.modifiers?.some(
         (modifier) => modifier.kind === ts.SyntaxKind.DefaultKeyword
       );
-      if (isDefault) return { name: statement.name.text, node: statement };
+      if (isDefault) return { name: statement.name?.text ?? 'DefaultPage', node: statement };
     }
     if (ts.isExportAssignment(statement)) {
       if (ts.isIdentifier(statement.expression)) {
@@ -189,7 +189,7 @@ function routePathFor(kind: RouteKind, segments: string[]): string {
       if (/^\[\.\.\.[^\]]+\]$/.test(segment) || /^\[\[\.\.\.[^\]]+\]\]$/.test(segment))
         return segment;
       if (segment.startsWith('[') && segment.endsWith(']')) return `:${segment.slice(1, -1)}`;
-      return segment.toLowerCase().replace(/[^a-z0-9-]+/g, '-');
+      return segment;
     })
     .filter(Boolean);
   if (kind === 'vite' || converted.length === 0) return '/';
@@ -273,7 +273,13 @@ function jsxChildren(node: ts.JsxElement): Array<ts.JsxElement | ts.JsxSelfClosi
       ts.isCallExpression(child) ||
       ts.isArrowFunction(child) ||
       ts.isConditionalExpression(child) ||
-      ts.isArrayLiteralExpression(child)
+      ts.isArrayLiteralExpression(child) ||
+      ts.isParenthesizedExpression(child) ||
+      (ts.isBinaryExpression(child) && [
+        ts.SyntaxKind.AmpersandAmpersandToken,
+        ts.SyntaxKind.BarBarToken,
+        ts.SyntaxKind.QuestionQuestionToken,
+      ].includes(child.operatorToken.kind))
     ) {
       ts.forEachChild(child, visit);
     }
@@ -412,10 +418,15 @@ export function mapSourceFilesToProject(
 
   const screens: IngestedScreen[] = [];
   const manifestScreens: ProjectScreen[] = [];
+  const usedScreenSlugs = new Set<string>();
   for (let index = 0; index < candidates.length; index++) {
     const candidate = candidates[index]!;
     const name = titleFromRoute(candidate.route, candidate.componentName);
-    const slug = screenSlug(candidate.route, index);
+    const baseSlug = screenSlug(candidate.route, index);
+    let slug = baseSlug;
+    let suffix = 2;
+    while (usedScreenSlugs.has(slug)) slug = `${baseSlug}-${suffix++}`;
+    usedScreenSlugs.add(slug);
     let nodeIndex = 0;
     const rootNode: ProjectNode = {
       id: `${slug}-root`,

@@ -3,6 +3,7 @@ import { execFileSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as os from 'node:os';
 import * as path from 'node:path';
+import * as ts from 'typescript';
 import {
   reverseEngineerDna,
   mapSourceFilesToProject,
@@ -188,8 +189,9 @@ export function UserDashboard({ userId }: { userId: string }) {
     try {
       fs.writeFileSync(path.join(temporaryDirectory, 'Page.tsx'), original);
       const diff = generateAstDiff('Page.tsx', original, modified);
+      expect(diff.unifiedDiff.endsWith('\n')).toBe(true);
       const patchPath = path.join(temporaryDirectory, 'change.patch');
-      fs.writeFileSync(patchPath, `${diff.unifiedDiff}\n`);
+      fs.writeFileSync(patchPath, diff.unifiedDiff);
       execFileSync('git', ['init', '-q'], { cwd: temporaryDirectory });
       execFileSync('git', ['config', 'core.autocrlf', 'false'], { cwd: temporaryDirectory });
       execFileSync('git', ['apply', '--check', patchPath], { cwd: temporaryDirectory });
@@ -209,7 +211,7 @@ export function UserDashboard({ userId }: { userId: string }) {
       fs.writeFileSync(path.join(temporaryDirectory, 'Page.tsx'), original);
       const diff = generateAstDiff('Page.tsx', original, modified);
       const patchPath = path.join(temporaryDirectory, 'change.patch');
-      fs.writeFileSync(patchPath, `${diff.unifiedDiff}\n`);
+      fs.writeFileSync(patchPath, diff.unifiedDiff);
       execFileSync('git', ['init', '-q'], { cwd: temporaryDirectory });
       execFileSync('git', ['config', 'core.autocrlf', 'false'], { cwd: temporaryDirectory });
       execFileSync('git', ['apply', '--check', patchPath], { cwd: temporaryDirectory });
@@ -237,7 +239,7 @@ export function UserDashboard({ userId }: { userId: string }) {
         fs.writeFileSync(path.join(temporaryDirectory, 'Page.tsx'), original);
         const diff = generateAstDiff('Page.tsx', original, modified);
         const patchPath = path.join(temporaryDirectory, 'change.patch');
-        fs.writeFileSync(patchPath, `${diff.unifiedDiff}\n`);
+        fs.writeFileSync(patchPath, diff.unifiedDiff);
         execFileSync('git', ['init', '-q'], { cwd: temporaryDirectory });
         execFileSync('git', ['config', 'core.autocrlf', 'false'], { cwd: temporaryDirectory });
         execFileSync('git', ['apply', '--check', patchPath], { cwd: temporaryDirectory });
@@ -391,6 +393,56 @@ export default function App() { const [tab, setTab] = useState('people'); return
     expect(result.productIntentInferred).toBe(false);
   });
 
+  it('recognizes an anonymous default function declaration as a route component', () => {
+    const result = mapSourceFilesToProject([
+      {
+        filePath: 'app/page.tsx',
+        code: 'export default function () { return <main><h1>People</h1></main>; }',
+      },
+    ]);
+
+    expect(result.screens).toHaveLength(1);
+    expect(result.screens[0]).toMatchObject({ route: '/', filePath: 'app/page.tsx' });
+    expect(result.screens[0]?.rootNode.children.map((node) => node.semanticRole)).toEqual(['main']);
+  });
+
+  it('preserves case and underscores in literal source route segments', () => {
+    const result = mapSourceFilesToProject([
+      { filePath: 'app/FooBar/page.tsx', code: 'export default function Page() { return <main />; }' },
+      { filePath: 'app/foo_bar/page.tsx', code: 'export default function Page() { return <main />; }' },
+    ]);
+
+    expect(result.screens.map((screen) => screen.route)).toEqual(['/FooBar', '/foo_bar']);
+    expect(result.projectManifest.screens.map((screen) => screen.slug)).toEqual(['/FooBar', '/foo_bar']);
+  });
+
+  it('allocates unique internal IDs when distinct source routes normalize to the same slug', () => {
+    const result = mapSourceFilesToProject([
+      { filePath: 'pages/index.tsx', code: 'export default function IndexPage() { return <main />; }' },
+      { filePath: 'pages/home.tsx', code: 'export default function HomePage() { return <main />; }' },
+      { filePath: 'pages/foo_bar.tsx', code: 'export default function SnakePage() { return <main />; }' },
+      { filePath: 'pages/foo-bar.tsx', code: 'export default function KebabPage() { return <main />; }' },
+    ]);
+    const screenIds = result.projectManifest.screens.map((screen) => screen.id);
+    const nodeIds = result.projectManifest.screens.map((screen) => screen.rootNode.id);
+
+    expect(result.screens.map((screen) => screen.route)).toEqual(['/', '/home', '/foo_bar', '/foo-bar']);
+    expect(new Set(screenIds).size).toBe(screenIds.length);
+    expect(new Set(nodeIds).size).toBe(nodeIds.length);
+    expect(() => ProjectManifestSchema.parse(result.projectManifest)).not.toThrow();
+  });
+
+  it('retains JSX descendants inside ordinary logical conditional rendering', () => {
+    const result = mapSourceFilesToProject([
+      {
+        filePath: 'src/App.tsx',
+        code: 'export default function App() { return <main>{visible && <footer><a href="/policies">Policies</a></footer>}</main>; }',
+      },
+    ]);
+
+    expect(result.screens[0]?.detectedRoles).toEqual(expect.arrayContaining(['footer', 'a']));
+  });
+
   it('rejects an isolated reusable component instead of presenting it as a route', () => {
     expect(() =>
       mapSourceFilesToProject([
@@ -489,6 +541,52 @@ export default function App() { const [tab, setTab] = useState('people'); return
     expect(result.safety).toBe('UNSUPPORTED');
     expect(result.applied).toBe(false);
     expect(result.modifiedCode).toBe(source);
+  });
+
+  it('targets JSX elements inside conditional expressions at their actual sibling index', () => {
+    const source = 'function Screen() { return <main>{<section className="p-4">Expression</section>}<section className="p-4">Static</section></main>; }';
+    const result = applyVisualMutationToSource(source, {
+      fileName: 'Screen.tsx',
+      componentName: 'Screen',
+      elementPath: 'main[0]/section[0]',
+      attributeName: 'className',
+      expectedValue: 'p-4',
+      replacementValue: 'p-8',
+    });
+
+    expect(result.safety).toBe('SAFE');
+    expect(result.applied).toBe(true);
+    expect(result.modifiedCode).toContain('{<section className="p-8">Expression');
+    expect(result.modifiedCode).toContain('<section className="p-4">Static');
+  });
+
+  it('preserves literal backslashes in JSX attribute replacements', () => {
+    const source = 'function Screen() { return <main className="before" />; }';
+    const replacementValue = String.raw`before:content-['hello\_world']`;
+    const result = applyVisualMutationToSource(source, {
+      fileName: 'Screen.tsx',
+      componentName: 'Screen',
+      elementPath: 'main[0]',
+      attributeName: 'className',
+      expectedValue: 'before',
+      replacementValue,
+    });
+
+    expect(result.safety).toBe('SAFE');
+    expect(result.applied).toBe(true);
+    const parsed = ts.createSourceFile('Screen.tsx', result.modifiedCode, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+    let actualClassName: string | undefined;
+    const visit = (node: ts.Node) => {
+      if (ts.isJsxAttribute(node) && node.name.getText(parsed) === 'className') {
+        const value = node.initializer;
+        if (value && ts.isJsxExpression(value) && value.expression && ts.isStringLiteral(value.expression)) {
+          actualClassName = value.expression.text;
+        }
+      }
+      ts.forEachChild(node, visit);
+    };
+    visit(parsed);
+    expect(actualClassName).toBe(replacementValue);
   });
 
   it('preserves generic, conditional, client and server component behavior during static styling edits', () => {
