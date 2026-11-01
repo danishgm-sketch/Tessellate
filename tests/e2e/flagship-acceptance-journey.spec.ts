@@ -604,11 +604,26 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
             await standalonePage.setViewportSize(size);
             await standalonePage.goto(previewUrl);
             await expect(standalonePage).toHaveTitle(finalManifest.name);
-            const teamsLink = standalonePage
-              .locator(
-                `a[href="#${finalManifest.screens.find((screen) => screen.name === 'Teams')!.id}"]`
-              )
+            const productNavigation = standalonePage
+              .getByRole('navigation', { name: 'Product screens', exact: true })
               .first();
+            if (size.width < 768) {
+              const marketingNavigationNode = findManifestNode(
+                finalManifest,
+                'Marketing Home',
+                (node) => node.resourceRef?.slug === 'minimal-top-nav'
+              );
+              const navigationToggle = standalonePage.locator(
+                `[data-node-id="${marketingNavigationNode.id}"] button[aria-controls]`
+              );
+              await expect(navigationToggle).toBeVisible();
+              await expect(navigationToggle).toHaveAccessibleName('Open navigation');
+              await navigationToggle.click();
+              await expect(navigationToggle).toHaveAttribute('aria-expanded', 'true');
+              await expect(navigationToggle).toHaveAccessibleName('Close navigation');
+              await expect(productNavigation).toBeVisible();
+            }
+            const teamsLink = productNavigation.getByRole('link', { name: 'Teams', exact: true });
             await expect(teamsLink).toBeVisible();
             await teamsLink.click();
             await expect(standalonePage.locator('.tess-screen')).toHaveAttribute(

@@ -631,8 +631,22 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
 
         await page.setViewportSize({ width: 390, height: 844 });
         await page.evaluate(() => window.scrollTo(0, 0));
-        const projectScreenNavigation = page.getByRole('navigation', { name: 'Product screens' }).first();
+        const exportedNavigationNode = page.locator('[data-node-id="node-nav"]');
+        const projectScreenNavigation = exportedNavigationNode.getByRole('navigation', { name: 'Product screens' });
+        const projectNavigationToggle = exportedNavigationNode.locator('button[aria-controls]');
+        expect(await projectNavigationToggle.getAttribute('aria-label')).toBe('Open navigation');
+        expect(await projectNavigationToggle.isVisible(), 'mobile exported navigation should expose its collapse toggle').toBe(true);
+        expect(await projectScreenNavigation.getByRole('link', { name: 'Workspace 1', exact: true }).isVisible()).toBe(false);
+        await projectNavigationToggle.click();
+        expect(await projectNavigationToggle.getAttribute('aria-expanded')).toBe('true');
+        expect(await projectNavigationToggle.getAttribute('aria-label')).toBe('Close navigation');
         expect(await projectScreenNavigation.getByRole('link', { name: 'Workspace 1', exact: true }).isVisible()).toBe(true);
+        await page.keyboard.press('Escape');
+        expect(await projectNavigationToggle.getAttribute('aria-expanded')).toBe('false');
+        expect(await projectScreenNavigation.getByRole('link', { name: 'Workspace 1', exact: true }).isVisible()).toBe(false);
+        expect(await projectNavigationToggle.evaluate((element) => element.ownerDocument.activeElement === element)).toBe(true);
+        await projectNavigationToggle.click();
+        expect(await projectNavigationToggle.getAttribute('aria-expanded')).toBe('true');
         const afterNavigationScreenshot = path.resolve(
           process.cwd(),
           'quality/evidence/step-24/after/standalone-export-navigation-mobile-390.png'

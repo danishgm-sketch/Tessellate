@@ -232,6 +232,14 @@ for (const fixture of listFixtures) {
     const iframe = page.locator('iframe[title$=" live preview"]');
     const frame = page.frameLocator('iframe[title$=" live preview"]');
     await expect(frame.locator('.tess-screen')).toHaveCount(1);
+    if (fixture.slug === 'minimal-top-nav') {
+      const navigationToggle = frame.locator('button[aria-controls]');
+      await expect(navigationToggle).toBeVisible();
+      await expect(navigationToggle).toHaveAccessibleName('Open navigation');
+      await navigationToggle.click();
+      await expect(navigationToggle).toHaveAttribute('aria-expanded', 'true');
+      await expect(navigationToggle).toHaveAccessibleName('Close navigation');
+    }
     await expect(frame.getByText(fixture.defaultMarker, { exact: true })).toBeVisible();
     const screenshots = [await recordCapture(page, fixture.slug, 'before')];
 
