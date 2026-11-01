@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. The overall product hardening programme remains incomplete.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -19027,7 +19027,8 @@
       ],
       "console": [],
       "network": [
-        "The public v69 browser regression recorded no failed requests or HTTP errors. The local passing production-equivalent run recorded 64 successful HTTP responses."
+        "The public v69 browser regression recorded no failed requests or HTTP errors. The local passing production-equivalent run recorded 64 successful HTTP responses.",
+        "Public v70 persisted-project recheck recorded 68 successful responses, zero failed requests, and zero HTTP errors."
       ],
       "screenshot": "quality/evidence/step-49/canvas-toolbar-occlusion/before/deployed-v69-persisted-1440.png",
       "rootCause": "WorkbenchCanvas absolutely positioned the z-20 CanvasToolbar over the same overflow:auto element that scrolls the project. Tall project content could pass behind the toolbar because the scroll area did not reserve a control row. Independently, Gold renderer chunks suspended individual nodes, so cold-load placeholders could expand into full-height sections after the first paint.",
@@ -19036,14 +19037,30 @@
         "tests/e2e/workbench-canvas-toolbar-clearance-step-49.spec.ts"
       ],
       "remediation": "Make the canvas root a clipped flex column, put the preview in its own min-height-zero scroll area, and render CanvasToolbar in a reserved nonshrinking row after that area. Preload only the active screen's Gold resource modules through shared preloadable registry entries and expose a truthful loading status until they settle. Preserve deselection when the user clicks canvas background. Add regressions using the exact persisted project observed on the deployed Site, including scroll-to-CTA reachability and delayed cold-load layout stability.",
-      "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
+      "fixCommit": "3916b7eead3455a91a33d3cd6694a30c4a5cc659",
+      "status": "closed-deployed-verified",
       "initialDeployedObservation": {
         "siteVersion": 69,
         "viewport": "1440x900",
-        "canvas": { "x": 280, "y": 89, "width": 820, "height": 747 },
-        "toolbar": { "x": 299.9375, "y": 777.34375, "width": 780.125, "height": 42.65625 },
-        "target": { "label": "Meet your team", "x": 361, "y": 781, "width": 141.421875, "height": 40 },
+        "canvas": {
+          "x": 280,
+          "y": 89,
+          "width": 820,
+          "height": 747
+        },
+        "toolbar": {
+          "x": 299.9375,
+          "y": 777.34375,
+          "width": 780.125,
+          "height": 42.65625
+        },
+        "target": {
+          "label": "Meet your team",
+          "x": 361,
+          "y": 781,
+          "width": 141.421875,
+          "height": 40
+        },
         "overlapHeight": 39,
         "consoleErrors": 0,
         "uncaughtExceptions": 0,
@@ -19067,9 +19084,116 @@
           "quality/evidence/step-49/workbench-load-stability/preloadable-registry/after-sites-chromium.png"
         ]
       },
-      "deployedVerification": null
+      "deployedVerification": {
+        "siteVersion": 70,
+        "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_5fa0ea06d024819192886185d5ba0628",
+        "deploymentId": "appgdep_6ae73db4c4548191bc644089eb1d8d83",
+        "deployedAt": "2026-11-01T13:25:38.000871Z",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "canonicalCommitSha": "3916b7eead3455a91a33d3cd6694a30c4a5cc659",
+        "sitesSourceCommitSha": "ba8a446b055443473bb062020c72c6ace8636039",
+        "persistedProjectId": "local-56865601-c583-4347-ab1b-e6f3f50b59a9",
+        "desktop": {
+          "route": "/workbench?project=local-56865601-c583-4347-ab1b-e6f3f50b59a9#screen-marketing-home",
+          "viewport": "1440x900",
+          "target": {
+            "x": 361,
+            "y": 413,
+            "width": 141.421875,
+            "height": 40
+          },
+          "toolbar": {
+            "x": 299.9375,
+            "y": 785.34375,
+            "width": 780.125,
+            "height": 42.65625
+          },
+          "previewScrollArea": {
+            "top": 89,
+            "bottom": 777.34375
+          },
+          "targetFullyVisible": true,
+          "targetOverlapsToolbar": false,
+          "overlappingTargets": [],
+          "documentOverflow": false
+        },
+        "tablet": {
+          "viewport": "1024x768",
+          "target": {
+            "x": 329,
+            "y": 235,
+            "width": 141.421875,
+            "height": 40
+          },
+          "toolbar": {
+            "left": 288,
+            "right": 676,
+            "top": 600.03125,
+            "bottom": 696,
+            "width": 388
+          },
+          "toolbarWithinCanvas": true,
+          "targetFullyVisible": true,
+          "targetOverlapsToolbar": false,
+          "documentOverflow": false
+        },
+        "coldLoad": {
+          "repeatedPasses": 5,
+          "delayedChunks": [
+            "TopToolbar",
+            "CommandBar"
+          ],
+          "delayMs": 1200,
+          "toolbarMovementPx": 0,
+          "capturedCLS": 0.01986111111111111,
+          "consoleErrors": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "mobileSmoke": {
+          "viewport": "390x844",
+          "exactFlagshipBrief": true,
+          "workbenchShell": {
+            "width": 390,
+            "height": 844
+          },
+          "documentWidth": 390,
+          "navigationHeight": 64,
+          "inspectedTabs": [
+            "Preview",
+            "Pages",
+            "Inspect",
+            "Command",
+            "Audit"
+          ],
+          "consoleErrors": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "network": {
+          "successfulResponses": 68,
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "sitesBindings": {
+          "d1": false,
+          "r2": false
+        },
+        "evidence": [
+          "quality/evidence/step-49/canvas-toolbar-occlusion/deployed-v70/sites-chromium-1440-cta-visible.png",
+          "quality/evidence/step-49/canvas-toolbar-occlusion/deployed-v70/sites-chromium-1024-cta-visible.png",
+          "quality/evidence/step-49/canvas-toolbar-occlusion/deployed-v70/sites-chromium.json",
+          "quality/evidence/step-49/workbench-load-stability/deployed-v70/sites-chromium.json",
+          "quality/evidence/step-49/workbench-load-stability/deployed-v70/before-sites-chromium.png",
+          "quality/evidence/step-49/workbench-load-stability/deployed-v70/after-sites-chromium.png",
+          "quality/evidence/step-49/canvas-toolbar-occlusion/deployed-v70/mobile/workbench-fundamentals-sites-mobile-chromium.png",
+          "quality/evidence/step-49/canvas-toolbar-occlusion/deployed-v70/mobile/workbench-fundamentals-sites-mobile-chromium.json"
+        ]
+      }
     }
   ],
-  "generatedAt": "2026-11-01T10:50:00Z",
-  "latestDeploymentEvidence": "quality/evidence/step-49/canvas-toolbar-occlusion/before/deployed-v69-persisted-1440.json"
+  "generatedAt": "2026-11-01T13:28:15Z",
+  "latestDeploymentEvidence": "quality/evidence/step-49/canvas-toolbar-occlusion/deployed-v70/sites-chromium.json"
 }
