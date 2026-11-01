@@ -72,7 +72,18 @@ test('saved IndexedDB projects reopen when localStorage reads are unavailable', 
       return originalGetItem.call(this, key);
     };
   })();`);
-  await page.goto(projectUrl);
+  // Reload the current project so the newly registered init script runs before
+  // Workbench reads the local recovery journal.
+  await page.reload();
+  expect(await page.evaluate(() => {
+    try {
+      localStorage.getItem('tessellate_active_project');
+      return false;
+    } catch (error) {
+      return error instanceof DOMException && error.name === 'SecurityError';
+    }
+  })).toBe(true);
+  await expect(page).toHaveURL(projectUrl);
 
   const failureHeading = page.getByRole('heading', { name: 'Local project needs attention' });
   await Promise.race([

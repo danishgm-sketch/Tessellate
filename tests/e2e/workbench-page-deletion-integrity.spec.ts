@@ -173,7 +173,7 @@ test('a quota-failed recovery journal cannot replace a newer local database save
   const initial = await exportManifest(page, `aud378-before-quota-${testInfo.project.name}.tess.json`);
   await page.goto(`/workbench?project=${encodeURIComponent(initial.id)}`);
   await expect(page.getByTestId('top-toolbar')).toBeVisible();
-  await expect(page).toHaveURL(new RegExp(`[?&]project=${initial.id}$`));
+  await expect.poll(() => new URL(page.url()).searchParams.get('project')).toBe(initial.id);
   if (mobile) {
     await page.getByRole('navigation', { name: 'Mobile Workbench' }).getByRole('button', { name: 'Inspect', exact: true }).click();
   }
