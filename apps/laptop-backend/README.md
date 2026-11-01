@@ -55,6 +55,14 @@ requests without mutating the project. Existing recognized deterministic command
 and browser-local editing remain available. Unsupported prompts never silently
 recompose a project. Stopping Docker makes backend features unavailable.
 
+The API container healthcheck allows 40 seconds for startup and requires six
+consecutive failed health probes before requesting recovery. It can restart only
+its own container, at most three times in a rolling hour, with the attempt budget
+stored in the existing local data volume. If the budget cannot be verified or is
+exhausted, Docker keeps the API unhealthy and host-dependent features remain
+unavailable until service is restored. This is local recovery only; it does not
+configure a public tunnel or make the Sites backend available.
+
 Run `node scripts/verify-laptop-backend.mjs` for real Docker persistence, inference,
 authorization and outage checks. It briefly pauses/restarts only Tessellate's
 containers and restores them. Safe results are in `evidence/docker-runtime.json`.

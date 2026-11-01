@@ -645,3 +645,14 @@ documented and covered by header and browser tests.
 **Security and compatibility impact:** Closes the reported filesystem traversal and resource-amplification advisories without changing Tessellate's application runtime, architecture, or supported Node versions. The CLI, ingestion, linter, dependency audit, and repository quality checks must pass against the updated frozen lockfile before publication.
 **Evidence:** GitHub Actions run 41153302233 on PR head `bb064ce4c327e4777b84ef1ff4d8c333774358db` failed its `pnpm audit:all` step with GHSA-g3hv-75wg-m249 and GHSA-3g3m-2fjr-6pw4. Local `pnpm audit` reproduced both advisories before the update. After-fix results are recorded in `quality/evidence/step-48/security/dependency-audit-2026-10-31.json`.
 **Status:** Implemented; automated and deployed review verification pending.
+
+### D-066 — Bound recovery of an unresponsive laptop API
+
+**Date:** 2026-11-01
+**Context:** AUD-448 reproduced a local Docker state where the API process remained running after its health endpoint stopped responding. Docker marked the container unhealthy but `restart: unless-stopped` did not restart it, leaving the host heartbeat stale.
+**Decision:** Keep the existing laptop API, local D1 volume, and optional worker topology. The API healthcheck waits through the existing startup grace period, requires six consecutive failures, records attempts in the existing local `/data` volume, then sends SIGTERM only to PID 1 in its own container so Docker's existing restart policy can recover it. Limit automatic attempts to three in any rolling hour. If the recovery budget is unreadable, unwritable, or exhausted, do not restart; keep the API unhealthy so host-dependent features fail closed. No new service, tunnel, database, secret, or paid infrastructure is added.
+**Alternatives rejected:** Treating Docker `unhealthy` as self-restarting; unbounded restart loops; privileged host Docker-socket watchdog; external monitoring or tunnel.
+**Cost impact:** £0 additional; uses the existing container and D1 persistence volume.
+**Security impact:** The healthcheck runs as the existing unprivileged container user, signals only its own container, stores only bounded timestamps locally, and never reads provider secrets. No CSP, API authentication, or preview-isolation policy changes.
+**Evidence:** `apps/laptop-backend/healthcheck.test.ts`, `quality/evidence/step-37/aud448-docker-recovery.mjs`, and `quality/evidence/step-37/aud448-docker-recovery.json`. The deterministic test reproduces a single unhealthy episode and confirms one restart leads to a healthy second boot. The initiating reason for the original Wrangler failure remains unknown.
+**Status:** Implemented and verified in a disposable local Docker container; live laptop services remain available.

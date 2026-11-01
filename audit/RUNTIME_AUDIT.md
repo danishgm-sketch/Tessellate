@@ -5133,15 +5133,15 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Deployed verification:** On public v71 desktop and mobile, the visible Workbench Undo control was exercised while localStorage journal writes threw QuotaExceededError. The prior Design DNA value survived Undo and reload; no console errors, exceptions, failed requests, or HTTP errors occurred. Evidence: `quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud447-quota-undo/`.
 - **Verification status:** closed-deployed-verified on public v71; exact-head CI is recorded in the current release checkpoint above.
 
-### AUD-448 — Laptop API and host containers remained running but unhealthy
+### AUD-448 — Laptop API could remain running but unhealthy
 
 - **Severity:** MEDIUM
-- **Evidence:** Local pre/post restart health, heartbeat age, and redacted log-signature counts are recorded in quality/evidence/step-37/docker-service-recovery-2026-11-01.json.
-- **Reproduction:** The API container showed running/unhealthy while GET http://127.0.0.1:8788/health failed. The host container showed running/unhealthy with a heartbeat older than 29 hours. Restarting the existing API container restored HTTP 200 and healthy status; restarting the dependent host restored a fresh heartbeat and healthy status.
-- **Root cause:** The proximate failure is confirmed: the API health endpoint was unreachable while Docker kept its container running, which left the host heartbeat stale. The initiating reason the API stopped serving is unknown. The available Docker logs contained no classified error signature.
-- **Affected code/configuration:** compose.laptop.yaml, apps/laptop-backend/start.sh, apps/host-daemon/daemon.py.
-- **Remediation:** Investigate and reproduce the Wrangler API unresponsive state. Add a bounded recovery mechanism only if a deterministic test proves the failure mode; continue to surface host features as unavailable whenever health or heartbeat is stale.
-- **Verification status:** Service recovered on the laptop; root-cause fix remains open.
+- **Evidence:** The original laptop recovery is in `quality/evidence/step-37/docker-service-recovery-2026-11-01.json`. The pre-fix control and post-fix isolated Docker run are in `quality/evidence/step-37/aud448-docker-recovery.json`.
+- **Reproduction:** Before the fix, run a long-lived process with a failing healthcheck under `restart: unless-stopped`; Docker reports `running/unhealthy` and `restartCount=0`. Then run `node quality/evidence/step-37/aud448-docker-recovery.mjs`: the same local API image mounts the new healthcheck, its test endpoint returns 503 on first boot and 200 on second boot, and the container recovers after exactly one restart.
+- **Root cause:** The initiating reason Wrangler stopped serving during the original incident is unknown. The recovery defect is confirmed: Docker healthchecks report state but do not restart an otherwise-running container. `unless-stopped` only takes effect after process exit, so the prior healthcheck could not recover a stuck API; the host heartbeat then expired.
+- **Affected code/configuration:** `compose.laptop.yaml`, `apps/laptop-backend/start.sh`, `apps/laptop-backend/healthcheck.mjs`, `apps/laptop-backend/healthcheck.test.ts`.
+- **Remediation:** After six consecutive failed probes and a 40-second startup grace period, the API healthcheck records a restart attempt in the existing local data volume and signals only its own container. Automatic recovery is capped at three attempts per rolling hour. If the budget is unreadable, unwritable or exhausted, the API remains unhealthy; host-dependent features continue to show unavailable.
+- **Verification status:** `fixed-local-verified` by five policy tests, a real disposable Docker recovery run, and activation on the existing laptop API container. The active API reports healthy and returns HTTP 200; its existing data volume and read-only secret mount are preserved, and the host heartbeat remains fresh. No live-service fault injection was performed.
 
 ### AUD-449 — Minimal Top Navigation did not collapse at mobile widths
 
