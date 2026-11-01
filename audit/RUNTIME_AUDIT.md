@@ -4606,12 +4606,15 @@ AUD-387 remains fixed-local-verified: it concerns inherited project metadata in 
 ## AUD-407 — Partner-name strip arrow-key scrolling varied by browser
 
 - **Severity:** Medium (accessibility)
-- **Evidence:** GitHub Actions Linux Chromium on the Sites Worker rendered a 1635px strip inside a 716px region, but ten ArrowRight presses left `scrollLeft` at 0. The public v64 Windows Chromium route returned HTTP 200, focused the region, and moved only 25px over ten presses. The live run recorded no console errors, uncaught exceptions, failed requests, or HTTP errors.
+- **Evidence:** GitHub Actions Linux Chromium on the Sites Worker rendered a 1635px strip inside a 716px region, but ten ArrowRight presses left `scrollLeft` at 0. The public v64 Windows Chromium route returned HTTP 200, focused the region, and moved only 25px over ten presses. On public v65, the same regression passed in Chromium at 1440×900 and 390×844: ten ArrowRight presses moved 919px and 1003px respectively, the final label was reachable, and ArrowLeft reversed movement. Both live runs recorded no browser console errors or warnings, uncaught exceptions, failed requests, or HTTP errors.
 - **Before screenshot:** `audit/evidence/deployed-v64-2026-10-31/logo-marquee-keyboard/before-arrow-navigation.png`
 - **Deployed v64 baseline after native keypresses (before fix):** `audit/evidence/deployed-v64-2026-10-31/logo-marquee-keyboard/after-arrow-navigation.png`
-- **Fixed local Sites Worker screenshot:** `quality/evidence/step-39/after/logo-cloud-marquee-keyboard-desktop.png`
+- **Deployed v65 desktop before/after interaction:** `audit/evidence/deployed-v65-2026-11-01/logo-marquee-keyboard/logo-cloud-marquee-desktop.png`, `audit/evidence/deployed-v65-2026-11-01/logo-marquee-keyboard/logo-cloud-marquee-keyboard-desktop.png`
+- **Deployed v65 mobile before/after interaction:** `audit/evidence/deployed-v65-2026-11-01/logo-marquee-keyboard/logo-cloud-marquee-mobile.png`, `audit/evidence/deployed-v65-2026-11-01/logo-marquee-keyboard/logo-cloud-marquee-keyboard-mobile.png`
+- **Machine-readable live evidence:** `audit/evidence/deployed-v65-2026-11-01/logo-marquee-keyboard/runtime.json`
 - **Reproduction:** Open `/r/logo-cloud-marquee/` at 1440×900, focus “Partner names, horizontally scrollable,” and press ArrowRight ten times. Browser-native overflow scrolling differed across environments.
 - **Root cause:** The region was focusable but delegated horizontal keyboard movement to browser defaults, which varied in step size and whether they moved at all.
 - **Affected code:** `resources/sections/logo-cloud-marquee/index.tsx`, generated Site resource JSON, and generated standalone Gold source.
-- **Remediation:** Added explicit 120px ArrowLeft/ArrowRight scrolling and regression assertions for both directions. The production-equivalent local Sites Worker test now passes with a substantial forward movement and reverse movement; the fixed local screenshot shows the keyboard reached later labels. The deployed baseline remains v64 until the fixed version is published.
-- **Status:** Fixed locally; awaiting the fixed public Site deployment for closure.
+- **Remediation:** Added explicit 120px ArrowLeft/ArrowRight scrolling and regression assertions for both directions. The same Playwright regression now passes against the public deployment at desktop and mobile sizes. The browser evidence records empty console-error/warning, uncaught-exception, failed-request, and HTTP-error collections.
+- **Deployment:** Public Site v65, version `appgprj_6acc036de8cc8191a823339566972d85~appgver_051d73cc16f8819183aae75a6aec3494`, built from canonical commit `c554d43970c4ae2be00e40d9bd7977f9cfe57be0` and Sites artifact source commit `25434a3c0356cf678161f76c7ccba5c50fe4ca71`.
+- **Status:** Closed after deployed verification on both viewports.

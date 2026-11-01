@@ -1,0 +1,64 @@
+{
+  "capturedAt": "2026-11-01T00:07:45.9686195Z",
+  "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": 65,
+  "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_051d73cc16f8819183aae75a6aec3494",
+  "deploymentId": "appgdep_6ae6826a37fc8191a530bdda4de0a217",
+  "canonicalCommit": "c554d43970c4ae2be00e40d9bd7977f9cfe57be0",
+  "siteSourceCommit": "25434a3c0356cf678161f76c7ccba5c50fe4ca71",
+  "route": "/r/logo-cloud-marquee/",
+  "result": "PASS",
+  "desktop": {
+    "viewport": "1440x900",
+    "status": 200,
+    "geometry": {
+      "clientWidth": 716,
+      "scrollWidth": 1635,
+      "trackLeft": 24,
+      "firstLeft": 24,
+      "firstClipped": false,
+      "hasHorizontalScroll": true
+    },
+    "arrowRightScrollLeft": 919,
+    "lastLabelVisible": true,
+    "arrowLeft": "PASS: scrollLeft decreased from the end position",
+    "runtime": {
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshots": [
+      "audit/evidence/deployed-v65-2026-11-01/logo-marquee-keyboard/logo-cloud-marquee-desktop.png",
+      "audit/evidence/deployed-v65-2026-11-01/logo-marquee-keyboard/logo-cloud-marquee-keyboard-desktop.png"
+    ]
+  },
+  "mobile": {
+    "viewport": "390x844",
+    "status": 200,
+    "geometry": {
+      "clientWidth": 274,
+      "scrollWidth": 1277,
+      "trackLeft": 24,
+      "firstLeft": 24,
+      "firstClipped": false,
+      "hasHorizontalScroll": true
+    },
+    "arrowRightScrollLeft": 1003,
+    "lastLabelVisible": true,
+    "arrowLeft": "PASS: scrollLeft decreased from the end position",
+    "runtime": {
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshots": [
+      "audit/evidence/deployed-v65-2026-11-01/logo-marquee-keyboard/logo-cloud-marquee-mobile.png",
+      "audit/evidence/deployed-v65-2026-11-01/logo-marquee-keyboard/logo-cloud-marquee-keyboard-mobile.png"
+    ]
+  },
+  "test": "resource-copy-truthfulness-step-39.spec.ts: logo marquee defaults are not presented as real customer or partner wordmarks"
+}

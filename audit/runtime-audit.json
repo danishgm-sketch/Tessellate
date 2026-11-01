@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports.",
   "entries": [
     {
       "id": "AUD-001",
@@ -18194,7 +18194,9 @@
       "beforeScreenshots": [
         "audit/evidence/deployed-v64-2026-10-31/logo-marquee-keyboard/before-arrow-navigation.png"
       ],
-      "localAfterScreenshots": ["quality/evidence/step-39/after/logo-cloud-marquee-keyboard-desktop.png"],
+      "localAfterScreenshots": [
+        "quality/evidence/step-39/after/logo-cloud-marquee-keyboard-desktop.png"
+      ],
       "rootCause": "The resource exposed a focusable overflow region but relied on browser-native arrow-key scrolling. The amount and behavior were inconsistent across browser environments.",
       "affectedFiles": [
         "resources/sections/logo-cloud-marquee/index.tsx",
@@ -18203,17 +18205,32 @@
         "tests/e2e/resource-copy-truthfulness-step-39.spec.ts"
       ],
       "remediation": "Handle ArrowLeft and ArrowRight explicitly with a 120px scrollBy step, and test forward and reverse movement. Regenerate the runtime resource and standalone Gold source snapshots from the canonical component.",
-      "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
+      "fixCommit": "c554d43970c4ae2be00e40d9bd7977f9cfe57be0",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "evidence": [
           "quality/evidence/step-39/after/logo-cloud-marquee-desktop.json",
           "audit/evidence/deployed-v64-2026-10-31/logo-marquee-keyboard/runtime.json"
         ],
         "result": "Production-equivalent Sites Worker Playwright regression passed after the explicit handler was added. Ten ArrowRight presses advanced to scrollLeft 919; ArrowLeft moved back from the end. Build, lint and typecheck passed."
+      },
+      "deployedVerification": {
+        "siteVersion": 65,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_051d73cc16f8819183aae75a6aec3494",
+        "deploymentId": "appgdep_6ae6826a37fc8191a530bdda4de0a217",
+        "canonicalCommit": "c554d43970c4ae2be00e40d9bd7977f9cfe57be0",
+        "siteSourceCommit": "25434a3c0356cf678161f76c7ccba5c50fe4ca71",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "result": "PASS",
+        "evidence": "audit/evidence/deployed-v65-2026-11-01/logo-marquee-keyboard/runtime.json",
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+        "details": "Public route returned 200 on both viewports. ArrowRight advanced 919px desktop and 1003px mobile after ten key presses; the final label was reachable and ArrowLeft reversed movement. Browser console errors and warnings, uncaught exceptions, failed requests, and HTTP errors were empty."
       }
     }
   ],
-  "generatedAt": "2026-10-31T23:18:28.125Z",
+  "generatedAt": "2026-11-01T00:08:28.475Z",
   "latestDeploymentEvidence": "audit/evidence/deployed-v64-2026-10-31/deployed-smoke.json"
 }
