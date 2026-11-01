@@ -31,6 +31,7 @@ type RouteEvidence = {
   consoleWarnings: string[];
   uncaughtExceptions: string[];
   failedRequests: string[];
+  navigationAborts: string[];
   httpErrors: Array<{ status: number; url: string }>;
   axe?: { violations: Array<{ id: string; impact: string | null; description: string }>;
     incomplete: Array<{ id: string; impact: string | null }>;
@@ -46,6 +47,10 @@ test('public routes and core accessibility remain clean in the deployed Site', a
   const all: RouteEvidence[] = [];
   let current: RouteEvidence | undefined;
   let axeConsole: string[] | undefined;
+  const requestOwners = new WeakMap<import('@playwright/test').Request, RouteEvidence>();
+  page.on('request', (request) => {
+    if (current) requestOwners.set(request, current);
+  });
   page.on('console', (message) => {
     if (!current) return;
     if (message.type() === 'error') {
@@ -55,18 +60,29 @@ test('public routes and core accessibility remain clean in the deployed Site', a
     if (message.type() === 'warning') current.consoleWarnings.push(message.text());
   });
   page.on('pageerror', (error) => current?.uncaughtExceptions.push(error.message));
-  page.on('requestfailed', (request) => current?.failedRequests.push(
-    `${request.method()} ${request.url()} ${request.failure()?.errorText ?? ''}`
-  ));
+  page.on('requestfailed', (request) => {
+    const owner = requestOwners.get(request);
+    const target = owner ?? current;
+    const failure = request.failure()?.errorText ?? '';
+    const description = `${request.method()} ${request.url()} ${failure}`;
+    if (failure === 'net::ERR_ABORTED' && owner && owner !== current) {
+      owner.navigationAborts.push(`${description} (next route: ${current?.route ?? 'unknown'})`);
+      return;
+    }
+    target?.failedRequests.push(description);
+  });
   page.on('response', (response) => {
-    if (response.status() >= 400) current?.httpErrors.push({ status: response.status(), url: response.url() });
+    if (response.status() >= 400) {
+      const owner = requestOwners.get(response.request());
+      (owner ?? current)?.httpErrors.push({ status: response.status(), url: response.url() });
+    }
   });
 
   for (const route of routes) {
     current = {
       route, url: '', viewport, status: null, title: '', headings: [], bodyCharacters: 0,
       overflow: false, documentWidth: 0, viewportWidth: 0, consoleErrors: [], consoleWarnings: [],
-      uncaughtExceptions: [], failedRequests: [], httpErrors: [], screenshot: '',
+      uncaughtExceptions: [], failedRequests: [], navigationAborts: [], httpErrors: [], screenshot: '',
     };
     const response = await page.goto(route, { waitUntil: 'load' });
     current.status = response?.status() ?? null;
@@ -107,6 +123,7 @@ test('public routes and core accessibility remain clean in the deployed Site', a
       consoleErrors: all.reduce((n, entry) => n + entry.consoleErrors.length, 0),
       uncaughtExceptions: all.reduce((n, entry) => n + entry.uncaughtExceptions.length, 0),
       failedRequests: all.reduce((n, entry) => n + entry.failedRequests.length, 0),
+      navigationAborts: all.reduce((n, entry) => n + entry.navigationAborts.length, 0),
       badResponses: all.reduce((n, entry) => n + entry.httpErrors.length, 0),
       overflow: all.filter((entry) => entry.overflow).length,
       axeScans: all.filter((entry) => entry.axe).length,
