@@ -20167,33 +20167,54 @@
       "route": "local laptop Docker runtime",
       "viewport": "local Docker",
       "category": "runtime",
-      "title": "API and host containers remained running but unhealthy until manually restarted",
+      "title": "Laptop API could remain running but unhealthy",
       "expected": "When the laptop Docker services are started, the API should serve its health endpoint and the worker should maintain a current heartbeat; unhealthy state should recover safely or remain clearly unavailable.",
-      "actual": "Docker showed both Tessellate containers as running but unhealthy. The API health endpoint failed locally and the host heartbeat was over 29 hours old. Restarting only the existing API container restored HTTP 200 and healthy status; restarting the dependent host restored a fresh heartbeat and healthy status. The initiating API failure is unknown.",
+      "actual": "The initiating Wrangler failure remains unknown. A deterministic pre-fix Docker reproduction showed a long-running process could remain running/unhealthy with restartCount=0 under unless-stopped. The bounded healthcheck recovered a disposable container after one restart and is active in tessellate-laptop-api-1. The API returned HTTP 200 and healthy status; the existing /data volume and read-only secret mount remained attached, and the existing host stayed healthy with a fresh heartbeat.",
       "reproduction": [
         "Inspect Docker status for tessellate-laptop-api-1 and tessellate-laptop-host-1.",
         "Before recovery, GET http://127.0.0.1:8788/health failed and the host heartbeat exceeded the 20-second health threshold.",
-        "Restart the API container without rebuilding, wait for its health check, then restart the host container.",
-        "After recovery, the API health request returns HTTP 200 and both containers report healthy."
+        "Run node quality/evidence/step-37/aud448-docker-recovery.mjs. The pre-fix control remains running/unhealthy with restartCount=0; the isolated post-fix container recovers after one restart.",
+        "Rebuild only the existing API service from compose.laptop.yaml; verify its bounded healthcheck is active, GET /health returns HTTP 200, the /data volume and read-only secret mount are preserved, and the host heartbeat remains fresh."
       ],
       "console": [],
       "network": [
-        "Before recovery: GET http://127.0.0.1:8788/health failed with fetch failed. After API restart: HTTP 200."
+        "Before recovery, GET http://127.0.0.1:8788/health failed. After the API-only update: HTTP 200."
       ],
       "screenshot": null,
-      "rootCause": "The API health endpoint was unreachable while Docker kept its container running; the worker heartbeat then expired because it could not maintain API contact. Docker restart policy does not restart a still-running unhealthy container. The initiating reason the API server became unresponsive is not established.",
+      "rootCause": "The initial reason Wrangler stopped serving is unknown. The deterministic recovery defect is confirmed: a Docker healthcheck reports unhealthy state but restart: unless-stopped does not restart a still-running process. The previous probe could not recover that class of failure; the host heartbeat then expired.",
       "affectedFiles": [
         "compose.laptop.yaml",
         "apps/laptop-backend/start.sh",
-        "apps/host-daemon/daemon.py"
+        "apps/laptop-backend/healthcheck.mjs",
+        "apps/laptop-backend/healthcheck.test.ts"
       ],
-      "remediation": "Investigate why the local Wrangler API stopped serving while its container remained running. Add a bounded recovery mechanism only after a deterministic fault-injection regression proves the failure mode; keep all host-dependent features unavailable while health or heartbeat is stale.",
-      "fixCommit": null,
-      "status": "open",
+      "remediation": "After six consecutive failed health probes beyond startup grace, the local API healthcheck records an attempt in the persistent local data volume and signals only its own container to restart. Recovery is capped at three attempts per rolling hour; if the budget cannot be read/written or is exhausted, the API remains unhealthy and host-dependent features remain unavailable. The change introduces no tunnel, cloud binding, secret, or paid service.",
+      "fixCommit": "7cc32b3fdb483821ce78ac48806ccf76cc8d2122",
+      "status": "fixed-local-verified",
       "evidence": {
-        "runtime": "quality/evidence/step-37/docker-service-recovery-2026-11-01.json"
+        "runtime": "quality/evidence/step-37/docker-service-recovery-2026-11-01.json",
+        "regression": "quality/evidence/step-37/aud448-docker-recovery.mjs",
+        "dockerRun": "quality/evidence/step-37/aud448-docker-recovery.json",
+        "unitTests": "apps/laptop-backend/healthcheck.test.ts"
       },
-      "deployedVerification": null
+      "deployedVerification": null,
+      "localRuntimeVerification": {
+        "apiContainer": "tessellate-laptop-api-1",
+        "apiStatus": "running",
+        "apiHealth": "healthy",
+        "apiRestartCount": 0,
+        "healthcheckCommand": [
+          "node",
+          "/app/apps/laptop-backend/healthcheck.mjs"
+        ],
+        "apiHttpStatus": 200,
+        "hostContainer": "tessellate-laptop-host-1",
+        "hostHealth": "healthy",
+        "hostHeartbeatAgeSeconds": 4.3,
+        "dataVolumePreserved": true,
+        "readOnlySecretMountPreserved": true,
+        "scope": "API service rebuilt; host was not recreated"
+      }
     },
     {
       "id": "AUD-449",
