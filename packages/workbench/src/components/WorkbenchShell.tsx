@@ -17,9 +17,17 @@ const BlendModal = lazy(() => import('./blend/BlendModal.js').then((module) => (
 const ReplaceDrawer = lazy(() => import('./replace/ReplaceDrawer.js').then((module) => ({ default: module.ReplaceDrawer })));
 const AuditPanel = lazy(() => import('./audit/AuditPanel.js').then((module) => ({ default: module.AuditPanel })));
 
-function LoadingEditorPart({ label = 'Loading Workbench controls…', tone = 'adaptive' }: { label?: string; tone?: 'adaptive' | 'dark' }) {
+function LoadingEditorPart({
+  label = 'Loading Workbench controls…',
+  tone = 'adaptive',
+  className = 'h-full min-h-12',
+}: {
+  label?: string;
+  tone?: 'adaptive' | 'dark';
+  className?: string;
+}) {
   const toneClassName = tone === 'dark' ? 'text-[#A8AFBA]' : 'text-[#62666F] dark:text-[#A8AFBA]';
-  return <div role="status" className={`flex h-full min-h-12 items-center justify-center px-4 py-3 text-xs ${toneClassName}`}>{label}</div>;
+  return <div role="status" className={`flex items-center justify-center px-4 py-3 text-xs ${toneClassName} ${className}`}>{label}</div>;
 }
 
 export function WorkbenchShell() {
@@ -364,7 +372,7 @@ export function WorkbenchShell() {
     >
       <a href="#workbench-main" className="sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:not-sr-only focus:bg-white focus:px-3 focus:py-2 focus:text-[#111217] focus:outline-2 focus:outline-offset-2 focus:outline-[#6782FF]">Skip to editor</a>
       {/* 56px Top Toolbar */}
-      <Suspense fallback={<LoadingEditorPart label="Loading the Workbench toolbar…" tone="dark" />}><TopToolbar historySaveStatus={historySaveStatus} /></Suspense>
+      <Suspense fallback={<LoadingEditorPart label="Loading the Workbench toolbar…" tone="dark" className="min-h-14 shrink-0" />}><TopToolbar historySaveStatus={historySaveStatus} /></Suspense>
       {storageWarning && (
         <div role="status" aria-live="polite" data-testid="storage-warning" className="border-b border-amber-500/30 bg-amber-950/40 px-4 py-2 text-xs text-amber-100">
           {storageWarning}
@@ -375,15 +383,15 @@ export function WorkbenchShell() {
       <main id="workbench-main" tabIndex={-1} aria-label="Workbench editor" className="relative flex flex-1 overflow-hidden">
         <h1 className="sr-only">Workbench: {projectName}</h1>
         {/* Left Panel (280px) */}
-        <Suspense fallback={<LoadingEditorPart label="Loading project structure…" tone="dark" />}><LeftPanel /></Suspense>
+        <Suspense fallback={<LoadingEditorPart label="Loading project structure…" tone="dark" className="h-full w-[280px] shrink-0 border-r border-[#272C34] bg-[#111419]" />}><LeftPanel /></Suspense>
 
         {/* Central Canvas or Audit Dashboard */}
         {activeMode === 'audit'
-          ? <Suspense fallback={<LoadingEditorPart label="Loading project audit…" tone="dark" />}><AuditPanel /></Suspense>
-          : <Suspense fallback={<LoadingEditorPart label="Loading the project canvas…" tone="dark" />}><WorkbenchCanvas /></Suspense>}
+          ? <Suspense fallback={<LoadingEditorPart label="Loading project audit…" tone="dark" className="relative h-full min-w-0 flex-1 overflow-hidden" />}><AuditPanel /></Suspense>
+          : <Suspense fallback={<LoadingEditorPart label="Loading the project canvas…" tone="dark" className="relative h-full w-full min-w-0 flex-1 overflow-hidden bg-[#07090C]" />}><WorkbenchCanvas /></Suspense>}
 
         {/* Right Contextual Inspector (340px) */}
-        <Suspense fallback={<LoadingEditorPart label="Loading the inspector…" tone="dark" />}><RightInspector /></Suspense>
+        <Suspense fallback={<LoadingEditorPart label="Loading the inspector…" tone="dark" className="dark h-full w-full shrink-0 border-l border-[#272C34] bg-[#111419] lg:w-[340px]" />}><RightInspector /></Suspense>
 
         {/* Advanced Modals & Drawers */}
         {isReplaceDrawerOpen && <Suspense fallback={<LoadingEditorPart label="Loading resource replacement…" tone="dark" />}><ReplaceDrawer /></Suspense>}
@@ -392,7 +400,7 @@ export function WorkbenchShell() {
       </main>
 
       {/* 64px Command Bar */}
-      <Suspense fallback={<LoadingEditorPart label="Loading project commands…" tone="dark" />}><CommandBar /></Suspense>
+      <Suspense fallback={<LoadingEditorPart label="Loading project commands…" tone="dark" className="min-h-16 shrink-0 border-t border-[#272C34] bg-[#0B0D10]" />}><CommandBar /></Suspense>
     </div>
   );
 }

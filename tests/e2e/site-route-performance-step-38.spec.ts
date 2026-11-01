@@ -77,6 +77,159 @@ test('Workbench shows a useful server-rendered status before its client bundle i
   expect(accessibility.violations, JSON.stringify(accessibility.violations)).toEqual([]);
 });
 
+test('Workbench keeps the canvas toolbar anchored while lazy panels resolve', async ({ page }, testInfo) => {
+  test.skip(
+    testInfo.project.name !== 'sites-chromium',
+    'The delayed lazy-panel geometry regression runs against the production-like Sites Worker in Chromium.'
+  );
+
+  await page.setViewportSize({ width: 1440, height: 900 });
+  const consoleErrors: string[] = [];
+  const uncaughtExceptions: string[] = [];
+  const failedRequests: Array<{ url: string; error: string | null }> = [];
+  const httpErrors: Array<{ url: string; status: number }> = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => uncaughtExceptions.push(error.message));
+  page.on('requestfailed', (request) =>
+    failedRequests.push({ url: request.url(), error: request.failure()?.errorText ?? null })
+  );
+  page.on('response', (response) => {
+    if (response.status() >= 400) httpErrors.push({ url: response.url(), status: response.status() });
+  });
+
+  await page.addInitScript(() => {
+    type LayoutShiftEntry = PerformanceEntry & {
+      value?: number;
+      hadRecentInput?: boolean;
+      sources?: Array<{
+        node?: Node | null;
+        previousRect?: { x: number; y: number; width: number; height: number };
+        currentRect?: { x: number; y: number; width: number; height: number };
+      }>;
+    };
+    const target = window as Window & {
+      __workbenchLayoutShifts?: Array<{
+        startTime: number;
+        value: number;
+        sources: Array<{
+          selector: string;
+          previousRect?: { x: number; y: number; width: number; height: number };
+          currentRect?: { x: number; y: number; width: number; height: number };
+        }>;
+      }>;
+    };
+    target.__workbenchLayoutShifts = [];
+    try {
+      new PerformanceObserver((list) => {
+        for (const rawEntry of list.getEntries()) {
+          const entry = rawEntry as LayoutShiftEntry;
+          if (entry.hadRecentInput) continue;
+          target.__workbenchLayoutShifts?.push({
+            startTime: entry.startTime,
+            value: entry.value ?? 0,
+            sources: (entry.sources ?? []).flatMap(({ node }) =>
+              node instanceof Element
+                ? [{
+                    selector: `${node.tagName.toLowerCase()}${node.id ? `#${node.id}` : ''}.${typeof node.className === 'string' ? node.className : ''}`,
+                    previousRect: entry.sources?.find((source) => source.node === node)?.previousRect,
+                    currentRect: entry.sources?.find((source) => source.node === node)?.currentRect,
+                  }]
+                : []
+            ),
+          });
+        }
+      }).observe({ type: 'layout-shift', buffered: true });
+    } catch {
+      // The assertions below report if this browser cannot measure layout shifts.
+    }
+  });
+
+  // Force the canvas to render while the fixed-height chrome is still suspended,
+  // matching the asynchronous chunk order observed in the deployed review Site.
+  for (const chunk of ['TopToolbar', 'CommandBar']) {
+    await page.route(`**/_astro/${chunk}.*.js`, async (route) => {
+      const response = await route.fetch();
+      await new Promise((resolve) => setTimeout(resolve, 1200));
+      await route.fulfill({ response });
+    });
+  }
+
+  await page.goto('/workbench');
+  const canvasToolbar = page.getByTestId('canvas-toolbar');
+  await expect(canvasToolbar).toBeVisible({ timeout: 15000 });
+  const toolbarBefore = await canvasToolbar.boundingBox();
+  expect(toolbarBefore, 'The canvas toolbar should have a measurable pre-settlement position').not.toBeNull();
+
+  const evidenceDirectory = path.resolve(process.cwd(), 'quality/evidence/step-48/workbench-load-stability');
+  await mkdir(evidenceDirectory, { recursive: true });
+  await page.screenshot({ path: path.join(evidenceDirectory, `before-${testInfo.project.name}.png`) });
+  await expect(page.getByTestId('top-toolbar')).toBeVisible({ timeout: 15000 });
+  await expect(page.getByTestId('command-bar')).toBeVisible({ timeout: 15000 });
+  await page.waitForTimeout(500);
+  const toolbarAfter = await canvasToolbar.boundingBox();
+  const layout = await page.evaluate(() => {
+    const target = window as Window & {
+      __workbenchLayoutShifts?: Array<{
+        startTime: number;
+        value: number;
+        sources: Array<{
+          selector: string;
+          previousRect?: { x: number; y: number; width: number; height: number };
+          currentRect?: { x: number; y: number; width: number; height: number };
+        }>;
+      }>;
+    };
+    const shifts = target.__workbenchLayoutShifts ?? [];
+    let sessionStart = 0;
+    let previousStart = 0;
+    let sessionTotal = 0;
+    let cls = 0;
+    for (const entry of shifts) {
+      if (sessionTotal === 0 || entry.startTime - previousStart >= 1000 || entry.startTime - sessionStart >= 5000) {
+        sessionStart = entry.startTime;
+        sessionTotal = entry.value;
+      } else {
+        sessionTotal += entry.value;
+      }
+      previousStart = entry.startTime;
+      cls = Math.max(cls, sessionTotal);
+    }
+    return { viewport: `${innerWidth}x${innerHeight}`, cls, shifts };
+  });
+  await page.screenshot({ path: path.join(evidenceDirectory, `after-${testInfo.project.name}.png`) });
+  const evidence = {
+    capturedAt: new Date().toISOString(),
+    route: page.url(),
+    delayedChunks: ['TopToolbar', 'CommandBar'],
+    delayMs: 1200,
+    viewport: layout.viewport,
+    toolbarBefore,
+    toolbarAfter,
+    toolbarMovementPx: toolbarBefore && toolbarAfter ? Math.abs(toolbarAfter.y - toolbarBefore.y) : null,
+    ...layout,
+    consoleErrors,
+    uncaughtExceptions,
+    failedRequests,
+    httpErrors,
+  };
+  const outputPath = path.join(evidenceDirectory, `${testInfo.project.name}.json`);
+  await writeFile(outputPath, `${JSON.stringify(evidence, null, 2)}\n`, 'utf8');
+  await testInfo.attach('Workbench loading geometry evidence', {
+    body: Buffer.from(JSON.stringify(evidence, null, 2)),
+    contentType: 'application/json',
+  });
+
+  expect(layout.viewport).toBe('1440x900');
+  expect(evidence.toolbarMovementPx, JSON.stringify(evidence)).toBeLessThanOrEqual(32);
+  expect(layout.cls, JSON.stringify(evidence.shifts)).toBeLessThanOrEqual(0.1);
+  expect(consoleErrors).toEqual([]);
+  expect(uncaughtExceptions).toEqual([]);
+  expect(failedRequests).toEqual([]);
+  expect(httpErrors).toEqual([]);
+});
+
 test('Explore initial catalogue render stays within the CLS budget', async ({ page }, testInfo) => {
   test.skip(
     !testInfo.project.name.startsWith('sites-'),
