@@ -18884,7 +18884,7 @@
       ],
       "remediation": "Give each lazy shell fallback the dimensions and flex behavior of the panel it replaces. Add a Sites Worker browser regression that delays the top and command-bar chunks, checks the canvas toolbar position and CLS, and records console/network failures.",
       "fixCommit": "72cbc9d60ee6fc5f0762b4ccc4dbd7942adf2859",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "initialDeployedObservation": {
         "siteVersion": 68,
         "lighthouse": {
@@ -18972,7 +18972,26 @@
           }
         }
       },
-      "deployedVerification": null,
+      "deployedVerification": {
+        "checkedAt": "2026-11-01T10:53:04.206Z",
+        "siteVersion": 69,
+        "canonicalSourceSha": "186172c56fbde731cf00902c392a907ceda8269f",
+        "sitesSourceSha": "2c9e33bccde47863f679ca693a38316babce89fe",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+        "testCommand": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/site-route-performance-step-38.spec.ts --grep 'Workbench keeps the canvas toolbar anchored' --project=sites-chromium --workers=1",
+        "result": "The delayed TopToolbar and CommandBar chunks were each held for 1.2 seconds. Public v69 retained the same toolbar position throughout loading. CLS remained below the 0.1 threshold, with no browser errors or failed requests.",
+        "toolbarMovementPx": 0,
+        "cls": 0.01986111111111111,
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "httpErrors": 0,
+        "evidence": [
+          "quality/evidence/step-48/workbench-load-stability/deployed-v69/sites-chromium.json",
+          "quality/evidence/step-48/workbench-load-stability/deployed-v69/before-sites-chromium.png",
+          "quality/evidence/step-48/workbench-load-stability/deployed-v69/after-sites-chromium.png"
+        ]
+      },
       "localReproduction": {
         "environment": "Production-like Sites Worker, Chromium at 1440x900",
         "delayMs": 1200,
@@ -18991,8 +19010,66 @@
           "quality/evidence/step-48/workbench-load-stability/after-sites-chromium.png"
         ]
       }
+    },
+    {
+      "id": "AUD-418",
+      "severity": "medium",
+      "route": "/workbench#screen-marketing-home",
+      "viewport": "1440x900",
+      "category": "visual",
+      "title": "Canvas toolbar obscures the employee preview call to action",
+      "expected": "The preview remains fully visible and its interactive controls are reachable while canvas controls are present.",
+      "actual": "On public v69, the Meet your team link occupied y=781–821 while the floating canvas toolbar occupied y=777–820, covering 39 of the link's 40 vertical pixels.",
+      "reproduction": [
+        "Open /workbench?project=local-56865601-c583-4347-ab1b-e6f3f50b59a9#screen-marketing-home at 1440x900.",
+        "Wait for the persisted Kudos Employee Experience project and CanvasToolbar to render.",
+        "Observe the Meet your team link beneath the toolbar and inspect its bounding rectangles."
+      ],
+      "console": [],
+      "network": [
+        "The public v69 browser regression recorded no failed requests or HTTP errors. The local passing production-equivalent run recorded 64 successful HTTP responses."
+      ],
+      "screenshot": "quality/evidence/step-49/canvas-toolbar-occlusion/before/deployed-v69-persisted-1440.png",
+      "rootCause": "WorkbenchCanvas absolutely positioned the z-20 CanvasToolbar over the same overflow:auto element that scrolls the project. Tall project content could pass behind the toolbar because the scroll area did not reserve a control row. Independently, Gold renderer chunks suspended individual nodes, so cold-load placeholders could expand into full-height sections after the first paint.",
+      "affectedCode": [
+        "packages/workbench/src/components/canvas/WorkbenchCanvas.tsx",
+        "tests/e2e/workbench-canvas-toolbar-clearance-step-49.spec.ts"
+      ],
+      "remediation": "Make the canvas root a clipped flex column, put the preview in its own min-height-zero scroll area, and render CanvasToolbar in a reserved nonshrinking row after that area. Preload only the active screen's Gold resource modules through shared preloadable registry entries and expose a truthful loading status until they settle. Preserve deselection when the user clicks canvas background. Add regressions using the exact persisted project observed on the deployed Site, including scroll-to-CTA reachability and delayed cold-load layout stability.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "initialDeployedObservation": {
+        "siteVersion": 69,
+        "viewport": "1440x900",
+        "canvas": { "x": 280, "y": 89, "width": 820, "height": 747 },
+        "toolbar": { "x": 299.9375, "y": 777.34375, "width": 780.125, "height": 42.65625 },
+        "target": { "label": "Meet your team", "x": 361, "y": 781, "width": 141.421875, "height": 40 },
+        "overlapHeight": 39,
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "httpErrors": 0,
+        "evidence": [
+          "quality/evidence/step-49/canvas-toolbar-occlusion/before/deployed-v69-persisted-1440.png",
+          "quality/evidence/step-49/canvas-toolbar-occlusion/before/deployed-v69-persisted-1440.json"
+        ]
+      },
+      "localVerification": {
+        "testCommand": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/workbench-canvas-toolbar-clearance-step-49.spec.ts --project=sites-chromium --workers=1",
+        "preFix": "The same browser test failed against public v69 and measured 39px CTA occlusion.",
+        "postFix": "Passed against the local production-equivalent Sites Worker at 1440x900 and 1024x768. Scrolling reveals the CTA fully within the preview scroll area, separated from the toolbar. At 1024px the toolbar wraps inside the 404px canvas width without document overflow. All 64 responses succeeded; console errors/warnings, uncaught exceptions, failed requests, and HTTP errors were zero. Five delayed cold-load repetitions recorded zero toolbar movement and CLS 0.0199; only the active screen's Gold resources were preloaded, and all per-resource loading placeholders settled before the editor rendered.",
+        "evidence": [
+          "quality/evidence/step-49/canvas-toolbar-occlusion/after-local-responsive/sites-worker-1440-cta-visible.png",
+          "quality/evidence/step-49/canvas-toolbar-occlusion/after-local-responsive/sites-worker-1024-cta-visible.png",
+          "quality/evidence/step-49/canvas-toolbar-occlusion/after-local-responsive/sites-worker.json",
+          "quality/evidence/step-49/workbench-load-stability/preloadable-registry/sites-chromium.json",
+          "quality/evidence/step-49/workbench-load-stability/preloadable-registry/before-sites-chromium.png",
+          "quality/evidence/step-49/workbench-load-stability/preloadable-registry/after-sites-chromium.png"
+        ]
+      },
+      "deployedVerification": null
     }
   ],
-  "generatedAt": "2026-11-01T08:27:49Z",
-  "latestDeploymentEvidence": "audit/evidence/deployed-v68-2026-11-01/runtime.json"
+  "generatedAt": "2026-11-01T10:50:00Z",
+  "latestDeploymentEvidence": "quality/evidence/step-49/canvas-toolbar-occlusion/before/deployed-v69-persisted-1440.json"
 }

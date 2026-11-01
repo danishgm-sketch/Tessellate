@@ -135,8 +135,37 @@ export async function discoverGoldComponents(
 }
 
 export function generateGoldRendererRegistry(components: DiscoveredGoldComponent[]): string {
-  const imports: string[] = ["import React from 'react';", "import type { ResourceRendererMap } from './types.js';"];
+  const imports: string[] = [
+    "import React from 'react';",
+    "import type { ResourceRendererMap } from './types.js';",
+    `function createPreloadableResource(loader: () => Promise<React.ComponentType<Record<string, unknown>>>) {
+  let component: React.ComponentType<Record<string, unknown>> | null = null;
+  let loadPromise: Promise<void> | null = null;
+  let loadError: unknown;
+  let loadFailed = false;
+  const preload = () => {
+    if (component) return Promise.resolve();
+    if (!loadPromise) {
+      loadPromise = loader().then((loaded) => {
+        component = loaded;
+      }, (error: unknown) => {
+        loadFailed = true;
+        loadError = error;
+        throw error;
+      });
+    }
+    return loadPromise;
+  };
+  function Component(props: Record<string, unknown>) {
+    if (loadFailed) throw loadError;
+    if (!component) throw preload();
+    return React.createElement(component, props);
+  }
+  return { Component, preload };
+}`,
+  ];
   const mappings: string[] = [];
+  const preloaders: string[] = [];
 
   components.forEach((c, idx) => {
     if (!ResourceSlugSchema.safeParse(c.slug).success) {
@@ -149,10 +178,14 @@ export function generateGoldRendererRegistry(components: DiscoveredGoldComponent
     // primitive registry; avoid generating a duplicate lazy import for it.
     if (c.slug === 'button') return;
     const importAlias = `GoldComp_${idx}_${c.componentName}`;
-    imports.push(`const ${importAlias} = React.lazy(() => import(${JSON.stringify(c.importPath)}).then((module) => ({ default: module.${c.componentName} })));`);
+    const loaderAlias = `loadGold_${idx}_${c.componentName}`;
+    imports.push(`const ${loaderAlias} = createPreloadableResource(() => import(${JSON.stringify(c.importPath)}).then((module) => module.${c.componentName} as unknown as React.ComponentType<Record<string, unknown>>));`);
+    imports.push(`const ${importAlias} = ${loaderAlias}.Component;`);
     mappings.push(`  ${JSON.stringify(c.slug)}: ${importAlias} as unknown as React.ComponentType<Record<string, unknown>>,`);
+    preloaders.push(`  ${JSON.stringify(c.slug)}: ${loaderAlias}.preload,`);
     if (c.id) {
       mappings.push(`  ${JSON.stringify(c.id)}: ${importAlias} as unknown as React.ComponentType<Record<string, unknown>>,`);
+      preloaders.push(`  ${JSON.stringify(c.id)}: ${loaderAlias}.preload,`);
     }
   });
 
@@ -162,6 +195,19 @@ ${imports.join('\n')}
 export const GENERATED_GOLD_RENDERERS: ResourceRendererMap = {
 ${mappings.join('\n')}
 };
+
+const GOLD_RESOURCE_PRELOADERS: Record<string, () => Promise<void>> = {
+${preloaders.join('\n')}
+};
+
+/** Preload only known Gold resources used by the active screen. Unknown refs stay visible to the renderer. */
+export async function preloadGoldResources(slugs: Iterable<string>): Promise<void> {
+  const loads = [...new Set(slugs)]
+    .map((slug) => GOLD_RESOURCE_PRELOADERS[slug])
+    .filter((load): load is () => Promise<void> => load !== undefined)
+    .map((load) => load());
+  await Promise.all(loads);
+}
 `;
 }
 

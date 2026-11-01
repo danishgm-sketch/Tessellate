@@ -155,18 +155,32 @@ test('Workbench keeps the canvas toolbar anchored while lazy panels resolve', as
       await route.fulfill({ response });
     });
   }
+  // Simulate a cold screen-resource load as well. A row of independent 48px
+  // Suspense placeholders used to expand into a full hero and shift the canvas.
+  for (const slug of ['minimal-top-nav', 'editorial-hero', 'feature-bento', 'cta-minimal', 'footer-product']) {
+    await page.route(`**/_astro/${slug}.*.js`, async (route) => {
+      const response = await route.fetch();
+      await new Promise((resolve) => setTimeout(resolve, 1200));
+      await route.fulfill({ response });
+    });
+  }
 
   await page.goto('/workbench');
   const canvasToolbar = page.getByTestId('canvas-toolbar');
   await expect(canvasToolbar).toBeVisible({ timeout: 15000 });
+  await expect(page.getByTestId('workbench-resource-preload-status')).toBeVisible({ timeout: 15000 });
   const toolbarBefore = await canvasToolbar.boundingBox();
   expect(toolbarBefore, 'The canvas toolbar should have a measurable pre-settlement position').not.toBeNull();
 
-  const evidenceDirectory = path.resolve(process.cwd(), 'quality/evidence/step-48/workbench-load-stability');
+  const evidenceDirectory = process.env.TESS_AUDIT_EVIDENCE_DIR
+    ? path.resolve(process.env.TESS_AUDIT_EVIDENCE_DIR)
+    : path.resolve(process.cwd(), 'quality/evidence/step-48/workbench-load-stability');
   await mkdir(evidenceDirectory, { recursive: true });
   await page.screenshot({ path: path.join(evidenceDirectory, `before-${testInfo.project.name}.png`) });
   await expect(page.getByTestId('top-toolbar')).toBeVisible({ timeout: 15000 });
   await expect(page.getByTestId('command-bar')).toBeVisible({ timeout: 15000 });
+  await expect(page.getByTestId('workbench-resource-preload-status')).toHaveCount(0, { timeout: 15000 });
+  await expect(page.locator('[data-testid="resource-loading"]')).toHaveCount(0);
   await page.waitForTimeout(500);
   const toolbarAfter = await canvasToolbar.boundingBox();
   const layout = await page.evaluate(() => {

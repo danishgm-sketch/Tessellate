@@ -43,6 +43,7 @@ export default defineConfig({
     'home-filter-hydration-contrast-step-48.spec.ts',
     'performance-workloads-step-38.spec.ts',
     'site-route-performance-step-38.spec.ts',
+    'workbench-canvas-toolbar-clearance-step-49.spec.ts',
     'performance-stress-step-38.spec.ts',
     'workbench-resource-heading-order-step-39.spec.ts',
     'workbench-dialog-role-step-39.spec.ts',
