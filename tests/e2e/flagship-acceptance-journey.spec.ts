@@ -495,7 +495,10 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
     await expect(preview.locator(`[data-node-id="${activity.id}"]`)).toBeVisible();
     await page.getByRole('button', { name: 'Exit Preview' }).click();
 
-    const evidenceDir = path.resolve(process.cwd(), 'quality/evidence/step-52/after');
+    const evidenceDir = path.resolve(
+      process.cwd(),
+      process.env.TESS_AUDIT_EVIDENCE_DIR ?? 'quality/evidence/step-52/after'
+    );
     fs.mkdirSync(evidenceDir, { recursive: true });
     const viewportLabel = isMobile ? 'mobile-390' : 'desktop-1440';
     const workbenchScreenshot = path.join(evidenceDir, `employee-workbench-${viewportLabel}.png`);
