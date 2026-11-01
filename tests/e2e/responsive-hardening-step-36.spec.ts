@@ -53,17 +53,58 @@ async function waitForSurface(page: import('@playwright/test').Page, route: stri
 test('major product surfaces fit and retain their primary content at every required width', async ({ page }, testInfo) => {
   test.setTimeout(10 * 60 * 1000);
   const evidence: Array<Record<string, unknown>> = [];
+  type SurfaceRuntime = {
+    consoleErrors: string[];
+    pageErrors: string[];
+    failedRequests: string[];
+    navigationAborts: string[];
+    httpErrors: string[];
+  };
+  const runtimeBySurface = new Map<string, SurfaceRuntime>();
+  const requestSurface = new WeakMap<import('@playwright/test').Request, string>();
+  let activeSurface = '';
+  const onRequest = (request: import('@playwright/test').Request) => {
+    if (activeSurface) requestSurface.set(request, activeSurface);
+  };
+  page.on('request', onRequest);
   const evidenceDir = path.resolve(process.cwd(), `quality/evidence/step-36/${testInfo.project.name}`);
   mkdirSync(evidenceDir, { recursive: true });
 
   for (const viewport of viewports) {
     await page.setViewportSize(viewport);
     for (const route of surfaces) {
-      const runtime = { consoleErrors: [] as string[], pageErrors: [] as string[], failedRequests: [] as string[], httpErrors: [] as string[] };
+      const surfaceKey = `${viewport.width}:${route}`;
+      activeSurface = surfaceKey;
+      const runtime: SurfaceRuntime = {
+        consoleErrors: [],
+        pageErrors: [],
+        failedRequests: [],
+        navigationAborts: [],
+        httpErrors: [],
+      };
+      runtimeBySurface.set(surfaceKey, runtime);
       const onConsole = (message: import('@playwright/test').ConsoleMessage) => { if (message.type() === 'error') runtime.consoleErrors.push(message.text()); };
       const onPageError = (error: Error) => runtime.pageErrors.push(error.message);
-      const onRequestFailed = (request: import('@playwright/test').Request) => runtime.failedRequests.push(`${request.method()} ${request.url()}: ${request.failure()?.errorText ?? 'unknown failure'}`);
-      const onResponse = (response: import('@playwright/test').Response) => { if (response.status() >= 400) runtime.httpErrors.push(`${response.status()} ${response.url()}`); };
+      const onRequestFailed = (request: import('@playwright/test').Request) => {
+        const failure = request.failure()?.errorText ?? 'unknown failure';
+        const requestDescription = `${request.method()} ${request.url()}: ${failure}`;
+        const ownerKey = requestSurface.get(request);
+        const ownerRuntime = ownerKey ? runtimeBySurface.get(ownerKey) : runtime;
+        // A prior page's pending iframe request is expected to abort when this
+        // route sweep navigates away. Keep that evidence distinct from network
+        // failures on the route that initiated the request.
+        if (failure === 'net::ERR_ABORTED' && ownerKey && ownerKey !== surfaceKey) {
+          ownerRuntime?.navigationAborts.push(`${requestDescription} (next route: ${surfaceKey})`);
+          return;
+        }
+        ownerRuntime?.failedRequests.push(requestDescription);
+      };
+      const onResponse = (response: import('@playwright/test').Response) => {
+        if (response.status() < 400) return;
+        const ownerKey = requestSurface.get(response.request());
+        const ownerRuntime = ownerKey ? runtimeBySurface.get(ownerKey) : runtime;
+        ownerRuntime?.httpErrors.push(`${response.status()} ${response.url()}`);
+      };
       page.on('console', onConsole);
       page.on('pageerror', onPageError);
       page.on('requestfailed', onRequestFailed);
@@ -120,11 +161,12 @@ test('major product surfaces fit and retain their primary content at every requi
       page.off('response', onResponse);
     }
   }
+  page.off('request', onRequest);
 
   writeFileSync(path.join(evidenceDir, 'responsive-route-matrix.json'), `${JSON.stringify(evidence, null, 2)}\n`);
   const failures = evidence.filter((item) => {
     const layout = item.layout as { viewportWidth: number; documentWidth: number; main: { left: number; right: number } | null; header: { left: number; right: number } | null };
-    const runtime = item.runtime as { consoleErrors: string[]; pageErrors: string[]; failedRequests: string[]; httpErrors: string[] };
+    const runtime = item.runtime as SurfaceRuntime;
     return item.status !== 200
       || layout.documentWidth > layout.viewportWidth + 2
       || Boolean(layout.main && (layout.main.left < -1 || layout.main.right > layout.viewportWidth + 1))

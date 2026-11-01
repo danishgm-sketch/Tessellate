@@ -4618,3 +4618,15 @@ AUD-387 remains fixed-local-verified: it concerns inherited project metadata in 
 - **Remediation:** Added explicit 120px ArrowLeft/ArrowRight scrolling and regression assertions for both directions. The same Playwright regression now passes against the public deployment at desktop and mobile sizes. The browser evidence records empty console-error/warning, uncaught-exception, failed-request, and HTTP-error collections.
 - **Deployment:** Public Site v65, version `appgprj_6acc036de8cc8191a823339566972d85~appgver_051d73cc16f8819183aae75a6aec3494`, built from canonical commit `c554d43970c4ae2be00e40d9bd7977f9cfe57be0` and Sites artifact source commit `25434a3c0356cf678161f76c7ccba5c50fe4ca71`.
 - **Status:** Closed after deployed verification on both viewports.
+
+## AUD-408 — Responsive route sweep misattributed a prior preview cancellation to Compose
+
+- **Severity:** Low (test instrumentation; no user-facing failure confirmed)
+- **Evidence:** GitHub CI run [41255458414](https://github.com/danishgm-sketch/Tessellate/actions/runs/41255458414) failed the responsive matrix at `/compose/`, 1024×900, after recording `GET /preview-content/?resource=accessibility-commitment-section: net::ERR_ABORTED`. The route returned HTTP 200, fit the viewport, and recorded no console/page errors or HTTP errors. The original collector did not retain which route initiated the request, so the failure log cannot establish its origin. A separate push-triggered validation of the same pre-fix SHA completed the full Playwright/Axe job successfully ([41255446434](https://github.com/danishgm-sketch/Tessellate/actions/runs/41255446434)), consistent with a timing-dependent attribution race.
+- **After-fix evidence:** `audit/evidence/responsive-request-attribution-2026-11-01/1024-compose-after.png` and `audit/evidence/responsive-request-attribution-2026-11-01/responsive-route-matrix-after.json`
+- **Reproduction:** Run `responsive-hardening-step-36.spec.ts` with the Sites preview config. The old per-route listener associated any pending `requestfailed` event with the route currently being inspected.
+- **Root cause:** The test did not map requests to their initiating route. When navigation canceled a pending preview iframe request, the active route listener could report that cancellation as a failure for the next route.
+- **Affected code:** `tests/e2e/responsive-hardening-step-36.spec.ts`
+- **Remediation:** Track request ownership and put only cross-route `net::ERR_ABORTED` cancellations in the separate `navigationAborts` evidence field. Failures initiated by the active route, other request failures, HTTP errors, console errors, and page errors still fail the test.
+- **Local verification:** The same mobile Chromium route matrix passed all 14 surfaces at widths 360, 390, 430, 768, 1024, 1280, 1440, and 1536. The 1024px Compose entry returned 200 with no overflow or runtime/network errors.
+- **Status:** Closed after the local 14-surface × 8-width responsive regression passed. The deployed app code was unchanged; current-head CI is rerunning the corrected instrumentation.

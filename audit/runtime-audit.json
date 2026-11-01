@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified.",
   "entries": [
     {
       "id": "AUD-001",
@@ -18229,8 +18229,41 @@
         ],
         "details": "Public route returned 200 on both viewports. ArrowRight advanced 919px desktop and 1003px mobile after ten key presses; the final label was reachable and ArrowLeft reversed movement. Browser console errors and warnings, uncaught exceptions, failed requests, and HTTP errors were empty."
       }
+    },
+    {
+      "id": "AUD-408",
+      "severity": "low",
+      "route": "/compose/",
+      "viewport": "1024x900",
+      "category": "network",
+      "title": "Responsive route sweep misattributed a prior preview cancellation to Compose",
+      "expected": "The route audit should associate network failures with the route that initiated each request and report navigation cancellations separately. Genuine failed requests on the active route must continue to fail the audit.",
+      "actual": "GitHub run 41255458414 failed the mobile Chromium route sweep at /compose/ after reporting GET /preview-content/?resource=accessibility-commitment-section as net::ERR_ABORTED. Compose returned HTTP 200, fit the 1024px viewport, and had no console/page errors or HTTP errors. The pre-fix collector did not record request ownership, so it could not establish which earlier route initiated this request; the failure was attributed to whichever route listener was active when cancellation arrived. A separate push-triggered validation of the same pre-fix SHA passed the full browser job, consistent with a timing-dependent attribution race rather than a stable product failure.",
+      "reproduction": [
+        "Run the CI Playwright/Axe job at https://github.com/danishgm-sketch/Tessellate/actions/runs/41255458414.",
+        "In responsive-hardening-step-36.spec.ts, sweep the mobile Chromium page through surfaces and widths; the 1024px /compose/ record receives an earlier preview iframe cancellation.",
+        "Run the same targeted local Sites Worker test after the fix; request ownership is preserved and genuine request failures remain checked."
+      ],
+      "console": [],
+      "network": [
+        "GET /preview-content/?resource=accessibility-commitment-section: net::ERR_ABORTED during the sequential route sweep; origin route was not retained by the old collector."
+      ],
+      "screenshot": "audit/evidence/responsive-request-attribution-2026-11-01/1024-compose-after.png",
+      "rootCause": "The test registered a per-route requestfailed callback before page.goto and attributed any failure to the currently active route instead of the route that started the request. A pending preview iframe request canceled by the next page navigation could therefore fail the wrong route check.",
+      "affectedFiles": [
+        "tests/e2e/responsive-hardening-step-36.spec.ts"
+      ],
+      "remediation": "Track each Playwright Request against its initiating route. Classify only net::ERR_ABORTED requests owned by a different route as navigationAborts, retain them in the evidence matrix, and continue treating same-route aborts, other failed requests, HTTP errors, and browser errors as failures.",
+      "fixCommit": null,
+      "status": "closed-local-verified",
+      "localVerification": {
+        "evidence": [
+          "audit/evidence/responsive-request-attribution-2026-11-01/responsive-route-matrix-after.json"
+        ],
+        "result": "The targeted mobile Chromium responsive route sweep passed all 14 surfaces at all eight widths (360, 390, 430, 768, 1024, 1280, 1440, 1536). The 1024px Compose route returned 200 with no horizontal overflow, console/page errors, failed requests, navigation aborts, or HTTP errors. The prior same-SHA CI push run also completed the full Playwright/Axe job successfully; this issue is isolated to test evidence attribution, not the deployed product."
+      }
     }
   ],
-  "generatedAt": "2026-11-01T00:08:28.475Z",
+  "generatedAt": "2026-11-01T00:53:51.606Z",
   "latestDeploymentEvidence": "audit/evidence/deployed-v64-2026-10-31/deployed-smoke.json"
 }
