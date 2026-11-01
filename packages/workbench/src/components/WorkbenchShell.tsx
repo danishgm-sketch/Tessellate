@@ -198,14 +198,59 @@ export function WorkbenchShell() {
     return () => { disposed = true; unsubscribe?.(); };
   }, [setManifest]);
 
-  useEffect(()=>{
-    const navigate = ()=>{
-      const id = decodeURIComponent(window.location.hash.slice(1));
-      if(useWorkbenchStore.getState().manifest.screens.some(screen=>screen.id===id)) useWorkbenchStore.getState().setActiveScreen(id);
+  useEffect(() => {
+    if (loading || typeof window === 'undefined') return;
+
+    const readScreenFromLocation = () => {
+      let screenId = '';
+      try {
+        screenId = decodeURIComponent(window.location.hash.slice(1));
+      } catch {
+        return;
+      }
+
+      const state = useWorkbenchStore.getState();
+      const screen = state.manifest.screens.find((item) => item.id === screenId);
+      if (screen) {
+        if (screen.id !== state.activeScreenId) state.setActiveScreen(screen.id);
+        return;
+      }
+
+      // Give a newly opened project a stable route for its initial screen.
+      // Replace the current entry so this does not add a spurious browser-history step.
+      if (!screenId) {
+        const active = state.manifest.screens.find((item) => item.id === state.activeScreenId)
+          ?? state.manifest.screens[0];
+        if (active) {
+          const url = new URL(window.location.href);
+          url.hash = encodeURIComponent(active.id);
+          window.history.replaceState(window.history.state, '', url);
+        }
+      }
     };
-    window.addEventListener('hashchange',navigate);
-    return ()=>window.removeEventListener('hashchange',navigate);
-  },[]);
+
+    const unsubscribe = useWorkbenchStore.subscribe((state, previous) => {
+      if (state.activeScreenId === previous.activeScreenId) return;
+      if (!state.manifest.screens.some((screen) => screen.id === state.activeScreenId)) return;
+
+      let currentScreenId = '';
+      try {
+        currentScreenId = decodeURIComponent(window.location.hash.slice(1));
+      } catch {
+        // Invalid fragments are replaced by the selected, valid screen id below.
+      }
+      if (currentScreenId !== state.activeScreenId) {
+        window.location.hash = encodeURIComponent(state.activeScreenId);
+      }
+    });
+
+    readScreenFromLocation();
+    window.addEventListener('hashchange', readScreenFromLocation);
+    return () => {
+      unsubscribe();
+      window.removeEventListener('hashchange', readScreenFromLocation);
+    };
+  }, [loading]);
 
   // Responsive window listener
   useEffect(() => {
