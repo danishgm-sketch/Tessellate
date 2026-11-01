@@ -1,0 +1,43 @@
+{
+  "id": "AUD-419",
+  "checkedAt": "2026-11-01T22:35:47.000Z",
+  "canonicalRuntimeCommit": "b5f9f1ea9a884c544f3f7c8862655a69648e6464",
+  "testCommitBase": "cc411141455b735677379c536e83db7ccbd3e712",
+  "test": "pnpm exec vitest run apps/sites/backend.test.ts apps/api/src/__tests__/ai-proxy.test.ts",
+  "result": "PASS",
+  "coverage": {
+    "path": [
+      "apps/sites/proxyBackend",
+      "apps/api Hono AI proxy route",
+      "stubbed Anthropic transport"
+    ],
+    "assertions": [
+      "provider authentication header reached the allowlisted provider transport",
+      "Anthropic version header reached the provider transport",
+      "untrusted caller header was dropped",
+      "Sites gateway secret was not forwarded to the provider"
+    ],
+    "providerCredential": "synthetic test value only; not persisted and not sent to an external provider",
+    "externalProviderRequests": 0
+  },
+  "negativeControl": {
+    "mutation": "Temporarily disabled the Sites gateway provider-header forwarding line in the working copy, then restored apps/sites/backend.ts from HEAD.",
+    "result": "EXPECTED_FAILURE",
+    "observedFailure": "The provider transport received no x-api-key header.",
+    "sourceRestored": true
+  },
+  "deployedRuntime": {
+    "siteVersion": 72,
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/api/inference/health",
+    "httpStatus": 200,
+    "apiOnline": false,
+    "hostOnline": false,
+    "reason": "Laptop backend connection is not configured",
+    "interpretation": "The review Site does not expose a laptop tunnel under decision D-041; its offline response is expected. Provider forwarding was not exercised in the deployed runtime."
+  },
+  "secrets": {
+    "realProviderCredentialUsed": false,
+    "gatewaySecretRecorded": false,
+    "providerCredentialPersisted": false
+  }
+}

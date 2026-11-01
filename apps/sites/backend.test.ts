@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { proxyBackend } from './backend.js';
+import api from '../api/src/index.js';
 
 const config = { url: 'https://laptop.example.test', secret: 'test-only-gateway-key-with-enough-length' };
 afterEach(() => { vi.unstubAllGlobals(); vi.restoreAllMocks(); });
@@ -53,6 +54,37 @@ describe('laptop backend transport', () => {
     const [, apiInit] = transport.mock.calls[1]!;
     expect(apiInit.headers.get('x-api-key')).toBeNull();
     expect(apiInit.headers.get('anthropic-version')).toBeNull();
+  });
+  it('carries BYO credentials through the Sites gateway and API proxy to the provider', async () => {
+    const providerRequests: Request[] = [];
+    vi.stubGlobal('fetch', vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const target = new URL(typeof input === 'string' ? input : input instanceof URL ? input.href : input.url);
+      if (target.hostname === 'laptop.example.test') return api.fetch(new Request(target, init));
+      if (target.hostname === 'api.anthropic.com') {
+        providerRequests.push(new Request(target, init));
+        return Response.json({ id: 'msg_test', content: [{ type: 'text', text: 'ok' }] });
+      }
+      throw new Error(`Unexpected transport target: ${target.origin}`);
+    }));
+
+    const result = await proxyBackend(new Request('https://site.test/api/ai/anthropic/v1/messages', {
+      method: 'POST',
+      headers: {
+        Origin: 'https://site.test',
+        'Content-Type': 'application/json',
+        'x-api-key': 'test-only-anthropic-key',
+        'anthropic-version': '2023-06-01',
+        'X-Untrusted-Secret': 'must-not-forward',
+      },
+      body: JSON.stringify({ model: 'claude-test', max_tokens: 16, messages: [] }),
+    }), config);
+
+    expect(result.status).toBe(200);
+    expect(providerRequests).toHaveLength(1);
+    expect(providerRequests[0]?.headers.get('x-api-key')).toBe('test-only-anthropic-key');
+    expect(providerRequests[0]?.headers.get('anthropic-version')).toBe('2023-06-01');
+    expect(providerRequests[0]?.headers.get('X-Untrusted-Secret')).toBeNull();
+    expect(providerRequests[0]?.headers.get('X-Tessellate-Gateway')).toBeNull();
   });
   it('allows model generation more time than a normal laptop API request', async () => {
     const transport = vi.fn().mockResolvedValue(Response.json({ ok: true }));

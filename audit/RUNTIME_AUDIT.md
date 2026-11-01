@@ -4780,14 +4780,12 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 ### AUD-419 — BYO provider credentials were dropped by the Sites AI gateway
 
 - **Severity:** HIGH
-- **Evidence:** Regression coverage: `apps/sites/backend.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yP8EF).
-- **Reproduction:**
-  - Run the regression test in apps/sites/backend.test.ts.
-  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Evidence:** The cross-boundary regression in `apps/sites/backend.test.ts` runs the Sites gateway through the API Hono route and a stubbed Anthropic transport. A negative control with gateway forwarding disabled fails because the provider receives no `x-api-key`. Machine evidence: `quality/evidence/step-48/aud419-sites-api-cross-boundary.json`. PR #8 review thread: PRRT_kwDOVEB2EM6yP8EF.
+- **Reproduction:** Run `pnpm exec vitest run apps/sites/backend.test.ts apps/api/src/__tests__/ai-proxy.test.ts`. To check the negative control, temporarily remove the gateway allowlist forwarding and rerun the focused cross-boundary test; it fails when the provider receives no authentication header. Restore the source before continuing.
 - **Root cause:** The gateway allowlist forwarded only content negotiation headers, so proxied requests reached the API without provider credentials.
 - **Affected code:** `apps/sites/backend.test.ts`.
 - **Remediation:** Forward only the supported ephemeral provider-auth headers through the AI proxy; keep secrets out of logs and persistence, and cover the gateway request with a proxy regression.
-- **Verification status:** fixed-local-verified; public v71 includes the allowlist fix, but the laptop backend is not configured on the Site, so provider-header forwarding could not be exercised without supplying a provider credential. Public health/offline evidence: `quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud419-backend-availability/`. No provider credential was sent or persisted.
+- **Verification status:** fixed-local-verified. The regression passes through the real Sites gateway and API route with a stubbed provider and synthetic test credential; the negative control fails as expected. Public v72 serves the fixed source, but its health endpoint reports the laptop backend unavailable because no server-side backend URL or tunnel is configured under D-041. No real provider credential or external provider request was used; hosted provider forwarding remains unverified by design.
 
 ### AUD-443 — Manifest prop names could inject JSX source into standalone exports
 

@@ -19201,10 +19201,11 @@
       "category": "network",
       "title": "BYO provider credentials were dropped by the Sites AI gateway",
       "expected": "A configured Anthropic or Gemini request should reach the laptop API with its provider authentication header and version header.",
-      "actual": "The header-forwarding allowlist fix and its local mocked-transport regression are present in the deployed v71 source. However, public /api/inference/health returns apiOnline=false and hostOnline=false because the laptop backend is not configured, so this deployment cannot exercise provider-header forwarding. No provider credential was supplied; retain local-only verification until a non-production dummy-provider integration environment is available.",
+      "actual": "A cross-boundary regression now runs the Sites gateway through the real Hono API app and a stubbed Anthropic transport. It confirms x-api-key and anthropic-version reach the provider while unrelated and internal secret headers are dropped; the test fails when gateway forwarding is disabled. Public v72 /api/inference/health returns HTTP 200 with apiOnline=false and hostOnline=false because the Site backend URL is intentionally unconfigured. No real provider credential, tunnel, or external provider request was used, so hosted header forwarding remains unverified.",
       "reproduction": [
-        "Run the regression test in apps/sites/backend.test.ts.",
-        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+        "Run pnpm exec vitest run apps/sites/backend.test.ts apps/api/src/__tests__/ai-proxy.test.ts.",
+        "Temporarily disable the Sites AI-header forwarding allowlist: the cross-boundary regression fails because the provider receives no x-api-key; restore the allowlist and the test passes.",
+        "Open the public v72 Site health endpoint: it truthfully reports the laptop backend as unavailable because no server-side backend URL is configured."
       ],
       "console": [],
       "network": [],
@@ -19219,9 +19220,17 @@
         "reviewThreadId": "PRRT_kwDOVEB2EM6yP8EF",
         "deployedHostAvailability": "quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud419-backend-availability/desktop-chrome.json",
         "deployedSource": {
-          "siteVersion": 71,
-          "canonicalCommit": "7ac7783de83e175ac410055da736b2218e2ba213",
-          "sitesSourceCommit": "0bce228a4fbd5fedad02a3186cd6af62690d8405"
+          "siteVersion": 72,
+          "canonicalCommit": "b5f9f1ea9a884c544f3f7c8862655a69648e6464",
+          "sitesSourceCommit": "95cf423eac1f30d22e3aaf8dba3d29d08cb53f57"
+        },
+        "crossBoundaryIntegration": "quality/evidence/step-48/aud419-sites-api-cross-boundary.json",
+        "publicHealthCheck": {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/api/inference/health",
+          "httpStatus": 200,
+          "apiOnline": false,
+          "hostOnline": false,
+          "reason": "Laptop backend connection is not configured"
         }
       },
       "fixCommit": "c744563df2ca43ec579151cd73107a65d9a6f1a7",
