@@ -1,15 +1,15 @@
 {
   "exactBrief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
-  "route": "http://127.0.0.1:4412/workbench?project=proj-direction-c-ccfb04a1a864491084baa456933f096adirc#screen-teams",
+  "route": "http://127.0.0.1:4321/workbench?project=proj-direction-c-acb46801ee014deb9f0e4c440524a1c7dirc#screen-teams",
   "viewport": {
     "width": 390,
     "height": 844
   },
   "selectedDirection": "C",
-  "selectedProjectId": "proj-direction-c-ccfb04a1a864491084baa456933f096adirc",
+  "selectedProjectId": "proj-direction-c-acb46801ee014deb9f0e4c440524a1c7dirc",
   "directionScreenshot": "quality\\evidence\\step-24\\after\\employee-directions-mobile-chrome.png",
   "visibleDirectionSnapshot": {
-    "id": "proj-direction-c-ccfb04a1a864491084baa456933f096adirc",
+    "id": "proj-direction-c-acb46801ee014deb9f0e4c440524a1c7dirc",
     "dna": {
       "professionalism": 100,
       "playfulness": 53,
@@ -39,7 +39,7 @@
       "trust": 100,
       "accessibilityPriority": 85,
       "performancePriority": 82,
-      "primaryArchetype": "recruitment",
+      "primaryArchetype": "saas",
       "visualMode": "dark",
       "geometryFamily": "pill",
       "navigationModel": "rail",
@@ -214,8 +214,8 @@
               "children": [],
               "slots": {},
               "props": {
-                "headline": "A better workday starts with people.",
-                "description": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
+                "headline": "Make the next step easier for every colleague.",
+                "description": "Help colleagues find their team, support and policies in one clear place.",
                 "label": "Meet your team",
                 "href": "#screen-teams"
               }
@@ -234,7 +234,7 @@
               "slots": {},
               "props": {
                 "brand": "People & Co",
-                "description": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
+                "description": "A people-first home for onboarding, teams and trusted policies.",
                 "links": [
                   {
                     "label": "Marketing Home",
@@ -290,8 +290,8 @@
               "nodeType": "layout",
               "semanticRole": "navigation",
               "resourceRef": {
-                "id": "res_shell_minimal_top_nav",
-                "slug": "minimal-top-nav",
+                "id": "res_shell_collapsible_sidebar",
+                "slug": "collapsible-sidebar",
                 "version": "1.0.0"
               },
               "variant": "nocturne",
@@ -494,8 +494,8 @@
               "nodeType": "layout",
               "semanticRole": "navigation",
               "resourceRef": {
-                "id": "res_shell_minimal_top_nav",
-                "slug": "minimal-top-nav",
+                "id": "res_shell_collapsible_sidebar",
+                "slug": "collapsible-sidebar",
                 "version": "1.0.0"
               },
               "variant": "nocturne",
@@ -665,8 +665,8 @@
               "nodeType": "layout",
               "semanticRole": "navigation",
               "resourceRef": {
-                "id": "res_shell_minimal_top_nav",
-                "slug": "minimal-top-nav",
+                "id": "res_shell_collapsible_sidebar",
+                "slug": "collapsible-sidebar",
                 "version": "1.0.0"
               },
               "variant": "nocturne",
@@ -836,8 +836,8 @@
               "nodeType": "layout",
               "semanticRole": "navigation",
               "resourceRef": {
-                "id": "res_shell_minimal_top_nav",
-                "slug": "minimal-top-nav",
+                "id": "res_shell_collapsible_sidebar",
+                "slug": "collapsible-sidebar",
                 "version": "1.0.0"
               },
               "variant": "nocturne",
@@ -1040,8 +1040,8 @@
               "nodeType": "layout",
               "semanticRole": "navigation",
               "resourceRef": {
-                "id": "res_shell_minimal_top_nav",
-                "slug": "minimal-top-nav",
+                "id": "res_shell_collapsible_sidebar",
+                "slug": "collapsible-sidebar",
                 "version": "1.0.0"
               },
               "variant": "nocturne",
@@ -1208,8 +1208,8 @@
               "nodeType": "layout",
               "semanticRole": "navigation",
               "resourceRef": {
-                "id": "res_shell_minimal_top_nav",
-                "slug": "minimal-top-nav",
+                "id": "res_shell_collapsible_sidebar",
+                "slug": "collapsible-sidebar",
                 "version": "1.0.0"
               },
               "variant": "nocturne",
@@ -1273,11 +1273,11 @@
                 },
                 {
                   "id": "node-screen-settings-save-footer-3",
-                  "nodeType": "element",
+                  "nodeType": "component",
                   "semanticRole": "save-footer",
                   "resourceRef": {
-                    "id": "res_primitive_button_01",
-                    "slug": "button",
+                    "id": "res_mot_magnetic_button",
+                    "slug": "magnetic-button",
                     "version": "1.0.0"
                   },
                   "variant": "nocturne",
@@ -1339,18 +1339,18 @@
   ],
   "persistedManifestSnapshot": {
     "schemaVersion": "1.0.0",
-    "id": "proj-direction-c-ccfb04a1a864491084baa456933f096adirc",
-    "name": "Adaptive Architecture — Employee experience",
+    "id": "proj-direction-c-acb46801ee014deb9f0e4c440524a1c7dirc",
+    "name": "Master-Detail Explorer — Employee experience",
     "description": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
-    "createdAt": "2026-10-26T19:09:51.979Z",
-    "updatedAt": "2026-10-26T19:09:51.979Z",
+    "createdAt": "2026-11-01T03:03:10.881Z",
+    "updatedAt": "2026-11-01T03:03:10.881Z",
     "catalogVersion": "0.1.0",
-    "seed": "ccfb04a1-a864-4910-84ba-a456933f096a-dir-c",
+    "seed": "acb46801-ee01-4deb-9f0e-4c440524a1c7-dir-c",
     "productModel": {
       "schemaVersion": "1.0.0",
       "productArchetypes": [
         {
-          "tag": "recruitment",
+          "tag": "saas",
           "weight": 100
         }
       ],
@@ -1432,13 +1432,13 @@
           ]
         }
       ],
-      "trustRequirement": 88,
+      "trustRequirement": 85,
       "informationComplexity": 55,
       "dataDensity": 55,
-      "collaborationLevel": 80,
+      "collaborationLevel": 70,
       "transactionCriticality": 30,
-      "navigationComplexity": 65,
-      "mobileImportance": 60,
+      "navigationComplexity": 60,
+      "mobileImportance": 50,
       "likelyScreens": [
         {
           "name": "Marketing Home",
@@ -1513,10 +1513,7 @@
         "onboarding-checklist",
         "policy-acknowledgements"
       ],
-      "forbiddenPatterns": [
-        "unblinded-evaluations-causing-bias",
-        "accidental-rejection-email-dispatches"
-      ],
+      "forbiddenPatterns": [],
       "constraints": {
         "accessibilityFloor": "AA",
         "performanceCeiling": "rich",
@@ -1537,10 +1534,7 @@
         "requiredScreens": [],
         "forbiddenScreens": [],
         "requiredPatterns": [],
-        "forbiddenPatterns": [
-          "unblinded-evaluations-causing-bias",
-          "accidental-rejection-email-dispatches"
-        ]
+        "forbiddenPatterns": []
       }
     },
     "designDNA": {
@@ -1572,7 +1566,7 @@
       "trust": 100,
       "accessibilityPriority": 85,
       "performancePriority": 82,
-      "primaryArchetype": "recruitment",
+      "primaryArchetype": "saas",
       "visualMode": "dark",
       "geometryFamily": "pill",
       "navigationModel": "rail",
@@ -1606,13 +1600,10 @@
       "requiredScreens": [],
       "forbiddenScreens": [],
       "requiredPatterns": [],
-      "forbiddenPatterns": [
-        "unblinded-evaluations-causing-bias",
-        "accidental-rejection-email-dispatches"
-      ]
+      "forbiddenPatterns": []
     },
     "screenGraph": {
-      "id": "graph-recruitment-19q9jdm",
+      "id": "graph-saas-jchic4",
       "groups": [
         {
           "id": "group-marketing",
@@ -2059,8 +2050,8 @@
               "children": [],
               "slots": {},
               "props": {
-                "headline": "A better workday starts with people.",
-                "description": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
+                "headline": "Make the next step easier for every colleague.",
+                "description": "Help colleagues find their team, support and policies in one clear place.",
                 "label": "Meet your team",
                 "href": "#screen-teams"
               }
@@ -2079,7 +2070,7 @@
               "slots": {},
               "props": {
                 "brand": "People & Co",
-                "description": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
+                "description": "A people-first home for onboarding, teams and trusted policies.",
                 "links": [
                   {
                     "label": "Marketing Home",
@@ -2135,8 +2126,8 @@
               "nodeType": "layout",
               "semanticRole": "navigation",
               "resourceRef": {
-                "id": "res_shell_minimal_top_nav",
-                "slug": "minimal-top-nav",
+                "id": "res_shell_collapsible_sidebar",
+                "slug": "collapsible-sidebar",
                 "version": "1.0.0"
               },
               "variant": "nocturne",
@@ -2339,8 +2330,8 @@
               "nodeType": "layout",
               "semanticRole": "navigation",
               "resourceRef": {
-                "id": "res_shell_minimal_top_nav",
-                "slug": "minimal-top-nav",
+                "id": "res_shell_collapsible_sidebar",
+                "slug": "collapsible-sidebar",
                 "version": "1.0.0"
               },
               "variant": "nocturne",
@@ -2510,8 +2501,8 @@
               "nodeType": "layout",
               "semanticRole": "navigation",
               "resourceRef": {
-                "id": "res_shell_minimal_top_nav",
-                "slug": "minimal-top-nav",
+                "id": "res_shell_collapsible_sidebar",
+                "slug": "collapsible-sidebar",
                 "version": "1.0.0"
               },
               "variant": "nocturne",
@@ -2681,8 +2672,8 @@
               "nodeType": "layout",
               "semanticRole": "navigation",
               "resourceRef": {
-                "id": "res_shell_minimal_top_nav",
-                "slug": "minimal-top-nav",
+                "id": "res_shell_collapsible_sidebar",
+                "slug": "collapsible-sidebar",
                 "version": "1.0.0"
               },
               "variant": "nocturne",
@@ -2885,8 +2876,8 @@
               "nodeType": "layout",
               "semanticRole": "navigation",
               "resourceRef": {
-                "id": "res_shell_minimal_top_nav",
-                "slug": "minimal-top-nav",
+                "id": "res_shell_collapsible_sidebar",
+                "slug": "collapsible-sidebar",
                 "version": "1.0.0"
               },
               "variant": "nocturne",
@@ -3053,8 +3044,8 @@
               "nodeType": "layout",
               "semanticRole": "navigation",
               "resourceRef": {
-                "id": "res_shell_minimal_top_nav",
-                "slug": "minimal-top-nav",
+                "id": "res_shell_collapsible_sidebar",
+                "slug": "collapsible-sidebar",
                 "version": "1.0.0"
               },
               "variant": "nocturne",
@@ -3118,11 +3109,11 @@
                 },
                 {
                   "id": "node-screen-settings-save-footer-3",
-                  "nodeType": "element",
+                  "nodeType": "component",
                   "semanticRole": "save-footer",
                   "resourceRef": {
-                    "id": "res_primitive_button_01",
-                    "slug": "button",
+                    "id": "res_mot_magnetic_button",
+                    "slug": "magnetic-button",
                     "version": "1.0.0"
                   },
                   "variant": "nocturne",
@@ -3248,8 +3239,8 @@
         "variant": "expressive"
       },
       {
-        "id": "res_shell_minimal_top_nav",
-        "slug": "minimal-top-nav",
+        "id": "res_shell_collapsible_sidebar",
+        "slug": "collapsible-sidebar",
         "version": "1.0.0",
         "variant": "nocturne"
       },
@@ -3278,8 +3269,8 @@
         "variant": "nocturne"
       },
       {
-        "id": "res_shell_minimal_top_nav",
-        "slug": "minimal-top-nav",
+        "id": "res_shell_collapsible_sidebar",
+        "slug": "collapsible-sidebar",
         "version": "1.0.0",
         "variant": "nocturne"
       },
@@ -3308,8 +3299,8 @@
         "variant": "nocturne"
       },
       {
-        "id": "res_shell_minimal_top_nav",
-        "slug": "minimal-top-nav",
+        "id": "res_shell_collapsible_sidebar",
+        "slug": "collapsible-sidebar",
         "version": "1.0.0",
         "variant": "nocturne"
       },
@@ -3338,8 +3329,8 @@
         "variant": "nocturne"
       },
       {
-        "id": "res_shell_minimal_top_nav",
-        "slug": "minimal-top-nav",
+        "id": "res_shell_collapsible_sidebar",
+        "slug": "collapsible-sidebar",
         "version": "1.0.0",
         "variant": "nocturne"
       },
@@ -3368,8 +3359,8 @@
         "variant": "nocturne"
       },
       {
-        "id": "res_shell_minimal_top_nav",
-        "slug": "minimal-top-nav",
+        "id": "res_shell_collapsible_sidebar",
+        "slug": "collapsible-sidebar",
         "version": "1.0.0",
         "variant": "nocturne"
       },
@@ -3392,8 +3383,8 @@
         "variant": "nocturne"
       },
       {
-        "id": "res_shell_minimal_top_nav",
-        "slug": "minimal-top-nav",
+        "id": "res_shell_collapsible_sidebar",
+        "slug": "collapsible-sidebar",
         "version": "1.0.0",
         "variant": "nocturne"
       },
@@ -3404,18 +3395,18 @@
         "variant": "nocturne"
       },
       {
-        "id": "res_primitive_button_01",
-        "slug": "button",
+        "id": "res_mot_magnetic_button",
+        "slug": "magnetic-button",
         "version": "1.0.0",
         "variant": "nocturne"
       }
     ],
     "projectLocks": [],
-    "activeManifestSha256": "179d8761b38fed21773e9b02eee55871dc861451eb7c280c46fedc5c4c05d5ed",
-    "exportedManifestSha256": "179d8761b38fed21773e9b02eee55871dc861451eb7c280c46fedc5c4c05d5ed"
+    "activeManifestSha256": "c48e9e50cbaf2805cde97f93133895d212afea65113baeaed8de1477031edfa1",
+    "exportedManifestSha256": "c48e9e50cbaf2805cde97f93133895d212afea65113baeaed8de1477031edfa1"
   },
   "handoffChecks": {
-    "filename": "adaptive-architecture-employee-experience-agent-handoff.zip",
+    "filename": "master-detail-explorer-employee-experience-agent-handoff.zip",
     "files": [
       "AGENT_PROMPT.md",
       "COMPONENTS.md",
@@ -3459,263 +3450,451 @@
     "failedRequests": [],
     "responses": [
       {
-        "url": "http://127.0.0.1:4412/compose",
+        "url": "http://127.0.0.1:4321/compose",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/style.C6wIKyn4.css",
+        "url": "http://127.0.0.1:4321/_astro/style.CNDZmuts.css",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/index.Bh89wAT3.js",
+        "url": "http://127.0.0.1:4321/_astro/index.Bh89wAT3.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/ComposeView.BOumgFoI.js",
+        "url": "http://127.0.0.1:4321/_astro/ComposeView.ByoMsdWy.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/client.CZ5CiHPg.js",
+        "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/jsx-runtime.BZkYIGyD.js",
+        "url": "http://127.0.0.1:4321/_astro/jsx-runtime.BZkYIGyD.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/react.B6PPDU_E.js",
+        "url": "http://127.0.0.1:4321/_astro/react.B6PPDU_E.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/src.BX1lhOTL.js",
+        "url": "http://127.0.0.1:4321/_astro/storage.YNF9kxvX.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/createLucideIcon.14lUEEec.js",
+        "url": "http://127.0.0.1:4321/_astro/src.BX1lhOTL.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/storage.DQkcCoR4.js",
+        "url": "http://127.0.0.1:4321/_astro/browser.CURJTRaq.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/arrow-right.CrL0QBhc.js",
+        "url": "http://127.0.0.1:4321/_astro/fetch-json-with-retry.CYGzYGh1.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/src.BOYsAstn.js",
+        "url": "http://127.0.0.1:4321/_astro/createLucideIcon.14lUEEec.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/chevron-down.DtfZPbTK.js",
+        "url": "http://127.0.0.1:4321/_astro/src.ejXkSjVr.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/smartphone.BKKE0Hdz.js",
+        "url": "http://127.0.0.1:4321/_astro/src.Bosr-Bfu.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/shield.CClXYlwc.js",
+        "url": "http://127.0.0.1:4321/_astro/arrow-right.CrL0QBhc.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/cpu.Cewq4aej.js",
+        "url": "http://127.0.0.1:4321/_astro/src.CBGed7cX.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/sparkles.Cox_DJ6k.js",
+        "url": "http://127.0.0.1:4321/_astro/chevron-down.DtfZPbTK.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/src.DnGFRryG.js",
+        "url": "http://127.0.0.1:4321/_astro/smartphone.BKKE0Hdz.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/src.B7UrmsMM.js",
+        "url": "http://127.0.0.1:4321/_astro/cpu.Cewq4aej.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/src.Cj1YM3rf.js",
+        "url": "http://127.0.0.1:4321/_astro/shield.CClXYlwc.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/gold.CeiPxNV6.js",
+        "url": "http://127.0.0.1:4321/_astro/sparkles.Cox_DJ6k.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/data/catalog.json",
+        "url": "http://127.0.0.1:4321/_astro/gold.CeiPxNV6.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/workbench?project=proj-direction-c-ccfb04a1a864491084baa456933f096adirc",
+        "url": "http://127.0.0.1:4321/_astro/manifest-renderer-core.wN_Tah80.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/style.C6wIKyn4.css",
+        "url": "http://127.0.0.1:4321/_astro/preload-helper.DHhhL8Zf.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/resource-variants.B_WU3vfO.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/data/catalog.json",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/collapsible-sidebar.CYcy-hM8.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/entity-profile-header.Doevic0Y.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/dashboard-kpi-grid.BJFAlBzq.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/timeline.DQvbCI4b.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/advanced-data-table.oBRQv8p5.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/minimal-top-nav.CfPvTRvh.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/workbench?project=proj-direction-c-acb46801ee014deb9f0e4c440524a1c7dirc",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/style.CNDZmuts.css",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/client.CZ5CiHPg.js",
+        "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/react.B6PPDU_E.js",
+        "url": "http://127.0.0.1:4321/_astro/WorkbenchShell.D9AsEZ27.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/react.B6PPDU_E.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/index.BcrThWbC.js",
-        "status": 200
-      },
-      {
-        "url": "http://127.0.0.1:4412/_astro/src.BX1lhOTL.js",
+        "url": "http://127.0.0.1:4321/_astro/jsx-runtime.BZkYIGyD.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/jsx-runtime.BZkYIGyD.js",
+        "url": "http://127.0.0.1:4321/_astro/src.Bosr-Bfu.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/src.DnGFRryG.js",
+        "url": "http://127.0.0.1:4321/_astro/storage.YNF9kxvX.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/src.B7UrmsMM.js",
+        "url": "http://127.0.0.1:4321/_astro/preload-helper.DHhhL8Zf.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/gold.CeiPxNV6.js",
+        "url": "http://127.0.0.1:4321/_astro/workbench-store.DYlPAjJY.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/resource-variants.B_WU3vfO.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/src.BOYsAstn.js",
+        "url": "http://127.0.0.1:4321/_astro/src.CBGed7cX.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/storage.DQkcCoR4.js",
+        "url": "http://127.0.0.1:4321/_astro/src.ejXkSjVr.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/createLucideIcon.14lUEEec.js",
+        "url": "http://127.0.0.1:4321/_astro/gold.CeiPxNV6.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/arrow-right.CrL0QBhc.js",
+        "url": "http://127.0.0.1:4321/_astro/runtime-catalog.B8qUQ4vX.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/browser.CURJTRaq.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/activity.DGq5j_oI.js",
-        "status": 200
-      },
-      {
-        "url": "http://127.0.0.1:4412/_astro/arrow-up.vGbmiYPw.js",
-        "status": 200
-      },
-      {
-        "url": "http://127.0.0.1:4412/_astro/compass.CD8f5pEM.js",
-        "status": 200
-      },
-      {
-        "url": "http://127.0.0.1:4412/_astro/bookmark.BGuXTOA4.js",
-        "status": 200
-      },
-      {
-        "url": "http://127.0.0.1:4412/_astro/chevron-down.DtfZPbTK.js",
+        "url": "http://127.0.0.1:4321/_astro/manifest-renderer-core.wN_Tah80.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/check.DZheQPi7.js",
+        "url": "http://127.0.0.1:4321/_astro/circle-check.BnrBU8lA.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/clock.B8yMDytp.js",
+        "url": "http://127.0.0.1:4321/_astro/eye.uoIoxOcf.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/circle-check.BnrBU8lA.js",
+        "url": "http://127.0.0.1:4321/_astro/file-text.sx6i_OCt.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/cpu.Cewq4aej.js",
+        "url": "http://127.0.0.1:4321/_astro/sliders-vertical.Bj_t08Fa.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/terminal.D1yAK8-f.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/MobileWorkbench.bzvU5AjB.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/createLucideIcon.14lUEEec.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/copy.BIIza9m3.js",
-        "status": 200
-      },
-      {
-        "url": "http://127.0.0.1:4412/_astro/eye.uoIoxOcf.js",
-        "status": 200
-      },
-      {
-        "url": "http://127.0.0.1:4412/_astro/smartphone.BKKE0Hdz.js",
+        "url": "http://127.0.0.1:4321/_astro/chevron-down.DtfZPbTK.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/layers.CtXwhj7g.js",
+        "url": "http://127.0.0.1:4321/_astro/clock.BSWorZFx.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/refresh-cw.SKQyrYtj.js",
+        "url": "http://127.0.0.1:4321/_astro/refresh-cw.nTDkSzmc.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/sun.DHWleJN4.js",
+        "url": "http://127.0.0.1:4321/_astro/plus.5qrNE-Rd.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/palette.Dfv1e2Eu.js",
+        "url": "http://127.0.0.1:4321/_astro/bookmark.BGuXTOA4.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/panels-top-left.B-jdE7pS.js",
+        "url": "http://127.0.0.1:4321/_astro/TopToolbar.BH0OBBIP.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/play.CLWN6hGw.js",
-        "status": 200
-      },
-      {
-        "url": "http://127.0.0.1:4412/_astro/shield.CClXYlwc.js",
+        "url": "http://127.0.0.1:4321/_astro/sparkles.Cox_DJ6k.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/sparkles.Cox_DJ6k.js",
+        "url": "http://127.0.0.1:4321/_astro/rotate-ccw.divXcstY.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/square-split-horizontal.alXLZY22.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/minimal-top-nav.CfPvTRvh.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/trash-2.CStjAi3B.js",
+        "url": "http://127.0.0.1:4321/_astro/editorial-hero.CN6KYWuK.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/rotate-ccw.divXcstY.js",
+        "url": "http://127.0.0.1:4321/_astro/feature-bento.CR3oOG6T.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/sliders-vertical.Bj_t08Fa.js",
+        "url": "http://127.0.0.1:4321/_astro/cta-minimal.9ScfhZCU.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/tablet.Dz7Mkca5.js",
+        "url": "http://127.0.0.1:4321/_astro/footer-product.DBXWiaig.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/src.Cj1YM3rf.js",
+        "url": "http://127.0.0.1:4321/_astro/src.BX1lhOTL.js",
         "status": 304
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/type.47V9oe1O.js",
+        "url": "http://127.0.0.1:4321/_astro/smartphone.BKKE0Hdz.js",
+        "status": 304
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/wind.D46DbNih.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/x.K_99xudA.js",
+        "url": "http://127.0.0.1:4321/_astro/tablet.Dz7Mkca5.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/terminal.D1yAK8-f.js",
+        "url": "http://127.0.0.1:4321/_astro/x.K_99xudA.js",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:4412/_astro/zap.BZ4uBrvW.js",
+        "url": "http://127.0.0.1:4321/_astro/PreviewModal.BUXzQUce.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/DeviceFrame.ETLoN-_P.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/collapsible-sidebar.CYcy-hM8.js",
+        "status": 304
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/timeline.DQvbCI4b.js",
+        "status": 304
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/kanban-board.BT4832DC.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/entity-profile-header.Doevic0Y.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/advanced-data-table.oBRQv8p5.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/filter-builder.BzzRP1SD.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/dashboard-kpi-grid.BJFAlBzq.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/input.VJwGA35y.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/magnetic-button.DpaUfLO4.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/ai-research-answer.Cvyb35Cc.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/ai-prompt-composer.DH8lD50F.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/area-chart.aBUvJm9g.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/ai-suggested-actions.BCaSBC20.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/badge.3TrCWYhf.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/bar-chart.DoGX54jV.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/dialog.CoLxPXmR.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/dashboard-skeleton.Cu7psLYu.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/donut-chart.Clww4GtQ.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/empty-workspace.PKJ5djP6.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/error-state.Dy_KVacb.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/faq-accordion.17Qt5Pic.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/fade-up-reveal.BAT707XO.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/feature-matrix.BGXnw6qY.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/logo-cloud-minimal.D3w0ta1s.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/marketing-nav-cta.Dv3YU090.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/notification-centre.CK2QV909.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/select.CRAX1Skt.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/pricing-three-tier.DDHY65P8.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/split-product-hero.BOXFk3-K.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/subtle-grid-field.Yd6q0qnX.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/three-pane-app-shell.dkx7fPrS.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/testimonial-grid.B2vRTlJy.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/time-series-chart.ngdgq6Cb.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/two-pane-master-detail-shell.DXz5xJYr.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4321/_astro/src.DbQf-iGp.js",
         "status": 200
       }
     ]

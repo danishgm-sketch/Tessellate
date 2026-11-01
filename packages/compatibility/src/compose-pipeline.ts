@@ -278,7 +278,8 @@ export function composeProjectForDirection(options: DirectionCompositionOptions)
       let roleCatalog = catalog;
       if (role === 'navigation') {
         const navigationSlug =
-          screenNode.screenType !== 'marketing' && direction.navigationModel === 'sidebar'
+          screenNode.screenType !== 'marketing' &&
+          (direction.navigationModel === 'sidebar' || direction.navigationModel === 'rail')
             ? 'collapsible-sidebar'
             : 'minimal-top-nav';
         roleCatalog = catalog.filter((resource) => resource.slug === navigationSlug);

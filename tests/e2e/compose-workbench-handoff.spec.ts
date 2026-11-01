@@ -30,6 +30,10 @@ const handoffEvidenceDirectory = path.resolve(process.cwd(), 'quality/evidence/s
 const exactBrief =
   'Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.';
 
+function flattenProjectNodes(node: ProjectNode): ProjectNode[] {
+  return [node, ...node.children.flatMap(flattenProjectNodes)];
+}
+
 test('Compose Direction C opens the exact selected manifest in Workbench', async ({
   page,
 }, testInfo) => {
@@ -167,6 +171,31 @@ test('Compose Direction C opens the exact selected manifest in Workbench', async
   expect(activeManifest.navigation).toEqual(selectedPreview.navigation);
   expect(activeManifest.screens).toEqual(selectedPreview.screens);
   expect(selectedPreview.diagnostics).toEqual([]);
+
+  if (selectedPreview.navigation.model === 'rail' && (page.viewportSize()?.width ?? 0) >= 1024) {
+    const applicationScreenIds = new Set(
+      activeManifest.screenGraph.groups
+        .flatMap((group) => group.screens)
+        .filter((screen) => screen.screenType !== 'marketing')
+        .map((screen) => screen.id),
+    );
+    const applicationNavigation = activeManifest.screens
+      .filter((screen) => applicationScreenIds.has(screen.screenNodeId))
+      .flatMap((screen) => flattenProjectNodes(screen.rootNode))
+      .filter((node) => node.semanticRole === 'navigation');
+    expect(applicationNavigation.length).toBeGreaterThan(0);
+    expect(applicationNavigation.every((node) => node.resourceRef?.slug === 'collapsible-sidebar')).toBe(true);
+
+    await page.getByTestId('left-panel').getByRole('button', { name: 'Pages' }).click();
+    await page.getByRole('button', { name: 'Select screen Team Overview' }).click();
+    await page.getByTestId('canvas-toolbar').getByRole('button', { name: '1440' }).click();
+    const renderedNavigation = page.locator('.tess-layout-navigation nav').first();
+    await expect(renderedNavigation).toBeVisible();
+    await expect
+      .poll(() => renderedNavigation.evaluate((navigation) => getComputedStyle(navigation).flexDirection))
+      .toBe('column');
+    await page.getByRole('button', { name: 'Select screen Marketing Home' }).click();
+  }
 
   let sameProjectMobileEvidence: {
     projectId: string;
