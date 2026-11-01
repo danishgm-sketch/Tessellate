@@ -1,0 +1,29 @@
+{
+  "issueId": "AUD-449",
+  "site": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+    "version": 71,
+    "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_868c6bee9ec4819194495b52cc426e79",
+    "deploymentId": "appgdep_6ae77cf2fb748191a0f739594e9b5e96",
+    "sitesSourceCommit": "0bce228a4fbd5fedad02a3186cd6af62690d8405",
+    "canonicalSourceCommit": "7ac7783de83e175ac410055da736b2218e2ba213",
+    "access": "public"
+  },
+  "route": "/resources/minimal-top-nav/",
+  "viewport": { "width": 390, "height": 844 },
+  "httpStatus": 200,
+  "visiblePreview": "The preview showed Overview, People and Settings as a small horizontal row. There was no in-preview navigation toggle and the menu was not collapsed.",
+  "consoleErrors": [],
+  "browserIssueMessages": [
+    "Deprecated feature used (count: 1)",
+    "Deprecated feature used (count: 1)",
+    "Deprecated feature used (count: 1)"
+  ],
+  "requests": {
+    "total": 49,
+    "statuses": { "200": 47, "302": 1, "304": 1 },
+    "failed": 0,
+    "httpErrors": 0
+  },
+  "screenshot": "minimal-top-nav-v71-mobile-before.png"
+}

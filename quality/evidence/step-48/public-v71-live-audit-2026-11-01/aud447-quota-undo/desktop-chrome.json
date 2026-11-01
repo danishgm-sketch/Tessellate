@@ -1,0 +1,22 @@
+{
+  "issue": "AUD-447",
+  "status": "deployed-verified",
+  "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "viewport": "desktop-chrome",
+  "projectUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=local-bcb14cfd-911e-4222-8f5a-d2e25c90a8c1#screen-marketing-home",
+  "playfulnessBeforeEdit": 75,
+  "playfulnessAfterEdit": 76,
+  "playfulnessAfterUndo": 75,
+  "playfulnessAfterReload": 75,
+  "injectedFault": "Storage.prototype.setItem throws QuotaExceededError for Tessellate project journal keys during visible Undo",
+  "checks": {
+    "undoRestoredPriorValue": true,
+    "indexedDbSaveSurvivedReload": true,
+    "projectRouteUnchanged": true
+  },
+  "consoleErrors": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "screenshot": "quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud447-quota-undo/desktop-chrome.png"
+}

@@ -1,0 +1,20 @@
+{
+  "url": "http://127.0.0.1:4323/workbench?project=local-cross-tab-history-desktop-1440#scr_inst_overview",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "consoleErrors": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "issue": "AUD-438",
+  "status": "passed",
+  "checks": {
+    "otherTabPrunedSnapshot": true,
+    "savedTabRewroteMissingSnapshot": true,
+    "undoWasRestoredAfterReload": true,
+    "undoRestoredExactPriorVisualAmbition": true
+  },
+  "screenshot": "quality\\evidence\\step-21\\after\\cross-tab-history-snapshot-integrity-desktop-1440.png"
+}

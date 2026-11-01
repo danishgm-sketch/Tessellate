@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete. PR review findings AUD-419–AUD-444 have named post-fix regression coverage; this record does not claim every regression ran red before its fix. The AUD-438 cross-tab history regression additionally passes in a real local Sites Worker browser at desktop and mobile sizes. Exact-head CI and applicable deployed verification remain pending. Public Axe evidence also found two unsupported ARIA label semantics (AUD-445 and AUD-446), now fixed locally and awaiting published verification. Public v70 route re-audit evidence is quality/evidence/step-45/public-v70-reaudit-2026-11-01/. Axe scan-time CSP console events are isolated to the sandboxed preview frames while Axe analyzes them; ordinary route navigation was clean, and the existing strict CSP remains unchanged. A separately discovered PR review issue AUD-447 reproduced an Undo recovery failure under simulated localStorage quota exhaustion; its regression fails against the pre-fix source and passes with the generation-based journal fix. Exact-head CI and public Site verification are pending.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete. PR review findings AUD-419–AUD-444 have named post-fix regression coverage; this record does not claim every regression ran red before its fix. The AUD-438 cross-tab history regression additionally passes in a real local Sites Worker browser at desktop and mobile sizes. Exact-head CI and applicable deployed verification remain pending. Public Axe evidence also found two unsupported ARIA label semantics (AUD-445 and AUD-446), now fixed locally and awaiting published verification. Public v70 route re-audit evidence is quality/evidence/step-45/public-v70-reaudit-2026-11-01/. Axe scan-time CSP console events are isolated to the sandboxed preview frames while Axe analyzes them; ordinary route navigation was clean, and the existing strict CSP remains unchanged. A separately discovered PR review issue AUD-447 reproduced an Undo recovery failure under simulated localStorage quota exhaustion; its regression fails against the pre-fix source and passes with the generation-based journal fix. Exact-head CI and public Site verification are pending. Public Sites v71 serves canonical commit 7ac7783de83e175ac410055da736b2218e2ba213 via Sites source 0bce228a4fbd5fedad02a3186cd6af62690d8405. The 31-route public-shell sweep passed 31/31 routes at 1440x900 and 390x844 (62 route captures), with zero HTTP failures, browser console errors, uncaught exceptions, failed requests, horizontal overflow, screenshot instrumentation warnings, Axe violations, or unsupported-ARIA incomplete results; 11 color-contrast checks remain Axe-incomplete. The full employee-experience flagship flow passed on desktop and mobile, including Direction C selection, locks, recomposition, replacement, Surprise Me, Undo/Redo and manifest/ZIP export; the desktop standalone export was clean-installed, built and browsed. AUD-443 and AUD-445 through AUD-447 now have issue-specific public v71 verification. AUD-419 remains locally verified only: the public backend health endpoint truthfully reports that the laptop backend is unconfigured, and no provider credentials were sent or persisted. The broader hardening programme remains incomplete. On 2026-11-01, local Docker inspection found the Tessellate API and host containers running but unhealthy. Restarting the existing API, then the dependent host, restored API HTTP 200, Docker health, and a fresh heartbeat without rebuilding images or touching MGI containers. AUD-448 records this medium local-runtime defect; its initiating cause remains unknown and it is open for root-cause investigation. AUD-449 records a public v71 responsive-collapse mismatch reproduced at 390x844; its keyboard and touch responsive fix passes in local Sites Worker desktop/mobile profiles across seven widths and awaits deployed recheck.",
   "entries": [
     {
       "id": "AUD-001",
@@ -19201,7 +19201,7 @@
       "category": "network",
       "title": "BYO provider credentials were dropped by the Sites AI gateway",
       "expected": "A configured Anthropic or Gemini request should reach the laptop API with its provider authentication header and version header.",
-      "actual": "The gateway allowlist forwarded only content negotiation headers, so proxied requests reached the API without provider credentials. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "actual": "The header-forwarding allowlist fix and its local mocked-transport regression are present in the deployed v71 source. However, public /api/inference/health returns apiOnline=false and hostOnline=false because the laptop backend is not configured, so this deployment cannot exercise provider-header forwarding. No provider credential was supplied; retain local-only verification until a non-production dummy-provider integration environment is available.",
       "reproduction": [
         "Run the regression test in apps/sites/backend.test.ts.",
         "Run the referenced regression test and compare the affected behavior described in its PR review thread."
@@ -19216,7 +19216,13 @@
       "evidence": {
         "testPath": "apps/sites/backend.test.ts",
         "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
-        "reviewThreadId": "PRRT_kwDOVEB2EM6yP8EF"
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yP8EF",
+        "deployedHostAvailability": "quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud419-backend-availability/desktop-chrome.json",
+        "deployedSource": {
+          "siteVersion": 71,
+          "canonicalCommit": "7ac7783de83e175ac410055da736b2218e2ba213",
+          "sitesSourceCommit": "0bce228a4fbd5fedad02a3186cd6af62690d8405"
+        }
       },
       "fixCommit": "c744563df2ca43ec579151cd73107a65d9a6f1a7",
       "status": "fixed-local-verified"
@@ -19892,7 +19898,7 @@
       "category": "export",
       "title": "Manifest prop names could inject JSX source into standalone exports",
       "expected": "Export must validate property names and keep all manifest values inside safe JSX expressions.",
-      "actual": "User-controlled prop keys were interpolated as JSX syntax before being validated against the resource contract. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "actual": "On public v71, a hostile prop name carrying a JavaScript assignment was imported through the visible Workbench manifest UI and exported through the visible standalone React ZIP control at desktop and mobile. All seven generated screen files were inspected; the hostile attribute and expression were absent, while normal node metadata remained. There were no browser or network errors.",
       "reproduction": [
         "Run the regression test in packages/exporter/src/__tests__/exporter.test.ts.",
         "Run the referenced regression test and compare the affected behavior described in its PR review thread."
@@ -19910,7 +19916,28 @@
         "reviewThreadId": "PRRT_kwDOVEB2EM6yabIl"
       },
       "fixCommit": "2804038cdaba11573fbd64eeeb0246b92d32ccd5",
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersion": 71,
+        "canonicalCommit": "7ac7783de83e175ac410055da736b2218e2ba213",
+        "sitesSourceCommit": "0bce228a4fbd5fedad02a3186cd6af62690d8405",
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+        "tests": [
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud443-hostile-prop/desktop-chrome.json",
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud443-hostile-prop/mobile-chrome.json"
+        ],
+        "exportedZips": [
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud443-hostile-prop/desktop-chrome.zip",
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud443-hostile-prop/mobile-chrome.zip"
+        ],
+        "maliciousPropNameOmitted": true,
+        "executableExpressionOmitted": true,
+        "allSevenScreenFilesInspected": true
+      }
     },
     {
       "id": "AUD-444",
@@ -19948,7 +19975,7 @@
       "category": "accessibility",
       "title": "Showcase preview label was attached to a container without a semantic role",
       "expected": "A named example-screen container should expose a supported landmark role to assistive technology.",
-      "actual": "The showcase renderer put aria-label on a div with no role; Axe reported aria-prohibited-attr as incomplete on both audited viewports. The deployed behavior is not closed until a review Site verifies the change.",
+      "actual": "The public v71 desktop and mobile Axe scans report zero violations and no ARIA incomplete nodes on the showcase route. The named preview region is supported by its role; color-contrast remains an Axe incomplete check because CSS Color 4 colors are not computed by the scanner.",
       "reproduction": [
         "Open /showcase/showcase-playful-hr/ at 1440x900 or 390x844.",
         "Run the WCAG 2.2 AA Axe scan and inspect aria-prohibited-attr incomplete nodes."
@@ -19982,7 +20009,29 @@
         ]
       },
       "fixCommit": "36736b77283edb223408da2317a37f6068f1bd67",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersion": 71,
+        "canonicalCommit": "7ac7783de83e175ac410055da736b2218e2ba213",
+        "sitesSourceCommit": "0bce228a4fbd5fedad02a3186cd6af62690d8405",
+        "route": "/showcase/showcase-playful-hr/",
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+        "routeReports": [
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/route-audit-desktop-chrome.json",
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/route-audit-mobile-chrome.json"
+        ],
+        "axeViolations": 0,
+        "ariaIncomplete": 0,
+        "colorContrastIncomplete": true,
+        "screenshots": [
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/screenshots/desktop-chrome/28-showcase-showcase-playful-hr.png",
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/screenshots/mobile-chrome/28-showcase-showcase-playful-hr.png"
+        ]
+      }
     },
     {
       "id": "AUD-446",
@@ -19992,7 +20041,7 @@
       "category": "accessibility",
       "title": "Workbench save status label had no supported status semantics",
       "expected": "Save-state feedback should expose a live status role so assistive technology can announce changes.",
-      "actual": "The local-history indicator used aria-label on a generic div; the public v70 Axe scan reported aria-prohibited-attr as incomplete. The local role=status fix passes desktop/mobile regression checks and awaits deployed verification.",
+      "actual": "The public v71 desktop and mobile Axe scans report zero violations and no ARIA incomplete nodes on Workbench. The save feedback is exposed as a status; color-contrast remains an Axe incomplete check because CSS Color 4 colors are not computed by the scanner.",
       "reproduction": [
         "Open /workbench at 1440x900 or 390x844.",
         "Run the WCAG 2.2 AA Axe scan and inspect aria-prohibited-attr incomplete nodes for history-save-status."
@@ -20026,7 +20075,29 @@
         ]
       },
       "fixCommit": "36736b77283edb223408da2317a37f6068f1bd67",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersion": 71,
+        "canonicalCommit": "7ac7783de83e175ac410055da736b2218e2ba213",
+        "sitesSourceCommit": "0bce228a4fbd5fedad02a3186cd6af62690d8405",
+        "route": "/workbench",
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+        "routeReports": [
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/route-audit-desktop-chrome.json",
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/route-audit-mobile-chrome.json"
+        ],
+        "axeViolations": 0,
+        "ariaIncomplete": 0,
+        "colorContrastIncomplete": true,
+        "screenshots": [
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/screenshots/desktop-chrome/13-workbench.png",
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/screenshots/mobile-chrome/13-workbench.png"
+        ]
+      }
     },
     {
       "id": "AUD-447",
@@ -20036,7 +20107,7 @@
       "category": "state",
       "title": "Undo could reload as the newer state when the recovery journal hit quota",
       "expected": "After Undo is saved successfully to IndexedDB, reload should restore the undone manifest even when localStorage is full.",
-      "actual": "The timestamped localStorage journal was preferred over IndexedDB, so a failed journal write could restore the later edited manifest and reverse Undo after reload.",
+      "actual": "Before the fix, a failed localStorage journal write could cause reload to restore the edited state and reverse Undo. On public v71, desktop and mobile UI tests injected QuotaExceededError during Undo, observed the prior value, reloaded, and observed the same prior value with no console, uncaught, failed-request, or HTTP errors.",
       "reproduction": [
         "Save manifest A, then save edited manifest B with a later updatedAt timestamp.",
         "Simulate localStorage quota failure and save A again, matching an Undo to the older manifest.",
@@ -20052,7 +20123,7 @@
       ],
       "remediation": "Capture journal identity before each save, use an opaque generation marker committed only after both journal payloads are written, and on IndexedDB success remove only the journal bytes belonging to the failed save or the exact previously observed bytes. This preserves crash recovery while preventing timestamps from overruling Undo.",
       "fixCommit": "d13d87a2bbb835b3de07b0b803b4394b4cddc81e",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "evidence": {
         "reviewCommentId": "4436330975",
         "preFixTest": "quality/evidence/step-48/browser-journal-undo-quota/pre-fix-vitest.log",
@@ -20060,9 +20131,162 @@
         "preFixResult": "1 failed: reload returned Edited state B instead of Undo target A.",
         "postFixResult": "1 passed; the full browser-session unit file passes 5/5."
       },
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersion": 71,
+        "canonicalCommit": "7ac7783de83e175ac410055da736b2218e2ba213",
+        "sitesSourceCommit": "0bce228a4fbd5fedad02a3186cd6af62690d8405",
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+        "tests": [
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud447-quota-undo/desktop-chrome.json",
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud447-quota-undo/mobile-chrome.json"
+        ],
+        "screenshots": [
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud447-quota-undo/desktop-chrome.png",
+          "quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud447-quota-undo/mobile-chrome.png"
+        ],
+        "faultInjected": "Storage.prototype.setItem throws QuotaExceededError for Tessellate local journal keys during visible Undo",
+        "reloadRestoredUndoneValue": true
+      }
+    },
+    {
+      "id": "AUD-448",
+      "severity": "medium",
+      "route": "local laptop Docker runtime",
+      "viewport": "local Docker",
+      "category": "runtime",
+      "title": "API and host containers remained running but unhealthy until manually restarted",
+      "expected": "When the laptop Docker services are started, the API should serve its health endpoint and the worker should maintain a current heartbeat; unhealthy state should recover safely or remain clearly unavailable.",
+      "actual": "Docker showed both Tessellate containers as running but unhealthy. The API health endpoint failed locally and the host heartbeat was over 29 hours old. Restarting only the existing API container restored HTTP 200 and healthy status; restarting the dependent host restored a fresh heartbeat and healthy status. The initiating API failure is unknown.",
+      "reproduction": [
+        "Inspect Docker status for tessellate-laptop-api-1 and tessellate-laptop-host-1.",
+        "Before recovery, GET http://127.0.0.1:8788/health failed and the host heartbeat exceeded the 20-second health threshold.",
+        "Restart the API container without rebuilding, wait for its health check, then restart the host container.",
+        "After recovery, the API health request returns HTTP 200 and both containers report healthy."
+      ],
+      "console": [],
+      "network": [
+        "Before recovery: GET http://127.0.0.1:8788/health failed with fetch failed. After API restart: HTTP 200."
+      ],
+      "screenshot": null,
+      "rootCause": "The API health endpoint was unreachable while Docker kept its container running; the worker heartbeat then expired because it could not maintain API contact. Docker restart policy does not restart a still-running unhealthy container. The initiating reason the API server became unresponsive is not established.",
+      "affectedFiles": [
+        "compose.laptop.yaml",
+        "apps/laptop-backend/start.sh",
+        "apps/host-daemon/daemon.py"
+      ],
+      "remediation": "Investigate why the local Wrangler API stopped serving while its container remained running. Add a bounded recovery mechanism only after a deterministic fault-injection regression proves the failure mode; keep all host-dependent features unavailable while health or heartbeat is stale.",
+      "fixCommit": null,
+      "status": "open",
+      "evidence": {
+        "runtime": "quality/evidence/step-37/docker-service-recovery-2026-11-01.json"
+      },
       "deployedVerification": null
+    },
+    {
+      "id": "AUD-449",
+      "severity": "medium",
+      "route": "/resources/minimal-top-nav/",
+      "viewport": "390x844; desktop control 1440x900",
+      "category": "accessibility",
+      "title": "Minimal Top Navigation did not collapse at mobile widths",
+      "expected": "The declared collapse strategy should hide the inline navigation behind an accessible mobile toggle, provide readable touch targets when open, and retain the full inline navigation on wider containers.",
+      "actual": "Public Sites v71 showed the resource navigation inline at 390px with no toggle. After the fix, public Sites v72 serves an accessible mobile toggle at 390x844: pointer and keyboard activation open the list; Overview, People and Settings are visible; Escape closes it and restores focus. At 1440x900, the links remain inline. The deployed route returned 200, with no horizontal overflow, failed requests, application console errors or uncaught exceptions.",
+      "reproduction": [
+        "Open /resources/minimal-top-nav/ on public Sites v71 at 390x844.",
+        "Inspect the live preview: the navigation remains inline and no menu toggle exists.",
+        "Run the regression test against the pre-fix local Sites Worker; it fails because the expected mobile toggle count is zero."
+      ],
+      "console": [],
+      "network": [
+        "Public v71 route: 49 requests, 47 HTTP 200, one 302, one 304; zero failed requests and zero HTTP responses >=400."
+      ],
+      "screenshot": "quality/evidence/step-48/aud449-minimal-top-nav/minimal-top-nav-v71-mobile-before.png",
+      "rootCause": "The resource manifest promised a collapse strategy, but MinimalTopNav only used flex-wrap. It had no mobile toggle, open state, or Escape/focus behavior, so the navigation could not collapse as documented.",
+      "affectedFiles": [
+        "resources/shells/minimal-top-nav/index.tsx",
+        "resources/shells/minimal-top-nav/README.md",
+        "tests/e2e/minimal-top-nav-responsive-collapse.spec.ts",
+        "tests/e2e/sites-preview.playwright.config.ts",
+        "tests/e2e/gold-resource-state-matrix.spec.ts",
+        "tests/e2e/flagship-acceptance-journey.spec.ts",
+        "packages/exporter/src/__tests__/standalone-export-fidelity.test.ts"
+      ],
+      "remediation": "Add an accessible, uniquely controlled mobile menu state to the existing resource. Preserve its current desktop layout; open and close the menu on activation, close on Escape and restore focus to the toggle, use container responsive utilities, and provide 44px mobile link rows.",
+      "fixCommit": "b5f9f1ea9a884c544f3f7c8862655a69648e6464",
+      "status": "closed-deployed-verified",
+      "evidence": {
+        "deployedBefore": "quality/evidence/step-48/aud449-minimal-top-nav/deployed-v71-before.json",
+        "desktopBeforeScreenshot": "quality/evidence/step-48/aud449-minimal-top-nav/minimal-top-nav-v71-desktop-before.png",
+        "preFixRegression": "quality/evidence/step-48/aud449-minimal-top-nav/pre-fix-regression.log",
+        "postFixRegression": "quality/evidence/step-48/aud449-minimal-top-nav/post-fix-regression.log",
+        "localBrowserAfter": "quality/evidence/step-48/aud449-minimal-top-nav/aud449-local-browser-evidence.json",
+        "localScreenshots": [
+          "quality/evidence/step-48/aud449-minimal-top-nav/minimal-top-nav-local-mobile-collapsed-after.png",
+          "quality/evidence/step-48/aud449-minimal-top-nav/minimal-top-nav-local-mobile-expanded-after.png",
+          "quality/evidence/step-48/aud449-minimal-top-nav/minimal-top-nav-local-desktop-after.png"
+        ],
+        "responsiveWidths": [
+          360,
+          390,
+          430,
+          768,
+          1024,
+          1280,
+          1440
+        ],
+        "profiles": [
+          "sites-chromium",
+          "sites-mobile-chromium"
+        ],
+        "build": "pnpm build passed; 324 resources validated and 40 Gold resources generated",
+        "eslint": "Targeted ESLint passed for the component and browser regression",
+        "fullE2E": {
+          "command": "pnpm test:e2e",
+          "result": "PASS: 769 passed, 174 configured profile skips, 0 failures across desktop/mobile Chromium, Sites Worker desktop/mobile Chromium, and preview app",
+          "log": "quality/evidence/step-48/aud449-minimal-top-nav/test-e2e-final.log",
+          "sitesDesktop": "205 passed, 6 configured skips",
+          "sitesMobile": "169 passed, 42 configured skips",
+          "stateMatrix": "Gold minimal-top-nav empty/large-link state test passed after opening the accessible menu through the UI"
+        },
+        "repositoryGates": {
+          "frozenInstall": "PASS",
+          "catalogue": "PASS: 324 resources; 40 Gold",
+          "typecheck": "PASS: all 22 workspace packages",
+          "lint": "PASS",
+          "unitIntegration": "PASS: 1,276 passed, 1 skipped",
+          "auditAll": "PASS: release gate 16/16; resource isolation 324/324; 733 Astro pages; bundle budgets; licence/provenance 324/324; zero security violations; zero known dependency vulnerabilities",
+          "logs": "quality/evidence/step-48/aud449-minimal-top-nav/"
+        },
+        "deployedAfter": "quality/evidence/step-48/aud449-minimal-top-nav/deployed-v72-browser-evidence.json",
+        "deployedPerformance": "quality/evidence/step-48/aud449-minimal-top-nav/deployed-v72-performance.json",
+        "sitesVersion": "appgprj_6acc036de8cc8191a823339566972d85~appgver_a660452f84c88191b499c629ca5c0893"
+      },
+      "deployedVerification": {
+        "siteVersion": 72,
+        "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_a660452f84c88191b499c629ca5c0893",
+        "deploymentId": "appgdep_6ae7ba14362c819191d533692c30487b",
+        "deploymentStatus": "succeeded",
+        "canonicalCommit": "b5f9f1ea9a884c544f3f7c8862655a69648e6464",
+        "sitesMirrorCommit": "95cf423eac1f30d22e3aaf8dba3d29d08cb53f57",
+        "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/resources/minimal-top-nav/",
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+        "interaction": "Mobile pointer and keyboard toggle, visible items, Escape closure and focus restoration passed; desktop remained inline.",
+        "httpStatus": 200,
+        "network": "45 post-reload requests returned HTTP 200; zero failed requests; a subsequent Lighthouse navigation also had 46/46 HTTP 200.",
+        "console": "Zero fresh application errors or uncaught exceptions. Three first-load Chromium deprecation issue notices came from Cloudflare challenge JS; Lighthouse later emitted one isolated instrumentation postMessage warning.",
+        "accessibility": "Lighthouse mobile navigation audit: Accessibility 100, Best Practices 100; zero serious/critical accessibility violations.",
+        "performance": "LCP 243ms, CLS 0.00, TTFB 50ms; raw trace not retained.",
+        "screenshotCapture": "Desktop and mobile captures were visually inspected inline; DevTools MCP file output was denied by its configured path policy."
+      }
     }
   ],
-  "generatedAt": "2026-11-01T13:28:15Z",
-  "latestDeploymentEvidence": "quality/evidence/step-45/public-v70-reaudit-2026-11-01/route-audit.json"
+  "generatedAt": "2026-11-01T22:22:21Z",
+  "latestDeploymentEvidence": "quality/evidence/step-48/aud449-minimal-top-nav/deployed-v72-browser-evidence.json"
 }

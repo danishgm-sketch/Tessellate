@@ -1,6 +1,8 @@
 # Runtime audit — product hardening and deployed-site verification
+Current public review Site: v72 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/, deployed from canonical commit b5f9f1ea9a884c544f3f7c8862655a69648e6464 through Sites mirror commit 95cf423eac1f30d22e3aaf8dba3d29d08cb53f57 (version appgprj_6acc036de8cc8191a823339566972d85~appgver_a660452f84c88191b499c629ca5c0893). v72 closes AUD-449 after the deployed responsive-navigation regression passed at 1440x900 and 390x844; its browser and performance evidence is under quality/evidence/step-48/aud449-minimal-top-nav/. The broader 31-route, flagship, and issue sweep remains the v71 baseline under quality/evidence/step-48/public-v71-live-audit-2026-11-01/; v72 is a targeted follow-up, not a repeat of that entire sweep. Screenshots from v72 were returned and inspected inline by DevTools MCP; its file-output path policy rejected local paths. The product-hardening programme remains incomplete.
 
-This register preserves historical resource/renderer findings and tracks issue-specific deployed verification. Public Sites v70 is the current review deployment. Its broad route audit visited the complete 31-route public shell at 1440×900 and 390×844 (62/62 HTTP 200, no route-sweep browser errors, failed requests, bad responses or horizontal overflow); eight showcase details also passed at both sizes (16/16). Five responsive workflow tests passed across 360, 390, 430, 768, 1024, 1280, 1440 and 1536px. The deployed flagship, tools, blueprints/showcases, Axe, and WebKit evidence is recorded under `quality/evidence/step-45/public-v70-reaudit-2026-11-01/`. This is a broad route and workflow sweep, not exhaustive interaction testing of every secondary control. Axe reported zero violations in 12 route/viewport scans, while returning 10 color-contrast and 4 ARIA incomplete checks; the ARIA findings are tracked as AUD-445/446 and locally fixed pending deployed verification. Its CSP console events were reproduced only during Axe analysis inside sandboxed preview frames; normal navigation did not emit them, and CSP remains strict. D1/R2 remain unprovisioned. The product-hardening programme remains incomplete. The older v61 route matrix is `quality/evidence/step-48/deployed-v61-2026-10-31/route-audit.json`; v62 evidence is in `quality/evidence/step-48/deployed-v62-2026-10-31/` and `quality/evidence/step-39/public-v62-copy-2026-10-31/`.
+The pre-v72 v71 baseline also passed the employee-experience flagship journey on desktop and mobile, including visible Compose, three directions, Direction C handoff, Workbench mutations, lock preservation, Undo/Redo, manifest export, and standalone React ZIP export. The desktop ZIP was clean-installed, built and browsed; the mobile profile exported the same project but did not repeat a separate clean install. Two Axe scans on the generated product reported zero violations. Axe marked 23 desktop and 9 mobile text nodes contrast-incomplete due to OKLCH parsing; a manual calculation checked all 32 nodes, found no WCAG AA failures, and left zero unverified nodes. AUD-443 was exercised through visible manifest import and ZIP export with a hostile prop-name payload on both profiles, and the generated screen source omitted the payload. AUD-447 passed visible Undo under injected localStorage quota failure and survived reload on desktop and mobile. AUD-445/446 have no remaining ARIA incomplete result on their respective deployed routes. The public laptop-backend health endpoint returns a truthful offline response because the backend is not configured; no provider credential was used. Sites D1/R2 remain unprovisioned, strict preview CSP remains intact, and the hardening programme remains incomplete.
+
 
 V40 served application code captured from canonical commit
 `36b873ba9d40380196a78fcabe8977d7aa881e58` (Sites source mirror
@@ -34,7 +36,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition (public v70, source fixes not yet deployed):** 446 findings (0 Critical, 84 High, 336 Medium, 26 Low): 235 closed after issue-specific deployed verification, 9 legacy closed records, 2 closed after surface-specific non-Site verification, 113 fixed and awaiting issue-specific deployed checks, 83 fixed and verified locally, 2 legacy fixed records, and 2 documented Sites-host limitations. AUD-413 closed after v67 screen/URL/history verification; AUD-410 through AUD-415 closed after v68 interaction, resource-failure, and heading checks. AUD-416 documents one stale-tab asset rollover 404 that recovered on reload; fresh sessions had no failed requests. AUD-417 closed on v69 after its delayed-panel regression measured zero toolbar movement and CLS 0.0199. AUD-418 closed on v70 after the same persisted-project regression passed at desktop/tablet sizes and a separate 390×844 mobile workflow smoke passed. The two newly identified High findings (AUD-419 and AUD-443) have local regression fixes but remain open pending exact-head CI and applicable release verification; no release-ready claim is made. AUD-445/446 add two separate accessibility findings from deployed Axe incomplete results and await published verification. Of the Axe incomplete items, the remaining 10 color-contrast checks could not be computed because the scanner could not parse current CSS Color 4 `oklch(... none)` values; these require manual contrast evidence before WCAG AA is claimed. The scan also emitted CSP console events only while instrumenting sandboxed preview frames; normal route navigation remained error-free, so no CSP relaxation was made. AUD-387 is closed-local-verified after the D1 integration suite passed; public Sites has no D1 binding, so this does not claim live API deployment. V70 serves canonical commit `3916b7eead3455a91a33d3cd6694a30c4a5cc659` via Sites mirror commit `ba8a446b055443473bb062020c72c6ace8636039`; Sites D1/R2 bindings are not provisioned.
+**Current disposition (public v72 targeted follow-up; v71 broad audit baseline):** 449 findings (0 Critical, 84 High, 339 Medium, 26 Low): 240 closed after issue-specific deployed verification, 9 legacy closed records, 2 closed after surface-specific non-Site verification, 111 fixed and awaiting issue-specific deployed checks, 82 fixed and verified locally, 2 legacy fixed records, 2 documented Sites-host limitations, and 1 open finding (AUD-448). AUD-443 and AUD-445 through AUD-447 closed after v71 checks; AUD-449 closed after the v72 deployed check. AUD-419 remains locally verified only: its forwarding fix and regression are in the v71 source, but the public laptop backend is unconfigured, so safe deployed verification of provider-header forwarding is not possible without a configured host and provider endpoint. No provider credential was sent. AUD-419 is the outstanding High/P1 release blocker; do not claim the P1 gate is complete. AUD-448 records local API/host recovery but the initiating API failure remains unknown. AUD-416 remains the documented stale-tab asset rollover 404 that recovered on reload; fresh v71 sessions had no failed requests. V71 route Axe scans had zero violations but 11 color-contrast incomplete results; generated-product contrast was manually calculated and met AA thresholds. No CSP relaxation was made. AUD-387 is closed against the local D1 contract only; public Sites has no D1 binding. Sites D1/R2 remain unprovisioned.
 
 ## Public Sites v51 issue-specific High verification — 2026-10-28
 
@@ -4773,7 +4775,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Runtime:** Sites D1 and R2 bindings remain unprovisioned. This focused closeout does not complete Step 49 or the broader Product Hardening programme.
 
 
-## HIGH — source-review defects awaiting release verification
+## HIGH — source-review defects and verification status
 
 ### AUD-419 — BYO provider credentials were dropped by the Sites AI gateway
 
@@ -4785,7 +4787,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** The gateway allowlist forwarded only content negotiation headers, so proxied requests reached the API without provider credentials.
 - **Affected code:** `apps/sites/backend.test.ts`.
 - **Remediation:** Forward only the supported ephemeral provider-auth headers through the AI proxy; keep secrets out of logs and persistence, and cover the gateway request with a proxy regression.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the allowlist fix, but the laptop backend is not configured on the Site, so provider-header forwarding could not be exercised without supplying a provider credential. Public health/offline evidence: `quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud419-backend-availability/`. No provider credential was sent or persisted.
 
 ### AUD-443 — Manifest prop names could inject JSX source into standalone exports
 
@@ -4797,7 +4799,8 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** User-controlled prop keys were interpolated as JSX syntax before being validated against the resource contract.
 - **Affected code:** `packages/exporter/src/__tests__/exporter.test.ts`.
 - **Remediation:** Filter user-controlled manifest prop names through a safe JSX identifier allowlist before emitting source code.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Deployed verification:** On public v71, the hostile prop name `data-x={window.__AUD443_EXECUTED__=true} data-y` was imported through the visible manifest UI and exported through the visible standalone ZIP control at 1440x900 and 390x844. All seven generated screen files omitted the hostile key and expression. Evidence and ZIPs: `quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud443-hostile-prop/`.
+- **Verification status:** closed-deployed-verified on public v71.
 
 
 ## MEDIUM — source-review and accessibility findings
@@ -4812,7 +4815,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** The single three-second abort deadline covered the entire buffered provider generation response.
 - **Affected code:** `apps/sites/backend.test.ts`.
 - **Remediation:** Use a generation-specific request deadline long enough for provider completion while retaining the short timeout for health and queue operations.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-421 — Changing an ancestor palette changed a locked descendant
 
@@ -4824,7 +4827,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** The ancestor palette mutation checked ancestor locks only; the lock snapshot held no values for the default palette.
 - **Affected code:** `packages/workbench/src/__tests__/workbench-store.test.ts`.
 - **Remediation:** Prevent ancestor palette mutations from changing any locked descendant and preserve the locked subtree snapshot even when its original palette is inherited.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-422 — Stale undo history could be restored against a newer project manifest
 
@@ -4836,7 +4839,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** History loading returned snapshots but not its current-head snapshot, and Workbench restored stacks unconditionally.
 - **Affected code:** `packages/workbench/src/__tests__/persistence.test.ts`.
 - **Remediation:** Restore an undo stack only when its current snapshot exactly matches the loaded project manifest; invalidate stale stacks otherwise.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-423 — Unreadable checkpoint journals hid valid IndexedDB checkpoints
 
@@ -4848,7 +4851,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** Checkpoint journal parsing/read errors escaped before the durable database fallback was queried.
 - **Affected code:** `packages/workbench/src/persistence/checkpoint-journal.test.ts`.
 - **Remediation:** Treat malformed/unreadable browser checkpoint journals as a recoverable local-index failure and continue loading durable IndexedDB checkpoints.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-424 — Standalone export overwrote authored navigation links
 
@@ -4860,7 +4863,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** Resource rendering replaced authored `links` with derived project navigation unconditionally.
 - **Affected code:** `packages/exporter/src/__tests__/exporter.test.ts`.
 - **Remediation:** Preserve resource-authored navigation links in standalone export, deriving project navigation only where authored links are absent.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-425 — Adaptive exports omitted a supported variant when no light variant was set
 
@@ -4872,7 +4875,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** The exporter emitted the variant prop only when a static variant existed, even though adaptive mode selected Nocturne at runtime.
 - **Affected code:** `packages/exporter/src/__tests__/exporter.test.ts`.
 - **Remediation:** Emit the supported adaptive variant prop whenever adaptive mode is selected, including when the static light variant is unset.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-426 — Creator-link validation accepted URLs whose serialized form exceeded the storage limit
 
@@ -4884,7 +4887,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** The input string length was checked before URL normalization percent-encoded non-ASCII path characters.
 - **Affected code:** `apps/api/src/__tests__/auth-and-cloud.test.ts`.
 - **Remediation:** Enforce storage bounds against the normalized serialized URL after URL parsing and encoding.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-427 — Workbench opened a fresh starter after the active-project journal was cleared
 
@@ -4896,7 +4899,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** IndexedDB discovery ran only when localStorage emitted a warning; a cleared journal can leave storage healthy with no active ID.
 - **Affected code:** `packages/workbench/src/persistence/browser-session.test.ts`.
 - **Remediation:** When no active-project journal ID exists, discover the most recent valid local IndexedDB project even if localStorage itself did not fail.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-428 — Adding or renaming a page erased authored navigation links
 
@@ -4908,7 +4911,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** Page synchronization rebuilt each resource links array entirely from primary navigation metadata.
 - **Affected code:** `packages/workbench/src/__tests__/workbench-store.test.ts`.
 - **Remediation:** Synchronize generated primary navigation without deleting resource-authored links during page addition or rename.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-429 — A queued IndexedDB save could delete a newer recovery journal
 
@@ -4920,7 +4923,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** Quota fallback cleanup removed the project journal by key without checking whether a newer edit replaced it.
 - **Affected code:** `packages/workbench/src/persistence/browser-session.test.ts`.
 - **Remediation:** Associate journal cleanup with the save generation being completed; never delete a newer recovery record written by a concurrent edit.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-430 — Switching variants of the same resource discarded authored props
 
@@ -4932,7 +4935,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** Replacement rebuilt props from generated content bindings even though the resource contract did not change.
 - **Affected code:** `packages/workbench/src/__tests__/resource-replacement.test.ts`.
 - **Remediation:** When replacing a resource with another variant of the same resource, preserve the user-authored props and update only variant-dependent state.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-431 — Add Page could exceed the supported manifest screen and graph limits
 
@@ -4944,7 +4947,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** The store action bypassed mutation validation and appended screens/navigation/graph records beyond 200.
 - **Affected code:** `packages/workbench/src/__tests__/workbench-store.test.ts`.
 - **Remediation:** Reject Add Page at the canonical 200-screen/graph limit before changing screens, navigation, or graph records.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-432 — Manifest defaults could expand an accepted API request past the persisted-size limit
 
@@ -4956,7 +4959,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** The API measured raw request size but not the larger schema-migrated representation stored and read later.
 - **Affected code:** `apps/api/src/__tests__/cloud-sync-d1.test.ts`.
 - **Remediation:** Measure the canonical normalized/migrated manifest before persistence and reject it if its stored representation exceeds the configured size bound.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-433 — Exported hash navigation failed for encoded screen IDs
 
@@ -4968,7 +4971,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** Generated Vite and Next pages compared the encoded fragment string directly with raw manifest IDs.
 - **Affected code:** `packages/exporter/src/__tests__/exporter.test.ts`.
 - **Remediation:** Decode URL fragments before comparing them with manifest screen IDs in generated Vite and Next navigation code.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-434 — Distinct imported routes could collide on generated screen and node IDs
 
@@ -4980,7 +4983,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** The normalized route slug was reused directly as the screen and root-node identifier.
 - **Affected code:** `packages/ingest/src/__tests__/ingest.test.ts`.
 - **Remediation:** Allocate unique internal screen and root-node IDs separately from preserved source route paths.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-435 — Static JSX class edits changed literal backslashes
 
@@ -4992,7 +4995,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** Patch generation used JavaScript string escaping inside a quoted JSX attribute, doubling literal backslashes.
 - **Affected code:** `packages/ingest/src/__tests__/ingest.test.ts`.
 - **Remediation:** Escape JSX string literals according to JSX semantics so a source class edit preserves literal backslashes exactly.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-436 — Ingestion skipped anonymous default function routes
 
@@ -5004,7 +5007,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** The route classifier required a FunctionDeclaration name and ignored anonymous function declarations.
 - **Affected code:** `packages/ingest/src/__tests__/ingest.test.ts`.
 - **Remediation:** Recognize anonymous default function declarations as importable route components.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-437 — Ingestion rewrote literal static route paths
 
@@ -5016,7 +5019,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** Route construction lowercased and slugified static path components, changing the source application URL.
 - **Affected code:** `packages/ingest/src/__tests__/ingest.test.ts`.
 - **Remediation:** Keep literal static route path segments unchanged during ingestion instead of lowercasing or slugifying them.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-438 — A stale per-tab history cache could skip a snapshot missing from IndexedDB
 
@@ -5028,7 +5031,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** A module-local cache of previously persisted IDs could survive a cross-tab prune and suppress rewriting a required snapshot.
 - **Affected code:** `packages/workbench/src/__tests__/persistence.test.ts`.
 - **Remediation:** Query the active IndexedDB history snapshot keys when persisting a stack; do not rely on a per-tab cache that can outlive another tab’s prune.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-439 — Logical JSX conditions hid imported child resources
 
@@ -5040,7 +5043,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** JSX child traversal omitted logical binary expressions and parenthesized expressions from its recognized AST nodes.
 - **Affected code:** `packages/ingest/src/__tests__/ingest.test.ts`.
 - **Remediation:** Traverse logical binary and parenthesized JSX expressions so conditional child resources appear in the imported graph.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-440 — JSX sibling paths could target a different source element
 
@@ -5052,7 +5055,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** Sibling collection traversed the expression children instead of visiting the expression node itself, so direct JSX roots were skipped.
 - **Affected code:** `packages/ingest/src/__tests__/ingest.test.ts`.
 - **Remediation:** Collect the containing expression node when mapping JSX sibling paths so the patch emitter and AST mapper use the same sibling index.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-441 — Clearing array content lost the resource element contract
 
@@ -5064,7 +5067,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** Content shape inference used current values only; after clearing, the array element schema was no longer available.
 - **Affected code:** `packages/workbench/src/utils/content-shape.test.ts`.
 - **Remediation:** Retain the resource’s declared array element contract after its current array value is cleared.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-442 — Generated unified diffs were missing the required terminal newline
 
@@ -5076,7 +5079,7 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** The unified diff joined lines without terminating the final patch record; tests masked it by appending a newline.
 - **Affected code:** `packages/ingest/src/__tests__/ingest.test.ts`.
 - **Remediation:** Terminate generated unified diff output with the required newline and test the emitted bytes without normalizing them in the test.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-444 — Normalized inference ASTs could exceed the queue storage budget
 
@@ -5088,32 +5091,33 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** The limit was applied to raw input while schema defaults and normalization expanded what the queue persisted.
 - **Affected code:** `apps/api/src/__tests__/inference-queue.test.ts`.
 - **Remediation:** Size-check the canonical normalized inference AST before storing or queueing it, not only the smaller raw request.
-- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+- **Verification status:** fixed-local-verified; public v71 includes the fix, but issue-specific deployed verification is pending.
 
 ### AUD-445 — Showcase preview label was attached to a container without a semantic role
 
 - **Severity:** MEDIUM
-- **Evidence:** Before-fix deployed evidence: `quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe-route-audit.json`; post-fix browser test: `tests/e2e/accessibility-label-semantics-regression.spec.ts` in desktop and mobile Sites Worker profiles. PR #8 deployed verification is pending. Before screenshot: `quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe/_showcase_showcase-playful-hr_-desktop-1440x900.png`.
+- **Evidence:** Before-fix deployed evidence: `quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe-route-audit.json`; deployed v71 route reports and screenshots are under `quality/evidence/step-48/public-v71-live-audit-2026-11-01/route-audit-*.json` and `screenshots/*/28-showcase-showcase-playful-hr.png`.
 - **Reproduction:**
   - Open /showcase/showcase-playful-hr/ at 1440x900 or 390x844.
   - Run the WCAG 2.2 AA Axe scan and inspect aria-prohibited-attr incomplete nodes.
 - **Root cause:** ShowcasePreview assigned an accessible name to a generic div instead of a named region.
 - **Affected code:** `apps/site/src/components/ShowcasePreview.tsx`, `tests/e2e/accessibility-label-semantics-regression.spec.ts`.
 - **Remediation:** Render the named showcase screen container with role="region" so its aria-label is supported by the accessibility tree.
-- **Local after evidence:** Desktop/mobile screenshots and zero-runtime-error/Axe telemetry are under `quality/evidence/step-48/accessibility-label-semantics/`.
-- **Verification status:** fixed-awaiting-deployed-verification; public v70 still serves the pre-fix code.
+- **Deployed after evidence:** Desktop/mobile v71 route scans report zero Axe violations and no ARIA incomplete findings. Screenshots and machine reports are under `quality/evidence/step-48/public-v71-live-audit-2026-11-01/`.
+- **Verification status:** closed-deployed-verified on public v71.
 
 ### AUD-446 — Workbench save status label had no supported status semantics
 
 - **Severity:** MEDIUM
-- **Evidence:** Before-fix deployed evidence: `quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe-route-audit.json`; post-fix browser test: `tests/e2e/accessibility-label-semantics-regression.spec.ts` in desktop and mobile Sites Worker profiles. PR #8 deployed verification is pending. Before screenshot: `quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe/_workbench-desktop-1440x900.png`.
+- **Evidence:** Before-fix deployed evidence: `quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe-route-audit.json`; deployed v71 route reports and screenshots are under `quality/evidence/step-48/public-v71-live-audit-2026-11-01/route-audit-*.json` and `screenshots/*/13-workbench.png`.
 - **Reproduction:**
   - Open /workbench at 1440x900 or 390x844.
   - Run the WCAG 2.2 AA Axe scan and inspect aria-prohibited-attr incomplete nodes for history-save-status.
 - **Root cause:** TopToolbar rendered changing save feedback without a status role.
 - **Affected code:** `packages/workbench/src/components/TopToolbar.tsx`, `tests/e2e/accessibility-label-semantics-regression.spec.ts`.
 - **Remediation:** Expose changing local save feedback with role="status" so the accessible name and status announcement are valid.
-- **Verification status:** fixed-awaiting-deployed-verification; public v70 still serves the pre-fix code.
+- **Deployed after evidence:** Desktop/mobile v71 route scans report zero Axe violations and no ARIA incomplete findings. Screenshots and machine reports are under `quality/evidence/step-48/public-v71-live-audit-2026-11-01/`.
+- **Verification status:** closed-deployed-verified on public v71.
 
 
 ### AUD-447 — Undo reload could restore the newer state after localStorage quota failure
@@ -5128,4 +5132,27 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** Recovery compared manifest updatedAt values to decide whether a journal was stale. An Undo snapshot intentionally has an older timestamp, so the stale journal could override the successful IndexedDB write.
 - **Affected code:** packages/workbench/src/persistence/browser-session.ts; regression in packages/workbench/src/persistence/browser-session.test.ts.
 - **Remediation:** Track a journal generation independently from manifest timestamps, commit its marker only after both journal payloads are written, and remove only the failed save's or previously observed journal bytes after IndexedDB succeeds.
-- **Verification status:** fixed-local-verified at d13d87a2bbb835b3de07b0b803b4394b4cddc81e; exact-head CI and public Site verification pending.
+- **Deployed verification:** On public v71 desktop and mobile, the visible Workbench Undo control was exercised while localStorage journal writes threw QuotaExceededError. The prior Design DNA value survived Undo and reload; no console errors, exceptions, failed requests, or HTTP errors occurred. Evidence: `quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud447-quota-undo/`.
+- **Verification status:** closed-deployed-verified on public v71; exact-head CI is recorded in the current release checkpoint above.
+
+### AUD-448 — Laptop API and host containers remained running but unhealthy
+
+- **Severity:** MEDIUM
+- **Evidence:** Local pre/post restart health, heartbeat age, and redacted log-signature counts are recorded in quality/evidence/step-37/docker-service-recovery-2026-11-01.json.
+- **Reproduction:** The API container showed running/unhealthy while GET http://127.0.0.1:8788/health failed. The host container showed running/unhealthy with a heartbeat older than 29 hours. Restarting the existing API container restored HTTP 200 and healthy status; restarting the dependent host restored a fresh heartbeat and healthy status.
+- **Root cause:** The proximate failure is confirmed: the API health endpoint was unreachable while Docker kept its container running, which left the host heartbeat stale. The initiating reason the API stopped serving is unknown. The available Docker logs contained no classified error signature.
+- **Affected code/configuration:** compose.laptop.yaml, apps/laptop-backend/start.sh, apps/host-daemon/daemon.py.
+- **Remediation:** Investigate and reproduce the Wrangler API unresponsive state. Add a bounded recovery mechanism only if a deterministic test proves the failure mode; continue to surface host features as unavailable whenever health or heartbeat is stale.
+- **Verification status:** Service recovered on the laptop; root-cause fix remains open.
+
+### AUD-449 — Minimal Top Navigation did not collapse at mobile widths
+
+- **Severity:** MEDIUM
+- **Evidence:** Public v71 route `/resources/minimal-top-nav/` at 390x844 returned HTTP 200 but showed the navigation labels inline with no in-preview menu toggle. The resource manifest already declared `responsive.defaultStrategy: collapse`. Before screenshots: `quality/evidence/step-48/aud449-minimal-top-nav/minimal-top-nav-v71-mobile-before.png` and `minimal-top-nav-v71-desktop-before.png`. The pre-fix regression failed with zero mobile toggles; logs are in `quality/evidence/step-48/aud449-minimal-top-nav/pre-fix-regression.log`.
+- **Reproduction:** Open the deployed resource route at 390x844 and inspect the preview; the navigation stays inline. Run the new Sites Worker regression against the pre-fix source; `Open navigation` is absent.
+- **Root cause:** The component only used `flex-wrap`; it did not implement the collapse strategy promised by its manifest.
+- **Affected code:** `resources/shells/minimal-top-nav/index.tsx`, its README, the Sites responsive regression, the Gold resource state matrix, the flagship export journey, and the standalone exporter fidelity test.
+- **Remediation:** Add a unique accessible toggle, container-responsive collapsed state, 44px mobile rows, and Escape close with focus restoration while preserving the desktop layout.
+- **Local verification:** The dedicated Sites Worker responsive regression passes on desktop and mobile across 360, 390, 430, 768, 1024, 1280 and 1440px. Its checks cover collapsed/expanded state, accessible names, 44px rows, Escape close and focus restoration, with zero console errors, uncaught exceptions, failed requests, HTTP errors, or horizontal overflow. The full `pnpm test:e2e` run then passed 769 tests with 174 configured profile skips and no failures, including all 324 resource render checks and the fixed Gold state-matrix test. Repository gates also passed: frozen install, catalogue build (324/40), 22 package typechecks, lint, 1,276 unit/integration tests (one configured skip), and `audit:all` (16/16 release gate, resource isolation, production build, bundle budgets, provenance, security, and dependency audit). Logs and screenshots are under `quality/evidence/step-48/aud449-minimal-top-nav/`.
+- **Test correction:** The first full E2E run correctly exposed that the existing 390px Gold state-matrix expected links to be visible while the new menu was closed. The test now opens the menu through its accessible toggle and uses a stable `aria-controls` locator after its accessible name changes. The corrected state-matrix passes; no second product defect was found.
+- **Deployment status:** Closed after public Sites v72 issue-specific verification. Canonical fix commit: `b5f9f1ea9a884c544f3f7c8862655a69648e6464`; Sites mirror commit: `95cf423eac1f30d22e3aaf8dba3d29d08cb53f57`; version `appgprj_6acc036de8cc8191a823339566972d85~appgver_a660452f84c88191b499c629ca5c0893`; deployment `appgdep_6ae7ba14362c819191d533692c30487b`. The 1440x900 preview remained inline; the 390x844 preview opened through pointer and keyboard, showed all three entries, and Escape restored focus. Lighthouse mobile accessibility scored 100. Fresh reload had no application errors, failed requests, or overflow. Machine evidence: `quality/evidence/step-48/aud449-minimal-top-nav/deployed-v72-browser-evidence.json` and `deployed-v72-performance.json`.

@@ -1,0 +1,25 @@
+{
+  "issue": "AUD-443",
+  "status": "deployed-verified",
+  "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "viewport": "mobile-chrome",
+  "projectId": "aud443-live-mvy5uf4n-mobile-chrome",
+  "targetResource": "dashboard-kpi-grid",
+  "hostilePropName": "data-x={window.__AUD443_EXECUTED__=true} data-y",
+  "exportedZip": "quality/evidence/step-48/public-v71-live-audit-2026-11-01/aud443-hostile-prop/mobile-chrome.zip",
+  "exportedScreenFiles": [
+    "src/screens/MarketingHome.tsx",
+    "src/screens/TeamOverview.tsx",
+    "src/screens/PeopleDirectory.tsx",
+    "src/screens/Teams.tsx",
+    "src/screens/Engagement.tsx",
+    "src/screens/Onboarding.tsx",
+    "src/screens/SettingsPolicies.tsx"
+  ],
+  "maliciousPropNameOmittedFromJsx": true,
+  "executableExpressionOmittedFromJsx": true,
+  "consoleErrors": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

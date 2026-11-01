@@ -1,0 +1,31 @@
+{
+  "issueId": "AUD-449",
+  "runtime": "local ChatGPT Sites Worker built from the fixed branch",
+  "route": "/resources/minimal-top-nav/",
+  "browser": "Playwright Chromium",
+  "viewports": [
+    {
+      "width": 390,
+      "height": 844,
+      "navigationInitiallyCollapsed": true,
+      "expandOnActivate": true,
+      "escapeClosesAndRestoresFocus": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "navigationVisible": true,
+      "toggleHidden": true
+    }
+  ],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "screenshots": [
+    "minimal-top-nav-local-mobile-collapsed-after.png",
+    "minimal-top-nav-local-mobile-expanded-after.png",
+    "minimal-top-nav-local-desktop-after.png"
+  ]
+}

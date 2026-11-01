@@ -1,0 +1,27 @@
+{
+  "route": "/workbench",
+  "url": "http://127.0.0.1:4321/workbench#screen-marketing-home",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "status": "passed",
+  "runtime": {
+    "consoleErrors": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "axeInstrumentation": {
+    "cspConsoleErrors": [],
+    "blockedRequests": []
+  },
+  "axe": {
+    "violations": [],
+    "ariaIncomplete": [],
+    "otherIncompleteRuleIds": [
+      "color-contrast"
+    ]
+  },
+  "screenshot": "quality/evidence/step-48/accessibility-label-semantics/desktop-chrome/AUD-446-workbench-after.png"
+}

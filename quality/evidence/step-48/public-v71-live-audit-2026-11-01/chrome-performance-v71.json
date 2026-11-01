@@ -1,0 +1,55 @@
+{
+  "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "version": 71,
+  "canonicalCommit": "7ac7783de83e175ac410055da736b2218e2ba213",
+  "browser": "Chromium via Chrome DevTools",
+  "captures": {
+    "homepage": {
+      "network": "unthrottled",
+      "viewport": "1440x900",
+      "lcpMs": 293,
+      "ttfbMs": 56,
+      "cls": 0,
+      "requests": 26,
+      "httpErrors": 0,
+      "failedRequests": 0,
+      "consoleErrors": 0,
+      "largestObservedLayoutUpdateMs": 94,
+      "totalDomElements": 856,
+      "lighthouse": {
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100,
+        "agenticBrowsing": 100,
+        "failedAudits": 0
+      }
+    },
+    "workbench": {
+      "network": "Fast 4G",
+      "cpuThrottlingRate": 1,
+      "viewport": "1440x900",
+      "lcpMs": 1743,
+      "ttfbMs": 167,
+      "cls": 0.0199,
+      "requests": 66,
+      "httpErrors": 0,
+      "failedRequests": 0,
+      "consoleErrors": 0,
+      "largestObservedLayoutUpdateMs": 67,
+      "totalDomElements": 579,
+      "lighthouse": {
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100,
+        "agenticBrowsing": 100,
+        "failedAudits": 0
+      }
+    }
+  },
+  "source": "Chrome DevTools cold-load Performance/Lighthouse inspection of deployed v71",
+  "rawTraceArtifact": null,
+  "limitations": [
+    "The inspected DevTools trace results are recorded here; raw trace export was not available in the active workspace.",
+    "These are lab measurements, not field Web Vitals."
+  ]
+}

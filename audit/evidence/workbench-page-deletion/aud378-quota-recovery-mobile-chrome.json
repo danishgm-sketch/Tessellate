@@ -1,0 +1,22 @@
+{
+  "url": "http://127.0.0.1:4321/workbench?project=local-2447be7e-748e-45c5-b0e9-faa4800f8067#screen-marketing-home",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "issue": "AUD-378",
+  "injectedFault": "localStorage.setItem throws QuotaExceededError for Tessellate journal writes after Workbench initialization",
+  "checks": {
+    "visibleEditSavedToIndexedDb": true,
+    "staleJournalInvalidated": true,
+    "exactProjectAndNewDNAValueRestored": true
+  },
+  "restoredProjectId": "local-2447be7e-748e-45c5-b0e9-faa4800f8067",
+  "restoredVisualAmbition": 31,
+  "screenshot": "audit\\evidence\\workbench-page-deletion\\aud378-quota-recovery-mobile-chrome.png"
+}

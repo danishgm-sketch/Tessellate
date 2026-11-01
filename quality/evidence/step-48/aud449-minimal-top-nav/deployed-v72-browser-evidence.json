@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-11-01T22:22:21Z",
+  "site": {
+    "title": "Tessellate V1 Review",
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+    "access": "public",
+    "version": 72,
+    "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_a660452f84c88191b499c629ca5c0893",
+    "deploymentId": "appgdep_6ae7ba14362c819191d533692c30487b",
+    "deploymentStatus": "succeeded",
+    "canonicalCommit": "b5f9f1ea9a884c544f3f7c8862655a69648e6464",
+    "sitesMirrorCommit": "95cf423eac1f30d22e3aaf8dba3d29d08cb53f57",
+    "d1": null,
+    "r2": null
+  },
+  "route": {
+    "path": "/resources/minimal-top-nav/",
+    "directHttpStatus": 200,
+    "browserUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/resources/minimal-top-nav/"
+  },
+  "viewports": [
+    {
+      "viewport": "1440x900",
+      "emulated": true,
+      "deviceScaleFactor": 1,
+      "horizontalOverflow": false,
+      "observed": "The preview renders Example workspace with Overview, People and Settings inline; the resource menu toggle is not shown at this width.",
+      "screenshot": "Captured and visually inspected inline through Chrome DevTools MCP; the screenshot file API denied repository paths."
+    },
+    {
+      "viewport": "390x844",
+      "emulated": true,
+      "deviceScaleFactor": 1,
+      "mobile": true,
+      "touch": true,
+      "documentWidth": 390,
+      "horizontalOverflow": false,
+      "observed": "The preview shows a Menu toggle in the header. Activating it reveals Overview, People and Settings in a vertical navigation list. Escape closes the menu and restores keyboard focus to the toggle.",
+      "screenshot": "Captured and visually inspected inline through Chrome DevTools MCP; the screenshot file API denied repository paths."
+    }
+  ],
+  "interaction": {
+    "initialButton": "Open navigation",
+    "initialExpanded": false,
+    "pointerActivation": "opens menu",
+    "openButton": "Close navigation",
+    "openExpanded": true,
+    "visibleItems": ["Overview", "People", "Settings"],
+    "escape": "closes menu and restores focus to the toggle",
+    "keyboardEnter": "opens menu",
+    "keyboardEscape": "closes menu and restores focus to the toggle"
+  },
+  "network": {
+    "postReloadRequestCount": 45,
+    "postReloadStatusCounts": {"200": 45},
+    "postReloadFailedRequests": 0,
+    "afterLighthouseRequestCount": 46,
+    "afterLighthouseStatusCounts": {"200": 46},
+    "afterLighthouseFailedRequests": 0,
+    "initialCloudflareChallenge": "A challenge-platform script returned 302 and then 200; no failed request or HTTP response >=400 was observed."
+  },
+  "console": {
+    "uncaughtExceptions": 0,
+    "applicationErrorsOnFreshReload": 0,
+    "firstLoadIssues": [
+      {
+        "type": "Chromium deprecation issue",
+        "source": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+        "details": ["Fenced Frame API", "StorageType.persistent", "Protected Audience API"],
+        "attribution": "Cloudflare challenge-platform script, not Tessellate application code"
+      }
+    ],
+    "auditInstrumentationWarning": "Lighthouse emitted a postMessage target-origin warning from _lighthouse-eval.js while checking the opaque sandboxed preview iframe; it did not occur on the fresh application reload."
+  },
+  "accessibility": {
+    "lighthouseDevice": "mobile",
+    "lighthouseMode": "navigation",
+    "accessibilityScore": 100,
+    "bestPracticesScore": 100,
+    "agenticBrowsingScore": 100,
+    "seoScore": 63,
+    "seoFailure": "is-crawlable: expected noindex behavior for the public review/staging Site",
+    "passedAudits": 54,
+    "failedAudits": 1,
+    "seriousOrCriticalAccessibilityViolations": 0
+  },
+  "screenshotToolLimit": "Chrome DevTools MCP returned screenshots inline, but rejected both absolute and relative output paths as outside its configured roots; no local PNG was written for this deployed check."
+}

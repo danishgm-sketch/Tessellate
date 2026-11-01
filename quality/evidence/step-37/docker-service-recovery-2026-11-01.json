@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0.0",
+  "observedAt": "2026-11-01T18:34:00Z",
+  "scope": "Local Tessellate Docker runtime on the owner's laptop",
+  "services": [
+    {
+      "name": "tessellate-laptop-api-1",
+      "before": {
+        "containerState": "running",
+        "dockerHealth": "unhealthy",
+        "localHealthRequest": "GET http://127.0.0.1:8788/health failed with fetch failed",
+        "dockerHealthcheck": "fetch to http://127.0.0.1:8787/health exited 1"
+      },
+      "action": "Restarted existing API container with docker compose restart api; no image rebuild.",
+      "after": {
+        "containerState": "running",
+        "dockerHealth": "healthy",
+        "localHealthStatus": 200,
+        "localHealthBody": { "status": "ok", "service": "tessellate-api" }
+      }
+    },
+    {
+      "name": "tessellate-laptop-host-1",
+      "before": {
+        "containerState": "running",
+        "dockerHealth": "unhealthy",
+        "heartbeatAgeSeconds": 105577.8,
+        "dockerHealthcheck": "host heartbeat timestamp was not updated within 20 seconds"
+      },
+      "action": "After the API was healthy, restarted the existing host container with docker compose restart host; no image rebuild.",
+      "after": {
+        "containerState": "running",
+        "dockerHealth": "healthy",
+        "heartbeatAgeSeconds": 2.1
+      }
+    }
+  ],
+  "logReview": {
+    "apiLinesReviewed": 30657,
+    "errorSignaturesFound": [],
+    "requestCounts": {
+      "GET /api/inference/poll 200": 23261,
+      "POST /api/inference/heartbeat 200": 4662,
+      "GET /health 200": 2368,
+      "POST /api/inference/heartbeat 503": 336
+    },
+    "hostLogLines": 9,
+    "hostErrorSignaturesFound": []
+  },
+  "impact": "Laptop inference and host-dependent operations were unavailable while the API was unhealthy and the host heartbeat was stale. Deterministic browser composition and the public Site were not changed.",
+  "rootCauseStatus": "The proximate failure is confirmed: the API health endpoint was unreachable while Docker kept the container running, and the host heartbeat expired. The initiating cause of the API server becoming unresponsive is unknown; restart restored service. No application source change is claimed.",
+  "actionsAvoided": [
+    "No MGI containers were restarted or modified.",
+    "No secret values or provider credentials were read, printed, or changed.",
+    "No container image was rebuilt from the dirty working tree."
+  ]
+}
