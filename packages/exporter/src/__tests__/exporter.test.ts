@@ -84,6 +84,19 @@ describe('Phase 11: Exporter Package', () => {
     expect(tree['src/index.css']).toContain('--tess-');
   });
 
+  it('does not treat untrusted data prop names as JSX source', () => {
+    const manifest = createTestManifest();
+    const resourceNode = manifest.screens[0]!.rootNode;
+    resourceNode.props['data-x={alert(1)} data-y'] = 'injected';
+
+    const tree = generateSourceTree(manifest);
+    const generatedScreen = tree['src/screens/Overview.tsx']!;
+
+    expect(generatedScreen).not.toContain('data-x={alert(1)} data-y');
+    expect(generatedScreen).not.toContain('alert(1)');
+    expect(generatedScreen).toContain('data-node-id=');
+  });
+
   it('generates reproducible source trees for the same manifest on every target', () => {
     const manifest = createTestManifest();
 
@@ -114,6 +127,46 @@ describe('Phase 11: Exporter Package', () => {
     expect(app).toContain('Dashboard');
     expect(app).not.toContain('Hidden Onboarding');
     expect(app).not.toContain('#screen-hidden-onboarding');
+  });
+
+  it('preserves authored navigation links when generating a resource-backed navigation', () => {
+    const manifest = createTestManifest();
+    const navigation = manifest.screens[0]!.rootNode;
+    navigation.semanticRole = 'navigation-header';
+    navigation.resourceRef = { id: 'res_shell_centered_top_nav', slug: 'centered-top-nav', version: '1.0.0' };
+    navigation.props.links = [{ label: 'Employee handbook', href: 'https://handbook.example.com/policies' }];
+
+    const screen = generateSourceTree(manifest)['src/screens/Overview.tsx']!;
+
+    expect(screen).toContain('Employee handbook');
+    expect(screen).toContain('https://handbook.example.com/policies');
+    expect(screen).not.toContain('href":"#scr_inst_overview');
+  });
+
+  it('passes adaptive variants to variant-aware resources when the light mode has no explicit variant', () => {
+    const manifest = createTestManifest();
+    manifest.designDNA.visualMode = 'adaptive';
+    const navigation = manifest.screens[0]!.rootNode;
+    navigation.semanticRole = 'navigation-header';
+    navigation.resourceRef = { id: 'res_shell_centered_top_nav', slug: 'centered-top-nav', version: '1.0.0' };
+    delete navigation.variant;
+
+    const screen = generateSourceTree(manifest)['src/screens/Overview.tsx']!;
+
+    expect(screen).toContain("variant={systemDark ? 'nocturne' : null}");
+  });
+
+  it('decodes screen IDs in URL fragments for both standalone export targets', () => {
+    const manifest = createTestManifest();
+    manifest.screens[0]!.id = 'screen People & Culture';
+
+    const viteApp = generateSourceTree(manifest, { target: 'vite' })['src/App.tsx']!;
+    const nextPage = generateSourceTree(manifest, { target: 'nextjs' })['app/page.tsx']!;
+
+    expect(viteApp).toContain('decodeURIComponent(location.hash.slice(1))');
+    expect(nextPage).toContain('decodeURIComponent(location.hash.slice(1))');
+    expect(viteApp).toContain('catch{return screens[0];}');
+    expect(nextPage).toContain('catch');
   });
 
   it('creates compressed ZIP archive and preserves all files upon extraction', () => {

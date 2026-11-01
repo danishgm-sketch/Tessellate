@@ -370,7 +370,7 @@ ${importsStr}
 export default function App() {
   const screens = ${JSON.stringify(screenSlugs.map(item=>item.id))};
   const screensWithEmbeddedNavigation: Record<string, boolean> = ${JSON.stringify(screensWithEmbeddedNavigation)};
-  const readScreen=()=>screens.includes(location.hash.slice(1)) ? location.hash.slice(1) : screens[0];
+  const readScreen=()=>{try{const id=decodeURIComponent(location.hash.slice(1));return screens.includes(id)?id:screens[0];}catch{return screens[0];}};
   const [activeScreenId,setActiveScreenId]=useState(readScreen);
   useEffect(()=>{const handle=()=>setActiveScreenId(readScreen());window.addEventListener('hashchange',handle);return ()=>window.removeEventListener('hashchange',handle);},[]);
 
@@ -550,20 +550,24 @@ function renderNodeToJsx(
     }
 
     const attributes: string[] = [];
-    if (runtimeVariant && (!acceptedProps || acceptedProps.has('variant'))) {
+    const supportsAdaptiveNocturne = dna.visualMode === 'adaptive'
+      && (!resolved.acceptedVariants || resolved.acceptedVariants.includes('nocturne'));
+    if ((runtimeVariant || supportsAdaptiveNocturne) && (!acceptedProps || acceptedProps.has('variant'))) {
       attributes.push(`variant={${variantExpression}}`);
     }
 
+    const authoredProps = { ...(node.slots || {}), ...(node.props || {}) };
+    const hasAuthoredLinks = Object.prototype.hasOwnProperty.call(authoredProps, 'links');
     const candidateProps: Record<string, unknown> = {
-      ...(node.slots || {}),
-      ...(node.props || {}),
-      ...(node.semanticRole === 'navigation' || (node.semanticRole === 'navigation-header' && node.resourceRef?.slug)
+      ...authoredProps,
+      ...((node.semanticRole === 'navigation' || (node.semanticRole === 'navigation-header' && node.resourceRef?.slug)) && !hasAuthoredLinks
         ? { links: navigationItems.map((item) => ({ label: item.label, href: `#${item.targetScreenId}` })) }
         : {}),
     };
 
     for (const [key, val] of Object.entries(candidateProps)) {
       if (key === 'className' || key === 'variant' || key === 'children') continue;
+      if (!/^[A-Za-z_:][A-Za-z0-9_.:-]*$/.test(key)) continue;
       if (acceptedProps && !acceptedProps.has(key) && !key.startsWith('aria-') && !key.startsWith('data-')) continue;
 
       if (val !== undefined && typeof val !== 'function') attributes.push(`${key}={${JSON.stringify(val)}}`);
@@ -989,7 +993,14 @@ export default function Page() {
   const screensWithEmbeddedNavigation: Record<string, boolean> = ${JSON.stringify(screensWithEmbeddedNavigation)};
   const [activeScreenId, setActiveScreenId] = useState(screens[0]);
   useEffect(() => {
-    const readScreen = () => screens.includes(location.hash.slice(1)) ? location.hash.slice(1) : screens[0];
+    const readScreen = () => {
+      try {
+        const id = decodeURIComponent(location.hash.slice(1));
+        return screens.includes(id) ? id : screens[0];
+      } catch {
+        return screens[0];
+      }
+    };
     const update = () => setActiveScreenId(readScreen());
     update();
     window.addEventListener('hashchange', update);
