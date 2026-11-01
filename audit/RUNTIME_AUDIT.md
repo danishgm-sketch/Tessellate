@@ -1,6 +1,6 @@
 # Runtime audit — product hardening and deployed-site verification
 
-This register preserves the historical resource/renderer audit and tracks deployed verification by release. The latest complete full route and accessibility sweep is public Sites v61. Its 44 requested/representative routes passed at 1440×900 and 390×844; the flagship employee workflow, standalone React export, Axe checks, and browser network audit also passed. Later Sites versions received focused, issue-specific audits. Public v70 is the current review deployment. It closes AUD-418 after the exact persisted employee-project preview CTA remained fully visible at 1440×900 and 1024×768, five delayed cold-load repetitions kept the canvas toolbar stationary, and a 390×844 Compose-to-Workbench mobile smoke passed. D1/R2 remain unprovisioned. The broader product-hardening programme remains incomplete. The v61 route matrix is `quality/evidence/step-48/deployed-v61-2026-10-31/route-audit.json`; v62 evidence is in `quality/evidence/step-48/deployed-v62-2026-10-31/` and `quality/evidence/step-39/public-v62-copy-2026-10-31/`.
+This register preserves historical resource/renderer findings and tracks issue-specific deployed verification. Public Sites v70 is the current review deployment. Its broad route audit visited the complete 31-route public shell at 1440×900 and 390×844 (62/62 HTTP 200, no route-sweep browser errors, failed requests, bad responses or horizontal overflow); eight showcase details also passed at both sizes (16/16). Five responsive workflow tests passed across 360, 390, 430, 768, 1024, 1280, 1440 and 1536px. The deployed flagship, tools, blueprints/showcases, Axe, and WebKit evidence is recorded under `quality/evidence/step-45/public-v70-reaudit-2026-11-01/`. This is a broad route and workflow sweep, not exhaustive interaction testing of every secondary control. Axe reported zero violations in 12 route/viewport scans, while returning 10 color-contrast and 4 ARIA incomplete checks; the ARIA findings are tracked as AUD-445/446 and locally fixed pending deployed verification. Its CSP console events were reproduced only during Axe analysis inside sandboxed preview frames; normal navigation did not emit them, and CSP remains strict. D1/R2 remain unprovisioned. The product-hardening programme remains incomplete. The older v61 route matrix is `quality/evidence/step-48/deployed-v61-2026-10-31/route-audit.json`; v62 evidence is in `quality/evidence/step-48/deployed-v62-2026-10-31/` and `quality/evidence/step-39/public-v62-copy-2026-10-31/`.
 
 V40 served application code captured from canonical commit
 `36b873ba9d40380196a78fcabe8977d7aa881e58` (Sites source mirror
@@ -34,7 +34,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition (public v70):** 418 findings (0 Critical, 82 High, 310 Medium, 26 Low): 235 closed after issue-specific deployed verification, 9 legacy closed records, 2 closed after surface-specific non-Site verification, 111 fixed and awaiting issue-specific deployed checks, 57 fixed and verified locally, 2 legacy fixed records, and 2 documented Sites-host limitations. AUD-413 closed after v67 screen/URL/history verification; AUD-410 through AUD-415 closed after v68 interaction, resource-failure, and heading checks. AUD-416 documents one stale-tab asset rollover 404 that recovered on reload; fresh sessions had no failed requests. AUD-417 closed on v69 after its delayed-panel regression measured zero toolbar movement and CLS 0.0199. AUD-418 closed on v70 after the same persisted-project regression passed at desktop/tablet sizes and a separate 390×844 mobile workflow smoke passed. No High findings remain open: AUD-387 is closed-local-verified after the D1 integration suite passed; public Sites has no D1 binding, so this does not claim live API deployment. A total of 107 Medium and 4 Low findings await issue-specific deployed checks. Verification debt is not a claim that every item remains broken. V70 serves canonical commit `3916b7eead3455a91a33d3cd6694a30c4a5cc659` via Sites mirror commit `ba8a446b055443473bb062020c72c6ace8636039`; Sites D1/R2 bindings are not provisioned.
+**Current disposition (public v70, source fixes not yet deployed):** 446 findings (0 Critical, 84 High, 336 Medium, 26 Low): 235 closed after issue-specific deployed verification, 9 legacy closed records, 2 closed after surface-specific non-Site verification, 113 fixed and awaiting issue-specific deployed checks, 83 fixed and verified locally, 2 legacy fixed records, and 2 documented Sites-host limitations. AUD-413 closed after v67 screen/URL/history verification; AUD-410 through AUD-415 closed after v68 interaction, resource-failure, and heading checks. AUD-416 documents one stale-tab asset rollover 404 that recovered on reload; fresh sessions had no failed requests. AUD-417 closed on v69 after its delayed-panel regression measured zero toolbar movement and CLS 0.0199. AUD-418 closed on v70 after the same persisted-project regression passed at desktop/tablet sizes and a separate 390×844 mobile workflow smoke passed. The two newly identified High findings (AUD-419 and AUD-443) have local regression fixes but remain open pending exact-head CI and applicable release verification; no release-ready claim is made. AUD-445/446 add two separate accessibility findings from deployed Axe incomplete results and await published verification. Of the Axe incomplete items, the remaining 10 color-contrast checks could not be computed because the scanner could not parse current CSS Color 4 `oklch(... none)` values; these require manual contrast evidence before WCAG AA is claimed. The scan also emitted CSP console events only while instrumenting sandboxed preview frames; normal route navigation remained error-free, so no CSP relaxation was made. AUD-387 is closed-local-verified after the D1 integration suite passed; public Sites has no D1 binding, so this does not claim live API deployment. V70 serves canonical commit `3916b7eead3455a91a33d3cd6694a30c4a5cc659` via Sites mirror commit `ba8a446b055443473bb062020c72c6ace8636039`; Sites D1/R2 bindings are not provisioned.
 
 ## Public Sites v51 issue-specific High verification — 2026-10-28
 
@@ -4771,3 +4771,361 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Mobile smoke:** The deployed exact employee-experience brief was composed through Direction C at 390×844, then the mobile Workbench Preview/Pages/Inspect/Command/Audit navigation and screen/selection context were exercised. The shell measured 390×844, document width 390, and bottom navigation 64px; no console errors, exceptions, failed requests, HTTP errors, or overflow occurred.
 - **Evidence:** `quality/evidence/step-49/canvas-toolbar-occlusion/deployed-v70/sites-chromium-1440-cta-visible.png`, `sites-chromium-1024-cta-visible.png`, and `sites-chromium.json`; delayed-load data and captures are in `quality/evidence/step-49/workbench-load-stability/deployed-v70/`; mobile capture and run record are in `quality/evidence/step-49/canvas-toolbar-occlusion/deployed-v70/mobile/`.
 - **Runtime:** Sites D1 and R2 bindings remain unprovisioned. This focused closeout does not complete Step 49 or the broader Product Hardening programme.
+
+
+## HIGH — source-review defects awaiting release verification
+
+### AUD-419 — BYO provider credentials were dropped by the Sites AI gateway
+
+- **Severity:** HIGH
+- **Evidence:** Regression coverage: `apps/sites/backend.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yP8EF).
+- **Reproduction:**
+  - Run the regression test in apps/sites/backend.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** The gateway allowlist forwarded only content negotiation headers, so proxied requests reached the API without provider credentials.
+- **Affected code:** `apps/sites/backend.test.ts`.
+- **Remediation:** Forward only the supported ephemeral provider-auth headers through the AI proxy; keep secrets out of logs and persistence, and cover the gateway request with a proxy regression.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-443 — Manifest prop names could inject JSX source into standalone exports
+
+- **Severity:** HIGH
+- **Evidence:** Regression coverage: `packages/exporter/src/__tests__/exporter.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yabIl).
+- **Reproduction:**
+  - Run the regression test in packages/exporter/src/__tests__/exporter.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** User-controlled prop keys were interpolated as JSX syntax before being validated against the resource contract.
+- **Affected code:** `packages/exporter/src/__tests__/exporter.test.ts`.
+- **Remediation:** Filter user-controlled manifest prop names through a safe JSX identifier allowlist before emitting source code.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+
+## MEDIUM — source-review and accessibility findings
+
+### AUD-420 — AI generation requests were aborted after the short health-check timeout
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `apps/sites/backend.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yP8EJ).
+- **Reproduction:**
+  - Run the regression test in apps/sites/backend.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** The single three-second abort deadline covered the entire buffered provider generation response.
+- **Affected code:** `apps/sites/backend.test.ts`.
+- **Remediation:** Use a generation-specific request deadline long enough for provider completion while retaining the short timeout for health and queue operations.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-421 — Changing an ancestor palette changed a locked descendant
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/workbench/src/__tests__/workbench-store.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yP8EM).
+- **Reproduction:**
+  - Run the regression test in packages/workbench/src/__tests__/workbench-store.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** The ancestor palette mutation checked ancestor locks only; the lock snapshot held no values for the default palette.
+- **Affected code:** `packages/workbench/src/__tests__/workbench-store.test.ts`.
+- **Remediation:** Prevent ancestor palette mutations from changing any locked descendant and preserve the locked subtree snapshot even when its original palette is inherited.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-422 — Stale undo history could be restored against a newer project manifest
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/workbench/src/__tests__/persistence.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yP8EQ).
+- **Reproduction:**
+  - Run the regression test in packages/workbench/src/__tests__/persistence.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** History loading returned snapshots but not its current-head snapshot, and Workbench restored stacks unconditionally.
+- **Affected code:** `packages/workbench/src/__tests__/persistence.test.ts`.
+- **Remediation:** Restore an undo stack only when its current snapshot exactly matches the loaded project manifest; invalidate stale stacks otherwise.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-423 — Unreadable checkpoint journals hid valid IndexedDB checkpoints
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/workbench/src/persistence/checkpoint-journal.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yP8ES).
+- **Reproduction:**
+  - Run the regression test in packages/workbench/src/persistence/checkpoint-journal.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** Checkpoint journal parsing/read errors escaped before the durable database fallback was queried.
+- **Affected code:** `packages/workbench/src/persistence/checkpoint-journal.test.ts`.
+- **Remediation:** Treat malformed/unreadable browser checkpoint journals as a recoverable local-index failure and continue loading durable IndexedDB checkpoints.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-424 — Standalone export overwrote authored navigation links
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/exporter/src/__tests__/exporter.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yQTdu).
+- **Reproduction:**
+  - Run the regression test in packages/exporter/src/__tests__/exporter.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** Resource rendering replaced authored `links` with derived project navigation unconditionally.
+- **Affected code:** `packages/exporter/src/__tests__/exporter.test.ts`.
+- **Remediation:** Preserve resource-authored navigation links in standalone export, deriving project navigation only where authored links are absent.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-425 — Adaptive exports omitted a supported variant when no light variant was set
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/exporter/src/__tests__/exporter.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yQTdv).
+- **Reproduction:**
+  - Run the regression test in packages/exporter/src/__tests__/exporter.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** The exporter emitted the variant prop only when a static variant existed, even though adaptive mode selected Nocturne at runtime.
+- **Affected code:** `packages/exporter/src/__tests__/exporter.test.ts`.
+- **Remediation:** Emit the supported adaptive variant prop whenever adaptive mode is selected, including when the static light variant is unset.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-426 — Creator-link validation accepted URLs whose serialized form exceeded the storage limit
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `apps/api/src/__tests__/auth-and-cloud.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yQTdy).
+- **Reproduction:**
+  - Run the regression test in apps/api/src/__tests__/auth-and-cloud.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** The input string length was checked before URL normalization percent-encoded non-ASCII path characters.
+- **Affected code:** `apps/api/src/__tests__/auth-and-cloud.test.ts`.
+- **Remediation:** Enforce storage bounds against the normalized serialized URL after URL parsing and encoding.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-427 — Workbench opened a fresh starter after the active-project journal was cleared
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/workbench/src/persistence/browser-session.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yRVae).
+- **Reproduction:**
+  - Run the regression test in packages/workbench/src/persistence/browser-session.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** IndexedDB discovery ran only when localStorage emitted a warning; a cleared journal can leave storage healthy with no active ID.
+- **Affected code:** `packages/workbench/src/persistence/browser-session.test.ts`.
+- **Remediation:** When no active-project journal ID exists, discover the most recent valid local IndexedDB project even if localStorage itself did not fail.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-428 — Adding or renaming a page erased authored navigation links
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/workbench/src/__tests__/workbench-store.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6ySiYT).
+- **Reproduction:**
+  - Run the regression test in packages/workbench/src/__tests__/workbench-store.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** Page synchronization rebuilt each resource links array entirely from primary navigation metadata.
+- **Affected code:** `packages/workbench/src/__tests__/workbench-store.test.ts`.
+- **Remediation:** Synchronize generated primary navigation without deleting resource-authored links during page addition or rename.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-429 — A queued IndexedDB save could delete a newer recovery journal
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/workbench/src/persistence/browser-session.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6ySz6Y).
+- **Reproduction:**
+  - Run the regression test in packages/workbench/src/persistence/browser-session.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** Quota fallback cleanup removed the project journal by key without checking whether a newer edit replaced it.
+- **Affected code:** `packages/workbench/src/persistence/browser-session.test.ts`.
+- **Remediation:** Associate journal cleanup with the save generation being completed; never delete a newer recovery record written by a concurrent edit.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-430 — Switching variants of the same resource discarded authored props
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/workbench/src/__tests__/resource-replacement.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6ySz6b).
+- **Reproduction:**
+  - Run the regression test in packages/workbench/src/__tests__/resource-replacement.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** Replacement rebuilt props from generated content bindings even though the resource contract did not change.
+- **Affected code:** `packages/workbench/src/__tests__/resource-replacement.test.ts`.
+- **Remediation:** When replacing a resource with another variant of the same resource, preserve the user-authored props and update only variant-dependent state.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-431 — Add Page could exceed the supported manifest screen and graph limits
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/workbench/src/__tests__/workbench-store.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yTZMH).
+- **Reproduction:**
+  - Run the regression test in packages/workbench/src/__tests__/workbench-store.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** The store action bypassed mutation validation and appended screens/navigation/graph records beyond 200.
+- **Affected code:** `packages/workbench/src/__tests__/workbench-store.test.ts`.
+- **Remediation:** Reject Add Page at the canonical 200-screen/graph limit before changing screens, navigation, or graph records.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-432 — Manifest defaults could expand an accepted API request past the persisted-size limit
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `apps/api/src/__tests__/cloud-sync-d1.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yTxZ2).
+- **Reproduction:**
+  - Run the regression test in apps/api/src/__tests__/cloud-sync-d1.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** The API measured raw request size but not the larger schema-migrated representation stored and read later.
+- **Affected code:** `apps/api/src/__tests__/cloud-sync-d1.test.ts`.
+- **Remediation:** Measure the canonical normalized/migrated manifest before persistence and reject it if its stored representation exceeds the configured size bound.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-433 — Exported hash navigation failed for encoded screen IDs
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/exporter/src/__tests__/exporter.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yUPW_).
+- **Reproduction:**
+  - Run the regression test in packages/exporter/src/__tests__/exporter.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** Generated Vite and Next pages compared the encoded fragment string directly with raw manifest IDs.
+- **Affected code:** `packages/exporter/src/__tests__/exporter.test.ts`.
+- **Remediation:** Decode URL fragments before comparing them with manifest screen IDs in generated Vite and Next navigation code.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-434 — Distinct imported routes could collide on generated screen and node IDs
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/ingest/src/__tests__/ingest.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yUPXB).
+- **Reproduction:**
+  - Run the regression test in packages/ingest/src/__tests__/ingest.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** The normalized route slug was reused directly as the screen and root-node identifier.
+- **Affected code:** `packages/ingest/src/__tests__/ingest.test.ts`.
+- **Remediation:** Allocate unique internal screen and root-node IDs separately from preserved source route paths.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-435 — Static JSX class edits changed literal backslashes
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/ingest/src/__tests__/ingest.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yUPXE).
+- **Reproduction:**
+  - Run the regression test in packages/ingest/src/__tests__/ingest.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** Patch generation used JavaScript string escaping inside a quoted JSX attribute, doubling literal backslashes.
+- **Affected code:** `packages/ingest/src/__tests__/ingest.test.ts`.
+- **Remediation:** Escape JSX string literals according to JSX semantics so a source class edit preserves literal backslashes exactly.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-436 — Ingestion skipped anonymous default function routes
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/ingest/src/__tests__/ingest.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yUfPk).
+- **Reproduction:**
+  - Run the regression test in packages/ingest/src/__tests__/ingest.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** The route classifier required a FunctionDeclaration name and ignored anonymous function declarations.
+- **Affected code:** `packages/ingest/src/__tests__/ingest.test.ts`.
+- **Remediation:** Recognize anonymous default function declarations as importable route components.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-437 — Ingestion rewrote literal static route paths
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/ingest/src/__tests__/ingest.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yVhd7).
+- **Reproduction:**
+  - Run the regression test in packages/ingest/src/__tests__/ingest.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** Route construction lowercased and slugified static path components, changing the source application URL.
+- **Affected code:** `packages/ingest/src/__tests__/ingest.test.ts`.
+- **Remediation:** Keep literal static route path segments unchanged during ingestion instead of lowercasing or slugifying them.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-438 — A stale per-tab history cache could skip a snapshot missing from IndexedDB
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `tests/e2e/workbench-cross-tab-history-integrity.spec.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yVhd_).
+- **Reproduction:**
+  - Run the regression test in packages/workbench/src/__tests__/persistence.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** A module-local cache of previously persisted IDs could survive a cross-tab prune and suppress rewriting a required snapshot.
+- **Affected code:** `packages/workbench/src/__tests__/persistence.test.ts`.
+- **Remediation:** Query the active IndexedDB history snapshot keys when persisting a stack; do not rely on a per-tab cache that can outlive another tab’s prune.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-439 — Logical JSX conditions hid imported child resources
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/ingest/src/__tests__/ingest.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yXVz8).
+- **Reproduction:**
+  - Run the regression test in packages/ingest/src/__tests__/ingest.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** JSX child traversal omitted logical binary expressions and parenthesized expressions from its recognized AST nodes.
+- **Affected code:** `packages/ingest/src/__tests__/ingest.test.ts`.
+- **Remediation:** Traverse logical binary and parenthesized JSX expressions so conditional child resources appear in the imported graph.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-440 — JSX sibling paths could target a different source element
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/ingest/src/__tests__/ingest.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yXZ2h).
+- **Reproduction:**
+  - Run the regression test in packages/ingest/src/__tests__/ingest.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** Sibling collection traversed the expression children instead of visiting the expression node itself, so direct JSX roots were skipped.
+- **Affected code:** `packages/ingest/src/__tests__/ingest.test.ts`.
+- **Remediation:** Collect the containing expression node when mapping JSX sibling paths so the patch emitter and AST mapper use the same sibling index.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-441 — Clearing array content lost the resource element contract
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/workbench/src/utils/content-shape.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yXZ2j).
+- **Reproduction:**
+  - Run the regression test in packages/workbench/src/utils/content-shape.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** Content shape inference used current values only; after clearing, the array element schema was no longer available.
+- **Affected code:** `packages/workbench/src/utils/content-shape.test.ts`.
+- **Remediation:** Retain the resource’s declared array element contract after its current array value is cleared.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-442 — Generated unified diffs were missing the required terminal newline
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `packages/ingest/src/__tests__/ingest.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6yYGze).
+- **Reproduction:**
+  - Run the regression test in packages/ingest/src/__tests__/ingest.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** The unified diff joined lines without terminating the final patch record; tests masked it by appending a newline.
+- **Affected code:** `packages/ingest/src/__tests__/ingest.test.ts`.
+- **Remediation:** Terminate generated unified diff output with the required newline and test the emitted bytes without normalizing them in the test.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-444 — Normalized inference ASTs could exceed the queue storage budget
+
+- **Severity:** MEDIUM
+- **Evidence:** Regression coverage: `apps/api/src/__tests__/inference-queue.test.ts`; [PR #8](https://github.com/danishgm-sketch/Tessellate/pull/8) (review thread PRRT_kwDOVEB2EM6ya0w9).
+- **Reproduction:**
+  - Run the regression test in apps/api/src/__tests__/inference-queue.test.ts.
+  - Run the referenced regression test and compare the affected behavior described in its PR review thread.
+- **Root cause:** The limit was applied to raw input while schema defaults and normalization expanded what the queue persisted.
+- **Affected code:** `apps/api/src/__tests__/inference-queue.test.ts`.
+- **Remediation:** Size-check the canonical normalized inference AST before storing or queueing it, not only the smaller raw request.
+- **Verification status:** fixed-local-verified; public v70 still serves the pre-fix code.
+
+### AUD-445 — Showcase preview label was attached to a container without a semantic role
+
+- **Severity:** MEDIUM
+- **Evidence:** Before-fix deployed evidence: `quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe-route-audit.json`; post-fix browser test: `tests/e2e/accessibility-label-semantics-regression.spec.ts` in desktop and mobile Sites Worker profiles. PR #8 deployed verification is pending. Before screenshot: `quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe/_showcase_showcase-playful-hr_-desktop-1440x900.png`.
+- **Reproduction:**
+  - Open /showcase/showcase-playful-hr/ at 1440x900 or 390x844.
+  - Run the WCAG 2.2 AA Axe scan and inspect aria-prohibited-attr incomplete nodes.
+- **Root cause:** ShowcasePreview assigned an accessible name to a generic div instead of a named region.
+- **Affected code:** `apps/site/src/components/ShowcasePreview.tsx`, `tests/e2e/accessibility-label-semantics-regression.spec.ts`.
+- **Remediation:** Render the named showcase screen container with role="region" so its aria-label is supported by the accessibility tree.
+- **Local after evidence:** Desktop/mobile screenshots and zero-runtime-error/Axe telemetry are under `quality/evidence/step-48/accessibility-label-semantics/`.
+- **Verification status:** fixed-awaiting-deployed-verification; public v70 still serves the pre-fix code.
+
+### AUD-446 — Workbench save status label had no supported status semantics
+
+- **Severity:** MEDIUM
+- **Evidence:** Before-fix deployed evidence: `quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe-route-audit.json`; post-fix browser test: `tests/e2e/accessibility-label-semantics-regression.spec.ts` in desktop and mobile Sites Worker profiles. PR #8 deployed verification is pending. Before screenshot: `quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe/_workbench-desktop-1440x900.png`.
+- **Reproduction:**
+  - Open /workbench at 1440x900 or 390x844.
+  - Run the WCAG 2.2 AA Axe scan and inspect aria-prohibited-attr incomplete nodes for history-save-status.
+- **Root cause:** TopToolbar rendered changing save feedback without a status role.
+- **Affected code:** `packages/workbench/src/components/TopToolbar.tsx`, `tests/e2e/accessibility-label-semantics-regression.spec.ts`.
+- **Remediation:** Expose changing local save feedback with role="status" so the accessible name and status announcement are valid.
+- **Verification status:** fixed-awaiting-deployed-verification; public v70 still serves the pre-fix code.
+
+
+### AUD-447 — Undo reload could restore the newer state after localStorage quota failure
+
+- **Severity:** MEDIUM
+- **Evidence:** PR #8 review comment 4436330975; fix commit d13d87a2bbb835b3de07b0b803b4394b4cddc81e. The regression ran against the pre-fix source and failed: it saved state A, edited state B with a later timestamp, simulated localStorage quota failure, saved A (Undo) to IndexedDB, then reloaded B from the still-marked journal. The post-fix targeted test passes. Logs: quality/evidence/step-48/browser-journal-undo-quota/pre-fix-vitest.log and quality/evidence/step-48/browser-journal-undo-quota/post-fix-vitest.log.
+- **Reproduction:**
+  1. Save project manifest A.
+  2. Save a later-edited manifest B.
+  3. Make localStorage writes fail, save A as Undo, and allow IndexedDB save to succeed.
+  4. Reload the project.
+- **Root cause:** Recovery compared manifest updatedAt values to decide whether a journal was stale. An Undo snapshot intentionally has an older timestamp, so the stale journal could override the successful IndexedDB write.
+- **Affected code:** packages/workbench/src/persistence/browser-session.ts; regression in packages/workbench/src/persistence/browser-session.test.ts.
+- **Remediation:** Track a journal generation independently from manifest timestamps, commit its marker only after both journal payloads are written, and remove only the failed save's or previously observed journal bytes after IndexedDB succeeds.
+- **Verification status:** fixed-local-verified at d13d87a2bbb835b3de07b0b803b4394b4cddc81e; exact-head CI and public Site verification pending.

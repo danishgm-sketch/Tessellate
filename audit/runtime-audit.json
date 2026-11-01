@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete. PR review findings AUD-419–AUD-444 have named post-fix regression coverage; this record does not claim every regression ran red before its fix. The AUD-438 cross-tab history regression additionally passes in a real local Sites Worker browser at desktop and mobile sizes. Exact-head CI and applicable deployed verification remain pending. Public Axe evidence also found two unsupported ARIA label semantics (AUD-445 and AUD-446), now fixed locally and awaiting published verification. Public v70 route re-audit evidence is quality/evidence/step-45/public-v70-reaudit-2026-11-01/. Axe scan-time CSP console events are isolated to the sandboxed preview frames while Axe analyzes them; ordinary route navigation was clean, and the existing strict CSP remains unchanged. A separately discovered PR review issue AUD-447 reproduced an Undo recovery failure under simulated localStorage quota exhaustion; its regression fails against the pre-fix source and passes with the generation-based journal fix. Exact-head CI and public Site verification are pending.",
   "entries": [
     {
       "id": "AUD-001",
@@ -19192,8 +19192,877 @@
           "quality/evidence/step-49/canvas-toolbar-occlusion/deployed-v70/mobile/workbench-fundamentals-sites-mobile-chromium.json"
         ]
       }
+    },
+    {
+      "id": "AUD-419",
+      "severity": "high",
+      "route": "/api/ai/*",
+      "viewport": "not applicable - source regression",
+      "category": "network",
+      "title": "BYO provider credentials were dropped by the Sites AI gateway",
+      "expected": "A configured Anthropic or Gemini request should reach the laptop API with its provider authentication header and version header.",
+      "actual": "The gateway allowlist forwarded only content negotiation headers, so proxied requests reached the API without provider credentials. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in apps/sites/backend.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The gateway allowlist forwarded only content negotiation headers, so proxied requests reached the API without provider credentials.",
+      "affectedFiles": [
+        "apps/sites/backend.test.ts"
+      ],
+      "evidence": {
+        "testPath": "apps/sites/backend.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yP8EF"
+      },
+      "fixCommit": "c744563df2ca43ec579151cd73107a65d9a6f1a7",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-420",
+      "severity": "medium",
+      "route": "/api/ai/*",
+      "viewport": "not applicable - source regression",
+      "category": "performance",
+      "title": "AI generation requests were aborted after the short health-check timeout",
+      "expected": "AI requests should have a generation-appropriate deadline while health and queue probes stay short.",
+      "actual": "The single three-second abort deadline covered the entire buffered provider generation response. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in apps/sites/backend.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The single three-second abort deadline covered the entire buffered provider generation response.",
+      "affectedFiles": [
+        "apps/sites/backend.test.ts"
+      ],
+      "evidence": {
+        "testPath": "apps/sites/backend.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yP8EJ"
+      },
+      "fixCommit": "c744563df2ca43ec579151cd73107a65d9a6f1a7",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-421",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "not applicable - source regression",
+      "category": "state",
+      "title": "Changing an ancestor palette changed a locked descendant",
+      "expected": "A locked resource should retain the effective palette it had when locked.",
+      "actual": "The ancestor palette mutation checked ancestor locks only; the lock snapshot held no values for the default palette. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/workbench/src/__tests__/workbench-store.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The ancestor palette mutation checked ancestor locks only; the lock snapshot held no values for the default palette.",
+      "affectedFiles": [
+        "packages/workbench/src/__tests__/workbench-store.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/workbench/src/__tests__/workbench-store.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yP8EM"
+      },
+      "fixCommit": "fe716e416f030ae44d2d8c883eb5f7d15856a09a",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-422",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "not applicable - source regression",
+      "category": "state",
+      "title": "Stale undo history could be restored against a newer project manifest",
+      "expected": "Undo/redo stacks should only be restored when the persisted history head is the active saved project.",
+      "actual": "History loading returned snapshots but not its current-head snapshot, and Workbench restored stacks unconditionally. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/workbench/src/__tests__/persistence.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "History loading returned snapshots but not its current-head snapshot, and Workbench restored stacks unconditionally.",
+      "affectedFiles": [
+        "packages/workbench/src/__tests__/persistence.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/workbench/src/__tests__/persistence.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yP8EQ"
+      },
+      "fixCommit": "fe716e416f030ae44d2d8c883eb5f7d15856a09a",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-423",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "not applicable - source regression",
+      "category": "state",
+      "title": "Unreadable checkpoint journals hid valid IndexedDB checkpoints",
+      "expected": "Malformed or inaccessible localStorage should not prevent restoring independently saved IndexedDB checkpoints.",
+      "actual": "Checkpoint journal parsing/read errors escaped before the durable database fallback was queried. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/workbench/src/persistence/checkpoint-journal.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Checkpoint journal parsing/read errors escaped before the durable database fallback was queried.",
+      "affectedFiles": [
+        "packages/workbench/src/persistence/checkpoint-journal.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/workbench/src/persistence/checkpoint-journal.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yP8ES"
+      },
+      "fixCommit": "fe716e416f030ae44d2d8c883eb5f7d15856a09a",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-424",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "not applicable - source regression",
+      "category": "export",
+      "title": "Standalone export overwrote authored navigation links",
+      "expected": "Explicit navigation-resource links, labels, and destinations should survive export exactly.",
+      "actual": "Resource rendering replaced authored `links` with derived project navigation unconditionally. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/exporter/src/__tests__/exporter.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Resource rendering replaced authored `links` with derived project navigation unconditionally.",
+      "affectedFiles": [
+        "packages/exporter/src/__tests__/exporter.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/exporter/src/__tests__/exporter.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yQTdu"
+      },
+      "fixCommit": "2804038cdaba11573fbd64eeeb0246b92d32ccd5",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-425",
+      "severity": "medium",
+      "route": "/workbench/export",
+      "viewport": "not applicable - source regression",
+      "category": "export",
+      "title": "Adaptive exports omitted a supported variant when no light variant was set",
+      "expected": "Adaptive resources that accept variants should receive the runtime dark/light variant expression.",
+      "actual": "The exporter emitted the variant prop only when a static variant existed, even though adaptive mode selected Nocturne at runtime. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/exporter/src/__tests__/exporter.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The exporter emitted the variant prop only when a static variant existed, even though adaptive mode selected Nocturne at runtime.",
+      "affectedFiles": [
+        "packages/exporter/src/__tests__/exporter.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/exporter/src/__tests__/exporter.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yQTdv"
+      },
+      "fixCommit": "2804038cdaba11573fbd64eeeb0246b92d32ccd5",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-426",
+      "severity": "medium",
+      "route": "/api/creator-links",
+      "viewport": "not applicable - source regression",
+      "category": "data",
+      "title": "Creator-link validation accepted URLs whose serialized form exceeded the storage limit",
+      "expected": "Every accepted creator link should remain valid when serialized and read back.",
+      "actual": "The input string length was checked before URL normalization percent-encoded non-ASCII path characters. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in apps/api/src/__tests__/auth-and-cloud.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The input string length was checked before URL normalization percent-encoded non-ASCII path characters.",
+      "affectedFiles": [
+        "apps/api/src/__tests__/auth-and-cloud.test.ts"
+      ],
+      "evidence": {
+        "testPath": "apps/api/src/__tests__/auth-and-cloud.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yQTdy"
+      },
+      "fixCommit": "c744563df2ca43ec579151cd73107a65d9a6f1a7",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-427",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "not applicable - source regression",
+      "category": "state",
+      "title": "Workbench opened a fresh starter after the active-project journal was cleared",
+      "expected": "Workbench should discover the latest IndexedDB project when the route has no recoverable project ID.",
+      "actual": "IndexedDB discovery ran only when localStorage emitted a warning; a cleared journal can leave storage healthy with no active ID. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/workbench/src/persistence/browser-session.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "IndexedDB discovery ran only when localStorage emitted a warning; a cleared journal can leave storage healthy with no active ID.",
+      "affectedFiles": [
+        "packages/workbench/src/persistence/browser-session.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/workbench/src/persistence/browser-session.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yRVae"
+      },
+      "fixCommit": "fe716e416f030ae44d2d8c883eb5f7d15856a09a",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-428",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "not applicable - source regression",
+      "category": "state",
+      "title": "Adding or renaming a page erased authored navigation links",
+      "expected": "Page operations should update screen-derived links while retaining user-authored destinations and labels.",
+      "actual": "Page synchronization rebuilt each resource links array entirely from primary navigation metadata. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/workbench/src/__tests__/workbench-store.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Page synchronization rebuilt each resource links array entirely from primary navigation metadata.",
+      "affectedFiles": [
+        "packages/workbench/src/__tests__/workbench-store.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/workbench/src/__tests__/workbench-store.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6ySiYT"
+      },
+      "fixCommit": "fe716e416f030ae44d2d8c883eb5f7d15856a09a",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-429",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "not applicable - source regression",
+      "category": "state",
+      "title": "A queued IndexedDB save could delete a newer recovery journal",
+      "expected": "A save completion should only invalidate the journal version it persisted.",
+      "actual": "Quota fallback cleanup removed the project journal by key without checking whether a newer edit replaced it. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/workbench/src/persistence/browser-session.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Quota fallback cleanup removed the project journal by key without checking whether a newer edit replaced it.",
+      "affectedFiles": [
+        "packages/workbench/src/persistence/browser-session.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/workbench/src/persistence/browser-session.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6ySz6Y"
+      },
+      "fixCommit": "fe716e416f030ae44d2d8c883eb5f7d15856a09a",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-430",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "not applicable - source regression",
+      "category": "state",
+      "title": "Switching variants of the same resource discarded authored props",
+      "expected": "A same-resource variant change should preserve custom size, intent, accessibility labels, and other authored props.",
+      "actual": "Replacement rebuilt props from generated content bindings even though the resource contract did not change. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/workbench/src/__tests__/resource-replacement.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Replacement rebuilt props from generated content bindings even though the resource contract did not change.",
+      "affectedFiles": [
+        "packages/workbench/src/__tests__/resource-replacement.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/workbench/src/__tests__/resource-replacement.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6ySz6b"
+      },
+      "fixCommit": "fe716e416f030ae44d2d8c883eb5f7d15856a09a",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-431",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "not applicable - source regression",
+      "category": "data",
+      "title": "Add Page could exceed the supported manifest screen and graph limits",
+      "expected": "Add Page and Duplicate should refuse or validate additions at the schema maximum.",
+      "actual": "The store action bypassed mutation validation and appended screens/navigation/graph records beyond 200. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/workbench/src/__tests__/workbench-store.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The store action bypassed mutation validation and appended screens/navigation/graph records beyond 200.",
+      "affectedFiles": [
+        "packages/workbench/src/__tests__/workbench-store.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/workbench/src/__tests__/workbench-store.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yTZMH"
+      },
+      "fixCommit": "fe716e416f030ae44d2d8c883eb5f7d15856a09a",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-432",
+      "severity": "medium",
+      "route": "/api/projects",
+      "viewport": "not applicable - source regression",
+      "category": "data",
+      "title": "Manifest defaults could expand an accepted API request past the persisted-size limit",
+      "expected": "The canonical serialized manifest must remain inside the storage budget before create/update succeeds.",
+      "actual": "The API measured raw request size but not the larger schema-migrated representation stored and read later. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in apps/api/src/__tests__/cloud-sync-d1.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The API measured raw request size but not the larger schema-migrated representation stored and read later.",
+      "affectedFiles": [
+        "apps/api/src/__tests__/cloud-sync-d1.test.ts"
+      ],
+      "evidence": {
+        "testPath": "apps/api/src/__tests__/cloud-sync-d1.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yTxZ2"
+      },
+      "fixCommit": "c744563df2ca43ec579151cd73107a65d9a6f1a7",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-433",
+      "severity": "medium",
+      "route": "/workbench/export",
+      "viewport": "not applicable - source regression",
+      "category": "export",
+      "title": "Exported hash navigation failed for encoded screen IDs",
+      "expected": "Standalone navigation should encode IDs in links and safely decode fragments before lookup.",
+      "actual": "Generated Vite and Next pages compared the encoded fragment string directly with raw manifest IDs. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/exporter/src/__tests__/exporter.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Generated Vite and Next pages compared the encoded fragment string directly with raw manifest IDs.",
+      "affectedFiles": [
+        "packages/exporter/src/__tests__/exporter.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/exporter/src/__tests__/exporter.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yUPW_"
+      },
+      "fixCommit": "2804038cdaba11573fbd64eeeb0246b92d32ccd5",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-434",
+      "severity": "medium",
+      "route": "CLI ingest",
+      "viewport": "not applicable - source regression",
+      "category": "data",
+      "title": "Distinct imported routes could collide on generated screen and node IDs",
+      "expected": "Route identity should be preserved while internal IDs remain unique after slug normalization.",
+      "actual": "The normalized route slug was reused directly as the screen and root-node identifier. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/ingest/src/__tests__/ingest.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The normalized route slug was reused directly as the screen and root-node identifier.",
+      "affectedFiles": [
+        "packages/ingest/src/__tests__/ingest.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/ingest/src/__tests__/ingest.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yUPXB"
+      },
+      "fixCommit": "7ceac911b471819efbbbcdbd901333c5ce0c28b0",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-435",
+      "severity": "medium",
+      "route": "CLI patch",
+      "viewport": "not applicable - source regression",
+      "category": "export",
+      "title": "Static JSX class edits changed literal backslashes",
+      "expected": "A successful visual mutation must compile to the exact requested class string.",
+      "actual": "Patch generation used JavaScript string escaping inside a quoted JSX attribute, doubling literal backslashes. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/ingest/src/__tests__/ingest.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Patch generation used JavaScript string escaping inside a quoted JSX attribute, doubling literal backslashes.",
+      "affectedFiles": [
+        "packages/ingest/src/__tests__/ingest.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/ingest/src/__tests__/ingest.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yUPXE"
+      },
+      "fixCommit": "7ceac911b471819efbbbcdbd901333c5ce0c28b0",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-436",
+      "severity": "medium",
+      "route": "CLI ingest",
+      "viewport": "not applicable - source regression",
+      "category": "data",
+      "title": "Ingestion skipped anonymous default function routes",
+      "expected": "An anonymous default function with JSX should be recognized as the declared route component.",
+      "actual": "The route classifier required a FunctionDeclaration name and ignored anonymous function declarations. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/ingest/src/__tests__/ingest.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The route classifier required a FunctionDeclaration name and ignored anonymous function declarations.",
+      "affectedFiles": [
+        "packages/ingest/src/__tests__/ingest.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/ingest/src/__tests__/ingest.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yUfPk"
+      },
+      "fixCommit": "7ceac911b471819efbbbcdbd901333c5ce0c28b0",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-437",
+      "severity": "medium",
+      "route": "CLI ingest",
+      "viewport": "not applicable - source regression",
+      "category": "data",
+      "title": "Ingestion rewrote literal static route paths",
+      "expected": "Imported route records should retain the original case and punctuation of source route segments.",
+      "actual": "Route construction lowercased and slugified static path components, changing the source application URL. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/ingest/src/__tests__/ingest.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Route construction lowercased and slugified static path components, changing the source application URL.",
+      "affectedFiles": [
+        "packages/ingest/src/__tests__/ingest.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/ingest/src/__tests__/ingest.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yVhd7"
+      },
+      "fixCommit": "7ceac911b471819efbbbcdbd901333c5ce0c28b0",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-438",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "not applicable - source regression",
+      "category": "state",
+      "title": "A stale per-tab history cache could skip a snapshot missing from IndexedDB",
+      "expected": "Every pointer must reference snapshots that exist in the current shared database, including snapshots removed by another tab.",
+      "actual": "A module-local cache of previously persisted IDs could survive a cross-tab prune and suppress rewriting a required snapshot. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/workbench/src/__tests__/persistence.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "A module-local cache of previously persisted IDs could survive a cross-tab prune and suppress rewriting a required snapshot.",
+      "affectedFiles": [
+        "packages/workbench/src/__tests__/persistence.test.ts"
+      ],
+      "evidence": {
+        "testPath": "tests/e2e/workbench-cross-tab-history-integrity.spec.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yVhd_",
+        "unitTestPath": "packages/workbench/src/__tests__/persistence.test.ts",
+        "browserProfiles": [
+          "sites-chromium 1440x900",
+          "sites-mobile-chromium 390x844"
+        ],
+        "browserAssertions": [
+          "A second tab prunes a snapshot from IndexedDB.",
+          "The visible Workbench save rewrites the missing snapshot.",
+          "After reload, Undo restores the exact prior Visual Ambition value.",
+          "No browser console errors, uncaught exceptions, failed requests, or HTTP errors."
+        ],
+        "browserScreenshots": [
+          "quality/evidence/step-21/after/cross-tab-history-snapshot-integrity-desktop-1440.png",
+          "quality/evidence/step-21/after/cross-tab-history-snapshot-integrity-mobile-390.png"
+        ],
+        "browserTelemetry": [
+          "quality/evidence/step-21/after/cross-tab-history-snapshot-integrity-desktop-1440.json",
+          "quality/evidence/step-21/after/cross-tab-history-snapshot-integrity-mobile-390.json"
+        ]
+      },
+      "fixCommit": "fe716e416f030ae44d2d8c883eb5f7d15856a09a",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-439",
+      "severity": "medium",
+      "route": "CLI ingest",
+      "viewport": "not applicable - source regression",
+      "category": "data",
+      "title": "Logical JSX conditions hid imported child resources",
+      "expected": "Ingestion should retain elements rendered through ordinary `&&`, `||`, or nullish JSX conditions.",
+      "actual": "JSX child traversal omitted logical binary expressions and parenthesized expressions from its recognized AST nodes. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/ingest/src/__tests__/ingest.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "JSX child traversal omitted logical binary expressions and parenthesized expressions from its recognized AST nodes.",
+      "affectedFiles": [
+        "packages/ingest/src/__tests__/ingest.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/ingest/src/__tests__/ingest.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yXVz8"
+      },
+      "fixCommit": "7ceac911b471819efbbbcdbd901333c5ce0c28b0",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-440",
+      "severity": "medium",
+      "route": "CLI patch",
+      "viewport": "not applicable - source regression",
+      "category": "state",
+      "title": "JSX sibling paths could target a different source element",
+      "expected": "A mutation path must include JSX nodes wrapped by expression containers in the correct sibling order.",
+      "actual": "Sibling collection traversed the expression children instead of visiting the expression node itself, so direct JSX roots were skipped. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/ingest/src/__tests__/ingest.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Sibling collection traversed the expression children instead of visiting the expression node itself, so direct JSX roots were skipped.",
+      "affectedFiles": [
+        "packages/ingest/src/__tests__/ingest.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/ingest/src/__tests__/ingest.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yXZ2h"
+      },
+      "fixCommit": "7ceac911b471819efbbbcdbd901333c5ce0c28b0",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-441",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "not applicable - source regression",
+      "category": "state",
+      "title": "Clearing array content lost the resource element contract",
+      "expected": "An emptied array editor should continue to show a valid element-shape editor for the selected resource prop.",
+      "actual": "Content shape inference used current values only; after clearing, the array element schema was no longer available. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/workbench/src/utils/content-shape.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Content shape inference used current values only; after clearing, the array element schema was no longer available.",
+      "affectedFiles": [
+        "packages/workbench/src/utils/content-shape.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/workbench/src/utils/content-shape.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yXZ2j"
+      },
+      "fixCommit": "fe716e416f030ae44d2d8c883eb5f7d15856a09a",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-442",
+      "severity": "medium",
+      "route": "CLI patch",
+      "viewport": "not applicable - source regression",
+      "category": "export",
+      "title": "Generated unified diffs were missing the required terminal newline",
+      "expected": "The returned patch artifact should pass `git apply --check` when written verbatim.",
+      "actual": "The unified diff joined lines without terminating the final patch record; tests masked it by appending a newline. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/ingest/src/__tests__/ingest.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The unified diff joined lines without terminating the final patch record; tests masked it by appending a newline.",
+      "affectedFiles": [
+        "packages/ingest/src/__tests__/ingest.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/ingest/src/__tests__/ingest.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yYGze"
+      },
+      "fixCommit": "7ceac911b471819efbbbcdbd901333c5ce0c28b0",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-443",
+      "severity": "high",
+      "route": "/workbench/export",
+      "viewport": "not applicable - source regression",
+      "category": "export",
+      "title": "Manifest prop names could inject JSX source into standalone exports",
+      "expected": "Export must validate property names and keep all manifest values inside safe JSX expressions.",
+      "actual": "User-controlled prop keys were interpolated as JSX syntax before being validated against the resource contract. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in packages/exporter/src/__tests__/exporter.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "User-controlled prop keys were interpolated as JSX syntax before being validated against the resource contract.",
+      "affectedFiles": [
+        "packages/exporter/src/__tests__/exporter.test.ts"
+      ],
+      "evidence": {
+        "testPath": "packages/exporter/src/__tests__/exporter.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6yabIl"
+      },
+      "fixCommit": "2804038cdaba11573fbd64eeeb0246b92d32ccd5",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-444",
+      "severity": "medium",
+      "route": "/api/inference",
+      "viewport": "not applicable - source regression",
+      "category": "data",
+      "title": "Normalized inference ASTs could exceed the queue storage budget",
+      "expected": "Inference submission should size-check the canonical, normalized payload before accepting a queue ticket.",
+      "actual": "The limit was applied to raw input while schema defaults and normalization expanded what the queue persisted. The named post-fix regression test passes; this record does not assert that the test was run before the fix.",
+      "reproduction": [
+        "Run the regression test in apps/api/src/__tests__/inference-queue.test.ts.",
+        "Run the referenced regression test and compare the affected behavior described in its PR review thread."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The limit was applied to raw input while schema defaults and normalization expanded what the queue persisted.",
+      "affectedFiles": [
+        "apps/api/src/__tests__/inference-queue.test.ts"
+      ],
+      "evidence": {
+        "testPath": "apps/api/src/__tests__/inference-queue.test.ts",
+        "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/8",
+        "reviewThreadId": "PRRT_kwDOVEB2EM6ya0w9"
+      },
+      "fixCommit": "c744563df2ca43ec579151cd73107a65d9a6f1a7",
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-445",
+      "severity": "medium",
+      "route": "/showcase/showcase-playful-hr/",
+      "viewport": "1440x900 and 390x844",
+      "category": "accessibility",
+      "title": "Showcase preview label was attached to a container without a semantic role",
+      "expected": "A named example-screen container should expose a supported landmark role to assistive technology.",
+      "actual": "The showcase renderer put aria-label on a div with no role; Axe reported aria-prohibited-attr as incomplete on both audited viewports. The deployed behavior is not closed until a review Site verifies the change.",
+      "reproduction": [
+        "Open /showcase/showcase-playful-hr/ at 1440x900 or 390x844.",
+        "Run the WCAG 2.2 AA Axe scan and inspect aria-prohibited-attr incomplete nodes."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe/_showcase_showcase-playful-hr_-desktop-1440x900.png",
+      "rootCause": "ShowcasePreview assigned an accessible name to a generic div instead of a named region.",
+      "affectedFiles": [
+        "apps/site/src/components/ShowcasePreview.tsx",
+        "tests/e2e/accessibility-label-semantics-regression.spec.ts"
+      ],
+      "evidence": {
+        "deployedBefore": "quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe-route-audit.json",
+        "postFixTest": "tests/e2e/accessibility-label-semantics-regression.spec.ts",
+        "postFixProfiles": [
+          "sites-chromium 1440x900",
+          "sites-mobile-chromium 390x844"
+        ],
+        "beforeScreenshots": [
+          "quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe/_showcase_showcase-playful-hr_desktop-1440x900.png",
+          "quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe/_showcase_showcase-playful-hr_mobile-390x844.png"
+        ],
+        "afterScreenshots": [
+          "quality/evidence/step-48/accessibility-label-semantics/sites-chromium/AUD-445-showcase-after.png",
+          "quality/evidence/step-48/accessibility-label-semantics/sites-mobile-chromium/AUD-445-showcase-after.png"
+        ],
+        "afterTelemetry": [
+          "quality/evidence/step-48/accessibility-label-semantics/sites-chromium/AUD-445-showcase-after.json",
+          "quality/evidence/step-48/accessibility-label-semantics/sites-mobile-chromium/AUD-445-showcase-after.json"
+        ]
+      },
+      "fixCommit": "36736b77283edb223408da2317a37f6068f1bd67",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-446",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "1440x900 and 390x844",
+      "category": "accessibility",
+      "title": "Workbench save status label had no supported status semantics",
+      "expected": "Save-state feedback should expose a live status role so assistive technology can announce changes.",
+      "actual": "The local-history indicator used aria-label on a generic div; the public v70 Axe scan reported aria-prohibited-attr as incomplete. The local role=status fix passes desktop/mobile regression checks and awaits deployed verification.",
+      "reproduction": [
+        "Open /workbench at 1440x900 or 390x844.",
+        "Run the WCAG 2.2 AA Axe scan and inspect aria-prohibited-attr incomplete nodes for history-save-status."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe/_workbench-desktop-1440x900.png",
+      "rootCause": "TopToolbar rendered changing save feedback without a status role.",
+      "affectedFiles": [
+        "packages/workbench/src/components/TopToolbar.tsx",
+        "tests/e2e/accessibility-label-semantics-regression.spec.ts"
+      ],
+      "evidence": {
+        "deployedBefore": "quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe-route-audit.json",
+        "postFixTest": "tests/e2e/accessibility-label-semantics-regression.spec.ts",
+        "postFixProfiles": [
+          "sites-chromium 1440x900",
+          "sites-mobile-chromium 390x844"
+        ],
+        "beforeScreenshots": [
+          "quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe/_workbench-desktop-1440x900.png",
+          "quality/evidence/step-45/public-v70-reaudit-2026-11-01/axe/_workbench-mobile-390x844.png"
+        ],
+        "afterScreenshots": [
+          "quality/evidence/step-48/accessibility-label-semantics/sites-chromium/AUD-446-workbench-after.png",
+          "quality/evidence/step-48/accessibility-label-semantics/sites-mobile-chromium/AUD-446-workbench-after.png"
+        ],
+        "afterTelemetry": [
+          "quality/evidence/step-48/accessibility-label-semantics/sites-chromium/AUD-446-workbench-after.json",
+          "quality/evidence/step-48/accessibility-label-semantics/sites-mobile-chromium/AUD-446-workbench-after.json"
+        ]
+      },
+      "fixCommit": "36736b77283edb223408da2317a37f6068f1bd67",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-447",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "unit regression; deployed browser recheck pending",
+      "category": "state",
+      "title": "Undo could reload as the newer state when the recovery journal hit quota",
+      "expected": "After Undo is saved successfully to IndexedDB, reload should restore the undone manifest even when localStorage is full.",
+      "actual": "The timestamped localStorage journal was preferred over IndexedDB, so a failed journal write could restore the later edited manifest and reverse Undo after reload.",
+      "reproduction": [
+        "Save manifest A, then save edited manifest B with a later updatedAt timestamp.",
+        "Simulate localStorage quota failure and save A again, matching an Undo to the older manifest.",
+        "Reload the project; before the fix, loadBrowserProject returned B although IndexedDB contained A."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Journal recovery compared manifest updatedAt timestamps and treated an older Undo snapshot as stale. The journal marker did not distinguish successful latest user intent from an earlier timestamp.",
+      "affectedFiles": [
+        "packages/workbench/src/persistence/browser-session.ts",
+        "packages/workbench/src/persistence/browser-session.test.ts"
+      ],
+      "remediation": "Capture journal identity before each save, use an opaque generation marker committed only after both journal payloads are written, and on IndexedDB success remove only the journal bytes belonging to the failed save or the exact previously observed bytes. This preserves crash recovery while preventing timestamps from overruling Undo.",
+      "fixCommit": "d13d87a2bbb835b3de07b0b803b4394b4cddc81e",
+      "status": "fixed-local-verified",
+      "evidence": {
+        "reviewCommentId": "4436330975",
+        "preFixTest": "quality/evidence/step-48/browser-journal-undo-quota/pre-fix-vitest.log",
+        "postFixTest": "quality/evidence/step-48/browser-journal-undo-quota/post-fix-vitest.log",
+        "preFixResult": "1 failed: reload returned Edited state B instead of Undo target A.",
+        "postFixResult": "1 passed; the full browser-session unit file passes 5/5."
+      },
+      "deployedVerification": null
     }
   ],
   "generatedAt": "2026-11-01T13:28:15Z",
-  "latestDeploymentEvidence": "quality/evidence/step-49/canvas-toolbar-occlusion/deployed-v70/sites-chromium.json"
+  "latestDeploymentEvidence": "quality/evidence/step-45/public-v70-reaudit-2026-11-01/route-audit.json"
 }

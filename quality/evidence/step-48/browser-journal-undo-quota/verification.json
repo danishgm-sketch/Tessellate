@@ -1,0 +1,28 @@
+{
+  "issueId": "AUD-447",
+  "fixCommit": "d13d87a2bbb835b3de07b0b803b4394b4cddc81e",
+  "preFix": {
+    "command": "node node_modules/vitest/vitest.mjs run packages/workbench/src/persistence/browser-session.test.ts -t does-not-restore-a-newer-timestamped-journal-after-Undo-was-saved-to-IndexedDB",
+    "result": "FAILED as expected against parent commit b6167eed1e65643b08f2548179906c528d67fee4: 1 failed, 4 skipped. Reload returned Edited state B instead of Undo target A.",
+    "log": "pre-fix-vitest.log"
+  },
+  "postFix": {
+    "command": "node node_modules/vitest/vitest.mjs run packages/workbench/src/persistence/browser-session.test.ts",
+    "result": "PASSED: the focused regression passed (1 passed, 4 skipped).",
+    "focusedResult": "PASSED: 1 test.",
+    "log": "post-fix-vitest.log",
+    "fullModule": "PASSED: 5/5 browser-session tests.",
+    "fullModuleLog": "post-fix-full-module-vitest.log"
+  },
+  "validation": {
+    "unitTests": "PASSED: 1276 passed, 1 configured skip.",
+    "workspaceTypecheck": "PASSED across 22 workspace packages.",
+    "lint": "PASSED.",
+    "releaseAudits": "PASSED: release gate 16/16, source isolation 324/324, licence/provenance 324/324, security/secrets 0 violations, dependency audit no known vulnerabilities.",
+    "productionBuild": "PASSED: 733 Astro pages and Sites Worker artifact; bundle budgets passed.",
+    "playwright": "PASSED: desktop/mobile 396 passed with 126 configured skips; Sites Worker desktop 204/6; Sites Worker mobile 168/42; standalone preview 3/0. Total 771 passed, 174 configured skips, zero failures."
+  },
+  "deployment": {
+    "status": "pending exact-head CI and public Site verification"
+  }
+}
