@@ -4682,4 +4682,43 @@ AUD-387 remains fixed-local-verified: it concerns inherited project metadata in 
 
 Findings AUD-409 through AUD-412 have regression coverage and root-cause fixes committed locally on `codex/product-hardening-progress`. Commit mapping: AUD-409 `9af41cd80076b11d782369879ad59d1fcac15886`; AUD-411 `39b9f1bf66c8f3d1cc5baef5500aa4ad65d4704c`; AUD-410 and AUD-412 `7c1ffab74205470c8970785cdca85f4c5631f5cf`.
 
-After the changes, frozen dependency installation, catalogue build, TypeScript typecheck, ESLint, Vitest (1,250 passed, 1 skipped), `pnpm audit:all` (16-point release gate, 324-resource isolation, production build, bundle budgets, licence/provenance, security/secrets, dependency audit), and `pnpm test:e2e` all passed. Playwright results: standard desktop/mobile projects 383 passed and 121 skipped; Sites Worker desktop 199 passed and 6 skipped; Sites Worker mobile 165 passed and 40 skipped; preview app 3 passed. There were zero E2E failures. The public review Site is still v65; these four findings remain open until issue-specific browser regressions pass on the newly deployed public version.
+After the changes, frozen dependency installation, catalogue build, TypeScript typecheck, ESLint, Vitest (1,250 passed, 1 skipped), `pnpm audit:all` (16-point release gate, 324-resource isolation, production build, bundle budgets, licence/provenance, security/secrets, dependency audit), and `pnpm test:e2e` all passed. Playwright results: standard desktop/mobile projects 383 passed and 121 skipped; Sites Worker desktop 199 passed and 6 skipped; Sites Worker mobile 165 passed and 40 skipped; preview app 3 passed. There were zero E2E failures. The public review Site is still v65; these four findings remain open until issue-specific browser regressions pass on the newly deployed public version.## MEDIUM — Workbench route and screen state
+
+### AUD-413 — Workbench screen selection did not synchronize with the URL
+
+- **Evidence:** Public v66 screenshots show the Workbench canvas on Team Overview while the URL still ends in `#screen-collection-index` at desktop, and the mobile reload showing Marketing Home with a fragment that still identifies People Directory: `audit/evidence/sites-v66/after-v66-workbench-surprise-redo-1440.png` and `after-v66-workbench-mobile-390.png`. The observed Workbench JS/CSS, catalogue and health requests were 200/304; the browser console and uncaught page errors were empty.
+- **Reproduction:** Open the employee-experience project on public v66, open Pages, select Team Overview, and observe that the canvas changes but the hash remains on People Directory. At 390×844, reload the route and observe a different active page from the fragment.
+- **Root cause:** Workbench only read hashes on later hashchange events; it did not initialize activeScreenId from the URL after the local manifest loaded. The Pages UI updated Zustand screen state without updating the fragment. Reload and history therefore restored inconsistent screen state.
+- **Affected code:** `packages/workbench/src/components/WorkbenchShell.tsx`; regression: `tests/e2e/workbench-screen-route-sync-step-48.spec.ts`.
+- **Remediation:** Read a valid fragment after manifest hydration, establish a fragment for a new project without adding a history step, synchronize visible screen selection to URL changes, and follow browser back/forward. The visible UI regression covers desktop and mobile selection, reload, pressed state, history, console, and network failures.
+- **Local verification:** The targeted desktop/mobile Chromium regression passed 2/2 after commit `d7b1071a2d1cff23d11c5d1c0cd32bdc68cfe1f6`. The complete local Playwright command passed with zero failures: standard desktop/mobile 385 passed and 121 configured skips; Sites Worker desktop 199 passed and 6 skips; Sites Worker mobile 165 passed and 40 skips; preview app 3 passed.
+
+
+## MEDIUM — heading hierarchy on generated and editing surfaces
+
+- **AUD-413 deployed verification:** Closed on v67 at 1440×900 and 390×844. Selecting Team Overview updated the hash, reload retained the selection, and browser back/forward restored both screen and URL. Mobile preview showed employee content without horizontal overflow; no console errors, uncaught exceptions, or 4xx/5xx requests. Screenshots: `audit/evidence/deployed-v67-2026-11-01/workbench-team-overview-desktop-1440.png` and `workbench-team-overview-mobile-390.png`.
+
+### AUD-414 — Dashboard KPI heading was incorrectly nested in the document outline
+
+- **Evidence:** Public v67 Lighthouse snapshots at desktop and mobile scored Accessibility 98 and each identified `heading-order` on `Your organisation at a glance`. The pre-fix screenshots and reports are `audit/evidence/deployed-v67-2026-11-01/workbench-team-overview-desktop-1440.png`, `workbench-team-overview-mobile-390.png`, `lighthouse-team-overview-desktop-report.json`, and `lighthouse-team-overview-mobile-report.json`.
+- **Reproduction:** Open the saved employee-experience Workbench project on v67, select Team Overview, then run Lighthouse at 1440×900 and 390×844. The KPI title is an h3 before the screen heading h2 in the document outline.
+- **Root cause:** `dashboard-kpi-grid` rendered the section title as h3 even though it is a top-level dashboard section in the generated product.
+- **Affected code:** `resources/blocks/dashboard-kpi-grid/index.tsx`; regression coverage in `tests/dashboard-kpi-grid-heading.test.tsx` and `tests/e2e/flagship-generated-product-a11y.spec.ts`.
+- **Remediation:** Change the resource title to h2. Add a resource-level markup regression and run Axe's heading-order rule in the actual generated employee product at desktop and mobile.
+- **Local verification:** The component regression and targeted desktop/mobile generated-product E2E pass after a fresh production build. Public v68 verification is pending.
+
+### AUD-415 — Workbench Brief panel project title skipped heading level
+
+- **Evidence:** Public v67 Lighthouse snapshot at 1440×900 scored Accessibility 98 and identified `heading-order` on the project title in the Brief panel. The before screenshot/report are `audit/evidence/deployed-v67-2026-11-01/workbench-brief-heading-order-desktop-1440.png` and `lighthouse-brief-panel-desktop-report.json`.
+- **Reproduction:** Open the saved employee-experience Workbench project on v67, open Brief, and run Lighthouse accessibility at desktop. The Workbench page h1 is followed by the project title as h3.
+- **Root cause:** `BriefTab` rendered the project title as h3 instead of h2 beneath the Workbench page heading.
+- **Affected code:** `packages/workbench/src/components/left-panel/BriefTab.tsx`; regression coverage in `tests/e2e/flagship-generated-product-a11y.spec.ts`.
+- **Remediation:** Render the project title as h2 and scan the open Brief panel for heading-order in the flagship browser test.
+- **Local verification:** The targeted desktop/mobile generated-product E2E passes after a fresh production build. Public v68 verification is pending.
+
+
+## Local verification — heading-order fixes (2026-11-01)
+
+- pnpm install --frozen-lockfile, pnpm build:catalog, pnpm typecheck, pnpm lint, pnpm test, pnpm audit:all, pnpm build, targeted desktop/mobile flagship Axe test, and full pnpm test:e2e completed successfully.
+- Vitest: 1,251 passed, 1 skipped. The full Playwright command reported standard desktop/mobile 385 passed/121 skipped; Sites Worker desktop 199 passed/6 skipped; Sites Worker mobile 165 passed/40 skipped; preview app 3 passed. No failures.
+- Public Site v67 remains the current deployment. AUD-413 is closed on deployed evidence; AUD-414 and AUD-415 are locally verified and await issue-specific v68 verification.

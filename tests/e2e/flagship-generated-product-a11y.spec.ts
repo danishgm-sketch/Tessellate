@@ -70,14 +70,35 @@ test('the generated employee experience opens in Workbench without serious acces
     await expect(briefPanel.getByText('100%', { exact: true })).toBeVisible();
   }
 
+  const briefHeadingOrder = await new AxeBuilder({ page }).withRules(['heading-order']).analyze();
+  const mobileWorkbench = page.getByTestId('mobile-workbench');
+  const isMobile = (page.viewportSize()?.width ?? 0) < 768;
+  if (isMobile) {
+    await mobileWorkbench.getByRole('button', { name: 'Pages', exact: true }).click();
+  } else {
+    await page.getByTestId('left-panel').getByRole('button', { name: 'Pages', exact: true }).click();
+  }
+  const teamOverviewPage = page.getByRole('button', { name: 'Select screen Team Overview', exact: true });
+  await expect(teamOverviewPage).toBeVisible();
+  await teamOverviewPage.click();
+  if (isMobile) await page.getByRole('navigation', { name: 'Mobile Workbench' }).getByRole('button', { name: 'Preview', exact: true }).click();
+  await expect(page.getByText(/Refined employee summary/).first()).toBeVisible();
+
+  const dashboardHeadingOrder = await new AxeBuilder({ page }).withRules(['heading-order']).analyze();
+  const headingOrderViolations = [
+    ...briefHeadingOrder.violations.map(({ id, nodes }) => ({ surface: 'Brief panel', id, targets: nodes.map((node) => node.target) })),
+    ...dashboardHeadingOrder.violations.map(({ id, nodes }) => ({ surface: 'Team Overview', id, targets: nodes.map((node) => node.target) })),
+  ];
   const axe = await scanAccessibility(page);
   await page.screenshot({ path: testInfo.outputPath(`generated-employee-workbench-${testInfo.project.name}.png`), fullPage: false });
   const evidence = {
     route: page.url(),
     viewport: page.viewportSize(),
     projectName: await page.getByRole('heading', { name: /^Workbench:/ }).innerText(),
+    selectedScreen: 'Team Overview',
     axeTags: WCAG_TAGS,
-    axeRules: ['target-size'],
+    axeRules: ['target-size', 'heading-order'],
+    headingOrderViolations,
     wcagViolations: axe.wcagViolations.map(({ id, impact, help, nodes }) => ({ id, impact, help, targets: nodes.map((node) => node.target) })),
     targetSizeViolations: axe.targetSizeViolations.map(({ id, impact, help, nodes }) => ({ id, impact, help, targets: nodes.map((node) => node.target) })),
     consoleErrors,
@@ -90,6 +111,7 @@ test('the generated employee experience opens in Workbench without serious acces
   mkdirSync(path.dirname(evidencePath), { recursive: true });
   writeFileSync(evidencePath, `${JSON.stringify(evidence, null, 2)}\n`);
   await testInfo.attach(`generated-employee-workbench-${testInfo.project.name}.json`, { path: evidencePath, contentType: 'application/json' });
+  expect(headingOrderViolations, JSON.stringify(evidence, null, 2)).toEqual([]);
   expect(axe.wcagViolations, JSON.stringify(evidence, null, 2)).toEqual([]);
   expect(axe.targetSizeViolations, JSON.stringify(evidence, null, 2)).toEqual([]);
   expect(consoleErrors).toEqual([]);

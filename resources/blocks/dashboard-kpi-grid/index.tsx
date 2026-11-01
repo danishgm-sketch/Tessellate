@@ -42,7 +42,7 @@ export function DashboardKpiGrid({
       } as React.CSSProperties}
       className={`w-full p-6 border transition-colors ${bg}`}
     >
-      <h3 className="text-sm font-semibold mb-4">{title}</h3>
+      <h2 className="text-sm font-semibold mb-4">{title}</h2>
       {cards.length === 0 ? (
         <p
           role="status"

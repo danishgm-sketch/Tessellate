@@ -26,9 +26,9 @@ export function BriefTab({
           <Sparkles className="h-3 w-3" />
           <span>Product Intent Model</span>
         </div>
-        <h3 className="text-sm font-bold text-[#111217] dark:text-[#F5F7FA]">
+        <h2 className="text-sm font-bold text-[#111217] dark:text-[#F5F7FA]">
           {manifest.name}
-        </h3>
+        </h2>
         <p className="text-xs text-[#62666F] dark:text-[#A8AFBA] leading-relaxed">
           {manifest.description || 'No description provided.'}
         </p>
