@@ -25,44 +25,96 @@ function recordProjectId(value: unknown): string | null {
     : null;
 }
 
-function isOlderProjectJournal(raw: string, manifest: ProjectManifest): boolean {
+interface BrowserJournalIdentity {
+  version: string | null;
+  project: string | null;
+  active: string | null;
+}
+
+function readBrowserJournalIdentity(projectId: string): BrowserJournalIdentity | null {
   try {
-    if (raw === JSON.stringify(manifest)) return true;
-    const record = safelyLoadProjectRecord(JSON.parse(raw));
-    return record.status !== 'corrupted'
-      && record.manifest.id === manifest.id
-      && Date.parse(record.manifest.updatedAt) < Date.parse(manifest.updatedAt);
+    return {
+      version: localStorage.getItem(`tessellate_journal_version_${projectId}`),
+      project: localStorage.getItem(`tessellate_project_${projectId}`),
+      active: localStorage.getItem('tessellate_active_project'),
+    };
   } catch {
-    return false;
+    return null;
   }
 }
 
-/** Clear only the journal this save superseded; preserve any later browser edit. */
-function invalidateBrowserProjectJournal(manifest: ProjectManifest): boolean {
+function createJournalGeneration(): string {
+  return `v2:${Date.now().toString(36)}:${Math.random().toString(36).slice(2)}`;
+}
+
+/** Clear only journal bytes observed before this failed save or written by it. */
+function invalidateBrowserProjectJournal(
+  manifest: ProjectManifest,
+  generation: string,
+  previous: BrowserJournalIdentity | null
+): boolean {
+  if (!previous) return false;
   const projectId = manifest.id;
-  let cleared = true;
+  const versionKey = `tessellate_journal_version_${projectId}`;
   const projectKey = `tessellate_project_${projectId}`;
-  let projectJournalRemoved = false;
+  const attemptedJson = JSON.stringify(manifest);
+  let complete = true;
+
+  const versionStillBelongsToThisSave = () => {
+    try {
+      const current = localStorage.getItem(versionKey);
+      return current === generation || current === previous.version;
+    } catch {
+      complete = false;
+      return false;
+    }
+  };
+
+  const belongsToProject = (raw: string): boolean => {
+    if (raw === attemptedJson) return true;
+    try {
+      return recordProjectId(JSON.parse(raw)) === projectId;
+    } catch {
+      return false;
+    }
+  };
+
+  const clearIfObserved = (key: string, previousRaw: string | null) => {
+    let raw: string | null;
+    try {
+      raw = localStorage.getItem(key);
+    } catch {
+      complete = false;
+      return;
+    }
+    if (!raw || !belongsToProject(raw)) return;
+    // A distinct value is a later edit (or an unrecognised record); leave it intact.
+    if (raw !== previousRaw && raw !== attemptedJson) return;
+    if (!versionStillBelongsToThisSave()) return;
+    try {
+      localStorage.removeItem(key);
+    } catch {
+      complete = false;
+    }
+  };
+
+  if (!versionStillBelongsToThisSave()) return true;
+  clearIfObserved(projectKey, previous.project);
+  clearIfObserved('tessellate_active_project', previous.active);
+
   try {
     const projectRaw = localStorage.getItem(projectKey);
-    if (projectRaw && isOlderProjectJournal(projectRaw, manifest)) {
-      localStorage.removeItem(projectKey);
-      localStorage.removeItem(`tessellate_journal_version_${projectId}`);
-      projectJournalRemoved = true;
-    }
-  } catch {
-    cleared = false;
-  }
-  try {
     const activeRaw = localStorage.getItem('tessellate_active_project');
-    if (activeRaw && recordProjectId(JSON.parse(activeRaw)) === projectId && isOlderProjectJournal(activeRaw, manifest)) {
-      localStorage.removeItem('tessellate_active_project');
-      if (!projectJournalRemoved) localStorage.removeItem(`tessellate_journal_version_${projectId}`);
+    const projectJournalRemains = [projectRaw, activeRaw]
+      .some((raw) => raw !== null && belongsToProject(raw));
+    if (!projectJournalRemains && versionStillBelongsToThisSave()) {
+      localStorage.removeItem(versionKey);
     }
   } catch {
-    cleared = false;
+    complete = false;
   }
-  return cleared;
+
+  return complete;
 }
 
 /** Validate both stores; the synchronous journal records the latest user intent,
@@ -116,7 +168,7 @@ export async function loadBrowserProject(projectId?: string): Promise<BrowserPro
         if (record.status === 'recovered') migratedProjectIds.add(record.manifest.id);
         candidates.push(record.manifest);
         try {
-          if (localStorage.getItem(`tessellate_journal_version_${record.manifest.id}`) === '1') journal ??=record.manifest;
+          if (localStorage.getItem(`tessellate_journal_version_${record.manifest.id}`)) journal ??=record.manifest;
         } catch (error) {
           addStorageWarning(storageFailureMessage(error, 'read'));
         }
@@ -166,18 +218,22 @@ export async function loadBrowserProject(projectId?: string): Promise<BrowserPro
 }
 
 /** Synchronous browser journal protects edits even when reload interrupts IndexedDB. */
-export function journalBrowserProject(manifest: ProjectManifest): void {
+export function journalBrowserProject(manifest: ProjectManifest, generation = createJournalGeneration()): string {
   const json = JSON.stringify(manifest);
   localStorage.setItem(`tessellate_project_${manifest.id}`, json);
   localStorage.setItem('tessellate_active_project', json);
-  localStorage.setItem(`tessellate_journal_version_${manifest.id}`,'1');
+  // Commit the generation last so interrupted writes keep the previous marker.
+  localStorage.setItem(`tessellate_journal_version_${manifest.id}`, generation);
+  return generation;
 }
 
 export function createProjectSaver(onWarning: (warning: string, undoHistoryAvailable: boolean) => void) {
   let queue = Promise.resolve();
   return (manifest: ProjectManifest) => {
+    const previousJournal = readBrowserJournalIdentity(manifest.id);
+    const generation = createJournalGeneration();
     let journalError: unknown;
-    try { journalBrowserProject(manifest); } catch(error) { journalError = error; }
+    try { journalBrowserProject(manifest, generation); } catch(error) { journalError = error; }
     queue = queue.then(async () => {
       try {
         const mode = await saveLocalProject(manifest);
@@ -188,7 +244,7 @@ export function createProjectSaver(onWarning: (warning: string, undoHistoryAvail
             onWarning('IndexedDB is unavailable. The project is saved in the browser recovery journal, but undo history will not survive a reload.', false);
           }
         } else if (journalError) {
-          const journalCleared = invalidateBrowserProjectJournal(manifest);
+          const journalCleared = invalidateBrowserProjectJournal(manifest, generation, previousJournal);
           onWarning(
             journalCleared
               ? `${storageFailureMessage(journalError, 'write')} The project was saved to local database storage.`

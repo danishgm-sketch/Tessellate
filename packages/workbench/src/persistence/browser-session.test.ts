@@ -81,6 +81,22 @@ describe('browser project journal recovery', () => {
     expect(loaded.damagedRecords).toEqual([]);
   });
 
+  it('does not restore a newer timestamped journal after Undo was saved to IndexedDB', async () => {
+    const original = { ...createSampleProject(), id: 'project-undo-quota-recovery', name: 'Undo target A', updatedAt: '2026-01-01T00:00:00.000Z' };
+    const edited = { ...original, name: 'Edited state B', updatedAt: '2026-02-01T00:00:00.000Z' };
+    const save = createProjectSaver(vi.fn());
+    await save(original);
+    await save(edited);
+
+    rejectWrites = true;
+    await save(original);
+    rejectWrites = false;
+    const loaded = await loadBrowserProject(original.id);
+
+    expect(persistence.projects.get(original.id)).toEqual(original);
+    expect(loaded.manifest).toEqual(original);
+  });
+
   it('discovers an IndexedDB project when its active localStorage journal has been cleared', async () => {
     const project = { ...createSampleProject(), id: 'project-indexeddb-only' };
     persistence.projects.set(project.id, project);
