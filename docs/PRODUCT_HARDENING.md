@@ -10,30 +10,15 @@ Canonical integration candidate: `consolidation/product-hardening`. `main` remai
 the protected released branch until a reviewed PR with green CI is merged.
 Legacy branches are evidence/reference, never parallel sources of product truth.
 
-## Current release evidence (2026-10-31)
+## Current release evidence (2026-11-01)
 
-The public review Site is v59 at
-`https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`, built from
-canonical commit `9a93b41c080cc214313532807a336b4780ae73e4` (Sites source
-mirror `1cb4327f8d28d6ee842ac88a80189c872cfa77d6`). The full public route pass
-visited 44 routes at 1440×900 and 390×844; all 88 checks passed with no HTTP,
-console, uncaught-exception, request, or overflow failures. The visible
-employee-experience flagship flow and independent standalone React export also
-passed. A corrected Axe scan found one serious keyboard-accessibility defect in
-the generated desktop Workbench (AUD-401). The fix is committed as
-`5dfb5b7207dd04b007e551add27aad7e5f918d91`; the full local suite passes, and
-the finding remains open until a newly deployed version passes the same scan.
-Full evidence is in
-`quality/evidence/step-48/deployed-v59-2026-10-31/` and
-`audit/RUNTIME_AUDIT.md`.
+The public review Site is v68 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/, built from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592 (Sites mirror a651c4943c171bd2c7a66d639eacdc8ed0f67d9f). The last complete public route sweep remains v61: 44 routes at 1440x900 and 390x844, plus the employee flagship flow and standalone React export. Later releases received scoped, issue-specific rechecks. V68 deployed verification closed AUD-410 (visible Surprise Me change with KPI lock and Undo/Redo), AUD-411 (distinct directions and exact Direction C rail handoff), AUD-412 (desktop/mobile Gold-chunk fault injection and schema-valid manifest export), AUD-414 and AUD-415 (heading order, Lighthouse Accessibility 100). AUD-413 was closed on v67.
 
-D1/R2 remain unprovisioned. Step 46 is
-owner-waived, not passed; Step 47 is complete; Step 48 remains open until the
-protected release path and required deployed verification are complete.
-The owner-approved Windows restart on 2026-10-30 recovered all eight running
-containers; the local laptop-backend lifecycle verifier passed 8/8. No ticket
-was held across the full OS shutdown, so that queue-recovery case remains open.
-See `quality/evidence/step-37/os-restart-recovery-2026-10-30.json`.
+The runtime audit contains 417 findings: 0 Critical, 82 High, 309 Medium and 26 Low. No High finding remains open; AUD-387 is closed against the local D1 integration contract after 36/36 tests passed, without claiming a live API because Sites D1 is unbound; detailed evidence is in audit/evidence/AUD-387-d1-integration-2026-11-01.json. AUD-416 records one stale pre-deployment tab requesting a removed hashed asset; reload recovered it, and fresh v68 sessions had no failed requests. AUD-417 records Workbench layout shift measured on v68 and a local fix awaiting deployed verification. A total of 108 Medium and 4 Low findings still await issue-specific deployed checks, and 2 Sites-host limitations are documented. Evidence: audit/RUNTIME_AUDIT.md and audit/evidence/deployed-v68-2026-11-01/.
+
+The AUD-417 fix is committed as `72cbc9d60ee6fc5f0762b4ccc4dbd7942adf2859`. The local quality suite passed on that source: 1,251 Vitest tests; `audit:all` 16/16; and E2E 385 standard desktop/mobile, 200 Sites Worker desktop, 165 Sites Worker mobile, and 3 preview-app tests, with configured skips and zero failures. The issue-specific delayed-panel test passed in the Sites Worker project with zero canvas-toolbar movement, CLS 0.0199 and clean browser/network telemetry. Exact-head CI and deployed verification are pending; v68 remains public until the next version passes the live check.
+
+D1/R2 remain unprovisioned. Step 46 is owner-waived, not passed; Step 47 is complete; Step 48 remains open until the protected release path and required deployed verification are complete. The owner-approved Windows restart on 2026-10-30 recovered all eight running containers; the local laptop-backend lifecycle verifier passed 8/8. No ticket was held across the full OS shutdown, so that queue-recovery case remains open. See quality/evidence/step-37/os-restart-recovery-2026-10-30.json.
 
 ## Execution order
 

@@ -1,0 +1,28 @@
+{
+  "id": "AUD-387",
+  "severity": "high",
+  "route": "PUT /api/projects/:id",
+  "checkedAt": "2026-11-01T07:32:12Z",
+  "command": "pnpm exec vitest run apps/api/src/__tests__/cloud-sync-d1.test.ts",
+  "environment": {
+    "vitest": "4.1.12",
+    "d1": "local integration harness; no Sites binding"
+  },
+  "testFile": "apps/api/src/__tests__/cloud-sync-d1.test.ts",
+  "tests": {
+    "filesPassed": 1,
+    "passed": 36,
+    "failed": 0
+  },
+  "regressionCases": [
+    "rejects oversized descriptions inherited from a project manifest on creation",
+    "rejects metadata inherited from an oversized project manifest before saving an update"
+  ],
+  "fixCommit": "f303e656f1c8649fdf01fb9a8eb0c08a2b305c8d",
+  "expectedStorageLimits": {
+    "projectNameCharacters": 120,
+    "projectDescriptionCharacters": 2000
+  },
+  "result": "Resolved name and description bounds are enforced after top-level overrides and before create/update writes. The targeted D1 integration file passed 36/36 tests. The public Sites v68 artifact has D1 and R2 set to null, so this evidence closes the local D1 API contract only and does not claim a live cloud-sync endpoint.",
+  "status": "closed-local-verified"
+}

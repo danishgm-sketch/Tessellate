@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. The overall product hardening programme remains incomplete.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. The overall product hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -17191,10 +17191,23 @@
       "affectedCode": "apps/api/src/routes/projects.ts; apps/api/src/__tests__/cloud-sync-d1.test.ts",
       "remediation": "Validate resolved name/description after top-level overrides and before both create/update writes. Reject over-limit inherited metadata with 400 and keep the existing revision readable.",
       "fixCommit": "f303e656",
-      "status": "fixed-local-verified",
+      "status": "closed-local-verified",
       "localVerification": {
         "regressionEvidence": "apps/api/src/__tests__/cloud-sync-d1.test.ts: rejects oversized descriptions inherited from a project manifest on creation; rejects metadata inherited from an oversized project manifest before saving an update",
-        "result": "Both regressions failed before the fix and pass after it. The D1 integration file and full local Vitest suite pass; Sites has no D1 binding, so this remains a server-side regression verification."
+        "result": "Both before-fix regressions were recorded in the D1 integration suite; after fix f303e656f1c8649fdf01fb9a8eb0c08a2b305c8d, reran the complete file: 1 file and 36 tests passed. Oversized manifest-inherited names/descriptions are rejected before writes. Sites v68 has no D1 binding, so this closes the local API contract without claiming a live Site endpoint.",
+        "checkedAt": "2026-11-01T07:32:12Z",
+        "testCommand": "pnpm exec vitest run apps/api/src/__tests__/cloud-sync-d1.test.ts",
+        "environment": "Vitest with the local D1 integration harness",
+        "testResult": {
+          "filesPassed": 1,
+          "testsPassed": 36,
+          "testsFailed": 0
+        },
+        "evidence": [
+          "audit/evidence/AUD-387-d1-integration-2026-11-01.json",
+          "apps/api/src/__tests__/cloud-sync-d1.test.ts"
+        ],
+        "testRecord": "audit/evidence/AUD-387-d1-integration-2026-11-01.json"
       }
     },
     {
@@ -18844,8 +18857,142 @@
         ],
         "result": "Observed once from an already-open pre-v68 browser context; fresh v68 reload and Compose re-run succeeded with the current asset hash."
       }
+    },
+    {
+      "id": "AUD-417",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "performance",
+      "title": "Workbench layout shifted as its lazy panels resolved",
+      "expected": "The canvas remains anchored while Workbench panels load, and the initial layout shift stays at or below 0.1.",
+      "actual": "Public v68 Lighthouse reported Workbench CLS 0.116. A production-like browser regression delayed the top toolbar and command-bar chunks by 1.2 seconds; the canvas toolbar moved 322px and measured CLS was 0.254. The initial client placeholders did not reserve the actual panel geometry.",
+      "reproduction": [
+        "Open /workbench in a fresh Chromium session at 1440x900.",
+        "Delay the TopToolbar and CommandBar lazy chunks by 1200ms while the Workbench canvas loads.",
+        "Before the fix, compare the visible canvas toolbar position before and after both real bars replace their Suspense fallbacks; it moved from y=455.34px to y=777.34px."
+      ],
+      "console": [],
+      "network": [
+        "The public v68 page and lazy chunks returned successfully. The controlled regression introduced delay only; it recorded no HTTP errors or failed requests."
+      ],
+      "screenshot": "quality/evidence/step-48/workbench-load-stability/before-sites-chromium.png",
+      "rootCause": "WorkbenchShell reused one generic h-full/min-h-12 Suspense fallback for top, side, canvas, inspector, and command-bar children. Those fallbacks did not preserve each panel's real flex geometry, so the main editor height changed when TopToolbar and CommandBar resolved. The canvas toolbar is absolutely positioned at the bottom of that changing canvas and moved with it.",
+      "affectedCode": [
+        "packages/workbench/src/components/WorkbenchShell.tsx",
+        "tests/e2e/site-route-performance-step-38.spec.ts"
+      ],
+      "remediation": "Give each lazy shell fallback the dimensions and flex behavior of the panel it replaces. Add a Sites Worker browser regression that delays the top and command-bar chunks, checks the canvas toolbar position and CLS, and records console/network failures.",
+      "fixCommit": "72cbc9d60ee6fc5f0762b4ccc4dbd7942adf2859",
+      "status": "fixed-awaiting-deployed-verification",
+      "initialDeployedObservation": {
+        "siteVersion": 68,
+        "lighthouse": {
+          "accessibility": 100,
+          "bestPractices": 100,
+          "agenticBrowsing": 95,
+          "cumulativeLayoutShift": 0.116
+        },
+        "evidence": [
+          "audit/evidence/deployed-v68-2026-11-01/runtime.json",
+          "audit/evidence/deployed-v68-2026-11-01/rechecks/workbench-layout-shift.json"
+        ]
+      },
+      "localVerification": {
+        "checkedAt": "2026-11-01T07:45:31.373Z",
+        "testCommand": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/site-route-performance-step-38.spec.ts --grep \"Workbench keeps the canvas toolbar anchored\" --project=sites-chromium --workers=1 --repeat-each=10",
+        "result": "The regression failed before the fallback fix with 322px toolbar movement and CLS 0.254. After the fix, ten consecutive delayed-chunk runs passed; the recorded run had zero toolbar movement, CLS 0.0199, no console errors, uncaught exceptions, failed requests, or HTTP errors.",
+        "filesPassed": 1,
+        "testsPassed": 10,
+        "testsFailed": 0,
+        "evidence": [
+          "quality/evidence/step-48/workbench-load-stability/sites-chromium.json",
+          "quality/evidence/step-48/workbench-load-stability/before-sites-chromium.png",
+          "quality/evidence/step-48/workbench-load-stability/after-sites-chromium.png"
+        ],
+        "fullSuite": {
+          "checkedAt": "2026-11-01T08:27:49Z",
+          "commands": [
+            "pnpm install --frozen-lockfile",
+            "pnpm build:catalog",
+            "pnpm typecheck",
+            "pnpm lint",
+            "pnpm test",
+            "pnpm audit:all",
+            "pnpm test:e2e"
+          ],
+          "unitTests": {
+            "passed": 1251,
+            "skipped": 1,
+            "failed": 0
+          },
+          "releaseGate": {
+            "criteriaPassed": 16,
+            "criteriaTotal": 16,
+            "buildPages": 733,
+            "resourceCount": 324,
+            "goldCount": 40,
+            "bundleBudget": "passed",
+            "licenseProvenance": "324/324 passed",
+            "securitySecrets": "0 violations",
+            "dependencyAudit": "no known vulnerabilities"
+          },
+          "playwright": {
+            "standardDesktopMobile": {
+              "passed": 385,
+              "skipped": 123,
+              "failed": 0
+            },
+            "sitesWorkerDesktop": {
+              "passed": 200,
+              "skipped": 6,
+              "failed": 0
+            },
+            "sitesWorkerMobile": {
+              "passed": 165,
+              "skipped": 41,
+              "failed": 0
+            },
+            "previewApp": {
+              "passed": 3,
+              "skipped": 0,
+              "failed": 0
+            }
+          },
+          "aud417Regression": {
+            "sitesWorkerDesktopPassed": 1,
+            "sitesWorkerDesktopFailed": 0,
+            "toolbarMovementPx": 0,
+            "cls": 0.01986111111111111,
+            "consoleErrors": 0,
+            "uncaughtExceptions": 0,
+            "failedRequests": 0,
+            "httpErrors": 0,
+            "evidence": "quality/evidence/step-48/workbench-load-stability/sites-chromium.json"
+          }
+        }
+      },
+      "deployedVerification": null,
+      "localReproduction": {
+        "environment": "Production-like Sites Worker, Chromium at 1440x900",
+        "delayMs": 1200,
+        "beforeFix": {
+          "toolbarMovementPx": 322,
+          "cls": 0.2542140282064472
+        },
+        "afterFix": {
+          "toolbarMovementPx": 0,
+          "cls": 0.01986111111111111,
+          "consecutivePassingRuns": 10
+        },
+        "evidence": [
+          "quality/evidence/step-48/workbench-load-stability/sites-chromium.json",
+          "quality/evidence/step-48/workbench-load-stability/before-sites-chromium.png",
+          "quality/evidence/step-48/workbench-load-stability/after-sites-chromium.png"
+        ]
+      }
     }
   ],
-  "generatedAt": "2026-11-01T07:24:38Z",
+  "generatedAt": "2026-11-01T08:27:49Z",
   "latestDeploymentEvidence": "audit/evidence/deployed-v68-2026-11-01/runtime.json"
 }
