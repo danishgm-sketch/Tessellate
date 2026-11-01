@@ -4631,3 +4631,55 @@ AUD-387 remains fixed-local-verified: it concerns inherited project metadata in 
 - **Fix commit:** `ececef0bb8c2a4d918233dcfb7659eeedf2d8567`
 - **Local verification:** The same mobile Chromium route matrix passed all 14 surfaces at widths 360, 390, 430, 768, 1024, 1280, 1440, and 1536. The 1024px Compose entry returned 200 with no overflow or runtime/network errors.
 - **Status:** Closed after the local 14-surface × 8-width responsive regression passed. The deployed app code was unchanged; current-head CI is rerunning the corrected instrumentation.
+
+## MEDIUM — public Sites v65 Compose finding
+
+### AUD-409 — Compose exposed two page-level H1 headings
+
+- **Evidence:** Public review Site v65, `/compose`, inspected at 1440×900 and 390×844 before changes. Screenshots: `quality/evidence/step-39/public-v65-current/compose-desktop-before.png` and `compose-mobile-before.png`. The accessibility snapshot showed both “Product Composer” and “Describe the product. Get the interface.” at level 1. `/compose` and `/data/catalog.json` were served from cache (304), all observed Astro assets returned 200, the browser console and uncaught-error list were empty, and mobile document width matched the viewport.
+- **Reproduction:** Open the public Compose route at desktop and mobile sizes and inspect the heading tree, or run `pnpm exec playwright test tests/e2e/compose-heading-hierarchy-step-39.spec.ts` against the pre-fix production preview. The red run found two H1 nodes.
+- **Root cause:** The Astro route already renders the page H1; `ComposeView` independently rendered its descriptive title as another H1.
+- **Affected code:** `apps/site/src/components/ComposeView.tsx` and `tests/e2e/compose-heading-hierarchy-step-39.spec.ts`.
+- **Remediation:** Keep “Product Composer” as the single H1 and render the descriptive title as H2 with unchanged visual styling.
+- **After-fix evidence:** `quality/evidence/step-39/compose-heading-order/compose-desktop-chrome.png` and `compose-mobile-chrome.png`; machine records with heading levels and runtime checks are beside the screenshots.
+- **Local verification:** The browser regression failed before the markup change and passes after it in desktop and mobile Chromium (2/2); both report one H1, the descriptive title as H2, and zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors.
+- **Status:** Fixed locally; awaiting deployed verification on a new Sites version. Do not close AUD-409 before the same regression passes on the deployed route.
+
+## HIGH — public Sites v65 Workbench findings
+
+### AUD-410 — Surprise Me reported success without a meaningful visible canvas change
+
+- **Evidence:** Public Sites v65 Direction C employee project at 1440×900. Before/after captures: `quality/evidence/step-39/public-v65-current/workbench-team-overview-before-surprise.png` and `workbench-team-overview-after-surprise.png`. The KPI lock remained intact. The UI reported DNA/navigation and layout changes, while the active canvas remained visually almost identical.
+- **Reproduction:** Open the saved Direction C project, lock the Team Overview KPI section, and use Surprise Me at divergence 60. Compare the active canvas and exported manifests. The old status did not name a rendered resource variant change.
+- **Root cause:** Surprise Me changed project DNA and hierarchy metadata but did not guarantee a concrete visual mutation for an unlocked runtime resource; its explanation described broad changes that current resources did not visibly consume.
+- **Affected code:** `packages/workbench/src/mutations/surprise.ts`, the renderer's canonical resource variant contract, and the visible regression `tests/e2e/surprise-visible-change-step-39.spec.ts`.
+- **Remediation:** Choose a supported variant for an unlocked runtime resource on the active screen, apply it after structural recomposition, and report the actual resource and before/after variant. If no candidate exists, explain that constraint.
+- **Local regression:** The mutation-level regression failed before the fix because no concrete resource-variant mutation was emitted. It now passes, and the visible Workbench UI regression passes on the production preview at desktop 1440×900 and mobile 390×844 (2/2). It verifies the manifest variant and rendered `data-resource-variant`, a visibly different component capture, the truthful action message, and empty console errors/warnings, uncaught exceptions, failed requests, and HTTP errors. Evidence is in `quality/evidence/step-39/surprise-visible-change/`.
+- **Status:** Fixed locally; awaiting deployed verification. Keep open until the same behavior passes on the deployed review Site.
+
+### AUD-411 — Direction C declared rail navigation but composed a top-navigation resource
+
+- **Evidence:** `quality/evidence/step-39/public-v65-current/employee-directions.json` reports Direction C navigation model `rail`, while the non-marketing screens reference `minimal-top-nav`. `quality/evidence/step-39/public-v65-current/workbench-direction-c-desktop.png` shows a horizontal application nav. Site route and resource chunks loaded successfully; the mismatch is in generated data and rendered layout.
+- **Reproduction:** Compose the exact employee brief, open Direction C in Workbench, select Team Overview, then inspect the navigation resource reference and computed `flex-direction`. The deployed v65 manifest paired `rail` with `minimal-top-nav` and row layout.
+- **Root cause:** The composition selector special-cased only `sidebar`; `rail` fell through to `minimal-top-nav`. The rail layout wrapper cannot turn a header component into a vertical navigation.
+- **Affected code:** `packages/compatibility/src/compose-pipeline.ts` and `tests/e2e/compose-workbench-handoff.spec.ts`.
+- **Remediation:** Use the existing collapsible sidebar runtime resource for application rails while retaining the marketing top nav, and assert the selected manifest resource and rendered desktop orientation in the Compose-to-Workbench browser test.
+- **Local regression:** The E2E assertion failed before the source fix because rail metadata selected row-oriented `minimal-top-nav`. The exact Compose → Direction C → Workbench handoff now passes on the production preview at desktop 1440×900 and mobile 390×844 (1/1 each). At desktop it verifies the application screens reference `collapsible-sidebar`, selects Team Overview through the UI, chooses the 1440 canvas preset, and observes a visible column-oriented navigation. Evidence is recorded in `quality/evidence/step-16/after/`.
+- **Status:** Fixed locally; awaiting deployed verification. Keep open until the same generated direction passes on the deployed review Site.
+
+## HIGH — renderer isolation regression found during local fault injection
+
+### AUD-412 — A single Gold resource chunk failure prevented Workbench from hydrating
+
+- **Evidence:** The first full Playwright run after adding Surprise Me's variant selection failed the Gold chunk-failure regression: intercepting the `editorial-hero` JavaScript module with HTTP 503 left Workbench on its startup fallback instead of reaching the editor. After the import boundary fix, desktop/mobile browser evidence is in `quality/evidence/step-39/resource-chunk-failure/desktop-chrome-after.png` and `mobile-chrome-after.png`; machine records are beside the screenshots.
+- **Reproduction:** Run `pnpm exec playwright test tests/e2e/gold-resource-chunk-failure.spec.ts --project=desktop-chrome --project=mobile-chrome --workers=1` with the earlier `@tessellate/renderer` root import in Surprise Me. Intercept `/_astro/editorial-hero.*.js` as 503; Workbench fails to hydrate. After the fix, the same injected failure is confined to the component boundary, Workbench controls still work, and a real manifest export retains the editorial-hero resource reference.
+- **Root cause:** The mutation imported variant helpers through the renderer package root, which also exports the generated Gold registry and renderers. This widened Workbench's startup dependency graph and coupled editor hydration to resource modules even though the mutation needed only variant metadata.
+- **Affected code:** `packages/workbench/src/mutations/surprise.ts`, `packages/renderer/package.json`, `packages/renderer/src/resource-variants.ts`, `packages/renderer/src/index.ts`, `vitest.config.ts`, and `tests/e2e/gold-resource-chunk-failure.spec.ts`.
+- **Remediation:** Add and use the narrow `@tessellate/renderer/resource-variants` entry. Keep the injected 503 test as a user-visible recovery regression; it checks the local error boundary, Workbench usability, schema-valid manifest preservation, zero uncaught errors, and absence of unrelated console/network errors.
+- **Local verification:** The fault-injection regression passes in desktop and mobile Chromium (2/2). The only HTTP/failed-request evidence is the intentionally injected editorial-hero 503; all unrelated console errors and page errors are asserted empty. The browser console messages caused by the deliberate failure are recorded in the machine evidence.
+- **Status:** Fixed locally; awaiting verification on the next public review deployment.
+## Local full-suite verification — 2026-11-01
+
+Findings AUD-409 through AUD-412 have regression coverage and root-cause fixes committed locally on `codex/product-hardening-progress`. Commit mapping: AUD-409 `9af41cd80076b11d782369879ad59d1fcac15886`; AUD-411 `39b9f1bf66c8f3d1cc5baef5500aa4ad65d4704c`; AUD-410 and AUD-412 `7c1ffab74205470c8970785cdca85f4c5631f5cf`.
+
+After the changes, frozen dependency installation, catalogue build, TypeScript typecheck, ESLint, Vitest (1,250 passed, 1 skipped), `pnpm audit:all` (16-point release gate, 324-resource isolation, production build, bundle budgets, licence/provenance, security/secrets, dependency audit), and `pnpm test:e2e` all passed. Playwright results: standard desktop/mobile projects 383 passed and 121 skipped; Sites Worker desktop 199 passed and 6 skipped; Sites Worker mobile 165 passed and 40 skipped; preview app 3 passed. There were zero E2E failures. The public review Site is still v65; these four findings remain open until issue-specific browser regressions pass on the newly deployed public version.

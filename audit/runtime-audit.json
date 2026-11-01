@@ -18262,8 +18262,171 @@
         ],
         "result": "The targeted mobile Chromium responsive route sweep passed all 14 surfaces at all eight widths (360, 390, 430, 768, 1024, 1280, 1440, 1536). The 1024px Compose route returned 200 with no horizontal overflow, console/page errors, failed requests, navigation aborts, or HTTP errors. The prior same-SHA CI push run also completed the full Playwright/Axe job successfully; this issue is isolated to test evidence attribution, not the deployed product."
       }
+    },
+    {
+      "id": "AUD-409",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900 and 390x844",
+      "category": "accessibility",
+      "title": "Compose exposed two page-level H1 headings",
+      "expected": "The route exposes one H1 page title; the descriptive composer heading follows at level 2.",
+      "actual": "Public Sites v65 exposed both “Product Composer” and “Describe the product. Get the interface.” as H1 headings. The route and catalogue loaded from cache (304); all Astro assets returned 200, the browser console was clean, and mobile document width matched the 390px viewport.",
+      "reproduction": [
+        "Open https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose at 1440x900 and 390x844.",
+        "Inspect the accessibility tree or document headings: both the route title and the composer description are level 1.",
+        "Run pnpm exec playwright test tests/e2e/compose-heading-hierarchy-step-39.spec.ts against the pre-fix local production preview; it fails because two H1 nodes are present."
+      ],
+      "console": [],
+      "network": [
+        "GET /compose: 304 (cached).",
+        "GET /data/catalog.json: 304 (cached); Catalogue ready was visible.",
+        "All observed Astro CSS/JavaScript assets returned 200; no failed requests or HTTP error responses."
+      ],
+      "screenshot": "quality/evidence/step-39/public-v65-current/compose-desktop-before.png; quality/evidence/step-39/public-v65-current/compose-mobile-before.png",
+      "rootCause": "The Astro route already renders the page H1, while ComposeView independently rendered its descriptive heading as another H1.",
+      "affectedFiles": [
+        "apps/site/src/pages/compose/index.astro",
+        "apps/site/src/components/ComposeView.tsx",
+        "tests/e2e/compose-heading-hierarchy-step-39.spec.ts"
+      ],
+      "remediation": "Keep “Product Composer” as the route H1 and render the descriptive composer title as H2. Add a browser regression that checks heading levels and runtime/network cleanliness at desktop and mobile.",
+      "fixCommit": "9af41cd80076b11d782369879ad59d1fcac15886",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "evidence": [
+          "quality/evidence/step-39/compose-heading-order/compose-desktop-chrome.json",
+          "quality/evidence/step-39/compose-heading-order/compose-mobile-chrome.json",
+          "quality/evidence/step-39/compose-heading-order/compose-desktop-chrome.png",
+          "quality/evidence/step-39/compose-heading-order/compose-mobile-chrome.png"
+        ],
+        "result": "The new red-to-green Playwright regression fails on pre-fix source with two H1s, then passes on the production preview for desktop and mobile (2/2). It records one H1, the descriptive title at H2, and zero browser console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Deployed verification is pending. Full local verification also completed: frozen install, typecheck, lint, 1,250 Vitest tests passed (1 skipped), audit:all including the 16-point behavioral gate and production build, and the complete Playwright command with desktop/mobile app 383 passed/121 skipped, Sites Worker desktop 199 passed/6 skipped, Sites Worker mobile 165 passed/40 skipped, preview app 3 passed, and zero failures."
+      }
+    },
+    {
+      "id": "AUD-410",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "visual",
+      "title": "Surprise Me reported a change without a meaningful visible canvas change",
+      "expected": "Surprise Me should make a useful, visible change on the active screen and explain that change, while preserving locked subtrees.",
+      "actual": "On the public v65 employee project, Surprise Me changed Design DNA and navigation metadata and reported success, but the active Team Overview canvas remained visually almost identical. The KPI lock was preserved. Before/after captures are quality/evidence/step-39/public-v65-current/workbench-team-overview-before-surprise.png and workbench-team-overview-after-surprise.png.",
+      "reproduction": [
+        "Open the public review Site at 1440x900 and load the saved Direction C employee project.",
+        "Lock the Team Overview KPI section and use Surprise Me at divergence 60.",
+        "Compare the active canvas and exported manifest before and after. The explanation reports changed DNA/navigation, but does not identify a visibly changed rendered resource variant."
+      ],
+      "console": [],
+      "network": [
+        "The Workbench shell, renderer, resource chunks, and /data/catalog.json loaded successfully. The inactive laptop backend health endpoint returned 200 with hostOnline=false; one mounted CommandBar polls every 10 seconds, not a duplicate-request storm."
+      ],
+      "screenshot": "quality/evidence/step-39/public-v65-current/workbench-team-overview-before-surprise.png; quality/evidence/step-39/public-v65-current/workbench-team-overview-after-surprise.png",
+      "rootCause": "Surprise Me changed project DNA and hierarchy metadata but did not guarantee a concrete visual mutation for an unlocked runtime resource. The explanation described the broad mutation set even when the renderer's current resources consumed little or none of those changed values.",
+      "affectedFiles": [
+        "packages/workbench/src/mutations/surprise.ts",
+        "packages/renderer/src/resource-variants.ts",
+        "packages/renderer/src/node-renderer-core.tsx",
+        "tests/e2e/surprise-visible-change-step-39.spec.ts",
+        "packages/renderer/package.json",
+        "vitest.config.ts"
+      ],
+      "remediation": "Use the renderer's certified variant contract to select an unlocked runtime resource on the active screen, apply a CHANGE_VARIANT after structural recomposition, and report the actual resource/variant change. If every eligible resource is locked or lacks alternatives, state that limitation instead of claiming a visible resource change.",
+      "fixCommit": "7c1ffab74205470c8970785cdca85f4c5631f5cf",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "evidence": [
+          "quality/evidence/step-39/surprise-visible-change/desktop-chrome.json",
+          "quality/evidence/step-39/surprise-visible-change/mobile-chrome.json",
+          "quality/evidence/step-39/surprise-visible-change/desktop-chrome-before.png",
+          "quality/evidence/step-39/surprise-visible-change/desktop-chrome-after.png",
+          "quality/evidence/step-39/surprise-visible-change/mobile-chrome-before.png",
+          "quality/evidence/step-39/surprise-visible-change/mobile-chrome-after.png"
+        ],
+        "result": "The mutation-level regression failed before the fix because Surprise Me emitted no concrete resource-variant mutation. It now passes, and the visible Workbench UI regression passes on the production preview at 1440x900 and 390x844 (2/2). The test verifies the manifest variant and rendered data-resource-variant, a visibly different component capture, the truthful action message, and zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Deployed verification is pending. A later full browser run also exposed a renderer import-boundary regression under Gold chunk failure; that separate startup failure is recorded as AUD-412 and fixed by importing the narrow resource-variant contract. Full local verification also completed: frozen install, typecheck, lint, 1,250 Vitest tests passed (1 skipped), audit:all including the 16-point behavioral gate and production build, and the complete Playwright command with desktop/mobile app 383 passed/121 skipped, Sites Worker desktop 199 passed/6 skipped, Sites Worker mobile 165 passed/40 skipped, preview app 3 passed, and zero failures."
+      }
+    },
+    {
+      "id": "AUD-411",
+      "severity": "high",
+      "route": "/compose -> /workbench",
+      "viewport": "1440x900",
+      "category": "visual",
+      "title": "Direction C declared rail navigation but composed a top-navigation resource",
+      "expected": "An application direction whose navigation model is rail should use a vertical application navigation resource in the desktop composition and hand off that same structure to Workbench.",
+      "actual": "The deployed Direction C metadata reported navigationModel=rail, but non-marketing screen manifests referenced minimal-top-nav and the Workbench rendered a horizontal nav. The evidence is in quality/evidence/step-39/public-v65-current/employee-directions.json and workbench-direction-c-desktop.png.",
+      "reproduction": [
+        "Compose the exact employee-experience brief and inspect Direction C's Design DNA/navigation model.",
+        "Open Direction C in Workbench, select Team Overview, and inspect the application navigation resource and computed flex direction.",
+        "Before the fix, rail metadata paired with minimal-top-nav and the rendered navigation remained row-oriented."
+      ],
+      "console": [],
+      "network": [
+        "The selected Site route and resource chunks returned successfully; the mismatch is between composition metadata, the ProjectManifest resource reference, and rendered DOM."
+      ],
+      "screenshot": "quality/evidence/step-39/public-v65-current/workbench-direction-c-desktop.png",
+      "rootCause": "The composition resource selector mapped only sidebar to collapsible-sidebar and sent every other navigation model, including rail, to minimal-top-nav. The rail shell could not turn that header resource into a vertical desktop navigation.",
+      "affectedFiles": [
+        "packages/compatibility/src/compose-pipeline.ts",
+        "tests/e2e/compose-workbench-handoff.spec.ts"
+      ],
+      "remediation": "Map rail application navigation to the existing collapsible-sidebar runtime resource, while retaining top navigation for marketing screens. Extend the visible Compose-to-Workbench regression to inspect both the resource reference and rendered desktop orientation.",
+      "fixCommit": "39b9f1bf66c8f3d1cc5baef5500aa4ad65d4704c",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "evidence": [
+          "quality/evidence/step-16/after/compose-workbench-handoff-desktop-chrome.json",
+          "quality/evidence/step-16/after/compose-workbench-handoff-mobile-chrome.json"
+        ],
+        "result": "The E2E assertion failed before the source fix because rail metadata selected row-oriented minimal-top-nav. The exact Compose to Direction C to Workbench handoff now passes on the production preview at 1440x900 and 390x844 (1/1 each). The desktop run verifies application screens reference collapsible-sidebar, selects Team Overview through the UI, chooses the 1440 canvas preset, and observes column-oriented navigation. Deployed verification is pending. Full local verification also completed: frozen install, typecheck, lint, 1,250 Vitest tests passed (1 skipped), audit:all including the 16-point behavioral gate and production build, and the complete Playwright command with desktop/mobile app 383 passed/121 skipped, Sites Worker desktop 199 passed/6 skipped, Sites Worker mobile 165 passed/40 skipped, preview app 3 passed, and zero failures."
+      }
+    },
+    {
+      "id": "AUD-412",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900 and 390x844",
+      "category": "runtime",
+      "title": "A single Gold resource chunk failure prevented Workbench from hydrating",
+      "expected": "If one resource module fails to load, Workbench should remain interactive, show a local error boundary for that resource, and preserve the project reference and exportable manifest.",
+      "actual": "An injected 503 for the editorial-hero module caused Workbench startup to remain on the fallback shell when Surprise Me imported variant helpers from the renderer root. The test did not reach the Workbench heading or resource-level recovery UI. After narrowing the import, only the injected resource is unavailable, Workbench controls remain usable, the manifest retains the canonical editorial-hero reference, and there are no uncaught page errors or unrelated network/console failures.",
+      "reproduction": [
+        "Run the Gold resource chunk failure browser regression with Surprise Me importing from @tessellate/renderer; intercept /_astro/editorial-hero.*.js with HTTP 503.",
+        "Observe Workbench fail to hydrate instead of displaying its resource-local error boundary; the regression fails at the Workbench heading assertion.",
+        "Import variant metadata through @tessellate/renderer/resource-variants and rerun at desktop and mobile sizes; Workbench stays interactive and its schema-valid manifest preserves the resource reference."
+      ],
+      "console": [
+        "Before fix: failed dynamic import of the injected editorial-hero module stopped Workbench hydration (captured during the failing full Playwright run).",
+        "After fix: expected browser console messages are limited to the injected 503 and its failed dynamic import; unexpected console errors are asserted empty."
+      ],
+      "network": [
+        "Injected GET /_astro/editorial-hero.*.js returns 503 by test design.",
+        "After fix, no other HTTP errors or failed requests occur; the intercepted chunk is the only failed resource request."
+      ],
+      "screenshot": "quality/evidence/step-39/resource-chunk-failure/desktop-chrome-after.png; quality/evidence/step-39/resource-chunk-failure/mobile-chrome-after.png",
+      "rootCause": "The Workbench mutation module imported named variant helpers through the @tessellate/renderer package root. That root also re-exports the generated Gold registry and node renderers, expanding the Workbench startup import graph and coupling editor hydration to Gold resource modules. Surprise Me only needs the generated variant metadata and pure layout contract.",
+      "affectedFiles": [
+        "packages/workbench/src/mutations/surprise.ts",
+        "packages/renderer/package.json",
+        "packages/renderer/src/resource-variants.ts",
+        "packages/renderer/src/index.ts",
+        "vitest.config.ts",
+        "tests/e2e/gold-resource-chunk-failure.spec.ts"
+      ],
+      "remediation": "Expose a narrow @tessellate/renderer/resource-variants entry that imports certified variant metadata without loading the renderer root or Gold registry. Use that entry from Surprise Me and add a visible browser fault-injection regression that validates the local error boundary, Workbench interactions, manifest export, and absence of unrelated runtime/network errors.",
+      "fixCommit": "7c1ffab74205470c8970785cdca85f4c5631f5cf",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "evidence": [
+          "quality/evidence/step-39/resource-chunk-failure/desktop-chrome.json",
+          "quality/evidence/step-39/resource-chunk-failure/mobile-chrome.json",
+          "quality/evidence/step-39/resource-chunk-failure/desktop-chrome-after.png",
+          "quality/evidence/step-39/resource-chunk-failure/mobile-chrome-after.png"
+        ],
+        "result": "The injected 503 regression passed at 1440x900 and 390x844. Workbench remained interactive, the local error boundary identified editorial-hero, a real UI export parsed against ProjectManifestSchema and preserved that resource ref, the expected 503 was the only HTTP error, no unrelated failed request or console error occurred, and pageErrors was empty. Deployed verification is pending. Full local verification also completed: frozen install, typecheck, lint, 1,250 Vitest tests passed (1 skipped), audit:all including the 16-point behavioral gate and production build, and the complete Playwright command with desktop/mobile app 383 passed/121 skipped, Sites Worker desktop 199 passed/6 skipped, Sites Worker mobile 165 passed/40 skipped, preview app 3 passed, and zero failures."
+      }
     }
   ],
-  "generatedAt": "2026-11-01T00:53:51.606Z",
+  "generatedAt": "2026-11-01T03:32:02.714Z",
   "latestDeploymentEvidence": "audit/evidence/deployed-v64-2026-10-31/deployed-smoke.json"
 }
