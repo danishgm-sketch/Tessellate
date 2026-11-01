@@ -1,6 +1,6 @@
 # Runtime audit — product hardening and deployed-site verification
 
-This register preserves the historical resource/renderer audit and tracks deployed verification by release. The latest complete full route and accessibility sweep is public Sites v61. Its 44 requested/representative routes passed at 1440×900 and 390×844; the flagship employee workflow, standalone React export, Axe checks, and browser network audit also passed. Sites v62 then rechecked AUD-390, AUD-391, AUD-403 and AUD-404 with issue-specific browser tests, and reran the copy/resource suite at desktop and mobile sizes. A manual review of the AI Copilot Sidebar on v62 exposed AUD-405: a dead Apply action and false live-analysis claims. The fix was deployed in public v63 and passed its desktop/mobile regression. Public v64 then closed AUD-406 after the shared resource-detail tab semantics regression passed on both route families at desktop and mobile. The broader product-hardening programme remains incomplete. The v61 route matrix is `quality/evidence/step-48/deployed-v61-2026-10-31/route-audit.json`; v62 evidence is in `quality/evidence/step-48/deployed-v62-2026-10-31/` and `quality/evidence/step-39/public-v62-copy-2026-10-31/`.
+This register preserves the historical resource/renderer audit and tracks deployed verification by release. The latest complete full route and accessibility sweep is public Sites v61. Its 44 requested/representative routes passed at 1440×900 and 390×844; the flagship employee workflow, standalone React export, Axe checks, and browser network audit also passed. Later Sites versions received focused, issue-specific audits. Public v68 is now the review deployment; it closed AUD-414 and AUD-415 after deployed Lighthouse Accessibility 100 checks on the employee Workbench Brief panel and generated Team Overview at desktop and mobile. The broader product-hardening programme remains incomplete. The v61 route matrix is `quality/evidence/step-48/deployed-v61-2026-10-31/route-audit.json`; v62 evidence is in `quality/evidence/step-48/deployed-v62-2026-10-31/` and `quality/evidence/step-39/public-v62-copy-2026-10-31/`.
 
 V40 served application code captured from canonical commit
 `36b873ba9d40380196a78fcabe8977d7aa881e58` (Sites source mirror
@@ -34,7 +34,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 406 findings (0 Critical, 79 High, 303 Medium, 24 Low): 226 closed after issue-specific deployed verification, 9 closed after surface-specific non-Site verification, 111 fixed and awaiting issue-specific deployed checks, 57 fixed and verified locally, 2 legacy fixed records, and 1 documented Sites-host limitation. Public v64 closed AUD-378, AUD-381, AUD-382 and AUD-392 after desktop/mobile browser and export verification; AUD-390, AUD-391, AUD-403 and AUD-404 were closed after v62 deployed checks; AUD-405 after v63; AUD-406 after v64. The 111-item deployed-verification backlog includes 107 Medium and 4 Low findings. AUD-387 is the remaining locally verified High finding because the Sites deployment has no D1 binding; no High finding is marked as deployed-verified without its actual server-side environment. Verification debt is not a claim that every item remains broken.
+**Current disposition (public v68):** 415 findings (0 Critical, 82 High, 308 Medium, 25 Low): 230 closed after issue-specific deployed verification, 9 legacy closed records, 1 closed after surface-specific non-Site verification, 111 fixed and awaiting issue-specific deployed checks, 61 fixed and verified locally, 2 legacy fixed records, and 1 documented Sites-host limitation. AUD-413 closed after v67 screen/URL/history verification; AUD-414 and AUD-415 closed on v68 after desktop/mobile heading-order checks. Four High findings remain locally verified without deployed closure (AUD-387 and AUD-410–412); 107 Medium and 4 Low findings await issue-specific deployed checks. Verification debt is not a claim that every item remains broken. The v68 Site is public at the existing review URL, built from canonical commit `82f944a6dc5a1eaac6337120d5f3e8e1717b2592`; Sites D1/R2 bindings are not provisioned.
 
 ## Public Sites v51 issue-specific High verification — 2026-10-28
 
@@ -4705,7 +4705,10 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** `dashboard-kpi-grid` rendered the section title as h3 even though it is a top-level dashboard section in the generated product.
 - **Affected code:** `resources/blocks/dashboard-kpi-grid/index.tsx`; regression coverage in `tests/dashboard-kpi-grid-heading.test.tsx` and `tests/e2e/flagship-generated-product-a11y.spec.ts`.
 - **Remediation:** Change the resource title to h2. Add a resource-level markup regression and run Axe's heading-order rule in the actual generated employee product at desktop and mobile.
-- **Local verification:** The component regression and targeted desktop/mobile generated-product E2E pass after a fresh production build. Public v68 verification is pending.
+- **Local verification:** The component regression and targeted desktop/mobile generated-product E2E pass after a fresh production build.
+- **Deployed verification:** Public v68, same employee project, Team Overview at 1440×900 and 390×844. Lighthouse Accessibility 100 with zero failed audits and `heading-order` score 1 on both viewports. The DOM order is Workbench H1, KPI H2, Team Overview H2, People updates H3. At mobile width, document and body are both 390px. No browser console errors/warnings, uncaught exceptions, failed essential requests, or 4xx/5xx responses. Evidence: `audit/evidence/deployed-v68-2026-11-01/team-overview-desktop-1440x900.png`, `team-overview-mobile-390x844.png`, and the corresponding desktop/mobile Lighthouse JSON reports.
+- **Deployment:** Public Site v68, version `appgprj_6acc036de8cc8191a823339566972d85~appgver_6d374528cccc8191835b84c8fcee4754`, deployment `appgdep_6ae6e3c67d0481918a3963fdeb7460a7`, canonical commit `82f944a6dc5a1eaac6337120d5f3e8e1717b2592`, Sites artifact source `a651c4943c171bd2c7a66d639eacdc8ed0f67d9f`.
+- **Status:** Closed after deployed verification.
 
 ### AUD-415 — Workbench Brief panel project title skipped heading level
 
@@ -4714,11 +4717,15 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Root cause:** `BriefTab` rendered the project title as h3 instead of h2 beneath the Workbench page heading.
 - **Affected code:** `packages/workbench/src/components/left-panel/BriefTab.tsx`; regression coverage in `tests/e2e/flagship-generated-product-a11y.spec.ts`.
 - **Remediation:** Render the project title as h2 and scan the open Brief panel for heading-order in the flagship browser test.
-- **Local verification:** The targeted desktop/mobile generated-product E2E passes after a fresh production build. Public v68 verification is pending.
+- **Local verification:** The targeted desktop/mobile generated-product E2E passes after a fresh production build.
+- **Deployed verification:** Public v68 at 1440×900 with the Brief panel open. Lighthouse Accessibility 100, zero failed audits, and `heading-order` score 1. The DOM begins with Workbench H1 followed by the project title as H2. No browser console errors/warnings, uncaught exceptions, failed essential requests, or 4xx/5xx responses. Evidence: `audit/evidence/deployed-v68-2026-11-01/brief-desktop-1440x900.png` and `lighthouse-brief-desktop.json`.
+- **Deployment:** Public Site v68, version `appgprj_6acc036de8cc8191a823339566972d85~appgver_6d374528cccc8191835b84c8fcee4754`, deployment `appgdep_6ae6e3c67d0481918a3963fdeb7460a7`, canonical commit `82f944a6dc5a1eaac6337120d5f3e8e1717b2592`, Sites artifact source `a651c4943c171bd2c7a66d639eacdc8ed0f67d9f`.
+- **Status:** Closed after deployed verification.
 
 
-## Local verification — heading-order fixes (2026-11-01)
+## Verification — heading-order fixes (2026-11-01)
 
 - pnpm install --frozen-lockfile, pnpm build:catalog, pnpm typecheck, pnpm lint, pnpm test, pnpm audit:all, pnpm build, targeted desktop/mobile flagship Axe test, and full pnpm test:e2e completed successfully.
 - Vitest: 1,251 passed, 1 skipped. The full Playwright command reported standard desktop/mobile 385 passed/121 skipped; Sites Worker desktop 199 passed/6 skipped; Sites Worker mobile 165 passed/40 skipped; preview app 3 passed. No failures.
-- Public Site v67 remains the current deployment. AUD-413 is closed on deployed evidence; AUD-414 and AUD-415 are locally verified and await issue-specific v68 verification.
+- PR #8 is [open against `main`](https://github.com/danishgm-sketch/Tessellate/pull/8), with current head `82f944a6dc5a1eaac6337120d5f3e8e1717b2592`; both CI validation runs, Windows host-secret ACL checks, and the 16-point quality/security gate passed on that exact head. The PR remains unmerged.
+- Public v68 is the current deployment at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. AUD-413, AUD-414 and AUD-415 are closed on deployed evidence. The v68 runtime record is `audit/evidence/deployed-v68-2026-11-01/runtime.json`; D1/R2 are not provisioned. The broader product-hardening programme remains incomplete.

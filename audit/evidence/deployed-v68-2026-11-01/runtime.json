@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "1.0.0",
+  "deployment": {
+    "siteVersion": 68,
+    "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d374528cccc8191835b84c8fcee4754",
+    "deploymentId": "appgdep_6ae6e3c67d0481918a3963fdeb7460a7",
+    "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "audience": "public",
+    "canonicalCommit": "82f944a6dc5a1eaac6337120d5f3e8e1717b2592",
+    "sitesSourceCommit": "a651c4943c171bd2c7a66d639eacdc8ed0f67d9f",
+    "d1": null,
+    "r2": null,
+    "buildFiles": 1863,
+    "archiveBytes": 56535040
+  },
+  "route": "/workbench?project=proj-direction-c-a71079ab6bf64084b7e45093aaf01da4dirc#screen-overview",
+  "states": [
+    {
+      "name": "Brief panel",
+      "viewport": "1440x900",
+      "result": "PASS",
+      "headingOrder": [
+        "H1 Workbench",
+        "H2 project title"
+      ],
+      "lighthouse": {
+        "accessibility": 100,
+        "failedAudits": 0,
+        "headingOrderScore": 1
+      },
+      "screenshot": "audit/evidence/deployed-v68-2026-11-01/brief-desktop-1440x900.png",
+      "report": "audit/evidence/deployed-v68-2026-11-01/lighthouse-brief-desktop.json"
+    },
+    {
+      "name": "Team Overview",
+      "viewport": "1440x900",
+      "result": "PASS",
+      "headingOrder": [
+        "H1 Workbench",
+        "H2 Your organisation at a glance",
+        "H2 Team Overview",
+        "H3 People updates"
+      ],
+      "lighthouse": {
+        "accessibility": 100,
+        "failedAudits": 0,
+        "headingOrderScore": 1
+      },
+      "screenshot": "audit/evidence/deployed-v68-2026-11-01/team-overview-desktop-1440x900.png",
+      "report": "audit/evidence/deployed-v68-2026-11-01/lighthouse-team-overview-desktop.json"
+    },
+    {
+      "name": "Team Overview",
+      "viewport": "390x844",
+      "result": "PASS",
+      "headingOrder": [
+        "H1 Workbench",
+        "H2 Your organisation at a glance",
+        "H2 Team Overview",
+        "H3 People updates"
+      ],
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "lighthouse": {
+        "accessibility": 100,
+        "failedAudits": 0,
+        "headingOrderScore": 1
+      },
+      "screenshot": "audit/evidence/deployed-v68-2026-11-01/team-overview-mobile-390x844.png",
+      "report": "audit/evidence/deployed-v68-2026-11-01/lighthouse-team-overview-mobile.json"
+    }
+  ],
+  "runtime": {
+    "requestCount": 97,
+    "statusCounts": {
+      "200": 95,
+      "304": 2
+    },
+    "failedHttpRequests": 0,
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "observedStatusClasses": [
+      "200",
+      "304"
+    ]
+  },
+  "auditedAt": "2026-11-01T07:04:42.758Z",
+  "routeHttpStatus": 200
+}

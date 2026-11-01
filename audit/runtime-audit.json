@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; AUD-414 and AUD-415 were re-audited in the hosted Chrome runtime at desktop/mobile and closed after Lighthouse Accessibility 100 with no failed audits. The overall product hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -18481,7 +18481,7 @@
       "category": "accessibility",
       "title": "Dashboard KPI heading was incorrectly nested in the document outline",
       "expected": "The generated product heading hierarchy should progress from its page heading to an h2 section heading, with no level skipped.",
-      "actual": "Public v67 Team Overview Lighthouse reported heading-order at desktop and mobile: the KPI title was an h3 before the screen-level h2. Lighthouse accessibility was 98 on both viewports; no other failing audit was reported in those snapshots.",
+      "actual": "Public v68 Lighthouse snapshots returned Accessibility 100 and zero failing audits on Team Overview at 1440x900 and 390x844. The DOM outline is H1 Workbench, H2 Your organisation at a glance, H2 Team Overview, then H3 People updates. At 390px, document and body width are both 390px. Ninety-seven observed requests returned 95×200 and 2×304; no console errors or warnings, uncaught exceptions, or 4xx/5xx requests.",
       "reproduction": [
         "Open the saved employee-experience Workbench project on public Site v67.",
         "Select Team Overview through Pages and inspect the visible dashboard.",
@@ -18489,14 +18489,14 @@
       ],
       "console": [],
       "network": [],
-      "screenshot": "audit/evidence/deployed-v67-2026-11-01/workbench-team-overview-desktop-1440.png",
+      "screenshot": "audit/evidence/deployed-v68-2026-11-01/team-overview-desktop-1440x900.png",
       "beforeScreenshots": [
         "audit/evidence/deployed-v67-2026-11-01/workbench-team-overview-desktop-1440.png",
         "audit/evidence/deployed-v67-2026-11-01/workbench-team-overview-mobile-390.png"
       ],
       "reports": [
-        "audit/evidence/deployed-v67-2026-11-01/lighthouse-team-overview-desktop-report.json",
-        "audit/evidence/deployed-v67-2026-11-01/lighthouse-team-overview-mobile-report.json"
+        "audit/evidence/deployed-v68-2026-11-01/lighthouse-team-overview-desktop.json",
+        "audit/evidence/deployed-v68-2026-11-01/lighthouse-team-overview-mobile.json"
       ],
       "rootCause": "The dashboard-kpi-grid resource rendered its section title as h3 although it is the top-level section under the generated product page heading.",
       "affectedFiles": [
@@ -18505,14 +18505,72 @@
         "tests/e2e/flagship-generated-product-a11y.spec.ts"
       ],
       "remediation": "Render the KPI section title as h2 and cover its actual resource markup plus desktop/mobile heading-order scans in the employee product browser regression.",
-      "fixCommit": null,
-      "status": "fixed-local-verified",
+      "fixCommit": "82f944a6dc5a1eaac6337120d5f3e8e1717b2592",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "evidence": [
           "tests/dashboard-kpi-grid-heading.test.tsx",
           "tests/e2e/flagship-generated-product-a11y.spec.ts"
         ],
         "result": "The resource heading test passes and the employee-product Axe heading-order check passes on the production-style local preview at desktop and mobile after a fresh production build. The complete local Playwright command then passed: standard desktop/mobile 385 passed and 121 skipped; Sites Worker desktop 199 passed and 6 skipped; Sites Worker mobile 165 passed and 40 skipped; preview app 3 passed; zero failures."
+      },
+      "deployedVerification": {
+        "siteVersion": 68,
+        "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d374528cccc8191835b84c8fcee4754",
+        "deploymentId": "appgdep_6ae6e3c67d0481918a3963fdeb7460a7",
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "canonicalCommit": "82f944a6dc5a1eaac6337120d5f3e8e1717b2592",
+        "sitesSourceCommit": "a651c4943c171bd2c7a66d639eacdc8ed0f67d9f",
+        "audience": "public",
+        "d1": null,
+        "r2": null,
+        "browser": "Chrome DevTools",
+        "viewportChecks": [
+          {
+            "viewport": "1440x900",
+            "result": "PASS",
+            "lighthouseAccessibility": 100,
+            "headingOrderScore": 1,
+            "screenshot": "audit/evidence/deployed-v68-2026-11-01/brief-desktop-1440x900.png"
+          },
+          {
+            "viewport": "1440x900",
+            "result": "PASS",
+            "lighthouseAccessibility": 100,
+            "headingOrderScore": 1,
+            "screenshot": "audit/evidence/deployed-v68-2026-11-01/team-overview-desktop-1440x900.png"
+          },
+          {
+            "viewport": "390x844",
+            "result": "PASS",
+            "lighthouseAccessibility": 100,
+            "headingOrderScore": 1,
+            "screenshot": "audit/evidence/deployed-v68-2026-11-01/team-overview-mobile-390x844.png"
+          }
+        ],
+        "network": {
+          "requestCount": 97,
+          "statusCounts": {
+            "200": 95,
+            "304": 2
+          },
+          "failedHttpRequests": 0
+        },
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "reportFiles": [
+          "audit/evidence/deployed-v68-2026-11-01/lighthouse-brief-desktop.json",
+          "audit/evidence/deployed-v68-2026-11-01/lighthouse-team-overview-desktop.json",
+          "audit/evidence/deployed-v68-2026-11-01/lighthouse-team-overview-mobile.json"
+        ],
+        "result": "Public v68 Team Overview passed Lighthouse at desktop and mobile (Accessibility 100, zero failed audits, heading-order score 1). DOM order: H1 Workbench, H2 KPI summary, H2 Team Overview, H3 People updates. Mobile document/body width 390px; no observed browser console errors/warnings, uncaught exceptions, failed essential requests, or 4xx/5xx responses.",
+        "evidence": [
+          "audit/evidence/deployed-v68-2026-11-01/team-overview-desktop-1440x900.png",
+          "audit/evidence/deployed-v68-2026-11-01/team-overview-mobile-390x844.png",
+          "audit/evidence/deployed-v68-2026-11-01/lighthouse-team-overview-desktop.json",
+          "audit/evidence/deployed-v68-2026-11-01/lighthouse-team-overview-mobile.json"
+        ]
       }
     },
     {
@@ -18523,7 +18581,7 @@
       "category": "accessibility",
       "title": "Workbench Brief project title skipped the page heading level",
       "expected": "Within the Workbench Brief panel, the project title should follow the Workbench page h1 as an h2.",
-      "actual": "Public v67 desktop Lighthouse reported heading-order while the Brief panel was open: its project name was an h3 following the Workbench shell h1. Lighthouse accessibility was 98; no other failing audit was reported in that snapshot.",
+      "actual": "Public v68 Lighthouse on the open Brief panel returned Accessibility 100 and zero failing audits. The DOM outline is H1 Workbench followed by H2 Master-Detail Explorer — Employee experience. Ninety-seven observed requests returned 95×200 and 2×304; no console errors or warnings, uncaught exceptions, or 4xx/5xx requests.",
       "reproduction": [
         "Open the saved employee-experience Workbench project on public Site v67 at 1440x900.",
         "Open the Brief panel.",
@@ -18531,12 +18589,12 @@
       ],
       "console": [],
       "network": [],
-      "screenshot": "audit/evidence/deployed-v67-2026-11-01/workbench-brief-heading-order-desktop-1440.png",
+      "screenshot": "audit/evidence/deployed-v68-2026-11-01/brief-desktop-1440x900.png",
       "beforeScreenshots": [
         "audit/evidence/deployed-v67-2026-11-01/workbench-brief-heading-order-desktop-1440.png"
       ],
       "reports": [
-        "audit/evidence/deployed-v67-2026-11-01/lighthouse-brief-panel-desktop-report.json"
+        "audit/evidence/deployed-v68-2026-11-01/lighthouse-brief-desktop.json"
       ],
       "rootCause": "BriefTab rendered the project name as h3 despite being a direct heading beneath the Workbench page h1.",
       "affectedFiles": [
@@ -18544,16 +18602,72 @@
         "tests/e2e/flagship-generated-product-a11y.spec.ts"
       ],
       "remediation": "Render the Brief project name as h2 and scan the Brief panel for heading-order in the flagship employee-product browser test.",
-      "fixCommit": null,
-      "status": "fixed-local-verified",
+      "fixCommit": "82f944a6dc5a1eaac6337120d5f3e8e1717b2592",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "evidence": [
           "tests/e2e/flagship-generated-product-a11y.spec.ts"
         ],
         "result": "The Brief panel heading-order Axe check passes in the local production-style browser test; see the desktop project run. The complete local Playwright command then passed: standard desktop/mobile 385 passed and 121 skipped; Sites Worker desktop 199 passed and 6 skipped; Sites Worker mobile 165 passed and 40 skipped; preview app 3 passed; zero failures."
+      },
+      "deployedVerification": {
+        "siteVersion": 68,
+        "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d374528cccc8191835b84c8fcee4754",
+        "deploymentId": "appgdep_6ae6e3c67d0481918a3963fdeb7460a7",
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "canonicalCommit": "82f944a6dc5a1eaac6337120d5f3e8e1717b2592",
+        "sitesSourceCommit": "a651c4943c171bd2c7a66d639eacdc8ed0f67d9f",
+        "audience": "public",
+        "d1": null,
+        "r2": null,
+        "browser": "Chrome DevTools",
+        "viewportChecks": [
+          {
+            "viewport": "1440x900",
+            "result": "PASS",
+            "lighthouseAccessibility": 100,
+            "headingOrderScore": 1,
+            "screenshot": "audit/evidence/deployed-v68-2026-11-01/brief-desktop-1440x900.png"
+          },
+          {
+            "viewport": "1440x900",
+            "result": "PASS",
+            "lighthouseAccessibility": 100,
+            "headingOrderScore": 1,
+            "screenshot": "audit/evidence/deployed-v68-2026-11-01/team-overview-desktop-1440x900.png"
+          },
+          {
+            "viewport": "390x844",
+            "result": "PASS",
+            "lighthouseAccessibility": 100,
+            "headingOrderScore": 1,
+            "screenshot": "audit/evidence/deployed-v68-2026-11-01/team-overview-mobile-390x844.png"
+          }
+        ],
+        "network": {
+          "requestCount": 97,
+          "statusCounts": {
+            "200": 95,
+            "304": 2
+          },
+          "failedHttpRequests": 0
+        },
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "reportFiles": [
+          "audit/evidence/deployed-v68-2026-11-01/lighthouse-brief-desktop.json",
+          "audit/evidence/deployed-v68-2026-11-01/lighthouse-team-overview-desktop.json",
+          "audit/evidence/deployed-v68-2026-11-01/lighthouse-team-overview-mobile.json"
+        ],
+        "result": "Public v68 Brief panel passed Lighthouse at 1440x900 (Accessibility 100, zero failed audits, heading-order score 1). DOM order begins with H1 Workbench followed by H2 Master-Detail Explorer — Employee experience. No observed browser console errors/warnings, uncaught exceptions, failed essential requests, or 4xx/5xx responses.",
+        "evidence": [
+          "audit/evidence/deployed-v68-2026-11-01/brief-desktop-1440x900.png",
+          "audit/evidence/deployed-v68-2026-11-01/lighthouse-brief-desktop.json"
+        ]
       }
     }
   ],
-  "generatedAt": "2026-11-01T06:19:13.059Z",
-  "latestDeploymentEvidence": "audit/evidence/deployed-v64-2026-10-31/deployed-smoke.json"
+  "generatedAt": "2026-11-01T07:04:42.707Z",
+  "latestDeploymentEvidence": "audit/evidence/deployed-v68-2026-11-01/runtime.json"
 }
