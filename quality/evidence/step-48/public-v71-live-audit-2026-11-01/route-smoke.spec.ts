@@ -13,6 +13,8 @@ const routes = [
 ];
 const axeRoutes = new Set(['/', '/explore', '/compose', '/workbench', '/r/advanced-data-table', '/showcase/showcase-playful-hr/']);
 const outputRoot = path.dirname(fileURLToPath(import.meta.url));
+const deployedSiteUrl = process.env.TESS_SITE_URL;
+if (!deployedSiteUrl) throw new Error('Set TESS_SITE_URL to the deployed review Site before running this audit.');
 
 type RouteEvidence = {
   route: string;
@@ -96,7 +98,7 @@ test('public routes and core accessibility remain clean in the deployed Site', a
   }
 
   const report = {
-    deploymentUrl: new URL('/', process.env.TESS_SITE_URL).toString(),
+    deploymentUrl: new URL('/', deployedSiteUrl).toString(),
     viewport,
     routesRequested: routes.length,
     routes: all,
