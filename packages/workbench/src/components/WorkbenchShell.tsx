@@ -1,5 +1,5 @@
 import {loadCheckpointJournal,saveCheckpointJournal} from '../persistence/checkpoint-journal.js';
-import { hasIndexedDB, loadLocalHistoryState, saveLocalHistoryState } from '../persistence/storage.js';
+import { hasIndexedDB, historyStateMatchesManifest, loadLocalHistoryState, saveLocalHistoryState } from '../persistence/storage.js';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import { loadBrowserProject, createProjectSaver } from '../persistence/browser-session.js';
@@ -116,7 +116,13 @@ export function WorkbenchShell() {
         if (loaded.migrated) await saver(loaded.manifest);
         try {
           const history = await loadLocalHistoryState(loaded.manifest.id);
-          if (history) useWorkbenchStore.setState({ history: history.history, future: history.future });
+          if (history && historyStateMatchesManifest(history, loaded.manifest)) {
+            useWorkbenchStore.setState({ history: history.history, future: history.future });
+          } else if (history) {
+            useWorkbenchStore.setState({ history: [], future: [] });
+            addStorageWarning('Undo and redo history did not match the saved project, so stale history was cleared to protect the current work.');
+            await saveLocalHistoryState(loaded.manifest.id, loaded.manifest, [], []);
+          }
           if (!hasIndexedDB()) {
             durableHistoryAvailable = false;
             addStorageWarning('Undo and redo history are only available until this tab closes because IndexedDB is unavailable.');

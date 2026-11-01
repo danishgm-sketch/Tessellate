@@ -9,6 +9,7 @@ import {
   listLocalCheckpoints,
   saveLocalHistoryState,
   loadLocalHistoryState,
+  historyStateMatchesManifest,
   clearLocalMemoryStorage,
 } from '../persistence/storage.js';
 import { safelyLoadProjectRecord } from '../persistence/recovery.js';
@@ -113,7 +114,9 @@ describe('Phase 11: Local Persistence & Recovery Gate', () => {
     await saveLocalHistoryState(original.id, edited, [original], [undone]);
     const loaded = await loadLocalHistoryState(original.id);
 
-    expect(loaded).toEqual({ history: [original], future: [undone] });
+    expect(loaded).toEqual({ currentManifest: edited, history: [original], future: [undone] });
+    expect(historyStateMatchesManifest(loaded!, edited)).toBe(true);
+    expect(historyStateMatchesManifest(loaded!, undone)).toBe(false);
     expect(loaded?.history[0]).not.toBe(original);
     expect(loaded?.future[0]).not.toBe(undone);
   });
@@ -125,7 +128,7 @@ describe('Phase 11: Local Persistence & Recovery Gate', () => {
     await saveLocalHistoryState(blended.id, blended, [original], []);
     const loaded = await loadLocalHistoryState(blended.id);
 
-    expect(loaded).toEqual({ history: [original], future: [] });
+    expect(loaded).toEqual({ currentManifest: blended, history: [original], future: [] });
   });
 
   it('rejects undo/redo stacks larger than the Workbench retention limit', async () => {

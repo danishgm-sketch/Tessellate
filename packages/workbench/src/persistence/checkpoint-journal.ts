@@ -14,8 +14,13 @@ const schema = z.object({
 });
 
 export async function loadCheckpointJournal(projectId: string): Promise<Checkpoint[]> {
-  const raw = localStorage.getItem(`tessellate_checkpoints_${projectId}`);
-  const journal = raw ? schema.array().parse(JSON.parse(raw)) : [];
+  let journal: Checkpoint[] = [];
+  try {
+    const raw = localStorage.getItem(`tessellate_checkpoints_${projectId}`);
+    if (raw) journal = schema.array().parse(JSON.parse(raw));
+  } catch {
+    // Keep the raw browser journal intact and fall back to durable checkpoints.
+  }
   const stored = schema.array().parse(await listLocalCheckpoints(projectId));
   const values = new Map([...stored, ...journal].map((checkpoint) => [checkpoint.id, checkpoint]));
   return [...values.values()].sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp));

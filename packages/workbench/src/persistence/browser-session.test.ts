@@ -2,7 +2,11 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { ProjectManifest } from '@tessellate/schemas';
 import { createSampleProject } from '../store/sample-project.js';
 
-const persistence = vi.hoisted(() => ({ projects: new Map<string, unknown>() }));
+const persistence = vi.hoisted(() => ({
+  projects: new Map<string, unknown>(),
+  saveGate: null as Promise<void> | null,
+  saveStarted: null as (() => void) | null,
+}));
 
 vi.mock('./storage.js', () => ({
   loadLocalProject: vi.fn(async (id: string) => {
@@ -11,6 +15,8 @@ vi.mock('./storage.js', () => ({
   }),
   saveLocalProject: vi.fn(async (manifest: ProjectManifest) => {
     persistence.projects.set(manifest.id, structuredClone(manifest));
+    persistence.saveStarted?.();
+    if (persistence.saveGate) await persistence.saveGate;
     return 'indexeddb' as const;
   }),
   listLocalProjects: vi.fn(async () => Array.from(persistence.projects.values()) as ProjectManifest[]),
@@ -25,6 +31,8 @@ describe('browser project journal recovery', () => {
   beforeEach(() => {
     values.clear();
     persistence.projects.clear();
+    persistence.saveGate = null;
+    persistence.saveStarted = null;
     rejectWrites = false;
     Object.defineProperty(globalThis, 'localStorage', {
       configurable: true,
@@ -71,5 +79,39 @@ describe('browser project journal recovery', () => {
 
     expect(loaded.manifest).toEqual(edited);
     expect(loaded.damagedRecords).toEqual([]);
+  });
+
+  it('discovers an IndexedDB project when its active localStorage journal has been cleared', async () => {
+    const project = { ...createSampleProject(), id: 'project-indexeddb-only' };
+    persistence.projects.set(project.id, project);
+
+    const loaded = await loadBrowserProject();
+
+    expect(loaded.manifest?.id).toBe(project.id);
+  });
+
+  it('does not let an older queued save delete a newer browser recovery journal', async () => {
+    const original = { ...createSampleProject(), id: 'project-raced-journal' };
+    const older = { ...original, name: 'Older saved project', updatedAt: '2026-01-01T00:00:00.000Z' };
+    const newer = { ...original, name: 'Newer recovery project', updatedAt: '2026-01-02T00:00:00.000Z' };
+    journalBrowserProject(original);
+    let releaseSave!: () => void;
+    let signalSaveStarted!: () => void;
+    const saveStarted = new Promise<void>((resolve) => { signalSaveStarted = resolve; });
+    persistence.saveStarted = signalSaveStarted;
+    persistence.saveGate = new Promise<void>((resolve) => { releaseSave = resolve; });
+    const save = createProjectSaver(vi.fn());
+
+    rejectWrites = true;
+    const olderSave = save(older);
+    await saveStarted;
+    rejectWrites = false;
+    const newerSave = save(newer);
+    persistence.saveGate = null;
+    releaseSave();
+    await Promise.all([olderSave, newerSave]);
+
+    expect(JSON.parse(values.get(`tessellate_project_${original.id}`)!).name).toBe('Newer recovery project');
+    expect(JSON.parse(values.get('tessellate_active_project')!).name).toBe('Newer recovery project');
   });
 });

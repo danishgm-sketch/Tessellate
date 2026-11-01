@@ -211,6 +211,8 @@ export function createReplaceOperation(
   const graphNodes=manifest.screenGraph.groups.flatMap(group=>group.screens);
   const screenNode=graphNodes.find(screen=>screen.id===ownerScreen?.screenNodeId);
   const boundContent=screenNode?bindResourceContent(manifest.productModel,screenNode,originalNode.semanticRole,graphNodes,replacementResource.slug,manifest.description):{};
+  const switchingVariantOfSameResource=originalNode.resourceRef?.slug===replacementResource.slug;
+  const authoredProps=Object.fromEntries(Object.entries(originalNode.props ?? {}).filter(([key])=>switchingVariantOfSameResource || key in boundContent));
   const replacementNode: ProjectNode = {
     id: nodeId, // preserve ID so tree references and locks stay stable
     nodeType: originalNode?.nodeType ?? 'component',
@@ -228,7 +230,7 @@ export function createReplaceOperation(
     props: {
       ...(replacementResource.preview?.defaultProps ?? {}),
       ...boundContent,
-      ...Object.fromEntries(Object.entries(originalNode.props ?? {}).filter(([key])=>key in boundContent)),
+      ...authoredProps,
     },
     children: originalNode?.children ?? [],
     locks: originalNode?.locks,

@@ -180,4 +180,21 @@ describe('Resource Replacement Fidelity', () => {
     );
     expect(hasVariantOrRel).toBe(true);
   });
+
+  it('keeps authored props when switching variants of the same resource', () => {
+    const manifest = structuredClone(testManifest);
+    const target = manifest.screens[0]!.rootNode.children[0]!;
+    target.props.customHint = 'Keep this authored value';
+    const button = catalog.find((resource) => resource.slug === 'button')!;
+
+    const operation = createReplaceOperation(manifest, target.id, button, 'quiet');
+    const mutation = operation.mutations[0]!;
+    expect(mutation.type).toBe('REPLACE_NODE');
+    if (mutation.type === 'REPLACE_NODE') {
+      expect(mutation.payload.replacementNode.resourceRef?.slug).toBe('button');
+      expect(mutation.payload.replacementNode.variant).toBe('quiet');
+      expect(mutation.payload.replacementNode.props.customHint).toBe('Keep this authored value');
+      expect(mutation.payload.replacementNode.props.label).toBe(target.props.label);
+    }
+  });
 });

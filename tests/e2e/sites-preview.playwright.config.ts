@@ -9,6 +9,8 @@ export default defineConfig({
     'composition-quality-smoke.spec.ts',
     'compose-workbench-handoff.spec.ts',
     'workbench-page-deletion-integrity.spec.ts',
+    'workbench-cross-tab-history-integrity.spec.ts',
+    'accessibility-label-semantics-regression.spec.ts',
     'showcase-content-copy-regression.spec.ts',
     'section-planner-input-identity.spec.ts',
     'compose-responsiveness-hardening.spec.ts',

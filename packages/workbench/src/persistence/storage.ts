@@ -26,8 +26,23 @@ const historySnapshotSchema = z.object({
 }).strict();
 
 export interface LocalHistoryState {
+  currentManifest: ProjectManifest;
   history: ProjectManifest[];
   future: ProjectManifest[];
+}
+
+function canonicalJson(value: unknown): string {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
+  if (value && typeof value === 'object') {
+    const record = value as Record<string, unknown>;
+    return `{${Object.keys(record).sort().map((key) => `${JSON.stringify(key)}:${canonicalJson(record[key])}`).join(',')}}`;
+  }
+  return JSON.stringify(value) ?? 'null';
+}
+
+/** Prevents restoring undo/redo stacks whose current head no longer matches the saved project. */
+export function historyStateMatchesManifest(state: LocalHistoryState, manifest: ProjectManifest): boolean {
+  return canonicalJson(state.currentManifest) === canonicalJson(manifest);
 }
 
 interface HistoryPointer {
@@ -50,7 +65,6 @@ const memoryProjects = new Map<string, ProjectManifest>();
 const memoryCheckpoints = new Map<string, Checkpoint & { projectId: string }>();
 const memoryHistory = new Map<string, MemoryHistoryState>();
 const historySnapshotIds = new WeakMap<ProjectManifest, Map<string, string>>();
-const persistedHistoryIds = new Map<string, Set<string>>();
 const historyWriteQueues = new Map<string, Promise<'indexeddb' | 'memory'>>();
 let nextHistorySnapshotId = 1;
 
@@ -187,7 +201,7 @@ export async function deleteLocalProject(id: string): Promise<void> {
       };
       request.onerror = () => tx.abort();
     }
-    tx.oncomplete = () => { persistedHistoryIds.delete(id); db.close(); resolve(); };
+    tx.oncomplete = () => { db.close(); resolve(); };
     tx.onabort = () => { db.close(); reject(tx.error ?? new Error('Local project deletion transaction aborted.')); };
     tx.onerror = () => { db.close(); reject(tx.error); };
   });
@@ -277,28 +291,26 @@ async function persistLocalHistoryState(
   }
 
   const db = await openDB();
-  const previouslyPersisted = persistedHistoryIds.get(projectId) ?? new Set<string>();
   return new Promise<'indexeddb' | 'memory'>((resolve, reject) => {
     const tx = db.transaction(STORE_HISTORY, 'readwrite');
     const store = tx.objectStore(STORE_HISTORY);
-    for (const [id, snapshot] of manifests) {
-      if (previouslyPersisted.has(id)) continue;
-      store.put({ key: id, projectId, kind: 'snapshot', manifest: cloneManifest(snapshot) });
-    }
-    store.put(pointer);
-
     const keep = new Set([pointer.key, pointer.currentId, ...pointer.historyIds, ...pointer.futureIds]);
     const recordsRequest = store.index('projectId').getAll(projectId);
     recordsRequest.onsuccess = () => {
-      for (const record of recordsRequest.result as Array<{ key: string }>) {
+      const records = recordsRequest.result as Array<{ key: string }>;
+      const persistedIds = new Set(records.map((record) => record.key));
+      for (const [id, snapshot] of manifests) {
+        if (persistedIds.has(id)) continue;
+        store.put({ key: id, projectId, kind: 'snapshot', manifest: cloneManifest(snapshot) });
+      }
+      store.put(pointer);
+      for (const record of records) {
         if (!keep.has(record.key)) store.delete(record.key);
       }
     };
     recordsRequest.onerror = () => tx.abort();
 
     tx.oncomplete = () => {
-      const persisted = new Set([...keep].filter((key) => key !== pointer.key));
-      persistedHistoryIds.set(projectId, persisted);
       db.close();
       resolve('indexeddb');
     };
@@ -323,6 +335,7 @@ export async function loadLocalHistoryState(projectId: string): Promise<LocalHis
       rememberHistorySnapshotId(projectId, snapshots.get(id)!, id);
     }
     return {
+      currentManifest: snapshots.get(pointer.currentId)!,
       history: pointer.historyIds.map((id) => snapshots.get(id)!),
       future: pointer.futureIds.map((id) => snapshots.get(id)!),
     };
@@ -362,15 +375,13 @@ export async function loadLocalHistoryState(projectId: string): Promise<LocalHis
   }
 
   const ids = new Set([pointer.currentId, ...pointer.historyIds, ...pointer.futureIds]);
-  const persisted = new Set<string>();
   for (const id of ids) {
     const snapshot = records.get(id);
     if (!snapshot) throw new Error(`Undo history snapshot ${id} is missing; the project was preserved.`);
     rememberHistorySnapshotId(projectId, snapshot, id);
-    persisted.add(id);
   }
-  persistedHistoryIds.set(projectId, persisted);
   return {
+    currentManifest: records.get(pointer.currentId)!,
     history: pointer.historyIds.map((id) => records.get(id)!),
     future: pointer.futureIds.map((id) => records.get(id)!),
   };
@@ -430,5 +441,4 @@ export function clearLocalMemoryStorage(): void {
   memoryProjects.clear();
   memoryCheckpoints.clear();
   memoryHistory.clear();
-  persistedHistoryIds.clear();
 }

@@ -46,10 +46,38 @@ function applyVisualMode(node:ProjectNode,mode:'light'|'dark'|'adaptive'):Projec
  return {...node,...(node.resourceRef ? {variant:effective==='dark' ? 'nocturne' : node.variant==='nocturne' ? 'quiet' : node.variant} : {}),children:node.children.map(child=>applyVisualMode(child,effective))};
 }
 
-function syncRenderedNavigation(manifest:ProjectManifest):ProjectManifest {
+function syncRenderedNavigation(manifest:ProjectManifest, previous:ProjectManifest = manifest):ProjectManifest {
  const links=manifest.navigation.primaryItems.filter(item=>manifest.screens.some(screen=>screen.id===item.targetScreenId)).map(item=>({label:item.label,href:`#${item.targetScreenId}`}));
- const update=(node:ProjectNode):ProjectNode=>node.locks?.node || node.locks?.content?node:{...node,...(node.semanticRole==='navigation'?{props:{...node.props,links}}:{}),children:node.children.map(update)};
+ const managedTargets=new Set([...previous.navigation.primaryItems,...manifest.navigation.primaryItems].map(item=>`#${item.targetScreenId}`));
+ const update=(node:ProjectNode):ProjectNode=>{
+  if(node.locks?.node || node.locks?.content)return node;
+  const authored=node.semanticRole==='navigation' && Array.isArray(node.props.links)
+   ? node.props.links.filter((item):item is {label:string;href:string} => typeof item==='object' && item!==null && 'label' in item && typeof item.label==='string' && 'href' in item && typeof item.href==='string')
+   : [];
+  const preserved=authored.filter(item=>!managedTargets.has(item.href));
+  return {...node,...(node.semanticRole==='navigation'?{props:{...node.props,links:[...links,...preserved]}}:{}),children:node.children.map(update)};
+ };
  return {...manifest,screens:manifest.screens.map(screen=>({...screen,rootNode:update(screen.rootNode)}))};
+}
+
+function applyPalettePreservingLockedDescendants(
+ node:ProjectNode,
+ targetId:string,
+ paletteId:string,
+ inheritedPalette='paper-cobalt',
+ withinTarget=false
+):ProjectNode {
+ const currentPalette=typeof node.tokenOverrides?.paletteId==='string'?node.tokenOverrides.paletteId:inheritedPalette;
+ const isTarget=node.id===targetId;
+ const isLocked=node.locks?.node || node.locks?.style || node.locks?.dna || node.locks?.motion;
+ if(withinTarget && !isTarget && isLocked) {
+  return {...node,tokenOverrides:{...node.tokenOverrides,paletteId:currentPalette}};
+ }
+ return {
+  ...node,
+  ...(isTarget?{tokenOverrides:{...node.tokenOverrides,paletteId}}:{}),
+  children:node.children.map(child=>applyPalettePreservingLockedDescendants(child,targetId,paletteId,currentPalette,withinTarget||isTarget)),
+ };
 }
 const initialSample = createSampleProject();
 const initialCheckpoint = createCheckpoint(initialSample, {
@@ -274,7 +302,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       if(selectedNodeId && screen.id!==activeScreenId)return screen;
       const targetId=selectedNodeId ?? screen.rootNode.id;
       if(isScopeLocked(manifest,screen.id,targetId))return screen;
-      return {...screen,rootNode:updateNodeInTree(screen.rootNode,targetId,node=>({...node,tokenOverrides:{...node.tokenOverrides,paletteId}}))};
+      return {...screen,rootNode:applyPalettePreservingLockedDescendants(screen.rootNode,targetId,paletteId)};
     });
     set({manifest:{...manifest,screens,updatedAt:new Date().toISOString()},history:[manifest,...history.slice(0,49)],future:[]});
   },
@@ -480,6 +508,11 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
 
   addScreen: (screen: ProjectScreen) => {
     const { manifest, history } = get();
+    const graphGroup=manifest.screenGraph.groups[0];
+    if(manifest.screens.length>=200 || manifest.navigation.primaryItems.length>=200 || !graphGroup || graphGroup.screens.length>=200) {
+      set({lastActionMessage:'A project can contain at most 200 screens, navigation items, and screens per group.'});
+      return;
+    }
     const nextManifest: ProjectManifest = {
       ...manifest,
       screens: [...manifest.screens, screen],
@@ -490,7 +523,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
     set({
       history: [manifest, ...history.slice(0, 49)],
       future: [],
-      manifest: syncRenderedNavigation(nextManifest),
+      manifest: syncRenderedNavigation(nextManifest,manifest),
       activeScreenId: screen.id,
     });
   },
@@ -516,7 +549,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       set({
         history: [manifest, ...history.slice(0, 49)],
         future: [],
-        manifest: syncRenderedNavigation(result.nextManifest),
+        manifest: syncRenderedNavigation(result.nextManifest,manifest),
         activeScreenId: nextActive,
         selectedNodeId: null,
         lastActionMessage: `Deleted ${screen.name}.`,
@@ -543,7 +576,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
     set({
       history: [manifest, ...history.slice(0, 49)],
       future: [],
-      manifest: syncRenderedNavigation(nextManifest),
+      manifest: syncRenderedNavigation(nextManifest,manifest),
     });
   },
 

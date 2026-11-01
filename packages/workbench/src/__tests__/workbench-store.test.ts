@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import { getNodePath, findNodeById } from '../utils/tree-helpers.js';
-import { getScopedDNA } from '../utils/dna-helpers.js';
+import { getScopedDNA, getScopedTokens } from '../utils/dna-helpers.js';
 import { createCheckpoint } from '../history/checkpoints.js';
 import { ProjectManifestSchema } from '@tessellate/schemas';
 
@@ -61,6 +61,85 @@ describe('Workbench Store & Tree Navigation', () => {
     // Delete screen
     useWorkbenchStore.getState().deleteScreen('screen-audit');
     expect(useWorkbenchStore.getState().manifest.screens.length).toBe(initialCount);
+  });
+
+  it('refuses page additions that would exceed the screen, navigation, or graph limits', () => {
+    const manifest = structuredClone(useWorkbenchStore.getState().manifest);
+    const first = manifest.screens[0]!;
+    const screens = Array.from({ length: 199 }, (_, index) => {
+      const screen = structuredClone(first);
+      screen.id = `screen-limit-${index}`;
+      screen.screenNodeId = screen.id;
+      screen.slug = `/screen-limit-${index}`;
+      screen.rootNode.id = `root-limit-${index}`;
+      screen.rootNode.children = [];
+      return screen;
+    });
+    manifest.screens = [first, ...screens];
+    manifest.navigation.primaryItems = Array.from({ length: 200 }, (_, index) => ({ label: `Screen ${index}`, targetScreenId: `screen-limit-${index}` }));
+    manifest.screenGraph.groups[0]!.screens = Array.from({ length: 200 }, (_, index) => ({
+      id: `screen-limit-${index}`,
+      name: `Screen ${index}`,
+      slug: `/screen-limit-${index}`,
+      screenType: 'custom',
+      purpose: 'Limit fixture',
+      jobs: [],
+      required: false,
+      navigationVisibility: 'primary',
+      importance: 50,
+      expectedData: [],
+      requiredRoles: [],
+      optionalRoles: [],
+    }));
+    useWorkbenchStore.setState({ manifest, history: [], future: [] });
+
+    useWorkbenchStore.getState().addScreen({
+      id: 'screen-over-limit', screenNodeId: 'screen-over-limit', name: 'Over limit', slug: '/over-limit',
+      rootNode: { id: 'root-over-limit', nodeType: 'layout', semanticRole: 'screen', props: {}, slots: {}, children: [] },
+    });
+
+    const result = useWorkbenchStore.getState();
+    expect(result.manifest.screens).toHaveLength(200);
+    expect(result.manifest.navigation.primaryItems).toHaveLength(200);
+    expect(result.manifest.screenGraph.groups[0]!.screens).toHaveLength(200);
+    expect(result.lastActionMessage).toMatch(/200/);
+  });
+
+  it('preserves authored external navigation links when a page is renamed', () => {
+    const manifest = structuredClone(useWorkbenchStore.getState().manifest);
+    const root = manifest.screens[0]!.rootNode;
+    root.children.push({
+      id: 'custom-navigation', nodeType: 'component', semanticRole: 'navigation',
+      resourceRef: { id: 'res_custom_navigation', slug: 'minimal-top-nav', version: '1.0.0' },
+      props: { links: [{ label: 'Handbook', href: 'https://handbook.example.test/' }] }, slots: {}, children: [],
+    });
+    useWorkbenchStore.setState({ manifest });
+
+    useWorkbenchStore.getState().renameScreen('screen-analytics', 'People');
+
+    const links = useWorkbenchStore.getState().manifest.screens[0]!.rootNode.children.find((node) => node.id === 'custom-navigation')!.props.links as Array<{ label: string; href: string }>;
+    expect(links).toContainEqual({ label: 'Handbook', href: 'https://handbook.example.test/' });
+    expect(links).toContainEqual({ label: 'People', href: '#screen-analytics' });
+  });
+
+  it('preserves a locked descendant palette when an ancestor palette changes', () => {
+    const store = useWorkbenchStore.getState();
+    const screenId = 'screen-overview';
+    const lockedNodeId = 'node-metric-arr';
+    const rootNodeId = 'node-app-shell';
+    store.setActiveScreen(screenId);
+    store.selectNode(lockedNodeId);
+    store.toggleNodeLock(lockedNodeId, 'style');
+    const before = getScopedTokens(useWorkbenchStore.getState().manifest, screenId, lockedNodeId).paletteId ?? 'paper-cobalt';
+
+    useWorkbenchStore.getState().selectNode(rootNodeId);
+    useWorkbenchStore.getState().setPalette('institutional-navy');
+
+    const result = useWorkbenchStore.getState();
+    const locked = findNodeById(result.manifest.screens[0]!.rootNode, lockedNodeId)!;
+    expect(locked.tokenOverrides?.paletteId).toBe(before);
+    expect(getScopedTokens(result.manifest, screenId, lockedNodeId).paletteId).toBe(before);
+    expect(getScopedTokens(result.manifest, screenId, rootNodeId).paletteId).toBe('institutional-navy');
   });
 
   it('removes secondary navigation references when a page is deleted', () => {
