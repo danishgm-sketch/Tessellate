@@ -301,9 +301,9 @@ export function ComposeView() {
         <div className="inline-flex items-center gap-2 rounded-full bg-[#E7EBFF] px-2.5 py-0.5 text-[11px] font-semibold text-[#2547E8] dark:bg-[#1C2752] dark:text-[#879DFF]">
           <Cpu className="h-3 w-3" /> Local product composer
         </div>
-        <h1 className="text-4xl font-bold tracking-tight text-[#111217] dark:text-[#F5F7FA]">
+        <h2 className="text-4xl font-bold tracking-tight text-[#111217] dark:text-[#F5F7FA]">
           Describe the product. Get the interface.
-        </h1>
+        </h2>
         <p className="max-w-3xl text-base text-[#62666F] dark:text-[#A8AFBA]">
           Start with a short brief. Compare three interface directions, then choose one to edit in Workbench.
         </p>
