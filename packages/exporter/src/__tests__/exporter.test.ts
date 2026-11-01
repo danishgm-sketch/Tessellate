@@ -87,6 +87,11 @@ describe('Phase 11: Exporter Package', () => {
   it('does not treat untrusted data prop names as JSX source', () => {
     const manifest = createTestManifest();
     const resourceNode = manifest.screens[0]!.rootNode;
+    resourceNode.resourceRef = {
+      id: 'res_primitive_accordion',
+      slug: 'accordion',
+      version: '1.0.0',
+    };
     resourceNode.props['data-x={alert(1)} data-y'] = 'injected';
 
     const tree = generateSourceTree(manifest);
