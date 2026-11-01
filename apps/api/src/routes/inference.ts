@@ -107,6 +107,10 @@ inferenceRoute.post('/heartbeat', async c => {
 
 inferenceRoute.post('/queue', async c => {
   const data = submitSchema.parse(await body(c));
+  const screenAstJson = JSON.stringify(data.screenAst);
+  if (new TextEncoder().encode(screenAstJson).byteLength > MAX_BODY_BYTES) {
+    return c.json({ error: 'RequestTooLarge', message: 'The normalized screen data exceeds the durable 96 KB limit.' }, 413);
+  }
   if (isNonActionableIntentPrompt(data.prompt)) {
     return c.json({ error: 'AmbiguousPrompt', message: 'Questions, negated intent, and requests to keep the current design are not sent to the laptop model. Rephrase as a direct request; your project was not changed.' }, 400);
   }
@@ -121,7 +125,7 @@ inferenceRoute.post('/queue', async c => {
   const id = crypto.randomUUID();
   const accessToken = crypto.randomUUID() + crypto.randomUUID();
   const ticket = await db.prepare("INSERT INTO inference_tickets(id,clientTokenHash,clientId,prompt,screenAst,designDna,status,createdAt,createdAtMs,expiresAt) SELECT ?,?,?,?,?,?,'queued',?,?,? WHERE (SELECT COUNT(*) FROM inference_tickets WHERE status IN ('queued','processing') AND expiresAt>?)<? RETURNING tokenNumber")
-    .bind(id, await digest(accessToken), clientId, data.prompt, JSON.stringify(data.screenAst), data.designDna ? JSON.stringify(data.designDna) : null, new Date(now).toISOString(), now, now + 300000, now, MAX_ACTIVE_QUEUE).first<{ tokenNumber: number }>();
+    .bind(id, await digest(accessToken), clientId, data.prompt, screenAstJson, data.designDna ? JSON.stringify(data.designDna) : null, new Date(now).toISOString(), now, now + 300000, now, MAX_ACTIVE_QUEUE).first<{ tokenNumber: number }>();
   if (!ticket) return c.json({ error: 'QueueFull', message: 'Laptop queue is full; try later' }, 429);
   const position = await db.prepare("SELECT COUNT(*) AS count FROM inference_tickets WHERE status IN ('queued','processing') AND tokenNumber<=? AND expiresAt>?").bind(ticket.tokenNumber, now).first<{ count: number }>();
   return c.json({ success: true, ticketId: id, accessToken, tokenNumber: ticket.tokenNumber, position: position?.count ?? 1, estimatedWaitSeconds: Math.max(2, (position?.count ?? 1) * 2) });

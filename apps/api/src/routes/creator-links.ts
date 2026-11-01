@@ -109,6 +109,9 @@ creatorLinksRoute.post('/', requireAuth, async (c) => {
   ) {
     return c.json({ error: 'Validation Error', message: 'URL must use HTTP or HTTPS and cannot include embedded credentials' }, 400);
   }
+  if (safeUrl.href.length > 2048) {
+    return c.json({ error: 'Validation Error', message: 'The normalized URL exceeds the 2,048-character storage limit.' }, 400);
+  }
 
   const id = `cl_${crypto.randomUUID()}`;
   const now = new Date().toISOString();

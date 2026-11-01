@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import app from '../index.js';
 import type { Env } from '../types.js';
+import { ProjectNodeSchema } from '@tessellate/schemas';
 
 describe('durable laptop inference API', () => {
   const hostSecret = crypto.randomUUID() + crypto.randomUUID();
@@ -94,6 +95,39 @@ describe('durable laptop inference API', () => {
     const queued = await env.DB!.prepare('SELECT COUNT(*) AS count FROM inference_tickets').first<{ count: number }>();
     expect(queued?.count).toBe(0);
   });
+
+  it('rejects ASTs that exceed the durable size limit only after schema defaults are applied', async () => {
+    const screenAst = {
+      id: 'root',
+      nodeType: 'layout',
+      semanticRole: 'screen',
+      children: Array.from({ length: 13 }, (_, groupIndex) => ({
+        id: `g${groupIndex}`,
+        nodeType: 'layout',
+        semanticRole: 'section',
+        children: Array.from({ length: 100 }, (_, nodeIndex) => ({
+          id: `n${groupIndex}_${nodeIndex}`,
+          nodeType: 'element',
+          semanticRole: 'text',
+        })),
+      })),
+    };
+    const body = JSON.stringify({ ...payload, screenAst });
+    expect(new TextEncoder().encode(body).byteLength).toBeLessThan(96 * 1024);
+    expect(new TextEncoder().encode(JSON.stringify(ProjectNodeSchema.parse(screenAst))).byteLength).toBeGreaterThan(96 * 1024);
+    await heartbeat();
+
+    const response = await request('/queue', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body,
+    });
+
+    expect(response.status).toBe(413);
+    expect(await response.json()).toMatchObject({ error: 'RequestTooLarge' });
+    const queued = await env.DB!.prepare('SELECT COUNT(*) AS count FROM inference_tickets').first<{ count: number }>();
+    expect(queued?.count).toBe(0);
+  }, 30000);
 
   it('cancels queued or leased jobs with the client token and rejects stale completions', async () => {
     await heartbeat();

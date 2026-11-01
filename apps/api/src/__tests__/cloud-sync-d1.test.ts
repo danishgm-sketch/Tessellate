@@ -1,6 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { Miniflare } from 'miniflare';
-import { validProjectFixture } from '@tessellate/schemas';
+import { migrateProjectManifest, validProjectFixture } from '@tessellate/schemas';
+import type { ProjectNode } from '@tessellate/schemas';
 import { createHmac, randomUUID } from 'node:crypto';
 import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -145,6 +146,41 @@ describe('D1 cloud project ownership and optimistic concurrency', () => {
     } finally {
       await request(`/api/projects/${projectId}`, { method: 'DELETE', headers: auth });
     }
+  }, 30000);
+
+  it('rejects a manifest that grows past its storage limit after schema defaults are applied', async () => {
+    const projectId = `proj_normalized_size_${randomUUID()}`;
+    const name = 'Normalized manifest size fixture';
+    const manifest = createProjectManifest(projectId, name);
+    const groupNodes = Array.from({ length: 180 }, (_, groupIndex) => ({
+      id: `g${groupIndex}`,
+      nodeType: 'layout' as const,
+      semanticRole: 'section',
+      children: Array.from({ length: 100 }, (_, nodeIndex) => ({
+        id: `n${groupIndex}_${nodeIndex}`,
+        nodeType: 'element' as const,
+        semanticRole: 'text',
+      })),
+    })) as unknown as ProjectNode[];
+    manifest.screens[0]!.rootNode = {
+      id: 'node_shell_01',
+      nodeType: 'layout',
+      semanticRole: 'screen',
+      children: groupNodes,
+      props: {},
+      slots: {},
+    };
+    expect(JSON.stringify(manifest).length).toBeLessThan(1_500_000);
+    expect(JSON.stringify(migrateProjectManifest(manifest)).length).toBeGreaterThan(1_500_000);
+
+    const response = await request('/api/projects', {
+      method: 'POST',
+      headers: { Authorization: testAuthBearer(alice), 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: projectId, name, manifest }),
+    });
+
+    expect(response.status).toBe(400);
+    expect(await request(`/api/projects/${projectId}`, { headers: { Authorization: testAuthBearer(alice) } })).toHaveProperty('status', 404);
   }, 30000);
 
   it('rejects metadata inherited from an oversized project manifest before saving an update', async () => {

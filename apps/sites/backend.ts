@@ -1,5 +1,7 @@
 /** Server-only transport to the owner's laptop. No tunnel credential reaches the browser. */
 export interface BackendConfiguration { url?: string; secret?: string }
+const STANDARD_UPSTREAM_TIMEOUT_MS = 3_000;
+const AI_UPSTREAM_TIMEOUT_MS = 120_000;
 function offline(path: string, reason: string) {
   const headers = { 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' };
   return path === '/api/inference/health'
@@ -42,7 +44,10 @@ export async function proxyBackend(request: Request, config: BackendConfiguratio
     if ((target.protocol !== 'https:' && !(local && target.protocol === 'http:')) || target.username || target.password) return offline(path, 'Laptop backend transport configuration is invalid');
     target.pathname = path; target.search = source.search;
     const headers = new Headers();
-    for (const name of ['Content-Type', 'Accept', 'Authorization']) { const value = request.headers.get(name); if (value) headers.set(name, value); }
+    const isAiRequest = path === '/api/ai' || path.startsWith('/api/ai/');
+    const forwardedHeaders = ['Content-Type', 'Accept', 'Authorization'];
+    if (isAiRequest) forwardedHeaders.push('x-api-key', 'anthropic-version', 'x-goog-api-key');
+    for (const name of forwardedHeaders) { const value = request.headers.get(name); if (value) headers.set(name, value); }
     const cookie = request.headers.get('Cookie')?.split(';').filter(part => /^\s*(?:__Secure-)?better-auth\./.test(part)).join(';');
     if (cookie) headers.set('Cookie', cookie);
     headers.set('Origin', source.origin);
@@ -52,7 +57,8 @@ export async function proxyBackend(request: Request, config: BackendConfiguratio
     const signed = new Uint8Array(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(identity)));
     headers.set('X-Tessellate-Client', Array.from(signed, byte => byte.toString(16).padStart(2, '0')).join(''));
     const body = ['GET', 'HEAD'].includes(request.method) ? undefined : await boundedBody(request, path.startsWith('/api/inference/') ? 96 * 1024 : 2 * 1024 * 1024);
-    const response = await fetch(target, { method: request.method, headers, body, redirect: 'manual', signal: AbortSignal.timeout(3000) });
+    const timeoutMs = isAiRequest ? AI_UPSTREAM_TIMEOUT_MS : STANDARD_UPSTREAM_TIMEOUT_MS;
+    const response = await fetch(target, { method: request.method, headers, body, redirect: 'manual', signal: AbortSignal.timeout(timeoutMs) });
     if (path === '/api/inference/health' && !response.ok) return offline(path, 'Laptop backend is offline or unhealthy');
     const responseHeaders = new Headers(response.headers);
     responseHeaders.set('Cache-Control', 'no-store');

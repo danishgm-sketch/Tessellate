@@ -160,7 +160,8 @@ function normalizeProjectManifest(
   if (description === null) delete candidate.description;
   else candidate.description = description;
   try {
-    return JSON.stringify(migrateProjectManifest(candidate));
+    const normalized = JSON.stringify(migrateProjectManifest(candidate));
+    return normalized.length <= MAX_PROJECT_MANIFEST_CHARS ? normalized : null;
   } catch {
     return null;
   }

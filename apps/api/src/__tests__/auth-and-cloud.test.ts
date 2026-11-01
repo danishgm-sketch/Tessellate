@@ -558,6 +558,20 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
       }
     });
 
+    it('rejects URLs whose serialized form exceeds the storage limit', async () => {
+      const url = `https://example.test/${'é'.repeat(700)}`;
+      expect(url.length).toBeLessThan(2048);
+      expect(new URL(url).href.length).toBeGreaterThan(2048);
+
+      const response = await request('/api/creator-links', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: tokenA },
+        body: JSON.stringify({ title: 'Encoded path', url }),
+      });
+
+      expect(response.status).toBe(400);
+    });
+
     it('adds, lists, and removes external links for a creator', async () => {
       // 1. Add link
       const addRes = await request('/api/creator-links', {
