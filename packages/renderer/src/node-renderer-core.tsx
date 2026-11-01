@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import {GOLD_RESOURCE_PROPS} from './generated-gold-props.js';
-import { RESOURCE_VARIANTS } from './generated-resource-variants.js';
 import { nodeLayoutClass, nodeRuntimeVariant } from './layout-contract.js';
+import { getSupportedResourceVariants } from './resource-variants.js';
 import type { NodeRendererProps } from './types.js';
 import type { ResourceRendererMap } from './types.js';
 import { normalizeDesignTokens } from './tokens/normalizer.js';
@@ -183,7 +183,7 @@ export function createNodeRenderer(defaultRegistry: ResourceRendererMap) {
     }
 
     const variant = nodeRuntimeVariant(node,childContext?.designDNA ?? {},context?.systemMode);
-    const supportedVariants = RESOURCE_VARIANTS[slug] ?? RESOURCE_VARIANTS[node.resourceRef.id];
+    const supportedVariants = getSupportedResourceVariants(slug, node.resourceRef.id);
     if (variant && supportedVariants && !supportedVariants.includes(variant)) {
       return (
         <div

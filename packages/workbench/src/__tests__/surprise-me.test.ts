@@ -22,6 +22,33 @@ function computeCanonicalSubtreeHash(node: ProjectNode): string {
 }
 
 describe('Requirement 7: True Surprise Me Execution & Lock Preservation', () => {
+  it('changes a supported visible resource variant when an unlocked candidate exists', () => {
+    const manifest = createSampleProject();
+    findNodeById(manifest.screens[0]!.rootNode, 'node-chart-overview')!.variant = 'quiet';
+
+    const result = surpriseMe(manifest, {
+      screenId: manifest.screens[0]!.id,
+      divergenceLevel: 60,
+      seed: 'visible-surprise-variant-regression',
+    });
+    const variantMutation = result.operation.mutations.find(
+      (mutation) => mutation.type === 'CHANGE_VARIANT'
+    );
+
+    expect(variantMutation, 'Surprise Me should include a concrete rendered change').toBeDefined();
+    if (!variantMutation || variantMutation.type !== 'CHANGE_VARIANT') return;
+
+    const previous = findNodeById(manifest.screens[0]!.rootNode, variantMutation.payload.targetNodeId);
+    expect(previous?.resourceRef?.slug).toBe('area-chart');
+    expect(previous?.locks?.node).not.toBe(true);
+    expect(variantMutation.payload.variant).not.toBe(previous?.variant);
+
+    const nextManifest = new HistoryManager().execute(manifest, result.operation).nextManifest;
+    const next = findNodeById(nextManifest.screens[0]!.rootNode, variantMutation.payload.targetNodeId);
+    expect(next?.variant).toBe(variantMutation.payload.variant);
+    expect(result.explanation).toContain('Changed the visible variant');
+  });
+
   it('keeps Surprise Me typography relevant to the employee product archetype', () => {
     const manifest = createSampleProject();
     manifest.seed = '22c8a6fd-24fb-4be2-80cc-457350c086b6-dir-c';
