@@ -4628,5 +4628,6 @@ AUD-387 remains fixed-local-verified: it concerns inherited project metadata in 
 - **Root cause:** The test did not map requests to their initiating route. When navigation canceled a pending preview iframe request, the active route listener could report that cancellation as a failure for the next route.
 - **Affected code:** `tests/e2e/responsive-hardening-step-36.spec.ts`
 - **Remediation:** Track request ownership and put only cross-route `net::ERR_ABORTED` cancellations in the separate `navigationAborts` evidence field. Failures initiated by the active route, other request failures, HTTP errors, console errors, and page errors still fail the test.
+- **Fix commit:** `ececef0bb8c2a4d918233dcfb7659eeedf2d8567`
 - **Local verification:** The same mobile Chromium route matrix passed all 14 surfaces at widths 360, 390, 430, 768, 1024, 1280, 1440, and 1536. The 1024px Compose entry returned 200 with no overflow or runtime/network errors.
 - **Status:** Closed after the local 14-surface × 8-width responsive regression passed. The deployed app code was unchanged; current-head CI is rerunning the corrected instrumentation.

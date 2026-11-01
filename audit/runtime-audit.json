@@ -18254,7 +18254,7 @@
         "tests/e2e/responsive-hardening-step-36.spec.ts"
       ],
       "remediation": "Track each Playwright Request against its initiating route. Classify only net::ERR_ABORTED requests owned by a different route as navigationAborts, retain them in the evidence matrix, and continue treating same-route aborts, other failed requests, HTTP errors, and browser errors as failures.",
-      "fixCommit": null,
+      "fixCommit": "ececef0bb8c2a4d918233dcfb7659eeedf2d8567",
       "status": "closed-local-verified",
       "localVerification": {
         "evidence": [
