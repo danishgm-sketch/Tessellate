@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; AUD-414 and AUD-415 were re-audited in the hosted Chrome runtime at desktop/mobile and closed after Lighthouse Accessibility 100 with no failed audits. The overall product hardening programme remains incomplete.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. The overall product hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -18333,7 +18333,7 @@
       ],
       "remediation": "Use the renderer's certified variant contract to select an unlocked runtime resource on the active screen, apply a CHANGE_VARIANT after structural recomposition, and report the actual resource/variant change. If every eligible resource is locked or lacks alternatives, state that limitation instead of claiming a visible resource change.",
       "fixCommit": "7c1ffab74205470c8970785cdca85f4c5631f5cf",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "evidence": [
           "quality/evidence/step-39/surprise-visible-change/desktop-chrome.json",
@@ -18343,7 +18343,46 @@
           "quality/evidence/step-39/surprise-visible-change/mobile-chrome-before.png",
           "quality/evidence/step-39/surprise-visible-change/mobile-chrome-after.png"
         ],
-        "result": "The mutation-level regression failed before the fix because Surprise Me emitted no concrete resource-variant mutation. It now passes, and the visible Workbench UI regression passes on the production preview at 1440x900 and 390x844 (2/2). The test verifies the manifest variant and rendered data-resource-variant, a visibly different component capture, the truthful action message, and zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Deployed verification is pending. A later full browser run also exposed a renderer import-boundary regression under Gold chunk failure; that separate startup failure is recorded as AUD-412 and fixed by importing the narrow resource-variant contract. Full local verification also completed: frozen install, typecheck, lint, 1,250 Vitest tests passed (1 skipped), audit:all including the 16-point behavioral gate and production build, and the complete Playwright command with desktop/mobile app 383 passed/121 skipped, Sites Worker desktop 199 passed/6 skipped, Sites Worker mobile 165 passed/40 skipped, preview app 3 passed, and zero failures."
+        "result": "The mutation-level regression failed before the fix because Surprise Me emitted no concrete resource-variant mutation. It now passes, and the visible Workbench UI regression passes on the production preview at 1440x900 and 390x844 (2/2). The test verifies the manifest variant and rendered data-resource-variant, a visibly different component capture, the truthful action message, and zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Deployed verification passed on public v68; see deployedVerification. A later full browser run also exposed a renderer import-boundary regression under Gold chunk failure; that separate startup failure is recorded as AUD-412 and fixed by importing the narrow resource-variant contract. Full local verification also completed: frozen install, typecheck, lint, 1,250 Vitest tests passed (1 skipped), audit:all including the 16-point behavioral gate and production build, and the complete Playwright command with desktop/mobile app 383 passed/121 skipped, Sites Worker desktop 199 passed/6 skipped, Sites Worker mobile 165 passed/40 skipped, preview app 3 passed, and zero failures."
+      },
+      "deployedVerification": {
+        "siteVersion": 68,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d374528cccc8191835b84c8fcee4754",
+        "deploymentId": "appgdep_6ae6e3c67d0481918a3963fdeb7460a7",
+        "canonicalSourceCommit": "82f944a6dc5a1eaac6337120d5f3e8e1717b2592",
+        "siteSourceCommit": "a651c4943c171bd2c7a66d639eacdc8ed0f67d9f",
+        "checkedAt": "2026-11-01T07:18:37Z",
+        "viewports": [
+          "1440x900"
+        ],
+        "evidence": [
+          "audit/evidence/deployed-v68-2026-11-01/team-overview-desktop-1440x900.png",
+          "audit/evidence/deployed-v68-2026-11-01/surprise-after-desktop-1440x900-live-recheck.png",
+          "audit/evidence/deployed-v68-2026-11-01/surprise-undo-desktop-1440x900.png"
+        ],
+        "runtime": {
+          "requestCount": 183,
+          "statusCounts": {
+            "200": 181,
+            "304": 2
+          },
+          "failedHttpRequests": 0,
+          "consoleErrors": [],
+          "consoleWarnings": [],
+          "uncaughtExceptions": []
+        },
+        "result": "On the saved Direction C employee project, the visible Surprise control at divergence 60 changed the rendered entity-profile-header variant from quiet to expressive; the after capture shows the profile section changing to a contrasting white surface. The status message names that concrete resource/variant change and says one locked node was preserved. The Your organisation at a glance KPI node remained locked. Undo restored quiet; Redo restored expressive; a final Undo returned the project to the baseline state. No console messages or failed HTTP requests were observed.",
+        "visualComparison": {
+          "componentBounds": {
+            "x": 329,
+            "y": 515,
+            "width": 707,
+            "height": 106
+          },
+          "baselineToSurpriseChangedPixels": 71915,
+          "baselineToUndoChangedPixels": 0,
+          "comparison": "PNG pixel comparison in browser canvas, same 1440x900 captures; crop covers rendered overview-header component only."
+        }
       }
     },
     {
@@ -18372,13 +18411,62 @@
       ],
       "remediation": "Map rail application navigation to the existing collapsible-sidebar runtime resource, while retaining top navigation for marketing screens. Extend the visible Compose-to-Workbench regression to inspect both the resource reference and rendered desktop orientation.",
       "fixCommit": "39b9f1bf66c8f3d1cc5baef5500aa4ad65d4704c",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "evidence": [
           "quality/evidence/step-16/after/compose-workbench-handoff-desktop-chrome.json",
           "quality/evidence/step-16/after/compose-workbench-handoff-mobile-chrome.json"
         ],
-        "result": "The E2E assertion failed before the source fix because rail metadata selected row-oriented minimal-top-nav. The exact Compose to Direction C to Workbench handoff now passes on the production preview at 1440x900 and 390x844 (1/1 each). The desktop run verifies application screens reference collapsible-sidebar, selects Team Overview through the UI, chooses the 1440 canvas preset, and observes column-oriented navigation. Deployed verification is pending. Full local verification also completed: frozen install, typecheck, lint, 1,250 Vitest tests passed (1 skipped), audit:all including the 16-point behavioral gate and production build, and the complete Playwright command with desktop/mobile app 383 passed/121 skipped, Sites Worker desktop 199 passed/6 skipped, Sites Worker mobile 165 passed/40 skipped, preview app 3 passed, and zero failures."
+        "result": "The E2E assertion failed before the source fix because rail metadata selected row-oriented minimal-top-nav. The exact Compose to Direction C to Workbench handoff now passes on the production preview at 1440x900 and 390x844 (1/1 each). The desktop run verifies application screens reference collapsible-sidebar, selects Team Overview through the UI, chooses the 1440 canvas preset, and observes column-oriented navigation. Deployed verification passed on public v68; see deployedVerification. Full local verification also completed: frozen install, typecheck, lint, 1,250 Vitest tests passed (1 skipped), audit:all including the 16-point behavioral gate and production build, and the complete Playwright command with desktop/mobile app 383 passed/121 skipped, Sites Worker desktop 199 passed/6 skipped, Sites Worker mobile 165 passed/40 skipped, preview app 3 passed, and zero failures."
+      },
+      "deployedVerification": {
+        "siteVersion": 68,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d374528cccc8191835b84c8fcee4754",
+        "deploymentId": "appgdep_6ae6e3c67d0481918a3963fdeb7460a7",
+        "canonicalSourceCommit": "82f944a6dc5a1eaac6337120d5f3e8e1717b2592",
+        "siteSourceCommit": "a651c4943c171bd2c7a66d639eacdc8ed0f67d9f",
+        "checkedAt": "2026-11-01T07:18:37Z",
+        "viewports": [
+          "390x844",
+          "1440x900"
+        ],
+        "evidence": [
+          "audit/evidence/deployed-v68-2026-11-01/compose-directions-mobile-390-full.png",
+          "audit/evidence/deployed-v68-2026-11-01/workbench-direction-c-1440-rail-fit.png"
+        ],
+        "handoff": {
+          "direction": "Direction C — Master-Detail Explorer",
+          "projectId": "proj-direction-c-c3e5b144c27f429ab54d95fadc85c958dirc",
+          "screens": [
+            "Marketing Home",
+            "Team Overview",
+            "People Directory",
+            "Teams",
+            "Engagement",
+            "Onboarding",
+            "Settings & Policies"
+          ],
+          "applicationNavigationResource": "collapsible-sidebar",
+          "marketingNavigationResource": "minimal-top-nav",
+          "selectedScreen": "Team Overview",
+          "canvasPreset": "1440",
+          "canvasZoom": "50% to fit the 1436px screen inside the editor's available canvas"
+        },
+        "runtime": {
+          "requestCount": 127,
+          "statusCounts": {
+            "200": 108,
+            "304": 3,
+            "pending-display": 16
+          },
+          "failedHttpRequests": 0,
+          "performanceAstroEntries": 69,
+          "duplicatePerformanceResourceUrls": 0,
+          "consoleErrors": [],
+          "consoleWarnings": [],
+          "uncaughtExceptions": []
+        },
+        "result": "On a cache-bypassing reload of public v68, Compose reported Catalogue ready and produced three distinct approaches: Clean Operations (sidebar, cards), Vibrant Velocity (top navigation, feature grid), and Master-Detail Explorer (rail, three-column workspace). Direction C opened in Workbench with the exact project ID above and seven named screens. Its layer tree references collapsible-sidebar for application navigation and minimal-top-nav for Marketing Home. After choosing the 1440 canvas preset, computed navigation flex-direction was column and its unscaled width was 154px; the complete preview screenshot shows the vertical navigation rail. On mobile Compose at 390x844 all three direction cards rendered without resource errors. The browser emitted no console messages or failed HTTP requests. The DevTools request list retained 16 pending display rows for modules also recorded as successful 200; the page Performance API had one entry per Astro URL and the controls/resources rendered. This is a tooling display inconsistency, not a failed user-visible request."
       }
     },
     {
@@ -18415,7 +18503,7 @@
       ],
       "remediation": "Expose a narrow @tessellate/renderer/resource-variants entry that imports certified variant metadata without loading the renderer root or Gold registry. Use that entry from Surprise Me and add a visible browser fault-injection regression that validates the local error boundary, Workbench interactions, manifest export, and absence of unrelated runtime/network errors.",
       "fixCommit": "7c1ffab74205470c8970785cdca85f4c5631f5cf",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "evidence": [
           "quality/evidence/step-39/resource-chunk-failure/desktop-chrome.json",
@@ -18423,7 +18511,59 @@
           "quality/evidence/step-39/resource-chunk-failure/desktop-chrome-after.png",
           "quality/evidence/step-39/resource-chunk-failure/mobile-chrome-after.png"
         ],
-        "result": "The injected 503 regression passed at 1440x900 and 390x844. Workbench remained interactive, the local error boundary identified editorial-hero, a real UI export parsed against ProjectManifestSchema and preserved that resource ref, the expected 503 was the only HTTP error, no unrelated failed request or console error occurred, and pageErrors was empty. Deployed verification is pending. Full local verification also completed: frozen install, typecheck, lint, 1,250 Vitest tests passed (1 skipped), audit:all including the 16-point behavioral gate and production build, and the complete Playwright command with desktop/mobile app 383 passed/121 skipped, Sites Worker desktop 199 passed/6 skipped, Sites Worker mobile 165 passed/40 skipped, preview app 3 passed, and zero failures."
+        "result": "The injected 503 regression passed at 1440x900 and 390x844. Workbench remained interactive, the local error boundary identified editorial-hero, a real UI export parsed against ProjectManifestSchema and preserved that resource ref, the expected 503 was the only HTTP error, no unrelated failed request or console error occurred, and pageErrors was empty. Deployed desktop and mobile verification passed on public v68; see deployedVerification. Full local verification also completed: frozen install, typecheck, lint, 1,250 Vitest tests passed (1 skipped), audit:all including the 16-point behavioral gate and production build, and the complete Playwright command with desktop/mobile app 383 passed/121 skipped, Sites Worker desktop 199 passed/6 skipped, Sites Worker mobile 165 passed/40 skipped, preview app 3 passed, and zero failures."
+      },
+      "deployedVerification": {
+        "siteVersion": 68,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d374528cccc8191835b84c8fcee4754",
+        "deploymentId": "appgdep_6ae6e3c67d0481918a3963fdeb7460a7",
+        "canonicalSourceCommit": "82f944a6dc5a1eaac6337120d5f3e8e1717b2592",
+        "siteSourceCommit": "a651c4943c171bd2c7a66d639eacdc8ed0f67d9f",
+        "checkedAt": "2026-11-01T07:23:11Z",
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+        "evidence": [
+          "audit/evidence/deployed-v68-2026-11-01/gold-chunk-failure-desktop-1440x900.png",
+          "audit/evidence/deployed-v68-2026-11-01/gold-chunk-failure-desktop-1440x900.json",
+          "audit/evidence/deployed-v68-2026-11-01/gold-chunk-failure-mobile-390x844.png",
+          "audit/evidence/deployed-v68-2026-11-01/gold-chunk-failure-mobile-390x844.json",
+          "audit/evidence/deployed-v68-2026-11-01/gold-chunk-failure-project.tess.json",
+          "audit/evidence/deployed-v68-2026-11-01/gold-chunk-failure-project-mobile.tess.json"
+        ],
+        "runtime": {
+          "routeHttpStatus": 200,
+          "interceptedGoldResource": "editorial-hero",
+          "expectedInjectedHttpFailures": [
+            503
+          ],
+          "otherHttpFailures": [],
+          "expectedFailedRequests": [
+            "/_astro/editorial-hero.CN6KYWuK.js"
+          ],
+          "unexpectedFailedRequests": [],
+          "unexpectedConsoleErrors": [],
+          "uncaughtExceptions": [],
+          "mobileDocumentWidth": 390,
+          "mobileBodyWidth": 390
+        },
+        "manifestValidation": {
+          "desktop": {
+            "valid": true,
+            "projectId": "local-c4d21def-2dfb-4e5b-a8ac-b1291b18bfa5",
+            "resourceNodeId": "node-screen-marketing-home-hero-2",
+            "resourceRef": "editorial-hero"
+          },
+          "mobile": {
+            "valid": true,
+            "projectId": "local-06cfd2df-55f6-4b1a-aeba-cbce1ec0c66e",
+            "resourceNodeId": "node-screen-marketing-home-hero-2",
+            "resourceRef": "editorial-hero"
+          },
+          "validator": "ProjectManifestSchema"
+        },
+        "result": "Injected one 503 for the public v68 editorial-hero Gold module at desktop and mobile. Workbench hydrated on both routes, rendered the resource-local failure boundary, kept the project usable, and completed visible manifest export. Both downloaded manifests passed ProjectManifestSchema and retained the editorial-hero resource node. At 390x844 the error boundary fit within the 390px viewport; document and body widths were both 390px. The injected 503 and its expected dynamic-import console messages were the only failure evidence; there were no unexpected HTTP failures, console errors, or uncaught exceptions."
       }
     },
     {
@@ -18666,8 +18806,46 @@
           "audit/evidence/deployed-v68-2026-11-01/lighthouse-brief-desktop.json"
         ]
       }
+    },
+    {
+      "id": "AUD-416",
+      "severity": "low",
+      "route": "/compose",
+      "viewport": "390x844",
+      "category": "network",
+      "title": "An open pre-deployment tab can request an obsolete Astro asset hash",
+      "expected": "When a review Site is updated while a user tab remains open, a later lazy resource load should either remain available or recover with a clear, safe reload path.",
+      "actual": "During the v68 audit, an already-open pre-v68 Workbench tab attempted to load the previous dashboard-kpi-grid content hash and received 404, then displayed the resource recovery message asking the user to reload. A cache-bypassing reload fetched the current v68 chunk successfully and a fresh Compose run generated all three directions without a failed request. This was limited to the stale tab; fresh v68 sessions passed.",
+      "reproduction": [
+        "Keep a Workbench tab from an earlier Sites version open through a public Site deployment.",
+        "From that old in-memory client, start a workflow that lazy-loads a resource whose hashed asset changed.",
+        "Observe the old hash request return 404 and the local resource recovery message; reload without cache and retry."
+      ],
+      "console": [
+        "Stale client: failed dynamic module load for the obsolete dashboard-kpi-grid asset."
+      ],
+      "network": [
+        "Stale client GET /_astro/dashboard-kpi-grid.BJFAlBzq.js returned 404.",
+        "After cache-bypassing reload, the current v68 dashboard-kpi-grid.BT2VlS6G.js returned 200."
+      ],
+      "screenshot": null,
+      "rootCause": "The Sites deployment replaces the static Astro asset set while already-open tabs retain JavaScript that references content hashes from the previous deployment. This is inferred from the old URL returning 404 and the current hash succeeding after reload.",
+      "affectedFiles": [
+        "ChatGPT Sites static deployment lifecycle; Astro content-hashed client chunks"
+      ],
+      "remediation": "The error boundary preserves the project reference and instructs the user to reload, which recovered the workflow. Keep the pre-deployment version skew documented; retain previous hashed assets only if Sites later supports safe immutable-asset retention. No fresh v68 route or new-session failure was observed.",
+      "fixCommit": null,
+      "status": "documented-host-limitation",
+      "deployedVerification": {
+        "siteVersion": 68,
+        "checkedAt": "2026-11-01T07:24:38Z",
+        "evidence": [
+          "audit/evidence/deployed-v68-2026-11-01/runtime.json"
+        ],
+        "result": "Observed once from an already-open pre-v68 browser context; fresh v68 reload and Compose re-run succeeded with the current asset hash."
+      }
     }
   ],
-  "generatedAt": "2026-11-01T07:04:42.707Z",
+  "generatedAt": "2026-11-01T07:24:38Z",
   "latestDeploymentEvidence": "audit/evidence/deployed-v68-2026-11-01/runtime.json"
 }

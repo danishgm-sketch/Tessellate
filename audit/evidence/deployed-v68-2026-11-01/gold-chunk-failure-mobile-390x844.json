@@ -1,0 +1,58 @@
+{
+  "siteVersion": 68,
+  "viewport": "390x844",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+  "routeHttpStatus": 200,
+  "interceptedCount": 1,
+  "visibleWorkbenchHeading": true,
+  "visibleResourceErrorBoundary": true,
+  "responsiveWidths": {
+    "width": 390,
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "boundary": {
+      "x": 17,
+      "y": 373,
+      "width": 356,
+      "right": 373
+    }
+  },
+  "projectId": "local-06cfd2df-55f6-4b1a-aeba-cbce1ec0c66e",
+  "preservedNodeId": "node-screen-marketing-home-hero-2",
+  "preservedResource": "editorial-hero",
+  "injectedHttpErrors": [
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/editorial-hero.CN6KYWuK.js",
+      "status": 503
+    }
+  ],
+  "otherHttpErrors": [],
+  "failedRequests": [
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/editorial-hero.CN6KYWuK.js",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "expectedConsoleMessages": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+    },
+    {
+      "type": "error",
+      "text": "TypeError: Failed to fetch dynamically imported module: https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/editorial-hero.CN6KYWuK.js"
+    }
+  ],
+  "unexpectedConsoleMessages": [],
+  "pageErrors": [],
+  "screenshot": "audit/evidence/deployed-v68-2026-11-01/gold-chunk-failure-mobile-390x844.png",
+  "result": "Public v68 Workbench remained usable at 390x844 during the injected Gold resource 503. The local error boundary remained visible, the project reference was preserved through the visible manifest export, body and document widths both stayed 390px, and the only failed request was the deliberate editorial-hero chunk interception. No unexpected console messages or uncaught exceptions occurred.",
+  "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d374528cccc8191835b84c8fcee4754",
+  "manifestValidation": {
+    "valid": true,
+    "validator": "ProjectManifestSchema",
+    "manifest": "gold-chunk-failure-project-mobile.tess.json",
+    "resourceRef": "editorial-hero",
+    "resourceNodeId": "node-screen-marketing-home-hero-2"
+  }
+}

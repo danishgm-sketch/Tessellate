@@ -1,0 +1,42 @@
+{
+  "siteVersion": 68,
+  "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d374528cccc8191835b84c8fcee4754",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+  "viewport": "1440x900",
+  "routeHttpStatus": 200,
+  "injectedRequest": "/_astro/editorial-hero.*.js",
+  "interceptedCount": 1,
+  "visibleWorkbenchHeading": true,
+  "visibleResourceErrorBoundary": true,
+  "projectReferencePreserved": true,
+  "exportedManifest": "gold-chunk-failure-project.tess.json",
+  "projectId": "local-c4d21def-2dfb-4e5b-a8ac-b1291b18bfa5",
+  "preservedNodeId": "node-screen-marketing-home-hero-2",
+  "expectedHttpErrors": [
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/editorial-hero.CN6KYWuK.js",
+      "status": 503
+    }
+  ],
+  "otherHttpErrors": [],
+  "failedRequests": [
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/editorial-hero.CN6KYWuK.js",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "consoleMessages": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+    },
+    {
+      "type": "error",
+      "text": "TypeError: Failed to fetch dynamically imported module: https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/editorial-hero.CN6KYWuK.js"
+    }
+  ],
+  "unexpectedConsoleErrors": [],
+  "pageErrors": [],
+  "screenshot": "audit/evidence/deployed-v68-2026-11-01/gold-chunk-failure-desktop-1440x900.png",
+  "result": "Public v68 Workbench hydrated despite the injected Gold resource 503. The resource-local error boundary identified editorial-hero and preserved the Workbench controls. UI manifest export downloaded and parsed; canonical project id local-c4d21def-2dfb-4e5b-a8ac-b1291b18bfa5 retained node node-screen-marketing-home-hero-2 pointing to editorial-hero. One expected 503 was the only HTTP failure; no other failed request, unexpected console warning/error, or uncaught page error occurred."
+}
