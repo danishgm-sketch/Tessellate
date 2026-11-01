@@ -213,6 +213,7 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
         )}
 
         <div
+          role="status"
           data-testid="history-save-status"
           data-state={historySaveStatus}
           title={historySaveStatus === 'unavailable' ? 'Undo and redo history may not survive a reload on this device' : `Project and undo history ${historySaveStatus} on this device`}

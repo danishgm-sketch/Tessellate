@@ -23,7 +23,7 @@ export function ShowcasePreview({ manifest }: { manifest: ProjectManifest }) {
       <h2 id="showcase-preview-heading" className="text-xl font-semibold">
         Example: {activeScreen.name}
       </h2>
-      <div className="overflow-auto border" aria-label={`${activeScreen.name} example screen`}>
+      <div role="region" className="overflow-auto border" aria-label={`${activeScreen.name} example screen`}>
         <ManifestRenderer manifest={manifest} activeScreenId={active} context={{ viewport: 'desktop', reducedMotion: true }} />
       </div>
       <dl className="grid gap-4 border-t pt-4 sm:grid-cols-3">
