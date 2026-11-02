@@ -634,7 +634,7 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         const exportedNavigationNode = page.locator('[data-node-id="node-nav"]');
         const projectScreenNavigation = exportedNavigationNode.getByRole('navigation', { name: 'Product screens' });
         const projectNavigationToggle = exportedNavigationNode.locator('button[aria-controls]');
-        expect(await projectNavigationToggle.getAttribute('aria-label')).toBe('Open navigation');
+        expect(await projectNavigationToggle.getAttribute('aria-label')).toBe('Menu, open navigation');
         expect(await projectNavigationToggle.isVisible(), 'mobile exported navigation should expose its collapse toggle').toBe(true);
         expect(await projectScreenNavigation.getByRole('link', { name: 'Workspace 1', exact: true }).isVisible()).toBe(false);
         await projectNavigationToggle.click();

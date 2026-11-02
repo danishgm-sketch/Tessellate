@@ -59,7 +59,7 @@ export function MinimalTopNav({
             className="hidden @max-md:inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-md border border-current/20 px-3 text-xs font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             aria-controls={navigationId}
             aria-expanded={navigationOpen}
-            aria-label={navigationOpen ? 'Close navigation' : 'Open navigation'}
+            aria-label={navigationOpen ? 'Close navigation' : 'Menu, open navigation'}
             onClick={() => setNavigationOpen((open) => !open)}
           >
             <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-4 w-4">

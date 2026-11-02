@@ -25,7 +25,8 @@ test('Minimal Top Navigation collapses inside a narrow preview and remains keybo
     await page.setViewportSize({ width, height: 844 });
     await expect(toggle).toHaveCount(1, { timeout: 3000 });
     await expect(toggle).toBeVisible();
-    await expect(toggle).toHaveAccessibleName('Open navigation');
+    await expect(toggle).toHaveText('Menu');
+    await expect(toggle).toHaveAccessibleName('Menu, open navigation');
     await expect(navigation).toBeHidden();
     const collapsedMetrics = await preview.locator('body').evaluate((body) => ({
       clientWidth: body.clientWidth,
@@ -36,9 +37,13 @@ test('Minimal Top Navigation collapses inside a narrow preview and remains keybo
     if (testInfo.project.name === 'sites-mobile-chromium') await toggle.tap();
     else await toggle.press('Enter');
     await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    await expect(toggle).toHaveText('Close');
     await expect(toggle).toHaveAccessibleName('Close navigation');
     await expect(navigation).toBeVisible();
     await expect(preview.getByText('Overview', { exact: true })).toBeVisible();
+    if (width === 390) {
+      await page.screenshot({ path: testInfo.outputPath('minimal-top-nav-mobile-open-after.png') });
+    }
     const expandedMetrics = await preview.locator('body').evaluate((body) => ({
       clientWidth: body.clientWidth,
       scrollWidth: body.scrollWidth,

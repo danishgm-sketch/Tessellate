@@ -235,7 +235,7 @@ for (const fixture of listFixtures) {
     if (fixture.slug === 'minimal-top-nav') {
       const navigationToggle = frame.locator('button[aria-controls]');
       await expect(navigationToggle).toBeVisible();
-      await expect(navigationToggle).toHaveAccessibleName('Open navigation');
+      await expect(navigationToggle).toHaveAccessibleName('Menu, open navigation');
       await navigationToggle.click();
       await expect(navigationToggle).toHaveAttribute('aria-expanded', 'true');
       await expect(navigationToggle).toHaveAccessibleName('Close navigation');
