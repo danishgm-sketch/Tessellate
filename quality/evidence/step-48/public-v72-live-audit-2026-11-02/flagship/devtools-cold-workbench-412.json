@@ -1,0 +1,59 @@
+{
+  "id": "AUD-452",
+  "environment": "deployed-public-review",
+  "siteVersion": 72,
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+  "capturedAt": "2026-11-02",
+  "viewport": {
+    "width": 412,
+    "height": 823,
+    "deviceScaleFactor": 1.75,
+    "device": "mobile Chrome 136 emulation"
+  },
+  "throttling": {
+    "cpuSlowdown": 4,
+    "network": "Fast 4G",
+    "cache": "bypassed"
+  },
+  "metrics": {
+    "cls": 0.5028,
+    "lcpMs": 3826,
+    "ttfbMs": 45,
+    "renderDelayMs": 3781,
+    "shiftClusterStartMs": 3809,
+    "shiftClusterDurationMs": 1000
+  },
+  "shiftedWrappers": [
+    "hero",
+    "value-proposition",
+    "conversion-cta",
+    "footer"
+  ],
+  "network": {
+    "requestCount": 39,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "statuses": {
+      "200": 38,
+      "304": 1
+    }
+  },
+  "console": {
+    "messages": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "accessibleSnapshot": {
+    "captured": true,
+    "workbenchControlsPresent": true,
+    "contentDomain": "employee experience",
+    "menuVisibleLabel": "Menu",
+    "menuAccessibleName": "Open navigation"
+  },
+  "companionScreenshot": {
+    "path": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/generated-workbench-390x844.png",
+    "viewport": "390x844",
+    "note": "Previously captured v72 screenshot; not the same 412x823 trace viewport."
+  },
+  "fixStatus": "code fix is in PR #8 at 25954eda8bd578811da89769f0903f5ff4b3b373; deployed verification pending"
+}

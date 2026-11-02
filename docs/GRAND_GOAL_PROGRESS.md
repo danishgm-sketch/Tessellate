@@ -42,9 +42,12 @@ source identity and rights restrictions.
   41406642682 and 41406660080 were still in the Playwright/Axe step at 07:48Z;
   Component Quality Gate run 41406660036 passed. These CI jobs cover `8768e58`
   only and do not certify the three newer local commits.
-- PR #8 is open and unmerged. Its remote head remains `8768e58`; local
-  remediation commits must be pushed before a fresh exact-head CI run can
-  certify them.
+- At the preceding checkpoint PR #8 was open and unmerged at
+  `25954eda8bd578811da89769f0903f5ff4b3b373`; its push CI, PR CI and Component
+  Quality Gate runs were still active. This continuation added a separate
+  keyboard regression for AUD-451 and fresh deployed DevTools evidence. Those
+  existing runs do not certify the added regression/evidence commit; the new
+  exact branch head needs fresh CI before publication.
 - Public review Site: `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`
   remains v72. D1/R2 are unprovisioned; no deployment or infrastructure change
   was made in this checkpoint.
@@ -60,8 +63,10 @@ source identity and rights restrictions.
   pending.
 - **AUD-451, high:** tapping that menu selected the enclosing renderer node
   and switched the mobile Workbench to Inspect. Fixed locally by allowing
-  semantic interactive descendants to handle their own events; deployed
-  verification is pending.
+  semantic interactive descendants to handle their own events. A keyboard
+  Enter activation also reproduces on public v72; the new test fails there
+  because the preview toggle detaches and passes on the local Sites Worker.
+  Deployed verification is pending.
 - **AUD-452, high/open; fix committed, deployed verification pending:** a fresh cache-bypass DevTools trace on public v72
   reproduced CLS 0.5028 at 412x823, DPR 1.75, 4x CPU and Fast 4G. It identifies
   the hero, value-proposition, conversion CTA and footer wrappers shifting as
@@ -72,7 +77,11 @@ source identity and rights restrictions.
   first load, reload and injected partial failure all measured CLS 0.00. The
   failure case retained its visible resource-specific error, one expected
   aborted request and zero uncaught exceptions. Four related mobile Workbench
-  regressions pass. Deployed verification remains pending.
+  regressions pass. A new Chrome DevTools trace on the live v72 Site reproduced
+  CLS 0.5028 with LCP 3,826 ms (TTFB 45 ms; render delay 3,781 ms); 39 requests
+  completed without HTTP failures or console messages. Machine evidence:
+  `quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/devtools-cold-workbench-412.json`.
+  Deployed verification remains pending.
 - **AUD-453, medium:** the internal progress ledger was included in public docs
   routes. Fixed locally by excluding it from the public route set and removing
   the absolute worktree path; the route now returns 404 across four browser
@@ -103,13 +112,13 @@ source identity and rights restrictions.
    CLI/MCP, accessibility, performance, reliability and security acceptance
    work in the order defined by the source programme.
 
-**Next:** verify the PR branch still has the expected `8768e58` remote head,
-push the three scoped local commits as a fast-forward, and wait for green CI on
-that exact new head. Then mirror the exact pushed source into the existing
-Sites source, build/save/deploy that source to the existing review Site, and
-rerun the route/docs plus mobile Workbench label, interaction, and cold-load
-checks. Public v72 remains unchanged until the deployed verification passes;
-close AUD-450–453 only after their corresponding hosted checks pass.
+**Next:** push the keyboard regression and captured evidence to PR #8, then wait
+for push CI, PR CI and the Component Quality Gate on that exact new head. If
+they pass, mirror the exact source into the existing Sites source, build/save/
+deploy it to the review Site, and rerun route/docs plus mobile Workbench label,
+keyboard/tap interaction and cold-load checks. Public v72 remains unchanged
+until deployed verification passes; close AUD-450–453 only after their
+corresponding hosted checks pass.
 ## Evidence and unresolved conditions
 
 - Detailed deployed audit: [`../quality/STEP_48_EVIDENCE.md`](../quality/STEP_48_EVIDENCE.md).

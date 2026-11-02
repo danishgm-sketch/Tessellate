@@ -20363,11 +20363,12 @@
       "category": "state",
       "title": "Tapping a preview navigation control switched Workbench to Inspect",
       "expected": "A tap inside the preview’s interactive menu should open the menu and leave the Workbench in Preview mode.",
-      "actual": "On public v72, tapping the mobile navigation toggle selected its enclosing rendered node and switched the mobile Workbench to Inspect. The preview subtree unmounted before the toggle could expose its expanded state; the pre-fix visible-UI regression failed.",
+      "actual": "On public v72, tapping the mobile navigation toggle selected its enclosing rendered node and switched the mobile Workbench to Inspect. The preview subtree unmounted before the toggle could expose its expanded state; the pre-fix visible-UI regression failed. Keyboard activation is affected too: focusing the visible Menu button and pressing Enter selects the enclosing navigation layout node, removes the preview control, and exposes its Workbench inspector.",
       "reproduction": [
         "Open /workbench#screen-marketing-home on public v72 at 390x844.",
         "With the Mobile Workbench in Preview mode, tap the rendered Menu toggle.",
-        "Observe that the preview is replaced by Inspect before the menu opens; tests/e2e/workbench-mobile-preview-interactions.spec.ts fails because the toggle is detached."
+        "Observe that the preview is replaced by Inspect before the menu opens; tests/e2e/workbench-mobile-preview-interactions.spec.ts fails because the toggle is detached.",
+        "Focus the visible Menu button and press Enter; observe the navigation layout node selected in Inspect and the preview toggle detached."
       ],
       "console": [],
       "network": [
@@ -20386,7 +20387,15 @@
         "failingDeployedRegression": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/workbench-label-interaction-pre-fix-public-v72.log",
         "localAfterScreenshot": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/minimal-top-nav-mobile-open-after.png",
         "postFixRegression": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/workbench-mobile-fixes-after-reentry.log",
-        "deployedVerificationPending": true
+        "deployedVerificationPending": true,
+        "keyboardActivation": {
+          "machineRecord": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/aud451-keyboard-activation.json",
+          "publicAfterScreenshot": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/aud451-keyboard-enter-after-public-v72.png",
+          "redRegression": "Playwright keyboard regression failed against public v72 because the preview toggle detached before aria-expanded became true.",
+          "fixedLocalScreenshot": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/aud451-keyboard-enter-after-local-sites.png",
+          "fixedLocalRegression": "The same keyboard regression passed against the local Sites Worker built from 25954eda8bd578811da89769f0903f5ff4b3b373.",
+          "deploymentVerificationPending": true
+        }
       }
     },
     {

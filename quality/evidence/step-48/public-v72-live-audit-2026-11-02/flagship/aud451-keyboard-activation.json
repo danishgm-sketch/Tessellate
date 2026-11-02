@@ -1,0 +1,39 @@
+{
+  "id": "AUD-451",
+  "environment": "deployed-public-review",
+  "siteVersion": 72,
+  "route": "/workbench#screen-marketing-home",
+  "capturedAt": "2026-11-02",
+  "viewport": "390x844 (Playwright mobile Chromium)",
+  "action": [
+    "Open the visible Menu control in the Workbench preview.",
+    "Focus the Menu button and press Enter."
+  ],
+  "expected": "The menu opens, the Menu button remains mounted, and Workbench stays in Preview.",
+  "actual": "The renderer selects its enclosing layout node. The preview menu control disappears and the Workbench inspector shows the navigation layout node. The keyboard regression times out because the toggle is detached before aria-expanded can become true.",
+  "console": {
+    "messages": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "network": {
+    "failedRequests": 0,
+    "httpErrors": 0
+  },
+  "redRegression": {
+    "test": "tests/e2e/workbench-mobile-preview-interactions.spec.ts",
+    "result": "failed against public v72 as expected",
+    "failure": "Menu toggle detached before aria-expanded became true"
+  },
+  "fixedLocalRegression": {
+    "test": "tests/e2e/workbench-mobile-preview-interactions.spec.ts",
+    "result": "passed against the Sites Worker built from 25954eda8bd578811da89769f0903f5ff4b3b373"
+  },
+  "screenshots": {
+    "before": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/workbench-mobile-accessible-name-before.png",
+    "publicAfterEnter": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/aud451-keyboard-enter-after-public-v72.png",
+    "fixedLocalAfterEnter": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/aud451-keyboard-enter-after-local-sites.png"
+  },
+  "fixCommit": "174b3c7c006864d5486f7e6b93953e8e1d6d93f1",
+  "deploymentVerificationPending": true
+}
