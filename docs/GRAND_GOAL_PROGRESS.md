@@ -29,13 +29,22 @@ source identity and rights restrictions.
 
 - Working copy: a dedicated Codex worktree for this review branch.
 - Branch: `codex/aud443-deployed-verification`.
-- Validated starting commit: `81695b52d659ad46561f4c1570de48af185c23c5`.
+- The local remediation code commits end at
+  `8c5a4f1d06c187b2af9c766188ed330b8fc706a1`. The review branch contains
+  three scoped local remediation commits after the
+  pushed AUD-452 commit: renderer control handling
+  (`174b3c7c006864d5486f7e6b93953e8e1d6d93f1`), mobile menu accessible name
+  (`046146fe474a4e07831a5c0e03e39913e9dccfc6`), and internal docs route
+  exclusion (`8c5a4f1d06c187b2af9c766188ed330b8fc706a1`). They pass the local
+  browser profiles recorded below but have not yet been pushed.
 - AUD-452 fix commit `8768e58a4d6a554d8e0e5319b0cd9d54edf7de30` is pushed to
   PR #8 branch `codex/step-48-review-fixes`. The new exact-head CI runs
-  41406642682 and 41406660080 plus Component Quality Gate run 41406660036 are
-  in progress; deployment waits for their result.
-- PR #8 is open and unmerged. Previous passing checks on `81695b52...` do not
-  certify the new commit.
+  41406642682 and 41406660080 were still in the Playwright/Axe step at 07:48Z;
+  Component Quality Gate run 41406660036 passed. These CI jobs cover `8768e58`
+  only and do not certify the three newer local commits.
+- PR #8 is open and unmerged. Its remote head remains `8768e58`; local
+  remediation commits must be pushed before a fresh exact-head CI run can
+  certify them.
 - Public review Site: `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`
   remains v72. D1/R2 are unprovisioned; no deployment or infrastructure change
   was made in this checkpoint.
@@ -94,11 +103,13 @@ source identity and rights restrictions.
    CLI/MCP, accessibility, performance, reliability and security acceptance
    work in the order defined by the source programme.
 
-**Next:** wait for exact-head CI on `8768e58a...`. If it passes, mirror that
-source commit into the existing Sites source, build and save an artifact from
-the exact pushed tree, deploy it to the existing review Site, and rerun the
-normal plus partial-failure mobile Workbench checks there. Public v72 remains
-unchanged until then; close AUD-452 only after the hosted recheck passes.
+**Next:** verify the PR branch still has the expected `8768e58` remote head,
+push the three scoped local commits as a fast-forward, and wait for green CI on
+that exact new head. Then mirror the exact pushed source into the existing
+Sites source, build/save/deploy that source to the existing review Site, and
+rerun the route/docs plus mobile Workbench label, interaction, and cold-load
+checks. Public v72 remains unchanged until the deployed verification passes;
+close AUD-450–453 only after their corresponding hosted checks pass.
 ## Evidence and unresolved conditions
 
 - Detailed deployed audit: [`../quality/STEP_48_EVIDENCE.md`](../quality/STEP_48_EVIDENCE.md).

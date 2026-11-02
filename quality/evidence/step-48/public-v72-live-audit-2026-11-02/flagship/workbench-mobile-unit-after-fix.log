@@ -1,0 +1,32 @@
+$ vitest run
+
+ RUN  v4.1.12 C:/Users/ismay/.codex/worktrees/tessellate-grand-goal-hardening
+
+ ❯ packages/exporter/src/__tests__/standalone-export-fidelity.test.ts (10 tests | 1 failed) 24943ms
+     × builds standalone project with real pnpm install and verifies interactive execution in Playwright via vite preview 24836ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/exporter/src/__tests__/standalone-export-fidelity.test.ts > Requirement 8: Standalone Export Fidelity > builds standalone project with real pnpm install and verifies interactive execution in Playwright via vite preview
+AssertionError: expected 'Menu, open navigation' to be 'Open navigation' // Object.is equality
+
+Expected: "Open navigation"
+Received: "Menu, open navigation"
+
+ ❯ packages/exporter/src/__tests__/standalone-export-fidelity.test.ts:637:74
+    635|         const projectScreenNavigation = exportedNavigationNode.getByRo…
+    636|         const projectNavigationToggle = exportedNavigationNode.locator…
+    637|         expect(await projectNavigationToggle.getAttribute('aria-label'…
+       |                                                                          ^
+    638|         expect(await projectNavigationToggle.isVisible(), 'mobile expo…
+    639|         expect(await projectScreenNavigation.getByRole('link', { name:…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 84 passed (85)
+      Tests  1 failed | 1281 passed | 1 skipped (1283)
+   Start at  05:30:02
+   Duration  67.81s (transform 5.14s, setup 0ms, import 62.72s, tests 172.62s, environment 10ms)
+
+[ELIFECYCLE] Test failed. See above for more details.

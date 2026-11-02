@@ -1,0 +1,22 @@
+[WebServer] (node:38960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:80120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [sites-chromium] › tests\e2e\minimal-top-nav-responsive-collapse.spec.ts:3:1 › Minimal Top Navigation collapses inside a narrow preview and remains keyboard-operable (1.5s)
+  -  2 [sites-chromium] › tests\e2e\workbench-mobile-accessible-label.spec.ts:3:1 › Mobile Workbench navigation includes its visible Menu label in the accessible name
+{"project":"sites-chromium","viewport":{"width":390,"height":844},"userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.8010.12 Safari/537.36","firstLoadCumulativeLayoutShift":0.017540440437500252,"reloadCumulativeLayoutShift":0.017540440437500252,"delayedChunks":["/_astro/minimal-top-nav.BckvualU.js","/_astro/feature-bento.CR3oOG6T.js","/_astro/cta-minimal.9ScfhZCU.js","/_astro/footer-product.DBXWiaig.js","/_astro/minimal-top-nav.BckvualU.js","/_astro/feature-bento.CR3oOG6T.js","/_astro/cta-minimal.9ScfhZCU.js","/_astro/footer-product.DBXWiaig.js"]}
+  ok 3 [sites-chromium] › tests\e2e\workbench-mobile-layout-stability.spec.ts:3:1 › Mobile Workbench avoids visible layout shifts while Gold resources load slowly (3.5s)
+  -  4 [sites-chromium] › tests\e2e\workbench-mobile-preview-interactions.spec.ts:3:1 › Mobile Workbench preview controls work without switching to Inspect
+(node:88248) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 5 [sites-mobile-chromium] › tests\e2e\minimal-top-nav-responsive-collapse.spec.ts:3:1 › Minimal Top Navigation collapses inside a narrow preview and remains keyboard-operable (979ms)
+  ok 6 [sites-mobile-chromium] › tests\e2e\workbench-mobile-accessible-label.spec.ts:3:1 › Mobile Workbench navigation includes its visible Menu label in the accessible name (920ms)
+{"project":"sites-mobile-chromium","viewport":{"width":390,"height":844},"userAgent":"Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.8010.12 Mobile Safari/537.36","firstLoadCumulativeLayoutShift":0.017540440437500252,"reloadCumulativeLayoutShift":0.017540440437500252,"delayedChunks":["/_astro/minimal-top-nav.BckvualU.js","/_astro/feature-bento.CR3oOG6T.js","/_astro/cta-minimal.9ScfhZCU.js","/_astro/footer-product.DBXWiaig.js","/_astro/minimal-top-nav.BckvualU.js","/_astro/feature-bento.CR3oOG6T.js","/_astro/cta-minimal.9ScfhZCU.js","/_astro/footer-product.DBXWiaig.js"]}
+  ok 7 [sites-mobile-chromium] › tests\e2e\workbench-mobile-layout-stability.spec.ts:3:1 › Mobile Workbench avoids visible layout shifts while Gold resources load slowly (3.5s)
+  ok 8 [sites-mobile-chromium] › tests\e2e\workbench-mobile-preview-interactions.spec.ts:3:1 › Mobile Workbench preview controls work without switching to Inspect (892ms)
+
+  2 skipped
+  6 passed (17.5s)

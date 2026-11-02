@@ -1,0 +1,932 @@
+$ pnpm audit:release-gate && pnpm audit:resource-isolation && pnpm build && pnpm audit:budgets && pnpm audit:licenses && pnpm audit:secrets && pnpm audit:dependencies
+$ tsx scripts/verify-release-gate.ts
+========================================================
+ TESSELLATE — CORE FIDELITY RELEASE GATE AUDIT
+========================================================
+
+[✓] Gate 1: 324 canonical resources exist & 40 Gold verified
+    Validated 324/324 canonical resources; exactly 40/40 verified Gold resources.
+[✓] Gate 2: 972 curated configurations exist
+    Found 972/972 curated configurations across Quiet, Expressive, and Nocturne variants.
+[✓] Gate 3: 36 page compositions exist
+    Found 36 full-page compositions across marketing, auth, dashboard, settings, and utility.
+[✓] Gate 4: 12 product blueprints exist
+    Found 12 multi-page product blueprints across standard product archetypes.
+[✓] Gate 5: 30 DNA presets exist & inheritance works
+    Found 30/30 Design DNA presets; verified parameter inheritance and local overrides.
+[✓] Gate 6: 8 showcase projects exist with distinct DNA
+    Found 8 showcase projects occupying non-overlapping DNA coordinates.
+[✓] Gate 7: 10 tools exist
+    Found 10/10 interactive tools in apps/site/src/pages/tools/.
+[✓] Gate 8: Deterministic composition & direction pipeline works
+    Composed project with archetype "analytics". Generated 3 valid, distinct ProjectManifest directions.
+[✓] Gate 9: BYO-AI structured planning works
+    Executed BYO-AI structured planning (action: "recompose-screen", summary: "Increase metric density and highlight transaction throughput", zero persisted secrets).
+[✓] Gate 10: Workbench locks, recomposition & Surprise Me work
+    Verified byte-level locked node preservation through deep SHA-256 canonical hash across recomposition (divergenceLevel: 20, 70, 95) and Surprise Me (divergenceLevel: 20, 60, 90).
+[✓] Gate 11: Real resource replacement works
+    Retrieved 1 ranked candidate resources from catalog. Successfully replaced node "node-screen-overview-activity-feed-4" with real resource "notification-centre".
+[✓] Gate 12: Faithful standalone export works
+    Exported standalone Vite + React + Tailwind 4 tree with 7 resolved components; zero runtime dependency on Tessellate.
+[✓] Gate 13: Registry / CLI / MCP work
+    Verified shadcn registry endpoints (/r/button.json & /r/index.json), CLI invocation (v0.1.0), and live MCP tool execution (search_resources & get_resource).
+[✓] Gate 14: Cloud save/publish works for authenticated users
+    Authenticated project list/create/owner-read pass; non-owner read is denied.
+[✓] Gate 15: Accessibility, security & performance gates pass
+    Verified 0 secrets/eval violations across source, 324 open licenses (MIT/Apache-2.0) with quality >=80, WCAG 2.2 AA Axe automated suite, and bundle budget audit.
+[✓] Gate 16: Documentation & Projection Audit (Projections for edge/serverless operational margins)
+    Verified £1.00/month infrastructure projection (ceiling <£20/month) and complete autonomous agent documentation.
+
+--------------------------------------------------------
+✓ RELEASE GATE PASSED: ALL 16/16 CRITERIA BEHAVIOURALLY VERIFIED!
+========================================================
+
+$ tsx scripts/audit-resource-isolation.ts
+{
+  "capturedAt": "2026-11-02T06:40:26.129Z",
+  "scope": "Static registry source-isolation check; resource source is never executed.",
+  "resourcesRoot": "resources",
+  "expectedResourceCount": 324,
+  "scanned": 324,
+  "passed": 324,
+  "skippedSymlinks": 0,
+  "failures": []
+}
+$ pnpm build:catalog && pnpm -r run build
+$ tsx scripts/build-catalog.ts
+[build-catalog] Scanning and validating resources at: <LOCAL_PATH>
+[build-catalog] Successfully validated 324 resource(s).
+[build-catalog] Tagged 40 Gold 40 resources as 'verified-gold'.
+[build-catalog] Wrote catalog and catalog.min.json to site & preview public dirs.
+[build-catalog] Generated the validated Workbench first-run sample for site and preview.
+[build-catalog] Generated registry index at: <LOCAL_PATH>
+[build-catalog] Generated /llms.txt and /llms-full.txt
+[build-catalog] Generated /openapi.json
+[build-catalog] Generated showcase manifests and synchronized public indexes.
+[generate-gold-artifacts] Discovered 324 validated catalogue resources; exposing only 40 Gold resources to the app renderer.
+[generate-gold-artifacts] Wrote <LOCAL_PATH>
+[generate-gold-artifacts] Wrote <LOCAL_PATH>
+[generate-gold-artifacts] Wrote <LOCAL_PATH>
+Scope: 22 of 23 workspace projects
+packages/schemas build$ tsc --noEmit
+packages/ui build$ tsc --noEmit
+packages/ui build: Done
+packages/schemas build: Done
+apps/api build$ tsc --noEmit
+packages/catalog build$ tsc --noEmit
+packages/dna build$ tsc --noEmit
+packages/dna build: Done
+packages/catalog build: Done
+apps/api build: Done
+apps/preview build$ vite build
+packages/composer build$ tsc --noEmit
+packages/registry build$ tsc --noEmit
+packages/search build$ tsc --noEmit
+apps/preview build: vite v8.3.4 building client environment for production...
+apps/preview build: transforming...
+apps/preview build: ✓ 665 modules transformed.
+apps/preview build: rendering chunks...
+apps/preview build: computing gzip size...
+apps/preview build: dist/index.html                                               0.45 kB │ gzip:   0.30 kB
+apps/preview build: dist/assets/geist-mono-symbols2-400-normal-DjbiTEEA.woff      5.01 kB
+apps/preview build: dist/assets/geist-mono-vietnamese-400-normal-CZEPLOgu.woff    5.30 kB
+apps/preview build: dist/assets/geist-mono-cyrillic-400-normal-C51Di1Mf.woff2     5.55 kB
+apps/preview build: dist/assets/geist-mono-latin-ext-400-normal-DI-rJ0UV.woff2    7.00 kB
+apps/preview build: dist/assets/geist-mono-cyrillic-400-normal-CPJFfJgk.woff      7.10 kB
+apps/preview build: dist/assets/geist-mono-latin-ext-400-normal-CfzLURNc.woff     9.66 kB
+apps/preview build: dist/assets/geist-mono-latin-400-normal-DTRLJnHl.woff2        9.86 kB
+apps/preview build: dist/assets/geist-mono-latin-400-normal-B2yvC1Cq.woff        13.04 kB
+apps/preview build: dist/assets/geist-sans-latin-400-normal-gapTbOY8.woff2       33.40 kB
+apps/preview build: dist/assets/geist-sans-latin-400-normal-BOaIZNA2.woff        38.91 kB
+apps/preview build: dist/assets/index-BNDBCoCs.css                              155.51 kB │ gzip:  35.35 kB
+apps/preview build: dist/assets/index-CLG8AKGA.js                               923.72 kB │ gzip: 191.54 kB
+apps/preview build: [plugin builtin:vite-reporter]
+apps/preview build: (!) Some chunks are larger than 500 kB after minification. Consider:
+apps/preview build: - Using dynamic import() to code-split the application
+apps/preview build: - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+apps/preview build: - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+apps/preview build: ✓ built in 1.44s
+apps/preview build: Done
+packages/testing build$ tsc --noEmit
+packages/registry build: Done
+packages/composer build: Done
+packages/search build: Done
+packages/testing build: Done
+packages/renderer build$ tsc --noEmit
+packages/renderer build: Done
+packages/linter build$ tsc --noEmit
+packages/ingest build$ tsc --noEmit
+packages/exporter build$ tsc --noEmit
+packages/linter build: Done
+packages/ingest build: Done
+packages/exporter build: Done
+packages/compatibility build$ tsc --noEmit
+packages/compatibility build: Done
+packages/cli build$ node ./scripts/build.mjs
+packages/workbench build$ tsc --noEmit
+packages/mcp build$ tsc --noEmit
+packages/cli build: [tess] Built portable CLI at <LOCAL_PATH>
+packages/cli build: Done
+packages/mcp build: Done
+packages/workbench build: Done
+apps/site build$ astro build
+apps/site build: 06:41:04 [types] Generated 100ms
+apps/site build: 06:41:04 [build] output: "static"
+apps/site build: 06:41:04 [build] mode: "static"
+apps/site build: 06:41:04 [build] directory: <LOCAL_PATH>\
+apps/site build: 06:41:04 [build] Collecting build info...
+apps/site build: 06:41:04 [build] ✓ Completed in 158ms.
+apps/site build: 06:41:04 [build] Building static entrypoints...
+apps/site build: 06:41:07 [vite] ✓ built in 2.41s
+apps/site build: 06:41:08 [WARN] [vite] [plugin builtin:vite-reporter]
+apps/site build: (!) Some chunks are larger than 500 kB after minification. Consider:
+apps/site build: - Using dynamic import() to code-split the application
+apps/site build: - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+apps/site build: - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+apps/site build: 06:41:08 [vite] ✓ built in 1.39s
+apps/site build: 06:41:08 [build] Rearranging server assets...
+apps/site build:  generating static routes
+apps/site build: 06:41:12   ├─ /404.html (+68ms)
+apps/site build: 06:41:12   ├─ /about/index.html (+7ms)
+apps/site build: 06:41:12   ├─ /agents/index.html (+5ms)
+apps/site build: 06:41:12   ├─ /blueprints/ai-product/index.html (+4ms)
+apps/site build: 06:41:12   ├─ /blueprints/b2b-saas/index.html (+3ms)
+apps/site build: 06:41:12   ├─ /blueprints/developer-platform/index.html (+3ms)
+apps/site build: 06:41:12   ├─ /blueprints/fintech/index.html (+2ms)
+apps/site build: 06:41:12   ├─ /blueprints/ecommerce/index.html (+2ms)
+apps/site build: 06:41:12   ├─ /blueprints/marketplace/index.html (+2ms)
+apps/site build: 06:41:12   ├─ /blueprints/analytics-platform/index.html (+2ms)
+apps/site build: 06:41:12   ├─ /blueprints/research-intelligence/index.html (+2ms)
+apps/site build: 06:41:12   ├─ /blueprints/crm-operations/index.html (+2ms)
+apps/site build: 06:41:12   ├─ /blueprints/education-product/index.html (+3ms)
+apps/site build: 06:41:12   ├─ /blueprints/creator-media/index.html (+2ms)
+apps/site build: 06:41:12   ├─ /blueprints/consumer-productivity/index.html (+2ms)
+apps/site build: 06:41:12   ├─ /blueprints/index.html (+4ms)
+apps/site build: 06:41:12   ├─ /collections/index.html (+5ms)
+apps/site build: 06:41:12   ├─ /compose/index.html (+17ms)
+apps/site build: 06:41:13   ├─ /creators/tessellate/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /creators/core/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /creators/community/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /creators/index.html (+28ms)
+apps/site build: 06:41:13   ├─ /dev/dna/index.html (+14ms)
+apps/site build: 06:41:13   ├─ /dev/ui/index.html (+14ms)
+apps/site build: 06:41:13   ├─ /docs/cli/index.html (+7ms)
+apps/site build: 06:41:13   ├─ /docs/contributing/index.html (+5ms)
+apps/site build: 06:41:13   ├─ /docs/manifest/index.html (+7ms)
+apps/site build: 06:41:13   ├─ /docs/mcp/index.html (+5ms)
+apps/site build: 06:41:13   ├─ /docs/registry/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /docs/architecture/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /docs/build-order/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /docs/capability-tiers/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /docs/composition-engine/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /docs/consolidation/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /docs/current-product-inventory/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /docs/data-contracts/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /docs/decisions/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /docs/deployment-cost/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /docs/design-system/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /docs/launch-inventory/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /docs/product-hardening/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /docs/product-spec/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /docs/quality-security/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /docs/workbench-spec/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /docs/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /explore/index.html (+8ms)
+apps/site build: 06:41:13   ├─ /license/index.html (+6ms)
+apps/site build: 06:41:13   ├─ /pages/index.html (+6ms)
+apps/site build: 06:41:13   ├─ /preview/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /preview-content/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /privacy/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/accessibility-commitment-section/index.html (+6ms)
+apps/site build: 06:41:13   ├─ /r/accordion/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/accordion-spring/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/activity-feed/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/admin-console-shell/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/advanced-data-table/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/ai-agent-activity-feed/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/ai-approval-request/index.html (+5ms)
+apps/site build: 06:41:13   ├─ /r/ai-chat-panel/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/ai-command-bar/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/ai-copilot-sidebar/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/ai-empty-state/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/ai-file-context-picker/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/ai-generation-compare/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/ai-memory-context-panel/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/ai-model-mode-switcher/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/ai-multi-agent-board/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/ai-plan-review/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/ai-prompt-composer/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/ai-prompt-hero/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/ai-prompt-history/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/ai-research-answer/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/ai-source-citations/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/ai-suggested-actions/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/ai-tool-execution-timeline/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/alert-dialog/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/analytics-shell/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/animated-border-trace/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/animated-gradient-line/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/animated-wave-field/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/api-capability-section/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/api-key-management/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/app-sidebar-compact/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/app-sidebar-expanded/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/approval-queue/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/architecture-diagram-section/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/area-chart/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/audit-log/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/aurora-field/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/autocomplete/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/avatar/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/avatar-group/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/badge/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/bar-chart/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/beam-grid/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/billing-overview/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/blur-to-sharp-reveal/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/bottom-sheet/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/breadcrumb/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/breadcrumb-header/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/bubble-plot/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/button/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/button-group/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/calendar-month/index.html (+5ms)
+apps/site build: 06:41:13   ├─ /r/calendar-week/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/canvas-workspace-shell/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/card-grid-skeleton/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/card-hover-lift/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/card-tilt/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/case-study-spotlight/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/centered-top-nav/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/character-stagger-reveal/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/checkbox/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/cinematic-media-hero/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/code-hero/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/cohort-matrix/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/collapsible-sidebar/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/combobox/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/command-centre-shell/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/command-first-nav/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/command-menu/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/command-results/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/commerce-management-shell/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/compact-data-table/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/comparison-table/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/compliance-proof/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/conic-light-field/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/connection-lost-state/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/context-menu/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/context-rail/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/conversation-list/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/counter-typography/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/cta-community/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/cta-demo-booking/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/cta-download/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/cta-minimal/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/cta-product-preview/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/cta-split/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/cursor-reactive-field/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/cursor-spotlight/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/customer-metrics-strip/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/customer-story-split/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/dashboard-kpi-grid/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/dashboard-kpi-strip/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/dashboard-skeleton/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/data-hero/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/data-stream-field/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/data-terminal-header/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/dialog/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/disclosure/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/document-detail/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/documentation-shell/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/donut-chart/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/dot-matrix-field/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/drawer/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/drawer-spring/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/dropdown-menu/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/dual-rail-nav/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/editor-workspace-shell/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/editorial-display-stack/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/editorial-grain/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/editorial-hero/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/empty-collection-state/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/empty-dashboard-state/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/empty-search-state/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/empty-workspace/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/entity-list/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/entity-overview/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/entity-profile-header/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/entity-search/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/error-state/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/executive-summary-panel/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/expandable-data-table/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/faceted-search-results/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/fade-up-reveal/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/faq-accordion/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/faq-searchable/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/faq-two-column/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/feature-alternating-rows/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/feature-bento/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/feature-carousel/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/feature-comparison/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/feature-grid-3x2/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/feature-matrix/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/feature-metrics/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/feature-spotlight/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/feature-steps/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/feature-sticky-narrative/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/feature-tabs/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/feature-timeline/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/feature-with-code/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/feature-with-live-demo/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/file-browser/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/filter-builder/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/financial-candlestick-chart/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/first-run-state/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/floating-ai-assistant/index.html (+5ms)
+apps/site build: 06:41:13   ├─ /r/floating-nav/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/footer-developer/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/footer-minimal/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/footer-newsletter/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/footer-product/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/footer-sitemap/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/funnel-chart/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/gauge/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/geographic-map/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/glass-refraction-panel/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/global-search-results/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/gradient-accent-text/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/grouped-data-table/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/heatmap/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/horizontal-bar-chart/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/horizontal-scroll-story/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/how-it-works-interactive/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/how-it-works-steps/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/how-it-works-timeline/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/icon-button/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/icon-rail/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/immersive-fullscreen-shell/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/import-data-flow/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/inline-ai-rewrite/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/inline-alert/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/inline-spinner/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/input/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/integration-directory-preview/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/integration-grid/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/integration-orbit/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/interactive-demo-hero/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/interactive-globe/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/kanban-board/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/kinetic-word-swap/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/kiosk-display-shell/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/kpi-delta-card/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/kpi-delta-motion/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/link/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/loading-orbit/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/logo-cloud-marquee/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/logo-cloud-minimal/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/magnetic-button/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/marketing-nav-cta/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/marquee-typography/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/masked-headline-reveal/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/masked-text-reveal/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/mega-nav/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/messaging-shell/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/messaging-thread/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/metadata-panel/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/metallic-sheen/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/mini-sparkline/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/minimal-statement-hero/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/minimal-top-nav/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/mobile-bottom-nav/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/mobile-drawer-nav/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/monospace-data-headline/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/multi-select/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/multi-series-line-chart/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/network-graph/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/noise-gradient/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/notification-centre/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/number-count-up/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/number-input/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/offline-state/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/onboarding-checklist/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/onboarding-role-select/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/onboarding-wizard/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/order-book-depth-chart/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/organization-settings/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/outlined-display-text/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/page-skeleton/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/pagination/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/paper-texture/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/parallax-media/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/particle-constellation/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/password-input/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/performance-benchmark-section/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/permission-denied-state/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/pinned-items/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/plan-feature-matrix/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/popover/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/press-mentions-strip/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/pricing-calculator-shell/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/pricing-comparison-table/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/pricing-enterprise/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/pricing-three-tier/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/pricing-toggle/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/pricing-two-tier/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/pricing-usage-based/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/process-diagram/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/processing-queued-state/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/product-screenshot-hero/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/profile-settings/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /r/progress-bar/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/progress-ring/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/progressive-loader/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/project-switcher/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/query-builder/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/quick-actions-panel/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/radar-chart/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/radial-spotlight/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/radio-group/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/range-slider/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/recent-items/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/relationship-panel/index.html (+4ms)
+apps/site build: 06:41:13   ├─ /r/research-terminal-shell/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/responsive-app-shell/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/role-permissions/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/sankey-diagram/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/saved-views/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/scale-reveal/index.html (+2ms)
+apps/site build: 06:41:13   ├─ /r/scatter-plot/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/schedule-agenda/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/scroll-progress/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/search-first-header/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/search-first-hero/index.html (+3ms)
+apps/site build: 06:41:13   ├─ /r/search-input/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/security-proof/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /r/segmented-control/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/select/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/separator/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/settings-navigation/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/settings-shell/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/shader-liquid-field/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/shader-noise-field/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/shared-element-transition/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/skeleton/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/slide-clip-reveal/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/slider/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/social-proof-hero/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/soft-mesh-gradient/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/split-button/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/split-line-headline/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/split-product-hero/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/stacked-area-chart/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/stacked-bar-chart/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/status-overview/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/sticky-scroll-story/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/subtle-grid-field/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /r/success-celebration/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/success-state/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/switch/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/tab-workspace-nav/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/table-skeleton/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/tabs/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /r/tag-chip/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/task-detail/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/team-management/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/testimonial-carousel/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/testimonial-grid/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/testimonial-quote/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/text-path-arc/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/textarea/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/three-d-orbital-field/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/three-pane-app-shell/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/time-series-chart/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/timeline/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/toast/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/tooltip/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/topographic-lines/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/transparent-solid-nav/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/treemap/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/trust-badges-strip/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/two-pane-master-detail-shell/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/upgrade-prompt/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/usage-overview/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/variable-weight-hover/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/version-history/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/vertical-label-system/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/video-hero/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/watchlist-panel/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /r/webhook-management/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /r/word-stagger-reveal/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /r/workflow-builder/index.html (+6ms)
+apps/site build: 06:41:14   ├─ /r/workflow-narrative/index.html (+5ms)
+apps/site build: 06:41:14   ├─ /r/workspace-switcher/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/accessibility-commitment-section/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/accordion/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/accordion-spring/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/activity-feed/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/admin-console-shell/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/advanced-data-table/index.html (+5ms)
+apps/site build: 06:41:14   ├─ /resources/ai-agent-activity-feed/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/ai-approval-request/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/ai-chat-panel/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/ai-command-bar/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/ai-copilot-sidebar/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/ai-empty-state/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/ai-file-context-picker/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/ai-generation-compare/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/ai-memory-context-panel/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/ai-model-mode-switcher/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/ai-multi-agent-board/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/ai-plan-review/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/ai-prompt-composer/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/ai-prompt-hero/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/ai-prompt-history/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/ai-research-answer/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/ai-source-citations/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/ai-suggested-actions/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/ai-tool-execution-timeline/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/alert-dialog/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/analytics-shell/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/animated-border-trace/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/animated-gradient-line/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/animated-wave-field/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/api-capability-section/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/api-key-management/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/app-sidebar-compact/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/app-sidebar-expanded/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/approval-queue/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/architecture-diagram-section/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/area-chart/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/audit-log/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/aurora-field/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/autocomplete/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/avatar/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/avatar-group/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/badge/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/bar-chart/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/beam-grid/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/billing-overview/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/blur-to-sharp-reveal/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/bottom-sheet/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/breadcrumb/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/breadcrumb-header/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/bubble-plot/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/button/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/button-group/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/calendar-month/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/calendar-week/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/canvas-workspace-shell/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/card-grid-skeleton/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/card-hover-lift/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/card-tilt/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/case-study-spotlight/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/centered-top-nav/index.html (+2ms)
+apps/site build: 06:41:14   ├─ /resources/character-stagger-reveal/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/checkbox/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/cinematic-media-hero/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/code-hero/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/cohort-matrix/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/collapsible-sidebar/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/combobox/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/command-centre-shell/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/command-first-nav/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/command-menu/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/command-results/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/commerce-management-shell/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/compact-data-table/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/comparison-table/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/compliance-proof/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/conic-light-field/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/connection-lost-state/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/context-menu/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/context-rail/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/conversation-list/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/counter-typography/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/cta-community/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/cta-demo-booking/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/cta-download/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/cta-minimal/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/cta-product-preview/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/cta-split/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/cursor-reactive-field/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/cursor-spotlight/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/customer-metrics-strip/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/customer-story-split/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/dashboard-kpi-grid/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/dashboard-kpi-strip/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/dashboard-skeleton/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/data-hero/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/data-stream-field/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/data-terminal-header/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/dialog/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/disclosure/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/document-detail/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/documentation-shell/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/donut-chart/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/dot-matrix-field/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/drawer/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/drawer-spring/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/dropdown-menu/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/dual-rail-nav/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/editor-workspace-shell/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/editorial-display-stack/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/editorial-grain/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/editorial-hero/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/empty-collection-state/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/empty-dashboard-state/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/empty-search-state/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/empty-workspace/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/entity-list/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/entity-overview/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/entity-profile-header/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/entity-search/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/error-state/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/executive-summary-panel/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/expandable-data-table/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/faceted-search-results/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/fade-up-reveal/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/faq-accordion/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/faq-searchable/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/faq-two-column/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/feature-alternating-rows/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/feature-bento/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/feature-carousel/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/feature-comparison/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/feature-grid-3x2/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/feature-matrix/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/feature-metrics/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/feature-spotlight/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/feature-steps/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/feature-sticky-narrative/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/feature-tabs/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/feature-timeline/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/feature-with-code/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/feature-with-live-demo/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/file-browser/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/filter-builder/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/financial-candlestick-chart/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/first-run-state/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/floating-ai-assistant/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/floating-nav/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/footer-developer/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/footer-minimal/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/footer-newsletter/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/footer-product/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/footer-sitemap/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/funnel-chart/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/gauge/index.html (+37ms)
+apps/site build: 06:41:14   ├─ /resources/geographic-map/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/glass-refraction-panel/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/global-search-results/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/gradient-accent-text/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/grouped-data-table/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/heatmap/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/horizontal-bar-chart/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/horizontal-scroll-story/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/how-it-works-interactive/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/how-it-works-steps/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/how-it-works-timeline/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/icon-button/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/icon-rail/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/immersive-fullscreen-shell/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/import-data-flow/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/inline-ai-rewrite/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/inline-alert/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/inline-spinner/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/input/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/integration-directory-preview/index.html (+24ms)
+apps/site build: 06:41:14   ├─ /resources/integration-grid/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/integration-orbit/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/interactive-demo-hero/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/interactive-globe/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/kanban-board/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/kinetic-word-swap/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/kiosk-display-shell/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/kpi-delta-card/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/kpi-delta-motion/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/link/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/loading-orbit/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/logo-cloud-marquee/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/logo-cloud-minimal/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/magnetic-button/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/marketing-nav-cta/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/marquee-typography/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/masked-headline-reveal/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/masked-text-reveal/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/mega-nav/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/messaging-shell/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/messaging-thread/index.html (+2ms)
+apps/site build: 06:41:14   ├─ /resources/metadata-panel/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/metallic-sheen/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/mini-sparkline/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/minimal-statement-hero/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/minimal-top-nav/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/mobile-bottom-nav/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/mobile-drawer-nav/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/monospace-data-headline/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/multi-select/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/multi-series-line-chart/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/network-graph/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/noise-gradient/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/notification-centre/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/number-count-up/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/number-input/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/offline-state/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/onboarding-checklist/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/onboarding-role-select/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/onboarding-wizard/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/order-book-depth-chart/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/organization-settings/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/outlined-display-text/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/page-skeleton/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/pagination/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/paper-texture/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/parallax-media/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/particle-constellation/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/password-input/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/performance-benchmark-section/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/permission-denied-state/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/pinned-items/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/plan-feature-matrix/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/popover/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/press-mentions-strip/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/pricing-calculator-shell/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/pricing-comparison-table/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/pricing-enterprise/index.html (+4ms)
+apps/site build: 06:41:14   ├─ /resources/pricing-three-tier/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/pricing-toggle/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/pricing-two-tier/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/pricing-usage-based/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/process-diagram/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/processing-queued-state/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/product-screenshot-hero/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/profile-settings/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/progress-bar/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/progress-ring/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/progressive-loader/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/project-switcher/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/query-builder/index.html (+2ms)
+apps/site build: 06:41:14   ├─ /resources/quick-actions-panel/index.html (+3ms)
+apps/site build: 06:41:14   ├─ /resources/radar-chart/index.html (+4ms)
+apps/site build: 06:41:15   ├─ /resources/radial-spotlight/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/radio-group/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/range-slider/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/recent-items/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/relationship-panel/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/research-terminal-shell/index.html (+2ms)
+apps/site build: 06:41:15   ├─ /resources/responsive-app-shell/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/role-permissions/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/sankey-diagram/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/saved-views/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/scale-reveal/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/scatter-plot/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/schedule-agenda/index.html (+2ms)
+apps/site build: 06:41:15   ├─ /resources/scroll-progress/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/search-first-header/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/search-first-hero/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/search-input/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/security-proof/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/segmented-control/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/select/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/separator/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/settings-navigation/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/settings-shell/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/shader-liquid-field/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/shader-noise-field/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/shared-element-transition/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/skeleton/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/slide-clip-reveal/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/slider/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/social-proof-hero/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/soft-mesh-gradient/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/split-button/index.html (+2ms)
+apps/site build: 06:41:15   ├─ /resources/split-line-headline/index.html (+5ms)
+apps/site build: 06:41:15   ├─ /resources/split-product-hero/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/stacked-area-chart/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/stacked-bar-chart/index.html (+4ms)
+apps/site build: 06:41:15   ├─ /resources/status-overview/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/sticky-scroll-story/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/subtle-grid-field/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/success-celebration/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/success-state/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/switch/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/tab-workspace-nav/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/table-skeleton/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/tabs/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/tag-chip/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/task-detail/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/team-management/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/testimonial-carousel/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/testimonial-grid/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/testimonial-quote/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/text-path-arc/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/textarea/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/three-d-orbital-field/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/three-pane-app-shell/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/time-series-chart/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/timeline/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/toast/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/tooltip/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/topographic-lines/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/transparent-solid-nav/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/treemap/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/trust-badges-strip/index.html (+2ms)
+apps/site build: 06:41:15   ├─ /resources/two-pane-master-detail-shell/index.html (+2ms)
+apps/site build: 06:41:15   ├─ /resources/upgrade-prompt/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/usage-overview/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/variable-weight-hover/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/version-history/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/vertical-label-system/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/video-hero/index.html (+4ms)
+apps/site build: 06:41:15   ├─ /resources/watchlist-panel/index.html (+4ms)
+apps/site build: 06:41:15   ├─ /resources/webhook-management/index.html (+4ms)
+apps/site build: 06:41:15   ├─ /resources/word-stagger-reveal/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/workflow-builder/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/workflow-narrative/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /resources/workspace-switcher/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /showcase/showcase-financial-terminal/index.html (+16ms)
+apps/site build: 06:41:15   ├─ /showcase/showcase-ai-developer-platform/index.html (+6ms)
+apps/site build: 06:41:15   ├─ /showcase/showcase-luxury-hospitality/index.html (+12ms)
+apps/site build: 06:41:15   ├─ /showcase/showcase-playful-hr/index.html (+15ms)
+apps/site build: 06:41:15   ├─ /showcase/showcase-luxury-ecommerce/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /showcase/showcase-scientific-research/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /showcase/showcase-creator-analytics/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /showcase/showcase-minimal-productivity/index.html (+2ms)
+apps/site build: 06:41:15   ├─ /showcase/index.html (+5ms)
+apps/site build: 06:41:15   ├─ /showcases/index.html (+4ms)
+apps/site build: 06:41:15   ├─ /sponsor/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /terms/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /tools/accessibility/index.html (+6ms)
+apps/site build: 06:41:15   ├─ /tools/backgrounds/index.html (+9ms)
+apps/site build: 06:41:15   ├─ /tools/dataviz/index.html (+7ms)
+apps/site build: 06:41:15   ├─ /tools/dna/index.html (+6ms)
+apps/site build: 06:41:15   ├─ /tools/icons/index.html (+8ms)
+apps/site build: 06:41:15   ├─ /tools/layout/index.html (+7ms)
+apps/site build: 06:41:15   ├─ /tools/motion/index.html (+8ms)
+apps/site build: 06:41:15   ├─ /tools/palette/index.html (+6ms)
+apps/site build: 06:41:15   ├─ /tools/section-planner/index.html (+8ms)
+apps/site build: 06:41:15   ├─ /tools/typography/index.html (+8ms)
+apps/site build: 06:41:15   ├─ /tools/index.html (+6ms)
+apps/site build: 06:41:15   ├─ /trends/index.html (+28ms)
+apps/site build: 06:41:15   ├─ /workbench/index.html (+4ms)
+apps/site build: 06:41:15   ├─ /components/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /sections/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /blocks/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /effects/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /motion/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /backgrounds/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /ai/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /data/index.html (+3ms)
+apps/site build: 06:41:15   ├─ /index.html (+14ms)
+apps/site build: 06:41:15 ✓ Completed in 6.76s.
+apps/site build: 06:41:15 [build] ✓ Completed in 10.64s.
+apps/site build: 06:41:15 [build] 733 page(s) built in 11.11s
+apps/site build: 06:41:15 [build] Complete!
+apps/site build: Done
+apps/sites build$ node prepare-static.mjs --worker-assets && vite build --config vite.config.ts
+apps/sites build: Sites artifact prepared: canonical Astro output, 324 resources, 731 public HTML CSP records (11 script hashes), preserved header declarations.
+apps/sites build: vite v8.3.4 building server environment for production...
+apps/sites build: transforming...
+apps/sites build: ✓ 6 modules transformed.
+apps/sites build: rendering chunks...
+apps/sites build: computing gzip size...
+apps/sites build: ../../dist/server/.vite/manifest.json   0.17 kB │ gzip: 0.12 kB
+apps/sites build: ../../dist/server/wrangler.json         1.53 kB │ gzip: 0.77 kB
+apps/sites build: ../../dist/server/index.js             10.05 kB │ gzip: 3.84 kB
+apps/sites build: ✓ built in 26ms
+apps/sites build: vite v8.3.4 building client environment for production...
+apps/sites build: transforming...
+apps/sites build: ✓ 2 modules transformed.
+apps/sites build: rendering chunks...
+apps/sites build: computing gzip size...
+apps/sites build: ../../dist/client/.assetsignore                  0.02 kB
+apps/sites build: ../../dist/client/__cloudflare_fallback_entry__  0.00 kB │ gzip: 0.02 kB
+apps/sites build: ✓ built in 1.26s
+apps/sites build: Done
+$ tsx scripts/audit-bundle-budgets.ts
+--- AUDITING EAGER ROUTE BUNDLE BUDGETS ---
+[PASS] Homepage eager hydration bundle: 99.44 KB gzip (313.79 KB raw, 22 files) <= 150 KB budget
+[PASS] Explore route eager hydration bundle: 177.91 KB gzip (583.60 KB raw, 32 files) <= 200 KB budget
+[PASS] Compose route eager hydration bundle: 250.20 KB gzip (892.75 KB raw, 21 files) <= 750 KB budget
+[PASS] Workbench route eager hydration bundle: 74.88 KB gzip (238.21 KB raw, 3 files) <= 750 KB budget
+[PASS] Search catalog data: 112.63 KB gzip <= 2048 KB budget
+Bundle budget audit passed successfully.
+$ tsx scripts/audit-license-provenance.ts
+--- AUDITING RESOURCE LICENSES, PROVENANCE & QUALITY ---
+Audited 324 canonical resources:
+- Schema failures: 0
+- Invalid licenses: 0
+- Missing provenance: 0
+- Substandard quality (< 80): 0
+[PASS] All 324 canonical resources pass license, provenance, and quality audits.
+$ tsx scripts/audit-security-secrets.ts
+--- AUDITING SECURITY, SECRETS & ISOLATION ---
+[PASS] ResourcePreviewFrame enforces sandboxed iframe isolation.
+[PASS] Main-origin renderer imports exactly the 40 certified Gold resource implementations.
+[PASS] Projects API routes enforce authenticated ownership checks (401 on unauth, 403 on non-owner).
+[PASS] Upload constraints verified: pure validated manifest schema mutations.
+Security audit finished with 0 violation(s).
+[PASS] Security, secrets, and isolation audits passed cleanly.
+$ pnpm audit
+No known vulnerabilities found

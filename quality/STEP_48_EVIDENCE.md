@@ -138,7 +138,7 @@ The exact employee-experience brief passed the visible Compose-to-Direction-C-to
 
 A local host check found the laptop API and worker containers running but unhealthy. Restarting the existing API and then its dependent host restored the API health endpoint, both Docker health checks, and a fresh heartbeat without rebuilding or touching MGI containers. The initiating API failure is unknown and recorded open as AUD-448. The public Site backend remains intentionally unavailable because its backend URL is unconfigured; no provider credential was supplied. D1/R2 are unprovisioned and no security policy was weakened.
 
-The ledger contains 449 findings: 0 Critical, 84 High, 339 Medium, and 26 Low. AUD-419 remains High and fixed locally: a new cross-boundary test covers Sites gateway → Hono API → stubbed provider, and a negative control fails when the gateway drops provider headers. Public v72 serves the fix but remains intentionally unconfigured for laptop access under D-041; no tunnel or real provider credential was used, so deployed provider forwarding remains unverified. AUD-448 remains an open Medium pending root-cause investigation. AUD-449 was reproduced on public v71 and is now closed after the same behavior passed on v72. The local keyboard/touch regression also passes at 360, 390, 430, 768, 1024, 1280 and 1440px. Step 48 and the broader hardening programme remain open; see audit/RUNTIME_AUDIT.md and docs/PRODUCT_HARDENING.md.
+The ledger contains 453 findings: 0 Critical, 86 High, 341 Medium, and 26 Low. AUD-419 remains High and fixed locally: a new cross-boundary test covers Sites gateway → Hono API → stubbed provider, and a negative control fails when the gateway drops provider headers. Public v72 serves the fix but remains intentionally unconfigured for laptop access under D-041; no tunnel or real provider credential was used, so deployed provider forwarding remains unverified. AUD-448 remains an open Medium pending root-cause investigation. AUD-449 was reproduced on public v71 and is now closed after the same behavior passed on v72. AUD-450 and AUD-451 were reproduced on public v72 and fixed locally; their deployed verification is pending. AUD-452 is now confirmed as a cold-load CLS defect, fixed locally and awaiting deployed verification. The local keyboard/touch regression also passes at 360, 390, 430, 768, 1024, 1280 and 1440px. Step 48 and the broader hardening programme remain open; see audit/RUNTIME_AUDIT.md and docs/PRODUCT_HARDENING.md.
 
 ## Public Sites v72 deployed AUD-449 verification — 2026-11-01
 
@@ -152,8 +152,69 @@ The focused integration test runs the actual `proxyBackend` gateway, the API Hon
 
 The prescribed catalogue build refreshed the checked-in Site and preview manifests for seven showcases. Each now matches canonical composer output, including the `collapsible-sidebar` navigation resource. The showcase consistency regression and all 1,277 unit tests passed after generation; `audit:all` also passed 16/16 release criteria, the 733-page production build, bundle budgets, 324-resource licence/provenance checks, security/secret checks, and dependency audit. The earlier test failure came from running Vitest before the documented `pnpm build:catalog` step. Volatile generation timestamps were excluded. Evidence: `quality/evidence/step-48/showcase-manifest-sync.json`.
 
+## Public Sites v72 settled route and flagship re-audit — 2026-11-02
+
+The public v72 Site was rechecked without changing or redeploying it. A corrected
+settled route runner visited all 31 requested routes at 1440×900 and 390×844.
+All 62 pages returned HTTP 200 with nonempty page content; both viewports had
+zero overflow, console errors/warnings, uncaught exceptions, failed requests,
+bad responses, or navigation cancellations. The runner waits for client
+catalogue results and network idle before capturing. Its 12 route Axe scans
+reported zero violations; 5 desktop and 6 mobile `color-contrast` results remain
+incomplete for manual review. Reports and settled screenshots are in
+`quality/evidence/step-48/public-v72-live-audit-2026-11-02/routes/`.
+
+The exact employee-experience brief passed the actual UI journey at desktop and
+mobile. Direction C opened the matching seven-screen project. Overrides,
+resource replacement, the locked dashboard summary, recomposition, Surprise
+Me, exact Undo/Redo, preview, manifest export and ZIP export completed. The
+desktop ZIP was installed and built outside the repository and exercised in a
+browser at desktop and mobile sizes. The separate generated Workbench Axe scan
+reported zero violations at both sizes. Compose and Workbench remained usable
+without overflow at 360, 390, 430, 768, 1024, 1280, 1440 and 1536 pixels; the
+mobile Pages and Preview tabs changed state. Browser, uncaught-exception and
+network-error counts were zero throughout. Full results, screenshots, ZIPs,
+and runners are in the linked evidence directory’s `flagship/` folder.
+
+Two audit-harness timing issues were corrected in the evidence runner: a
+Compose probe searched for letter-named directions although the UI renders
+01/02/03, and the first route sweep captured catalogue skeletons before
+hydration. The visible UI composed all three directions, and the settled route
+run loaded `/sections` (50/72 resources) and `/data` (35/35) in under one
+second. Neither was a product defect. Axe contrast-incomplete results remain
+unadjudicated; this checkpoint does not complete WCAG manual review or Step 48.
+
+Exact-head GitHub CI run
+[41363451182](https://github.com/danishgm-sketch/Tessellate/actions/runs/41363451182)
+was still in progress on PR #8 head `81695b52d659ad46561f4c1570de48af185c23c5`
+when this evidence was captured. The PR remains open and the public Site is
+unchanged. No D1/R2 binding or infrastructure was provisioned.
+
 ## AUD-448 bounded laptop Docker recovery — 2026-11-01
 
 The initiating failure from the original unhealthy API incident remains unknown. A deterministic Docker control established the actionable recovery defect: a long-running container with a failing healthcheck remains running/unhealthy under `restart: unless-stopped` (restart count 0). The Compose healthcheck now runs a source-controlled Node probe. After its startup grace and six consecutive failures, the probe records a restart attempt in the existing `/data` volume and sends SIGTERM only to its own container's PID 1. It allows no more than three recovery attempts per rolling hour; if the persistent budget cannot be verified or has been exhausted, the API stays unhealthy so host features remain unavailable.
 
 Five unit regressions cover consecutive failures, health recovery, startup grace, the persistent attempt limit, and malformed budget state. The disposable Docker integration uses the local API image and the actual healthcheck source; its endpoint returns 503 on boot one, the container restarts once, and boot two returns healthy. The test binds no host port, mounts no secrets, and cleans up only its generated test container and temporary directory. Evidence: `quality/evidence/step-37/aud448-docker-recovery.mjs` and `quality/evidence/step-37/aud448-docker-recovery.json`. This does not identify the original Wrangler failure and does not verify permanent Sites-to-laptop connectivity.
+
+## Public v72 mobile Workbench label and interaction follow-up — 2026-11-02
+
+The mobile Workbench Lighthouse audit exposed two deployed v72 defects that the broad route and flagship journey did not exercise: the visible `Menu` label was missing from the accessible name (AUD-450), and tapping the menu selected its parent canvas node, switched to Inspect, and unmounted the preview (AUD-451). Before screenshots and failing public regressions are in `quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/`. Source corrections now include the visible word in the accessible name and let semantic interactive descendants receive their own click events. The targeted Sites Worker suite passes 6 tests with 2 configured desktop-profile skips; the delayed Gold-load regression records CLS 0.01754 on first load and reload under both profiles. The clean-install standalone export regression passes, the full unit suite passes 1,282 tests with 1 configured skip, all 22 workspace typechecks pass, lint passes with zero warnings, the 734-page production/Sites build passes, and the mobile Workbench Axe regression passes. Logs are in the same `flagship/` evidence directory. Both issues remain `fixed-local-verified`; the public Site has not changed.
+
+Three Lighthouse mobile Agentic Browsing audits report CLS 0.502–0.503. The five earlier DevTools traces were warm/cached or captured before the late resource expansion; a new cache-bypass cold trace on public v72 at 412x823, DPR 1.75, 4x CPU and Fast 4G measured CLS 0.5028 and attributed the movement to four semantic resource wrappers. The active screen's five Gold chunks load behind the Workbench shell and manifest renderer. Machine trace findings and the earlier runs are recorded in quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/workbench-cls-investigation.json. Local regression evidence reproduces the failure with 1.8-second delayed chunks and passes after a fresh production build: CLS 0.00 on first load and reload, with no console or network errors.
+
+PR #8's two exact-head CI runs (41363451182 and 41363467212) and Component Quality Gate (41363467170) now pass on existing PR head `81695b52d659ad46561f4c1570de48af185c23c5`. That head predates this local fix; the PR remains open. The public v72 Site, D1/R2 configuration and infrastructure are unchanged.
+
+### Local remediation and full browser-profile reruns — 2026-11-02
+
+The first full local E2E pass exposed two stale assumptions in desktop tests: they clicked the centre of a rendered resource and expected the editor to select it even when that point was an interactive child, and one test then expected the Library panel while Layers was open. These tests now select through the visible Layers tree and return to Library before checking results. The renderer keeps interactive descendants' events intact.
+
+The same full browser profiles were rerun after the corrections: default desktop/mobile Chromium 394 passed / 130 configured skips; Sites Worker desktop 206 / 8; Sites Worker mobile 172 / 42; standalone preview app 3 / 0. No failures remained. The documentation-index test was also run separately in desktop/mobile Astro and Sites profiles (4 additional passes); the internal progress route returned 404 in each profile. Aggregate complete profile runs: 775 passed, 180 configured skips, 0 failures, plus the four targeted docs-index checks. Logs are `workbench-mobile-e2e-remediated.log`, `workbench-mobile-e2e-sites-chromium-remediated.log`, `workbench-mobile-e2e-sites-mobile-remediated.log`, and `workbench-mobile-e2e-preview-app-remediated.log` under `quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/`.
+
+The new AUD-453 documents the internal progress ledger appearing as a 17th docs link in the pre-fix build. `apps/site/src/lib/documentation.ts` excludes the internal ledger, and the source document no longer contains an absolute local worktree path. The index stays at 16 canonical links; the ledger route is not built. Post-fix desktop, mobile, Sites desktop and Sites mobile screenshots/reports are in `audit/evidence/step-48/internal-doc-publication/`. This fix is only locally verified because public v72 has not changed.
+
+The fresh 733-page production build, all 22 workspace typechecks, lint (zero warnings), all 1,282 unit tests (one configured skip), and `pnpm audit:all` now pass after the docs-index test was extended to save screenshots. The audit gate reports 16/16 behavioral checks, 324/324 resource-isolation checks, 324/324 licence/provenance checks, passing bundle budgets, zero security violations and no known dependency vulnerabilities. Logs are `workbench-mobile-unit-remediated.log` and `workbench-mobile-audit-all-remediated.log` in the flagship evidence directory. Public v72 and the laptop/D1/R2 infrastructure remain unchanged; AUD-450, AUD-451 and AUD-453 await deployed verification. AUD-452 is locally fixed but remains open until the same cold-load test passes on a new review deployment.
+
+
+### AUD-452 local remediation — 2026-11-02
+
+After a fresh Sites production build, the cold mobile Workbench regression passed on first load and reload with CLS 0.00. Five Gold chunks were delayed by 1.8 seconds under 4x CPU emulation; the stable mobile preload status remained visible until the active screen was ready, then the employee experience rendered. A partial-failure case then aborted `editorial-hero` and delayed the other four Gold chunks. Before the root-cause correction, the regression failed at CLS 0.502772 because the first rejected import released the screen gate while other chunks remained pending. The hook now waits for all deduplicated per-resource imports to settle. After the fix, the same injected case measured CLS 0.00, retained the explicit failed-resource message and had no uncaught exception; the single failed request and browser import error were expected fault-injection evidence. The test log records the red result, and the machine report plus before/after screenshots are in `audit/evidence/step-48/aud452-mobile-cold-resource-load/`. Four related mobile Workbench browser tests and 10 Workbench UI unit tests pass. Normal cold/reload runs recorded zero console errors or warnings, uncaught exceptions, failed requests or HTTP errors. The initial post-source-change run still failed at CLS 0.5028 because the test server was serving a stale generated Sites artifact; only the rebuilt artifact is valid post-fix evidence. This remains a local fix; public v72 is unchanged.

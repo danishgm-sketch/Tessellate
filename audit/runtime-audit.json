@@ -20342,7 +20342,7 @@
         "packages/exporter/src/__tests__/standalone-export-fidelity.test.ts"
       ],
       "remediation": "Include the visible “Menu” label in the collapsed state accessible name and keep the expanded-state name aligned with the visible “Close” label.",
-      "fixCommit": null,
+      "fixCommit": "046146fe474a4e07831a5c0e03e39913e9dccfc6",
       "status": "fixed-local-verified",
       "evidence": {
         "deployedBefore": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/workbench-mobile-accessible-name-before.png",
@@ -20380,7 +20380,7 @@
         "tests/e2e/workbench-mobile-preview-interactions.spec.ts"
       ],
       "remediation": "Skip canvas node-selection interception when the event target is inside a semantic interactive element; preserve native control behavior and only select the rendered node for non-interactive canvas clicks.",
-      "fixCommit": null,
+      "fixCommit": "174b3c7c006864d5486f7e6b93953e8e1d6d93f1",
       "status": "fixed-local-verified",
       "evidence": {
         "failingDeployedRegression": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/workbench-label-interaction-pre-fix-public-v72.log",
@@ -20418,7 +20418,7 @@
         "tests/e2e/workbench-mobile-layout-stability.spec.ts"
       ],
       "remediation": "Deduplicate active-screen slugs and wait for Promise.allSettled over per-resource preload attempts before mounting the manifest renderer. Preserve the specific failed-resource boundary. Keep cold-load, reload and partial-network-failure CLS regressions on the production-like Sites Worker, then verify the same behavior on a new review deployment.",
-      "fixCommit": null,
+      "fixCommit": "8768e58a4d6a554d8e0e5319b0cd9d54edf7de30",
       "status": "open",
       "evidence": {
         "measurements": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/workbench-cls-investigation.json",
@@ -20516,7 +20516,7 @@
         "tests/e2e/sites-preview.playwright.config.ts"
       ],
       "remediation": "Exclude the internal progress ledger from the public documentation route manifest, remove its absolute local worktree path, and assert the canonical link count plus a 404 response in Astro and Sites desktop/mobile browser profiles.",
-      "fixCommit": null,
+      "fixCommit": "8c5a4f1d06c187b2af9c766188ed330b8fc706a1",
       "status": "fixed-local-verified",
       "evidence": {
         "preFixFullE2E": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/workbench-mobile-e2e-final.log",

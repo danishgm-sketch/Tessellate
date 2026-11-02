@@ -1,0 +1,225 @@
+[WebServer] (node:88364) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 214 tests using 1 worker
+
+(node:87844) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok   1 [sites-mobile-chromium] › tests\e2e\accessibility-hardening-step-35.spec.ts:43:1 › Compose labels describe form fields rather than styling non-field controls (255ms)
+  ok   2 [sites-mobile-chromium] › tests\e2e\accessibility-hardening-step-35.spec.ts:55:1 › showcase previews continue the document heading hierarchy (3.0s)
+  ok   3 [sites-mobile-chromium] › tests\e2e\accessibility-hardening-step-35.spec.ts:92:1 › Core surfaces pass WCAG 2.2 A/AA and target-size scans (11.6s)
+  ok   4 [sites-mobile-chromium] › tests\e2e\accessibility-hardening-step-35.spec.ts:201:1 › keyboard dialogs trap focus, close with Escape, and return focus (1.7s)
+  ok   5 [sites-mobile-chromium] › tests\e2e\accessibility-hardening-step-35.spec.ts:297:1 › every public and editing shell exposes a working keyboard skip target (1.6s)
+  ok   6 [sites-mobile-chromium] › tests\e2e\accessibility-hardening-step-35.spec.ts:327:1 › reduced motion and 200 percent equivalent layout keep Core controls usable (733ms)
+  ok   7 [sites-mobile-chromium] › tests\e2e\accessibility-hardening-step-35.spec.ts:355:1 › Workbench landmarks and every primary mode pass WCAG 2.2 A/AA (3.9s)
+  -    8 [sites-mobile-chromium] › tests\e2e\accessibility-hardening-step-35.spec.ts:393:1 › keyboard users can reorder Workbench layers without drag and drop
+  ok   9 [sites-mobile-chromium] › tests\e2e\accessibility-label-semantics-regression.spec.ts:10:3 › /workbench gives every labelled non-interactive container a semantic role (1.4s)
+  ok  10 [sites-mobile-chromium] › tests\e2e\accessibility-label-semantics-regression.spec.ts:10:3 › /showcase/showcase-playful-hr/ gives every labelled non-interactive container a semantic role (947ms)
+  ok  11 [sites-mobile-chromium] › tests\e2e\activity-feed-sample-disclosure-step-40.spec.ts:3:1 › activity feed discloses its built-in entries are samples (349ms)
+  ok  12 [sites-mobile-chromium] › tests\e2e\ai-copilot-sidebar-truthfulness-step-39.spec.ts:3:1 › AI Copilot Sidebar discloses sample content and disables its unconnected apply action (357ms)
+  ok  13 [sites-mobile-chromium] › tests\e2e\aud403-surprise-domain.spec.ts:10:1 › Surprise Me keeps seeded employee SaaS typography out of financial styles (1.6s)
+  -   14 [sites-mobile-chromium] › tests\e2e\catalog-resource-render.spec.ts:36:1 › AI agent activity preview labels sample content and follows heading hierarchy
+  -   15 [sites-mobile-chromium] › tests\e2e\catalog-resource-render.spec.ts:70:1 › all catalogue resources render at every certified width in the Sites Worker
+  -   16 [sites-mobile-chromium] › tests\e2e\catalog-resource-render.spec.ts:426:1 › canonical /r resource detail route preserves title, preview, and responsive layout
+  ok  17 [sites-mobile-chromium] › tests\e2e\catalog-resource-render.spec.ts:463:1 › AI Chat Panel standalone preview starts with a coherent heading hierarchy (449ms)
+  -   18 [sites-mobile-chromium] › tests\e2e\catalog-resource-render.spec.ts:491:1 › marketing CTA header reflows without overflow in compact resource previews
+  ok  19 [sites-mobile-chromium] › tests\e2e\catalogue-preview-loading-state.spec.ts:5:1 › Explore identifies a visible resource preview while its isolated frame loads (3.0s)
+  ok  20 [sites-mobile-chromium] › tests\e2e\catalogue-preview-loading-state.spec.ts:35:1 › Explore explains a preview error and offers the resource page (599ms)
+  ok  21 [sites-mobile-chromium] › tests\e2e\compose-responsiveness-hardening.spec.ts:8:1 › Compose acknowledges work before generating the three real directions (2.5s)
+  ok  22 [sites-mobile-chromium] › tests\e2e\compose-workbench-handoff.spec.ts:37:1 › Compose Direction C opens the exact selected manifest in Workbench (5.2s)
+  ok  23 [sites-mobile-chromium] › tests\e2e\composition-quality-smoke.spec.ts:20:1 › showcase identity survives composition and renders in the public preview (631ms)
+  -   24 [sites-mobile-chromium] › tests\e2e\composition-quality-smoke.spec.ts:98:1 › review representative marketplace and community compositions in the real browser
+  ok  25 [sites-mobile-chromium] › tests\e2e\composition-quality-smoke.spec.ts:286:1 › SaaS overview activity uses a truthful chronological feed with human-readable examples (3.1s)
+  ok  26 [sites-mobile-chromium] › tests\e2e\composition-quality-smoke.spec.ts:481:1 › brokerage terminal brief composes market workflows instead of banking screens (2.3s)
+  ok  27 [sites-mobile-chromium] › tests\e2e\composition-quality-smoke.spec.ts:661:1 › product catalog offers a clear path to the generated product detail screen (1.5s)
+  ok  28 [sites-mobile-chromium] › tests\e2e\composition-quality-smoke.spec.ts:782:1 › returns portal brief composes order lookup, return request, and refund status (2.1s)
+  ok  29 [sites-mobile-chromium] › tests\e2e\composition-quality-smoke.spec.ts:937:1 › real-estate and travel directions use truthful, domain-fit content (3.8s)
+  ok  30 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:15:1 › Compose explains the product plan without internal schema vocabulary (2.1s)
+  ok  31 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:204:1 › AI prompt resource describes and exposes only the behavior that works (2.2s)
+  ok  32 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:342:1 › AI rewrite preview separates fixed examples from an actual model action (892ms)
+  ok  33 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:431:1 › AI tool timeline labels timings and results as illustrative sample data (787ms)
+  ok  34 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:527:1 › resource detail labels status as manifest-provided metadata (534ms)
+  ok  35 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:547:3 › AI Chat Panel identifies its local example behavior (2.1s)
+  ok  36 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:547:3 › AI Model Mode Switcher identifies its local example behavior (1.9s)
+  ok  37 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:547:3 › AI Source Citations identifies its local example behavior (2.0s)
+  ok  38 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:547:3 › AI Research Answer identifies its local example behavior (1.9s)
+  ok  39 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:652:1 › community CTA uses real destinations and makes no unsupported member-count claim (759ms)
+  ok  40 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:716:1 › product preview CTA links to Compose and labels its disconnected sample (781ms)
+  ok  41 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:773:1 › homepage examples disclose sample data and avoid unsupported product metrics (2.1s)
+  ok  42 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:875:1 › homepage spectrum controls explain their pre-hydration state (2.4s)
+  ok  43 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:914:1 › mobile homepage spectrum preview keeps its title readable beside its status badges (407ms)
+  ok  44 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:961:1 › homepage resource examples use catalogue identities and demo controls have truthful behavior (1.8s)
+  ok  45 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:1153:1 › Section Planner exports examples without inventing proof or runtime behavior (704ms)
+  ok  46 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:1246:1 › Section Planner does not expose inert controls before its client is ready (582ms)
+  ok  47 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:1306:1 › Typography Lab keeps controls unavailable until its client is ready (520ms)
+  ok  48 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:1360:1 › Typography Lab shows truthful, responsive type specimens (1.4s)
+  ok  49 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:1485:1 › Accessibility Lab describes the limited checks it performs (761ms)
+  ok  50 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:1506:1 › Data Visualisation Styler describes sample recipes and its SVG output (691ms)
+  ok  51 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:1526:1 › Motion Studio labels its sequence as examples instead of measured results (776ms)
+  ok  52 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:1554:1 › Background Studio labels its sample and disables unconnected preview controls (822ms)
+  ok  53 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:1576:1 › Palette Studio limits claims to calculated pairs and disclosed sample data (900ms)
+  ok  54 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:1612:1 › Tools directory descriptions match each tool’s current output (717ms)
+  ok  55 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:1632:1 › Design DNA Lab labels parsed values and sample code without fabricated metrics (1.1s)
+  ok  56 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:1660:1 › Layout Composer describes its schematic preview and copied snippets accurately (784ms)
+  ok  57 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:1694:1 › CLI documentation matches the private package and required command syntax (732ms)
+  ok  58 [sites-mobile-chromium] › tests\e2e\copy-quality-step-39.spec.ts:1721:1 › MCP documentation describes local use and heuristic limitations (725ms)
+  ok  59 [sites-mobile-chromium] › tests\e2e\core-accessibility-landmarks.spec.ts:4:1 › home, Explore, and Workbench preserve heading order and landmark ownership (4.6s)
+  ok  60 [sites-mobile-chromium] › tests\e2e\cross-surface-manifest-step-41.spec.ts:118:1 › UI Direction C manifest validates and exports identically through CLI and MCP (8.7s)
+  ok  61 [sites-mobile-chromium] › tests\e2e\cross-surface-manifest-step-41.spec.ts:325:1 › opens a CLI-composed manifest in Workbench and exports its edited project (5.4s)
+  ok  62 [sites-mobile-chromium] › tests\e2e\cross-surface-manifest-step-41.spec.ts:444:1 › opens an MCP-composed manifest in Workbench and returns the edited project through CLI and MCP (5.6s)
+  ok  63 [sites-mobile-chromium] › tests\e2e\documentation-keyboard-regression.spec.ts:6:1 › registry command is keyboard scrollable on mobile (521ms)
+  ok  64 [sites-mobile-chromium] › tests\e2e\documentation-keyboard-regression.spec.ts:15:1 › the CLI documentation shell stays within a 320px phone viewport (142ms)
+  ok  65 [sites-mobile-chromium] › tests\e2e\documentation-keyboard-regression.spec.ts:26:1 › CLI examples stay within the phone viewport and long commands scroll by keyboard (489ms)
+  ok  66 [sites-mobile-chromium] › tests\e2e\documentation-keyboard-regression.spec.ts:53:1 › long prose tokens and inline identifiers wrap without widening mobile documentation (446ms)
+  ok  67 [sites-mobile-chromium] › tests\e2e\explore-filter-control-identity.spec.ts:3:1 › Explore filter controls have stable identity and survive a reload (960ms)
+  ok  68 [sites-mobile-chromium] › tests\e2e\explore-search-hardening.spec.ts:15:1 › search returns resources that match declared intent, not only a related word (1.6s)
+  ok  69 [sites-mobile-chromium] › tests\e2e\explore-search-hardening.spec.ts:36:1 › Explore search keeps browser-restorable field identity while filtering results (830ms)
+  ok  70 [sites-mobile-chromium] › tests\e2e\explore-search-hardening.spec.ts:50:1 › Explore keeps current results and in-flight previews until a debounced query is applied (956ms)
+  ok  71 [sites-mobile-chromium] › tests\e2e\explore-search-hardening.spec.ts:121:1 › Explore search explains and blocks input until its client handlers are ready (895ms)
+  ok  72 [sites-mobile-chromium] › tests\e2e\explore-search-hardening.spec.ts:183:1 › suggested searches lead to relevant catalog results (1.0s)
+  ok  73 [sites-mobile-chromium] › tests\e2e\explore-search-hardening.spec.ts:206:1 › facet selection filters results and survives reload through the URL (1.5s)
+  ok  74 [sites-mobile-chromium] › tests\e2e\explore-search-hardening.spec.ts:242:1 › Accessibility facet labels declared conformance targets without claiming certification (704ms)
+  ok  75 [sites-mobile-chromium] › tests\e2e\explore-search-hardening.spec.ts:256:1 › facet lists only include values represented in the loaded catalogue (853ms)
+  ok  76 [sites-mobile-chromium] › tests\e2e\explore-search-hardening.spec.ts:285:1 › a stale URL facet remains visible so it can be removed (727ms)
+  ok  77 [sites-mobile-chromium] › tests\e2e\explore-search-hardening.spec.ts:298:1 › Explore reports the real total and exposes more than the first 50 resources (641ms)
+  ok  78 [sites-mobile-chromium] › tests\e2e\explore-search-hardening.spec.ts:309:1 › mobile filter drawer is a keyboard dialog with focus containment and Escape close (659ms)
+  ok  79 [sites-mobile-chromium] › tests\e2e\fault-injection-step-42.spec.ts:91:1 › a corrupt catalogue fails closed and recovers through the visible retry control (1.2s)
+  ok  80 [sites-mobile-chromium] › tests\e2e\fault-injection-step-42.spec.ts:139:1 › a stale Workbench project link enters read-only recovery without creating a replacement project (763ms)
+  ok  81 [sites-mobile-chromium] › tests\e2e\fault-injection-step-42.spec.ts:166:1 › the visible ZIP export reports a browser download failure instead of losing it (1.4s)
+  ok  82 [sites-mobile-chromium] › tests\e2e\fault-injection-step-42.spec.ts:214:1 › an unresolved resource in an imported manifest blocks ZIP export with a useful error (1.7s)
+  -   83 [sites-mobile-chromium] › tests\e2e\fault-injection-step-42.spec.ts:262:1 › deterministic commands remain available while the laptop Lab is offline
+  -   84 [sites-mobile-chromium] › tests\e2e\gold-dialog-accessibility.spec.ts:3:1 › Gold dialog preview exposes modal semantics and closes on Escape
+  -   85 [sites-mobile-chromium] › tests\e2e\gold-resource-accessibility-certification.spec.ts:17:1 › Gold resources expose accessible semantics and contrast in every variant
+  -   86 [sites-mobile-chromium] › tests\e2e\gold-resource-accessibility-certification.spec.ts:99:1 › Split Product Hero Nocturne keeps its badge readable on the dark canvas
+  -   87 [sites-mobile-chromium] › tests\e2e\gold-resource-action-completion.spec.ts:5:1 › AI Prompt Composer reports clearly that its preview does not send a provider request
+  -   88 [sites-mobile-chromium] › tests\e2e\gold-resource-certification.spec.ts:58:1 › Gold resources render at every certified width and each declared variant
+  -   89 [sites-mobile-chromium] › tests\e2e\gold-resource-state-certification.spec.ts:44:1 › Gold data resources handle empty states, large datasets, long content, and interaction
+  -   90 [sites-mobile-chromium] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold marketing-nav-cta handles empty and large links states
+  -   91 [sites-mobile-chromium] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold testimonial-grid handles empty and large testimonials states
+  -   92 [sites-mobile-chromium] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold split-product-hero handles empty and large panels states
+  -   93 [sites-mobile-chromium] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold feature-matrix handles empty and large items states
+  -   94 [sites-mobile-chromium] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold logo-cloud-minimal handles empty and large logos states
+  -   95 [sites-mobile-chromium] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold footer-product handles empty and large links states
+  -   96 [sites-mobile-chromium] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold collapsible-sidebar handles empty and large links states
+  -   97 [sites-mobile-chromium] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold minimal-top-nav handles empty and large links states
+  -   98 [sites-mobile-chromium] › tests\e2e\gold-resource-state-matrix.spec.ts:289:1 › Gold form controls honor disabled state and state patterns remain announced
+  -   99 [sites-mobile-chromium] › tests\e2e\gold-resource-state-matrix.spec.ts:355:1 › Gold fixed-slot resource renders partial input without unresolved values
+  -  100 [sites-mobile-chromium] › tests\e2e\gold-resource-state-matrix.spec.ts:477:1 › Gold long-text props remain readable without mobile overflow
+  ok 101 [sites-mobile-chromium] › tests\e2e\home-catalogue-filter-readiness-step-39.spec.ts:34:1 › homepage category filters stay unavailable until their Astro island is ready (1.3s)
+  ok 102 [sites-mobile-chromium] › tests\e2e\home-default-brief-truthfulness.spec.ts:3:1 › homepage starts with the same domain as its employee-experience example (208ms)
+  ok 103 [sites-mobile-chromium] › tests\e2e\home-demo-hydration.spec.ts:5:1 › homepage route reaches Compose and waits for the live catalogue (681ms)
+  ok 104 [sites-mobile-chromium] › tests\e2e\home-demo-hydration.spec.ts:49:1 › homepage example-directions action produces three real previews (3.5s)
+  ok 105 [sites-mobile-chromium] › tests\e2e\home-demo-hydration.spec.ts:137:1 › homepage example control is unavailable until its island is hydrated (380ms)
+  ok 106 [sites-mobile-chromium] › tests\e2e\home-filter-hydration-contrast-step-48.spec.ts:18:1 › homepage catalogue filters keep readable contrast through initial hydration (1.5s)
+  ok 107 [sites-mobile-chromium] › tests\e2e\home-performance-step-38.spec.ts:3:1 › homepage form fields expose stable IDs and names for browser autofill (202ms)
+  ok 108 [sites-mobile-chromium] › tests\e2e\home-performance-step-38.spec.ts:16:1 › homepage transfers an edited brief to Compose without eager engine loading (1.9s)
+  ok 109 [sites-mobile-chromium] › tests\e2e\home-preset-chips-responsive-step-45.spec.ts:5:1 › homepage preset briefs stay fully visible without horizontal clipping (1.5s)
+  ok 110 [sites-mobile-chromium] › tests\e2e\home-structure-comparison-readiness.spec.ts:30:1 › homepage structure selectors stay disabled until the visible island hydrates (339ms)
+  ok 111 [sites-mobile-chromium] › tests\e2e\home-structure-comparison-readiness.spec.ts:77:1 › homepage wireframe keeps every pane inside the visible diagram before JavaScript (319ms)
+  ok 112 [sites-mobile-chromium] › tests\e2e\home-structure-comparison-readiness.spec.ts:114:1 › tablet homepage wireframe keeps the complete three-pane diagram visible (391ms)
+  ok 113 [sites-mobile-chromium] › tests\e2e\home-structure-comparison-readiness.spec.ts:151:1 › homepage wireframe fits without clipping across phone, tablet, and desktop widths (2.1s)
+  ok 114 [sites-mobile-chromium] › tests\e2e\home-structure-comparison-readiness.spec.ts:211:1 › hydrated homepage structure selectors change the visible layout diagram without mobile clipping (485ms)
+  ok 115 [sites-mobile-chromium] › tests\e2e\home-visual-rhythm-step-40.spec.ts:5:1 › mobile homepage keeps wrapped presets and the composer within the first 90svh (328ms)
+  -  116 [sites-mobile-chromium] › tests\e2e\inline-ai-rewrite-responsive.spec.ts:5:1 › Inline AI Rewrite stays within its 360px Sites resource preview at every tone
+  ok 117 [sites-mobile-chromium] › tests\e2e\minimal-top-nav-responsive-collapse.spec.ts:3:1 › Minimal Top Navigation collapses inside a narrow preview and remains keyboard-operable (920ms)
+  -  118 [sites-mobile-chromium] › tests\e2e\performance-stress-step-38.spec.ts:147:1 › Explore remains usable on constrained 4G and 4x CPU
+  -  119 [sites-mobile-chromium] › tests\e2e\performance-stress-step-38.spec.ts:301:1 › large Workbench project loads, navigates, and exports within local budgets
+  ok 120 [sites-mobile-chromium] › tests\e2e\performance-stress-step-38.spec.ts:452:1 › a saved Workbench project opens before catalogue resources are requested (1.6s)
+  -  121 [sites-mobile-chromium] › tests\e2e\performance-stress-step-38.spec.ts:630:1 › a catalogue failure leaves a saved project intact and Library can retry
+  ok 122 [sites-mobile-chromium] › tests\e2e\performance-workloads-step-38.spec.ts:9:1 › real discovery, composition, handoff and recompose workload stays responsive (4.2s)
+  -  123 [sites-mobile-chromium] › tests\e2e\preview-form-interactions.spec.ts:21:1 › Text Input and Textarea retain text typed into the live preview
+  -  124 [sites-mobile-chromium] › tests\e2e\preview-form-interactions.spec.ts:42:1 › Select retains the chosen option in the live preview
+  -  125 [sites-mobile-chromium] › tests\e2e\preview-form-interactions.spec.ts:55:1 › Filter Builder adds editable conditions and removes them without inserting unrelated rules
+  -  126 [sites-mobile-chromium] › tests\e2e\preview-form-interactions.spec.ts:121:1 › form-control focus does not announce a generic action
+  -  127 [sites-mobile-chromium] › tests\e2e\preview-form-interactions.spec.ts:167:1 › Combobox selection remains connected to the preview action handler
+  -  128 [sites-mobile-chromium] › tests\e2e\preview-form-interactions.spec.ts:179:1 › Button preview still reports an activated example action
+  ok 129 [sites-mobile-chromium] › tests\e2e\preview-form-interactions.spec.ts:186:1 › Reduced Motion toggle disables CSS transitions in the live resource preview (1.1s)
+  ok 130 [sites-mobile-chromium] › tests\e2e\preview-link-navigation.spec.ts:5:1 › resource preview CTA opens Compose through a trusted host confirmation (989ms)
+  ok 131 [sites-mobile-chromium] › tests\e2e\preview-link-navigation.spec.ts:43:1 › Explore opens the full resource page before following a preview link (1.2s)
+  ok 132 [sites-mobile-chromium] › tests\e2e\preview-link-navigation.spec.ts:67:1 › the direct preview wrapper presents a host confirmation before following resource links (704ms)
+  -  133 [sites-mobile-chromium] › tests\e2e\project-scale-step-43.spec.ts:114:3 › Workbench persists, navigates and exports a 3-screen project
+  -  134 [sites-mobile-chromium] › tests\e2e\project-scale-step-43.spec.ts:114:3 › Workbench persists, navigates and exports a 10-screen project
+  -  135 [sites-mobile-chromium] › tests\e2e\project-scale-step-43.spec.ts:114:3 › Workbench persists, navigates and exports a 30-screen project
+  -  136 [sites-mobile-chromium] › tests\e2e\project-scale-step-43.spec.ts:114:3 › Workbench persists, navigates and exports a 50-screen project
+  ok 137 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:120:1 › accessibility, compliance, trust, and security resources distinguish templates from verified claims (3.0s)
+  ok 138 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:162:1 › success state uses truthful defaults, a real action state, and accessible contrast (1.2s)
+  ok 139 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:187:1 › document detail displays a static example without promising universal export or a dead action (802ms)
+  ok 140 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:197:1 › accordion motion answers describe the actual disclosure and avoid blanket accessibility claims (782ms)
+  ok 141 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:216:1 › editorial and workflow samples describe current output without production guarantees (2.6s)
+  ok 142 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:251:1 › interactive preview describes its local controls instead of simulated runtime results (836ms)
+  ok 143 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:265:1 › AI command and empty-state patterns expose only the actions that are connected (1.4s)
+  ok 144 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:297:1 › palette preset copy limits itself to the selected contrast pairs (826ms)
+  ok 145 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:317:1 › resource scores and accessibility declarations are identified as manifest claims (1.9s)
+  ok 146 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:348:1 › unassessed resources do not present template scores or accessibility declarations as verified results (2.3s)
+  ok 147 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:377:1 › resource accessibility status cards keep every label and status readable across widths (5.4s)
+  ok 148 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:505:1 › metrics strip catalogue copy matches its real example preview (1.3s)
+  ok 149 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:571:1 › logo marquee defaults are not presented as real customer or partner wordmarks (708ms)
+  ok 150 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:662:1 › performance metrics resource describes a template instead of measured evidence (333ms)
+  ok 151 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:680:1 › social proof hero metadata matches its evidence-labeled sample defaults (351ms)
+  ok 152 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:700:1 › testimonial grid defaults are examples and do not display invented five-star ratings (353ms)
+  ok 153 [sites-mobile-chromium] › tests\e2e\resource-copy-truthfulness-step-39.spec.ts:719:1 › Footer Minimal defaults do not imply a live system-status source (682ms)
+  ok 154 [sites-mobile-chromium] › tests\e2e\responsive-hardening-step-36.spec.ts:53:1 › major product surfaces fit and retain their primary content at every required width (28.1s)
+  ok 155 [sites-mobile-chromium] › tests\e2e\responsive-hardening-step-36.spec.ts:182:1 › responsive navigation, filters and Workbench controls switch at their real breakpoints (8.5s)
+  ok 156 [sites-mobile-chromium] › tests\e2e\responsive-hardening-step-36.spec.ts:271:1 › phone header keeps its primary action on one line (552ms)
+  ok 157 [sites-mobile-chromium] › tests\e2e\responsive-hardening-step-36.spec.ts:297:1 › phone Workbench keeps the project name and save status inside the toolbar (2.4s)
+  ok 158 [sites-mobile-chromium] › tests\e2e\responsive-hardening-step-36.spec.ts:328:1 › Compose remains actionable across phone, tablet and desktop widths (4.0s)
+  ok 159 [sites-mobile-chromium] › tests\e2e\section-planner-input-identity.spec.ts:3:1 › custom section title has a stable field identity and adds a section (420ms)
+  ok 160 [sites-mobile-chromium] › tests\e2e\showcase-content-copy-regression.spec.ts:3:1 › employee showcase gives the conversion CTA distinct copy from its hero (198ms)
+  ok 161 [sites-mobile-chromium] › tests\e2e\showcase-content-copy-regression.spec.ts:22:1 › homepage employee experience example uses the SaaS taxonomy (237ms)
+  ok 162 [sites-mobile-chromium] › tests\e2e\site-favicon.spec.ts:3:1 › the public Site serves its declared Tessellate favicon (55ms)
+  ok 163 [sites-mobile-chromium] › tests\e2e\site-favicon.spec.ts:11:1 › the public Site serves the browser-requested ICO fallback without a failed request (10ms)
+  ok 164 [sites-mobile-chromium] › tests\e2e\site-route-performance-step-38.spec.ts:13:1 › Workbench shows a useful server-rendered status before its client bundle is ready (749ms)
+  -  165 [sites-mobile-chromium] › tests\e2e\site-route-performance-step-38.spec.ts:80:1 › Workbench keeps the canvas toolbar anchored while lazy panels resolve
+  ok 166 [sites-mobile-chromium] › tests\e2e\site-route-performance-step-38.spec.ts:247:1 › Explore initial catalogue render stays within the CLS budget (2.4s)
+  -  167 [sites-mobile-chromium] › tests\e2e\site-route-performance-step-38.spec.ts:347:1 › Explore keeps the first search transition stable in a narrow desktop window
+  -  168 [sites-mobile-chromium] › tests\e2e\site-route-performance-step-38.spec.ts:430:1 › Explore replaces an empty search state cleanly when the query changes
+  ok 169 [sites-mobile-chromium] › tests\e2e\site-route-performance-step-38.spec.ts:495:1 › Explore reserves the catalogue area before asynchronous search completes (924ms)
+  ok 170 [sites-mobile-chromium] › tests\e2e\site-route-performance-step-38.spec.ts:569:1 › Compose does not download Workbench editor code before project handoff (614ms)
+  ok 171 [sites-mobile-chromium] › tests\e2e\site-route-performance-step-38.spec.ts:652:1 › public routes stay within browser-load, layout and runtime budgets (3.4s)
+  ok 172 [sites-mobile-chromium] › tests\e2e\sites-a11y-regressions-step-48.spec.ts:18:1 › Accessibility Lab auto-fix produces AA contrast for normal text (835ms)
+  ok 173 [sites-mobile-chromium] › tests\e2e\sites-a11y-regressions-step-48.spec.ts:33:1 › resource detail exposes the active visual variant to assistive technology (1.3s)
+  ok 174 [sites-mobile-chromium] › tests\e2e\sites-availability-regressions-step-48.spec.ts:3:1 › Explore retries one transient catalogue network failure without user action (961ms)
+  ok 175 [sites-mobile-chromium] › tests\e2e\sites-availability-regressions-step-48.spec.ts:19:1 › Compose retries one transient catalogue network failure before enabling composition (993ms)
+  ok 176 [sites-mobile-chromium] › tests\e2e\sites-availability-regressions-step-48.spec.ts:36:1 › robots.txt is served as a successful static response (8ms)
+  ok 177 [sites-mobile-chromium] › tests\e2e\sites-preview-csp-live-v25.spec.ts:7:1 › a preview opened directly remains opaque and cannot access Site storage (322ms)
+  ok 178 [sites-mobile-chromium] › tests\e2e\sites-preview-csp-live-v25.spec.ts:45:1 › a directly opened preview cannot create a scripted external popup (966ms)
+  ok 179 [sites-mobile-chromium] › tests\e2e\sites-preview-csp-live-v25.spec.ts:80:1 › a directly opened preview cannot activate an external anchor by script (583ms)
+  ok 180 [sites-mobile-chromium] › tests\e2e\sites-preview-csp-live-v25.spec.ts:122:1 › a preview can trigger only one parent initialization response (1.1s)
+  ok 181 [sites-mobile-chromium] › tests\e2e\sites-preview-csp-live-v25.spec.ts:219:1 › preview CSP blocks forms from sending entered data to an external origin (297ms)
+  ok 182 [sites-mobile-chromium] › tests\e2e\sites-preview-csp-live-v25.spec.ts:257:1 › Explore previews load under an opaque sandbox with only compiled asset connections (627ms)
+  ok 183 [sites-mobile-chromium] › tests\e2e\sites-preview-csp-live-v25.spec.ts:322:1 › sandboxed Explore previews preserve resource inline style behavior (979ms)
+  ok 184 [sites-mobile-chromium] › tests\e2e\sites-preview-csp-live-v25.spec.ts:347:1 › resource detail preview styles are authorized by its runtime CSP (453ms)
+  ok 185 [sites-mobile-chromium] › tests\e2e\sites-preview-csp-live-v25.spec.ts:384:1 › an untrusted preview cannot send data to an external origin (920ms)
+  ok 186 [sites-mobile-chromium] › tests\e2e\sites-preview-csp-live-v25.spec.ts:498:1 › preview CSP limits scripts and styles to compiled assets or build-certified hashes (427ms)
+  ok 187 [sites-mobile-chromium] › tests\e2e\sites-preview-csp-live-v25.spec.ts:598:1 › public shell blocks a newly injected inline script (210ms)
+  ok 188 [sites-mobile-chromium] › tests\e2e\sites-preview-csp-live-v25.spec.ts:624:1 › public shell CSP authorizes only build-certified inline code (1.7s)
+  ok 189 [sites-mobile-chromium] › tests\e2e\sites-preview-csp-live-v25.spec.ts:701:1 › public Explore avoids Zod eval probes under the strict application CSP (522ms)
+  ok 190 [sites-mobile-chromium] › tests\e2e\sites-preview-csp.spec.ts:7:1 › a preview opened directly remains opaque and cannot access Site storage (354ms)
+  ok 191 [sites-mobile-chromium] › tests\e2e\sites-preview-csp.spec.ts:45:1 › a directly opened preview cannot create a scripted external popup (854ms)
+  ok 192 [sites-mobile-chromium] › tests\e2e\sites-preview-csp.spec.ts:80:1 › a directly opened preview cannot activate an external anchor by script (591ms)
+  ok 193 [sites-mobile-chromium] › tests\e2e\sites-preview-csp.spec.ts:122:1 › a preview can trigger only one parent initialization response (1.1s)
+  ok 194 [sites-mobile-chromium] › tests\e2e\sites-preview-csp.spec.ts:219:1 › preview CSP blocks forms from sending entered data to an external origin (321ms)
+  ok 195 [sites-mobile-chromium] › tests\e2e\sites-preview-csp.spec.ts:257:1 › Explore previews load under an opaque sandbox with only compiled asset connections (733ms)
+  ok 196 [sites-mobile-chromium] › tests\e2e\sites-preview-csp.spec.ts:322:1 › sandboxed Explore previews preserve resource inline style behavior (941ms)
+  ok 197 [sites-mobile-chromium] › tests\e2e\sites-preview-csp.spec.ts:347:1 › resource detail preview styles are authorized by its runtime CSP (452ms)
+  ok 198 [sites-mobile-chromium] › tests\e2e\sites-preview-csp.spec.ts:384:1 › an untrusted preview cannot send data to an external origin (886ms)
+  ok 199 [sites-mobile-chromium] › tests\e2e\sites-preview-csp.spec.ts:498:1 › preview CSP limits scripts and styles to compiled assets or build-certified hashes (531ms)
+  ok 200 [sites-mobile-chromium] › tests\e2e\sites-preview-csp.spec.ts:598:1 › public shell blocks a newly injected inline script (203ms)
+  ok 201 [sites-mobile-chromium] › tests\e2e\sites-preview-csp.spec.ts:624:1 › public shell CSP authorizes only build-certified inline code (1.7s)
+  ok 202 [sites-mobile-chromium] › tests\e2e\sites-preview-csp.spec.ts:707:1 › public Explore avoids Zod eval probes under the strict application CSP (502ms)
+  ok 203 [sites-mobile-chromium] › tests\e2e\sites-unknown-resource-preview.spec.ts:3:1 › Sites preview announces an unavailable resource without rendering a substitute (252ms)
+  -  204 [sites-mobile-chromium] › tests\e2e\workbench-canvas-toolbar-clearance-step-49.spec.ts:5:1 › Workbench canvas controls never cover interactive project content
+  ok 205 [sites-mobile-chromium] › tests\e2e\workbench-cross-tab-history-integrity.spec.ts:30:1 › a tab rewrites a history snapshot pruned by another tab before its next save (4.3s)
+  ok 206 [sites-mobile-chromium] › tests\e2e\workbench-dialog-role-step-39.spec.ts:15:1 › Replace Resource dialog uses a host element compatible with its dialog role (2.6s)
+  ok 207 [sites-mobile-chromium] › tests\e2e\workbench-mobile-accessible-label.spec.ts:3:1 › Mobile Workbench navigation includes its visible Menu label in the accessible name (920ms)
+{"project":"sites-mobile-chromium","viewport":{"width":390,"height":844},"userAgent":"Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.8010.12 Mobile Safari/537.36","firstLoadCumulativeLayoutShift":0.017540440437500252,"reloadCumulativeLayoutShift":0.017540440437500252,"delayedChunks":["/_astro/minimal-top-nav.BckvualU.js","/_astro/feature-bento.CR3oOG6T.js","/_astro/cta-minimal.9ScfhZCU.js","/_astro/footer-product.DBXWiaig.js","/_astro/minimal-top-nav.BckvualU.js","/_astro/feature-bento.CR3oOG6T.js","/_astro/cta-minimal.9ScfhZCU.js","/_astro/footer-product.DBXWiaig.js"]}
+  ok 208 [sites-mobile-chromium] › tests\e2e\workbench-mobile-layout-stability.spec.ts:3:1 › Mobile Workbench avoids visible layout shifts while Gold resources load slowly (3.6s)
+  ok 209 [sites-mobile-chromium] › tests\e2e\workbench-mobile-preview-interactions.spec.ts:3:1 › Mobile Workbench preview controls work without switching to Inspect (886ms)
+  ok 210 [sites-mobile-chromium] › tests\e2e\workbench-page-deletion-integrity.spec.ts:105:1 › deleting a page removes its primary and secondary navigation references (1.6s)
+  ok 211 [sites-mobile-chromium] › tests\e2e\workbench-page-deletion-integrity.spec.ts:129:1 › a page containing a locked descendant cannot be deleted (2.8s)
+  ok 212 [sites-mobile-chromium] › tests\e2e\workbench-page-deletion-integrity.spec.ts:156:1 › a quota-failed recovery journal cannot replace a newer local database save (4.8s)
+  ok 213 [sites-mobile-chromium] › tests\e2e\workbench-resource-heading-order-step-39.spec.ts:27:1 › Workbench resource details and replacement preserve heading hierarchy (2.6s)
+  ok 214 [sites-mobile-chromium] › tests\e2e\workbench-visible-label-accessibility-step-39.spec.ts:16:1 › Workbench visible control labels remain present in accessible names (2.2s)
+
+  42 skipped
+  172 passed (4.9m)

@@ -10,7 +10,7 @@ Canonical integration candidate: `consolidation/product-hardening`. `main` remai
 the protected released branch until a reviewed PR with green CI is merged.
 Legacy branches are evidence/reference, never parallel sources of product truth.
 
-## Current release evidence (2026-11-01)
+## Current release evidence (2026-11-02)
 
 Public review Site v72 is live at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. Version ID: appgprj_6acc036de8cc8191a823339566972d85~appgver_a660452f84c88191b499c629ca5c0893; deployment ID: appgdep_6ae7ba14362c819191d533692c30487b. It serves app code from canonical commit b5f9f1ea9a884c544f3f7c8862655a69648e6464 through Sites mirror commit 95cf423eac1f30d22e3aaf8dba3d29d08cb53f57. Exact-head GitHub CI (run 41353416916) passed on the code commit, including Playwright and Axe. PR #8 remains open and unmerged: https://github.com/danishgm-sketch/Tessellate/pull/8.
 
@@ -18,7 +18,7 @@ The v72 follow-up closes AUD-449 only; it is not a rerun of the full v71 route/f
 
 The broader v71 baseline exercised all 31 requested routes at 1440x900 and 390x844 (62/62 route classifications PASS), and completed the employee Compose-to-Workbench-to-export workflow. It recorded zero failed essential requests, runtime errors, or route Axe violations; 11 color-contrast Axe items were incomplete due to CSS Color 4 parsing. The desktop React ZIP was independently clean-installed, built and browsed. The mobile profile exported a ZIP but did not repeat a separate clean install. Full evidence remains in `quality/evidence/step-48/public-v71-live-audit-2026-11-01/`.
 
-The register contains 449 findings (0 Critical, 84 High, 339 Medium, 26 Low): 240 deployed-verified, 9 legacy closed, 2 local closures, 111 fixed awaiting deployed verification, 83 fixed and locally verified, 2 legacy fixed, and 2 documented Sites-host limitations. AUD-419 remains the High/P1 blocker: the source fix exists, but a safe deployed provider-header test needs the laptop backend to be configured; no provider credential was sent. AUD-448's bounded local Docker recovery is fixed and verified; the initiating reason for the original Wrangler unresponsiveness remains unknown. The P1 gate is incomplete.
+The register contains 453 findings (0 Critical, 86 High, 341 Medium, 26 Low): 240 deployed-verified, 9 legacy closed, 2 local closures, 111 fixed awaiting deployed verification, 86 fixed and locally verified, 2 legacy fixed, 2 documented Sites-host limitations, and 1 open High/P1 issue. AUD-419 still needs deployed provider-forwarding confirmation; the laptop backend is deliberately unconfigured, and no provider credential was sent. AUD-448's bounded local Docker recovery is fixed and verified; the initiating reason for the original Wrangler unresponsiveness remains unknown. AUD-450 and AUD-451 have local fixes awaiting issue-specific deployed verification. AUD-452 is a confirmed cold mobile Workbench layout-shift defect (public v72 CLS 0.5028), fixed locally and awaiting deployed verification. AUD-453's internal progress-document route leak is fixed locally and awaits review-Site verification. The P1 gate remains incomplete.
 
 Sites D1/R2 remain unprovisioned. No paid service, recurring infrastructure, or secret was added; the £20/month cap and strict preview CSP are unchanged. The wider hardening programme, exhaustive resource certification, remaining feature matrix, and human validation remain incomplete; external human sessions are owner-waived, not passed.
 ## Execution order
@@ -540,3 +540,48 @@ A new cross-boundary regression now runs `proxyBackend` through the actual API H
 ### 2026-11-01 continuation — generated showcase manifest synchronization
 
 `pnpm build:catalog` refreshed the checked-in Site and preview manifests for seven showcases so their navigation resource references match canonical composer output. The consistency regression passes after generation; all 1,277 unit tests pass, and `pnpm audit:all` passes the 16-point behavioral release gate, production build, bundle budgets, 324-resource licence/provenance checks, security/secret audit and dependency audit. Generated timestamp-only catalog/sample updates were excluded. This is an artifact synchronization; v72's Sites packaging already runs the catalogue build before its static build. Evidence: `quality/evidence/step-48/showcase-manifest-sync.json`.
+
+### 2026-11-02 continuation — settled public v72 browser audit
+
+The public review Site remained on v72; no source or hosted version was changed.
+The 31-route matrix passed at desktop and mobile after the runner was corrected
+to wait for client catalogue readiness and network idle. It recorded 62
+populated route captures, zero HTTP/runtime/network failures, zero overflow,
+and zero route Axe violations. Six further Axe scans on the generated Direction
+C Workbench also had zero violations. Contrast checks remain incomplete where
+Axe cannot parse Tailwind `oklch(... none)` colors or gradient backgrounds; no
+manual contrast pass is claimed.
+
+The exact employee-experience journey passed via visible controls at 1440×900
+and 390×844, including Direction C handoff, persistent overrides, locking,
+recomposition, Gold resource replacement, Surprise Me, exact Undo/Redo, preview
+and both exports. The desktop React ZIP was clean-installed, built and browsed
+outside the monorepo at desktop/mobile sizes. The Compose and Workbench shells
+were also checked at 360, 390, 430, 768, 1024, 1280, 1440 and 1536px with no
+overflow or runtime/network errors. Machine reports, screenshots and export
+artifacts are under
+`quality/evidence/step-48/public-v72-live-audit-2026-11-02/`.
+
+This run corrected two test-harness false alarms: an initial Compose probe
+looked for letter-labelled directions instead of the UI’s 01/02/03 labels, and
+the first route screenshots were taken before Sections/Data catalogue
+hydration. Both pages settled under one second and populated normally. No
+product defect was found in those observations. This is a scoped re-audit, not
+completion of the Step 48 release gate. PR #8 remains open; exact-head GitHub CI
+run 41363451182 was still in progress on
+`81695b52d659ad46561f4c1570de48af185c23c5`. No D1/R2 binding or infrastructure
+was provisioned.
+
+### 2026-11-02 continuation — public v72 mobile Workbench defects and CLS adjudication
+
+The settled v72 audit was followed by a Lighthouse mobile run on the persisted Workbench project. It exposed two defects missed by the route/flagship sweep: AUD-450, where the visible `Menu` label was absent from the accessible name, and AUD-451, where tapping the preview's navigation control selected its enclosing canvas node and switched Workbench to Inspect. Both were reproduced on the deployed v72 UI and recorded with before evidence. The source fixes now include the visible label and keep semantic interactive descendants out of canvas selection interception. The targeted Sites Worker suite passes 6 tests with 2 configured desktop-profile skips; the Gold resource delayed-load test measures CLS 0.01754 on first load and reload in both browser profiles. The clean-install standalone export regression passes; the complete unit suite passes 1,282 tests with 1 configured skip. All 22 workspace typechecks, lint with zero warnings, the 734-page production/Sites build, and the mobile Workbench Axe regression also pass. Evidence and logs are under `quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/`. These fixes are local only and await a new deployed re-audit.
+
+The Lighthouse Agentic Browsing category reported CLS 0.502–0.503 across three mobile audits. Five Chrome DevTools Performance traces under persisted and isolated project contexts, including matching 412x823/DPR 1.75/4x CPU/Fast 4G settings, reported 0.00; the post-navigation buffered PerformanceObserver had zero layout-shift entries. No shifting node or product-code cause has been identified. AUD-452 remains open as a low-severity measurement discrepancy; no layout change was made without attributable evidence. The machine record is `quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/workbench-cls-investigation.json`.
+
+PR #8's exact-head CI runs 41363451182 and 41363467212 and the 16-point Component Quality Gate run 41363467170 have since completed successfully on the existing PR head `81695b52d659ad46561f4c1570de48af185c23c5`. That head predates the local AUD-450/AUD-451 changes; PR #8 remains open and merge-blocked. Public v72 is unchanged. No D1/R2 binding or infrastructure was provisioned.
+
+## Local v72 audit follow-up — 2026-11-02
+
+AUD-450 and AUD-451 have locally verified fixes for the visible menu accessible name and mobile preview interaction. AUD-453 records the internal goal ledger accidentally appearing in the public docs index; the Astro documentation loader now omits that route, the absolute worktree path was removed from the ledger, and desktop/mobile checks confirm the route returns 404. The focused Sites regression also passes. Full profile results and screenshots are recorded in `quality/STEP_48_EVIDENCE.md` and `audit/evidence/step-48/internal-doc-publication/`.
+
+The public review Site is still v72; no deployment or D1/R2 provisioning occurred. Local changes are on `codex/aud443-deployed-verification` and are not included in the existing PR head until committed and pushed. No release or completion claim is implied.

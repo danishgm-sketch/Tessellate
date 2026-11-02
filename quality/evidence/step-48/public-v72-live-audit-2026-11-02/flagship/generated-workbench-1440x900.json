@@ -1,0 +1,297 @@
+{
+  "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=proj-direction-c-51634fb184774f4ca260199515806193dirc",
+  "viewport": "1440x900",
+  "project": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=proj-direction-c-51634fb184774f4ca260199515806193dirc#screen-marketing-home",
+    "title": "Workbench — Tessellate Composition Engine",
+    "headings": [
+      "Workbench: Master-Detail Explorer — Employee experience",
+      "A better workday starts with people.",
+      "Made for everyday employee experiences",
+      "Make the next step easier for every colleague."
+    ],
+    "documentWidth": 1440,
+    "viewportWidth": 1440,
+    "bodyChars": 2631
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaught": [],
+    "failedRequests": [],
+    "badResponses": [],
+    "axeInstrumentationConsole": []
+  },
+  "axe": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              ".tracking-tight.text-sm.gap-2 > span:nth-child(2)"
+            ],
+            "any": [
+              {
+                "id": "color-contrast",
+                "message": "Could not parse color string oklch(0.205 0 none)",
+                "data": {
+                  "bgColor": "#e7e7e7",
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "colorParse",
+                  "expectedContrastRatio": "4.5:1",
+                  "colorParse": "oklch(0.205 0 none)"
+                }
+              }
+            ],
+            "all": [],
+            "none": []
+          },
+          {
+            "target": [
+              ".\\@md\\:min-h-0.\\@md\\:px-0[href$=\"#screen-marketing-home\"]"
+            ],
+            "any": [
+              {
+                "id": "color-contrast",
+                "message": "Could not parse color string oklch(0.371 0 none)",
+                "data": {
+                  "bgColor": "#e7e7e7",
+                  "contrastRatio": 0,
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "colorParse",
+                  "expectedContrastRatio": "4.5:1",
+                  "colorParse": "oklch(0.371 0 none)"
+                }
+              }
+            ],
+            "all": [],
+            "none": []
+          },
+          {
+            "target": [
+              ".\\@md\\:min-h-0.\\@md\\:px-0[href$=\"#screen-overview\"]"
+            ],
+            "any": [
+              {
+                "id": "color-contrast",
+                "message": "Could not parse color string oklch(0.371 0 none)",
+                "data": {
+                  "bgColor": "#e7e7e7",
+                  "contrastRatio": 0,
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "colorParse",
+                  "expectedContrastRatio": "4.5:1",
+                  "colorParse": "oklch(0.371 0 none)"
+                }
+              }
+            ],
+            "all": [],
+            "none": []
+          },
+          {
+            "target": [
+              ".\\@md\\:min-h-0.\\@md\\:px-0[href$=\"#screen-collection-index\"]"
+            ],
+            "any": [
+              {
+                "id": "color-contrast",
+                "message": "Could not parse color string oklch(0.371 0 none)",
+                "data": {
+                  "bgColor": "#e7e7e7",
+                  "contrastRatio": 0,
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "colorParse",
+                  "expectedContrastRatio": "4.5:1",
+                  "colorParse": "oklch(0.371 0 none)"
+                }
+              }
+            ],
+            "all": [],
+            "none": []
+          },
+          {
+            "target": [
+              ".\\@md\\:min-h-0.\\@md\\:px-0[href$=\"#screen-teams\"]"
+            ],
+            "any": [
+              {
+                "id": "color-contrast",
+                "message": "Could not parse color string oklch(0.371 0 none)",
+                "data": {
+                  "bgColor": "#e7e7e7",
+                  "contrastRatio": 0,
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "colorParse",
+                  "expectedContrastRatio": "4.5:1",
+                  "colorParse": "oklch(0.371 0 none)"
+                }
+              }
+            ],
+            "all": [],
+            "none": []
+          },
+          {
+            "target": [
+              ".\\@md\\:min-h-0.\\@md\\:px-0[href$=\"#screen-engagement\"]"
+            ],
+            "any": [
+              {
+                "id": "color-contrast",
+                "message": "Could not parse color string oklch(0.371 0 none)",
+                "data": {
+                  "bgColor": "#e7e7e7",
+                  "contrastRatio": 0,
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "colorParse",
+                  "expectedContrastRatio": "4.5:1",
+                  "colorParse": "oklch(0.371 0 none)"
+                }
+              }
+            ],
+            "all": [],
+            "none": []
+          },
+          {
+            "target": [
+              ".\\@md\\:min-h-0.\\@md\\:px-0[href$=\"#screen-settings\"]"
+            ],
+            "any": [
+              {
+                "id": "color-contrast",
+                "message": "Could not parse color string oklch(0.371 0 none)",
+                "data": {
+                  "bgColor": "#e7e7e7",
+                  "contrastRatio": 0,
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "colorParse",
+                  "expectedContrastRatio": "4.5:1",
+                  "colorParse": "oklch(0.371 0 none)"
+                }
+              }
+            ],
+            "all": [],
+            "none": []
+          },
+          {
+            "target": [
+              ".bg-blue-100\\/70"
+            ],
+            "any": [
+              {
+                "id": "color-contrast",
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ],
+            "all": [],
+            "none": []
+          },
+          {
+            "target": [
+              ".text-4xl"
+            ],
+            "any": [
+              {
+                "id": "color-contrast",
+                "message": "Could not parse color string oklch(0.145 0 none)",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "54.0pt (72px)",
+                  "fontWeight": "bold",
+                  "messageKey": "colorParse",
+                  "expectedContrastRatio": "3:1",
+                  "colorParse": "oklch(0.145 0 none)"
+                }
+              }
+            ],
+            "all": [],
+            "none": []
+          },
+          {
+            "target": [
+              ".\\@sm\\:text-xl"
+            ],
+            "any": [
+              {
+                "id": "color-contrast",
+                "message": "Could not parse color string oklch(0.145 0 none)",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "15.0pt (20px)",
+                  "fontWeight": "normal",
+                  "messageKey": "colorParse",
+                  "expectedContrastRatio": "4.5:1",
+                  "colorParse": "oklch(0.145 0 none)"
+                }
+              }
+            ],
+            "all": [],
+            "none": []
+          },
+          {
+            "target": [
+              ".border-neutral-300"
+            ],
+            "any": [
+              {
+                "id": "color-contrast",
+                "message": "Could not parse color string oklch(0.205 0 none)",
+                "data": {
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "colorParse",
+                  "expectedContrastRatio": "4.5:1",
+                  "colorParse": "oklch(0.205 0 none)"
+                }
+              }
+            ],
+            "all": [],
+            "none": []
+          },
+          {
+            "target": [
+              ".text-\\[var\\(--tess-ink-secondary\\,\\#62666F\\)\\]"
+            ],
+            "any": [
+              {
+                "id": "color-contrast",
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ],
+            "all": [],
+            "none": []
+          }
+        ]
+      }
+    ],
+    "passes": 29
+  },
+  "screenshot": "quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/generated-workbench-1440x900.png"
+}
