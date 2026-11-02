@@ -43,11 +43,15 @@ source identity and rights restrictions.
   Component Quality Gate run 41406660036 passed. These CI jobs cover `8768e58`
   only and do not certify the three newer local commits.
 - At the preceding checkpoint PR #8 was open and unmerged at
-  `25954eda8bd578811da89769f0903f5ff4b3b373`; its push CI, PR CI and Component
-  Quality Gate runs were still active. This continuation added a separate
-  keyboard regression for AUD-451 and fresh deployed DevTools evidence. Those
-  existing runs do not certify the added regression/evidence commit; the new
-  exact branch head needs fresh CI before publication.
+  `25954eda8bd578811da89769f0903f5ff4b3b373`; its push and PR CI later failed
+  in the Sites desktop E2E profile at the catalogue-lazy-load replacement
+  stress test. The test clicked the component center, which hit an interactive
+  descendant and correctly did not select the renderer node. It now selects
+  the resource through Layers; the same local Sites desktop test passes.
+- This continuation also added a keyboard regression for AUD-451 and fresh
+  deployed DevTools evidence. CI on the previous candidate does not certify
+  either the added keyboard test or the Layers-based stress-test correction.
+  A fresh exact-head CI run is required before publication.
 - Public review Site: `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`
   remains v72. D1/R2 are unprovisioned; no deployment or infrastructure change
   was made in this checkpoint.
@@ -112,8 +116,8 @@ source identity and rights restrictions.
    CLI/MCP, accessibility, performance, reliability and security acceptance
    work in the order defined by the source programme.
 
-**Next:** push the keyboard regression and captured evidence to PR #8, then wait
-for push CI, PR CI and the Component Quality Gate on that exact new head. If
+**Next:** push the Layers-based stress-test correction to PR #8, then wait for
+push CI, PR CI and the Component Quality Gate on the resulting exact head. If
 they pass, mirror the exact source into the existing Sites source, build/save/
 deploy it to the review Site, and rerun route/docs plus mobile Workbench label,
 keyboard/tap interaction and cold-load checks. Public v72 remains unchanged

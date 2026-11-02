@@ -586,7 +586,8 @@ test('a saved Workbench project opens before catalogue resources are requested',
     await expect.poll(() => catalogueRequests).toBe(1);
     const resourceNode = firstResourceNode(manifest.screens[0]!.rootNode);
     expect(resourceNode, 'The saved showcase fixture should include a rendered Gold resource.').not.toBeNull();
-    await page.locator(`[data-node-id="${resourceNode!.id}"]`).click();
+    await page.getByTestId('left-panel').getByRole('button', { name: 'Layers', exact: true }).click();
+    await page.getByTestId(`layer-node-${resourceNode!.id}`).click();
     await page.keyboard.press('r');
     const replacement = page.getByRole('dialog', { name: 'Replace Resource' });
     await expect(replacement).toBeVisible();
@@ -598,6 +599,7 @@ test('a saved Workbench project opens before catalogue resources are requested',
     await expect(replacement.getByText(/Loading compatible candidates/i)).toHaveCount(0);
     await expect(replacement.getByText(/No compatible candidate resources found|Apply Replacement/).first()).toBeVisible({ timeout: 15_000 });
     await replacement.getByRole('button', { name: 'Close Replace Drawer' }).click();
+    await page.getByTestId('left-panel').getByRole('button', { name: 'Library', exact: true }).click();
     await expect(page.getByTestId('library-tab').getByText(/Gold runtime/i).first()).toBeVisible({ timeout: 15_000 });
   }
 
