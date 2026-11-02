@@ -46,10 +46,11 @@ test('Workbench resource details and replacement preserve heading hierarchy', as
 
   await page.goto(`/workbench?project=${manifest.id}`);
   await expect(page.getByRole('heading', { name: `Workbench: ${manifest.name}` })).toBeAttached();
-  await page.locator(`[data-node-id="${resourceNode!.id}"]`).click();
-
   if (testInfo.project.name.includes('mobile')) {
+    await page.locator(`[data-node-id="${resourceNode!.id}"]`).click();
     await page.getByTestId('mobile-workbench').getByRole('button', { name: 'Inspect' }).click();
+  } else {
+    await page.getByTestId(`layer-node-${resourceNode!.id}`).click();
   }
 
   const inspector = page.getByRole('complementary', { name: 'Workbench inspector' });

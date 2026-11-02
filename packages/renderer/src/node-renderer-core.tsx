@@ -7,6 +7,29 @@ import type { ResourceRendererMap } from './types.js';
 import { normalizeDesignTokens } from './tokens/normalizer.js';
 import { tokensToCssVariables } from './tokens/contract.js';
 
+const WORKBENCH_INTERACTIVE_TARGET = [
+  'a[href]',
+  'button',
+  'input:not([type="hidden"])',
+  'select',
+  'textarea',
+  'summary',
+  '[contenteditable="true"]',
+  '[role="button"]',
+  '[role="checkbox"]',
+  '[role="combobox"]',
+  '[role="link"]',
+  '[role="listbox"]',
+  '[role="menuitem"]',
+  '[role="option"]',
+  '[role="radio"]',
+  '[role="slider"]',
+  '[role="switch"]',
+  '[role="tab"]',
+  '[role="textbox"]',
+  '[role="treeitem"]',
+].join(',');
+
 class ResourceLoadBoundary extends React.Component<
   { slug: string; children: React.ReactNode },
   { failed: boolean }
@@ -56,6 +79,9 @@ export function createNodeRenderer(defaultRegistry: ResourceRendererMap) {
 
   const handleSelect = (e: React.MouseEvent) => {
     if (context?.onNodeSelect) {
+      if (e.target instanceof Element && e.target.closest(WORKBENCH_INTERACTIVE_TARGET)) {
+        return;
+      }
       e.stopPropagation();
       e.preventDefault();
       context.onNodeSelect(node.id);

@@ -34,7 +34,11 @@ test('Workbench visible control labels remain present in accessible names', asyn
   }, manifest);
   await page.goto(`/workbench?project=${manifest.id}`);
   await expect(page.getByRole('heading', { name: `Workbench: ${manifest.name}` })).toBeAttached();
-  await page.locator(`[data-node-id="${resourceNode!.id}"]`).click();
+  if (isMobile) {
+    await page.locator(`[data-node-id="${resourceNode!.id}"]`).click();
+  } else {
+    await page.getByTestId(`layer-node-${resourceNode!.id}`).click();
+  }
   const inspector = page.getByRole('complementary', { name: 'Workbench inspector' });
   await inspector.getByRole('button', { name: 'Content', exact: true }).click();
   const contentAxe = await new AxeBuilder({ page }).withRules(['label-content-name-mismatch']).analyze();

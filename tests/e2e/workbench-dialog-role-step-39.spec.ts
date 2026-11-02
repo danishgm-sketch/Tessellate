@@ -27,9 +27,11 @@ test('Replace Resource dialog uses a host element compatible with its dialog rol
   }, manifest);
   await page.goto(`/workbench?project=${manifest.id}`);
   await expect(page.getByRole('heading', { name: `Workbench: ${manifest.name}` })).toBeAttached();
-  await page.locator(`[data-node-id="${resourceNode!.id}"]`).click();
   if (testInfo.project.name.includes('mobile')) {
+    await page.locator(`[data-node-id="${resourceNode!.id}"]`).click();
     await page.getByTestId('mobile-workbench').getByRole('button', { name: 'Inspect' }).click();
+  } else {
+    await page.getByTestId('layer-node-' + resourceNode!.id).click();
   }
   const inspector = page.getByRole('complementary', { name: 'Workbench inspector' });
   await inspector.getByRole('button', { name: 'Resource', exact: true }).click();
