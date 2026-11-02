@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import type { MobileTab } from '../../types.js';
 import { BrowserManifestRenderer as ManifestRenderer } from '@tessellate/renderer/browser';
+import { useScreenResourcePreload } from '../use-screen-resource-preload.js';
 import { TopToolbar } from '../TopToolbar.js';
 import {
   Eye,
@@ -32,6 +33,11 @@ export function MobileWorkbench({ historySaveStatus = 'saved', storageWarning = 
   const isBlendOpen = useWorkbenchStore((state) => state.isBlendOpen);
   const reducedMotion = useWorkbenchStore((state) => state.reducedMotion);
   const lastActionMessage = useWorkbenchStore((state) => state.lastActionMessage);
+  const activeScreen = manifest.screens.find((screen) => screen.id === activeScreenId) ?? manifest.screens[0];
+  const resourcesReady = useScreenResourcePreload(
+    activeScreen?.rootNode,
+    `${manifest.id}:${activeScreen?.id ?? activeScreenId}`,
+  );
 
   const tabs: Array<{ id: MobileTab; label: string; icon: React.ReactNode }> = [
     { id: 'preview', label: 'Preview', icon: <Eye className="h-4 w-4" /> },
@@ -67,23 +73,36 @@ export function MobileWorkbench({ historySaveStatus = 'saved', storageWarning = 
       <main id="workbench-main" tabIndex={-1} aria-label="Workbench editor" className="relative z-0 flex-1 overflow-y-auto">
         <h1 className="sr-only">Workbench: {manifest.name}</h1>
         {mobileTab === 'preview' && (
-          <div className="p-4">
-            <div className="rounded-2xl border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#111217] overflow-hidden shadow-sm">
-              <ManifestRenderer
-                manifest={manifest}
-                activeScreenId={activeScreenId}
-                context={{
-                  selectedNodeId: selectedNodeId ?? undefined,
-                  onNodeSelect: (id) => {
-                    selectNode(id);
-                    setMobileTab('selection');
-                  },
-                  viewport: 'mobile',
-                  reducedMotion,
-                }}
-              />
+          resourcesReady ? (
+            <div className="p-4">
+              <div className="rounded-2xl border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#111217] overflow-hidden shadow-sm">
+                <ManifestRenderer
+                  manifest={manifest}
+                  activeScreenId={activeScreenId}
+                  context={{
+                    selectedNodeId: selectedNodeId ?? undefined,
+                    onNodeSelect: (id) => {
+                      selectNode(id);
+                      setMobileTab('selection');
+                    },
+                    viewport: 'mobile',
+                    reducedMotion,
+                  }}
+                />
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="p-4">
+              <div
+                data-testid="workbench-mobile-resource-preload-status"
+                role="status"
+                aria-live="polite"
+                className="flex min-h-[65vh] items-center justify-center rounded-2xl border border-[#D9D6CF] bg-white px-6 py-12 text-sm text-[#62666F] dark:border-[#272C34] dark:bg-[#111217] dark:text-[#A8AFBA]"
+              >
+                Loading resources for {activeScreen?.name ?? 'this screen'}…
+              </div>
+            </div>
+          )
         )}
 
         {mobileTab === 'pages' && (

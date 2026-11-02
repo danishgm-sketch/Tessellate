@@ -1,0 +1,65 @@
+{
+  "capturedAt": "2026-11-02T07:28:17.700Z",
+  "route": "http://127.0.0.1:4323/workbench#screen-marketing-home",
+  "viewport": {
+    "width": 412,
+    "height": 823
+  },
+  "cpuThrottlingRate": 4,
+  "projectHeading": "Workbench: Example employee workspace",
+  "delayedResources": {
+    "firstLoad": [
+      "/_astro/minimal-top-nav.BckvualU.js",
+      "/_astro/editorial-hero.CN6KYWuK.js",
+      "/_astro/feature-bento.CR3oOG6T.js",
+      "/_astro/cta-minimal.9ScfhZCU.js",
+      "/_astro/footer-product.DBXWiaig.js"
+    ],
+    "reload": [
+      "/_astro/minimal-top-nav.BckvualU.js",
+      "/_astro/editorial-hero.CN6KYWuK.js",
+      "/_astro/feature-bento.CR3oOG6T.js",
+      "/_astro/cta-minimal.9ScfhZCU.js",
+      "/_astro/footer-product.DBXWiaig.js"
+    ]
+  },
+  "firstLoad": {
+    "cls": 0,
+    "shifts": []
+  },
+  "reload": {
+    "cls": 0,
+    "shifts": []
+  },
+  "normalRuntime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "faultInjection": {
+    "cls": 0,
+    "shifts": [],
+    "failedGoldResource": "/_astro/editorial-hero.CN6KYWuK.js",
+    "delayedResources": [
+      "/_astro/minimal-top-nav.BckvualU.js",
+      "/_astro/feature-bento.CR3oOG6T.js",
+      "/_astro/cta-minimal.9ScfhZCU.js",
+      "/_astro/footer-product.DBXWiaig.js"
+    ],
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_FAILED",
+      "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4323/_astro/editorial-hero.CN6KYWuK.js"
+    ],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [
+      {
+        "url": "http://127.0.0.1:4323/_astro/editorial-hero.CN6KYWuK.js",
+        "error": "net::ERR_FAILED"
+      }
+    ],
+    "httpErrors": []
+  }
+}

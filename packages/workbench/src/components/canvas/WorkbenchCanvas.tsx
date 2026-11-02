@@ -1,19 +1,10 @@
 import React from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import { BrowserManifestRenderer as ManifestRenderer } from '@tessellate/renderer/browser';
-import { preloadBrowserResources } from '@tessellate/renderer/browser';
-import type { ProjectNode } from '@tessellate/schemas';
 import { DeviceFrame } from './DeviceFrame.js';
 import { CanvasToolbar } from './CanvasToolbar.js';
 import { BreadcrumbBar } from './BreadcrumbBar.js';
-
-function collectResourceSlugs(node: ProjectNode | undefined): string[] {
-  if (!node) return [];
-  return [
-    ...(node.resourceRef ? [node.resourceRef.slug] : []),
-    ...node.children.flatMap(collectResourceSlugs),
-  ];
-}
+import { useScreenResourcePreload } from '../use-screen-resource-preload.js';
 
 export function WorkbenchCanvas() {
   const manifest = useWorkbenchStore((state) => state.manifest);
@@ -26,24 +17,10 @@ export function WorkbenchCanvas() {
   const zoom = useWorkbenchStore((state) => state.zoom);
   const reducedMotion = useWorkbenchStore((state) => state.reducedMotion);
   const activeScreen = manifest.screens.find((screen) => screen.id === activeScreenId) ?? manifest.screens[0];
-  const resourceSlugs = React.useMemo(() => collectResourceSlugs(activeScreen?.rootNode), [activeScreen?.rootNode]);
-  const resourceKey = `${manifest.id}:${activeScreen?.id ?? activeScreenId}:${resourceSlugs.join(',')}`;
-  const [loadedResourceKey, setLoadedResourceKey] = React.useState<string | null>(null);
-
-  React.useEffect(() => {
-    let cancelled = false;
-    void preloadBrowserResources(resourceSlugs)
-      .catch(() => {
-        // Let the normal renderer boundary show a resource-specific failure instead of
-        // leaving the whole screen in a loading state.
-      })
-      .finally(() => {
-        if (!cancelled) setLoadedResourceKey(resourceKey);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [resourceKey, resourceSlugs]);
+  const resourcesReady = useScreenResourcePreload(
+    activeScreen?.rootNode,
+    `${manifest.id}:${activeScreen?.id ?? activeScreenId}`,
+  );
 
   const isMobileViewport = ['430', '390', '360'].includes(devicePreset);
   const isTabletViewport = devicePreset === '768';
@@ -83,7 +60,7 @@ export function WorkbenchCanvas() {
           }}
           className="w-full flex justify-center pb-4"
         >
-          {loadedResourceKey === resourceKey ? (
+          {resourcesReady ? (
             <DeviceFrame preset={devicePreset}>
               <div className="w-full min-h-full" data-canvas-background="true">
                 <ManifestRenderer

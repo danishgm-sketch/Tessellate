@@ -16,6 +16,7 @@ export default defineConfig({
     'compose-responsiveness-hardening.spec.ts',
     'catalogue-preview-loading-state.spec.ts',
     'minimal-top-nav-responsive-collapse.spec.ts',
+    'workbench-mobile-cold-resource-layout-shift.spec.ts',
     'sites-a11y-regressions-step-48.spec.ts',
     'sites-availability-regressions-step-48.spec.ts',
     'explore-search-hardening.spec.ts',
