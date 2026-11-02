@@ -1,0 +1,112 @@
+# Tessellate Grand Goal progress ledger
+
+This ledger tracks the persistent product-hardening and Verso-integration goal
+without replacing the ordered gates in
+[`PRODUCT_HARDENING.md`](PRODUCT_HARDENING.md), the capability snapshot in
+[`CURRENT_PRODUCT_INVENTORY.md`](CURRENT_PRODUCT_INVENTORY.md), the test matrix
+in [`../quality/FEATURE_MATRIX.md`](../quality/FEATURE_MATRIX.md), or the
+machine-readable issue register in [`../audit/runtime-audit.json`](../audit/runtime-audit.json).
+
+## Goal and guardrails
+
+Make Tessellate a coherent, dependable product for interpreting a brief,
+producing materially different interface directions, editing safely, and
+exporting a working application. Finish and verify existing product hardening
+before widening the resource ecosystem. Then integrate every technically and
+legally eligible Verso resource through shared contracts while preserving its
+source identity and rights restrictions.
+
+- No major product expansion until the release gates in `PRODUCT_HARDENING.md`
+  pass.
+- The owner's external-user-study waiver is recorded as **waived, not passed**;
+  simulated perspectives do not count as human sessions.
+- Verso's private/unlicensed status remains a distribution restriction until
+  documented rights authorize redistribution.
+- No silent merge, rights-restricted publication, paid infrastructure, or
+  production Site change. The public review Site currently remains v72.
+
+## Current checkpoint — 2026-11-02
+
+- Working copy: a dedicated Codex worktree for this review branch.
+- Branch: `codex/aud443-deployed-verification`.
+- Validated starting commit: `81695b52d659ad46561f4c1570de48af185c23c5`.
+- AUD-452 fix commit `8768e58a4d6a554d8e0e5319b0cd9d54edf7de30` is pushed to
+  PR #8 branch `codex/step-48-review-fixes`. The new exact-head CI runs
+  41406642682 and 41406660080 plus Component Quality Gate run 41406660036 are
+  in progress; deployment waits for their result.
+- PR #8 is open and unmerged. Previous passing checks on `81695b52...` do not
+  certify the new commit.
+- Public review Site: `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`
+  remains v72. D1/R2 are unprovisioned; no deployment or infrastructure change
+  was made in this checkpoint.
+- The latest scoped v72 audit covered 31 public routes at 1440x900 and 390x844,
+  the employee-experience journey, responsive shells through 1536px, and the
+  independent desktop React export build. Its scope is recorded in
+  `quality/STEP_48_EVIDENCE.md`; it does not complete Step 48.
+
+### Work in progress
+
+- **AUD-450, medium:** the mobile preview menu's accessible name omitted its
+  visible `Menu` label. Fixed locally; issue-specific deployed verification is
+  pending.
+- **AUD-451, high:** tapping that menu selected the enclosing renderer node
+  and switched the mobile Workbench to Inspect. Fixed locally by allowing
+  semantic interactive descendants to handle their own events; deployed
+  verification is pending.
+- **AUD-452, high/open; fix committed, deployed verification pending:** a fresh cache-bypass DevTools trace on public v72
+  reproduced CLS 0.5028 at 412x823, DPR 1.75, 4x CPU and Fast 4G. It identifies
+  the hero, value-proposition, conversion CTA and footer wrappers shifting as
+  five Gold chunks load behind the Workbench shell. The first mobile preload
+  gate also had a fail-fast race: when one Gold chunk failed, the screen mounted
+  before other delayed chunks settled. The shared hook now waits for every
+  deduplicated resource attempt, including failures. After a fresh `pnpm build`,
+  first load, reload and injected partial failure all measured CLS 0.00. The
+  failure case retained its visible resource-specific error, one expected
+  aborted request and zero uncaught exceptions. Four related mobile Workbench
+  regressions pass. Deployed verification remains pending.
+- **AUD-453, medium:** the internal progress ledger was included in public docs
+  routes. Fixed locally by excluding it from the public route set and removing
+  the absolute worktree path; the route now returns 404 across four browser
+  profiles. Deployed verification is pending.
+- The local Sites Worker regression passes 6 tests with 2 configured desktop
+  profile skips. The delayed Gold-load test records CLS 0.01754 on first load
+  and reload. The full unit suite passes 1,282 tests with 1 configured skip;
+  all 22 workspace typechecks, lint (zero warnings), the 734-page production
+  build, standalone export fidelity, and the mobile Workbench Axe test pass.
+  Logs and machine evidence are under
+  `quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/`.
+- Fresh E2E profile runs are green: 394 passed / 130 skips in default
+  desktop/mobile, 206 / 8 in Sites desktop, 172 / 42 in Sites mobile, and 3 / 0
+  in the standalone preview app. Four additional targeted docs-index checks
+  cover desktop/mobile in Astro and Sites. The production build now emits 733
+  pages because the internal progress route is excluded. Full results are
+  recorded in `quality/STEP_48_EVIDENCE.md`.
+
+## Mission order and next action
+
+1. **Mission A — existing hardening:** active. Step 48 and the full release
+   gate remain incomplete; do not infer release readiness from the scoped v72
+   sweep or existing green CI.
+2. **Mission B — Verso integration:** not started in this checkpoint. Inspect
+   the current Verso repository against its verified source snapshot and
+   preserve the private/unlicensed redistribution boundary before integration.
+3. Continue the remaining product, renderer, mutation, persistence, export,
+   CLI/MCP, accessibility, performance, reliability and security acceptance
+   work in the order defined by the source programme.
+
+**Next:** wait for exact-head CI on `8768e58a...`. If it passes, mirror that
+source commit into the existing Sites source, build and save an artifact from
+the exact pushed tree, deploy it to the existing review Site, and rerun the
+normal plus partial-failure mobile Workbench checks there. Public v72 remains
+unchanged until then; close AUD-452 only after the hosted recheck passes.
+## Evidence and unresolved conditions
+
+- Detailed deployed audit: [`../quality/STEP_48_EVIDENCE.md`](../quality/STEP_48_EVIDENCE.md).
+- Issue details and status: [`../audit/RUNTIME_AUDIT.md`](../audit/RUNTIME_AUDIT.md)
+  and [`../audit/runtime-audit.json`](../audit/runtime-audit.json).
+- Current baseline feature rows remain historical inventory evidence, not
+  certification. Refresh them only when their ordered feature gates are
+  actually verified.
+- Human usability evidence remains unavailable by owner waiver. Verso rights,
+  remaining hardening gates, broader integration benchmarks, and deployed
+  verification of local-only fixes remain unresolved.
