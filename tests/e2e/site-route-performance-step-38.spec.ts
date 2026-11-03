@@ -31,8 +31,15 @@ test('Workbench shows a useful server-rendered status before its client bundle i
 
   await page.route('**/_astro/index.*.js', async (route) => {
     const response = await route.fetch();
+    const [body, headers] = await Promise.all([response.body(), response.headers()]);
     await new Promise((resolve) => setTimeout(resolve, 1600));
-    await route.fulfill({ response });
+    // Buffer the response before delaying; a navigated frame can dispose the
+    // original browser response while this intercepted request is suspended.
+    await route.fulfill({
+      status: response.status(),
+      headers: headers['content-type'] ? { 'content-type': headers['content-type'] } : undefined,
+      body,
+    });
   });
 
   const startedAt = Date.now();
