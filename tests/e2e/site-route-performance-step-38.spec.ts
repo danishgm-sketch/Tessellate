@@ -24,6 +24,7 @@ test('Workbench shows a useful server-rendered status before its client bundle i
   page.on('response', (response) => {
     if (response.status() >= 400) httpErrors.push({ url: response.url(), status: response.status() });
   });
+
   page.on('requestfailed', (request) =>
     failedRequests.push({ url: request.url(), error: request.failure()?.errorText ?? null })
   );
@@ -99,6 +100,21 @@ test('Workbench keeps the canvas toolbar anchored while lazy panels resolve', as
     if (response.status() >= 400) httpErrors.push({ url: response.url(), status: response.status() });
   });
 
+  const delayedStartupChunks: string[] = [];
+  await page.route('**/_astro/WorkbenchShell.*.js', async (route) => {
+    const response = await route.fetch();
+    delayedStartupChunks.push(new URL(route.request().url()).pathname);
+    await new Promise((resolve) => setTimeout(resolve, 400));
+    await route.fulfill({ response });
+  });
+  const delayedStarterRequests: string[] = [];
+  await page.route('**/data/workbench-starter.json', async (route) => {
+    const response = await route.fetch();
+    delayedStarterRequests.push(new URL(route.request().url()).pathname);
+    await new Promise((resolve) => setTimeout(resolve, 1600));
+    await route.fulfill({ response });
+  });
+
   await page.addInitScript(() => {
     type LayoutShiftEntry = PerformanceEntry & {
       value?: number;
@@ -165,7 +181,13 @@ test('Workbench keeps the canvas toolbar anchored while lazy panels resolve', as
     });
   }
 
-  await page.goto('/workbench');
+  await page.goto('/workbench', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('[data-testid="workbench-startup-shell"][data-client-rendered="true"]')).toBeVisible({ timeout: 10000 });
+  await expect(page.getByTestId('workbench-startup-status')).toBeVisible();
+  const startupMain = page.locator('main[aria-busy="true"]');
+  await expect(startupMain, 'the accessible full-height startup shell should remain while the starter project is loading').toBeVisible();
+  const startupHeight = await startupMain.evaluate((element) => element.getBoundingClientRect().height);
+  expect(startupHeight, 'the Workbench startup view should reserve the mobile/desktop viewport height').toBeGreaterThanOrEqual(900);
   const canvasToolbar = page.getByTestId('canvas-toolbar');
   await expect(canvasToolbar).toBeVisible({ timeout: 15000 });
   await expect(page.getByTestId('workbench-resource-preload-status')).toBeVisible({ timeout: 15000 });
@@ -216,8 +238,10 @@ test('Workbench keeps the canvas toolbar anchored while lazy panels resolve', as
   const evidence = {
     capturedAt: new Date().toISOString(),
     route: page.url(),
-    delayedChunks: ['TopToolbar', 'CommandBar'],
-    delayMs: 1200,
+    delayedChunks: ['WorkbenchShell', 'TopToolbar', 'CommandBar'],
+    delayedStartupChunks,
+    delayedStarterRequests,
+    delayMs: 1600,
     viewport: layout.viewport,
     toolbarBefore,
     toolbarAfter,
@@ -236,6 +260,8 @@ test('Workbench keeps the canvas toolbar anchored while lazy panels resolve', as
   });
 
   expect(layout.viewport).toBe('1440x900');
+  expect(delayedStartupChunks, 'the cold-start fixture should delay the Workbench island entry').toHaveLength(1);
+  expect(delayedStarterRequests, 'the cold-start fixture should delay the starter project response').toHaveLength(1);
   expect(evidence.toolbarMovementPx, JSON.stringify(evidence)).toBeLessThanOrEqual(32);
   expect(layout.cls, JSON.stringify(evidence.shifts)).toBeLessThanOrEqual(0.1);
   expect(consoleErrors).toEqual([]);

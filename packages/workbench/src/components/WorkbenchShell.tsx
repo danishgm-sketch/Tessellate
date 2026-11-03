@@ -5,6 +5,7 @@ import { useWorkbenchStore } from '../store/workbench-store.js';
 import { loadBrowserProject, createProjectSaver } from '../persistence/browser-session.js';
 import { loadWorkbenchStarterTemplate } from '../persistence/starter-template.js';
 import { ProjectManifestSchema, type ProjectManifest } from '@tessellate/schemas';
+import { WorkbenchStartup } from './WorkbenchStartup.js';
 
 const TopToolbar = lazy(() => import('./TopToolbar.js').then((module) => ({ default: module.TopToolbar })));
 const LeftPanel = lazy(() => import('./left-panel/LeftPanel.js').then((module) => ({ default: module.LeftPanel })));
@@ -352,7 +353,11 @@ export function WorkbenchShell() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedNodeId, selectParentNode, undo, redo, setDevicePreset, setZoom, toggleNodeLock, openReplaceDrawer]);
 
-  if (loading) return <div role="status" className="p-8">Starting your workspace…</div>;
+  if (loading) {
+    const params = new URLSearchParams(window.location.search);
+    const hasProjectQuery = ['project', 'showcase', 'resource'].some((key) => params.has(key));
+    return <WorkbenchStartup hasProjectQuery={hasProjectQuery} />;
+  }
   if (damagedRecords.length) return <main className="p-8 space-y-4"><h1>Recover your local project</h1><p role="alert">A stored record could not be validated. Its original data has been preserved. Editing is paused to protect your work.</p>{damagedRecords.map((record,index)=><div key={index}><p>{record.reason}</p><a download={`recovered-record-${index}.json`} href={`data:application/json;charset=utf-8,${encodeURIComponent(record.raw)}`}>Export raw record {index+1}</a></div>)}<a href="/compose">Create a separate project</a></main>;
   if (storageError) return (
     <main id="workbench-main" className="min-h-screen bg-[#FAF9F6] px-4 py-10 text-[#111217] dark:bg-[#0B0D10] dark:text-[#F5F7FA] sm:px-8">

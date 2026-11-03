@@ -8,6 +8,7 @@
   "exports": {
     ".": "./src/index.ts",
     "./shell": "./src/components/WorkbenchShell.tsx",
+    "./startup": "./src/components/WorkbenchStartup.tsx",
     "./persistence": "./src/persistence/storage.ts"
   },
   "scripts": {
