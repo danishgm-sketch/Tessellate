@@ -749,3 +749,112 @@ test('Footer Minimal defaults do not imply a live system-status source', async (
   expect(runtime.failedRequests).toEqual([]);
   expect(runtime.httpErrors).toEqual([]);
 });
+
+test('resource previews disclose examples and avoid unsupported billing state or inert affordances', async ({ page }, testInfo) => {
+  const runtime = watchRuntime(page);
+  const pricingSlugs = [
+    'pricing-three-tier',
+    'pricing-two-tier',
+    'pricing-comparison-table',
+    'pricing-toggle',
+    'pricing-usage-based',
+    'pricing-calculator-shell',
+    'plan-feature-matrix',
+    'faq-accordion',
+  ];
+  const forbidden = /Free Core|Team Sync|all 324|dedicated SLA|private registry|cancel anytime|Organization Pro|Team Pro Plan|real-time project checkpoints|role-based access control|official MCP server bindings/i;
+  const viewport = testInfo.project.name.includes('mobile') ? 'mobile-390x844' : 'desktop-1440x900';
+  const directory = path.resolve(process.cwd(), 'quality/evidence/step-39/pricing-truthfulness-local');
+  const observations: Array<{ slug: string; detailText: string; previewText: string }> = [];
+  await mkdir(directory, { recursive: true });
+
+  for (const slug of pricingSlugs) {
+    const response = await page.goto(`/r/${slug}/`, { waitUntil: 'domcontentloaded' });
+    expect(response?.status(), `${slug} detail route`).toBe(200);
+    const detail = await page.locator('main').innerText();
+    expect(detail).toMatch(/example|illustrative/i);
+    expect(detail).not.toMatch(forbidden);
+
+    const detailPreview = page.frameLocator('iframe[title$=" live preview"]');
+    await expect(detailPreview.locator('.tess-screen')).toBeVisible({ timeout: 15_000 });
+    const detailPreviewText = await detailPreview.locator('body').innerText();
+    expect(detailPreviewText).toMatch(/example|illustrative/i);
+    expect(detailPreviewText).not.toMatch(forbidden);
+    await page.screenshot({ path: path.join(directory, `${slug}-${viewport}.png`) });
+    await detailPreview.locator('.tess-screen').screenshot({
+      path: path.join(directory, `${slug}-preview-${viewport}.png`),
+    });
+    observations.push({ slug, detailText: detail, previewText: detailPreviewText });
+
+    const preview = await openResourcePreview(page, slug);
+    const previewText = await preview.locator('body').innerText();
+    expect(previewText).toMatch(/example|illustrative/i);
+    expect(previewText).not.toMatch(forbidden);
+
+    if (slug === 'pricing-three-tier') {
+      const selectStarter = preview.getByRole('button', { name: 'Get Started', exact: true }).first();
+      await expect(selectStarter).toBeEnabled();
+      await selectStarter.click();
+      await expect(preview.getByRole('status')).toHaveText('Starter example plan selected.');
+    }
+    if (slug === 'pricing-two-tier') {
+      const selectStarter = preview.getByRole('button', { name: 'Choose Starter', exact: true });
+      await expect(selectStarter).toBeEnabled();
+      await selectStarter.click();
+      await expect(preview.getByRole('status')).toHaveText('Starter example plan selected.');
+    }
+    if (slug === 'pricing-toggle') {
+      await preview.getByRole('button', { name: /Annual/ }).click();
+      await expect(preview.getByText('£14.40/mo')).toBeVisible();
+      await expect(preview.getByText(/£172.80\/year, 20% less than monthly/)).toBeVisible();
+      const choosePlan = preview.getByRole('button', { name: 'Choose plan', exact: true });
+      await expect(choosePlan).toBeEnabled();
+      await choosePlan.click();
+      await expect(preview.getByRole('status')).toHaveText('Example plan selected.');
+    }
+  }
+
+  const billing = await openResourcePreview(page, 'billing-overview');
+  const billingText = await billing.locator('body').innerText();
+  expect(billingText).toContain('Sample account details and pricing');
+  expect(billingText).toContain('EXAMPLE');
+  expect(billingText).not.toMatch(/ACTIVE|Renews on Nov 1, 2026/i);
+  await expect(billing.getByRole('button', { name: 'Connect payment action' })).toBeDisabled();
+  await expect(billing.getByText(/Payment updates are not connected in this example/i)).toBeVisible();
+  await billing.locator('.tess-screen').screenshot({
+    path: path.join(directory, `billing-overview-preview-${viewport}.png`),
+  });
+  observations.push({ slug: 'billing-overview', detailText: '', previewText: billingText });
+
+  const recentItems = await openResourcePreview(page, 'recent-items');
+  const recentText = await recentItems.locator('body').innerText();
+  expect(recentText).toContain('Example activity and timestamps');
+  expect(recentText).not.toMatch(/Trading|Portfolio|Order Book|Financial Terminal/i);
+  await expect(recentItems.getByRole('button')).toHaveCount(0);
+  const rowCursors = await recentItems.locator('.space-y-3 > div').evaluateAll((rows) => rows.map((row) => getComputedStyle(row).cursor));
+  expect(rowCursors).not.toContain('pointer');
+  await recentItems.locator('.tess-screen').screenshot({
+    path: path.join(directory, `recent-items-preview-${viewport}.png`),
+  });
+  observations.push({ slug: 'recent-items', detailText: '', previewText: recentText });
+
+  expect(runtime.consoleErrors).toEqual([]);
+  expect(runtime.uncaughtExceptions).toEqual([]);
+  expect(runtime.failedRequests).toEqual([]);
+  expect(runtime.httpErrors).toEqual([]);
+  await writeFile(
+    path.join(directory, `results-${viewport}.json`),
+    `${JSON.stringify(
+      {
+        capturedAt: new Date().toISOString(),
+        site: 'local production-like Sites Worker build',
+        viewport: testInfo.project.use.viewport,
+        checkedResources: observations,
+        rowCursors,
+        runtime,
+      },
+      null,
+      2
+    )}\n`
+  );
+});

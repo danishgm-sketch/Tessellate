@@ -259,7 +259,13 @@ export default function PreviewHost() {
     onDocsClick: () => setActionStatus('Documentation action previewed.'),
     onExport: () => setActionStatus('Export action previewed.'),
     onSave: () => setActionStatus('Save action previewed.'),
-    onSelectPlan: (plan: string) => setActionStatus(`${plan} plan selected.`),
+    onSelectPlan: (plan: string) => {
+      const planName = plan.trim();
+      const announcement = /\bplan$/i.test(planName)
+        ? `${planName} selected.`
+        : `${planName} plan selected.`;
+      setActionStatus(announcement);
+    },
     onCreateProject: () => setActionStatus('Project creation previewed.'),
     onAction: () => setActionStatus('Example action activated.'),
     onRetry: () => setActionStatus('Retry action previewed.'),

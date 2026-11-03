@@ -19,16 +19,17 @@ export function PlanFeatureMatrix({ variant = 'quiet' }: PlanFeatureMatrixProps)
   }
 
   const items = [
-    { group: 'Core Composition', feature: 'Full Resource Manifests', free: 'Yes', pro: 'Yes' },
-    { group: 'Core Composition', feature: 'React + Tailwind AST Output', free: 'Yes', pro: 'Yes' },
-    { group: 'Team Collaboration', feature: 'Real-time Project Checkpoints', free: 'No', pro: 'Yes' },
-    { group: 'Team Collaboration', feature: 'Role-Based Access Control', free: 'No', pro: 'Yes' },
+    { group: 'Core features', feature: 'Feature group one', free: 'Yes', pro: 'Yes' },
+    { group: 'Core features', feature: 'Feature group two', free: 'Yes', pro: 'Yes' },
+    { group: 'Optional features', feature: 'Feature group three', free: 'No', pro: 'Yes' },
+    { group: 'Optional features', feature: 'Feature group four', free: 'No', pro: 'Yes' },
   ];
 
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Categorized Feature Matrix</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Example feature matrix</h2>
+        <p className="mx-auto -mt-6 mb-8 max-w-2xl text-center text-sm opacity-75">Illustrative example only. Replace sample prices, tiers, and included features with your published terms.</p>
 
         <div className={`overflow-x-auto rounded-xl border ${tableBorder}`}>
           <table className="w-full text-left text-xs sm:text-sm">
@@ -36,8 +37,8 @@ export function PlanFeatureMatrix({ variant = 'quiet' }: PlanFeatureMatrixProps)
               <tr>
                 <th className="p-4">Group</th>
                 <th className="p-4">Feature</th>
-                <th className="p-4">Free</th>
-                <th className="p-4">Pro</th>
+                <th className="p-4">Plan A (example)</th>
+                <th className="p-4">Plan B (example)</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-200 dark:divide-neutral-800">

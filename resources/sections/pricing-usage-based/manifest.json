@@ -5,7 +5,7 @@
   "name": "Pricing Usage Based",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Pay-as-you-go pricing card with tier volume sliders and unit-cost breakdowns.",
+  "description": "Usage-based pricing estimator with an illustrative per-unit rate.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,15 +130,15 @@
     "api"
   ],
   "intent": {
-    "summary": "Pay-as-you-go pricing card with tier volume sliders and unit-cost breakdowns.",
+    "summary": "Usage-based pricing estimator with an illustrative per-unit rate.",
     "idealFor": [
-      "Compute, bandwidth, and API credit monetization"
+      "Products that need to explain a verified usage-based rate"
     ],
     "avoidFor": [
-      "Fixed seat-license SaaS"
+      "Live invoices or estimates until the sample rate is replaced"
     ],
     "jobs": [
-      "Explain consumption-based meter charges transparently"
+      "Show how a sample usage rate changes an estimate"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"

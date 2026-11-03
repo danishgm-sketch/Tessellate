@@ -5,7 +5,7 @@
   "name": "Billing Overview",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Subscription status panel with card on file, next invoice date, and plan upgrade trigger.",
+  "description": "Example subscription summary with clearly labelled sample values and a disabled payment action.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -130,15 +130,15 @@
     "subscription"
   ],
   "intent": {
-    "summary": "Subscription status panel with card on file, next invoice date, and plan upgrade trigger.",
+    "summary": "Example subscription summary with clearly labelled sample values and a disabled payment action.",
     "idealFor": [
-      "Subscription overview and card-on-file management"
+      "Billing layouts with caller-supplied current account data"
     ],
     "avoidFor": [
-      "Pre-commercial open source projects"
+      "Live payment management until a billing action is connected"
     ],
     "jobs": [
-      "Show current subscription plan, payment card, and invoice date"
+      "Display sample billing information without implying a real account state"
     ],
     "contentRequirements": [
       "High data density, keyboard accessibility, semantic tokens"

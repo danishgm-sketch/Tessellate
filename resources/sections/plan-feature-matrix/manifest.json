@@ -5,7 +5,7 @@
   "name": "Plan Feature Matrix",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Segmented feature comparison with expandable category groupings.",
+  "description": "Grouped four-row example feature table with placeholder plan labels and values.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,15 +130,15 @@
     "matrix"
   ],
   "intent": {
-    "summary": "Segmented feature comparison with expandable category groupings.",
+    "summary": "Grouped four-row example feature table with placeholder plan labels and values.",
     "idealFor": [
-      "Exhaustive pricing audits categorizing security, storage, and tooling"
+      "Teams organizing a concise plan comparison by feature group"
     ],
     "avoidFor": [
-      "Quick marketing teasers"
+      "Published comparison until all example values are verified"
     ],
     "jobs": [
-      "Organize features into grouped sections for comprehensive evaluation"
+      "Group example plan features for side-by-side review"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"

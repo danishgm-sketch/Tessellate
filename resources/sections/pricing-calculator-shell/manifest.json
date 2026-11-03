@@ -5,7 +5,7 @@
   "name": "Pricing Calculator Shell",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Interactive slider calculator estimating monthly cost based on MAU or compute units.",
+  "description": "Seat-cost calculator with an illustrative per-member monthly rate.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,15 +130,15 @@
     "estimate"
   ],
   "intent": {
-    "summary": "Interactive slider calculator estimating monthly cost based on MAU or compute units.",
+    "summary": "Seat-cost calculator with an illustrative per-member monthly rate.",
     "idealFor": [
-      "Helping enterprise buyers estimate monthly infrastructure invoices"
+      "Products that price by seats or team members"
     ],
     "avoidFor": [
-      "Flat rate plans"
+      "Live billing estimates until the sample rate is replaced"
     ],
     "jobs": [
-      "Calculate estimated invoice according to user-selected scale sliders"
+      "Show a sample monthly estimate as team size changes"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"

@@ -23,15 +23,16 @@ export function PricingThreeTier({ variant = 'quiet', onSelectPlan }: PricingThr
   }
 
   const tiers = [
-    { name: 'Free Core', price: '£0', desc: 'Complete access to all 324 open source resources.', featured: false },
-    { name: 'Team Sync', price: '£18', desc: 'Cloud project sharing, checkpoint history, and team roles.', featured: true },
-    { name: 'Enterprise', price: 'Custom', desc: 'SSO, dedicated SLA, custom DNA tokens, and private registry.', featured: false },
+    { name: 'Starter example', price: '£0', desc: 'Example of a free tier. Replace this description with your offer.', featured: false },
+    { name: 'Team example', price: '£18', desc: 'Example team tier. Replace the price and features with your offer.', featured: true },
+    { name: 'Scale example', price: 'Custom', desc: 'Example custom tier. Replace the scope, price, and terms with your offer.', featured: false },
   ];
 
   return (
     <section className={`relative w-full py-20 px-6 @sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl @sm:text-5xl font-bold tracking-tight text-center mb-16">Simple, Honest Pricing</h2>
+        <h2 className="text-3xl @sm:text-5xl font-bold tracking-tight text-center mb-16">Example plans</h2>
+        <p className="mx-auto -mt-10 mb-10 max-w-2xl text-center text-sm opacity-75">Illustrative example only. Replace sample prices, tiers, and included features with your published terms.</p>
 
         <div className="grid grid-cols-1 @md:grid-cols-3 gap-8 items-stretch">
           {tiers.map((t) => (
@@ -55,7 +56,7 @@ export function PricingThreeTier({ variant = 'quiet', onSelectPlan }: PricingThr
               >
                 Get Started
               </button>
-              {!onSelectPlan && <span id={`pricing-${t.name.toLowerCase().replaceAll(' ', '-')}-action-help`} className="sr-only">Connect a plan selection action before enabling checkout.</span>}
+              {!onSelectPlan && <span id={`pricing-${t.name.toLowerCase().replaceAll(' ', '-')}-action-help`} className="mt-3 block text-center text-xs opacity-75">Connect a plan selection action to enable this example button.</span>}
             </div>
           ))}
         </div>

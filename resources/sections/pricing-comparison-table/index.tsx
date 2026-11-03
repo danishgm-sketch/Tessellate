@@ -19,25 +19,26 @@ export function PricingComparisonTable({ variant = 'quiet' }: PricingComparisonT
   }
 
   const rows = [
-    { feature: 'All 324 Launch Resources', free: '✓', team: '✓', enterprise: '✓' },
-    { feature: 'TypeScript Source Code Export', free: '✓', team: '✓', enterprise: '✓' },
-    { feature: 'Cloud Checkpoints & Sync', free: '—', team: '✓', enterprise: '✓' },
-    { feature: 'Custom DNA Token Storage', free: '—', team: '—', enterprise: '✓' },
+    { feature: 'Core feature set', free: '✓', team: '✓', enterprise: '✓' },
+    { feature: 'Additional workspace features', free: '—', team: '✓', enterprise: '✓' },
+    { feature: 'Team collaboration features', free: '—', team: '✓', enterprise: '✓' },
+    { feature: 'Custom support options', free: '—', team: '—', enterprise: '✓' },
   ];
 
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Detailed Feature Matrix</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Example feature comparison</h2>
+        <p className="mx-auto -mt-6 mb-8 max-w-2xl text-center text-sm opacity-75">Illustrative example only. Replace sample prices, tiers, and included features with your published terms.</p>
 
         <div className={`overflow-x-auto rounded-xl border ${tableBorder}`}>
           <table className="w-full text-left text-xs sm:text-sm">
             <thead className="border-b bg-neutral-100/60 dark:bg-neutral-900/60 font-mono text-xs uppercase">
               <tr>
                 <th className="p-4">Feature</th>
-                <th className="p-4">Free Core</th>
-                <th className="p-4">Team</th>
-                <th className="p-4">Enterprise</th>
+                <th className="p-4">Plan A (example)</th>
+                <th className="p-4">Plan B (example)</th>
+                <th className="p-4">Plan C (example)</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-200 dark:divide-neutral-800">

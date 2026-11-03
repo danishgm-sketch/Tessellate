@@ -1,3 +1,3 @@
 # Recent Items
 
-List of recently accessed documents and blueprints for swift resumption.
+A static list of example workspace records. Rows are informational and do not navigate.

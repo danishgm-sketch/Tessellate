@@ -16,17 +16,18 @@ export function RecentItems({ variant = 'quiet' }: RecentItemsProps) {
   }
 
   const items = [
-    { name: 'Analytics Dashboard Blueprint', type: 'Blueprint', time: '14m ago' },
-    { name: 'Nocturne Trading Terminal', type: 'Showcase', time: '2h ago' },
-    { name: 'Pricing Three Tier Component', type: 'Section', time: '1d ago' },
+    { name: 'Workspace overview', type: 'Document', time: '14m ago' },
+    { name: 'Design system update', type: 'Project', time: '2h ago' },
+    { name: 'New hire journey', type: 'Document', time: '1d ago' },
   ];
 
   return (
     <div className={`w-full p-6 rounded-xl border transition-colors ${bg}`}>
-      <h3 className="text-sm font-semibold mb-4">Recent Documents</h3>
+      <h3 className="text-sm font-semibold mb-1">Recent documents</h3>
+      <p className="mb-4 text-xs opacity-70">Example activity and timestamps.</p>
       <div className="space-y-3">
         {items.map((it) => (
-          <div key={it.name} className="p-3 rounded-lg border border-neutral-100 dark:border-neutral-800 flex items-center justify-between text-xs hover:bg-neutral-50 dark:hover:bg-neutral-900 cursor-pointer">
+          <div key={it.name} className="p-3 rounded-lg border border-neutral-100 dark:border-neutral-800 flex items-center justify-between text-xs">
             <div>
               <div className="font-semibold">{it.name}</div>
               <span className="text-[10px] font-mono opacity-50 uppercase">{it.type}</span>

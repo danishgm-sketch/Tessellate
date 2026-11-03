@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-10-31T17:18:46.128Z",
+  "generatedAt": "2026-11-03T07:23:32.410Z",
   "count": 324,
   "resources": [
     {
@@ -11299,7 +11299,7 @@
       "name": "Billing Overview",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Subscription status panel with card on file, next invoice date, and plan upgrade trigger.",
+      "description": "Example subscription summary with clearly labelled sample values and a disabled payment action.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -11424,15 +11424,15 @@
         "subscription"
       ],
       "intent": {
-        "summary": "Subscription status panel with card on file, next invoice date, and plan upgrade trigger.",
+        "summary": "Example subscription summary with clearly labelled sample values and a disabled payment action.",
         "idealFor": [
-          "Subscription overview and card-on-file management"
+          "Billing layouts with caller-supplied current account data"
         ],
         "avoidFor": [
-          "Pre-commercial open source projects"
+          "Live payment management until a billing action is connected"
         ],
         "jobs": [
-          "Show current subscription plan, payment card, and invoice date"
+          "Display sample billing information without implying a real account state"
         ],
         "contentRequirements": [
           "High data density, keyboard accessibility, semantic tokens"
@@ -31287,7 +31287,7 @@
       "name": "FAQ Accordion",
       "version": "1.0.0",
       "status": "verified-gold",
-      "description": "Clean expandable question list with keyboard navigation and smooth disclosure.",
+      "description": "Accessible FAQ accordion with generic example questions and answers.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -31413,15 +31413,15 @@
         "verified-gold"
       ],
       "intent": {
-        "summary": "Clean expandable question list with keyboard navigation and smooth disclosure.",
+        "summary": "Accessible FAQ accordion with generic example questions and answers.",
         "idealFor": [
-          "Addressing common developer questions cleanly"
+          "Teams drafting a frequently asked questions section"
         ],
         "avoidFor": [
-          "Complex tutorial walkthroughs"
+          "Published policy or product FAQ until example answers are replaced"
         ],
         "jobs": [
-          "Resolve objections and clarify licensing with expandable accordions"
+          "Present example answers that can be replaced with verified policies"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -56744,7 +56744,7 @@
       "name": "Plan Feature Matrix",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Segmented feature comparison with expandable category groupings.",
+      "description": "Grouped four-row example feature table with placeholder plan labels and values.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -56869,15 +56869,15 @@
         "matrix"
       ],
       "intent": {
-        "summary": "Segmented feature comparison with expandable category groupings.",
+        "summary": "Grouped four-row example feature table with placeholder plan labels and values.",
         "idealFor": [
-          "Exhaustive pricing audits categorizing security, storage, and tooling"
+          "Teams organizing a concise plan comparison by feature group"
         ],
         "avoidFor": [
-          "Quick marketing teasers"
+          "Published comparison until all example values are verified"
         ],
         "jobs": [
-          "Organize features into grouped sections for comprehensive evaluation"
+          "Group example plan features for side-by-side review"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -57487,7 +57487,7 @@
       "name": "Pricing Calculator Shell",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Interactive slider calculator estimating monthly cost based on MAU or compute units.",
+      "description": "Seat-cost calculator with an illustrative per-member monthly rate.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -57612,15 +57612,15 @@
         "estimate"
       ],
       "intent": {
-        "summary": "Interactive slider calculator estimating monthly cost based on MAU or compute units.",
+        "summary": "Seat-cost calculator with an illustrative per-member monthly rate.",
         "idealFor": [
-          "Helping enterprise buyers estimate monthly infrastructure invoices"
+          "Products that price by seats or team members"
         ],
         "avoidFor": [
-          "Flat rate plans"
+          "Live billing estimates until the sample rate is replaced"
         ],
         "jobs": [
-          "Calculate estimated invoice according to user-selected scale sliders"
+          "Show a sample monthly estimate as team size changes"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -57735,7 +57735,7 @@
       "name": "Pricing Comparison Table",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Exhaustive checkmark matrix comparing feature tiers across 20+ dimensions.",
+      "description": "Responsive four-row example feature comparison. Plan labels and feature claims are placeholders.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -57860,15 +57860,15 @@
         "comparison"
       ],
       "intent": {
-        "summary": "Exhaustive checkmark matrix comparing feature tiers across 20+ dimensions.",
+        "summary": "Responsive four-row example feature comparison. Plan labels and feature claims are placeholders.",
         "idealFor": [
-          "Detailed side-by-side plan feature breakdown"
+          "Teams presenting a concise comparison of their own verified plan features"
         ],
         "avoidFor": [
-          "Mobile-only minimal splash pages"
+          "Exhaustive feature matrices or unverified published terms"
         ],
         "jobs": [
-          "Provide thorough checkmark comparison between plans"
+          "Compare example plan features in a readable table"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -58231,7 +58231,7 @@
       "name": "Pricing Three Tier",
       "version": "1.0.0",
       "status": "verified-gold",
-      "description": "Canonical 3-card pricing table (Free, Pro, Enterprise) with highlighted recommended tier.",
+      "description": "Example three-plan pricing section. Plan names, prices, and included features are placeholders to replace before publication.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -58357,15 +58357,15 @@
         "verified-gold"
       ],
       "intent": {
-        "summary": "Canonical 3-card pricing table (Free, Pro, Enterprise) with highlighted recommended tier.",
+        "summary": "Example three-plan pricing section. Plan names, prices, and included features are placeholders to replace before publication.",
         "idealFor": [
-          "Standard B2B SaaS pricing models"
+          "Teams building a pricing page with their own verified plan terms"
         ],
         "avoidFor": [
-          "Free-only open source projects without paid tiers"
+          "Published pricing pages until all example values are replaced"
         ],
         "jobs": [
-          "Provide clean comparative pricing with transparent features"
+          "Compare clearly disclosed example plan tiers"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -58480,7 +58480,7 @@
       "name": "Pricing Toggle",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Billing interval switcher (Monthly vs Annual with discount badge) above plan cards.",
+      "description": "Monthly and annual pricing-toggle example with illustrative rates and a disabled plan action.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -58605,15 +58605,15 @@
         "toggle"
       ],
       "intent": {
-        "summary": "Billing interval switcher (Monthly vs Annual with discount badge) above plan cards.",
+        "summary": "Monthly and annual pricing-toggle example with illustrative rates and a disabled plan action.",
         "idealFor": [
-          "Offering discounted annual contracts to increase retention"
+          "Products demonstrating recurring billing choices after replacing sample terms"
         ],
         "avoidFor": [
-          "Non-recurring pricing"
+          "Live checkout or billing without a connected payment flow"
         ],
         "jobs": [
-          "Toggle between monthly and annual subscription rates"
+          "Show monthly and annual example prices with consistent arithmetic"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -58728,7 +58728,7 @@
       "name": "Pricing Two Tier",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Focused 2-card comparison (Starter vs Business) for streamlined product offerings.",
+      "description": "Example two-plan comparison with placeholder plan names, prices, and terms.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -58853,15 +58853,15 @@
         "plans"
       ],
       "intent": {
-        "summary": "Focused 2-card comparison (Starter vs Business) for streamlined product offerings.",
+        "summary": "Example two-plan comparison with placeholder plan names, prices, and terms.",
         "idealFor": [
-          "Straightforward products with minimal tier complexity"
+          "Products that need a simple, two-option pricing layout"
         ],
         "avoidFor": [
-          "Complex enterprise sales matrices"
+          "Published pricing pages until all example values are replaced"
         ],
         "jobs": [
-          "Keep buying decisions simple with two clear choices"
+          "Compare two example plans without implying live checkout"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -58976,7 +58976,7 @@
       "name": "Pricing Usage Based",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Pay-as-you-go pricing card with tier volume sliders and unit-cost breakdowns.",
+      "description": "Usage-based pricing estimator with an illustrative per-unit rate.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -59101,15 +59101,15 @@
         "api"
       ],
       "intent": {
-        "summary": "Pay-as-you-go pricing card with tier volume sliders and unit-cost breakdowns.",
+        "summary": "Usage-based pricing estimator with an illustrative per-unit rate.",
         "idealFor": [
-          "Compute, bandwidth, and API credit monetization"
+          "Products that need to explain a verified usage-based rate"
         ],
         "avoidFor": [
-          "Fixed seat-license SaaS"
+          "Live invoices or estimates until the sample rate is replaced"
         ],
         "jobs": [
-          "Explain consumption-based meter charges transparently"
+          "Show how a sample usage rate changes an estimate"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -62721,7 +62721,7 @@
       "name": "Recent Items",
       "version": "1.0.0",
       "status": "verified",
-      "description": "List of recently modified files, projects, or manifests with timestamp and author.",
+      "description": "Static recent-items list with generic sample workspace records and timestamps.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -62846,15 +62846,15 @@
         "files"
       ],
       "intent": {
-        "summary": "List of recently modified files, projects, or manifests with timestamp and author.",
+        "summary": "Static recent-items list with generic sample workspace records and timestamps.",
         "idealFor": [
-          "Workspace launchers and file manager sidebars"
+          "Recent workspace lists with caller-supplied or clearly labelled sample data"
         ],
         "avoidFor": [
-          "Empty state dashboards"
+          "Interactive history until navigation is connected"
         ],
         "jobs": [
-          "Let user jump back into recent work with one click"
+          "Show recent workspace items in a compact list"
         ],
         "contentRequirements": [
           "High data density, keyboard accessibility, semantic tokens"

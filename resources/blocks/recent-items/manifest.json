@@ -5,7 +5,7 @@
   "name": "Recent Items",
   "version": "1.0.0",
   "status": "verified",
-  "description": "List of recently modified files, projects, or manifests with timestamp and author.",
+  "description": "Static recent-items list with generic sample workspace records and timestamps.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -130,15 +130,15 @@
     "files"
   ],
   "intent": {
-    "summary": "List of recently modified files, projects, or manifests with timestamp and author.",
+    "summary": "Static recent-items list with generic sample workspace records and timestamps.",
     "idealFor": [
-      "Workspace launchers and file manager sidebars"
+      "Recent workspace lists with caller-supplied or clearly labelled sample data"
     ],
     "avoidFor": [
-      "Empty state dashboards"
+      "Interactive history until navigation is connected"
     ],
     "jobs": [
-      "Let user jump back into recent work with one click"
+      "Show recent workspace items in a compact list"
     ],
     "contentRequirements": [
       "High data density, keyboard accessibility, semantic tokens"

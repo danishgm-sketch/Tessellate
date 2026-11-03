@@ -124,7 +124,7 @@ Tools provided:
 - [Badge](https://tessellate.design/r/badge): Compact pill indicator for counts, status dots, and metadata taxonomy tags. (primitives, display)
 - [Bar Chart](https://tessellate.design/r/bar-chart): Vertical categorical column chart with rounded top caps, subtle hover darkening, value labels, and horizontal gridlines. (data, visualization, charts)
 - [Beam Grid](https://tessellate.design/r/beam-grid): Precision architectural coordinate grid with luminous traveling laser beams gliding along horizontal and vertical axes. (backgrounds, effects, grid)
-- [Billing Overview](https://tessellate.design/r/billing-overview): Subscription status panel with card on file, next invoice date, and plan upgrade trigger. (blocks, settings, billing)
+- [Billing Overview](https://tessellate.design/r/billing-overview): Example subscription summary with clearly labelled sample values and a disabled payment action. (blocks, settings, billing)
 - [Blur-to-Sharp Reveal](https://tessellate.design/r/blur-to-sharp-reveal): Defocus-to-crisp entrance transitioning from filter blur(8px) into razor-sharp focus. (motion, microinteractions, reveals)
 - [Bottom Sheet](https://tessellate.design/r/bottom-sheet): Mobile-first bottom sliding sheet with drag handle bar and responsive snap points. (primitives, overlays)
 - [Breadcrumb](https://tessellate.design/r/breadcrumb): Hierarchical navigation trail path with customizable separators and accessible current page. (primitives, navigation)
@@ -204,7 +204,7 @@ Tools provided:
 - [Expandable Data Table](https://tessellate.design/r/expandable-data-table): Data grid where each row expands to reveal detailed sub-attributes or nested logs. (blocks, data, tables)
 - [Faceted Search Results](https://tessellate.design/r/faceted-search-results): Search results accompanied by facet checkboxes (type, status, tags, author). (blocks, search, facets)
 - [Fade-Up Reveal](https://tessellate.design/r/fade-up-reveal): Smooth vertical translate-y and opacity entrance reveal with springy or linear settling physics. (motion, microinteractions, reveals)
-- [FAQ Accordion](https://tessellate.design/r/faq-accordion): Clean expandable question list with keyboard navigation and smooth disclosure. (sections, marketing, faq)
+- [FAQ Accordion](https://tessellate.design/r/faq-accordion): Accessible FAQ accordion with generic example questions and answers. (sections, marketing, faq)
 - [FAQ Searchable](https://tessellate.design/r/faq-searchable): Filterable FAQ section with live search input and category filter chips. (sections, marketing, faq)
 - [FAQ Two Column](https://tessellate.design/r/faq-two-column): Two-column layout for questions and answers. (sections, marketing, faq)
 - [Feature Alternating Rows](https://tessellate.design/r/feature-alternating-rows): Left-right alternating feature narrative with illustrative preview frames. (sections, marketing, features)
@@ -306,16 +306,16 @@ Tools provided:
 - [Performance Benchmark Section](https://tessellate.design/r/performance-benchmark-section): Bar chart benchmarks comparing execution latency and throughput against industry baselines. (sections, marketing, technical-proof)
 - [Permission Denied State](https://tessellate.design/r/permission-denied-state): Access boundary lock screen detailing required RBAC roles, organization membership, and request access workflow. (states, security, permission)
 - [Pinned Items](https://tessellate.design/r/pinned-items): User-favorited resources and project bookmarks with quick unpin toggles. (blocks, dashboards, favorites)
-- [Plan Feature Matrix](https://tessellate.design/r/plan-feature-matrix): Segmented feature comparison with expandable category groupings. (sections, marketing, pricing)
+- [Plan Feature Matrix](https://tessellate.design/r/plan-feature-matrix): Grouped four-row example feature table with placeholder plan labels and values. (sections, marketing, pricing)
 - [Popover](https://tessellate.design/r/popover): Floating rich content card anchored to a target trigger with dismissal handling. (primitives, overlays)
 - [Press Mentions Strip](https://tessellate.design/r/press-mentions-strip): Curated editorial press quote row with publication logos and external publication links. (sections, marketing, trust)
-- [Pricing Calculator Shell](https://tessellate.design/r/pricing-calculator-shell): Interactive slider calculator estimating monthly cost based on MAU or compute units. (sections, marketing, pricing)
-- [Pricing Comparison Table](https://tessellate.design/r/pricing-comparison-table): Exhaustive checkmark matrix comparing feature tiers across 20+ dimensions. (sections, marketing, pricing)
+- [Pricing Calculator Shell](https://tessellate.design/r/pricing-calculator-shell): Seat-cost calculator with an illustrative per-member monthly rate. (sections, marketing, pricing)
+- [Pricing Comparison Table](https://tessellate.design/r/pricing-comparison-table): Responsive four-row example feature comparison. Plan labels and feature claims are placeholders. (sections, marketing, pricing)
 - [Pricing Enterprise](https://tessellate.design/r/pricing-enterprise): Dedicated high-touch enterprise tier section with custom contract feature list. (sections, marketing, pricing)
-- [Pricing Three Tier](https://tessellate.design/r/pricing-three-tier): Canonical 3-card pricing table (Free, Pro, Enterprise) with highlighted recommended tier. (sections, marketing, pricing)
-- [Pricing Toggle](https://tessellate.design/r/pricing-toggle): Billing interval switcher (Monthly vs Annual with discount badge) above plan cards. (sections, marketing, pricing)
-- [Pricing Two Tier](https://tessellate.design/r/pricing-two-tier): Focused 2-card comparison (Starter vs Business) for streamlined product offerings. (sections, marketing, pricing)
-- [Pricing Usage Based](https://tessellate.design/r/pricing-usage-based): Pay-as-you-go pricing card with tier volume sliders and unit-cost breakdowns. (sections, marketing, pricing)
+- [Pricing Three Tier](https://tessellate.design/r/pricing-three-tier): Example three-plan pricing section. Plan names, prices, and included features are placeholders to replace before publication. (sections, marketing, pricing)
+- [Pricing Toggle](https://tessellate.design/r/pricing-toggle): Monthly and annual pricing-toggle example with illustrative rates and a disabled plan action. (sections, marketing, pricing)
+- [Pricing Two Tier](https://tessellate.design/r/pricing-two-tier): Example two-plan comparison with placeholder plan names, prices, and terms. (sections, marketing, pricing)
+- [Pricing Usage Based](https://tessellate.design/r/pricing-usage-based): Usage-based pricing estimator with an illustrative per-unit rate. (sections, marketing, pricing)
 - [Process Diagram](https://tessellate.design/r/process-diagram): Visual flowchart explaining system data pipeline from ingestion to output. (sections, marketing, explanation)
 - [Processing/Queued State](https://tessellate.design/r/processing-queued-state): Asynchronous task queue state card displaying queue position, estimated wait time, and auto-refresh telemetry. (states, loading, queue)
 - [Product Screenshot Hero](https://tessellate.design/r/product-screenshot-hero): Product hero with an illustrative interface preview and optional CTA destination. (sections, marketing, hero)
@@ -330,7 +330,7 @@ Tools provided:
 - [Radial Spotlight](https://tessellate.design/r/radial-spotlight): Top-centered radial cone of light focusing attention downward onto hero headlines. (backgrounds, effects, spotlight)
 - [Radio Group](https://tessellate.design/r/radio-group): Accessible single-choice selection group with circle indicators and keyboard navigation. (primitives, inputs)
 - [Range Slider](https://tessellate.design/r/range-slider): Dual-thumb interval selector for bounding min/max numerical thresholds simultaneously. (primitives, inputs)
-- [Recent Items](https://tessellate.design/r/recent-items): List of recently modified files, projects, or manifests with timestamp and author. (blocks, dashboards, navigation)
+- [Recent Items](https://tessellate.design/r/recent-items): Static recent-items list with generic sample workspace records and timestamps. (blocks, dashboards, navigation)
 - [Relationship Panel](https://tessellate.design/r/relationship-panel): Graph-like panel listing incoming and outgoing component dependencies and links. (blocks, entities, graph)
 - [Research Terminal Shell](https://tessellate.design/r/research-terminal-shell): Scholarly exploration workspace with paper abstract viewer, citation graph, and notes rail. (shells, layout)
 - [Responsive App Shell](https://tessellate.design/r/responsive-app-shell): Unified application shell adapting gracefully from desktop sidebar to mobile bottom bar. (shells, layout)
@@ -2257,7 +2257,7 @@ Tools provided:
 ### Billing Overview (`billing-overview`)
 - **Type**: block
 - **Categories**: blocks, settings, billing
-- **Description**: Subscription status panel with card on file, next invoice date, and plan upgrade trigger.
+- **Description**: Example subscription summary with clearly labelled sample values and a disabled payment action.
 - **License**: MIT
 - **Dependencies**: none
 - **Dev Dependencies**: none
@@ -5537,7 +5537,7 @@ Tools provided:
 ### FAQ Accordion (`faq-accordion`)
 - **Type**: section
 - **Categories**: sections, marketing, faq
-- **Description**: Clean expandable question list with keyboard navigation and smooth disclosure.
+- **Description**: Accessible FAQ accordion with generic example questions and answers.
 - **License**: MIT
 - **Dependencies**: none
 - **Dev Dependencies**: none
@@ -9719,7 +9719,7 @@ Tools provided:
 ### Plan Feature Matrix (`plan-feature-matrix`)
 - **Type**: section
 - **Categories**: sections, marketing, pricing
-- **Description**: Segmented feature comparison with expandable category groupings.
+- **Description**: Grouped four-row example feature table with placeholder plan labels and values.
 - **License**: MIT
 - **Dependencies**: none
 - **Dev Dependencies**: none
@@ -9842,7 +9842,7 @@ Tools provided:
 ### Pricing Calculator Shell (`pricing-calculator-shell`)
 - **Type**: section
 - **Categories**: sections, marketing, pricing
-- **Description**: Interactive slider calculator estimating monthly cost based on MAU or compute units.
+- **Description**: Seat-cost calculator with an illustrative per-member monthly rate.
 - **License**: MIT
 - **Dependencies**: none
 - **Dev Dependencies**: none
@@ -9883,7 +9883,7 @@ Tools provided:
 ### Pricing Comparison Table (`pricing-comparison-table`)
 - **Type**: section
 - **Categories**: sections, marketing, pricing
-- **Description**: Exhaustive checkmark matrix comparing feature tiers across 20+ dimensions.
+- **Description**: Responsive four-row example feature comparison. Plan labels and feature claims are placeholders.
 - **License**: MIT
 - **Dependencies**: none
 - **Dev Dependencies**: none
@@ -9965,7 +9965,7 @@ Tools provided:
 ### Pricing Three Tier (`pricing-three-tier`)
 - **Type**: section
 - **Categories**: sections, marketing, pricing
-- **Description**: Canonical 3-card pricing table (Free, Pro, Enterprise) with highlighted recommended tier.
+- **Description**: Example three-plan pricing section. Plan names, prices, and included features are placeholders to replace before publication.
 - **License**: MIT
 - **Dependencies**: none
 - **Dev Dependencies**: none
@@ -10006,7 +10006,7 @@ Tools provided:
 ### Pricing Toggle (`pricing-toggle`)
 - **Type**: section
 - **Categories**: sections, marketing, pricing
-- **Description**: Billing interval switcher (Monthly vs Annual with discount badge) above plan cards.
+- **Description**: Monthly and annual pricing-toggle example with illustrative rates and a disabled plan action.
 - **License**: MIT
 - **Dependencies**: none
 - **Dev Dependencies**: none
@@ -10047,7 +10047,7 @@ Tools provided:
 ### Pricing Two Tier (`pricing-two-tier`)
 - **Type**: section
 - **Categories**: sections, marketing, pricing
-- **Description**: Focused 2-card comparison (Starter vs Business) for streamlined product offerings.
+- **Description**: Example two-plan comparison with placeholder plan names, prices, and terms.
 - **License**: MIT
 - **Dependencies**: none
 - **Dev Dependencies**: none
@@ -10088,7 +10088,7 @@ Tools provided:
 ### Pricing Usage Based (`pricing-usage-based`)
 - **Type**: section
 - **Categories**: sections, marketing, pricing
-- **Description**: Pay-as-you-go pricing card with tier volume sliders and unit-cost breakdowns.
+- **Description**: Usage-based pricing estimator with an illustrative per-unit rate.
 - **License**: MIT
 - **Dependencies**: none
 - **Dev Dependencies**: none
@@ -10703,7 +10703,7 @@ Tools provided:
 ### Recent Items (`recent-items`)
 - **Type**: block
 - **Categories**: blocks, dashboards, navigation
-- **Description**: List of recently modified files, projects, or manifests with timestamp and author.
+- **Description**: Static recent-items list with generic sample workspace records and timestamps.
 - **License**: MIT
 - **Dependencies**: none
 - **Dev Dependencies**: none

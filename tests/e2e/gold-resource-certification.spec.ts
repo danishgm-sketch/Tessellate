@@ -291,7 +291,7 @@ test('Gold resources render at every certified width and each declared variant',
                 } else {
                   const expectedResponse: Record<string, string> = {
                     'marketing-nav-cta': 'Start action previewed.',
-                    'pricing-three-tier': 'Free Core plan selected.',
+                    'pricing-three-tier': 'Starter example plan selected.',
                     'empty-workspace': 'Project creation previewed.',
                     'magnetic-button': 'Example action activated.',
                     'error-state': 'Retry action previewed.',

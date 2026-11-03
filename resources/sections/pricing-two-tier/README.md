@@ -1,3 +1,3 @@
 # Pricing Two Tier
 
-Two-card pricing layout offering a clean binary choice between Starter and Pro.
+Two-column plan comparison with illustrative values. Plan actions remain disabled until connected.
