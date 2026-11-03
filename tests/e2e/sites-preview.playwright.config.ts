@@ -18,6 +18,7 @@ export default defineConfig({
     'minimal-top-nav-responsive-collapse.spec.ts',
     'workbench-mobile-accessible-label.spec.ts',
     'workbench-mobile-preview-interactions.spec.ts',
+    'workbench-mobile-startup-stability.spec.ts',
     'workbench-mobile-layout-stability.spec.ts',
     'workbench-mobile-cold-resource-layout-shift.spec.ts',
     'workbench-system-reduced-motion.spec.ts',

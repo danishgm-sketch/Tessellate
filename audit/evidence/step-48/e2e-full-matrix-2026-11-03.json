@@ -1,0 +1,42 @@
+{
+  "capturedAt": "2026-11-03T15:17:08.876Z",
+  "command": "pnpm test:e2e",
+  "environment": "fresh local production-like E2E command across Astro, Sites Worker and standalone preview",
+  "result": "PASS",
+  "projects": [
+    {
+      "name": "Astro desktop/mobile Chromium",
+      "passed": 396,
+      "skipped": 136,
+      "failed": 0
+    },
+    {
+      "name": "Sites Worker desktop Chromium",
+      "passed": 209,
+      "skipped": 11,
+      "failed": 0
+    },
+    {
+      "name": "Sites Worker mobile Chromium",
+      "passed": 178,
+      "skipped": 42,
+      "failed": 0
+    },
+    {
+      "name": "Standalone preview Chromium",
+      "passed": 3,
+      "skipped": 0,
+      "failed": 0
+    }
+  ],
+  "totals": {
+    "passed": 786,
+    "configuredSkips": 189,
+    "failed": 0
+  },
+  "coverageNotes": [
+    "All 324 canonical resources rendered through the production-like Sites Worker desktop sweep at their certified widths.",
+    "Compose-to-Direction-C handoff, Workbench editing, export, mobile navigation, history, responsive behavior, CSP isolation, and standalone preview checks completed with zero test failures.",
+    "Skips are configured profile skips for tests intentionally restricted to another browser, platform, or viewport."
+  ]
+}

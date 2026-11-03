@@ -143,9 +143,9 @@ test('mobile Workbench keeps CLS below 0.1 while employee screen resources load 
     + await page.getByTestId('resource-loading').count()
   ), { message: 'the Workbench should show an honest loading state while resources are delayed' }).toBeGreaterThan(0);
   await page.screenshot({ path: path.join(evidenceDirectory, `${testInfo.project.name}-cold-load-before.png`), fullPage: true });
-  await page.waitForLoadState('networkidle');
   await expect(page.getByRole('heading', { name: 'A better workday starts with people.' })).toBeVisible();
   await expect(page.getByTestId('resource-loading')).toHaveCount(0);
+  await expect(page.getByTestId('resource-load-failure')).toHaveCount(0);
   await page.waitForTimeout(250);
   await page.screenshot({ path: path.join(evidenceDirectory, `${testInfo.project.name}-cold-load-after.png`), fullPage: true });
 
@@ -164,9 +164,9 @@ test('mobile Workbench keeps CLS below 0.1 while employee screen resources load 
     + await page.getByTestId('resource-loading').count()
   ), { message: 'a reload should keep the mobile loading state truthful' }).toBeGreaterThan(0);
   await page.screenshot({ path: path.join(evidenceDirectory, `${testInfo.project.name}-reload-before.png`), fullPage: true });
-  await page.waitForLoadState('networkidle');
   await expect(page.getByRole('heading', { name: 'A better workday starts with people.' })).toBeVisible();
   await expect(page.getByTestId('resource-loading')).toHaveCount(0);
+  await expect(page.getByTestId('resource-load-failure')).toHaveCount(0);
   await page.waitForTimeout(250);
   await page.screenshot({ path: path.join(evidenceDirectory, `${testInfo.project.name}-reload-after.png`), fullPage: true });
 
@@ -194,7 +194,6 @@ test('mobile Workbench keeps CLS below 0.1 while employee screen resources load 
     + await page.getByTestId('resource-loading').count()
   ), { message: 'the Workbench should show a truthful state while other resources are still pending' }).toBeGreaterThan(0);
   await page.screenshot({ path: path.join(evidenceDirectory, testInfo.project.name + '-failure-before.png'), fullPage: true });
-  await page.waitForLoadState('networkidle');
   await expect(page.getByTestId('resource-load-failure')).toContainText('Could not load resource: editorial-hero');
   const failedHeroHeight = await page.getByTestId('resource-load-failure').evaluate((element) => (
     element.closest<HTMLElement>('[data-node-id]')?.getBoundingClientRect().height ?? 0
