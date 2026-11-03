@@ -161,5 +161,3 @@ console.log(JSON.stringify({
   httpErrors: results.reduce((sum, result) => sum + result.runtime.httpErrors.length, 0),
 }, null, 2));
 if (report.failures.length) process.exitCode = 1;
-
-\n
