@@ -5227,6 +5227,61 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Local verification:** The regression failed against the pre-fix production-like Sites build and passed in both desktop 1440×900 and mobile 390×844 profiles after the fix. Both post-fix reports show HTTP 200 for essential requests, no console errors, no uncaught exceptions, and no failed requests.
 - **Status:** `fixed-local-verified`; deployed verification is pending.
 
+## MEDIUM — 2026-11-03 public v72 resource copy and action truthfulness
+
+### AUD-457 — Pricing templates presented invented plan entitlements as Tessellate offers
+
+- **Evidence:** Public v72 resource previews at `/r/pricing-three-tier/`, `/r/pricing-two-tier/`, `/r/pricing-comparison-table/`, and `/r/plan-feature-matrix/` showed named plans and unsupported entitlements such as team sync, cloud checkpoints, SSO, SLAs, private registry access, and role controls. Before screenshots are under `audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/`.
+- **Reproduction:** Visit the listed resource routes at 1440×900 or 390×844 and read the isolated preview. The preview presents the plans and entitlements as live Tessellate offers without a sample disclosure.
+- **Root cause:** Pricing resources shipped product-specific copy as reusable component defaults and described those plans as canonical product facts in their metadata.
+- **Affected code:** The four resource components, manifests, READMEs, `scripts/sections-batch-3.ts`, and `tests/e2e/resource-copy-truthfulness-step-39.spec.ts`.
+- **Remediation:** Use neutral plan examples, add explicit illustrative-term disclosures, correct metadata, and cover route and iframe copy in the Sites Worker browser test.
+- **Status:** `fixed-local-verified`; desktop and mobile local Sites Worker profiles pass. Public v72 remains unchanged, so deployed verification is pending.
+
+### AUD-458 — Pricing and usage templates showed unsupported rates as real billing terms
+
+- **Evidence:** Public v72 `/r/pricing-toggle/`, `/r/pricing-usage-based/`, and `/r/pricing-calculator-shell/` previews showed a Team Pro rate, cancellation terms, compilation usage, and a £75 monthly estimate without example disclosure. Before screenshots are in the v72 route-sweep directory.
+- **Reproduction:** Open those resource routes at desktop or mobile size and inspect the preview's price and billing text.
+- **Root cause:** Reusable examples treated fictional rates and derived invoice values as production billing data.
+- **Affected code:** Those three section components and manifests, `scripts/sections-batch-3.ts`, and the resource-copy browser regression.
+- **Remediation:** Label sample rates and calculations as illustrative, remove unsupported product-tier terms, keep monthly/annual arithmetic consistent, and assert those visible disclosures in the browser test.
+- **Status:** `fixed-local-verified`; the focused Sites Worker browser regression passes at 1440×900 and 390×844. Public verification is pending.
+
+### AUD-459 — FAQ example made unsupported first-party claims
+
+- **Evidence:** The public v72 FAQ claimed Tessellate was 100% free/open core and that all 324 resources and CLI commands were free under MIT. Before screenshot: `audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/faq-accordion-1440x900.jpg`.
+- **Reproduction:** Open `/r/faq-accordion/` at either audited viewport and read its expanded example answer.
+- **Root cause:** The generic FAQ resource embedded Tessellate marketing copy and unqualified product-support statements.
+- **Affected code:** `resources/sections/faq-accordion/{index.tsx,manifest.json,README.md}`, `scripts/sections-batch-3.ts`, and the resource-copy browser regression.
+- **Remediation:** Replace the first-party FAQ with generic sample questions and answers, explicitly disclose example content, and assert that disclosure on the route and isolated preview.
+- **Status:** `fixed-local-verified`; the Sites Worker desktop/mobile regression passes. Public verification is pending.
+
+### AUD-460 — Billing sample fabricated an active subscription and renewal date
+
+- **Evidence:** Public v72 `/r/billing-overview/` showed “ACTIVE”, “Team Pro Subscription”, “Renews on Nov 1, 2026” and a monthly price. Before screenshots: the matching desktop/mobile files under `audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/`.
+- **Reproduction:** Open `/r/billing-overview/` and inspect the preview at 1440×900 or 390×844.
+- **Root cause:** Static fictional account data was rendered as though it represented a live visitor's subscription.
+- **Affected code:** `resources/blocks/billing-overview/{index.tsx,manifest.json,README.md}`, `scripts/blocks-batch-1.ts`, and the resource-copy browser regression.
+- **Remediation:** Mark sample account details as EXAMPLE, remove the fabricated active and renewal states, and assert that the sample is disclosed.
+- **Status:** `fixed-local-verified`; the local desktop/mobile browser regression passes. Public verification is pending.
+
+### AUD-461 — Billing payment button implied an action that was not connected
+
+- **Evidence:** The public v72 billing preview exposed “Update Payment Method” but had no payment integration or action response. Before screenshot: `audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/billing-overview-390x844.jpg`.
+- **Reproduction:** Open `/r/billing-overview/` and activate “Update Payment Method”; the apparent action has no configured payment operation and no limitation is shown.
+- **Root cause:** The static example exposed a production billing affordance without an action contract.
+- **Affected code:** `resources/blocks/billing-overview/index.tsx`, its manifest, `scripts/blocks-batch-1.ts`, and the resource-copy browser regression.
+- **Remediation:** Disable the payment action, provide visible and accessible explanation that payment updates are not connected in this example, and assert disabled semantics.
+- **Status:** `fixed-local-verified`; the local browser regression confirms the truthful disabled state. Public verification is pending.
+
+### AUD-462 — Generic recent-items example contained unrelated trading content
+
+- **Evidence:** Public v72 `/r/recent-items/` showed a “Nocturne Trading Terminal” row in a generic recent-items resource. Before screenshots are under the v72 route-sweep screenshot directory.
+- **Reproduction:** Open `/r/recent-items/` at desktop or mobile size and read the sample resource titles.
+- **Root cause:** The generic fixture reused an unrelated finance-domain showcase title.
+- **Affected code:** `resources/blocks/recent-items/{index.tsx,manifest.json,README.md}`, `scripts/blocks-batch-3.ts`, and the resource-copy browser regression.
+- **Remediation:** Use neutral example titles, identify the list as sample activity, and assert it contains no finance/trading residue.
+- **Status:** `fixed-local-verified`; the local Sites Worker browser regression passes. Public verification is pending.
 
 ## LOW — 2026-11-03 preview confirmation copy
 
@@ -5238,3 +5293,14 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Affected code:** `apps/site/src/pages/preview/index.astro` and `tests/e2e/preview-link-navigation.spec.ts`.
 - **Remediation:** Add explicit inline spacing and assert the full phrase `This isolated preview requested a link to /compose` in the browser test.
 - **Status:** `fixed-local-verified`; the complete desktop/mobile matrix passed with the corrected preview harness, and deployed verification is pending.
+
+## LOW — 2026-11-03 recent-items affordance
+
+### AUD-463 — Static recent-items rows looked clickable but did nothing
+
+- **Evidence:** On public v72, recent-items rows were inert containers styled with a pointer cursor and lacked links or buttons; see `audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/recent-items-1440x900.jpg`.
+- **Reproduction:** Open `/r/recent-items/`, hover a row, then click it; the pointer cursor suggests navigation, but nothing happens.
+- **Root cause:** The component styled static rows with an interactive cursor despite having no navigation target or action contract.
+- **Affected code:** `resources/blocks/recent-items/{index.tsx,manifest.json,README.md}`, `scripts/blocks-batch-3.ts`, and the resource-copy browser regression.
+- **Remediation:** Remove the false pointer affordance until the resource contract supplies functional navigation targets; assert there are no inert controls and no pointer cursor.
+- **Status:** `fixed-local-verified`; the browser regression passes at desktop and mobile. Public verification is pending.

@@ -20794,8 +20794,265 @@
           }
         }
       }
+    },
+    {
+      "id": "AUD-457",
+      "severity": "medium",
+      "route": "/r/pricing-three-tier/; /r/pricing-two-tier/; /r/pricing-comparison-table/; /r/plan-feature-matrix/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Pricing examples presented invented plan entitlements as Tessellate offers",
+      "expected": "Reusable pricing templates should identify their plan names and feature rows as illustrative until a product supplies real commercial terms.",
+      "actual": "The deployed v72 previews advertised Free Core, Team Sync, Organization Pro and Enterprise plans, including cloud sync, checkpoints, SSO, SLA, private registry and feature entitlements, as direct Tessellate offers.",
+      "reproduction": [
+        "Open each listed resource route on public Site v72 at desktop or mobile viewport.",
+        "Read the isolated resource preview; the pricing cards and feature table make product-specific plan and entitlement claims without an example disclosure."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/pricing-three-tier-1440x900.jpg",
+      "rootCause": "The resource implementations used product-specific pricing and entitlement copy as defaults, and their manifests described canonical live plans rather than reusable example content.",
+      "affectedFiles": [
+        "resources/sections/pricing-three-tier/index.tsx",
+        "resources/sections/pricing-two-tier/index.tsx",
+        "resources/sections/pricing-comparison-table/index.tsx",
+        "resources/sections/plan-feature-matrix/index.tsx",
+        "resources/sections-batch-3.ts",
+        "tests/e2e/resource-copy-truthfulness-step-39.spec.ts"
+      ],
+      "remediation": "Replace unsupported plan names and entitlements with neutral examples, disclose that terms are illustrative, and assert the visible detail/preview copy in the Sites Worker browser test.",
+      "fixCommit": null,
+      "status": "fixed-local-verified",
+      "evidence": {
+        "preFixScreenshots": [
+          "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/pricing-three-tier-1440x900.jpg",
+          "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/pricing-two-tier-390x844.jpg",
+          "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/pricing-comparison-table-1440x900.jpg",
+          "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/plan-feature-matrix-390x844.jpg"
+        ],
+        "postFixScreenshots": "quality/evidence/step-39/pricing-truthfulness-local/",
+        "regression": "tests/e2e/resource-copy-truthfulness-step-39.spec.ts",
+        "postFixResult": "Both Sites Worker desktop and mobile profiles pass; route and isolated-preview text includes illustrative disclosure, excludes unsupported claims, and reports no console, uncaught-exception, request, or HTTP errors.",
+        "deployedVerificationPending": true
+      }
+    },
+    {
+      "id": "AUD-458",
+      "severity": "medium",
+      "route": "/r/pricing-toggle/; /r/pricing-usage-based/; /r/pricing-calculator-shell/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Pricing examples showed unsupported billing amounts and terms as real calculations",
+      "expected": "Sample rates, billing periods, and estimated invoices should be labelled illustrative, with displayed arithmetic remaining internally consistent.",
+      "actual": "The v72 samples used a Team Pro price, cancellation terms, AST compilation usage and a £75 monthly invoice without disclosing they were made-up examples.",
+      "reproduction": [
+        "Open the pricing toggle, usage-based pricing, and calculator resource routes on v72.",
+        "Inspect their previews; they show exact rates and invoice estimates without example or illustrative language."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/pricing-toggle-1440x900.jpg",
+      "rootCause": "The template defaults presented invented pricing inputs and calculated outputs as production billing data.",
+      "affectedFiles": [
+        "resources/sections/pricing-toggle/index.tsx",
+        "resources/sections/pricing-usage-based/index.tsx",
+        "resources/sections/pricing-calculator-shell/index.tsx",
+        "resources/sections-batch-3.ts",
+        "tests/e2e/resource-copy-truthfulness-step-39.spec.ts"
+      ],
+      "remediation": "Disclose sample rates and calculations, remove unsupported product-tier language, retain consistent annual/monthly arithmetic, and cover all three previews in the browser regression.",
+      "fixCommit": null,
+      "status": "fixed-local-verified",
+      "evidence": {
+        "preFixScreenshots": [
+          "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/pricing-toggle-1440x900.jpg",
+          "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/pricing-usage-based-390x844.jpg",
+          "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/pricing-calculator-shell-1440x900.jpg"
+        ],
+        "postFixScreenshots": "quality/evidence/step-39/pricing-truthfulness-local/",
+        "regression": "tests/e2e/resource-copy-truthfulness-step-39.spec.ts",
+        "postFixResult": "The desktop/mobile browser test verifies visible sample disclosures, consistent annual arithmetic, working plan-selection status, and clean runtime/network state.",
+        "deployedVerificationPending": true
+      }
+    },
+    {
+      "id": "AUD-459",
+      "severity": "medium",
+      "route": "/r/faq-accordion/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "FAQ example made unsupported first-party licensing and capability claims",
+      "expected": "A reusable FAQ component should not assert Tessellate licensing, resource availability, or agent support as customer-facing facts.",
+      "actual": "The v72 FAQ asked whether Tessellate was 100% free/open core and claimed all 324 resources and CLI commands were free under MIT, alongside unqualified agent capability claims.",
+      "reproduction": [
+        "Open /r/faq-accordion/ at 1440x900 or 390x844.",
+        "Read the preview's expanded FAQ answer; it states specific first-party licensing and product-support claims."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/faq-accordion-1440x900.jpg",
+      "rootCause": "The FAQ resource embedded Tessellate marketing copy instead of neutral example questions and answers.",
+      "affectedFiles": [
+        "resources/sections/faq-accordion/index.tsx",
+        "resources/sections/faq-accordion/manifest.json",
+        "resources/sections/faq-accordion/README.md",
+        "scripts/sections-batch-3.ts",
+        "tests/e2e/resource-copy-truthfulness-step-39.spec.ts"
+      ],
+      "remediation": "Use generic, visibly illustrative FAQ content and cover the resource detail and isolated preview in the route regression.",
+      "fixCommit": null,
+      "status": "fixed-local-verified",
+      "evidence": {
+        "preFixScreenshot": "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/faq-accordion-1440x900.jpg",
+        "postFixScreenshots": "quality/evidence/step-39/pricing-truthfulness-local/faq-accordion-desktop-1440x900.png",
+        "regression": "tests/e2e/resource-copy-truthfulness-step-39.spec.ts",
+        "postFixResult": "Desktop and mobile route/detail previews assert the generic example disclosure and forbid the previous Tessellate marketing claims.",
+        "deployedVerificationPending": true
+      }
+    },
+    {
+      "id": "AUD-460",
+      "severity": "medium",
+      "route": "/r/billing-overview/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Billing overview fabricated an active subscription and renewal date",
+      "expected": "A reusable billing example should not imply that the visitor or Tessellate account has an active subscription, payment relationship, or real renewal date.",
+      "actual": "The v72 block showed an ACTIVE Team Pro Subscription renewing on Nov 1, 2026 for £18/month.",
+      "reproduction": [
+        "Open /r/billing-overview/ and inspect the isolated preview at desktop or mobile size.",
+        "The card presents an active plan, specific renewal date, and monthly rate without an example label."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/billing-overview-1440x900.jpg",
+      "rootCause": "The static resource used fictional account and subscription state as if it described a live user's billing record.",
+      "affectedFiles": [
+        "resources/blocks/billing-overview/index.tsx",
+        "resources/blocks/billing-overview/manifest.json",
+        "resources/blocks/billing-overview/README.md",
+        "scripts/blocks-batch-1.ts",
+        "tests/e2e/resource-copy-truthfulness-step-39.spec.ts"
+      ],
+      "remediation": "Render an explicitly labelled sample subscription without a fabricated active/renewal state, and protect the visible text contract at desktop and mobile.",
+      "fixCommit": null,
+      "status": "fixed-local-verified",
+      "evidence": {
+        "preFixScreenshots": [
+          "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/billing-overview-1440x900.jpg",
+          "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/billing-overview-390x844.jpg"
+        ],
+        "postFixScreenshots": "quality/evidence/step-39/pricing-truthfulness-local/",
+        "regression": "tests/e2e/resource-copy-truthfulness-step-39.spec.ts",
+        "postFixResult": "The sample account is labelled EXAMPLE, has an explicit sample-data disclosure, and does not show ACTIVE or the fabricated renewal date.",
+        "deployedVerificationPending": true
+      }
+    },
+    {
+      "id": "AUD-461",
+      "severity": "medium",
+      "route": "/r/billing-overview/",
+      "viewport": "1440x900; 390x844",
+      "category": "runtime",
+      "title": "Billing payment-method button had no connected action",
+      "expected": "A prominent billing action should either perform a real configured action or be disabled with a truthful explanation.",
+      "actual": "The v72 Update Payment Method button was presented as interactive but had no handler or disclosed limitation.",
+      "reproduction": [
+        "Open /r/billing-overview/ at desktop or mobile viewport.",
+        "Activate Update Payment Method; no payment action is connected and the interface gives no explanation."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/billing-overview-390x844.jpg",
+      "rootCause": "The sample block exposed a real payment-management affordance despite containing no payment integration or action contract.",
+      "affectedFiles": [
+        "resources/blocks/billing-overview/index.tsx",
+        "resources/blocks/billing-overview/manifest.json",
+        "scripts/blocks-batch-1.ts",
+        "tests/e2e/resource-copy-truthfulness-step-39.spec.ts"
+      ],
+      "remediation": "Disable the unsupported payment action and explain that payment updates are not connected in the sample; test disabled semantics and help text.",
+      "fixCommit": null,
+      "status": "fixed-local-verified",
+      "evidence": {
+        "postFixScreenshots": "quality/evidence/step-39/pricing-truthfulness-local/",
+        "regression": "tests/e2e/resource-copy-truthfulness-step-39.spec.ts",
+        "postFixResult": "The button is disabled, has an accessible description, and visible copy explains the missing payment integration.",
+        "deployedVerificationPending": true
+      }
+    },
+    {
+      "id": "AUD-462",
+      "severity": "low",
+      "route": "/r/recent-items/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Recent-items example included finance/trading content in a general resource",
+      "expected": "A generic recent-items block should use neutral, domain-appropriate examples unless a finance-specific context is declared.",
+      "actual": "The v72 example named a Nocturne Trading Terminal, mixing finance/trading content into general recent items.",
+      "reproduction": [
+        "Open /r/recent-items/ at desktop or mobile size.",
+        "Read the sample row titled Nocturne Trading Terminal; it is not identified as domain-specific content."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/recent-items-1440x900.jpg",
+      "rootCause": "The generic sample fixture reused an unrelated finance-domain showcase title.",
+      "affectedFiles": [
+        "resources/blocks/recent-items/index.tsx",
+        "resources/blocks/recent-items/manifest.json",
+        "resources/blocks/recent-items/README.md",
+        "scripts/blocks-batch-3.ts",
+        "tests/e2e/resource-copy-truthfulness-step-39.spec.ts"
+      ],
+      "remediation": "Replace the finance title with a neutral sample resource and disclose the sample data in the component and manifest.",
+      "fixCommit": null,
+      "status": "fixed-local-verified",
+      "evidence": {
+        "preFixScreenshots": [
+          "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/recent-items-1440x900.jpg",
+          "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/recent-items-390x844.jpg"
+        ],
+        "postFixScreenshots": "quality/evidence/step-39/pricing-truthfulness-local/",
+        "regression": "tests/e2e/resource-copy-truthfulness-step-39.spec.ts",
+        "postFixResult": "The desktop/mobile preview test asserts neutral names, sample disclosure, no finance terminology, and clean runtime state.",
+        "deployedVerificationPending": true
+      }
+    },
+    {
+      "id": "AUD-463",
+      "severity": "medium",
+      "route": "/r/recent-items/",
+      "viewport": "1440x900; 390x844",
+      "category": "visual",
+      "title": "Static recent-items rows looked like clickable navigation",
+      "expected": "Rows that do not navigate should use a neutral visual cursor and presentation, or should have a working link/action.",
+      "actual": "The v72 static preview rows displayed a pointer cursor without any link or activation behavior.",
+      "reproduction": [
+        "Open /r/recent-items/ and hover a recent row, then click it.",
+        "The cursor advertises interaction but the row contains no link or button and does nothing."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/recent-items-1440x900.jpg",
+      "rootCause": "The row container applied an interactive cursor even though recent-items rows were rendered as inert divs.",
+      "affectedFiles": [
+        "resources/blocks/recent-items/index.tsx",
+        "resources/blocks/recent-items/manifest.json",
+        "scripts/blocks-batch-3.ts",
+        "tests/e2e/resource-copy-truthfulness-step-39.spec.ts"
+      ],
+      "remediation": "Remove the false pointer affordance until the resource contract supplies navigation targets, and assert no pointer cursor or inert button-like semantics.",
+      "fixCommit": null,
+      "status": "fixed-local-verified",
+      "evidence": {
+        "postFixScreenshots": "quality/evidence/step-39/pricing-truthfulness-local/recent-items-desktop-1440x900.png",
+        "regression": "tests/e2e/resource-copy-truthfulness-step-39.spec.ts",
+        "postFixResult": "The isolated preview contains no interactive row controls and row cursors are not pointer; runtime/network errors remain zero.",
+        "deployedVerificationPending": true
+      }
     }
   ],
-  "generatedAt": "2026-11-03T05:35:24.693Z",
+  "generatedAt": "2026-11-03T07:20:31.837Z",
   "latestDeploymentEvidence": "quality/evidence/step-48/aud449-minimal-top-nav/deployed-v72-browser-evidence.json"
 }
