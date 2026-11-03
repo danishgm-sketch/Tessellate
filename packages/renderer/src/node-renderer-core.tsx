@@ -197,7 +197,7 @@ export function createNodeRenderer(defaultRegistry: ResourceRendererMap) {
   // 4. Motion classes
   const motionClasses = isReducedMotion
     ? 'transition-none duration-0 animate-none'
-    : 'transition-all duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ease-out)]';
+    : 'transition-colors duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ease-out)]';
 
   // 5. Responsive layout modifiers
   let layoutModifierClasses = '';
