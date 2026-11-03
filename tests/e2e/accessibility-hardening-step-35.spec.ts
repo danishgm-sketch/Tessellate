@@ -313,10 +313,16 @@ test('every public and editing shell exposes a working keyboard skip target', as
     const targetId = (await skip.getAttribute('href'))?.slice(1);
     expect(targetId).toBeTruthy();
     const main = page.locator(`#${targetId}`);
-    await expect(main).toHaveAttribute('tabindex', '-1');
+    const mobileWorkbenchScrollRegion = route === '/workbench/' && testInfo.project.name.includes('mobile');
+    await expect(main).toHaveAttribute('tabindex', mobileWorkbenchScrollRegion ? '0' : '-1');
     await page.keyboard.press('Enter');
     await expect(main).toBeFocused();
-    evidence.push({ route, skipTarget: `#${targetId}`, mainFocusedAfterActivation: true });
+    evidence.push({
+      route,
+      skipTarget: `#${targetId}`,
+      tabIndex: mobileWorkbenchScrollRegion ? 0 : -1,
+      mainFocusedAfterActivation: true,
+    });
   }
 
   const evidenceDir = path.resolve(process.cwd(), `quality/evidence/step-35/${testInfo.project.name}`);

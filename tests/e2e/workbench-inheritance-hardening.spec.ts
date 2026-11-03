@@ -81,8 +81,11 @@ async function selectLayer(page: Page, node: { id: string; type: string }) {
 async function setPlayfulness(page: Page, value: number) {
   const slider = page.getByRole('slider', { name: 'Playfulness' });
   await slider.focus();
-  await slider.press('Home');
-  for (let step = 0; step < value; step += 1) await slider.press('ArrowRight');
+  const startAtMinimum = value <= 50;
+  await slider.press(startAtMinimum ? 'Home' : 'End');
+  const distance = startAtMinimum ? value : 100 - value;
+  const key = startAtMinimum ? 'ArrowRight' : 'ArrowLeft';
+  for (let step = 0; step < distance; step += 1) await slider.press(key);
   await expect(slider).toHaveValue(String(value));
 }
 

@@ -84,6 +84,23 @@ test('the generated employee experience opens in Workbench without serious acces
   if (isMobile) await page.getByRole('navigation', { name: 'Mobile Workbench' }).getByRole('button', { name: 'Preview', exact: true }).click();
   await expect(page.getByText(/Refined employee summary/).first()).toBeVisible();
 
+  if (isMobile) {
+    const editorScrollRegion = page.locator('#workbench-main');
+    await page.getByRole('link', { name: 'Skip to editor' }).focus();
+    let editorReachedByKeyboard = false;
+    for (let index = 0; index < 16; index += 1) {
+      await page.keyboard.press('Tab');
+      if (await editorScrollRegion.evaluate((element) => element === document.activeElement)) {
+        editorReachedByKeyboard = true;
+        break;
+      }
+    }
+    expect(editorReachedByKeyboard, 'The mobile editor scroll region should be reachable in the sequential tab order').toBe(true);
+    const initialScrollTop = await editorScrollRegion.evaluate((element) => element.scrollTop);
+    await page.keyboard.press('PageDown');
+    await expect.poll(() => editorScrollRegion.evaluate((element) => element.scrollTop)).toBeGreaterThan(initialScrollTop);
+  }
+
   const dashboardHeadingOrder = await new AxeBuilder({ page }).withRules(['heading-order']).analyze();
   const headingOrderViolations = [
     ...briefHeadingOrder.violations.map(({ id, nodes }) => ({ surface: 'Brief panel', id, targets: nodes.map((node) => node.target) })),
