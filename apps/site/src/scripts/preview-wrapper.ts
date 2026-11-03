@@ -9,6 +9,7 @@ const frame = document.querySelector<HTMLIFrameElement>('[data-tessellate-previe
 
 if (frame) {
   const params = new URLSearchParams(window.location.search);
+  const expectedResourceId = params.get('resource') ?? 'button';
   const resourceParams = new URLSearchParams();
   for (const key of ['resource', 'variant', 'theme', 'device', 'reducedMotion']) {
     const value = params.get(key);
@@ -33,7 +34,12 @@ if (frame) {
   });
 
   window.addEventListener('message', (event: MessageEvent<unknown>) => {
-    if (event.source === frame.contentWindow && event.origin === 'null' && isPreviewToParentMessage(event.data)) {
+    if (
+      event.source === frame.contentWindow &&
+      event.origin === 'null' &&
+      isPreviewToParentMessage(event.data) &&
+      event.data.resourceId === expectedResourceId
+    ) {
       if (event.data.type === 'TESSELLATE_PREVIEW_NAVIGATION_REQUEST') {
         const destination = resolvePreviewNavigationDestination(event.data.href, window.location.origin);
         if (!destination || !navigationRequest || !navigationLabel || !navigationLink) return;

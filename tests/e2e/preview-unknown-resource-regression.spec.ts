@@ -20,15 +20,21 @@ test('unknown resource preview reports a visible error instead of substituting t
     const previewMessages: Array<{ type?: string; resourceId?: string; error?: string }> = [];
     Object.defineProperty(window, '__previewMessages', { value: previewMessages });
     window.addEventListener('message', (event) => {
-      if (event.source === window && event.data?.type?.startsWith('TESSELLATE_PREVIEW_')) {
+      if (event.source !== window && event.origin === window.location.origin && event.data?.type?.startsWith('TESSELLATE_PREVIEW_')) {
         previewMessages.push(event.data);
       }
     });
   });
 
-  await page.goto('/?resource=__missing-resource-for-renderer-audit__');
-  await expect(page.getByRole('alert')).toContainText('not available');
-  await expect(page.getByRole('button')).toHaveCount(0);
+  await page.route('**/__preview_test_host', (route) => route.fulfill({
+    status: 200,
+    contentType: 'text/html',
+    body: '<!doctype html><html><body><iframe title="Resource preview" src="/?resource=__missing-resource-for-renderer-audit__"></iframe></body></html>',
+  }));
+  await page.goto('/__preview_test_host');
+  const preview = page.frameLocator('iframe[title="Resource preview"]');
+  await expect(preview.getByRole('alert')).toContainText('Unknown resource: __missing-resource-for-renderer-audit__');
+  await expect(preview.getByRole('button')).toHaveCount(0);
   await expect.poll(() => page.evaluate(() => {
     return (window as Window & { __previewMessages?: Array<{ type?: string; error?: string }> }).__previewMessages
       ?.some((message) => message.type === 'TESSELLATE_PREVIEW_ERROR' && message.error?.includes('__missing-resource-for-renderer-audit__')) ?? false;

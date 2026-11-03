@@ -10,7 +10,7 @@ test('preview app compiles the utility styles used by canonical resources', asyn
   page.on('response', (response) => { if (response.status() >= 400) diagnostics.network.push(`${response.status()} ${response.url()}`); });
 
   await page.emulateMedia({ reducedMotion: 'no-preference' });
-  await page.goto('/?resource=fade-up-reveal');
+  await page.goto('/?resource=fade-up-reveal&variant=quiet');
 
   const card = page.locator('div.w-full.p-6').last();
   await expect(card).toBeVisible();
@@ -35,17 +35,36 @@ test('preview app compiles the utility styles used by canonical resources', asyn
 
 test('preview app applies and restores its reduced-motion state', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'no-preference' });
-  await page.goto('/?resource=fade-up-reveal');
+  // Exercise the host protocol from a real parent browsing context. The
+  // standalone preview deliberately rejects same-window messages and accepts
+  // state updates only from its authorized embedding parent.
+  await page.route('**/__preview_test_host', (route) => route.fulfill({
+    status: 200,
+    contentType: 'text/html',
+    body: '<!doctype html><html><body><iframe title="Resource preview" src="/?resource=fade-up-reveal&variant=quiet"></iframe></body></html>',
+  }));
+  await page.goto('/__preview_test_host');
 
-  const card = page.locator('div.w-full.p-6').last();
+  const preview = page.frameLocator('iframe[title="Resource preview"]');
+  const card = preview.locator('div.w-full.p-6').last();
   await expect(card).toBeVisible();
   await expect.poll(() => card.evaluate((element) => getComputedStyle(element).transitionDuration)).toBe('0.3s');
 
-  await page.evaluate(() => window.postMessage({ type: 'TESSELLATE_PREVIEW_UPDATE', reducedMotion: true }, '*'));
-  await expect.poll(() => page.evaluate(() => document.documentElement.dataset.tessellateReducedMotion)).toBe('true');
+  await page.locator('iframe').evaluate((element) => {
+    (element as HTMLIFrameElement).contentWindow?.postMessage(
+      { type: 'TESSELLATE_PREVIEW_UPDATE', reducedMotion: true },
+      window.location.origin,
+    );
+  });
+  await expect.poll(() => preview.locator('html').getAttribute('data-tessellate-reduced-motion')).toBe('true');
   await expect.poll(() => card.evaluate((element) => getComputedStyle(element).transitionDuration)).toBe('0s');
 
-  await page.evaluate(() => window.postMessage({ type: 'TESSELLATE_PREVIEW_UPDATE', reducedMotion: false }, '*'));
-  await expect.poll(() => page.evaluate(() => document.documentElement.dataset.tessellateReducedMotion)).toBeUndefined();
+  await page.locator('iframe').evaluate((element) => {
+    (element as HTMLIFrameElement).contentWindow?.postMessage(
+      { type: 'TESSELLATE_PREVIEW_UPDATE', reducedMotion: false },
+      window.location.origin,
+    );
+  });
+  await expect.poll(() => preview.locator('html').getAttribute('data-tessellate-reduced-motion')).toBeNull();
   await expect.poll(() => card.evaluate((element) => getComputedStyle(element).transitionDuration)).toBe('0.3s');
 });
