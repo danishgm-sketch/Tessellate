@@ -73,6 +73,7 @@ export function WorkbenchCanvas() {
                     onNodeHover: setHoveredNode,
                     viewport: viewportCategory,
                     reducedMotion,
+                    deferOffscreenResources: true,
                   }}
                 />
               </div>

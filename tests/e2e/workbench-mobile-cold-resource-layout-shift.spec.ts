@@ -79,8 +79,32 @@ test('mobile Workbench keeps CLS below 0.1 while employee screen resources load 
   });
 
   await page.addInitScript(() => {
-    const observedWindow = window as typeof window & { __tessellateColdLoadShifts?: LayoutShiftRecord[] };
+    const observedWindow = window as typeof window & {
+      __tessellateColdLoadShifts?: LayoutShiftRecord[];
+      __tessellateColdLoadTransitions?: Array<{ time: number; target: string; added: string[]; removed: string[] }>;
+    };
     observedWindow.__tessellateColdLoadShifts = [];
+    observedWindow.__tessellateColdLoadTransitions = [];
+    const describeNode = (node: Node) => {
+      if (!(node instanceof Element)) return node.textContent?.trim().replace(/\s+/g, ' ').slice(0, 80) ?? '';
+      const text = node.textContent?.trim().replace(/\s+/g, ' ').slice(0, 80) ?? '';
+      return `${node.tagName.toLowerCase()}${node.id ? `#${node.id}` : ''}${text ? `: ${text}` : ''}`;
+    };
+    const observer = new MutationObserver((records) => {
+      const transitions = observedWindow.__tessellateColdLoadTransitions;
+      if (!transitions) return;
+      for (const record of records) {
+        transitions.push({
+          time: performance.now(),
+          target: describeNode(record.target),
+          added: Array.from(record.addedNodes).map(describeNode).slice(0, 3),
+          removed: Array.from(record.removedNodes).map(describeNode).slice(0, 3),
+        });
+      }
+    });
+    const observeDocument = () => observer.observe(document.documentElement, { subtree: true, childList: true });
+    if (document.documentElement) observeDocument();
+    else document.addEventListener('DOMContentLoaded', observeDocument, { once: true });
     new PerformanceObserver((list) => {
       for (const entry of list.getEntries() as Array<PerformanceEntry & {
         hadRecentInput?: boolean;
@@ -172,6 +196,10 @@ test('mobile Workbench keeps CLS below 0.1 while employee screen resources load 
   await page.screenshot({ path: path.join(evidenceDirectory, testInfo.project.name + '-failure-before.png'), fullPage: true });
   await page.waitForLoadState('networkidle');
   await expect(page.getByTestId('resource-load-failure')).toContainText('Could not load resource: editorial-hero');
+  const failedHeroHeight = await page.getByTestId('resource-load-failure').evaluate((element) => (
+    element.closest<HTMLElement>('[data-node-id]')?.getBoundingClientRect().height ?? 0
+  ));
+  expect(failedHeroHeight, 'the failed hero must retain its reserved preview height').toBeGreaterThan(400);
   await expect(page.getByTestId('resource-loading')).toHaveCount(0);
   await page.waitForTimeout(250);
   const faultShifts = await page.evaluate(() => (window as typeof window & {
@@ -197,9 +225,15 @@ test('mobile Workbench keeps CLS below 0.1 while employee screen resources load 
     projectHeading: await page.locator('[data-testid="mobile-workbench"] h1.sr-only').innerText(),
     delayedResources: { firstLoad: firstLoadDelayedResources, reload: normalReloadDelayedResources },
     firstLoad: { cls: firstLoadCls, shifts: firstLoad },
-    reload: { cls: reloadCls, shifts: reload },
+    reload: {
+      cls: reloadCls,
+      shifts: reload,
+      transitions: await page.evaluate(() => (window as typeof window & {
+        __tessellateColdLoadTransitions?: Array<{ time: number; target: string; added: string[]; removed: string[] }>;
+      }).__tessellateColdLoadTransitions ?? []),
+    },
     normalRuntime,
-    faultInjection: { cls: faultCls, shifts: faultShifts, ...faultRuntime },
+    faultInjection: { cls: faultCls, failedHeroHeight, shifts: faultShifts, ...faultRuntime },
   };
   await writeFile(path.join(evidenceDirectory, `${testInfo.project.name}-cold-load.json`), `${JSON.stringify(result, null, 2)}\n`, 'utf8');
   console.log(JSON.stringify({

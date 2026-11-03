@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useRef, useState } from 'react';
 import {GOLD_RESOURCE_PROPS} from './generated-gold-props.js';
 import { nodeLayoutClass, nodeRuntimeVariant } from './layout-contract.js';
 import { getSupportedResourceVariants } from './resource-variants.js';
@@ -30,8 +30,18 @@ const WORKBENCH_INTERACTIVE_TARGET = [
   '[role="treeitem"]',
 ].join(',');
 
+function resourceReservedHeight(semanticRole: string): string {
+  switch (semanticRole) {
+    case 'navigation': return 'min-h-14';
+    case 'hero': return 'min-h-[28rem]';
+    case 'footer': return 'min-h-48';
+    case 'conversion-cta': return 'min-h-64';
+    default: return 'min-h-56';
+  }
+}
+
 class ResourceLoadBoundary extends React.Component<
-  { slug: string; children: React.ReactNode },
+  { slug: string; semanticRole: string; children: React.ReactNode },
   { failed: boolean }
 > {
   override state = { failed: false };
@@ -46,7 +56,7 @@ class ResourceLoadBoundary extends React.Component<
         <div
           data-testid="resource-load-failure"
           role="alert"
-          className="rounded-lg border border-dashed border-amber-400 bg-amber-50 p-4 text-xs text-amber-900 dark:border-amber-700 dark:bg-amber-950/30 dark:text-amber-100"
+          className={`rounded-lg border border-dashed border-amber-400 bg-amber-50 p-4 text-xs text-amber-900 dark:border-amber-700 dark:bg-amber-950/30 dark:text-amber-100 ${resourceReservedHeight(this.props.semanticRole)}`}
         >
           <p className="font-semibold">Could not load resource: {this.props.slug}</p>
           <p className="mt-1">The project reference is preserved. Reload the page to retry this resource.</p>
@@ -55,6 +65,58 @@ class ResourceLoadBoundary extends React.Component<
     }
     return this.props.children;
   }
+}
+
+function DeferredResource({
+  slug,
+  semanticRole,
+  enabled,
+  children,
+}: {
+  slug: string;
+  semanticRole: string;
+  enabled: boolean;
+  children: React.ReactNode;
+}) {
+  const elementRef = useRef<HTMLDivElement>(null);
+  const [nearViewport, setNearViewport] = useState(!enabled);
+
+  useEffect(() => {
+    if (!enabled || nearViewport) return undefined;
+    const element = elementRef.current;
+    if (!element || typeof IntersectionObserver === 'undefined') {
+      setNearViewport(true);
+      return undefined;
+    }
+
+    const scrollRoot = element.closest('[data-testid="workbench-canvas-scroll-area"]')
+      ?? element.closest('#workbench-main');
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        setNearViewport(true);
+        observer.disconnect();
+      }
+    }, { root: scrollRoot, rootMargin: '0px' });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [enabled, nearViewport]);
+
+  if (!nearViewport) {
+    return (
+      <div
+        ref={elementRef}
+        data-testid="resource-deferred"
+        data-resource-slug={slug}
+        role="group"
+        aria-label={`Loading ${semanticRole.replaceAll('-', ' ')} resource ${slug}`}
+        className={`flex w-full items-center justify-center border-y border-neutral-200/70 bg-neutral-50/70 px-4 py-3 text-xs text-neutral-500 dark:border-neutral-800 dark:bg-neutral-900/50 dark:text-neutral-400 ${resourceReservedHeight(semanticRole)}`}
+      >
+        Loading {slug} when this section is in view…
+      </div>
+    );
+  }
+
+  return <div className="w-full min-w-0">{children}</div>;
 }
 
 export function createNodeRenderer(defaultRegistry: ResourceRendererMap) {
@@ -264,21 +326,23 @@ export function createNodeRenderer(defaultRegistry: ResourceRendererMap) {
         }}
         className={`@container ${nodeLayoutClass(node)} relative ${motionClasses} ${layoutModifierClasses} ${selectionClasses}`}
       >
-        <ResourceLoadBoundary key={slug} slug={slug}>
-          <Suspense
-            fallback={
-              <div role="status" data-testid="resource-loading" className="min-h-12 px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400 motion-reduce:animate-none">
-                Loading {slug}…
-              </div>
-            }
-          >
-            {hasChildren ? (
-              <Component {...mergedProps}>{childrenToPass}</Component>
-            ) : (
-              <Component {...mergedProps} />
-            )}
-          </Suspense>
-        </ResourceLoadBoundary>
+        <DeferredResource slug={slug} semanticRole={node.semanticRole} enabled={context?.deferOffscreenResources === true}>
+          <ResourceLoadBoundary key={slug} slug={slug} semanticRole={node.semanticRole}>
+            <Suspense
+              fallback={
+                <div role="status" data-testid="resource-loading" className="min-h-12 px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400 motion-reduce:animate-none">
+                  Loading {slug}…
+                </div>
+              }
+            >
+              {hasChildren ? (
+                <Component {...mergedProps}>{childrenToPass}</Component>
+              ) : (
+                <Component {...mergedProps} />
+              )}
+            </Suspense>
+          </ResourceLoadBoundary>
+        </DeferredResource>
       </div>
     );
   }

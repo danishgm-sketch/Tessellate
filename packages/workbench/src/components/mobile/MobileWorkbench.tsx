@@ -70,7 +70,7 @@ export function MobileWorkbench({ historySaveStatus = 'saved', storageWarning = 
         </div>
       )}
       {/* Main Content Area */}
-      <main id="workbench-main" tabIndex={-1} aria-label="Workbench editor" className="relative z-0 flex-1 overflow-y-auto">
+      <main id="workbench-main" tabIndex={0} aria-label="Workbench editor" className="relative z-0 flex-1 overflow-y-auto">
         <h1 className="sr-only">Workbench: {manifest.name}</h1>
         {mobileTab === 'preview' && (
           resourcesReady ? (
@@ -87,6 +87,7 @@ export function MobileWorkbench({ historySaveStatus = 'saved', storageWarning = 
                     },
                     viewport: 'mobile',
                     reducedMotion,
+                    deferOffscreenResources: true,
                   }}
                 />
               </div>

@@ -1,6 +1,12 @@
 ---
 import '../../styles/global.css';
 import { WorkbenchShell } from '@tessellate/workbench/shell';
+import { ManifestRenderer } from '@tessellate/renderer';
+import { ProjectManifestSchema } from '@tessellate/schemas';
+import starterManifestSource from '../../../public/data/workbench-starter.json';
+
+const starterManifest = ProjectManifestSchema.parse(starterManifestSource);
+const hasProjectQuery = ['project', 'showcase', 'resource'].some((key) => Astro.url.searchParams.has(key));
 ---
 
 <!doctype html>
@@ -13,6 +19,28 @@ import { WorkbenchShell } from '@tessellate/workbench/shell';
       name="description"
       content="Tessellate Workbench: Structured UI composition environment driven by semantic project nodes, Design DNA, resources and validated mutations."
     />
+    <script>
+      if (window.innerWidth < 1024) {
+        const starterRequest = (window as Window & { __tessellateWorkbenchStarterRequest?: Promise<unknown> }).__tessellateWorkbenchStarterRequest;
+        if (starterRequest) {
+          void import('@tessellate/renderer/browser').then(({ preloadManifestInitialViewportResources }) =>
+            starterRequest.then((manifest) => preloadManifestInitialViewportResources(manifest, 'screen-marketing-home')),
+          ).catch(() => undefined);
+        }
+      }
+    </script>
+    <script is:inline>
+      (() => {
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('project') || params.has('showcase') || params.has('resource')) return;
+        const request = fetch('/data/workbench-starter.json').then(async (response) => {
+          if (!response.ok) throw new Error(`Workbench starter HTTP ${response.status}`);
+          return response.json();
+        });
+        void request.catch(() => undefined);
+        window.__tessellateWorkbenchStarterRequest = request;
+      })();
+    </script>
   </head>
   <body class="h-full overflow-hidden bg-[#FAF9F6] text-[#111217] dark:bg-[#0B0D10] dark:text-[#F5F7FA] antialiased font-sans">
     <WorkbenchShell client:only="react">
@@ -20,8 +48,21 @@ import { WorkbenchShell } from '@tessellate/workbench/shell';
         slot="fallback"
         id="workbench-startup"
         aria-busy="true"
-        class="flex min-h-screen flex-col bg-[#FAF9F6] text-[#111217] dark:bg-[#0B0D10] dark:text-[#F5F7FA]"
+        class="flex min-h-screen flex-col overflow-x-hidden bg-[#FAF9F6] text-[#111217] dark:bg-[#0B0D10] dark:text-[#F5F7FA]"
       >
+        {!hasProjectQuery ? (
+          <>
+            <div class="sticky top-0 z-10 border-b border-[#D9D6CF] bg-[#FAF9F6]/95 px-4 py-2 text-center backdrop-blur dark:border-[#272C34] dark:bg-[#0B0D10]/95">
+              <h1 class="text-xs font-semibold text-[#111217] dark:text-[#F5F7FA]">Preparing your local workspace</h1>
+              <p role="status" aria-live="polite" class="text-xs text-[#62666F] dark:text-[#A8AFBA]">
+                Read-only preview of Example employee workspace while editable controls load.
+              </p>
+            </div>
+            <div data-testid="workbench-starter-preview" inert aria-hidden="true" class="min-h-screen w-full overflow-hidden">
+              <ManifestRenderer manifest={starterManifest} activeScreenId="screen-marketing-home" context={{ viewport: 'desktop', reducedMotion: true }} />
+            </div>
+          </>
+        ) : (
         <div class="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center px-5 py-10 sm:px-8">
           <div class="mb-6 flex items-center gap-3">
             <span
@@ -44,6 +85,7 @@ import { WorkbenchShell } from '@tessellate/workbench/shell';
             class="mt-5 inline-flex min-h-11 w-fit items-center border border-[#D9D6CF] px-4 py-2 text-sm font-semibold hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2547E8] dark:border-[#272C34] dark:hover:bg-[#171B21]"
           >Open Compose</a>
         </div>
+        )}
       </main>
     </WorkbenchShell>
   </body>

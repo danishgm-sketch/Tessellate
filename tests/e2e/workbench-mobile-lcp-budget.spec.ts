@@ -62,17 +62,31 @@ test('a first mobile Workbench visit reaches rendered employee-product content w
 
   const navigationStartedAt = Date.now();
   await page.goto('/workbench', { waitUntil: 'domcontentloaded', timeout: 60_000 });
+  await expect(page.getByTestId('workbench-starter-preview')).toBeVisible({ timeout: 10_000 });
+  await expect(page.getByTestId('workbench-starter-preview').getByText('A better workday starts with people.', { exact: true })).toBeVisible({ timeout: 10_000 });
+  const employeeContentReadyAt = Date.now();
   // The mobile Workbench has a separate shell and intentionally does not render
   // the desktop-only workbench-shell test id.
+  await expect(page.getByTestId('mobile-workbench')).toBeVisible({ timeout: 60_000 });
   await expect(page.getByRole('heading', { name: 'Workbench: Example employee workspace' })).toBeVisible({ timeout: 60_000 });
-  await expect(page.getByRole('heading', { name: 'A better workday starts with people.', exact: true }).first()).toBeVisible({ timeout: 60_000 });
+  const editorReadyAt = Date.now();
+  await expect(page.getByTestId('resource-load-failure')).toHaveCount(0);
   await page.waitForTimeout(100);
 
-  const metrics = await page.evaluate((startedAt) => ({
+  const pageMetrics = await page.evaluate((startedAt) => ({
     url: location.href,
     viewport: { width: innerWidth, height: innerHeight },
     projectContentReadyMs: Date.now() - startedAt,
     lcpSamples: window.__workbenchLcpSamples ?? [],
+    deferredResources: [...document.querySelectorAll<HTMLElement>('[data-testid="resource-deferred"]')]
+      .map((element) => element.dataset.resourceSlug ?? ''),
+    starterRequests: performance.getEntriesByType('resource')
+      .filter((entry) => entry.name.includes('/data/workbench-starter.json'))
+      .map((entry) => ({
+        startTimeMs: Math.round(entry.startTime),
+        durationMs: Math.round(entry.duration),
+        transferBytes: (entry as PerformanceResourceTiming).transferSize,
+      })),
     scripts: performance.getEntriesByType('resource')
       .filter((entry) => entry.name.endsWith('.js'))
       .map((entry) => {
@@ -82,11 +96,19 @@ test('a first mobile Workbench visit reaches rendered employee-product content w
           transferBytes: script.transferSize,
           decodedBytes: script.decodedBodySize,
           durationMs: Math.round(script.duration),
+          startTimeMs: Math.round(script.startTime),
         };
       })
       .sort((left, right) => right.transferBytes - left.transferBytes),
   }), navigationStartedAt);
+  const metrics = {
+    ...pageMetrics,
+    projectContentReadyMs: employeeContentReadyAt - navigationStartedAt,
+    editorReadyMs: editorReadyAt - navigationStartedAt,
+    editorAfterContentMs: editorReadyAt - employeeContentReadyAt,
+  };
   const lcp = metrics.lcpSamples.at(-1)?.startTime ?? null;
+  const starterRequestStartedAt = metrics.starterRequests[0]?.startTimeMs ?? null;
   const evidence = { ...metrics, runtime };
   const evidenceJson = JSON.stringify(evidence, null, 2);
   await testInfo.attach('workbench-first-visit-metrics.json', {
@@ -101,8 +123,13 @@ test('a first mobile Workbench visit reaches rendered employee-product content w
   }
   expect(lcp, 'The browser should record a largest-contentful-paint candidate for the Workbench.').not.toBeNull();
   expect(
+    starterRequestStartedAt,
+    'The static starter manifest should start before React island startup on a first visit.',
+  ).not.toBeNull();
+  expect(starterRequestStartedAt!).toBeLessThan(2_000);
+  expect(
     metrics.projectContentReadyMs,
-    `Project content took ${metrics.projectContentReadyMs}ms; LCP candidates: ${JSON.stringify(metrics.lcpSamples)}; scripts: ${JSON.stringify(metrics.scripts)}`,
+    `Project content took ${metrics.projectContentReadyMs}ms; editor controls were ready after ${metrics.editorReadyMs}ms (${metrics.editorAfterContentMs}ms after the read-only preview); LCP candidates: ${JSON.stringify(metrics.lcpSamples)}; starter requests: ${JSON.stringify(metrics.starterRequests)}; deferred: ${JSON.stringify(metrics.deferredResources)}; scripts: ${JSON.stringify(metrics.scripts)}`,
   ).toBeLessThan(5_000);
   expect(runtime.consoleErrors).toEqual([]);
   expect(runtime.uncaughtExceptions).toEqual([]);
