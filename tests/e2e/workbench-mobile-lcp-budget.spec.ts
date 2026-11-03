@@ -62,14 +62,23 @@ test('a first mobile Workbench visit reaches rendered employee-product content w
 
   const navigationStartedAt = Date.now();
   await page.goto('/workbench', { waitUntil: 'domcontentloaded', timeout: 60_000 });
-  await expect(page.getByTestId('workbench-starter-preview')).toBeVisible({ timeout: 10_000 });
-  await expect(page.getByTestId('workbench-starter-preview').getByText('A better workday starts with people.', { exact: true })).toBeVisible({ timeout: 10_000 });
-  const employeeContentReadyAt = Date.now();
+  await expect(page.getByTestId('workbench-startup-shell')).toBeVisible({ timeout: 10_000 });
+  await expect(page.getByTestId('workbench-startup-status')).toContainText(
+    'Loading the example project and verified resource catalogue.',
+  );
+  const startupShellReadyAt = Date.now();
   // The mobile Workbench has a separate shell and intentionally does not render
-  // the desktop-only workbench-shell test id.
+  // the desktop-only workbench-shell test id. Wait for actual starter content,
+  // not the retired server-rendered preview selector.
   await expect(page.getByTestId('mobile-workbench')).toBeVisible({ timeout: 60_000 });
   await expect(page.getByRole('heading', { name: 'Workbench: Example employee workspace' })).toBeVisible({ timeout: 60_000 });
+  await expect(
+    page.getByTestId('mobile-workbench').getByText('A better workday starts with people.', { exact: true }),
+  ).toBeVisible({ timeout: 60_000 });
+  const employeeContentReadyAt = Date.now();
+  await expect(page.getByRole('navigation', { name: 'Mobile Workbench' })).toBeVisible();
   const editorReadyAt = Date.now();
+  const projectContentReadyAt = employeeContentReadyAt;
   await expect(page.getByTestId('resource-load-failure')).toHaveCount(0);
   await page.waitForTimeout(100);
 
@@ -103,7 +112,8 @@ test('a first mobile Workbench visit reaches rendered employee-product content w
   }), navigationStartedAt);
   const metrics = {
     ...pageMetrics,
-    projectContentReadyMs: employeeContentReadyAt - navigationStartedAt,
+    startupShellReadyMs: startupShellReadyAt - navigationStartedAt,
+    projectContentReadyMs: projectContentReadyAt - navigationStartedAt,
     editorReadyMs: editorReadyAt - navigationStartedAt,
     editorAfterContentMs: editorReadyAt - employeeContentReadyAt,
   };
