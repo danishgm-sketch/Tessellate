@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete. PR review findings AUD-419–AUD-444 have named post-fix regression coverage; this record does not claim every regression ran red before its fix. The AUD-438 cross-tab history regression additionally passes in a real local Sites Worker browser at desktop and mobile sizes. Exact-head CI and applicable deployed verification remain pending. Public Axe evidence also found two unsupported ARIA label semantics (AUD-445 and AUD-446), now fixed locally and awaiting published verification. Public v70 route re-audit evidence is quality/evidence/step-45/public-v70-reaudit-2026-11-01/. Axe scan-time CSP console events are isolated to the sandboxed preview frames while Axe analyzes them; ordinary route navigation was clean, and the existing strict CSP remains unchanged. A separately discovered PR review issue AUD-447 reproduced an Undo recovery failure under simulated localStorage quota exhaustion; its regression fails against the pre-fix source and passes with the generation-based journal fix. Exact-head CI and public Site verification are pending. Public Sites v71 serves canonical commit 7ac7783de83e175ac410055da736b2218e2ba213 via Sites source 0bce228a4fbd5fedad02a3186cd6af62690d8405. The 31-route public-shell sweep passed 31/31 routes at 1440x900 and 390x844 (62 route captures), with zero HTTP failures, browser console errors, uncaught exceptions, failed requests, horizontal overflow, screenshot instrumentation warnings, Axe violations, or unsupported-ARIA incomplete results; 11 color-contrast checks remain Axe-incomplete. The full employee-experience flagship flow passed on desktop and mobile, including Direction C selection, locks, recomposition, replacement, Surprise Me, Undo/Redo and manifest/ZIP export; the desktop standalone export was clean-installed, built and browsed. AUD-443 and AUD-445 through AUD-447 now have issue-specific public v71 verification. AUD-419 remains locally verified only: the public backend health endpoint truthfully reports that the laptop backend is unconfigured, and no provider credentials were sent or persisted. The broader hardening programme remains incomplete. On 2026-11-01, local Docker inspection found the Tessellate API and host containers running but unhealthy. Restarting the existing API, then the dependent host, restored API HTTP 200, Docker health, and a fresh heartbeat without rebuilding images or touching MGI containers. AUD-448 records this medium local-runtime defect; its initiating cause remains unknown and it is open for root-cause investigation. AUD-449 records a public v71 responsive-collapse mismatch reproduced at 390x844; its keyboard and touch responsive fix passes in local Sites Worker desktop/mobile profiles across seven widths and awaits deployed recheck. AUD-450 and AUD-451 are locally fixed pending deployment; AUD-452 is confirmed as cold mobile Workbench CLS 0.5028 on public v72; the local cold-load, reload and partial-resource-failure regressions pass after a fail-fast preload race fix, and deployed verification remains pending; AUD-453 is locally fixed pending deployment. AUD-454 reproduces in the local production-like Sites Worker and passes the same direct-preview navigation journey at desktop/mobile after the bounded opaque-parent message fix; deployed verification remains pending. AUD-455 records the confirmation sentence spacing defect visible in the AUD-454 after screenshot; explicit spacing and an exact browser text assertion are included, with deployed verification pending. Public v73 was independently checked with a clean mobile browser under prefers-reduced-motion; that trace found a shared renderer transition defect (AUD-464), reproduced by a new red-to-green Workbench browser regression. The local fix now disables transitions and animations for screen content under system or explicit reduced-motion settings; the issue remains open pending the same public Site check. On 2026-11-03 the full pnpm test:e2e matrix passed 785 tests with 186 configured profile skips and zero failures across Astro, Sites Worker desktop/mobile, and standalone preview. The fixed reduced-motion and preview error recovery regressions pass locally; public verification is pending. AUD-465 records a variable constrained-network Explore preview delay (9,250ms initial, 7,994ms pre-fix repeat) with a 5,382ms post-fix repeat; hosted recheck remains pending. Public Sites v74 issue-specific verification closed AUD-464 and AUD-465 from canonical commit 75276e8078e908b8258fa3d2cba629d71b85cd60; this does not repeat the full v71 route/flagship audit or close the broader hardening gate. Public v74 follow-up then closed AUD-450 (accessible name), AUD-451 (mobile preview menu touch/keyboard), AUD-452 (cold resource CLS) and AUD-456 (delayed mobile startup handoff) using issue-specific deployed regressions; the full route audit was not repeated. AUD-419 remains locally verified only because the optional laptop backend/provider path is intentionally unconfigured and no credential/tunnel was used. After the v74 rechecks, the latest pnpm test:e2e run passed 786 tests with 189 configured profile skips and zero failures across Astro desktop/mobile, Sites Worker desktop/mobile, and standalone preview. pnpm audit:all passed all 16 behavioral gates, 324 resource isolation and provenance checks, route budgets, security/secret checks, and dependency audit. A 2026-11-03 public v74 copy sweep visited all 324 detail routes at desktop and mobile and rendered 1,944 variants; it recorded five findings (AUD-466–AUD-470) and a working empty-workspace callback. Local fixes await exact-version deployed verification.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete. PR review findings AUD-419–AUD-444 have named post-fix regression coverage; this record does not claim every regression ran red before its fix. The AUD-438 cross-tab history regression additionally passes in a real local Sites Worker browser at desktop and mobile sizes. Exact-head CI and applicable deployed verification remain pending. Public Axe evidence also found two unsupported ARIA label semantics (AUD-445 and AUD-446), now fixed locally and awaiting published verification. Public v70 route re-audit evidence is quality/evidence/step-45/public-v70-reaudit-2026-11-01/. Axe scan-time CSP console events are isolated to the sandboxed preview frames while Axe analyzes them; ordinary route navigation was clean, and the existing strict CSP remains unchanged. A separately discovered PR review issue AUD-447 reproduced an Undo recovery failure under simulated localStorage quota exhaustion; its regression fails against the pre-fix source and passes with the generation-based journal fix. Exact-head CI and public Site verification are pending. Public Sites v71 serves canonical commit 7ac7783de83e175ac410055da736b2218e2ba213 via Sites source 0bce228a4fbd5fedad02a3186cd6af62690d8405. The 31-route public-shell sweep passed 31/31 routes at 1440x900 and 390x844 (62 route captures), with zero HTTP failures, browser console errors, uncaught exceptions, failed requests, horizontal overflow, screenshot instrumentation warnings, Axe violations, or unsupported-ARIA incomplete results; 11 color-contrast checks remain Axe-incomplete. The full employee-experience flagship flow passed on desktop and mobile, including Direction C selection, locks, recomposition, replacement, Surprise Me, Undo/Redo and manifest/ZIP export; the desktop standalone export was clean-installed, built and browsed. AUD-443 and AUD-445 through AUD-447 now have issue-specific public v71 verification. AUD-419 remains locally verified only: the public backend health endpoint truthfully reports that the laptop backend is unconfigured, and no provider credentials were sent or persisted. The broader hardening programme remains incomplete. On 2026-11-01, local Docker inspection found the Tessellate API and host containers running but unhealthy. Restarting the existing API, then the dependent host, restored API HTTP 200, Docker health, and a fresh heartbeat without rebuilding images or touching MGI containers. AUD-448 records this medium local-runtime defect; its initiating cause remains unknown and it is open for root-cause investigation. AUD-449 records a public v71 responsive-collapse mismatch reproduced at 390x844; its keyboard and touch responsive fix passes in local Sites Worker desktop/mobile profiles across seven widths and awaits deployed recheck. AUD-450 and AUD-451 are locally fixed pending deployment; AUD-452 is confirmed as cold mobile Workbench CLS 0.5028 on public v72; the local cold-load, reload and partial-resource-failure regressions pass after a fail-fast preload race fix, and deployed verification remains pending; AUD-453 is locally fixed pending deployment. AUD-454 reproduces in the local production-like Sites Worker and passes the same direct-preview navigation journey at desktop/mobile after the bounded opaque-parent message fix; deployed verification remains pending. AUD-455 records the confirmation sentence spacing defect visible in the AUD-454 after screenshot; explicit spacing and an exact browser text assertion are included, with deployed verification pending. Public v73 was independently checked with a clean mobile browser under prefers-reduced-motion; that trace found a shared renderer transition defect (AUD-464), reproduced by a new red-to-green Workbench browser regression. The local fix now disables transitions and animations for screen content under system or explicit reduced-motion settings; the issue remains open pending the same public Site check. On 2026-11-03 the full pnpm test:e2e matrix passed 785 tests with 186 configured profile skips and zero failures across Astro, Sites Worker desktop/mobile, and standalone preview. The fixed reduced-motion and preview error recovery regressions pass locally; public verification is pending. AUD-465 records a variable constrained-network Explore preview delay (9,250ms initial, 7,994ms pre-fix repeat) with a 5,382ms post-fix repeat; hosted recheck remains pending. Public Sites v74 issue-specific verification closed AUD-464 and AUD-465 from canonical commit 75276e8078e908b8258fa3d2cba629d71b85cd60; this does not repeat the full v71 route/flagship audit or close the broader hardening gate. Public v74 follow-up then closed AUD-450 (accessible name), AUD-451 (mobile preview menu touch/keyboard), AUD-452 (cold resource CLS) and AUD-456 (delayed mobile startup handoff) using issue-specific deployed regressions; the full route audit was not repeated. AUD-419 remains locally verified only because the optional laptop backend/provider path is intentionally unconfigured and no credential/tunnel was used. After the v74 rechecks, the latest pnpm test:e2e run passed 786 tests with 189 configured profile skips and zero failures across Astro desktop/mobile, Sites Worker desktop/mobile, and standalone preview. pnpm audit:all passed all 16 behavioral gates, 324 resource isolation and provenance checks, route budgets, security/secret checks, and dependency audit. A 2026-11-03 public v74 copy sweep visited all 324 detail routes at desktop and mobile and rendered 1,944 variants; it recorded five findings (AUD-466–AUD-470) and a working empty-workspace callback. Local fixes await exact-version deployed verification. Public v75 detail/preview audit captured 13 high-risk resources at 1440x900 and 390x844; 21 additional defects AUD-471–AUD-491 are locally corrected and await deployed verification.",
   "entries": [
     {
       "id": "AUD-001",
@@ -21732,11 +21732,1341 @@
         "regression": "tests/e2e/resource-copy-truthfulness-step-39.spec.ts",
         "postFixResult": "The focused Sites Worker regression confirms neutral analytics recommendations and verifies that the isolated preview renders its loading status, four metric cards, and chart placeholder after frame readiness; desktop and mobile profiles pass. Deployed verification of this fix is pending."
       }
+    },
+    {
+      "id": "AUD-471",
+      "severity": "medium",
+      "route": "/r/ai-multi-agent-board/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "AI Multi-Agent Board presented fixed tasks as an active swarm",
+      "expected": "A static pattern preview should identify example task lanes and should not claim agents or an SDK are running.",
+      "actual": "The preview said “Autonomous Agent Swarm”, “3 subagents coordinated via Antigravity SDK”, and “Active Swarm” while rendering fixed example tasks.",
+      "reproduction": [
+        "Open /r/ai-multi-agent-board/.",
+        "Read the embedded preview heading and status."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-multi-agent-board-1440x900.png",
+      "rootCause": "The resource was authored as a static example but used operational language for an unimplemented agent integration.",
+      "affectedFiles": [
+        "resources/ai/ai-multi-agent-board/index.tsx",
+        "resources/ai/ai-multi-agent-board/manifest.json",
+        "resources/ai/ai-multi-agent-board/README.md",
+        "scripts/ai-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Use fixed example lanes, label them as sample workflow data, and remove the unsupported SDK and active-swarm claims.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-multi-agent-board-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-multi-agent-board-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/ai-multi-agent-board/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/ai-multi-agent-board/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-472",
+      "severity": "medium",
+      "route": "/r/ai-plan-review/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "AI Plan Review showed invented execution estimates and test counts",
+      "expected": "A plan example should not present a phase number, run time, test count, or completed checks as measured facts.",
+      "actual": "The preview named Phase 18, estimated ~2m runtime, claimed 253 tests, and asserted zero typecheck/lint errors without executing those jobs.",
+      "reproduction": [
+        "Open /r/ai-plan-review/.",
+        "Read the steps and their time/test/status claims."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-plan-review-1440x900.png",
+      "rootCause": "A hand-authored fixture copied build-pipeline details into a component with no task runner or test integration.",
+      "affectedFiles": [
+        "resources/ai/ai-plan-review/index.tsx",
+        "resources/ai/ai-plan-review/manifest.json",
+        "resources/ai/ai-plan-review/README.md",
+        "scripts/ai-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Replace the pipeline fixture with a general example plan and state that no coding agent is connected.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-plan-review-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-plan-review-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/ai-plan-review/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/ai-plan-review/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-473",
+      "severity": "medium",
+      "route": "/r/ai-plan-review/",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Accept Plan action claimed work had started",
+      "expected": "A local approval preview must not imply that tasks were accepted by or started in an execution system.",
+      "actual": "Clicking “Accept Plan & Proceed” changed the button to “Plan Accepted & Running” although no task runner was connected.",
+      "reproduction": [
+        "Open /r/ai-plan-review/.",
+        "Click “Accept Plan & Proceed”.",
+        "Observe the running-status wording and absence of any started task."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-plan-review-1440x900.png",
+      "rootCause": "A local boolean toggle reused production execution wording.",
+      "affectedFiles": [
+        "resources/ai/ai-plan-review/index.tsx",
+        "scripts/ai-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Rename the action to “Preview plan approval” and show an explicit local status saying that no tasks have started.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-plan-review-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-plan-review-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/ai-plan-review/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/ai-plan-review/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-474",
+      "severity": "medium",
+      "route": "/r/marquee-typography/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Typography strip claimed unsupported configuration and accessibility certification",
+      "expected": "The resource should describe the behavior it implements and must not claim unverified counts or WCAG certification.",
+      "actual": "Default copy claimed “972 CONFIGURATIONS” and “WCAG AA VERIFIED”; the component repeated static text and did not provide those certifications.",
+      "reproduction": [
+        "Open /r/marquee-typography/.",
+        "Read the embedded strip and resource description."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/marquee-typography-1440x900.png",
+      "rootCause": "Marketing copy claimed product-wide counts and accessibility results unrelated to the component implementation.",
+      "affectedFiles": [
+        "resources/typography/marquee-typography/index.tsx",
+        "resources/typography/marquee-typography/manifest.json",
+        "resources/typography/marquee-typography/README.md",
+        "scripts/typography-batch-1.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Use neutral sample phrases, rename the pattern as a repeating strip, and remove unused speed configuration and unverified claims.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/marquee-typography-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/marquee-typography-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/marquee-typography/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/marquee-typography/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-475",
+      "severity": "medium",
+      "route": "/r/sticky-scroll-story/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Story selector claimed sticky scrolling and unmeasured performance",
+      "expected": "A chapter selector should not claim pinned-scroll behavior or benchmark results that it does not implement or measure.",
+      "actual": "The preview claimed sub-5ms routing and zero client-bundle penalties, while the rendered UI was a simple chapter selector without a sticky scroll scene.",
+      "reproduction": [
+        "Open /r/sticky-scroll-story/.",
+        "Read the chapter copy and compare it with the rendered interaction."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/sticky-scroll-story-1440x900.png",
+      "rootCause": "A generic state selector was described with unrelated infrastructure and performance claims.",
+      "affectedFiles": [
+        "resources/motion/sticky-scroll-story/index.tsx",
+        "resources/motion/sticky-scroll-story/manifest.json",
+        "resources/motion/sticky-scroll-story/README.md",
+        "scripts/motion-batch-1.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Name and describe it as a story chapter selector, use relevant example copy, and remove scroll/performance claims.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/sticky-scroll-story-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/sticky-scroll-story-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/sticky-scroll-story/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/sticky-scroll-story/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-476",
+      "severity": "medium",
+      "route": "/r/sticky-scroll-story/",
+      "viewport": "1440x900; 390x844",
+      "category": "accessibility",
+      "title": "Story chapter controls could not be reached or operated by keyboard",
+      "expected": "Each chapter selection should be a focusable control with a visible focus state and exposed selected state.",
+      "actual": "The chapter rows were clickable divs with no keyboard role, tab stop, or keyboard activation.",
+      "reproduction": [
+        "Open /r/sticky-scroll-story/.",
+        "Press Tab through the preview.",
+        "Observe that chapter rows are skipped; mouse clicks still change the panel."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/sticky-scroll-story-1440x900.png",
+      "rootCause": "Click handlers were attached to non-interactive div elements.",
+      "affectedFiles": [
+        "resources/motion/sticky-scroll-story/index.tsx",
+        "scripts/motion-batch-1.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Use buttons with aria-pressed state and visible keyboard focus, and verify Enter activation in the browser.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/sticky-scroll-story-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/sticky-scroll-story-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/sticky-scroll-story/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/sticky-scroll-story/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-477",
+      "severity": "medium",
+      "route": "/r/number-count-up/",
+      "viewport": "1440x900; 390x844",
+      "category": "data",
+      "title": "Number counter presented a sample as Tessellate certification data",
+      "expected": "The animated value should be identified as example content and must not imply a verified resource count or a different easing algorithm.",
+      "actual": "The counter showed 324 “Canonical Resources Verified” under “Logarithmic Counter”, while it linearly added 12 per tick and did not read catalogue data.",
+      "reproduction": [
+        "Open /r/number-count-up/.",
+        "Read the metric label and activate Replay Count."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/number-count-up-1440x900.png",
+      "rootCause": "A hard-coded fixture value was coupled to a product count and described with an algorithm the implementation did not use.",
+      "affectedFiles": [
+        "resources/motion/number-count-up/index.tsx",
+        "resources/motion/number-count-up/manifest.json",
+        "resources/motion/number-count-up/README.md",
+        "scripts/motion-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Use a generic example value and accurate count-up wording, clean up the timer on unmount, and skip the animation when reduced motion is requested.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/number-count-up-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/number-count-up-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/number-count-up/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/number-count-up/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-478",
+      "severity": "medium",
+      "route": "/r/version-history/",
+      "viewport": "1440x900; 390x844",
+      "category": "data",
+      "title": "Version History showed fabricated verified resource totals",
+      "expected": "A revision-list example should label its values as sample history rather than asserting current catalogue totals.",
+      "actual": "The static revisions claimed Tessellate added 72 verified marketing sections, stabilized 36 navigation shells, and initialized 44 primitives.",
+      "reproduction": [
+        "Open /r/version-history/.",
+        "Read each revision summary."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/version-history-1440x900.png",
+      "rootCause": "A mock revision fixture embedded invented product-volume metrics without marking them as examples.",
+      "affectedFiles": [
+        "resources/blocks/version-history/index.tsx",
+        "resources/blocks/version-history/manifest.json",
+        "resources/blocks/version-history/README.md",
+        "scripts/blocks-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Use neutral sample revision descriptions and label the entire list as example history.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/version-history-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/version-history-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/version-history/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/version-history/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-479",
+      "severity": "medium",
+      "route": "/r/version-history/",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Restore buttons had no action or feedback",
+      "expected": "Restore must either perform a real host operation or be explicitly presented as a preview with truthful feedback.",
+      "actual": "Two enabled buttons said “Restore” and had no click handler or visible effect.",
+      "reproduction": [
+        "Open /r/version-history/.",
+        "Click either enabled Restore button.",
+        "Observe that no project revision changes and no response appears."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/version-history-1440x900.png",
+      "rootCause": "The sample UI exposed an unconnected restore affordance without a callback contract.",
+      "affectedFiles": [
+        "resources/blocks/version-history/index.tsx",
+        "resources/blocks/version-history/manifest.json",
+        "resources/blocks/version-history/README.md",
+        "scripts/blocks-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Change the action to “Preview restore” and show a status that no project revision was changed.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/version-history-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/version-history-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/version-history/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/version-history/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-480",
+      "severity": "medium",
+      "route": "/r/data-hero/",
+      "viewport": "1440x900; 390x844",
+      "category": "data",
+      "title": "Data Hero presented invented telemetry values as live measurements",
+      "expected": "Unconnected metrics should be labeled as examples and should not claim live throughput, latency, or measured baseline changes.",
+      "actual": "The preview claimed real-time telemetry and mission-critical microsecond performance, with 4.2M req/s, 1.4 ms, 18.2 MB and “vs baseline” values.",
+      "reproduction": [
+        "Open /r/data-hero/.",
+        "Read the headline, metric cards, and comparison labels."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/data-hero-1440x900.png",
+      "rootCause": "A static marketing fixture used fabricated performance values and live-measurement language without a source.",
+      "affectedFiles": [
+        "resources/sections/data-hero/index.tsx",
+        "resources/sections/data-hero/fixtures.ts",
+        "resources/sections/data-hero/manifest.json",
+        "resources/sections/data-hero/README.md",
+        "scripts/sections-batch-1.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Use generic example metrics and trend labels, disclose that no telemetry is connected, and keep the resource metadata in the analytics domain.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/data-hero-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/data-hero-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/data-hero/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/data-hero/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-481",
+      "severity": "medium",
+      "route": "/r/analytics-shell/",
+      "viewport": "1440x900; 390x844",
+      "category": "data",
+      "title": "Analytics Shell displayed unsourced business metrics as actual results",
+      "expected": "A shell with no connected data source should label its default metrics as illustrative sample content.",
+      "actual": "The preview displayed MRR $84k, DAU 12.4k, Churn 0.8%, and NPS 74 without a sample-data disclosure.",
+      "reproduction": [
+        "Open /r/analytics-shell/.",
+        "Read the metric cards and period label."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/analytics-shell-1440x900.png",
+      "rootCause": "The default fixture copied fabricated business metrics into a shell without identifying them as sample data.",
+      "affectedFiles": [
+        "resources/shells/analytics-shell/index.tsx",
+        "resources/shells/analytics-shell/manifest.json",
+        "resources/shells/analytics-shell/README.md",
+        "scripts/shells-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Label default values as illustrative, make the period explicitly an example, and expose export only when a host callback exists.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/analytics-shell-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/analytics-shell-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/analytics-shell/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/analytics-shell/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-482",
+      "severity": "medium",
+      "route": "/r/analytics-shell/",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Analytics period and CSV controls were enabled but inert",
+      "expected": "Visible controls must perform their named action or be non-interactive/disabled with an explanation.",
+      "actual": "“Last 30 Days” and “Export CSV” were enabled buttons without handlers.",
+      "reproduction": [
+        "Open /r/analytics-shell/.",
+        "Activate Last 30 Days, then Export CSV.",
+        "Observe no period change and no download or feedback."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/analytics-shell-1440x900.png",
+      "rootCause": "The static preview rendered button styling without a date-filter or export callback contract.",
+      "affectedFiles": [
+        "resources/shells/analytics-shell/index.tsx",
+        "resources/shells/analytics-shell/manifest.json",
+        "resources/shells/analytics-shell/README.md",
+        "scripts/shells-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Render the static example period as text and disable CSV export unless the host supplies an export callback, with associated help text.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/analytics-shell-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/analytics-shell-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/analytics-shell/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/analytics-shell/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-483",
+      "severity": "medium",
+      "route": "/r/data-terminal-header/",
+      "viewport": "1440x900; 390x844",
+      "category": "data",
+      "title": "Data terminal presented static market and latency values as live",
+      "expected": "Fixed market/timing examples should be visibly identified as sample values, with no current-feed or latency-probe claim.",
+      "actual": "The header showed a BTC quote, +2.4%, RTT 12ms and a fixed UTC clock without a sample label or feed disclosure.",
+      "reproduction": [
+        "Open /r/data-terminal-header/.",
+        "Read the quote, status, and timing values."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/data-terminal-header-1440x900.png",
+      "rootCause": "Hard-coded market and timing fixtures were presented using live-terminal styling without a data-source boundary.",
+      "affectedFiles": [
+        "resources/shells/data-terminal-header/index.tsx",
+        "resources/shells/data-terminal-header/manifest.json",
+        "resources/shells/data-terminal-header/README.md",
+        "scripts/shells-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Label the values as examples and state that no market feed or latency probe is connected.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/data-terminal-header-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/data-terminal-header-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/data-terminal-header/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/data-terminal-header/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-484",
+      "severity": "medium",
+      "route": "/r/connection-lost-state/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Connection Lost State promised an automatic retry that never ran",
+      "expected": "A recovery message should describe only retry behavior implemented by the component or host.",
+      "actual": "The preview said it was reconnecting automatically in five seconds, but no timer or retry sequence ran.",
+      "reproduction": [
+        "Open /r/connection-lost-state/.",
+        "Read the countdown and wait past five seconds."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/connection-lost-state-1440x900.png",
+      "rootCause": "Static text copied a countdown promise without a scheduled retry implementation.",
+      "affectedFiles": [
+        "resources/states/connection-lost-state/index.tsx",
+        "resources/states/connection-lost-state/manifest.json",
+        "resources/states/connection-lost-state/README.md",
+        "scripts/states-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Remove the countdown and explain that recovery is controlled by the host application.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/connection-lost-state-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/connection-lost-state-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/connection-lost-state/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/connection-lost-state/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-485",
+      "severity": "medium",
+      "route": "/r/connection-lost-state/",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Preview host enabled a reconnect action with no recovery operation",
+      "expected": "The retry control should be disabled when the resource has no host recovery callback.",
+      "actual": "“Reconnect Now” was enabled; the shared preview host supplied a generic callback that only changed a local status message.",
+      "reproduction": [
+        "Open /r/connection-lost-state/.",
+        "Click Reconnect Now.",
+        "Observe the preview status message without any network recovery attempt."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/connection-lost-state-1440x900.png",
+      "rootCause": "PreviewHost injected onRetry into every preview through shared action props, even when the resource did not request a retry integration.",
+      "affectedFiles": [
+        "apps/preview/src/components/PreviewHost.tsx",
+        "resources/states/connection-lost-state/index.tsx",
+        "scripts/states-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Remove global onRetry injection and provide the callback only to the existing Error State resource that owns the preview action.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/connection-lost-state-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/connection-lost-state-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/connection-lost-state/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/connection-lost-state/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-486",
+      "severity": "medium",
+      "route": "/r/feature-with-live-demo/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Local toggle claimed an external system was online",
+      "expected": "A preview-only toggle should identify its scope and avoid claims about system connectivity or rendering performance.",
+      "actual": "The section said “Live Sandbox” and “SYSTEM ACTIVE [ONLINE]” and claimed state transitions without re-render cascades; it only toggled local React state.",
+      "reproduction": [
+        "Open /r/feature-with-live-demo/.",
+        "Activate the toggle and inspect the copy and resulting state."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/feature-with-live-demo-1440x900.png",
+      "rootCause": "A local state demo was styled and described as an external sandbox/system integration.",
+      "affectedFiles": [
+        "resources/sections/feature-with-live-demo/index.tsx",
+        "resources/sections/feature-with-live-demo/preview.tsx",
+        "resources/sections/feature-with-live-demo/manifest.json",
+        "resources/sections/feature-with-live-demo/README.md",
+        "scripts/sections-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Rename it as an interactive preview, describe the local state, remove unsupported performance claims, and expose toggle state with aria-pressed.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/feature-with-live-demo-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/feature-with-live-demo-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/feature-with-live-demo/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/feature-with-live-demo/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-487",
+      "severity": "medium",
+      "route": "/r/kiosk-display-shell/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Kiosk example used Tessellate-branded signage without a real product",
+      "expected": "An illustrative shell should not present an example as an existing Tessellate customer/product surface.",
+      "actual": "The preview header said “Tessellate Signage Hub” and “KIOSK #04” without identifying a fictional example.",
+      "reproduction": [
+        "Open /r/kiosk-display-shell/.",
+        "Read the signage header."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-1440x900.png",
+      "rootCause": "A generic display scaffold used first-party product branding and a fabricated kiosk identifier.",
+      "affectedFiles": [
+        "resources/shells/kiosk-display-shell/index.tsx",
+        "resources/shells/kiosk-display-shell/manifest.json",
+        "resources/shells/kiosk-display-shell/README.md",
+        "scripts/shells-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Use neutral example-display wording and remove the invented product name and identifier.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/kiosk-display-shell/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/kiosk-display-shell/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-488",
+      "severity": "medium",
+      "route": "/r/kiosk-display-shell/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Kiosk shell promised a nonexistent inactivity reset",
+      "expected": "A display preview must not promise an automatic reset unless a timer and reset behavior are implemented.",
+      "actual": "The footer claimed the screen resets after 60 seconds of inactivity; no timer existed.",
+      "reproduction": [
+        "Open /r/kiosk-display-shell/.",
+        "Read the footer and wait without input."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-1440x900.png",
+      "rootCause": "Static footer copy was inherited from a functional kiosk specification without the timer implementation.",
+      "affectedFiles": [
+        "resources/shells/kiosk-display-shell/index.tsx",
+        "resources/shells/kiosk-display-shell/manifest.json",
+        "resources/shells/kiosk-display-shell/README.md",
+        "scripts/shells-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Remove the reset promise and state explicitly that no inactivity timer is running in the preview.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/kiosk-display-shell/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/kiosk-display-shell/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-489",
+      "severity": "medium",
+      "route": "/r/kiosk-display-shell/",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Kiosk prompt invited touch input without providing an action",
+      "expected": "A displayed call to action should be an operable control or should be phrased as static sample content.",
+      "actual": "“Touch Screen to Begin” was a heading, not a control, and touching the preview did nothing.",
+      "reproduction": [
+        "Open /r/kiosk-display-shell/.",
+        "Tap or click Touch Screen to Begin.",
+        "Observe that no workflow starts."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-1440x900.png",
+      "rootCause": "Instructional copy was rendered as a heading with no event or control behind it.",
+      "affectedFiles": [
+        "resources/shells/kiosk-display-shell/index.tsx",
+        "resources/shells/kiosk-display-shell/manifest.json",
+        "resources/shells/kiosk-display-shell/README.md",
+        "scripts/shells-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Replace the prompt with neutral sample display copy that does not invite an unavailable action.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/kiosk-display-shell/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/kiosk-display-shell/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-490",
+      "severity": "medium",
+      "route": "/r/interactive-globe/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Globe illustration claimed live worldwide telemetry and orbiting data",
+      "expected": "A static illustrative map should identify sample locations and should not imply connected telemetry or orbital data.",
+      "actual": "The preview said “Worldwide Telemetry Mesh” and “Live Orbit”; no network data or orbit integration existed.",
+      "reproduction": [
+        "Open /r/interactive-globe/.",
+        "Read the map title and status label."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/interactive-globe-1440x900.png",
+      "rootCause": "A schematic globe was described as a live telemetry system despite rendering only a fixed SVG example.",
+      "affectedFiles": [
+        "resources/data/interactive-globe/index.tsx",
+        "resources/data/interactive-globe/manifest.json",
+        "resources/data/interactive-globe/README.md",
+        "scripts/data-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Describe an illustrative network map and sample markers, disclose that no network/telemetry data is connected, and name the marker pulse accurately.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/interactive-globe-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/interactive-globe-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/interactive-globe/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/interactive-globe/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
+    },
+    {
+      "id": "AUD-491",
+      "severity": "medium",
+      "route": "/r/interactive-globe/",
+      "viewport": "1440x900; 390x844",
+      "category": "accessibility",
+      "title": "Globe rotation was not operable by keyboard",
+      "expected": "The map rotation should have an accessible keyboard control and pointer/touch manipulation should preserve page scrolling.",
+      "actual": "The preview advertised drag rotation but offered no keyboard control; marker feedback also depended on mouse hover.",
+      "reproduction": [
+        "Open /r/interactive-globe/.",
+        "Navigate the preview with Tab and arrow keys.",
+        "Observe there is no rotation control; test pointer drag separately."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/interactive-globe-1440x900.png",
+      "rootCause": "Rotation depended on mouse-only pointer handlers without a focusable semantic control.",
+      "affectedFiles": [
+        "resources/data/interactive-globe/index.tsx",
+        "resources/data/interactive-globe/manifest.json",
+        "resources/data/interactive-globe/README.md",
+        "scripts/data-batch-2.ts",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "remediation": "Use pointer events for drag, provide a labelled range control for keyboard rotation, and suppress decorative marker animation when reduced motion is requested.",
+      "fixCommit": "71fd293e5e7bea118f310fde414ad6adfc24d6cf",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": {
+        "beforeReport": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/interactive-globe-1440x900.png",
+          "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/interactive-globe-390x844.png"
+        ],
+        "deployedV75": [
+          {
+            "route": "/r/interactive-globe/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/interactive-globe/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "localRegression": "tests/e2e/resource-claims-and-controls-step-39.spec.ts",
+        "localResult": "PASS: 30/30 Chromium checks across desktop 1440x900 and mobile 390x844; after screenshots captured for all 13 resource detail routes. See quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.",
+        "postFixScreenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+      }
     }
   ],
-  "generatedAt": "2026-11-03T16:59:15.453Z",
-  "latestDeploymentEvidence": "audit/evidence/step-48/deployed-v74/post-hardening-rechecks.json",
+  "generatedAt": "2026-11-03T18:51:46.469Z",
+  "latestDeploymentEvidence": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
   "latestLocalQualityRun": {
+    "capturedAt": "2026-11-03T20:34:29.000Z",
+    "command": "pnpm test:e2e",
+    "environment": "Clean local E2E sequence across Astro preview, production-like Sites Worker desktop/mobile, and isolated preview application",
+    "result": "PASS",
+    "projects": [
+      {
+        "name": "Astro desktop/mobile Chromium",
+        "passed": 396,
+        "skipped": 136,
+        "failed": 0
+      },
+      {
+        "name": "Sites Worker desktop Chromium",
+        "passed": 228,
+        "skipped": 11,
+        "failed": 0
+      },
+      {
+        "name": "Sites Worker mobile Chromium",
+        "passed": 197,
+        "skipped": 42,
+        "failed": 0
+      },
+      {
+        "name": "Standalone preview Chromium",
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      }
+    ],
+    "totals": {
+      "passed": 824,
+      "configuredSkips": 189,
+      "failed": 0
+    },
+    "coverageNotes": [
+      "Complete local four-group Playwright run passed after a single non-reproduced mobile startup timing outlier in the prior run.",
+      "Sites Worker rendered all 324 catalogue resources at certified responsive widths and all 40 Gold resources across declared variants.",
+      "The flagship employee workflow, exact Direction C handoff, Workbench mutations/history, independent React export, responsive and accessibility checks, and strict preview CSP checks completed without failures.",
+      "AUD-471 through AUD-491 pass the added 30-check desktop/mobile Sites Worker regression and await deployment verification.",
+      "Skips are configured browser/profile skips, not unexecuted failures."
+    ],
+    "priorTimingOutlier": {
+      "priorRun": "quality/evidence/step-39/public-v75-fixes-2026-11-03/test-e2e-final-retry.log",
+      "failedTest": "tests/e2e/workbench-mobile-lcp-budget.spec.ts",
+      "measuredProjectContentReadyMs": 15703,
+      "budgetMs": 5000,
+      "isolatedFollowUpMs": 3231,
+      "repeatedFollowUpMs": [
+        3700,
+        3900,
+        4000
+      ],
+      "fullRunFollowUpMs": 3800,
+      "interpretation": "not reproduced; no application code change was made for the one timing sample"
+    },
+    "evidence": "quality/evidence/step-39/public-v75-fixes-2026-11-03/test-e2e-final-stability.log",
+    "exitCode": "quality/evidence/step-39/public-v75-fixes-2026-11-03/test-e2e-final-stability.exitcode",
+    "focusedResourceRun": {
+      "passed": 30,
+      "failed": 0,
+      "evidence": "quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log",
+      "screenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+    }
+  },
+  "previousLocalQualityRun": {
     "capturedAt": "2026-11-03T16:54:38.067Z",
     "command": "pnpm test:e2e",
     "environment": "fresh local production-like E2E command across Astro, Sites Worker and standalone preview",
@@ -21787,6 +23117,30 @@
         "The dashboard skeleton assertion waits for the isolated preview and verifies the loading status, four metric cards, and chart placeholder before capturing the after screenshot."
       ]
     },
-    "evidence": "audit/evidence/step-48/e2e-full-matrix-2026-11-03.json"
+    "evidence": "audit/evidence/step-48/e2e-full-matrix-2026-11-03.json",
+    "resourceTruthfulnessRegression": {
+      "capturedAt": "2026-11-03T18:51:46.468Z",
+      "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/resource-claims-and-controls-step-39.spec.ts --reporter=line",
+      "environment": "Local production-like Sites Worker built from the patched source; Chromium desktop 1440x900 and mobile 390x844",
+      "result": "PASS",
+      "projects": [
+        {
+          "name": "Sites Worker desktop Chromium",
+          "passed": 15,
+          "failed": 0
+        },
+        {
+          "name": "Sites Worker mobile Chromium",
+          "passed": 15,
+          "failed": 0
+        }
+      ],
+      "totals": {
+        "passed": 30,
+        "failed": 0
+      },
+      "evidence": "quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log",
+      "screenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
+    }
   }
 }

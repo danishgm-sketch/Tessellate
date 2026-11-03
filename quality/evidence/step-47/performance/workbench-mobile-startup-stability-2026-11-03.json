@@ -1,0 +1,57 @@
+{
+  "capturedAt": "2026-11-03T20:34:29.000Z",
+  "route": "/workbench",
+  "viewport": "390x844",
+  "profile": {
+    "cpuThrottlingRate": 4,
+    "network": {
+      "connectionType": "cellular3g",
+      "latencyMs": 150,
+      "downloadBitsPerSecond": 200000,
+      "uploadBitsPerSecond": 93750
+    }
+  },
+  "budgetMs": 5000,
+  "observations": [
+    {
+      "run": "initial full suite",
+      "result": "FAIL",
+      "projectContentReadyMs": 15703,
+      "source": "test-e2e-final-retry.log",
+      "notes": "single run-level outlier; no follow-up code change"
+    },
+    {
+      "run": "isolated reproduction",
+      "result": "PASS",
+      "projectContentReadyMs": 3231
+    },
+    {
+      "run": "isolated repeat 1",
+      "result": "PASS",
+      "projectContentReadyMs": 3700
+    },
+    {
+      "run": "isolated repeat 2",
+      "result": "PASS",
+      "projectContentReadyMs": 3900
+    },
+    {
+      "run": "isolated repeat 3",
+      "result": "PASS",
+      "projectContentReadyMs": 4000
+    },
+    {
+      "run": "clean full suite",
+      "result": "PASS",
+      "projectContentReadyMs": 3800
+    }
+  ],
+  "summary": "The 5-second startup budget passes in the isolated reproduction, three repeated cold runs, and the subsequent full E2E run. Preserve the first failure as an observed outlier; it is not sufficient evidence to alter the product or relax the budget.",
+  "runtimeDiagnostics": {
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "httpErrors": 0
+  },
+  "finalFullSuite": "quality/evidence/step-39/public-v75-fixes-2026-11-03/test-e2e-final-stability.log"
+}

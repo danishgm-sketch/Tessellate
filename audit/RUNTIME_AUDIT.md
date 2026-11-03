@@ -5403,3 +5403,215 @@ The separate `pnpm audit:all` run passed 16/16 behavioral release-gate checks, 3
 - **Local verification:** The full end-to-end matrix passed 786 tests with 189 configured skips and zero failures. A focused post-fix Sites Chromium stress test passed with latest first preview 4,034ms (5,382ms on the previous repeat), CLS 0.0276, 1,599ms of long tasks across 13 tasks, zero console errors, uncaught exceptions, failed requests or HTTP errors, and 5 intentionally aborted iframe requests after filtering.
 - **Deployed verification:** Four fresh public v74 runs at 150ms latency, 1.6Mbps down, 750kbps up and 4x CPU measured first-preview readiness at 4,312–4,794ms and catalogue readiness at 4,417–5,754ms. All six filtered previews emitted READY, with zero preview errors or visible unavailable states. Console errors, uncaught exceptions, failed requests, HTTP errors and overflow were zero; intentional frame-module aborts after filtering are separately counted. A single earlier 15,582ms route-ready result did not recur. Screenshots, sanitized network summary and machine report are in `audit/evidence/step-48/deployed-v74/`.
 - **Status:** `closed-deployed-verified` on public Sites v74 (canonical `75276e8078e908b8258fa3d2cba629d71b85cd60`).
+
+## MEDIUM — 2026-11-03 public v75 resource copy and interaction audit
+
+### AUD-471 — AI Multi-Agent Board presented fixed tasks as an active swarm
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-multi-agent-board-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-multi-agent-board-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/ai-multi-agent-board/. Read the embedded preview heading and status.
+- **Root cause:** The resource was authored as a static example but used operational language for an unimplemented agent integration.
+- **Affected code:** resources/ai/ai-multi-agent-board/index.tsx, resources/ai/ai-multi-agent-board/manifest.json, resources/ai/ai-multi-agent-board/README.md, scripts/ai-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Use fixed example lanes, label them as sample workflow data, and remove the unsupported SDK and active-swarm claims.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-472 — AI Plan Review showed invented execution estimates and test counts
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-plan-review-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-plan-review-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/ai-plan-review/. Read the steps and their time/test/status claims.
+- **Root cause:** A hand-authored fixture copied build-pipeline details into a component with no task runner or test integration.
+- **Affected code:** resources/ai/ai-plan-review/index.tsx, resources/ai/ai-plan-review/manifest.json, resources/ai/ai-plan-review/README.md, scripts/ai-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Replace the pipeline fixture with a general example plan and state that no coding agent is connected.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-473 — Accept Plan action claimed work had started
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-plan-review-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-plan-review-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/ai-plan-review/. Click “Accept Plan & Proceed”. Observe the running-status wording and absence of any started task.
+- **Root cause:** A local boolean toggle reused production execution wording.
+- **Affected code:** resources/ai/ai-plan-review/index.tsx, scripts/ai-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Rename the action to “Preview plan approval” and show an explicit local status saying that no tasks have started.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-474 — Typography strip claimed unsupported configuration and accessibility certification
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/marquee-typography-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/marquee-typography-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/marquee-typography/. Read the embedded strip and resource description.
+- **Root cause:** Marketing copy claimed product-wide counts and accessibility results unrelated to the component implementation.
+- **Affected code:** resources/typography/marquee-typography/index.tsx, resources/typography/marquee-typography/manifest.json, resources/typography/marquee-typography/README.md, scripts/typography-batch-1.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Use neutral sample phrases, rename the pattern as a repeating strip, and remove unused speed configuration and unverified claims.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-475 — Story selector claimed sticky scrolling and unmeasured performance
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/sticky-scroll-story-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/sticky-scroll-story-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/sticky-scroll-story/. Read the chapter copy and compare it with the rendered interaction.
+- **Root cause:** A generic state selector was described with unrelated infrastructure and performance claims.
+- **Affected code:** resources/motion/sticky-scroll-story/index.tsx, resources/motion/sticky-scroll-story/manifest.json, resources/motion/sticky-scroll-story/README.md, scripts/motion-batch-1.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Name and describe it as a story chapter selector, use relevant example copy, and remove scroll/performance claims.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-476 — Story chapter controls could not be reached or operated by keyboard
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/sticky-scroll-story-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/sticky-scroll-story-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/sticky-scroll-story/. Press Tab through the preview. Observe that chapter rows are skipped; mouse clicks still change the panel.
+- **Root cause:** Click handlers were attached to non-interactive div elements.
+- **Affected code:** resources/motion/sticky-scroll-story/index.tsx, scripts/motion-batch-1.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Use buttons with aria-pressed state and visible keyboard focus, and verify Enter activation in the browser.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-477 — Number counter presented a sample as Tessellate certification data
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/number-count-up-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/number-count-up-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/number-count-up/. Read the metric label and activate Replay Count.
+- **Root cause:** A hard-coded fixture value was coupled to a product count and described with an algorithm the implementation did not use.
+- **Affected code:** resources/motion/number-count-up/index.tsx, resources/motion/number-count-up/manifest.json, resources/motion/number-count-up/README.md, scripts/motion-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Use a generic example value and accurate count-up wording, clean up the timer on unmount, and skip the animation when reduced motion is requested.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-478 — Version History showed fabricated verified resource totals
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/version-history-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/version-history-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/version-history/. Read each revision summary.
+- **Root cause:** A mock revision fixture embedded invented product-volume metrics without marking them as examples.
+- **Affected code:** resources/blocks/version-history/index.tsx, resources/blocks/version-history/manifest.json, resources/blocks/version-history/README.md, scripts/blocks-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Use neutral sample revision descriptions and label the entire list as example history.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-479 — Restore buttons had no action or feedback
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/version-history-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/version-history-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/version-history/. Click either enabled Restore button. Observe that no project revision changes and no response appears.
+- **Root cause:** The sample UI exposed an unconnected restore affordance without a callback contract.
+- **Affected code:** resources/blocks/version-history/index.tsx, resources/blocks/version-history/manifest.json, resources/blocks/version-history/README.md, scripts/blocks-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Change the action to “Preview restore” and show a status that no project revision was changed.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-480 — Data Hero presented invented telemetry values as live measurements
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/data-hero-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/data-hero-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/data-hero/. Read the headline, metric cards, and comparison labels.
+- **Root cause:** A static marketing fixture used fabricated performance values and live-measurement language without a source.
+- **Affected code:** resources/sections/data-hero/index.tsx, resources/sections/data-hero/fixtures.ts, resources/sections/data-hero/manifest.json, resources/sections/data-hero/README.md, scripts/sections-batch-1.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Use generic example metrics and trend labels, disclose that no telemetry is connected, and keep the resource metadata in the analytics domain.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-481 — Analytics Shell displayed unsourced business metrics as actual results
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/analytics-shell-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/analytics-shell-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/analytics-shell/. Read the metric cards and period label.
+- **Root cause:** The default fixture copied fabricated business metrics into a shell without identifying them as sample data.
+- **Affected code:** resources/shells/analytics-shell/index.tsx, resources/shells/analytics-shell/manifest.json, resources/shells/analytics-shell/README.md, scripts/shells-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Label default values as illustrative, make the period explicitly an example, and expose export only when a host callback exists.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-482 — Analytics period and CSV controls were enabled but inert
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/analytics-shell-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/analytics-shell-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/analytics-shell/. Activate Last 30 Days, then Export CSV. Observe no period change and no download or feedback.
+- **Root cause:** The static preview rendered button styling without a date-filter or export callback contract.
+- **Affected code:** resources/shells/analytics-shell/index.tsx, resources/shells/analytics-shell/manifest.json, resources/shells/analytics-shell/README.md, scripts/shells-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Render the static example period as text and disable CSV export unless the host supplies an export callback, with associated help text.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-483 — Data terminal presented static market and latency values as live
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/data-terminal-header-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/data-terminal-header-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/data-terminal-header/. Read the quote, status, and timing values.
+- **Root cause:** Hard-coded market and timing fixtures were presented using live-terminal styling without a data-source boundary.
+- **Affected code:** resources/shells/data-terminal-header/index.tsx, resources/shells/data-terminal-header/manifest.json, resources/shells/data-terminal-header/README.md, scripts/shells-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Label the values as examples and state that no market feed or latency probe is connected.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-484 — Connection Lost State promised an automatic retry that never ran
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/connection-lost-state-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/connection-lost-state-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/connection-lost-state/. Read the countdown and wait past five seconds.
+- **Root cause:** Static text copied a countdown promise without a scheduled retry implementation.
+- **Affected code:** resources/states/connection-lost-state/index.tsx, resources/states/connection-lost-state/manifest.json, resources/states/connection-lost-state/README.md, scripts/states-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Remove the countdown and explain that recovery is controlled by the host application.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-485 — Preview host enabled a reconnect action with no recovery operation
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/connection-lost-state-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/connection-lost-state-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/connection-lost-state/. Click Reconnect Now. Observe the preview status message without any network recovery attempt.
+- **Root cause:** PreviewHost injected onRetry into every preview through shared action props, even when the resource did not request a retry integration.
+- **Affected code:** apps/preview/src/components/PreviewHost.tsx, resources/states/connection-lost-state/index.tsx, scripts/states-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Remove global onRetry injection and provide the callback only to the existing Error State resource that owns the preview action.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-486 — Local toggle claimed an external system was online
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/feature-with-live-demo-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/feature-with-live-demo-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/feature-with-live-demo/. Activate the toggle and inspect the copy and resulting state.
+- **Root cause:** A local state demo was styled and described as an external sandbox/system integration.
+- **Affected code:** resources/sections/feature-with-live-demo/index.tsx, resources/sections/feature-with-live-demo/preview.tsx, resources/sections/feature-with-live-demo/manifest.json, resources/sections/feature-with-live-demo/README.md, scripts/sections-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Rename it as an interactive preview, describe the local state, remove unsupported performance claims, and expose toggle state with aria-pressed.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-487 — Kiosk example used Tessellate-branded signage without a real product
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/kiosk-display-shell/. Read the signage header.
+- **Root cause:** A generic display scaffold used first-party product branding and a fabricated kiosk identifier.
+- **Affected code:** resources/shells/kiosk-display-shell/index.tsx, resources/shells/kiosk-display-shell/manifest.json, resources/shells/kiosk-display-shell/README.md, scripts/shells-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Use neutral example-display wording and remove the invented product name and identifier.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-488 — Kiosk shell promised a nonexistent inactivity reset
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/kiosk-display-shell/. Read the footer and wait without input.
+- **Root cause:** Static footer copy was inherited from a functional kiosk specification without the timer implementation.
+- **Affected code:** resources/shells/kiosk-display-shell/index.tsx, resources/shells/kiosk-display-shell/manifest.json, resources/shells/kiosk-display-shell/README.md, scripts/shells-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Remove the reset promise and state explicitly that no inactivity timer is running in the preview.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-489 — Kiosk prompt invited touch input without providing an action
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/kiosk-display-shell/. Tap or click Touch Screen to Begin. Observe that no workflow starts.
+- **Root cause:** Instructional copy was rendered as a heading with no event or control behind it.
+- **Affected code:** resources/shells/kiosk-display-shell/index.tsx, resources/shells/kiosk-display-shell/manifest.json, resources/shells/kiosk-display-shell/README.md, scripts/shells-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Replace the prompt with neutral sample display copy that does not invite an unavailable action.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-490 — Globe illustration claimed live worldwide telemetry and orbiting data
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/interactive-globe-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/interactive-globe-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/interactive-globe/. Read the map title and status label.
+- **Root cause:** A schematic globe was described as a live telemetry system despite rendering only a fixed SVG example.
+- **Affected code:** resources/data/interactive-globe/index.tsx, resources/data/interactive-globe/manifest.json, resources/data/interactive-globe/README.md, scripts/data-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Describe an illustrative network map and sample markers, disclose that no network/telemetry data is connected, and name the marker pulse accurately.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+### AUD-491 — Globe rotation was not operable by keyboard
+
+- **Evidence:** Public v75 at 1440x900 and 390x844 showed the behavior described above; both captures returned HTTP 200 with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before screenshots: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/interactive-globe-1440x900.png, quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/interactive-globe-390x844.png. Machine report: quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json.
+- **Reproduction:** Open /r/interactive-globe/. Navigate the preview with Tab and arrow keys. Observe there is no rotation control; test pointer drag separately.
+- **Root cause:** Rotation depended on mouse-only pointer handlers without a focusable semantic control.
+- **Affected code:** resources/data/interactive-globe/index.tsx, resources/data/interactive-globe/manifest.json, resources/data/interactive-globe/README.md, scripts/data-batch-2.ts, tests/e2e/resource-claims-and-controls-step-39.spec.ts.
+- **Remediation:** Use pointer events for drag, provide a labelled range control for keyboard rotation, and suppress decorative marker animation when reduced motion is requested.
+- **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
+- **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
