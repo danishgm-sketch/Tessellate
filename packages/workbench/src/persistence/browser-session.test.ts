@@ -6,9 +6,11 @@ const persistence = vi.hoisted(() => ({
   projects: new Map<string, unknown>(),
   saveGate: null as Promise<void> | null,
   saveStarted: null as (() => void) | null,
+  databaseExists: null as boolean | null,
 }));
 
 vi.mock('./storage.js', () => ({
+  hasExistingLocalProjectDatabase: vi.fn(async () => persistence.databaseExists),
   loadLocalProject: vi.fn(async (id: string) => {
     const project = persistence.projects.get(id);
     return project ? structuredClone(project) as ProjectManifest : null;
@@ -23,6 +25,7 @@ vi.mock('./storage.js', () => ({
 }));
 
 import { createProjectSaver, journalBrowserProject, loadBrowserProject } from './browser-session.js';
+import { hasExistingLocalProjectDatabase, listLocalProjects } from './storage.js';
 
 describe('browser project journal recovery', () => {
   const values = new Map<string, string>();
@@ -33,6 +36,7 @@ describe('browser project journal recovery', () => {
     persistence.projects.clear();
     persistence.saveGate = null;
     persistence.saveStarted = null;
+    persistence.databaseExists = null;
     rejectWrites = false;
     Object.defineProperty(globalThis, 'localStorage', {
       configurable: true,
@@ -48,6 +52,27 @@ describe('browser project journal recovery', () => {
         clear: () => values.clear(),
       } satisfies Storage,
     });
+  });
+
+  it('does not open a new local project database on a clean first visit', async () => {
+    persistence.databaseExists = false;
+
+    const loaded = await loadBrowserProject();
+
+    expect(loaded.manifest).toBeNull();
+    expect(loaded.storageWarnings).toEqual([]);
+    expect(hasExistingLocalProjectDatabase).toHaveBeenCalledOnce();
+    expect(listLocalProjects).not.toHaveBeenCalled();
+  });
+
+  it('keeps listing local projects when database enumeration is unsupported', async () => {
+    const existing = { ...createSampleProject(), id: 'project-legacy-browser' };
+    persistence.projects.set(existing.id, existing);
+
+    const loaded = await loadBrowserProject();
+
+    expect(loaded.manifest?.id).toBe(existing.id);
+    expect(listLocalProjects).toHaveBeenCalledOnce();
   });
 
   it('does not put an unrelated corrupted active project into the requested project recovery state', async () => {

@@ -1,5 +1,5 @@
 import type { ProjectManifest } from '@tessellate/schemas';
-import { listLocalProjects, loadLocalProject, saveLocalProject } from './storage.js';
+import { hasExistingLocalProjectDatabase, listLocalProjects, loadLocalProject, saveLocalProject } from './storage.js';
 import { safelyLoadProjectRecord } from './recovery.js';
 
 export interface BrowserProjectLoad {
@@ -182,8 +182,11 @@ export async function loadBrowserProject(projectId?: string): Promise<BrowserPro
   let id = projectId ?? candidates[0]?.id;
   if (!id) {
     try {
-      const projects = await listLocalProjects();
-      id = projects.sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))[0]?.id;
+      const databaseExists = await hasExistingLocalProjectDatabase();
+      if (databaseExists !== false) {
+        const projects = await listLocalProjects();
+        id = projects.sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))[0]?.id;
+      }
     } catch {
       addStorageWarning('The local project database could not be listed.');
     }

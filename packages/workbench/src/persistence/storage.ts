@@ -72,6 +72,29 @@ export function hasIndexedDB(): boolean {
   return typeof window !== 'undefined' && typeof window.indexedDB !== 'undefined';
 }
 
+/**
+ * Returns whether this origin has already created Tessellate's project database.
+ * `null` means the browser cannot safely answer, so callers should use the
+ * normal IndexedDB path. Avoiding `open()` for a known-empty database keeps a
+ * first Workbench visit from creating storage just to discover there are no
+ * saved projects.
+ */
+export async function hasExistingLocalProjectDatabase(): Promise<boolean | null> {
+  if (!hasIndexedDB()) return null;
+
+  const databases = window.indexedDB.databases;
+  if (typeof databases !== 'function') return null;
+
+  try {
+    const existing = await databases.call(window.indexedDB);
+    return existing.some((database) => database.name === DB_NAME);
+  } catch {
+    // Database enumeration can be unavailable in restricted/private browsing
+    // modes. Preserve the existing open/list behavior as the safe fallback.
+    return null;
+  }
+}
+
 function openDB(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
     if (!hasIndexedDB()) {
