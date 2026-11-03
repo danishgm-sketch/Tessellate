@@ -1,6 +1,6 @@
 {
-  "capturedAt": "2026-10-27T17:44:58.230Z",
-  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=catalogue-loading-sites-mobile-chromium",
+  "capturedAt": "2026-11-03T04:16:34.156Z",
+  "route": "http://127.0.0.1:4323/workbench?project=catalogue-loading-sites-mobile-chromium#screen-marketing-home",
   "viewport": {
     "width": 390,
     "height": 844
@@ -10,13 +10,13 @@
     "name": "Saved employee workspace"
   },
   "timingsMs": {
-    "savedProjectVisible": 1527,
+    "savedProjectVisible": 867,
     "readyState": "complete",
-    "domContentLoadedMs": 231.30000001192093,
-    "domInteractiveMs": 230.40000000596046,
-    "loadEventMs": 231.30000001192093,
-    "responseStartMs": 115.2000000178814,
-    "responseEndMs": 117
+    "domContentLoadedMs": 107.29999995231628,
+    "domInteractiveMs": 79.29999995231628,
+    "loadEventMs": 107.5,
+    "responseStartMs": 6.699999988079071,
+    "responseEndMs": 11.399999976158142
   },
   "initialCatalogRequests": 0,
   "networkResponses": [
@@ -25,280 +25,259 @@
       "path": "/workbench",
       "resourceType": "document",
       "status": 200,
-      "durationMs": 116
+      "durationMs": 7
     },
     {
       "method": "GET",
-      "path": "/_astro/style.B91OJ-K3.css",
+      "path": "/_astro/style.Dh9Cy2NU.css",
       "resourceType": "stylesheet",
       "status": 200,
-      "durationMs": 68
+      "durationMs": 21
     },
     {
       "method": "GET",
-      "path": "/cdn-cgi/challenge-platform/[redacted]",
-      "resourceType": "script",
-      "status": 302,
-      "durationMs": 16
-    },
-    {
-      "method": "GET",
-      "path": "/cdn-cgi/challenge-platform/[redacted]",
+      "path": "/_astro/index.astro_astro_type_script_index_0_lang.De2kHuEd.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 31
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/WorkbenchShell.2hvAG8aP.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 119
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/client.CZ5CiHPg.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 119
-    },
-    {
-      "method": "POST",
-      "path": "/cdn-cgi/challenge-platform/[redacted]",
-      "resourceType": "xhr",
-      "status": 200,
-      "durationMs": 27
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/react.B6PPDU_E.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 57
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/jsx-runtime.BZkYIGyD.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 121
+      "durationMs": 21
     },
     {
       "method": "GET",
       "path": "/_astro/preload-helper.DHhhL8Zf.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 122
+      "durationMs": 34
     },
     {
       "method": "GET",
-      "path": "/_astro/workbench-store.BxZYU563.js",
+      "path": "/_astro/WorkbenchShell.BODrX4aR.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 125
+      "durationMs": 60
     },
     {
       "method": "GET",
-      "path": "/_astro/storage.YNF9kxvX.js",
+      "path": "/_astro/client.CZ5CiHPg.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 127
+      "durationMs": 61
     },
     {
       "method": "GET",
-      "path": "/_astro/src.Bosr-Bfu.js",
+      "path": "/_astro/react.B6PPDU_E.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 146
+      "durationMs": 27
     },
     {
       "method": "GET",
-      "path": "/_astro/runtime-catalog.C_1D71ab.js",
+      "path": "/_astro/jsx-runtime.BZkYIGyD.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 76
+      "durationMs": 46
     },
     {
       "method": "GET",
-      "path": "/_astro/src.ejXkSjVr.js",
+      "path": "/_astro/storage.DNwmJYUr.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 83
+      "durationMs": 46
     },
     {
       "method": "GET",
-      "path": "/_astro/src.Dm7jqtGq.js",
+      "path": "/_astro/workbench-store.CfYGjnWc.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 98
+      "durationMs": 46
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/src.BdH8G51d.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 48
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/resource-variants.B_WU3vfO.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 26
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/runtime-catalog.BLbPs_QI.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 28
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/src.BcZfIrEJ.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 35
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/src.BoFAVE08.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 53
     },
     {
       "method": "GET",
       "path": "/_astro/gold.CeiPxNV6.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 56
+      "durationMs": 8
     },
     {
       "method": "GET",
-      "path": "/_astro/chevron-down.DtfZPbTK.js",
+      "path": "/_astro/MobileWorkbench.D4QIFRRl.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 70
+      "durationMs": 24
     },
     {
       "method": "GET",
-      "path": "/_astro/sparkles.Cox_DJ6k.js",
+      "path": "/_astro/browser.6ks6e1B2.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 73
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/TopToolbar.BGX6RyiO.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 95
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/refresh-cw.nTDkSzmc.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 95
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/square-split-horizontal.alXLZY22.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 96
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/MobileWorkbench.Bc2eWefF.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 127
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/browser.BSFJLym8.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 155
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/createLucideIcon.14lUEEec.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 153
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/manifest-renderer-core.BjZtcjap.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 157
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/eye.uoIoxOcf.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 158
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/terminal.D1yAK8-f.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 160
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/sliders-vertical.Bj_t08Fa.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 161
+      "durationMs": 24
     },
     {
       "method": "GET",
       "path": "/_astro/circle-check.BnrBU8lA.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 161
+      "durationMs": 28
     },
     {
       "method": "GET",
-      "path": "/_astro/bookmark.BGuXTOA4.js",
+      "path": "/_astro/createLucideIcon.14lUEEec.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 162
+      "durationMs": 28
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/eye.uoIoxOcf.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 28
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/manifest-renderer-core.Cg2FRoZx.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 29
     },
     {
       "method": "GET",
       "path": "/_astro/file-text.sx6i_OCt.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 163
+      "durationMs": 47
     },
     {
       "method": "GET",
-      "path": "/_astro/clock.BSWorZFx.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 213
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/rotate-ccw.divXcstY.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 213
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/plus.5qrNE-Rd.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 214
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/minimal-top-nav.CfPvTRvh.js",
-      "resourceType": "script",
-      "status": 200,
-      "durationMs": 52
-    },
-    {
-      "method": "GET",
-      "path": "/_astro/footer-product.DBXWiaig.js",
+      "path": "/_astro/sliders-vertical.Bj_t08Fa.js",
       "resourceType": "script",
       "status": 200,
       "durationMs": 51
     },
     {
       "method": "GET",
-      "path": "/_astro/feature-bento.CR3oOG6T.js",
+      "path": "/_astro/terminal.D1yAK8-f.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 67
+      "durationMs": 52
     },
     {
       "method": "GET",
-      "path": "/_astro/cta-minimal.9ScfhZCU.js",
+      "path": "/_astro/bookmark.BGuXTOA4.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 67
+      "durationMs": 52
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/chevron-down.DtfZPbTK.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 52
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/TopToolbar.CA0qmZkU.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 54
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/clock.BSWorZFx.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 63
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/plus.5qrNE-Rd.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 76
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/refresh-cw.nTDkSzmc.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 78
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/rotate-ccw.divXcstY.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 78
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/sparkles.Cox_DJ6k.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 78
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/use-screen-resource-preload.EHW3KjLZ.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 78
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/square-split-horizontal.alXLZY22.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 78
     },
     {
       "method": "GET",
       "path": "/_astro/editorial-hero.CN6KYWuK.js",
       "resourceType": "script",
       "status": 200,
-      "durationMs": 70
+      "durationMs": 8
+    },
+    {
+      "method": "GET",
+      "path": "/_astro/minimal-top-nav.BckvualU.js",
+      "resourceType": "script",
+      "status": 200,
+      "durationMs": 7
     }
   ],
   "axeViolations": [],

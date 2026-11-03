@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.0.0",
-  "id": "local-ac630866-6e20-4124-b2e5-7574912f79a2",
+  "id": "local-7581a36e-472b-43ef-b754-76410f6e801c",
   "name": "Kudos Employee Experience",
   "description": "Example project. Employee experience platform for people, teams, playful onboarding and peer recognition.",
   "createdAt": "2026-10-10T12:00:00.000Z",
-  "updatedAt": "2026-10-26T19:12:38.959Z",
+  "updatedAt": "2026-11-03T03:58:35.036Z",
   "catalogVersion": "0.1.0",
   "seed": "showcase-playful-hr",
   "productModel": {
     "schemaVersion": "1.0.0",
     "productArchetypes": [
       {
-        "tag": "recruitment",
+        "tag": "saas",
         "weight": 100
       }
     ],
@@ -93,13 +93,13 @@
         ]
       }
     ],
-    "trustRequirement": 88,
+    "trustRequirement": 85,
     "informationComplexity": 55,
     "dataDensity": 55,
-    "collaborationLevel": 100,
+    "collaborationLevel": 90,
     "transactionCriticality": 30,
-    "navigationComplexity": 65,
-    "mobileImportance": 60,
+    "navigationComplexity": 60,
+    "mobileImportance": 50,
     "likelyScreens": [
       {
         "name": "Marketing Home",
@@ -174,10 +174,7 @@
       "onboarding-checklist",
       "policy-acknowledgements"
     ],
-    "forbiddenPatterns": [
-      "unblinded-evaluations-causing-bias",
-      "accidental-rejection-email-dispatches"
-    ],
+    "forbiddenPatterns": [],
     "constraints": {
       "accessibilityFloor": "AA",
       "performanceCeiling": "balanced",
@@ -198,10 +195,7 @@
       "requiredScreens": [],
       "forbiddenScreens": [],
       "requiredPatterns": [],
-      "forbiddenPatterns": [
-        "unblinded-evaluations-causing-bias",
-        "accidental-rejection-email-dispatches"
-      ]
+      "forbiddenPatterns": []
     }
   },
   "designDNA": {
@@ -233,7 +227,7 @@
     "trust": 90,
     "accessibilityPriority": 98,
     "performancePriority": 96,
-    "primaryArchetype": "hr",
+    "primaryArchetype": "saas",
     "visualMode": "light",
     "geometryFamily": "soft-pill",
     "navigationModel": "rail",
@@ -267,13 +261,10 @@
     "requiredScreens": [],
     "forbiddenScreens": [],
     "requiredPatterns": [],
-    "forbiddenPatterns": [
-      "unblinded-evaluations-causing-bias",
-      "accidental-rejection-email-dispatches"
-    ]
+    "forbiddenPatterns": []
   },
   "screenGraph": {
-    "id": "graph-recruitment-1bgnlo1",
+    "id": "graph-saas-hh1ajk",
     "groups": [
       {
         "id": "group-marketing",
@@ -604,11 +595,11 @@
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_shell_collapsible_sidebar",
-              "slug": "collapsible-sidebar",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "expressive",
             "children": [],
             "slots": {},
             "props": {
@@ -638,10 +629,8 @@
                   "label": "Settings & Policies",
                   "href": "#screen-settings"
                 }
-              ]
-            },
-            "dnaOverrides": {
-              "visualMode": "light"
+              ],
+              "orientation": "horizontal"
             }
           },
           {
@@ -649,17 +638,17 @@
             "nodeType": "section",
             "semanticRole": "hero",
             "resourceRef": {
-              "id": "res_sec_editorial_hero",
-              "slug": "editorial-hero",
+              "id": "res_sec_split_product_hero",
+              "slug": "split-product-hero",
               "version": "1.0.0"
             },
-            "variant": "expressive",
+            "variant": "quiet",
             "children": [],
             "slots": {},
             "props": {
-              "eyebrow": "Example organisation · sample content",
+              "badge": "EXAMPLE",
               "headline": "A better workday starts with people.",
-              "subheadline": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
+              "description": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
               "primaryCta": {
                 "label": "Meet your team",
                 "href": "#screen-teams"
@@ -668,7 +657,27 @@
                 "label": "Explore onboarding",
                 "href": "#screen-onboarding"
               },
-              "note": "Example interface · replace sample data with your organisation"
+              "panelTitle": "Your first weeks, made clearer",
+              "panels": [
+                {
+                  "id": "panel-0",
+                  "label": "Onboarding",
+                  "text": "A warm welcome\nMeet your buddy, discover your team and complete onboarding at your own pace."
+                },
+                {
+                  "id": "panel-1",
+                  "label": "People directory",
+                  "text": "People, connected\nFind colleagues and understand the teams around you."
+                },
+                {
+                  "id": "panel-2",
+                  "label": "Engagement",
+                  "text": "A voice for everyone\nMake space for feedback, recognition and conversations."
+                }
+              ]
+            },
+            "dnaOverrides": {
+              "visualMode": "light"
             }
           },
           {
@@ -722,8 +731,8 @@
             "children": [],
             "slots": {},
             "props": {
-              "headline": "A better workday starts with people.",
-              "description": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
+              "headline": "Make the next step easier for every colleague.",
+              "description": "Help colleagues find their team, support and policies in one clear place.",
               "label": "Meet your team",
               "href": "#screen-teams"
             }
@@ -742,7 +751,7 @@
             "slots": {},
             "props": {
               "brand": "People & Co",
-              "description": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
+              "description": "A people-first home for onboarding, teams and trusted policies.",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -798,8 +807,8 @@
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "nocturne",
@@ -1002,8 +1011,8 @@
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "nocturne",
@@ -1173,8 +1182,8 @@
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "nocturne",
@@ -1344,8 +1353,8 @@
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "nocturne",
@@ -1548,8 +1557,8 @@
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "nocturne",
@@ -1716,8 +1725,8 @@
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "nocturne",

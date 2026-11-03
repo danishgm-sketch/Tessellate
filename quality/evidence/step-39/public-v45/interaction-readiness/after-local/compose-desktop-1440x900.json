@@ -1,5 +1,5 @@
 {
-  "url": "http://127.0.0.1:49823/compose",
+  "url": "http://127.0.0.1:4323/compose",
   "viewport": "desktop-1440x900",
   "geometry": {
     "viewportWidth": 1440,
@@ -9,11 +9,11 @@
   "runtime": {
     "successfulResponses": [
       {
-        "url": "http://127.0.0.1:49823/compose",
+        "url": "http://127.0.0.1:4323/compose",
         "status": 200
       },
       {
-        "url": "http://127.0.0.1:49823/data/catalog.json",
+        "url": "http://127.0.0.1:4323/data/catalog.json",
         "status": 200
       }
     ],

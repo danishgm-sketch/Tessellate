@@ -1,7 +1,7 @@
 [
   {
     "route": "/",
-    "url": "http://127.0.0.1:4413/",
+    "url": "http://127.0.0.1:4323/",
     "viewport": {
       "width": 360,
       "height": 800
@@ -25,7 +25,7 @@
       "horizontalScrollContainers": [
         {
           "tag": "pre",
-          "label": "AGENT_HANDOFF JSON specification",
+          "label": null,
           "scrollWidth": 315,
           "clientWidth": 262
         }
@@ -35,13 +35,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "360-home.png"
   },
   {
     "route": "/explore/",
-    "url": "http://127.0.0.1:4413/explore/",
+    "url": "http://127.0.0.1:4323/explore/",
     "viewport": {
       "width": 360,
       "height": 800
@@ -75,13 +76,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "360-explore-.png"
   },
   {
     "route": "/compose/",
-    "url": "http://127.0.0.1:4413/compose/",
+    "url": "http://127.0.0.1:4323/compose/",
     "viewport": {
       "width": 360,
       "height": 800
@@ -108,13 +110,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "360-compose-.png"
   },
   {
     "route": "/workbench/",
-    "url": "http://127.0.0.1:4413/workbench/",
+    "url": "http://127.0.0.1:4323/workbench/#screen-marketing-home",
     "viewport": {
       "width": 360,
       "height": 800
@@ -141,13 +144,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "360-workbench-.png"
   },
   {
     "route": "/r/button/",
-    "url": "http://127.0.0.1:4413/r/button/",
+    "url": "http://127.0.0.1:4323/r/button/",
     "viewport": {
       "width": 360,
       "height": 800
@@ -171,7 +175,7 @@
       "horizontalScrollContainers": [
         {
           "tag": "div",
-          "label": null,
+          "label": "Resource information",
           "scrollWidth": 815,
           "clientWidth": 326
         }
@@ -181,13 +185,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "360-r-button-.png"
   },
   {
     "route": "/tools/",
-    "url": "http://127.0.0.1:4413/tools/",
+    "url": "http://127.0.0.1:4323/tools/",
     "viewport": {
       "width": 360,
       "height": 800
@@ -214,13 +219,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "360-tools-.png"
   },
   {
     "route": "/tools/accessibility/",
-    "url": "http://127.0.0.1:4413/tools/accessibility/",
+    "url": "http://127.0.0.1:4323/tools/accessibility/",
     "viewport": {
       "width": 360,
       "height": 800
@@ -247,13 +253,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "360-tools-accessibility-.png"
   },
   {
     "route": "/blueprints/",
-    "url": "http://127.0.0.1:4413/blueprints/",
+    "url": "http://127.0.0.1:4323/blueprints/",
     "viewport": {
       "width": 360,
       "height": 800
@@ -280,13 +287,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "360-blueprints-.png"
   },
   {
     "route": "/blueprints/ai-product/",
-    "url": "http://127.0.0.1:4413/blueprints/ai-product/",
+    "url": "http://127.0.0.1:4323/blueprints/ai-product/",
     "viewport": {
       "width": 360,
       "height": 800
@@ -313,13 +321,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "360-blueprints-ai-product-.png"
   },
   {
     "route": "/showcases/",
-    "url": "http://127.0.0.1:4413/showcases/",
+    "url": "http://127.0.0.1:4323/showcases/",
     "viewport": {
       "width": 360,
       "height": 800
@@ -346,13 +355,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "360-showcases-.png"
   },
   {
     "route": "/showcase/showcase-playful-hr/",
-    "url": "http://127.0.0.1:4413/showcase/showcase-playful-hr/",
+    "url": "http://127.0.0.1:4323/showcase/showcase-playful-hr/",
     "viewport": {
       "width": 360,
       "height": 800
@@ -379,13 +389,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "360-showcase-showcase-playful-hr-.png"
   },
   {
     "route": "/docs/",
-    "url": "http://127.0.0.1:4413/docs/",
+    "url": "http://127.0.0.1:4323/docs/",
     "viewport": {
       "width": 360,
       "height": 800
@@ -412,13 +423,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "360-docs-.png"
   },
   {
     "route": "/docs/cli/",
-    "url": "http://127.0.0.1:4413/docs/cli/",
+    "url": "http://127.0.0.1:4323/docs/cli/",
     "viewport": {
       "width": 360,
       "height": 800
@@ -464,13 +476,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "360-docs-cli-.png"
   },
   {
     "route": "/about/",
-    "url": "http://127.0.0.1:4413/about/",
+    "url": "http://127.0.0.1:4323/about/",
     "viewport": {
       "width": 360,
       "height": 800
@@ -497,13 +510,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "360-about-.png"
   },
   {
     "route": "/",
-    "url": "http://127.0.0.1:4413/",
+    "url": "http://127.0.0.1:4323/",
     "viewport": {
       "width": 390,
       "height": 844
@@ -527,7 +541,7 @@
       "horizontalScrollContainers": [
         {
           "tag": "pre",
-          "label": "AGENT_HANDOFF JSON specification",
+          "label": null,
           "scrollWidth": 315,
           "clientWidth": 292
         }
@@ -537,13 +551,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "390-home.png"
   },
   {
     "route": "/explore/",
-    "url": "http://127.0.0.1:4413/explore/",
+    "url": "http://127.0.0.1:4323/explore/",
     "viewport": {
       "width": 390,
       "height": 844
@@ -577,13 +592,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "390-explore-.png"
   },
   {
     "route": "/compose/",
-    "url": "http://127.0.0.1:4413/compose/",
+    "url": "http://127.0.0.1:4323/compose/",
     "viewport": {
       "width": 390,
       "height": 844
@@ -610,13 +626,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "390-compose-.png"
   },
   {
     "route": "/workbench/",
-    "url": "http://127.0.0.1:4413/workbench/",
+    "url": "http://127.0.0.1:4323/workbench/#screen-marketing-home",
     "viewport": {
       "width": 390,
       "height": 844
@@ -643,13 +660,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "390-workbench-.png"
   },
   {
     "route": "/r/button/",
-    "url": "http://127.0.0.1:4413/r/button/",
+    "url": "http://127.0.0.1:4323/r/button/",
     "viewport": {
       "width": 390,
       "height": 844
@@ -673,7 +691,7 @@
       "horizontalScrollContainers": [
         {
           "tag": "div",
-          "label": null,
+          "label": "Resource information",
           "scrollWidth": 815,
           "clientWidth": 356
         }
@@ -683,13 +701,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "390-r-button-.png"
   },
   {
     "route": "/tools/",
-    "url": "http://127.0.0.1:4413/tools/",
+    "url": "http://127.0.0.1:4323/tools/",
     "viewport": {
       "width": 390,
       "height": 844
@@ -716,13 +735,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "390-tools-.png"
   },
   {
     "route": "/tools/accessibility/",
-    "url": "http://127.0.0.1:4413/tools/accessibility/",
+    "url": "http://127.0.0.1:4323/tools/accessibility/",
     "viewport": {
       "width": 390,
       "height": 844
@@ -749,13 +769,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "390-tools-accessibility-.png"
   },
   {
     "route": "/blueprints/",
-    "url": "http://127.0.0.1:4413/blueprints/",
+    "url": "http://127.0.0.1:4323/blueprints/",
     "viewport": {
       "width": 390,
       "height": 844
@@ -782,13 +803,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "390-blueprints-.png"
   },
   {
     "route": "/blueprints/ai-product/",
-    "url": "http://127.0.0.1:4413/blueprints/ai-product/",
+    "url": "http://127.0.0.1:4323/blueprints/ai-product/",
     "viewport": {
       "width": 390,
       "height": 844
@@ -815,13 +837,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "390-blueprints-ai-product-.png"
   },
   {
     "route": "/showcases/",
-    "url": "http://127.0.0.1:4413/showcases/",
+    "url": "http://127.0.0.1:4323/showcases/",
     "viewport": {
       "width": 390,
       "height": 844
@@ -848,13 +871,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "390-showcases-.png"
   },
   {
     "route": "/showcase/showcase-playful-hr/",
-    "url": "http://127.0.0.1:4413/showcase/showcase-playful-hr/",
+    "url": "http://127.0.0.1:4323/showcase/showcase-playful-hr/",
     "viewport": {
       "width": 390,
       "height": 844
@@ -881,13 +905,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "390-showcase-showcase-playful-hr-.png"
   },
   {
     "route": "/docs/",
-    "url": "http://127.0.0.1:4413/docs/",
+    "url": "http://127.0.0.1:4323/docs/",
     "viewport": {
       "width": 390,
       "height": 844
@@ -914,13 +939,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "390-docs-.png"
   },
   {
     "route": "/docs/cli/",
-    "url": "http://127.0.0.1:4413/docs/cli/",
+    "url": "http://127.0.0.1:4323/docs/cli/",
     "viewport": {
       "width": 390,
       "height": 844
@@ -960,13 +986,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "390-docs-cli-.png"
   },
   {
     "route": "/about/",
-    "url": "http://127.0.0.1:4413/about/",
+    "url": "http://127.0.0.1:4323/about/",
     "viewport": {
       "width": 390,
       "height": 844
@@ -993,13 +1020,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "390-about-.png"
   },
   {
     "route": "/",
-    "url": "http://127.0.0.1:4413/",
+    "url": "http://127.0.0.1:4323/",
     "viewport": {
       "width": 430,
       "height": 932
@@ -1026,13 +1054,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "430-home.png"
   },
   {
     "route": "/explore/",
-    "url": "http://127.0.0.1:4413/explore/",
+    "url": "http://127.0.0.1:4323/explore/",
     "viewport": {
       "width": 430,
       "height": 932
@@ -1066,13 +1095,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "430-explore-.png"
   },
   {
     "route": "/compose/",
-    "url": "http://127.0.0.1:4413/compose/",
+    "url": "http://127.0.0.1:4323/compose/",
     "viewport": {
       "width": 430,
       "height": 932
@@ -1099,13 +1129,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "430-compose-.png"
   },
   {
     "route": "/workbench/",
-    "url": "http://127.0.0.1:4413/workbench/",
+    "url": "http://127.0.0.1:4323/workbench/#screen-marketing-home",
     "viewport": {
       "width": 430,
       "height": 932
@@ -1132,13 +1163,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "430-workbench-.png"
   },
   {
     "route": "/r/button/",
-    "url": "http://127.0.0.1:4413/r/button/",
+    "url": "http://127.0.0.1:4323/r/button/",
     "viewport": {
       "width": 430,
       "height": 932
@@ -1162,7 +1194,7 @@
       "horizontalScrollContainers": [
         {
           "tag": "div",
-          "label": null,
+          "label": "Resource information",
           "scrollWidth": 815,
           "clientWidth": 396
         }
@@ -1172,13 +1204,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "430-r-button-.png"
   },
   {
     "route": "/tools/",
-    "url": "http://127.0.0.1:4413/tools/",
+    "url": "http://127.0.0.1:4323/tools/",
     "viewport": {
       "width": 430,
       "height": 932
@@ -1205,13 +1238,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "430-tools-.png"
   },
   {
     "route": "/tools/accessibility/",
-    "url": "http://127.0.0.1:4413/tools/accessibility/",
+    "url": "http://127.0.0.1:4323/tools/accessibility/",
     "viewport": {
       "width": 430,
       "height": 932
@@ -1238,13 +1272,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "430-tools-accessibility-.png"
   },
   {
     "route": "/blueprints/",
-    "url": "http://127.0.0.1:4413/blueprints/",
+    "url": "http://127.0.0.1:4323/blueprints/",
     "viewport": {
       "width": 430,
       "height": 932
@@ -1271,13 +1306,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "430-blueprints-.png"
   },
   {
     "route": "/blueprints/ai-product/",
-    "url": "http://127.0.0.1:4413/blueprints/ai-product/",
+    "url": "http://127.0.0.1:4323/blueprints/ai-product/",
     "viewport": {
       "width": 430,
       "height": 932
@@ -1304,13 +1340,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "430-blueprints-ai-product-.png"
   },
   {
     "route": "/showcases/",
-    "url": "http://127.0.0.1:4413/showcases/",
+    "url": "http://127.0.0.1:4323/showcases/",
     "viewport": {
       "width": 430,
       "height": 932
@@ -1337,13 +1374,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "430-showcases-.png"
   },
   {
     "route": "/showcase/showcase-playful-hr/",
-    "url": "http://127.0.0.1:4413/showcase/showcase-playful-hr/",
+    "url": "http://127.0.0.1:4323/showcase/showcase-playful-hr/",
     "viewport": {
       "width": 430,
       "height": 932
@@ -1370,13 +1408,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "430-showcase-showcase-playful-hr-.png"
   },
   {
     "route": "/docs/",
-    "url": "http://127.0.0.1:4413/docs/",
+    "url": "http://127.0.0.1:4323/docs/",
     "viewport": {
       "width": 430,
       "height": 932
@@ -1403,13 +1442,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "430-docs-.png"
   },
   {
     "route": "/docs/cli/",
-    "url": "http://127.0.0.1:4413/docs/cli/",
+    "url": "http://127.0.0.1:4323/docs/cli/",
     "viewport": {
       "width": 430,
       "height": 932
@@ -1436,13 +1476,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "430-docs-cli-.png"
   },
   {
     "route": "/about/",
-    "url": "http://127.0.0.1:4413/about/",
+    "url": "http://127.0.0.1:4323/about/",
     "viewport": {
       "width": 430,
       "height": 932
@@ -1469,13 +1510,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "430-about-.png"
   },
   {
     "route": "/",
-    "url": "http://127.0.0.1:4413/",
+    "url": "http://127.0.0.1:4323/",
     "viewport": {
       "width": 768,
       "height": 1024
@@ -1502,13 +1544,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "768-home.png"
   },
   {
     "route": "/explore/",
-    "url": "http://127.0.0.1:4413/explore/",
+    "url": "http://127.0.0.1:4323/explore/",
     "viewport": {
       "width": 768,
       "height": 1024
@@ -1542,13 +1585,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "768-explore-.png"
   },
   {
     "route": "/compose/",
-    "url": "http://127.0.0.1:4413/compose/",
+    "url": "http://127.0.0.1:4323/compose/",
     "viewport": {
       "width": 768,
       "height": 1024
@@ -1575,13 +1619,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "768-compose-.png"
   },
   {
     "route": "/workbench/",
-    "url": "http://127.0.0.1:4413/workbench/",
+    "url": "http://127.0.0.1:4323/workbench/#screen-marketing-home",
     "viewport": {
       "width": 768,
       "height": 1024
@@ -1608,13 +1653,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "768-workbench-.png"
   },
   {
     "route": "/r/button/",
-    "url": "http://127.0.0.1:4413/r/button/",
+    "url": "http://127.0.0.1:4323/r/button/",
     "viewport": {
       "width": 768,
       "height": 1024
@@ -1638,7 +1684,7 @@
       "horizontalScrollContainers": [
         {
           "tag": "div",
-          "label": null,
+          "label": "Resource information",
           "scrollWidth": 815,
           "clientWidth": 718
         }
@@ -1648,13 +1694,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "768-r-button-.png"
   },
   {
     "route": "/tools/",
-    "url": "http://127.0.0.1:4413/tools/",
+    "url": "http://127.0.0.1:4323/tools/",
     "viewport": {
       "width": 768,
       "height": 1024
@@ -1681,13 +1728,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "768-tools-.png"
   },
   {
     "route": "/tools/accessibility/",
-    "url": "http://127.0.0.1:4413/tools/accessibility/",
+    "url": "http://127.0.0.1:4323/tools/accessibility/",
     "viewport": {
       "width": 768,
       "height": 1024
@@ -1714,13 +1762,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "768-tools-accessibility-.png"
   },
   {
     "route": "/blueprints/",
-    "url": "http://127.0.0.1:4413/blueprints/",
+    "url": "http://127.0.0.1:4323/blueprints/",
     "viewport": {
       "width": 768,
       "height": 1024
@@ -1747,13 +1796,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "768-blueprints-.png"
   },
   {
     "route": "/blueprints/ai-product/",
-    "url": "http://127.0.0.1:4413/blueprints/ai-product/",
+    "url": "http://127.0.0.1:4323/blueprints/ai-product/",
     "viewport": {
       "width": 768,
       "height": 1024
@@ -1780,13 +1830,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "768-blueprints-ai-product-.png"
   },
   {
     "route": "/showcases/",
-    "url": "http://127.0.0.1:4413/showcases/",
+    "url": "http://127.0.0.1:4323/showcases/",
     "viewport": {
       "width": 768,
       "height": 1024
@@ -1813,13 +1864,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "768-showcases-.png"
   },
   {
     "route": "/showcase/showcase-playful-hr/",
-    "url": "http://127.0.0.1:4413/showcase/showcase-playful-hr/",
+    "url": "http://127.0.0.1:4323/showcase/showcase-playful-hr/",
     "viewport": {
       "width": 768,
       "height": 1024
@@ -1846,13 +1898,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "768-showcase-showcase-playful-hr-.png"
   },
   {
     "route": "/docs/",
-    "url": "http://127.0.0.1:4413/docs/",
+    "url": "http://127.0.0.1:4323/docs/",
     "viewport": {
       "width": 768,
       "height": 1024
@@ -1879,13 +1932,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "768-docs-.png"
   },
   {
     "route": "/docs/cli/",
-    "url": "http://127.0.0.1:4413/docs/cli/",
+    "url": "http://127.0.0.1:4323/docs/cli/",
     "viewport": {
       "width": 768,
       "height": 1024
@@ -1912,13 +1966,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "768-docs-cli-.png"
   },
   {
     "route": "/about/",
-    "url": "http://127.0.0.1:4413/about/",
+    "url": "http://127.0.0.1:4323/about/",
     "viewport": {
       "width": 768,
       "height": 1024
@@ -1945,13 +2000,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "768-about-.png"
   },
   {
     "route": "/",
-    "url": "http://127.0.0.1:4413/",
+    "url": "http://127.0.0.1:4323/",
     "viewport": {
       "width": 1024,
       "height": 900
@@ -1978,13 +2034,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1024-home.png"
   },
   {
     "route": "/explore/",
-    "url": "http://127.0.0.1:4413/explore/",
+    "url": "http://127.0.0.1:4323/explore/",
     "viewport": {
       "width": 1024,
       "height": 900
@@ -2011,13 +2068,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1024-explore-.png"
   },
   {
     "route": "/compose/",
-    "url": "http://127.0.0.1:4413/compose/",
+    "url": "http://127.0.0.1:4323/compose/",
     "viewport": {
       "width": 1024,
       "height": 900
@@ -2044,13 +2102,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1024-compose-.png"
   },
   {
     "route": "/workbench/",
-    "url": "http://127.0.0.1:4413/workbench/",
+    "url": "http://127.0.0.1:4323/workbench/#screen-marketing-home",
     "viewport": {
       "width": 1024,
       "height": 900
@@ -2066,31 +2125,21 @@
       },
       "mainContentWidth": 1024,
       "mainScrollWidth": 1024,
-      "header": {
-        "left": 0,
-        "right": 1024,
-        "width": 1024
-      },
-      "horizontalScrollContainers": [
-        {
-          "tag": "div",
-          "label": null,
-          "scrollWidth": 410,
-          "clientWidth": 339
-        }
-      ]
+      "header": null,
+      "horizontalScrollContainers": []
     },
     "runtime": {
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1024-workbench-.png"
   },
   {
     "route": "/r/button/",
-    "url": "http://127.0.0.1:4413/r/button/",
+    "url": "http://127.0.0.1:4323/r/button/",
     "viewport": {
       "width": 1024,
       "height": 900
@@ -2117,13 +2166,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1024-r-button-.png"
   },
   {
     "route": "/tools/",
-    "url": "http://127.0.0.1:4413/tools/",
+    "url": "http://127.0.0.1:4323/tools/",
     "viewport": {
       "width": 1024,
       "height": 900
@@ -2150,13 +2200,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1024-tools-.png"
   },
   {
     "route": "/tools/accessibility/",
-    "url": "http://127.0.0.1:4413/tools/accessibility/",
+    "url": "http://127.0.0.1:4323/tools/accessibility/",
     "viewport": {
       "width": 1024,
       "height": 900
@@ -2183,13 +2234,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1024-tools-accessibility-.png"
   },
   {
     "route": "/blueprints/",
-    "url": "http://127.0.0.1:4413/blueprints/",
+    "url": "http://127.0.0.1:4323/blueprints/",
     "viewport": {
       "width": 1024,
       "height": 900
@@ -2216,13 +2268,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1024-blueprints-.png"
   },
   {
     "route": "/blueprints/ai-product/",
-    "url": "http://127.0.0.1:4413/blueprints/ai-product/",
+    "url": "http://127.0.0.1:4323/blueprints/ai-product/",
     "viewport": {
       "width": 1024,
       "height": 900
@@ -2249,13 +2302,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1024-blueprints-ai-product-.png"
   },
   {
     "route": "/showcases/",
-    "url": "http://127.0.0.1:4413/showcases/",
+    "url": "http://127.0.0.1:4323/showcases/",
     "viewport": {
       "width": 1024,
       "height": 900
@@ -2282,13 +2336,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1024-showcases-.png"
   },
   {
     "route": "/showcase/showcase-playful-hr/",
-    "url": "http://127.0.0.1:4413/showcase/showcase-playful-hr/",
+    "url": "http://127.0.0.1:4323/showcase/showcase-playful-hr/",
     "viewport": {
       "width": 1024,
       "height": 900
@@ -2315,13 +2370,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1024-showcase-showcase-playful-hr-.png"
   },
   {
     "route": "/docs/",
-    "url": "http://127.0.0.1:4413/docs/",
+    "url": "http://127.0.0.1:4323/docs/",
     "viewport": {
       "width": 1024,
       "height": 900
@@ -2348,13 +2404,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1024-docs-.png"
   },
   {
     "route": "/docs/cli/",
-    "url": "http://127.0.0.1:4413/docs/cli/",
+    "url": "http://127.0.0.1:4323/docs/cli/",
     "viewport": {
       "width": 1024,
       "height": 900
@@ -2381,13 +2438,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1024-docs-cli-.png"
   },
   {
     "route": "/about/",
-    "url": "http://127.0.0.1:4413/about/",
+    "url": "http://127.0.0.1:4323/about/",
     "viewport": {
       "width": 1024,
       "height": 900
@@ -2414,13 +2472,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1024-about-.png"
   },
   {
     "route": "/",
-    "url": "http://127.0.0.1:4413/",
+    "url": "http://127.0.0.1:4323/",
     "viewport": {
       "width": 1280,
       "height": 900
@@ -2447,13 +2506,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1280-home.png"
   },
   {
     "route": "/explore/",
-    "url": "http://127.0.0.1:4413/explore/",
+    "url": "http://127.0.0.1:4323/explore/",
     "viewport": {
       "width": 1280,
       "height": 900
@@ -2480,13 +2540,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1280-explore-.png"
   },
   {
     "route": "/compose/",
-    "url": "http://127.0.0.1:4413/compose/",
+    "url": "http://127.0.0.1:4323/compose/",
     "viewport": {
       "width": 1280,
       "height": 900
@@ -2513,13 +2574,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1280-compose-.png"
   },
   {
     "route": "/workbench/",
-    "url": "http://127.0.0.1:4413/workbench/",
+    "url": "http://127.0.0.1:4323/workbench/#screen-marketing-home",
     "viewport": {
       "width": 1280,
       "height": 900
@@ -2535,31 +2597,21 @@
       },
       "mainContentWidth": 1280,
       "mainScrollWidth": 1280,
-      "header": {
-        "left": 0,
-        "right": 1280,
-        "width": 1280
-      },
-      "horizontalScrollContainers": [
-        {
-          "tag": "div",
-          "label": null,
-          "scrollWidth": 410,
-          "clientWidth": 339
-        }
-      ]
+      "header": null,
+      "horizontalScrollContainers": []
     },
     "runtime": {
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1280-workbench-.png"
   },
   {
     "route": "/r/button/",
-    "url": "http://127.0.0.1:4413/r/button/",
+    "url": "http://127.0.0.1:4323/r/button/",
     "viewport": {
       "width": 1280,
       "height": 900
@@ -2583,7 +2635,7 @@
       "horizontalScrollContainers": [
         {
           "tag": "div",
-          "label": null,
+          "label": "Resource information",
           "scrollWidth": 815,
           "clientWidth": 798
         }
@@ -2593,13 +2645,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1280-r-button-.png"
   },
   {
     "route": "/tools/",
-    "url": "http://127.0.0.1:4413/tools/",
+    "url": "http://127.0.0.1:4323/tools/",
     "viewport": {
       "width": 1280,
       "height": 900
@@ -2626,13 +2679,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1280-tools-.png"
   },
   {
     "route": "/tools/accessibility/",
-    "url": "http://127.0.0.1:4413/tools/accessibility/",
+    "url": "http://127.0.0.1:4323/tools/accessibility/",
     "viewport": {
       "width": 1280,
       "height": 900
@@ -2659,13 +2713,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1280-tools-accessibility-.png"
   },
   {
     "route": "/blueprints/",
-    "url": "http://127.0.0.1:4413/blueprints/",
+    "url": "http://127.0.0.1:4323/blueprints/",
     "viewport": {
       "width": 1280,
       "height": 900
@@ -2692,13 +2747,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1280-blueprints-.png"
   },
   {
     "route": "/blueprints/ai-product/",
-    "url": "http://127.0.0.1:4413/blueprints/ai-product/",
+    "url": "http://127.0.0.1:4323/blueprints/ai-product/",
     "viewport": {
       "width": 1280,
       "height": 900
@@ -2725,13 +2781,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1280-blueprints-ai-product-.png"
   },
   {
     "route": "/showcases/",
-    "url": "http://127.0.0.1:4413/showcases/",
+    "url": "http://127.0.0.1:4323/showcases/",
     "viewport": {
       "width": 1280,
       "height": 900
@@ -2758,13 +2815,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1280-showcases-.png"
   },
   {
     "route": "/showcase/showcase-playful-hr/",
-    "url": "http://127.0.0.1:4413/showcase/showcase-playful-hr/",
+    "url": "http://127.0.0.1:4323/showcase/showcase-playful-hr/",
     "viewport": {
       "width": 1280,
       "height": 900
@@ -2791,13 +2849,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1280-showcase-showcase-playful-hr-.png"
   },
   {
     "route": "/docs/",
-    "url": "http://127.0.0.1:4413/docs/",
+    "url": "http://127.0.0.1:4323/docs/",
     "viewport": {
       "width": 1280,
       "height": 900
@@ -2824,13 +2883,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1280-docs-.png"
   },
   {
     "route": "/docs/cli/",
-    "url": "http://127.0.0.1:4413/docs/cli/",
+    "url": "http://127.0.0.1:4323/docs/cli/",
     "viewport": {
       "width": 1280,
       "height": 900
@@ -2857,13 +2917,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1280-docs-cli-.png"
   },
   {
     "route": "/about/",
-    "url": "http://127.0.0.1:4413/about/",
+    "url": "http://127.0.0.1:4323/about/",
     "viewport": {
       "width": 1280,
       "height": 900
@@ -2890,13 +2951,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1280-about-.png"
   },
   {
     "route": "/",
-    "url": "http://127.0.0.1:4413/",
+    "url": "http://127.0.0.1:4323/",
     "viewport": {
       "width": 1440,
       "height": 900
@@ -2923,13 +2985,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1440-home.png"
   },
   {
     "route": "/explore/",
-    "url": "http://127.0.0.1:4413/explore/",
+    "url": "http://127.0.0.1:4323/explore/",
     "viewport": {
       "width": 1440,
       "height": 900
@@ -2956,13 +3019,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1440-explore-.png"
   },
   {
     "route": "/compose/",
-    "url": "http://127.0.0.1:4413/compose/",
+    "url": "http://127.0.0.1:4323/compose/",
     "viewport": {
       "width": 1440,
       "height": 900
@@ -2989,13 +3053,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1440-compose-.png"
   },
   {
     "route": "/workbench/",
-    "url": "http://127.0.0.1:4413/workbench/",
+    "url": "http://127.0.0.1:4323/workbench/#screen-marketing-home",
     "viewport": {
       "width": 1440,
       "height": 900
@@ -3011,31 +3076,21 @@
       },
       "mainContentWidth": 1440,
       "mainScrollWidth": 1440,
-      "header": {
-        "left": 0,
-        "right": 1440,
-        "width": 1440
-      },
-      "horizontalScrollContainers": [
-        {
-          "tag": "div",
-          "label": null,
-          "scrollWidth": 410,
-          "clientWidth": 339
-        }
-      ]
+      "header": null,
+      "horizontalScrollContainers": []
     },
     "runtime": {
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1440-workbench-.png"
   },
   {
     "route": "/r/button/",
-    "url": "http://127.0.0.1:4413/r/button/",
+    "url": "http://127.0.0.1:4323/r/button/",
     "viewport": {
       "width": 1440,
       "height": 900
@@ -3059,7 +3114,7 @@
       "horizontalScrollContainers": [
         {
           "tag": "div",
-          "label": null,
+          "label": "Resource information",
           "scrollWidth": 815,
           "clientWidth": 798
         }
@@ -3069,13 +3124,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1440-r-button-.png"
   },
   {
     "route": "/tools/",
-    "url": "http://127.0.0.1:4413/tools/",
+    "url": "http://127.0.0.1:4323/tools/",
     "viewport": {
       "width": 1440,
       "height": 900
@@ -3102,13 +3158,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1440-tools-.png"
   },
   {
     "route": "/tools/accessibility/",
-    "url": "http://127.0.0.1:4413/tools/accessibility/",
+    "url": "http://127.0.0.1:4323/tools/accessibility/",
     "viewport": {
       "width": 1440,
       "height": 900
@@ -3135,13 +3192,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1440-tools-accessibility-.png"
   },
   {
     "route": "/blueprints/",
-    "url": "http://127.0.0.1:4413/blueprints/",
+    "url": "http://127.0.0.1:4323/blueprints/",
     "viewport": {
       "width": 1440,
       "height": 900
@@ -3168,13 +3226,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1440-blueprints-.png"
   },
   {
     "route": "/blueprints/ai-product/",
-    "url": "http://127.0.0.1:4413/blueprints/ai-product/",
+    "url": "http://127.0.0.1:4323/blueprints/ai-product/",
     "viewport": {
       "width": 1440,
       "height": 900
@@ -3201,13 +3260,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1440-blueprints-ai-product-.png"
   },
   {
     "route": "/showcases/",
-    "url": "http://127.0.0.1:4413/showcases/",
+    "url": "http://127.0.0.1:4323/showcases/",
     "viewport": {
       "width": 1440,
       "height": 900
@@ -3234,13 +3294,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1440-showcases-.png"
   },
   {
     "route": "/showcase/showcase-playful-hr/",
-    "url": "http://127.0.0.1:4413/showcase/showcase-playful-hr/",
+    "url": "http://127.0.0.1:4323/showcase/showcase-playful-hr/",
     "viewport": {
       "width": 1440,
       "height": 900
@@ -3267,13 +3328,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1440-showcase-showcase-playful-hr-.png"
   },
   {
     "route": "/docs/",
-    "url": "http://127.0.0.1:4413/docs/",
+    "url": "http://127.0.0.1:4323/docs/",
     "viewport": {
       "width": 1440,
       "height": 900
@@ -3300,13 +3362,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1440-docs-.png"
   },
   {
     "route": "/docs/cli/",
-    "url": "http://127.0.0.1:4413/docs/cli/",
+    "url": "http://127.0.0.1:4323/docs/cli/",
     "viewport": {
       "width": 1440,
       "height": 900
@@ -3333,13 +3396,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1440-docs-cli-.png"
   },
   {
     "route": "/about/",
-    "url": "http://127.0.0.1:4413/about/",
+    "url": "http://127.0.0.1:4323/about/",
     "viewport": {
       "width": 1440,
       "height": 900
@@ -3366,13 +3430,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1440-about-.png"
   },
   {
     "route": "/",
-    "url": "http://127.0.0.1:4413/",
+    "url": "http://127.0.0.1:4323/",
     "viewport": {
       "width": 1536,
       "height": 960
@@ -3399,13 +3464,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1536-home.png"
   },
   {
     "route": "/explore/",
-    "url": "http://127.0.0.1:4413/explore/",
+    "url": "http://127.0.0.1:4323/explore/",
     "viewport": {
       "width": 1536,
       "height": 960
@@ -3432,13 +3498,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1536-explore-.png"
   },
   {
     "route": "/compose/",
-    "url": "http://127.0.0.1:4413/compose/",
+    "url": "http://127.0.0.1:4323/compose/",
     "viewport": {
       "width": 1536,
       "height": 960
@@ -3465,13 +3532,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1536-compose-.png"
   },
   {
     "route": "/workbench/",
-    "url": "http://127.0.0.1:4413/workbench/",
+    "url": "http://127.0.0.1:4323/workbench/#screen-marketing-home",
     "viewport": {
       "width": 1536,
       "height": 960
@@ -3487,31 +3555,21 @@
       },
       "mainContentWidth": 1536,
       "mainScrollWidth": 1536,
-      "header": {
-        "left": 0,
-        "right": 1536,
-        "width": 1536
-      },
-      "horizontalScrollContainers": [
-        {
-          "tag": "div",
-          "label": null,
-          "scrollWidth": 410,
-          "clientWidth": 339
-        }
-      ]
+      "header": null,
+      "horizontalScrollContainers": []
     },
     "runtime": {
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1536-workbench-.png"
   },
   {
     "route": "/r/button/",
-    "url": "http://127.0.0.1:4413/r/button/",
+    "url": "http://127.0.0.1:4323/r/button/",
     "viewport": {
       "width": 1536,
       "height": 960
@@ -3535,7 +3593,7 @@
       "horizontalScrollContainers": [
         {
           "tag": "div",
-          "label": null,
+          "label": "Resource information",
           "scrollWidth": 815,
           "clientWidth": 798
         }
@@ -3545,13 +3603,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1536-r-button-.png"
   },
   {
     "route": "/tools/",
-    "url": "http://127.0.0.1:4413/tools/",
+    "url": "http://127.0.0.1:4323/tools/",
     "viewport": {
       "width": 1536,
       "height": 960
@@ -3578,13 +3637,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1536-tools-.png"
   },
   {
     "route": "/tools/accessibility/",
-    "url": "http://127.0.0.1:4413/tools/accessibility/",
+    "url": "http://127.0.0.1:4323/tools/accessibility/",
     "viewport": {
       "width": 1536,
       "height": 960
@@ -3611,13 +3671,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1536-tools-accessibility-.png"
   },
   {
     "route": "/blueprints/",
-    "url": "http://127.0.0.1:4413/blueprints/",
+    "url": "http://127.0.0.1:4323/blueprints/",
     "viewport": {
       "width": 1536,
       "height": 960
@@ -3644,13 +3705,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1536-blueprints-.png"
   },
   {
     "route": "/blueprints/ai-product/",
-    "url": "http://127.0.0.1:4413/blueprints/ai-product/",
+    "url": "http://127.0.0.1:4323/blueprints/ai-product/",
     "viewport": {
       "width": 1536,
       "height": 960
@@ -3677,13 +3739,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1536-blueprints-ai-product-.png"
   },
   {
     "route": "/showcases/",
-    "url": "http://127.0.0.1:4413/showcases/",
+    "url": "http://127.0.0.1:4323/showcases/",
     "viewport": {
       "width": 1536,
       "height": 960
@@ -3710,13 +3773,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1536-showcases-.png"
   },
   {
     "route": "/showcase/showcase-playful-hr/",
-    "url": "http://127.0.0.1:4413/showcase/showcase-playful-hr/",
+    "url": "http://127.0.0.1:4323/showcase/showcase-playful-hr/",
     "viewport": {
       "width": 1536,
       "height": 960
@@ -3743,13 +3807,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1536-showcase-showcase-playful-hr-.png"
   },
   {
     "route": "/docs/",
-    "url": "http://127.0.0.1:4413/docs/",
+    "url": "http://127.0.0.1:4323/docs/",
     "viewport": {
       "width": 1536,
       "height": 960
@@ -3776,13 +3841,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1536-docs-.png"
   },
   {
     "route": "/docs/cli/",
-    "url": "http://127.0.0.1:4413/docs/cli/",
+    "url": "http://127.0.0.1:4323/docs/cli/",
     "viewport": {
       "width": 1536,
       "height": 960
@@ -3809,13 +3875,14 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1536-docs-cli-.png"
   },
   {
     "route": "/about/",
-    "url": "http://127.0.0.1:4413/about/",
+    "url": "http://127.0.0.1:4323/about/",
     "viewport": {
       "width": 1536,
       "height": 960
@@ -3842,6 +3909,7 @@
       "consoleErrors": [],
       "pageErrors": [],
       "failedRequests": [],
+      "navigationAborts": [],
       "httpErrors": []
     },
     "screenshot": "1536-about-.png"

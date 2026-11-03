@@ -1,5 +1,5 @@
 {
-  "route": "http://127.0.0.1:4412/compose",
+  "route": "http://127.0.0.1:4321/compose",
   "viewport": {
     "width": 1440,
     "height": 900
@@ -8,7 +8,7 @@
   "directions": [
     {
       "number": "01",
-      "projectId": "proj-direction-a-cc32a383771649e99af2a8ad4a502908dira",
+      "projectId": "proj-direction-a-c734239bdc7643d981daabc8fa985a26dira",
       "navigation": "sidebar",
       "grammar": "classic-sidebar-dashboard",
       "dna": {
@@ -40,7 +40,7 @@
         "trust": 100,
         "accessibilityPriority": 100,
         "performancePriority": 97,
-        "primaryArchetype": "recruitment",
+        "primaryArchetype": "saas",
         "visualMode": "light",
         "geometryFamily": "pill",
         "navigationModel": "sidebar",
@@ -306,7 +306,7 @@
     },
     {
       "number": "02",
-      "projectId": "proj-direction-b-cc32a383771649e99af2a8ad4a502908dirb",
+      "projectId": "proj-direction-b-c734239bdc7643d981daabc8fa985a26dirb",
       "navigation": "top-nav",
       "grammar": "product-proof-marketing",
       "dna": {
@@ -338,7 +338,7 @@
         "trust": 100,
         "accessibilityPriority": 85,
         "performancePriority": 82,
-        "primaryArchetype": "recruitment",
+        "primaryArchetype": "saas",
         "visualMode": "light",
         "geometryFamily": "pill",
         "navigationModel": "top-nav",
@@ -558,7 +558,7 @@
         {
           "screen": "Settings & Policies",
           "role": "save-footer",
-          "slug": "button",
+          "slug": "magnetic-button",
           "variant": "expressive"
         }
       ],
@@ -603,7 +603,7 @@
     },
     {
       "number": "03",
-      "projectId": "proj-direction-c-cc32a383771649e99af2a8ad4a502908dirc",
+      "projectId": "proj-direction-c-c734239bdc7643d981daabc8fa985a26dirc",
       "navigation": "rail",
       "grammar": "three-pane-intelligence-workspace",
       "dna": {
@@ -635,7 +635,7 @@
         "trust": 100,
         "accessibilityPriority": 85,
         "performancePriority": 82,
-        "primaryArchetype": "recruitment",
+        "primaryArchetype": "saas",
         "visualMode": "dark",
         "geometryFamily": "pill",
         "navigationModel": "rail",
@@ -700,7 +700,7 @@
         {
           "screen": "Team Overview",
           "role": "navigation",
-          "slug": "minimal-top-nav",
+          "slug": "collapsible-sidebar",
           "variant": "nocturne"
         },
         {
@@ -730,7 +730,7 @@
         {
           "screen": "People Directory",
           "role": "navigation",
-          "slug": "minimal-top-nav",
+          "slug": "collapsible-sidebar",
           "variant": "nocturne"
         },
         {
@@ -760,7 +760,7 @@
         {
           "screen": "Teams",
           "role": "navigation",
-          "slug": "minimal-top-nav",
+          "slug": "collapsible-sidebar",
           "variant": "nocturne"
         },
         {
@@ -790,7 +790,7 @@
         {
           "screen": "Engagement",
           "role": "navigation",
-          "slug": "minimal-top-nav",
+          "slug": "collapsible-sidebar",
           "variant": "nocturne"
         },
         {
@@ -820,7 +820,7 @@
         {
           "screen": "Onboarding",
           "role": "navigation",
-          "slug": "minimal-top-nav",
+          "slug": "collapsible-sidebar",
           "variant": "nocturne"
         },
         {
@@ -844,7 +844,7 @@
         {
           "screen": "Settings & Policies",
           "role": "navigation",
-          "slug": "minimal-top-nav",
+          "slug": "collapsible-sidebar",
           "variant": "nocturne"
         },
         {
@@ -856,7 +856,7 @@
         {
           "screen": "Settings & Policies",
           "role": "save-footer",
-          "slug": "button",
+          "slug": "magnetic-button",
           "variant": "nocturne"
         }
       ],
@@ -883,7 +883,7 @@
           "left": 61,
           "top": 111,
           "width": 180,
-          "height": 225,
+          "height": 296,
           "display": "block",
           "gridColumn": "auto"
         },
@@ -929,8 +929,10 @@
       "onlyLeft": [
         "collapsible-sidebar"
       ],
-      "onlyRight": [],
-      "jaccard": 0.929
+      "onlyRight": [
+        "magnetic-button"
+      ],
+      "jaccard": 0.867
     },
     {
       "left": "01",
@@ -941,6 +943,7 @@
         "feature-bento",
         "cta-minimal",
         "footer-product",
+        "collapsible-sidebar",
         "entity-profile-header",
         "dashboard-kpi-grid",
         "timeline",
@@ -950,11 +953,11 @@
         "kanban-board",
         "input"
       ],
-      "onlyLeft": [
-        "collapsible-sidebar"
+      "onlyLeft": [],
+      "onlyRight": [
+        "magnetic-button"
       ],
-      "onlyRight": [],
-      "jaccard": 0.929
+      "jaccard": 0.933
     },
     {
       "left": "02",
@@ -972,11 +975,14 @@
         "filter-builder",
         "button",
         "kanban-board",
-        "input"
+        "input",
+        "magnetic-button"
       ],
       "onlyLeft": [],
-      "onlyRight": [],
-      "jaccard": 1
+      "onlyRight": [
+        "collapsible-sidebar"
+      ],
+      "jaccard": 0.933
     }
   ],
   "consoleErrors": [],

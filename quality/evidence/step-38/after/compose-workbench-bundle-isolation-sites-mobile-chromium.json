@@ -1,12 +1,12 @@
 {
-  "capturedAt": "2026-10-26T19:32:32.112Z",
-  "route": "http://127.0.0.1:4413/compose",
+  "capturedAt": "2026-11-03T04:18:05.921Z",
+  "route": "http://127.0.0.1:4323/compose",
   "viewport": {
     "width": 390,
     "height": 844
   },
-  "javascriptTransferBytes": 283032,
-  "javascriptDecodedBytes": 1027578,
+  "javascriptTransferBytes": 270606,
+  "javascriptDecodedBytes": 958685,
   "assets": [
     {
       "url": "/_astro/index.Bh89wAT3.js",
@@ -19,9 +19,9 @@
       "decodedBytes": 212865
     },
     {
-      "url": "/_astro/ComposeView.BOumgFoI.js",
-      "transferBytes": 8394,
-      "decodedBytes": 32211
+      "url": "/_astro/ComposeView.BWsVoLfw.js",
+      "transferBytes": 8851,
+      "decodedBytes": 33131
     },
     {
       "url": "/_astro/src.BX1lhOTL.js",
@@ -39,29 +39,39 @@
       "decodedBytes": 424
     },
     {
-      "url": "/_astro/src.BOYsAstn.js",
+      "url": "/_astro/storage.DNwmJYUr.js",
+      "transferBytes": 2623,
+      "decodedBytes": 6869
+    },
+    {
+      "url": "/_astro/src.BdH8G51d.js",
+      "transferBytes": 55218,
+      "decodedBytes": 202539
+    },
+    {
+      "url": "/_astro/src.BoFAVE08.js",
+      "transferBytes": 71419,
+      "decodedBytes": 265243
+    },
+    {
+      "url": "/_astro/browser.6ks6e1B2.js",
+      "transferBytes": 778,
+      "decodedBytes": 900
+    },
+    {
+      "url": "/_astro/src.BcZfIrEJ.js",
       "transferBytes": 20341,
       "decodedBytes": 89167
-    },
-    {
-      "url": "/_astro/storage.DQkcCoR4.js",
-      "transferBytes": 2462,
-      "decodedBytes": 6694
-    },
-    {
-      "url": "/_astro/src.DnGFRryG.js",
-      "transferBytes": 55232,
-      "decodedBytes": 202550
-    },
-    {
-      "url": "/_astro/src.B7UrmsMM.js",
-      "transferBytes": 71653,
-      "decodedBytes": 264832
     },
     {
       "url": "/_astro/createLucideIcon.14lUEEec.js",
       "transferBytes": 844,
       "decodedBytes": 899
+    },
+    {
+      "url": "/_astro/fetch-json-with-retry.CYGzYGh1.js",
+      "transferBytes": 620,
+      "decodedBytes": 484
     },
     {
       "url": "/_astro/arrow-right.CrL0QBhc.js",
@@ -94,14 +104,24 @@
       "decodedBytes": 508
     },
     {
-      "url": "/_astro/src.Cj1YM3rf.js",
-      "transferBytes": 32954,
-      "decodedBytes": 151633
+      "url": "/_astro/manifest-renderer-core.Cg2FRoZx.js",
+      "transferBytes": 11453,
+      "decodedBytes": 37608
     },
     {
       "url": "/_astro/gold.CeiPxNV6.js",
       "transferBytes": 703,
       "decodedBytes": 684
+    },
+    {
+      "url": "/_astro/resource-variants.B_WU3vfO.js",
+      "transferBytes": 6155,
+      "decodedBytes": 40588
+    },
+    {
+      "url": "/_astro/preload-helper.DHhhL8Zf.js",
+      "transferBytes": 1152,
+      "decodedBytes": 1665
     }
   ],
   "consoleErrors": [],

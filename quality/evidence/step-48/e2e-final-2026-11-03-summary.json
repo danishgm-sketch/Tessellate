@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-03",
+  "command": "pnpm test:e2e",
+  "result": "passed",
+  "profiles": {
+    "astro-chromium": { "passed": 394, "configuredSkipped": 134, "failed": 0 },
+    "sites-desktop-chromium": { "passed": 207, "configuredSkipped": 10, "failed": 0 },
+    "sites-mobile-chromium": { "passed": 175, "configuredSkipped": 42, "failed": 0 },
+    "preview-app-chromium": { "passed": 3, "configuredSkipped": 0, "failed": 0 }
+  },
+  "total": { "passed": 779, "configuredSkipped": 186, "failed": 0 },
+  "log": "quality/evidence/step-48/test-e2e-final-2026-11-03-after-preview-harness.log",
+  "limitations": [
+    "The profile-configured skips are not executions and must not be counted as passing checks.",
+    "This is local evidence against rebuilt application artifacts; the public review Site remains v72 until exact-head CI and deployment.",
+    "This does not complete the ordered Product Hardening programme or the Step 48 release gate."
+  ]
+}

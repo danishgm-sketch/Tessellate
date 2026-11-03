@@ -1,5 +1,5 @@
 {
-  "url": "http://127.0.0.1:4412/workbench?project=local-e53d76d4-cfbe-4782-9a47-d3dae9c5cd2e",
+  "url": "http://127.0.0.1:4321/workbench?project=local-6dc3081b-dcc1-495d-91d7-f38a7eb94b03#screen-overview",
   "viewport": {
     "width": 1440,
     "height": 900
@@ -12,7 +12,7 @@
   "checks": {
     "lockedNode": {
       "id": "node-screen-overview-metric-cards-3",
-      "subtreeHash": "5f2f23ca1b048a2673fecfba0be067840d393d0e24fdde204c16fe0b24e8b3ec",
+      "subtreeHash": "ec6c2864a9478f8914e2ddd4c1580284c6f3d607c82245519ea62d95d194b1ea",
       "resourceRef": {
         "id": "res_blk_dashboard_kpi_grid",
         "slug": "dashboard-kpi-grid",
@@ -68,7 +68,7 @@
         "trust": 90,
         "accessibilityPriority": 98,
         "performancePriority": 96,
-        "primaryArchetype": "hr",
+        "primaryArchetype": "saas",
         "visualMode": "light",
         "geometryFamily": "soft-pill",
         "navigationModel": "rail",

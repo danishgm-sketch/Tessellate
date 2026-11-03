@@ -8,7 +8,22 @@
       "title": "AI Prompt Hero (@tess/ai-prompt-hero) — Tessellate Resource",
       "heading": "AI Prompt Hero",
       "pageWidth": 390,
-      "previewWidth": 322
+      "previewWidth": 322,
+      "variantInteractions": [
+        {
+          "selected": "quiet",
+          "rendered": "quiet"
+        },
+        {
+          "selected": "expressive",
+          "rendered": "expressive"
+        },
+        {
+          "selected": "nocturne",
+          "rendered": "nocturne"
+        }
+      ],
+      "screenshots": []
     },
     {
       "viewport": "1440x900",
@@ -16,7 +31,25 @@
       "title": "AI Prompt Hero (@tess/ai-prompt-hero) — Tessellate Resource",
       "heading": "AI Prompt Hero",
       "pageWidth": 1440,
-      "previewWidth": 764
+      "previewWidth": 764,
+      "variantInteractions": [
+        {
+          "selected": "quiet",
+          "rendered": "quiet"
+        },
+        {
+          "selected": "expressive",
+          "rendered": "expressive"
+        },
+        {
+          "selected": "nocturne",
+          "rendered": "nocturne"
+        }
+      ],
+      "screenshots": [
+        "quality/evidence/step-39/resource-preview-variant/ai-prompt-hero-expressive-1440-after.png",
+        "quality/evidence/step-39/resource-preview-variant/ai-prompt-hero-nocturne-1440-after.png"
+      ]
     }
   ]
 }

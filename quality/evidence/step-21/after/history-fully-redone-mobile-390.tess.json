@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.0.0",
-  "id": "local-96abfe7a-bbc8-4a88-a8fc-64c1cc632746",
+  "id": "local-7cfbf49e-93c2-417e-ba24-52d265295331",
   "name": "Kudos Employee Experience",
   "description": "Example project. Employee experience platform for people, teams, playful onboarding and peer recognition.",
   "createdAt": "2026-10-10T12:00:00.000Z",
-  "updatedAt": "2026-10-26T19:12:21.435Z",
+  "updatedAt": "2026-11-03T03:58:01.662Z",
   "catalogVersion": "0.1.0",
   "seed": "showcase-playful-hr",
   "productModel": {
     "schemaVersion": "1.0.0",
     "productArchetypes": [
       {
-        "tag": "recruitment",
+        "tag": "saas",
         "weight": 100
       }
     ],
@@ -93,13 +93,13 @@
         ]
       }
     ],
-    "trustRequirement": 88,
+    "trustRequirement": 85,
     "informationComplexity": 55,
     "dataDensity": 55,
-    "collaborationLevel": 100,
+    "collaborationLevel": 90,
     "transactionCriticality": 30,
-    "navigationComplexity": 65,
-    "mobileImportance": 60,
+    "navigationComplexity": 60,
+    "mobileImportance": 50,
     "likelyScreens": [
       {
         "name": "Marketing Home",
@@ -174,10 +174,7 @@
       "onboarding-checklist",
       "policy-acknowledgements"
     ],
-    "forbiddenPatterns": [
-      "unblinded-evaluations-causing-bias",
-      "accidental-rejection-email-dispatches"
-    ],
+    "forbiddenPatterns": [],
     "constraints": {
       "accessibilityFloor": "AA",
       "performanceCeiling": "balanced",
@@ -198,10 +195,7 @@
       "requiredScreens": [],
       "forbiddenScreens": [],
       "requiredPatterns": [],
-      "forbiddenPatterns": [
-        "unblinded-evaluations-causing-bias",
-        "accidental-rejection-email-dispatches"
-      ]
+      "forbiddenPatterns": []
     }
   },
   "designDNA": {
@@ -233,7 +227,7 @@
     "trust": 90,
     "accessibilityPriority": 98,
     "performancePriority": 96,
-    "primaryArchetype": "hr",
+    "primaryArchetype": "saas",
     "visualMode": "light",
     "geometryFamily": "soft-pill",
     "navigationModel": "rail",
@@ -267,13 +261,10 @@
     "requiredScreens": [],
     "forbiddenScreens": [],
     "requiredPatterns": [],
-    "forbiddenPatterns": [
-      "unblinded-evaluations-causing-bias",
-      "accidental-rejection-email-dispatches"
-    ]
+    "forbiddenPatterns": []
   },
   "screenGraph": {
-    "id": "graph-recruitment-1bgnlo1",
+    "id": "graph-saas-hh1ajk",
     "groups": [
       {
         "id": "group-marketing",
@@ -720,8 +711,8 @@
             "children": [],
             "slots": {},
             "props": {
-              "headline": "A better workday starts with people.",
-              "description": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
+              "headline": "Make the next step easier for every colleague.",
+              "description": "Help colleagues find their team, support and policies in one clear place.",
               "label": "Meet your team",
               "href": "#screen-teams"
             }
@@ -740,7 +731,7 @@
             "slots": {},
             "props": {
               "brand": "People & Co",
-              "description": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
+              "description": "A people-first home for onboarding, teams and trusted policies.",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -796,8 +787,8 @@
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "nocturne",
@@ -1000,8 +991,8 @@
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "nocturne",
@@ -1171,8 +1162,8 @@
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "nocturne",
@@ -1342,8 +1333,8 @@
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "nocturne",
@@ -1546,8 +1537,8 @@
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "nocturne",
@@ -1714,8 +1705,8 @@
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "nocturne",

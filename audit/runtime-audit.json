@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete. PR review findings AUD-419–AUD-444 have named post-fix regression coverage; this record does not claim every regression ran red before its fix. The AUD-438 cross-tab history regression additionally passes in a real local Sites Worker browser at desktop and mobile sizes. Exact-head CI and applicable deployed verification remain pending. Public Axe evidence also found two unsupported ARIA label semantics (AUD-445 and AUD-446), now fixed locally and awaiting published verification. Public v70 route re-audit evidence is quality/evidence/step-45/public-v70-reaudit-2026-11-01/. Axe scan-time CSP console events are isolated to the sandboxed preview frames while Axe analyzes them; ordinary route navigation was clean, and the existing strict CSP remains unchanged. A separately discovered PR review issue AUD-447 reproduced an Undo recovery failure under simulated localStorage quota exhaustion; its regression fails against the pre-fix source and passes with the generation-based journal fix. Exact-head CI and public Site verification are pending. Public Sites v71 serves canonical commit 7ac7783de83e175ac410055da736b2218e2ba213 via Sites source 0bce228a4fbd5fedad02a3186cd6af62690d8405. The 31-route public-shell sweep passed 31/31 routes at 1440x900 and 390x844 (62 route captures), with zero HTTP failures, browser console errors, uncaught exceptions, failed requests, horizontal overflow, screenshot instrumentation warnings, Axe violations, or unsupported-ARIA incomplete results; 11 color-contrast checks remain Axe-incomplete. The full employee-experience flagship flow passed on desktop and mobile, including Direction C selection, locks, recomposition, replacement, Surprise Me, Undo/Redo and manifest/ZIP export; the desktop standalone export was clean-installed, built and browsed. AUD-443 and AUD-445 through AUD-447 now have issue-specific public v71 verification. AUD-419 remains locally verified only: the public backend health endpoint truthfully reports that the laptop backend is unconfigured, and no provider credentials were sent or persisted. The broader hardening programme remains incomplete. On 2026-11-01, local Docker inspection found the Tessellate API and host containers running but unhealthy. Restarting the existing API, then the dependent host, restored API HTTP 200, Docker health, and a fresh heartbeat without rebuilding images or touching MGI containers. AUD-448 records this medium local-runtime defect; its initiating cause remains unknown and it is open for root-cause investigation. AUD-449 records a public v71 responsive-collapse mismatch reproduced at 390x844; its keyboard and touch responsive fix passes in local Sites Worker desktop/mobile profiles across seven widths and awaits deployed recheck. AUD-450 and AUD-451 are locally fixed pending deployment; AUD-452 is confirmed as cold mobile Workbench CLS 0.5028 on public v72; the local cold-load, reload and partial-resource-failure regressions pass after a fail-fast preload race fix, and deployed verification remains pending; AUD-453 is locally fixed pending deployment.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete. PR review findings AUD-419–AUD-444 have named post-fix regression coverage; this record does not claim every regression ran red before its fix. The AUD-438 cross-tab history regression additionally passes in a real local Sites Worker browser at desktop and mobile sizes. Exact-head CI and applicable deployed verification remain pending. Public Axe evidence also found two unsupported ARIA label semantics (AUD-445 and AUD-446), now fixed locally and awaiting published verification. Public v70 route re-audit evidence is quality/evidence/step-45/public-v70-reaudit-2026-11-01/. Axe scan-time CSP console events are isolated to the sandboxed preview frames while Axe analyzes them; ordinary route navigation was clean, and the existing strict CSP remains unchanged. A separately discovered PR review issue AUD-447 reproduced an Undo recovery failure under simulated localStorage quota exhaustion; its regression fails against the pre-fix source and passes with the generation-based journal fix. Exact-head CI and public Site verification are pending. Public Sites v71 serves canonical commit 7ac7783de83e175ac410055da736b2218e2ba213 via Sites source 0bce228a4fbd5fedad02a3186cd6af62690d8405. The 31-route public-shell sweep passed 31/31 routes at 1440x900 and 390x844 (62 route captures), with zero HTTP failures, browser console errors, uncaught exceptions, failed requests, horizontal overflow, screenshot instrumentation warnings, Axe violations, or unsupported-ARIA incomplete results; 11 color-contrast checks remain Axe-incomplete. The full employee-experience flagship flow passed on desktop and mobile, including Direction C selection, locks, recomposition, replacement, Surprise Me, Undo/Redo and manifest/ZIP export; the desktop standalone export was clean-installed, built and browsed. AUD-443 and AUD-445 through AUD-447 now have issue-specific public v71 verification. AUD-419 remains locally verified only: the public backend health endpoint truthfully reports that the laptop backend is unconfigured, and no provider credentials were sent or persisted. The broader hardening programme remains incomplete. On 2026-11-01, local Docker inspection found the Tessellate API and host containers running but unhealthy. Restarting the existing API, then the dependent host, restored API HTTP 200, Docker health, and a fresh heartbeat without rebuilding images or touching MGI containers. AUD-448 records this medium local-runtime defect; its initiating cause remains unknown and it is open for root-cause investigation. AUD-449 records a public v71 responsive-collapse mismatch reproduced at 390x844; its keyboard and touch responsive fix passes in local Sites Worker desktop/mobile profiles across seven widths and awaits deployed recheck. AUD-450 and AUD-451 are locally fixed pending deployment; AUD-452 is confirmed as cold mobile Workbench CLS 0.5028 on public v72; the local cold-load, reload and partial-resource-failure regressions pass after a fail-fast preload race fix, and deployed verification remains pending; AUD-453 is locally fixed pending deployment. AUD-454 reproduces in the local production-like Sites Worker and passes the same direct-preview navigation journey at desktop/mobile after the bounded opaque-parent message fix; deployed verification remains pending. AUD-455 records the confirmation sentence spacing defect visible in the AUD-454 after screenshot; explicit spacing and an exact browser text assertion are included, with deployed verification pending.",
   "entries": [
     {
       "id": "AUD-001",
@@ -20406,7 +20406,7 @@
       "category": "performance",
       "title": "Cold mobile Workbench resource loading causes severe layout shift",
       "expected": "The mobile Workbench keeps stable layout while active-screen Gold resources load; first load and reload CLS remain below 0.1.",
-      "actual": "A fresh cache-bypass public v72 trace at 412x823, DPR 1.75, 4x CPU and Fast 4G measured CLS 0.5028, LCP 4,844 ms, TTFB 1,195 ms and 3,649 ms render delay. Four renderer wrappers shifted at 4,829 ms while five Gold chunks loaded behind the Workbench shell and manifest renderer. The first local partial-failure regression reproduced the same CLS 0.5028 when editorial-hero failed and four other Gold chunks were delayed. After per-resource all-settled preload gating and a fresh pnpm build, local Sites Worker first load, reload and partial-failure CLS are all 0.00; the expected failed chunk displays its resource-specific recovery message, with no uncaught exception.",
+      "actual": "A fresh cache-bypass public v72 trace at 412x823, DPR 1.75, 4x CPU and Fast 4G measured CLS 0.5028, LCP 4,844 ms, TTFB 1,195 ms and 3,649 ms render delay. Four renderer wrappers shifted at 4,829 ms while five Gold chunks loaded behind Workbench. The initial local partial-failure regression reproduced CLS 0.502772 when editorial-hero failed and four other Gold chunks were delayed. After all-settled preload gating, deferred offscreen rendering, role-sized loading/error fallbacks and a fresh production build, the final local Sites Worker first load, reload and partial-failure CLS were each 0.017716. The failed hero retained a 448px wrapper and displayed its specific recovery message. The injected request and corresponding browser import errors were expected; there were zero uncaught exceptions. Normal runs recorded zero console errors/warnings, failed requests, uncaught exceptions or HTTP errors.",
       "reproduction": [
         "Open public v72 /workbench#screen-marketing-home in a fresh mobile context at 412x823, DPR 1.75, 4x CPU and Fast 4G, then record a cache-bypass navigation trace.",
         "On the local Sites Worker, delay the five active-screen Gold chunks by 1.8 seconds, observe first-load and reload layout-shift sessions, and assert CLS is below 0.1."
@@ -20418,15 +20418,17 @@
         "Public cold trace: 42 requests, zero failed requests and zero HTTP error responses; five active-screen Gold chunks returned HTTP 200. Cloudflare challenge script redirect 302 and favicon 304 were non-errors."
       ],
       "screenshot": "audit/evidence/step-48/aud452-mobile-cold-resource-load/sites-mobile-chromium-cold-load-before.png",
-      "rootCause": "The initial mobile preload gate marked the screen ready in finally after a fail-fast Promise.all rejected on the first failed Gold chunk. Other delayed chunks then completed after ManifestRenderer mounted and expanded their per-node 48px fallback. The hook now waits for all per-resource preload attempts to settle, including rejected imports, before mounting the screen. The renderer continues to show its explicit failure boundary for a resource that did not load.",
+      "rootCause": "The initial mobile preload gate marked the screen ready in finally after a fail-fast Promise.all rejected on the first failed Gold chunk. Other delayed chunks then completed after ManifestRenderer mounted and expanded its per-node fallback. In addition, the renderer's generic loading and failure placeholders did not reserve space for the resource role. The preload gate now waits for every resource attempt to settle, and the shared renderer defers offscreen resources while reserving role-sized space for loading and failure states.",
       "affectedFiles": [
         "packages/workbench/src/components/mobile/MobileWorkbench.tsx",
         "packages/workbench/src/components/canvas/WorkbenchCanvas.tsx",
         "packages/workbench/src/components/use-screen-resource-preload.ts",
+        "packages/renderer/src/node-renderer-core.tsx",
+        "packages/renderer/src/types.ts",
         "tests/e2e/workbench-mobile-cold-resource-layout-shift.spec.ts",
         "tests/e2e/workbench-mobile-layout-stability.spec.ts"
       ],
-      "remediation": "Deduplicate active-screen slugs and wait for Promise.allSettled over per-resource preload attempts before mounting the manifest renderer. Preserve the specific failed-resource boundary. Keep cold-load, reload and partial-network-failure CLS regressions on the production-like Sites Worker, then verify the same behavior on a new review deployment.",
+      "remediation": "Deduplicate active-screen slugs and wait for Promise.allSettled over per-resource preload attempts before mounting the manifest renderer. Defer offscreen resources and use semantic-role reserved heights for both loading and resource-failure states. Keep cold-load, reload and partial-network-failure CLS regressions on the production-like Sites Worker, then verify the same behavior on a new review deployment.",
       "fixCommit": "8768e58a4d6a554d8e0e5319b0cd9d54edf7de30",
       "status": "open",
       "evidence": {
@@ -20462,8 +20464,8 @@
         },
         "localRegression": {
           "command": "pnpm exec playwright test tests/e2e/workbench-mobile-cold-resource-layout-shift.spec.ts --config tests/e2e/sites-preview.playwright.config.ts --project=sites-mobile-chromium",
-          "firstLoadCls": 0,
-          "reloadCls": 0,
+          "firstLoadCls": 0.017716154259663604,
+          "reloadCls": 0.017716154259663604,
           "consoleErrors": 0,
           "consoleWarnings": 0,
           "uncaughtExceptions": 0,
@@ -20473,13 +20475,14 @@
           "screenshotAfter": "audit/evidence/step-48/aud452-mobile-cold-resource-load/sites-mobile-chromium-cold-load-after.png",
           "machineReport": "audit/evidence/step-48/aud452-mobile-cold-resource-load/sites-mobile-chromium-cold-load.json",
           "deploymentVerificationPending": true,
-          "faultInjectionCls": 0,
+          "faultInjectionCls": 0.017716154259663604,
+          "failedHeroHeightPx": 448,
           "faultInjectionExpectedFailedRequests": 1,
           "faultInjectionUncaughtExceptions": 0,
           "faultScreenshotBefore": "audit/evidence/step-48/aud452-mobile-cold-resource-load/sites-mobile-chromium-failure-before.png",
           "faultScreenshotAfter": "audit/evidence/step-48/aud452-mobile-cold-resource-load/sites-mobile-chromium-failure-after.png",
           "preFixRedLog": "audit/evidence/step-48/aud452-mobile-cold-resource-load/red-fault-injection.log",
-          "relatedMobileRegression": "4 mobile Workbench Playwright tests passed; CLS remained 0.00 on first load and reload"
+          "relatedMobileRegression": "4 mobile Workbench Playwright tests passed; final cold-load, reload and fault-injection CLS each measured 0.017716"
         },
         "preFixFaultInjection": {
           "cls": 0.5027722398518326,
@@ -20490,7 +20493,8 @@
           "regressionLog": "audit/evidence/step-48/aud452-mobile-cold-resource-load/red-fault-injection.log"
         },
         "postFixFaultInjection": {
-          "cls": 0,
+          "cls": 0.017716154259663604,
+          "failedHeroHeightPx": 448,
           "failedResource": "editorial-hero",
           "otherGoldChunksDelayed": 4,
           "expectedFailedRequests": 1,
@@ -20546,8 +20550,91 @@
         ],
         "deployedVerificationPending": true
       }
+    },
+    {
+      "id": "AUD-454",
+      "severity": "medium",
+      "route": "/preview/?resource=cta-product-preview",
+      "viewport": "1440x900; 390x844",
+      "category": "runtime",
+      "title": "Direct preview wrapper dropped resource navigation messages",
+      "expected": "After a preview CTA is clicked, the trusted wrapper should show a confirmation link and continue to Compose only after the user activates it.",
+      "actual": "The resource CTA click left the user on the preview with no confirmation. The child preview targeted the Sites origin, while response-level sandboxing gives the wrapper an opaque origin, so the browser discarded the message.",
+      "reproduction": [
+        "Open /preview/?resource=cta-product-preview in the production-like Sites Worker.",
+        "Click Start composing inside the isolated preview iframe.",
+        "Before the fix, no host confirmation appeared and the browser remained on /preview/.",
+        "After the fix, the accessible confirmation appears; select Open preview link and Compose loads with the catalogue ready."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-48/aud454-preview-wrapper-navigation/confirmation-1440x900.png",
+      "rootCause": "PreviewHost used the Site origin as postMessage targetOrigin. The /preview wrapper is itself sandboxed by the response CSP, so its origin is opaque and cannot match that target. The message was silently discarded.",
+      "affectedFiles": [
+        "apps/preview/src/components/PreviewHost.tsx",
+        "apps/site/src/scripts/preview-wrapper.ts",
+        "apps/sites/VALIDATION.md",
+        "tests/e2e/preview-link-navigation.spec.ts"
+      ],
+      "remediation": "Send only bounded protocol messages to the direct parent using targetOrigin \"*\" because the wrapper parent is opaque. The trusted hosts continue to require the exact frame WindowProxy, opaque sender origin, valid protocol schema and matching resource id; the wrapper still requires a user confirmation before navigation.",
+      "fixCommit": null,
+      "status": "fixed-local-verified",
+      "evidence": {
+        "preFixRegression": "audit/evidence/step-48/aud454-preview-wrapper-navigation/red-regression.log",
+        "postFixRegression": "tests/e2e/preview-link-navigation.spec.ts",
+        "postFixProfiles": [
+          "sites-chromium",
+          "sites-mobile-chromium"
+        ],
+        "postFixResult": "2/2 browser profiles passed. Console errors, uncaught exceptions, failed requests and non-200 essential responses were zero.",
+        "screenshots": [
+          "audit/evidence/step-48/aud454-preview-wrapper-navigation/confirmation-1440x900.png",
+          "audit/evidence/step-48/aud454-preview-wrapper-navigation/confirmation-390x844.png"
+        ],
+        "reports": [
+          "audit/evidence/step-48/aud454-preview-wrapper-navigation/browser-report-1440x900.json",
+          "audit/evidence/step-48/aud454-preview-wrapper-navigation/browser-report-390x844.json"
+        ],
+        "deployedVerificationPending": true
+      }
+    },
+    {
+      "id": "AUD-455",
+      "severity": "low",
+      "route": "/preview/?resource=cta-product-preview",
+      "viewport": "1440x900; 390x844",
+      "category": "visual",
+      "title": "Preview navigation confirmation omitted a space before the destination",
+      "expected": "The confirmation sentence should render as “This isolated preview requested a link to /compose.”",
+      "actual": "The route rendered “This isolated preview requested a link to/compose.”",
+      "reproduction": [
+        "Open /preview/?resource=cta-product-preview in the production-like Sites Worker.",
+        "Click Start composing inside the isolated preview.",
+        "Read the host confirmation before following the link."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-48/aud454-preview-wrapper-navigation/confirmation-1440x900.png",
+      "rootCause": "Astro whitespace handling removed the line break between the sentence text and the inline destination code element.",
+      "affectedFiles": [
+        "apps/site/src/pages/preview/index.astro",
+        "tests/e2e/preview-link-navigation.spec.ts"
+      ],
+      "remediation": "Place an explicit space before the inline destination and assert the complete sentence in the browser regression.",
+      "fixCommit": null,
+      "status": "fixed-local-verified",
+      "evidence": {
+        "preFixScreenshot": "audit/evidence/step-48/aud454-preview-wrapper-navigation/before-1440x900.png",
+        "postFixScreenshots": [
+          "audit/evidence/step-48/aud454-preview-wrapper-navigation/confirmation-1440x900.png",
+          "audit/evidence/step-48/aud454-preview-wrapper-navigation/confirmation-390x844.png"
+        ],
+        "regression": "tests/e2e/preview-link-navigation.spec.ts",
+        "assertion": "The confirmation contains the exact phrase “This isolated preview requested a link to /compose”.",
+        "deployedVerificationPending": true
+      }
     }
   ],
-  "generatedAt": "2026-11-02T06:37:27.341Z",
+  "generatedAt": "2026-11-03T02:29:09.127Z",
   "latestDeploymentEvidence": "quality/evidence/step-48/aud449-minimal-top-nav/deployed-v72-browser-evidence.json"
 }

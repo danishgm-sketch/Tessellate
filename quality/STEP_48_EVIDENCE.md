@@ -138,7 +138,7 @@ The exact employee-experience brief passed the visible Compose-to-Direction-C-to
 
 A local host check found the laptop API and worker containers running but unhealthy. Restarting the existing API and then its dependent host restored the API health endpoint, both Docker health checks, and a fresh heartbeat without rebuilding or touching MGI containers. The initiating API failure is unknown and recorded open as AUD-448. The public Site backend remains intentionally unavailable because its backend URL is unconfigured; no provider credential was supplied. D1/R2 are unprovisioned and no security policy was weakened.
 
-The ledger contains 453 findings: 0 Critical, 86 High, 341 Medium, and 26 Low. AUD-419 remains High and fixed locally: a new cross-boundary test covers Sites gateway → Hono API → stubbed provider, and a negative control fails when the gateway drops provider headers. Public v72 serves the fix but remains intentionally unconfigured for laptop access under D-041; no tunnel or real provider credential was used, so deployed provider forwarding remains unverified. AUD-448 remains an open Medium pending root-cause investigation. AUD-449 was reproduced on public v71 and is now closed after the same behavior passed on v72. AUD-450 and AUD-451 were reproduced on public v72 and fixed locally; their deployed verification is pending. AUD-452 is now confirmed as a cold-load CLS defect, fixed locally and awaiting deployed verification. The local keyboard/touch regression also passes at 360, 390, 430, 768, 1024, 1280 and 1440px. Step 48 and the broader hardening programme remain open; see audit/RUNTIME_AUDIT.md and docs/PRODUCT_HARDENING.md.
+The ledger contains 455 findings: 0 Critical, 86 High, 342 Medium, and 27 Low. AUD-419 remains High and fixed locally: a new cross-boundary test covers Sites gateway → Hono API → stubbed provider, and a negative control fails when the gateway drops provider headers. Public v72 serves the fix but remains intentionally unconfigured for laptop access under D-041; no tunnel or real provider credential was used, so deployed provider forwarding remains unverified. AUD-448 remains an open Medium pending root-cause investigation. AUD-449 was reproduced on public v71 and is now closed after the same behavior passed on v72. AUD-450 and AUD-451 were reproduced on public v72 and fixed locally; their deployed verification is pending. AUD-452 is confirmed as a cold-load CLS defect, fixed locally and awaiting deployed verification. The local keyboard/touch regression also passes at 360, 390, 430, 768, 1024, 1280 and 1440px. Step 48 and the broader hardening programme remain open; see audit/RUNTIME_AUDIT.md and docs/PRODUCT_HARDENING.md.
 
 ## Public Sites v72 deployed AUD-449 verification — 2026-11-01
 
@@ -217,4 +217,35 @@ The fresh 733-page production build, all 22 workspace typechecks, lint (zero war
 
 ### AUD-452 local remediation — 2026-11-02
 
-After a fresh Sites production build, the cold mobile Workbench regression passed on first load and reload with CLS 0.00. Five Gold chunks were delayed by 1.8 seconds under 4x CPU emulation; the stable mobile preload status remained visible until the active screen was ready, then the employee experience rendered. A partial-failure case then aborted `editorial-hero` and delayed the other four Gold chunks. Before the root-cause correction, the regression failed at CLS 0.502772 because the first rejected import released the screen gate while other chunks remained pending. The hook now waits for all deduplicated per-resource imports to settle. After the fix, the same injected case measured CLS 0.00, retained the explicit failed-resource message and had no uncaught exception; the single failed request and browser import error were expected fault-injection evidence. The test log records the red result, and the machine report plus before/after screenshots are in `audit/evidence/step-48/aud452-mobile-cold-resource-load/`. Four related mobile Workbench browser tests and 10 Workbench UI unit tests pass. Normal cold/reload runs recorded zero console errors or warnings, uncaught exceptions, failed requests or HTTP errors. The initial post-source-change run still failed at CLS 0.5028 because the test server was serving a stale generated Sites artifact; only the rebuilt artifact is valid post-fix evidence. This remains a local fix; public v72 is unchanged.
+After a fresh Sites production build, the cold mobile Workbench regression measured CLS 0.017716 on first load, reload, and the injected `editorial-hero` failure (below the 0.1 budget). Five Gold chunks were delayed by 1.8 seconds under 4x CPU emulation; the preload status remained until the active screen was ready. The preload gate now waits for all deduplicated resource imports to settle, while the shared renderer defers offscreen resources and reserves a semantic-role height for loading and failure states. The failed hero retained a 448px wrapper and displayed its explicit resource-specific error. The fault injection expected one failed chunk request and two browser console error events from that intentional module failure, but had zero uncaught exceptions; normal cold/reload runs had zero console errors or warnings, failed requests, uncaught exceptions, or HTTP errors. The exact machine report is `audit/evidence/step-48/aud452-mobile-cold-resource-load/sites-mobile-chromium-cold-load.json`; the full Playwright rerun is `quality/evidence/step-48/test-e2e-final-2026-11-03-after-preview-harness.log`. The complete browser matrix passed 779 tests with 186 configured profile skips and zero failures. This remains a local fix; public v72 is unchanged.
+
+## 2026-11-03 continuation — final local validation and preview regressions
+
+The complete configured `pnpm test:e2e` rerun finished with 779 passed, 186
+profile-designated skips, and zero failures: Astro 394/134, Sites Worker
+desktop 207/10, Sites Worker mobile 175/42, and standalone preview 3/0. In the
+412×823 cold mobile Workbench regression, first load, reload, and injected
+`editorial-hero` chunk failure each measured CLS 0.017716 (below 0.1). The
+failed hero retained a 448px wrapper and presented its resource-specific error;
+the injected failed request produced no uncaught exception. Normal-run console
+errors/warnings, failed requests, and HTTP errors were zero. The full log is
+`quality/evidence/step-48/test-e2e-final-2026-11-03-after-preview-harness.log`;
+the detailed machine report is
+`audit/evidence/step-48/aud452-mobile-cold-resource-load/sites-mobile-chromium-cold-load.json`.
+
+The preview app's two previously failing tests were corrected to exercise the
+actual embedded-parent protocol and to assert the renderer's specific unknown
+resource error copy. The prior test setup sent same-window messages that the
+isolated preview intentionally rejects, and expected generic error copy the
+renderer does not use. The updated standalone profile passes 3/3; these were
+test-harness defects, not new product findings.
+
+The repository gates also passed on this tree: frozen install, catalogue
+build (324 resources/40 Gold), 22 workspace typechecks, lint, 1,313 unit and
+integration tests with one configured skip, `audit:all` (16/16 behavioral
+checks plus licence/provenance, security, dependency and bundle audits), and
+the 733-page production/Sites build. This remains local evidence: public Site
+v72 is unchanged. AUD-452 remains open until its cold-load/failure behavior is
+rechecked on a new review deployment; AUD-450/451/453/454/455 also retain their
+existing pending deployed checks. The hardening programme and Step 48 remain
+incomplete.
