@@ -314,4 +314,7 @@ feature-specific evidence remain FAIL in `quality/FEATURE_MATRIX.md`.
 This is an isolated inspection adapter, not a product capability promotion or
 catalogue expansion. It records the integration without importing private
 source into the canonical tree. See `quality/VERSO_LOCAL_INTEGRATION_EVIDENCE.md`
-for the runtime boundary and audit results.
+for the runtime boundary and audit results. Functional-family destinations in
+the existing Tessellate product are recorded in
+`quality/VERSO_NATIVE_FIT_MAP.md`; that map makes no item-level equivalence or
+redistribution claim and does not certify the mapped capabilities.
