@@ -20406,7 +20406,7 @@
       "category": "performance",
       "title": "Cold mobile Workbench resource loading causes severe layout shift",
       "expected": "The mobile Workbench keeps stable layout while active-screen Gold resources load; first load and reload CLS remain below 0.1.",
-      "actual": "A fresh cache-bypass public v72 trace at 412x823, DPR 1.75, 4x CPU and Fast 4G measured CLS 0.5028, LCP 4,844 ms, TTFB 1,195 ms and 3,649 ms render delay. Four renderer wrappers shifted at 4,829 ms while five Gold chunks loaded behind Workbench. The initial local partial-failure regression reproduced CLS 0.502772 when editorial-hero failed and four other Gold chunks were delayed. After all-settled preload gating, deferred offscreen rendering, role-sized loading/error fallbacks and a fresh production build, the final local Sites Worker first load, reload and partial-failure CLS were each 0.017716. The failed hero retained a 448px wrapper and displayed its specific recovery message. The injected request and corresponding browser import errors were expected; there were zero uncaught exceptions. Normal runs recorded zero console errors/warnings, failed requests, uncaught exceptions or HTTP errors.",
+      "actual": "A fresh cache-bypass public v72 trace at 412x823, DPR 1.75, 4x CPU and Fast 4G measured CLS 0.5028, LCP 4,844 ms, TTFB 1,195 ms and 3,649 ms render delay. Four renderer wrappers shifted at 4,829 ms while five Gold chunks loaded behind Workbench. The initial local partial-failure regression reproduced CLS 0.502772 when editorial-hero failed and four other Gold chunks were delayed. After all-settled preload gating, deferred offscreen rendering, role-sized loading/error fallbacks and a fresh production build, the final local Sites Worker first load, reload and partial-failure CLS were each 0.017716. The failed hero retained a 448px wrapper and displayed its specific recovery message. The injected request and corresponding browser import errors were expected; there were zero uncaught exceptions. Normal runs recorded zero console errors/warnings, failed requests, uncaught exceptions or HTTP errors. A clean-profile v72 repeat on 2026-11-03 measured CLS 0, LCP 2,768ms and TTFB 1,112ms under the same CPU/network conditions, so this earlier live failure has not been reproduced consistently.",
       "reproduction": [
         "Open public v72 /workbench#screen-marketing-home in a fresh mobile context at 412x823, DPR 1.75, 4x CPU and Fast 4G, then record a cache-bypass navigation trace.",
         "On the local Sites Worker, delay the five active-screen Gold chunks by 1.8 seconds, observe first-load and reload layout-shift sessions, and assert CLS is below 0.1."
@@ -20501,6 +20501,25 @@
           "visibleResourceFailure": true,
           "uncaughtExceptions": 0,
           "machineReport": "audit/evidence/step-48/aud452-mobile-cold-resource-load/sites-mobile-chromium-cold-load.json"
+        },
+        "latestV72Repeat": {
+          "report": "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-devtools-trace.json",
+          "date": "2026-11-03",
+          "coldProfile": true,
+          "viewport": "412x823, DPR 1.75, 4x CPU, Fast 4G",
+          "clearedStorage": [
+            "localStorage",
+            "IndexedDB",
+            "Cache Storage"
+          ],
+          "httpCacheBypass": true,
+          "cls": 0,
+          "lcpMs": 2768,
+          "ttfbMs": 1112,
+          "renderDelayMs": 1656,
+          "consoleErrors": 0,
+          "failedRequests": 0,
+          "note": "Does not reproduce the 2026-11-02 v72 CLS report; keep the issue open pending repeat on the updated Site."
         }
       }
     },
@@ -20633,8 +20652,101 @@
         "assertion": "The confirmation contains the exact phrase “This isolated preview requested a link to /compose”.",
         "deployedVerificationPending": true
       }
+    },
+    {
+      "id": "AUD-456",
+      "severity": "high",
+      "route": "/workbench#screen-marketing-home",
+      "viewport": "1440x900; 390x844",
+      "category": "performance",
+      "title": "Workbench startup handoff replaces the server preview with a compact status",
+      "expected": "The server fallback and client startup should preserve one accessible, full-viewport Workbench loading shell until the project and verified resource catalogue are ready.",
+      "actual": "Exact-head CI run 41578373521 failed the desktop Sites layout test at CLS 0.5390775463 and first-run mobile at CLS 0.6693234653309674 (reload 0.023588868174569302). A controlled cold-start against the current public v72 at 390x844, DPR 1.75, 4x CPU and Fast 4G delayed WorkbenchShell by 700ms and starter data by 1,800ms; CLS reached 0.510487301008628 as the 844px server fallback was replaced by a compact “Starting your workspace…” message with no main element. Afterward the loaded Workbench occupied y=219..780. The same run had zero console errors/warnings, failed requests or HTTP errors. A no-delay v72 DevTools trace measured CLS 0, so the problem is the slow startup handoff, not every navigation.",
+      "reproduction": [
+        "Open public v72 /workbench in a fresh mobile browser profile at 390x844, DPR 1.75, with 4x CPU and Fast 4G.",
+        "Delay /_astro/WorkbenchShell.*.js by 700ms and /data/workbench-starter.json by 1,800ms; observe the full-height initial shell collapse to the one-line client status, then expand into the editor.",
+        "The browser report records CLS 0.510487301008628 with no console or network errors. Repeat the same delays against the new review deployment before closing the issue."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-client-startup-before.png",
+      "rootCause": "The Astro client-only server fallback is a full-height, useful local-workspace loading surface, but React WorkbenchShell replaces it with a one-line “Starting your workspace…” div while project data is pending. This collapses the visible page; the candidate branch also had a different large preview fallback whose removal produced the CI CLS failure.",
+      "affectedFiles": [
+        "apps/site/src/pages/workbench/index.astro",
+        "packages/workbench/src/components/WorkbenchStartup.tsx",
+        "packages/workbench/src/components/WorkbenchShell.tsx",
+        "packages/workbench/package.json",
+        "tests/e2e/site-route-performance-step-38.spec.ts"
+      ],
+      "remediation": "Use one shared accessible WorkbenchStartup component for the Astro fallback and React loading state. Reserve the same editor shell regions and viewport height in both phases, and retain a truthful local-project loading message and working Compose link. Keep a regression that delays both the startup bundle and starter data.",
+      "fixCommit": "9d5e080c8793e1027695f4045b6966f2acca5c81",
+      "status": "fixed-local-verified",
+      "evidence": {
+        "preFixCiRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/41578373521",
+        "preFixCiMeasurements": {
+          "desktopSitesCls": 0.5390775462962962,
+          "firstMobileCls": 0.6693234653309674,
+          "reloadMobileCls": 0.023588868174569302
+        },
+        "publicV72Baseline": "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-devtools-trace.json",
+        "publicV72Trace": "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-devtools-trace.json",
+        "publicV72TraceMetrics": {
+          "coldProfile": true,
+          "viewport": "412x823 at DPR 1.75",
+          "cpuThrottling": "4x",
+          "network": "Fast 4G",
+          "cls": 0,
+          "lcpMs": 2768,
+          "ttfbMs": 1112,
+          "renderDelayMs": 1656,
+          "consoleErrors": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "note": "A no-delay DevTools trace recorded CLS 0. The controlled slow bundle/data run above reproduces the handoff regression."
+        },
+        "postFixRegression": "tests/e2e/site-route-performance-step-38.spec.ts",
+        "postFixProfiles": [
+          "desktop-chrome",
+          "mobile-chrome",
+          "sites-chromium",
+          "sites-mobile-chromium"
+        ],
+        "postFixResult": "The full pnpm test:e2e matrix passed 779 tests with 186 configured profile skips and zero failures. The startup regression delayed the WorkbenchShell chunk by 400ms and starter JSON by 1600ms; the full accessible shell remained visible until the project loaded.",
+        "postFixScreenshots": [
+          "quality/evidence/step-38/after/workbench-startup-fallback-sites-chromium.png",
+          "quality/evidence/step-38/after/workbench-startup-fallback-sites-mobile-chromium.png"
+        ],
+        "testLog": "quality/evidence/step-48/test-e2e-final-2026-11-03-after-preview-harness.log",
+        "deployedVerificationPending": true,
+        "fixCommit": "9d5e080c8793e1027695f4045b6966f2acca5c81",
+        "publicV72ControlledSlowStartup": {
+          "report": "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-startup-before.json",
+          "viewport": "390x844, DPR 1.75, 4x CPU, Fast 4G",
+          "delayedResources": {
+            "workbenchShellMs": 700,
+            "starterJsonMs": 1800
+          },
+          "cls": 0.510487301008628,
+          "beforeMainHeight": 844,
+          "clientStatusMain": null,
+          "loadedMain": {
+            "y": 219,
+            "height": 561
+          },
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshots": [
+            "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-initial-visible-before.png",
+            "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-client-startup-before.png",
+            "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-loaded-before.png"
+          ]
+        }
+      }
     }
   ],
-  "generatedAt": "2026-11-03T02:29:09.127Z",
+  "generatedAt": "2026-11-03T05:32:16.291Z",
   "latestDeploymentEvidence": "quality/evidence/step-48/aud449-minimal-top-nav/deployed-v72-browser-evidence.json"
 }

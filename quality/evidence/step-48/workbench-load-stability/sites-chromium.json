@@ -1,11 +1,18 @@
 {
-  "capturedAt": "2026-11-03T04:12:37.191Z",
+  "capturedAt": "2026-11-03T05:16:59.140Z",
   "route": "http://127.0.0.1:4323/workbench#screen-marketing-home",
   "delayedChunks": [
+    "WorkbenchShell",
     "TopToolbar",
     "CommandBar"
   ],
-  "delayMs": 1200,
+  "delayedStartupChunks": [
+    "/_astro/WorkbenchShell.K4klj2bv.js"
+  ],
+  "delayedStarterRequests": [
+    "/data/workbench-starter.json"
+  ],
+  "delayMs": 1600,
   "viewport": "1440x900",
   "toolbarBefore": {
     "x": 299.9375,
@@ -23,7 +30,7 @@
   "cls": 0.07349993837877229,
   "shifts": [
     {
-      "startTime": 1487.300000011921,
+      "startTime": 3210.600000023842,
       "value": 0.01986111111111111,
       "sources": [
         {
@@ -52,7 +59,7 @@
       ]
     },
     {
-      "startTime": 1815.300000011921,
+      "startTime": 3803.100000023842,
       "value": 0.05363882726766118,
       "sources": [
         {
@@ -104,7 +111,7 @@
       ]
     },
     {
-      "startTime": 3023.400000035763,
+      "startTime": 5024.100000023842,
       "value": 0.001129238468792867,
       "sources": [
         {

@@ -1,0 +1,74 @@
+{
+  "capturedAt": "2026-11-03T05:31:58.449Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+  "siteVersion": 72,
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "deviceScaleFactor": 1.75,
+    "cpuThrottlingRate": 4,
+    "network": "Fast 4G emulation"
+  },
+  "delays": [
+    {
+      "path": "/_astro/WorkbenchShell.WojrnSWZ.js",
+      "delayMs": 700
+    },
+    {
+      "path": "/data/workbench-starter.json",
+      "delayMs": 1800
+    }
+  ],
+  "firstVisible": {
+    "text": "T\nTessellate Workbench\n\nLOCAL WORKSPACE\n\nPreparing your local workspace\n\nLoading your project and verified resource catalogue. Projects stay in this browser.\n\nOpen Compose",
+    "bodyHeight": 844,
+    "bodyScrollHeight": 844,
+    "main": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844,
+      "top": 0,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    }
+  },
+  "clientStartup": {
+    "text": "Starting your workspace…",
+    "bodyHeight": 844,
+    "bodyScrollHeight": 844,
+    "main": null
+  },
+  "loaded": {
+    "text": "Skip to editor\nT\nExample employee workspace\nLocal\nSAVED\nCompose\nStructure\nStyle\nMotion\nContent\nAudit\nRecompose\nSurprise\nBlend\nCompare\nSnapshots (1)\nExport\nWorkbench: Example employee workspace\nPeople & Co\nMenu\nExample organisation · sample content\nA better workday starts with people.\n\nBring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.\n\nMeet your team\nExplore onboarding\n\nExample interface · replace sample data with your organisation\n\nMade for everyday employee experiences\nFLAGSHIP FEATURE\nA warm welcome\n\nMeet your buddy, d",
+    "bodyHeight": 844,
+    "bodyScrollHeight": 844,
+    "main": {
+      "x": 0,
+      "y": 219,
+      "width": 390,
+      "height": 561,
+      "top": 219,
+      "right": 390,
+      "bottom": 780,
+      "left": 0
+    },
+    "cls": 0.510487301008628,
+    "shifts": [
+      {
+        "startTime": 7112.199999988079,
+        "value": 0.510487301008628
+      }
+    ]
+  },
+  "errors": [],
+  "warnings": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "screenshots": [
+    "public-v72-initial-visible-before.png",
+    "public-v72-client-startup-before.png",
+    "public-v72-loaded-before.png"
+  ]
+}

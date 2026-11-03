@@ -1,0 +1,25 @@
+{
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+  "siteVersion": 72,
+  "coldProfile": "Isolated Chromium context; localStorage, IndexedDB, Cache Storage and service workers cleared before traced reload; HTTP cache bypassed.",
+  "conditions": {
+    "viewport": "412x823",
+    "deviceScaleFactor": 1.75,
+    "cpuThrottling": "4x",
+    "network": "Fast 4G",
+    "colorScheme": "light"
+  },
+  "metrics": {
+    "cls": 0,
+    "lcpMs": 2768,
+    "ttfbMs": 1112,
+    "renderDelayMs": 1656
+  },
+  "lcpElement": "Paragraph text; not a network resource.",
+  "consoleErrors": 0,
+  "uncaughtExceptions": 0,
+  "failedRequests": 0,
+  "httpErrors": 0,
+  "note": "Chrome DevTools MCP trace output path was denied outside its configured workspace, so key metrics and insight findings are retained here rather than the raw trace. This v72 clean trace did not reproduce the candidate-branch CI layout defect.",
+  "capturedDate": "2026-11-03"
+}

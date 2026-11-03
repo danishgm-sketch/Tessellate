@@ -138,7 +138,7 @@ The exact employee-experience brief passed the visible Compose-to-Direction-C-to
 
 A local host check found the laptop API and worker containers running but unhealthy. Restarting the existing API and then its dependent host restored the API health endpoint, both Docker health checks, and a fresh heartbeat without rebuilding or touching MGI containers. The initiating API failure is unknown and recorded open as AUD-448. The public Site backend remains intentionally unavailable because its backend URL is unconfigured; no provider credential was supplied. D1/R2 are unprovisioned and no security policy was weakened.
 
-The ledger contains 455 findings: 0 Critical, 86 High, 342 Medium, and 27 Low. AUD-419 remains High and fixed locally: a new cross-boundary test covers Sites gateway → Hono API → stubbed provider, and a negative control fails when the gateway drops provider headers. Public v72 serves the fix but remains intentionally unconfigured for laptop access under D-041; no tunnel or real provider credential was used, so deployed provider forwarding remains unverified. AUD-448 remains an open Medium pending root-cause investigation. AUD-449 was reproduced on public v71 and is now closed after the same behavior passed on v72. AUD-450 and AUD-451 were reproduced on public v72 and fixed locally; their deployed verification is pending. AUD-452 is confirmed as a cold-load CLS defect, fixed locally and awaiting deployed verification. The local keyboard/touch regression also passes at 360, 390, 430, 768, 1024, 1280 and 1440px. Step 48 and the broader hardening programme remain open; see audit/RUNTIME_AUDIT.md and docs/PRODUCT_HARDENING.md.
+The ledger contains 456 findings: 0 Critical, 87 High, 342 Medium, and 27 Low. AUD-419 remains High and fixed locally: a new cross-boundary test covers Sites gateway → Hono API → stubbed provider, and a negative control fails when the gateway drops provider headers. Public v72 serves the fix but remains intentionally unconfigured for laptop access under D-041; no tunnel or real provider credential was used, so deployed provider forwarding remains unverified. AUD-448 remains an open Medium pending root-cause investigation. AUD-449 was reproduced on public v71 and is now closed after the same behavior passed on v72. AUD-450 and AUD-451 were reproduced on public v72 and fixed locally; their deployed verification is pending. AUD-452's earlier v72 cold-load CLS finding is fixed locally; its latest clean live DevTools trace did not reproduce the shift, so the issue remains open pending the updated deployment. AUD-456 records the separate startup shell replacement regression caught in exact-head CI and fixed locally. The local keyboard/touch regression also passes at 360, 390, 430, 768, 1024, 1280 and 1440px. Step 48 and the broader hardening programme remain open; see audit/RUNTIME_AUDIT.md and docs/PRODUCT_HARDENING.md.
 
 ## Public Sites v72 deployed AUD-449 verification — 2026-11-01
 
@@ -249,3 +249,22 @@ v72 is unchanged. AUD-452 remains open until its cold-load/failure behavior is
 rechecked on a new review deployment; AUD-450/451/453/454/455 also retain their
 existing pending deployed checks. The hardening programme and Step 48 remain
 incomplete.
+
+### AUD-456 local remediation — 2026-11-03
+
+The exact-head CI E2E job failed after 205 passing tests: the desktop Sites
+Workbench route recorded CLS 0.5390775463 when its server-rendered example
+preview disappeared at React startup, and the first mobile run recorded CLS
+0.6693234653 (reload 0.0235888682). A new deterministic browser regression
+holds the WorkbenchShell bundle for 400ms and starter JSON for 1,600ms. Before
+the fix, React replaced the full preview fallback with a compact startup line.
+`WorkbenchStartup` now renders the same accessible, full-viewport editor shell
+in Astro and React, with reserved panel/canvas regions and a real Compose link.
+The full post-fix E2E matrix passed 779 tests with 186 configured profile skips
+and zero failures; local desktop and mobile captures are in
+`quality/evidence/step-38/after/`. A no-delay v72 live trace recorded CLS 0,
+LCP 2,768ms and TTFB 1,112ms under 4× CPU and Fast 4G. A separate public v72
+browser run delayed the bundle by 700ms and starter data by 1,800ms, reproduced
+the full-shell-to-one-line collapse, and measured CLS 0.510487 with zero
+console or network errors. It remains open until the same deployed regression
+passes on the new review version.
