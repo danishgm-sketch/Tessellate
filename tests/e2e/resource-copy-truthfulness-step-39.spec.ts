@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test, type FrameLocator, type Page } from '@playwright/test';
+import { expect, test, type FrameLocator, type Page, type TestInfo } from '@playwright/test';
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
@@ -32,6 +32,37 @@ function watchRuntime(page: Page): ResourceRuntimeEvidence {
       runtime.httpErrors.push({ url: response.url(), status: response.status() });
   });
   return runtime;
+}
+
+async function captureCopyFixEvidence(
+  page: Page,
+  testInfo: TestInfo,
+  slug: string,
+  runtime: ResourceRuntimeEvidence,
+  outcome: Record<string, unknown>,
+  preview?: FrameLocator
+) {
+  const viewport = testInfo.project.use.viewport;
+  const viewportLabel = `${viewport?.width ?? 'unknown'}x${viewport?.height ?? 'unknown'}`;
+  const directory = path.resolve(
+    process.cwd(),
+    'quality/evidence/step-39/public-v74-copy-review-2026-11-03/local-after'
+  );
+  await mkdir(directory, { recursive: true });
+  const screenshot = path.join(directory, `${slug}-${viewportLabel}-after.png`);
+  const capture = preview ? preview.locator('.tess-screen') : page.locator('main');
+  await capture.screenshot({ path: screenshot });
+  await writeFile(
+    path.join(directory, `${slug}-${viewportLabel}-after.json`),
+    `${JSON.stringify({
+      capturedAt: new Date().toISOString(),
+      url: page.url(),
+      viewport,
+      outcome,
+      runtime,
+      screenshot: path.relative(process.cwd(), screenshot).replaceAll('\\', '/'),
+    }, null, 2)}\n`
+  );
 }
 
 async function captureAssessmentEvidence(
@@ -857,4 +888,102 @@ test('resource previews disclose examples and avoid unsupported billing state or
       2
     )}\n`
   );
+});
+
+test('video hero never reports playback when no media source is configured', async ({ page }, testInfo) => {
+  const runtime = watchRuntime(page);
+  const preview = await openResourcePreview(page, 'video-hero');
+  const copy = await preview.locator('body').innerText();
+
+  expect(copy).toContain('This preview contains no video media.');
+  expect(copy).not.toMatch(/production-ready React applications|zero manual wiring|Playing High-Fidelity Showreel/i);
+  await expect(preview.locator('video')).toHaveCount(0);
+  await expect(preview.getByRole('button', { name: /play video showreel/i })).toHaveCount(0);
+
+  await captureCopyFixEvidence(page, testInfo, 'video-hero', runtime, {
+    mediaSourceConfigured: false,
+    videoElementCount: 0,
+    unsupportedPlaybackClaims: false,
+  }, preview);
+
+  expect(runtime.consoleErrors).toEqual([]);
+  expect(runtime.consoleWarnings).toEqual([]);
+  expect(runtime.uncaughtExceptions).toEqual([]);
+  expect(runtime.failedRequests).toEqual([]);
+  expect(runtime.httpErrors).toEqual([]);
+});
+
+test('empty dashboard state disables an unconnected action and avoids unrelated telemetry claims', async ({ page }, testInfo) => {
+  const runtime = watchRuntime(page);
+  const preview = await openResourcePreview(page, 'empty-dashboard-state');
+  const copy = await preview.locator('body').innerText();
+
+  expect(copy).not.toMatch(/run `tess compose`|populate live metrics|component audits/i);
+  await expect(preview.getByRole('button', { name: 'Connect Telemetry Source' })).toBeDisabled();
+  await expect(preview.getByText(/Connect a telemetry source in the host application to enable this action/i)).toBeVisible();
+
+  await captureCopyFixEvidence(page, testInfo, 'empty-dashboard-state', runtime, {
+    connectActionDisabled: true,
+    hostSetupExplanationVisible: true,
+    composeTelemetryClaimPresent: false,
+  }, preview);
+
+  expect(runtime.consoleErrors).toEqual([]);
+  expect(runtime.consoleWarnings).toEqual([]);
+  expect(runtime.uncaughtExceptions).toEqual([]);
+  expect(runtime.failedRequests).toEqual([]);
+  expect(runtime.httpErrors).toEqual([]);
+});
+
+test('empty workspace project creation action is connected to the preview host', async ({ page }, testInfo) => {
+  const runtime = watchRuntime(page);
+  const preview = await openResourcePreview(page, 'empty-workspace');
+  const createButton = preview.getByRole('button', { name: /create new project/i });
+
+  await expect(createButton).toBeEnabled();
+  await createButton.click();
+  await expect(preview.getByRole('status')).toContainText('Project creation previewed.');
+
+  const viewport = testInfo.project.use.viewport;
+  const viewportLabel = `${viewport?.width ?? 'unknown'}x${viewport?.height ?? 'unknown'}`;
+  await captureCopyFixEvidence(page, testInfo, 'empty-workspace', runtime, {
+    buttonLabel: await createButton.innerText(),
+    buttonEnabled: await createButton.isEnabled(),
+    resultingStatus: await preview.getByRole('status').innerText(),
+    viewportLabel,
+  }, preview);
+
+  expect(runtime.consoleErrors).toEqual([]);
+  expect(runtime.consoleWarnings).toEqual([]);
+  expect(runtime.uncaughtExceptions).toEqual([]);
+  expect(runtime.failedRequests).toEqual([]);
+  expect(runtime.httpErrors).toEqual([]);
+});
+
+test('dashboard skeleton recommendations stay within the general analytics domain', async ({ page }, testInfo) => {
+  const runtime = watchRuntime(page);
+  const response = await page.goto('/r/dashboard-skeleton/', { waitUntil: 'domcontentloaded' });
+  expect(response?.status()).toBe(200);
+  const detailH1 = await page.locator('main h1').first().innerText();
+  const detail = await page.locator('main').innerText();
+  expect(detail).not.toMatch(/trading portal|order book|portfolio/i);
+
+  const preview = await openResourcePreview(page, 'dashboard-skeleton');
+  const skeleton = preview.getByRole('status', { name: 'Loading dashboard metrics' });
+  await expect(skeleton).toBeVisible();
+  await expect(skeleton.locator('.grid.grid-cols-2 > div')).toHaveCount(4);
+  await expect(skeleton.locator('.h-48')).toBeVisible();
+
+  await captureCopyFixEvidence(page, testInfo, 'dashboard-skeleton', runtime, {
+    financeDomainRecommendations: false,
+    detailH1,
+    skeletonVisible: await skeleton.isVisible(),
+    metricCardCount: await skeleton.locator('.grid.grid-cols-2 > div').count(),
+  }, preview);
+
+  expect(runtime.consoleErrors).toEqual([]);
+  expect(runtime.consoleWarnings).toEqual([]);
+  expect(runtime.uncaughtExceptions).toEqual([]);
+  expect(runtime.failedRequests).toEqual([]);
+  expect(runtime.httpErrors).toEqual([]);
 });

@@ -28,7 +28,11 @@ export function EmptyWorkspace({ variant = 'quiet', onCreateProject }: EmptyWork
       <button type="button" onClick={onCreateProject} disabled={!onCreateProject} aria-describedby={!onCreateProject ? 'empty-workspace-action-help' : undefined} className="px-5 py-2.5 rounded-[var(--tess-radius-lg,8px)] bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold disabled:cursor-not-allowed disabled:opacity-60">
         + Create New Project
       </button>
-      {!onCreateProject && <span id="empty-workspace-action-help" className="sr-only">Connect a project creation action before enabling this control.</span>}
+      {!onCreateProject && (
+        <p id="empty-workspace-action-help" role="note" className="mt-3 text-xs text-neutral-600 dark:text-neutral-300">
+          Connect a project creation action in the host application to enable this control.
+        </p>
+      )}
     </div>
   );
 }

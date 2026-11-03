@@ -106,15 +106,15 @@ Full-page progressive layout shimmer placeholder preserving layout stability.`,
   {
     slug: 'dashboard-skeleton',
     name: 'Dashboard Skeleton',
-    description: 'Multi-metric analytics workspace skeleton placeholder with metric card shingles, chart viewport placeholder, and data table rows.',
+    description: 'Responsive analytics dashboard loading state with metric cards, a chart, and table rows.',
     categories: ['states', 'loading', 'skeleton'],
     roles: ['state', 'dashboard-skeleton'],
     purposes: ['analytics-loading', 'perceived-performance', 'dashboard-placeholder'],
     componentName: 'DashboardSkeleton',
     tags: ['skeleton', 'dashboard', 'analytics', 'metrics', 'charts'],
-    idealFor: ['Business intelligence dashboards', 'Cloud telemetry overviews', 'Trading portal loaders'],
+    idealFor: ['Business intelligence dashboards', 'Product analytics dashboards', 'Reporting dashboards'],
     avoidFor: ['Text article views', 'Compact modal dialogs'],
-    jobs: ['Retain dashboard metric card rhythm and chart geometry while telemetry streams connect'],
+    jobs: ['Retain dashboard metric-card rhythm and chart geometry while dashboard data loads'],
     indexCode: `import React from 'react';
 
 export type DashboardSkeletonVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -708,15 +708,15 @@ Graceful search query fallback with query echo and corrective actions.`,
   {
     slug: 'empty-dashboard-state',
     name: 'Empty Dashboard State',
-    description: 'First-time dashboard panel placeholder encouraging initial telemetry integration with quick-start steps.',
+    description: 'Empty analytics dashboard state that explains the absence of data and points to host setup.',
     categories: ['states', 'empty', 'dashboard'],
     roles: ['state', 'empty-dashboard'],
     purposes: ['onboarding-welcome', 'empty-workspace', 'initial-setup'],
     componentName: 'EmptyDashboardState',
     tags: ['empty', 'dashboard', 'onboarding', 'workspace', 'setup'],
-    idealFor: ['Fresh project workspaces', 'New organization accounts', 'Unconnected telemetry screens'],
+    idealFor: ['Fresh analytics workspaces', 'New organization accounts', 'Dashboards awaiting a telemetry source'],
     avoidFor: ['Network outages', 'Active high-density analytics'],
-    jobs: ['Guide first-time users towards their primary high-value configuration action without feeling barren'],
+    jobs: ['Explain that no dashboard data is present and point users to the configured setup action'],
     indexCode: `import React from 'react';
 
 export type EmptyDashboardStateVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -753,18 +753,27 @@ export function EmptyDashboardState({ onConnect, variant = 'quiet', children }: 
           No telemetry events recorded yet
         </h3>
         <p className="text-xs text-neutral-500 max-w-md mx-auto leading-relaxed">
-          Connect your application telemetry stream or run \`tess compose\` to populate live metrics and component audits.
+          This preview does not connect to a data source. Connect a telemetry source in your host application to populate this dashboard.
         </p>
       </div>
 
       <div className="pt-2 flex justify-center gap-3">
         <button
+          type="button"
           onClick={onConnect}
-          className="px-4 py-2 text-xs font-semibold rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:opacity-90"
+          disabled={!onConnect}
+          aria-describedby={!onConnect ? 'empty-dashboard-connect-help' : undefined}
+          className="px-4 py-2 text-xs font-semibold rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
         >
           Connect Telemetry Source
         </button>
       </div>
+
+      {!onConnect && (
+        <p id="empty-dashboard-connect-help" role="note" className="text-xs text-neutral-500">
+          Connect a telemetry source in the host application to enable this action.
+        </p>
+      )}
 
       {children}
     </div>

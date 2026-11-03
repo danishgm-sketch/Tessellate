@@ -965,7 +965,7 @@ Three-column plan layout with illustrative values and disabled actions until con
   {
     slug: 'pricing-two-tier',
     name: 'Pricing Two Tier',
-    description: 'Example two-plan comparison with placeholder plan names, prices, and terms.',
+    description: 'Example two-plan comparison with sample plan names, prices, and terms.',
     categories: ['sections', 'marketing', 'pricing'],
     roles: ['pricing', 'two-tier'],
     purposes: ['Streamlined pricing', 'Binary plan choice'],
@@ -1570,7 +1570,7 @@ Slider-driven seat-cost example with a stated sample rate. Replace the rate and 
   {
     slug: 'plan-feature-matrix',
     name: 'Plan Feature Matrix',
-    description: 'Grouped four-row example feature table with placeholder plan labels and values.',
+    description: 'Grouped four-row example feature table with sample plan labels and values.',
     categories: ['sections', 'marketing', 'pricing'],
     roles: ['pricing', 'matrix'],
     purposes: ['Category-by-category plan audit', 'Thorough technical comparison'],

@@ -1,0 +1,225 @@
+{
+  "capturedAt": "2026-11-03T16:12:26.887Z",
+  "publicSite": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "publicVersion": 74,
+  "canonicalSourceCommit": "75276e8078e908b8258fa3d2cba629d71b85cd60",
+  "siteSourceCommit": "601d4b4069fdcba6bd57a26e2b625dbd42467602",
+  "results": [
+    {
+      "route": "/r/video-hero/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/video-hero/",
+      "viewport": "1440x900",
+      "status": 200,
+      "expected": "A configured video source plays and the control reflects actual playback.",
+      "before": {
+        "playButtonCount": 1,
+        "pauseButtonCount": 0,
+        "videoElementCount": 0,
+        "previewText": "Video Hero preview\nSHOWREEL\n•\n1:45\nSee the composition engine in continuous motion.\n\nWatch how arbitrary manifests transform into production-ready React applications with zero manual wiring.\n\nClick to launch preview playback"
+      },
+      "action": "Clicked Play video showreel through the visible preview UI.",
+      "after": {
+        "playButtonCount": 0,
+        "pauseButtonCount": 1,
+        "videoElementCount": 0,
+        "previewText": "Video Hero preview\nSHOWREEL\n•\n1:45\nSee the composition engine in continuous motion.\n\nWatch how arbitrary manifests transform into production-ready React applications with zero manual wiring.\n\nPlaying High-Fidelity Showreel (4K)"
+      },
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshots": {
+        "before": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/video-hero-1440x900-before.png",
+        "after": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/video-hero-1440x900-after.png"
+      }
+    },
+    {
+      "route": "/r/empty-dashboard-state/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/empty-dashboard-state/",
+      "viewport": "1440x900",
+      "status": 200,
+      "expected": "The preview discloses that it has no telemetry connection, and the unconnected action is disabled or produces a truthful preview status.",
+      "before": {
+        "buttonCount": 1,
+        "buttonEnabled": true,
+        "statusCount": 0,
+        "previewText": "Empty Dashboard State preview\n📊\nNo telemetry events recorded yet\n\nConnect your application telemetry stream or run `tess compose` to populate live metrics and component audits.\n\nConnect Telemetry Source"
+      },
+      "action": "Clicked Connect Telemetry Source through the visible preview UI.",
+      "after": {
+        "buttonCount": 1,
+        "buttonEnabled": true,
+        "statusCount": 0,
+        "previewText": "Empty Dashboard State preview\n📊\nNo telemetry events recorded yet\n\nConnect your application telemetry stream or run `tess compose` to populate live metrics and component audits.\n\nConnect Telemetry Source"
+      },
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshots": {
+        "before": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-dashboard-state-1440x900-before.png",
+        "after": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-dashboard-state-1440x900-after.png"
+      }
+    },
+    {
+      "route": "/r/empty-workspace/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/empty-workspace/",
+      "viewport": "1440x900",
+      "status": 200,
+      "expected": "The project creation action either completes through the preview host or is disabled with a clear explanation.",
+      "before": {
+        "buttonCount": 1,
+        "buttonEnabled": true,
+        "statusCount": 0,
+        "previewText": "Empty Workspace preview\n✧\nNo Projects Found\n\nStart by creating a new composition or choose from 12 pre-built blueprints.\n\n+ Create New Project"
+      },
+      "action": "Clicked /create new project/i through the visible preview UI.",
+      "after": {
+        "buttonCount": 1,
+        "buttonEnabled": true,
+        "statusCount": 1,
+        "previewText": "Empty Workspace preview\n\nProject creation previewed.\n\n✧\nNo Projects Found\n\nStart by creating a new composition or choose from 12 pre-built blueprints.\n\n+ Create New Project"
+      },
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshots": {
+        "before": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-workspace-1440x900-before.png",
+        "after": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-workspace-1440x900-after.png"
+      }
+    },
+    {
+      "route": "/r/video-hero/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/video-hero/",
+      "viewport": "390x844",
+      "status": 200,
+      "expected": "A configured video source plays and the control reflects actual playback.",
+      "before": {
+        "playButtonCount": 1,
+        "pauseButtonCount": 0,
+        "videoElementCount": 0,
+        "previewText": "Video Hero preview\nSHOWREEL\n•\n1:45\nSee the composition engine in continuous motion.\n\nWatch how arbitrary manifests transform into production-ready React applications with zero manual wiring.\n\nClick to launch preview playback"
+      },
+      "action": "Clicked Play video showreel through the visible preview UI.",
+      "after": {
+        "playButtonCount": 0,
+        "pauseButtonCount": 1,
+        "videoElementCount": 0,
+        "previewText": "Video Hero preview\nSHOWREEL\n•\n1:45\nSee the composition engine in continuous motion.\n\nWatch how arbitrary manifests transform into production-ready React applications with zero manual wiring.\n\nPlaying High-Fidelity Showreel (4K)"
+      },
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshots": {
+        "before": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/video-hero-390x844-before.png",
+        "after": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/video-hero-390x844-after.png"
+      }
+    },
+    {
+      "route": "/r/empty-dashboard-state/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/empty-dashboard-state/",
+      "viewport": "390x844",
+      "status": 200,
+      "expected": "The preview discloses that it has no telemetry connection, and the unconnected action is disabled or produces a truthful preview status.",
+      "before": {
+        "buttonCount": 1,
+        "buttonEnabled": true,
+        "statusCount": 0,
+        "previewText": "Empty Dashboard State preview\n📊\nNo telemetry events recorded yet\n\nConnect your application telemetry stream or run `tess compose` to populate live metrics and component audits.\n\nConnect Telemetry Source"
+      },
+      "action": "Clicked Connect Telemetry Source through the visible preview UI.",
+      "after": {
+        "buttonCount": 1,
+        "buttonEnabled": true,
+        "statusCount": 0,
+        "previewText": "Empty Dashboard State preview\n📊\nNo telemetry events recorded yet\n\nConnect your application telemetry stream or run `tess compose` to populate live metrics and component audits.\n\nConnect Telemetry Source"
+      },
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshots": {
+        "before": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-dashboard-state-390x844-before.png",
+        "after": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-dashboard-state-390x844-after.png"
+      }
+    },
+    {
+      "route": "/r/empty-workspace/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/empty-workspace/",
+      "viewport": "390x844",
+      "status": 200,
+      "expected": "The project creation action either completes through the preview host or is disabled with a clear explanation.",
+      "before": {
+        "buttonCount": 1,
+        "buttonEnabled": true,
+        "statusCount": 0,
+        "previewText": "Empty Workspace preview\n✧\nNo Projects Found\n\nStart by creating a new composition or choose from 12 pre-built blueprints.\n\n+ Create New Project"
+      },
+      "action": "Clicked /create new project/i through the visible preview UI.",
+      "after": {
+        "buttonCount": 1,
+        "buttonEnabled": true,
+        "statusCount": 1,
+        "previewText": "Empty Workspace preview\n\nProject creation previewed.\n\n✧\nNo Projects Found\n\nStart by creating a new composition or choose from 12 pre-built blueprints.\n\n+ Create New Project"
+      },
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshots": {
+        "before": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-workspace-390x844-before.png",
+        "after": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-workspace-390x844-after.png"
+      }
+    }
+  ]
+}

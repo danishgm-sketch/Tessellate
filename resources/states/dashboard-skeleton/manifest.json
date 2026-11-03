@@ -5,7 +5,7 @@
   "name": "Dashboard Skeleton",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Multi-metric analytics workspace skeleton placeholder with metric card shingles, chart viewport placeholder, and data table rows.",
+  "description": "Responsive analytics dashboard loading state with metric cards, a chart, and table rows.",
   "resourceType": "state",
   "categories": [
     "states",
@@ -132,18 +132,18 @@
     "charts"
   ],
   "intent": {
-    "summary": "Multi-metric analytics workspace skeleton placeholder with metric card shingles, chart viewport placeholder, and data table rows.",
+    "summary": "Responsive analytics dashboard loading state with metric cards, a chart, and table rows.",
     "idealFor": [
       "Business intelligence dashboards",
-      "Cloud telemetry overviews",
-      "Trading portal loaders"
+      "Product analytics dashboards",
+      "Reporting dashboards"
     ],
     "avoidFor": [
       "Text article views",
       "Compact modal dialogs"
     ],
     "jobs": [
-      "Retain dashboard metric card rhythm and chart geometry while telemetry streams connect"
+      "Preserve dashboard layout while analytics data loads"
     ],
     "contentRequirements": [
       "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"

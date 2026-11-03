@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-11-03T07:23:32.410Z",
+  "generatedAt": "2026-11-03T16:19:28.880Z",
   "count": 324,
   "resources": [
     {
@@ -23537,7 +23537,7 @@
       "name": "Dashboard Skeleton",
       "version": "1.0.0",
       "status": "verified-gold",
-      "description": "Multi-metric analytics workspace skeleton placeholder with metric card shingles, chart viewport placeholder, and data table rows.",
+      "description": "Responsive analytics dashboard loading state with metric cards, a chart, and table rows.",
       "resourceType": "state",
       "categories": [
         "states",
@@ -23665,18 +23665,18 @@
         "verified-gold"
       ],
       "intent": {
-        "summary": "Multi-metric analytics workspace skeleton placeholder with metric card shingles, chart viewport placeholder, and data table rows.",
+        "summary": "Responsive analytics dashboard loading state with metric cards, a chart, and table rows.",
         "idealFor": [
           "Business intelligence dashboards",
-          "Cloud telemetry overviews",
-          "Trading portal loaders"
+          "Product analytics dashboards",
+          "Reporting dashboards"
         ],
         "avoidFor": [
           "Text article views",
           "Compact modal dialogs"
         ],
         "jobs": [
-          "Retain dashboard metric card rhythm and chart geometry while telemetry streams connect"
+          "Preserve dashboard layout while analytics data loads"
         ],
         "contentRequirements": [
           "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
@@ -28286,7 +28286,7 @@
       "name": "Empty Dashboard State",
       "version": "1.0.0",
       "status": "verified",
-      "description": "First-time dashboard panel placeholder encouraging initial telemetry integration with quick-start steps.",
+      "description": "Empty analytics dashboard state explaining the missing data and host setup action.",
       "resourceType": "state",
       "categories": [
         "states",
@@ -28413,9 +28413,9 @@
         "setup"
       ],
       "intent": {
-        "summary": "First-time dashboard panel placeholder encouraging initial telemetry integration with quick-start steps.",
+        "summary": "Empty analytics dashboard state explaining the missing data and host setup action.",
         "idealFor": [
-          "Fresh project workspaces",
+          "Fresh analytics workspaces",
           "New organization accounts",
           "Unconnected telemetry screens"
         ],
@@ -28424,7 +28424,7 @@
           "Active high-density analytics"
         ],
         "jobs": [
-          "Guide first-time users towards their primary high-value configuration action without feeling barren"
+          "Explain that no dashboard data is present and direct users to the configured setup action"
         ],
         "contentRequirements": [
           "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
@@ -28792,7 +28792,7 @@
       "name": "Empty Workspace",
       "version": "1.0.0",
       "status": "verified-gold",
-      "description": "Empty state placeholder card with welcoming illustration and primary create action.",
+      "description": "Empty workspace state with a welcoming illustration and a project-creation action.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -28918,7 +28918,7 @@
         "verified-gold"
       ],
       "intent": {
-        "summary": "Empty state placeholder card with welcoming illustration and primary create action.",
+        "summary": "Empty workspace state with a welcoming illustration and a project-creation action.",
         "idealFor": [
           "New workspaces with zero created projects"
         ],
@@ -79190,7 +79190,7 @@
       "name": "Video Hero",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Cinematic header with ambient video background placeholder, gradient veil, and play trigger.",
+      "description": "Cinematic marketing section with optional host-supplied video and native playback controls.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -79317,7 +79317,7 @@
         "marketing"
       ],
       "intent": {
-        "summary": "Cinematic header with ambient video background placeholder, gradient veil, and play trigger.",
+        "summary": "Cinematic marketing section with optional host-supplied video and native playback controls.",
         "idealFor": [
           "Visually driven product showcases with motion showreels"
         ],

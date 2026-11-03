@@ -5,7 +5,7 @@
   "name": "Empty Workspace",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Empty state placeholder card with welcoming illustration and primary create action.",
+  "description": "Empty workspace state with a welcoming illustration and a project-creation action.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -130,7 +130,7 @@
     "first-action"
   ],
   "intent": {
-    "summary": "Empty state placeholder card with welcoming illustration and primary create action.",
+    "summary": "Empty workspace state with a welcoming illustration and a project-creation action.",
     "idealFor": [
       "New workspaces with zero created projects"
     ],
