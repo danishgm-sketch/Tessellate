@@ -1,6 +1,7 @@
 # Verso local integration evidence
 
-**Captured:** 2026-11-03 (full local runtime audit repeated after the variant-handshake fix)  
+**Captured:** 2026-11-03 (full local runtime audit repeated after the variant-handshake fix)
+
 **Scope:** Owner-only local source inspection; no public redistribution.
 
 ## Runtime result

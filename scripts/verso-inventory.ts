@@ -790,4 +790,3 @@ if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToP
     process.exitCode = 1;
   });
 }
-
