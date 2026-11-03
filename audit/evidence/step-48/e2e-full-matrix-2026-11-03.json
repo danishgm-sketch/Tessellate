@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-03T15:17:08.876Z",
+  "capturedAt": "2026-11-03T16:54:38.067Z",
   "command": "pnpm test:e2e",
   "environment": "fresh local production-like E2E command across Astro, Sites Worker and standalone preview",
   "result": "PASS",
@@ -12,13 +12,13 @@
     },
     {
       "name": "Sites Worker desktop Chromium",
-      "passed": 209,
+      "passed": 213,
       "skipped": 11,
       "failed": 0
     },
     {
       "name": "Sites Worker mobile Chromium",
-      "passed": 178,
+      "passed": 182,
       "skipped": 42,
       "failed": 0
     },
@@ -30,7 +30,7 @@
     }
   ],
   "totals": {
-    "passed": 786,
+    "passed": 794,
     "configuredSkips": 189,
     "failed": 0
   },
@@ -38,5 +38,16 @@
     "All 324 canonical resources rendered through the production-like Sites Worker desktop sweep at their certified widths.",
     "Compose-to-Direction-C handoff, Workbench editing, export, mobile navigation, history, responsive behavior, CSP isolation, and standalone preview checks completed with zero test failures.",
     "Skips are configured profile skips for tests intentionally restricted to another browser, platform, or viewport."
-  ]
+  ],
+  "focusedSupplementalRun": {
+    "capturedAt": "2026-11-03T16:59:15.453Z",
+    "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts --grep \"video hero never|empty dashboard state disables|empty workspace project creation|dashboard skeleton recommendations\"",
+    "passed": 8,
+    "skipped": 0,
+    "failed": 0,
+    "coverageNotes": [
+      "The four affected resource checks passed on Sites Worker desktop and mobile profiles.",
+      "The dashboard skeleton assertion waits for the isolated preview and verifies the loading status, four metric cards, and chart placeholder before capturing the after screenshot."
+    ]
+  }
 }

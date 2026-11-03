@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete. PR review findings AUD-419–AUD-444 have named post-fix regression coverage; this record does not claim every regression ran red before its fix. The AUD-438 cross-tab history regression additionally passes in a real local Sites Worker browser at desktop and mobile sizes. Exact-head CI and applicable deployed verification remain pending. Public Axe evidence also found two unsupported ARIA label semantics (AUD-445 and AUD-446), now fixed locally and awaiting published verification. Public v70 route re-audit evidence is quality/evidence/step-45/public-v70-reaudit-2026-11-01/. Axe scan-time CSP console events are isolated to the sandboxed preview frames while Axe analyzes them; ordinary route navigation was clean, and the existing strict CSP remains unchanged. A separately discovered PR review issue AUD-447 reproduced an Undo recovery failure under simulated localStorage quota exhaustion; its regression fails against the pre-fix source and passes with the generation-based journal fix. Exact-head CI and public Site verification are pending. Public Sites v71 serves canonical commit 7ac7783de83e175ac410055da736b2218e2ba213 via Sites source 0bce228a4fbd5fedad02a3186cd6af62690d8405. The 31-route public-shell sweep passed 31/31 routes at 1440x900 and 390x844 (62 route captures), with zero HTTP failures, browser console errors, uncaught exceptions, failed requests, horizontal overflow, screenshot instrumentation warnings, Axe violations, or unsupported-ARIA incomplete results; 11 color-contrast checks remain Axe-incomplete. The full employee-experience flagship flow passed on desktop and mobile, including Direction C selection, locks, recomposition, replacement, Surprise Me, Undo/Redo and manifest/ZIP export; the desktop standalone export was clean-installed, built and browsed. AUD-443 and AUD-445 through AUD-447 now have issue-specific public v71 verification. AUD-419 remains locally verified only: the public backend health endpoint truthfully reports that the laptop backend is unconfigured, and no provider credentials were sent or persisted. The broader hardening programme remains incomplete. On 2026-11-01, local Docker inspection found the Tessellate API and host containers running but unhealthy. Restarting the existing API, then the dependent host, restored API HTTP 200, Docker health, and a fresh heartbeat without rebuilding images or touching MGI containers. AUD-448 records this medium local-runtime defect; its initiating cause remains unknown and it is open for root-cause investigation. AUD-449 records a public v71 responsive-collapse mismatch reproduced at 390x844; its keyboard and touch responsive fix passes in local Sites Worker desktop/mobile profiles across seven widths and awaits deployed recheck. AUD-450 and AUD-451 are locally fixed pending deployment; AUD-452 is confirmed as cold mobile Workbench CLS 0.5028 on public v72; the local cold-load, reload and partial-resource-failure regressions pass after a fail-fast preload race fix, and deployed verification remains pending; AUD-453 is locally fixed pending deployment. AUD-454 reproduces in the local production-like Sites Worker and passes the same direct-preview navigation journey at desktop/mobile after the bounded opaque-parent message fix; deployed verification remains pending. AUD-455 records the confirmation sentence spacing defect visible in the AUD-454 after screenshot; explicit spacing and an exact browser text assertion are included, with deployed verification pending. Public v73 was independently checked with a clean mobile browser under prefers-reduced-motion; that trace found a shared renderer transition defect (AUD-464), reproduced by a new red-to-green Workbench browser regression. The local fix now disables transitions and animations for screen content under system or explicit reduced-motion settings; the issue remains open pending the same public Site check. On 2026-11-03 the full pnpm test:e2e matrix passed 785 tests with 186 configured profile skips and zero failures across Astro, Sites Worker desktop/mobile, and standalone preview. The fixed reduced-motion and preview error recovery regressions pass locally; public verification is pending. AUD-465 records a variable constrained-network Explore preview delay (9,250ms initial, 7,994ms pre-fix repeat) with a 5,382ms post-fix repeat; hosted recheck remains pending. Public Sites v74 issue-specific verification closed AUD-464 and AUD-465 from canonical commit 75276e8078e908b8258fa3d2cba629d71b85cd60; this does not repeat the full v71 route/flagship audit or close the broader hardening gate. Public v74 follow-up then closed AUD-450 (accessible name), AUD-451 (mobile preview menu touch/keyboard), AUD-452 (cold resource CLS) and AUD-456 (delayed mobile startup handoff) using issue-specific deployed regressions; the full route audit was not repeated. AUD-419 remains locally verified only because the optional laptop backend/provider path is intentionally unconfigured and no credential/tunnel was used. After the v74 rechecks, the latest pnpm test:e2e run passed 786 tests with 189 configured profile skips and zero failures across Astro desktop/mobile, Sites Worker desktop/mobile, and standalone preview. pnpm audit:all passed all 16 behavioral gates, 324 resource isolation and provenance checks, route budgets, security/secret checks, and dependency audit.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete. PR review findings AUD-419–AUD-444 have named post-fix regression coverage; this record does not claim every regression ran red before its fix. The AUD-438 cross-tab history regression additionally passes in a real local Sites Worker browser at desktop and mobile sizes. Exact-head CI and applicable deployed verification remain pending. Public Axe evidence also found two unsupported ARIA label semantics (AUD-445 and AUD-446), now fixed locally and awaiting published verification. Public v70 route re-audit evidence is quality/evidence/step-45/public-v70-reaudit-2026-11-01/. Axe scan-time CSP console events are isolated to the sandboxed preview frames while Axe analyzes them; ordinary route navigation was clean, and the existing strict CSP remains unchanged. A separately discovered PR review issue AUD-447 reproduced an Undo recovery failure under simulated localStorage quota exhaustion; its regression fails against the pre-fix source and passes with the generation-based journal fix. Exact-head CI and public Site verification are pending. Public Sites v71 serves canonical commit 7ac7783de83e175ac410055da736b2218e2ba213 via Sites source 0bce228a4fbd5fedad02a3186cd6af62690d8405. The 31-route public-shell sweep passed 31/31 routes at 1440x900 and 390x844 (62 route captures), with zero HTTP failures, browser console errors, uncaught exceptions, failed requests, horizontal overflow, screenshot instrumentation warnings, Axe violations, or unsupported-ARIA incomplete results; 11 color-contrast checks remain Axe-incomplete. The full employee-experience flagship flow passed on desktop and mobile, including Direction C selection, locks, recomposition, replacement, Surprise Me, Undo/Redo and manifest/ZIP export; the desktop standalone export was clean-installed, built and browsed. AUD-443 and AUD-445 through AUD-447 now have issue-specific public v71 verification. AUD-419 remains locally verified only: the public backend health endpoint truthfully reports that the laptop backend is unconfigured, and no provider credentials were sent or persisted. The broader hardening programme remains incomplete. On 2026-11-01, local Docker inspection found the Tessellate API and host containers running but unhealthy. Restarting the existing API, then the dependent host, restored API HTTP 200, Docker health, and a fresh heartbeat without rebuilding images or touching MGI containers. AUD-448 records this medium local-runtime defect; its initiating cause remains unknown and it is open for root-cause investigation. AUD-449 records a public v71 responsive-collapse mismatch reproduced at 390x844; its keyboard and touch responsive fix passes in local Sites Worker desktop/mobile profiles across seven widths and awaits deployed recheck. AUD-450 and AUD-451 are locally fixed pending deployment; AUD-452 is confirmed as cold mobile Workbench CLS 0.5028 on public v72; the local cold-load, reload and partial-resource-failure regressions pass after a fail-fast preload race fix, and deployed verification remains pending; AUD-453 is locally fixed pending deployment. AUD-454 reproduces in the local production-like Sites Worker and passes the same direct-preview navigation journey at desktop/mobile after the bounded opaque-parent message fix; deployed verification remains pending. AUD-455 records the confirmation sentence spacing defect visible in the AUD-454 after screenshot; explicit spacing and an exact browser text assertion are included, with deployed verification pending. Public v73 was independently checked with a clean mobile browser under prefers-reduced-motion; that trace found a shared renderer transition defect (AUD-464), reproduced by a new red-to-green Workbench browser regression. The local fix now disables transitions and animations for screen content under system or explicit reduced-motion settings; the issue remains open pending the same public Site check. On 2026-11-03 the full pnpm test:e2e matrix passed 785 tests with 186 configured profile skips and zero failures across Astro, Sites Worker desktop/mobile, and standalone preview. The fixed reduced-motion and preview error recovery regressions pass locally; public verification is pending. AUD-465 records a variable constrained-network Explore preview delay (9,250ms initial, 7,994ms pre-fix repeat) with a 5,382ms post-fix repeat; hosted recheck remains pending. Public Sites v74 issue-specific verification closed AUD-464 and AUD-465 from canonical commit 75276e8078e908b8258fa3d2cba629d71b85cd60; this does not repeat the full v71 route/flagship audit or close the broader hardening gate. Public v74 follow-up then closed AUD-450 (accessible name), AUD-451 (mobile preview menu touch/keyboard), AUD-452 (cold resource CLS) and AUD-456 (delayed mobile startup handoff) using issue-specific deployed regressions; the full route audit was not repeated. AUD-419 remains locally verified only because the optional laptop backend/provider path is intentionally unconfigured and no credential/tunnel was used. After the v74 rechecks, the latest pnpm test:e2e run passed 786 tests with 189 configured profile skips and zero failures across Astro desktop/mobile, Sites Worker desktop/mobile, and standalone preview. pnpm audit:all passed all 16 behavioral gates, 324 resource isolation and provenance checks, route budgets, security/secret checks, and dependency audit. A 2026-11-03 public v74 copy sweep visited all 324 detail routes at desktop and mobile and rendered 1,944 variants; it recorded five findings (AUD-466–AUD-470) and a working empty-workspace callback. Local fixes await exact-version deployed verification.",
   "entries": [
     {
       "id": "AUD-001",
@@ -21465,12 +21465,279 @@
           "audit/evidence/step-48/deployed-v74/explore-recheck-4-1440x900.png"
         ]
       }
+    },
+    {
+      "id": "AUD-466",
+      "severity": "medium",
+      "route": "/r/video-hero/",
+      "viewport": "1440x900; 390x844",
+      "category": "runtime",
+      "title": "Video Hero play control reported playback without media",
+      "expected": "Playback controls should reflect actual media state and be backed by a configured media source.",
+      "actual": "Clicking Play changed the UI to a pause icon and reported a 4K showreel as playing, but the preview contained no video element or source.",
+      "reproduction": [
+        "Open /r/video-hero/ at desktop or mobile size.",
+        "Click Play video showreel.",
+        "Observe the label change while no media element exists."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/video-hero-1440x900-before.png",
+      "rootCause": "The resource maintained an isPlaying boolean disconnected from any media element or playback event.",
+      "affectedFiles": [
+        "resources/sections/video-hero/index.tsx",
+        "resources/sections/video-hero/preview.tsx",
+        "scripts/sections-batch-1.ts",
+        "tests/e2e/resource-copy-truthfulness-step-39.spec.ts"
+      ],
+      "remediation": "Use native video controls only when a host supplies videoSrc; otherwise render a static message that explains media is not configured.",
+      "fixCommit": "720c94cc968ba009e286ad9cda7605941e0650c6",
+      "status": "fixed-local-verified",
+      "evidence": {
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/video-hero-1440x900-before.png",
+          "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/video-hero-390x844-before.png"
+        ],
+        "deployedV74": [
+          {
+            "route": "/r/video-hero/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/video-hero/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "postFixScreenshots": "quality/evidence/step-39/empty-workspace-action/local-after/",
+        "regression": "tests/e2e/resource-copy-truthfulness-step-39.spec.ts",
+        "postFixResult": "Targeted Sites Worker regression passes after a production build; deployed verification of this fix is pending."
+      }
+    },
+    {
+      "id": "AUD-467",
+      "severity": "medium",
+      "route": "/r/video-hero/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Video Hero advertised an unprovided 4K showreel and production guarantees",
+      "expected": "Marketing copy and media metadata should describe the supplied example and must not claim playback, resolution, or production outcomes that are not present.",
+      "actual": "The static preview claimed an arbitrary manifest becomes a production-ready React application with zero manual wiring and advertised a 1:45 4K showreel without video media.",
+      "reproduction": [
+        "Open /r/video-hero/.",
+        "Read the headline, subheadline, duration badge, and playback message."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/video-hero-1440x900-before.png",
+      "rootCause": "The demo fixture embedded Tessellate claims and a fabricated video duration instead of identifying the media as host-supplied.",
+      "affectedFiles": [
+        "resources/sections/video-hero/index.tsx",
+        "resources/sections/video-hero/fixtures.ts",
+        "resources/sections/video-hero/manifest.json",
+        "resources/sections/video-hero/README.md",
+        "scripts/sections-batch-1.ts",
+        "tests/e2e/resource-copy-truthfulness-step-39.spec.ts"
+      ],
+      "remediation": "Replace Tessellate-specific claims and fabricated duration with neutral copy; disclose that the host application supplies and licenses any video.",
+      "fixCommit": "720c94cc968ba009e286ad9cda7605941e0650c6",
+      "status": "fixed-local-verified",
+      "evidence": {
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/video-hero-1440x900-before.png",
+          "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/video-hero-390x844-before.png"
+        ],
+        "deployedV74": [
+          {
+            "route": "/r/video-hero/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/video-hero/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "postFixScreenshots": "quality/evidence/step-39/empty-workspace-action/local-after/",
+        "regression": "tests/e2e/resource-copy-truthfulness-step-39.spec.ts",
+        "postFixResult": "Targeted Sites Worker regression passes after a production build; deployed verification of this fix is pending."
+      }
+    },
+    {
+      "id": "AUD-468",
+      "severity": "medium",
+      "route": "/r/empty-dashboard-state/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Empty dashboard state claimed composition creates live telemetry",
+      "expected": "The example should distinguish local interface composition from external telemetry and audit integrations.",
+      "actual": "The preview said running tess compose populates live metrics and component audits, which this static resource does not connect to.",
+      "reproduction": [
+        "Open /r/empty-dashboard-state/.",
+        "Read the empty-state guidance below No telemetry events recorded yet."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-dashboard-state-1440x900-before.png",
+      "rootCause": "The reusable state copy conflated Tessellate composition with an external telemetry data source.",
+      "affectedFiles": [
+        "resources/states/empty-dashboard-state/index.tsx",
+        "resources/states/empty-dashboard-state/manifest.json",
+        "scripts/states-batch-1.ts",
+        "tests/e2e/resource-copy-truthfulness-step-39.spec.ts"
+      ],
+      "remediation": "State that the example has no data-source connection and that the host application must configure a telemetry source.",
+      "fixCommit": "720c94cc968ba009e286ad9cda7605941e0650c6",
+      "status": "fixed-local-verified",
+      "evidence": {
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-dashboard-state-1440x900-before.png",
+          "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-dashboard-state-390x844-before.png"
+        ],
+        "deployedV74": [
+          {
+            "route": "/r/empty-dashboard-state/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/empty-dashboard-state/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "postFixScreenshots": "quality/evidence/step-39/empty-workspace-action/local-after/",
+        "regression": "tests/e2e/resource-copy-truthfulness-step-39.spec.ts",
+        "postFixResult": "Targeted Sites Worker regression passes after a production build; deployed verification of this fix is pending."
+      }
+    },
+    {
+      "id": "AUD-469",
+      "severity": "medium",
+      "route": "/r/empty-dashboard-state/",
+      "viewport": "1440x900; 390x844",
+      "category": "runtime",
+      "title": "Empty dashboard Connect action was enabled without an action",
+      "expected": "When no host callback exists, an action must be disabled with an accessible explanation; a connected preview action must show an honest response.",
+      "actual": "The visible Connect Telemetry Source button was enabled, but clicking it produced no status or visible effect.",
+      "reproduction": [
+        "Open /r/empty-dashboard-state/.",
+        "Click Connect Telemetry Source.",
+        "Observe no data-source flow and no response."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-dashboard-state-1440x900-before.png",
+      "rootCause": "The CTA did not reflect that its optional onConnect callback was absent and had no disabled help text.",
+      "affectedFiles": [
+        "resources/states/empty-dashboard-state/index.tsx",
+        "scripts/states-batch-1.ts",
+        "tests/e2e/resource-copy-truthfulness-step-39.spec.ts"
+      ],
+      "remediation": "Disable the button when onConnect is absent, provide visible and programmatically associated explanation, and test the preview-host callback behavior.",
+      "fixCommit": "720c94cc968ba009e286ad9cda7605941e0650c6",
+      "status": "fixed-local-verified",
+      "evidence": {
+        "preFixScreenshots": [
+          "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-dashboard-state-1440x900-before.png",
+          "quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-dashboard-state-390x844-before.png"
+        ],
+        "deployedV74": [
+          {
+            "route": "/r/empty-dashboard-state/",
+            "viewport": "1440x900",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          },
+          {
+            "route": "/r/empty-dashboard-state/",
+            "viewport": "390x844",
+            "status": 200,
+            "consoleErrors": [],
+            "consoleWarnings": [],
+            "uncaughtExceptions": [],
+            "failedRequests": [],
+            "httpErrors": []
+          }
+        ],
+        "postFixScreenshots": "quality/evidence/step-39/empty-workspace-action/local-after/",
+        "regression": "tests/e2e/resource-copy-truthfulness-step-39.spec.ts",
+        "postFixResult": "Targeted Sites Worker regression passes after a production build; deployed verification of this fix is pending."
+      }
+    },
+    {
+      "id": "AUD-470",
+      "severity": "low",
+      "route": "/r/dashboard-skeleton/",
+      "viewport": "1440x900; 390x844",
+      "category": "data",
+      "title": "Dashboard skeleton recommendations included a trading portal",
+      "expected": "Generic analytics resource recommendations should remain in their declared analytics domain unless explicitly marked finance-specific.",
+      "actual": "The resource detail listed Trading portal loaders among ideal use cases for a general dashboard skeleton.",
+      "reproduction": [
+        "Open /r/dashboard-skeleton/.",
+        "Read the When it works (ideal for) list."
+      ],
+      "console": [],
+      "network": [],
+      "rootCause": "The resource metadata reused unrelated trading-domain recommendation text.",
+      "affectedFiles": [
+        "resources/states/dashboard-skeleton/manifest.json",
+        "scripts/states-batch-1.ts",
+        "tests/e2e/resource-copy-truthfulness-step-39.spec.ts"
+      ],
+      "remediation": "Replace the trading recommendation with product analytics and reporting dashboard examples, and keep the domain-contamination regression.",
+      "fixCommit": "720c94cc968ba009e286ad9cda7605941e0650c6",
+      "status": "fixed-local-verified",
+      "evidence": {
+        "preFixScreenshots": [],
+        "deployedV74": [],
+        "postFixScreenshots": "quality/evidence/step-39/empty-workspace-action/local-after/",
+        "regression": "tests/e2e/resource-copy-truthfulness-step-39.spec.ts",
+        "postFixResult": "The focused Sites Worker regression confirms neutral analytics recommendations and verifies that the isolated preview renders its loading status, four metric cards, and chart placeholder after frame readiness; desktop and mobile profiles pass. Deployed verification of this fix is pending."
+      }
     }
   ],
-  "generatedAt": "2026-11-03T15:17:08.876Z",
+  "generatedAt": "2026-11-03T16:59:15.453Z",
   "latestDeploymentEvidence": "audit/evidence/step-48/deployed-v74/post-hardening-rechecks.json",
   "latestLocalQualityRun": {
-    "capturedAt": "2026-11-03T15:17:08.876Z",
+    "capturedAt": "2026-11-03T16:54:38.067Z",
     "command": "pnpm test:e2e",
     "environment": "fresh local production-like E2E command across Astro, Sites Worker and standalone preview",
     "result": "PASS",
@@ -21483,13 +21750,13 @@
       },
       {
         "name": "Sites Worker desktop Chromium",
-        "passed": 209,
+        "passed": 213,
         "skipped": 11,
         "failed": 0
       },
       {
         "name": "Sites Worker mobile Chromium",
-        "passed": 178,
+        "passed": 182,
         "skipped": 42,
         "failed": 0
       },
@@ -21501,7 +21768,7 @@
       }
     ],
     "totals": {
-      "passed": 786,
+      "passed": 794,
       "configuredSkips": 189,
       "failed": 0
     },
@@ -21510,6 +21777,16 @@
       "Compose-to-Direction-C handoff, Workbench editing, export, mobile navigation, history, responsive behavior, CSP isolation, and standalone preview checks completed with zero test failures.",
       "Skips are configured profile skips for tests intentionally restricted to another browser, platform, or viewport."
     ],
+    "focusedSupplementalRun": {
+      "capturedAt": "2026-11-03T16:59:15.453Z",
+      "passed": 8,
+      "skipped": 0,
+      "failed": 0,
+      "coverageNotes": [
+        "The four affected resource checks passed on Sites Worker desktop and mobile profiles.",
+        "The dashboard skeleton assertion waits for the isolated preview and verifies the loading status, four metric cards, and chart placeholder before capturing the after screenshot."
+      ]
+    },
     "evidence": "audit/evidence/step-48/e2e-full-matrix-2026-11-03.json"
   }
 }

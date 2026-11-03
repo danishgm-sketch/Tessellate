@@ -5309,9 +5309,63 @@ After the changes, frozen dependency installation, catalogue build, TypeScript t
 - **Deployed verification:** Public v74 repeats the visible flagship flow at 1440x900 and 390x844 with reduced motion enabled. Six nodes report transition:none and animation:none, no transitionrun/transitionstart/animationstart event fired, and no browser/network errors occurred. Lighthouse mobile scored 100 in Accessibility, Best Practices, SEO and Agentic Browsing. Chrome DevTools recorded LCP 1,409ms at 1x CPU and 4,416ms at 4x CPU, CLS 0.06 in both. Evidence and screenshots: `audit/evidence/step-48/deployed-v74/workbench-reduced-motion-live.json` and `audit/evidence/step-48/deployed-v74/`.
 - **Status:** `closed-deployed-verified` on public Sites v74 (canonical `75276e8078e908b8258fa3d2cba629d71b85cd60`).
 
+## MEDIUM — 2026-11-03 public v74 catalogue copy review
+
+### AUD-466 — Video Hero reported playback without media
+
+- **Evidence:** On v74 `/r/video-hero/`, the play control changed to a pause state and “Playing High-Fidelity Showreel (4K)” while the preview had no `<video>` element. Desktop/mobile screenshots: `quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/video-hero-1440x900-before.png` and `video-hero-390x844-before.png`.
+- **Reproduction:** Open `/r/video-hero/` and activate “Play video showreel.”
+- **Root cause:** The control toggled an `isPlaying` flag without a media source or playback event.
+- **Affected code:** `resources/sections/video-hero/index.tsx`, `resources/sections/video-hero/preview.tsx`, `scripts/sections-batch-1.ts`, and the Step 39 browser regression.
+- **Remediation:** Use native controls only when a host supplies a video source. Without one, render a truthful static message and no play control.
+- **Local verification:** The Sites Worker regression passes after a production build; no media request is made when `videoSrc` is absent.
+- **Deployed verification:** Pending a new review Site version.
+
+### AUD-467 — Video Hero used fabricated media and production claims
+
+- **Evidence:** The same v74 preview advertised a 1:45 showreel and claimed arbitrary manifests become production-ready applications with zero manual wiring, despite containing no video or measured export result. See the AUD-466 screenshots and `baseline-interactions.json` in the same evidence directory.
+- **Reproduction:** Open `/r/video-hero/` and read its title, description, duration badge, and playback state.
+- **Root cause:** Demo copy embedded a Tessellate promise and invented media metadata instead of documenting the host-supplied video contract.
+- **Affected code:** `resources/sections/video-hero/{index.tsx,preview.tsx,fixtures.ts,manifest.json,README.md}`, `scripts/sections-batch-1.ts`, and the Step 39 browser regression.
+- **Remediation:** Use neutral example copy, remove fabricated duration/resolution claims, and disclose that the host supplies and licenses any video.
+- **Local verification:** The production-like Sites Worker regression confirms the default preview has no video element and no unsupported claim.
+- **Deployed verification:** Pending a new review Site version.
+
+### AUD-468 — Empty Dashboard State conflated composition with telemetry
+
+- **Evidence:** Public v74 `/r/empty-dashboard-state/` said `tess compose` would populate live metrics and component audits, although the resource has no telemetry integration. Desktop/mobile screenshots: `quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/empty-dashboard-state-1440x900-before.png` and `empty-dashboard-state-390x844-before.png`.
+- **Reproduction:** Open `/r/empty-dashboard-state/` and read the explanatory paragraph.
+- **Root cause:** A generic telemetry empty-state message incorrectly attributed external data integration to the local composition command.
+- **Affected code:** `resources/states/empty-dashboard-state/{index.tsx,manifest.json}`, `scripts/states-batch-1.ts`, and the Step 39 browser regression.
+- **Remediation:** State that no data connection exists and that the host application must configure a telemetry source.
+- **Local verification:** The Sites Worker browser regression confirms the incorrect claim is absent.
+- **Deployed verification:** Pending a new review Site version.
+
+### AUD-469 — Empty Dashboard State exposed an inert connection action
+
+- **Evidence:** Clicking the enabled “Connect Telemetry Source” button on public v74 produced no status or visible effect. `baseline-interactions.json` records no browser or network errors, confirming this was a silent no-op. The desktop/mobile screenshots are linked under AUD-468.
+- **Reproduction:** Open `/r/empty-dashboard-state/` and activate “Connect Telemetry Source.”
+- **Root cause:** The action remained enabled when the optional `onConnect` callback was absent and had no explanation.
+- **Affected code:** `resources/states/empty-dashboard-state/index.tsx`, `scripts/states-batch-1.ts`, and the Step 39 browser regression.
+- **Remediation:** Disable the action without a callback and associate a visible explanation with the control.
+- **Local verification:** The Sites Worker regression asserts disabled semantics, help text, and zero runtime/network failures.
+- **Deployed verification:** Pending a new review Site version.
+
+## LOW — 2026-11-03 public v74 catalogue copy review
+
+### AUD-470 — Dashboard Skeleton recommended a trading portal
+
+- **Evidence:** Public v74 `/r/dashboard-skeleton/` listed “Trading portal loaders” as an ideal use case for a general analytics resource. Screenshot: `quality/evidence/step-39/public-v74-copy-review-2026-11-03/screenshots/dashboard-skeleton-1440x900.png`.
+- **Reproduction:** Open `/r/dashboard-skeleton/` and read its “When it works” recommendations.
+- **Root cause:** Resource metadata reused unrelated trading-domain sample copy.
+- **Affected code:** `resources/states/dashboard-skeleton/manifest.json`, `scripts/states-batch-1.ts`, and the Step 39 browser regression.
+- **Remediation:** Replace the recommendation with product analytics/reporting uses and assert the generic resource has no trading, order-book, or portfolio residue.
+- **Local verification:** The production-like Sites Worker route regression passes with neutral analytics recommendations.
+- **Deployed verification:** Pending a new review Site version.
+
 ## 2026-11-03 full local regression pass
 
-After the AUD-464 reduced-motion change and Explore preview-load recovery fix, the current tree passed pnpm test:e2e across Astro, the Sites Worker, and standalone preview: 786 passed, 189 configured profile skips, zero failures. This includes 396 Astro desktop/mobile passes, 209 Sites desktop passes, 178 Sites mobile passes, and 3 standalone preview passes. Sites browser certification rendered all 324 resources at certified widths; reduced-motion passed in Astro and both Sites profiles; preview loading and error recovery passed in Sites desktop and mobile. The flagship employee Compose-to-Workbench and standalone React export journeys passed in Astro desktop/mobile and Sites desktop/mobile. The machine-readable run is audit/evidence/step-48/e2e-full-matrix-2026-11-03.json. This local suite does not replace issue-specific deployed checks; other pending findings remain open. AUD-450, AUD-451, AUD-452, AUD-456, AUD-464 and AUD-465 are closed after their public v74 checks.
+After the AUD-464 reduced-motion change and Explore preview-load recovery fix, the latest complete pnpm test:e2e run across Astro, the Sites Worker, and standalone preview passed 794 tests, with 189 configured profile skips and zero failures. This includes 396 Astro desktop/mobile passes, 213 Sites desktop passes, 182 Sites mobile passes, and 3 standalone preview passes. Sites browser certification rendered all 324 resources at certified widths; reduced-motion passed in Astro and both Sites profiles; preview loading/error recovery and the new AUD-466–AUD-470 regressions passed in Sites desktop and mobile. A focused supplemental rerun of those four resource regressions passed 8/8 after the dashboard-skeleton test was strengthened to wait for the rendered isolated preview before taking evidence screenshots. The flagship employee Compose-to-Workbench and standalone React export journeys passed in Astro desktop/mobile and Sites desktop/mobile. The machine-readable run is audit/evidence/step-48/e2e-full-matrix-2026-11-03.json. This local suite does not replace issue-specific deployed checks; other pending findings remain open. AUD-450, AUD-451, AUD-452, AUD-456, AUD-464 and AUD-465 are closed after their public v74 checks.
 
 The separate `pnpm audit:all` run passed 16/16 behavioral release-gate checks, 324/324 resource isolation, the production build, all route bundle budgets, 324/324 license/provenance/quality checks, secret/security/isolation checks, and the dependency audit. Frozen installation, all 22 workspace typechecks, lint, and Vitest (1,324 passed, 1 skipped) also passed. The public review Site is v74; no D1/R2 bindings were added. Issue-specific public v74 reruns closed AUD-450, AUD-451, AUD-452 and AUD-456. These checks do not replace the full v71 route sweep, and other locally fixed findings still await deployed verification.
 
