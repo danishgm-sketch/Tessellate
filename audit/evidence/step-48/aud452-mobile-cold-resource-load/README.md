@@ -10,6 +10,19 @@ wrappers while five Gold chunks loaded. The DevTools trace could not be saved
 to the workspace; its returned findings are retained in
 `quality/evidence/step-48/public-v72-live-audit-2026-11-02/flagship/workbench-cls-investigation.json`.
 
+A later cache-bypass Chrome DevTools trace on 2026-11-03 used the same viewport
+and CPU/network profile and measured CLS 0.18 (worst cluster 0.1782 from
+2,892ms to 4,113ms), LCP 2,897ms, TTFB 1,168ms and render delay 1,729ms. It
+identified the value-proposition, conversion-CTA, footer and hero wrappers as
+shifted elements but no potential root cause. The browser reported 42 requests,
+zero console errors/warnings, failed requests or HTTP error responses. A
+different same-day clean-profile trace measured CLS 0, so public v72 remains
+intermittent and AUD-452 stays open. The machine-readable summary is
+`public-v72-devtools-repeat-2026-11-03.json`; an inline screenshot was captured
+in the audit session. The settled public viewport screenshot is saved as
+`public-v72-mobile-412x823-2026-11-03.png`; raw trace export remained blocked by
+the DevTools workspace path policy.
+
 ## Regression and fix
 
 Run the regression on the production-like Sites Worker:

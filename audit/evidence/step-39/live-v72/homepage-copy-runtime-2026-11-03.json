@@ -1,0 +1,99 @@
+{
+  "capturedAt": "2026-11-03",
+  "source": "Chrome DevTools MCP and Playwright CLI",
+  "siteVersion": 72,
+  "canonicalSourceCommit": "b5f9f1ea9a884c544f3f7c8862655a69648e6464",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "routeClassification": "PASS for this homepage sample; not a full product or copy-review pass",
+  "viewports": {
+    "desktop": {
+      "viewport": "1440x900",
+      "documentClientWidth": 1425,
+      "documentScrollWidth": 1425,
+      "horizontalOverflow": false,
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "uncaughtExceptions": 0,
+      "requests": 30,
+      "failedRequests": 0,
+      "httpErrorResponses": 0,
+      "lighthouseSnapshot": {
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100,
+        "agenticBrowsing": 100,
+        "failedAudits": 0
+      },
+      "performanceTrace": {
+        "network": "Fast 4G",
+        "cpuThrottle": "1x",
+        "lcpMs": 364,
+        "ttfbMs": 48,
+        "cls": 0,
+        "fieldData": "unavailable"
+      },
+      "screenshot": "public-home-1440x900-viewport-2026-11-03.png"
+    },
+    "mobile": {
+      "viewport": "390x844",
+      "documentClientWidth": 390,
+      "documentScrollWidth": 390,
+      "documentScrollHeight": 16631,
+      "horizontalOverflow": false,
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "uncaughtExceptions": 0,
+      "requests": 27,
+      "failedRequests": 0,
+      "httpErrorResponses": 0,
+      "lighthouseSnapshot": {
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100,
+        "agenticBrowsing": 100,
+        "failedAudits": 0
+      },
+      "performanceTrace": {
+        "network": "Fast 4G",
+        "cpuThrottle": "1x",
+        "lcpMs": 337,
+        "ttfbMs": 58,
+        "cls": 0,
+        "fieldData": "unavailable"
+      },
+      "screenshot": "public-home-390x844-2026-11-03.png"
+    }
+  },
+  "contentReview": {
+    "sampleDataDisclosed": true,
+    "illustrativePreviewsDisclosed": true,
+    "liveUsageMetricsClaimed": false,
+    "placeholderOrLoremTextFound": false,
+    "notes": [
+      "Catalogue previews label their values as examples and sample data, not live product activity.",
+      "The direction and design-spectrum examples explicitly say they are illustrative and are not connected to a live project.",
+      "Offscreen comparison islands initially show a Preparing status and disabled controls; after scrolling them into view, controls enabled within 2.5 seconds. This is expected lazy activation, not a dead control."
+    ]
+  },
+  "presetInteraction": {
+    "control": "Preset briefs",
+    "default": "playful HR platform",
+    "defaultClick": "No value change because this preset was already active.",
+    "alternateTest": "luxury travel marketplace",
+    "alternateResult": {
+      "briefChanged": true,
+      "feel": "luxury without being flashy",
+      "visualAmbition": 85,
+      "structuralCreativity": 45
+    },
+    "restoredToDefault": true
+  },
+  "networkNotes": [
+    "Desktop received one Cloudflare challenge redirect followed by successful challenge resources; the application completed loading.",
+    "The homepage did not request /data/catalog.json; catalogue readiness is audited on Compose and catalogue routes."
+  ],
+  "limitations": [
+    "This is a scoped homepage check only. It does not complete Step 39's manual review of all visible catalogue strings or the broader product-hardening release gate.",
+    "The first mobile viewport exposes two lines of the longer sample brief in its textarea; its complete accessible value remains present. Full mobile interaction testing belongs to the later responsive gate."
+  ]
+}

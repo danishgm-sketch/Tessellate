@@ -20406,7 +20406,7 @@
       "category": "performance",
       "title": "Cold mobile Workbench resource loading causes severe layout shift",
       "expected": "The mobile Workbench keeps stable layout while active-screen Gold resources load; first load and reload CLS remain below 0.1.",
-      "actual": "A fresh cache-bypass public v72 trace at 412x823, DPR 1.75, 4x CPU and Fast 4G measured CLS 0.5028, LCP 4,844 ms, TTFB 1,195 ms and 3,649 ms render delay. Four renderer wrappers shifted at 4,829 ms while five Gold chunks loaded behind Workbench. The initial local partial-failure regression reproduced CLS 0.502772 when editorial-hero failed and four other Gold chunks were delayed. After all-settled preload gating, deferred offscreen rendering, role-sized loading/error fallbacks and a fresh production build, the final local Sites Worker first load, reload and partial-failure CLS were each 0.017716. The failed hero retained a 448px wrapper and displayed its specific recovery message. The injected request and corresponding browser import errors were expected; there were zero uncaught exceptions. Normal runs recorded zero console errors/warnings, failed requests, uncaught exceptions or HTTP errors. A clean-profile v72 repeat on 2026-11-03 measured CLS 0, LCP 2,768ms and TTFB 1,112ms under the same CPU/network conditions, so this earlier live failure has not been reproduced consistently.",
+      "actual": "Public v72 browser traces are variable. The 2026-11-02 cache-bypass trace measured CLS 0.5028, LCP 4,844ms, TTFB 1,195ms and 3,649ms render delay. A clean-profile v72 repeat on 2026-11-03 measured CLS 0. A further Chrome DevTools cache-bypass trace on 2026-11-03 at 412x823, DPR 1.75, 4x CPU and Fast 4G measured CLS 0.18 (worst cluster 0.1782 from 2,892ms to 4,113ms), LCP 2,897ms, TTFB 1,168ms and 1,729ms render delay. It identified shifts in the value-proposition, conversion-CTA, footer and hero wrappers; Chrome identified no potential root cause. The trace reported 42 requests, zero console errors/warnings, zero failed requests and zero HTTP error responses. The fixed local Sites Worker first load, reload and injected-failure regressions each measured CLS 0.017716; the failed hero retained a 448px wrapper and showed its specific recovery message. The raw Chrome trace and screenshot could not be saved because the DevTools MCP file path was outside its configured workspace boundary; a summary and inline screenshot capture are recorded. Keep AUD-452 open until the same cold/failure workflow passes on a newly deployed Site.",
       "reproduction": [
         "Open public v72 /workbench#screen-marketing-home in a fresh mobile context at 412x823, DPR 1.75, 4x CPU and Fast 4G, then record a cache-bypass navigation trace.",
         "On the local Sites Worker, delay the five active-screen Gold chunks by 1.8 seconds, observe first-load and reload layout-shift sessions, and assert CLS is below 0.1."
@@ -20438,7 +20438,7 @@
           "2026-11-02T05:19:21.505Z: 0.502",
           "2026-11-02T05:20:18.126Z: 0.503"
         ],
-        "devToolsTraceCount": 5,
+        "devToolsTraceCount": 6,
         "rawTraceRetained": false,
         "deploymentVerificationPending": true,
         "coldPublicTrace": {
@@ -20502,7 +20502,7 @@
           "uncaughtExceptions": 0,
           "machineReport": "audit/evidence/step-48/aud452-mobile-cold-resource-load/sites-mobile-chromium-cold-load.json"
         },
-        "latestV72Repeat": {
+        "earlierV72Repeat": {
           "report": "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-devtools-trace.json",
           "date": "2026-11-03",
           "coldProfile": true,
@@ -20520,6 +20520,35 @@
           "consoleErrors": 0,
           "failedRequests": 0,
           "note": "Does not reproduce the 2026-11-02 v72 CLS report; keep the issue open pending repeat on the updated Site."
+        },
+        "latestV72Repeat": {
+          "report": "audit/evidence/step-48/aud452-mobile-cold-resource-load/public-v72-devtools-repeat-2026-11-03.json",
+          "date": "2026-11-03",
+          "coldProfile": true,
+          "viewport": "412x823, DPR 1.75, 4x CPU, Fast 4G",
+          "httpCacheBypass": true,
+          "cls": 0.18,
+          "worstShiftCluster": 0.1782,
+          "clusterStartMs": 2892,
+          "clusterEndMs": 4113,
+          "lcpMs": 2897,
+          "ttfbMs": 1168,
+          "renderDelayMs": 1729,
+          "shiftedWrappers": [
+            "value-proposition",
+            "conversion-cta",
+            "footer",
+            "hero"
+          ],
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "networkRequests": 42,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "rawTraceRetained": false,
+          "screenshot": "audit/evidence/step-48/aud452-mobile-cold-resource-load/public-v72-mobile-412x823-2026-11-03.png",
+          "screenshotCapture": "Playwright CLI, public route, 412x823 viewport, captured after the Workbench preview appeared and 3s settle; not captured under the trace throttles.",
+          "note": "Reproduces CLS above 0.1 on public v72; keep open pending deployed verification of the local fix."
         }
       }
     },
@@ -20661,11 +20690,12 @@
       "category": "performance",
       "title": "Workbench startup handoff replaces the server preview with a compact status",
       "expected": "The server fallback and client startup should preserve one accessible, full-viewport Workbench loading shell until the project and verified resource catalogue are ready.",
-      "actual": "Exact-head CI run 41578373521 failed the desktop Sites layout test at CLS 0.5390775463 and first-run mobile at CLS 0.6693234653309674 (reload 0.023588868174569302). A controlled cold-start against the current public v72 at 390x844, DPR 1.75, 4x CPU and Fast 4G delayed WorkbenchShell by 700ms and starter data by 1,800ms; CLS reached 0.510487301008628 as the 844px server fallback was replaced by a compact “Starting your workspace…” message with no main element. Afterward the loaded Workbench occupied y=219..780. The same run had zero console errors/warnings, failed requests or HTTP errors. A no-delay v72 DevTools trace measured CLS 0, so the problem is the slow startup handoff, not every navigation.",
+      "actual": "Exact-head CI run 41578373521 failed the desktop Sites layout test at CLS 0.5390775463 and first-run mobile at CLS 0.6693234653309674 (reload 0.023588868174569302). A controlled cold-start against current public v72 delayed WorkbenchShell by 700ms and starter data by 1,800ms at both 1440x900 and 390x844. Mobile CLS reached 0.510487301008628 as the 844px server fallback was replaced by a compact “Starting your workspace…” message with no main element; the loaded Workbench occupied y=219..780. Desktop also lost the main element, although its fixed 900px body kept the CLS observer at 0. The same run had zero console errors/warnings, failed requests or HTTP errors. A no-delay v72 DevTools trace measured CLS 0, so the problem is the slow startup handoff, not every navigation.",
       "reproduction": [
         "Open public v72 /workbench in a fresh mobile browser profile at 390x844, DPR 1.75, with 4x CPU and Fast 4G.",
         "Delay /_astro/WorkbenchShell.*.js by 700ms and /data/workbench-starter.json by 1,800ms; observe the full-height initial shell collapse to the one-line client status, then expand into the editor.",
-        "The browser report records CLS 0.510487301008628 with no console or network errors. Repeat the same delays against the new review deployment before closing the issue."
+        "The browser report records CLS 0.510487301008628 with no console or network errors. Repeat the same delays against the new review deployment before closing the issue.",
+        "At 1440x900 with the same 700ms/1,800ms delays, the public v72 main element disappears during the one-line client status. The body remains fixed at 900px and no main content is available until Workbench finishes loading."
       ],
       "console": [],
       "network": [],
@@ -20741,12 +20771,31 @@
           "screenshots": [
             "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-initial-visible-before.png",
             "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-client-startup-before.png",
-            "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-loaded-before.png"
-          ]
+            "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-loaded-before.png",
+            "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-desktop-initial-before.png",
+            "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-desktop-client-before.png",
+            "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-desktop-loaded-before.png"
+          ],
+          "desktop": {
+            "report": "audit/evidence/step-48/aud456-workbench-startup-shift/public-v72-desktop-startup-before.json",
+            "viewport": "1440x900, 4x CPU, Fast 4G",
+            "delayedResources": {
+              "workbenchShellMs": 700,
+              "starterJsonMs": 1800
+            },
+            "beforeMainHeight": 900,
+            "clientStatusMain": null,
+            "cls": 0,
+            "consoleErrors": 0,
+            "consoleWarnings": 0,
+            "failedRequests": 0,
+            "httpErrors": 0,
+            "note": "The body retains its 900px fixed viewport height, so the CLS observer is zero even though the full main content disappears into a single status line."
+          }
         }
       }
     }
   ],
-  "generatedAt": "2026-11-03T05:32:16.291Z",
+  "generatedAt": "2026-11-03T05:35:24.693Z",
   "latestDeploymentEvidence": "quality/evidence/step-48/aud449-minimal-top-nav/deployed-v72-browser-evidence.json"
 }

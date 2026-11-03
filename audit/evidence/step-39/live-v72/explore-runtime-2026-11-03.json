@@ -1,0 +1,93 @@
+{
+  "capturedAt": "2026-11-03",
+  "source": "Chrome DevTools MCP and Playwright CLI",
+  "siteVersion": 72,
+  "canonicalSourceCommit": "b5f9f1ea9a884c544f3f7c8862655a69648e6464",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+  "routeClassification": "PASS for the sampled search, combined-filter, responsive, and dialog behavior; not a catalogue-wide search-quality certification",
+  "catalogue": {
+    "status": "ready",
+    "visibleCount": 50,
+    "totalCount": 324,
+    "goldCount": 40
+  },
+  "viewports": {
+    "desktop": {
+      "viewport": "1440x900",
+      "horizontalOverflow": false,
+      "visibleResourceCards": 6,
+      "loadedPreviewFrames": 7,
+      "requests": 129,
+      "failedRequests": 0,
+      "httpErrorResponses": 0,
+      "networkNotes": [
+        "One Cloudflare challenge redirect completed before application requests; no essential request failed.",
+        "Seven preview iframes loaded for visible or near-visible cards."
+      ],
+      "screenshot": "public-explore-1440x900-2026-11-03.png"
+    },
+    "mobile": {
+      "viewport": "390x844",
+      "documentClientWidth": 390,
+      "documentScrollWidth": 390,
+      "horizontalOverflow": false,
+      "loadedPreviewFrames": 2,
+      "requests": 66,
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "uncaughtExceptions": 0,
+      "failedRequests": 0,
+      "httpErrorResponses": 0,
+      "lighthouseSnapshot": {
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100,
+        "agenticBrowsing": 100,
+        "failedAudits": 0
+      },
+      "screenshot": "public-explore-390x844-2026-11-03.png"
+    }
+  },
+  "searchAndFilter": {
+    "query": "pricing",
+    "resultCount": 10,
+    "results": [
+      "pricing-three-tier",
+      "pricing-usage-based",
+      "pricing-enterprise",
+      "pricing-toggle",
+      "pricing-calculator-shell",
+      "pricing-two-tier",
+      "pricing-comparison-table",
+      "plan-feature-matrix",
+      "animated-border-trace",
+      "cursor-spotlight"
+    ],
+    "relevanceNote": "The two motion resources declare pricing plan cards as an intended use; the eight section results directly match the query.",
+    "urlState": "/explore?q=pricing",
+    "combinedFilterCheck": {
+      "queryPlusBlock": 0,
+      "queryPlusBlockAndSection": 8,
+      "urlState": "/explore?q=pricing&type=block%2Csection",
+      "interpretation": "Category selections combine as OR within the selected categories; the text query is intersected with the selected categories."
+    }
+  },
+  "mobileDialog": {
+    "control": "Filters",
+    "openedAccessibleDialog": true,
+    "dialogName": "Explore filters",
+    "initialFocus": "Close filters",
+    "escapeCloses": true,
+    "focusRestoredToTrigger": true,
+    "expandedStateAfterClose": false
+  },
+  "observedResponsiveDetails": [
+    "The Try chips are in a horizontally scrollable row and remain within the 390px document viewport.",
+    "Preview content is intentionally isolated in small preview frames; frame-internal scrolling is distinct from document overflow.",
+    "Mobile lazy-loading mounted two preview frames during the captured viewport instead of eagerly mounting the desktop set."
+  ],
+  "limitations": [
+    "This is a scoped route check. It does not review relevance for the full catalogue or all search terms in the product-hardening matrix.",
+    "The complete 324-resource provenance, preview, and responsive certification remains part of later ordered hardening gates."
+  ]
+}

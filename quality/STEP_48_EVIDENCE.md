@@ -138,7 +138,7 @@ The exact employee-experience brief passed the visible Compose-to-Direction-C-to
 
 A local host check found the laptop API and worker containers running but unhealthy. Restarting the existing API and then its dependent host restored the API health endpoint, both Docker health checks, and a fresh heartbeat without rebuilding or touching MGI containers. The initiating API failure is unknown and recorded open as AUD-448. The public Site backend remains intentionally unavailable because its backend URL is unconfigured; no provider credential was supplied. D1/R2 are unprovisioned and no security policy was weakened.
 
-The ledger contains 456 findings: 0 Critical, 87 High, 342 Medium, and 27 Low. AUD-419 remains High and fixed locally: a new cross-boundary test covers Sites gateway → Hono API → stubbed provider, and a negative control fails when the gateway drops provider headers. Public v72 serves the fix but remains intentionally unconfigured for laptop access under D-041; no tunnel or real provider credential was used, so deployed provider forwarding remains unverified. AUD-448 remains an open Medium pending root-cause investigation. AUD-449 was reproduced on public v71 and is now closed after the same behavior passed on v72. AUD-450 and AUD-451 were reproduced on public v72 and fixed locally; their deployed verification is pending. AUD-452's earlier v72 cold-load CLS finding is fixed locally; its latest clean live DevTools trace did not reproduce the shift, so the issue remains open pending the updated deployment. AUD-456 records the separate startup shell replacement regression caught in exact-head CI and fixed locally. The local keyboard/touch regression also passes at 360, 390, 430, 768, 1024, 1280 and 1440px. Step 48 and the broader hardening programme remain open; see audit/RUNTIME_AUDIT.md and docs/PRODUCT_HARDENING.md.
+The ledger contains 456 findings: 0 Critical, 87 High, 342 Medium, and 27 Low. AUD-419 remains High and fixed locally: a new cross-boundary test covers Sites gateway → Hono API → stubbed provider, and a negative control fails when the gateway drops provider headers. Public v72 serves the fix but remains intentionally unconfigured for laptop access under D-041; no tunnel or real provider credential was used, so deployed provider forwarding remains unverified. AUD-448 remains an open Medium pending root-cause investigation. AUD-449 was reproduced on public v71 and is now closed after the same behavior passed on v72. AUD-450 and AUD-451 were reproduced on public v72 and fixed locally; their deployed verification is pending. AUD-452's earlier v72 cold-load CLS finding is fixed locally. Public v72 traces varied: one clean-profile trace measured CLS 0, while a subsequent cache-bypass DevTools trace measured CLS 0.18 with a 0.1782 shift cluster and affected section wrappers. Keep the issue open until the updated Site passes the same cold/failure workflow. AUD-456 records the separate startup shell replacement regression caught in exact-head CI and fixed locally. The local keyboard/touch regression also passes at 360, 390, 430, 768, 1024, 1280 and 1440px. Step 48 and the broader hardening programme remain open; see audit/RUNTIME_AUDIT.md and docs/PRODUCT_HARDENING.md.
 
 ## Public Sites v72 deployed AUD-449 verification — 2026-11-01
 
@@ -245,10 +245,20 @@ build (324 resources/40 Gold), 22 workspace typechecks, lint, 1,313 unit and
 integration tests with one configured skip, `audit:all` (16/16 behavioral
 checks plus licence/provenance, security, dependency and bundle audits), and
 the 733-page production/Sites build. This remains local evidence: public Site
-v72 is unchanged. AUD-452 remains open until its cold-load/failure behavior is
-rechecked on a new review deployment; AUD-450/451/453/454/455 also retain their
-existing pending deployed checks. The hardening programme and Step 48 remain
-incomplete.
+v72 is unchanged. A new Chrome DevTools cache-bypass repeat at 412×823, DPR
+1.75, 4× CPU and Fast 4G measured CLS 0.18 (worst cluster 0.1782), LCP 2,897ms,
+TTFB 1,168ms and render delay 1,729ms. It identified shifts in the
+value-proposition, conversion-CTA, footer and hero wrappers; the trace found no
+root cause. There were 42 requests and zero console errors/warnings, failed
+requests or HTTP errors. A prior same-day clean-profile repeat measured CLS 0,
+so v72 remains intermittent and AUD-452 stays open until a new review deployment
+passes the cold/failure workflow. The machine summary is
+`audit/evidence/step-48/aud452-mobile-cold-resource-load/public-v72-devtools-repeat-2026-11-03.json`;
+the settled public screenshot is
+`audit/evidence/step-48/aud452-mobile-cold-resource-load/public-v72-mobile-412x823-2026-11-03.png`.
+The raw trace export was blocked by the DevTools workspace boundary.
+AUD-450/451/453/454/455 also retain their pending
+deployed checks. The hardening programme and Step 48 remain incomplete.
 
 ### AUD-456 local remediation — 2026-11-03
 
@@ -264,7 +274,9 @@ The full post-fix E2E matrix passed 779 tests with 186 configured profile skips
 and zero failures; local desktop and mobile captures are in
 `quality/evidence/step-38/after/`. A no-delay v72 live trace recorded CLS 0,
 LCP 2,768ms and TTFB 1,112ms under 4× CPU and Fast 4G. A separate public v72
-browser run delayed the bundle by 700ms and starter data by 1,800ms, reproduced
-the full-shell-to-one-line collapse, and measured CLS 0.510487 with zero
-console or network errors. It remains open until the same deployed regression
-passes on the new review version.
+browser runs at desktop 1440×900 and mobile 390×844 delayed the bundle by
+700ms and starter data by 1,800ms, reproducing the full-shell-to-one-line
+collapse with zero console or network errors. Mobile CLS measured 0.510487;
+desktop lost its main content even though fixed body height kept its CLS at 0.
+It remains open until the same deployed regression passes on the new review
+version.

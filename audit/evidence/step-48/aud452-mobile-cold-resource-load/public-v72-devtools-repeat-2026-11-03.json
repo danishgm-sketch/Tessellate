@@ -1,0 +1,42 @@
+{
+  "capturedAt": "2026-11-03",
+  "source": "Chrome DevTools MCP",
+  "siteVersion": 72,
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+  "viewport": {
+    "width": 412,
+    "height": 823,
+    "deviceScaleFactor": 1.75,
+    "cpuThrottle": "4x",
+    "networkProfile": "Fast 4G",
+    "cacheBypass": true
+  },
+  "metrics": {
+    "cls": 0.18,
+    "worstShiftCluster": 0.1782,
+    "clusterStartMs": 2892,
+    "clusterEndMs": 4113,
+    "lcpMs": 2897,
+    "ttfbMs": 1168,
+    "renderDelayMs": 1729
+  },
+  "shiftedElements": [
+    "DIV.tess-layout-value-proposition",
+    "DIV.tess-layout-conversion-cta",
+    "DIV.tess-layout-footer",
+    "SECTION.hero"
+  ],
+  "runtime": {
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "networkRequests": 42,
+    "failedRequests": 0,
+    "httpErrorResponses": 0,
+    "cloudflareChallengeRedirects": 1,
+    "notModifiedResponses": 1
+  },
+  "screenshot": "audit/evidence/step-48/aud452-mobile-cold-resource-load/public-v72-mobile-412x823-2026-11-03.png",
+  "screenshotCapture": "Playwright CLI on the public v72 route at a 412x823 viewport after mobile-workbench became visible and a 3s settle; screenshot is visual evidence, not the throttled trace profile.",
+  "rawTraceRetained": false,
+  "disposition": "AUD-452 remains open: the public v72 trace again exceeds the 0.1 CLS target; verify the fix on a newly deployed version."
+}
