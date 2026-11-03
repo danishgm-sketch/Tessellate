@@ -3,6 +3,7 @@ import { hasIndexedDB, historyStateMatchesManifest, loadLocalHistoryState, saveL
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import { loadBrowserProject, createProjectSaver } from '../persistence/browser-session.js';
+import { loadWorkbenchStarterTemplate } from '../persistence/starter-template.js';
 import { ProjectManifestSchema, type ProjectManifest } from '@tessellate/schemas';
 
 const TopToolbar = lazy(() => import('./TopToolbar.js').then((module) => ({ default: module.TopToolbar })));
@@ -47,7 +48,9 @@ export function WorkbenchShell() {
   const openReplaceDrawer = useWorkbenchStore((state) => state.openReplaceDrawer);
   const setManifest = useWorkbenchStore((state) => state.setManifest);
 
-  const [isMobileScreen, setIsMobileScreen] = useState(false);
+  const [isMobileScreen, setIsMobileScreen] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth < 1024,
+  );
   const [loading, setLoading] = useState(true);
   const [historySaveStatus, setHistorySaveStatus] = useState<'loading' | 'saving' | 'saved' | 'unavailable'>('loading');
   const [storageError, setStorageError] = useState<string | null>(null);
@@ -71,6 +74,13 @@ export function WorkbenchShell() {
       });
     };
     let durableHistoryAvailable = true;
+    const starterTemplatePromise = !projectId && !showcaseId && !resourceSlug
+      ? loadWorkbenchStarterTemplate()
+      : null;
+    // The persisted-project lookup may need an IndexedDB open. Keep a rejected
+    // starter request handled while that lookup finishes; the failure is shown
+    // only if this visit actually needs the starter project.
+    void starterTemplatePromise?.catch(() => undefined);
     const saver = createProjectSaver((warning, undoHistoryAvailable) => {
       addStorageWarning(warning);
       if (!undoHistoryAvailable && !disposed) {
@@ -135,9 +145,8 @@ export function WorkbenchShell() {
       }
       else if (projectId) throw new Error(`Project ${projectId} was not found in this browser.`);
       else if (loaded.damagedRecords.length===0) {
-        const response = await fetch('/data/workbench-starter.json');
-        if (!response.ok) throw new Error(`Workbench starter HTTP ${response.status}`);
-        const starterTemplate = ProjectManifestSchema.parse(await response.json());
+        if (!starterTemplatePromise) throw new Error('Workbench starter project is not available for this route.');
+        const starterTemplate = await starterTemplatePromise;
         const starter = ProjectManifestSchema.parse({ ...starterTemplate, id: `local-${crypto.randomUUID()}` });
         setManifest(starter);
         void saver(starter);
