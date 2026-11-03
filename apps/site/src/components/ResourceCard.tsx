@@ -4,6 +4,7 @@ import { isPreviewToParentMessage, resolvePreviewNavigationDestination } from '@
 import type { PreviewNavigationDestination } from '@tessellate/catalog/protocol';
 import type { ResourceManifest } from '@tessellate/schemas';
 import { buildPrivatePreviewUrl, isPrivateVersoResource, resolvePrivatePreviewOrigin } from '../lib/private-preview-origin';
+import { acquirePreviewLoadSlot } from '../lib/preview-load-scheduler';
 import { Eye, Bookmark, ArrowUpRight, Copy, Check } from 'lucide-react';
 import { PreviewNavigationConfirmation } from './PreviewNavigationConfirmation';
 
@@ -42,6 +43,8 @@ export function ResourceCard({
   const [previewFailed,setPreviewFailed]=useState(false);
   const [previewDestination,setPreviewDestination]=useState<PreviewNavigationDestination|null>(null);
   const previewFrameRef=useRef<HTMLIFrameElement>(null);
+  const previewReadyRef=useRef(false);
+  const [previewActive,setPreviewActive]=useState(false);
   useEffect(()=>{
     if(typeof IntersectionObserver==='undefined'){setPreviewVisible(true);return undefined;}
     // Mount the isolated resource runtime only when its card enters the viewport.
@@ -62,6 +65,7 @@ export function ResourceCard({
       if(event.data.type==='TESSELLATE_PREVIEW_NAVIGATION_REQUEST'){
         setPreviewDestination(resolvePreviewNavigationDestination(event.data.href,window.location.origin));
       } else if(event.data.type==='TESSELLATE_PREVIEW_READY'){
+        previewReadyRef.current=true;
         setPreviewLoaded(true);
         setPreviewFailed(false);
       } else if(event.data.type==='TESSELLATE_PREVIEW_ERROR'){
@@ -74,8 +78,26 @@ export function ResourceCard({
   },[manifest.slug,privateVerso,privatePreviewOrigin]);
   useEffect(()=>{
     if(!previewVisible || previewLoaded || previewFailed || (privateVerso && !privatePreviewOrigin)) return undefined;
-    const timeout=window.setTimeout(()=>setPreviewFailed(true),15000);
-    return ()=>window.clearTimeout(timeout);
+    let cancelled=false;
+    let releaseSlot:(()=>void)|null=null;
+    let timeout:number|undefined;
+    const controller=new AbortController();
+    void acquirePreviewLoadSlot(controller.signal).then(release=>{
+      if(!release)return;
+      if(cancelled){release();return;}
+      releaseSlot=release;
+      // Register the failure timer before rendering the loading state. This
+      // makes the visible state a reliable signal that recovery is armed.
+      timeout=window.setTimeout(()=>setPreviewFailed(true),15000);
+      setPreviewActive(true);
+    });
+    return ()=>{
+      cancelled=true;
+      controller.abort();
+      if(timeout!==undefined)window.clearTimeout(timeout);
+      releaseSlot?.();
+      if(!previewReadyRef.current)setPreviewActive(false);
+    };
   },[previewVisible,previewLoaded,previewFailed,privateVerso,privatePreviewOrigin]);
 
   const handleCopy = (e: React.MouseEvent) => {
@@ -93,9 +115,9 @@ export function ResourceCard({
   };
 
   return (
-    <div className="group relative flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] transition-all duration-200 hover:border-[var(--tess-hairline-strong,#C7C3BA)] hover:shadow-md overflow-hidden">
+    <div ref={previewRef} className="group relative flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] transition-all duration-200 hover:border-[var(--tess-hairline-strong,#C7C3BA)] hover:shadow-md overflow-hidden">
       {/* 16:10 Preview Frame */}
-      <div ref={previewRef} aria-busy={previewVisible && !previewLoaded && !previewFailed} className="relative aspect-[16/10] w-full bg-[var(--tess-canvas,#F4F2ED)] border-b border-[var(--tess-hairline,#D9D6CF)] flex items-center justify-center p-6 overflow-hidden">
+      <div data-testid="resource-preview-surface" aria-busy={previewVisible && !previewLoaded && !previewFailed} className="relative aspect-[16/10] w-full bg-[var(--tess-canvas,#F4F2ED)] border-b border-[var(--tess-hairline,#D9D6CF)] flex items-center justify-center p-6 overflow-hidden">
         {previewVisible && privateVerso && !privatePreviewOrigin ? (
           <span role="status" className="px-4 text-center text-xs text-[var(--tess-ink-secondary)]">
             Private preview runtime is not configured for this local session.
@@ -104,7 +126,7 @@ export function ResourceCard({
           <>
             {!previewLoaded && !previewFailed && (
               <span role="status" className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-xs text-[var(--tess-ink-muted)]">
-                <span className="rounded-full border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] px-3 py-1.5">Loading preview…</span>
+                <span className="rounded-full border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] px-3 py-1.5">{previewActive ? 'Loading preview…' : 'Preview queued…'}</span>
               </span>
             )}
             {previewFailed && (
@@ -114,7 +136,7 @@ export function ResourceCard({
                 {' '}for details.
               </span>
             )}
-            <iframe
+            {previewActive && <iframe
               ref={previewFrameRef}
               src={privateVerso && privatePreviewOrigin
                 ? buildPrivatePreviewUrl(privatePreviewOrigin, manifest.slug)
@@ -125,7 +147,7 @@ export function ResourceCard({
               loading="lazy"
               onError={() => { setPreviewLoaded(false); setPreviewFailed(true); }}
               className={`w-full h-full border-0 bg-white transition-opacity duration-150 ${previewLoaded ? 'opacity-100' : 'opacity-0'}`}
-            />
+            />}
           </>
         ) : (
           <span role="status" className="text-xs text-[var(--tess-ink-muted)]">Preview loads when visible</span>

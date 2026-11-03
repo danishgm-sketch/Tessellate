@@ -16,7 +16,7 @@ test('Explore identifies a visible resource preview while its isolated frame loa
 
   const firstPreview = page.locator('main iframe[title$="actual preview"]').first();
   await expect(firstPreview).toBeVisible();
-  const previewSurface = firstPreview.locator('xpath=..');
+  const previewSurface = firstPreview.locator('xpath=../..').getByTestId('resource-preview-surface');
 
   await expect(previewSurface).toHaveAttribute('aria-busy', 'true');
   await expect(previewSurface.getByRole('status')).toHaveText('Loading preview…');
@@ -40,7 +40,7 @@ test('Explore explains a preview error and offers the resource page', async ({ p
 
   const firstPreview = page.locator('main iframe[title$="actual preview"]').first();
   await expect(firstPreview).toBeVisible();
-  const previewSurface = firstPreview.locator('xpath=..');
+  const previewSurface = page.getByTestId('resource-preview-surface').first();
   await expect(previewSurface).toHaveAttribute('aria-busy', 'true');
   await expect(previewSurface.getByRole('status')).toHaveText('Loading preview…');
   await page.clock.fastForward(15_000);
