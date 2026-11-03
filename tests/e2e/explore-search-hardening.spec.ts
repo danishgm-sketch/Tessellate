@@ -258,14 +258,34 @@ test('facet lists only include values represented in the loaded catalogue', asyn
   await expect(page.getByText('Showing 50 of 324 resources', { exact: true })).toBeVisible();
   await openMobileFiltersIfNeeded(page);
 
+  const catalogResponse = await page.request.get('/data/catalog.json');
+  expect(catalogResponse.ok()).toBe(true);
+  const catalog = await catalogResponse.json() as {
+    resources: Array<{ slug: string; interactionDNA: { motionIntensity: number } }>;
+  };
+  const noMotionSlugs = catalog.resources
+    .filter((resource) => resource.interactionDNA.motionIntensity === 0)
+    .map((resource) => resource.slug)
+    .sort();
+
   await expect(page.getByRole('checkbox', { name: 'component', exact: true })).toHaveCount(0);
   await expect(page.getByRole('checkbox', { name: 'page', exact: true })).toHaveCount(0);
   await expect(page.getByRole('checkbox', { name: 'primitive', exact: true })).toBeVisible();
 
   await page.getByRole('button', { name: /^Motion/ }).click();
-  await expect(page.getByRole('checkbox', { name: 'None', exact: true })).toHaveCount(0);
+  const noMotionOption = page.getByRole('checkbox', { name: 'None', exact: true });
+  if (noMotionSlugs.length > 0) await expect(noMotionOption).toBeVisible();
+  else await expect(noMotionOption).toHaveCount(0);
   await expect(page.getByRole('checkbox', { name: 'Heavy', exact: true })).toHaveCount(0);
   await expect(page.getByRole('checkbox', { name: 'Light', exact: true })).toBeVisible();
+
+  if (noMotionSlugs.length > 0) {
+    await noMotionOption.check();
+    await expect(page.getByText(`Showing ${noMotionSlugs.length} of ${noMotionSlugs.length} resources`, { exact: true })).toBeVisible();
+    for (const slug of noMotionSlugs) {
+      await expect(page.locator(`a[href="/r/${slug}"]`).first()).toBeVisible();
+    }
+  }
 
   await page.getByRole('button', { name: /^Density/ }).click();
   await expect(page.getByRole('checkbox', { name: 'Sparse', exact: true })).toHaveCount(0);

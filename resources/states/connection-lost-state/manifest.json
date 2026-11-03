@@ -5,7 +5,7 @@
   "name": "Connection Lost State",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Active socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button.",
+  "description": "Connection interruption alert with an optional host-provided retry callback.",
   "resourceType": "state",
   "categories": [
     "states",
@@ -132,7 +132,7 @@
     "retry"
   ],
   "intent": {
-    "summary": "Active socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button.",
+    "summary": "Connection interruption alert; retry is available only when the host provides a callback.",
     "idealFor": [
       "Live collaborative editing sessions",
       "Real-time telemetry streams",
@@ -143,13 +143,13 @@
       "Planned maintenance modals"
     ],
     "jobs": [
-      "Inform users of active websocket connection dropouts and provide automatic reconnect attempts"
+      "Explain an interrupted connection and offer a host-provided retry action"
     ],
     "contentRequirements": [
       "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
     ],
     "notes": [
-      "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+      "No automatic retry timer runs in this component. The preview disables retry when no callback is supplied."
     ]
   },
   "visualDNA": {

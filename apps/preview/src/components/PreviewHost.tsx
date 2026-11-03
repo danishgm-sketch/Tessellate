@@ -268,9 +268,11 @@ export default function PreviewHost() {
     },
     onCreateProject: () => setActionStatus('Project creation previewed.'),
     onAction: () => setActionStatus('Example action activated.'),
-    onRetry: () => setActionStatus('Retry action previewed.'),
     ...(resourceId === 'ai-prompt-composer' ? {
       onExecute: () => setActionStatus('Prompt previewed locally; no provider request was sent.'),
+    } : {}),
+    ...(resourceId === 'error-state' ? {
+      onRetry: () => setActionStatus('Retry action previewed.'),
     } : {}),
   };
   const interactiveProps = {

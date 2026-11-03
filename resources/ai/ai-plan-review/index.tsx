@@ -17,10 +17,10 @@ export function AIPlanReview({ variant = 'quiet' }: AIPlanReviewProps) {
       : 'bg-white border-neutral-200 text-neutral-900';
 
   const steps = [
-    { num: '01', title: 'Generate Manifest Contracts', desc: 'Create 20 validated ResourceManifest JSON schemas with 0 dependencies.' },
-    { num: '02', title: 'Synthesize React Components', desc: 'Author clean, accessible pure SVG + Tailwind components for all 3 variants.' },
-    { num: '03', title: 'Monorepo Typecheck & Lint Gate', desc: 'Run pnpm typecheck and pnpm lint to verify 0 errors and 0 warnings.' },
-    { num: '04', title: 'Test Suite & Phase Gate Commit', desc: 'Execute 253 tests across packages and commit with conventional commit message.' },
+    { num: '01', title: 'Define the product goal', desc: 'Describe the people, tasks, and outcomes the product should support.' },
+    { num: '02', title: 'Review the proposed screens', desc: 'Check that each screen has a clear purpose and place in the workflow.' },
+    { num: '03', title: 'Check content and access needs', desc: 'Review the information, language, and accessibility requirements.' },
+    { num: '04', title: 'Approve before implementation', desc: 'Confirm the plan with the team before work begins.' },
   ];
 
   return (
@@ -28,10 +28,10 @@ export function AIPlanReview({ variant = 'quiet' }: AIPlanReviewProps) {
       <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
         <div>
           <h4 className="text-sm font-semibold tracking-tight">Proposed Implementation Plan</h4>
-          <p className="text-xs text-neutral-500">Autonomous execution strategy for Phase 18</p>
+          <p className="text-xs text-neutral-500">Example plan for review; no coding agent is connected.</p>
         </div>
         <span className="text-xs font-mono font-medium px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500">
-          4 Steps | ~2m runtime
+          4 example steps
         </span>
       </div>
 
@@ -49,12 +49,19 @@ export function AIPlanReview({ variant = 'quiet' }: AIPlanReviewProps) {
 
       <div className="flex justify-end pt-2">
         <button
+          type="button"
+          aria-pressed={accepted}
           onClick={() => setAccepted(!accepted)}
           className="px-5 py-2 text-xs font-medium rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:opacity-90 transition-opacity"
         >
-          {accepted ? '✓ Plan Accepted & Running' : 'Accept Plan & Proceed'}
+          {accepted ? 'Approval previewed' : 'Preview plan approval'}
         </button>
       </div>
+      {accepted && (
+        <p role="status" className="text-xs text-neutral-500 text-right">
+          Approval previewed. No tasks have started.
+        </p>
+      )}
     </div>
   );
 }

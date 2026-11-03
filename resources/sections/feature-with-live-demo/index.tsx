@@ -24,10 +24,10 @@ export function FeatureWithLiveDemo({ variant = 'quiet' }: FeatureWithLiveDemoPr
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
-          <span className="text-xs font-mono font-bold uppercase text-neutral-500 mb-3 block">Live Sandbox</span>
-          <h2 className="text-3xl font-bold tracking-tight mb-4">Tactile state transitions without re-render cascades.</h2>
+          <span className="text-xs font-mono font-bold uppercase text-neutral-500 mb-3 block">Interactive preview</span>
+          <h2 className="text-3xl font-bold tracking-tight mb-4">Interactive preview of a local state change.</h2>
           <p className="text-sm opacity-80 leading-relaxed mb-6">
-            Observe how state toggles propagate smoothly across nested manifests without incurring unwanted DOM rewrites.
+            Try the local toggle state. This preview does not connect to an external system.
           </p>
         </div>
 
@@ -35,12 +35,13 @@ export function FeatureWithLiveDemo({ variant = 'quiet' }: FeatureWithLiveDemoPr
           <span className="text-xs font-mono opacity-60 mb-6">Interactive Toggle Component</span>
           <button
             type="button"
+            aria-pressed={active}
             onClick={() => setActive(!active)}
             className={`px-6 py-3 rounded-xl font-semibold text-xs tracking-wider transition-all ${
               active ? 'bg-emerald-600 text-white' : 'bg-neutral-300 dark:bg-neutral-700 text-neutral-800 dark:text-neutral-200'
             }`}
           >
-            {active ? 'SYSTEM ACTIVE [ONLINE]' : 'SYSTEM STANDBY [OFFLINE]'}
+            {active ? 'Preview state: active' : 'Preview state: inactive'}
           </button>
         </div>
       </div>

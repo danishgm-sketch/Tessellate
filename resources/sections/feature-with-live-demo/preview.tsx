@@ -7,7 +7,7 @@ export function FeatureWithLiveDemoPreview() {
   return (
     <div className="w-full flex flex-col">
       <div className="p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs">
-        <span className="font-semibold text-neutral-600">Feature with Live Demo Preview</span>
+        <span className="font-semibold text-neutral-600">Feature with Interactive Preview</span>
         <div className="flex items-center gap-1.5">
           {(['quiet', 'expressive', 'nocturne'] as FeatureWithLiveDemoVariant[]).map((v) => (
             <button

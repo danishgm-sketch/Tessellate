@@ -1,3 +1,3 @@
 # Data Hero
 
-Financial and quantitative hero section emphasizing live throughput metrics and low latency.
+An analytical hero layout with sample metric cards. No live telemetry or measurements are connected in the preview.

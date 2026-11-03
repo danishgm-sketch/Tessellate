@@ -1,3 +1,3 @@
 # Interactive Globe
 
-Orthographic vector wireframe globe with latitude/longitude meridians and orbital nodes.
+An interactive vector globe illustration with sample locations. No network or telemetry data is connected.

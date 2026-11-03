@@ -5,7 +5,7 @@
   "name": "Number Count Up",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Eased numeric counter animating from zero to target value on viewport entrance with monospace stability.",
+  "description": "Linear count-up animation that starts when the replay control is activated.",
   "resourceType": "motion",
   "categories": [
     "motion",
@@ -19,7 +19,7 @@
   "purposes": [
     "numeric-count-up",
     "metric-celebration",
-    "telemetry-load"
+    "count-up-demo"
   ],
   "productArchetypes": [
     {
@@ -132,24 +132,24 @@
     "counter"
   ],
   "intent": {
-    "summary": "Eased numeric counter animating from zero to target value on viewport entrance with monospace stability.",
+    "summary": "Linear count-up animation started by a replay control.",
     "idealFor": [
-      "Social proof metric counters",
-      "Customer tally stats",
-      "Benchmark speed metrics"
+      "Demonstrating an animated number",
+      "Highlighting a count in a product interface",
+      "Showing a count-up interaction pattern"
     ],
     "avoidFor": [
       "Real-time clock seconds",
       "Pagination page numbers"
     ],
     "jobs": [
-      "Animate integers from 0 to destination with smooth logarithmic easing"
+      "Animate an example integer from zero to a target value after activation"
     ],
     "contentRequirements": [
       "CSS transition and animation transforms, reduced-motion fallbacks"
     ],
     "notes": [
-      "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+      "The displayed number is example content, not a certified catalogue count."
     ]
   },
   "visualDNA": {

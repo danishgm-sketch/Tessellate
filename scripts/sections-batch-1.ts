@@ -1168,15 +1168,15 @@ Terminal-styled developer hero prioritizing one-line package installation.`,
     slug: 'data-hero',
     name: 'Data Hero',
     description:
-      'Financial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.',
+      'Analytical hero layout with sample metric cards and an optional host-supplied data set.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'data'],
-    purposes: ['Fintech platforms', 'Trading terminals', 'Telemetry portals'],
+    purposes: ['Analytics products', 'Operational dashboards', 'Data-led product pages'],
     componentName: 'DataHero',
-    tags: ['data-hero', 'hero', 'data', 'finance', 'marketing'],
-    idealFor: ['Data-intensive SaaS and quantitative products'],
+    tags: ['data-hero', 'hero', 'data', 'analytics', 'marketing'],
+    idealFor: ['Product analytics and operational dashboards'],
     avoidFor: ['Content marketing blogs'],
-    jobs: ['Communicate analytical density and real-time computation speeds'],
+    jobs: ['Give important product metrics a clear place in a page'],
     indexCode: `import React from 'react';
 
 export type DataHeroVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -1189,11 +1189,11 @@ export interface DataHeroProps {
 
 export function DataHero({
   variant = 'quiet',
-  headline = 'Real-time telemetry and programmatic precision.',
+  headline = 'A focused overview of your data.',
   metrics = [
-    { label: 'Ingestion Rate', value: '4.2M req/s', change: '+12.4%' },
-    { label: 'P99 Latency', value: '1.4 ms', change: '-8.1%' },
-    { label: 'Memory Footprint', value: '18.2 MB', change: '-45.0%' },
+    { label: 'Events processed', value: '12.8k', change: 'Example trend: +12%' },
+    { label: 'Response time', value: '186 ms', change: 'Example trend: -8%' },
+    { label: 'Active workspaces', value: '24', change: 'Example trend: +4%' },
   ],
 }: DataHeroProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
@@ -1212,8 +1212,9 @@ export function DataHero({
       <div className="max-w-5xl mx-auto text-center flex flex-col items-center mb-12">
         <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-6 max-w-2xl">{headline}</h1>
         <p className="text-base text-neutral-600 dark:text-neutral-400 max-w-xl">
-          Engineered for mission-critical dashboards where microsecond delays are unacceptable.
+          Use this layout to give important product metrics a clear place.
         </p>
+        <p role="note" className="mt-3 text-xs text-neutral-500">Sample metrics only — no live telemetry or measurements are connected.</p>
       </div>
 
       <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -1221,7 +1222,7 @@ export function DataHero({
           <div key={m.label} className={\`p-6 rounded-xl border flex flex-col items-start \${card}\`}>
             <span className="text-xs uppercase tracking-wider text-neutral-500 mb-2 font-mono">{m.label}</span>
             <span className="text-3xl font-bold font-mono tracking-tight mb-2">{m.value}</span>
-            <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">{m.change} vs baseline</span>
+            <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">{m.change}</span>
           </div>
         ))}
       </div>
@@ -1258,11 +1259,11 @@ export function DataHeroPreview() {
   );
 }`,
     fixturesCode: `export const dataHeroFixtures = {
-  headline: 'Real-time telemetry and programmatic precision.',
+  headline: 'A focused overview of your data.',
 };`,
     readmeCode: `# Data Hero
 
-Financial and quantitative hero section emphasizing live throughput metrics and low latency.`,
+Analytical hero layout with illustrative metric cards. Values are examples; no telemetry or measurements are connected.`,
   },
 
   // 11. Minimal Statement Hero

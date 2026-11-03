@@ -2,10 +2,10 @@
   "schemaVersion": "1.0.0",
   "id": "res_sec_feature_with_live_demo",
   "slug": "feature-with-live-demo",
-  "name": "Feature with Live Demo",
+  "name": "Feature with Interactive Preview",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Feature showcase paired directly with an interactive sandbox state toggle.",
+  "description": "Feature showcase with a local state toggle that does not connect to an external system.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -14,11 +14,11 @@
   ],
   "roles": [
     "features",
-    "live-demo"
+    "interactive-preview"
   ],
   "purposes": [
-    "Interactive proof",
-    "Sandbox preview"
+    "interactive-proof",
+    "local-state-preview"
   ],
   "productArchetypes": [
     {
@@ -124,13 +124,13 @@
     }
   ],
   "tags": [
-    "feature-with-live-demo",
+    "feature-with-interactive-preview",
     "features",
     "interactive",
     "demo"
   ],
   "intent": {
-    "summary": "Feature showcase paired directly with an interactive sandbox state toggle.",
+    "summary": "Feature showcase with an interactive local preview state.",
     "idealFor": [
       "Features best demonstrated by direct state interaction"
     ],
@@ -138,13 +138,13 @@
       "Static brochure sites"
     ],
     "jobs": [
-      "Give visitor tactile control of a real component inside the feature card"
+      "Let a visitor change a local example state inside the feature card"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"
     ],
     "notes": [
-      "Responsive stacking down to 360px with reduced-motion support"
+      "The toggle changes local preview state and does not connect to an external system."
     ]
   },
   "visualDNA": {

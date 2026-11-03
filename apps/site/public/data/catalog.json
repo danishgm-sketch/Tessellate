@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-11-03T16:19:28.880Z",
+  "generatedAt": "2026-11-03T18:57:43.740Z",
   "count": 324,
   "resources": [
     {
@@ -4035,7 +4035,7 @@
       "name": "AI Multi-Agent Board",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Kanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.",
+      "description": "Kanban-style example board showing how tasks can be grouped into workflow lanes.",
       "resourceType": "ai-pattern",
       "categories": [
         "ai",
@@ -4044,12 +4044,12 @@
       ],
       "roles": [
         "board",
-        "swarm"
+        "workflow"
       ],
       "purposes": [
-        "swarm-coordination",
-        "subagent-management",
-        "concurrent-execution"
+        "task-lane-example",
+        "workflow-planning",
+        "team-task-review"
       ],
       "productArchetypes": [
         {
@@ -4157,29 +4157,29 @@
       "tags": [
         "ai",
         "multi-agent",
-        "swarm",
         "kanban",
+        "workflow",
         "tasks"
       ],
       "intent": {
-        "summary": "Kanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.",
+        "summary": "Kanban-style example board showing tasks in queued, active, and completed lanes.",
         "idealFor": [
-          "Multi-agent orchestration displays",
-          "Autonomous team work distribution",
-          "Subagent task lane tracking"
+          "Showing task progress across workflow lanes",
+          "Planning work across a team",
+          "Demonstrating an agent interface pattern"
         ],
         "avoidFor": [
           "Single user personal to-do lists",
           "Static blog articles"
         ],
         "jobs": [
-          "Coordinate and monitor parallel subagent workstreams in designated status lanes"
+          "Present example tasks in queued, active, and completed lanes"
         ],
         "contentRequirements": [
           "Describe the behavior represented by the interface and clearly label any illustrative data."
         ],
         "notes": [
-          "This component supplies a UI pattern; the host application connects any live model or data source it needs."
+          "The preview uses fixed example tasks. It does not start or monitor agents."
         ]
       },
       "visualDNA": {
@@ -4288,7 +4288,7 @@
       "name": "AI Plan Review",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Multi-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.",
+      "description": "Structured example plan with steps and a local approval-state preview.",
       "resourceType": "ai-pattern",
       "categories": [
         "ai",
@@ -4300,8 +4300,8 @@
         "review"
       ],
       "purposes": [
-        "plan-approval",
-        "phase-gate-review",
+        "plan-approval-preview",
+        "phase-review",
         "task-decomposition"
       ],
       "productArchetypes": [
@@ -4411,28 +4411,28 @@
         "ai",
         "plan",
         "review",
-        "phases",
+        "steps",
         "tasks"
       ],
       "intent": {
-        "summary": "Multi-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.",
+        "summary": "Structured example plan with a button that previews its approval state.",
         "idealFor": [
-          "Autonomous build order roadmaps",
-          "Complex architectural refactor reviews",
-          "Pre-flight deployment planning"
+          "Reviewing a proposed implementation plan",
+          "Breaking a project into steps",
+          "Demonstrating a plan-review interface"
         ],
         "avoidFor": [
           "Standard task item checklists",
           "Simple single-command terminals"
         ],
         "jobs": [
-          "Present structured multi-step execution plans with actionable proceed confirmations"
+          "Review a sample plan before work begins"
         ],
         "contentRequirements": [
           "Describe the behavior represented by the interface and clearly label any illustrative data."
         ],
         "notes": [
-          "This component supplies a UI pattern; the host application connects any live model or data source it needs."
+          "Approval changes only the example state; no agent or task runner is connected."
         ]
       },
       "visualDNA": {
@@ -6557,7 +6557,7 @@
       "name": "Analytics Shell",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Metric-dense business intelligence dashboard shell with date picker bar and KPI grid.",
+      "description": "Responsive analytics shell with illustrative metric cards and an optional host export callback.",
       "resourceType": "block",
       "categories": [
         "shells",
@@ -6678,21 +6678,21 @@
         "bi"
       ],
       "intent": {
-        "summary": "Metric-dense business intelligence dashboard shell with date picker bar and KPI grid.",
+        "summary": "Responsive dashboard shell that labels its default metrics as examples.",
         "idealFor": [
-          "Business telemetry monitoring with time interval controls"
+          "Presenting key metrics in a responsive dashboard shell"
         ],
         "avoidFor": [
           "Content reading sites"
         ],
         "jobs": [
-          "Coordinate executive KPI summaries and interactive time-series plots"
+          "Present summary metrics with a clear sample period"
         ],
         "contentRequirements": [
           "Accessible navigation semantics and responsive containment"
         ],
         "notes": [
-          "Supports responsive collapsing and reduced motion"
+          "Default metrics are illustrative. A host callback is needed to enable CSV export."
         ]
       },
       "visualDNA": {
@@ -19295,7 +19295,7 @@
       "name": "Connection Lost State",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Active socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button.",
+      "description": "Connection interruption alert with an optional host-provided retry callback.",
       "resourceType": "state",
       "categories": [
         "states",
@@ -19422,7 +19422,7 @@
         "retry"
       ],
       "intent": {
-        "summary": "Active socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button.",
+        "summary": "Connection interruption alert; retry is available only when the host provides a callback.",
         "idealFor": [
           "Live collaborative editing sessions",
           "Real-time telemetry streams",
@@ -19433,13 +19433,13 @@
           "Planned maintenance modals"
         ],
         "jobs": [
-          "Inform users of active websocket connection dropouts and provide automatic reconnect attempts"
+          "Explain an interrupted connection and offer a host-provided retry action"
         ],
         "contentRequirements": [
           "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
         ],
         "notes": [
-          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+          "No automatic retry timer runs in this component. The preview disables retry when no callback is supplied."
         ]
       },
       "visualDNA": {
@@ -23791,7 +23791,7 @@
       "name": "Data Hero",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Financial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.",
+      "description": "Analytical hero layout with sample metric cards and an optional host-supplied data set.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -23803,9 +23803,9 @@
         "data"
       ],
       "purposes": [
-        "Fintech platforms",
-        "Trading terminals",
-        "Telemetry portals"
+        "Analytics products",
+        "Operational dashboards",
+        "Data-led product pages"
       ],
       "productArchetypes": [
         {
@@ -23914,25 +23914,25 @@
         "data-hero",
         "hero",
         "data",
-        "finance",
+        "analytics",
         "marketing"
       ],
       "intent": {
-        "summary": "Financial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.",
+        "summary": "Analytical hero layout for presenting a headline and metric cards.",
         "idealFor": [
-          "Data-intensive SaaS and quantitative products"
+          "Product analytics and operational dashboards"
         ],
         "avoidFor": [
           "Content marketing blogs"
         ],
         "jobs": [
-          "Communicate analytical density and real-time computation speeds"
+          "Give important product metrics a clear place in a page"
         ],
         "contentRequirements": [
-          "Clear hierarchy, responsive layout, accessible typography"
+          "Clear hierarchy, responsive layout, accessible typography, and an explicit label for example values"
         ],
         "notes": [
-          "Responsive stacking down to 360px with reduced-motion support"
+          "Metric values and trends are examples; no telemetry or measurements are connected."
         ]
       },
       "visualDNA": {
@@ -24293,7 +24293,7 @@
       "name": "Data Terminal Header",
       "version": "1.0.0",
       "status": "verified",
-      "description": "High-density monospace financial header with ticker feed, clock, and connection latency.",
+      "description": "Compact data-terminal header showing clearly labelled example market and latency values.",
       "resourceType": "block",
       "categories": [
         "shells",
@@ -24414,18 +24414,18 @@
         "monospace"
       ],
       "intent": {
-        "summary": "High-density monospace financial header with ticker feed, clock, and connection latency.",
+        "summary": "Compact monospace header with static example market and latency values.",
         "idealFor": [
-          "Real-time streaming dashboards and Bloomberg-style terminals"
+          "Illustrative market and service-status headers"
         ],
         "avoidFor": [
           "Casual marketing blogs"
         ],
         "jobs": [
-          "Stream critical telemetry status and ticker feeds in header strip"
+          "Show sample market and status fields in a compact header"
         ],
         "contentRequirements": [
-          "Accessible navigation semantics and responsive containment"
+          "The preview uses static example values; no market feed or latency probe is connected."
         ],
         "notes": [
           "Supports responsive collapsing and reduced motion"
@@ -35255,10 +35255,10 @@
       "schemaVersion": "1.0.0",
       "id": "res_sec_feature_with_live_demo",
       "slug": "feature-with-live-demo",
-      "name": "Feature with Live Demo",
+      "name": "Feature with Interactive Preview",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Feature showcase paired directly with an interactive sandbox state toggle.",
+      "description": "Feature showcase with a local state toggle that does not connect to an external system.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -35267,11 +35267,11 @@
       ],
       "roles": [
         "features",
-        "live-demo"
+        "interactive-preview"
       ],
       "purposes": [
-        "Interactive proof",
-        "Sandbox preview"
+        "interactive-proof",
+        "local-state-preview"
       ],
       "productArchetypes": [
         {
@@ -35377,13 +35377,13 @@
         }
       ],
       "tags": [
-        "feature-with-live-demo",
+        "feature-with-interactive-preview",
         "features",
         "interactive",
         "demo"
       ],
       "intent": {
-        "summary": "Feature showcase paired directly with an interactive sandbox state toggle.",
+        "summary": "Feature showcase with an interactive local preview state.",
         "idealFor": [
           "Features best demonstrated by direct state interaction"
         ],
@@ -35391,13 +35391,13 @@
           "Static brochure sites"
         ],
         "jobs": [
-          "Give visitor tactile control of a real component inside the feature card"
+          "Let a visitor change a local example state inside the feature card"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
         ],
         "notes": [
-          "Responsive stacking down to 360px with reduced-motion support"
+          "The toggle changes local preview state and does not connect to an external system."
         ]
       },
       "visualDNA": {
@@ -44492,7 +44492,7 @@
       "name": "Interactive Globe",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Orthographic projection vector wireframe globe with latitude/longitude meridians, active data nodes, and orbit pulse.",
+      "description": "Interactive vector globe illustration with sample location markers and a draggable orientation.",
       "resourceType": "data-visualization",
       "categories": [
         "data",
@@ -44505,8 +44505,8 @@
       ],
       "purposes": [
         "global-presence",
-        "worldwide-telemetry",
-        "orbital-visualization"
+        "geographic-overview",
+        "network-map-illustration"
       ],
       "productArchetypes": [
         {
@@ -44616,27 +44616,27 @@
         "wireframe",
         "orthographic",
         "svg",
-        "orbital"
+        "map"
       ],
       "intent": {
-        "summary": "Orthographic projection vector wireframe globe with latitude/longitude meridians, active data nodes, and orbit pulse.",
+        "summary": "Vector globe illustration with sample locations and a draggable orientation.",
         "idealFor": [
-          "Global cybersecurity telemetry",
-          "International traffic landing pages",
-          "Real-time threat monitoring"
+          "Illustrating worldwide presence",
+          "Explaining a global service footprint",
+          "Demonstrating a globe visualization"
         ],
         "avoidFor": [
           "Standard 2D tabular accounting",
           "Single variable KPIs"
         ],
         "jobs": [
-          "Provide high-ambition vector globe presence for worldwide telemetry data"
+          "Show a globe illustration with sample locations"
         ],
         "contentRequirements": [
           "Structured numerical data points, semantic color tokens, SVG vector rendering"
         ],
         "notes": [
-          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+          "Marker locations are illustrative; no network or telemetry data is connected."
         ]
       },
       "visualDNA": {
@@ -45247,7 +45247,7 @@
       "name": "Kiosk Display Shell",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Digital signage kiosk shell with high contrast typography, touch safety, and timeout reset.",
+      "description": "Large-format digital signage layout example; no inactivity timer is included.",
       "resourceType": "block",
       "categories": [
         "shells",
@@ -45368,15 +45368,15 @@
         "touch"
       ],
       "intent": {
-        "summary": "Digital signage kiosk shell with high contrast typography, touch safety, and timeout reset.",
+        "summary": "Large-format signage layout example for a kiosk or public display.",
         "idealFor": [
-          "Unattended touch screen kiosk hardware and public monitors"
+          "Large-format kiosk layouts and public displays"
         ],
         "avoidFor": [
           "Standard desktop multi-window software"
         ],
         "jobs": [
-          "Display large-format touch interactive layout with auto-idle timeout"
+          "Present a large-format interface for a kiosk or public display"
         ],
         "contentRequirements": [
           "Accessible navigation semantics and responsive containment"
@@ -47490,23 +47490,23 @@
       "schemaVersion": "1.0.0",
       "id": "res_typo_marquee_typography",
       "slug": "marquee-typography",
-      "name": "Marquee Typography",
+      "name": "Repeating Typography Strip",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Continuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.",
+      "description": "Repeating text strip for short brand or campaign messages, with horizontal overflow for narrow containers.",
       "resourceType": "typography",
       "categories": [
         "typography",
         "display",
-        "marquee"
+        "ticker"
       ],
       "roles": [
         "typography",
-        "marquee"
+        "ticker"
       ],
       "purposes": [
         "brand-slogan",
-        "social-proof-ticker",
+        "campaign-message",
         "event-banner"
       ],
       "productArchetypes": [
@@ -47614,30 +47614,29 @@
       ],
       "tags": [
         "typography",
-        "marquee",
-        "ticker",
-        "continuous",
-        "scroll"
+        "repeat",
+        "campaign",
+        "ticker"
       ],
       "intent": {
-        "summary": "Continuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.",
+        "summary": "Repeating text strip for short brand or campaign messages.",
         "idealFor": [
-          "Partner logo and quote banners",
-          "Product feature ticker bars",
-          "Conference site headers"
+          "Short campaign messages",
+          "A repeating row of product phrases",
+          "Conference site banners"
         ],
         "avoidFor": [
           "Critical safety warnings",
           "Lengthy legal disclosures"
         ],
         "jobs": [
-          "Generate continuous kinetic forward momentum across wide viewport sections"
+          "Repeat short messages in a horizontally scrollable strip"
         ],
         "contentRequirements": [
           "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
         ],
         "notes": [
-          "Accessible for screen readers, respecting user font preferences and reduced motion"
+          "The repeated copy is present in both strip passes. The component does not animate automatically."
         ]
       },
       "visualDNA": {
@@ -47656,8 +47655,8 @@
         "colourfulness": 40,
         "curvature": 25,
         "depth": 30,
-        "motion": 30,
-        "motionPlayfulness": 25,
+        "motion": 0,
+        "motionPlayfulness": 0,
         "typographicExpression": 95,
         "imageryIntensity": 0,
         "videoIntensity": 0,
@@ -47675,7 +47674,7 @@
       },
       "interactionDNA": {
         "interactionDensity": 45,
-        "motionIntensity": 25,
+        "motionIntensity": 0,
         "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
@@ -47711,7 +47710,7 @@
       },
       "performance": {
         "jsCost": "tiny",
-        "gpuCost": "low",
+        "gpuCost": "none",
         "mediaCost": "none",
         "runtimeComplexity": "low",
         "lazyRecommended": false,
@@ -52239,7 +52238,7 @@
       "name": "Number Count Up",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Eased numeric counter animating from zero to target value on viewport entrance with monospace stability.",
+      "description": "Linear count-up animation that starts when the replay control is activated.",
       "resourceType": "motion",
       "categories": [
         "motion",
@@ -52253,7 +52252,7 @@
       "purposes": [
         "numeric-count-up",
         "metric-celebration",
-        "telemetry-load"
+        "count-up-demo"
       ],
       "productArchetypes": [
         {
@@ -52366,24 +52365,24 @@
         "counter"
       ],
       "intent": {
-        "summary": "Eased numeric counter animating from zero to target value on viewport entrance with monospace stability.",
+        "summary": "Linear count-up animation started by a replay control.",
         "idealFor": [
-          "Social proof metric counters",
-          "Customer tally stats",
-          "Benchmark speed metrics"
+          "Demonstrating an animated number",
+          "Highlighting a count in a product interface",
+          "Showing a count-up interaction pattern"
         ],
         "avoidFor": [
           "Real-time clock seconds",
           "Pagination page numbers"
         ],
         "jobs": [
-          "Animate integers from 0 to destination with smooth logarithmic easing"
+          "Animate an example integer from zero to a target value after activation"
         ],
         "contentRequirements": [
           "CSS transition and animation transforms, reduced-motion fallbacks"
         ],
         "notes": [
-          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+          "The displayed number is example content, not a certified catalogue count."
         ]
       },
       "visualDNA": {
@@ -71202,24 +71201,24 @@
       "schemaVersion": "1.0.0",
       "id": "res_mot_sticky_scroll_story",
       "slug": "sticky-scroll-story",
-      "name": "Sticky Scroll Story",
+      "name": "Story Chapter Selector",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Sticky viewport container pairing stationary preview graphic with scrolling narrative chapters.",
+      "description": "Selectable story chapters paired with a matching content panel.",
       "resourceType": "motion",
       "categories": [
         "motion",
         "microinteractions",
-        "scroll"
+        "story"
       ],
       "roles": [
         "story",
-        "scroll"
+        "chapter-selector"
       ],
       "purposes": [
-        "product-walkthrough",
-        "narrative-demo",
-        "feature-storytelling"
+        "story-navigation",
+        "onboarding-walkthrough",
+        "product-guide"
       ],
       "productArchetypes": [
         {
@@ -71326,30 +71325,30 @@
       ],
       "tags": [
         "motion",
-        "sticky",
-        "scroll",
+        "chapter-switcher",
+        "selectable-story",
         "story",
         "chapters"
       ],
       "intent": {
-        "summary": "Sticky viewport container pairing stationary preview graphic with scrolling narrative chapters.",
+        "summary": "Select a story chapter to update its related content panel.",
         "idealFor": [
           "Product capability stories",
           "Onboarding walkthroughs",
-          "Interactive architecture tours"
+          "Interactive product guides"
         ],
         "avoidFor": [
           "Dense spreadsheet editing",
           "Command palettes"
         ],
         "jobs": [
-          "Pair scrolling narrative chapter copy with a pinned, reactive visual display"
+          "Select a chapter and view its related content"
         ],
         "contentRequirements": [
           "CSS transition and animation transforms, reduced-motion fallbacks"
         ],
         "notes": [
-          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+          "Chapter selection is local to the preview; no external data is loaded."
         ]
       },
       "visualDNA": {
@@ -71368,8 +71367,8 @@
         "colourfulness": 35,
         "curvature": 35,
         "depth": 40,
-        "motion": 50,
-        "motionPlayfulness": 30,
+        "motion": 0,
+        "motionPlayfulness": 0,
         "typographicExpression": 50,
         "imageryIntensity": 0,
         "videoIntensity": 0,
@@ -71387,7 +71386,7 @@
       },
       "interactionDNA": {
         "interactionDensity": 85,
-        "motionIntensity": 45,
+        "motionIntensity": 0,
         "keyboardComplexity": "medium",
         "hoverDependency": "none",
         "directManipulation": true
@@ -71423,7 +71422,7 @@
       },
       "performance": {
         "jsCost": "tiny",
-        "gpuCost": "low",
+        "gpuCost": "none",
         "mediaCost": "none",
         "runtimeComplexity": "low",
         "lazyRecommended": false,
@@ -78689,7 +78688,7 @@
       "name": "Version History",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Changelog of document revisions with restore buttons, diff flags, and author details.",
+      "description": "Example revision list with local restore-preview actions; it does not change project data.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -78701,8 +78700,8 @@
         "versions"
       ],
       "purposes": [
-        "Document checkpoint rollback",
-        "Revision comparison"
+        "revision-history-preview",
+        "checkpoint-comparison-example"
       ],
       "productArchetypes": [
         {
@@ -78814,21 +78813,21 @@
         "checkpoints"
       ],
       "intent": {
-        "summary": "Changelog of document revisions with restore buttons, diff flags, and author details.",
+        "summary": "Example revisions with buttons that preview a restore message without changing a project.",
         "idealFor": [
-          "Rollback panels and cloud project revision histories"
+          "Demonstrating revision history in an application"
         ],
         "avoidFor": [
           "Ephemeral unversioned scratchpads"
         ],
         "jobs": [
-          "List historical revisions with restore triggers"
+          "Show a sample revision list and preview a restore action"
         ],
         "contentRequirements": [
           "High data density, keyboard accessibility, semantic tokens"
         ],
         "notes": [
-          "Responsive compression down to 360px with reduced-motion support"
+          "The revisions are examples. Previewing restore does not change project data."
         ]
       },
       "visualDNA": {

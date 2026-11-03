@@ -5,7 +5,7 @@
   "name": "Version History",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Changelog of document revisions with restore buttons, diff flags, and author details.",
+  "description": "Example revision list with local restore-preview actions; it does not change project data.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -17,8 +17,8 @@
     "versions"
   ],
   "purposes": [
-    "Document checkpoint rollback",
-    "Revision comparison"
+    "revision-history-preview",
+    "checkpoint-comparison-example"
   ],
   "productArchetypes": [
     {
@@ -130,21 +130,21 @@
     "checkpoints"
   ],
   "intent": {
-    "summary": "Changelog of document revisions with restore buttons, diff flags, and author details.",
+    "summary": "Example revisions with buttons that preview a restore message without changing a project.",
     "idealFor": [
-      "Rollback panels and cloud project revision histories"
+      "Demonstrating revision history in an application"
     ],
     "avoidFor": [
       "Ephemeral unversioned scratchpads"
     ],
     "jobs": [
-      "List historical revisions with restore triggers"
+      "Show a sample revision list and preview a restore action"
     ],
     "contentRequirements": [
       "High data density, keyboard accessibility, semantic tokens"
     ],
     "notes": [
-      "Responsive compression down to 360px with reduced-motion support"
+      "The revisions are examples. Previewing restore does not change project data."
     ]
   },
   "visualDNA": {

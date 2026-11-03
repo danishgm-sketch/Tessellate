@@ -5,7 +5,7 @@
   "name": "Data Terminal Header",
   "version": "1.0.0",
   "status": "verified",
-  "description": "High-density monospace financial header with ticker feed, clock, and connection latency.",
+  "description": "Compact data-terminal header showing clearly labelled example market and latency values.",
   "resourceType": "block",
   "categories": [
     "shells",
@@ -126,18 +126,18 @@
     "monospace"
   ],
   "intent": {
-    "summary": "High-density monospace financial header with ticker feed, clock, and connection latency.",
+    "summary": "Compact monospace header with static example market and latency values.",
     "idealFor": [
-      "Real-time streaming dashboards and Bloomberg-style terminals"
+      "Illustrative market and service-status headers"
     ],
     "avoidFor": [
       "Casual marketing blogs"
     ],
     "jobs": [
-      "Stream critical telemetry status and ticker feeds in header strip"
+      "Show sample market and status fields in a compact header"
     ],
     "contentRequirements": [
-      "Accessible navigation semantics and responsive containment"
+      "The preview uses static example values; no market feed or latency probe is connected."
     ],
     "notes": [
       "Supports responsive collapsing and reduced motion"

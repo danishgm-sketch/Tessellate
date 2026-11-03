@@ -1,2 +1,2 @@
 # Analytics Shell
-Metric-dense business intelligence dashboard shell with date picker bar and KPI grid.
+A responsive dashboard shell with illustrative metric cards. CSV export is disabled in the preview until a host application supplies an export callback.

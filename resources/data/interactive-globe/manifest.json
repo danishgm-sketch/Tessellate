@@ -5,7 +5,7 @@
   "name": "Interactive Globe",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Orthographic projection vector wireframe globe with latitude/longitude meridians, active data nodes, and orbit pulse.",
+  "description": "Interactive vector globe illustration with sample location markers and a draggable orientation.",
   "resourceType": "data-visualization",
   "categories": [
     "data",
@@ -18,8 +18,8 @@
   ],
   "purposes": [
     "global-presence",
-    "worldwide-telemetry",
-    "orbital-visualization"
+    "geographic-overview",
+    "network-map-illustration"
   ],
   "productArchetypes": [
     {
@@ -129,27 +129,27 @@
     "wireframe",
     "orthographic",
     "svg",
-    "orbital"
+    "map"
   ],
   "intent": {
-    "summary": "Orthographic projection vector wireframe globe with latitude/longitude meridians, active data nodes, and orbit pulse.",
+    "summary": "Vector globe illustration with sample locations and a draggable orientation.",
     "idealFor": [
-      "Global cybersecurity telemetry",
-      "International traffic landing pages",
-      "Real-time threat monitoring"
+      "Illustrating worldwide presence",
+      "Explaining a global service footprint",
+      "Demonstrating a globe visualization"
     ],
     "avoidFor": [
       "Standard 2D tabular accounting",
       "Single variable KPIs"
     ],
     "jobs": [
-      "Provide high-ambition vector globe presence for worldwide telemetry data"
+      "Show a globe illustration with sample locations"
     ],
     "contentRequirements": [
       "Structured numerical data points, semantic color tokens, SVG vector rendering"
     ],
     "notes": [
-      "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+      "Marker locations are illustrative; no network or telemetry data is connected."
     ]
   },
   "visualDNA": {

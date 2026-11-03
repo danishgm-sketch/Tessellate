@@ -232,20 +232,19 @@ Human-in-the-loop intervention card requesting explicit user verification prior 
   {
     slug: 'ai-plan-review',
     name: 'AI Plan Review',
-    description:
-      'Multi-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.',
+    description: 'Structured example plan with steps and a local approval-state preview.',
     categories: ['ai', 'patterns', 'planning'],
     roles: ['plan', 'review'],
-    purposes: ['plan-approval', 'phase-gate-review', 'task-decomposition'],
+    purposes: ['plan-approval-preview', 'phase-review', 'task-decomposition'],
     componentName: 'AIPlanReview',
-    tags: ['ai', 'plan', 'review', 'phases', 'tasks'],
+    tags: ['ai', 'plan', 'review', 'steps', 'tasks'],
     idealFor: [
-      'Autonomous build order roadmaps',
-      'Complex architectural refactor reviews',
-      'Pre-flight deployment planning',
+      'Reviewing a proposed implementation plan',
+      'Breaking a project into steps',
+      'Demonstrating a plan-review interface',
     ],
     avoidFor: ['Standard task item checklists', 'Simple single-command terminals'],
-    jobs: ['Present structured multi-step execution plans with actionable proceed confirmations'],
+    jobs: ['Review a sample plan before work begins'],
     indexCode: `import React, { useState } from 'react';
 
 export type AIPlanReviewVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -265,10 +264,10 @@ export function AIPlanReview({ variant = 'quiet' }: AIPlanReviewProps) {
       : 'bg-white border-neutral-200 text-neutral-900';
 
   const steps = [
-    { num: '01', title: 'Generate Manifest Contracts', desc: 'Create 20 validated ResourceManifest JSON schemas with 0 dependencies.' },
-    { num: '02', title: 'Synthesize React Components', desc: 'Author clean, accessible pure SVG + Tailwind components for all 3 variants.' },
-    { num: '03', title: 'Monorepo Typecheck & Lint Gate', desc: 'Run pnpm typecheck and pnpm lint to verify 0 errors and 0 warnings.' },
-    { num: '04', title: 'Test Suite & Phase Gate Commit', desc: 'Execute 253 tests across packages and commit with conventional commit message.' },
+    { num: '01', title: 'Define the product goal', desc: 'Describe the people, tasks, and outcomes the product should support.' },
+    { num: '02', title: 'Review the proposed screens', desc: 'Check that each screen has a clear purpose and place in the workflow.' },
+    { num: '03', title: 'Check content and access needs', desc: 'Review the information, language, and accessibility requirements.' },
+    { num: '04', title: 'Approve before implementation', desc: 'Confirm the plan with the team before work begins.' },
   ];
 
   return (
@@ -276,10 +275,10 @@ export function AIPlanReview({ variant = 'quiet' }: AIPlanReviewProps) {
       <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
         <div>
           <h4 className="text-sm font-semibold tracking-tight">Proposed Implementation Plan</h4>
-          <p className="text-xs text-neutral-500">Autonomous execution strategy for Phase 18</p>
+          <p className="text-xs text-neutral-500">Example plan for review; no coding agent is connected.</p>
         </div>
         <span className="text-xs font-mono font-medium px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500">
-          4 Steps | ~2m runtime
+          4 example steps
         </span>
       </div>
 
@@ -297,12 +296,15 @@ export function AIPlanReview({ variant = 'quiet' }: AIPlanReviewProps) {
 
       <div className="flex justify-end pt-2">
         <button
+          type="button"
+          aria-pressed={accepted}
           onClick={() => setAccepted(!accepted)}
           className="px-5 py-2 text-xs font-medium rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:opacity-90 transition-opacity"
         >
-          {accepted ? '✓ Plan Accepted & Running' : 'Accept Plan & Proceed'}
+          {accepted ? 'Approval previewed' : 'Preview plan approval'}
         </button>
       </div>
+      {accepted && <p role="status" className="text-xs text-neutral-500 text-right">Approval previewed. No tasks have started.</p>}
     </div>
   );
 }`,
@@ -334,27 +336,26 @@ export function AIPlanReviewPreview() {
     fixturesCode: `export const aiPlanReviewFixtures = {};`,
     readmeCode: `# AI Plan Review
 
-Multi-stage structured action plan with phase gates, estimated complexities, and proceed confirmations.`,
+Structured example plan with a local approval preview. Approving the sample does not start tasks or connect to an agent.`,
   },
 
   // 14. AI Multi-Agent Board
   {
     slug: 'ai-multi-agent-board',
     name: 'AI Multi-Agent Board',
-    description:
-      'Kanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.',
+    description: 'Kanban-style example board showing how tasks can be grouped into workflow lanes.',
     categories: ['ai', 'patterns', 'multi-agent'],
-    roles: ['board', 'swarm'],
-    purposes: ['swarm-coordination', 'subagent-management', 'concurrent-execution'],
+    roles: ['board', 'workflow'],
+    purposes: ['task-lane-example', 'workflow-planning', 'team-task-review'],
     componentName: 'AIMultiAgentBoard',
-    tags: ['ai', 'multi-agent', 'swarm', 'kanban', 'tasks'],
+    tags: ['ai', 'multi-agent', 'kanban', 'workflow', 'tasks'],
     idealFor: [
-      'Multi-agent orchestration displays',
-      'Autonomous team work distribution',
-      'Subagent task lane tracking',
+      'Showing task progress across workflow lanes',
+      'Planning work across a team',
+      'Demonstrating an agent interface pattern',
     ],
     avoidFor: ['Single user personal to-do lists', 'Static blog articles'],
-    jobs: ['Coordinate and monitor parallel subagent workstreams in designated status lanes'],
+    jobs: ['Present example tasks in queued, active, and completed lanes'],
     indexCode: `import React, { useState } from 'react';
 
 export type AIMultiAgentBoardVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -374,19 +375,19 @@ export function AIMultiAgentBoard({ variant = 'quiet' }: AIMultiAgentBoardProps)
       : 'bg-white border-neutral-200 text-neutral-900';
 
   const agents = [
-    { name: 'ArchitectAgent', task: 'Design Schema 1.0.0', lane: 'Complete', status: 'done' },
-    { name: 'CatalogAgent', task: 'Validating 324 resources', lane: 'In Progress', status: 'active' },
-    { name: 'TestingAgent', task: 'Execute Playwright suite', lane: 'Queued', status: 'idle' },
+    { name: 'Planning agent', task: 'Draft a screen outline', lane: 'Complete' },
+    { name: 'Research agent', task: 'Collect example requirements', lane: 'In Progress' },
+    { name: 'Review agent', task: 'Check the outline for gaps', lane: 'Queued' },
   ];
 
   return (
     <div className={\`w-full p-6 rounded-xl border flex flex-col gap-4 transition-colors \${cardBg}\`}>
       <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
         <div>
-          <h4 className="text-sm font-semibold tracking-tight">Autonomous Agent Swarm</h4>
-          <p className="text-xs text-neutral-500">3 subagents coordinated via Antigravity SDK</p>
+          <h4 className="text-sm font-semibold tracking-tight">Example task board</h4>
+          <p className="text-xs text-neutral-500">Sample workflow only — no agents are running.</p>
         </div>
-        <span className="text-xs font-mono font-medium text-emerald-500">Active Swarm</span>
+        <span className="text-xs font-mono font-medium text-neutral-500">Sample workflow</span>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -435,7 +436,7 @@ export function AIMultiAgentBoardPreview() {
     fixturesCode: `export const aiMultiAgentBoardFixtures = {};`,
     readmeCode: `# AI Multi-Agent Board
 
-Kanban-style swarm status board coordinating concurrent subagent tasks across lifecycle lanes.`,
+Kanban-style example board with fixed tasks in workflow lanes. It does not start or monitor agents.`,
   },
 
   // 15. AI Memory/Context Panel

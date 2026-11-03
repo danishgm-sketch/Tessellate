@@ -2,23 +2,23 @@
   "schemaVersion": "1.0.0",
   "id": "res_typo_marquee_typography",
   "slug": "marquee-typography",
-  "name": "Marquee Typography",
+  "name": "Repeating Typography Strip",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Continuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.",
+  "description": "Repeating text strip for short brand or campaign messages, with horizontal overflow for narrow containers.",
   "resourceType": "typography",
   "categories": [
     "typography",
     "display",
-    "marquee"
+    "ticker"
   ],
   "roles": [
     "typography",
-    "marquee"
+    "ticker"
   ],
   "purposes": [
     "brand-slogan",
-    "social-proof-ticker",
+    "campaign-message",
     "event-banner"
   ],
   "productArchetypes": [
@@ -126,30 +126,29 @@
   ],
   "tags": [
     "typography",
-    "marquee",
-    "ticker",
-    "continuous",
-    "scroll"
+    "repeat",
+    "campaign",
+    "ticker"
   ],
   "intent": {
-    "summary": "Continuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.",
+    "summary": "Repeating text strip for short brand or campaign messages.",
     "idealFor": [
-      "Partner logo and quote banners",
-      "Product feature ticker bars",
-      "Conference site headers"
+      "Short campaign messages",
+      "A repeating row of product phrases",
+      "Conference site banners"
     ],
     "avoidFor": [
       "Critical safety warnings",
       "Lengthy legal disclosures"
     ],
     "jobs": [
-      "Generate continuous kinetic forward momentum across wide viewport sections"
+      "Repeat short messages in a horizontally scrollable strip"
     ],
     "contentRequirements": [
       "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
     ],
     "notes": [
-      "Accessible for screen readers, respecting user font preferences and reduced motion"
+      "The repeated copy is present in both strip passes. The component does not animate automatically."
     ]
   },
   "visualDNA": {
@@ -168,8 +167,8 @@
     "colourfulness": 40,
     "curvature": 25,
     "depth": 30,
-    "motion": 30,
-    "motionPlayfulness": 25,
+    "motion": 0,
+    "motionPlayfulness": 0,
     "typographicExpression": 95,
     "imageryIntensity": 0,
     "videoIntensity": 0,
@@ -187,7 +186,7 @@
   },
   "interactionDNA": {
     "interactionDensity": 45,
-    "motionIntensity": 25,
+    "motionIntensity": 0,
     "keyboardComplexity": "low",
     "hoverDependency": "none",
     "directManipulation": false
@@ -223,7 +222,7 @@
   },
   "performance": {
     "jsCost": "tiny",
-    "gpuCost": "low",
+    "gpuCost": "none",
     "mediaCost": "none",
     "runtimeComplexity": "low",
     "lazyRecommended": false,

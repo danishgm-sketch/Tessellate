@@ -1,3 +1,3 @@
 export const dataHeroFixtures = {
-  headline: 'Real-time telemetry and programmatic precision.',
+  headline: 'A focused overview of your data.',
 };

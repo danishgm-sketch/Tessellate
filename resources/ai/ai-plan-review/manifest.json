@@ -5,7 +5,7 @@
   "name": "AI Plan Review",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Multi-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.",
+  "description": "Structured example plan with steps and a local approval-state preview.",
   "resourceType": "ai-pattern",
   "categories": [
     "ai",
@@ -17,8 +17,8 @@
     "review"
   ],
   "purposes": [
-    "plan-approval",
-    "phase-gate-review",
+    "plan-approval-preview",
+    "phase-review",
     "task-decomposition"
   ],
   "productArchetypes": [
@@ -128,28 +128,28 @@
     "ai",
     "plan",
     "review",
-    "phases",
+    "steps",
     "tasks"
   ],
   "intent": {
-    "summary": "Multi-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.",
+    "summary": "Structured example plan with a button that previews its approval state.",
     "idealFor": [
-      "Autonomous build order roadmaps",
-      "Complex architectural refactor reviews",
-      "Pre-flight deployment planning"
+      "Reviewing a proposed implementation plan",
+      "Breaking a project into steps",
+      "Demonstrating a plan-review interface"
     ],
     "avoidFor": [
       "Standard task item checklists",
       "Simple single-command terminals"
     ],
     "jobs": [
-      "Present structured multi-step execution plans with actionable proceed confirmations"
+      "Review a sample plan before work begins"
     ],
     "contentRequirements": [
       "Describe the behavior represented by the interface and clearly label any illustrative data."
     ],
     "notes": [
-      "This component supplies a UI pattern; the host application connects any live model or data source it needs."
+      "Approval changes only the example state; no agent or task runner is connected."
     ]
   },
   "visualDNA": {

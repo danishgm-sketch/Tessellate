@@ -5,7 +5,7 @@
   "name": "Data Hero",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Financial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.",
+  "description": "Analytical hero layout with sample metric cards and an optional host-supplied data set.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -17,9 +17,9 @@
     "data"
   ],
   "purposes": [
-    "Fintech platforms",
-    "Trading terminals",
-    "Telemetry portals"
+    "Analytics products",
+    "Operational dashboards",
+    "Data-led product pages"
   ],
   "productArchetypes": [
     {
@@ -128,25 +128,25 @@
     "data-hero",
     "hero",
     "data",
-    "finance",
+    "analytics",
     "marketing"
   ],
   "intent": {
-    "summary": "Financial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.",
+    "summary": "Analytical hero layout for presenting a headline and metric cards.",
     "idealFor": [
-      "Data-intensive SaaS and quantitative products"
+      "Product analytics and operational dashboards"
     ],
     "avoidFor": [
       "Content marketing blogs"
     ],
     "jobs": [
-      "Communicate analytical density and real-time computation speeds"
+      "Give important product metrics a clear place in a page"
     ],
     "contentRequirements": [
-      "Clear hierarchy, responsive layout, accessible typography"
+      "Clear hierarchy, responsive layout, accessible typography, and an explicit label for example values"
     ],
     "notes": [
-      "Responsive stacking down to 360px with reduced-motion support"
+      "Metric values and trends are examples; no telemetry or measurements are connected."
     ]
   },
   "visualDNA": {

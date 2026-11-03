@@ -1,3 +1,3 @@
-# Feature with Live Demo
+# Feature with Interactive Preview
 
-Feature showcase directly integrating an interactive stateful control.
+A feature showcase with a local state toggle. The preview does not connect to an external system.

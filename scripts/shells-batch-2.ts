@@ -5,15 +5,15 @@ export const SHELLS_BATCH_2: ShellDef[] = [
   {
     slug: 'data-terminal-header',
     name: 'Data Terminal Header',
-    description: 'High-density monospace financial header with ticker feed, clock, and connection latency.',
+    description: 'Compact data-terminal header showing clearly labelled example market and latency values.',
     categories: ['shells', 'navigation'],
     roles: ['header', 'terminal'],
     purposes: ['Trading terminals', 'Telemetry monitors', 'Server status consoles'],
     componentName: 'DataTerminalHeader',
     tags: ['data-terminal-header', 'terminal', 'finance', 'monospace'],
-    idealFor: ['Real-time streaming dashboards and Bloomberg-style terminals'],
+    idealFor: ['Illustrative market and service-status headers'],
     avoidFor: ['Casual marketing blogs'],
-    jobs: ['Stream critical telemetry status and ticker feeds in header strip'],
+    jobs: ['Show sample market and status fields in a compact header'],
     indexCode: `import React from 'react';
 
 export type DataTerminalHeaderVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -29,13 +29,13 @@ export function DataTerminalHeader({ variant = 'quiet' }: DataTerminalHeaderProp
   return (
     <header className={\`w-full px-4 h-11 flex items-center justify-between text-xs \${theme}\`}>
       <div className="flex items-center gap-4">
-        <span className="font-bold text-emerald-400">● LIVE</span>
-        <span className="opacity-70">BTC/USD $94,320.50</span>
-        <span className="opacity-70 text-emerald-400">+2.4%</span>
+        <span className="font-bold text-amber-300">SAMPLE DATA</span>
+        <span className="opacity-70">BTC/USD $42,000.00</span>
+        <span className="opacity-70 text-emerald-400">+2.4% example</span>
       </div>
       <div className="flex items-center gap-4 opacity-60 text-[11px]">
-        <span>RTT: 12ms</span>
-        <span>UTC 14:02:49</span>
+        <span>Example RTT: 12ms</span>
+        <span>No market feed or latency probe is connected</span>
       </div>
     </header>
   );
@@ -57,7 +57,7 @@ export const expressiveFixture = { variant: 'expressive' };
 export const nocturneFixture = { variant: 'nocturne' };
 `,
     readmeCode: `# Data Terminal Header
-High-density monospace financial header with ticker feed, clock, and connection latency.
+Compact monospace header for market or service-status fields. The preview uses static example values; no feed or latency probe is connected.
 `,
   },
 
@@ -620,15 +620,15 @@ Code and structured text editing shell with gutter line numbers, status bar, and
   {
     slug: 'analytics-shell',
     name: 'Analytics Shell',
-    description: 'Metric-dense business intelligence dashboard shell with date picker bar and KPI grid.',
+    description: 'Responsive analytics shell with illustrative metric cards and an optional host export callback.',
     categories: ['shells', 'layout'],
     roles: ['shell', 'analytics'],
     purposes: ['Telemetry metrics', 'Financial analytics', 'Growth reports'],
     componentName: 'AnalyticsShell',
     tags: ['analytics-shell', 'analytics', 'dashboard', 'bi'],
-    idealFor: ['Business telemetry monitoring with time interval controls'],
+    idealFor: ['Presenting key metrics in a responsive dashboard shell'],
     avoidFor: ['Content reading sites'],
-    jobs: ['Coordinate executive KPI summaries and interactive time-series plots'],
+    jobs: ['Present summary metrics with a clear sample period'],
     indexCode: `import React from 'react';
 
 export type AnalyticsShellVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -636,28 +636,31 @@ export type AnalyticsShellVariant = 'quiet' | 'expressive' | 'nocturne';
 export interface AnalyticsShellProps {
   variant?: AnalyticsShellVariant;
   children?: React.ReactNode;
+  onExportCsv?: () => void;
 }
 
 export function AnalyticsShell({
   variant = 'quiet',
-  children = <div className="grid grid-cols-4 gap-4"><div className="border p-4 rounded-xl">MRR: $84k</div><div className="border p-4 rounded-xl">DAU: 12.4k</div><div className="border p-4 rounded-xl">Churn: 0.8%</div><div className="border p-4 rounded-xl">NPS: 74</div></div>,
+  children = <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"><div className="border p-4 rounded-xl">Example · Sessions: 1,240</div><div className="border p-4 rounded-xl">Example · Tasks completed: 86</div><div className="border p-4 rounded-xl">Example · Completion: 92%</div><div className="border p-4 rounded-xl">Example · Feedback score: 4.6/5</div></div>,
+  onExportCsv,
 }: AnalyticsShellProps) {
   let theme = 'bg-[#FAF9F6] text-neutral-900';
   if (variant === 'nocturne') theme = 'bg-[#0B0D10] text-white';
 
   return (
     <div className={\`min-h-screen p-8 space-y-6 \${theme}\`}>
-      <div className="flex justify-between items-center pb-4 border-b">
+      <div className="flex flex-wrap justify-between items-center gap-3 pb-4 border-b">
         <div>
           <h1 className="text-base font-bold">Analytics & Growth</h1>
-          <p className="text-xs opacity-60">Trailing 30 days telemetry</p>
+          <p className="text-xs opacity-60">Illustrative sample data — no data source is connected.</p>
         </div>
         <div className="flex gap-2 text-xs">
-          <button className="px-3 py-1.5 border rounded-lg bg-white dark:bg-neutral-900">Last 30 Days</button>
-          <button className="px-3 py-1.5 border rounded-lg bg-white dark:bg-neutral-900">Export CSV</button>
+          <span className="px-3 py-1.5 border rounded-lg bg-white dark:bg-neutral-900">Example period: last 30 days</span>
+          <button type="button" onClick={onExportCsv} disabled={!onExportCsv} aria-describedby={!onExportCsv ? 'analytics-export-help' : undefined} className="px-3 py-1.5 border rounded-lg bg-white dark:bg-neutral-900 disabled:cursor-not-allowed disabled:opacity-60">Export CSV</button>
         </div>
       </div>
       <div>{children}</div>
+      {!onExportCsv && <p id="analytics-export-help" role="note" className="text-xs opacity-60">Connect a data source and export handler to enable CSV downloads.</p>}
     </div>
   );
 }
@@ -678,7 +681,7 @@ export const expressiveFixture = { variant: 'expressive' };
 export const nocturneFixture = { variant: 'nocturne' };
 `,
     readmeCode: `# Analytics Shell
-Metric-dense business intelligence dashboard shell with date picker bar and KPI grid.
+Responsive analytics shell with illustrative metric cards. CSV export is unavailable in the preview until a host application supplies an export callback.
 `,
   },
 
@@ -1134,7 +1137,7 @@ Distraction-free edge-to-edge presentation shell with auto-hiding chrome and foc
   {
     slug: 'kiosk-display-shell',
     name: 'Kiosk Display Shell',
-    description: 'Digital signage kiosk shell with high contrast typography, touch safety, and timeout reset.',
+    description: 'Large-format digital signage layout example; no inactivity timer is included.',
     categories: ['shells', 'layout'],
     roles: ['shell', 'kiosk'],
     purposes: ['Lobby displays', 'Public touch kiosks', 'Conference monitors'],
@@ -1142,7 +1145,7 @@ Distraction-free edge-to-edge presentation shell with auto-hiding chrome and foc
     tags: ['kiosk-display-shell', 'kiosk', 'signage', 'touch'],
     idealFor: ['Unattended touch screen kiosk hardware and public monitors'],
     avoidFor: ['Standard desktop multi-window software'],
-    jobs: ['Display large-format touch interactive layout with auto-idle timeout'],
+    jobs: ['Present a large-format interface for a kiosk or public display'],
     indexCode: `import React from 'react';
 
 export type KioskDisplayShellVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -1158,15 +1161,15 @@ export function KioskDisplayShell({ variant = 'quiet' }: KioskDisplayShellProps)
   return (
     <div className={\`w-full h-screen p-12 flex flex-col justify-between select-none \${theme}\`}>
       <header className="flex justify-between items-center pb-6 border-b">
-        <span className="text-xl font-bold">Tessellate Signage Hub</span>
-        <span className="text-sm font-mono opacity-50">KIOSK #04</span>
+        <span className="text-xl font-bold">Example signage interface</span>
+        <span className="text-sm font-mono opacity-50">Example screen</span>
       </header>
       <main className="text-center space-y-4">
-        <h2 className="text-3xl font-extrabold tracking-tight">Touch Screen to Begin</h2>
-        <p className="text-sm opacity-60">Interactive self-service interface system</p>
+        <h2 className="text-3xl font-extrabold tracking-tight">Welcome to the event</h2>
+        <p className="text-sm opacity-60">Sample message for a public display.</p>
       </main>
       <footer className="text-center text-xs opacity-40">
-        Resets automatically after 60 seconds of inactivity
+        Preview only — no inactivity timer is running.
       </footer>
     </div>
   );
@@ -1188,7 +1191,7 @@ export const expressiveFixture = { variant: 'expressive' };
 export const nocturneFixture = { variant: 'nocturne' };
 `,
     readmeCode: `# Kiosk Display Shell
-Digital signage kiosk shell with high contrast typography, touch safety, and timeout reset.
+Large-format signage layout example. It does not run an inactivity timer.
 `,
   },
 ];

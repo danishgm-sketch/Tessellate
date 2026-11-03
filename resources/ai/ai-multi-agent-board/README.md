@@ -1,3 +1,3 @@
 # AI Multi-Agent Board
 
-Kanban-style swarm status board coordinating concurrent subagent tasks across lifecycle lanes.
+An example task board with queued, active, and completed lanes. The preview uses fixed sample tasks; it does not start or monitor agents.
