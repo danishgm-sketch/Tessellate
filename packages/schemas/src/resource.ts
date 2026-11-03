@@ -51,7 +51,7 @@ export const LicenseInfoSchema = z.object({
   name: z.string().min(1),
   url: z.string().url().optional(),
   redistributionVerified: z.boolean(),
-  attributionRequired: z.boolean(),
+  attributionRequired: z.union([z.boolean(), z.literal('unknown')]),
   attributionText: z.string().optional(),
 }).strict();
 export type LicenseInfo = z.infer<typeof LicenseInfoSchema>;

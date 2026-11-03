@@ -174,6 +174,19 @@ describe('Nested schema contracts reject drift and preserve JSON round trips', (
     });
   }
 
+  it('preserves unknown attribution requirements without granting redistribution rights', () => {
+    const license = {
+      ...validResourceFixture.license,
+      spdx: 'UNLICENSED',
+      name: 'UNLICENSED (private source)',
+      redistributionVerified: false,
+      attributionRequired: 'unknown',
+      attributionText: 'Attribution requirements have not been established.',
+    };
+    expect(schemas.LicenseInfoSchema.parse(license).attributionRequired).toBe('unknown');
+    expect(schemas.ResourceManifestSchema.safeParse({ ...validResourceFixture, license }).success).toBe(true);
+  });
+
   it('accepts numeric contract boundaries and rejects values beyond each declared range', () => {
     expect(schemas.WeightedTagSchema.safeParse({ tag: 'saas', weight: 0 }).success).toBe(true);
     expect(schemas.WeightedTagSchema.safeParse({ tag: 'saas', weight: 100 }).success).toBe(true);

@@ -66,7 +66,7 @@ export function checkLicenseProvenanceGate(manifest?: ResourceManifest): GateChe
   if (!license.redistributionVerified) {
     return failure(`Redistribution rights for "${license.spdx}" are not marked verified.`);
   }
-  if (license.attributionRequired && !license.attributionText?.trim()) {
+  if (license.attributionRequired === true && !license.attributionText?.trim()) {
     return failure(`License "${license.spdx}" requires attribution text, but none is provided.`);
   }
   const hasOriginalLocator = Boolean(

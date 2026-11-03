@@ -294,11 +294,24 @@ verified in their ordered gates before changing capability claims:
    explicit Lab opt-in and proposal review before application; step 40 still
    needs a model-quality evaluation before any promotion.
 
-The inventory contains **158 distinct capability/route rows**. The test
-inventory is **69 test/spec files** under `tests`, `packages` and `apps`; this is
-a count of files, not a claim that every listed feature is covered. The ten
-resource categories contain 324 manifests in total. The blueprint source
-contains 12 definitions and the showcase source contains 8 projects. Step 04
-assigns 86 Core, 63 Beta and 9 Lab rows. These tiers do not close the release
-gate; applicable checks without feature-specific evidence remain FAIL in
-`quality/FEATURE_MATRIX.md`.
+The inventory contains **159 distinct capability/route rows**. Its initial
+Step 03 snapshot counted 69 test/spec files; the repository now contains
+**209 test/spec files** under `tests`, `packages` and `apps`. These are file
+counts, not a claim that every listed feature is covered. The ten resource
+categories contain 324 manifests in total. The blueprint source contains 12
+definitions and the showcase source contains 8 projects. Step 04 assigns 86
+Core, 63 Beta and 9 Lab rows. The later owner-only private inspection adapter
+adds one Lab row, bringing the current tiers to 86 Core, 63 Beta and 10 Lab.
+These tiers do not close the release gate; applicable checks without
+feature-specific evidence remain FAIL in `quality/FEATURE_MATRIX.md`.
+
+## Later private-source inspection adapter (2026-11-02)
+
+| Feature | Surface | Package/application | User | Input | Output | Dependencies | Persistence | Status | Tests | Known defects | Capability tier |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Owner-supplied Verso source inspection | Local Explore/resource detail and isolated preview app | `apps/site` + `apps/preview`; static inventory/projection scripts | Repository owner | External private source tree and generated projection | Read-only local manifests, source disclosure and isolated previews | TypeScript AST parser, canonical `ResourceManifest` schema, second local origin | None | Owner-only Lab; disabled unless explicit local environment flags are present; loopback-only; production builds reject private mode | `tests/verso-inventory.test.ts`, `tests/adapt-verso-manifests.test.ts`, `tests/private-verso-vite-plugin.test.ts`, `tests/private-preview-origin.test.ts`, `tests/preview-parent-origin.test.ts`, `tests/preview-action-props.test.ts`, `tests/resource-code-disclosure.test.ts`, external full browser audit | Verso declares `UNLICENSED`; attribution and redistribution rights remain unresolved. Items are not eligible for the public catalogue, Gold runtime, Workbench, registry or exports. | Lab |
+
+This is an isolated inspection adapter, not a product capability promotion or
+catalogue expansion. It records the integration without importing private
+source into the canonical tree. See `quality/VERSO_LOCAL_INTEGRATION_EVIDENCE.md`
+for the runtime boundary and audit results.

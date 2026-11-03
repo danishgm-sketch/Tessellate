@@ -434,7 +434,9 @@ test('canonical /r resource detail route preserves title, preview, and responsiv
   page.on('requestfailed', (request) => errors.push(`${request.method()} ${request.url()}: ${request.failure()?.errorText ?? 'unknown failure'}`));
   const evidenceDir = path.resolve(process.cwd(), 'audit/evidence/step-06/after/resource-layout');
   mkdirSync(evidenceDir, { recursive: true });
-  const results: Array<{ viewport: string; status: number | null; title: string; heading: string; pageWidth: number; previewWidth: number }> = [];
+  const results: Array<{ viewport: string; status: number | null; title: string; heading: string; pageWidth: number; previewWidth: number; variantInteractions: Array<{ selected: string; rendered: string | null }>; screenshots: string[] }> = [];
+  const variantEvidenceDir = path.resolve(process.cwd(), 'quality/evidence/step-39/resource-preview-variant');
+  mkdirSync(variantEvidenceDir, { recursive: true });
 
   for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
     await page.setViewportSize(viewport);
@@ -444,13 +446,33 @@ test('canonical /r resource detail route preserves title, preview, and responsiv
     await expect(heading).toBeVisible();
     const preview = page.locator('iframe[title$=" live preview"]');
     await expect(preview).toHaveCount(1);
-    await expect(page.frameLocator('iframe[title$=" live preview"]').locator('.tess-screen')).toHaveCount(1);
+    const previewFrame = page.frameLocator('iframe[title$=" live preview"]');
+    await expect(previewFrame.locator('.tess-screen')).toHaveCount(1);
+    const previewNode = previewFrame.locator(`[data-node-id="preview-${slug}"]`);
+    const resource = catalogResources.find((entry) => entry.slug === slug);
+    expect(resource, `Catalog entry for ${slug} should exist.`).toBeDefined();
+    const variantInteractions: Array<{ selected: string; rendered: string | null }> = [];
+    const screenshots: string[] = [];
+    for (const variant of resource?.variants ?? []) {
+      await page.getByRole('button', { name: variant.name, exact: true }).click();
+      await expect(previewNode, `Selecting ${variant.name} should update the actual isolated preview.`)
+        .toHaveAttribute('data-resource-variant', variant.id, { timeout: 3000 });
+      const renderedVariant = await previewNode.getAttribute('data-resource-variant');
+      variantInteractions.push({ selected: variant.id, rendered: renderedVariant });
+      if (viewport.width === 1440 && variant.id !== resource?.variants[0]?.id) {
+        const screenshotPath = path.join(variantEvidenceDir, `ai-prompt-hero-${variant.id}-1440-after.png`);
+        await page.screenshot({ path: screenshotPath, animations: 'disabled' });
+        screenshots.push(path.relative(process.cwd(), screenshotPath).replaceAll('\\', '/'));
+      }
+    }
+    const defaultVariant = resource?.variants[0];
+    if (defaultVariant) await page.getByRole('button', { name: defaultVariant.name, exact: true }).click();
     const dimensions = await page.locator('html').evaluate((html) => ({ pageWidth: html.scrollWidth, clientWidth: html.clientWidth }));
     const previewWidth = await preview.evaluate((iframe) => Math.round(iframe.getBoundingClientRect().width));
     expect(dimensions.pageWidth).toBeLessThanOrEqual(dimensions.clientWidth + 2);
     if (viewport.width >= 1280) expect(previewWidth).toBeGreaterThanOrEqual(500);
     await page.screenshot({ path: path.join(evidenceDir, `r-ai-prompt-hero-${viewport.width}.png`), animations: 'disabled' });
-    results.push({ viewport: `${viewport.width}x${viewport.height}`, status: response?.status() ?? null, title: await page.title(), heading: (await heading.innerText()).trim(), pageWidth: dimensions.pageWidth, previewWidth });
+    results.push({ viewport: `${viewport.width}x${viewport.height}`, status: response?.status() ?? null, title: await page.title(), heading: (await heading.innerText()).trim(), pageWidth: dimensions.pageWidth, previewWidth, variantInteractions, screenshots });
   }
 
   expect(errors, `Canonical resource route browser errors: ${errors.join('\n')}`).toEqual([]);

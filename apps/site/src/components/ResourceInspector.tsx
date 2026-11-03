@@ -13,6 +13,7 @@ export function ResourceInspector({ manifest,componentName }: ResourceInspectorP
   const [copiedInstall, setCopiedInstall] = useState(false);
 
   const [copyError,setCopyError]=useState('');
+  const redistributionAllowed = manifest.license.redistributionVerified;
   const copy=(value:string,onSuccess:()=>void)=>{void navigator.clipboard.writeText(value).then(()=>{onSuccess();setCopyError('');}).catch(cause=>setCopyError(`Copy failed: ${String(cause)}`));};
   const handleCopyCode = () => {
     copy(`import { ${componentName} } from "@/components/ui/${manifest.slug}";`,()=>setCopiedCode(true));
@@ -34,9 +35,9 @@ export function ResourceInspector({ manifest,componentName }: ResourceInspectorP
         >
           <span>Use in Workbench</span>
           <ArrowUpRight className="w-4 h-4" />
-        </a> : <p className="text-xs">Source and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.</p>}
+        </a> : !redistributionAllowed ? <p className="text-xs text-amber-900">Local isolated preview only. Source rights are unresolved; install and redistribution are disabled.</p> : <p className="text-xs">Source and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.</p>}
 
-        <div className="grid grid-cols-2 gap-2">
+        {redistributionAllowed && <div className="grid grid-cols-2 gap-2">
           <button
             type="button"
             onClick={handleCopyCode}
@@ -54,7 +55,7 @@ export function ResourceInspector({ manifest,componentName }: ResourceInspectorP
             {copiedInstall ? <Check className="w-3.5 h-3.5 text-emerald-700" /> : <Terminal className="w-3.5 h-3.5" />}
             <span>{copiedInstall ? 'Copied' : 'npx install'}</span>
           </button>
-        </div>
+        </div>}
       </div>
 
       {copyError && <p role="alert" className="text-xs">{copyError}</p>}

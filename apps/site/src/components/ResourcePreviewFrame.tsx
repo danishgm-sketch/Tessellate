@@ -9,6 +9,7 @@ import type {
 } from '@tessellate/catalog/protocol';
 import { Monitor, Tablet, Smartphone, Sun, Moon, RotateCcw, Activity } from 'lucide-react';
 import { PreviewNavigationConfirmation } from './PreviewNavigationConfirmation';
+import { buildPrivatePreviewUrl, isPrivateVersoResource, resolvePrivatePreviewOrigin } from '../lib/private-preview-origin';
 
 export interface ResourcePreviewFrameProps {
   manifest: ResourceManifest;
@@ -25,6 +26,16 @@ export function ResourcePreviewFrame({
   initialTheme = 'light',
   previewUrl = '/preview-content/',
 }: ResourcePreviewFrameProps) {
+  const privateVerso = isPrivateVersoResource(manifest.slug);
+  const [privatePreviewOrigin, setPrivatePreviewOrigin] = useState<string | null>(null);
+  useEffect(() => {
+    if (!privateVerso) return;
+    setPrivatePreviewOrigin(resolvePrivatePreviewOrigin(
+      import.meta.env.PUBLIC_TESSELLATE_PRIVATE_PREVIEW_ORIGIN,
+      window.location.origin,
+      import.meta.env.PROD,
+    ));
+  }, [privateVerso]);
   const defaultVariant = initialVariant ?? manifest.variants[0]?.id ?? 'expressive';
   const [variant, setVariant] = useState<string>(defaultVariant);
   const [device, setDevice] = useState<PreviewDevice>(initialDevice);
@@ -39,7 +50,8 @@ export function ResourcePreviewFrame({
     const receive = (event: MessageEvent) => {
       if (
         event.source !== iframeRef.current?.contentWindow ||
-        event.origin !== 'null' ||
+        event.origin !== (privateVerso ? privatePreviewOrigin : 'null') ||
+        (privateVerso && !privatePreviewOrigin) ||
         !isPreviewToParentMessage(event.data) ||
         event.data.resourceId !== manifest.slug
       ) {
@@ -51,7 +63,13 @@ export function ResourcePreviewFrame({
         );
         return;
       }
-      if (event.data.type !== 'TESSELLATE_PREVIEW_READY' || initializedRef.current) return;
+      if (event.data.type !== 'TESSELLATE_PREVIEW_READY') return;
+
+      // The iframe can finish loading before this React island hydrates and
+      // attaches its onLoad handler. The validated READY handshake is the
+      // reliable signal that updates can be delivered to the isolated frame.
+      setIframeLoaded(true);
+      if (initializedRef.current) return;
 
       initializedRef.current = true;
       iframeRef.current?.contentWindow?.postMessage(
@@ -64,16 +82,16 @@ export function ResourcePreviewFrame({
           device,
           reducedMotion,
         },
-        '*'
+        privateVerso ? privatePreviewOrigin! : '*'
       );
     };
     window.addEventListener('message', receive);
     return () => window.removeEventListener('message', receive);
-  }, [manifest, variant, theme, device, reducedMotion]);
+  }, [manifest, variant, theme, device, reducedMotion, privateVerso, privatePreviewOrigin]);
 
   // Send updates to iframe whenever controls change
   useEffect(() => {
-    if (!iframeRef.current?.contentWindow) return;
+    if (!iframeLoaded || !iframeRef.current?.contentWindow || (privateVerso && !privatePreviewOrigin)) return;
 
     const updateMsg: PreviewUpdateMessage = {
       type: 'TESSELLATE_PREVIEW_UPDATE',
@@ -85,11 +103,11 @@ export function ResourcePreviewFrame({
     };
 
     try {
-      iframeRef.current.contentWindow.postMessage(updateMsg, '*');
+      iframeRef.current.contentWindow.postMessage(updateMsg, privateVerso ? privatePreviewOrigin! : '*');
     } catch {
       // Ignore
     }
-  }, [variant, theme, device, reducedMotion, iframeLoaded]);
+  }, [variant, theme, device, reducedMotion, iframeLoaded, privateVerso, privatePreviewOrigin]);
 
   const handleReset = () => {
     setVariant(defaultVariant);
@@ -105,7 +123,22 @@ export function ResourcePreviewFrame({
     mobile: 'w-[360px]',
   }[device];
 
-  const initialIframeSrc = `${previewUrl}?resource=${encodeURIComponent(manifest.slug)}&variant=${encodeURIComponent(defaultVariant)}&theme=${initialTheme}&device=${initialDevice}&reducedMotion=false`;
+  const initialIframeSrc = privateVerso && privatePreviewOrigin
+    ? buildPrivatePreviewUrl(privatePreviewOrigin, manifest.slug, {
+        variant: defaultVariant,
+        theme: initialTheme,
+        device: initialDevice,
+        reducedMotion: 'false',
+      })
+    : `${previewUrl}?resource=${encodeURIComponent(manifest.slug)}&variant=${encodeURIComponent(defaultVariant)}&theme=${initialTheme}&device=${initialDevice}&reducedMotion=false`;
+
+  if (privateVerso && !privatePreviewOrigin) {
+    return (
+      <div role="status" className="rounded-xl border border-amber-300 bg-amber-50 p-5 text-sm text-amber-950">
+        Private preview runtime is not configured for this local session. No source is loaded into the application page.
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] overflow-hidden shadow-xs">
@@ -228,7 +261,8 @@ export function ResourcePreviewFrame({
             ref={iframeRef}
             src={initialIframeSrc}
             title={`${manifest.name} live preview`}
-            sandbox="allow-scripts"
+            sandbox={privateVerso ? 'allow-scripts allow-same-origin' : 'allow-scripts'}
+            referrerPolicy="strict-origin"
             onLoad={() => {
               initializedRef.current = false;
               setIframeLoaded(true);

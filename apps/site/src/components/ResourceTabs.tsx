@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { ResourceManifest } from '@tessellate/schemas';
 import { isGoldResource } from '@tessellate/catalog/gold';
+import { getResourceCodeDisclosure, getResourceVariantsDisclosure, getResourceVersionDisclosure } from '../lib/resource-code-disclosure';
 import {
   Code,
   Layers,
@@ -35,6 +36,7 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
   const [copyStatus, setCopyStatus] = useState('');
   useEffect(() => setOrigin(window.location.origin), []);
   const install = `npx shadcn@latest add ${origin}/r/${manifest.slug}.json`;
+  const codeDisclosure = getResourceCodeDisclosure(manifest.license.redistributionVerified);
   const copy = () => {
     void navigator.clipboard
       .writeText(install)
@@ -144,6 +146,7 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
                   <span>When It Works (Ideal For)</span>
                 </div>
                 <ul className="space-y-1 text-xs text-emerald-950">
+                  {manifest.intent.idealFor.length === 0 && <li>Not declared in this resource manifest.</li>}
                   {manifest.intent.idealFor.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-1.5">
                       <span className="font-bold text-emerald-700">•</span>
@@ -160,6 +163,7 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
                   <span>When It Is Inappropriate (Avoid For)</span>
                 </div>
                 <ul className="space-y-1 text-xs text-rose-950">
+                  {manifest.intent.avoidFor.length === 0 && <li>Not declared in this resource manifest.</li>}
                   {manifest.intent.avoidFor.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-1.5">
                       <span className="font-bold text-rose-600">•</span>
@@ -176,6 +180,7 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
                 Jobs To Be Done
               </h2>
               <div className="flex flex-wrap gap-2">
+                {manifest.intent.jobs.length === 0 && <span className="text-xs text-[var(--tess-ink-muted,#62666F)]">No user jobs are declared.</span>}
                 {manifest.intent.jobs.map((job, idx) => (
                   <span
                     key={idx}
@@ -193,6 +198,7 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
                 Expected Content Requirements
               </h2>
               <ul className="list-disc list-inside text-xs space-y-1 text-[var(--tess-ink-secondary,#62666F)]">
+                {manifest.intent.contentRequirements.length === 0 && <li>No content requirements are declared.</li>}
                 {manifest.intent.contentRequirements.map((req, idx) => (
                   <li key={idx}>{req}</li>
                 ))}
@@ -223,27 +229,36 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
         {/* CODE TAB */}
         {activeTab === 'code' && (
           <div className="space-y-4 font-mono text-xs">
-            <div className="flex items-center justify-between">
-              <span className="text-[var(--tess-ink-secondary,#62666F)]">
-                Install component via CLI:
-              </span>
-              <button
-                type="button"
-                onClick={copy}
-                className="px-2 py-1 rounded bg-[var(--tess-canvas,#F4F2ED)] border border-[var(--tess-hairline,#D9D6CF)] text-[11px] hover:bg-white"
-              >
-                Copy
-              </button>
-            </div>
-            <pre
-              tabIndex={0}
-              className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]"
-            >
-              <code>{install}</code>
-            </pre>
+            {codeDisclosure.notice && (
+              <p role="note" className="rounded-lg border border-amber-300 bg-amber-50 p-3 font-sans text-xs leading-relaxed text-amber-950">
+                {codeDisclosure.notice}
+              </p>
+            )}
+            {codeDisclosure.installHeading && (
+              <>
+                <div className="flex items-center justify-between">
+                  <span className="text-[var(--tess-ink-secondary,#62666F)]">
+                    {codeDisclosure.installHeading}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={copy}
+                    className="px-2 py-1 rounded bg-[var(--tess-canvas,#F4F2ED)] border border-[var(--tess-hairline,#D9D6CF)] text-[11px] hover:bg-white"
+                  >
+                    Copy
+                  </button>
+                </div>
+                <pre
+                  tabIndex={0}
+                  className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]"
+                >
+                  <code>{install}</code>
+                </pre>
+              </>
+            )}
 
             <span className="text-[var(--tess-ink-secondary,#62666F)] block pt-2">
-              Actual published source (React + Tailwind):
+              {codeDisclosure.sourceHeading}
             </span>
             <pre
               tabIndex={0}
@@ -262,10 +277,9 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
               Declared Variants
             </h2>
             <p className="text-xs text-[var(--tess-ink-secondary,#62666F)]">
-              The configurations declared by this resource are listed below. Inspect them in the
-              live preview.
+              {getResourceVariantsDisclosure(manifest.variants.length)}
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {manifest.variants.length > 0 && <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {manifest.variants.map((v) => (
                 <div
                   key={v.id}
@@ -282,7 +296,7 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
                   </p>
                 </div>
               ))}
-            </div>
+            </div>}
           </div>
         )}
 
@@ -292,7 +306,11 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
             <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
               Configurable Slots & Props
             </h2>
-            <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white overflow-hidden">
+            {manifest.slots.length === 0 ? (
+              <p role="status" className="rounded-lg border border-[var(--tess-hairline,#D9D6CF)] bg-white p-4 text-xs text-[var(--tess-ink-secondary,#62666F)]">
+                No configurable slots or props are declared in this resource manifest.
+              </p>
+            ) : <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white overflow-hidden">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
                   <tr className="border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] text-[var(--tess-ink-secondary,#62666F)]">
@@ -319,7 +337,7 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
                   ))}
                 </tbody>
               </table>
-            </div>
+            </div>}
           </div>
         )}
 
@@ -383,6 +401,11 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
         {/* PERFORMANCE TAB */}
         {activeTab === 'performance' && (
           <div className="space-y-4">
+            {(manifest.performance.notes?.length ?? 0) > 0 && (
+              <p role="note" className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs leading-relaxed text-amber-950">
+                {manifest.performance.notes?.join(' ')}
+              </p>
+            )}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3">
                 <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">
@@ -453,13 +476,13 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
           <div className="space-y-4">
             <div className="p-4 rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white space-y-1">
               <div className="flex items-center justify-between">
-                <span className="font-mono font-bold text-sm">v{manifest.version}</span>
+                <span className="font-mono font-bold text-sm">Current manifest version: v{manifest.version}</span>
                 <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)]">
-                  Initial Release
+                  Version metadata
                 </span>
               </div>
               <p className="text-xs text-[var(--tess-ink-secondary,#62666F)]">
-                Launch release with verified Quiet, Expressive, and Nocturne variants.
+                {getResourceVersionDisclosure(manifest.version)}
               </p>
             </div>
           </div>

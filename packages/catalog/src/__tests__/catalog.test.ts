@@ -276,5 +276,15 @@ describe('Catalogue Foundation & Validator', () => {
         attributionRequired: false,
       }).valid
     ).toBe(false);
+
+    expect(
+      validateLicense({
+        spdx: 'UNLICENSED',
+        name: 'UNLICENSED',
+        redistributionVerified: false,
+        attributionRequired: 'unknown',
+        attributionText: 'Attribution requirements have not been established.',
+      }).valid
+    ).toBe(false);
   });
 });

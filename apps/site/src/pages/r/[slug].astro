@@ -17,14 +17,39 @@ export async function getStaticPaths() {
   ];
   const rootResourcesDir = candidates.find((p) => fs.existsSync(p)) ?? candidates[0]!;
   const discovered = discoverResources(rootResourcesDir);
-
-  return discovered.map((item) => {
+  const publicPaths = discovered.map((item) => {
     const manifest = loadJsonManifest(item.manifestPath);
     return {
       params: { slug: manifest.slug },
       props: { manifest, sourceCode: fs.readFileSync(path.join(path.dirname(item.manifestPath),'index.tsx'),'utf8') },
     };
   });
+
+  if (process.env.TESSELLATE_PRIVATE_VERSO !== '1') return publicPaths;
+  const projectionPath = process.env.TESSELLATE_PRIVATE_VERSO_PROJECTION;
+  if (!projectionPath || !path.isAbsolute(projectionPath)) {
+    throw new Error('Local private Verso preview requires TESSELLATE_PRIVATE_VERSO_PROJECTION to be an absolute file path.');
+  }
+  const projection = JSON.parse(fs.readFileSync(projectionPath, 'utf8')) as {
+    license: string;
+    sourceRoot: string;
+    records: Array<{ source: { path: string }; manifest: ResourceManifest }>;
+  };
+  if (projection.license !== 'UNLICENSED') throw new Error('Private Verso route generation requires the unlicensed local source state.');
+  const sourceRoot = fs.realpathSync(projection.sourceRoot);
+  const privatePaths = projection.records.map((record) => {
+    const sourcePath = path.resolve(sourceRoot, record.source.path);
+    const canonicalSourcePath = fs.realpathSync(sourcePath);
+    const relative = path.relative(sourceRoot, canonicalSourcePath);
+    if (relative === '..' || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)) {
+      throw new Error(`Private Verso source path escapes its root: ${record.source.path}`);
+    }
+    return {
+      params: { slug: record.manifest.slug },
+      props: { manifest: record.manifest, sourceCode: fs.readFileSync(canonicalSourcePath, 'utf8') },
+    };
+  });
+  return [...publicPaths, ...privatePaths];
 }
 
 interface Props {
@@ -76,11 +101,16 @@ if(!componentName)throw new Error(`No component export in ${manifest.slug}`);
             <span class="px-2 py-0.5 rounded text-xs font-mono font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
               Manifest status: {manifest.status}
             </span>
+            {!manifest.license.redistributionVerified && (
+              <span class="px-2 py-0.5 rounded text-xs font-mono font-semibold bg-amber-50 text-amber-900 border border-amber-300">
+                Local preview only · redistribution blocked
+              </span>
+            )}
           </div>
           <p class="text-sm md:text-base text-[var(--tess-ink-secondary,#62666F)]">
             {manifest.description}
           </p>
-          <div class="pt-2 flex flex-wrap items-center gap-2">
+          {manifest.license.redistributionVerified ? <div class="pt-2 flex flex-wrap items-center gap-2">
             <span class="text-xs text-[var(--tess-ink-secondary,#62666F)] font-mono">Install:</span>
             <code class="px-2 py-1 rounded text-xs font-mono bg-white border border-[var(--tess-hairline,#D9D6CF)] text-[var(--tess-cobalt,#2547E8)]">
               tess add {manifest.slug}
@@ -88,7 +118,7 @@ if(!componentName)throw new Error(`No component export in ${manifest.slug}`);
             <code class="px-2 py-1 rounded text-xs font-mono bg-white border border-[var(--tess-hairline,#D9D6CF)] text-[var(--tess-ink-secondary,#62666F)]">
               Registry source: /r/{manifest.slug}.json
             </code>
-          </div>
+          </div> : <p class="pt-2 text-xs font-medium text-amber-900">This component can be inspected in the isolated local preview. Tessellate does not offer an install or redistribution path while its rights remain unresolved.</p>}
         </div>
 
         <!-- Tags -->
@@ -116,7 +146,9 @@ if(!componentName)throw new Error(`No component export in ${manifest.slug}`);
     </main>
 
     <footer class="mt-auto border-t border-[var(--tess-hairline,#D9D6CF)] py-8 px-4 text-center text-xs text-[var(--tess-ink-muted,#62666F)]">
-      Tessellate Interface Intelligence Layer — Open resource library under {manifest.license.spdx} License.
+      {manifest.license.redistributionVerified
+        ? `Tessellate Interface Intelligence Layer — Open resource library under ${manifest.license.spdx} License.`
+        : 'Tessellate local review — source rights and redistribution status are unresolved.'}
     </footer>
   </body>
 </html>

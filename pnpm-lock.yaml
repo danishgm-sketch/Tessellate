@@ -117,6 +117,9 @@ importers:
       '@tessellate/dna':
         specifier: workspace:*
         version: link:../../packages/dna
+      '@tessellate/renderer':
+        specifier: workspace:*
+        version: link:../../packages/renderer
       '@tessellate/schemas':
         specifier: workspace:*
         version: link:../../packages/schemas

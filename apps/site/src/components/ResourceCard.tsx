@@ -3,6 +3,7 @@ import {isGoldResource} from '@tessellate/catalog/gold';
 import { isPreviewToParentMessage, resolvePreviewNavigationDestination } from '@tessellate/catalog/protocol';
 import type { PreviewNavigationDestination } from '@tessellate/catalog/protocol';
 import type { ResourceManifest } from '@tessellate/schemas';
+import { buildPrivatePreviewUrl, isPrivateVersoResource, resolvePrivatePreviewOrigin } from '../lib/private-preview-origin';
 import { Eye, Bookmark, ArrowUpRight, Copy, Check } from 'lucide-react';
 import { PreviewNavigationConfirmation } from './PreviewNavigationConfirmation';
 
@@ -20,7 +21,18 @@ export function ResourceCard({
   onSave,
 }: ResourceCardProps) {
   const [actionError,setActionError]=useState('');
+  const privateVerso = isPrivateVersoResource(manifest.slug);
+  const [privatePreviewOrigin, setPrivatePreviewOrigin] = useState<string | null>(null);
+  useEffect(() => {
+    if (!privateVerso) return;
+    setPrivatePreviewOrigin(resolvePrivatePreviewOrigin(
+      import.meta.env.PUBLIC_TESSELLATE_PRIVATE_PREVIEW_ORIGIN,
+      window.location.origin,
+      import.meta.env.PROD,
+    ));
+  }, [privateVerso]);
   const gold=isGoldResource(manifest.slug);
+  const redistributionAllowed=manifest.license.redistributionVerified;
   useEffect(()=>{const read=()=>{try {const stored:unknown=JSON.parse(localStorage.getItem('tessellate_saved_resources') ?? '[]');if(Array.isArray(stored))setSaved(stored.includes(manifest.slug));}catch{setActionError('Saved collection could not be read. Its data has been preserved.');}};read();window.addEventListener('tessellate-saved-resources-changed',read);return ()=>window.removeEventListener('tessellate-saved-resources-changed',read);},[manifest.slug]);
   const [copied, setCopied] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -43,7 +55,7 @@ export function ResourceCard({
     const receivePreviewState=(event:MessageEvent)=>{
       if(
         event.source!==previewFrameRef.current?.contentWindow ||
-        event.origin!=='null' ||
+        event.origin!==(privateVerso ? privatePreviewOrigin : 'null') ||
         !isPreviewToParentMessage(event.data) ||
         event.data.resourceId!==manifest.slug
       ) return;
@@ -59,12 +71,12 @@ export function ResourceCard({
     };
     window.addEventListener('message',receivePreviewState);
     return ()=>window.removeEventListener('message',receivePreviewState);
-  },[manifest.slug]);
+  },[manifest.slug,privateVerso,privatePreviewOrigin]);
   useEffect(()=>{
-    if(!previewVisible || previewLoaded || previewFailed) return undefined;
+    if(!previewVisible || previewLoaded || previewFailed || (privateVerso && !privatePreviewOrigin)) return undefined;
     const timeout=window.setTimeout(()=>setPreviewFailed(true),15000);
     return ()=>window.clearTimeout(timeout);
-  },[previewVisible,previewLoaded,previewFailed]);
+  },[previewVisible,previewLoaded,previewFailed,privateVerso,privatePreviewOrigin]);
 
   const handleCopy = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -84,7 +96,11 @@ export function ResourceCard({
     <div className="group relative flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] transition-all duration-200 hover:border-[var(--tess-hairline-strong,#C7C3BA)] hover:shadow-md overflow-hidden">
       {/* 16:10 Preview Frame */}
       <div ref={previewRef} aria-busy={previewVisible && !previewLoaded && !previewFailed} className="relative aspect-[16/10] w-full bg-[var(--tess-canvas,#F4F2ED)] border-b border-[var(--tess-hairline,#D9D6CF)] flex items-center justify-center p-6 overflow-hidden">
-        {previewVisible ? (
+        {previewVisible && privateVerso && !privatePreviewOrigin ? (
+          <span role="status" className="px-4 text-center text-xs text-[var(--tess-ink-secondary)]">
+            Private preview runtime is not configured for this local session.
+          </span>
+        ) : previewVisible ? (
           <>
             {!previewLoaded && !previewFailed && (
               <span role="status" className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-xs text-[var(--tess-ink-muted)]">
@@ -100,9 +116,12 @@ export function ResourceCard({
             )}
             <iframe
               ref={previewFrameRef}
-              src={`/preview-content/?resource=${manifest.slug}`}
+              src={privateVerso && privatePreviewOrigin
+                ? buildPrivatePreviewUrl(privatePreviewOrigin, manifest.slug)
+                : `/preview-content/?resource=${encodeURIComponent(manifest.slug)}`}
               title={`${manifest.name} actual preview`}
-              sandbox="allow-scripts"
+              sandbox={privateVerso ? 'allow-scripts allow-same-origin' : 'allow-scripts'}
+              referrerPolicy="strict-origin"
               loading="lazy"
               onError={() => { setPreviewLoaded(false); setPreviewFailed(true); }}
               className={`w-full h-full border-0 bg-white transition-opacity duration-150 ${previewLoaded ? 'opacity-100' : 'opacity-0'}`}
@@ -152,14 +171,14 @@ export function ResourceCard({
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>}
 
-          <button
+          {redistributionAllowed ? <button
             type="button"
             onClick={handleCopy}
             title="Copy registry install command"
             className="h-8 w-8 rounded-lg bg-white text-[var(--tess-ink,#111217)] flex items-center justify-center shadow-sm hover:bg-neutral-100 transition-colors"
           >
             {copied ? <Check className="w-3.5 h-3.5 text-emerald-700" /> : <Copy className="w-3.5 h-3.5" />}
-          </button>
+          </button> : <span role="note" title="Redistribution rights are unresolved" className="rounded bg-amber-50 px-2 py-1 text-[10px] font-mono text-amber-900">LOCAL ONLY</span>}
         </div>
       </div>
 
@@ -193,7 +212,7 @@ export function ResourceCard({
             </span>
           </div>
         </div>
-        <p className="text-[11px] text-[var(--tess-ink-secondary)]">{gold ? 'Gold runtime · composition and browser export' : 'Live sandbox preview · source download'}</p>
+        <p className="text-[11px] text-[var(--tess-ink-secondary)]">{gold ? 'Gold runtime · composition and browser export' : redistributionAllowed ? 'Live sandbox preview · source download' : 'Isolated local preview · installation unavailable'}</p>
       </div>
     </div>
   );

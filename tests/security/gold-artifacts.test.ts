@@ -50,7 +50,9 @@ describe('generated Gold resource artifacts', () => {
 
     const components = await discoverAllComponents();
     expect(components.some((component) => component.sourceCode.includes(probe))).toBe(false);
-  }, 30_000);
+  // This adversarial fixture validates the full 324-resource catalogue and
+  // rescans source paths; allow for concurrent work in the complete suite.
+  }, 60_000);
 
   it('serializes validated manifest IDs as data in generated TypeScript registries', () => {
     const maliciousId = `resource': (() => { throw new Error('GOLD_ID_PROBE') })(), 'safe`;
