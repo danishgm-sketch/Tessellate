@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-11-03",
+  "environment": "Local production build and Sites Worker runtime",
+  "command": "pnpm test:e2e",
+  "result": "passed",
+  "failures": 0,
+  "stages": [
+    { "name": "Astro desktop and mobile", "passed": 396, "skipped": 134, "failed": 0 },
+    { "name": "Sites Worker desktop Chromium", "passed": 209, "skipped": 10, "failed": 0 },
+    { "name": "Sites Worker mobile Chromium", "passed": 177, "skipped": 42, "failed": 0 },
+    { "name": "Standalone preview app Chromium", "passed": 3, "skipped": 0, "failed": 0 }
+  ],
+  "totals": { "passed": 785, "skipped": 186, "failed": 0 },
+  "coverageNotes": [
+    "Flagship employee experience flow and independent React export passed in desktop and mobile browser profiles.",
+    "All 324 canonical resources passed Sites Worker browser render certification at the certified widths.",
+    "Reduced-motion behavior passed in Astro and Sites Worker desktop/mobile profiles.",
+    "Preview load and visible error recovery passed in Sites Worker desktop/mobile profiles.",
+    "Sites preview CSP, iframe isolation, and cross-surface CLI/MCP manifest workflows passed."
+  ],
+  "limitations": [
+    "Configured profile skips remain and are reported by the Playwright projects.",
+    "This run is local and does not close public-deployment findings.",
+    "The public review Site remained v73 during this run."
+  ]
+}

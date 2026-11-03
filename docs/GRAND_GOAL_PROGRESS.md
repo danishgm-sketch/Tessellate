@@ -74,3 +74,34 @@ The public v72 `/tools/` index and ten tool routes were also visited at both siz
 - Human usability evidence remains unavailable by owner waiver. Verso rights,
   remaining hardening gates, broader integration benchmarks, and deployed
   verification of local-only fixes remain unresolved.
+
+### 2026-11-03 continuation — complete local regression pass
+
+Starting from `c99c867cf064c9803511fd911f512dee23925952`, I fixed the Explore
+preview failure-timer registration so the visible loading state only appears
+after its timeout is armed, and changed the error-state regression to locate
+the stable preview surface after the iframe is removed. I also retained the
+Sites preview queue behavior for explicitly constrained connections and the
+shared reduced-motion renderer fix. The browser runs now pass the full matrix:
+Astro desktop/mobile 396 passed / 134 configured skips; Sites Worker desktop
+209 / 10; Sites Worker mobile 177 / 42; standalone preview 3 / 0. Total: 785
+passed, 186 configured skips, zero failures. Machine summary:
+`../audit/evidence/step-48/local-full-e2e-2026-11-03.json`.
+
+Frozen installation, catalogue generation (324 resources / 40 Gold), all 22
+workspace typechecks, lint, Vitest (1,324 passed / 1 skipped), the 16/16
+behavioral release gate, resource isolation, production build, bundle budgets,
+license/provenance, secret/security and dependency audits also passed. This is
+local evidence only: the public review Site is still v73. The audit now has
+465 findings (0 Critical, 87 High, 350 Medium, 28 Low). AUD-452, AUD-464, and
+AUD-465 remain pending issue-specific deployed rechecks; the wider release and
+human-validation gates remain incomplete.
+
+Verso integration remains the private owner-only adapter over the inspected
+1,053 source modules. The private source declares `UNLICENSED`; without written
+redistribution rights, those modules cannot be copied into the public
+catalogue, Gold runtime, Workbench, registry, CLI/MCP or export. No source was
+copied during this continuation. This completes the technically permitted
+local integration, not public redistribution or per-component certification.
+
+The two product fixes are isolated in commits `5a8310980808d87159cd2dfa1f6dcf63d4fa5e55` (reduced motion) and `72301ad3c890f36ce2a42fe1288700824b474933` (Explore previews). The delayed-response Playwright harness correction is `93b2ae606a72176acbdbbc851a4d2f7a9cbe8f20`. Audit findings AUD-464 and AUD-465 reference their respective fix commits. All three are locally verified; deployed verification remains pending.

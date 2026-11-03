@@ -1,0 +1,68 @@
+{
+  "capturedAt": "2026-11-03T10:14:16.675Z",
+  "source": "Public ChatGPT Sites v73, fresh Playwright mobile browser context",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+  "viewport": {
+    "width": 412,
+    "height": 823,
+    "deviceScaleFactor": 1.75,
+    "reducedMotion": "reduce"
+  },
+  "status": 200,
+  "nodes": [
+    {
+      "role": "marketing-page",
+      "transitionProperty": "all",
+      "transitionDuration": "1e-06s",
+      "animationName": "none",
+      "animationDuration": "1e-06s"
+    },
+    {
+      "role": "navigation",
+      "transitionProperty": "all",
+      "transitionDuration": "1e-06s",
+      "animationName": "none",
+      "animationDuration": "1e-06s"
+    },
+    {
+      "role": "hero",
+      "transitionProperty": "all",
+      "transitionDuration": "1e-06s",
+      "animationName": "none",
+      "animationDuration": "1e-06s"
+    },
+    {
+      "role": "value-proposition",
+      "transitionProperty": "all",
+      "transitionDuration": "1e-06s",
+      "animationName": "none",
+      "animationDuration": "1e-06s"
+    },
+    {
+      "role": "conversion-cta",
+      "transitionProperty": "all",
+      "transitionDuration": "1e-06s",
+      "animationName": "none",
+      "animationDuration": "1e-06s"
+    },
+    {
+      "role": "footer",
+      "transitionProperty": "all",
+      "transitionDuration": "1e-06s",
+      "animationName": "none",
+      "animationDuration": "1e-06s"
+    }
+  ],
+  "consoleErrors": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "chromeDevToolsTrace": {
+    "cls": 0.06,
+    "lcpMs": 1748,
+    "ttfbMs": 58,
+    "cpuThrottle": "4x",
+    "network": "Fast 4G",
+    "cause": "transition-all on Tessellate screen wrappers exposed non-composited layout property animations under reduced motion"
+  },
+  "screenshot": "C:\\Users\\ismay\\.codex\\worktrees\\verso-integration\\Tessellate\\audit\\evidence\\step-48\\system-reduced-motion\\public-v73-workbench-412x823-before.png"
+}
