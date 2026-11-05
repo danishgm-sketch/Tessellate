@@ -1,4 +1,4 @@
-import { readFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
@@ -421,6 +421,262 @@ test('all catalogue resources render at every certified width in the Sites Worke
 
   const failures = records.flatMap((record) => record.findings.map((finding) => `${record.slug}: ${finding.type}: ${finding.detail}`));
   expect(failures, `Catalogue browser smoke findings:\n${failures.join('\n')}`).toEqual([]);
+});
+
+test('data terminal header fits the compact preview width without hiding sample fields', async ({
+  page,
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name !== 'sites-chromium',
+    'This preview runs against the Sites Worker isolation boundary.'
+  );
+
+  const consoleErrors: string[] = [];
+  const uncaughtExceptions: string[] = [];
+  const failedRequests: string[] = [];
+  const httpErrors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => uncaughtExceptions.push(error.message));
+  page.on('requestfailed', (request) =>
+    failedRequests.push(
+      `${request.method()} ${request.url()}: ${request.failure()?.errorText ?? 'unknown failure'}`
+    )
+  );
+  page.on('response', (response) => {
+    if (response.status() >= 400) httpErrors.push(`${response.status()} ${response.url()}`);
+  });
+
+  await page.setViewportSize({ width: 360, height: 900 });
+  const response = await page.goto('/r/data-terminal-header/', { waitUntil: 'domcontentloaded' });
+  expect(response?.status()).toBe(200);
+  const preview = page.frameLocator('iframe[title$=" live preview"]');
+  const header = preview.locator('.tess-screen header');
+  await expect(header).toBeVisible();
+  const layout = await header.evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    const children = [...element.querySelectorAll('span')].map((child) => {
+      const childRect = child.getBoundingClientRect();
+      return {
+        text: child.textContent?.trim() ?? '',
+        left: Math.round(childRect.left - rect.left),
+        right: Math.round(childRect.right - rect.left),
+        height: Math.round(childRect.height),
+      };
+    });
+    return {
+      clientWidth: element.clientWidth,
+      scrollWidth: element.scrollWidth,
+      text: element.innerText,
+      children,
+    };
+  });
+  const stage = process.env.TESS_RESOURCE_EVIDENCE_STAGE === 'before' ? 'before' : 'after';
+  const evidenceDirectory = path.resolve(process.cwd(), 'audit/evidence/step-39/aud-492');
+  mkdirSync(evidenceDirectory, { recursive: true });
+  const screenshot = path.join(evidenceDirectory, `data-terminal-header-360-${stage}.png`);
+  await page.screenshot({
+    path: screenshot,
+    animations: 'disabled',
+  });
+  const pageDimensions = await page
+    .locator('html')
+    .evaluate((html) => ({ clientWidth: html.clientWidth, scrollWidth: html.scrollWidth }));
+  writeFileSync(
+    path.join(evidenceDirectory, `data-terminal-header-360-${stage}.json`),
+    `${JSON.stringify(
+      {
+        capturedAt: new Date().toISOString(),
+        url: page.url(),
+        viewport: page.viewportSize(),
+        status: response?.status() ?? null,
+        layout,
+        pageDimensions,
+        screenshot: path.relative(process.cwd(), screenshot).replaceAll('\\', '/'),
+        consoleErrors,
+        uncaughtExceptions,
+        failedRequests,
+        httpErrors,
+      },
+      null,
+      2
+    )}\n`
+  );
+  expect(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth + 1);
+  expect(
+    layout.children.every((child) => child.left >= 0 && child.right <= layout.clientWidth + 1)
+  ).toBe(true);
+  expect(layout.children.every((child) => child.height <= 18)).toBe(true);
+  expect(layout.text).toContain('SAMPLE DATA');
+  expect(layout.text).toContain('BTC/USD $42,000.00');
+  expect(layout.text).toContain('+2.4% example');
+  expect(layout.text).toContain('Example RTT: 12ms');
+  expect(layout.text).toContain('No live feed');
+  expect(pageDimensions.scrollWidth).toBeLessThanOrEqual(pageDimensions.clientWidth + 2);
+  expect(consoleErrors).toEqual([]);
+  expect(uncaughtExceptions).toEqual([]);
+  expect(failedRequests).toEqual([]);
+  expect(httpErrors).toEqual([]);
+});
+
+test('data terminal header variants produce distinct visual treatments', async ({
+  page,
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name !== 'sites-chromium',
+    'This preview runs against the Sites Worker isolation boundary.'
+  );
+
+  const consoleErrors: string[] = [];
+  const uncaughtExceptions: string[] = [];
+  const failedRequests: string[] = [];
+  const httpErrors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => uncaughtExceptions.push(error.message));
+  page.on('requestfailed', (request) =>
+    failedRequests.push(
+      `${request.method()} ${request.url()}: ${request.failure()?.errorText ?? 'unknown failure'}`
+    )
+  );
+  page.on('response', (response) => {
+    if (response.status() >= 400) httpErrors.push(`${response.status()} ${response.url()}`);
+  });
+
+  const response = await page.goto('/r/data-terminal-header/', { waitUntil: 'domcontentloaded' });
+  expect(response?.status()).toBe(200);
+  const preview = page.frameLocator('iframe[title$=" live preview"]');
+  const header = preview.locator('.tess-screen header');
+  const resourceNode = preview.locator('[data-node-id="preview-data-terminal-header"]');
+  await expect(header).toBeVisible();
+  await expect(resourceNode).toHaveAttribute('data-resource-variant', 'quiet');
+  const stage = process.env.TESS_RESOURCE_EVIDENCE_STAGE === 'before' ? 'before' : 'after';
+  const evidenceDirectory = path.resolve(process.cwd(), 'audit/evidence/step-39/aud-493');
+  mkdirSync(evidenceDirectory, { recursive: true });
+  const backgroundColors: string[] = [];
+  const contrastRatios: number[] = [];
+  const assertHeaderContrast = async () => {
+    const ratios = await header.evaluate((element) => {
+      const luminance = (color: string) => {
+        const oklch = color.match(/oklch\(\s*([\d.]+)\s+([\d.]+)\s+([\d.]+|none)/i);
+        let rgb: number[];
+        if (oklch) {
+          const lightness = Number(oklch[1]);
+          const chroma = Number(oklch[2]);
+          const hue = oklch[3] === 'none' ? 0 : (Number(oklch[3]) * Math.PI) / 180;
+          const a = chroma * Math.cos(hue);
+          const b = chroma * Math.sin(hue);
+          const lRoot = lightness + 0.3963377774 * a + 0.2158037573 * b;
+          const mRoot = lightness - 0.1055613458 * a - 0.0638541728 * b;
+          const sRoot = lightness - 0.0894841775 * a - 1.291485548 * b;
+          const l = lRoot ** 3;
+          const m = mRoot ** 3;
+          const s = sRoot ** 3;
+          rgb = [
+            4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s,
+            -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s,
+            -0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s,
+          ];
+        } else {
+          const channels =
+            color
+              .match(/[\d.]+/g)
+              ?.slice(0, 3)
+              .map(Number) ?? [];
+          rgb = channels.map((channel) => {
+            const normalized = channel / 255;
+            const srgb =
+              normalized <= 0.04045 ? normalized / 12.92 : ((normalized + 0.055) / 1.055) ** 2.4;
+            return srgb;
+          });
+        }
+        const clipped = rgb.map((channel) => Math.max(0, Math.min(1, channel)));
+        return 0.2126 * (clipped[0] ?? 0) + 0.7152 * (clipped[1] ?? 0) + 0.0722 * (clipped[2] ?? 0);
+      };
+      const backgroundColor = getComputedStyle(element).backgroundColor;
+      const background = luminance(backgroundColor);
+      return [...element.querySelectorAll('span')].map((span) => {
+        const text = span.textContent?.trim() ?? '';
+        const foregroundColor = getComputedStyle(span).color;
+        const foreground = luminance(foregroundColor);
+        return {
+          text,
+          foregroundColor,
+          backgroundColor,
+          ratio: text
+            ? (Math.max(background, foreground) + 0.05) / (Math.min(background, foreground) + 0.05)
+            : 21,
+        };
+      });
+    });
+    contrastRatios.push(...ratios.map(({ ratio }) => ratio));
+    expect(
+      ratios.every(({ ratio }) => ratio >= 4.5),
+      JSON.stringify(ratios)
+    ).toBe(true);
+  };
+  backgroundColors.push(
+    await header.evaluate((element) => getComputedStyle(element).backgroundColor)
+  );
+  await assertHeaderContrast();
+  await header.screenshot({
+    path: path.join(evidenceDirectory, `data-terminal-header-quiet-${stage}.png`),
+    animations: 'disabled',
+  });
+
+  await page.getByRole('button', { name: 'Expressive', exact: true }).click();
+  await expect(resourceNode).toHaveAttribute('data-resource-variant', 'expressive');
+  backgroundColors.push(
+    await header.evaluate((element) => getComputedStyle(element).backgroundColor)
+  );
+  await assertHeaderContrast();
+  await header.screenshot({
+    path: path.join(evidenceDirectory, `data-terminal-header-expressive-${stage}.png`),
+    animations: 'disabled',
+  });
+
+  await page.getByRole('button', { name: 'Nocturne', exact: true }).click();
+  await expect(resourceNode).toHaveAttribute('data-resource-variant', 'nocturne');
+  backgroundColors.push(
+    await header.evaluate((element) => getComputedStyle(element).backgroundColor)
+  );
+  await assertHeaderContrast();
+  await header.screenshot({
+    path: path.join(evidenceDirectory, `data-terminal-header-nocturne-${stage}.png`),
+    animations: 'disabled',
+  });
+
+  writeFileSync(
+    path.join(evidenceDirectory, `data-terminal-header-variants-${stage}.json`),
+    `${JSON.stringify(
+      {
+        capturedAt: new Date().toISOString(),
+        url: page.url(),
+        viewport: page.viewportSize(),
+        responseStatus: response?.status() ?? null,
+        backgroundColors,
+        contrastRatios,
+        screenshots: ['quiet', 'expressive', 'nocturne'].map(
+          (variant) => `audit/evidence/step-39/aud-493/data-terminal-header-${variant}-${stage}.png`
+        ),
+        consoleErrors,
+        uncaughtExceptions,
+        failedRequests,
+        httpErrors,
+      },
+      null,
+      2
+    )}\n`
+  );
+
+  expect(new Set(backgroundColors).size).toBe(3);
+  expect(contrastRatios.length).toBeGreaterThan(0);
+  expect(consoleErrors).toEqual([]);
+  expect(uncaughtExceptions).toEqual([]);
+  expect(failedRequests).toEqual([]);
+  expect(httpErrors).toEqual([]);
 });
 
 test('canonical /r resource detail route preserves title, preview, and responsive layout', async ({ page }, testInfo) => {

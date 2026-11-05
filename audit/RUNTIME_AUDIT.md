@@ -5615,3 +5615,26 @@ The separate `pnpm audit:all` run passed 16/16 behavioral release-gate checks, 3
 - **Remediation:** Use pointer events for drag, provide a labelled range control for keyboard rotation, and suppress decorative marker animation when reduced motion is requested.
 - **Local verification:** PASS locally: 30/30 Sites Worker Chromium checks across desktop 1440x900 and mobile 390x844; all 13 after screenshots captured. Evidence: quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log.
 - **Deployed verification:** Pending a new review Site version; v75 remains the before-state.
+
+## Step 39 public v75 data-terminal follow-up — 2026-11-05
+
+### MEDIUM — AUD-492: Data terminal header compressed text at 360px
+
+- **Evidence:** Public v75 route `/r/data-terminal-header/` returned HTTP 200 at 360×900 with no console errors, uncaught exceptions, failed requests, or HTTP errors. The preview iframe was 292px wide and the header's text children reached 29–32px high because fields were cramped into narrow columns. Before screenshot and machine report: `audit/evidence/step-39/aud-492/data-terminal-header-360-before.png` and `.json`.
+- **Reproduction:** Open the route at 360×900 and inspect the preview header fields.
+- **Root cause:** The compact preview kept the header in a single-row layout without a narrow-width stacking strategy.
+- **Affected code:** `resources/shells/data-terminal-header/index.tsx`, its manifest and README, and `tests/e2e/catalog-resource-render.spec.ts`.
+- **Remediation:** Stack/wrap fields on narrow viewports and restore the one-row treatment at wider widths.
+- **Local verification:** The focused Sites Worker browser regression passed. The local after report records every field at 15–16px text height, no overflow, and no runtime/network errors; see `audit/evidence/step-39/aud-492/data-terminal-header-360-after.png` and `.json`.
+- **Deployed verification:** Awaiting the next public review Site deployment.
+
+### MEDIUM — AUD-493: Expressive variant duplicated Quiet's appearance
+
+- **Evidence:** Public v75 returned HTTP 200 at 1440×900 with no console errors, uncaught exceptions, failed requests, or HTTP errors. Quiet and Expressive shared a neutral dark background, leaving only two distinct background colors across three variants. Before report and captures: `audit/evidence/step-39/aud-493/data-terminal-header-variants-before.json` and the three `*-before.png` screenshots.
+- **Reproduction:** Open `/r/data-terminal-header/` at 1440×900 and select Quiet, Expressive, and Nocturne in turn.
+- **Root cause:** Expressive did not apply its own treatment and inherited the Quiet background.
+- **Affected code:** `resources/shells/data-terminal-header/index.tsx`, its manifest and README, and `tests/e2e/catalog-resource-render.spec.ts`.
+- **Remediation:** Define explicit, distinct variant treatments and test computed colors and text contrast.
+- **Local verification:** The focused Sites Worker regression passed; all three backgrounds differ, and tested text contrast ratios are at least 6.01:1. After captures and report: `audit/evidence/step-39/aud-493/`.
+- **Deployed verification:** Awaiting the next public review Site deployment.
+**Latest ledger:** 493 total findings (0 Critical, 87 High, 377 Medium, 29 Low): 246 closed after deployed verification, 9 historical closed, 2 closed-local, 134 fixed awaiting deployed verification, 98 locally verified, 2 legacy fixed, and 2 documented Sites-host limitations. AUD-492 and AUD-493 remain open for public-version recheck.

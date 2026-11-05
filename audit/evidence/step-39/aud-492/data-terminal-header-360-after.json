@@ -1,0 +1,55 @@
+{
+  "capturedAt": "2026-11-05T22:42:27.816Z",
+  "url": "http://127.0.0.1:4323/r/data-terminal-header/",
+  "viewport": {
+    "width": 360,
+    "height": 900
+  },
+  "status": 200,
+  "layout": {
+    "clientWidth": 292,
+    "scrollWidth": 292,
+    "text": "SAMPLE DATA\nBTC/USD $42,000.00\n+2.4% example\nExample RTT: 12ms\nNo live feed",
+    "children": [
+      {
+        "text": "SAMPLE DATA",
+        "left": 16,
+        "right": 89,
+        "height": 16
+      },
+      {
+        "text": "BTC/USD $42,000.00",
+        "left": 101,
+        "right": 219,
+        "height": 16
+      },
+      {
+        "text": "+2.4% example",
+        "left": 16,
+        "right": 102,
+        "height": 16
+      },
+      {
+        "text": "Example RTT: 12ms",
+        "left": 16,
+        "right": 119,
+        "height": 15
+      },
+      {
+        "text": "No live feed",
+        "left": 131,
+        "right": 203,
+        "height": 15
+      }
+    ]
+  },
+  "pageDimensions": {
+    "clientWidth": 360,
+    "scrollWidth": 360
+  },
+  "screenshot": "audit/evidence/step-39/aud-492/data-terminal-header-360-after.png",
+  "consoleErrors": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": []
+}
