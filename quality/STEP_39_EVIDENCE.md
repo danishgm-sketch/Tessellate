@@ -773,3 +773,5 @@ The 21 issues remain `fixed-awaiting-deployed-verification`. v75 is the before-s
 
 
 The first exact-head GitHub Actions run caught a literal backslash-n line in the captured audit runner, which ESLint rejected although the resource regressions and local application workflow had passed. Removing that stray line restores the audit script; targeted ESLint and the full pnpm lint gate now pass locally. The correction is isolated to the audit runner and does not change product behavior.
+
+Exact-head GitHub Actions runs 41715426290 and 41715451928 initially failed because the root Astro Playwright profile picked up resource-claims-and-controls-step-39.spec.ts, which inspects assets inside opaque sandbox frames. Plain Astro preview does not apply the hosting _headers CORS policy; this suite belongs only in the production-like Sites Worker profile. The local worktree already contained the corresponding testIgnore entry, but it had not been committed with the test. After committing that entry, the Astro test listing returns zero cases for this file and the dedicated Sites Worker run passes all 30 desktop/mobile cases. The preview sandbox and CSP remain unchanged.
