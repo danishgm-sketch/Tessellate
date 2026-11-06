@@ -438,7 +438,7 @@
       "name": "api-key-management",
       "type": "registry:block",
       "title": "API Key Management",
-      "description": "Secret key manager with generate modal, masked token display, and revocation buttons.",
+      "description": "Preview-only token manager with sample rows and local add/remove interactions. It never handles credentials.",
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": [],

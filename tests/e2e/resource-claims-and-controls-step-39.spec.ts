@@ -87,6 +87,34 @@ test('number counter skips its animation when reduced motion is requested', asyn
   await expect(preview.getByText('0', { exact: true })).toHaveCount(0);
 });
 
+test('API token manager discloses sample state and gives its preview actions truthful local feedback', async ({ page }) => {
+  const preview = await openPreview(page, 'api-key-management');
+  const copy = await preview.locator('body').innerText();
+
+  expect(copy).toMatch(/example API tokens/i);
+  expect(copy).toMatch(/preview only.*no credentials are created or revoked/i);
+  expect(copy).not.toMatch(/Production Agent Token|Local Development Key|tess_live_|tess_test_/i);
+
+  const add = preview.getByRole('button', { name: /add example token/i });
+  await expect(add).toBeEnabled();
+  await add.focus();
+  await page.keyboard.press('Enter');
+  await expect(preview.getByText('Example token 3', { exact: true })).toBeVisible();
+  await expect(preview.getByRole('status')).toContainText(/no credential was created/i);
+
+  const removeAddedToken = preview.getByRole('button', { name: /remove example token 3/i });
+  const touchTargetHeight = await removeAddedToken.evaluate((button) => button.getBoundingClientRect().height);
+  expect(touchTargetHeight).toBeGreaterThanOrEqual(24);
+  await removeAddedToken.focus();
+  await page.keyboard.press('Space');
+  await expect(preview.getByText('Example token 3', { exact: true })).toHaveCount(0);
+  await expect(preview.getByRole('status')).toContainText(/removed from this preview/i);
+
+  await preview.getByRole('button', { name: /remove example token 1/i }).click();
+  await preview.getByRole('button', { name: /remove example token 2/i }).click();
+  await expect(preview.getByText(/no example tokens in this preview/i)).toBeVisible();
+});
+
 test('version history uses sample revisions and restore preview gives visible local feedback', async ({ page }) => {
   const preview = await openPreview(page, 'version-history');
   const copy = await preview.locator('body').innerText();

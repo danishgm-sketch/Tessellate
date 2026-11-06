@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-11-06T08:00:18.534Z",
+  "generatedAt": "2026-11-06T22:41:38.420Z",
   "count": 324,
   "resources": [
     {
@@ -7807,7 +7807,7 @@
       "name": "API Key Management",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Secret key manager with generate modal, masked token display, and revocation buttons.",
+      "description": "Preview-only token manager with sample rows and local add/remove interactions. It never handles credentials.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -7932,15 +7932,15 @@
         "credentials"
       ],
       "intent": {
-        "summary": "Secret key manager with generate modal, masked token display, and revocation buttons.",
+        "summary": "Local-only sample UI for reviewing API token rows and previewing add/remove interactions without handling credentials.",
         "idealFor": [
-          "Developer portals managing authentication tokens"
+          "Demonstrating token-management layouts and local preview interactions"
         ],
         "avoidFor": [
-          "Consumer frontends without API keys"
+          "Creating, storing, rotating, or revoking credentials"
         ],
         "jobs": [
-          "Generate, view, and revoke programmatic developer API keys"
+          "Show a token-management pattern without processing credentials"
         ],
         "contentRequirements": [
           "High data density, keyboard accessibility, semantic tokens"

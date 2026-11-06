@@ -1,3 +1,3 @@
 # API Key Management
 
-Developer token manager displaying masked secret keys and revocation triggers.
+Preview-only token-management pattern with example rows and local add/remove interactions. No credentials are created, stored, or revoked.
