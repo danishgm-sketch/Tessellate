@@ -680,11 +680,30 @@ cold desktop first visit and `0.007836` while three Gold chunks are delayed by
 1.8 seconds. Both runs report zero application console errors, uncaught
 exceptions, failed requests, and HTTP errors. The existing mobile CLS test also
 records `0.012601` on first load, reload, and an injected chunk failure.
-Screenshots and JSON are under
-`audit/evidence/step-47/AUD-512/local-after/`. AUD-512 remains open until the
-same desktop cold-load and delayed-resource check passes on a deployed review
-version. This later finding does not retroactively certify the old public v30
-measurements or imply field Core Web Vitals data.
+Screenshots and JSON are under `audit/evidence/step-47/AUD-512/local-after/`.
+
+Public Sites v83 deployed verification closes AUD-512. On an isolated first
+visit at 1440×900 with Fast 4G, Chrome DevTools recorded LCP 1,130ms (TTFB
+43ms, render delay 1,088ms) and trace CLS 0.01; the browser-side layout-shift
+observer measured CLS 0.008507. The same route with three actual Gold chunks
+(`editorial-hero`, `minimal-top-nav`, and `feature-bento`) each delayed by 1.8
+seconds measured CLS 0.007836. At 390×844, LCP was 1,294ms (TTFB 63ms, render
+delay 1,232ms), trace CLS 0.01, and observer CLS 0.012486. All three runs
+returned HTTP 200 and reported zero browser console errors/warnings, uncaught
+exceptions, failed requests, HTTP errors, or document overflow. CrUX field
+data is unavailable. A normal 500px mobile-editor scroll moved the selected
+preview 500px and brought the clipped initial “Meet your team” action fully
+inside the editor viewport; the bottom toolbar stayed anchored. Its after
+capture is `audit/evidence/step-47/AUD-512/public-v83/mobile-after-editor-scroll-390x844.png`.
+Before screenshots are in
+`audit/evidence/step-47/public-v82/manual-repro/`; deployed screenshots and the
+machine-readable report are in `audit/evidence/step-47/AUD-512/public-v83/`.
+Sites version `appgprj_6acc036de8cc8191a823339566972d85~appgver_31e30cf4b9008191a5b0dc26bcd36fbe`
+was published as deployment `appgdep_6aee4bf6e99c8191b5c904878a60134c` from
+Sites mirror `e8adb0a10e9ab0e57cd48a3b8f12894fd8f90536`, matching canonical
+commit `484a00b25cbb00e9fe54ce48804153041f6f073d`. Both exact-head CI runs
+passed before publication. This does not imply field Core Web Vitals data or
+repeat the broad public route audit.
 
 ## 2026-10-26 — Saved-project startup no longer waits on catalogue data
 

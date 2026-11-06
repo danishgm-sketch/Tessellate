@@ -24463,19 +24463,45 @@
       "category": "performance",
       "title": "Workbench cold desktop load shifts more than the layout budget",
       "expected": "Workbench should remain within a 0.05 CLS budget on a cold desktop visit, including while lazy toolbar and resource chunks load.",
-      "actual": "Public v82 measured 0.074629 CLS in the first-visit trace and 0.104 in a separate Lighthouse sample. The startup header reserved 56px while the loaded toolbar was 89px; lazy resource fallbacks reserved only 48px despite role-specific renderer heights.",
+      "actual": "Public v82 before the fix measured 0.074629 CLS in the first-visit desktop trace and 0.104 in Lighthouse. Public v83 after the fix measured 0.008507 CLS on a clean 1440x900 visit, 0.007836 with three Gold chunks delayed by 1.8 seconds, and 0.012486 on a clean 390x844 visit.",
       "reproduction": [
         "Open the public v82 /workbench route in a clean desktop browser context at 1440x900.",
         "Capture layout-shift entries from navigation through the first rendered employee-workspace screen.",
         "Repeat with the employee resource chunks delayed to observe the loading fallback height changes."
       ],
       "console": [],
-      "network": [],
+      "network": [
+        {
+          "scenario": "v83 desktop cold",
+          "status": 200,
+          "requests": 67,
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        {
+          "scenario": "v83 desktop delayed Gold chunks",
+          "status": 200,
+          "delayedGoldChunks": 3,
+          "delayMs": 1800,
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        {
+          "scenario": "v83 mobile cold",
+          "status": 200,
+          "requests": 39,
+          "failedRequests": 0,
+          "httpErrors": 0
+        }
+      ],
       "screenshot": "audit/evidence/step-47/public-v82/workbench-desktop-resource-loading-before.png",
       "afterScreenshots": [
         "audit/evidence/step-47/AUD-512/local-after/workbench-desktop-first-visit-1440x900.png",
         "audit/evidence/step-47/AUD-512/local-after/workbench-desktop-delayed-resources-before-1440x900.png",
-        "audit/evidence/step-47/AUD-512/local-after/workbench-desktop-delayed-resources-after-1440x900.png"
+        "audit/evidence/step-47/AUD-512/local-after/workbench-desktop-delayed-resources-after-1440x900.png",
+        "audit/evidence/step-47/AUD-512/public-v83/desktop-cold-1440x900.png",
+        "audit/evidence/step-47/AUD-512/public-v83/desktop-delayed-gold-1440x900.png",
+        "audit/evidence/step-47/AUD-512/public-v83/mobile-cold-390x844.png"
       ],
       "rootCause": "WorkbenchStartup and the toolbar Suspense fallback reserved 56px at desktop widths although TopToolbar rendered at 89px. The shared resource Suspense fallback used a generic min-height of 48px rather than the semantic-role height already used by its resource container.",
       "affectedCode": [
@@ -24485,7 +24511,7 @@
         "tests/e2e/workbench-desktop-cold-resource-layout-shift.spec.ts"
       ],
       "fixCommit": "e0ce4ece",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "regressionTest": "tests/e2e/workbench-desktop-cold-resource-layout-shift.spec.ts",
         "red": "Before the fix on public v82, a cold first-visit trace measured CLS 0.07462917684756516 against the 0.05 budget; a separate Lighthouse sample measured 0.104.",
@@ -24493,11 +24519,53 @@
         "focusedCommand": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts --project=sites-chromium tests/e2e/workbench-desktop-cold-resource-layout-shift.spec.ts",
         "fullE2E": "PASS: 856 passed, 197 configured profile skips, zero failures across default desktop/mobile Chromium, Sites Worker desktop/mobile Chromium, and standalone preview.",
         "screenshots": "audit/evidence/step-47/AUD-512/local-after/"
+      },
+      "publicVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "version": 83,
+        "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_31e30cf4b9008191a5b0dc26bcd36fbe",
+        "deploymentId": "appgdep_6aee4bf6e99c8191b5c904878a60134c",
+        "canonicalCommit": "484a00b25cbb00e9fe54ce48804153041f6f073d",
+        "sitesMirrorCommit": "e8adb0a10e9ab0e57cd48a3b8f12894fd8f90536",
+        "checks": [
+          {
+            "viewport": "1440x900",
+            "network": "Fast 4G",
+            "lcpMs": 1130,
+            "ttfbMs": 43,
+            "renderDelayMs": 1088,
+            "clsTrace": 0.01,
+            "clsLayoutShiftObserver": 0.008507266482338821
+          },
+          {
+            "viewport": "1440x900",
+            "network": "Fast 4G",
+            "goldChunksDelayed": 3,
+            "delayMs": 1800,
+            "clsLayoutShiftObserver": 0.00783578371484911
+          },
+          {
+            "viewport": "390x844",
+            "network": "Fast 4G",
+            "lcpMs": 1294,
+            "ttfbMs": 63,
+            "renderDelayMs": 1232,
+            "clsTrace": 0.01,
+            "clsLayoutShiftObserver": 0.012486415226695094
+          }
+        ],
+        "consoleErrors": 0,
+        "consoleWarnings": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "httpErrors": 0,
+        "overflow": false,
+        "cruxFieldData": "unavailable"
       }
     }
   ],
-  "generatedAt": "2026-11-06T20:53:08.000Z",
-  "latestDeploymentEvidence": "quality/evidence/step-45/public-v81-followup-2026-11-06/resource-detail-preview-loading/report.json",
+  "generatedAt": "2026-11-06T21:56:38.890Z",
+  "latestDeploymentEvidence": "audit/evidence/step-47/AUD-512/public-v83/runtime-audit.json",
   "latestLocalQualityRun": {
     "capturedAt": "2026-11-06T20:53:08.000Z",
     "command": "pnpm install --frozen-lockfile; pnpm build:catalog; pnpm typecheck; pnpm lint; pnpm test; pnpm audit:all; pnpm test:e2e",

@@ -1,0 +1,161 @@
+{
+  "deployment": "Sites v83",
+  "sourceCommit": "e8adb0a10e9ab0e57cd48a3b8f12894fd8f90536",
+  "testedAt": "2026-11-06T21:55:00.115Z",
+  "scenarios": [
+    {
+      "name": "desktop-cold-1440x900",
+      "status": 200,
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+      "title": "Workbench — Tessellate Composition Engine",
+      "viewport": [
+        1440,
+        900
+      ],
+      "document": [
+        1440,
+        900
+      ],
+      "heading": "Workbench: Example employee workspace",
+      "layoutShiftEntries": [
+        {
+          "value": 0.00783578371484911,
+          "start": 935,
+          "source": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "cls": "@container tess-node tess-layout-value-proposition relative transition-colors duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ease-out)]  "
+            }
+          ]
+        },
+        {
+          "value": 0.0006714827674897119,
+          "start": 1238.2999999970198,
+          "source": [
+            {
+              "tag": "SECTION",
+              "id": "",
+              "cls": "relative w-full py-24 @sm:py-32 px-6 @sm:px-12 border-b transition-colors bg-[#FAF8F5] text-neutral-900 border-neutral-200"
+            }
+          ]
+        }
+      ],
+      "cls": 0.008507266482338821,
+      "bodyStart": "Skip to editor\nT\nExample employee workspace\nLocal\nSAVED\nCompose\nStructure\nStyle\nMotion\nContent\nAudit\nRecompose\nSurprise\nBlend\nCompare\nSnapshots (1)\nPreview\nExport\nWorkbench: Example employee workspace\nLayers\nPages\nLibrary\nBrief\nSEMANTIC TREE (MARKETING HOME)\nmarketing-page\nDNA\nnavigation\nminimal-top-nav\nhero\neditorial-hero\nMade for everyday employe",
+      "delayedResourceCount": 0,
+      "delayedResources": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    {
+      "name": "desktop-delayed-gold-1440x900",
+      "status": 200,
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+      "title": "Workbench — Tessellate Composition Engine",
+      "viewport": [
+        1440,
+        900
+      ],
+      "document": [
+        1440,
+        900
+      ],
+      "heading": "Workbench: Example employee workspace",
+      "layoutShiftEntries": [
+        {
+          "value": 0.00783578371484911,
+          "start": 3946.2999999970198,
+          "source": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "cls": "@container tess-node tess-layout-value-proposition relative transition-colors duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ease-out)]  "
+            }
+          ]
+        },
+        {
+          "value": 0.0006714827674897119,
+          "start": 6095.9000000059605,
+          "source": [
+            {
+              "tag": "SECTION",
+              "id": "",
+              "cls": "relative w-full py-24 @sm:py-32 px-6 @sm:px-12 border-b transition-colors bg-[#FAF8F5] text-neutral-900 border-neutral-200"
+            }
+          ]
+        }
+      ],
+      "cls": 0.00783578371484911,
+      "bodyStart": "Skip to editor\nT\nExample employee workspace\nLocal\nSAVED\nCompose\nStructure\nStyle\nMotion\nContent\nAudit\nRecompose\nSurprise\nBlend\nCompare\nSnapshots (1)\nPreview\nExport\nWorkbench: Example employee workspace\nLayers\nPages\nLibrary\nBrief\nSEMANTIC TREE (MARKETING HOME)\nmarketing-page\nDNA\nnavigation\nminimal-top-nav\nhero\neditorial-hero\nMade for everyday employe",
+      "delayedResourceCount": 3,
+      "delayedResources": [
+        "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/editorial-hero.CN6KYWuK.js",
+        "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/minimal-top-nav.BckvualU.js",
+        "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/feature-bento.CR3oOG6T.js"
+      ],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    {
+      "name": "mobile-cold-390x844",
+      "status": 200,
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+      "title": "Workbench — Tessellate Composition Engine",
+      "viewport": [
+        390,
+        844
+      ],
+      "document": [
+        390,
+        844
+      ],
+      "heading": "Workbench: Example employee workspace",
+      "layoutShiftEntries": [
+        {
+          "value": 0.012486415226695094,
+          "start": 1160.2000000029802,
+          "source": [
+            {
+              "tag": "SECTION",
+              "id": "",
+              "cls": "relative w-full py-24 @sm:py-32 px-6 @sm:px-12 border-b transition-colors bg-[#FAF8F5] text-neutral-900 border-neutral-200"
+            }
+          ]
+        }
+      ],
+      "cls": 0.012486415226695094,
+      "bodyStart": "Skip to editor\nT\nExample employee workspace\nLocal\nSAVED\nCompose\nStructure\nStyle\nMotion\nContent\nAudit\nRecompose\nSurprise\nBlend\nCompare\nSnapshots (1)\nExport\nWorkbench: Example employee workspace\nPeople & Co\nMenu\nExample organisation · sample content\nA better workday starts with people.\n\nBring your people, teams and everyday employee experiences toget",
+      "delayedResourceCount": 0,
+      "delayedResources": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    }
+  ],
+  "mobileScrollCheck": {
+    "viewport": "390x844",
+    "route": "/workbench",
+    "httpStatus": 200,
+    "initialMainScroll": {
+      "top": 0,
+      "clientHeight": 561,
+      "scrollHeight": 1559
+    },
+    "input": {
+      "type": "mouse-wheel",
+      "deltaY": 500
+    },
+    "afterMainScroll": {
+      "top": 500,
+      "clientHeight": 561,
+      "scrollHeight": 2704
+    },
+    "target": "Meet your team",
+    "targetVisibleWithinEditor": true,
+    "uncaughtExceptions": 0,
+    "screenshot": "audit/evidence/step-47/AUD-512/public-v83/mobile-after-editor-scroll-390x844.png"
+  }
+}
