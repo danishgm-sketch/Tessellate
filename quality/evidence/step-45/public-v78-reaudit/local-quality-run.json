@@ -1,0 +1,60 @@
+{
+  "capturedAt": "2026-11-06T08:46:54.378Z",
+  "command": "pnpm install --frozen-lockfile; pnpm build:catalog; pnpm typecheck; pnpm lint; pnpm test; pnpm audit:all; pnpm test:e2e",
+  "environment": "Fresh detached Windows worktree with isolated pnpm store; local Astro, Sites Worker, and standalone preview runtimes",
+  "result": "PASS",
+  "sourceBranch": "codex/surprise-net-change-audit",
+  "sourceBase": "735cefa3",
+  "sourceCommit": "735cefa3",
+  "projects": [
+    {
+      "name": "Astro desktop/mobile Chromium",
+      "total": 532,
+      "failed": 0,
+      "result": "PASS",
+      "evidence": "Playwright .last-run.json status=passed, failedTests=[]; --list confirmed 532 tests in 93 files; the runner did not retain the pass/skip split."
+    },
+    {
+      "name": "Sites Worker desktop Chromium",
+      "passed": 238,
+      "configuredSkips": 11,
+      "failed": 0,
+      "result": "PASS"
+    },
+    {
+      "name": "Sites Worker mobile Chromium",
+      "passed": 205,
+      "configuredSkips": 44,
+      "failed": 0,
+      "result": "PASS"
+    },
+    {
+      "name": "Standalone preview Chromium",
+      "passed": 3,
+      "configuredSkips": 0,
+      "failed": 0,
+      "result": "PASS"
+    }
+  ],
+  "quality": {
+    "catalogResources": 324,
+    "certifiedGoldResources": 40,
+    "typecheckPackages": 22,
+    "unitTestFilesPassed": 95,
+    "unitTestsPassed": 1343,
+    "unitTestsSkipped": 1,
+    "behaviouralReleaseGatesPassed": 16,
+    "isolationFailures": 0,
+    "securityViolations": 0,
+    "dependencyVulnerabilities": 0,
+    "bundleBudgets": "all passed",
+    "build": "passed with existing large preview chunk and ineffective dynamic-import warnings"
+  },
+  "totalScheduledPlaywrightTests": 1033,
+  "coverageNotes": [
+    "All four Playwright runtime groups exited successfully with zero failures.",
+    "Astro suite skip count is not retained by its list reporter; status and empty failedTests are captured from .last-run.json.",
+    "The Sites Worker desktop profile rendered all 324 catalogue resources at certified widths; mobile profile covered responsive, keyboard, accessibility, and core workflows."
+  ],
+  "evidence": "quality/evidence/step-45/public-v78-reaudit/local-quality-run.json"
+}

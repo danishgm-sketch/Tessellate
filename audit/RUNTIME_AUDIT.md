@@ -5677,4 +5677,107 @@ The separate `pnpm audit:all` run passed 16/16 behavioral release-gate checks, 3
 - **Runtime:** 0 console messages, 0 uncaught exceptions, 184 requests in the latest preserved Compose/Workbench network snapshot, 0 failed requests, and 0 HTTP errors. The latest snapshot contained 176 responses with status 200 and 8 with status 304. `/data/catalog.json` loaded and then used 304 cache responses. The initial Cloudflare detection redirect (302) completed successfully.
 - **Status:** `closed-deployed-verified`. Machine evidence: `evidence/step-20/aud-495-surprise-net-variant/runtime-v78.json`. This closes AUD-495 only; the full public route audit and hardening/release gates are not complete.
 
-**Current ledger:** 495 findings (0 Critical, 87 High, 379 Medium, 29 Low): 249 closed after deployed verification, 9 historical closed, 2 closed-local, 133 fixed awaiting deployed verification, 98 fixed and verified locally, 2 legacy fixed, and 2 documented Sites-host limitations. High/P1 and overall hardening gates remain incomplete.
+**Ledger at v78:** 495 findings (0 Critical, 87 High, 379 Medium, 29 Low): 270 closed after deployed verification, 9 historical closed, 2 closed-local, 112 fixed awaiting deployed verification, 98 fixed and verified locally, 2 legacy fixed, and 2 documented Sites-host limitations. High/P1 and overall hardening gates remain incomplete.
+
+
+## Public v78 re-audit and AUD-471–AUD-491 closeout — 2026-11-06
+
+Public Sites v78 serves canonical commit 3e889d0ca68345c5ccf5ef767c3c05ebc07716ca through Sites source mirror e6387f7ff8e1080a5a4c191cf00faef813719a3d (version appgprj_6acc036de8cc8191a823339566972d85~appgver_67206589708c81919ade92023cb90608; deployment appgdep_6aed6cf7cc288191a4ba98ee07ef81fc). The public URL is https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/.
+
+- Route shell: 31 routes × 1440×900 and 390×844 (62 captures); all returned HTTP 200. The recorded route smoke had no overflow, blank shell, readiness timeout, uncaught exception, failed request, or HTTP error. Contact sheets and captures: [route audit](../quality/evidence/step-45/public-v78-reaudit/ROUTE_AUDIT.md).
+- Resource detail and variants: all 324 unique catalogue resources were opened at both widths (648 detail-page viewport visits) and all three variants were rendered (1,944 renders). No route failure, runtime/network failure, empty preview, variant mismatch, or finance-contamination flag was recorded. Fourteen conservative copy-scanner hits across seven resources were manually checked and were intentional skeleton, empty-state, or replaceable sample-pricing copy.
+- AUD-471–AUD-491: 21 medium findings now have issue-specific deployed verification. The same visible regressions passed 30/30 across desktop and mobile for sample-data truthfulness, unsupported operational claims, local-only actions, keyboard interaction, reduced motion, and metadata. Evidence and after screenshots: [runtime records](../quality/evidence/step-45/public-v78-reaudit/copy-sweep-runtime.jsonl), [test source](../quality/evidence/step-45/public-v78-reaudit/resource-claims-v78.spec.ts), and [captures](../quality/evidence/step-45/public-v78-reaudit/copy-after/).
+- Accessibility and isolated preview: eight representative Axe scans covered resource-detail shells and actual isolated preview frames at both viewports; zero violations. The preview security boundary and CSP were retained. The corrected capture helper inspects the child iframe rather than querying the host document. Reports: [Axe results](../quality/evidence/step-45/public-v78-reaudit/axe-resource-results.json) and [preview reports](../quality/evidence/step-45/public-v78-reaudit/previews/).
+- Runtime: no uncaught exceptions, failed requests, or HTTP errors in the route sweep, 30 targeted regressions, or 648-page resource corpus. One browser deprecation warning for window.styleMedia appeared once on the mobile globe-detail test; it did not recur in the 13-route repeat, corpus run, or preview capture. It remains recorded as a non-reproduced observation, not silently omitted.
+
+The register contains 495 findings: 0 Critical, 87 High, 379 Medium, and 29 Low. Statuses are 270 closed-deployed-verified, 112 fixed-awaiting-deployed-verification, 98 locally verified, 9 historical closed, 2 closed-local, 2 legacy fixed, and 2 documented Sites-host limitations. The remaining unverified group includes 108 Medium and 4 Low findings. AUD-419 remains the sole nonclosed High finding; provider-forwarding cannot be certified while the optional laptop host/provider endpoint is unconfigured.
+
+This is not a complete Step 39 copy review: all resource pages and variants were sampled/rendered, but manual language review across every visible string in the entire site, CLI, MCP, documentation, and all secondary workflows remains open. Step 48 release and the broader hardening sequence remain incomplete. Verso remains integrated only through its owner-local private inspection adapter; its 1,053 items remain excluded from public catalogue/runtime/export surfaces until redistribution rights and per-resource certification are established.
+
+## MEDIUM — v78 manual-copy and control findings AUD-496–AUD-505 (2026-11-06)
+
+The local fixes are in code commit `735cefa3`. The full local unit, typecheck, lint, build, release, dependency, security and Playwright matrix passed; machine summary: `../quality/evidence/step-45/public-v78-reaudit/local-quality-run.json`. All ten findings remain `fixed-awaiting-deployed-verification` until exact-head CI and the public review Site re-audit pass.
+
+The deployed v78 public Site was used first at 1440×900 and 390×844. Eight resource-detail routes loaded HTTP 200 with no console errors, warnings, uncaught exceptions, failed requests, HTTP errors, or horizontal overflow. The captured machine report is `quality/evidence/step-45/public-v78-reaudit/manual-copy-suspects/report.json`; before screenshots are under `quality/evidence/step-45/public-v78-reaudit/manual-copy-suspects/`. These findings remain open for deployment verification. Local source regressions now pass; the affected pages have not yet been rechecked on a new public Site version.
+
+### AUD-496 — Fabricated organization state was presented as live
+
+- **Evidence:** `/r/admin-console-shell/` showed “Active Organization Members (14)” and “All members authenticated with GitHub OAuth.” at desktop and mobile. Screenshots: `admin-console-shell-desktop-1440x900-preview-before.png`, `admin-console-shell-mobile-390x844-preview-before.png`.
+- **Reproduction:** Open the route and inspect its preview. The component has no organization or identity-provider connection.
+- **Root cause:** Hard-coded member count and OAuth claim had no sample-data disclosure.
+- **Affected code:** `resources/shells/admin-console-shell/index.tsx`, `resources/shells/admin-console-shell/manifest.json`.
+- **Remediation:** Replace the claims with example-organization copy and state that identity and member count are not connected. Local regression passes; deployed verification pending.
+
+### AUD-497 — Invite User was a dead control
+
+- **Evidence:** Clicking Invite User on `/r/admin-console-shell/` caused no visible text change at either viewport; telemetry was clean. The enabled button had no handler.
+- **Reproduction:** Open the route and click Invite User.
+- **Root cause:** The component exposed no optional invitation callback and rendered the action unconditionally.
+- **Affected code:** `resources/shells/admin-console-shell/index.tsx`.
+- **Remediation:** Add a host callback; disable the button with an accessible explanation when it is absent. Local desktop/mobile regression passes; deployed verification pending.
+
+### AUD-498 — Local sample preferences were called active assistant memory
+
+- **Evidence:** `/r/ai-memory-context-panel/` claimed “Active Assistant Memory” and “Short & long-term conversational recall”; clearing rows only changed local React state.
+- **Reproduction:** Open the route, click Purge All, and observe only preview rows disappear.
+- **Root cause:** Local hard-coded examples were described as connected persisted memory.
+- **Affected code:** `resources/ai/ai-memory-context-panel/index.tsx`, `resources/ai/ai-memory-context-panel/manifest.json`.
+- **Remediation:** Label the panel as a local example, clarify that no assistant is connected, and show an empty state after clearing. Local desktop/mobile regression passes; deployed verification pending.
+
+### AUD-499 — Prompt history and usage figures looked like stored records
+
+- **Evidence:** `/r/ai-prompt-history/` displayed three fabricated prompts, relative timestamps, and token counts without a sample-data notice.
+- **Reproduction:** Open the route and inspect the rows before using the filter.
+- **Root cause:** Static sample records and usage figures were presented as actual provider history in the component and catalogue metadata.
+- **Affected code:** `resources/ai/ai-prompt-history/index.tsx`, `resources/ai/ai-prompt-history/manifest.json`.
+- **Remediation:** Identify the records as examples, state that provider usage is not stored, and update the catalogue description. Local regression passes; deployed verification pending.
+
+### AUD-500 — Replay did not replay a prompt
+
+- **Evidence:** Clicking Replay on any row at `/r/ai-prompt-history/` produced no visible result at desktop or mobile.
+- **Reproduction:** Open the route and click Replay.
+- **Root cause:** Replay buttons had no host callback or disabled state.
+- **Affected code:** `resources/ai/ai-prompt-history/index.tsx`.
+- **Remediation:** Add an optional replay callback and disable the action with a connected explanation when absent. Local desktop/mobile regression passes; deployed verification pending.
+
+### AUD-501 — Suggested-action cards implied work that had not run
+
+- **Evidence:** Clicking “Export as Vite App” on `/r/ai-suggested-actions/` changed selection styling but did not export anything or explain that no operation ran.
+- **Reproduction:** Open the route and click Export as Vite App.
+- **Root cause:** Component-local selection state and a generic preview-host callback obscured the difference between selecting an example and executing a product operation.
+- **Affected code:** `resources/ai/ai-suggested-actions/index.tsx`, `resources/ai/ai-suggested-actions/manifest.json`, `apps/preview/src/components/PreviewHost.tsx`.
+- **Remediation:** Label the cards as examples, accept an optional host action, and have the preview report that no product operation ran. Local desktop/mobile browser test confirms the status; deployed verification pending.
+
+### AUD-502 — API section showed paths not implemented by the current API
+
+- **Evidence:** `/r/api-capability-section/` showed `/api/v1/resources/:slug`, `/api/v1/compose`, and `/api/v1/dna/tokens` as API access. Those paths are absent from the current Hono app and mounted routers.
+- **Reproduction:** Open the route and compare the listed paths with `apps/api/src/index.ts` and its mounted routes.
+- **Root cause:** Static endpoint examples were presented as implemented capabilities without a disclaimer.
+- **Affected code:** `resources/sections/api-capability-section/index.tsx`, `resources/sections/api-capability-section/manifest.json`.
+- **Remediation:** Identify the paths as illustrative examples, not API documentation. Local desktop/mobile regression passes; deployed verification pending.
+
+### AUD-503 — Example events were described as an immutable security log
+
+- **Evidence:** `/r/audit-log/` showed fabricated actors and reserved example IP addresses under “Security Audit Trail”; the manifest claimed an immutable audit trail, with no visible sample disclosure.
+- **Reproduction:** Open the route and inspect the events and catalogue description.
+- **Root cause:** Static event fixtures and an unsupported security guarantee were not identified as examples.
+- **Affected code:** `resources/blocks/audit-log/index.tsx`, `resources/blocks/audit-log/manifest.json`.
+- **Remediation:** Label the entries as sample audit events and remove the immutable/live security claim. Local desktop/mobile regression passes; deployed verification pending.
+
+### AUD-504 — Static command-centre preview claimed healthy live systems
+
+- **Evidence:** `/r/command-centre-shell/` showed “Global Cluster Telemetry” and a green “ALL SYSTEMS OPERATIONAL” banner beside disconnected placeholder nodes.
+- **Reproduction:** Open the route; the status remains healthy without any telemetry source.
+- **Root cause:** A successful system state was hard-coded into a static layout and its metadata.
+- **Affected code:** `resources/shells/command-centre-shell/index.tsx`, `resources/shells/command-centre-shell/manifest.json`.
+- **Remediation:** Use example-layout and neutral “sample status — not live” copy, and identify the nodes as examples. Local desktop/mobile regression passes; deployed verification pending.
+
+### AUD-505 — Cohort values looked like measured analytics
+
+- **Evidence:** `/r/cohort-matrix/` showed 2026 cohort sizes and retention percentages without a sample-data disclosure at desktop or mobile.
+- **Reproduction:** Open the route and inspect the cohort table.
+- **Root cause:** Hard-coded sample rows lacked visible and assistive-technology disclosures.
+- **Affected code:** `resources/data/cohort-matrix/index.tsx`, `resources/data/cohort-matrix/manifest.json`.
+- **Remediation:** Label values illustrative and add a table caption explaining they are not live metrics. Local desktop/mobile regression passes; deployed verification pending.
+
+The ledger now contains 505 findings: 0 Critical, 87 High, 389 Medium, and 29 Low. Of these, 270 are closed after deployed verification, 122 await deployed verification, 98 are locally verified, 9 are historical closed, 2 are closed-local-verified, 2 are legacy fixed, and 2 document Sites-host limitations. The new v78 findings are Medium/P2 and do not change the open High/P1 gate.
