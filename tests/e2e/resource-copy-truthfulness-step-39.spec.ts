@@ -174,6 +174,10 @@ test('accessibility, compliance, trust, and security resources distinguish templ
     await page.goto(`/r/${route.slug}`);
     const detail = await page.locator('main').innerText();
     expect(detail).not.toMatch(route.forbidden);
+    // Finish the detail preview before intentionally navigating to the direct
+    // preview wrapper; otherwise the browser reports its in-flight iframe
+    // navigation as ERR_ABORTED during normal page teardown.
+    await expect(page.frameLocator('iframe[title$=" live preview"]').locator('.tess-screen')).toHaveCount(1);
     const preview = await openResourcePreview(page, route.slug);
     const previewText = await preview.locator('body').innerText();
     if (route.slug === 'accessibility-commitment-section')

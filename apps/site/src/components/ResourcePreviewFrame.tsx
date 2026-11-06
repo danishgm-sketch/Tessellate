@@ -42,6 +42,7 @@ export function ResourcePreviewFrame({
   const [theme, setTheme] = useState<PreviewTheme>(initialTheme);
   const [reducedMotion, setReducedMotion] = useState<boolean>(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [previewHostReady, setPreviewHostReady] = useState(false);
   const [previewDestination, setPreviewDestination] = useState<PreviewNavigationDestination | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const initializedRef = useRef(false);
@@ -86,6 +87,9 @@ export function ResourcePreviewFrame({
       );
     };
     window.addEventListener('message', receive);
+    // Do not let the sandboxed document post READY or navigation messages
+    // before this host has installed its validation and response handler.
+    setPreviewHostReady(true);
     return () => window.removeEventListener('message', receive);
   }, [manifest, variant, theme, device, reducedMotion, privateVerso, privatePreviewOrigin]);
 
@@ -255,15 +259,22 @@ export function ResourcePreviewFrame({
       {/* Frame Container */}
       <div className="min-h-[460px] max-h-[720px] bg-[var(--tess-canvas-strong,#ECE9E2)] p-4 flex items-center justify-center overflow-auto">
         <div
-          className={`transition-all duration-300 rounded-lg overflow-hidden border border-[var(--tess-hairline,#D9D6CF)] shadow-sm bg-white dark:bg-[#0B0D10] ${deviceWidthClass}`}
+          aria-busy={!previewHostReady}
+          className={`relative transition-all duration-300 rounded-lg overflow-hidden border border-[var(--tess-hairline,#D9D6CF)] shadow-sm bg-white dark:bg-[#0B0D10] ${deviceWidthClass}`}
         >
+          {!previewHostReady && (
+            <div role="status" className="absolute inset-0 z-10 flex items-center justify-center bg-[var(--tess-surface,#FAF9F6)] text-sm text-[var(--tess-ink-muted,#62666F)]">
+              Loading isolated preview…
+            </div>
+          )}
           <iframe
             ref={iframeRef}
-            src={initialIframeSrc}
+            src={previewHostReady ? initialIframeSrc : undefined}
             title={`${manifest.name} live preview`}
             sandbox={privateVerso ? 'allow-scripts allow-same-origin' : 'allow-scripts'}
             referrerPolicy="strict-origin"
             onLoad={() => {
+              if (!previewHostReady) return;
               initializedRef.current = false;
               setIframeLoaded(true);
             }}

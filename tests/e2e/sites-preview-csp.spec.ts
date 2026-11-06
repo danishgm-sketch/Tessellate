@@ -657,7 +657,7 @@ test('public shell CSP authorizes only build-certified inline code', async ({ re
     );
     const inlineScripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)]
       .filter(([, attributes]) => !/\bsrc\s*=/i.test(attributes ?? ''))
-      .map(([, , content]) => content ?? '');
+      .map(([, attributes, content]) => ({ attributes: attributes ?? '', content: content ?? '' }));
     const inlineStyles = [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)].map(
       ([, content]) => content ?? ''
     );
@@ -666,9 +666,14 @@ test('public shell CSP authorizes only build-certified inline code', async ({ re
     expect(directives.get('script-src'), route).not.toContain("'unsafe-inline'");
     expect(inlineScripts.length, route).toBeGreaterThan(0);
     for (const script of inlineScripts) {
-      expect(directives.get('script-src'), `${route} inline script hash`).toContain(
-        contentHash(script)
-      );
+      const scriptSources = directives.get('script-src') ?? [];
+      const nonce = script.attributes.match(/\bnonce=["']([^"']+)["']/i)?.[1];
+      const hasCertifiedHash = scriptSources.includes(contentHash(script.content));
+      const hasResponseNonce = Boolean(nonce && scriptSources.includes(`'nonce-${nonce}'`));
+      expect(
+        hasCertifiedHash || hasResponseNonce,
+        `${route} inline script must match a certified hash or this response's nonce`
+      ).toBe(true);
     }
     expect(directives.get('style-src'), route).not.toContain("'unsafe-inline'");
     expect(directives.get('style-src-elem'), route).not.toContain("'unsafe-inline'");
@@ -698,6 +703,11 @@ test('public shell CSP authorizes only build-certified inline code', async ({ re
       if (!test.info().project.name.includes('mobile')) {
         await expect(page.getByTestId('right-inspector')).toBeVisible();
       }
+    }
+    if (route === '/r/button') {
+      await expect(
+        page.frameLocator('iframe[title="Button live preview"]').locator('.tess-screen')
+      ).toBeVisible();
     }
   }
   expect(runtimeErrors).toEqual([]);

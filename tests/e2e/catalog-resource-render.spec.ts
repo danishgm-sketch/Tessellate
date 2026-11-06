@@ -159,14 +159,14 @@ test('all catalogue resources render at every certified width in the Sites Worke
         await expect(page.getByRole('heading', { level: 1, name: resource.name, exact: true })).toBeVisible();
         const preview = page.locator('iframe[title$=" live preview"]');
         await expect(preview).toHaveCount(1);
-        const initialPreviewSrc = await preview.getAttribute('src');
-        if (!initialPreviewSrc) record.findings.push({ type: 'preview-error', detail: 'Preview iframe has no source URL.' });
         const sandbox = (await preview.getAttribute('sandbox'))?.split(/\s+/) ?? [];
         if (!sandbox.includes('allow-scripts') || sandbox.includes('allow-same-origin')) {
           record.findings.push({ type: 'preview-error', detail: `Unexpected preview sandbox: ${sandbox.join(' ')}.` });
         }
         const frame = page.frameLocator('iframe[title$=" live preview"]');
         await expect(frame.locator('.tess-screen')).toHaveCount(1, { timeout: 15000 });
+        const initialPreviewSrc = await preview.getAttribute('src');
+        if (!initialPreviewSrc) record.findings.push({ type: 'preview-error', detail: 'Preview iframe did not receive a source after its host became ready.' });
         await waitForActualResource(frame, resource.slug);
         if (resource.variants.length === 0) record.findings.push({ type: 'preview-error', detail: 'Resource has no declared variant.' });
         for (const variant of resource.variants) {

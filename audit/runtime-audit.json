@@ -23022,7 +23022,7 @@
       ],
       "remediation": "Stack and wrap the existing header fields on narrow viewports, restore the single-row layout at wider widths, and assert that labels remain readable and complete.",
       "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "evidence": {
         "before": "audit/evidence/step-39/aud-492/data-terminal-header-360-before.json",
         "after": "audit/evidence/step-39/aud-492/data-terminal-header-360-after.json",
@@ -23030,7 +23030,8 @@
         "localResult": "PASS: focused Sites Worker Chromium regression; 2 tests passed, 2 profile-specific skips. Local report records all fields and text heights of 15-16px with no console, exception, failed-request, or HTTP errors.",
         "afterScreenshot": "audit/evidence/step-39/aud-492/data-terminal-header-360-after.png",
         "deployedVerification": "Pending the next public review Site deployment."
-      }
+      },
+      "deployedVerification": "Public v76: 360px resource render check passed. See audit/evidence/step-39/aud-492/data-terminal-header-360-after.json and .png."
     },
     {
       "id": "AUD-493",
@@ -23057,7 +23058,7 @@
       ],
       "remediation": "Give each supported variant an explicit treatment and document only behaviors present in the resource; verify distinct computed styles and minimum 4.5:1 text contrast in the browser.",
       "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "evidence": {
         "before": "audit/evidence/step-39/aud-493/data-terminal-header-variants-before.json",
         "after": "audit/evidence/step-39/aud-493/data-terminal-header-variants-after.json",
@@ -23069,12 +23070,110 @@
           "audit/evidence/step-39/aud-493/data-terminal-header-nocturne-after.png"
         ],
         "deployedVerification": "Pending the next public review Site deployment."
+      },
+      "deployedVerification": "Public v76: all three data-terminal backgrounds differ and readable contrast remains. See audit/evidence/step-39/aud-493/data-terminal-header-variants-after.json and screenshots."
+    },
+    {
+      "id": "AUD-494",
+      "severity": "medium",
+      "route": "/explore → /r/cta-product-preview",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Resource detail preview can lose navigation clicks before its host island hydrates",
+      "expected": "Clicking Start composing in the isolated resource preview should display the trusted host confirmation and keep the user on the detail route.",
+      "actual": "Under a 1.2-second delay to the ResourcePreviewFrame island, the preview posted a valid /compose request from the expected opaque frame, but the host had not installed its message listener and displayed no confirmation. The user remained on the detail route with no feedback.",
+      "reproduction": [
+        "Open /explore at 1440x900 and search for CTA Product Preview.",
+        "Open its full resource page.",
+        "Delay the ResourcePreviewFrame island bundle by 1.2 seconds while leaving the isolated preview runtime available.",
+        "Click Start composing as soon as it appears in the preview; observe no host confirmation."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-48/aud494-preview-host-readiness/before-1440x900.png",
+      "rootCause": "The server-rendered iframe had a source before its React host island hydrated. The sandbox could render and post navigation requests before the parent installed the trusted message listener, so early requests were dropped.",
+      "affectedCode": [
+        "apps/site/src/components/ResourcePreviewFrame.tsx",
+        "tests/e2e/preview-link-navigation.spec.ts"
+      ],
+      "remediation": "Wait to set the sandboxed iframe source until the host message listener is installed, show a truthful loading status during that interval, and exercise the route with a delayed host-island bundle.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "beforeEvidence": [
+        "audit/evidence/step-48/aud494-preview-host-readiness/before-1440x900.png",
+        "audit/evidence/step-48/aud494-preview-host-readiness/before-390x844.png"
+      ],
+      "localVerification": {
+        "result": "PASS",
+        "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/preview-link-navigation.spec.ts tests/e2e/sites-preview-csp.spec.ts tests/e2e/sites-preview-csp-live-v25.spec.ts",
+        "passed": 58,
+        "failed": 0,
+        "screenshots": [
+          "audit/evidence/step-48/aud494-preview-host-readiness/local-after-1440x900.png",
+          "audit/evidence/step-48/aud494-preview-host-readiness/local-after-390x844.png"
+        ],
+        "reports": [
+          "audit/evidence/step-48/aud494-preview-host-readiness/local-after-1440x900.json",
+          "audit/evidence/step-48/aud494-preview-host-readiness/local-after-390x844.json"
+        ],
+        "notes": "The targeted delayed-island test passes at 1440x900 and 390x844, and the complete pnpm test:e2e run passes: Astro 396/136, Sites Worker desktop 230/11, Sites Worker mobile 197/44, standalone preview 3/0. Both after reports show the host confirmation, zero failed or HTTP-error responses, zero console errors, and zero uncaught exceptions. Desktop recorded 21 net::ERR_ABORTED requests from preview chunks removed as the user narrowed Explore search results; these are classified as browser-cancelled obsolete preview requests (no HTTP failure), while mobile recorded none.",
+        "fullSuite": {
+          "passed": 826,
+          "configuredSkips": 191,
+          "failed": 0,
+          "result": "PASS"
+        }
       }
     }
   ],
-  "generatedAt": "2026-11-05T22:41:52.379Z",
+  "generatedAt": "2026-11-06T02:03:48.942Z",
   "latestDeploymentEvidence": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
   "latestLocalQualityRun": {
+    "capturedAt": "2026-11-06T02:03:48.941Z",
+    "command": "pnpm test:e2e",
+    "environment": "Full local E2E sequence across Astro desktop/mobile, production-like Sites Worker desktop/mobile, and standalone preview",
+    "result": "PASS",
+    "projects": [
+      {
+        "name": "Astro desktop/mobile Chromium",
+        "passed": 396,
+        "skipped": 136,
+        "failed": 0
+      },
+      {
+        "name": "Sites Worker desktop Chromium",
+        "passed": 230,
+        "skipped": 11,
+        "failed": 0
+      },
+      {
+        "name": "Sites Worker mobile Chromium",
+        "passed": 197,
+        "skipped": 44,
+        "failed": 0
+      },
+      {
+        "name": "Standalone preview Chromium",
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      }
+    ],
+    "totals": {
+      "passed": 826,
+      "configuredSkips": 191,
+      "failed": 0
+    },
+    "coverageNotes": [
+      "The full local Playwright command passed across all four runtime groups.",
+      "The Sites desktop matrix rendered all 324 catalogue resources at certified widths and all 40 Gold resources across declared variants.",
+      "The flagship employee workflow, exact Direction C handoff, Workbench mutations/history, independent React export, responsive and accessibility checks, and strict preview CSP checks completed without failures.",
+      "The delayed ResourcePreviewFrame-host-island regression passed desktop and mobile; the related 324-resource render matrix and resource-copy test also passed.",
+      "Skips are explicit profile or platform skips, not unexecuted failures."
+    ],
+    "evidence": "Playwright full-suite run on current working tree; per-test traces and screenshots under test-results/ and audit/evidence/step-48/aud494-preview-host-readiness/"
+  },
+  "previousLocalQualityRun": {
     "capturedAt": "2026-11-03T20:34:29.000Z",
     "command": "pnpm test:e2e",
     "environment": "Clean local E2E sequence across Astro preview, production-like Sites Worker desktop/mobile, and isolated preview application",
@@ -23137,83 +23236,6 @@
     "focusedResourceRun": {
       "passed": 30,
       "failed": 0,
-      "evidence": "quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log",
-      "screenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
-    }
-  },
-  "previousLocalQualityRun": {
-    "capturedAt": "2026-11-03T16:54:38.067Z",
-    "command": "pnpm test:e2e",
-    "environment": "fresh local production-like E2E command across Astro, Sites Worker and standalone preview",
-    "result": "PASS",
-    "projects": [
-      {
-        "name": "Astro desktop/mobile Chromium",
-        "passed": 396,
-        "skipped": 136,
-        "failed": 0
-      },
-      {
-        "name": "Sites Worker desktop Chromium",
-        "passed": 213,
-        "skipped": 11,
-        "failed": 0
-      },
-      {
-        "name": "Sites Worker mobile Chromium",
-        "passed": 182,
-        "skipped": 42,
-        "failed": 0
-      },
-      {
-        "name": "Standalone preview Chromium",
-        "passed": 3,
-        "skipped": 0,
-        "failed": 0
-      }
-    ],
-    "totals": {
-      "passed": 794,
-      "configuredSkips": 189,
-      "failed": 0
-    },
-    "coverageNotes": [
-      "All 324 canonical resources rendered through the production-like Sites Worker desktop sweep at their certified widths.",
-      "Compose-to-Direction-C handoff, Workbench editing, export, mobile navigation, history, responsive behavior, CSP isolation, and standalone preview checks completed with zero test failures.",
-      "Skips are configured profile skips for tests intentionally restricted to another browser, platform, or viewport."
-    ],
-    "focusedSupplementalRun": {
-      "capturedAt": "2026-11-03T16:59:15.453Z",
-      "passed": 8,
-      "skipped": 0,
-      "failed": 0,
-      "coverageNotes": [
-        "The four affected resource checks passed on Sites Worker desktop and mobile profiles.",
-        "The dashboard skeleton assertion waits for the isolated preview and verifies the loading status, four metric cards, and chart placeholder before capturing the after screenshot."
-      ]
-    },
-    "evidence": "audit/evidence/step-48/e2e-full-matrix-2026-11-03.json",
-    "resourceTruthfulnessRegression": {
-      "capturedAt": "2026-11-03T18:51:46.468Z",
-      "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/resource-claims-and-controls-step-39.spec.ts --reporter=line",
-      "environment": "Local production-like Sites Worker built from the patched source; Chromium desktop 1440x900 and mobile 390x844",
-      "result": "PASS",
-      "projects": [
-        {
-          "name": "Sites Worker desktop Chromium",
-          "passed": 15,
-          "failed": 0
-        },
-        {
-          "name": "Sites Worker mobile Chromium",
-          "passed": 15,
-          "failed": 0
-        }
-      ],
-      "totals": {
-        "passed": 30,
-        "failed": 0
-      },
       "evidence": "quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log",
       "screenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
     }

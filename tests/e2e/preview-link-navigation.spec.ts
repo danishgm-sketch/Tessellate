@@ -42,6 +42,52 @@ test('resource preview CTA opens Compose through a trusted host confirmation', a
   });
 });
 test('Explore opens the full resource page before following a preview link', async ({ page }) => {
+  const console: Array<{ type: string; text: string }> = [];
+  const uncaught: string[] = [];
+  const network: Array<{ kind: string; url: string; status?: number; error?: string; reason?: string; routeAtStart?: string; routeAtFailure?: string }> = [];
+  const requestRoute = new WeakMap<import('@playwright/test').Request, string>();
+  page.on('console', (message) => {
+    if (message.type() === 'error' || message.type() === 'warning') {
+      console.push({ type: message.type(), text: message.text() });
+    }
+  });
+  page.on('pageerror', (error) => uncaught.push(error.message));
+  page.on('request', (request) => requestRoute.set(request, page.url()));
+  page.on('requestfailed', (request) => {
+    const error = request.failure()?.errorText ?? 'unknown';
+    const startedFromPreviousRoute = requestRoute.get(request) !== undefined
+      && requestRoute.get(request) !== page.url();
+    const expectedRouteTeardown = error === 'net::ERR_ABORTED' && startedFromPreviousRoute;
+    network.push({
+      kind: expectedRouteTeardown ? 'cancelled' : 'failed',
+      url: request.url(),
+      error,
+      routeAtStart: requestRoute.get(request),
+      routeAtFailure: page.url(),
+      ...(expectedRouteTeardown ? { reason: 'A UI navigation or search update removed the preview frame while its request was in flight; the browser cancelled that obsolete request without an HTTP error.' } : {}),
+    });
+  });
+  page.on('response', (response) => {
+    const url = new URL(response.url());
+    if (url.origin === new URL(page.context().pages()[0]?.url() ?? 'http://127.0.0.1').origin) {
+      network.push({ kind: 'response', url: url.pathname, status: response.status() });
+    }
+  });
+  const detailHtmlResponse = await page.request.get('/r/cta-product-preview');
+  expect(detailHtmlResponse.status()).toBe(200);
+  const detailHtml = await detailHtmlResponse.text();
+  const previewIsland = detailHtml.match(
+    /<astro-island\b(?=[^>]*component-export="ResourcePreviewFrame")(?=[^>]*component-url="([^"]+)")[^>]*>/
+  );
+  expect(previewIsland, 'the resource-detail preview island is part of the static page').not.toBeNull();
+  const previewIslandPath = previewIsland![1]!;
+  // Simulate a slow connection for the host island while the isolated preview
+  // runtime remains available. The UI must not expose clickable preview links
+  // until the trusted host has installed its message listener.
+  await page.route(`**${previewIslandPath}`, async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 1200));
+    await route.continue();
+  });
   await page.goto('/explore');
   await expect(page.getByText('Showing 50 of 324 resources', { exact: true })).toBeVisible();
   await page.getByLabel('Search catalogue').fill('CTA Product Preview');
@@ -57,10 +103,56 @@ test('Explore opens the full resource page before following a preview link', asy
   const preview = page.frameLocator('iframe[title="CTA Product Preview live preview"]');
   const composeLink = preview.getByRole('link', { name: 'Start composing' });
   await expect(composeLink).toBeVisible();
+  await page.evaluate(() => {
+    const target = window as Window & { __tessellateAuditMessages?: unknown[] };
+    target.__tessellateAuditMessages = [];
+    window.addEventListener('message', (event) => {
+      const data = event.data as { type?: unknown; resourceId?: unknown; href?: unknown };
+      target.__tessellateAuditMessages?.push({
+        origin: event.origin,
+        type: data?.type,
+        resourceId: data?.resourceId,
+        href: data?.href,
+        sourceMatchesFrame: [...document.querySelectorAll('iframe')].some((frame) => frame.contentWindow === event.source),
+      });
+    });
+  });
   await composeLink.click();
   const confirmation = page.getByRole('status').filter({
     hasText: 'This isolated preview requested a link to',
   });
+  const viewport = page.viewportSize();
+  const viewportName = test.info().project.name.includes('mobile') ? '390x844' : '1440x900';
+  const evidencePhase = process.env.RUNTIME_AUDIT_PHASE;
+  const confirmationVisible = await confirmation.isVisible().catch(() => false);
+  const captureEvidence = async (visible: boolean) => {
+    const evidenceDirectory = path.resolve('audit/evidence/step-48/aud494-preview-host-readiness');
+    await mkdir(evidenceDirectory, { recursive: true });
+    const screenshot = path.join(evidenceDirectory, `${evidencePhase}-${viewportName}.png`);
+    await page.screenshot({ path: screenshot, fullPage: true });
+    await writeFile(
+      path.join(evidenceDirectory, `${evidencePhase}-${viewportName}.json`),
+      `${JSON.stringify({
+      issue: 'AUD-494',
+      route: '/explore → /r/cta-product-preview',
+      url: page.url(),
+      viewport,
+      expected: 'A trusted host confirmation appears immediately after clicking Start composing in the isolated preview.',
+      actual: visible ? 'Confirmation visible after the trusted host handled the preview message.' : 'Confirmation absent at the normal click point.',
+      confirmationVisible: visible,
+      messages: await page.evaluate(() => (window as Window & { __tessellateAuditMessages?: unknown[] }).__tessellateAuditMessages ?? []),
+      console,
+      uncaught,
+      network,
+        screenshot: path.posix.join('audit/evidence/step-48/aud494-preview-host-readiness', path.basename(screenshot)),
+      }, null, 2)}\n`,
+    );
+  };
+  if (evidencePhase === 'before') await captureEvidence(confirmationVisible);
+  if (evidencePhase && evidencePhase !== 'before') {
+    await expect(confirmation).toContainText('/compose');
+    await captureEvidence(await confirmation.isVisible().catch(() => false));
+  }
   await expect(confirmation).toContainText('/compose');
   await expect(page).toHaveURL(/\/r\/cta-product-preview\/?$/);
 });

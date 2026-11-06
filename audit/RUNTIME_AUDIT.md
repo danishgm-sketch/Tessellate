@@ -5626,7 +5626,7 @@ The separate `pnpm audit:all` run passed 16/16 behavioral release-gate checks, 3
 - **Affected code:** `resources/shells/data-terminal-header/index.tsx`, its manifest and README, and `tests/e2e/catalog-resource-render.spec.ts`.
 - **Remediation:** Stack/wrap fields on narrow viewports and restore the one-row treatment at wider widths.
 - **Local verification:** The focused Sites Worker browser regression passed. The local after report records every field at 15–16px text height, no overflow, and no runtime/network errors; see `audit/evidence/step-39/aud-492/data-terminal-header-360-after.png` and `.json`.
-- **Deployed verification:** Awaiting the next public review Site deployment.
+- **Deployed verification:** Public v76 verified the 360px resource render. See `audit/evidence/step-39/aud-492/data-terminal-header-360-after.json` and `.png`.
 
 ### MEDIUM — AUD-493: Expressive variant duplicated Quiet's appearance
 
@@ -5636,5 +5636,16 @@ The separate `pnpm audit:all` run passed 16/16 behavioral release-gate checks, 3
 - **Affected code:** `resources/shells/data-terminal-header/index.tsx`, its manifest and README, and `tests/e2e/catalog-resource-render.spec.ts`.
 - **Remediation:** Define explicit, distinct variant treatments and test computed colors and text contrast.
 - **Local verification:** The focused Sites Worker regression passed; all three backgrounds differ, and tested text contrast ratios are at least 6.01:1. After captures and report: `audit/evidence/step-39/aud-493/`.
-- **Deployed verification:** Awaiting the next public review Site deployment.
-**Latest ledger:** 493 total findings (0 Critical, 87 High, 377 Medium, 29 Low): 246 closed after deployed verification, 9 historical closed, 2 closed-local, 134 fixed awaiting deployed verification, 98 locally verified, 2 legacy fixed, and 2 documented Sites-host limitations. AUD-492 and AUD-493 remain open for public-version recheck.
+- **Deployed verification:** Public v76 verified three distinct backgrounds and readable contrast. See `audit/evidence/step-39/aud-493/data-terminal-header-variants-after.json` and screenshots.
+
+## MEDIUM — AUD-494: Resource-detail preview can lose an early navigation click
+
+- **Evidence:** Public v76, route `/explore` → `/r/cta-product-preview`, at 1440×900 and 390×844. With the `ResourcePreviewFrame` island delayed by 1.2 seconds, the user-facing `Start composing` link appeared and was clicked, and the isolated frame posted a valid `TESSELLATE_PREVIEW_NAVIGATION_REQUEST` for `/compose` from the expected opaque origin and iframe. No host confirmation appeared. Both captures recorded no console errors, uncaught exceptions, failed requests, or HTTP error responses. Before screenshots and machine reports: `audit/evidence/step-48/aud494-preview-host-readiness/before-1440x900.png` / `.json` and `before-390x844.png` / `.json`.
+- **Reproduction:** Open `/explore`, search `CTA Product Preview`, follow its Preview link, delay the ResourcePreviewFrame island bundle by 1.2 seconds while leaving the isolated preview available, then click `Start composing` as soon as it appears.
+- **Root cause:** The static detail page gave the sandboxed iframe a source before the React host island hydrated. The iframe could render and post a navigation request before the host registered its message listener, dropping the request without feedback.
+- **Affected code:** `apps/site/src/components/ResourcePreviewFrame.tsx`, `tests/e2e/preview-link-navigation.spec.ts`.
+- **Remediation:** Assign the iframe source only after the host listener is registered, disclose the brief loading state, and retain a delayed-island browser regression test.
+- **Local verification:** PASS: the delayed-island workflow passes at 1440×900 and 390×844; the focused run passes 58 preview/CSP cases and the full `pnpm test:e2e` run passes 826 with 191 configured skips and zero failures (Astro 396/136, Sites Worker desktop 230/11, mobile 197/44, standalone preview 3/0). The all-324-resource desktop Sites certification and dashboard-skeleton content test pass. After screenshots/reports: `audit/evidence/step-48/aud494-preview-host-readiness/local-after-1440x900.png` / `.json` and `local-after-390x844.png` / `.json`. Both reports show the trusted host confirmation, zero HTTP errors, zero console errors and zero uncaught exceptions. Desktop recorded 21 `net::ERR_ABORTED` preview chunk requests when search-result changes removed obsolete preview frames; they are explicitly classified as browser cancellations, not failed HTTP requests. Mobile recorded none. The strict CSP regression rejects `unsafe-inline` and accepts only certified hashes or a nonce matching the response policy.
+- **Deployed verification:** Pending a new review version; public v76 is the reproduced before-state.
+
+**Latest ledger:** 494 total findings (0 Critical, 87 High, 378 Medium, 29 Low): 248 closed after deployed verification, 9 historical closed, 2 closed-local, 133 fixed awaiting deployed verification, 98 locally verified, 2 legacy fixed, and 2 documented Sites-host limitations. AUD-494 awaits verification on the next public review Site.
