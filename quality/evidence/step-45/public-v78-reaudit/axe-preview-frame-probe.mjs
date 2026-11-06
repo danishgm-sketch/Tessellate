@@ -1,4 +1,4 @@
-import AxeBuilder from '@axe-core/playwright';
+/* global document window */
 import { chromium } from '@playwright/test';
 import { createRequire } from 'node:module';
 import { readFile } from 'node:fs/promises';
