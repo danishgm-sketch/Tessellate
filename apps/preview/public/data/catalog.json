@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-11-05T22:28:21.240Z",
+  "generatedAt": "2026-11-06T08:00:18.534Z",
   "count": 324,
   "resources": [
     {
@@ -1017,7 +1017,7 @@
       "name": "Admin Console Shell",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Enterprise administration layout with organization selector, user table, and security audit tab.",
+      "description": "Example administration layout. Member counts and identity state are illustrative until an identity provider is connected.",
       "resourceType": "block",
       "categories": [
         "shells",
@@ -1138,7 +1138,7 @@
         "roles"
       ],
       "intent": {
-        "summary": "Enterprise administration layout with organization selector, user table, and security audit tab.",
+        "summary": "Example administration layout with clearly identified sample identity data.",
         "idealFor": [
           "IT administrative management surfaces"
         ],
@@ -1146,7 +1146,7 @@
           "Casual public homepages"
         ],
         "jobs": [
-          "Manage users, access permissions, and audit logs safely"
+          "Demonstrate an organization administration layout with sample data and a host-provided invitation action."
         ],
         "contentRequirements": [
           "Accessible navigation semantics and responsive containment"
@@ -3531,7 +3531,7 @@
       "name": "AI Memory Context Panel",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Inspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls.",
+      "description": "Local preview of assistant-memory controls using example preferences; it does not read or persist assistant memory.",
       "resourceType": "ai-pattern",
       "categories": [
         "ai",
@@ -3658,7 +3658,7 @@
         "preferences"
       ],
       "intent": {
-        "summary": "Inspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls.",
+        "summary": "Preview local memory-control interactions with clearly identified example preferences.",
         "idealFor": [
           "User preference management",
           "Session memory inspection",
@@ -3669,7 +3669,7 @@
           "Password inputs"
         ],
         "jobs": [
-          "Inspect and manage persisted memory entities remembered by the assistant"
+          "Review how memory preferences may be presented; connect a real host memory store before use."
         ],
         "contentRequirements": [
           "Describe the behavior represented by the interface and clearly label any illustrative data."
@@ -5045,7 +5045,7 @@
       "name": "AI Prompt History",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Searchable log of previous prompts with token stats, execution timestamps, and re-run buttons.",
+      "description": "Searchable example prompt history. Records are sample content; replay requires a host callback and no provider usage is stored.",
       "resourceType": "ai-pattern",
       "categories": [
         "ai",
@@ -5172,7 +5172,7 @@
         "replay"
       ],
       "intent": {
-        "summary": "Searchable log of previous prompts with token stats, execution timestamps, and re-run buttons.",
+        "summary": "Show a searchable prompt-history layout with clearly identified example records.",
         "idealFor": [
           "Prompt experimentation logs",
           "Team prompt review libraries",
@@ -5183,7 +5183,7 @@
           "Single character typing fields"
         ],
         "jobs": [
-          "Audit and replay past prompts with execution metrics and one-click reload"
+          "Demonstrate prompt-history presentation; connect a host replay action and real history source before use."
         ],
         "contentRequirements": [
           "Describe the behavior represented by the interface and clearly label any illustrative data."
@@ -5801,7 +5801,7 @@
       "name": "AI Suggested Actions",
       "version": "1.0.0",
       "status": "verified-gold",
-      "description": "Context-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts.",
+      "description": "Example suggested-action cards. They remain disabled until the host connects action handlers.",
       "resourceType": "ai-pattern",
       "categories": [
         "ai",
@@ -5929,7 +5929,7 @@
         "verified-gold"
       ],
       "intent": {
-        "summary": "Context-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts.",
+        "summary": "Preview suggested-action presentation without implying that example actions have run.",
         "idealFor": [
           "Post-generation next step recommendations",
           "Chat conclusion action pills",
@@ -5940,7 +5940,7 @@
           "Static disclaimer footers"
         ],
         "jobs": [
-          "Suggest high-probability next steps based on recent conversation or generation state"
+          "Show suggested next steps and allow a host application to connect the corresponding actions."
         ],
         "contentRequirements": [
           "Describe the behavior represented by the interface and clearly label any illustrative data."
@@ -7559,7 +7559,7 @@
       "name": "API Capability Section",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Developer section highlighting REST / GraphQL / SDK methods with endpoint pill tags.",
+      "description": "Illustrative API route patterns for developer product pages. These examples are not API documentation.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -7684,7 +7684,7 @@
         "developer"
       ],
       "intent": {
-        "summary": "Developer section highlighting REST / GraphQL / SDK methods with endpoint pill tags.",
+        "summary": "Present API route examples while directing developers to the current API reference.",
         "idealFor": [
           "Technical products exposing webhooks and APIs"
         ],
@@ -7692,7 +7692,7 @@
           "Consumer non-technical apps"
         ],
         "jobs": [
-          "Demonstrate clean API endpoint signatures and fast HTTP responses"
+          "Show illustrative route patterns without promising that the endpoints are implemented."
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -9293,7 +9293,7 @@
       "name": "Audit Log",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Security and governance audit log table recording user actions, IP addresses, and hashes.",
+      "description": "Example audit-event layout with sample actors and addresses; it is not a live or immutable security log.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -9418,7 +9418,7 @@
         "compliance"
       ],
       "intent": {
-        "summary": "Security and governance audit log table recording user actions, IP addresses, and hashes.",
+        "summary": "Show an audit-event layout with an explicit sample-data disclosure.",
         "idealFor": [
           "Security settings panels and enterprise administrative audit tracks"
         ],
@@ -9426,7 +9426,7 @@
           "Casual public feeds"
         ],
         "jobs": [
-          "Record immutable audit trail of system modifications and logins"
+          "Demonstrate an audit-event table; connect a server-managed event source before production use."
         ],
         "contentRequirements": [
           "High data density, keyboard accessibility, semantic tokens"
@@ -16303,7 +16303,7 @@
       "name": "Cohort Matrix",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Retention table displaying user cohorts over weekly/monthly periods with color-coded retention percentage cells.",
+      "description": "Retention matrix with illustrative cohort sizes and percentages; values are not measured or live product metrics.",
       "resourceType": "data-visualization",
       "categories": [
         "data",
@@ -16430,7 +16430,7 @@
         "analytics"
       ],
       "intent": {
-        "summary": "Retention table displaying user cohorts over weekly/monthly periods with color-coded retention percentage cells.",
+        "summary": "Show an accessible cohort-matrix layout using explicitly illustrative data.",
         "idealFor": [
           "SaaS weekly retention matrices",
           "E-commerce repeat purchase cohorts",
@@ -16441,7 +16441,7 @@
           "Geometric geospatial maps"
         ],
         "jobs": [
-          "Track user engagement and retention drop-offs grouped by sign-up cohort"
+          "Demonstrate retention-table hierarchy; replace sample values with measured cohort data."
         ],
         "contentRequirements": [
           "Structured numerical data points, semantic color tokens, SVG vector rendering"
@@ -17059,7 +17059,7 @@
       "name": "Command Centre Shell",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Mission control telemetry layout with multi-panel monitoring grids and emergency alerts.",
+      "description": "Example multi-panel operations layout. Its status and node labels are sample content, not live telemetry.",
       "resourceType": "block",
       "categories": [
         "shells",
@@ -17180,7 +17180,7 @@
         "telemetry"
       ],
       "intent": {
-        "summary": "Mission control telemetry layout with multi-panel monitoring grids and emergency alerts.",
+        "summary": "Present an operations-monitor layout without claiming live system health.",
         "idealFor": [
           "High-stakes operational monitors requiring multi-pane status displays"
         ],
@@ -17188,7 +17188,7 @@
           "Standard consumer settings pages"
         ],
         "jobs": [
-          "Coordinate multi-grid operations monitoring"
+          "Demonstrate a monitoring layout and replace sample state with a connected data source."
         ],
         "contentRequirements": [
           "Accessible navigation semantics and responsive containment"

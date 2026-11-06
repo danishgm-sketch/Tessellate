@@ -45,13 +45,14 @@ export function CohortMatrix({ variant = 'quiet' }: CohortMatrixProps) {
     <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h4 className="text-sm font-semibold tracking-tight">User Retention Cohort Matrix</h4>
-          <p className="text-xs text-neutral-500">Monthly active user persistence</p>
+          <h4 className="text-sm font-semibold tracking-tight">Example user retention cohorts</h4>
+          <p className="text-xs text-neutral-500">Illustrative retention data — not live metrics.</p>
         </div>
       </div>
 
       <div className="overflow-x-auto">
         <table className="w-full text-xs font-mono">
+          <caption className="sr-only">Illustrative cohort retention examples; values are not live metrics.</caption>
           <thead>
             <tr className="border-b border-neutral-200 dark:border-neutral-800 text-neutral-400 text-left">
               <th className="py-2 pr-4 font-normal">Cohort</th>

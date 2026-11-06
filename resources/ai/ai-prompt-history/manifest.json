@@ -5,7 +5,7 @@
   "name": "AI Prompt History",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Searchable log of previous prompts with token stats, execution timestamps, and re-run buttons.",
+  "description": "Searchable example prompt history. Records are sample content; replay requires a host callback and no provider usage is stored.",
   "resourceType": "ai-pattern",
   "categories": [
     "ai",
@@ -132,7 +132,7 @@
     "replay"
   ],
   "intent": {
-    "summary": "Searchable log of previous prompts with token stats, execution timestamps, and re-run buttons.",
+    "summary": "Show a searchable prompt-history layout with clearly identified example records.",
     "idealFor": [
       "Prompt experimentation logs",
       "Team prompt review libraries",
@@ -143,7 +143,7 @@
       "Single character typing fields"
     ],
     "jobs": [
-      "Audit and replay past prompts with execution metrics and one-click reload"
+      "Demonstrate prompt-history presentation; connect a host replay action and real history source before use."
     ],
     "contentRequirements": [
       "Describe the behavior represented by the interface and clearly label any illustrative data."

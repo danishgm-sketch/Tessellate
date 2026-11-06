@@ -5,7 +5,7 @@
   "name": "API Capability Section",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Developer section highlighting REST / GraphQL / SDK methods with endpoint pill tags.",
+  "description": "Illustrative API route patterns for developer product pages. These examples are not API documentation.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,7 +130,7 @@
     "developer"
   ],
   "intent": {
-    "summary": "Developer section highlighting REST / GraphQL / SDK methods with endpoint pill tags.",
+    "summary": "Present API route examples while directing developers to the current API reference.",
     "idealFor": [
       "Technical products exposing webhooks and APIs"
     ],
@@ -138,7 +138,7 @@
       "Consumer non-technical apps"
     ],
     "jobs": [
-      "Demonstrate clean API endpoint signatures and fast HTTP responses"
+      "Show illustrative route patterns without promising that the endpoints are implemented."
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"

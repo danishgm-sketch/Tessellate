@@ -5,7 +5,7 @@
   "name": "Cohort Matrix",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Retention table displaying user cohorts over weekly/monthly periods with color-coded retention percentage cells.",
+  "description": "Retention matrix with illustrative cohort sizes and percentages; values are not measured or live product metrics.",
   "resourceType": "data-visualization",
   "categories": [
     "data",
@@ -132,7 +132,7 @@
     "analytics"
   ],
   "intent": {
-    "summary": "Retention table displaying user cohorts over weekly/monthly periods with color-coded retention percentage cells.",
+    "summary": "Show an accessible cohort-matrix layout using explicitly illustrative data.",
     "idealFor": [
       "SaaS weekly retention matrices",
       "E-commerce repeat purchase cohorts",
@@ -143,7 +143,7 @@
       "Geometric geospatial maps"
     ],
     "jobs": [
-      "Track user engagement and retention drop-offs grouped by sign-up cohort"
+      "Demonstrate retention-table hierarchy; replace sample values with measured cohort data."
     ],
     "contentRequirements": [
       "Structured numerical data points, semantic color tokens, SVG vector rendering"

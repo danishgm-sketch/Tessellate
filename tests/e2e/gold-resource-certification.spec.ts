@@ -293,7 +293,7 @@ test('Gold resources render at every certified width and each declared variant',
                     'marketing-nav-cta': 'Start action previewed.',
                     'pricing-three-tier': 'Starter example plan selected.',
                     'empty-workspace': 'Project creation previewed.',
-                    'magnetic-button': 'Example action activated.',
+                    'magnetic-button': 'Example action previewed locally; no product operation was run.',
                     'error-state': 'Retry action previewed.',
                   };
                   const expectedText = expectedResponse[resource.slug];

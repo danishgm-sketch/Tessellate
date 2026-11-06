@@ -267,7 +267,7 @@ export default function PreviewHost() {
       setActionStatus(announcement);
     },
     onCreateProject: () => setActionStatus('Project creation previewed.'),
-    onAction: () => setActionStatus('Example action activated.'),
+    onAction: () => setActionStatus('Example action previewed locally; no product operation was run.'),
     ...(resourceId === 'ai-prompt-composer' ? {
       onExecute: () => setActionStatus('Prompt previewed locally; no provider request was sent.'),
     } : {}),

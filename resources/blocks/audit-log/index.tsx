@@ -23,7 +23,8 @@ export function AuditLog({ variant = 'quiet' }: AuditLogProps) {
 
   return (
     <div className={`w-full p-6 rounded-xl border font-mono text-xs transition-colors ${bg}`}>
-      <h3 className="text-sm font-semibold mb-4 font-sans">Security Audit Trail</h3>
+      <h3 className="text-sm font-semibold mb-1 font-sans">Example audit events</h3>
+      <p className="mb-4 font-sans text-[11px] opacity-70">Sample records; not live audit data.</p>
       <div className="space-y-3">
         {logs.map((l) => (
           <div key={l.action + l.time} className="p-3 rounded-lg border border-neutral-100 dark:border-neutral-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">

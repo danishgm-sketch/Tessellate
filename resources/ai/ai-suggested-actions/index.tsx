@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useId } from 'react';
 
 export type AISuggestedActionsVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface AISuggestedActionsProps {
   variant?: AISuggestedActionsVariant;
+  onAction?: (actionId: string) => void;
 }
 
-export function AISuggestedActions({ variant = 'quiet' }: AISuggestedActionsProps) {
-  const [selected, setSelected] = useState<string | null>(null);
+export function AISuggestedActions({ variant = 'quiet', onAction }: AISuggestedActionsProps) {
+  const actionNoteId = useId();
 
   const cardBg =
     variant === 'nocturne'
@@ -38,23 +39,26 @@ export function AISuggestedActions({ variant = 'quiet' }: AISuggestedActionsProp
     >
       <div className="flex items-center gap-2 text-xs font-semibold">
         <span aria-hidden="true" className="text-amber-700 dark:text-amber-300">✦</span>
-        <span>Suggested Next Steps</span>
+        <span>Example suggested actions</span>
       </div>
 
       <div className="grid grid-cols-1 @sm:grid-cols-3 gap-2.5">
         {actions.map((act) => (
           <button
             key={act.id}
-            onClick={() => setSelected(act.id)}
-            className={`p-3 rounded-[var(--tess-radius-lg,8px)] border text-left transition-all ${actionPill} ${
-              selected === act.id ? 'ring-2 ring-current' : ''
-            }`}
+            type="button"
+            onClick={() => onAction?.(act.id)}
+            disabled={!onAction}
+            aria-describedby={!onAction ? actionNoteId : undefined}
+            title={!onAction ? 'Connect an action handler to enable this step' : undefined}
+            className={`p-3 rounded-[var(--tess-radius-lg,8px)] border text-left transition-all disabled:cursor-not-allowed disabled:opacity-70 ${actionPill}`}
           >
             <div className="text-xs font-semibold mb-1">{act.title}</div>
             <div className="text-[11px] text-[var(--tess-ink-muted,#62666F)] dark:text-neutral-300 leading-snug">{act.desc}</div>
           </button>
         ))}
       </div>
+      {!onAction && <p id={actionNoteId} className="text-xs text-neutral-500">Examples only; connect action handlers to enable these steps.</p>}
     </div>
   );
 }

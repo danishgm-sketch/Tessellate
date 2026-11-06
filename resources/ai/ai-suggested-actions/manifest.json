@@ -5,7 +5,7 @@
   "name": "AI Suggested Actions",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Context-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts.",
+  "description": "Example suggested-action cards. They remain disabled until the host connects action handlers.",
   "resourceType": "ai-pattern",
   "categories": [
     "ai",
@@ -132,7 +132,7 @@
     "workflow"
   ],
   "intent": {
-    "summary": "Context-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts.",
+    "summary": "Preview suggested-action presentation without implying that example actions have run.",
     "idealFor": [
       "Post-generation next step recommendations",
       "Chat conclusion action pills",
@@ -143,7 +143,7 @@
       "Static disclaimer footers"
     ],
     "jobs": [
-      "Suggest high-probability next steps based on recent conversation or generation state"
+      "Show suggested next steps and allow a host application to connect the corresponding actions."
     ],
     "contentRequirements": [
       "Describe the behavior represented by the interface and clearly label any illustrative data."

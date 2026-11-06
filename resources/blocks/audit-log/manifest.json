@@ -5,7 +5,7 @@
   "name": "Audit Log",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Security and governance audit log table recording user actions, IP addresses, and hashes.",
+  "description": "Example audit-event layout with sample actors and addresses; it is not a live or immutable security log.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -130,7 +130,7 @@
     "compliance"
   ],
   "intent": {
-    "summary": "Security and governance audit log table recording user actions, IP addresses, and hashes.",
+    "summary": "Show an audit-event layout with an explicit sample-data disclosure.",
     "idealFor": [
       "Security settings panels and enterprise administrative audit tracks"
     ],
@@ -138,7 +138,7 @@
       "Casual public feeds"
     ],
     "jobs": [
-      "Record immutable audit trail of system modifications and logins"
+      "Demonstrate an audit-event table; connect a server-managed event source before production use."
     ],
     "contentRequirements": [
       "High data density, keyboard accessibility, semantic tokens"

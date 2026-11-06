@@ -14,7 +14,8 @@ export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = {
     "variant"
   ],
   "ai-suggested-actions": [
-    "variant"
+    "variant",
+    "onAction"
   ],
   "area-chart": [
     "variant"

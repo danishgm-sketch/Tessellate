@@ -202,3 +202,71 @@ test('resource detail metadata matches the honest preview scope', async ({ page 
     await page.screenshot({ path: join(screenshotDir, `${item.slug}-${viewportLabel}.png`), fullPage: true });
   }
 });
+
+async function openAuditedResource(page: Page, slug: string): Promise<FrameLocator> {
+  const response = await page.goto(`/r/${slug}/`, { waitUntil: 'domcontentloaded' });
+  expect(response?.ok(), `${slug} detail route should load`).toBe(true);
+  const preview = page.frameLocator('iframe[title$=" live preview"]');
+  await expect(preview.locator('.tess-screen')).toBeVisible({ timeout: 15_000 });
+  return preview;
+}
+
+test('admin console example state and unavailable invitation are disclosed', async ({ page }) => {
+  const preview = await openAuditedResource(page, 'admin-console-shell');
+  await expect(preview.getByText('Example organization data')).toBeVisible();
+  await expect(preview.getByText(/Member count and identity provider are not connected/i)).toBeVisible();
+  await expect(preview.getByRole('button', { name: 'Invite User' })).toBeDisabled();
+  await expect(preview.getByText(/Connect an invite handler to enable this action/i)).toBeVisible();
+});
+
+test('memory controls only clear local example state', async ({ page }) => {
+  const preview = await openAuditedResource(page, 'ai-memory-context-panel');
+  await expect(preview.getByText('Example assistant memory')).toBeVisible();
+  await expect(preview.getByText(/Local preview only; not connected to an assistant/i)).toBeVisible();
+  await preview.getByRole('button', { name: 'Clear examples' }).click();
+  await expect(preview.getByRole('status')).toHaveText('No example memory entries.');
+});
+
+test('prompt history is example content and does not offer a dead replay action', async ({ page }) => {
+  const preview = await openAuditedResource(page, 'ai-prompt-history');
+  await expect(preview.getByText('Example prompt history')).toBeVisible();
+  await expect(preview.getByText(/Sample records only; no prompt history or provider usage is stored/i)).toBeVisible();
+  await expect(preview.getByRole('button', { name: 'Replay' }).first()).toBeDisabled();
+  await expect(preview.getByText(/Connect a replay handler to enable these actions/i)).toBeVisible();
+  await preview.getByRole('textbox', { name: 'Filter example prompts' }).fill('no matching example');
+  await expect(preview.getByRole('status')).toHaveText('No example prompts match this filter.');
+});
+
+test('suggested actions are identified as examples and report a local preview instead of claiming execution', async ({ page }) => {
+  const preview = await openAuditedResource(page, 'ai-suggested-actions');
+  await expect(preview.getByText('Example suggested actions')).toBeVisible();
+  const exportAction = preview.getByRole('button', { name: /Export as Vite App/ });
+  await expect(exportAction).toBeEnabled();
+  await exportAction.click();
+  await expect(preview.getByRole('status')).toHaveText('Example action previewed locally; no product operation was run.');
+});
+
+test('API section labels route patterns as illustrative rather than current API docs', async ({ page }) => {
+  const preview = await openAuditedResource(page, 'api-capability-section');
+  await expect(preview.getByRole('heading', { name: 'Illustrative API examples' })).toBeVisible();
+  await expect(preview.getByText(/These route patterns are examples, not API documentation/i)).toBeVisible();
+});
+
+test('audit log marks actors and events as sample data', async ({ page }) => {
+  const preview = await openAuditedResource(page, 'audit-log');
+  await expect(preview.getByRole('heading', { name: 'Example audit events' })).toBeVisible();
+  await expect(preview.getByText(/Sample records; not live audit data/i)).toBeVisible();
+});
+
+test('command centre never reports sample systems as operational', async ({ page }) => {
+  const preview = await openAuditedResource(page, 'command-centre-shell');
+  await expect(preview.getByText('Example telemetry layout')).toBeVisible();
+  await expect(preview.getByText('Sample status · not live')).toBeVisible();
+  await expect(preview.getByText('ALL SYSTEMS OPERATIONAL')).toHaveCount(0);
+});
+
+test('cohort matrix discloses that sizes and percentages are illustrative', async ({ page }) => {
+  const preview = await openAuditedResource(page, 'cohort-matrix');
+  await expect(preview.getByText('Illustrative retention data — not live metrics.')).toBeVisible();
+  await expect(preview.getByRole('table').getByRole('caption')).toHaveText(/Illustrative cohort retention examples/);
+});

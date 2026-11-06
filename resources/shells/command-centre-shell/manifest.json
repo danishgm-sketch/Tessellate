@@ -5,7 +5,7 @@
   "name": "Command Centre Shell",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Mission control telemetry layout with multi-panel monitoring grids and emergency alerts.",
+  "description": "Example multi-panel operations layout. Its status and node labels are sample content, not live telemetry.",
   "resourceType": "block",
   "categories": [
     "shells",
@@ -126,7 +126,7 @@
     "telemetry"
   ],
   "intent": {
-    "summary": "Mission control telemetry layout with multi-panel monitoring grids and emergency alerts.",
+    "summary": "Present an operations-monitor layout without claiming live system health.",
     "idealFor": [
       "High-stakes operational monitors requiring multi-pane status displays"
     ],
@@ -134,7 +134,7 @@
       "Standard consumer settings pages"
     ],
     "jobs": [
-      "Coordinate multi-grid operations monitoring"
+      "Demonstrate a monitoring layout and replace sample state with a connected data source."
     ],
     "contentRequirements": [
       "Accessible navigation semantics and responsive containment"

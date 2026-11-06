@@ -5,7 +5,7 @@
   "name": "AI Memory Context Panel",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Inspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls.",
+  "description": "Local preview of assistant-memory controls using example preferences; it does not read or persist assistant memory.",
   "resourceType": "ai-pattern",
   "categories": [
     "ai",
@@ -132,7 +132,7 @@
     "preferences"
   ],
   "intent": {
-    "summary": "Inspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls.",
+    "summary": "Preview local memory-control interactions with clearly identified example preferences.",
     "idealFor": [
       "User preference management",
       "Session memory inspection",
@@ -143,7 +143,7 @@
       "Password inputs"
     ],
     "jobs": [
-      "Inspect and manage persisted memory entities remembered by the assistant"
+      "Review how memory preferences may be presented; connect a real host memory store before use."
     ],
     "contentRequirements": [
       "Describe the behavior represented by the interface and clearly label any illustrative data."

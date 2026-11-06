@@ -27,7 +27,8 @@ export function ApiCapabilitySection({ variant = 'quiet' }: ApiCapabilitySection
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Programmatic API Access</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-3">Illustrative API examples</h2>
+        <p className="mx-auto mb-12 max-w-2xl text-center text-sm opacity-75">These route patterns are examples, not API documentation. Check the current API reference before integrating.</p>
 
         <div className="space-y-4">
           {endpoints.map((ep) => (

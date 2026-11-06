@@ -5,7 +5,7 @@
   "name": "Admin Console Shell",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Enterprise administration layout with organization selector, user table, and security audit tab.",
+  "description": "Example administration layout. Member counts and identity state are illustrative until an identity provider is connected.",
   "resourceType": "block",
   "categories": [
     "shells",
@@ -126,7 +126,7 @@
     "roles"
   ],
   "intent": {
-    "summary": "Enterprise administration layout with organization selector, user table, and security audit tab.",
+    "summary": "Example administration layout with clearly identified sample identity data.",
     "idealFor": [
       "IT administrative management surfaces"
     ],
@@ -134,7 +134,7 @@
       "Casual public homepages"
     ],
     "jobs": [
-      "Manage users, access permissions, and audit logs safely"
+      "Demonstrate an organization administration layout with sample data and a host-provided invitation action."
     ],
     "contentRequirements": [
       "Accessible navigation semantics and responsive containment"
