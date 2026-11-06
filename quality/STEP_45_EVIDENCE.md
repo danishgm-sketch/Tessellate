@@ -1,6 +1,14 @@
 # Step 45 — Public review verification
 
-Status: **Ongoing; release gate not passed.** Public v81 closes AUD-510 after desktop/mobile Slow 3G verification. On 2026-11-06 the current public route sweep and the flagship employee-experience journey were repeated at 1440×900 and 390×844; all 31 route shells and the flagship workflow passed, and all ten Beta tools were exercised through their existing live browser suite (41 passed, 21 project-scoped skips). These runs do not close 133 unrelated deployed-verification findings or complete the full accessibility/contrast review. AUD-419 remains the only nonclosed High finding; public Sites is intentionally disconnected from the laptop host, so hosted BYO-provider forwarding remains unavailable and unverified. D1/R2 remain unbound. Step 46 is owner-waived, not passed, as recorded in D-064 and `quality/STEP_46_EVIDENCE.md`.
+Status: **Ongoing; release gate not passed.** Public v81 closes AUD-510 after desktop/mobile Slow 3G verification and provides the 31-route, flagship, and ten-tool baseline. Public v82 closes AUD-511 after an issue-specific desktop/mobile Compose recheck. These runs do not close the 132 unrelated findings awaiting deployed verification or complete the full accessibility/contrast review. AUD-419 remains the only nonclosed High finding; public Sites is intentionally disconnected from the laptop host, so hosted BYO-provider forwarding remains unavailable and unverified. D1/R2 remain unbound. Step 46 is owner-waived, not passed, as recorded in D-064 and `quality/STEP_46_EVIDENCE.md`.
+
+## AUD-511 public v82 deployed verification — 2026-11-06
+
+Sites v82 is live at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ from canonical PR head `99f9bb7370d45926e5abd9e2475c267846d0540c` via Sites mirror commit `20cdb2d29a3dea0f4272525edf038902bb00287f`. The Site retains its public audience and has no D1/R2 bindings.
+
+The visible Compose workflow ran the exact employee-experience brief at 1440×900 and 390×844. Playwright delayed script requests by 700 ms to make the lazy state observable. Direction A showed five accessible `Loading interface element…` statuses with no slugs in each viewport. All three directions settled with five rendered resources each, no unresolved references or renderer failures, and no browser console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Screenshots and reports are in `quality/evidence/step-45/public-v82-followup-2026-11-06/`. This targeted check closes AUD-511; it does not repeat the complete v81 route or flagship re-audit.
+
+## Public v81 route, flagship, and tool re-audit — 2026-11-06
 
 ## AUD-510 public reproduction and local fix — 2026-11-06
 
