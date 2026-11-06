@@ -22,6 +22,7 @@ export default defineConfig({
     'workbench-mobile-startup-stability.spec.ts',
     'workbench-mobile-layout-stability.spec.ts',
     'workbench-mobile-cold-resource-layout-shift.spec.ts',
+    'workbench-desktop-cold-resource-layout-shift.spec.ts',
     'workbench-system-reduced-motion.spec.ts',
     'sites-a11y-regressions-step-48.spec.ts',
     'sites-availability-regressions-step-48.spec.ts',

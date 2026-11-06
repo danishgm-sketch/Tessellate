@@ -18,7 +18,7 @@ export function WorkbenchStartup({ hasProjectQuery = false }: WorkbenchStartupPr
       aria-busy="true"
       className="flex h-screen min-h-screen w-screen flex-col overflow-hidden bg-[#0B0D10] text-[#F5F7FA]"
     >
-      <header className="flex h-14 shrink-0 items-center justify-between border-b border-[#272C34] bg-[#111419] px-4">
+      <header className="flex min-h-14 shrink-0 items-center justify-between border-b border-[#272C34] bg-[#111419] px-4 lg:min-h-[89px]">
         <div className="flex items-center gap-3">
           <span aria-hidden="true" className="grid size-8 place-items-center bg-[#6782FF] text-sm font-bold text-[#0B0D10]">T</span>
           <span className="text-sm font-semibold tracking-tight">Tessellate Workbench</span>

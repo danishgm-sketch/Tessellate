@@ -31,6 +31,11 @@ test('a Gold resource chunk failure stays local and preserves the Workbench proj
   await expect(page.getByRole('heading', { name: 'Workbench: Example employee workspace' })).toBeVisible({ timeout: 15_000 });
   await expect(page.getByTestId('resource-load-failure').filter({ hasText: 'editorial-hero' })).toBeVisible();
   await expect(page.getByText('The project reference is preserved. Reload the page to retry this resource.')).toBeVisible();
+  if (testInfo.project.name.includes('mobile')) {
+    const deferredFeature = page.locator('[data-testid="resource-deferred"][data-resource-slug="feature-bento"]');
+    await expect(deferredFeature).toBeVisible();
+    await deferredFeature.scrollIntoViewIfNeeded();
+  }
   await expect(page.getByRole('heading', { name: 'Made for everyday employee experiences' })).toBeVisible();
   expect(interceptedChunks).toBe(1);
 

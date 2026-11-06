@@ -391,8 +391,8 @@ export function WorkbenchShell() {
       className="h-screen w-screen overflow-hidden flex flex-col bg-[#0B0D10] text-[#F5F7FA]"
     >
       <a href="#workbench-main" className="sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:not-sr-only focus:bg-white focus:px-3 focus:py-2 focus:text-[#111217] focus:outline-2 focus:outline-offset-2 focus:outline-[#6782FF]">Skip to editor</a>
-      {/* 56px Top Toolbar */}
-      <Suspense fallback={<LoadingEditorPart label="Loading the Workbench toolbar…" tone="dark" className="min-h-14 shrink-0" />}><TopToolbar historySaveStatus={historySaveStatus} /></Suspense>
+      {/* Reserve the measured desktop toolbar height before its lazy chunk hydrates. */}
+      <Suspense fallback={<LoadingEditorPart label="Loading the Workbench toolbar…" tone="dark" className="min-h-14 shrink-0 lg:min-h-[89px]" />}><TopToolbar historySaveStatus={historySaveStatus} /></Suspense>
       {storageWarning && (
         <div role="status" aria-live="polite" data-testid="storage-warning" className="border-b border-amber-500/30 bg-amber-950/40 px-4 py-2 text-xs text-amber-100">
           {storageWarning}

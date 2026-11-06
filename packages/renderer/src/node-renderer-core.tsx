@@ -330,7 +330,7 @@ export function createNodeRenderer(defaultRegistry: ResourceRendererMap) {
           <ResourceLoadBoundary key={slug} slug={slug} semanticRole={node.semanticRole}>
             <Suspense
               fallback={
-                <div role="status" aria-label="Loading interface element" data-testid="resource-loading" className="min-h-12 px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400 motion-reduce:animate-none">
+                <div role="status" aria-label="Loading interface element" data-testid="resource-loading" className={`px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400 motion-reduce:animate-none ${resourceReservedHeight(node.semanticRole)}`}>
                   Loading interface element…
                 </div>
               }
