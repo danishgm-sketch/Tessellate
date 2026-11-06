@@ -60,3 +60,9 @@ Machine-readable reports and exported manifests are in
 `quality/evidence/step-20/{before,after}/`. The local runtime finding and its
 reproduction are documented as AUD-156 in `audit/runtime-audit.json` and
 `audit/RUNTIME_AUDIT.md`.
+
+### Public v77 follow-up — AUD-495 net variant feedback
+
+The public flagship audit found that Surprise Me could report an intermediate variant transition with no net rendered change. With `split-product-hero` already rendered as Quiet, structural recomposition could temporarily choose Expressive, then Surprise Me selected Quiet again and reported `expressive → quiet`. The before/after UI captures and runtime report are in `audit/evidence/step-20/aud-495-surprise-net-variant/`.
+
+A user-facing regression now asserts that Surprise Me changes the final rendered variant relative to its pre-operation value, and that the status describes the net result. It failed before the fix and passes after it (9/9 targeted tests); Workbench typecheck and targeted ESLint pass. The fix is commit `365295387776b6620f95d9705542b46a9cac256c`. The full local gates pass: 1,325 unit tests (one configured skip), 22 workspace typechecks, lint, 16/16 behavioral gates, catalogue/resource isolation/licence/security audits, production build/budgets, and the four-project E2E run (826 passed, 191 configured skips, zero failures). Machine-readable results are in `audit/evidence/step-20/aud-495-surprise-net-variant/local-verification.json`. This is local verification only. AUD-495 remains open pending the same check on a new published Sites review version.

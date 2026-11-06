@@ -23124,12 +23124,74 @@
           "result": "PASS"
         }
       }
+    },
+    {
+      "id": "AUD-495",
+      "severity": "medium",
+      "route": "/workbench → Marketing Home",
+      "viewport": "390x844",
+      "category": "state",
+      "title": "Surprise Me reported an intermediate variant change that did not reach the rendered project",
+      "expected": "Surprise Me feedback should describe the final rendered change, and a claimed visible variant change should produce a different variant in the project.",
+      "actual": "On public v77, the selected split-product-hero had data-resource-variant=\"quiet\" before and after Surprise Me. The action status said it changed from expressive to quiet, even though the final rendered variant was unchanged.",
+      "reproduction": [
+        "Open /compose on the public review Site and enter the exact employee-experience brief.",
+        "Compose, choose Direction C, and open it in Workbench.",
+        "On Marketing Home, replace the Editorial Hero with the compatible Gold Split Product Hero; its selected variant is quiet.",
+        "Click Surprise Me at its default 60% divergence.",
+        "Compare the selected hero variant before and after and read the action status."
+      ],
+      "console": [],
+      "network": [
+        {
+          "path": "/data/catalog.json",
+          "status": 304
+        },
+        {
+          "requestCount": 84,
+          "failedRequests": 0,
+          "httpErrors": 0
+        }
+      ],
+      "screenshot": "audit/evidence/step-20/aud-495-surprise-net-variant/after-390x844.png",
+      "beforeEvidence": [
+        "audit/evidence/step-20/aud-495-surprise-net-variant/before-390x844.png"
+      ],
+      "afterEvidence": [
+        "audit/evidence/step-20/aud-495-surprise-net-variant/after-390x844.png"
+      ],
+      "machineEvidence": "audit/evidence/step-20/aud-495-surprise-net-variant/runtime-v77.json",
+      "rootCause": "Surprise Me chose the new variant by excluding the variant created by structural recomposition, rather than excluding the selected node’s original rendered variant. Recomposition could first switch quiet to expressive, after which the variant mutation switched expressive back to quiet.",
+      "affectedCode": [
+        "packages/workbench/src/mutations/surprise.ts",
+        "packages/workbench/src/__tests__/surprise-me.test.ts",
+        "audit/evidence/step-20/aud-495-surprise-net-variant/local-verification.json"
+      ],
+      "remediation": "Choose an alternate variant relative to the candidate node’s pre-operation rendered variant. Skip the variant change if recomposition changed that node to a different resource, and describe only net changes.",
+      "fixCommit": "365295387776b6620f95d9705542b46a9cac256c",
+      "status": "fixed-awaiting-deployed-verification",
+      "deployedVerification": null,
+      "localVerification": {
+        "result": "PASS",
+        "focusedRegression": {
+          "result": "PASS",
+          "passed": 9,
+          "failed": 0,
+          "preFix": "Failed: final rendered variant remained quiet while feedback described expressive to quiet.",
+          "postFix": "Passed: final variant differs from original and explanation reports original to final."
+        },
+        "workbenchTypecheck": "PASS",
+        "targetedEslint": "PASS",
+        "fullSuiteEvidence": "audit/evidence/step-20/aud-495-surprise-net-variant/local-verification.json",
+        "deployed": false,
+        "sourceCommit": "365295387776b6620f95d9705542b46a9cac256c"
+      }
     }
   ],
-  "generatedAt": "2026-11-06T02:03:48.942Z",
+  "generatedAt": "2026-11-06T04:58:16.000Z",
   "latestDeploymentEvidence": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
   "latestLocalQualityRun": {
-    "capturedAt": "2026-11-06T02:03:48.941Z",
+    "capturedAt": "2026-11-06T04:58:16.000Z",
     "command": "pnpm test:e2e",
     "environment": "Full local E2E sequence across Astro desktop/mobile, production-like Sites Worker desktop/mobile, and standalone preview",
     "result": "PASS",
@@ -23169,9 +23231,12 @@
       "The Sites desktop matrix rendered all 324 catalogue resources at certified widths and all 40 Gold resources across declared variants.",
       "The flagship employee workflow, exact Direction C handoff, Workbench mutations/history, independent React export, responsive and accessibility checks, and strict preview CSP checks completed without failures.",
       "The delayed ResourcePreviewFrame-host-island regression passed desktop and mobile; the related 324-resource render matrix and resource-copy test also passed.",
-      "Skips are explicit profile or platform skips, not unexecuted failures."
+      "Skips are explicit profile or platform skips, not unexecuted failures.",
+      "AUD-495 net-variant user-facing regression fails before the fix and passes after it; full repository, release-audit, and four-group browser suites pass on the candidate working tree."
     ],
-    "evidence": "Playwright full-suite run on current working tree; per-test traces and screenshots under test-results/ and audit/evidence/step-48/aud494-preview-host-readiness/"
+    "evidence": "audit/evidence/step-20/aud-495-surprise-net-variant/local-verification.json",
+    "sourceBase": "432e51412e4e6743f080bcdffaa23e0af900b6f8",
+    "sourceCommit": "365295387776b6620f95d9705542b46a9cac256c"
   },
   "previousLocalQualityRun": {
     "capturedAt": "2026-11-03T20:34:29.000Z",

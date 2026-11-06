@@ -1,0 +1,32 @@
+{
+  "deployment": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+    "version": "v77",
+    "canonicalSourceCommit": "432e51412e4e6743f080bcdffaa23e0af900b6f8"
+  },
+  "route": "/workbench?project=proj-direction-c-377abc80369f4c28bce931066a15a59edirc#screen-marketing-home",
+  "viewport": "390x844",
+  "resource": {
+    "nodeId": "node-screen-marketing-home-hero-2",
+    "slugBefore": "split-product-hero",
+    "slugAfter": "split-product-hero",
+    "variantBefore": "quiet",
+    "variantAfter": "quiet",
+    "status": "Surprise Me (divergence: 60%): Adjusted Design DNA (visual ambition: 71, structural creativity: 95); Shifted surface personality to \"glass\"; Shifted motion personality to \"calm-precision\"; Shifted typography personality to \"technical-mono-geist\"; Switched navigation model to \"top-nav\"; Recomposed layout and hierarchy of screen \"Marketing Home\" (divergence: 60%); Changed the visible variant for split-product-hero from expressive to quiet. Preserved 1 locked node(s)."
+  },
+  "screenshots": {
+    "before": "audit/evidence/step-20/aud-495-surprise-net-variant/before-390x844.png",
+    "after": "audit/evidence/step-20/aud-495-surprise-net-variant/after-390x844.png"
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "requestCount": 84,
+  "requiredCatalogRequest": {
+    "path": "/data/catalog.json",
+    "status": 304
+  },
+  "finding": "The visible hero stayed quiet before and after Surprise Me, while the status said it changed from expressive to quiet. The same click did recompose layout and change other DNA dimensions."
+}

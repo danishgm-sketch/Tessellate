@@ -1,0 +1,100 @@
+{
+  "id": "AUD-495-local-verification",
+  "capturedAt": "2026-11-06T04:58:16Z",
+  "branch": "codex/surprise-net-change-audit",
+  "baseCommit": "432e51412e4e6743f080bcdffaa23e0af900b6f8",
+  "commands": {
+    "frozenInstall": {
+      "command": "pnpm install --frozen-lockfile",
+      "result": "PASS",
+      "details": "23 workspace projects; lockfile unchanged."
+    },
+    "catalogue": {
+      "command": "pnpm build:catalog",
+      "result": "PASS",
+      "details": "324 canonical resources validated; 40 verified Gold resources."
+    },
+    "unitIntegration": {
+      "command": "pnpm test",
+      "result": "PASS",
+      "passed": 1325,
+      "skipped": 1,
+      "failed": 0
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "result": "PASS",
+      "details": "All 22 workspace packages."
+    },
+    "lint": {
+      "command": "pnpm lint",
+      "result": "PASS",
+      "errors": 0,
+      "configuredWarningsMaximum": 51
+    },
+    "releaseAudits": {
+      "command": "pnpm audit:all",
+      "result": "PASS",
+      "behavioralGates": "16/16",
+      "resourceIsolation": "324/324",
+      "productionPages": 733,
+      "sitesCspRecords": 731,
+      "routeBudgets": "all pass",
+      "licenceProvenance": "324/324 pass",
+      "securitySecretViolations": 0,
+      "knownDependencyVulnerabilities": 0
+    },
+    "browserE2E": {
+      "command": "pnpm test:e2e",
+      "result": "PASS",
+      "projects": [
+        {
+          "name": "Astro desktop/mobile Chromium",
+          "passed": 396,
+          "skipped": 136,
+          "failed": 0
+        },
+        {
+          "name": "Sites Worker desktop Chromium",
+          "passed": 230,
+          "skipped": 11,
+          "failed": 0
+        },
+        {
+          "name": "Sites Worker mobile Chromium",
+          "passed": 197,
+          "skipped": 44,
+          "failed": 0
+        },
+        {
+          "name": "Standalone preview Chromium",
+          "passed": 3,
+          "skipped": 0,
+          "failed": 0
+        }
+      ],
+      "totals": {
+        "passed": 826,
+        "configuredSkips": 191,
+        "failed": 0
+      },
+      "coverage": [
+        "Flagship employee journey and independent React export",
+        "324 resources at certified widths in Sites desktop profile",
+        "40 Gold resources across certified variants",
+        "Compose-to-Workbench, mutations, lock/history, accessibility and responsive checks",
+        "CSP, fault injection, CLI/MCP integration and project scale through 50 screens"
+      ]
+    }
+  },
+  "regression": {
+    "file": "packages/workbench/src/__tests__/surprise-me.test.ts",
+    "case": "keeps Surprise Me variant feedback aligned with the net rendered change after recomposition",
+    "preFix": "FAIL: expected the final rendered variant to differ from quiet; it remained quiet while the status described expressive to quiet.",
+    "postFix": "PASS: focused Surprise Me suite 9/9; package typecheck and targeted ESLint pass."
+  },
+  "knownBuildWarning": "The production build emits the existing 555.64 KB raw preview bundle warning (146.65 KB gzip); route gzip budgets pass.",
+  "deploymentStatus": "Not deployed. Public Sites v77 remains the before-state.",
+  "fixCommit": "365295387776b6620f95d9705542b46a9cac256c",
+  "sourceCommit": "365295387776b6620f95d9705542b46a9cac256c"
+}
