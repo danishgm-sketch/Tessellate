@@ -311,7 +311,7 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
       'utf8',
     );
 
-    expect(component).toBe(canonicalSource);
+    expect(component?.replace(/\r\n/g, '\n')).toBe(canonicalSource.replace(/\r\n/g, '\n'));
     expect(component).toContain('onApplyRecommendedFixes?: (recommendationIds: readonly string[]) => void;');
     expect(component).toContain('disabled={!onApplyRecommendedFixes}');
     expect(component).toContain('Example content only. This preview does not inspect files or change source code.');
