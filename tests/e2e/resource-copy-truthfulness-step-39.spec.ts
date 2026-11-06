@@ -972,6 +972,12 @@ test('dashboard skeleton recommendations stay within the general analytics domai
   const detail = await page.locator('main').innerText();
   expect(detail).not.toMatch(/trading portal|order book|portfolio/i);
 
+  // Wait for the detail-page iframe to finish rendering before leaving it.
+  // Otherwise its in-flight document request is reported as ERR_ABORTED when
+  // the next navigation intentionally opens the standalone preview.
+  await expect(
+    page.frameLocator('iframe[title$=" live preview"]').locator('.tess-screen'),
+  ).toHaveCount(1, { timeout: 15_000 });
   const preview = await openResourcePreview(page, 'dashboard-skeleton');
   const skeleton = preview.getByRole('status', { name: 'Loading dashboard metrics' });
   await expect(skeleton).toBeVisible();

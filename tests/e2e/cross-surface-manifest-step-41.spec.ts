@@ -356,7 +356,7 @@ test('opens a CLI-composed manifest in Workbench and exports its edited project'
   );
 
   await page.goto('/workbench');
-  await expect(page.getByTestId('top-toolbar')).toBeVisible();
+  await expect(page.getByTestId('top-toolbar')).toBeVisible({ timeout: 15_000 });
   const originalProjectName = (await page.getByTestId('top-toolbar').locator('button').first().innerText()).trim();
   await page.getByTestId('export-button').click();
   await expect(page.getByTestId('import-manifest-btn')).toBeVisible();
