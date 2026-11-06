@@ -197,7 +197,7 @@ export default function PreviewHost() {
 
   useEffect(() => {
     const el = containerRef.current;
-    if (!el || window.parent === window || !parentOrigin) return;
+    if (!el || window.parent === window || !parentOrigin || !component) return;
 
     const readyMsg: PreviewReadyMessage = {
       type: 'TESSELLATE_PREVIEW_READY',

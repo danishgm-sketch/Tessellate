@@ -64,11 +64,17 @@ export function ResourcePreviewFrame({
         );
         return;
       }
+      if (event.data.type === 'TESSELLATE_PREVIEW_ERROR') {
+        // Reveal the iframe's own error panel instead of leaving the loading
+        // overlay in place when the isolated renderer cannot load a resource.
+        setIframeLoaded(true);
+        return;
+      }
       if (event.data.type !== 'TESSELLATE_PREVIEW_READY') return;
 
-      // The iframe can finish loading before this React island hydrates and
-      // attaches its onLoad handler. The validated READY handshake is the
-      // reliable signal that updates can be delivered to the isolated frame.
+      // READY is sent only after the selected component is available. Keeping
+      // the overlay until this handshake prevents a blank detail preview while
+      // the isolated renderer and its resource chunk are loading.
       setIframeLoaded(true);
       if (initializedRef.current) return;
 
@@ -259,10 +265,10 @@ export function ResourcePreviewFrame({
       {/* Frame Container */}
       <div className="min-h-[460px] max-h-[720px] bg-[var(--tess-canvas-strong,#ECE9E2)] p-4 flex items-center justify-center overflow-auto">
         <div
-          aria-busy={!previewHostReady}
+          aria-busy={!iframeLoaded}
           className={`relative transition-all duration-300 rounded-lg overflow-hidden border border-[var(--tess-hairline,#D9D6CF)] shadow-sm bg-white dark:bg-[#0B0D10] ${deviceWidthClass}`}
         >
-          {!previewHostReady && (
+          {!iframeLoaded && (
             <div role="status" className="absolute inset-0 z-10 flex items-center justify-center bg-[var(--tess-surface,#FAF9F6)] text-sm text-[var(--tess-ink-muted,#62666F)]">
               Loading isolated preview…
             </div>
@@ -273,11 +279,6 @@ export function ResourcePreviewFrame({
             title={`${manifest.name} live preview`}
             sandbox={privateVerso ? 'allow-scripts allow-same-origin' : 'allow-scripts'}
             referrerPolicy="strict-origin"
-            onLoad={() => {
-              if (!previewHostReady) return;
-              initializedRef.current = false;
-              setIframeLoaded(true);
-            }}
             className="w-full min-h-[500px] border-0 bg-transparent block"
           />
         </div>

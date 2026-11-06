@@ -24354,22 +24354,60 @@
           "after": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/cohort-matrix-mobile-390x844-keyboard-focus-after.png"
         }
       }
+    },
+    {
+      "id": "AUD-510",
+      "severity": "medium",
+      "route": "/r/app-sidebar-expanded/",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Resource detail preview disappears into a blank surface while its isolated renderer loads",
+      "expected": "The resource detail preview should retain an accessible loading status and aria-busy state until the selected resource is rendered or a visible error is available.",
+      "actual": "On public v80 under Slow 3G and 4x CPU throttling, the resource frame was blank white while aria-busy was false and no loading status was present. The resource eventually rendered after its isolated bundle completed.",
+      "reproduction": [
+        "Open /r/app-sidebar-expanded/ at 1440x900.",
+        "Throttle the browser to Slow 3G and 4x CPU.",
+        "Capture the preview immediately after the detail shell loads; before the resource appears, the frame is blank and has no visible status.",
+        "Wait for the isolated resource bundle; the sidebar then renders without a user action."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-45/public-v80-followup-2026-11-06/resource-detail-preview-loading/before-v80-slow3g-1440x900.png",
+      "rootCause": "ResourcePreviewFrame used previewHostReady, which only meant its message listener was installed, to remove the overlay and clear aria-busy. The child PreviewHost also sent READY on mount before the resource component import finished, and the iframe load handler marked the frame ready prematurely.",
+      "affectedCode": [
+        "apps/site/src/components/ResourcePreviewFrame.tsx",
+        "apps/preview/src/components/PreviewHost.tsx"
+      ],
+      "fixCommit": null,
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionTest": "tests/e2e/resource-detail-preview-loading-state.spec.ts",
+        "red": "Public v80 failed the delayed-frame regression: expected aria-busy=true, received false.",
+        "green": "PASS in local Sites Worker desktop/mobile; delayed-ready and chunk-failure cases in each profile.",
+        "build": "PASS",
+        "typecheck": "PASS (22 packages)",
+        "lint": "PASS",
+        "unitTests": "PASS (95 files; 1,343 passed; 1 skipped)",
+        "releaseAudit": "PASS (16 behavioral gates; 324/324 resource isolation and provenance; secrets/security; dependency and bundle budgets)",
+        "playwright": "PASS (854 passed; 191 configured skips; 0 failed across Astro, Sites desktop/mobile, and standalone preview)",
+        "deploymentVerification": "Pending; public v80 still contains the defect."
+      }
     }
   ],
-  "generatedAt": "2026-11-06T12:20:32.938Z",
+  "generatedAt": "2026-11-06T14:09:57.000Z",
   "latestDeploymentEvidence": "quality/evidence/step-45/public-v80-reaudit/closure-summary.json",
   "latestLocalQualityRun": {
-    "capturedAt": "2026-11-06T11:11:38.457Z",
+    "capturedAt": "2026-11-06T14:09:57.000Z",
     "command": "pnpm install --frozen-lockfile; pnpm build:catalog; pnpm typecheck; pnpm lint; pnpm test; pnpm audit:all; pnpm test:e2e",
-    "environment": "Clean Windows Sites source checkout using the exact PR working tree, isolated local pnpm dependencies, Astro preview, production-like Sites Worker and standalone Vite preview",
+    "environment": "Windows Sites source checkout; isolated local pnpm dependency store; Astro, production-like Sites Worker desktop/mobile, and standalone Vite preview",
     "result": "PASS",
     "sourceBranch": "codex/surprise-net-change-audit",
     "sourceBase": "8620d98061919d75c66d89d73bf2efc348ac11f9",
     "workingTreeWasDirty": true,
     "changesUnderTest": [
-      "Three contrast-safe resource text fixes and a keyboard-accessible named cohort table region",
-      "Four user-visible Playwright regression cases",
-      "Windows line-ending normalization for a standalone-export fidelity assertion"
+      "Resource detail preview retains aria-busy and a visible loading state until the isolated renderer sends READY or ERROR.",
+      "PreviewHost sends READY only after the selected resource component has loaded.",
+      "Added delayed-resource and chunk-failure browser regressions for Sites desktop and mobile."
     ],
     "commandResults": {
       "frozenInstall": "PASS",
@@ -24378,24 +24416,25 @@
       "lint": "PASS",
       "unitAndIntegrationTests": "PASS (95 files; 1,343 passed; 1 skipped)",
       "behavioralAndSecurityAudit": "PASS (16 behavioral gates; resource isolation; licence/provenance; secret/security and dependency audits; bundle budgets)",
-      "productionBuild": "PASS with existing large preview chunk and ineffective dynamic-import warnings"
+      "productionBuild": "PASS (733 static pages; existing large-preview-chunk and ineffective-dynamic-import warnings)",
+      "playwright": "PASS (854 passed; 191 configured profile skips; 0 failures)"
     },
     "projects": [
       {
-        "name": "Astro desktop/mobile Chromium",
+        "name": "Astro Chromium",
         "passed": 396,
         "configuredSkips": 136,
         "failed": 0
       },
       {
         "name": "Sites Worker desktop Chromium",
-        "passed": 242,
+        "passed": 244,
         "configuredSkips": 11,
         "failed": 0
       },
       {
         "name": "Sites Worker mobile Chromium",
-        "passed": 209,
+        "passed": 211,
         "configuredSkips": 44,
         "failed": 0
       },
@@ -24407,20 +24446,19 @@
       }
     ],
     "totals": {
-      "passed": 850,
+      "passed": 854,
       "configuredSkips": 191,
       "failed": 0,
-      "scheduled": 1041
+      "scheduled": 1045
     },
     "notes": [
-      "All four new accessibility regressions passed in both Sites Worker viewport profiles.",
-      "Axe instrumentation emitted blocked inline-style messages under the strict CSP; these were recorded separately from application telemetry and did not indicate app runtime errors.",
-      "Configured profile skips are explicit test-profile exclusions, not failures.",
-      "After the run, the tested product-code tree was committed as 0fc74517 and the CRLF/LF assertion portability correction as 18411a10; evidence/documentation changes were recorded separately."
+      "The new resource-detail loading regression passed in both Sites Worker viewport profiles, with separate tests for delayed readiness and chunk failure.",
+      "The public v80 reproduction failed before the fix as expected; local tests pass, but deployment verification remains pending.",
+      "Axe instrumentation emitted blocked inline-style messages under the strict CSP; they were recorded separately from application telemetry and no CSP changes were made.",
+      "Configured profile skips are explicit test-profile exclusions, not failures."
     ],
-    "evidence": "quality/evidence/step-45/public-v79-reaudit/local-quality-run.json",
-    "sourceCommit": "18411a10cb7199477f3c25a05f4f639b7205973e",
-    "sourceAfterProductCodeCommit": "0fc7451797894eabc0620ce16de8f8ec3d8700b4"
+    "evidence": "quality/evidence/step-45/public-v80-followup-2026-11-06/resource-detail-preview-loading/report.json",
+    "sourceCommit": null
   },
   "previousLocalQualityRun": {
     "capturedAt": "2026-11-03T20:34:29.000Z",

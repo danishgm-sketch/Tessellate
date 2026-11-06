@@ -15,6 +15,7 @@ export default defineConfig({
     'section-planner-input-identity.spec.ts',
     'compose-responsiveness-hardening.spec.ts',
     'catalogue-preview-loading-state.spec.ts',
+    'resource-detail-preview-loading-state.spec.ts',
     'minimal-top-nav-responsive-collapse.spec.ts',
     'workbench-mobile-accessible-label.spec.ts',
     'workbench-mobile-preview-interactions.spec.ts',
