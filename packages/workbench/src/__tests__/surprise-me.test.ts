@@ -22,6 +22,46 @@ function computeCanonicalSubtreeHash(node: ProjectNode): string {
 }
 
 describe('Requirement 7: True Surprise Me Execution & Lock Preservation', () => {
+  it('keeps Surprise Me variant feedback aligned with the net rendered change after recomposition', () => {
+    const manifest = createSampleProject();
+    const screen = manifest.screens[0]!;
+    manifest.seed = 'net-0';
+    manifest.locks = [];
+    screen.rootNode = {
+      id: 'marketing-root',
+      nodeType: 'layout',
+      semanticRole: 'marketing-page',
+      children: [
+        {
+          id: 'surprise-hero',
+          nodeType: 'section',
+          semanticRole: 'hero',
+          resourceRef: {
+            id: 'res-split-product-hero-01',
+            slug: 'split-product-hero',
+            version: '1.0.0',
+          },
+          variant: 'quiet',
+          children: [],
+          slots: {},
+          props: {},
+        },
+      ],
+      slots: {},
+      props: {},
+    };
+
+    const beforeVariant = 'quiet';
+    const result = surpriseMe(manifest, { screenId: screen.id, divergenceLevel: 60 });
+    const nextManifest = new HistoryManager().execute(manifest, result.operation).nextManifest;
+    const heroAfter = findNodeById(nextManifest.screens[0]!.rootNode, 'surprise-hero');
+
+    expect(heroAfter?.variant, 'Surprise Me should make a net visible variant change.').not.toBe(beforeVariant);
+    expect(result.explanation).toContain(
+      `Changed the visible variant for split-product-hero from ${beforeVariant} to ${heroAfter?.variant}`,
+    );
+  });
+
   it('changes a supported visible resource variant when an unlocked candidate exists', () => {
     const manifest = createSampleProject();
     findNodeById(manifest.screens[0]!.rootNode, 'node-chart-overview')!.variant = 'quiet';

@@ -26,8 +26,9 @@ export interface SurpriseMeResult {
 
 interface VisibleVariantCandidate {
   nodeId: string;
+  resourceId: string;
   slug: string;
-  effectiveDNA: ProjectManifest['designDNA'];
+  currentVariant: string;
 }
 
 function findVisibleVariantCandidate(
@@ -45,7 +46,12 @@ function findVisibleVariantCandidate(
       const variants = getSupportedResourceVariants(node.resourceRef.slug, node.resourceRef.id);
       const currentVariant = nodeRuntimeVariant(node, effectiveDNA) ?? 'quiet';
       if (variants?.some((variant) => variant !== currentVariant)) {
-        return { nodeId: node.id, slug: node.resourceRef.slug, effectiveDNA };
+        return {
+          nodeId: node.id,
+          resourceId: node.resourceRef.id,
+          slug: node.resourceRef.slug,
+          currentVariant,
+        };
       }
     }
     if (locked) return undefined;
@@ -292,14 +298,15 @@ export function surpriseMe(
     ) ?? recomposeReplacement;
     const resultingRoot = replacement?.payload.replacementNode ?? targetScreen.rootNode;
     const resultingNode = findNodeById(resultingRoot, visualVariantCandidate.nodeId);
-    const variants = resultingNode?.resourceRef
+    const sameResource =
+      resultingNode?.resourceRef?.slug === visualVariantCandidate.slug &&
+      resultingNode.resourceRef.id === visualVariantCandidate.resourceId;
+    const variants = resultingNode?.resourceRef && sameResource
       ? getSupportedResourceVariants(resultingNode.resourceRef.slug, resultingNode.resourceRef.id)
       : undefined;
-    const currentRenderedVariant = resultingNode
-      ? nodeRuntimeVariant(resultingNode, visualVariantCandidate.effectiveDNA) ?? 'quiet'
-      : 'quiet';
-    const nextVariant = variants?.filter((variant) => variant !== currentRenderedVariant);
-    if (resultingNode?.resourceRef && nextVariant?.length) {
+    const previousVariant = visualVariantCandidate.currentVariant;
+    const nextVariant = variants?.filter((variant) => variant !== previousVariant);
+    if (resultingNode?.resourceRef && sameResource && nextVariant?.length) {
       const variant = rng.pick(nextVariant);
       mutations.push({
         id: `mut-surprise-variant-${Date.now()}`,
@@ -311,7 +318,7 @@ export function surpriseMe(
         preconditionRevision: manifest.historyMeta.headRevision,
       });
       appliedExplanations.push(
-        `Changed the visible variant for ${visualVariantCandidate.slug} from ${currentRenderedVariant} to ${variant}`,
+        `Changed the visible variant for ${visualVariantCandidate.slug} from ${previousVariant} to ${variant}`,
       );
     }
   } else if (targetScreen) {
