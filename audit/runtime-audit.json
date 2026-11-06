@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete. PR review findings AUD-419–AUD-444 have named post-fix regression coverage; this record does not claim every regression ran red before its fix. The AUD-438 cross-tab history regression additionally passes in a real local Sites Worker browser at desktop and mobile sizes. Exact-head CI and applicable deployed verification remain pending. Public Axe evidence also found two unsupported ARIA label semantics (AUD-445 and AUD-446), now fixed locally and awaiting published verification. Public v70 route re-audit evidence is quality/evidence/step-45/public-v70-reaudit-2026-11-01/. Axe scan-time CSP console events are isolated to the sandboxed preview frames while Axe analyzes them; ordinary route navigation was clean, and the existing strict CSP remains unchanged. A separately discovered PR review issue AUD-447 reproduced an Undo recovery failure under simulated localStorage quota exhaustion; its regression fails against the pre-fix source and passes with the generation-based journal fix. Exact-head CI and public Site verification are pending. Public Sites v71 serves canonical commit 7ac7783de83e175ac410055da736b2218e2ba213 via Sites source 0bce228a4fbd5fedad02a3186cd6af62690d8405. The 31-route public-shell sweep passed 31/31 routes at 1440x900 and 390x844 (62 route captures), with zero HTTP failures, browser console errors, uncaught exceptions, failed requests, horizontal overflow, screenshot instrumentation warnings, Axe violations, or unsupported-ARIA incomplete results; 11 color-contrast checks remain Axe-incomplete. The full employee-experience flagship flow passed on desktop and mobile, including Direction C selection, locks, recomposition, replacement, Surprise Me, Undo/Redo and manifest/ZIP export; the desktop standalone export was clean-installed, built and browsed. AUD-443 and AUD-445 through AUD-447 now have issue-specific public v71 verification. AUD-419 remains locally verified only: the public backend health endpoint truthfully reports that the laptop backend is unconfigured, and no provider credentials were sent or persisted. The broader hardening programme remains incomplete. On 2026-11-01, local Docker inspection found the Tessellate API and host containers running but unhealthy. Restarting the existing API, then the dependent host, restored API HTTP 200, Docker health, and a fresh heartbeat without rebuilding images or touching MGI containers. AUD-448 records this medium local-runtime defect; its initiating cause remains unknown and it is open for root-cause investigation. AUD-449 records a public v71 responsive-collapse mismatch reproduced at 390x844; its keyboard and touch responsive fix passes in local Sites Worker desktop/mobile profiles across seven widths and awaits deployed recheck. AUD-450 and AUD-451 are locally fixed pending deployment; AUD-452 is confirmed as cold mobile Workbench CLS 0.5028 on public v72; the local cold-load, reload and partial-resource-failure regressions pass after a fail-fast preload race fix, and deployed verification remains pending; AUD-453 is locally fixed pending deployment. AUD-454 reproduces in the local production-like Sites Worker and passes the same direct-preview navigation journey at desktop/mobile after the bounded opaque-parent message fix; deployed verification remains pending. AUD-455 records the confirmation sentence spacing defect visible in the AUD-454 after screenshot; explicit spacing and an exact browser text assertion are included, with deployed verification pending. Public v73 was independently checked with a clean mobile browser under prefers-reduced-motion; that trace found a shared renderer transition defect (AUD-464), reproduced by a new red-to-green Workbench browser regression. The local fix now disables transitions and animations for screen content under system or explicit reduced-motion settings; the issue remains open pending the same public Site check. On 2026-11-03 the full pnpm test:e2e matrix passed 785 tests with 186 configured profile skips and zero failures across Astro, Sites Worker desktop/mobile, and standalone preview. The fixed reduced-motion and preview error recovery regressions pass locally; public verification is pending. AUD-465 records a variable constrained-network Explore preview delay (9,250ms initial, 7,994ms pre-fix repeat) with a 5,382ms post-fix repeat; hosted recheck remains pending. Public Sites v74 issue-specific verification closed AUD-464 and AUD-465 from canonical commit 75276e8078e908b8258fa3d2cba629d71b85cd60; this does not repeat the full v71 route/flagship audit or close the broader hardening gate. Public v74 follow-up then closed AUD-450 (accessible name), AUD-451 (mobile preview menu touch/keyboard), AUD-452 (cold resource CLS) and AUD-456 (delayed mobile startup handoff) using issue-specific deployed regressions; the full route audit was not repeated. AUD-419 remains locally verified only because the optional laptop backend/provider path is intentionally unconfigured and no credential/tunnel was used. After the v74 rechecks, the latest pnpm test:e2e run passed 786 tests with 189 configured profile skips and zero failures across Astro desktop/mobile, Sites Worker desktop/mobile, and standalone preview. pnpm audit:all passed all 16 behavioral gates, 324 resource isolation and provenance checks, route budgets, security/secret checks, and dependency audit. A 2026-11-03 public v74 copy sweep visited all 324 detail routes at desktop and mobile and rendered 1,944 variants; it recorded five findings (AUD-466–AUD-470) and a working empty-workspace callback. Local fixes await exact-version deployed verification. Public v75 detail/preview audit captured 13 high-risk resources at 1440x900 and 390x844; 21 additional defects AUD-471–AUD-491 are locally corrected and await deployed verification. Public v75 live resource evidence adds AUD-492 (360px data-terminal header readability) and AUD-493 (Expressive variant visual distinction); local regressions and screenshots are captured, with deployed verification pending. Public Sites v78 is live from canonical commit 3e889d0ca68345c5ccf5ef767c3c05ebc07716ca via Sites source mirror e6387f7ff8e1080a5a4c191cf00faef813719a3d. AUD-495 passed the same visible Workbench regression after deployment: the hero rendered Quiet before Surprise Me and Nocturne afterward, and status matched quiet to nocturne. Three transition cycles matched, with zero browser console messages, zero failed requests, and zero HTTP errors. The broader product hardening programme remains incomplete. The AUD-495 v78 repeat also passed at 1440x900: Quiet changed to Nocturne and the visible status matched. Its paired desktop captures are recorded alongside the 390x844 mobile pair. Public Sites v79 manual resource review found four serious accessibility defects (AUD-506–AUD-509): three preview color-contrast failures and one unnamed, non-keyboard-focusable horizontal table region. Each was reproduced with Axe before source changes; app console, uncaught exception, network and HTTP error telemetry was zero. Fixes and browser regressions are local; issue closure awaits exact-source deployed v80 verification.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete. PR review findings AUD-419–AUD-444 have named post-fix regression coverage; this record does not claim every regression ran red before its fix. The AUD-438 cross-tab history regression additionally passes in a real local Sites Worker browser at desktop and mobile sizes. Exact-head CI and applicable deployed verification remain pending. Public Axe evidence also found two unsupported ARIA label semantics (AUD-445 and AUD-446), now fixed locally and awaiting published verification. Public v70 route re-audit evidence is quality/evidence/step-45/public-v70-reaudit-2026-11-01/. Axe scan-time CSP console events are isolated to the sandboxed preview frames while Axe analyzes them; ordinary route navigation was clean, and the existing strict CSP remains unchanged. A separately discovered PR review issue AUD-447 reproduced an Undo recovery failure under simulated localStorage quota exhaustion; its regression fails against the pre-fix source and passes with the generation-based journal fix. Exact-head CI and public Site verification are pending. Public Sites v71 serves canonical commit 7ac7783de83e175ac410055da736b2218e2ba213 via Sites source 0bce228a4fbd5fedad02a3186cd6af62690d8405. The 31-route public-shell sweep passed 31/31 routes at 1440x900 and 390x844 (62 route captures), with zero HTTP failures, browser console errors, uncaught exceptions, failed requests, horizontal overflow, screenshot instrumentation warnings, Axe violations, or unsupported-ARIA incomplete results; 11 color-contrast checks remain Axe-incomplete. The full employee-experience flagship flow passed on desktop and mobile, including Direction C selection, locks, recomposition, replacement, Surprise Me, Undo/Redo and manifest/ZIP export; the desktop standalone export was clean-installed, built and browsed. AUD-443 and AUD-445 through AUD-447 now have issue-specific public v71 verification. AUD-419 remains locally verified only: the public backend health endpoint truthfully reports that the laptop backend is unconfigured, and no provider credentials were sent or persisted. The broader hardening programme remains incomplete. On 2026-11-01, local Docker inspection found the Tessellate API and host containers running but unhealthy. Restarting the existing API, then the dependent host, restored API HTTP 200, Docker health, and a fresh heartbeat without rebuilding images or touching MGI containers. AUD-448 records this medium local-runtime defect; its initiating cause remains unknown and it is open for root-cause investigation. AUD-449 records a public v71 responsive-collapse mismatch reproduced at 390x844; its keyboard and touch responsive fix passes in local Sites Worker desktop/mobile profiles across seven widths and awaits deployed recheck. AUD-450 and AUD-451 are locally fixed pending deployment; AUD-452 is confirmed as cold mobile Workbench CLS 0.5028 on public v72; the local cold-load, reload and partial-resource-failure regressions pass after a fail-fast preload race fix, and deployed verification remains pending; AUD-453 is locally fixed pending deployment. AUD-454 reproduces in the local production-like Sites Worker and passes the same direct-preview navigation journey at desktop/mobile after the bounded opaque-parent message fix; deployed verification remains pending. AUD-455 records the confirmation sentence spacing defect visible in the AUD-454 after screenshot; explicit spacing and an exact browser text assertion are included, with deployed verification pending. Public v73 was independently checked with a clean mobile browser under prefers-reduced-motion; that trace found a shared renderer transition defect (AUD-464), reproduced by a new red-to-green Workbench browser regression. The local fix now disables transitions and animations for screen content under system or explicit reduced-motion settings; the issue remains open pending the same public Site check. On 2026-11-03 the full pnpm test:e2e matrix passed 785 tests with 186 configured profile skips and zero failures across Astro, Sites Worker desktop/mobile, and standalone preview. The fixed reduced-motion and preview error recovery regressions pass locally; public verification is pending. AUD-465 records a variable constrained-network Explore preview delay (9,250ms initial, 7,994ms pre-fix repeat) with a 5,382ms post-fix repeat; hosted recheck remains pending. Public Sites v74 issue-specific verification closed AUD-464 and AUD-465 from canonical commit 75276e8078e908b8258fa3d2cba629d71b85cd60; this does not repeat the full v71 route/flagship audit or close the broader hardening gate. Public v74 follow-up then closed AUD-450 (accessible name), AUD-451 (mobile preview menu touch/keyboard), AUD-452 (cold resource CLS) and AUD-456 (delayed mobile startup handoff) using issue-specific deployed regressions; the full route audit was not repeated. AUD-419 remains locally verified only because the optional laptop backend/provider path is intentionally unconfigured and no credential/tunnel was used. After the v74 rechecks, the latest pnpm test:e2e run passed 786 tests with 189 configured profile skips and zero failures across Astro desktop/mobile, Sites Worker desktop/mobile, and standalone preview. pnpm audit:all passed all 16 behavioral gates, 324 resource isolation and provenance checks, route budgets, security/secret checks, and dependency audit. A 2026-11-03 public v74 copy sweep visited all 324 detail routes at desktop and mobile and rendered 1,944 variants; it recorded five findings (AUD-466–AUD-470) and a working empty-workspace callback. Local fixes await exact-version deployed verification. Public v75 detail/preview audit captured 13 high-risk resources at 1440x900 and 390x844; 21 additional defects AUD-471–AUD-491 are locally corrected and await deployed verification. Public v75 live resource evidence adds AUD-492 (360px data-terminal header readability) and AUD-493 (Expressive variant visual distinction); local regressions and screenshots are captured, with deployed verification pending. Public Sites v78 is live from canonical commit 3e889d0ca68345c5ccf5ef767c3c05ebc07716ca via Sites source mirror e6387f7ff8e1080a5a4c191cf00faef813719a3d. AUD-495 passed the same visible Workbench regression after deployment: the hero rendered Quiet before Surprise Me and Nocturne afterward, and status matched quiet to nocturne. Three transition cycles matched, with zero browser console messages, zero failed requests, and zero HTTP errors. The broader product hardening programme remains incomplete. The AUD-495 v78 repeat also passed at 1440x900: Quiet changed to Nocturne and the visible status matched. Its paired desktop captures are recorded alongside the 390x844 mobile pair. Public Sites v79 manual resource review found four serious accessibility defects (AUD-506–AUD-509): three preview color-contrast failures and one unnamed, non-keyboard-focusable horizontal table region. Each was reproduced with Axe before source changes; app console, uncaught exception, network and HTTP error telemetry was zero. Fixes and browser regressions are local; issue closure awaits exact-source deployed v80 verification. Public Sites v80 closed AUD-506–AUD-509 after the same desktop/mobile resource audit returned 16/16 HTTP 200, zero Axe violations, zero app runtime/network failures, zero overflow, and a live keyboard-scroll check moved the cohort table 40px with ArrowRight.",
   "entries": [
     {
       "id": "AUD-001",
@@ -23832,7 +23832,39 @@
       "screenshot": "quality/evidence/step-45/public-v79-reaudit/manual-copy-suspects/ai-memory-context-panel-desktop-1440x900-preview-before.png",
       "rootCause": "The example-removal control used the bright brand rose utility text-rose-500 as small body text, without a contrast-safe text token.",
       "fixCommit": "0fc7451797894eabc0620ce16de8f8ec3d8700b4",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T12:17:07.824Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 80,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+        "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+        "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+        "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v80-reaudit/closure-summary.json",
+        "console": {
+          "errors": 0,
+          "warnings": 0,
+          "uncaughtExceptions": 0,
+          "messages": []
+        },
+        "network": {
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "axe": {
+          "violations": 0,
+          "axeInstrumentationConsoleErrors": 16,
+          "note": "Axe attempted to inject inline styles blocked by the site's CSP; these instrumentation messages are separate from application console telemetry."
+        },
+        "screenshots": {
+          "before": "quality/evidence/step-45/public-v79-reaudit/manual-copy-suspects/ai-memory-context-panel-desktop-1440x900-preview-before.png",
+          "after": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/ai-memory-context-panel-desktop-1440x900-preview-after.png",
+          "mobileAfter": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/ai-memory-context-panel-mobile-390x844-preview-after.png"
+        }
+      }
     },
     {
       "id": "AUD-507",
@@ -23852,7 +23884,39 @@
       "screenshot": "quality/evidence/step-45/public-v79-reaudit/manual-copy-suspects/api-capability-section-desktop-1440x900-preview-before.png",
       "rootCause": "Method badge foreground used text-emerald-600 on a pale emerald surface, which did not meet normal-text contrast.",
       "fixCommit": "0fc7451797894eabc0620ce16de8f8ec3d8700b4",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T12:17:07.824Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 80,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+        "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+        "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+        "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v80-reaudit/closure-summary.json",
+        "console": {
+          "errors": 0,
+          "warnings": 0,
+          "uncaughtExceptions": 0,
+          "messages": []
+        },
+        "network": {
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "axe": {
+          "violations": 0,
+          "axeInstrumentationConsoleErrors": 16,
+          "note": "Axe attempted to inject inline styles blocked by the site's CSP; these instrumentation messages are separate from application console telemetry."
+        },
+        "screenshots": {
+          "deployedDesktop": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/api-capability-section-desktop-1440x900-preview-before.png",
+          "deployedMobile": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/api-capability-section-mobile-390x844-preview-before.png",
+          "note": "These v80 captures show the deployed post-fix state; the source script labels the untouched preview snapshots as before-interaction."
+        }
+      }
     },
     {
       "id": "AUD-508",
@@ -23872,7 +23936,39 @@
       "screenshot": "quality/evidence/step-45/public-v79-reaudit/manual-copy-suspects/audit-log-desktop-1440x900-preview-before.png",
       "rootCause": "The event action text used text-emerald-600 at 12px, below the contrast threshold for normal text.",
       "fixCommit": "0fc7451797894eabc0620ce16de8f8ec3d8700b4",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T12:17:07.824Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 80,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+        "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+        "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+        "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v80-reaudit/closure-summary.json",
+        "console": {
+          "errors": 0,
+          "warnings": 0,
+          "uncaughtExceptions": 0,
+          "messages": []
+        },
+        "network": {
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "axe": {
+          "violations": 0,
+          "axeInstrumentationConsoleErrors": 16,
+          "note": "Axe attempted to inject inline styles blocked by the site's CSP; these instrumentation messages are separate from application console telemetry."
+        },
+        "screenshots": {
+          "deployedDesktop": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/audit-log-desktop-1440x900-preview-before.png",
+          "deployedMobile": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/audit-log-mobile-390x844-preview-before.png",
+          "note": "These v80 captures show the deployed post-fix state; the source script labels the untouched preview snapshots as before-interaction."
+        }
+      }
     },
     {
       "id": "AUD-509",
@@ -23892,11 +23988,56 @@
       "screenshot": "quality/evidence/step-45/public-v79-reaudit/manual-copy-suspects/cohort-matrix-mobile-390x844-preview-before.png",
       "rootCause": "The data table wrapper relied on pointer scrolling and did not declare region semantics, an accessible name, keyboard focus, or visible focus styling.",
       "fixCommit": "0fc7451797894eabc0620ce16de8f8ec3d8700b4",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T12:17:07.824Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 80,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+        "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+        "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+        "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v80-reaudit/closure-summary.json",
+        "console": {
+          "errors": 0,
+          "warnings": 0,
+          "uncaughtExceptions": 0,
+          "messages": []
+        },
+        "network": {
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "axe": {
+          "violations": 0,
+          "axeInstrumentationConsoleErrors": 16,
+          "note": "Axe attempted to inject inline styles blocked by the site's CSP; these instrumentation messages are separate from application console telemetry."
+        },
+        "workflow": [
+          "Opened the live mobile preview route.",
+          "Focused the named Cohort retention table region.",
+          "Confirmed the tab stop receives focus.",
+          "Pressed ArrowRight and verified scrollLeft moved from 0 to 40px."
+        ],
+        "keyboard": {
+          "regionName": "Cohort retention table",
+          "tabindex": "0",
+          "clientWidth": 340,
+          "scrollWidth": 393,
+          "scrollLeftBefore": 0,
+          "scrollLeftAfterArrowRight": 40
+        },
+        "screenshots": {
+          "before": "quality/evidence/step-45/public-v79-reaudit/manual-copy-suspects/cohort-matrix-mobile-390x844-preview-before.png",
+          "after": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/cohort-matrix-mobile-390x844-keyboard-focus-after.png"
+        }
+      }
     }
   ],
-  "generatedAt": "2026-11-06T11:14:21.632Z",
-  "latestDeploymentEvidence": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/deployed-v75-copy-risk-sweep.json",
+  "generatedAt": "2026-11-06T12:20:32.938Z",
+  "latestDeploymentEvidence": "quality/evidence/step-45/public-v80-reaudit/closure-summary.json",
   "latestLocalQualityRun": {
     "capturedAt": "2026-11-06T11:11:38.457Z",
     "command": "pnpm install --frozen-lockfile; pnpm build:catalog; pnpm typecheck; pnpm lint; pnpm test; pnpm audit:all; pnpm test:e2e",

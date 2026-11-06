@@ -1,6 +1,14 @@
 # Step 45 — Public review verification
 
-Status: **Step 45 passed** on public Sites v55. The deployed re-audit passed the required route, showcase, flagship, responsive, accessibility, browser and independent-export checks with zero newly discovered defects and zero open P0/P1 findings. D1/R2 remain unbound; the Site does not connect to the laptop host, so host inference is unavailable there. The findings ledger still has 176 Medium items awaiting deployed verification and 8 Low items awaiting deployed verification or host resolution. The broader product-hardening programme remains open; Step 46 is owner-waived, not passed, as recorded in D-064 and `quality/STEP_46_EVIDENCE.md`.
+Status: **Ongoing; release gate not passed.** The broad v55 review passed its then-current scope, but later public audits found additional defects. Public v80 closed AUD-506–AUD-509. AUD-419 remains the only nonclosed High finding, and 143 findings still await deployed verification. The v55 full route and flagship audit has not been repeated on v80. D1/R2 remain unbound; the public Site does not connect to the laptop host, so host inference is unavailable there. Step 46 is owner-waived, not passed, as recorded in D-064 and `quality/STEP_46_EVIDENCE.md`.
+
+## Public v80 targeted accessibility re-audit — 2026-11-06
+
+The public review Site is [Tessellate v80](https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/), version `appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a`, deployment `appgdep_6aedc4b71fdc8191a977d4ffa397e928`. It serves canonical commit `888c9dab36f044c86fe2802d423590112ac24146` through Sites mirror commit `13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2`.
+
+The same eight high-risk resource routes were visited at 1440×900 and 390×844 (16 captures). All returned HTTP 200; there were zero navigation failures, horizontal overflow, application console errors/warnings, uncaught exceptions, failed requests, HTTP errors, or Axe violations. The mobile Cohort retention table was reached by Tab and horizontally scrolled 40px with ArrowRight. AUD-506–AUD-509 are closed after this deployed check. Axe's 16 blocked inline-style instrumentation messages are isolated from application telemetry; the strict production CSP was left unchanged.
+
+Evidence: `quality/evidence/step-45/public-v80-reaudit/closure-summary.json`, screenshots and interaction reports under `quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/`, and the per-finding deployed records in `audit/runtime-audit.json`. This targeted check does not repeat the full v55 route/flagship audit or verify the separate AUD-496–AUD-505 interactions. The ledger contains 509 findings (0 Critical, 91 High, 389 Medium, 29 Low); 253 are deployed-verified, 143 await deployed verification, 98 are locally verified, 9 are historical closures, 2 are local closures, 2 are legacy fixed records, and 2 are documented host limitations. AUD-419 remains the only nonclosed High.
 
 ## Public v55 RC re-audit — 2026-10-28
 
