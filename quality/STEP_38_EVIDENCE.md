@@ -664,6 +664,28 @@ The only observed browser console error is AUD-342: a per-response ChatGPT Sites
 
 Public v30 checks close AUD-338 (visible startup fallback), AUD-339 (no preview iframe reload), AUD-340 (truthful/rendered Explore previews) and AUD-341 (HTML compression). Step 38 is complete for its recorded lab workload and deployed-trace scope. Long-session/history stress belongs to the later stress-testing step; field Core Web Vitals remain unavailable.
 
+## 2026-11-06 Workbench cold desktop layout shift — AUD-512
+
+The Step 38 workload suite was supplemented after a public v82 desktop trace
+found a cold Workbench CLS of `0.07462917684756516` at 1440×900 (a separate
+Lighthouse sample measured `0.104`). The public before screenshot and trace
+are under `audit/evidence/step-47/public-v82/`. The header fallback reserved
+56px while the lazy desktop toolbar rendered at 89px; a resource Suspense
+fallback also reserved 48px instead of the renderer's semantic-role height.
+
+The local correction reserves 89px for the desktop startup/toolbar fallback
+and uses `resourceReservedHeight(node.semanticRole)` in the shared renderer.
+The new production-like Sites Worker regression reports CLS `0.008507` for a
+cold desktop first visit and `0.007836` while three Gold chunks are delayed by
+1.8 seconds. Both runs report zero application console errors, uncaught
+exceptions, failed requests, and HTTP errors. The existing mobile CLS test also
+records `0.012601` on first load, reload, and an injected chunk failure.
+Screenshots and JSON are under
+`audit/evidence/step-47/AUD-512/local-after/`. AUD-512 remains open until the
+same desktop cold-load and delayed-resource check passes on a deployed review
+version. This later finding does not retroactively certify the old public v30
+measurements or imply field Core Web Vitals data.
+
 ## 2026-10-26 — Saved-project startup no longer waits on catalogue data
 
 AUD-346 reproduced a Core availability failure behind the prior LCP observation: a valid saved browser project stayed behind Workbench's loading state until the entire 324-resource catalogue returned. An HTTP error in that request produced the startup error screen even though the project manifest and Gold renderer were local.
