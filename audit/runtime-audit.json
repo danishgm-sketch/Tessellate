@@ -24378,7 +24378,7 @@
         "apps/site/src/components/ResourcePreviewFrame.tsx",
         "apps/preview/src/components/PreviewHost.tsx"
       ],
-      "fixCommit": null,
+      "fixCommit": "ed868cc79f9678e9104e6efde592c4623e2855e0",
       "status": "fixed-local-verified",
       "localVerification": {
         "regressionTest": "tests/e2e/resource-detail-preview-loading-state.spec.ts",
@@ -24458,7 +24458,7 @@
       "Configured profile skips are explicit test-profile exclusions, not failures."
     ],
     "evidence": "quality/evidence/step-45/public-v80-followup-2026-11-06/resource-detail-preview-loading/report.json",
-    "sourceCommit": null
+    "sourceCommit": "ed868cc79f9678e9104e6efde592c4623e2855e0"
   },
   "previousLocalQualityRun": {
     "capturedAt": "2026-11-03T20:34:29.000Z",
