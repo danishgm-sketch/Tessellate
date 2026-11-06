@@ -771,6 +771,12 @@ The complete local `pnpm test:e2e` rerun passed 824 tests with 189 configured pr
 
 The 21 issues remain `fixed-awaiting-deployed-verification`. v75 is the before-state; none is closed until the exact pushed source is published to the review Site and the same resource behaviors pass against the live deployment.
 
+### 2026-11-06 continuation — v79 preview accessibility audit
+
+The manual v79 audit visited eight higher-risk resource detail/preview routes at 1440×900 and 390×844 (16 captures). All routes returned HTTP 200 with zero application console errors/warnings, uncaught exceptions, failed requests, HTTP errors, or horizontal overflow. Axe found three distinct text contrast failures and one keyboard-inaccessible horizontal data table (AUD-506–AUD-509). Evidence includes full route text, screenshots before changes, per-route Axe output, and telemetry in `quality/evidence/step-45/public-v79-reaudit/manual-copy-suspects/`.
+
+Contrast-safe foregrounds were added to the AI memory, API capability, and audit-log previews. Cohort retention table scrolling now has a named region, keyboard focus, and visible focus styling. The four new browser regressions failed against public v79 before code changes, then passed in both desktop and mobile Sites Worker profiles. The complete local quality suite passed: frozen installation, catalogue generation (324/40), 22 typechecks, lint, 1,343 unit tests, `pnpm audit:all`, and 850 Playwright passes with 191 configured skips and zero failures. Machine summary: `quality/evidence/step-45/public-v79-reaudit/local-quality-run.json`. The findings remain open until the same checks pass against the deployed v80 Site.
+
 
 The first exact-head GitHub Actions run caught a literal backslash-n line in the captured audit runner, which ESLint rejected although the resource regressions and local application workflow had passed. Removing that stray line restores the audit script; targeted ESLint and the full pnpm lint gate now pass locally. The correction is isolated to the audit runner and does not change product behavior.
 

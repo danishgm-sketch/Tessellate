@@ -1,0 +1,64 @@
+{
+  "capturedAt": "2026-11-06T11:11:38.457Z",
+  "command": "pnpm install --frozen-lockfile; pnpm build:catalog; pnpm typecheck; pnpm lint; pnpm test; pnpm audit:all; pnpm test:e2e",
+  "environment": "Clean Windows Sites source checkout using the exact PR working tree, isolated local pnpm dependencies, Astro preview, production-like Sites Worker and standalone Vite preview",
+  "result": "PASS",
+  "sourceBranch": "codex/surprise-net-change-audit",
+  "sourceBase": "8620d98061919d75c66d89d73bf2efc348ac11f9",
+  "workingTreeWasDirty": true,
+  "changesUnderTest": [
+    "Three contrast-safe resource text fixes and a keyboard-accessible named cohort table region",
+    "Four user-visible Playwright regression cases",
+    "Windows line-ending normalization for a standalone-export fidelity assertion"
+  ],
+  "commandResults": {
+    "frozenInstall": "PASS",
+    "catalogueBuild": "PASS (324 canonical resources; 40 Gold resources)",
+    "typecheck": "PASS (22 packages)",
+    "lint": "PASS",
+    "unitAndIntegrationTests": "PASS (95 files; 1,343 passed; 1 skipped)",
+    "behavioralAndSecurityAudit": "PASS (16 behavioral gates; resource isolation; licence/provenance; secret/security and dependency audits; bundle budgets)",
+    "productionBuild": "PASS with existing large preview chunk and ineffective dynamic-import warnings"
+  },
+  "projects": [
+    {
+      "name": "Astro desktop/mobile Chromium",
+      "passed": 396,
+      "configuredSkips": 136,
+      "failed": 0
+    },
+    {
+      "name": "Sites Worker desktop Chromium",
+      "passed": 242,
+      "configuredSkips": 11,
+      "failed": 0
+    },
+    {
+      "name": "Sites Worker mobile Chromium",
+      "passed": 209,
+      "configuredSkips": 44,
+      "failed": 0
+    },
+    {
+      "name": "Standalone preview Chromium",
+      "passed": 3,
+      "configuredSkips": 0,
+      "failed": 0
+    }
+  ],
+  "totals": {
+    "passed": 850,
+    "configuredSkips": 191,
+    "failed": 0,
+    "scheduled": 1041
+  },
+  "notes": [
+    "All four new accessibility regressions passed in both Sites Worker viewport profiles.",
+    "Axe instrumentation emitted blocked inline-style messages under the strict CSP; these were recorded separately from application telemetry and did not indicate app runtime errors.",
+    "Configured profile skips are explicit test-profile exclusions, not failures.",
+    "The E2E run completed before the two tracked commits but used the exact final product/test files; only docs and audit evidence changed afterward."
+  ],
+  "evidence": "quality/evidence/step-45/public-v79-reaudit/local-quality-run.json",
+  "sourceCommit": "18411a10cb7199477f3c25a05f4f639b7205973e",
+  "sourceAfterProductCodeCommit": "0fc7451797894eabc0620ce16de8f8ec3d8700b4"
+}

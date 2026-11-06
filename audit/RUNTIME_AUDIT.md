@@ -1,7 +1,7 @@
 # Runtime audit — product hardening and deployed-site verification
 ## Latest deployment state (2026-11-06)
 
-Public review Site v78 is live at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. It serves canonical commit `3e889d0ca68345c5ccf5ef767c3c05ebc07716ca` through Sites source mirror `e6387f7ff8e1080a5a4c191cf00faef813719a3d` (version `appgprj_6acc036de8cc8191a823339566972d85~appgver_67206589708c81919ade92023cb90608`, deployment `appgdep_6aed6cf7cc288191a4ba98ee07ef81fc`). AUD-495 was found on v77, fixed in the source, and now passes its same visible Workbench regression on v78 at 390×844 and 1440×900. Screenshots and machine evidence are linked below. This issue-specific recheck is not a repeat of the full route audit; the overall hardening gate remains incomplete. D1/R2 remain unprovisioned. The historical v74 narrative below is not the current live version.
+Public review Site v79 is live at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. It serves canonical commit `8620d98061919d75c66d89d73bf2efc348ac11f9` through Sites source mirror `274b2a404a88b2586f001aeb0f24b2d471f70370` (version `appgprj_6acc036de8cc8191a823339566972d85~appgver_3d99e293992c8191bc6038ea4f46820`). A manual eight-resource preview audit at desktop and mobile found four serious Axe defects (AUD-506–AUD-509): three contrast failures and one inaccessible horizontal scroll region. Each has a failing-before screenshot, machine telemetry, a source fix, and a browser regression; local validation passes, and issue closure awaits exact-source v80 deployed verification. Runtime/network errors in the audit were zero. This issue-specific recheck is not a repeat of the full route audit; the overall hardening gate remains incomplete. D1/R2 remain unprovisioned. The historical v74 narrative below is not the current live version.
 The historical v74 Site was https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. It serves canonical commit `75276e8078e908b8258fa3d2cba629d71b85cd60` through Sites mirror commit `601d4b4069fdcba6bd57a26e2b625dbd42467602` (version `appgprj_6acc036de8cc8191a823339566972d85~appgver_a853aa5b01908191b3321c1de656e6c6`, deployment `appgdep_6ae9e3cf216c8191b1f06c5096e01fdd`). PR #8 remains open and unmerged. The v74 deployment is a targeted follow-up, not a repeat of the full v71 route audit.
 
 The v74 reduced-motion flagship recheck closed AUD-464. A visible user flow composed the exact employee-experience brief, selected Direction C, opened Workbench, and rendered six screen nodes with system reduced motion enabled. Computed transitions and animations were disabled, no transition/animation event fired, desktop and mobile screenshots were captured, 390px document width matched its viewport, and browser errors/warnings, uncaught exceptions, failed requests and HTTP errors were zero. Mobile Lighthouse snapshot scores were 100 for Accessibility, Best Practices, SEO and Agentic Browsing. Chrome DevTools recorded LCP 1,409ms at 1x CPU and 4,416ms at 4x CPU, CLS 0.06 in both. Trace evidence and screenshots are in `audit/evidence/step-48/deployed-v74/`.
@@ -48,7 +48,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition (public v74 targeted follow-up; v71 broad audit baseline):** 465 findings (0 Critical, 87 High, 350 Medium, 28 Low): 246 closed after issue-specific deployed verification, 9 historical closed records, 2 local closures, 111 fixed awaiting issue-specific deployed checks, 93 fixed and verified locally, 2 legacy fixed records, 2 documented Sites-host limitations, and 0 open findings. AUD-450, AUD-451, AUD-452, AUD-456, AUD-464 and AUD-465 are closed after issue-specific v74 checks. AUD-419 remains locally verified only because its optional laptop backend/provider path is intentionally unconfigured; no provider credential or tunnel was used. AUD-448 records bounded local API/host recovery, though the initiating API failure remains unknown. AUD-416 remains the documented stale-tab asset rollover 404 that recovered on reload; fresh sessions had no failed requests. V71 route Axe scans had zero violations but 11 color-contrast incomplete results; generated-product contrast was manually calculated and met AA thresholds. No CSP relaxation was made. D1/R2 remain unprovisioned. The High/P1 and overall hardening gates remain incomplete.
+**Current disposition (public v79 targeted follow-up; v71 broad audit baseline):** 509 findings (0 Critical, 91 High, 389 Medium, 29 Low). The previous detailed status totals are historical; the current machine-readable ledger is `runtime-audit.json`. AUD-506–AUD-509 are fixed locally and await deployed verification on v80. AUD-419 remains locally verified only because its optional laptop backend/provider path is intentionally unconfigured; no provider credential or tunnel was used. The High/P1 and overall hardening gates remain incomplete. D1/R2 remain unprovisioned.
 
 ## Public Sites v51 issue-specific High verification — 2026-10-28
 
@@ -5780,4 +5780,42 @@ The deployed v78 public Site was used first at 1440×900 and 390×844. Eight res
 - **Affected code:** `resources/data/cohort-matrix/index.tsx`, `resources/data/cohort-matrix/manifest.json`.
 - **Remediation:** Label values illustrative and add a table caption explaining they are not live metrics. Local desktop/mobile regression passes; deployed verification pending.
 
-The ledger now contains 505 findings: 0 Critical, 87 High, 389 Medium, and 29 Low. Of these, 270 are closed after deployed verification, 122 await deployed verification, 98 are locally verified, 9 are historical closed, 2 are closed-local-verified, 2 are legacy fixed, and 2 document Sites-host limitations. The new v78 findings are Medium/P2 and do not change the open High/P1 gate.
+The v78 manual review brought the ledger to 505 findings: 0 Critical, 87 High, 389 Medium, and 29 Low. Its findings remain `fixed-awaiting-deployed-verification` until their affected behaviors are checked on the public Site.
+
+## HIGH — v79 preview accessibility findings AUD-506–AUD-509 (2026-11-06)
+
+The v79 deployed audit visited eight high-risk resource previews at desktop (1440×900) and mobile (390×844). All 16 route/viewport visits returned HTTP 200. Runtime console errors/warnings, uncaught exceptions, failed requests, HTTP errors, and horizontal overflow were zero. Axe identified four serious violations across three resources; instrumentation-generated inline-style CSP messages are recorded separately and are not application runtime errors. The machine report and before/after screenshots are in `evidence/step-45/public-v79-reaudit/manual-copy-suspects/`.
+
+### AUD-506 — AI memory clear-example label fails contrast
+
+- **Evidence:** Axe measured 3.75:1 for small rose text against white at `/r/ai-memory-context-panel/` on desktop and mobile. Before capture: `ai-memory-context-panel-desktop-1440x900-preview-before.png`.
+- **Reproduction:** Open the resource route, inspect the Clear Examples action, and run Axe against the preview at 1440×900 or 390×844.
+- **Root cause:** `text-rose-500` was used for small body text instead of a contrast-safe foreground.
+- **Affected code:** `resources/ai/ai-memory-context-panel/index.tsx`.
+- **Remediation:** Use darker rose text in light mode and a legible rose token in dark mode; add an Axe browser regression. Local desktop/mobile Sites tests pass; v80 deployed verification is pending.
+
+### AUD-507 — API method badges fail contrast
+
+- **Evidence:** Axe measured 3.31:1 for the three green method badges on their pale green backgrounds at `/r/api-capability-section/`, desktop and mobile. Before capture: `api-capability-section-desktop-1440x900-preview-before.png`.
+- **Reproduction:** Open the resource route and run Axe on the preview at 1440×900 or 390×844.
+- **Root cause:** `text-emerald-600` does not provide sufficient normal-text contrast against the badge surface.
+- **Affected code:** `resources/sections/api-capability-section/index.tsx`.
+- **Remediation:** Use a darker emerald foreground in light mode and a legible light emerald in dark mode; add an Axe browser regression. Local desktop/mobile Sites tests pass; v80 deployed verification is pending.
+
+### AUD-508 — Audit-log action labels fail contrast
+
+- **Evidence:** Axe measured 3.65:1 for 12px green action labels against white at `/r/audit-log/`, desktop and mobile. Before capture: `audit-log-desktop-1440x900-preview-before.png`.
+- **Reproduction:** Open the resource route and run Axe on the preview at 1440×900 or 390×844.
+- **Root cause:** `text-emerald-600` was used for small event action text.
+- **Affected code:** `resources/blocks/audit-log/index.tsx`.
+- **Remediation:** Use a contrast-safe emerald foreground for both themes and add an Axe browser regression. Local desktop/mobile Sites tests pass; v80 deployed verification is pending.
+
+### AUD-509 — Cohort table scroll region is unnamed and unreachable by keyboard
+
+- **Evidence:** Axe reported `scrollable-region-focusable` at `/r/cohort-matrix/` on mobile. The `overflow-x-auto` wrapper had no accessible region name or tab stop. Before capture: `cohort-matrix-mobile-390x844-preview-before.png`.
+- **Reproduction:** Open the resource route at 390×844, tab through the preview, and try to reach the horizontally scrollable table.
+- **Root cause:** The scroll wrapper was built for pointer-only scrolling without region semantics or focus styling.
+- **Affected code:** `resources/data/cohort-matrix/index.tsx`.
+- **Remediation:** Add a named region, `tabIndex=0`, and visible keyboard focus; add a mobile browser regression verifying keyboard scrolling. Local Sites test passes; v80 deployed verification is pending.
+
+The ledger now contains 509 findings: 0 Critical, 91 High, 389 Medium, and 29 Low. AUD-506–AUD-509 remain `fixed-awaiting-deployed-verification`; AUD-419 remains separately unverified because its optional hosted provider-forwarding path requires the local laptop host and configured provider endpoint.
