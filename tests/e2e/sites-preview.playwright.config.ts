@@ -60,6 +60,7 @@ export default defineConfig({
     'workbench-visible-label-accessibility-step-39.spec.ts',
     'copy-quality-step-39.spec.ts',
     'resource-copy-truthfulness-step-39.spec.ts',
+    'resource-preview-accessibility-regressions.spec.ts',
     'resource-claims-and-controls-step-39.spec.ts',
     'ai-copilot-sidebar-truthfulness-step-39.spec.ts',
     'home-visual-rhythm-step-40.spec.ts',

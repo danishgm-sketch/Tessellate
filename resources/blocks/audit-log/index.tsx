@@ -29,7 +29,7 @@ export function AuditLog({ variant = 'quiet' }: AuditLogProps) {
         {logs.map((l) => (
           <div key={l.action + l.time} className="p-3 rounded-lg border border-neutral-100 dark:border-neutral-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
-              <span className="font-bold text-emerald-600 dark:text-emerald-400">{l.action}</span>
+              <span className="font-bold text-emerald-700 dark:text-emerald-300">{l.action}</span>
               <div className="text-[10px] opacity-60">Actor: {l.actor} • IP: {l.ip}</div>
             </div>
             <span className="opacity-50 text-[11px]">{l.time}</span>

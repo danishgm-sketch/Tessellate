@@ -34,7 +34,7 @@ export function ApiCapabilitySection({ variant = 'quiet' }: ApiCapabilitySection
           {endpoints.map((ep) => (
             <div key={ep.path} className={`p-4 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${card}`}>
               <div className="flex items-center gap-3">
-                <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold">{ep.method}</span>
+                <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-800 dark:text-emerald-200 font-bold">{ep.method}</span>
                 <span className="font-semibold">{ep.path}</span>
               </div>
               <span className="text-xs opacity-70 font-sans">{ep.desc}</span>

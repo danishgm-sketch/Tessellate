@@ -37,6 +37,7 @@ export default defineConfig({
     '**/catalog-resource-render.spec.ts',
     '**/copy-quality-step-39.spec.ts',
     '**/resource-copy-truthfulness-step-39.spec.ts',
+    '**/resource-preview-accessibility-regressions.spec.ts',
     '**/resource-claims-and-controls-step-39.spec.ts',
     // This audit records the Sites Worker runtime. It runs in the dedicated
     // Sites preview config, where opaque-origin preview iframes receive the

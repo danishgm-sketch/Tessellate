@@ -33,7 +33,7 @@ export function AIMemoryContextPanel({ variant = 'quiet' }: AIMemoryContextPanel
         </div>
         <button
           onClick={() => setMemories([])}
-          className="text-xs text-rose-500 hover:underline font-mono"
+          className="text-xs text-rose-700 dark:text-rose-300 hover:underline font-mono"
         >
           Clear examples
         </button>
@@ -53,7 +53,7 @@ export function AIMemoryContextPanel({ variant = 'quiet' }: AIMemoryContextPanel
               type="button"
               aria-label={`Remove example ${m.key}`}
               onClick={() => removeMem(m.key)}
-              className="text-neutral-400 hover:text-rose-500 px-1"
+              className="text-neutral-600 dark:text-neutral-300 hover:text-rose-700 dark:hover:text-rose-300 px-1"
             >
               <span aria-hidden="true">✕</span>
             </button>

@@ -50,7 +50,12 @@ export function CohortMatrix({ variant = 'quiet' }: CohortMatrixProps) {
         </div>
       </div>
 
-      <div className="overflow-x-auto">
+      <div
+        className="overflow-x-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-neutral-600 dark:focus-visible:ring-neutral-300"
+        role="region"
+        aria-label="Cohort retention table"
+        tabIndex={0}
+      >
         <table className="w-full text-xs font-mono">
           <caption className="sr-only">Illustrative cohort retention examples; values are not live metrics.</caption>
           <thead>
