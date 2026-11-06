@@ -24379,7 +24379,20 @@
         "apps/preview/src/components/PreviewHost.tsx"
       ],
       "fixCommit": "ed868cc79f9678e9104e6efde592c4623e2855e0",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T15:33:30Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 81,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_cb89890515f4819186a34bcfd9a2629e",
+        "deploymentId": "appgdep_6aedef3867988191b2c28c8aedb93307",
+        "canonicalSourceCommit": "21438fbdd12f43771bbbaab2bb925c714e709e6e",
+        "sitesSourceCommit": "3d2a4673d591591d1529775787d824cdc9981b63",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v81-followup-2026-11-06/resource-detail-preview-loading/report.json",
+        "details": "At both viewports under Slow 3G and 4x CPU, aria-busy remained true with an accessible Loading isolated preview status until the isolated renderer was ready; the Tessellate Console sidebar then rendered and aria-busy cleared. There was no horizontal overflow, application console error or warning, or essential failed request."
+      },
       "localVerification": {
         "regressionTest": "tests/e2e/resource-detail-preview-loading-state.spec.ts",
         "red": "Public v80 failed the delayed-frame regression: expected aria-busy=true, received false.",
@@ -24390,12 +24403,12 @@
         "unitTests": "PASS (95 files; 1,343 passed; 1 skipped)",
         "releaseAudit": "PASS (16 behavioral gates; 324/324 resource isolation and provenance; secrets/security; dependency and bundle budgets)",
         "playwright": "PASS (854 passed; 191 configured skips; 0 failed across Astro, Sites desktop/mobile, and standalone preview)",
-        "deploymentVerification": "Pending; public v80 still contains the defect."
+        "deploymentVerification": "PASS on public Sites v81 at 1440x900 and 390x844; see deployedVerification evidence."
       }
     }
   ],
-  "generatedAt": "2026-11-06T14:09:57.000Z",
-  "latestDeploymentEvidence": "quality/evidence/step-45/public-v80-reaudit/closure-summary.json",
+  "generatedAt": "2026-11-06T15:33:30.000Z",
+  "latestDeploymentEvidence": "quality/evidence/step-45/public-v81-followup-2026-11-06/resource-detail-preview-loading/report.json",
   "latestLocalQualityRun": {
     "capturedAt": "2026-11-06T14:09:57.000Z",
     "command": "pnpm install --frozen-lockfile; pnpm build:catalog; pnpm typecheck; pnpm lint; pnpm test; pnpm audit:all; pnpm test:e2e",
