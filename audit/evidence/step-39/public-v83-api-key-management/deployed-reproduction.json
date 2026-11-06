@@ -1,0 +1,93 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/api-key-management",
+  "title": "API Key Management (@tess/api-key-management) — Tessellate Resource",
+  "text": "Skip to content\nTessellate\nExplore\nCompose\nWorkbench\nTools\nAgents\nCreators\nDocs\nSearch...\n⌘K\nLocal projects\nStart building\nHome\n/\nExplore\n/\nBlocks\n/\nAPI Key Management\nAPI Key Management\n@tess/api-key-management\nv1.0.0\nManifest status: verified\n\nSecret key manager with generate modal, masked token display, and revocation buttons.\n\nInstall:\ntess add api-key-management\nRegistry source: /r/api-key-management.json\n#api-key-management\n#api-keys\n#tokens\n#credentials\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nSecret key manager with generate modal, masked token display, and revocation buttons.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nDeveloper portals managing authentication tokens\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nConsumer frontends without API keys\nJOBS TO BE DONE\nGenerate, view, and revoke programmatic developer API keys\nEXPECTED CONTENT REQUIREMENTS\nHigh data density, keyboard accessibility, semantic tokens\nTARGET PRODUCT ARCHETYPES\nb2b-saas (95%)\ndeveloper-tool (90%)\ndata-product (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nBlocks\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n65%\nContrast\n80%\nCurvature\n35%\nMotion\n25%\nTessellate Interface Intelligence Layer — Open resource library under MIT License.",
+  "buttons": [
+    {
+      "text": "Quiet",
+      "disabled": false
+    },
+    {
+      "text": "Expressive",
+      "disabled": false
+    },
+    {
+      "text": "Nocturne",
+      "disabled": false
+    },
+    {
+      "text": "",
+      "disabled": false
+    },
+    {
+      "text": "",
+      "disabled": false
+    },
+    {
+      "text": "",
+      "disabled": false
+    },
+    {
+      "text": "",
+      "disabled": false
+    },
+    {
+      "text": "Motion",
+      "disabled": false
+    },
+    {
+      "text": "",
+      "disabled": false
+    },
+    {
+      "text": "Intent",
+      "disabled": false
+    },
+    {
+      "text": "Code",
+      "disabled": false
+    },
+    {
+      "text": "Variants",
+      "disabled": false
+    },
+    {
+      "text": "Anatomy",
+      "disabled": false
+    },
+    {
+      "text": "Accessibility",
+      "disabled": false
+    },
+    {
+      "text": "Performance",
+      "disabled": false
+    },
+    {
+      "text": "Dependencies",
+      "disabled": false
+    },
+    {
+      "text": "Versions",
+      "disabled": false
+    },
+    {
+      "text": "Copy import",
+      "disabled": false
+    },
+    {
+      "text": "npx install",
+      "disabled": false
+    }
+  ],
+  "viewport": "1440x900",
+  "status": 200,
+  "createControlNoVisibleEffect": true,
+  "revokeControlNoVisibleEffect": true,
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaught": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "screenshot": "audit/evidence/step-39/public-v83-api-key-management/before-1440x900.png"
+}

@@ -1,0 +1,32 @@
+{
+  "localSite": "http://127.0.0.1:4323",
+  "route": "/preview/?resource=api-key-management",
+  "results": [
+    {
+      "viewport": "1440x900",
+      "status": 200,
+      "row3Removed": true,
+      "emptyStateVisible": true,
+      "afterRemove": "API Key Management preview\nExample API tokens\nAdd example token\n\nPreview only. Actions change these example rows; no credentials are created or revoked.\n\nExample token 1\nSample row · not a credential\nRemove example\nExample token 2\nSample row · not a credential\nRemove example\n\nExample token 3 removed from this preview. No credential was revoked.",
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "uncaught": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshot": "audit/evidence/step-39/public-v83-api-key-management/local-after-desktop-1440x900.png"
+    },
+    {
+      "viewport": "390x844",
+      "status": 200,
+      "row3Removed": true,
+      "emptyStateVisible": true,
+      "afterRemove": "API Key Management preview\nExample API tokens\nAdd example token\n\nPreview only. Actions change these example rows; no credentials are created or revoked.\n\nExample token 1\nSample row · not a credential\nRemove example\nExample token 2\nSample row · not a credential\nRemove example\n\nExample token 3 removed from this preview. No credential was revoked.",
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "uncaught": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshot": "audit/evidence/step-39/public-v83-api-key-management/local-after-mobile-390x844.png"
+    }
+  ]
+}

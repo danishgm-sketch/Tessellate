@@ -24562,9 +24562,47 @@
         "overflow": false,
         "cruxFieldData": "unavailable"
       }
+    },
+    {
+      "id": "AUD-513",
+      "severity": "medium",
+      "route": "/r/api-key-management",
+      "viewport": "1440x900 and 390x844",
+      "category": "content",
+      "title": "API token preview presents sample credentials and inert controls as live",
+      "expected": "A resource preview should label example data and make preview-only actions explicit; it must not imply real credentials are present or managed.",
+      "actual": "Public v83 described a secret key manager, rendered “Production Agent Token” and “Local Development Key” with token-shaped strings, and showed enabled Create/Revoke buttons. Clicking either control produced no visible state change.",
+      "reproduction": [
+        "Open /blocks and locate the API Key Management card, or open /r/api-key-management directly.",
+        "At 1440x900, note the production-like token labels and token-shaped values in the preview.",
+        "Click “+ Create New Token”, then click a “Revoke” button. Neither action changes the preview or reports a result."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-39/public-v83-api-key-management/before-1440x900.png",
+      "rootCause": "The blocks batch generator shipped fixed production-like token labels and key-shaped sample values with buttons that had no handlers, while resource metadata described them as real credential operations.",
+      "affectedCode": [
+        "scripts/blocks-batch-3.ts",
+        "resources/blocks/api-key-management/index.tsx",
+        "resources/blocks/api-key-management/manifest.json",
+        "resources/blocks/api-key-management/README.md",
+        "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+      ],
+      "fixCommit": "5a0c4392bba35006232e3d941fb1428eff112590",
+      "status": "fixed-awaiting-deployed-verification",
+      "localVerification": {
+        "red": "The new Sites Worker UI regression failed before the source fix because the preview showed API Tokens, Production Agent Token, tess_live_…, Local Development Key, and inert controls.",
+        "green": "After the fix, the regression passes in desktop and mobile Sites Worker profiles. It checks the sample disclosure, absence of credential-shaped values, add/remove actions, live feedback, and empty state.",
+        "focusedCommand": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts --project=sites-chromium --grep \"API token manager discloses\" (1 passed); same with --project=sites-mobile-chromium (1 passed).",
+        "screenshots": [
+          "audit/evidence/step-39/public-v83-api-key-management/local-after-desktop-1440x900.png",
+          "audit/evidence/step-39/public-v83-api-key-management/local-after-mobile-390x844.png"
+        ],
+        "telemetry": "Local preview: HTTP 200; zero console errors, failed requests, or HTTP errors at both viewport sizes. The source change has not been deployed, so AUD-513 remains open for hosted verification."
+      }
     }
   ],
-  "generatedAt": "2026-11-06T21:56:38.890Z",
+  "generatedAt": "2026-11-06T22:30:53.167Z",
   "latestDeploymentEvidence": "audit/evidence/step-47/AUD-512/public-v83/runtime-audit.json",
   "latestLocalQualityRun": {
     "capturedAt": "2026-11-06T20:53:08.000Z",

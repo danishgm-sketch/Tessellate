@@ -116,3 +116,10 @@ copied during this continuation. This completes the technically permitted
 local integration, not public redistribution or per-component certification.
 
 The two product fixes are isolated in commits `5a8310980808d87159cd2dfa1f6dcf63d4fa5e55` (reduced motion) and `72301ad3c890f36ce2a42fe1288700824b474933` (Explore previews). The delayed-response Playwright harness correction is `93b2ae606a72176acbdbbc851a4d2f7a9cbe8f20`. Audit findings AUD-464 and AUD-465 reference their respective fix commits. All three are locally verified; deployed verification remains pending.
+
+
+### 2026-11-06 continuation — v83 route sweep and AUD-513 local remediation
+
+The required 31 public routes were captured at desktop and mobile sizes on the live v83 Site. All 62 captures returned HTTP 200 with no browser/network errors or horizontal overflow. Manual review classified 30 route shells PASS and /blocks DEGRADED because of a resource preview defect; a supplemental detail audit classified /r/api-key-management MISLEADING. AUD-513 now has a red-to-green Sites Worker browser regression and a local fix; it remains fixed-awaiting-deployed-verification. The current ledger is 513 findings: 0 Critical, 91 High, 393 Medium, 29 Low; 266 deployed-verified, 134 awaiting deployed verification, and 98 local fixes verified. AUD-419 remains the sole nonclosed High. The review deployment stays v83 until exact-head CI passes and the affected resource is redeployed and checked.
+
+The Verso local-only inspection adapter remains complete for the technically permissible scope: 1,053 modules were inventoried, projected, and rendered in an isolated local preview. Public catalogue/runtime/export integration remains blocked by missing redistribution rights. Product hardening remains incomplete; the external user study is owner-waived, not passed.
