@@ -107,11 +107,11 @@ function DeferredResource({
         ref={elementRef}
         data-testid="resource-deferred"
         data-resource-slug={slug}
-        role="group"
-        aria-label={`Loading ${semanticRole.replaceAll('-', ' ')} resource ${slug}`}
+        role="status"
+        aria-label="Loading section content"
         className={`flex w-full items-center justify-center border-y border-neutral-200/70 bg-neutral-50/70 px-4 py-3 text-xs text-neutral-500 dark:border-neutral-800 dark:bg-neutral-900/50 dark:text-neutral-400 ${resourceReservedHeight(semanticRole)}`}
       >
-        Loading {slug} when this section is in view…
+        Loading section content when it comes into view…
       </div>
     );
   }
@@ -330,8 +330,8 @@ export function createNodeRenderer(defaultRegistry: ResourceRendererMap) {
           <ResourceLoadBoundary key={slug} slug={slug} semanticRole={node.semanticRole}>
             <Suspense
               fallback={
-                <div role="status" data-testid="resource-loading" className="min-h-12 px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400 motion-reduce:animate-none">
-                  Loading {slug}…
+                <div role="status" aria-label="Loading interface element" data-testid="resource-loading" className="min-h-12 px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400 motion-reduce:animate-none">
+                  Loading interface element…
                 </div>
               }
             >

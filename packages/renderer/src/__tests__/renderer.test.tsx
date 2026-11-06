@@ -8,6 +8,7 @@ import {
   normalizeDesignTokens,
   tokensToCssVariables,
 } from '../index.js';
+import { createNodeRenderer } from '../node-renderer-core.js';
 
 describe('Semantic Token Contract & Normalisation', () => {
   it('normalizes Design DNA into complete SemanticTokenContract', () => {
@@ -141,6 +142,39 @@ describe('Semantic Token Contract & Normalisation', () => {
     expect(paperSurface.surfaceDepth.shadowMedium).not.toBe(
       contrastSurface.surfaceDepth.shadowMedium
     );
+  });
+});
+
+describe('Resource loading feedback', () => {
+  it('keeps lazy-load feedback accessible without showing internal resource slugs', () => {
+    const delayedResource = React.lazy(
+      () => new Promise<{ default: React.ComponentType<Record<string, unknown>> }>(() => {}),
+    );
+    const SuspendedResourceRenderer = createNodeRenderer({
+      'collapsible-sidebar': delayedResource,
+    });
+    const node: ProjectNode = {
+      id: 'loading-node',
+      nodeType: 'component',
+      semanticRole: 'navigation',
+      resourceRef: { id: 'resource-collapsible-sidebar', slug: 'collapsible-sidebar', version: '1.0.0' },
+      props: {},
+      slots: {},
+      children: [],
+    };
+
+    const html = renderToString(<SuspendedResourceRenderer node={node} />);
+
+    expect(html).toContain('role="status"');
+    expect(html).toContain('Loading interface element');
+    expect(html).not.toContain('Loading collapsible-sidebar');
+
+    const deferredHtml = renderToString(
+      <SuspendedResourceRenderer node={node} context={{ deferOffscreenResources: true }} />,
+    );
+
+    expect(deferredHtml).toContain('Loading section content when it comes into view');
+    expect(deferredHtml).not.toContain('Loading collapsible-sidebar');
   });
 });
 
