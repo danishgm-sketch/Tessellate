@@ -1,0 +1,1629 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersion": 81,
+  "capturedAt": "2026-11-06T16:11:58.995Z",
+  "viewports": [
+    "1440x900",
+    "390x844"
+  ],
+  "classificationMeaning": "PASS means current route content was captured at both viewports, route runtime/network/overflow checks are clean, and the named route interaction evidence is available. It does not claim every secondary control or all WCAG contrast checks passed.",
+  "sharedEvidence": [
+    "quality/evidence/step-45/public-v81-followup-2026-11-06/route-audit/route-audit-desktop-chrome.json: 31 routes, 0 HTTP failures, app console errors/warnings, uncaught exceptions, failed requests, bad responses, overflow, or Axe violations.",
+    "quality/evidence/step-45/public-v81-followup-2026-11-06/route-audit/route-audit-mobile-chrome.json: same checks at 390x844.",
+    "The route sweep waits for all nine catalogue/category pages, Compose readiness, direct Workbench startup, and the representative isolated resource preview.",
+    "Axe returned zero violations. color-contrast remained incomplete on some complex rendered text and is not represented as a contrast pass."
+  ],
+  "counts": {
+    "PASS": 31
+  },
+  "routes": [
+    {
+      "route": "/",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Tessellate — Describe the product. Get the interface.",
+          "headings": [
+            "Describe the product.Get the interface.",
+            "Choose a direction. Or blend them.",
+            "Not a component library.A composition system.",
+            "Open resources. Clear sample data.",
+            "Essential → Experimental.",
+            "Familiar → Experimental structure.",
+            "Step inside the engine.Inspect every design decision.",
+            "Compatibility scoring & normalisation."
+          ],
+          "bodyCharacters": 10895,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [
+            "color-contrast"
+          ],
+          "screenshot": "screenshots/desktop-chrome/01-home.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Tessellate — Describe the product. Get the interface.",
+          "headings": [
+            "Describe the product.Get the interface.",
+            "Choose a direction. Or blend them.",
+            "Not a component library.A composition system.",
+            "Open resources. Clear sample data.",
+            "Essential → Experimental.",
+            "Familiar → Experimental structure.",
+            "Step inside the engine.Inspect every design decision.",
+            "Compatibility scoring & normalisation."
+          ],
+          "bodyCharacters": 10434,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [
+            "color-contrast"
+          ],
+          "screenshot": "screenshots/mobile-chrome/01-home.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 route smoke at both viewports; AUD-335 home-island readiness fix was previously verified deployed on v37 and later Sites versions.",
+      "priorInteractionEvidence": "The page content and post-hydration example flow work, but deployed v26 leaves Generate example directions enabled before the React island is ready; an attempted pre-hydration activation is dropped. AUD-335 tracks the fix pending a new deployment."
+    },
+    {
+      "route": "/explore",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Explore — Tessellate Open Interface Library",
+          "headings": [
+            "Explore Resource Library",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 7043,
+          "catalogueStatus": "Showing 50 of 324 resources",
+          "catalogueCards": 50,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [
+            "color-contrast"
+          ],
+          "screenshot": "screenshots/desktop-chrome/02-explore.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Explore — Tessellate Open Interface Library",
+          "headings": [
+            "Explore Resource Library",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 6700,
+          "catalogueStatus": "Showing 50 of 324 resources",
+          "catalogueCards": 50,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [
+            "color-contrast"
+          ],
+          "screenshot": "screenshots/mobile-chrome/02-explore.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 settled catalogue, 324-resource count, onboarding search (15 results), mobile filter dialog, Escape dismissal, and focus restoration.",
+      "priorInteractionEvidence": "Catalogue load, pre-hydration filter disabled state, hydrated filter dialog and keyboard Escape/focus restoration exercised."
+    },
+    {
+      "route": "/components",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Components — Tessellate",
+          "headings": [
+            "Components",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 5795,
+          "catalogueStatus": "Showing 44 of 44 resources",
+          "catalogueCards": 44,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/03-components.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Components — Tessellate",
+          "headings": [
+            "Components",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 5540,
+          "catalogueStatus": "Showing 44 of 44 resources",
+          "catalogueCards": 44,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/03-components.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 settled category: 44 of 44 resources rendered at desktop and mobile.",
+      "priorInteractionEvidence": "Catalogue category rendered at both required viewports; card links included in same-origin link audit."
+    },
+    {
+      "route": "/sections",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Sections — Tessellate",
+          "headings": [
+            "Sections",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 6792,
+          "catalogueStatus": "Showing 50 of 72 resources",
+          "catalogueCards": 50,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/04-sections.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Sections — Tessellate",
+          "headings": [
+            "Sections",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 6623,
+          "catalogueStatus": "Showing 50 of 72 resources",
+          "catalogueCards": 50,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/04-sections.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 settled category: 50 of 72 resources rendered at desktop and mobile; load-more remains available.",
+      "priorInteractionEvidence": "Catalogue category rendered at both required viewports; card links included in same-origin link audit."
+    },
+    {
+      "route": "/blocks",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Application blocks — Tessellate",
+          "headings": [
+            "Application blocks",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 6609,
+          "catalogueStatus": "Showing 50 of 56 resources",
+          "catalogueCards": 50,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/05-blocks.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Application blocks — Tessellate",
+          "headings": [
+            "Application blocks",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 6442,
+          "catalogueStatus": "Showing 50 of 56 resources",
+          "catalogueCards": 50,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/05-blocks.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 settled category: 50 of 56 resources rendered at desktop and mobile; load-more remains available.",
+      "priorInteractionEvidence": "Catalogue category rendered at both required viewports; card links included in same-origin link audit."
+    },
+    {
+      "route": "/pages",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Page architectures — Tessellate",
+          "headings": [
+            "Page architectures",
+            "Marketing Home",
+            "Product Overview",
+            "Use Case Landing",
+            "Industry Landing",
+            "Pricing",
+            "Security & Trust",
+            "Developer/API Landing"
+          ],
+          "bodyCharacters": 8800,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/06-pages.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Page architectures — Tessellate",
+          "headings": [
+            "Page architectures",
+            "Marketing Home",
+            "Product Overview",
+            "Use Case Landing",
+            "Industry Landing",
+            "Pricing",
+            "Security & Trust",
+            "Developer/API Landing"
+          ],
+          "bodyCharacters": 8713,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/06-pages.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Page architecture catalogue rendered at both required viewports; resource links resolve."
+    },
+    {
+      "route": "/effects",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Effects — Tessellate",
+          "headings": [
+            "Effects",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 6871,
+          "catalogueStatus": "Showing 50 of 56 resources",
+          "catalogueCards": 50,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/07-effects.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Effects — Tessellate",
+          "headings": [
+            "Effects",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 6655,
+          "catalogueStatus": "Showing 50 of 56 resources",
+          "catalogueCards": 50,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/07-effects.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 settled category: 50 of 56 resources rendered at desktop and mobile; load-more remains available.",
+      "priorInteractionEvidence": "Catalogue page and preview assets rendered without CSP or console errors at both required viewports."
+    },
+    {
+      "route": "/motion",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Motion — Tessellate",
+          "headings": [
+            "Motion",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 3495,
+          "catalogueStatus": "Showing 24 of 24 resources",
+          "catalogueCards": 24,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/08-motion.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Motion — Tessellate",
+          "headings": [
+            "Motion",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 3299,
+          "catalogueStatus": "Showing 24 of 24 resources",
+          "catalogueCards": 24,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/08-motion.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 settled category: 24 of 24 resources rendered at desktop and mobile.",
+      "priorInteractionEvidence": "Catalogue page and preview assets rendered without CSP or console errors at both required viewports."
+    },
+    {
+      "route": "/backgrounds",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Backgrounds — Tessellate",
+          "headings": [
+            "Backgrounds",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 3081,
+          "catalogueStatus": "Showing 20 of 20 resources",
+          "catalogueCards": 20,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/09-backgrounds.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Backgrounds — Tessellate",
+          "headings": [
+            "Backgrounds",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 2898,
+          "catalogueStatus": "Showing 20 of 20 resources",
+          "catalogueCards": 20,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/09-backgrounds.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 settled category: 20 of 20 resources rendered at desktop and mobile.",
+      "priorInteractionEvidence": "Catalogue page and preview assets rendered without CSP or console errors at both required viewports."
+    },
+    {
+      "route": "/ai",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "AI patterns — Tessellate",
+          "headings": [
+            "AI patterns",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 3167,
+          "catalogueStatus": "Showing 20 of 20 resources",
+          "catalogueCards": 20,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/10-ai.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "AI patterns — Tessellate",
+          "headings": [
+            "AI patterns",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 2984,
+          "catalogueStatus": "Showing 20 of 20 resources",
+          "catalogueCards": 20,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/10-ai.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 settled category: 20 of 20 resources rendered at desktop and mobile.",
+      "priorInteractionEvidence": "AI-pattern catalogue rendered; page describes resources, not hosted inference."
+    },
+    {
+      "route": "/data",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Data visualisation — Tessellate",
+          "headings": [
+            "Data visualisation",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 5074,
+          "catalogueStatus": "Showing 35 of 35 resources",
+          "catalogueCards": 35,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/11-data.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Data visualisation — Tessellate",
+          "headings": [
+            "Data visualisation",
+            "Catalogue results"
+          ],
+          "bodyCharacters": 4871,
+          "catalogueStatus": "Showing 35 of 35 resources",
+          "catalogueCards": 35,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/11-data.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 settled category: 35 of 35 resources rendered at desktop and mobile.",
+      "priorInteractionEvidence": "Data-visualisation catalogue rendered at both required viewports."
+    },
+    {
+      "route": "/compose",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Compose — Tessellate",
+          "headings": [
+            "Product Composer",
+            "Describe the product. Get the interface."
+          ],
+          "bodyCharacters": 1417,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/12-compose.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Compose — Tessellate",
+          "headings": [
+            "Product Composer",
+            "Describe the product. Get the interface."
+          ],
+          "bodyCharacters": 1349,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [
+            "color-contrast"
+          ],
+          "screenshot": "screenshots/mobile-chrome/12-compose.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 flagship exact employee-experience brief, ready catalogue, all three settled previews, Direction C handoff, Workbench mutations, undo/redo, persistence, and standalone export.",
+      "priorInteractionEvidence": "Exact employee-experience brief composed through visible controls; all directions inspected; C handoff and export covered."
+    },
+    {
+      "route": "/workbench",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Workbench — Tessellate Composition Engine",
+          "headings": [
+            "Workbench: Example employee workspace",
+            "A better workday starts with people."
+          ],
+          "bodyCharacters": 1775,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [
+            "color-contrast"
+          ],
+          "screenshot": "screenshots/desktop-chrome/13-workbench.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Workbench — Tessellate Composition Engine",
+          "headings": [
+            "Workbench: Example employee workspace",
+            "A better workday starts with people."
+          ],
+          "bodyCharacters": 700,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [
+            "color-contrast"
+          ],
+          "screenshot": "screenshots/mobile-chrome/13-workbench.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 direct startup reached the editor at desktop and mobile; the flagship then opened the selected Direction C project and exercised mutations/export.",
+      "priorInteractionEvidence": "Direction C opened and mutated through visible UI; lock, 95% recompose, Replace, Surprise Me, exact Undo/Redo and standalone export exercised."
+    },
+    {
+      "route": "/blueprints",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Product blueprints — Tessellate",
+          "headings": [
+            "Product blueprints",
+            "AI Product",
+            "B2B SaaS",
+            "Developer Platform",
+            "Fintech",
+            "Ecommerce",
+            "Marketplace",
+            "Analytics Platform"
+          ],
+          "bodyCharacters": 2312,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/14-blueprints.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Product blueprints — Tessellate",
+          "headings": [
+            "Product blueprints",
+            "AI Product",
+            "B2B SaaS",
+            "Developer Platform",
+            "Fintech",
+            "Ecommerce",
+            "Marketplace",
+            "Analytics Platform"
+          ],
+          "bodyCharacters": 2225,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/14-blueprints.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Blueprint index and representative B2B SaaS blueprint inspected; links resolve."
+    },
+    {
+      "route": "/collections",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Your resource collection — Tessellate",
+          "headings": [
+            "Your resource collection"
+          ],
+          "bodyCharacters": 554,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/15-collections.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Your resource collection — Tessellate",
+          "headings": [
+            "Your resource collection"
+          ],
+          "bodyCharacters": 467,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/15-collections.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Truthful browser-local empty state and Beta limitations inspected; no cloud sync claim is made."
+    },
+    {
+      "route": "/creators",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Resource creators — Tessellate",
+          "headings": [
+            "Resource creators",
+            "Tessellate Core"
+          ],
+          "bodyCharacters": 6221,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/16-creators.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Resource creators — Tessellate",
+          "headings": [
+            "Resource creators",
+            "Tessellate Core"
+          ],
+          "bodyCharacters": 6134,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/16-creators.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Attribution directory states counts are published catalogue resources, not usage/popularity data."
+    },
+    {
+      "route": "/showcase",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Showcase projects — Tessellate",
+          "headings": [
+            "Showcase projects",
+            "Apex Financial Intelligence Terminal",
+            "Synthetix AI Developer Platform",
+            "Velluto Private Estate Residences",
+            "Kudos Employee Experience",
+            "Atelier Chronos Horology",
+            "Cortex Laboratory Environment",
+            "Pulse Media Creator Studio"
+          ],
+          "bodyCharacters": 1688,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/17-showcase.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Showcase projects — Tessellate",
+          "headings": [
+            "Showcase projects",
+            "Apex Financial Intelligence Terminal",
+            "Synthetix AI Developer Platform",
+            "Velluto Private Estate Residences",
+            "Kudos Employee Experience",
+            "Atelier Chronos Horology",
+            "Cortex Laboratory Environment",
+            "Pulse Media Creator Studio"
+          ],
+          "bodyCharacters": 1601,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/17-showcase.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Showcase index and representative employee showcase inspected; sample-content warning is visible."
+    },
+    {
+      "route": "/trends",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Catalogue signals — Tessellate",
+          "headings": [
+            "Catalogue signals",
+            "sections",
+            "marketing",
+            "technical-proof",
+            "primitives",
+            "layout",
+            "motion",
+            "microinteractions"
+          ],
+          "bodyCharacters": 13132,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/18-trends.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Catalogue signals — Tessellate",
+          "headings": [
+            "Catalogue signals",
+            "sections",
+            "marketing",
+            "technical-proof",
+            "primitives",
+            "layout",
+            "motion",
+            "microinteractions"
+          ],
+          "bodyCharacters": 13045,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/18-trends.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Catalogue tag counts are labelled as catalogue signals and do not claim popularity or customer usage."
+    },
+    {
+      "route": "/tools",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Ten Tools — Tessellate Interface Intelligence",
+          "headings": [
+            "Ten Interface Tools."
+          ],
+          "bodyCharacters": 2109,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/19-tools.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Ten Tools — Tessellate Interface Intelligence",
+          "headings": [
+            "Ten Interface Tools."
+          ],
+          "bodyCharacters": 2022,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/19-tools.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 ran the existing 10-tool browser suite at desktop and mobile: 41 passed, 21 project-scoped skips, zero failures.",
+      "priorInteractionEvidence": "Ten tools are explicitly Beta, client-side, and not represented as mutating/certifying Workbench projects; each tool page has separate live checks."
+    },
+    {
+      "route": "/agents",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Tessellate for agents — Tessellate",
+          "headings": [
+            "Tessellate for agents",
+            "Discover the catalogue",
+            "Compose and mutate",
+            "Review capability boundary"
+          ],
+          "bodyCharacters": 1222,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/20-agents.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Tessellate for agents — Tessellate",
+          "headings": [
+            "Tessellate for agents",
+            "Discover the catalogue",
+            "Compose and mutate",
+            "Review capability boundary"
+          ],
+          "bodyCharacters": 1135,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/20-agents.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Page explicitly limits hosted Site scope; CLI/MCP require local installation and no hosted API is implied."
+    },
+    {
+      "route": "/docs",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Documentation — Tessellate",
+          "headings": [
+            "Documentation"
+          ],
+          "bodyCharacters": 611,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/21-docs.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Documentation — Tessellate",
+          "headings": [
+            "Documentation"
+          ],
+          "bodyCharacters": 524,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/21-docs.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Repository-derived documentation index rendered; representative CLI child route inspected."
+    },
+    {
+      "route": "/sponsor",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Support the open commons — Tessellate",
+          "headings": [
+            "Support the open commons",
+            "Contribute",
+            "Sponsorship"
+          ],
+          "bodyCharacters": 867,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/22-sponsor.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Support the open commons — Tessellate",
+          "headings": [
+            "Support the open commons",
+            "Contribute",
+            "Sponsorship"
+          ],
+          "bodyCharacters": 780,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/22-sponsor.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Page states no payment processor/checkout is configured and preserves free resource access."
+    },
+    {
+      "route": "/about",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "About Tessellate — Tessellate",
+          "headings": [
+            "About Tessellate",
+            "A coherent product, not a pile of components",
+            "Open and portable",
+            "This review version"
+          ],
+          "bodyCharacters": 996,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/23-about.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "About Tessellate — Tessellate",
+          "headings": [
+            "About Tessellate",
+            "A coherent product, not a pile of components",
+            "Open and portable",
+            "This review version"
+          ],
+          "bodyCharacters": 909,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/23-about.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Informational product page rendered at both required viewports."
+    },
+    {
+      "route": "/license",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Licences and provenance — Tessellate",
+          "headings": [
+            "Licences and provenance",
+            "Resource licences",
+            "Repository licence",
+            "Exports"
+          ],
+          "bodyCharacters": 943,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/24-license.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Licences and provenance — Tessellate",
+          "headings": [
+            "Licences and provenance",
+            "Resource licences",
+            "Repository licence",
+            "Exports"
+          ],
+          "bodyCharacters": 856,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/24-license.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Licence and provenance page rendered; internal source links resolve."
+    },
+    {
+      "route": "/privacy",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Privacy in this review — Tessellate",
+          "headings": [
+            "Privacy in this review",
+            "Local project storage",
+            "Credentials",
+            "Hosting",
+            "Public previews"
+          ],
+          "bodyCharacters": 1262,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/25-privacy.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Privacy in this review — Tessellate",
+          "headings": [
+            "Privacy in this review",
+            "Local project storage",
+            "Credentials",
+            "Hosting",
+            "Public previews"
+          ],
+          "bodyCharacters": 1175,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/25-privacy.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Review-specific privacy page rendered at both required viewports."
+    },
+    {
+      "route": "/terms",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Review terms — Tessellate",
+          "headings": [
+            "Review terms",
+            "Review status",
+            "Your content",
+            "Source and redistribution"
+          ],
+          "bodyCharacters": 967,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/26-terms.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Review terms — Tessellate",
+          "headings": [
+            "Review terms",
+            "Review status",
+            "Your content",
+            "Source and redistribution"
+          ],
+          "bodyCharacters": 880,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/26-terms.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Review-specific terms page rendered at both required viewports."
+    },
+    {
+      "route": "/r/advanced-data-table",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Advanced Data Table (@tess/advanced-data-table) — Tessellate Resource",
+          "headings": [
+            "Advanced Data Table",
+            "Summary & Purpose",
+            "Jobs To Be Done",
+            "Expected Content Requirements",
+            "Target Product Archetypes"
+          ],
+          "bodyCharacters": 1435,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [
+            "color-contrast"
+          ],
+          "screenshot": "screenshots/desktop-chrome/27-r-advanced-data-table.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Advanced Data Table (@tess/advanced-data-table) — Tessellate Resource",
+          "headings": [
+            "Advanced Data Table",
+            "Summary & Purpose",
+            "Jobs To Be Done",
+            "Expected Content Requirements",
+            "Target Product Archetypes"
+          ],
+          "bodyCharacters": 1367,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [
+            "color-contrast"
+          ],
+          "screenshot": "screenshots/mobile-chrome/27-r-advanced-data-table.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 detail preview reached aria-busy=false at both viewports; earlier live resource variant and provenance checks remain linked below.",
+      "priorInteractionEvidence": "Representative resource preview and variant controls inspected; all 40 Gold resources were switched to dark Expressive and contrast checked."
+    },
+    {
+      "route": "/showcase/showcase-playful-hr/",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Kudos Employee Experience — Tessellate",
+          "headings": [
+            "Kudos Employee Experience",
+            "Example: Marketing Home",
+            "A better workday starts with people.",
+            "Made for everyday employee experiences",
+            "Make the next step easier for every colleague."
+          ],
+          "bodyCharacters": 1944,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [
+            "color-contrast"
+          ],
+          "screenshot": "screenshots/desktop-chrome/28-showcase-showcase-playful-hr.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Kudos Employee Experience — Tessellate",
+          "headings": [
+            "Kudos Employee Experience",
+            "Example: Marketing Home",
+            "A better workday starts with people.",
+            "Made for everyday employee experiences",
+            "Make the next step easier for every colleague."
+          ],
+          "bodyCharacters": 1779,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [
+            "color-contrast"
+          ],
+          "screenshot": "screenshots/mobile-chrome/28-showcase-showcase-playful-hr.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Representative showcase renders an employee-experience project and marks the content as illustrative sample data."
+    },
+    {
+      "route": "/blueprints/b2b-saas/",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "B2B SaaS — Tessellate",
+          "headings": [
+            "B2B SaaS",
+            "Audience and objective",
+            "Required page classes",
+            "Anti-patterns",
+            "Architecture priors"
+          ],
+          "bodyCharacters": 1272,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/29-blueprints-b2b-saas.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "B2B SaaS — Tessellate",
+          "headings": [
+            "B2B SaaS",
+            "Audience and objective",
+            "Required page classes",
+            "Anti-patterns",
+            "Architecture priors"
+          ],
+          "bodyCharacters": 1185,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/29-blueprints-b2b-saas.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 current route smoke and screenshot at both viewports; interaction depth is limited to the earlier audited behavior cited below.",
+      "priorInteractionEvidence": "Representative blueprint presents audience, objective, screens, anti-patterns and a Compose action."
+    },
+    {
+      "route": "/tools/palette",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "Palette Studio — Tessellate Tools",
+          "headings": [
+            "Palette Studio"
+          ],
+          "bodyCharacters": 518,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/30-tools-palette.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "Palette Studio — Tessellate Tools",
+          "headings": [
+            "Palette Studio"
+          ],
+          "bodyCharacters": 431,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/30-tools-palette.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 live tool suite exercised Palette Studio alongside all other tools at desktop and mobile.",
+      "priorInteractionEvidence": "Representative tool controls and preview inspected; all ten tool routes and configured interactions are covered by the live tool suite."
+    },
+    {
+      "route": "/docs/cli",
+      "classification": "PASS",
+      "runtime": {
+        "desktop": {
+          "status": 200,
+          "title": "CLI Reference — Tessellate Documentation",
+          "headings": [
+            "Tessellate CLI (`tess`)",
+            "Build from a Tessellate checkout",
+            "Commands",
+            "Start with a product brief."
+          ],
+          "bodyCharacters": 2532,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/desktop-chrome/31-docs-cli.png"
+        },
+        "mobile": {
+          "status": 200,
+          "title": "CLI Reference — Tessellate Documentation",
+          "headings": [
+            "Tessellate CLI (`tess`)",
+            "Build from a Tessellate checkout",
+            "Commands",
+            "Start with a product brief."
+          ],
+          "bodyCharacters": 2445,
+          "catalogueStatus": null,
+          "catalogueCards": null,
+          "overflow": false,
+          "consoleErrors": 0,
+          "applicationConsoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "axeViolations": 0,
+          "axeIncomplete": [],
+          "screenshot": "screenshots/mobile-chrome/31-docs-cli.png"
+        }
+      },
+      "currentInteractionEvidence": "v81 route smoke confirms the representative CLI documentation page renders at both viewports.",
+      "priorInteractionEvidence": "Representative CLI guide renders from the current repository documentation; links resolve."
+    }
+  ]
+}
