@@ -1,6 +1,6 @@
 # Step 45 — Public review verification
 
-Status: **Ongoing; release gate not passed.** The broad v55 review passed its then-current scope, but later public audits found additional defects. Public v80 closed AUD-506–AUD-509. AUD-419 remains the only nonclosed High finding, and 143 findings still await deployed verification. The v55 full route and flagship audit has not been repeated on v80. D1/R2 remain unbound; the public Site does not connect to the laptop host, so host inference is unavailable there. Step 46 is owner-waived, not passed, as recorded in D-064 and `quality/STEP_46_EVIDENCE.md`.
+Status: **Ongoing; release gate not passed.** The broad v55 review passed its then-current scope, but later public audits found additional defects. Public v80 closed AUD-496–AUD-509 after issue-specific desktop/mobile checks. AUD-419 remains the only nonclosed High finding, and 133 findings still await deployed verification. The v55 full route and flagship audit has not been repeated on v80. D1/R2 remain unbound; the public Site does not connect to the laptop host, so host inference is unavailable there. Step 46 is owner-waived, not passed, as recorded in D-064 and `quality/STEP_46_EVIDENCE.md`.
 
 ## Public v80 targeted accessibility re-audit — 2026-11-06
 
@@ -728,3 +728,8 @@ See the [machine verification summary](evidence/step-45/public-v50/verification-
 [route captures](evidence/step-45/public-v50/routes/),
 [Axe report](evidence/step-45/public-v50/axe-core-routes/report.json), and
 [flagship evidence](evidence/step-45/public-v50/flagship/).
+## Public v80 manual-copy continuation — 2026-11-06
+
+The follow-up covers AUD-496–AUD-505 across eight routes and 16 desktop/mobile captures. All routes returned HTTP 200. Axe reported zero violations; runtime console errors/warnings, uncaught exceptions, failed requests, HTTP errors, and horizontal overflow were all zero. Manual preview review confirmed the disclosures and controls listed in quality/STEP_39_EVIDENCE.md; a targeted follow-up captured the suggested-action status after a real click.
+
+Evidence: quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/report.json, ai-suggested-action-followup-v80.json, screenshots, and audit/runtime-audit.json. The full route/flagship/accessibility/export acceptance audit remains outstanding, as does the wider hardening release gate. The current evidence-only PR head needs a green exact-head CI rerun after the keyboard helper lint correction.

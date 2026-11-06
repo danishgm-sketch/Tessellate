@@ -23290,7 +23290,7 @@
         "Open /r/admin-console-shell/ at 1440x900 or 390x844.",
         "Inspect the live preview; the member count and OAuth claim are visible."
       ],
-      "screenshot": "quality/evidence/step-45/public-v78-reaudit/manual-copy-suspects/admin-console-shell-desktop-1440x900-preview-before.png",
+      "screenshot": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/admin-console-shell-desktop-1440x900-preview-after.png",
       "evidence": {
         "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/admin-console-shell/",
         "browser": {
@@ -23332,7 +23332,39 @@
       "console": [],
       "network": [],
       "fixCommit": "735cefa3",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T12:52:54.068Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 80,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+        "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+        "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+        "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/report.json",
+        "console": {
+          "errors": 0,
+          "warnings": 0,
+          "uncaughtExceptions": 0,
+          "messages": []
+        },
+        "network": {
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "axe": {
+          "violations": 0,
+          "axeInstrumentationConsoleErrors": 16,
+          "note": "Axe inline-style CSP instrumentation messages were isolated from application console telemetry; the production CSP was unchanged."
+        },
+        "screenshots": {
+          "desktop": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/admin-console-shell-desktop-1440x900-preview-after.png",
+          "mobile": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/admin-console-shell-mobile-390x844-preview-after.png"
+        },
+        "verificationNote": "The same public routes and example disclosures were confirmed visually in the browser; live preview content and behavior were checked without invoking internal application stores."
+      }
     },
     {
       "id": "AUD-497",
@@ -23347,7 +23379,7 @@
         "Open /r/admin-console-shell/.",
         "Click Invite User; no dialog, navigation, status or visible state change occurs."
       ],
-      "screenshot": "quality/evidence/step-45/public-v78-reaudit/manual-copy-suspects/admin-console-shell-desktop-1440x900-preview-before.png",
+      "screenshot": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/admin-console-shell-desktop-1440x900-preview-after.png",
       "evidence": {
         "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/admin-console-shell/",
         "browser": {
@@ -23388,7 +23420,39 @@
       "console": [],
       "network": [],
       "fixCommit": "735cefa3",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T12:52:54.068Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 80,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+        "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+        "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+        "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/report.json",
+        "console": {
+          "errors": 0,
+          "warnings": 0,
+          "uncaughtExceptions": 0,
+          "messages": []
+        },
+        "network": {
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "axe": {
+          "violations": 0,
+          "axeInstrumentationConsoleErrors": 16,
+          "note": "Axe inline-style CSP instrumentation messages were isolated from application console telemetry; the production CSP was unchanged."
+        },
+        "screenshots": {
+          "desktop": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/admin-console-shell-desktop-1440x900-preview-after.png",
+          "mobile": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/admin-console-shell-mobile-390x844-preview-after.png"
+        },
+        "verificationNote": "The same public routes and example disclosures were confirmed visually in the browser; live preview content and behavior were checked without invoking internal application stores."
+      }
     },
     {
       "id": "AUD-498",
@@ -23403,7 +23467,7 @@
         "Open /r/ai-memory-context-panel/.",
         "Compare the active-memory claims with the local-only effect of Purge All."
       ],
-      "screenshot": "quality/evidence/step-45/public-v78-reaudit/manual-copy-suspects/ai-memory-context-panel-desktop-1440x900-preview-before.png",
+      "screenshot": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/ai-memory-context-panel-desktop-1440x900-preview-after.png",
       "evidence": {
         "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-memory-context-panel/",
         "browser": {
@@ -23445,7 +23509,39 @@
       "console": [],
       "network": [],
       "fixCommit": "735cefa3",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T12:52:54.068Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 80,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+        "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+        "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+        "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/report.json",
+        "console": {
+          "errors": 0,
+          "warnings": 0,
+          "uncaughtExceptions": 0,
+          "messages": []
+        },
+        "network": {
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "axe": {
+          "violations": 0,
+          "axeInstrumentationConsoleErrors": 16,
+          "note": "Axe inline-style CSP instrumentation messages were isolated from application console telemetry; the production CSP was unchanged."
+        },
+        "screenshots": {
+          "desktop": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/ai-memory-context-panel-desktop-1440x900-preview-after.png",
+          "mobile": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/ai-memory-context-panel-mobile-390x844-preview-after.png"
+        },
+        "verificationNote": "The same public routes and example disclosures were confirmed visually in the browser; live preview content and behavior were checked without invoking internal application stores."
+      }
     },
     {
       "id": "AUD-499",
@@ -23460,7 +23556,7 @@
         "Open /r/ai-prompt-history/.",
         "Inspect the prompt rows and token/time figures before interacting."
       ],
-      "screenshot": "quality/evidence/step-45/public-v78-reaudit/manual-copy-suspects/ai-prompt-history-desktop-1440x900-preview-before.png",
+      "screenshot": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/ai-prompt-history-desktop-1440x900-preview-after.png",
       "evidence": {
         "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-prompt-history/",
         "browser": {
@@ -23502,7 +23598,39 @@
       "console": [],
       "network": [],
       "fixCommit": "735cefa3",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T12:52:54.068Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 80,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+        "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+        "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+        "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/report.json",
+        "console": {
+          "errors": 0,
+          "warnings": 0,
+          "uncaughtExceptions": 0,
+          "messages": []
+        },
+        "network": {
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "axe": {
+          "violations": 0,
+          "axeInstrumentationConsoleErrors": 16,
+          "note": "Axe inline-style CSP instrumentation messages were isolated from application console telemetry; the production CSP was unchanged."
+        },
+        "screenshots": {
+          "desktop": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/ai-prompt-history-desktop-1440x900-preview-after.png",
+          "mobile": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/ai-prompt-history-mobile-390x844-preview-after.png"
+        },
+        "verificationNote": "The same public routes and example disclosures were confirmed visually in the browser; live preview content and behavior were checked without invoking internal application stores."
+      }
     },
     {
       "id": "AUD-500",
@@ -23517,7 +23645,7 @@
         "Open /r/ai-prompt-history/.",
         "Click Replay on any row; no action or feedback occurs."
       ],
-      "screenshot": "quality/evidence/step-45/public-v78-reaudit/manual-copy-suspects/ai-prompt-history-desktop-1440x900-preview-before.png",
+      "screenshot": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/ai-prompt-history-desktop-1440x900-preview-after.png",
       "evidence": {
         "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-prompt-history/",
         "browser": {
@@ -23558,7 +23686,39 @@
       "console": [],
       "network": [],
       "fixCommit": "735cefa3",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T12:52:54.068Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 80,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+        "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+        "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+        "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/report.json",
+        "console": {
+          "errors": 0,
+          "warnings": 0,
+          "uncaughtExceptions": 0,
+          "messages": []
+        },
+        "network": {
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "axe": {
+          "violations": 0,
+          "axeInstrumentationConsoleErrors": 16,
+          "note": "Axe inline-style CSP instrumentation messages were isolated from application console telemetry; the production CSP was unchanged."
+        },
+        "screenshots": {
+          "desktop": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/ai-prompt-history-desktop-1440x900-preview-after.png",
+          "mobile": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/ai-prompt-history-mobile-390x844-preview-after.png"
+        },
+        "verificationNote": "The same public routes and example disclosures were confirmed visually in the browser; live preview content and behavior were checked without invoking internal application stores."
+      }
     },
     {
       "id": "AUD-501",
@@ -23573,7 +23733,7 @@
         "Open /r/ai-suggested-actions/.",
         "Click Export as Vite App; no export starts and no visible text explains the result."
       ],
-      "screenshot": "quality/evidence/step-45/public-v78-reaudit/manual-copy-suspects/ai-suggested-actions-desktop-1440x900-preview-before.png",
+      "screenshot": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/ai-suggested-actions-desktop-1440x900-preview-after-cua-followup.png",
       "evidence": {
         "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-suggested-actions/",
         "browser": {
@@ -23616,7 +23776,39 @@
       "console": [],
       "network": [],
       "fixCommit": "735cefa3",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T12:52:54.068Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 80,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+        "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+        "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+        "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/report.json",
+        "console": {
+          "errors": 0,
+          "warnings": 0,
+          "uncaughtExceptions": 0,
+          "messages": []
+        },
+        "network": {
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "axe": {
+          "violations": 0,
+          "axeInstrumentationConsoleErrors": 16,
+          "note": "Axe inline-style CSP instrumentation messages were isolated from application console telemetry; the production CSP was unchanged."
+        },
+        "screenshots": {
+          "desktop": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/ai-suggested-actions-desktop-1440x900-preview-after-cua-followup.png",
+          "mobile": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/ai-suggested-actions-mobile-390x844-preview-before.png"
+        },
+        "verificationNote": "The generic action locator in the earlier report missed this button; a visible user click and a targeted browser capture verified the explicit local-preview status. See ai-suggested-action-followup-v80.json."
+      }
     },
     {
       "id": "AUD-502",
@@ -23631,7 +23823,7 @@
         "Open /r/api-capability-section/.",
         "Compare the displayed endpoints with the mounted routes in apps/api/src/index.ts."
       ],
-      "screenshot": "quality/evidence/step-45/public-v78-reaudit/manual-copy-suspects/api-capability-section-desktop-1440x900-preview-before.png",
+      "screenshot": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/api-capability-section-desktop-1440x900-preview-before.png",
       "evidence": {
         "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/api-capability-section/",
         "browser": {
@@ -23665,7 +23857,39 @@
       "console": [],
       "network": [],
       "fixCommit": "735cefa3",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T12:52:54.068Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 80,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+        "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+        "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+        "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/report.json",
+        "console": {
+          "errors": 0,
+          "warnings": 0,
+          "uncaughtExceptions": 0,
+          "messages": []
+        },
+        "network": {
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "axe": {
+          "violations": 0,
+          "axeInstrumentationConsoleErrors": 16,
+          "note": "Axe inline-style CSP instrumentation messages were isolated from application console telemetry; the production CSP was unchanged."
+        },
+        "screenshots": {
+          "desktop": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/api-capability-section-desktop-1440x900-preview-before.png",
+          "mobile": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/api-capability-section-mobile-390x844-preview-before.png"
+        },
+        "verificationNote": "The same public routes and example disclosures were confirmed visually in the browser; live preview content and behavior were checked without invoking internal application stores."
+      }
     },
     {
       "id": "AUD-503",
@@ -23680,7 +23904,7 @@
         "Open /r/audit-log/.",
         "Inspect the event heading, actor/IP rows, and resource intent metadata."
       ],
-      "screenshot": "quality/evidence/step-45/public-v78-reaudit/manual-copy-suspects/audit-log-desktop-1440x900-preview-before.png",
+      "screenshot": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/audit-log-desktop-1440x900-preview-before.png",
       "evidence": {
         "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/audit-log/",
         "browser": {
@@ -23714,7 +23938,39 @@
       "console": [],
       "network": [],
       "fixCommit": "735cefa3",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T12:52:54.068Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 80,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+        "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+        "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+        "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/report.json",
+        "console": {
+          "errors": 0,
+          "warnings": 0,
+          "uncaughtExceptions": 0,
+          "messages": []
+        },
+        "network": {
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "axe": {
+          "violations": 0,
+          "axeInstrumentationConsoleErrors": 16,
+          "note": "Axe inline-style CSP instrumentation messages were isolated from application console telemetry; the production CSP was unchanged."
+        },
+        "screenshots": {
+          "desktop": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/audit-log-desktop-1440x900-preview-before.png",
+          "mobile": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/audit-log-mobile-390x844-preview-before.png"
+        },
+        "verificationNote": "The same public routes and example disclosures were confirmed visually in the browser; live preview content and behavior were checked without invoking internal application stores."
+      }
     },
     {
       "id": "AUD-504",
@@ -23729,7 +23985,7 @@
         "Open /r/command-centre-shell/.",
         "Inspect the health banner; it remains green with no connected data source."
       ],
-      "screenshot": "quality/evidence/step-45/public-v78-reaudit/manual-copy-suspects/command-centre-shell-desktop-1440x900-preview-before.png",
+      "screenshot": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/command-centre-shell-desktop-1440x900-preview-before.png",
       "evidence": {
         "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/command-centre-shell/",
         "browser": {
@@ -23763,7 +24019,39 @@
       "console": [],
       "network": [],
       "fixCommit": "735cefa3",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T12:52:54.068Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 80,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+        "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+        "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+        "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/report.json",
+        "console": {
+          "errors": 0,
+          "warnings": 0,
+          "uncaughtExceptions": 0,
+          "messages": []
+        },
+        "network": {
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "axe": {
+          "violations": 0,
+          "axeInstrumentationConsoleErrors": 16,
+          "note": "Axe inline-style CSP instrumentation messages were isolated from application console telemetry; the production CSP was unchanged."
+        },
+        "screenshots": {
+          "desktop": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/command-centre-shell-desktop-1440x900-preview-before.png",
+          "mobile": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/command-centre-shell-mobile-390x844-preview-before.png"
+        },
+        "verificationNote": "The same public routes and example disclosures were confirmed visually in the browser; live preview content and behavior were checked without invoking internal application stores."
+      }
     },
     {
       "id": "AUD-505",
@@ -23778,7 +24066,7 @@
         "Open /r/cohort-matrix/.",
         "Inspect the cohort sizes and percentages in the table."
       ],
-      "screenshot": "quality/evidence/step-45/public-v78-reaudit/manual-copy-suspects/cohort-matrix-desktop-1440x900-preview-before.png",
+      "screenshot": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/cohort-matrix-desktop-1440x900-preview-before.png",
       "evidence": {
         "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/cohort-matrix/",
         "browser": {
@@ -23812,7 +24100,39 @@
       "console": [],
       "network": [],
       "fixCommit": "735cefa3",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "result": "PASS",
+        "verifiedAt": "2026-11-06T12:52:54.068Z",
+        "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "siteVersionNumber": 80,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+        "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+        "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+        "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+        "viewport": "1440x900 and 390x844",
+        "evidence": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/report.json",
+        "console": {
+          "errors": 0,
+          "warnings": 0,
+          "uncaughtExceptions": 0,
+          "messages": []
+        },
+        "network": {
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "axe": {
+          "violations": 0,
+          "axeInstrumentationConsoleErrors": 16,
+          "note": "Axe inline-style CSP instrumentation messages were isolated from application console telemetry; the production CSP was unchanged."
+        },
+        "screenshots": {
+          "desktop": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/cohort-matrix-desktop-1440x900-preview-before.png",
+          "mobile": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/cohort-matrix-mobile-390x844-preview-before.png"
+        },
+        "verificationNote": "The same public routes and example disclosures were confirmed visually in the browser; live preview content and behavior were checked without invoking internal application stores."
+      }
     },
     {
       "id": "AUD-506",

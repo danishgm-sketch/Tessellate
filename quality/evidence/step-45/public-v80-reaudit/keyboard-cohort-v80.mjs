@@ -19,7 +19,7 @@ await region.waitFor({ state: 'visible', timeout: 20000 });
 const dimensions = await region.evaluate(element => ({ clientWidth: element.clientWidth, scrollWidth: element.scrollWidth }));
 await page.screenshot({ path: path.join(output, 'cohort-matrix-mobile-390x844-keyboard-focus-before.png'), fullPage: true });
 await region.focus();
-const focusConfirmed = await region.evaluate(element => element === document.activeElement);
+const focusConfirmed = await region.evaluate(element => element === element.ownerDocument.activeElement);
 const before = await region.evaluate(element => element.scrollLeft);
 await page.keyboard.press('ArrowRight');
 await page.waitForTimeout(250);

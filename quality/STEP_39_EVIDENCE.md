@@ -1,6 +1,6 @@
 # Step 39 — Language and copy evidence
 
-Step 39 remains in progress. Findings close as deployed only after version-specific browser evidence is recorded in audit/runtime-audit.json. Public Sites v62 closes 73 copy/resource findings with desktop and mobile evidence; public v63 closes AUD-405 after the same browser regression passes at desktop and mobile. The catalogue-wide manual review remains incomplete. Older issue sections below preserve their contemporaneous status and are superseded by the dated v62 closeout and continuation notes at the end of this file.
+Step 39 remains in progress. Findings close as deployed only after version-specific browser evidence is recorded in audit/runtime-audit.json. Public v80 closes AUD-496–AUD-505 after issue-specific checks at 1440×900 and 390×844. The wider manual language review across the full public catalogue, documentation, CLI, MCP, errors, and secondary workflows remains incomplete. Older issue sections below preserve their contemporaneous status and are superseded by dated closeouts and continuation notes.
 
 ## AUD-177 — AI Prompt Hero advertised an unavailable generation service
 
@@ -803,3 +803,18 @@ The component tests passed 18/18 after the original red run (9/9 failing before 
 The v80 live audit repeated the eight high-risk resource previews at 1440×900 and 390×844 (16 captures). All routes returned HTTP 200, with zero application console errors or warnings, uncaught exceptions, failed requests, HTTP errors, overflow, or Axe violations. The cohort table was keyboard reachable on mobile and ArrowRight scrolled it 40px. The three contrast fixes and named keyboard-scroll region therefore pass on the deployed Site; AUD-506–AUD-509 are closed. Axe emitted 16 CSP-blocked inline-style messages during its instrumentation, separated from clean application telemetry; no security policy was weakened. Evidence is in `quality/evidence/step-45/public-v80-reaudit/closure-summary.json` and `quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/`.
 
 The four closures do not close Step 39. AUD-496–AUD-505 remain fixed awaiting their own deployed interaction checks; the full language/copy review across public pages, documentation, CLI, MCP, errors, and secondary workflows is still incomplete. The current 509-item ledger has 0 Critical, 91 High, 389 Medium, and 29 Low findings. Status counts: 253 deployed-verified, 143 awaiting deployed verification, 98 locally verified, 9 historical closed, 2 closed-local, 2 legacy fixed, and 2 documented Sites limitations. AUD-419 remains the only nonclosed High.
+## 2026-11-06 continuation — v80 closes AUD-496–AUD-505
+
+The eight affected resource routes were revisited on the public v80 Site at 1440×900 and 390×844. The route report contains 16 successful HTTP 200 captures, zero navigation failures, zero horizontal overflow, zero Axe violations, and zero application console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. A focused follow-up corrected a false negative in the earlier suggested-action locator: clicking “Export as Vite App” now has deployed evidence that it reports “Example action previewed locally; no product operation was run.”
+
+Verified behavior:
+- Admin Console labels organization data as an example, explains identity provider state is not connected, and disables Invite User until a host handler exists.
+- AI Memory labels local sample preferences and clears only those examples.
+- Prompt History labels sample records, disables Replay without a host callback, and filters to a truthful empty state.
+- Suggested Actions identifies example cards and reports local preview without claiming the export or audit ran.
+- API route cards say they are illustrative examples, not API documentation.
+- Audit Log labels example events and disclaims live/immutable status.
+- Command Centre identifies sample telemetry/status and never claims systems are operational.
+- Cohort Matrix identifies values as illustrative and gives the scroll area a keyboard name and focusable region; the deployed keyboard check is in cohort-matrix-keyboard-v80.json.
+
+Evidence: quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/report.json, ai-suggested-action-followup-v80.json, and the desktop/mobile screenshots in the same directory. Runtime ledger entries AUD-496–AUD-505 now have v80 deployment verification. This closes those ten issue-specific findings only; the 324-resource manual language review and the full Step 39 scope remain open.
