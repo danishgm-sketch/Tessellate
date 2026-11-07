@@ -251,6 +251,43 @@ describe('Tessellate Canonical Schemas', () => {
       expect(ProjectManifestSchema.safeParse(candidate).success).toBe(false);
     });
 
+    it('rejects project screen routes that differ only by slash or case', () => {
+      const candidate = structuredClone(validProjectFixture);
+      const firstGroup = candidate.screenGraph.groups[0]!;
+      firstGroup.screens[0]!.slug = '/overview/';
+      firstGroup.screens.push({
+        ...structuredClone(firstGroup.screens[0]!),
+        id: 'scr_people',
+        name: 'People',
+        slug: 'people',
+      });
+      candidate.screens[0]!.slug = 'overview';
+      candidate.screens.push({
+        id: 'screen_people',
+        screenNodeId: 'scr_people',
+        name: 'People',
+        slug: '/OVERVIEW/',
+        rootNode: {
+          id: 'node_people_root',
+          nodeType: 'layout',
+          semanticRole: 'app-shell',
+          children: [],
+          slots: {},
+          props: {},
+        },
+      });
+
+      const result = ProjectManifestSchema.safeParse(candidate);
+
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        expect(result.error.issues).toContainEqual(expect.objectContaining({
+          path: ['screens', 1, 'slug'],
+          message: expect.stringContaining('Duplicate project screen route'),
+        }));
+      }
+    });
+
     it('rejects oversized project collections before parsing hostile entries', () => {
       const oversizedScreens = Array.from({ length: 25_000 }, () => null);
       const result = ProjectManifestSchema.safeParse({
@@ -312,6 +349,19 @@ describe('Tessellate Canonical Schemas', () => {
         ...structuredClone(firstGroup.screens[0]!),
         id: 'screen-duplicate-route',
         name: 'Duplicate route',
+      });
+
+      expect(ScreenGraphSchema.safeParse(graph).success).toBe(false);
+    });
+
+    it('treats leading slash, trailing slash, and case variants as one route', () => {
+      const graph = structuredClone(validProjectFixture.screenGraph);
+      const firstGroup = graph.groups[0]!;
+      firstGroup.screens[0]!.slug = '/overview/';
+      firstGroup.screens.push({
+        ...structuredClone(firstGroup.screens[0]!),
+        id: 'screen_route_alias',
+        slug: 'OVERVIEW',
       });
 
       expect(ScreenGraphSchema.safeParse(graph).success).toBe(false);

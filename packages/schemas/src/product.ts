@@ -110,6 +110,12 @@ const ScreenGraphBaseSchema = z.object({
   edges: z.array(ScreenEdgeSchema).max(10_000).default([]),
 }).strict();
 
+/** Canonical route identity used when comparing screen slugs across contracts. */
+export function normalizeScreenRouteSlug(slug: string): string {
+  const path = slug.trim().replace(/^\/+|\/+$/g, '').toLowerCase();
+  return path ? `/${path}` : '/';
+}
+
 export const ScreenGraphSchema = ScreenGraphBaseSchema.superRefine((graph, context) => {
   const groupIds = new Set<string>();
   const screenIds = new Set<string>();
@@ -136,7 +142,7 @@ export const ScreenGraphSchema = ScreenGraphBaseSchema.superRefine((graph, conte
       }
       screenIds.add(screen.id);
 
-      const normalizedSlug = screen.slug.toLocaleLowerCase().replace(/\/+$/, '') || '/';
+      const normalizedSlug = normalizeScreenRouteSlug(screen.slug);
       if (routeSlugs.has(normalizedSlug)) {
         context.addIssue({
           code: z.ZodIssueCode.custom,

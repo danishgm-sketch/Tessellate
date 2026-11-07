@@ -11,7 +11,19 @@ the protected released branch until a reviewed PR with green CI is merged.
 Legacy branches are evidence/reference, never parallel sources of product truth.
 
 
-## Current release evidence (2026-11-06)
+## Current release evidence (2026-11-07)
+
+Public Sites v85 is live at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. Version ID: `appgprj_6acc036de8cc8191a823339566972d85~appgver_a4a58b31f42881918ef627fd99d8c643`; deployment: `appgdep_6aee912c731481919084dcd2d2423405`. It carries canonical application source `8574755fe9c1f51d90357c3a7b039ca6b8adac37` through Sites mirror `ca1b4663edc74727a0d54c258458feca7432a02a`. PR #12 merged as `8f6d8ba8a4e9313c15aa9fcc0633999f9c3bb929`; it added the v85 audit, tests and evidence without changing runtime code, so v85 remains the current deployment. Exact-head CI passed (Actions run 42335341318).
+
+The v85 audit visited 31 public route shells at 1440×900 and 390×844 (62/62 passed), then completed the flagship employee-experience Compose → Direction C → Workbench → mutation → undo/redo → manifest/standalone-export journey at desktop and mobile. Three directions rendered distinct navigation, grammar and resource sets with no unresolved diagnostics. The desktop standalone export clean-installed, built and opened in a browser. Core route/mode Axe runs recorded zero WCAG 2.2 A/AA or target-size violations; the generated project had zero serious/critical, heading-order or target-size violations. Scope and evidence: `quality/STEP_45_EVIDENCE.md` and `audit/evidence/step-45/public-v85-route-sweep/ROUTE_AUDIT.md`.
+
+The runtime ledger remains at 513 findings (0 Critical, 91 High, 393 Medium, 29 Low); AUD-419 is the only nonclosed High. The complete release gate remains open. D1/R2 are unbound. Verso's inspected source remains `UNLICENSED`, so the local inspection adapter is not redistributed. Human usability sessions are owner-waived, not passed.
+
+### 2026-11-07 continuation — Step 5 screen-route contract
+
+A regression showed that `ProjectManifestSchema` accepted two project screens whose route slugs differ only by case and leading/trailing slashes, even though route consumers canonicalize those forms to the same destination. The regression failed before the fix. `normalizeScreenRouteSlug` is now shared by `ScreenGraphSchema` and `ProjectManifestSchema`, and focused schema tests pass (164 passed). `docs/DATA_CONTRACTS.md` records the route-identity rule. This is a contract-level hardening change; no D1/R2 binding, paid service, or secret was added. Exact-head CI and deployed verification are pending for this continuation.
+
+### Historical release state — v83 (2026-11-06)
 
 Public Sites v83 is live at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. Version ID: `appgprj_6acc036de8cc8191a823339566972d85~appgver_31e30cf4b9008191a5b0dc26bcd36fbe`; deployment: `appgdep_6aee4bf6e99c8191b5c904878a60134c`. It serves the AUD-512 fix from canonical commit `484a00b25cbb00e9fe54ce48804153041f6f073d` through Sites mirror `e8adb0a10e9ab0e57cd48a3b8f12894fd8f90536`. PR #10 remains open and unmerged. V80 closes AUD-496–AUD-509, v81 closes AUD-510, v82 closes AUD-511, and v83 closes AUD-512 after deployed first-visit checks at desktop and mobile. The 31-route/flagship/tool audit remains the v81 baseline; this targeted follow-up does not repeat it. The broader release gate remains open. Evidence is in `quality/evidence/step-45/public-v81-followup-2026-11-06/` and `audit/evidence/step-47/AUD-512/`.
 
