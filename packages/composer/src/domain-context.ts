@@ -2135,3 +2135,167 @@ export function specialiseConsumer(base: ArchetypeDefinition, text: string): Arc
     ],
   };
 }
+
+/** Keep hazardous offshore maintenance briefs operational and safety-led. */
+export function specialiseOffshoreWindOperations(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  const offshoreWind = /\b(?:offshore wind|wind farm|wind turbine)\b/i.test(text);
+  const operationalWork =
+    /\b(?:maintenance|work orders?|permit(?:s)? to work|lockout\s*\/\s*tagout|loto|sea conditions?|turbines?|technicians?|crew dispatch|incident escalation)\b/i.test(
+      text
+    );
+
+  if (base.id !== 'erp-operations' || !offshoreWind || !operationalWork) return base;
+
+  return {
+    ...base,
+    name: 'Offshore Wind Operations',
+    primaryAudience:
+      'Offshore technicians, control-room operators, maintenance coordinators, and health and safety leads',
+    primaryObjective:
+      'Keep offshore turbines safe and available by coordinating maintenance windows, sea conditions, permits to work, verified energy isolation, and incident escalation',
+    userSophistication: 80,
+    trustRequirement: 99,
+    informationComplexity: 90,
+    dataDensity: 84,
+    collaborationLevel: 90,
+    transactionCriticality: 99,
+    navigationComplexity: 85,
+    mobileImportance: 95,
+    defaultEntities: [
+      {
+        name: 'Turbine',
+        description:
+          'An offshore turbine with its operational status, inspection history, and location',
+        fields: ['id', 'site', 'status', 'lastInspection', 'activeWorkOrder'],
+      },
+      {
+        name: 'Work Order',
+        description:
+          'A maintenance or inspection task linked to a turbine, crew, and access window',
+        fields: ['id', 'turbineId', 'scope', 'priority', 'crewId', 'status'],
+      },
+      {
+        name: 'Permit to Work',
+        description:
+          'An authorisation record for a defined work scope and verified energy isolation',
+        fields: ['id', 'workOrderId', 'isolationStatus', 'approver', 'validUntil', 'status'],
+      },
+      {
+        name: 'Crew',
+        description: 'A field crew with role, competency, shift, and vessel assignment',
+        fields: ['id', 'members', 'competencies', 'shift', 'vesselId'],
+      },
+      {
+        name: 'Sea Condition',
+        description: 'A forecast and observed sea condition used to assess access windows',
+        fields: ['id', 'site', 'observedAt', 'forecastWindow', 'accessStatus'],
+      },
+      {
+        name: 'Incident',
+        description:
+          'A safety or operational incident with crew accountability and escalation history',
+        fields: ['id', 'site', 'severity', 'reportedAt', 'responseOwner', 'status'],
+      },
+      {
+        name: 'Spare Part',
+        description: 'A maintenance part with turbine compatibility and stock location',
+        fields: ['id', 'partNumber', 'compatibleTurbines', 'quantity', 'location'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'dispatch-offshore-work-order',
+        name: 'Plan a maintenance window and dispatch a competent crew',
+        steps: [
+          'Review turbine status and inspection scope',
+          'Check sea conditions and vessel access window',
+          'Verify crew competency and shift coverage',
+          'Dispatch the work order and track completion',
+        ],
+      },
+      {
+        id: 'authorise-permit-to-work',
+        name: 'Verify energy isolation and authorise a permit to work',
+        steps: [
+          'Review the work scope and affected equipment',
+          'Apply lockout/tagout to identified energy sources',
+          'Independently verify isolation and record evidence',
+          'Approve the permit and monitor its expiry',
+        ],
+      },
+      {
+        id: 'escalate-offshore-incident',
+        name: 'Account for the crew and escalate an offshore incident',
+        steps: [
+          'Raise a safety or operational incident',
+          'Account for affected crew members',
+          'Escalate to the control room and response lead',
+          'Keep a time-stamped response record',
+        ],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Turbine Operations',
+        screenType: 'dashboard',
+        purpose:
+          'Fleet status, sea-condition access windows, active work orders, permits requiring action, crew coverage, and unresolved incidents',
+        jobs: ['review-fleet-status', 'check-access-window', 'triage-safety-alerts'],
+        required: true,
+      },
+      {
+        name: 'Work Orders',
+        screenType: 'workspace-editor',
+        purpose:
+          'Schedule turbine maintenance and inspections by work scope, crew, vessel, and access window',
+        jobs: ['schedule-maintenance', 'dispatch-crew', 'sign-off-work'],
+        required: true,
+      },
+      {
+        name: 'Permits to Work',
+        screenType: 'index-list',
+        purpose:
+          'Review work scopes, verify lockout/tagout isolation, and track permit approval and expiry',
+        jobs: ['verify-energy-isolation', 'approve-permit', 'monitor-permit-expiry'],
+        required: true,
+      },
+      {
+        name: 'Incident Response',
+        screenType: 'index-list',
+        purpose:
+          'Account for affected crews, escalate to the control room, and maintain a traceable response record',
+        jobs: ['account-for-crew', 'escalate-incident', 'record-response'],
+        required: true,
+      },
+      {
+        name: 'Crew & Vessel Dispatch',
+        screenType: 'workspace-editor',
+        purpose:
+          'Match qualified crews and vessels to work orders, shifts, and forecast access windows',
+        jobs: ['check-competency', 'assign-vessel', 'coordinate-shifts'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      ...base.requiredCapabilities,
+      'offline-work-order-drafts',
+      'permit-to-work',
+      'lockout-tagout-verification',
+      'incident-escalation',
+      'weather-window-planning',
+      'crew-competency-check',
+      'glove-friendly-controls',
+    ],
+    forbiddenPatterns: [
+      ...base.forbiddenPatterns,
+      'safety-state-distinguished-by-colour-alone',
+      'unverified-energy-isolation-approval',
+      'stale-weather-window-presented-as-current',
+      'offline-work-presented-as-synchronised',
+      'emergency-escalation-hidden-in-secondary-navigation',
+    ],
+  };
+}
