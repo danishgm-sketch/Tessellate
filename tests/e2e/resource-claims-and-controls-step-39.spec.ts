@@ -22,7 +22,7 @@ test.afterEach(async ({ page }) => {
 });
 
 async function openPreview(page: Page, slug: string): Promise<FrameLocator> {
-  await page.goto(`/preview/?resource=${encodeURIComponent(slug)}`, { waitUntil: 'networkidle' });
+  await page.goto(`/preview/?resource=${encodeURIComponent(slug)}`, { waitUntil: 'domcontentloaded' });
   const preview = page.frameLocator('iframe[data-tessellate-preview-frame]');
   await expect(preview.locator('.tess-screen')).toBeVisible({ timeout: 15_000 });
   return preview;
