@@ -16,6 +16,7 @@ export default defineConfig({
     'compose-responsiveness-hardening.spec.ts',
     'catalogue-preview-loading-state.spec.ts',
     'resource-detail-preview-loading-state.spec.ts',
+    'resource-preview-reset-state.spec.ts',
     'minimal-top-nav-responsive-collapse.spec.ts',
     'workbench-mobile-accessible-label.spec.ts',
     'workbench-mobile-preview-interactions.spec.ts',

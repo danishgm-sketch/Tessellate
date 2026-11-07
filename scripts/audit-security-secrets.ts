@@ -53,6 +53,60 @@ function auditSecurityAndSecrets() {
     scanDir(d);
   }
 
+  // 1a. Browser HAR evidence can capture host cookies or provider credentials.
+  // Keep the evidence useful for status/timing review while rejecting any
+  // unredacted credential-bearing headers or cookie records.
+  const evidenceDirs = ['audit/evidence', 'quality/evidence'];
+  const sensitiveHeaders = new Set([
+    'authorization',
+    'proxy-authorization',
+    'cookie',
+    'set-cookie',
+    'x-api-key',
+  ]);
+  function scanHarEvidence(dir: string) {
+    if (!fs.existsSync(dir)) return;
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        scanHarEvidence(fullPath);
+        continue;
+      }
+      if (!entry.isFile() || !entry.name.toLowerCase().endsWith('.har')) continue;
+
+      let har: { log?: { entries?: Array<{ request?: { headers?: Array<{ name?: string; value?: string }>; cookies?: Array<{ value?: string }> }; response?: { headers?: Array<{ name?: string; value?: string }>; cookies?: Array<{ value?: string }> } }> } };
+      try {
+        har = JSON.parse(fs.readFileSync(fullPath, 'utf-8')) as typeof har;
+      } catch {
+        console.error(`[EVIDENCE PRIVACY VIOLATION] HAR evidence is not valid JSON: ${fullPath}`);
+        violations++;
+        continue;
+      }
+
+      for (const record of har.log?.entries ?? []) {
+        for (const headers of [record.request?.headers ?? [], record.response?.headers ?? []]) {
+          for (const header of headers) {
+            const value = header.value?.trim().toLowerCase();
+            if (
+              header.name && sensitiveHeaders.has(header.name.toLowerCase()) &&
+              value && value !== '[redacted]' && value !== '<redacted>'
+            ) {
+              console.error(`[EVIDENCE PRIVACY VIOLATION] Unredacted sensitive header in ${fullPath}`);
+              violations++;
+            }
+          }
+        }
+        for (const cookies of [record.request?.cookies ?? [], record.response?.cookies ?? []]) {
+          if (cookies.some((cookie) => Boolean(cookie.value && !['[redacted]', '<redacted>'].includes(cookie.value.trim().toLowerCase())))) {
+            console.error(`[EVIDENCE PRIVACY VIOLATION] Unredacted cookie record in ${fullPath}`);
+            violations++;
+          }
+        }
+      }
+    }
+  }
+  for (const evidenceDir of evidenceDirs) scanHarEvidence(evidenceDir);
+
   // 2. Audit D1 schema / migrations: Provider secrets must NEVER be persisted in D1
   const d1MigrationDirs = ['apps/api/migrations', 'packages/db/migrations'];
   for (const migDir of d1MigrationDirs) {

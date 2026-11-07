@@ -43,6 +43,7 @@ export function ResourcePreviewFrame({
   const [reducedMotion, setReducedMotion] = useState<boolean>(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [previewHostReady, setPreviewHostReady] = useState(false);
+  const [previewGeneration, setPreviewGeneration] = useState(0);
   const [previewDestination, setPreviewDestination] = useState<PreviewNavigationDestination | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const initializedRef = useRef(false);
@@ -125,6 +126,9 @@ export function ResourcePreviewFrame({
     setTheme('light');
     setReducedMotion(false);
     setPreviewDestination(null);
+    initializedRef.current = false;
+    setIframeLoaded(false);
+    setPreviewGeneration((generation) => generation + 1);
   };
 
   const deviceWidthClass = {
@@ -274,6 +278,7 @@ export function ResourcePreviewFrame({
             </div>
           )}
           <iframe
+            key={previewGeneration}
             ref={iframeRef}
             src={previewHostReady ? initialIframeSrc : undefined}
             title={`${manifest.name} live preview`}

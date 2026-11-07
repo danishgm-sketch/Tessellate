@@ -24623,6 +24623,62 @@
         ],
         "evidence": "audit/evidence/AUD-513/deployed-v84/runtime-audit.json"
       }
+    },
+    {
+      "id": "AUD-514",
+      "severity": "medium",
+      "route": "/r/api-key-management",
+      "viewport": "1440x900 and 390x844",
+      "category": "state",
+      "title": "Reset preview state did not clear local state inside the isolated resource iframe",
+      "expected": "Reset preview state should restore the resource and host controls to their initial values.",
+      "actual": "After adding Example token 3 and activating Reset preview state on public v88, the third sample remained in the iframe and the status still said it had been added.",
+      "reproduction": [
+        "Open /r/api-key-management on the public review Site.",
+        "Wait for the isolated preview to show Example API tokens.",
+        "Activate Add example token and confirm Example token 3 appears.",
+        "Activate Reset preview state and observe Example token 3 remains."
+      ],
+      "console": [
+        "No application console errors, uncaught exceptions, or mobile browser issues. Desktop DevTools reported three deprecated-feature issues from the host-injected Cloudflare challenge script; details are in the issue-specific evidence."
+      ],
+      "network": [
+        "Desktop: 48 requests; mobile: 46 requests. Essential document, application assets, and preview requests returned 200 or cache-valid 304; no failed essential requests or HTTP errors."
+      ],
+      "screenshot": "quality/evidence/step-39/public-v88-api-token-preview/deployed-desktop-after-reset-still-added.jpg; quality/evidence/step-39/public-v88-api-token-preview/deployed-mobile-after-reset-still-added.jpg",
+      "rootCause": "The reset handler reset only host toolbar state. The isolated iframe retained its own local React state and received an update message instead of a fresh preview initialization.",
+      "affectedCode": [
+        "apps/site/src/components/ResourcePreviewFrame.tsx",
+        "tests/e2e/resource-preview-reset-state.spec.ts",
+        "tests/e2e/sites-preview.playwright.config.ts"
+      ],
+      "fixCommit": null,
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-515",
+      "severity": "medium",
+      "route": "Repository HAR evidence",
+      "viewport": "not applicable",
+      "category": "security",
+      "title": "Browser HAR evidence retained host cookie headers",
+      "expected": "Network evidence should not retain browser authentication or session material.",
+      "actual": "Two tracked public-page HAR captures contained populated request Cookie and response Set-Cookie headers. Values were not repeated in the audit report.",
+      "reproduction": [
+        "Open either affected HAR as JSON.",
+        "Inspect log.entries[*].request.headers and log.entries[*].response.headers for Cookie or Set-Cookie fields."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "HAR files preserved browser-provided headers, while the existing security audit scanned application source but did not inspect evidence artifacts.",
+      "affectedCode": [
+        "scripts/audit-security-secrets.ts",
+        "quality/evidence/step-39/public-v42/page-recipes/pages-before-desktop.har",
+        "quality/evidence/step-39/public-v42/page-recipes/pages-before-mobile.har"
+      ],
+      "fixCommit": null,
+      "status": "fixed-local-verified"
     }
   ],
   "generatedAt": "2026-11-07T00:44:25.635Z",

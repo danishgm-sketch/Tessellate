@@ -1,0 +1,66 @@
+{
+  "audit": "AUD-514",
+  "deployedSite": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersion": 88,
+  "canonicalMainAtAudit": "a338ab93ae6354bfe09fcd01421b00f2ff36cd34",
+  "route": "/r/api-key-management",
+  "viewports": [
+    {
+      "viewport": "1440x900",
+      "documentStatus": 200,
+      "documentWidth": 1425,
+      "viewportWidth": 1440,
+      "networkRequests": 48,
+      "failedEssentialRequests": 0,
+      "httpErrors": 0,
+      "uncaughtExceptions": 0,
+      "applicationConsoleErrors": 0,
+      "browserIssues": [
+        "Three deprecation issue records came from the host-injected Cloudflare challenge script, not Tessellate application scripts: Fenced Frame API, StorageType.persistent, and Protected Audience API."
+      ],
+      "previewReady": true,
+      "resetResult": "After adding Example token 3 and activating Reset preview state, Example token 3 remained and the live status still reported that it had been added.",
+      "screenshot": "deployed-desktop-after-reset-still-added.jpg"
+    },
+    {
+      "viewport": "390x844",
+      "documentStatus": 200,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "networkRequests": 46,
+      "failedEssentialRequests": 0,
+      "httpErrors": 0,
+      "uncaughtExceptions": 0,
+      "applicationConsoleErrors": 0,
+      "browserIssues": [],
+      "previewReady": true,
+      "resetResult": "After adding Example token 3 and activating Reset preview state, Example token 3 remained and the live status still reported that it had been added.",
+      "screenshot": "deployed-mobile-after-reset-still-added.jpg"
+    }
+  ],
+  "reproduction": [
+    "Open /r/api-key-management on the public v88 review Site.",
+    "Wait for the isolated preview to show Example API tokens.",
+    "Activate Add example token; confirm Example token 3 and its live status appear.",
+    "Activate Reset preview state; observe that Example token 3 remains."
+  ],
+  "baselineRegression": {
+    "test": "tests/e2e/resource-preview-reset-state.spec.ts",
+    "result": "FAIL before fix",
+    "assertion": "Expected Remove example token 3 count 0 after reset; received 1."
+  },
+  "localVerification": {
+    "result": "PASS after fix",
+    "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts --project=sites-chromium --project=sites-mobile-chromium tests/e2e/resource-preview-reset-state.spec.ts",
+    "passed": 2,
+    "failed": 0,
+    "screenshots": [
+      "local-after-desktop.png",
+      "local-after-mobile.png"
+    ]
+  },
+  "rootCause": "The reset handler restored only the host toolbar state. The isolated iframe retained its own local React state, and the host sent a preview update instead of creating a fresh preview instance.",
+  "remediation": "The shared resource preview reset now remounts the isolated iframe, clears the ready state, and performs the preview initialization handshake again. Local verification is complete; deployed verification is pending.",
+  "fixCommit": null,
+  "status": "fixed-local-verified"
+}
