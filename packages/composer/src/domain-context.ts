@@ -2062,15 +2062,15 @@ export function specialiseDeveloperTools(
   const selected = profiles.find((profile) => profile.match.test(text));
   return selected ? { ...base, ...selected.context } : base;
 }
-/** Keep community briefs focused on local groups and updates, not photo-story defaults. */
+/** Keep local community briefs focused on resident needs, not generic media sharing. */
 export function specialiseConsumer(base: ArchetypeDefinition, text: string): ArchetypeDefinition {
   if (
     base.id !== 'consumer' ||
-    !/\b(neighborhood social|community app|hobby groups?|shared interests?)\b/i.test(text)
+    !/\b(?:neighbou?rhood social|community app|hobby groups?|shared interests?|mutual[ -]aid)\b/i.test(text)
   ) {
     return base;
   }
-  return {
+  const localCommunity: ArchetypeDefinition = {
     ...base,
     primaryAudience:
       'Everyday consumers, residents, hobby-group members, and nearby community members',
@@ -2132,6 +2132,176 @@ export function specialiseConsumer(base: ArchetypeDefinition, text: string): Arc
       ...base.requiredCapabilities,
       'community-groups',
       'local-event-discovery',
+    ],
+  };
+
+  if (!/\bmutual[ -]aid\b/i.test(text)) return localCommunity;
+
+  return {
+    ...localCommunity,
+    name: 'Neighbourhood Mutual Aid',
+    primaryAudience:
+      'Residents, volunteer coordinators, and trusted community moderators',
+    primaryObjective:
+      'Coordinate consent-based local assistance, practical community events, sourced notices with clear expiry, and safe moderation while exposing only the minimum personal information needed',
+    userSophistication: 55,
+    trustRequirement: 96,
+    informationComplexity: 74,
+    dataDensity: 58,
+    collaborationLevel: 94,
+    transactionCriticality: 72,
+    navigationComplexity: 68,
+    mobileImportance: 100,
+    defaultEntities: [
+      {
+        name: 'Resident',
+        description:
+          'A verified community member represented by selected neighbourhood and language preferences',
+        fields: ['id', 'selectedNeighbourhood', 'preferredLanguage', 'verificationStatus'],
+      },
+      {
+        name: 'Mutual Aid Request',
+        description:
+          'A request for practical local help with a selected audience and consent-controlled contact',
+        fields: [
+          'id',
+          'category',
+          'neighbourhood',
+          'createdAt',
+          'status',
+          'visibility',
+          'consentState',
+        ],
+      },
+      {
+        name: 'Volunteer Offer',
+        description:
+          'A resident offer of help with a service category, approximate area, and availability',
+        fields: ['id', 'serviceCategory', 'neighbourhood', 'availability', 'consentState', 'status'],
+      },
+      {
+        name: 'Community Event',
+        description:
+          'A local event with an approximate area, schedule, and accessibility information',
+        fields: ['id', 'title', 'neighbourhood', 'startsAt', 'accessibilityNotes', 'status'],
+      },
+      {
+        name: 'Safety Notice',
+        description:
+          'A sourced local notice with an area, publication time, and expiry time',
+        fields: ['id', 'area', 'summary', 'source', 'publishedAt', 'expiresAt'],
+      },
+      {
+        name: 'Moderation Report',
+        description:
+          'A resident-submitted report with a reason, review state, and resolution history',
+        fields: ['id', 'reason', 'submittedAt', 'reviewStatus', 'resolution'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'publish-consent-based-help-request',
+        name: 'Share a local help request with a chosen audience',
+        steps: [
+          'Choose a request category and approximate neighbourhood',
+          'Select who may see the request and what information is included',
+          'Keep direct contact details hidden until both residents consent',
+          'Update the request status when help is arranged',
+        ],
+      },
+      {
+        id: 'coordinate-volunteer-offer',
+        name: 'Coordinate a volunteer offer without exposing private contact details',
+        steps: [
+          'Review a volunteer offer and its available times',
+          'Match the offer to a request in the selected neighbourhood',
+          'Ask both residents to consent before sharing contact details',
+          'Close the request when the residents confirm the outcome',
+        ],
+      },
+      {
+        id: 'moderate-community-safety-report',
+        name: 'Review a safety report and keep the resolution traceable',
+        steps: [
+          'Receive a resident safety report',
+          'Limit report details to authorised moderators',
+          'Review the report and record a reasoned outcome',
+          'Resolve or escalate it and retain an access history',
+        ],
+      },
+      {
+        id: 'expire-local-safety-notice',
+        name: 'Publish a sourced local notice with a clear expiry',
+        steps: [
+          'Verify the notice source and approximate area',
+          'Publish the summary with its timestamp and expiry',
+          'Review the source when conditions change',
+          'Mark the notice expired when it is no longer current',
+        ],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Neighbourhood Updates',
+        screenType: 'dashboard',
+        purpose:
+          'A chronological, resident-selected view of local notices, help requests, volunteer offers, and events',
+        jobs: ['review-local-updates', 'find-nearby-help', 'check-safety-notices'],
+        required: true,
+      },
+      {
+        name: 'Community Help Board',
+        screenType: 'index-list',
+        purpose:
+          'Find and coordinate help requests and volunteer offers by category and approximate neighbourhood',
+        jobs: ['review-help-request', 'offer-volunteer-help', 'coordinate-consent'],
+        required: true,
+      },
+      {
+        name: 'Local Events & Skills',
+        screenType: 'index-list',
+        purpose:
+          'Discover local events and skill swaps with language and accessibility details',
+        jobs: ['find-community-event', 'share-skill-offer', 'check-accessibility'],
+        required: true,
+      },
+      {
+        name: 'Safety & Moderation',
+        screenType: 'index-list',
+        purpose:
+          'Review authorised safety reports, document decisions, and expire outdated notices',
+        jobs: ['review-safety-report', 'record-moderation-outcome', 'expire-notice'],
+        required: true,
+      },
+      {
+        name: 'Privacy & Languages',
+        screenType: 'settings',
+        purpose:
+          'Choose preferred language, neighbourhood visibility, notification detail, and contact-sharing consent',
+        jobs: ['set-language-preference', 'control-neighbourhood-visibility', 'review-contact-consent'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      'community-groups',
+      'local-event-discovery',
+      'consent-based-contact-sharing',
+      'community-moderation-queue',
+      'minimal-location-precision',
+      'language-preferences',
+      'expiring-local-notices',
+      'offline-draft-mode',
+      'reduced-motion-support',
+    ],
+    forbiddenPatterns: [
+      ...localCommunity.forbiddenPatterns,
+      'direct-contact-shared-without-mutual-consent',
+      'exact-home-address-in-public-feed',
+      'unverified-identity-presented-as-verified',
+      'sensitive-request-details-visible-to-unselected-audience',
+      'algorithmic-feed-without-resident-control',
+      'stale-safety-notice-presented-as-current',
+      'moderation-report-visible-to-unauthorised-residents',
     ],
   };
 }

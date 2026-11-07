@@ -19,9 +19,12 @@ function workspaceBrand(entityName?: string): string {
 export function resolveWorkspaceBrand(product: ProductModel, briefDescription = ''): string {
   const employee = product.entities.some((entity) => entity.name === 'Employee');
   const primaryArchetype = product.productArchetypes[0]?.tag ?? '';
-  const community = /community|neighborhood/i.test(
+  const community = /community|neighbou?rhood/i.test(
     `${product.primaryAudience} ${product.primaryObjective}`
   );
+  const mutualAidCommunity =
+    primaryArchetype === 'consumer' &&
+    product.entities.some((entity) => entity.name === 'Mutual Aid Request');
   const tradingTerminal =
     primaryArchetype === 'fintech' &&
     /market depth|equity trade|trading terminal|order book/i.test(
@@ -33,6 +36,7 @@ export function resolveWorkspaceBrand(product: ProductModel, briefDescription = 
     product.entities.some((entity) => entity.name === 'Permit to Work');
 
   if (employee) return 'People & Co';
+  if (mutualAidCommunity) return 'Neighbourhood Commons';
   if (community) return 'Example Community';
   if (tradingTerminal) return 'Market Workspace';
   if (offshoreWindOperations) return 'Wind Operations';
@@ -117,6 +121,80 @@ function offshoreWindRecordSet(screenName: string): {
   };
 }
 
+function mutualAidRecordSet(screenName: string): {
+  columnLabels: { name: string; type: string; quality: string; status: string };
+  rows: Array<{
+    id: number;
+    name: string;
+    type: string;
+    quality: number;
+    status: string;
+    displayValue: string;
+  }>;
+} {
+  const record = /moderation|safety/i.test(screenName)
+    ? {
+        name: 'moderation report',
+        type: 'Reason reviewed by an authorised moderator',
+        quality: 'Access scope',
+        statusLabel: 'Review state',
+        status: 'Moderation service not connected',
+        displayValue: 'Example only · no resident details',
+      }
+    : /help|aid/i.test(screenName)
+      ? {
+          name: 'help request',
+          type: 'Category and approximate area',
+          quality: 'Visibility',
+          statusLabel: 'Request state',
+          status: 'Help service not connected',
+          displayValue: 'Contact hidden until mutual consent',
+        }
+      : /event|skill/i.test(screenName)
+        ? {
+            name: 'local event or skill swap',
+            type: 'Approximate area and time',
+            quality: 'Accessibility',
+            statusLabel: 'Listing state',
+            status: 'Event service not connected',
+            displayValue: 'Example details only',
+          }
+        : /privacy|language/i.test(screenName)
+          ? {
+              name: 'privacy preference',
+              type: 'Neighbourhood and language settings',
+              quality: 'Information shared',
+              statusLabel: 'Settings state',
+              status: 'Account service not connected',
+              displayValue: 'No resident profile is connected',
+            }
+          : {
+              name: 'local safety notice',
+              type: 'Source and approximate area',
+              quality: 'Expiry',
+              statusLabel: 'Notice state',
+              status: 'Notice service not connected',
+              displayValue: 'Example only · verify before acting',
+            };
+
+  return {
+    columnLabels: {
+      name: record.name,
+      type: record.type,
+      quality: record.quality,
+      status: record.statusLabel,
+    },
+    rows: ['A', 'B', 'C'].map((letter, index) => ({
+      id: index + 1,
+      name: `Example ${record.name} ${letter}`,
+      type: record.type,
+      quality: 0,
+      status: record.status,
+      displayValue: record.displayValue,
+    })),
+  };
+}
+
 export function bindResourceContent(
   product: ProductModel,
   screen: ScreenNode,
@@ -128,6 +206,9 @@ export function bindResourceContent(
 ): Record<string, unknown> {
   const employee = product.entities.some((entity) => entity.name === 'Employee');
   const primaryArchetype = product.productArchetypes[0]?.tag ?? '';
+  const isMutualAidCommunity =
+    primaryArchetype === 'consumer' &&
+    product.entities.some((entity) => entity.name === 'Mutual Aid Request');
   const isOffshoreWindOperations =
     primaryArchetype === 'erp-operations' &&
     product.entities.some((entity) => entity.name === 'Turbine') &&
@@ -135,10 +216,11 @@ export function bindResourceContent(
   const isRealEstate = primaryArchetype === 'real-estate';
   const isMarketplaceListings =
     primaryArchetype === 'marketplace' && screen.name === 'Explore Listings';
-  const isCommunity = /community|neighborhood/i.test(
+  const isCommunity = /community|neighbou?rhood/i.test(
     `${product.primaryAudience} ${product.primaryObjective}`
   );
-  const isCommunityActivity = isCommunity && screen.name === 'Activity Stream';
+  const isCommunityActivity =
+    isCommunity && /^(?:activity stream|neighbourhood updates)$/i.test(screen.name);
   const isNotificationScreen = /notifications?|inbox|alerts/i.test(screen.name);
   const isTradingTerminal =
     primaryArchetype === 'fintech' &&
@@ -228,31 +310,33 @@ export function bindResourceContent(
     ? 'Meet your team'
     : isOffshoreWindOperations
       ? 'Review turbine operations'
-    : isFlightManagement
-      ? 'View upcoming flights'
-      : isGroundedSupportAssistant
-        ? 'Ask a support question'
-        : isRadioProduct
-          ? 'Listen to live radio'
-          : isMagazineProduct
-            ? 'Browse magazine issues'
-            : isNewsroom
-              ? 'Open the newsroom plan'
-              : isFilmStreaming
-                ? 'Browse films'
-                : isMusicStore
-                  ? screen.name === 'Product Catalog'
-                    ? 'View album details'
-                    : 'Browse albums'
-                  : isDestinationTravel
-                    ? 'Explore destinations'
-                    : isHotelBooking
-                      ? 'Find a stay'
-                      : isCommunity
-                        ? 'See community updates'
-                        : isReturnsPortal
-                          ? 'Find an order'
-                          : (ctaCopyByArchetype[primaryArchetype] ?? 'Explore the workspace');
+      : isMutualAidCommunity
+        ? 'View community help requests'
+        : isFlightManagement
+          ? 'View upcoming flights'
+          : isGroundedSupportAssistant
+            ? 'Ask a support question'
+            : isRadioProduct
+              ? 'Listen to live radio'
+              : isMagazineProduct
+                ? 'Browse magazine issues'
+                : isNewsroom
+                  ? 'Open the newsroom plan'
+                  : isFilmStreaming
+                    ? 'Browse films'
+                    : isMusicStore
+                      ? screen.name === 'Product Catalog'
+                        ? 'View album details'
+                        : 'Browse albums'
+                      : isDestinationTravel
+                        ? 'Explore destinations'
+                        : isHotelBooking
+                          ? 'Find a stay'
+                          : isCommunity
+                            ? 'See community updates'
+                            : isReturnsPortal
+                              ? 'Find an order'
+                              : (ctaCopyByArchetype[primaryArchetype] ?? 'Explore the workspace');
   const targetPatternsByArchetype: Record<string, RegExp> = {
     ecommerce: /product detail/i,
     education: /learning|course|catalog/i,
@@ -266,26 +350,28 @@ export function bindResourceContent(
     ? /^teams?$/i
     : isOffshoreWindOperations
       ? /turbine operations/i
-    : isFlightManagement
-      ? /journey overview|flight details/i
-      : isFilmStreaming
-        ? /film catalogue|film detail|watchlist/i
-        : isGroundedSupportAssistant
-          ? /support assistant|answer review/i
-          : isRadioProduct
-            ? /live radio|episode archive/i
-            : isMagazineProduct
-              ? /magazine issues|photo essays/i
-              : isNewsroom
-                ? /newsroom planner|story assignments/i
-                : isDestinationTravel
-                  ? /destination|neighborhood/i
-                  : isHotelBooking
-                    ? /find a stay|room details/i
-                    : isReturnsPortal
-                      ? /order lookup/i
-                      : (targetPatternsByArchetype[primaryArchetype] ??
-                        /overview|dashboard|home|workspace/i);
+      : isMutualAidCommunity
+        ? /community help board/i
+        : isFlightManagement
+          ? /journey overview|flight details/i
+          : isFilmStreaming
+            ? /film catalogue|film detail|watchlist/i
+            : isGroundedSupportAssistant
+              ? /support assistant|answer review/i
+              : isRadioProduct
+                ? /live radio|episode archive/i
+                : isMagazineProduct
+                  ? /magazine issues|photo essays/i
+                  : isNewsroom
+                    ? /newsroom planner|story assignments/i
+                    : isDestinationTravel
+                      ? /destination|neighborhood/i
+                      : isHotelBooking
+                        ? /find a stay|room details/i
+                        : isReturnsPortal
+                          ? /order lookup/i
+                          : (targetPatternsByArchetype[primaryArchetype] ??
+                            /overview|dashboard|home|workspace/i);
   const primaryActionScreen =
     screens.find((item) => preferredTargetPattern.test(item.name)) ??
     screens.find((item) => /overview|dashboard|home|workspace/i.test(item.name)) ??
@@ -302,19 +388,25 @@ export function bindResourceContent(
   const isEmployeeTeamsScreen = employee && /^teams$/i.test(screen.name.trim());
   const isEmployeeEngagementScreen = employee && /engagement|feedback|recognition/i.test(screen.name);
   const isEmployeeSettingsScreen = employee && /settings|policy/i.test(screen.name);
+  const isMutualAidSettingsScreen =
+    isMutualAidCommunity && /privacy|language/i.test(screen.name);
   const description = employee
     ? 'Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.'
     : isReturnsPortal
       ? 'Find a previous purchase, choose eligible items, and follow each return and refund step.'
       : isOffshoreWindOperations
         ? 'Coordinate turbine maintenance, sea conditions, permits to work, verified energy isolation, and incident response. Live operational data appears only when its source is connected.'
+      : isMutualAidCommunity
+        ? 'Share practical local help, community events, and sourced notices by approximate neighbourhood. Resident details stay out of this preview; live accounts and community services are not connected.'
         : `A workspace for ${product.primaryAudience.toLowerCase()}.`;
   const conversionCtaHeadline = employee
     ? 'Make the next step easier for every colleague.'
     : `Ready to ${primaryActionLabel.toLowerCase()}?`;
   const conversionCtaDescription = employee
     ? 'Help colleagues find their team, support and policies in one clear place.'
-    : `Continue with ${primaryActionLabel.toLowerCase()} for ${product.primaryAudience.toLowerCase()}.`;
+    : isMutualAidCommunity
+      ? 'Find or offer local help, with contact details shared only after both residents consent.'
+      : `Continue with ${primaryActionLabel.toLowerCase()} for ${product.primaryAudience.toLowerCase()}.`;
   const footerDescription = employee
     ? 'A people-first home for onboarding, teams and trusted policies.'
     : description;
@@ -415,7 +507,14 @@ export function bindResourceContent(
         placeholder: 'Search by turbine, permit, or work order',
         helperText: 'Example search only. Connect your operations service to search live records.',
       }
-    : searchCopyByArchetype[primaryArchetype] ?? {
+    : isMutualAidCommunity
+      ? {
+          label: 'Search local help and notices',
+          placeholder: 'Search by category or neighbourhood',
+          helperText:
+            'Example search only. Resident accounts and community services are not connected.',
+        }
+      : searchCopyByArchetype[primaryArchetype] ?? {
         label: 'Search records',
         placeholder: 'Search records',
         helperText: 'Example search only. Connect your data source to search live records.',
@@ -443,7 +542,34 @@ export function bindResourceContent(
           detail: 'Response',
         },
       ]
-    : employee
+    : isMutualAidCommunity
+      ? [
+          {
+            title: 'Community Help Board',
+            description:
+              'Browse practical requests and volunteer offers by category and approximate area.',
+            detail: 'Help requests',
+          },
+          {
+            title: 'Local Events & Skills',
+            description:
+              'Find neighbourhood events and skill swaps with language and access details.',
+            detail: 'Events and skills',
+          },
+          {
+            title: 'Safety & Moderation',
+            description:
+              'Review authorised reports and keep sourced local notices up to date.',
+            detail: 'Safety and moderation',
+          },
+          {
+            title: 'Privacy & Languages',
+            description:
+              'Choose language and area visibility; share contact details only by mutual consent.',
+            detail: 'Privacy settings',
+          },
+        ]
+      : employee
     ? [
         {
           title: 'A warm welcome',
@@ -503,7 +629,20 @@ export function bindResourceContent(
           desc: 'This example response is waiting for a person to confirm the cited guidance and confidence.',
         },
       ]
-    : /freelance|designer|proposal/i.test(briefDescription)
+    : isMutualAidCommunity
+      ? [
+          {
+            time: 'Example request',
+            title: 'Grocery collection offered in an example area',
+            desc: 'Example only. Contact details stay private unless both residents consent to share them.',
+          },
+          {
+            time: 'Example volunteer offer',
+            title: 'A local skill swap is available this week',
+            desc: 'Example only. No resident account, location, or message is connected.',
+          },
+        ]
+      : /freelance|designer|proposal/i.test(briefDescription)
       ? [
           {
             time: 'Today',
@@ -529,7 +668,7 @@ export function bindResourceContent(
               desc: 'The seller responds with information relevant to the listing.',
             },
           ]
-        : /community|neighborhood|hobby group/i.test(briefDescription)
+        : /community|neighbou?rhood|hobby group/i.test(briefDescription)
           ? [
               {
                 time: 'Today',
@@ -607,7 +746,25 @@ export function bindResourceContent(
               },
             ]
           : isCommunityActivity
-            ? [
+            ? isMutualAidCommunity
+              ? [
+                  {
+                    time: 'Example notice',
+                    title: 'Community garden cleanup · example only',
+                    desc: 'Example event in a selected neighbourhood. No resident or event service is connected.',
+                  },
+                  {
+                    time: 'Example help request',
+                    title: 'Grocery collection · contact details hidden',
+                    desc: 'Example only. Direct contact remains private until both residents consent.',
+                  },
+                  {
+                    time: 'Example safety notice',
+                    title: 'Local notice · verify source and expiry',
+                    desc: 'Example only. Confirm current information with its source before sharing.',
+                  },
+                ]
+              : [
                 {
                   time: sampleActivityTime(0),
                   title: 'A neighbour shared a local update',
@@ -630,6 +787,7 @@ export function bindResourceContent(
     .match(/\b([\d,]+)[ -]+(?:person|employee|people)/i)?.[1]
     ?.replaceAll(',', '');
   const offshoreWindRecords = offshoreWindRecordSet(screen.name);
+  const mutualAidRecords = mutualAidRecordSet(screen.name);
   const titles: Record<string, string> = isOffshoreWindOperations
     ? {
         'metric-cards': 'Fleet and safety status',
@@ -646,6 +804,22 @@ export function bindResourceContent(
                 ? 'Maintenance work orders'
                 : 'Turbine fleet status',
       }
+    : isMutualAidCommunity
+      ? {
+          'metric-cards': 'Community activity at a glance',
+          'summary-kpis': 'Community activity at a glance',
+          'activity-feed': 'Neighbourhood updates',
+          'activity-timeline': 'Neighbourhood updates',
+          'data-table': /moderation|safety/i.test(screen.name)
+            ? 'Safety and moderation queue'
+            : /help|aid/i.test(screen.name)
+              ? 'Community help board'
+              : /event|skill/i.test(screen.name)
+                ? 'Local events and skill swaps'
+                : /privacy|language/i.test(screen.name)
+                  ? 'Privacy and language preferences'
+                  : 'Sourced local notices',
+        }
     : employee
     ? {
         'metric-cards': isEmployeeEngagementScreen ? 'Engagement overview' : 'Your organisation at a glance',
@@ -684,6 +858,8 @@ export function bindResourceContent(
         };
   const saveFooterLabel = isReturnsPortal
     ? 'Submit return request'
+    : isMutualAidSettingsScreen
+      ? 'Save privacy preferences'
     : isEmployeeSettingsScreen
       ? 'Save preferences'
       : 'Save changes';
@@ -735,6 +911,8 @@ export function bindResourceContent(
     subtitle: screen.purpose,
     panelTitle: isOffshoreWindOperations
       ? 'Control room priorities'
+      : isMutualAidCommunity
+        ? 'Community coordination'
       : employee
         ? 'Your first weeks, made clearer'
         : 'Your workspace',
@@ -747,12 +925,16 @@ export function bindResourceContent(
     secondaryCta: {
       label: isOffshoreWindOperations
         ? 'Check work orders'
+        : isMutualAidCommunity
+          ? 'See local events'
         : employee
           ? 'Explore onboarding'
           : 'See how it works',
       href: secondaryActionHref,
     },
-    note: 'Example interface · replace sample data with your organisation',
+    note: isMutualAidCommunity
+      ? 'Example preview · no resident data is connected; verify notices before sharing'
+      : 'Example interface · replace sample data with your organisation',
     items,
     events,
     cards: isOffshoreWindOperations
@@ -764,6 +946,13 @@ export function bindResourceContent(
           { label: 'Crew coverage', val: '—', status: 'No connected data' },
           { label: 'Safe access windows', val: '—', status: 'No connected data' },
         ]
+      : isMutualAidCommunity
+        ? [
+            { label: 'Open help requests', val: '—', status: 'No connected data' },
+            { label: 'Volunteer offers', val: '—', status: 'No connected data' },
+            { label: 'Local events', val: '—', status: 'No connected data' },
+            { label: 'Safety notices', val: '—', status: 'No connected data' },
+          ]
       : employee && isEmployeeEngagementScreen
       ? [
           { label: 'Feedback', val: '—', status: 'No connected data' },
@@ -787,6 +976,8 @@ export function bindResourceContent(
         })),
     rows: isOffshoreWindOperations
       ? offshoreWindRecords.rows
+      : isMutualAidCommunity
+        ? mutualAidRecords.rows
       : isEcommerceCatalog
       ? ['A', 'B', 'C'].map((letter) => ({
           id: letter.charCodeAt(0),
@@ -964,6 +1155,8 @@ export function bindResourceContent(
                           })),
     columnLabels: isOffshoreWindOperations
       ? offshoreWindRecords.columnLabels
+      : isMutualAidCommunity
+        ? mutualAidRecords.columnLabels
       : isEmployeeTeamsScreen
       ? { name: 'Team', type: 'Focus', quality: 'Members', status: 'Status' }
       : isEmployeeEngagementScreen
@@ -1060,7 +1253,9 @@ export function bindResourceContent(
             : role === 'auth-card'
               ? 'Work email'
               : role === 'settings-form'
-                ? isReturnsPortal
+                ? isMutualAidSettingsScreen
+                  ? 'Privacy and language preferences'
+                  : isReturnsPortal
                   ? 'Return reason'
                   : isEmployeeSettingsScreen
                     ? 'Policy acknowledgement (preview only)'
@@ -1075,6 +1270,8 @@ export function bindResourceContent(
         ? searchCopy.placeholder
         : role === 'message-composer'
           ? 'Write a message…'
+          : role === 'settings-form' && isMutualAidSettingsScreen
+            ? 'Connect resident accounts to configure'
           : role === 'settings-form' && isEmployeeSettingsScreen
             ? 'Local preview — not saved'
           : role === 'settings-form' && isReturnsPortal
@@ -1095,6 +1292,8 @@ export function bindResourceContent(
             ? 'Sample respectful workplace and information security guidance. Replace with approved company text; acknowledgements are not stored in this preview.'
           : role === 'settings-form' && isReturnsPortal
             ? 'Example field. Connect order data and a returns service in the exported application.'
+          : role === 'settings-form' && isMutualAidSettingsScreen
+            ? 'Example settings only. No resident profile, language preference, or consent state is connected. Changes are not saved in this preview.'
             : 'Example field. Connect persistence and your backend in the exported application.',
     children:
       role === 'pagination'
@@ -1106,7 +1305,12 @@ export function bindResourceContent(
         : role === 'auth-footer'
           ? 'Authentication backend required'
           : 'Continue',
-    disabled: ['save-footer', 'auth-footer', 'action-controls', 'action-button', 'pagination'].includes(role),
+    disabled:
+      isMutualAidSettingsScreen && role === 'settings-form'
+        ? true
+        : ['save-footer', 'auth-footer', 'action-controls', 'action-button', 'pagination'].includes(
+            role
+          ),
     href: primaryActionHref,
   };
   if (role === 'save-footer' && isReturnsPortal) {
@@ -1114,6 +1318,9 @@ export function bindResourceContent(
   }
   if (role === 'save-footer' && isEmployeeSettingsScreen) {
     content.title = 'Connect persistence to save.';
+  }
+  if (role === 'save-footer' && isMutualAidSettingsScreen) {
+    content.title = 'Connect an account service to save privacy preferences.';
   }
   if (role === 'pagination') {
     content.title = 'Connect a paging data source before navigating additional records.';

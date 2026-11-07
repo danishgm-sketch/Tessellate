@@ -728,7 +728,18 @@ const ARCHETYPE_PRIMARY_SIGNALS: Record<string, string[]> = {
   travel: ['travel service', 'travel planning', 'trip planner', 'trip-planning', 'travel itinerary', 'hotel booking', 'flight booking', 'destination guide', 'travelers', 'hospitality'],
   'real-estate': ['real estate', 'real-estate', 'home search', 'home-search', 'property management', 'property listing', 'commercial leasing', 'residential manager', 'mortgage', 'realtor', 'realty'],
   recruitment: ['recruitment', 'recruiting', 'talent acquisition', 'applicant tracking', 'candidate pipeline', 'candidate portal', 'hiring workspace', 'interview panel'],
-  consumer: ['consumer app', 'consumer application', 'social network', 'social app', 'neighborhood social', 'community app', 'social feed', 'mobile-first consumer'],
+  consumer: [
+    'consumer app',
+    'consumer application',
+    'social network',
+    'social app',
+    'neighborhood social',
+    'neighbourhood social',
+    'community app',
+    'mutual aid app',
+    'social feed',
+    'mobile-first consumer',
+  ],
 };
 
 function matchesKeyword(normalizedText: string, keyword: string): boolean {

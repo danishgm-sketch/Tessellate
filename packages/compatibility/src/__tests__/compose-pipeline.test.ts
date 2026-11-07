@@ -38,10 +38,20 @@ function composeEmployeeExperience() {
 const offshoreWindBrief =
   'A field safety intelligence and equipment maintenance platform for a 1,200-person offshore wind operator. Dispatch crews across three time zones. Technicians use rugged tablets with intermittent connectivity; control room teams manage turbine status, sea conditions, permits to work, lockout/tagout, and incident escalation.';
 
+const mutualAidBrief =
+  'A mobile-first neighbourhood social and mutual-aid app for 30,000 residents in a dense city. Verified residents share local updates, organise cleanup events and skill swaps, ask neighbours for help, and follow street-by-street notices. Volunteer moderators handle reports and privacy controls. Users have limited data plans; motion should be optional and every action accessible.';
+
 function composeOffshoreWind() {
   return composeProjectPipeline(
     { description: offshoreWindBrief },
     { catalogResources: loadTestCatalog(), seed: 'offshore-wind-safety-preview' }
+  );
+}
+
+function composeMutualAid() {
+  return composeProjectPipeline(
+    { description: mutualAidBrief },
+    { catalogResources: loadTestCatalog(), seed: 'neighbourhood-mutual-aid-preview' }
   );
 }
 
@@ -58,6 +68,76 @@ function nodesForScreen(manifest: ReturnType<typeof composeEmployeeExperience>, 
 }
 
 describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
+  it('keeps a neighbourhood mutual-aid project private, local, and truthful in every direction', () => {
+    const result = composeMutualAid();
+    const manifests = [
+      result.directionA.manifest,
+      result.directionB.manifest,
+      result.directionC.manifest,
+    ];
+
+    expect(result.directionA.diagnostics).toEqual([]);
+    expect(result.directionB.diagnostics).toEqual([]);
+    expect(result.directionC.diagnostics).toEqual([]);
+
+    for (const manifest of manifests) {
+      expect(manifest.brand?.name).toBe('Neighbourhood Commons');
+      const updates = nodesForScreen(manifest, 'Neighbourhood Updates');
+      const metrics = updates.find((node) => node.semanticRole === 'metric-cards');
+      const cards = metrics?.props.cards as Array<{ label: string; status: string }>;
+      expect(cards.map((card) => card.label)).toEqual(
+        expect.arrayContaining([
+          'Open help requests',
+          'Volunteer offers',
+          'Local events',
+          'Safety notices',
+        ])
+      );
+      expect(cards.every((card) => card.status === 'No connected data')).toBe(true);
+      expect(JSON.stringify(updates).toLocaleLowerCase()).not.toMatch(/algorithmic|published media/);
+      expect(JSON.stringify(updates)).toMatch(/contact details hidden|contact details stay private/i);
+
+      const helpBoard = nodesForScreen(manifest, 'Community Help Board');
+      const helpTable = helpBoard.find((node) => node.semanticRole === 'data-table');
+      const helpRows = helpTable?.props.rows as Array<{ status: string; displayValue: string }>;
+      expect(helpRows.every((row) => row.status === 'Help service not connected')).toBe(true);
+      expect(helpRows.every((row) => /contact hidden until mutual consent/i.test(row.displayValue))).toBe(
+        true
+      );
+
+      const moderation = nodesForScreen(manifest, 'Safety & Moderation');
+      const moderationTable = moderation.find((node) => node.semanticRole === 'data-table');
+      const moderationRows = moderationTable?.props.rows as Array<{ displayValue: string }>;
+      expect(moderationRows.every((row) => /no resident details/i.test(row.displayValue))).toBe(true);
+
+      const privacy = nodesForScreen(manifest, 'Privacy & Languages');
+      expect(JSON.stringify(privacy)).toMatch(/language|contact|neighbourhood|consent/i);
+      const entityFields = manifest.productModel.entities
+        .flatMap((entity) => entity.fields ?? [])
+        .join(' ')
+        .toLocaleLowerCase();
+      expect(entityFields).not.toMatch(/homeaddress|streetaddress|dateofbirth|phone(number)?|personalemail/);
+      const screenCopy = manifest.screens
+        .flatMap((screen) => nodesForScreen(manifest, screen.name))
+        .map((node) => JSON.stringify(node.props))
+        .join(' ')
+        .toLocaleLowerCase();
+      expect(screenCopy).not.toMatch(/published media|algorithmic/);
+    }
+
+    expect(
+      result.screenGraph.groups.flatMap((group) => group.screens.map((screen) => screen.name))
+    ).toEqual(
+      expect.arrayContaining([
+        'Neighbourhood Updates',
+        'Community Help Board',
+        'Local Events & Skills',
+        'Safety & Moderation',
+        'Privacy & Languages',
+      ])
+    );
+  });
+
   it('carries safety-critical offshore operations into all three real previews', () => {
     const result = composeOffshoreWind();
     const manifests = [
