@@ -6,6 +6,14 @@ Step 39 remains in progress. Findings close as deployed only after version-speci
 
 On public Sites v87, the deployed Step 39 claims/control Playwright suite passed 48 cases across desktop and mobile (24 per profile). It covered the audited sample-data disclosures, API token manager truthfulness, local action feedback, disabled unconnected actions, reduced-motion behavior, catalogue sample counts, and related tested controls. It reported no new defect in those cases. This is a targeted regression suite; it does not complete the manual copy review across all 324 resources, documentation, CLI, MCP, errors, and secondary workflows. Step 39 remains open. The run summary is in `audit/evidence/step-45/public-v87-route-sweep/deployed-runtime-summary.json`.
 
+## 2026-11-07 local offshore-wind composition review
+
+A realistic 1,200-person offshore wind safety and maintenance brief exposed a domain mismatch: generic “intelligence” wording outranked ERP operations, and the generic incident screen rendered billing support copy with unresolved resource roles. The existing ERP interpretation now recognizes specialized offshore maintenance language and carries turbines, work orders, permits to work, isolation verification, crew and vessel dispatch, sea-condition planning, and incident response through all three generated directions. Incident Response uses the existing index-list pattern. The generated dashboard has six balanced safety and operations metrics; every value and example record is explicitly marked as unconnected.
+
+The new browser regression composes the brief in the local product, inspects all three directions, and visits each of the five planned screens at desktop and mobile widths. It checks the visible content, truthful disconnected-data labels, required-resource diagnostics, browser/network errors, and horizontal overflow. Vitest integration coverage also checks all three real manifests and ordinary-warehouse and field-research classification guards. The full local suite passed: 96 Vitest files (1,350 passed, 1 configured skip), 22-workspace typecheck, lint, and the two targeted Playwright profiles. This verifies composition and preview presentation only; no live operational service or safety workflow is connected. This local change awaits exact-head CI and public review, and does not complete the wider manual copy review or Step 39.
+
+Regression source: `tests/e2e/offshore-safety-composition.spec.ts`, `packages/composer/src/__tests__/operational-safety.test.ts`, and `packages/compatibility/src/__tests__/compose-pipeline.test.ts`.
+
 ## AUD-177 — AI Prompt Hero advertised an unavailable generation service
 
 - Severity: Medium; route /r/ai-prompt-hero.

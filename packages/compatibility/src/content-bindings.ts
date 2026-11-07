@@ -27,15 +27,94 @@ export function resolveWorkspaceBrand(product: ProductModel, briefDescription = 
     /market depth|equity trade|trading terminal|order book/i.test(
       `${product.primaryObjective} ${briefDescription}`
     );
+  const offshoreWindOperations =
+    primaryArchetype === 'erp-operations' &&
+    product.entities.some((entity) => entity.name === 'Turbine') &&
+    product.entities.some((entity) => entity.name === 'Permit to Work');
 
   if (employee) return 'People & Co';
   if (community) return 'Example Community';
   if (tradingTerminal) return 'Market Workspace';
+  if (offshoreWindOperations) return 'Wind Operations';
   return workspaceBrand(product.entities[0]?.name);
 }
 
 function sampleActivityTime(index: number): string {
   return ['Today', 'Yesterday', 'Earlier this week'][Math.min(index, 2)]!;
+}
+
+function offshoreWindRecordSet(screenName: string): {
+  columnLabels: { name: string; type: string; quality: string; status: string };
+  rows: Array<{
+    id: number;
+    name: string;
+    type: string;
+    quality: number;
+    status: string;
+    displayValue: string;
+  }>;
+} {
+  const record = /permit/i.test(screenName)
+    ? {
+        name: 'permit to work',
+        type: 'Work scope and energy isolation',
+        quality: 'Verification',
+        statusLabel: 'Permit status',
+        status: 'Permit service not connected',
+        displayValue: 'Approval not connected',
+      }
+    : /incident/i.test(screenName)
+      ? {
+          name: 'incident',
+          type: 'Crew welfare and response',
+          quality: 'Escalation',
+          statusLabel: 'Response status',
+          status: 'Incident service not connected',
+          displayValue: 'Response status not connected',
+        }
+      : /crew|vessel/i.test(screenName)
+        ? {
+            name: 'field crew',
+            type: 'Competency and vessel assignment',
+            quality: 'Crew coverage',
+            statusLabel: 'Dispatch status',
+            status: 'Dispatch service not connected',
+            displayValue: 'Crew and vessel data not connected',
+          }
+        : /work order/i.test(screenName)
+          ? {
+              name: 'turbine maintenance work order',
+              type: 'Inspection or repair scope',
+              quality: 'Crew and schedule',
+              statusLabel: 'Work order status',
+              status: 'Work order service not connected',
+              displayValue: 'Crew and schedule not connected',
+            }
+          : {
+              name: 'turbine',
+              type: 'Site and inspection history',
+              quality: 'Availability',
+              statusLabel: 'Operational status',
+              status: 'Telemetry not connected',
+              displayValue: 'Availability not connected',
+            };
+
+  return {
+    columnLabels: {
+      name: record.name,
+      type: record.type,
+      quality: record.quality,
+      status: record.statusLabel,
+    },
+    rows: ['A', 'B', 'C'].map((letter, index) => ({
+      id: index + 1,
+      name: `Example ${record.name} ${letter}`,
+      type: record.type,
+      quality: 0,
+      status: record.status,
+      displayValue: record.displayValue,
+    })),
+  };
 }
 
 export function bindResourceContent(
@@ -49,6 +128,10 @@ export function bindResourceContent(
 ): Record<string, unknown> {
   const employee = product.entities.some((entity) => entity.name === 'Employee');
   const primaryArchetype = product.productArchetypes[0]?.tag ?? '';
+  const isOffshoreWindOperations =
+    primaryArchetype === 'erp-operations' &&
+    product.entities.some((entity) => entity.name === 'Turbine') &&
+    product.entities.some((entity) => entity.name === 'Permit to Work');
   const isRealEstate = primaryArchetype === 'real-estate';
   const isMarketplaceListings =
     primaryArchetype === 'marketplace' && screen.name === 'Explore Listings';
@@ -143,6 +226,8 @@ export function bindResourceContent(
   };
   const primaryActionLabel = employee
     ? 'Meet your team'
+    : isOffshoreWindOperations
+      ? 'Review turbine operations'
     : isFlightManagement
       ? 'View upcoming flights'
       : isGroundedSupportAssistant
@@ -179,6 +264,8 @@ export function bindResourceContent(
   };
   const preferredTargetPattern = employee
     ? /^teams?$/i
+    : isOffshoreWindOperations
+      ? /turbine operations/i
     : isFlightManagement
       ? /journey overview|flight details/i
       : isFilmStreaming
@@ -219,7 +306,9 @@ export function bindResourceContent(
     ? 'Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.'
     : isReturnsPortal
       ? 'Find a previous purchase, choose eligible items, and follow each return and refund step.'
-      : `A workspace for ${product.primaryAudience.toLowerCase()}.`;
+      : isOffshoreWindOperations
+        ? 'Coordinate turbine maintenance, sea conditions, permits to work, verified energy isolation, and incident response. Live operational data appears only when its source is connected.'
+        : `A workspace for ${product.primaryAudience.toLowerCase()}.`;
   const conversionCtaHeadline = employee
     ? 'Make the next step easier for every colleague.'
     : `Ready to ${primaryActionLabel.toLowerCase()}?`;
@@ -320,12 +409,41 @@ export function bindResourceContent(
       helperText: 'Example search only. Connect your service to search live developer records.',
     },
   };
-  const searchCopy = searchCopyByArchetype[primaryArchetype] ?? {
-    label: 'Search records',
-    placeholder: 'Search records',
-    helperText: 'Example search only. Connect your data source to search live records.',
-  };
-  const items = employee
+  const searchCopy = isOffshoreWindOperations
+    ? {
+        label: 'Search turbines and work orders',
+        placeholder: 'Search by turbine, permit, or work order',
+        helperText: 'Example search only. Connect your operations service to search live records.',
+      }
+    : searchCopyByArchetype[primaryArchetype] ?? {
+        label: 'Search records',
+        placeholder: 'Search records',
+        helperText: 'Example search only. Connect your data source to search live records.',
+      };
+  const items = isOffshoreWindOperations
+    ? [
+        {
+          title: 'Fleet status',
+          description: 'Review turbine availability, inspection history, and active maintenance.',
+          detail: 'Control room',
+        },
+        {
+          title: 'Field dispatch',
+          description: 'Coordinate work orders, qualified crews, vessel access, and weather windows.',
+          detail: 'Crew & vessel dispatch',
+        },
+        {
+          title: 'Permit to work',
+          description: 'Review work scope and record independent lockout/tagout verification.',
+          detail: 'Safety controls',
+        },
+        {
+          title: 'Incident response',
+          description: 'Account for crew and keep control-room escalation traceable.',
+          detail: 'Response',
+        },
+      ]
+    : employee
     ? [
         {
           title: 'A warm welcome',
@@ -511,7 +629,24 @@ export function bindResourceContent(
   const count = briefDescription
     .match(/\b([\d,]+)[ -]+(?:person|employee|people)/i)?.[1]
     ?.replaceAll(',', '');
-  const titles: Record<string, string> = employee
+  const offshoreWindRecords = offshoreWindRecordSet(screen.name);
+  const titles: Record<string, string> = isOffshoreWindOperations
+    ? {
+        'metric-cards': 'Fleet and safety status',
+        'summary-kpis': 'Fleet and safety status',
+        'activity-feed': 'Operational activity',
+        'activity-timeline': 'Operational activity',
+        'data-table': /permit/i.test(screen.name)
+          ? 'Permit to work queue'
+          : /incident/i.test(screen.name)
+            ? 'Incident response queue'
+            : /crew|vessel/i.test(screen.name)
+              ? 'Crew and vessel assignments'
+              : /work order/i.test(screen.name)
+                ? 'Maintenance work orders'
+                : 'Turbine fleet status',
+      }
+    : employee
     ? {
         'metric-cards': isEmployeeEngagementScreen ? 'Engagement overview' : 'Your organisation at a glance',
         'summary-kpis': isEmployeeEngagementScreen ? 'Engagement overview' : 'Your organisation at a glance',
@@ -598,7 +733,11 @@ export function bindResourceContent(
           ? footerDescription
           : description,
     subtitle: screen.purpose,
-    panelTitle: employee ? 'Your first weeks, made clearer' : 'Your workspace',
+    panelTitle: isOffshoreWindOperations
+      ? 'Control room priorities'
+      : employee
+        ? 'Your first weeks, made clearer'
+        : 'Your workspace',
     panels: items.slice(0, 3).map((item, index) => ({
       id: `panel-${index}`,
       label: item.detail,
@@ -606,13 +745,26 @@ export function bindResourceContent(
     })),
     primaryCta: { label: primaryActionLabel, href: primaryActionHref },
     secondaryCta: {
-      label: employee ? 'Explore onboarding' : 'See how it works',
+      label: isOffshoreWindOperations
+        ? 'Check work orders'
+        : employee
+          ? 'Explore onboarding'
+          : 'See how it works',
       href: secondaryActionHref,
     },
     note: 'Example interface · replace sample data with your organisation',
     items,
     events,
-    cards: employee && isEmployeeEngagementScreen
+    cards: isOffshoreWindOperations
+      ? [
+          { label: 'Fleet availability', val: '—', status: 'No connected data' },
+          { label: 'Active work orders', val: '—', status: 'No connected data' },
+          { label: 'Permits awaiting approval', val: '—', status: 'No connected data' },
+          { label: 'Unresolved incidents', val: '—', status: 'No connected data' },
+          { label: 'Crew coverage', val: '—', status: 'No connected data' },
+          { label: 'Safe access windows', val: '—', status: 'No connected data' },
+        ]
+      : employee && isEmployeeEngagementScreen
       ? [
           { label: 'Feedback', val: '—', status: 'No connected data' },
           { label: 'Recognition', val: '—', status: 'No connected data' },
@@ -633,7 +785,9 @@ export function bindResourceContent(
           val: '—',
           status: isTradingTerminal ? 'Market data not connected' : 'No connected data',
         })),
-    rows: isEcommerceCatalog
+    rows: isOffshoreWindOperations
+      ? offshoreWindRecords.rows
+      : isEcommerceCatalog
       ? ['A', 'B', 'C'].map((letter) => ({
           id: letter.charCodeAt(0),
           name: `Example ${ecommerceItemLabel.name} ${letter}`,
@@ -808,7 +962,9 @@ export function bindResourceContent(
                               ? 'Market data not connected'
                               : 'Details not connected',
                           })),
-    columnLabels: isEmployeeTeamsScreen
+    columnLabels: isOffshoreWindOperations
+      ? offshoreWindRecords.columnLabels
+      : isEmployeeTeamsScreen
       ? { name: 'Team', type: 'Focus', quality: 'Members', status: 'Status' }
       : isEmployeeEngagementScreen
         ? { name: 'Item', type: 'Type', quality: 'Details', status: 'Status' }

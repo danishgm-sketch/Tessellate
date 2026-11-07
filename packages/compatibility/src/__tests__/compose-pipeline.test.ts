@@ -35,6 +35,16 @@ function composeEmployeeExperience() {
   ).directionC.manifest;
 }
 
+const offshoreWindBrief =
+  'A field safety intelligence and equipment maintenance platform for a 1,200-person offshore wind operator. Dispatch crews across three time zones. Technicians use rugged tablets with intermittent connectivity; control room teams manage turbine status, sea conditions, permits to work, lockout/tagout, and incident escalation.';
+
+function composeOffshoreWind() {
+  return composeProjectPipeline(
+    { description: offshoreWindBrief },
+    { catalogResources: loadTestCatalog(), seed: 'offshore-wind-safety-preview' }
+  );
+}
+
 function nodesForScreen(manifest: ReturnType<typeof composeEmployeeExperience>, screenName: string) {
   const screen = manifest.screens.find((item) => item.name === screenName);
   if (!screen) throw new Error(`Missing ${screenName} screen`);
@@ -48,6 +58,57 @@ function nodesForScreen(manifest: ReturnType<typeof composeEmployeeExperience>, 
 }
 
 describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
+  it('carries safety-critical offshore operations into all three real previews', () => {
+    const result = composeOffshoreWind();
+    const manifests = [
+      result.directionA.manifest,
+      result.directionB.manifest,
+      result.directionC.manifest,
+    ];
+
+    expect(result.directionA.diagnostics).toEqual([]);
+    expect(result.directionB.diagnostics).toEqual([]);
+    expect(result.directionC.diagnostics).toEqual([]);
+
+    for (const manifest of manifests) {
+      expect(manifest.brand?.name).toBe('Wind Operations');
+      const nodes = nodesForScreen(manifest, 'Turbine Operations');
+      const metricCards = nodes.find((node) => node.semanticRole === 'metric-cards');
+      const cards = metricCards?.props.cards as Array<{ label: string; status: string }>;
+
+      expect(cards.map((card) => card.label.toLocaleLowerCase())).toEqual(
+        expect.arrayContaining([
+          'fleet availability',
+          'active work orders',
+          'permits awaiting approval',
+          'unresolved incidents',
+          'crew coverage',
+          'safe access windows',
+        ])
+      );
+      expect(cards).toHaveLength(6);
+      expect(cards.every((card) => card.status === 'No connected data')).toBe(true);
+      expect(nodes.map((node) => JSON.stringify(node.props).toLocaleLowerCase()).join(' ')).toMatch(
+        /weather|sea condition/
+      );
+
+      const permitTable = nodesForScreen(manifest, 'Permits to Work').find(
+        (node) => node.semanticRole === 'data-table'
+      );
+      expect(permitTable?.props.columnLabels).toMatchObject({
+        name: 'permit to work',
+        quality: 'Verification',
+      });
+      const permitRows = permitTable?.props.rows as Array<{ name: string; status: string }>;
+      expect(permitRows.every((row) => row.name.startsWith('Example permit to work'))).toBe(true);
+      expect(permitRows.every((row) => row.status === 'Permit service not connected')).toBe(true);
+    }
+
+    expect(
+      result.screenGraph.groups.flatMap((group) => group.screens.map((screen) => screen.name))
+    ).toEqual(expect.arrayContaining(['Permits to Work', 'Incident Response', 'Crew & Vessel Dispatch']));
+  });
+
   it('keeps resource navigation branding identical to the project brand', () => {
     const manifest = composeEmployeeExperience();
     const brandedNodes = manifest.screens.flatMap((screen) => nodesForScreen(manifest, screen.name))
