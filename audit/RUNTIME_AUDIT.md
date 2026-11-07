@@ -1,11 +1,11 @@
 # Runtime audit — product hardening and deployed-site verification
 ## Latest deployment state (2026-11-07)
 
-The public review Site is live at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ on version 88 (version `appgprj_6acc036de8cc8191a823339566972d85~appgver_baf005cb021c819193a656255680b0db`, deployment `appgdep_6aeef5db30a481919034541a56025fdb`, status `succeeded`). Sites records source mirror commit `c55a23cc2705af5fea147acab07ee6125022eda3`; the canonical repository's current `main` merge commit is `a338ab93ae6354bfe09fcd01421b00f2ff36cd34` (PR #15, head `4ee014f56a0a3859c40bf0515baf59f182d9e2b1`). The mirror SHA is not a commit in the canonical repository, so the Sites version record alone does not prove byte-for-byte source equivalence. PR #15 changed audit evidence and documentation only; the v88 version is not a new application-runtime audit. The v87 browser evidence below remains the latest broad runtime verification.
+The public review Site is live at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ on version 89 (version `appgprj_6acc036de8cc8191a823339566972d85~appgver_de9b3d5062248191b0e0b984ca6ba402`, deployment `appgdep_6aef16a4f5f88191b5dc8c9eb7f39a69`, status `succeeded`). Sites source mirror commit: `6bd66ccbdce4d1689772644fe0be3bc15dc3b96d`; canonical main merge commit: `bef26443fcd972b1e302d91613ac8c22352518e2` (PR #16, exact PR head `c26f8b1d1617c4d059f1f1cf27e8065a62fa0c25`). The deployment service confirms the public v89 deployment succeeded. D1 and R2 remain unbound. The v87 browser evidence below remains the latest broad runtime verification.
 
 The v87 continuation recaptured all 31 requested public route shells at 1440×900 and 390×844 (62/62 returned HTTP 200). It recorded zero navigation failures, console errors/warnings, uncaught exceptions, failed requests, HTTP errors, or horizontal-overflow captures. The exact employee-experience workflow passed in public browser sessions at desktop and mobile, including Direction C, Workbench mutations, lock preservation, replacement, Surprise Me, Undo/Redo, Preview, manifest, and standalone ZIP export. The desktop journey clean-installed and built the ZIP outside the monorepo, then opened it at both desktop and mobile viewports. A separate deployed Step 39 targeted claims/control suite passed 48 cases. This was a targeted continuation, not a full product audit: Axe was not rerun, the v87 route classifications cover shell/content rather than all interactions, and the broader language/copy review remains open. Detailed evidence: `audit/evidence/step-45/public-v87-route-sweep/ROUTE_AUDIT.md`, `quality/STEP_39_EVIDENCE.md`, and `quality/STEP_45_EVIDENCE.md`.
 
-The ledger contains 515 findings (0 Critical, 91 High, 395 Medium, 29 Low): 267 closed after deployed verification, 133 fixed awaiting deployed verification, 100 fixed and verified locally, 9 historical closures, 2 local closures, 2 legacy fixed records, and 2 documented host limitations. AUD-419 is the only nonclosed High and still lacks public verification of the optional BYO-provider path. AUD-514 is locally fixed and awaits deployed verification; AUD-515 is a locally fixed evidence-privacy defect. The overall hardening gate remains incomplete. The Site has no D1 or R2 bindings.
+The ledger contains 515 findings (0 Critical, 91 High, 395 Medium, 29 Low): 268 closed after deployed verification, 132 fixed awaiting deployed verification, 100 fixed and verified locally, 9 historical closures, 2 local closures, 2 legacy fixed records, and 2 documented host limitations. AUD-419 is the only nonclosed High and still lacks public verification of the optional BYO-provider path. AUD-514 is closed after public v89 desktop/mobile verification; AUD-515 is locally fixed. The overall hardening gate remains incomplete. The Site has no D1 or R2 bindings.
 The historical v74 Site was https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. It serves canonical commit `75276e8078e908b8258fa3d2cba629d71b85cd60` through Sites mirror commit `601d4b4069fdcba6bd57a26e2b625dbd42467602` (version `appgprj_6acc036de8cc8191a823339566972d85~appgver_a853aa5b01908191b3321c1de656e6c6`, deployment `appgdep_6ae9e3cf216c8191b1f06c5096e01fdd`). PR #8 remains open and unmerged. The v74 deployment is a targeted follow-up, not a repeat of the full v71 route audit.
 
 The v74 reduced-motion flagship recheck closed AUD-464. A visible user flow composed the exact employee-experience brief, selected Direction C, opened Workbench, and rendered six screen nodes with system reduced motion enabled. Computed transitions and animations were disabled, no transition/animation event fired, desktop and mobile screenshots were captured, 390px document width matched its viewport, and browser errors/warnings, uncaught exceptions, failed requests and HTTP errors were zero. Mobile Lighthouse snapshot scores were 100 for Accessibility, Best Practices, SEO and Agentic Browsing. Chrome DevTools recorded LCP 1,409ms at 1x CPU and 4,416ms at 4x CPU, CLS 0.06 in both. Trace evidence and screenshots are in `audit/evidence/step-48/deployed-v74/`.
@@ -5885,12 +5885,36 @@ At the v80 checkpoint, the 510-item ledger contained 0 Critical, 91 High, 390 Me
 
 ## MEDIUM — AUD-514 — Reset preview state did not clear the isolated resource iframe
 
-- **Evidence:** Public Sites v88 `/r/api-key-management` was inspected at 1440×900 and 390×844. At both sizes, after adding “Example token 3” and activating “Reset preview state”, the row remained and the status still reported the add. The 1440px document width was 1425px due to the vertical scrollbar; the 390px document width matched the 390px viewport. Before screenshots: `quality/evidence/step-39/public-v88-api-token-preview/deployed-desktop-after-reset-still-added.jpg` and `deployed-mobile-after-reset-still-added.jpg`.
-- **Reproduction:** Open `/r/api-key-management`; wait for the isolated preview; activate “Add example token”; activate “Reset preview state”; observe “Example token 3” remains.
-- **Root cause:** The reset handler restored only host toolbar values. The cross-origin isolated iframe retained its own local React state and received an update message instead of a fresh initialization.
-- **Affected code:** `apps/site/src/components/ResourcePreviewFrame.tsx` and `tests/e2e/resource-preview-reset-state.spec.ts`.
-- **Remediation:** Reset now remounts the iframe, clears its loaded/initialized state, and runs the preview handshake again. The new browser test failed before the change (expected remove-token-3 count 0, received 1) and passes after the fix in desktop and mobile Sites Worker profiles. Local after screenshots: `quality/evidence/step-39/public-v88-api-token-preview/local-after-desktop.png` and `local-after-mobile.png`. Public deployed verification remains pending.
-- **Runtime telemetry:** Desktop: 48 requests; mobile: 46. No failed essential requests, HTTP errors, uncaught exceptions, or application console errors. Desktop DevTools reported three deprecated-feature issues from the host-injected Cloudflare challenge script; the mobile page reported none. No product change was made to CSP or preview isolation.
+- **Evidence:** Public Sites v88 `/r/api-key-management` reproduced the defect at 1440×900 and
+  390×844: after adding “Example token 3” and activating “Reset preview state”, the row remained.
+  On public v89, the same visible interaction at both viewports restored the initial two rows and
+  cleared the add status. Before captures: `quality/evidence/step-39/public-v88-api-token-preview/
+  deployed-desktop-after-reset-still-added.jpg` and `deployed-mobile-after-reset-still-added.jpg`.
+  Deployed after captures: `quality/evidence/AUD-514/deployed-v89-desktop-after.png` and
+  `quality/evidence/AUD-514/deployed-v89-mobile-after.png`; added-state captures are in the same
+  directory.
+- **Reproduction:** Open `/r/api-key-management`; wait for the isolated preview; activate “Add
+  example token” and verify Example token 3 appears; activate “Reset preview state”; verify the row
+  disappears, two initial rows remain, and the status clears.
+- **Root cause:** The reset handler restored only host toolbar values. The cross-origin isolated
+  iframe retained its own local React state and received an update message instead of a fresh
+  initialization.
+- **Affected code:** `apps/site/src/components/ResourcePreviewFrame.tsx`,
+  `tests/e2e/resource-preview-reset-state.spec.ts`, and
+  `tests/e2e/sites-preview.playwright.config.ts`.
+- **Remediation:** Reset remounts the iframe, clears loaded/initialized state, and restarts the
+  preview handshake. The browser regression failed before the fix and passes in both desktop/mobile
+  Sites Worker profiles. Canonical fix commit: `bef26443fcd972b1e302d91613ac8c22352518e2`.
+- **Deployed verification:** Sites v89 (`appgprj_6acc036de8cc8191a823339566972d85~appgver_de9b3d5062248191b0e0b984ca6ba402`) succeeded as deployment
+  `appgdep_6aef16a4f5f88191b5dc8c9eb7f39a69` at the existing public review URL. It serves canonical
+  commit `bef26443fcd972b1e302d91613ac8c22352518e2` via Sites source mirror commit
+  `6bd66ccbdce4d1689772644fe0be3bc15dc3b96d`. Desktop: 63 requests; mobile: 61. Both sessions
+  recorded zero application console errors/warnings, uncaught exceptions, failed requests, HTTP
+  errors, and horizontal overflow. Desktop DevTools also reported three deprecated-feature issues
+  from the host-injected Cloudflare challenge; no application issue was reported. Essential
+  application requests returned 200 or cache-valid 304; the challenge completed its 302-to-200 flow.
+  Machine-readable record: `quality/evidence/AUD-514/deployed-v89-runtime.json`. D1/R2 remain
+  unbound; preview CSP and iframe isolation were unchanged.
 
 ## MEDIUM — AUD-515 — Browser HAR evidence retained host cookie headers
 

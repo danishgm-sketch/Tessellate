@@ -1,0 +1,59 @@
+{
+  "auditId": "AUD-514",
+  "capturedAt": "2026-11-07T12:35:17Z",
+  "deployment": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+    "versionNumber": 89,
+    "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_de9b3d5062248191b0e0b984ca6ba402",
+    "deploymentId": "appgdep_6aef16a4f5f88191b5dc8c9eb7f39a69",
+    "canonicalCommit": "bef26443fcd972b1e302d91613ac8c22352518e2",
+    "sitesSourceCommit": "6bd66ccbdce4d1689772644fe0be3bc15dc3b96d",
+    "status": "succeeded",
+    "d1Bound": false,
+    "r2Bound": false
+  },
+  "route": "/r/api-key-management",
+  "interaction": [
+    "Open the API-key-management resource preview.",
+    "Add Example token 3 and verify it appears.",
+    "Activate Reset preview state.",
+    "Verify Example token 3 is absent, the initial two rows are restored, and the added-token status is cleared."
+  ],
+  "sessions": [
+    {
+      "viewport": "1440x900",
+      "result": "pass",
+      "requestCount": 63,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "horizontalOverflow": false,
+      "documentScrollWidth": 1425,
+      "documentClientWidth": 1425,
+      "screenshotAdded": "quality/evidence/AUD-514/deployed-v89-desktop-added.png",
+      "screenshotAfterReset": "quality/evidence/AUD-514/deployed-v89-desktop-after.png",
+      "hostBrowserIssues": [
+        "Three deprecated-feature issues from the host-injected Cloudflare challenge; no application issue."
+      ]
+    },
+    {
+      "viewport": "390x844",
+      "result": "pass",
+      "requestCount": 61,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "horizontalOverflow": false,
+      "documentScrollWidth": 390,
+      "documentClientWidth": 390,
+      "screenshotAdded": "quality/evidence/AUD-514/deployed-v89-mobile-added.png",
+      "screenshotAfterReset": "quality/evidence/AUD-514/deployed-v89-mobile-after.png",
+      "hostBrowserIssues": []
+    }
+  ],
+  "networkSummary": "All essential document, application, catalogue, and preview requests returned 200 or cache-valid 304. The host-injected Cloudflare challenge completed its expected 302-to-200 flow. No failed requests or HTTP errors were observed."
+}

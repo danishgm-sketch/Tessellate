@@ -13,13 +13,27 @@ Legacy branches are evidence/reference, never parallel sources of product truth.
 
 ## Current release evidence (2026-11-07)
 
-Public Sites v88 is live at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. Version ID: `appgprj_6acc036de8cc8191a823339566972d85~appgver_baf005cb021c819193a656255680b0db`; deployment: `appgdep_6aeef5db30a481919034541a56025fdb`; Sites source mirror: `c55a23cc2705af5fea147acab07ee6125022eda3`. Canonical `main` is at merge commit `a338ab93ae6354bfe09fcd01421b00f2ff36cd34` after PR #15; its exact-head CI passed. PR #15 added audit evidence and documentation, not application code, so v88 does not represent a new runtime audit. The v87 browser evidence below remains the latest broad runtime verification. The mirror SHA is Sites source metadata and is not present in the canonical Git repository; it is not independent proof of byte-for-byte source equivalence. D1 and R2 remain unbound.
+Public Sites v89 is live at [the Tessellate review Site](https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/).
+Version ID: `appgprj_6acc036de8cc8191a823339566972d85~appgver_de9b3d5062248191b0e0b984ca6ba402`;
+deployment: `appgdep_6aef16a4f5f88191b5dc8c9eb7f39a69`; Sites source mirror:
+`6bd66ccbdce4d1689772644fe0be3bc15dc3b96d`. It serves canonical `main` commit
+`bef26443fcd972b1e302d91613ac8c22352518e2`, merged through PR #16 after exact-head CI passed.
+The deployment service reports success. D1 and R2 remain unbound.
 
-The v88 resource-detail follow-up reproduced AUD-514: the “Reset preview state” button reset the outer controls but left local example rows in the sandboxed resource. The shared preview reset is now fixed locally and has a failing-before/passing-after Sites Worker browser regression at desktop and mobile. Deployed verification is pending. Evidence: `quality/evidence/step-39/public-v88-api-token-preview/`.
+The v89 deployed resource-detail regression closes AUD-514. At 1440×900 and 390×844, the visible
+user added Example token 3, reset the preview, and confirmed the iframe returned to its initial two
+rows with the add status cleared. Desktop/mobile screenshots and request/error summaries are in
+`quality/evidence/AUD-514/`. Both sessions recorded zero application console errors or warnings,
+uncaught exceptions, failed requests, HTTP errors, or horizontal overflow; 63 desktop and 61 mobile
+requests were observed. Desktop DevTools also reported three deprecated-feature issues from the
+host-injected Cloudflare challenge; no application issue was reported. Essential app requests
+returned 200 or cache-valid 304, and the challenge completed a 302-to-200 flow. The audit ledger
+now has 268 deployed-verified closures and 132 fixes awaiting deployed verification. AUD-419 remains
+the only nonclosed High; AUD-515 remains locally fixed and is not yet deployed-verified.
 
-The v87 continuation recaptured all 31 requested public route shells at 1440×900 and 390×844 (62/62 returned HTTP 200). It recorded zero navigation failures, console errors/warnings, uncaught exceptions, failed requests, HTTP errors, or horizontal-overflow captures. The exact employee-experience workflow passed in public browser sessions at desktop and mobile, including Direction C, Workbench mutations, lock preservation, replacement, Surprise Me, Undo/Redo, Preview, manifest, and standalone ZIP export. The desktop journey clean-installed and built the ZIP outside the monorepo, then opened it at both desktop and mobile viewports. A separate deployed Step 39 targeted claims/control suite passed 48 cases. This is a targeted continuation, not a full product audit: Axe was not rerun, the v87 route classifications cover shell/content rather than all interactions, and the broader language/copy review remains open. Detailed evidence: [`public-v87-route-sweep`](../audit/evidence/step-45/public-v87-route-sweep/ROUTE_AUDIT.md), `quality/STEP_39_EVIDENCE.md`, and `quality/STEP_45_EVIDENCE.md`.
-
-The runtime ledger now contains 515 findings (0 Critical, 91 High, 395 Medium, 29 Low). AUD-419 is the only nonclosed High; AUD-514 awaits deployed verification and AUD-515's evidence files and secret-audit guard are fixed locally. The complete release gate remains open. D1/R2 are unbound. Verso's inspected source remains `UNLICENSED`, so the local inspection adapter is not redistributed. Human usability sessions are owner-waived, not passed.
+The v87 sweep remains the latest broad public route/flagship audit, not a full re-audit of every
+control. The complete hardening release gate remains open. Verso source remains `UNLICENSED` and
+excluded from redistribution; human usability sessions are owner-waived, not passed.
 
 ### 2026-11-07 continuation — Step 5 screen-route contract
 
