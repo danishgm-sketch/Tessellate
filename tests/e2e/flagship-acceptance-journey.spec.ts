@@ -219,18 +219,82 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
 
     const directions = ['01', '02', '03'];
     const directionTexts: string[] = [];
+    const directionEvidence: Array<{
+      number: string;
+      projectId: string;
+      navigationModel: string;
+      grammar: string;
+      resourceSlugs: string[];
+      screenNames: string[];
+      designDNA: unknown;
+      diagnostics: unknown;
+    }> = [];
     for (const direction of directions) {
       const card = page.getByTestId(`direction-card-${direction}`);
       const preview = page.getByTestId(`direction-preview-${direction}`);
       await expect(card).toBeVisible();
       await expect(preview).toBeVisible();
+      await expect(preview.getByTestId('resource-loading')).toHaveCount(0, { timeout: 30_000 });
+      await expect(
+        preview.getByText(/Loading section content when it comes into view/)
+      ).toHaveCount(0, { timeout: 30_000 });
+      await expect.poll(() => preview.locator('[data-node-id]').count(), { timeout: 30_000 }).toBeGreaterThan(0);
       await assertZeroUnresolvedResources(page, preview);
       directionTexts.push(await card.innerText());
       await preview.screenshot({
         path: testInfo.outputPath(`direction-${direction}-${testInfo.project.name}.png`),
       });
+
+      await card.getByRole('button', { name: 'Inspect full preview and DNA' }).click();
+      const inspection = page.getByRole('dialog').last();
+      await expect(inspection).toBeVisible();
+      await expect(inspection.getByTestId('resource-loading')).toHaveCount(0, { timeout: 30_000 });
+      await inspection.locator('details > summary').click();
+      const inspectionText = await inspection.locator('pre').innerText();
+      const details = JSON.parse(inspectionText) as {
+        id: string;
+        dna: unknown;
+        navigation: { model?: string };
+        grammar: string;
+        screens: Array<{ id: string; name: string; rootNode: ProjectNode }>;
+        diagnostics: unknown;
+      };
+      const resourceSlugs: string[] = [];
+      const collectResourceSlugs = (node: ProjectNode) => {
+        if (node.resourceRef?.slug) resourceSlugs.push(node.resourceRef.slug);
+        node.children.forEach(collectResourceSlugs);
+      };
+      details.screens.forEach((screen) => collectResourceSlugs(screen.rootNode));
+      directionEvidence.push({
+        number: direction,
+        projectId: details.id,
+        navigationModel: details.navigation.model ?? 'unspecified',
+        grammar: details.grammar,
+        resourceSlugs: [...new Set(resourceSlugs)].sort(),
+        screenNames: details.screens.map((screen) => screen.name),
+        designDNA: details.dna,
+        diagnostics: details.diagnostics,
+      });
+      await inspection.getByRole('combobox', { name: 'Direction preview screen' }).scrollIntoViewIfNeeded();
+      await page.screenshot({
+        path: testInfo.outputPath(`direction-${direction}-full-${testInfo.project.name}.png`),
+        fullPage: false,
+        animations: 'disabled',
+      });
+      await page.keyboard.press('Escape');
+      await expect(inspection).toHaveCount(0);
     }
     expect(new Set(directionTexts).size).toBe(3);
+    expect(new Set(directionEvidence.map((direction) => direction.navigationModel)).size).toBeGreaterThan(1);
+    expect(new Set(directionEvidence.map((direction) => direction.grammar)).size).toBe(3);
+    expect(new Set(directionEvidence.map((direction) => direction.resourceSlugs.join('|'))).size).toBe(3);
+    const directionEvidencePath = testInfo.outputPath(`directions-${testInfo.project.name}.json`);
+    fs.mkdirSync(path.dirname(directionEvidencePath), { recursive: true });
+    fs.writeFileSync(directionEvidencePath, `${JSON.stringify(directionEvidence, null, 2)}\n`);
+    await testInfo.attach(`directions-${testInfo.project.name}.json`, {
+      path: directionEvidencePath,
+      contentType: 'application/json',
+    });
 
     const directionC = page.getByTestId('direction-card-03');
     const selectedProjectId = await directionC.getAttribute('data-project-id');
