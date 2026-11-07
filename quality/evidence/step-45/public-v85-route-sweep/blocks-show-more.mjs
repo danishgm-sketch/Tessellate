@@ -39,7 +39,7 @@ for (const profile of [
     route: '/blocks', profile: profile.name, status: response?.status() ?? null,
     beforeCount, afterCount: await page.getByRole('link', { name: /View details|Preview/ }).count(),
     summary: await page.locator('#explore-catalogue-status').innerText(),
-    documentWidth: await page.evaluate(() => document.documentElement.scrollWidth),
+    documentWidth: await page.evaluate(() => globalThis.document.documentElement.scrollWidth),
     viewportWidth: profile.viewport.width, consoleErrors, pageErrors, failedRequests, httpErrors,
   });
   await context.close();

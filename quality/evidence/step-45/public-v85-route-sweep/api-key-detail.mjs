@@ -38,7 +38,7 @@ for (const profile of [
   results.push({
     route: '/r/api-key-management', profile: profile.name, status: response?.status() ?? null,
     heading: await page.getByRole('heading', { level: 1 }).innerText(),
-    previewLoaded: true, documentWidth: await page.evaluate(() => document.documentElement.scrollWidth),
+    previewLoaded: true, documentWidth: await page.evaluate(() => globalThis.document.documentElement.scrollWidth),
     viewportWidth: profile.viewport.width, consoleErrors, pageErrors, failedRequests, httpErrors,
   });
   await context.close();
