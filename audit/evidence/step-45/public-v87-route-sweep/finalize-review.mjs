@@ -113,4 +113,3 @@ const markdown = `# Public Sites v87 route audit\n\n` +
   `Axe was not rerun during this v87 continuation; see the v81 evidence linked from [Step 45 evidence](../../../../quality/STEP_45_EVIDENCE.md) for its scope and the incomplete contrast checks. The broader runtime ledger, Step 39 language review, and Step 45 release gate remain open.\n`;
 await fs.writeFile(path.join(evidenceDir, 'ROUTE_AUDIT.md'), markdown);
 
-process.stdout.write(`${JSON.stringify({ routes: routeRows.length, captures: report.results.length, classifications: classificationReport.counts })}\n`);
