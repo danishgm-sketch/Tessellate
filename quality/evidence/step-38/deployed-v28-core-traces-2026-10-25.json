@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "1.0.0",
+  "siteVersion": 28,
+  "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "capturedAt": "2026-10-25",
+  "browser": "Chrome 156 with Chrome DevTools Performance",
+  "measurementType": "single-run lab measurements; CrUX field data unavailable",
+  "routeTraces": [
+    {
+      "route": "/",
+      "viewport": "1440x900",
+      "cpuThrottling": "1x",
+      "network": "unthrottled",
+      "cache": "bypassed",
+      "lcpMs": 311,
+      "ttfbMs": 51,
+      "renderDelayMs": 259,
+      "cls": 0
+    },
+    {
+      "route": "/explore",
+      "viewport": "1440x900",
+      "cpuThrottling": "1x",
+      "network": "unthrottled",
+      "cache": "bypassed",
+      "lcpMs": 187,
+      "ttfbMs": 48,
+      "renderDelayMs": 139,
+      "cls": 0,
+      "observedRequests": 108,
+      "httpErrors": 0,
+      "consoleMessages": 0,
+      "documentOverflow": false
+    },
+    {
+      "route": "/compose",
+      "viewport": "1440x900",
+      "cpuThrottling": "1x",
+      "network": "unthrottled",
+      "cache": "bypassed",
+      "lcpMs": 210,
+      "ttfbMs": 54,
+      "renderDelayMs": 156,
+      "cls": 0
+    },
+    {
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "cpuThrottling": "1x",
+      "network": "unthrottled",
+      "cache": "bypassed",
+      "lcpMs": 569,
+      "ttfbMs": 40,
+      "renderDelayMs": 529,
+      "cls": 0
+    }
+  ],
+  "interactionTraces": [
+    {
+      "route": "/compose",
+      "interaction": "Open Advanced Constraints & Devices",
+      "viewport": "1440x900",
+      "inpMs": 18,
+      "cls": 0
+    }
+  ],
+  "explorePreviewObservation": {
+    "firstCaptureDelayAfterMainMs": 1200,
+    "initialVisiblePreviewFrames": 6,
+    "initialState": "blank preview wells with no progress status",
+    "stateAfterWaitMs": 5000,
+    "laterState": "the same preview frames show rendered resources",
+    "beforeScreenshot": "quality/evidence/step-38/deployed-v28-explore-1440x900.png",
+    "afterScreenshotsAreLocalSitesWorker": true,
+    "localRegressionResult": "4/4 desktop/mobile delayed-load and timeout cases passed",
+    "localAfterScreenshots": [
+      "quality/evidence/step-38/after/explore-preview-loading-sites-chromium.png",
+      "quality/evidence/step-38/after/explore-preview-loaded-sites-chromium.png",
+      "quality/evidence/step-38/after/explore-preview-loading-sites-mobile-chromium.png",
+      "quality/evidence/step-38/after/explore-preview-loaded-sites-mobile-chromium.png"
+    ],
+    "status": "fixed locally; awaiting deployed verification"
+  },
+  "mobileWorkbenchTrace": {
+    "route": "/workbench",
+    "viewport": "390x844, DPR 3",
+    "cpuThrottling": "4x",
+    "network": "Slow 4G",
+    "status": "inconclusive",
+    "capturedMetrics": {
+      "cls": 0
+    },
+    "limitation": "The DevTools trace returned no navigation segment for this run; do not infer mobile LCP from this capture. Existing local and v28 cold-start evidence is recorded separately."
+  }
+}

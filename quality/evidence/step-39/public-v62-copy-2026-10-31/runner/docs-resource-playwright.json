@@ -1,0 +1,245 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/docs-and-resource.public-v62.config.ts"
+    ],
+    "configFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-39\\public-v62-copy-2026-10-31\\runner\\docs-and-resource.public-v62.config.ts",
+    "rootDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-39/public-v62-copy-2026-10-31/runner",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "sites-chromium",
+        "name": "sites-chromium",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-39/public-v62-copy-2026-10-31/runner",
+        "testIgnore": [],
+        "testMatch": [
+          "docs-index.public-v62.spec.ts",
+          "activity-feed.public-v62.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "sites-mobile-chromium",
+        "name": "sites-mobile-chromium",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-39/public-v62-copy-2026-10-31/runner",
+        "testIgnore": [],
+        "testMatch": [
+          "docs-index.public-v62.spec.ts",
+          "activity-feed.public-v62.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "docs-resource-playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "activity-feed.public-v62.spec.ts",
+      "file": "activity-feed.public-v62.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "activity feed discloses its built-in entries are samples",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1526,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:47:04.034Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e29c2e36f6d253b163b7-8281630b8c6ecdd4bf3f",
+          "file": "activity-feed.public-v62.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "activity feed discloses its built-in entries are samples",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1601,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:47:07.942Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e29c2e36f6d253b163b7-68d25384011a27b0e963",
+          "file": "activity-feed.public-v62.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "docs-index.public-v62.spec.ts",
+      "file": "docs-index.public-v62.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "documentation index links to canonical repository contracts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1696,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:47:05.696Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b8161db5345a0d31591-f7ce3c7e2ce90b29aa5f",
+          "file": "docs-index.public-v62.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "documentation index links to canonical repository contracts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3208,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:47:09.673Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b8161db5345a0d31591-876d2746029a06f63495",
+          "file": "docs-index.public-v62.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-31T16:47:03.554Z",
+    "duration": 9405.747,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

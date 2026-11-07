@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "1.0.0",
+  "issue": "AUD-510",
+  "verifiedAt": "2026-11-06T15:33:30Z",
+  "route": "/r/app-sidebar-expanded/",
+  "deployment": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "siteVersionNumber": 81,
+    "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_cb89890515f4819186a34bcfd9a2629e",
+    "deploymentId": "appgdep_6aedef3867988191b2c28c8aedb93307",
+    "canonicalSourceCommit": "21438fbdd12f43771bbbaab2bb925c714e709e6e",
+    "sitesSourceCommit": "3d2a4673d591591d1529775787d824cdc9981b63"
+  },
+  "conditions": {
+    "network": "Slow 3G",
+    "cpuThrottling": "4x",
+    "colorScheme": "light",
+    "reducedMotion": false
+  },
+  "runs": [
+    {
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "loading": {
+        "elapsedSinceNavigationMs": 4892,
+        "ariaBusy": true,
+        "accessibleStatus": "Loading isolated preview…",
+        "screenshot": "desktop-1440-loading.png"
+      },
+      "ready": {
+        "elapsedSinceNavigationMs": 25743,
+        "ariaBusy": false,
+        "accessibleStatus": null,
+        "previewContent": "Tessellate Console sidebar with Dashboard, Telemetry, Composition Engine, Design DNA and API Tokens",
+        "screenshot": "desktop-1440-loaded.png"
+      },
+      "documentWidth": {
+        "scrollWidth": 1425,
+        "clientWidth": 1425,
+        "horizontalOverflow": false
+      },
+      "console": {
+        "errors": 0,
+        "warnings": 0,
+        "platformIssues": 3,
+        "platformIssueDescription": "DevTools reported three Deprecated feature used issue notices in this run. They are issue notices rather than application console errors or warnings."
+      },
+      "network": {
+        "capturedRequests": 51,
+        "resourceDocumentStatus": 200,
+        "previewContentStatus": 200,
+        "resourceChunkStatus": 200,
+        "essentialRequestFailures": 0,
+        "navigationCancelledRequests": [
+          "One prior preview-content request was cancelled by the explicit page reload used to start the cold-cache reproduction; the new preview request returned 200."
+        ],
+        "retryResolvedRequests": [
+          "The favicon request was pending at the first snapshot and completed with 200 on retry."
+        ],
+        "platformRequests": "One challenge-platform redirect (302) completed through 200 script and POST responses."
+      }
+    },
+    {
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "loading": {
+        "elapsedSinceNavigationMs": 4828,
+        "ariaBusy": true,
+        "accessibleStatus": "Loading isolated preview…",
+        "screenshot": "mobile-390-loading.png"
+      },
+      "ready": {
+        "elapsedSinceNavigationMs": 25660,
+        "ariaBusy": false,
+        "accessibleStatus": null,
+        "previewContent": "Tessellate Console sidebar with Dashboard, Telemetry, Composition Engine, Design DNA and API Tokens",
+        "screenshot": "mobile-390-slow3g-loaded.png"
+      },
+      "documentWidth": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "horizontalOverflow": false
+      },
+      "console": {
+        "errors": 0,
+        "warnings": 0,
+        "issues": 0
+      },
+      "network": {
+        "capturedRequests": 46,
+        "resourceDocumentStatus": 200,
+        "previewContentStatus": 304,
+        "resourceChunkStatus": 200,
+        "essentialRequestFailures": 0
+      },
+      "visualNotes": "The detail shell and preview controls fit the 390px viewport. The selected Mobile preview control narrows the frame to 360px; the document itself remains at 390px without horizontal overflow."
+    }
+  ],
+  "hostHealth": {
+    "route": "/api/inference/health",
+    "httpStatus": 200,
+    "apiOnline": false,
+    "hostOnline": false,
+    "engine": "deterministic",
+    "reason": "Laptop backend connection is not configured",
+    "interpretation": "The public Site truthfully reports the laptop/Docker feature unavailable; this is intentional under the local-host deployment boundary."
+  },
+  "result": "PASS: the loading overlay and aria-busy remain active until the selected isolated resource is ready, then clear with the actual preview visible. AUD-510 is closed after public v81 verification on desktop and mobile.",
+  "scopeLimit": "This issue-specific check does not repeat the full public route audit, flagship workflow, or an Axe scan. Those remain part of the open Step 45 release gate."
+}

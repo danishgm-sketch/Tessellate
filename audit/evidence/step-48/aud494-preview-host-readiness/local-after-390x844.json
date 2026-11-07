@@ -1,0 +1,706 @@
+{
+  "issue": "AUD-494",
+  "route": "/explore → /r/cta-product-preview",
+  "url": "http://127.0.0.1:4323/r/cta-product-preview",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "expected": "A trusted host confirmation appears immediately after clicking Start composing in the isolated preview.",
+  "actual": "Confirmation visible after the trusted host handled the preview message.",
+  "confirmationVisible": true,
+  "messages": [
+    {
+      "origin": "null",
+      "type": "TESSELLATE_PREVIEW_NAVIGATION_REQUEST",
+      "resourceId": "cta-product-preview",
+      "href": "http://127.0.0.1:4323/compose",
+      "sourceMatchesFrame": true
+    }
+  ],
+  "console": [],
+  "uncaught": [],
+  "network": [
+    {
+      "kind": "response",
+      "url": "/_astro/style.Ve3VYTcb.css",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/SiteHeader.C7OZ7KlQ.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/ExploreView.ku2MT8th.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/client.CZ5CiHPg.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/react.B6PPDU_E.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/jsx-runtime.BZkYIGyD.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/createLucideIcon.14lUEEec.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/arrow-right.CrL0QBhc.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/CommandPalette.CQW2-QbW.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/src.BX1lhOTL.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/github.61P_G89B.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/search.CyDEvGzC.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/x.K_99xudA.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/fetch-json-with-retry.CYGzYGh1.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/chevron-down.DtfZPbTK.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/chevron-right.BhTF9xXd.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/clock.BSWorZFx.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/rotate-ccw.divXcstY.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/sliders-horizontal.B8xEUDjw.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/sparkles.Cox_DJ6k.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/ResourceCard.CklnKrXB.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/src.BdH8G51d.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/book-open.CAas_EJc.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/compass.P0TncO_g.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/sliders-vertical.Bj_t08Fa.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/gold.CeiPxNV6.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/arrow-up-right.ERzt_9ei.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/bookmark.BGuXTOA4.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/check.DZheQPi7.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/eye.uoIoxOcf.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/copy.BIIza9m3.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/PreviewNavigationConfirmation.CYyIAI7A.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/preview-protocol.CKCD-MJb.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/data/catalog.json",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/preview-content/",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/preview-content/",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/style.Ve3VYTcb.css",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/style.Ve3VYTcb.css",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/PreviewHost.C-4ZISlg.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/PreviewHost.C-4ZISlg.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/client.CZ5CiHPg.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/client.CZ5CiHPg.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/react.B6PPDU_E.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/jsx-runtime.BZkYIGyD.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/react.B6PPDU_E.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/preload-helper.DHhhL8Zf.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/browser.CNmXnXPa.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/jsx-runtime.BZkYIGyD.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/preview-protocol.CKCD-MJb.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/preload-helper.DHhhL8Zf.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/browser.CNmXnXPa.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/preview-protocol.CKCD-MJb.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/manifest-renderer-core.DE4gZbA0.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/manifest-renderer-core.DE4gZbA0.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/resource-variants.DapNdg5J.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/src.BdH8G51d.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/src.BcZfIrEJ.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/resource-variants.DapNdg5J.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/src.BdH8G51d.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/src.BcZfIrEJ.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/accordion.zlhmApTf.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/accessibility-commitment-section.C6cdvPIl.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/manifest.CBZ89Yjw.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/manifest.qVwBQQnh.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/preview-content/",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/preview-content/",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/style.Ve3VYTcb.css",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/style.Ve3VYTcb.css",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/PreviewHost.C-4ZISlg.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/PreviewHost.C-4ZISlg.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/client.CZ5CiHPg.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/react.B6PPDU_E.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/jsx-runtime.BZkYIGyD.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/preload-helper.DHhhL8Zf.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/browser.CNmXnXPa.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/preview-protocol.CKCD-MJb.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/react.B6PPDU_E.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/client.CZ5CiHPg.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/jsx-runtime.BZkYIGyD.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/preload-helper.DHhhL8Zf.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/browser.CNmXnXPa.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/preview-protocol.CKCD-MJb.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/manifest-renderer-core.DE4gZbA0.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/manifest-renderer-core.DE4gZbA0.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/src.BdH8G51d.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/resource-variants.DapNdg5J.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/src.BcZfIrEJ.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/src.BdH8G51d.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/resource-variants.DapNdg5J.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/src.BcZfIrEJ.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/product-screenshot-hero.BDJGa5M5.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/r/cta-product-preview",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/style.Ve3VYTcb.css",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/index.Bh89wAT3.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/ResourceInspector.XNBzFxKG.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/ResourceTabs.Bv1tljPc.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/client.CZ5CiHPg.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/jsx-runtime.BZkYIGyD.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/react.B6PPDU_E.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/gold.CeiPxNV6.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/src.BX1lhOTL.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/createLucideIcon.14lUEEec.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/arrow-up-right.ERzt_9ei.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/check.DZheQPi7.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/copy.BIIza9m3.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/terminal.D1yAK8-f.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/circle-check.BnrBU8lA.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/code.BhCSGOdD.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/layers.CtXwhj7g.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/palette.Dfv1e2Eu.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/sparkles.Cox_DJ6k.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/shield-check.DfVMU--k.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/zap.BZ4uBrvW.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/ResourcePreviewFrame.10LeAYDL.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/activity.DGq5j_oI.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/smartphone.BKKE0Hdz.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/sun.DHWleJN4.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/rotate-ccw.divXcstY.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/preview-protocol.CKCD-MJb.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/tablet.Dz7Mkca5.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/PreviewNavigationConfirmation.CYyIAI7A.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/preview-content/",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/style.Ve3VYTcb.css",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/PreviewHost.C-4ZISlg.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/client.CZ5CiHPg.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/react.B6PPDU_E.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/jsx-runtime.BZkYIGyD.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/preload-helper.DHhhL8Zf.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/browser.CNmXnXPa.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/preview-protocol.CKCD-MJb.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/manifest-renderer-core.DE4gZbA0.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/resource-variants.DapNdg5J.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/src.BdH8G51d.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/src.BcZfIrEJ.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/cta-product-preview.W0ovjNcK.js",
+      "status": 200
+    },
+    {
+      "kind": "response",
+      "url": "/_astro/manifest.DuQzZ70i.js",
+      "status": 200
+    }
+  ],
+  "screenshot": "audit/evidence/step-48/aud494-preview-host-readiness/local-after-390x844.png"
+}

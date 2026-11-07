@@ -1,0 +1,62 @@
+{
+  "step": 35,
+  "date": "2026-10-20",
+  "status": "local-browser-gate-passed",
+  "runtime": "ChatGPT Sites-compatible Cloudflare Worker built from the current worktree",
+  "browser": "Chromium",
+  "viewports": {
+    "desktop": "1440x900",
+    "mobile": "390x844",
+    "zoomReflowEquivalent": "720 CSS px, equivalent layout width to 1440 CSS px at 200% browser zoom"
+  },
+  "productionBuild": {
+    "command": "pnpm build",
+    "result": "passed"
+  },
+  "browserTests": {
+    "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/accessibility-hardening-step-35.spec.ts",
+    "passed": 13,
+    "skipped": 1,
+    "failed": 0,
+    "skipReason": "Desktop layer-panel keyboard reordering is not repeated in the mobile tab layout; mobile Workbench tabs and keyboard routes were separately checked."
+  },
+  "axe": {
+    "tags": ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"],
+    "extraRules": ["target-size"],
+    "routeScans": 14,
+    "workbenchModeOrTabScans": 10,
+    "focusedHeadingOrderScans": 8,
+    "violationsAfterFix": 0
+  },
+  "runtime": {
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "desktopHorizontalOverflow": false,
+    "mobileHorizontalOverflow": false
+  },
+  "keyboard": {
+    "skipLinks": "first Tab stop; focus moves to programmatically focusable main/editor landmark",
+    "desktopSearchDialog": "focus entry, Tab containment, Escape close, focus return",
+    "mobileNavigationDialog": "focus entry, Tab containment, Escape close, focus return",
+    "exploreFiltersDialog": "focus entry, Tab containment, Escape close, focus return",
+    "workbenchLayerReorder": "keyboard action button reorders selected sibling and preserves selection"
+  },
+  "reducedMotion": "passed; animation duration suppressed under prefers-reduced-motion",
+  "contrast": "Axe color-contrast rules passed for audited default theme states",
+  "issues": {
+    "found": 3,
+    "fixed": 3,
+    "critical": 0,
+    "high": 0,
+    "medium": 3,
+    "low": 0
+  },
+  "remainingLimits": [
+    "Native browser zoom was not changed; the layout was tested at its 200%-equivalent CSS viewport width.",
+    "Playwright accessibility-tree snapshots provide semantic smoke evidence; spoken NVDA/VoiceOver review remains open for the public release and human testing gate.",
+    "The local Sites Worker was tested; this does not close deployed public-Site accessibility verification."
+  ],
+  "screenshotsDirectory": "quality/evidence/step-35/"
+}

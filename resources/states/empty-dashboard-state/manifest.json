@@ -5,7 +5,7 @@
   "name": "Empty Dashboard State",
   "version": "1.0.0",
   "status": "verified",
-  "description": "First-time dashboard panel placeholder encouraging initial telemetry integration with quick-start steps.",
+  "description": "Empty analytics dashboard state explaining the missing data and host setup action.",
   "resourceType": "state",
   "categories": [
     "states",
@@ -132,9 +132,9 @@
     "setup"
   ],
   "intent": {
-    "summary": "First-time dashboard panel placeholder encouraging initial telemetry integration with quick-start steps.",
+    "summary": "Empty analytics dashboard state explaining the missing data and host setup action.",
     "idealFor": [
-      "Fresh project workspaces",
+      "Fresh analytics workspaces",
       "New organization accounts",
       "Unconnected telemetry screens"
     ],
@@ -143,7 +143,7 @@
       "Active high-density analytics"
     ],
     "jobs": [
-      "Guide first-time users towards their primary high-value configuration action without feeling barren"
+      "Explain that no dashboard data is present and direct users to the configured setup action"
     ],
     "contentRequirements": [
       "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
@@ -214,12 +214,12 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -242,7 +242,11 @@
     "composability": 97,
     "visualCraft": 98,
     "dependencyCleanliness": 100,
-    "documentation": 96
+    "documentation": 96,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

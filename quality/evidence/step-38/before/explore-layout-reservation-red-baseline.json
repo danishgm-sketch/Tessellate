@@ -1,0 +1,23 @@
+{
+  "capturedAt": "2026-10-23T14:56:18.876Z",
+  "method": "Playwright production-like Sites Worker; catalog.json response held until the loading state was visible; captured before the Explore placeholder fix.",
+  "route": "/explore",
+  "delayedRequest": "/data/catalog.json",
+  "results": [
+    {
+      "viewport": "1440x900",
+      "before": { "mainHeight": 755, "footerTop": 819, "documentHeight": 900 },
+      "after": { "mainHeight": 5464, "footerTop": 5528, "documentHeight": 5609 },
+      "documentHeightDelta": 4709,
+      "footerTopDelta": 4709
+    },
+    {
+      "viewport": "390x844",
+      "capturedAt": "2026-10-23T14:56:20.464Z",
+      "before": { "mainHeight": 683, "footerTop": 747, "documentHeight": 844 },
+      "after": { "mainHeight": 17396, "footerTop": 17460, "documentHeight": 17557 },
+      "documentHeightDelta": 16713,
+      "footerTopDelta": 16713
+    }
+  ]
+}

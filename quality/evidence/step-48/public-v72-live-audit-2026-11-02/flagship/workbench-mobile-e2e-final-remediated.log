@@ -1,0 +1,170 @@
+$ playwright test && playwright test --config tests/e2e/sites-preview.playwright.config.ts --project=sites-chromium && playwright test --config tests/e2e/sites-preview.playwright.config.ts --project=sites-mobile-chromium && playwright test --config tests/e2e/preview-app.playwright.config.ts
+[WebServer] (node:88860) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ astro preview "--host" "127.0.0.1" "--port" "4321"
+[WebServer] (node:59444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 524 tests using 1 worker
+
+(node:86336) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok   1 [desktop-chrome] › tests\e2e\accessibility-axe.spec.ts:5:3 › Accessibility & WCAG 2.2 AA Audits › homepage passes automated axe accessibility scan (726ms)
+  ok   2 [desktop-chrome] › tests\e2e\accessibility-axe.spec.ts:17:3 › Accessibility & WCAG 2.2 AA Audits › showcases route passes automated axe accessibility scan (527ms)
+  ok   3 [desktop-chrome] › tests\e2e\accessibility-axe.spec.ts:28:3 › Accessibility & WCAG 2.2 AA Audits › explore route passes automated axe accessibility scan (590ms)
+  ok   4 [desktop-chrome] › tests\e2e\accessibility-axe.spec.ts:39:3 › Accessibility & WCAG 2.2 AA Audits › resource detail gives primary and breadcrumb navigation unique landmark names (498ms)
+  ok   5 [desktop-chrome] › tests\e2e\accessibility-axe.spec.ts:57:3 › Accessibility & WCAG 2.2 AA Audits › reduced-motion preference is respected across pages (245ms)
+  ok   6 [desktop-chrome] › tests\e2e\accessibility-axe.spec.ts:70:3 › Accessibility & WCAG 2.2 AA Audits › keyboard navigation and focus visibility works across navigation header (187ms)
+  ok   7 [desktop-chrome] › tests\e2e\accessibility-hardening-step-35.spec.ts:43:1 › Compose labels describe form fields rather than styling non-field controls (150ms)
+  ok   8 [desktop-chrome] › tests\e2e\accessibility-hardening-step-35.spec.ts:55:1 › showcase previews continue the document heading hierarchy (2.6s)
+  -    9 [desktop-chrome] › tests\e2e\accessibility-hardening-step-35.spec.ts:92:1 › Core surfaces pass WCAG 2.2 A/AA and target-size scans
+  ok  10 [desktop-chrome] › tests\e2e\accessibility-hardening-step-35.spec.ts:201:1 › keyboard dialogs trap focus, close with Escape, and return focus (585ms)
+  ok  11 [desktop-chrome] › tests\e2e\accessibility-hardening-step-35.spec.ts:297:1 › every public and editing shell exposes a working keyboard skip target (827ms)
+  ok  12 [desktop-chrome] › tests\e2e\accessibility-hardening-step-35.spec.ts:327:1 › reduced motion and 200 percent equivalent layout keep Core controls usable (621ms)
+  ok  13 [desktop-chrome] › tests\e2e\accessibility-hardening-step-35.spec.ts:355:1 › Workbench landmarks and every primary mode pass WCAG 2.2 A/AA (5.0s)
+  ok  14 [desktop-chrome] › tests\e2e\accessibility-hardening-step-35.spec.ts:393:1 › keyboard users can reorder Workbench layers without drag and drop (644ms)
+  ok  15 [desktop-chrome] › tests\e2e\accessibility-label-semantics-regression.spec.ts:10:3 › /workbench gives every labelled non-interactive container a semantic role (1.6s)
+  ok  16 [desktop-chrome] › tests\e2e\accessibility-label-semantics-regression.spec.ts:10:3 › /showcase/showcase-playful-hr/ gives every labelled non-interactive container a semantic role (708ms)
+  ok  17 [desktop-chrome] › tests\e2e\accessibility-semantic-labels-step45.spec.ts:3:1 › homepage exposes its preset briefs as a named group (196ms)
+  ok  18 [desktop-chrome] › tests\e2e\accessibility-semantic-labels-step45.spec.ts:10:1 › homepage exposes the manifest example through its visible label (250ms)
+  ok  19 [desktop-chrome] › tests\e2e\accessibility-semantic-labels-step45.spec.ts:20:1 › mobile Explore filter button controls the opened dialog and Escape restores focus (447ms)
+  ok  20 [desktop-chrome] › tests\e2e\aud403-surprise-domain.spec.ts:10:1 › Surprise Me keeps seeded employee SaaS typography out of financial styles (1.5s)
+  ok  21 [desktop-chrome] › tests\e2e\blueprints-showcases-hardening.spec.ts:99:1 › all blueprint and showcase routes render with usable content at this viewport (13.3s)
+  ok  22 [desktop-chrome] › tests\e2e\blueprints-showcases-hardening.spec.ts:319:1 › every blueprint composes three real directions, opens Workbench, mutates and exports (17.7s)
+  ok  23 [desktop-chrome] › tests\e2e\blueprints-showcases-hardening.spec.ts:416:1 › every showcase opens in Workbench, accepts a visible DNA edit, and exports that project (10.2s)
+  ok  24 [desktop-chrome] › tests\e2e\capability-tiers.spec.ts:3:1 › Beta client tools disclose their tier and current limits on directory and detail routes (273ms)
+  ok  25 [desktop-chrome] › tests\e2e\capability-tiers.spec.ts:22:1 › creator review profile avoids false verification claims and discloses Beta status (146ms)
+  ok  26 [desktop-chrome] › tests\e2e\capability-tiers.spec.ts:34:1 › CLI documentation labels secondary tools and describes only the real Vite export command (152ms)
+  ok  27 [desktop-chrome] › tests\e2e\capability-tiers.spec.ts:47:1 › unavailable laptop model Lab remains opt-in and unsupported commands leave a visible safe failure (1.0s)
+  ok  28 [desktop-chrome] › tests\e2e\capability-tiers.spec.ts:72:1 › online laptop model output is reviewed before it can be applied (4.0s)
+  ok  29 [desktop-chrome] › tests\e2e\catalogue-preview-window-regression.spec.ts:2:1 › catalogue mounts only a nearby window of real previews (558ms)
+  ok  30 [desktop-chrome] › tests\e2e\compose-heading-hierarchy-step-39.spec.ts:5:1 › Compose exposes one page heading followed by its description heading (312ms)
+  ok  31 [desktop-chrome] › tests\e2e\compose-loading-contrast.spec.ts:45:3 › Compose loading and error controls retain readable contrast (light) (1.5s)
+  ok  32 [desktop-chrome] › tests\e2e\compose-loading-contrast.spec.ts:45:3 › Compose loading and error controls retain readable contrast (dark) (1.4s)
+  ok  33 [desktop-chrome] › tests\e2e\compose-responsiveness-hardening.spec.ts:8:1 › Compose acknowledges work before generating the three real directions (2.2s)
+  ok  34 [desktop-chrome] › tests\e2e\compose-ux-hardening.spec.ts:101:1 › Compose auto-retries once and keeps explicit recovery for persistent catalogue failures (688ms)
+  ok  35 [desktop-chrome] › tests\e2e\compose-ux-hardening.spec.ts:144:1 › Compose rejects whitespace-only briefs with a clear message (419ms)
+  ok  36 [desktop-chrome] › tests\e2e\compose-ux-hardening.spec.ts:162:1 › Compose hides stale directions after the brief or design settings change (870ms)
+  ok  37 [desktop-chrome] › tests\e2e\compose-ux-hardening.spec.ts:191:1 › Compose hides stale directions after Visual Ambition changes (470ms)
+  ok  38 [desktop-chrome] › tests\e2e\compose-ux-hardening.spec.ts:208:1 › Selecting a sample brief clears the empty-brief error (612ms)
+  ok  39 [desktop-chrome] › tests\e2e\compose-ux-hardening.spec.ts:246:1 › Compose exposes selected ambition and target-device controls to keyboard users (491ms)
+  ok  40 [desktop-chrome] › tests\e2e\compose-ux-hardening.spec.ts:285:1 › Compose explains why the final selected target device cannot be removed (424ms)
+  ok  41 [desktop-chrome] › tests\e2e\compose-ux-hardening.spec.ts:304:1 › Compose stays usable with a long brief and repeated submissions (611ms)
+  ok  42 [desktop-chrome] › tests\e2e\compose-workbench-handoff.spec.ts:37:1 › Compose Direction C opens the exact selected manifest in Workbench (5.5s)
+  ok  43 [desktop-chrome] › tests\e2e\composition-quality-smoke.spec.ts:20:1 › showcase identity survives composition and renders in the public preview (381ms)
+  ok  44 [desktop-chrome] › tests\e2e\composition-quality-smoke.spec.ts:98:1 › review representative marketplace and community compositions in the real browser (2.7s)
+  ok  45 [desktop-chrome] › tests\e2e\composition-quality-smoke.spec.ts:286:1 › SaaS overview activity uses a truthful chronological feed with human-readable examples (1.9s)
+  ok  46 [desktop-chrome] › tests\e2e\composition-quality-smoke.spec.ts:481:1 › brokerage terminal brief composes market workflows instead of banking screens (1.6s)
+  ok  47 [desktop-chrome] › tests\e2e\composition-quality-smoke.spec.ts:661:1 › product catalog offers a clear path to the generated product detail screen (1.5s)
+  ok  48 [desktop-chrome] › tests\e2e\composition-quality-smoke.spec.ts:782:1 › returns portal brief composes order lookup, return request, and refund status (2.2s)
+  ok  49 [desktop-chrome] › tests\e2e\composition-quality-smoke.spec.ts:937:1 › real-estate and travel directions use truthful, domain-fit content (3.8s)
+  ok  50 [desktop-chrome] › tests\e2e\critical-flows.spec.ts:4:3 › Critical Anonymous User Flows › homepage loads editorial shell, navigation, and interactive islands (235ms)
+  ok  51 [desktop-chrome] › tests\e2e\critical-flows.spec.ts:21:3 › Critical Anonymous User Flows › explore catalogue loads verified resource index and supports filtering (720ms)
+  ok  52 [desktop-chrome] › tests\e2e\critical-flows.spec.ts:34:3 › Critical Anonymous User Flows › showcases gallery presents 8 distinct systems and inspects Design DNA (200ms)
+  ok  53 [desktop-chrome] › tests\e2e\critical-flows.spec.ts:43:3 › Critical Anonymous User Flows › workbench route loads dark studio workspace and Design DNA inspector (947ms)
+  ok  54 [desktop-chrome] › tests\e2e\critical-flows.spec.ts:56:3 › Critical Anonymous User Flows › production error state: 404 page renders cleanly with recovery links (147ms)
+  ok  55 [desktop-chrome] › tests\e2e\cross-surface-manifest-step-41.spec.ts:118:1 › UI Direction C manifest validates and exports identically through CLI and MCP (8.4s)
+  ok  56 [desktop-chrome] › tests\e2e\cross-surface-manifest-step-41.spec.ts:325:1 › opens a CLI-composed manifest in Workbench and exports its edited project (5.1s)
+  ok  57 [desktop-chrome] › tests\e2e\cross-surface-manifest-step-41.spec.ts:444:1 › opens an MCP-composed manifest in Workbench and returns the edited project through CLI and MCP (4.9s)
+  ok  58 [desktop-chrome] › tests\e2e\design-dna-observability.spec.ts:17:1 › Design DNA sliders update semantic output and preserve the mapped values (1.4s)
+  ok  59 [desktop-chrome] › tests\e2e\direction-generation-audit.spec.ts:8:1 › employee dashboard marks unavailable metrics with a neutral status tone (1.4s)
+  ok  60 [desktop-chrome] › tests\e2e\direction-generation-audit.spec.ts:100:1 › flagship directions use distinct rendered structures and a real three-pane dashboard (1.8s)
+  ok  61 [desktop-chrome] › tests\e2e\documentation-index-step-40.spec.ts:5:1 › documentation index links to canonical repository contracts (326ms)
+  ok  62 [desktop-chrome] › tests\e2e\documentation-keyboard-regression.spec.ts:6:1 › registry command is keyboard scrollable on mobile (471ms)
+  ok  63 [desktop-chrome] › tests\e2e\documentation-keyboard-regression.spec.ts:15:1 › the CLI documentation shell stays within a 320px phone viewport (128ms)
+  ok  64 [desktop-chrome] › tests\e2e\documentation-keyboard-regression.spec.ts:26:1 › CLI examples stay within the phone viewport and long commands scroll by keyboard (353ms)
+  ok  65 [desktop-chrome] › tests\e2e\documentation-keyboard-regression.spec.ts:53:1 › long prose tokens and inline identifiers wrap without widening mobile documentation (315ms)
+  ok  66 [desktop-chrome] › tests\e2e\domain-workflow-composition-audit.spec.ts:50:1 › specialized ecommerce, flight, and film briefs keep their domain workflows across all directions (4.5s)
+  ok  67 [desktop-chrome] › tests\e2e\explore-filter-control-identity.spec.ts:3:1 › Explore filter controls have stable identity and survive a reload (548ms)
+  ok  68 [desktop-chrome] › tests\e2e\explore-search-hardening.spec.ts:15:1 › search returns resources that match declared intent, not only a related word (1.4s)
+  ok  69 [desktop-chrome] › tests\e2e\explore-search-hardening.spec.ts:36:1 › Explore search keeps browser-restorable field identity while filtering results (694ms)
+  ok  70 [desktop-chrome] › tests\e2e\explore-search-hardening.spec.ts:50:1 › Explore keeps current results and in-flight previews until a debounced query is applied (762ms)
+  ok  71 [desktop-chrome] › tests\e2e\explore-search-hardening.spec.ts:121:1 › Explore search explains and blocks input until its client handlers are ready (689ms)
+  ok  72 [desktop-chrome] › tests\e2e\explore-search-hardening.spec.ts:183:1 › suggested searches lead to relevant catalog results (951ms)
+  ok  73 [desktop-chrome] › tests\e2e\explore-search-hardening.spec.ts:206:1 › facet selection filters results and survives reload through the URL (1.3s)
+  ok  74 [desktop-chrome] › tests\e2e\explore-search-hardening.spec.ts:242:1 › Accessibility facet labels declared conformance targets without claiming certification (430ms)
+  ok  75 [desktop-chrome] › tests\e2e\explore-search-hardening.spec.ts:256:1 › facet lists only include values represented in the loaded catalogue (645ms)
+  ok  76 [desktop-chrome] › tests\e2e\explore-search-hardening.spec.ts:285:1 › a stale URL facet remains visible so it can be removed (520ms)
+  ok  77 [desktop-chrome] › tests\e2e\explore-search-hardening.spec.ts:298:1 › Explore reports the real total and exposes more than the first 50 resources (501ms)
+  -   78 [desktop-chrome] › tests\e2e\explore-search-hardening.spec.ts:309:1 › mobile filter drawer is a keyboard dialog with focus containment and Escape close
+  ok  79 [desktop-chrome] › tests\e2e\flagship-acceptance-journey.spec.ts:183:3 › Flagship Acceptance & Merge Gate Verification › flagship employee experience journey uses the visible UI through independent React export (24.4s)
+  ok  80 [desktop-chrome] › tests\e2e\flagship-acceptance-journey.spec.ts:717:3 › Flagship Acceptance & Merge Gate Verification › regression suite: financial trading terminal flow with locks, recomposition and zip export (3.7s)
+  -   81 [desktop-chrome] › tests\e2e\flagship-acceptance-journey.spec.ts:848:3 › Flagship Acceptance & Merge Gate Verification › mobile composer to workbench acceptance flow
+  ok  82 [desktop-chrome] › tests\e2e\flagship-generated-product-a11y.spec.ts:18:1 › the generated employee experience opens in Workbench without serious accessibility violations (3.9s)
+  -   83 [desktop-chrome] › tests\e2e\gold-dialog-accessibility.spec.ts:3:1 › Gold dialog preview exposes modal semantics and closes on Escape
+  -   84 [desktop-chrome] › tests\e2e\gold-resource-accessibility-certification.spec.ts:17:1 › Gold resources expose accessible semantics and contrast in every variant
+  -   85 [desktop-chrome] › tests\e2e\gold-resource-accessibility-certification.spec.ts:99:1 › Split Product Hero Nocturne keeps its badge readable on the dark canvas
+  -   86 [desktop-chrome] › tests\e2e\gold-resource-action-completion.spec.ts:5:1 › AI Prompt Composer reports clearly that its preview does not send a provider request
+  ok  87 [desktop-chrome] › tests\e2e\gold-resource-chunk-failure.spec.ts:10:1 › a Gold resource chunk failure stays local and preserves the Workbench project (1.2s)
+  -   88 [desktop-chrome] › tests\e2e\gold-resource-state-certification.spec.ts:44:1 › Gold data resources handle empty states, large datasets, long content, and interaction
+  -   89 [desktop-chrome] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold marketing-nav-cta handles empty and large links states
+  -   90 [desktop-chrome] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold testimonial-grid handles empty and large testimonials states
+  -   91 [desktop-chrome] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold split-product-hero handles empty and large panels states
+  -   92 [desktop-chrome] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold feature-matrix handles empty and large items states
+  -   93 [desktop-chrome] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold logo-cloud-minimal handles empty and large logos states
+  -   94 [desktop-chrome] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold footer-product handles empty and large links states
+  -   95 [desktop-chrome] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold collapsible-sidebar handles empty and large links states
+  -   96 [desktop-chrome] › tests\e2e\gold-resource-state-matrix.spec.ts:199:3 › Gold minimal-top-nav handles empty and large links states
+  -   97 [desktop-chrome] › tests\e2e\gold-resource-state-matrix.spec.ts:289:1 › Gold form controls honor disabled state and state patterns remain announced
+  -   98 [desktop-chrome] › tests\e2e\gold-resource-state-matrix.spec.ts:355:1 › Gold fixed-slot resource renders partial input without unresolved values
+  -   99 [desktop-chrome] › tests\e2e\gold-resource-state-matrix.spec.ts:477:1 › Gold long-text props remain readable without mobile overflow
+  ok 100 [desktop-chrome] › tests\e2e\header-accessible-name.spec.ts:6:3 › search trigger includes its visible label in its accessible name on / (203ms)
+  ok 101 [desktop-chrome] › tests\e2e\header-accessible-name.spec.ts:6:3 › search trigger includes its visible label in its accessible name on /explore (121ms)
+  ok 102 [desktop-chrome] › tests\e2e\header-accessible-name.spec.ts:6:3 › search trigger includes its visible label in its accessible name on /compose (150ms)
+  ok 103 [desktop-chrome] › tests\e2e\header-accessible-name.spec.ts:6:3 › search trigger includes its visible label in its accessible name on /r/advanced-data-table (173ms)
+  ok 104 [desktop-chrome] › tests\e2e\home-agent-example-regression.spec.ts:3:1 › homepage contract example is truthful and uses readable dark tokens (258ms)
+  ok 105 [desktop-chrome] › tests\e2e\home-agent-example-regression.spec.ts:7:1 › dark agent example has sufficient contrast (610ms)
+  ok 106 [desktop-chrome] › tests\e2e\home-catalogue-filter-readiness-step-39.spec.ts:34:1 › homepage category filters stay unavailable until their Astro island is ready (1.1s)
+  ok 107 [desktop-chrome] › tests\e2e\home-default-brief-truthfulness.spec.ts:3:1 › homepage starts with the same domain as its employee-experience example (197ms)
+  ok 108 [desktop-chrome] › tests\e2e\home-demo-hydration.spec.ts:5:1 › homepage route reaches Compose and waits for the live catalogue (409ms)
+  ok 109 [desktop-chrome] › tests\e2e\home-demo-hydration.spec.ts:49:1 › homepage example-directions action produces three real previews (1.8s)
+  ok 110 [desktop-chrome] › tests\e2e\home-demo-hydration.spec.ts:137:1 › homepage example control is unavailable until its island is hydrated (301ms)
+  ok 111 [desktop-chrome] › tests\e2e\home-filter-hydration-contrast-step-48.spec.ts:18:1 › homepage catalogue filters keep readable contrast through initial hydration (1.4s)
+  ok 112 [desktop-chrome] › tests\e2e\home-performance-step-38.spec.ts:3:1 › homepage form fields expose stable IDs and names for browser autofill (209ms)
+  ok 113 [desktop-chrome] › tests\e2e\home-performance-step-38.spec.ts:16:1 › homepage transfers an edited brief to Compose without eager engine loading (1.6s)
+  ok 114 [desktop-chrome] › tests\e2e\home-preset-chips-responsive-step-45.spec.ts:5:1 › homepage preset briefs stay fully visible without horizontal clipping (536ms)
+  -  115 [desktop-chrome] › tests\e2e\home-structure-comparison-readiness.spec.ts:30:1 › homepage structure selectors stay disabled until the visible island hydrates
+  -  116 [desktop-chrome] › tests\e2e\home-structure-comparison-readiness.spec.ts:77:1 › homepage wireframe keeps every pane inside the visible diagram before JavaScript
+  -  117 [desktop-chrome] › tests\e2e\home-structure-comparison-readiness.spec.ts:114:1 › tablet homepage wireframe keeps the complete three-pane diagram visible
+  -  118 [desktop-chrome] › tests\e2e\home-structure-comparison-readiness.spec.ts:151:1 › homepage wireframe fits without clipping across phone, tablet, and desktop widths
+  ok 119 [desktop-chrome] › tests\e2e\home-structure-comparison-readiness.spec.ts:211:1 › hydrated homepage structure selectors change the visible layout diagram without mobile clipping (314ms)
+  ok 120 [desktop-chrome] › tests\e2e\home-visual-rhythm-step-40.spec.ts:5:1 › mobile homepage keeps wrapped presets and the composer within the first 90svh (265ms)
+  -  121 [desktop-chrome] › tests\e2e\inline-ai-rewrite-responsive.spec.ts:5:1 › Inline AI Rewrite stays within its 360px Sites resource preview at every tone
+  ok 122 [desktop-chrome] › tests\e2e\mcp-docs-regression.spec.ts:6:1 › MCP setup guide is truthful, keyboard reachable, and usable on desktop and mobile (610ms)
+  -  123 [desktop-chrome] › tests\e2e\minimal-top-nav-responsive-collapse.spec.ts:3:1 › Minimal Top Navigation collapses inside a narrow preview and remains keyboard-operable
+  ok 124 [desktop-chrome] › tests\e2e\mobile-navigation-regression.spec.ts:2:1 › mobile navigation traps focus, closes with Escape and returns focus (249ms)
+  ok 125 [desktop-chrome] › tests\e2e\page-recipe-handoff-step-39.spec.ts:16:1 › page recipe handoff quotes the title instead of assuming its article (345ms)
+  ok 126 [desktop-chrome] › tests\e2e\page-recipe-handoff-step-39.spec.ts:29:1 › generic workspace overview recipe produces a coherent SaaS architecture (707ms)
+  ok 127 [desktop-chrome] › tests\e2e\palette-hydration-readiness.spec.ts:3:1 › Palette Studio exposes its controls only after the React island is interactive (228ms)
+  -  128 [desktop-chrome] › tests\e2e\performance-stress-step-38.spec.ts:147:1 › Explore remains usable on constrained 4G and 4x CPU
+  -  129 [desktop-chrome] › tests\e2e\performance-stress-step-38.spec.ts:301:1 › large Workbench project loads, navigates, and exports within local budgets
+  -  130 [desktop-chrome] › tests\e2e\performance-stress-step-38.spec.ts:452:1 › a saved Workbench project opens before catalogue resources are requested
+  -  131 [desktop-chrome] › tests\e2e\performance-stress-step-38.spec.ts:630:1 › a catalogue failure leaves a saved project intact and Library can retry
+  -  132 [desktop-chrome] › tests\e2e\performance-workloads-step-38.spec.ts:9:1 › real discovery, composition, handoff and recompose workload stays responsive
+  -  133 [desktop-chrome] › tests\e2e\preview-form-interactions.spec.ts:21:1 › Text Input and Textarea retain text typed into the live preview
+  -  134 [desktop-chrome] › tests\e2e\preview-form-interactions.spec.ts:42:1 › Select retains the chosen option in the live preview
+  -  135 [desktop-chrome] › tests\e2e\preview-form-interactions.spec.ts:55:1 › Filter Builder adds editable conditions and removes them without inserting unrelated rules
+  -  136 [desktop-chrome] › tests\e2e\preview-form-interactions.spec.ts:121:1 › form-control focus does not announce a generic action
+  -  137 [desktop-chrome] › tests\e2e\preview-form-interactions.spec.ts:167:1 › Combobox selection remains connected to the preview action handler
+  -  138 [desktop-chrome] › tests\e2e\preview-form-interactions.spec.ts:179:1 › Button preview still reports an activated example action
+  -  139 [desktop-chrome] › tests\e2e\preview-form-interactions.spec.ts:186:1 › Reduced Motion toggle disables CSS transitions in the live resource preview
+  ok 140 [desktop-chrome] › tests\e2e\renderer-children-parity.spec.ts:7:1 › Workbench canvas and Preview render all canonical Gold resource variants (2.7s)
+  ok 141 [desktop-chrome] › tests\e2e\renderer-children-parity.spec.ts:50:1 › Workbench renders the shared semantic parity fixture in canvas and Preview (1.5s)
+  ok 142 [desktop-chrome] › tests\e2e\renderer-children-parity.spec.ts:115:1 › Workbench preserves declared resource slot content alongside nested manifest children (1.4s)
+  ok 143 [desktop-chrome] › tests\e2e\resource-dark-expressive-contrast.spec.ts:16:1 › Gold resources keep expressive variants readable on dark product canvases (31.1s)
+  ok 144 [desktop-chrome] › tests\e2e\resource-preview-contrast-regression.spec.ts:17:3 › accessibility-commitment-section expressive preview has readable contrast in light mode (956ms)
+  ok 145 [desktop-chrome] › tests\e2e\resource-preview-contrast-regression.spec.ts:17:3 › ai-approval-request expressive preview has readable contrast in light mode (955ms)
+  ok 146 [desktop-chrome] › tests\e2e\resource-preview-contrast-regression.spec.ts:17:3 › advanced-data-table expressive preview has readable contrast in dark mode (987ms)
+  ok 147 [desktop-chrome] › tests\e2e\resource-preview-contrast-regression.spec.ts:17:3 › feature-matrix expressive preview has readable contrast in dark mode (983ms)
+  ok 148 [desktop-chrome] › tests\e2e\resource-preview-contrast-regression.spec.ts:17:3 › dashboard-kpi-grid expressive preview has readable contrast in dark mode (937ms)
+  ok 149 [desktop-chrome] › tests\e2e\resource-preview-contrast-regression.spec.ts:17:3 › filter-builder expressive preview has readable contrast in dark mode (948ms)
+  ok 150 [desktop-chrome] › tests\e2e\resource-preview-contrast-regression.spec.ts:17:3 › timeline quiet preview has readable contrast in light mode (929ms)
+  ok 151 [desktop-chrome] › tests\e2e\resource-preview-contrast-regression.spec.ts:17:3 › timeline quiet preview has readable contrast in dark mode (965ms)
+  ok 152 [desktop-chrome] › tests\e2e\resource-preview-contrast-regression.spec.ts:17:3 › timeline expressive preview has readable contrast in light mode (935ms)
+  ok 153 [desktop-chrome] › tests\e2e\resource-preview-contrast-regression.spec.ts:17:3 › timeline expressive preview has readable contrast in dark mode (939ms)
+  ok 154 [desktop-chrome] › tests\e2e\resource-preview-contrast-regression.spec.ts:17:3 › timeline nocturne preview has readable contrast in light mode (945ms)
+  ok 155 [desktop-chrome] › tests\e2e\resource-preview-contrast-regression.spec.ts:17:3 › timeline nocturne preview has readable contrast in dark mode (933ms)
+  ok 156 [desktop-chrome] › tests\e2e\resource-preview-contrast-regression.spec.ts:31:1 › Feature Matrix expressive dark preview keeps normal text at WCAG AA contrast (171ms)
+  ok 157 [desktop-chrome] › tests\e2e\resource-preview-dark-contrast.spec.ts:159:1 › Gold resources keep Expressive previews readable in dark mode (4.0s)
+  ok 158 [desktop-chrome] › tests\e2e\resource-preview-regression.spec.ts:2:1 › actual forwarded React primitives load in the public preview (283ms)
+  ok 159 [desktop-chrome] › tests\e2e\resource-scroll-accessibility.spec.ts:10:1 › scrollable Gold resource content is keyboard reachable on mobile (461ms)

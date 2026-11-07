@@ -5,7 +5,7 @@
   "name": "Executive Summary Panel",
   "version": "1.0.0",
   "status": "verified",
-  "description": "High-level synthesis card summarizing critical alerts, key wins, and risk flags.",
+  "description": "Executive briefing template with explicitly illustrative values.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -130,7 +130,7 @@
     "briefing"
   ],
   "intent": {
-    "summary": "High-level synthesis card summarizing critical alerts, key wins, and risk flags.",
+    "summary": "Illustrative summary; replace sample copy and values with verified data.",
     "idealFor": [
       "Executive briefing views and high-level team summaries"
     ],
@@ -138,7 +138,7 @@
       "Raw event log feeds"
     ],
     "jobs": [
-      "Synthesize multi-source information into a crisp executive briefing"
+      "Summarize connected, verified operational information"
     ],
     "contentRequirements": [
       "High data density, keyboard accessibility, semantic tokens"
@@ -209,12 +209,12 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

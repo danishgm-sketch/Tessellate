@@ -1,0 +1,48 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "capturedAt": "2026-10-24T20:04:04.359Z",
+  "results": [
+    {
+      "route": "/resources/error-state/",
+      "viewport": "390x844",
+      "selector": "[aria-label=\"Error code sample\"]",
+      "text": "Error: [ZodError] layoutDNA: density is required",
+      "focus": true,
+      "tabIndex": "0",
+      "overflow": {
+        "document": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "route": "/resources/feature-matrix/",
+      "viewport": "390x844",
+      "selector": "[aria-label=\"Example capability matrix comparison table\"]",
+      "text": "CAPABILITY\tPRIMITIVES\tSHELLS\tSECTIONS\tBLOCKS\nVerified Zod Schemas\tYes\tYes\tYes\tYes\nAccessibility review\tRequired\tRequired\tRequired\tRequired\nZero External CSS Dep",
+      "focus": true,
+      "tabIndex": "0",
+      "overflow": {
+        "document": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "route": "/resources/three-pane-app-shell/",
+      "viewport": "390x844",
+      "selector": "[aria-label=\"Workspace canvas\"]",
+      "text": "Visual Canvas",
+      "focus": true,
+      "tabIndex": "0",
+      "overflow": {
+        "document": 390,
+        "viewport": 390
+      }
+    }
+  ],
+  "diagnostics": {
+    "console": [],
+    "errors": [],
+    "failed": [],
+    "http": []
+  }
+}

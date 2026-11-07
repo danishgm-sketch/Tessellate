@@ -1,0 +1,71 @@
+{
+  "capturedAt": "2026-10-19T20:33:24Z",
+  "step": 30,
+  "status": "complete",
+  "capabilityTier": "Beta",
+  "branch": "consolidation/product-hardening",
+  "baseCommit": "4aea42c1f70ca69e35240b3e7c1bcf5536b2da63",
+  "changesCommitted": false,
+  "gate": {
+    "name": "8-Check Static Registry Contribution Gate",
+    "checks": [
+      "schema-validation",
+      "token-hygiene",
+      "accessibility-audit",
+      "responsive-strategy",
+      "reduced-motion",
+      "security-isolation",
+      "bundle-budget",
+      "license-provenance"
+    ],
+    "focusedTests": {
+      "status": "pass",
+      "passed": 18,
+      "total": 18
+    }
+  },
+  "catalogueAudit": {
+    "canonical": {
+      "resources": 324,
+      "staticChecksClear": 104,
+      "reviewRequired": 220
+    },
+    "gold": {
+      "resources": 40,
+      "staticChecksClear": 13,
+      "reviewRequired": 27
+    },
+    "evidence": [
+      "canonical-resource-gate.json",
+      "gold-resource-gate.json"
+    ]
+  },
+  "repositoryValidation": {
+    "unitAndIntegrationTests": {
+      "status": "pass",
+      "passed": 989,
+      "total": 989,
+      "files": 67
+    },
+    "typecheck": "pass",
+    "lint": {
+      "status": "pass",
+      "errors": 0,
+      "warnings": 33,
+      "warningLimit": 51
+    },
+    "targetedPrettier": "pass",
+    "auditAll": "pass",
+    "releaseGate": "16/16 pass",
+    "siteBuild": "717 pages pass",
+    "sitesWorkerBuild": "pass",
+    "bundleBudgetAudit": "pass",
+    "licenseProvenanceAudit": "324 resources pass",
+    "securitySecretsAudit": "0 violations"
+  },
+  "limitations": [
+    "The static gate does not compile or execute submitted resource code.",
+    "License and redistribution statements are checked for consistency but remain self-attested.",
+    "Gold resources with static accessibility, token or reduced-motion findings remain open for their ordered hardening gates."
+  ]
+}

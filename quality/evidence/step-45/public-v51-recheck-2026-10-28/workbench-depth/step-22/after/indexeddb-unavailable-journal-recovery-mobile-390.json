@@ -1,0 +1,20 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=local-d3e965d5-7b20-45ec-9950-afcaeedcdc30",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "status": "passed",
+  "issue": "AUD-161",
+  "checks": {
+    "journalManifestRestoredExactly": true,
+    "workbenchRemainedEditable": true,
+    "historyAvailabilityWasTruthful": true
+  },
+  "screenshot": "quality/evidence/step-22/after/indexeddb-unavailable-journal-recovery-mobile-390.png"
+}

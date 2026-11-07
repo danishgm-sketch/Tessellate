@@ -1,3 +1,3 @@
 # Feature Metrics
 
-Quantitative feature proof section validating payload budgets and Lighthouse scores.
+Illustrative performance-proof section with a sample JavaScript budget and prompts for tracking and Lighthouse reports. Replace the examples with dated measurements, sources, and testing conditions before publishing.

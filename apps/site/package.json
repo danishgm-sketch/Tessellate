@@ -10,17 +10,18 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/react": "^4.2.1",
+    "@astrojs/markdown-remark": "7.2.4",
+    "@astrojs/react": "^7.1.0",
     "@tessellate/catalog": "workspace:*",
     "@tessellate/compatibility": "workspace:*",
     "@tessellate/composer": "workspace:*",
     "@tessellate/dna": "workspace:*",
-    "@tessellate/schemas": "workspace:*",
     "@tessellate/renderer": "workspace:*",
+    "@tessellate/schemas": "workspace:*",
     "@tessellate/search": "workspace:*",
     "@tessellate/ui": "workspace:*",
     "@tessellate/workbench": "workspace:*",
-    "astro": "^5.3.0",
+    "astro": "^7.4.2",
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

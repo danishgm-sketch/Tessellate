@@ -1,0 +1,608 @@
+{
+  "capturedAt": "2026-11-03T15:14:27.236Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+  "viewport": {
+    "width": 412,
+    "height": 823
+  },
+  "cpuThrottlingRate": 4,
+  "projectHeading": "Workbench: Example employee workspace",
+  "delayedResources": {
+    "firstLoad": [
+      "/_astro/editorial-hero.CN6KYWuK.js",
+      "/_astro/minimal-top-nav.BckvualU.js"
+    ],
+    "reload": [
+      "/_astro/editorial-hero.CN6KYWuK.js",
+      "/_astro/minimal-top-nav.BckvualU.js"
+    ]
+  },
+  "firstLoad": {
+    "cls": 0.017716154259663604,
+    "shifts": [
+      {
+        "value": 0.004887214968183062,
+        "startTime": 12846,
+        "sources": [
+          {
+            "tag": "DIV",
+            "className": "@container tess-node tess-layout-hero relative transition-colors duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ease-out)]  ",
+            "text": "Example organisation · sample contentA better workday starts with people.Bring your people, teams and everyday employee ",
+            "previousRect": {
+              "x": 17,
+              "y": 316,
+              "width": 378,
+              "height": 443,
+              "top": 316,
+              "right": 395,
+              "bottom": 759,
+              "left": 17
+            },
+            "currentRect": {
+              "x": 17,
+              "y": 308,
+              "width": 378,
+              "height": 451,
+              "top": 308,
+              "right": 395,
+              "bottom": 759,
+              "left": 17
+            }
+          }
+        ]
+      },
+      {
+        "value": 0.017716154259663604,
+        "startTime": 14709.800000011921,
+        "sources": [
+          {
+            "tag": "SECTION",
+            "className": "relative w-full py-24 @sm:py-32 px-6 @sm:px-12 border-b transition-colors bg-[#FAF8F5] text-neutral-900 border-neutral-200",
+            "text": "Example organisation · sample contentA better workday starts with people.Bring your people, teams and everyday employee ",
+            "previousRect": {
+              "x": 17,
+              "y": 308,
+              "width": 378,
+              "height": 451,
+              "top": 308,
+              "right": 395,
+              "bottom": 759,
+              "left": 17
+            },
+            "currentRect": {
+              "x": 17,
+              "y": 337,
+              "width": 378,
+              "height": 422,
+              "top": 337,
+              "right": 395,
+              "bottom": 759,
+              "left": 17
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "reload": {
+    "cls": 0.017716154259663604,
+    "shifts": [
+      {
+        "value": 0.004887214968183062,
+        "startTime": 2555.100000023842,
+        "sources": [
+          {
+            "tag": "DIV",
+            "className": "@container tess-node tess-layout-hero relative transition-colors duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ease-out)]  ",
+            "text": "Example organisation · sample contentA better workday starts with people.Bring your people, teams and everyday employee ",
+            "previousRect": {
+              "x": 17,
+              "y": 316,
+              "width": 378,
+              "height": 443,
+              "top": 316,
+              "right": 395,
+              "bottom": 759,
+              "left": 17
+            },
+            "currentRect": {
+              "x": 17,
+              "y": 308,
+              "width": 378,
+              "height": 451,
+              "top": 308,
+              "right": 395,
+              "bottom": 759,
+              "left": 17
+            }
+          }
+        ]
+      },
+      {
+        "value": 0.017716154259663604,
+        "startTime": 4581.100000023842,
+        "sources": [
+          {
+            "tag": "SECTION",
+            "className": "relative w-full py-24 @sm:py-32 px-6 @sm:px-12 border-b transition-colors bg-[#FAF8F5] text-neutral-900 border-neutral-200",
+            "text": "Example organisation · sample contentA better workday starts with people.Bring your people, teams and everyday employee ",
+            "previousRect": {
+              "x": 17,
+              "y": 308,
+              "width": 378,
+              "height": 451,
+              "top": 308,
+              "right": 395,
+              "bottom": 759,
+              "left": 17
+            },
+            "currentRect": {
+              "x": 17,
+              "y": 337,
+              "width": 378,
+              "height": 422,
+              "top": 337,
+              "right": 395,
+              "bottom": 759,
+              "left": 17
+            }
+          }
+        ]
+      }
+    ],
+    "transitions": [
+      {
+        "time": 491.5999999642372,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 761.5999999642372,
+        "target": "astro-island: TTessellate WorkbenchPreparing your local workspaceProject structureProject canv",
+        "added": [],
+        "removed": [
+          "template"
+        ]
+      },
+      {
+        "time": 767.3000000119209,
+        "target": "astro-island: TTessellate WorkbenchPreparing your local workspaceProject structureProject canv",
+        "added": [],
+        "removed": [
+          "main#workbench-startup: TTessellate WorkbenchPreparing your local workspaceProject structureProject canv"
+        ]
+      },
+      {
+        "time": 767.3000000119209,
+        "target": "astro-island: TTessellate WorkbenchPreparing your local workspaceProject structureProject canv",
+        "added": [
+          "main#workbench-startup: TTessellate WorkbenchPreparing your local workspaceProject structureProject canv"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.1999999880791,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.3999999761581,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.3999999761581,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.3999999761581,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.3999999761581,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.3999999761581,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.5999999642372,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.5999999642372,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.5999999642372,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.5999999642372,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.5999999642372,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.5999999642372,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.5999999642372,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.5999999642372,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.5999999642372,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.5999999642372,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.5999999642372,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.8000000119209,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.8000000119209,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.8000000119209,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.8000000119209,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.8000000119209,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 799.8000000119209,
+        "target": "astro-island: Opening the mobile workspace…",
+        "added": [],
+        "removed": [
+          "main#workbench-startup: TTessellate WorkbenchPreparing your local workspaceProject structureProject canv"
+        ]
+      },
+      {
+        "time": 799.8000000119209,
+        "target": "astro-island: Opening the mobile workspace…",
+        "added": [
+          "div: Opening the mobile workspace…"
+        ],
+        "removed": []
+      },
+      {
+        "time": 1234.8999999761581,
+        "target": "astro-island: Skip to editorTExample employee workspaceLocalSavedComposestructurestylemotionco",
+        "added": [],
+        "removed": [
+          "div: Opening the mobile workspace…"
+        ]
+      },
+      {
+        "time": 1235.0999999642372,
+        "target": "astro-island: Skip to editorTExample employee workspaceLocalSavedComposestructurestylemotionco",
+        "added": [
+          "div: Skip to editorTExample employee workspaceLocalSavedComposestructurestylemotionco"
+        ],
+        "removed": []
+      },
+      {
+        "time": 1280.3999999761581,
+        "target": "div: .tess-screen{container-type:inline-size;container-name:tess-screen;min-width:0} ",
+        "added": [],
+        "removed": [
+          "Loading resources for"
+        ]
+      },
+      {
+        "time": 1280.5999999642372,
+        "target": "div: .tess-screen{container-type:inline-size;container-name:tess-screen;min-width:0} ",
+        "added": [],
+        "removed": [
+          "Marketing Home"
+        ]
+      },
+      {
+        "time": 1281,
+        "target": "div: .tess-screen{container-type:inline-size;container-name:tess-screen;min-width:0} ",
+        "added": [],
+        "removed": [
+          "…"
+        ]
+      },
+      {
+        "time": 1281,
+        "target": "div: .tess-screen{container-type:inline-size;container-name:tess-screen;min-width:0} ",
+        "added": [
+          "div: .tess-screen{container-type:inline-size;container-name:tess-screen;min-width:0} "
+        ],
+        "removed": []
+      },
+      {
+        "time": 1327.3999999761581,
+        "target": "head: Workbench — Tessellate Composition Engine (() => { const params = new URLSearchP",
+        "added": [
+          "link"
+        ],
+        "removed": []
+      },
+      {
+        "time": 1327.699999988079,
+        "target": "div: Loading minimal-top-nav…",
+        "added": [],
+        "removed": [
+          "Loading"
+        ]
+      },
+      {
+        "time": 1327.8999999761581,
+        "target": "div: Loading minimal-top-nav…",
+        "added": [],
+        "removed": [
+          "minimal-top-nav"
+        ]
+      },
+      {
+        "time": 1328,
+        "target": "div: Loading minimal-top-nav…",
+        "added": [],
+        "removed": [
+          "when this section is in view…"
+        ]
+      },
+      {
+        "time": 1328.0999999642372,
+        "target": "div: Loading minimal-top-nav…",
+        "added": [
+          "div: Loading minimal-top-nav…"
+        ],
+        "removed": []
+      },
+      {
+        "time": 1328.0999999642372,
+        "target": "div: Could not load resource: editorial-heroThe project reference is preserved. Reloa",
+        "added": [],
+        "removed": [
+          "Loading"
+        ]
+      },
+      {
+        "time": 1328.199999988079,
+        "target": "div: Could not load resource: editorial-heroThe project reference is preserved. Reloa",
+        "added": [],
+        "removed": [
+          "editorial-hero"
+        ]
+      },
+      {
+        "time": 1328.199999988079,
+        "target": "div: Could not load resource: editorial-heroThe project reference is preserved. Reloa",
+        "added": [],
+        "removed": [
+          "when this section is in view…"
+        ]
+      },
+      {
+        "time": 1328.199999988079,
+        "target": "div: Could not load resource: editorial-heroThe project reference is preserved. Reloa",
+        "added": [
+          "div: Could not load resource: editorial-heroThe project reference is preserved. Reloa"
+        ],
+        "removed": []
+      },
+      {
+        "time": 3316,
+        "target": "div: People & CoMenuMarketing HomeTeam OverviewPeople DirectoryTeamsEngagementSetting",
+        "added": [],
+        "removed": [
+          "div: Loading minimal-top-nav…"
+        ]
+      },
+      {
+        "time": 3316.199999988079,
+        "target": "div: People & CoMenuMarketing HomeTeam OverviewPeople DirectoryTeamsEngagementSetting",
+        "added": [
+          "header: People & CoMenuMarketing HomeTeam OverviewPeople DirectoryTeamsEngagementSetting"
+        ],
+        "removed": []
+      }
+    ]
+  },
+  "normalRuntime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "faultInjection": {
+    "cls": 0.017716154259663604,
+    "failedHeroHeight": 448,
+    "shifts": [
+      {
+        "value": 0.004887214968183062,
+        "startTime": 1336.5,
+        "sources": [
+          {
+            "tag": "DIV",
+            "className": "@container tess-node tess-layout-hero relative transition-colors duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ease-out)]  ",
+            "text": "Could not load resource: editorial-heroThe project reference is preserved. Reload the page to retry this resource.",
+            "previousRect": {
+              "x": 17,
+              "y": 316,
+              "width": 378,
+              "height": 443,
+              "top": 316,
+              "right": 395,
+              "bottom": 759,
+              "left": 17
+            },
+            "currentRect": {
+              "x": 17,
+              "y": 308,
+              "width": 378,
+              "height": 448,
+              "top": 308,
+              "right": 395,
+              "bottom": 756,
+              "left": 17
+            }
+          }
+        ]
+      },
+      {
+        "value": 0.017716154259663604,
+        "startTime": 3322.199999988079,
+        "sources": [
+          {
+            "tag": "DIV",
+            "className": "@container tess-node tess-layout-hero relative transition-colors duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ease-out)]  ",
+            "text": "Could not load resource: editorial-heroThe project reference is preserved. Reload the page to retry this resource.",
+            "previousRect": {
+              "x": 17,
+              "y": 308,
+              "width": 378,
+              "height": 448,
+              "top": 308,
+              "right": 395,
+              "bottom": 756,
+              "left": 17
+            },
+            "currentRect": {
+              "x": 17,
+              "y": 337,
+              "width": 378,
+              "height": 422,
+              "top": 337,
+              "right": 395,
+              "bottom": 759,
+              "left": 17
+            }
+          }
+        ]
+      }
+    ],
+    "failedGoldResource": "/_astro/editorial-hero.CN6KYWuK.js",
+    "delayedResources": [
+      "/_astro/minimal-top-nav.BckvualU.js"
+    ],
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_FAILED",
+      "TypeError: Failed to fetch dynamically imported module: https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/editorial-hero.CN6KYWuK.js"
+    ],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/editorial-hero.CN6KYWuK.js",
+        "error": "net::ERR_FAILED"
+      }
+    ],
+    "httpErrors": []
+  }
+}

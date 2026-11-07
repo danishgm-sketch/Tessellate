@@ -5,7 +5,7 @@
   "name": "CTA Community",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Invitation banner to Discord / GitHub discussions with member counter badge.",
+  "description": "Community invitation with configurable contributor-guide and repository links.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -17,8 +17,8 @@
     "community"
   ],
   "purposes": [
-    "Community growth",
-    "Developer engagement"
+    "Contributor navigation",
+    "Community discovery"
   ],
   "productArchetypes": [
     {
@@ -86,7 +86,10 @@
   },
   "preview": {
     "component": "CtaCommunityPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "guideHref": "/creators",
+      "repositoryHref": "https://github.com/danishgm-sketch/Tessellate"
+    },
     "viewport": 1440
   },
   "slots": [
@@ -126,11 +129,11 @@
   "tags": [
     "cta-community",
     "community",
-    "discord",
-    "github"
+    "contributing",
+    "repository"
   ],
   "intent": {
-    "summary": "Invitation banner to Discord / GitHub discussions with member counter badge.",
+    "summary": "Community invitation with configurable contributor-guide and repository links.",
     "idealFor": [
       "Open source projects building a developer community"
     ],
@@ -138,12 +141,14 @@
       "Strict enterprise confidentiality sites"
     ],
     "jobs": [
-      "Invite developers to join community forums and Discord server"
+      "Direct visitors to configured contributor guidance or a project repository"
     ],
     "contentRequirements": [
-      "Clear hierarchy, responsive layout, accessible typography"
+      "Clear hierarchy, responsive layout, accessible typography",
+      "At least one configured destination and no unsupported member-count claims"
     ],
     "notes": [
+      "Provide guideHref and repositoryHref to enable links",
       "Responsive stacking down to 360px with reduced-motion support"
     ]
   },
@@ -209,12 +214,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +242,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

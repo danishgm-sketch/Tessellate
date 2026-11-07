@@ -1,0 +1,39 @@
+{
+  "findingId": "SEC-37-104",
+  "severity": "medium",
+  "title": "Registry admission allowed unresolved form and beacon destinations",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "<form {...props}><input type=\"email\" /></form>",
+      "<form action={destination}><input type=\"email\" /></form>",
+      "<button formAction={destination} type=\"submit\">Submit</button>",
+      "<a href=\"#\" ping={beacon}>Continue</a>",
+      "React.createElement('form', props)"
+    ],
+    "beforeFix": "The registry gate passed the forwarded form-action props because it treated form, button, and input URLs as non-automatic. A dynamic endpoint therefore remained uncertified. A real browser submission attempt in the Sites preview was independently blocked by sandboxing.",
+    "redTest": "The regression failed before the fix: React.FormHTMLAttributes forwarded through a form spread returned pass instead of fail."
+  },
+  "rootCause": "The gate only failed closed for remote requests considered automatic and skipped submit-time action and ping attributes.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "resources/primitives/link/index.tsx",
+    "resources/primitives/button/index.tsx",
+    "resources/primitives/icon-button/index.tsx",
+    "resources/primitives/input/index.tsx",
+    "resources/primitives/password-input/index.tsx",
+    "resources/primitives/search-input/index.tsx"
+  ],
+  "remediation": "Fail closed when action, formAction, or ping destinations cannot be statically certified, including JSX, React factories, property spreads, and DOM mutation. Remove these transport attributes from shared Link, Button, IconButton, Input, PasswordInput, and SearchInput contracts and runtime prop forwarding.",
+  "validation": {
+    "regression": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"unresolved form destinations in forwarded resource props\"",
+    "result": "passed for dynamic form action, button formAction, anchor ping, React factory, and DOM Object.assign cases",
+    "fullRegistrySuite": "69 tests passed",
+    "sourceIsolationMatrix": "324 resources scanned; 324 pass, 0 warn, 0 fail",
+    "catalogBuild": "pnpm build validates the canonical resource catalogue and regenerates Site artifacts"
+  },
+  "runtimeBoundary": "The preview sandbox and explicit form-action CSP block form submissions. No untrusted contributed source was executed by the registry tests.",
+  "capturedAt": "2026-10-21T18:24:02Z"
+}

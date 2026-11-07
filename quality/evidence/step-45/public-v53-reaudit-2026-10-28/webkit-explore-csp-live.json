@@ -1,0 +1,119 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": 53,
+  "browser": "Playwright WebKit (not Safari)",
+  "capturedAt": "2026-10-28T09:16:07.303Z",
+  "route": "/explore?q=onboarding",
+  "results": [
+    {
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+      "status": 200,
+      "navigationError": null,
+      "cspEvents": [
+        {
+          "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+          "directive": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "",
+          "lineNumber": 5,
+          "disposition": "enforce"
+        },
+        {
+          "frameUrl": "about:blank",
+          "directive": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "",
+          "lineNumber": 5,
+          "disposition": "enforce"
+        }
+      ],
+      "consoleErrors": [
+        {
+          "text": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+          "location": {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+          "location": {
+            "url": "about:blank",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        }
+      ],
+      "consoleWarnings": [
+        "window.styleMedia is a deprecated draft version of window.matchMedia API, and it will be removed in the future."
+      ],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "resourceFrameCount": 6,
+      "screensRendered": 6,
+      "screenshot": "quality/evidence/step-45/public-v53-reaudit-2026-10-28/webkit/explore-onboarding-desktop-1440x900.png"
+    },
+    {
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+      "status": 200,
+      "navigationError": null,
+      "cspEvents": [
+        {
+          "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+          "directive": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "",
+          "lineNumber": 5,
+          "disposition": "enforce"
+        },
+        {
+          "frameUrl": "about:blank",
+          "directive": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "",
+          "lineNumber": 5,
+          "disposition": "enforce"
+        }
+      ],
+      "consoleErrors": [
+        {
+          "text": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+          "location": {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "text": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+          "location": {
+            "url": "about:blank",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        }
+      ],
+      "consoleWarnings": [
+        "window.styleMedia is a deprecated draft version of window.matchMedia API, and it will be removed in the future."
+      ],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "resourceFrameCount": 2,
+      "screensRendered": 2,
+      "screenshot": "quality/evidence/step-45/public-v53-reaudit-2026-10-28/webkit/explore-onboarding-mobile-390x844.png"
+    }
+  ]
+}

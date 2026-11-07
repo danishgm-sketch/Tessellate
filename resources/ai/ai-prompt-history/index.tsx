@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 export type AIPromptHistoryVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface AIPromptHistoryProps {
   variant?: AIPromptHistoryVariant;
+  onReplay?: (prompt: string) => void;
 }
 
-export function AIPromptHistory({ variant = 'quiet' }: AIPromptHistoryProps) {
+export function AIPromptHistory({ variant = 'quiet', onReplay }: AIPromptHistoryProps) {
   const [search, setSearch] = useState('');
+  const replayNoteId = useId();
 
   const cardBg =
     variant === 'nocturne'
@@ -28,11 +30,12 @@ export function AIPromptHistory({ variant = 'quiet' }: AIPromptHistoryProps) {
     <div className={`w-full p-6 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>
       <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
         <div>
-          <h4 className="text-sm font-semibold tracking-tight">Prompt History</h4>
-          <p className="text-xs text-neutral-500">Replay or inspect previous generation requests</p>
+          <h4 className="text-sm font-semibold tracking-tight">Example prompt history</h4>
+          <p className="text-xs text-neutral-500">Sample records only; no prompt history or provider usage is stored.</p>
         </div>
         <input
           type="text"
+          aria-label="Filter example prompts"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Filter prompts..."
@@ -52,12 +55,21 @@ export function AIPromptHistory({ variant = 'quiet' }: AIPromptHistoryProps) {
                 {h.time} • {h.tokens}
               </div>
             </div>
-            <button className="px-3 py-1 text-xs rounded border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-800">
+            <button
+              type="button"
+              onClick={() => onReplay?.(h.prompt)}
+              disabled={!onReplay}
+              aria-describedby={!onReplay ? replayNoteId : undefined}
+              title={!onReplay ? 'Connect a replay handler to enable this action' : undefined}
+              className="px-3 py-1 text-xs rounded border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50"
+            >
               Replay
             </button>
           </div>
         ))}
+        {filtered.length === 0 && <p role="status" className="p-3 text-xs text-neutral-500">No example prompts match this filter.</p>}
       </div>
+      {!onReplay && <p id={replayNoteId} className="text-xs text-neutral-500">Connect a replay handler to enable these actions.</p>}
     </div>
   );
 }

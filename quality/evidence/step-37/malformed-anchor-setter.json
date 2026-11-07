@@ -1,0 +1,24 @@
+{
+  "finding": "SEC-37-112",
+  "severity": "medium",
+  "title": "Malformed anchor setter arguments crashed source validation",
+  "status": "fixed_locally_pending_deployed_verification",
+  "reproduction": {
+    "before_fix": "Checking source with anchor.setAttribute(); anchor.click(); threw a TypeError while the isolation scanner read the absent first argument.",
+    "after_fix": "The scanner checks both argument expressions before resolving the setter and returns a controlled failed security-isolation result when the destination is not certified.",
+    "red_before_fix": "The focused test failed with TypeError: Cannot read properties of undefined (reading kind)."
+  },
+  "root_cause": "Optional TypeScript AST call arguments were passed to resolveStaticStrings without checking whether the requested argument existed.",
+  "affected_files": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Validate the attribute and value arguments before static resolution. Missing values are treated as uncertified and fail closed through the standard registry-gate result.",
+  "validation": {
+    "focused_regression": "red before fix; passed after fix",
+    "registry_worker_and_sites_proxy_tests": "80/80 passed",
+    "workspace_typecheck": "rerun in progress",
+    "full_unit_suite": "rerun in progress"
+  },
+  "deployed_verification": "pending release-candidate deployment"
+}

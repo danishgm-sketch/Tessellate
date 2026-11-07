@@ -48,7 +48,7 @@ export function Tabs({ items, activeId, onChange, className }: TabsProps) {
               'relative py-3 text-sm font-medium transition-colors cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2547E8] rounded-t-sm',
               isActive
                 ? 'text-[#111217] dark:text-[#F5F7FA]'
-                : 'text-[#62666F] hover:text-[#111217] dark:text-[#707986] dark:hover:text-[#F5F7FA]'
+                : 'text-[#62666F] hover:text-[#111217] dark:text-[var(--text-muted)] dark:hover:text-[#F5F7FA]'
             )}
           >
             <span>{tab.label}</span>

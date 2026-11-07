@@ -1,0 +1,27 @@
+{
+  "capturedAt": "2026-10-28T05:35:18.944Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/motion",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "status": 200,
+  "layout": {
+    "viewportWidth": 1440,
+    "documentWidth": 1440,
+    "horizontalOverflow": false
+  },
+  "visibleText": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 03 · KINETIC PHYSICS\nClient-Side · Zero Login\nMotion Studio\n\nCreate and compare easing curves, spring dynamics, stagger timing, and a reduced-motion example.\n\nPlay Animation\nCopy CSS\nPERSONALITY PRESETS\nCalm Precision\nEditorial Glide\nEnergetic Tactile\nDeliberate Command\nReduced Motion Safe\nKinetic Physics Model\nReduced Motion\nReset\nCubic-Bezier\nSpring Physics\nPacing Duration\n220ms\nStagger Delay (per item)\n40ms\nBezier Curve Coordinates\n[0.16, 1, 0.3, 1]\nX1 / Y1 (In)\nX2 / Y2 (Out)\nKINETIC SIMULATION BENCH\n220ms · CUBIC-BEZIER\nStaggered Component Sequence\n01 · Example architecture review\nSAMPLE\n02 · Example token check\nSAMPLE\n03 · Example response timing\nSAMPLE\nInteractive Tactile Press Target\nPress Me for Spring Response\nClick to test physical depression & rebound feedback.\nCSS TRANSITION\nCopy\n/* Tessellate Motion Preset: calm-precision */\ntransition-property: transform, opacity, box-shadow;\ntransition-duration: 220ms;\ntransition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);\nMOTION PROPS\nCopy\n{\n  duration: 0.22,\n  ease: [0.16, 1, 0.3, 1]\n}",
+  "accessibility": {
+    "totalViolations": 0,
+    "seriousOrCritical": []
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-39\\public-v52-copy-2026-10-28\\after\\desktop\\motion-studio-copy.png"
+}

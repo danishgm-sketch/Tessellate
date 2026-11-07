@@ -1,0 +1,112 @@
+{
+  "step": 27,
+  "area": "MCP",
+  "status": "local-verification-passed",
+  "protocol": {
+    "client": "@modelcontextprotocol/sdk Client",
+    "stdio": "passed",
+    "sse": "passed",
+    "concurrentSseClients": 2,
+    "ephemeralLoopbackPort": true,
+    "untrustedOriginPreflight": 403,
+    "wildcardCors": false,
+    "serverStderr": "empty"
+  },
+  "toolCount": 15,
+  "tools": [
+    "search_resources",
+    "get_resource",
+    "get_resource_code",
+    "get_resource_metadata",
+    "find_alternatives",
+    "recommend_resources",
+    "compose_screen",
+    "compose_product",
+    "validate_project",
+    "audit_project",
+    "get_design_dna",
+    "list_design_directions",
+    "export_project_code",
+    "audit_project_accessibility",
+    "mutate_screen_ast"
+  ],
+  "workflow": {
+    "brief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+    "controls": {
+      "feel": "professional but playful",
+      "visualAmbition": 68,
+      "structuralCreativity": 72,
+      "targetDevices": ["desktop", "tablet", "mobile"]
+    },
+    "directions": ["A", "B", "C"],
+    "directionNavigationModelsDistinct": true,
+    "employeeEntitiesPresent": ["Employee", "Team", "Policy"],
+    "employeeScreensPresent": ["Team Overview", "People Directory", "Onboarding", "Settings & Policies"],
+    "financeContamination": false,
+    "allResourceRefsResolve": true,
+    "directionCParityWithSharedPipeline": [
+      "project identity",
+      "ProductModel",
+      "ScreenGraph",
+      "Design DNA",
+      "navigation",
+      "resource refs"
+    ],
+    "mutations": ["lock", "adjust Design DNA", "set navigation", "unlock"],
+    "validation": "passed",
+    "accessibilityAuditScope": "heuristic only; browser/DOM dimensions explicitly not assessed",
+    "export": "Vite source tree generated; clean install/build/runtime not certified by this MCP step"
+  },
+  "negativeCases": [
+    "unknown resource",
+    "blank recommendation intent",
+    "invalid search limit",
+    "malformed manifest",
+    "missing mutation arguments",
+    "nonexistent node ID",
+    "invalid Design DNA value",
+    "malformed local catalogue"
+  ],
+  "catalogueProvider": {
+    "canonicalResources": 324,
+    "externalWorkingDirectory": "passed",
+    "cacheIsolationAcrossRoots": "passed",
+    "malformedCatalogueRejected": "passed"
+  },
+  "tests": {
+    "command": "pnpm exec vitest run packages/mcp/src/__tests__ --reporter=verbose",
+    "filesPassed": 3,
+    "testsPassed": 7
+  },
+  "documentationBrowserAudit": {
+    "route": "/docs/mcp/",
+    "viewports": ["1440x900", "390x844"],
+    "initialResult": "failed: code sample was not keyboard focusable; Axe serious scrollable-region-focusable violation",
+    "remediation": "added tabindex=0 and an accessible name to the horizontally scrollable code block",
+    "afterResult": "passed: keyboard focus, JSON config, Axe main landmark, no overflow, no console errors, no failed requests",
+    "beforeScreenshots": [
+      "quality/evidence/step-27/before/mcp-docs-desktop-chrome.png",
+      "quality/evidence/step-27/before/mcp-docs-mobile-chrome.png"
+    ],
+    "afterScreenshots": [
+      "quality/evidence/step-27/after/mcp-docs-desktop-chrome.png",
+      "quality/evidence/step-27/after/mcp-docs-mobile-chrome.png"
+    ]
+  },
+  "fullBrowserGate": {
+    "command": "pnpm test:e2e",
+    "chromiumPassed": 203,
+    "chromiumSkipped": 67,
+    "sitesRuntimePassed": 45,
+    "sitesRuntimeSkipped": 27,
+    "previewAppPassed": 3,
+    "failures": 0,
+    "notes": ["Playwright runner emitted a NO_COLOR/FORCE_COLOR environment warning"]
+  },
+  "limitations": [
+    "MCP package remains private and unpublished",
+    "SSE has no authentication and is not approved for remote exposure",
+    "generated MCP export source was not independently installed or run",
+    "accessibility output is not a rendered DOM certification"
+  ]
+}

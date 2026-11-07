@@ -1,13 +1,8 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
+import {isScopeLocked} from '../../utils/dna-helpers.js';
 import { findNodeById } from '../../utils/tree-helpers.js';
 import type { RightTab } from '../../types.js';
-import { IntentTab } from './IntentTab.js';
-import { StyleTab } from './StyleTab.js';
-import { MotionTab } from './MotionTab.js';
-import { ContentTab } from './ContentTab.js';
-import { ConstraintsTab } from './ConstraintsTab.js';
-import { ResourceTab } from './ResourceTab.js';
 import {
   Sparkles,
   Palette,
@@ -18,6 +13,13 @@ import {
   RotateCcw,
   X,
 } from 'lucide-react';
+
+const IntentTab = lazy(() => import('./IntentTab.js').then((module) => ({ default: module.IntentTab })));
+const StyleTab = lazy(() => import('./StyleTab.js').then((module) => ({ default: module.StyleTab })));
+const MotionTab = lazy(() => import('./MotionTab.js').then((module) => ({ default: module.MotionTab })));
+const ContentTab = lazy(() => import('./ContentTab.js').then((module) => ({ default: module.ContentTab })));
+const ConstraintsTab = lazy(() => import('./ConstraintsTab.js').then((module) => ({ default: module.ConstraintsTab })));
+const ResourceTab = lazy(() => import('./ResourceTab.js').then((module) => ({ default: module.ResourceTab })));
 
 export function RightInspector() {
   const manifest = useWorkbenchStore((state) => state.manifest);
@@ -34,6 +36,7 @@ export function RightInspector() {
       ? findNodeById(activeScreen.rootNode, selectedNodeId)
       : null;
 
+  const locked=isScopeLocked(manifest,activeScreenId,selectedNodeId);
   const hasDnaOverrides = Boolean(
     selectedNode?.dnaOverrides && Object.keys(selectedNode.dnaOverrides).length > 0
   );
@@ -50,12 +53,13 @@ export function RightInspector() {
   return (
     <aside
       data-testid="right-inspector"
-      className="w-[340px] shrink-0 border-l border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#0E1015] flex flex-col h-full select-none"
+      aria-label="Workbench inspector"
+      className="dark w-full lg:w-[340px] shrink-0 border-l border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#111419] flex flex-col h-full select-none"
     >
       {/* Target Hierarchy Banner */}
       <div className="px-4 py-3 border-b border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#111217] flex items-center justify-between">
         <div className="overflow-hidden">
-          <div className="text-[10px] uppercase font-mono tracking-wider text-[#8B8F97]">
+          <div className="text-[10px] uppercase font-mono tracking-wider text-[var(--text-muted)]">
             {selectedNode ? `Node: ${selectedNode.nodeType}` : 'Project Scope'}
           </div>
           <div className="font-bold text-xs text-[#111217] dark:text-[#F5F7FA] truncate">
@@ -70,7 +74,7 @@ export function RightInspector() {
         <div className="flex items-center gap-1.5">
           {selectedNode && hasDnaOverrides && (
             <button
-              onClick={() => resetNodeDNA(selectedNode.id)}
+              disabled={locked} onClick={() => resetNodeDNA(selectedNode.id)}
               title="Reset node DNA overrides"
               className="flex items-center gap-1 rounded bg-violet-100 dark:bg-violet-950/60 px-2 py-0.5 text-[10px] font-bold text-violet-700 dark:text-violet-300 hover:opacity-80"
             >
@@ -81,8 +85,8 @@ export function RightInspector() {
           {selectedNode && (
             <button
               onClick={() => selectNode(null)}
-              className="p-1 rounded text-[#8B8F97] hover:text-[#111217] dark:hover:text-[#F5F7FA]"
-              title="Deselect Node"
+              className="p-1 rounded text-[var(--text-muted)] hover:text-[#111217] dark:hover:text-[#F5F7FA]"
+              aria-label="Deselect Node" title="Deselect Node"
             >
               <X className="h-3.5 w-3.5" />
             </button>
@@ -100,7 +104,7 @@ export function RightInspector() {
               onClick={() => setActiveRightTab(tab.id)}
               className={`flex-1 flex items-center justify-center gap-1 py-1.5 px-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                 isActive
-                  ? 'bg-[#FAF9F6] dark:bg-[#171B21] text-[#2547E8] dark:text-[#6782FF] shadow-xs'
+                  ? 'bg-[#FAF9F6] dark:bg-[#171B21] text-[#2547E8] dark:text-[#879DFF] shadow-xs'
                   : 'text-[#62666F] dark:text-[#A8AFBA] hover:text-[#111217] dark:hover:text-[#F5F7FA]'
               }`}
             >
@@ -113,12 +117,14 @@ export function RightInspector() {
 
       {/* Active Tab View */}
       <div className="flex-1 overflow-y-auto">
-        {activeRightTab === 'intent' && <IntentTab />}
-        {activeRightTab === 'style' && <StyleTab />}
-        {activeRightTab === 'motion' && <MotionTab />}
-        {activeRightTab === 'content' && <ContentTab />}
-        {activeRightTab === 'constraints' && <ConstraintsTab />}
-        {activeRightTab === 'resource' && <ResourceTab />}
+        <Suspense fallback={<div role="status" className="p-4 text-xs text-[var(--text-muted)]">Loading {activeRightTab} controls…</div>}>
+          {activeRightTab === 'intent' && <IntentTab />}
+          {activeRightTab === 'style' && <StyleTab />}
+          {activeRightTab === 'motion' && <MotionTab />}
+          {activeRightTab === 'content' && <ContentTab />}
+          {activeRightTab === 'constraints' && <ConstraintsTab />}
+          {activeRightTab === 'resource' && <ResourceTab />}
+        </Suspense>
       </div>
     </aside>
   );

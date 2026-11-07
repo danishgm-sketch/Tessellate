@@ -1,0 +1,936 @@
+{
+  "programmeStep": 33,
+  "title": "Ten browser tools hardening",
+  "runtime": "Local Astro production preview via Playwright; this is not a deployed Site audit.",
+  "testRun": {
+    "command": "pnpm exec playwright test tests/e2e/tools-hardening.spec.ts tests/e2e/tools-interaction.spec.ts",
+    "passed": 36,
+    "skipped": 14,
+    "failed": 0
+  },
+  "quality": {
+    "unit": {
+      "command": "pnpm test",
+      "passedFiles": 71,
+      "passedTests": 1030,
+      "failed": 0
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "status": "passed"
+    },
+    "lint": {
+      "command": "pnpm lint",
+      "status": "passed",
+      "errors": 0,
+      "existingWarnings": 33
+    },
+    "aggregate": {
+      "command": "pnpm audit:all",
+      "status": "passed",
+      "releaseGateChecks": "16/16",
+      "sitePagesBuilt": 717,
+      "bundleBudgets": "passed",
+      "catalogueResources": "324/324",
+      "goldResources": "40/40",
+      "provenanceAudit": "passed",
+      "securitySecretAudit": "0 violations"
+    }
+  },
+  "captures": [
+    {
+      "phase": "before",
+      "route": "/tools/accessibility",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/before/desktop-chrome-accessibility-lab.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/backgrounds",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/before/desktop-chrome-background-studio.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/dataviz",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/before/desktop-chrome-dataviz-styler.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/dna",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/before/desktop-chrome-design-dna.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/icons",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/before/desktop-chrome-icon-lab.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/layout",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/before/desktop-chrome-layout-composer.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/motion",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/before/desktop-chrome-motion-studio.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/palette",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/before/desktop-chrome-palette-studio.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/section-planner",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/before/desktop-chrome-section-planner.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/typography",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/before/desktop-chrome-typography-lab.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/accessibility",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/before/mobile-chrome-accessibility-lab.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/backgrounds",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/before/mobile-chrome-background-studio.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/dataviz",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/before/mobile-chrome-dataviz-styler.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/dna",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/before/mobile-chrome-design-dna.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/icons",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/before/mobile-chrome-icon-lab.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/layout",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/before/mobile-chrome-layout-composer.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/motion",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/before/mobile-chrome-motion-studio.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/palette",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/before/mobile-chrome-palette-studio.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/section-planner",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/before/mobile-chrome-section-planner.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "before",
+      "route": "/tools/typography",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/before/mobile-chrome-typography-lab.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/accessibility",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/after/desktop-chrome-accessibility-lab.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/backgrounds",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/after/desktop-chrome-background-studio.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/dataviz",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/after/desktop-chrome-dataviz-styler.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/dna",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/after/desktop-chrome-design-dna.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/icons",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/after/desktop-chrome-icon-lab.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/layout",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/after/desktop-chrome-layout-composer.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/motion",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/after/desktop-chrome-motion-studio.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/palette",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/after/desktop-chrome-palette-studio.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/section-planner",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/after/desktop-chrome-section-planner.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/typography",
+      "viewport": "1440x900",
+      "screenshot": "evidence/step-33/after/desktop-chrome-typography-lab.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/accessibility",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/after/mobile-chrome-accessibility-lab.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/backgrounds",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/after/mobile-chrome-background-studio.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/dataviz",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/after/mobile-chrome-dataviz-styler.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/dna",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/after/mobile-chrome-design-dna.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/icons",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/after/mobile-chrome-icon-lab.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/layout",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/after/mobile-chrome-layout-composer.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/motion",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/after/mobile-chrome-motion-studio.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/palette",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/after/mobile-chrome-palette-studio.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/section-planner",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/after/mobile-chrome-section-planner.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "phase": "after",
+      "route": "/tools/typography",
+      "viewport": "390x844",
+      "screenshot": "evidence/step-33/after/mobile-chrome-typography-lab.png",
+      "status": "PASS",
+      "checks": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "badHttpResponses": 0,
+        "axeViolations": 0,
+        "horizontalOverflow": false
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "TOOL-001",
+      "severity": "medium",
+      "route": "/tools/dataviz",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "In `/tools/dataviz`, choose `Categorical Column Ledger` and copy SVG; the old output retained the line-chart path",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "In `/tools/dataviz`, choose `Categorical Column Ledger` and copy SVG; the old output retained the line-chart path.",
+      "reproduction": [
+        "In `/tools/dataviz`, choose `Categorical Column Ledger` and copy SVG; the old output retained the line-chart path."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "evidence/step-33/after/desktop-chrome-dataviz-styler.png",
+      "rootCause": "Export built a fixed path instead of serializing the selected rendered chart. It now exports the selected SVG DOM, including the active recipe and standalone SVG attributes.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-002",
+      "severity": "medium",
+      "route": "/tools",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "DataViz described project Design DNA, responsive curves, WCAG contrast, and a 100ms interval although it used local sample controls and no project/runtime timing integration",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "DataViz described project Design DNA, responsive curves, WCAG contrast, and a 100ms interval although it used local sample controls and no project/runtime timing integration.",
+      "reproduction": [
+        "DataViz described project Design DNA, responsive curves, WCAG contrast, and a 100ms interval although it used local sample controls and no project/runtime timing integration."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Demo copy presented unimplemented integrations as working features. Copy now describes sample chart recipes and static sample data; unsupported curve/stroke settings are disabled by chart type.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-003",
+      "severity": "medium",
+      "route": "/tools/icons",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "In `/tools/icons`, copy SVG; the old result contained an SVG wrapper/comment but no selected icon geometry",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "In `/tools/icons`, copy SVG; the old result contained an SVG wrapper/comment but no selected icon geometry.",
+      "reproduction": [
+        "In `/tools/icons`, copy SVG; the old result contained an SVG wrapper/comment but no selected icon geometry."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "evidence/step-33/after/desktop-chrome-icon-lab.png",
+      "rootCause": "Export omitted the rendered Lucide paths. SVG and JSX output now include the selected icon's actual geometry and standalone sizing.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-004",
+      "severity": "medium",
+      "route": "/tools",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Accessibility Lab claimed “WCAG 2",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "Accessibility Lab claimed “WCAG 2.2 AA Baseline Guaranteed” and reduced-motion support for a narrow checker.",
+      "reproduction": [
+        "Accessibility Lab claimed “WCAG 2.2 AA Baseline Guaranteed” and reduced-motion support for a narrow checker."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Marketing claim exceeded implemented checks. The page now names contrast, focus-ring and target-size checks and explicitly says it is not a full audit.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-005",
+      "severity": "medium",
+      "route": "/tools",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Enter `purple` in the foreground hex field; prior calculation produced invalid contrast output and left auto-fix available",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "Enter `purple` in the foreground hex field; prior calculation produced invalid contrast output and left auto-fix available.",
+      "reproduction": [
+        "Enter `purple` in the foreground hex field; prior calculation produced invalid contrast output and left auto-fix available."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Hex input was not validated before calculations. Invalid values now produce an alert, an em dash instead of `NaN`, `aria-invalid`, and no auto-fix action.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-006",
+      "severity": "medium",
+      "route": "/tools",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Inspect paired foreground/background picker and text inputs in Accessibility Lab",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "Inspect paired foreground/background picker and text inputs in Accessibility Lab.",
+      "reproduction": [
+        "Inspect paired foreground/background picker and text inputs in Accessibility Lab."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Picker and hex inputs shared implicit labels. Distinct accessible names now identify each control.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-007",
+      "severity": "medium",
+      "route": "/tools",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Inspect the paired colour controls in Background Studio",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "Inspect the paired colour controls in Background Studio.",
+      "reproduction": ["Inspect the paired colour controls in Background Studio."],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Picker and text controls had ambiguous labels. Inputs now have distinct names and the size setting is labelled as cell pitch.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-008",
+      "severity": "medium",
+      "route": "/tools/section-planner",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Review `/tools/section-planner` examples for compliance, customer, performance and pricing assertions",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "Review `/tools/section-planner` examples for compliance, customer, performance and pricing assertions.",
+      "reproduction": [
+        "Review `/tools/section-planner` examples for compliance, customer, performance and pricing assertions."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "evidence/step-33/after/desktop-chrome-section-planner.png",
+      "rootCause": "Fictional section copy looked verified. The planner now marks its structure as illustrative and tells users to verify claims before publishing.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-009",
+      "severity": "medium",
+      "route": "/tools",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Change Section Planner sections and inspect the “balanced” status",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "Change Section Planner sections and inspect the “balanced” status.",
+      "reproduction": ["Change Section Planner sections and inspect the “balanced” status."],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The old static status implied an evaluated quality score. It is now a computed “Section Mix Guide” based on disclosed heuristic ranges, with its limits stated.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-010",
+      "severity": "medium",
+      "route": "/tools",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Review Motion Studio's compliance and demo labels",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "Review Motion Studio's compliance and demo labels.",
+      "reproduction": ["Review Motion Studio's compliance and demo labels."],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Copy described WCAG compliance and example metrics as measured capabilities. Unsupported certification language was removed and examples are labelled as sample/demo content.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-011",
+      "severity": "medium",
+      "route": "/tools",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Deny clipboard access and click a tool's copy action",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "Deny clipboard access and click a tool's copy action.",
+      "reproduction": ["Deny clipboard access and click a tool's copy action."],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Eight tools duplicated copy handlers that swallowed permission errors and still displayed success. A shared clipboard helper now attempts a safe fallback, returns a truthful result, and shows a visible failure notice.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-012",
+      "severity": "medium",
+      "route": "/tools",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Select and attempt to select/copy text in tool controls and output",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "Select and attempt to select/copy text in tool controls and output.",
+      "reproduction": ["Select and attempt to select/copy text in tool controls and output."],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Shared tool roots used `select-none`, preventing normal text selection. The suppression was removed from tool roots and Tools Hub.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-013",
+      "severity": "medium",
+      "route": "/tools",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Use Layout Composer viewport buttons with assistive technology",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "Use Layout Composer viewport buttons with assistive technology.",
+      "reproduction": ["Use Layout Composer viewport buttons with assistive technology."],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Viewport icon buttons lacked accessible names and selected-state semantics. They now have descriptive names and `aria-pressed`.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-014",
+      "severity": "medium",
+      "route": "/tools",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Select presets/tabs in the tools and inspect exposed selected state",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "Select presets/tabs in the tools and inspect exposed selected state.",
+      "reproduction": ["Select presets/tabs in the tools and inspect exposed selected state."],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Several button groups relied only on visual styling. Selected controls now expose `aria-pressed` across the audited tools.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-015",
+      "severity": "low",
+      "route": "/tools",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Change Typography Lab pairing and specimen mode, then reset",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "Change Typography Lab pairing and specimen mode, then reset.",
+      "reproduction": ["Change Typography Lab pairing and specimen mode, then reset."],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Reset restored scale/numerical values but left pairing and specimen mode modified. Reset now restores all visible controls.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    },
+    {
+      "id": "TOOL-016",
+      "severity": "low",
+      "route": "/tools",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Change Motion Studio preset, then look for a way to restore baseline",
+      "expected": "Displayed behavior and exported output match the selected controls and the tool description.",
+      "actual": "Change Motion Studio preset, then look for a way to restore baseline.",
+      "reproduction": ["Change Motion Studio preset, then look for a way to restore baseline."],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Motion Studio had no reset action. A reset now restores preset, easing and reduced-motion control values.",
+      "fixCommit": null,
+      "status": "fixed_locally_pending_deployed_verification"
+    }
+  ],
+  "remainingLimits": [
+    "Tools remain Beta.",
+    "Full keyboard traversal and screen-reader use are not certified.",
+    "Reduced-motion behavior, persistence, intermediate viewport widths, and fault injection remain unverified for these tools.",
+    "No new public deployment was created, so fixes await deployed-runtime verification."
+  ]
+}

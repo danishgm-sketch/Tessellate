@@ -1,0 +1,32 @@
+{
+  "capturedAt": "2026-10-21T06:42:56.602Z",
+  "route": "http://127.0.0.1:4323/resources/inline-ai-rewrite/",
+  "viewport": "360x844",
+  "status": 200,
+  "previewViewport": 292,
+  "measurements": [
+    {
+      "tone": "concise",
+      "clientWidth": 292,
+      "scrollWidth": 316
+    },
+    {
+      "tone": "professional",
+      "clientWidth": 292,
+      "scrollWidth": 317
+    },
+    {
+      "tone": "energetic",
+      "clientWidth": 292,
+      "scrollWidth": 317
+    }
+  ],
+  "runtime": {
+    "consoleErrors": [],
+    "pageErrors": [],
+    "failedRequests": [
+      "GET http://127.0.0.1:4323/_astro/src.DlEIsmX1.js: net::ERR_ABORTED"
+    ],
+    "httpErrors": []
+  }
+}

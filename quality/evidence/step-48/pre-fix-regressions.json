@@ -1,0 +1,26 @@
+{
+  "preFixCommit": "ce03d2337d7fcf90b99b45ccf14a084319a1c46f",
+  "verifiedAt": "2026-11-01",
+  "cases": [
+    {
+      "issues": ["AUD-419", "AUD-420"],
+      "testFile": "apps/sites/backend.test.ts",
+      "command": "node node_modules/vitest/vitest.mjs run apps/sites/backend.test.ts",
+      "result": "failed as expected: 2 tests failed, 5 passed",
+      "failures": [
+        "BYO provider forwarding received null instead of the supplied x-api-key.",
+        "AI generation timeout was 3000 ms instead of 120000 ms."
+      ],
+      "postFix": "The full pnpm test suite passed after both fixes."
+    },
+    {
+      "issues": ["AUD-443"],
+      "testFile": "packages/exporter/src/__tests__/exporter.test.ts",
+      "testName": "does not treat untrusted data prop names as JSX source",
+      "command": "node node_modules/vitest/vitest.mjs run packages/exporter/src/__tests__/exporter.test.ts -t \"does not treat untrusted data prop names as JSX source\"",
+      "result": "failed as expected against the pre-fix emitter",
+      "failure": "Generated TSX contained data-x={alert(1)} data-y={\"injected\"} from a manifest-controlled prop name.",
+      "postFix": "The hardened test passed after switching the fixture to a real resolved Gold resource and validating prop-name filtering."
+    }
+  ]
+}

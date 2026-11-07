@@ -171,8 +171,10 @@ export const reports = sqliteTable('reports', {
 
 // 14. Inference Tickets (Host Queue & Token System)
 export const inferenceTickets = sqliteTable('inference_tickets', {
-  id: text('id').primaryKey(),
-  tokenNumber: integer('tokenNumber').notNull(),
+  id: text('id').notNull().unique(),
+  tokenNumber: integer('tokenNumber').primaryKey({ autoIncrement: true }),
+  clientTokenHash: text('clientTokenHash').notNull(),
+  clientId: text('clientId').notNull(),
   prompt: text('prompt').notNull(),
   screenAst: text('screenAst').notNull(),
   designDna: text('designDna'),
@@ -182,6 +184,10 @@ export const inferenceTickets = sqliteTable('inference_tickets', {
   createdAt: text('createdAt').notNull(),
   startedAt: text('startedAt'),
   completedAt: text('completedAt'),
+  createdAtMs: integer('createdAtMs').notNull(),
+  expiresAt: integer('expiresAt').notNull(),
+  leaseId: text('leaseId'),
+  leaseUntil: integer('leaseUntil'),
 });
 
 // 15. Host Worker Liveness

@@ -66,7 +66,10 @@ export function evaluateAccessibility(input: AccessibilityEvaluationInput): Acce
   }
 
   // Weight with manifest quality accessibility score
-  let blendedScore = Math.max(0, Math.min(100, Math.round(score * 0.6 + resource.quality.accessibility * 0.4)));
+  const assessedQuality = resource.quality.assessment.status === 'reviewed'
+    ? resource.quality.accessibility
+    : 50;
+  let blendedScore = Math.max(0, Math.min(100, Math.round(score * 0.6 + assessedQuality * 0.4)));
 
   if (!meetsFloor) {
     blendedScore = Math.min(blendedScore, 20);

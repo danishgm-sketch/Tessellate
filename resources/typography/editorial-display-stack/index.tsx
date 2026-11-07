@@ -12,10 +12,10 @@ export interface EditorialDisplayStackProps {
 }
 
 export function EditorialDisplayStack({
-  kicker = 'SYSTEM ARCHITECTURE • V2.4',
+  kicker = 'EDITORIAL COMPONENT STUDY',
   headline = 'Interface composition without the',
   accentClause = 'cognitive tax of chaos',
-  subdeck = 'A validated resource grammar that translates product intent into coherent, production-ready interface systems.',
+  subdeck = 'Use a clear heading, supporting copy, and one emphasized phrase to shape an editorial introduction.',
   variant = 'quiet',
   children,
 }: EditorialDisplayStackProps) {

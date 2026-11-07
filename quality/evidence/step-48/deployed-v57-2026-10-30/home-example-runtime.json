@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0.0",
+  "route": "/",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersion": 57,
+  "viewport": "1440x900",
+  "evidence": {
+    "selector": "pre[aria-labelledby=agent-handoff-json-specification-label]",
+    "snippet": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"name\": \"Employee experience\",\n  \"productModel\": {\n    \"productArchetypes\": [\n      { \"tag\": \"recruitment\", \"weight\": 100 }\n    ]\n  },\n  \"designDNA\": {\n    \"professionalism\": 80,\n    \"playfulness\": 55,\n    \"visualAmbition\": 40,\n    \"structuralCreativity\": 85\n  },\n  \"screens\": [\n    { \"name\": \"Team Overview\", \"slug\": \"/overview\" }\n  ]\n}}",
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "badResponses": [],
+    "requestCount": 29,
+    "httpStatusCounts": {
+      "200": 28,
+      "302": 1
+    },
+    "httpStatus": 200,
+    "screenshot": "before-home-employee-taxonomy-1440x900.png",
+    "observedRedirects": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+        "status": 302,
+        "note": "Cloudflare challenge-script redirect; no request failure."
+      }
+    ]
+  }
+}

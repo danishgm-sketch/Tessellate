@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-10-26T08:14:36Z",
+  "issue": "AUD-351",
+  "branch": "release/v1-utility-rc1",
+  "baseCommit": "7d30a75b1770c79e5aa906b3e5e20f6801d306d3",
+  "fixCommit": "097862d3785038f50e64523e5e946afa8d71c1b5",
+  "deployment": {
+    "publicVersion": 30,
+    "candidateVersion33": "saved-but-superseded",
+    "candidateWithFix": "not-yet-saved",
+    "d1Bound": false,
+    "r2Bound": false
+  },
+  "evidence": {
+    "before": {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "viewport": "390x844",
+      "rowWidth": 342,
+      "rowScrollWidth": 691,
+      "thirdPresetRight": 415,
+      "screenshot": "audit/evidence/step-45/aud-351-home-mobile-390-before-live-v30.png"
+    },
+    "after": {
+      "route": "/",
+      "viewports": ["360x844", "390x844", "430x844", "768x844", "1024x844", "1440x844"],
+      "presetLabelsFullyVisible": true,
+      "presetRowHorizontalOverflow": false,
+      "presetActionsUpdateBrief": true,
+      "screenshot": "audit/evidence/step-45/aud-351-home-mobile-390-after.png"
+    }
+  },
+  "checks": {
+    "frozenInstall": "pass",
+    "catalogueBuild": { "status": "pass", "resources": 324, "gold": 40 },
+    "typecheck": { "status": "pass", "workspacePackages": 22 },
+    "lint": "pass",
+    "unitTests": { "status": "pass", "passed": 1220, "configuredSkips": 1 },
+    "auditAll": {
+      "status": "pass",
+      "behavioralGates": "16/16",
+      "resourceIsolation": "324/324",
+      "licenseProvenance": "324/324",
+      "securityViolations": 0,
+      "dependencyVulnerabilities": 0,
+      "bundleBudgets": "pass",
+      "astroPages": 733,
+      "sitesResources": 324,
+      "sitesCspHtmlRecords": 731
+    },
+    "astroPlaywright": {
+      "status": "pass",
+      "passed": 324,
+      "configuredSkips": 112,
+      "failures": 0,
+      "flagshipMobileIndependentReactExport": "pass"
+    },
+    "sitesWorkerBroadDesktopMobile": {
+      "status": "one-transient-failure-followed-by-targeted-reruns",
+      "passed": 319,
+      "configuredSkips": 42,
+      "failed": 1,
+      "failure": "faq-searchable preview iframe remained unmounted while GET /_astro/manifest.BIW3SyyO.js remained unsettled during the 324-resource traversal",
+      "faqSearchableIsolatedRerun": "pass"
+    },
+    "sitesWorkerFullResourceMatrixRerun": {
+      "status": "pass",
+      "resources": 324,
+      "variants": 972,
+      "findings": 0,
+      "durationMinutes": 11
+    },
+    "isolatedPreviewPlaywright": {
+      "status": "pass",
+      "passed": 3,
+      "configuredSkips": 0
+    },
+    "sitesPresetRegression": {
+      "status": "pass",
+      "profiles": ["sites-chromium", "sites-mobile-chromium"],
+      "viewports": [360, 390, 430, 768, 1024, 1440]
+    },
+    "exactHeadGithubCi": "pending"
+  },
+  "limitations": [
+    "The complete package-script pnpm test:e2e command has not yet passed as one uninterrupted run; exact-head GitHub CI is pending.",
+    "The transient faq-searchable failure is recorded and reproduced as passing in isolation and in the subsequent exhaustive resource run.",
+    "The public v30 Site still emits the separately tracked AUD-342 console error from a per-response Sites bootstrap blocked by the strict CSP; no unsafe-inline relaxation was made.",
+    "Vite reports a non-failing raw minified chunk-size warning; gzip budgets pass.",
+    "No public deployment was made from this candidate."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "step": 44,
+  "attempt": 4,
+  "status": "harness-incomplete",
+  "failureStage": "PowerShell-native-stderr",
+  "exitCode": 1,
+  "failure": "PowerShell 5.1 treated Docker exec stderr as a terminating NativeCommandError while the container process continued without a host-side capture.",
+  "containerName": "tessellate-step44-20261024T034643Z",
+  "frozenInstall": "passed",
+  "sourceStorage": "container-native",
+  "remediation": "Continue native command stderr and tee the script output to a container-local log.",
+  "capturedAtUtc": "2026-10-24T03:49:43.5845842Z",
+  "log": "quality/evidence/step-44/clean-container.log"
+}

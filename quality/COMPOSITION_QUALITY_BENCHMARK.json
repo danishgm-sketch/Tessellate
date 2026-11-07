@@ -1,0 +1,862 @@
+{
+  "schemaVersion": "1.0.0",
+  "title": "Composition Quality Benchmark",
+  "scope": "Compose all three interface directions for the 100 manually adjudicated no-override product briefs. This benchmark evaluates end-to-end product quality and is separate from the structural integrity scenario suite.",
+  "briefSource": "quality/PRODUCT_INTERPRETATION_BENCHMARK.json",
+  "briefSourceStatus": "100 briefs manually adjudicated for product semantics; each benchmark case preserves the source brief and semantic acceptance profile.",
+  "domainCoverage": {
+    "ai": 6,
+    "analytics": 6,
+    "consumer": 5,
+    "creator": 5,
+    "crm": 6,
+    "developer-tools": 6,
+    "ecommerce": 6,
+    "education": 5,
+    "erp-operations": 6,
+    "fintech": 6,
+    "intelligence-research": 6,
+    "marketplace": 6,
+    "media": 5,
+    "productivity": 5,
+    "real-estate": 5,
+    "recruitment": 4,
+    "saas": 7,
+    "travel": 5
+  },
+  "acceptance": {
+    "directionsPerBrief": 3,
+    "projectManifestSchemaValid": true,
+    "screenGraphSchemaValid": true,
+    "requiredRolesResolved": true,
+    "coreResourcesGoldEligible": true,
+    "domainSemanticsMatchSourceProfile": true,
+    "mobileResourceStrategyValid": true,
+    "directionDifferenceAxes": [
+      "navigationModel",
+      "compositionGrammar",
+      "semanticComponentRoles",
+      "selectedResources"
+    ],
+    "minimumStructuralDifferenceAxesPerDirectionPair": 2
+  },
+  "briefs": [
+    {
+      "id": "SAS-01",
+      "industry": "saas",
+      "brief": "A cloud workspace helps a 120-person design consultancy plan client projects, assign ownership, review milestones, and control access by team role.",
+      "expectedPrimaryArchetype": "saas",
+      "acceptableArchetypes": ["saas"],
+      "semanticProfile": "saas"
+    },
+    {
+      "id": "SAS-02",
+      "industry": "saas",
+      "brief": "A multi-tenant service gives regional nonprofits one place to coordinate programs, share operating documents, and manage staff permissions.",
+      "expectedPrimaryArchetype": "saas",
+      "acceptableArchetypes": ["saas"],
+      "semanticProfile": "saas"
+    },
+    {
+      "id": "SAS-03",
+      "industry": "saas",
+      "brief": "A subscription platform lets independent clinics schedule internal work, manage shared resources, and invite colleagues into separate organizations.",
+      "expectedPrimaryArchetype": "saas",
+      "acceptableArchetypes": ["saas"],
+      "semanticProfile": "saas"
+    },
+    {
+      "id": "SAS-04",
+      "industry": "saas",
+      "brief": "A B2B workspace helps legal teams coordinate matters, assign review tasks, track deadlines, and keep client documents within the right group.",
+      "expectedPrimaryArchetype": "saas",
+      "acceptableArchetypes": ["saas"],
+      "semanticProfile": "saas"
+    },
+    {
+      "id": "SAS-05",
+      "industry": "saas",
+      "brief": "A cloud help desk lets support teams organize customer requests, assign agents, monitor response targets, and maintain a shared knowledge base.",
+      "expectedPrimaryArchetype": "saas",
+      "acceptableArchetypes": ["saas", "crm"],
+      "semanticProfile": "saas"
+    },
+    {
+      "id": "SAS-06",
+      "industry": "saas",
+      "brief": "A release-planning workspace helps product teams collect proposals, prioritize roadmaps, coordinate owners, and communicate delivery status to stakeholders.",
+      "expectedPrimaryArchetype": "saas",
+      "acceptableArchetypes": ["saas", "productivity"],
+      "semanticProfile": "saas"
+    },
+    {
+      "id": "AI-01",
+      "industry": "ai",
+      "brief": "An LLM prompt studio helps research teams compare model generations, save reusable instructions, and inspect source citations before sharing an answer.",
+      "expectedPrimaryArchetype": "ai",
+      "acceptableArchetypes": ["ai", "intelligence-research"],
+      "semanticProfile": "ai"
+    },
+    {
+      "id": "AI-02",
+      "industry": "ai",
+      "brief": "A generative audio tool turns written direction into short music drafts, lets composers compare variations, and keeps approved stems organized.",
+      "expectedPrimaryArchetype": "ai",
+      "acceptableArchetypes": ["ai", "creator"],
+      "semanticProfile": "ai"
+    },
+    {
+      "id": "AI-03",
+      "industry": "ai",
+      "brief": "An AI support assistant answers questions from a company help center, shows supporting passages, and lets a human review uncertain responses.",
+      "expectedPrimaryArchetype": "ai",
+      "acceptableArchetypes": ["ai", "saas"],
+      "semanticProfile": "ai"
+    },
+    {
+      "id": "AI-04",
+      "industry": "ai",
+      "brief": "A machine-learning evaluation workbench compares model versions on a fixed test set, records failure examples, and helps practitioners review regressions.",
+      "expectedPrimaryArchetype": "ai",
+      "acceptableArchetypes": ["ai", "analytics"],
+      "semanticProfile": "ai"
+    },
+    {
+      "id": "AI-05",
+      "industry": "ai",
+      "brief": "An autonomous agent workspace lets operations staff configure tools, test bounded actions, inspect run history, and approve changes before execution.",
+      "expectedPrimaryArchetype": "ai",
+      "acceptableArchetypes": ["ai", "saas"],
+      "semanticProfile": "ai"
+    },
+    {
+      "id": "AI-06",
+      "industry": "ai",
+      "brief": "A mobile image-generation app helps illustrators develop visual concepts, organize saved generations, and refine prompts without losing earlier drafts.",
+      "expectedPrimaryArchetype": "ai",
+      "acceptableArchetypes": ["ai", "creator"],
+      "semanticProfile": "ai"
+    },
+    {
+      "id": "DEV-01",
+      "industry": "developer-tools",
+      "brief": "An API debugging console lets backend engineers inspect requests, compare responses, replay a failing call, and save working examples.",
+      "expectedPrimaryArchetype": "developer-tools",
+      "acceptableArchetypes": ["developer-tools"],
+      "semanticProfile": "developer-tools"
+    },
+    {
+      "id": "DEV-02",
+      "industry": "developer-tools",
+      "brief": "A command-line deployment monitor tracks Kubernetes services, highlights failed releases, and links each incident to its recent log stream.",
+      "expectedPrimaryArchetype": "developer-tools",
+      "acceptableArchetypes": ["developer-tools"],
+      "semanticProfile": "developer-tools"
+    },
+    {
+      "id": "DEV-03",
+      "industry": "developer-tools",
+      "brief": "An SDK portal helps software teams explore endpoints, copy runnable examples, manage version changes, and validate webhook delivery.",
+      "expectedPrimaryArchetype": "developer-tools",
+      "acceptableArchetypes": ["developer-tools"],
+      "semanticProfile": "developer-tools"
+    },
+    {
+      "id": "DEV-04",
+      "industry": "developer-tools",
+      "brief": "A distributed tracing console lets platform engineers follow service latency, filter runtime errors, and inspect the span behind an incident.",
+      "expectedPrimaryArchetype": "developer-tools",
+      "acceptableArchetypes": ["developer-tools", "analytics"],
+      "semanticProfile": "developer-tools"
+    },
+    {
+      "id": "DEV-05",
+      "industry": "developer-tools",
+      "brief": "A source-control review tool organizes pull requests, shows continuous integration checks, and helps maintainers resolve requested changes.",
+      "expectedPrimaryArchetype": "developer-tools",
+      "acceptableArchetypes": ["developer-tools"],
+      "semanticProfile": "developer-tools"
+    },
+    {
+      "id": "DEV-06",
+      "industry": "developer-tools",
+      "brief": "A feature-flag console lets application engineers define rollout rules, target environments, and inspect change history before a release.",
+      "expectedPrimaryArchetype": "developer-tools",
+      "acceptableArchetypes": ["developer-tools"],
+      "semanticProfile": "developer-tools"
+    },
+    {
+      "id": "FIN-01",
+      "industry": "fintech",
+      "brief": "A business banking portal helps finance managers review account balances, prepare verified transfers, reconcile statements, and manage account access.",
+      "expectedPrimaryArchetype": "fintech",
+      "acceptableArchetypes": ["fintech"],
+      "semanticProfile": "fintech"
+    },
+    {
+      "id": "FIN-02",
+      "industry": "fintech",
+      "brief": "A personal money app organizes wallet balances, monthly budgets, recurring bills, and card activity for people managing household finances.",
+      "expectedPrimaryArchetype": "fintech",
+      "acceptableArchetypes": ["fintech", "productivity"],
+      "semanticProfile": "fintech"
+    },
+    {
+      "id": "FIN-03",
+      "industry": "fintech",
+      "brief": "A payment reconciliation tool matches incoming settlements with merchant records, flags discrepancies, and prepares an auditable close.",
+      "expectedPrimaryArchetype": "fintech",
+      "acceptableArchetypes": ["fintech", "ecommerce"],
+      "semanticProfile": "fintech"
+    },
+    {
+      "id": "FIN-04",
+      "industry": "fintech",
+      "brief": "A wealth-management workspace helps advisers compare client asset allocations, review risk exposure, and prepare documented portfolio recommendations.",
+      "expectedPrimaryArchetype": "fintech",
+      "acceptableArchetypes": ["fintech", "analytics"],
+      "semanticProfile": "fintech"
+    },
+    {
+      "id": "FIN-05",
+      "industry": "fintech",
+      "brief": "A brokerage terminal displays securities, market data, order-book depth, and verified trade execution for professional equity dealers.",
+      "expectedPrimaryArchetype": "fintech",
+      "acceptableArchetypes": ["fintech"],
+      "semanticProfile": "fintech-trading",
+      "requiredContentAnyOf": ["market depth", "trade execution"],
+      "forbiddenContentAnyOf": ["bank statement", "reconcile statements", "household budget"]
+    },
+    {
+      "id": "FIN-06",
+      "industry": "fintech",
+      "brief": "A corporate card system helps employees submit purchase evidence while finance teams review policy exceptions, reimbursements, and monthly balances.",
+      "expectedPrimaryArchetype": "fintech",
+      "acceptableArchetypes": ["fintech", "erp-operations"],
+      "semanticProfile": "fintech"
+    },
+    {
+      "id": "ECOM-01",
+      "industry": "ecommerce",
+      "brief": "A direct-to-consumer clothing store helps shoppers browse a seasonal catalog, compare garment details, choose a size, and complete checkout.",
+      "expectedPrimaryArchetype": "ecommerce",
+      "acceptableArchetypes": ["ecommerce"],
+      "semanticProfile": "ecommerce-clothing"
+    },
+    {
+      "id": "ECOM-02",
+      "industry": "ecommerce",
+      "brief": "A neighborhood grocery shop lets customers search fresh food, build a cart, choose a delivery window, and confirm a purchase.",
+      "expectedPrimaryArchetype": "ecommerce",
+      "acceptableArchetypes": ["ecommerce"],
+      "semanticProfile": "ecommerce-grocery"
+    },
+    {
+      "id": "ECOM-03",
+      "industry": "ecommerce",
+      "brief": "An online retailer organizes home goods into collections, presents product specifications, and guides shoppers through a clear purchase flow.",
+      "expectedPrimaryArchetype": "ecommerce",
+      "acceptableArchetypes": ["ecommerce"],
+      "semanticProfile": "ecommerce-home-goods"
+    },
+    {
+      "id": "ECOM-04",
+      "industry": "ecommerce",
+      "brief": "A digital music shop sells licensed albums, supports sample playback, and lets listeners buy and download selected releases.",
+      "expectedPrimaryArchetype": "ecommerce",
+      "acceptableArchetypes": ["ecommerce", "media"],
+      "semanticProfile": "ecommerce-music"
+    },
+    {
+      "id": "ECOM-05",
+      "industry": "ecommerce",
+      "brief": "A cosmetics storefront helps shoppers compare ingredients, select product variations, and review delivery and return information before buying.",
+      "expectedPrimaryArchetype": "ecommerce",
+      "acceptableArchetypes": ["ecommerce"],
+      "semanticProfile": "ecommerce-cosmetics"
+    },
+    {
+      "id": "ECOM-06",
+      "industry": "ecommerce",
+      "brief": "An online returns portal lets customers find a previous purchase, choose eligible items, and follow the return approval and refund steps.",
+      "expectedPrimaryArchetype": "ecommerce",
+      "acceptableArchetypes": ["ecommerce", "fintech"],
+      "semanticProfile": "ecommerce-returns"
+    },
+    {
+      "id": "MKT-01",
+      "industry": "marketplace",
+      "brief": "A freelance services marketplace connects independent designers with clients, supports profile discovery, project proposals, messaging, and mutual reviews.",
+      "expectedPrimaryArchetype": "marketplace",
+      "acceptableArchetypes": ["marketplace", "creator"],
+      "semanticProfile": "marketplace",
+      "requiredContentAnyOf": ["designer", "proposal"],
+      "forbiddenContentAnyOf": [
+        "complete booking",
+        "choose-dates",
+        "confirm-payment",
+        "supply side asset upload",
+        "set-calendar"
+      ]
+    },
+    {
+      "id": "MKT-02",
+      "industry": "marketplace",
+      "brief": "A musical-instrument marketplace helps buyers compare local listings, ask sellers questions, and arrange a protected exchange.",
+      "expectedPrimaryArchetype": "marketplace",
+      "acceptableArchetypes": ["marketplace", "ecommerce"],
+      "semanticProfile": "marketplace"
+    },
+    {
+      "id": "MKT-03",
+      "industry": "marketplace",
+      "brief": "A home-cleaning marketplace lets households compare verified providers, request a time, message the provider, and review completed work.",
+      "expectedPrimaryArchetype": "marketplace",
+      "acceptableArchetypes": ["marketplace"],
+      "semanticProfile": "marketplace"
+    },
+    {
+      "id": "MKT-04",
+      "industry": "marketplace",
+      "brief": "A parking marketplace connects drivers with private space owners, showing availability, location details, host messages, and booking confirmation.",
+      "expectedPrimaryArchetype": "marketplace",
+      "acceptableArchetypes": ["marketplace", "travel"],
+      "semanticProfile": "marketplace"
+    },
+    {
+      "id": "MKT-05",
+      "industry": "marketplace",
+      "brief": "A tutoring marketplace matches families with independent tutors, displays teaching profiles, supports lesson inquiries, and collects post-session reviews.",
+      "expectedPrimaryArchetype": "marketplace",
+      "acceptableArchetypes": ["marketplace", "education"],
+      "semanticProfile": "marketplace"
+    },
+    {
+      "id": "MKT-06",
+      "industry": "marketplace",
+      "brief": "A used-outdoor-gear marketplace helps buyers search seller listings, inspect item condition, negotiate questions, and arrange collection.",
+      "expectedPrimaryArchetype": "marketplace",
+      "acceptableArchetypes": ["marketplace", "ecommerce"],
+      "semanticProfile": "marketplace"
+    },
+    {
+      "id": "AN-01",
+      "industry": "analytics",
+      "brief": "A product-adoption dashboard helps growth analysts compare active-user trends, segment cohorts, and share a weekly usage report.",
+      "expectedPrimaryArchetype": "analytics",
+      "acceptableArchetypes": ["analytics"],
+      "semanticProfile": "analytics"
+    },
+    {
+      "id": "AN-02",
+      "industry": "analytics",
+      "brief": "A business-intelligence workspace turns warehouse tables into filtered charts, saved reports, and an executive overview of operating metrics.",
+      "expectedPrimaryArchetype": "analytics",
+      "acceptableArchetypes": ["analytics", "erp-operations"],
+      "semanticProfile": "analytics"
+    },
+    {
+      "id": "AN-03",
+      "industry": "analytics",
+      "brief": "A subscription-retention dashboard measures cancellations by cohort, identifies unusual changes, and helps teams investigate customer behavior.",
+      "expectedPrimaryArchetype": "analytics",
+      "acceptableArchetypes": ["analytics", "saas"],
+      "semanticProfile": "analytics"
+    },
+    {
+      "id": "AN-04",
+      "industry": "analytics",
+      "brief": "An experiment-analysis tool compares control and treatment groups, checks sample quality, and summarizes the measured outcome for product teams.",
+      "expectedPrimaryArchetype": "analytics",
+      "acceptableArchetypes": ["analytics"],
+      "semanticProfile": "analytics"
+    },
+    {
+      "id": "AN-05",
+      "industry": "analytics",
+      "brief": "A customer-support analytics console compares response times, resolution rates, and topic volume across support teams and periods.",
+      "expectedPrimaryArchetype": "analytics",
+      "acceptableArchetypes": ["analytics", "crm"],
+      "semanticProfile": "analytics"
+    },
+    {
+      "id": "AN-06",
+      "industry": "analytics",
+      "brief": "A fleet-usage dashboard aggregates vehicle activity, fuel consumption, and maintenance intervals to help managers plan service capacity.",
+      "expectedPrimaryArchetype": "analytics",
+      "acceptableArchetypes": ["analytics", "erp-operations"],
+      "semanticProfile": "analytics"
+    },
+    {
+      "id": "RES-01",
+      "industry": "intelligence-research",
+      "brief": "A scientific laboratory workspace records reproducible protocols, organizes chemical samples, compares spectra, and links findings to source evidence.",
+      "expectedPrimaryArchetype": "intelligence-research",
+      "acceptableArchetypes": ["intelligence-research"],
+      "semanticProfile": "intelligence-research"
+    },
+    {
+      "id": "RES-02",
+      "industry": "intelligence-research",
+      "brief": "A clinical-trial research portal helps coordinators review study cohorts, record approved observations, and assemble an evidence-linked dossier.",
+      "expectedPrimaryArchetype": "intelligence-research",
+      "acceptableArchetypes": ["intelligence-research"],
+      "semanticProfile": "intelligence-research"
+    },
+    {
+      "id": "RES-03",
+      "industry": "intelligence-research",
+      "brief": "An investigative newsroom tool maps public entities, attaches verified documents, records source confidence, and prepares a research brief.",
+      "expectedPrimaryArchetype": "intelligence-research",
+      "acceptableArchetypes": ["intelligence-research", "media"],
+      "semanticProfile": "intelligence-research"
+    },
+    {
+      "id": "RES-04",
+      "industry": "intelligence-research",
+      "brief": "A climate-science workspace compares field observations, tracks instrument methods, and preserves the provenance needed to reproduce each analysis.",
+      "expectedPrimaryArchetype": "intelligence-research",
+      "acceptableArchetypes": ["intelligence-research", "analytics"],
+      "semanticProfile": "intelligence-research"
+    },
+    {
+      "id": "RES-05",
+      "industry": "intelligence-research",
+      "brief": "A policy research library lets analysts search primary sources, connect claims to evidence, and maintain a versioned case dossier.",
+      "expectedPrimaryArchetype": "intelligence-research",
+      "acceptableArchetypes": ["intelligence-research"],
+      "semanticProfile": "intelligence-research"
+    },
+    {
+      "id": "RES-06",
+      "industry": "intelligence-research",
+      "brief": "A materials-research environment catalogs experiments, tracks synthesis conditions, and compares peer-reviewed measurements across laboratory runs.",
+      "expectedPrimaryArchetype": "intelligence-research",
+      "acceptableArchetypes": ["intelligence-research"],
+      "semanticProfile": "intelligence-research"
+    },
+    {
+      "id": "CRM-01",
+      "industry": "crm",
+      "brief": "A sales CRM helps account executives manage leads, qualify opportunities, log client meetings, and forecast a shared pipeline.",
+      "expectedPrimaryArchetype": "crm",
+      "acceptableArchetypes": ["crm"],
+      "semanticProfile": "crm"
+    },
+    {
+      "id": "CRM-02",
+      "industry": "crm",
+      "brief": "A customer relationship workspace records contacts, renewal conversations, account plans, and follow-up ownership for a service team.",
+      "expectedPrimaryArchetype": "crm",
+      "acceptableArchetypes": ["crm", "saas"],
+      "semanticProfile": "crm"
+    },
+    {
+      "id": "CRM-03",
+      "industry": "crm",
+      "brief": "A nonprofit donor CRM organizes supporter histories, campaign interactions, giving preferences, and relationship follow-ups for fundraisers.",
+      "expectedPrimaryArchetype": "crm",
+      "acceptableArchetypes": ["crm"],
+      "semanticProfile": "crm"
+    },
+    {
+      "id": "CRM-04",
+      "industry": "crm",
+      "brief": "A customer-success console helps account managers review adoption risks, plan check-ins, and track renewal conversations across customer accounts.",
+      "expectedPrimaryArchetype": "crm",
+      "acceptableArchetypes": ["crm", "analytics"],
+      "semanticProfile": "crm"
+    },
+    {
+      "id": "CRM-05",
+      "industry": "crm",
+      "brief": "A vehicle dealership CRM organizes prospective buyers, sales conversations, test-drive requests, and next actions for the sales team.",
+      "expectedPrimaryArchetype": "crm",
+      "acceptableArchetypes": ["crm"],
+      "semanticProfile": "crm"
+    },
+    {
+      "id": "CRM-06",
+      "industry": "crm",
+      "brief": "A property brokerage CRM helps agents organize client contacts, viewing conversations, offer follow-ups, and relationship notes.",
+      "expectedPrimaryArchetype": "crm",
+      "acceptableArchetypes": ["crm", "real-estate"],
+      "semanticProfile": "crm"
+    },
+    {
+      "id": "ERP-01",
+      "industry": "erp-operations",
+      "brief": "A warehouse operations system tracks item locations, stock counts, pick queues, and replenishment tasks across distribution sites.",
+      "expectedPrimaryArchetype": "erp-operations",
+      "acceptableArchetypes": ["erp-operations"],
+      "semanticProfile": "erp-operations"
+    },
+    {
+      "id": "ERP-02",
+      "industry": "erp-operations",
+      "brief": "A procurement application routes purchase requests, compares approved suppliers, records approvals, and tracks delivery commitments.",
+      "expectedPrimaryArchetype": "erp-operations",
+      "acceptableArchetypes": ["erp-operations"],
+      "semanticProfile": "erp-operations"
+    },
+    {
+      "id": "ERP-03",
+      "industry": "erp-operations",
+      "brief": "A manufacturing operations console assigns work orders, tracks machine maintenance, records quality checks, and coordinates shift handovers.",
+      "expectedPrimaryArchetype": "erp-operations",
+      "acceptableArchetypes": ["erp-operations"],
+      "semanticProfile": "erp-operations"
+    },
+    {
+      "id": "ERP-04",
+      "industry": "erp-operations",
+      "brief": "A logistics platform plans carrier capacity, tracks shipments between depots, and resolves late-delivery exceptions for dispatch teams.",
+      "expectedPrimaryArchetype": "erp-operations",
+      "acceptableArchetypes": ["erp-operations"],
+      "semanticProfile": "erp-operations"
+    },
+    {
+      "id": "ERP-05",
+      "industry": "erp-operations",
+      "brief": "A field-service system dispatches technicians, attaches repair instructions, records parts used, and tracks each work order to completion.",
+      "expectedPrimaryArchetype": "erp-operations",
+      "acceptableArchetypes": ["erp-operations"],
+      "semanticProfile": "erp-operations"
+    },
+    {
+      "id": "ERP-06",
+      "industry": "erp-operations",
+      "brief": "A supply-chain planning tool forecasts component demand, monitors supplier lead times, and coordinates replenishment across production facilities.",
+      "expectedPrimaryArchetype": "erp-operations",
+      "acceptableArchetypes": ["erp-operations"],
+      "semanticProfile": "erp-operations"
+    },
+    {
+      "id": "PROD-01",
+      "industry": "productivity",
+      "brief": "A personal task planner helps busy professionals capture commitments, prioritize today’s work, and move tasks between a calendar and project list.",
+      "expectedPrimaryArchetype": "productivity",
+      "acceptableArchetypes": ["productivity"],
+      "semanticProfile": "productivity"
+    },
+    {
+      "id": "PROD-02",
+      "industry": "productivity",
+      "brief": "A note-taking app lets individuals save quick thoughts, organize reference pages, and retrieve them with a lightweight search.",
+      "expectedPrimaryArchetype": "productivity",
+      "acceptableArchetypes": ["productivity"],
+      "semanticProfile": "productivity"
+    },
+    {
+      "id": "PROD-03",
+      "industry": "productivity",
+      "brief": "A habit journal helps people set weekly routines, record completion, and reflect on changes without public rankings.",
+      "expectedPrimaryArchetype": "productivity",
+      "acceptableArchetypes": ["productivity"],
+      "semanticProfile": "productivity"
+    },
+    {
+      "id": "PROD-04",
+      "industry": "productivity",
+      "brief": "A reading organizer stores saved articles, groups them into lists, and helps a reader resume where they stopped.",
+      "expectedPrimaryArchetype": "productivity",
+      "acceptableArchetypes": ["productivity", "media"],
+      "semanticProfile": "productivity"
+    },
+    {
+      "id": "PROD-05",
+      "industry": "productivity",
+      "brief": "A daily planning app combines a personal agenda, focus sessions, reminders, and a short end-of-day review.",
+      "expectedPrimaryArchetype": "productivity",
+      "acceptableArchetypes": ["productivity"],
+      "semanticProfile": "productivity"
+    },
+    {
+      "id": "EDU-01",
+      "industry": "education",
+      "brief": "An online academy organizes courses into lessons, short quizzes, and visible learning milestones for independent learners.",
+      "expectedPrimaryArchetype": "education",
+      "acceptableArchetypes": ["education"],
+      "semanticProfile": "education"
+    },
+    {
+      "id": "EDU-02",
+      "industry": "education",
+      "brief": "A classroom platform helps teachers publish assignments, review student submissions, and give feedback against a course rubric.",
+      "expectedPrimaryArchetype": "education",
+      "acceptableArchetypes": ["education"],
+      "semanticProfile": "education"
+    },
+    {
+      "id": "EDU-03",
+      "industry": "education",
+      "brief": "A language-learning app guides learners through vocabulary practice, listening lessons, and spaced review sessions.",
+      "expectedPrimaryArchetype": "education",
+      "acceptableArchetypes": ["education"],
+      "semanticProfile": "education"
+    },
+    {
+      "id": "EDU-04",
+      "industry": "education",
+      "brief": "A cohort learning portal coordinates seminar schedules, reading material, group exercises, and instructor feedback for adult learners.",
+      "expectedPrimaryArchetype": "education",
+      "acceptableArchetypes": ["education", "saas"],
+      "semanticProfile": "education"
+    },
+    {
+      "id": "EDU-05",
+      "industry": "education",
+      "brief": "A safety-training system assigns required lessons, records quiz completion, and gives supervisors a clear view of learner progress.",
+      "expectedPrimaryArchetype": "education",
+      "acceptableArchetypes": ["education", "erp-operations"],
+      "semanticProfile": "education"
+    },
+    {
+      "id": "CRE-01",
+      "industry": "creator",
+      "brief": "A newsletter creator helps independent writers draft editions, preview subscriber-only sections, schedule delivery, and review membership tiers.",
+      "expectedPrimaryArchetype": "creator",
+      "acceptableArchetypes": ["creator", "media"],
+      "semanticProfile": "creator"
+    },
+    {
+      "id": "CRE-02",
+      "industry": "creator",
+      "brief": "A podcast membership hub lets hosts publish episodes, organize paid subscriber access, and share show notes with listeners.",
+      "expectedPrimaryArchetype": "creator",
+      "acceptableArchetypes": ["creator", "media"],
+      "semanticProfile": "creator"
+    },
+    {
+      "id": "CRE-03",
+      "industry": "creator",
+      "brief": "A video-creator studio organizes channel drafts, release schedules, audience comments, and supporter membership benefits.",
+      "expectedPrimaryArchetype": "creator",
+      "acceptableArchetypes": ["creator", "media"],
+      "semanticProfile": "creator"
+    },
+    {
+      "id": "CRE-04",
+      "industry": "creator",
+      "brief": "A digital-illustration workspace helps artists prepare collections, publish selected work, and manage subscriber updates.",
+      "expectedPrimaryArchetype": "creator",
+      "acceptableArchetypes": ["creator"],
+      "semanticProfile": "creator"
+    },
+    {
+      "id": "CRE-05",
+      "industry": "creator",
+      "brief": "A creator community tool helps authors share early drafts, gather reader feedback, and keep a direct member directory.",
+      "expectedPrimaryArchetype": "creator",
+      "acceptableArchetypes": ["creator", "consumer"],
+      "semanticProfile": "creator"
+    },
+    {
+      "id": "MED-01",
+      "industry": "media",
+      "brief": "A local newspaper website presents breaking headlines, long-form reporting, topic sections, and a calm article-reading experience.",
+      "expectedPrimaryArchetype": "media",
+      "acceptableArchetypes": ["media"],
+      "semanticProfile": "media"
+    },
+    {
+      "id": "MED-02",
+      "industry": "media",
+      "brief": "A digital magazine platform organizes editorial issues, photo essays, saved stories, and typography preferences for readers.",
+      "expectedPrimaryArchetype": "media",
+      "acceptableArchetypes": ["media"],
+      "semanticProfile": "media"
+    },
+    {
+      "id": "MED-03",
+      "industry": "media",
+      "brief": "A public-radio service publishes live programs, episode archives, transcripts, and listening schedules for its audience.",
+      "expectedPrimaryArchetype": "media",
+      "acceptableArchetypes": ["media"],
+      "semanticProfile": "media"
+    },
+    {
+      "id": "MED-04",
+      "industry": "media",
+      "brief": "A streaming service helps viewers browse films, continue a watchlist, and explore editorial collections by theme.",
+      "expectedPrimaryArchetype": "media",
+      "acceptableArchetypes": ["media", "consumer"],
+      "semanticProfile": "media-streaming"
+    },
+    {
+      "id": "MED-05",
+      "industry": "media",
+      "brief": "A newsroom planning tool lets editors arrange a front page, assign story coverage, review copy, and prepare an edition for publication.",
+      "expectedPrimaryArchetype": "media",
+      "acceptableArchetypes": ["media", "saas"],
+      "semanticProfile": "media"
+    },
+    {
+      "id": "TRV-01",
+      "industry": "travel",
+      "brief": "A trip-planning service helps travelers compare destinations, save places, coordinate dates, and keep a shared itinerary.",
+      "expectedPrimaryArchetype": "travel",
+      "acceptableArchetypes": ["travel", "productivity"],
+      "semanticProfile": "travel-trip-planning"
+    },
+    {
+      "id": "TRV-02",
+      "industry": "travel",
+      "brief": "A boutique hotel booking site presents room details, amenities, local guides, availability, and a clear reservation flow.",
+      "expectedPrimaryArchetype": "travel",
+      "acceptableArchetypes": ["travel", "marketplace"],
+      "semanticProfile": "travel-hotel-booking"
+    },
+    {
+      "id": "TRV-03",
+      "industry": "travel",
+      "brief": "A flight-management app organizes confirmed journeys, check-in reminders, gate updates, and travel documents for frequent flyers.",
+      "expectedPrimaryArchetype": "travel",
+      "acceptableArchetypes": ["travel"],
+      "semanticProfile": "travel-flight-management"
+    },
+    {
+      "id": "TRV-04",
+      "industry": "travel",
+      "brief": "A resort guest portal lets visitors review their stay details, request concierge assistance, and find on-property services.",
+      "expectedPrimaryArchetype": "travel",
+      "acceptableArchetypes": ["travel", "saas"],
+      "semanticProfile": "travel-resort-guest"
+    },
+    {
+      "id": "TRV-05",
+      "industry": "travel",
+      "brief": "A destination guide helps travelers explore neighborhoods, save recommendations, and build a day-by-day plan.",
+      "expectedPrimaryArchetype": "travel",
+      "acceptableArchetypes": ["travel", "media"],
+      "semanticProfile": "travel-destination-guide"
+    },
+    {
+      "id": "REA-01",
+      "industry": "real-estate",
+      "brief": "A home-search service helps buyers compare neighborhoods, filter available properties, save favorites, and arrange a viewing with an agent.",
+      "expectedPrimaryArchetype": "real-estate",
+      "acceptableArchetypes": ["real-estate", "marketplace"],
+      "semanticProfile": "real-estate"
+    },
+    {
+      "id": "REA-02",
+      "industry": "real-estate",
+      "brief": "A rental platform helps tenants inspect apartment details, check lease terms, ask a property manager questions, and request a tour.",
+      "expectedPrimaryArchetype": "real-estate",
+      "acceptableArchetypes": ["real-estate", "marketplace"],
+      "semanticProfile": "real-estate"
+    },
+    {
+      "id": "REA-03",
+      "industry": "real-estate",
+      "brief": "A property-management system organizes building maintenance, tenant requests, inspection dates, and lease documents for residential managers.",
+      "expectedPrimaryArchetype": "real-estate",
+      "acceptableArchetypes": ["real-estate", "erp-operations"],
+      "semanticProfile": "real-estate"
+    },
+    {
+      "id": "REA-04",
+      "industry": "real-estate",
+      "brief": "A commercial leasing workspace helps brokers track available spaces, client requirements, scheduled tours, and proposal status.",
+      "expectedPrimaryArchetype": "real-estate",
+      "acceptableArchetypes": ["real-estate", "crm"],
+      "semanticProfile": "real-estate"
+    },
+    {
+      "id": "REA-05",
+      "industry": "real-estate",
+      "brief": "A realtor portal helps agents prepare property pages, coordinate open-house visits, and keep buyer communications in one record.",
+      "expectedPrimaryArchetype": "real-estate",
+      "acceptableArchetypes": ["real-estate", "crm"],
+      "semanticProfile": "real-estate"
+    },
+    {
+      "id": "REC-01",
+      "industry": "recruitment",
+      "brief": "An applicant-tracking system helps recruiting teams organize open roles, candidate interviews, scorecards, and hiring decisions.",
+      "expectedPrimaryArchetype": "recruitment",
+      "acceptableArchetypes": ["recruitment", "crm"],
+      "semanticProfile": "recruitment"
+    },
+    {
+      "id": "REC-02",
+      "industry": "saas",
+      "brief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+      "expectedPrimaryArchetype": "saas",
+      "acceptableArchetypes": ["saas"],
+      "semanticProfile": "employee-experience"
+    },
+    {
+      "id": "REC-03",
+      "industry": "recruitment",
+      "brief": "A hiring workspace helps managers review applicants, coordinate interview panels, compare structured feedback, and prepare a respectful offer process.",
+      "expectedPrimaryArchetype": "recruitment",
+      "acceptableArchetypes": ["recruitment", "saas"],
+      "semanticProfile": "recruitment"
+    },
+    {
+      "id": "REC-04",
+      "industry": "recruitment",
+      "brief": "A recruiting pipeline gives talent teams a clear view of candidate stages, role ownership, interview notes, and pending decisions.",
+      "expectedPrimaryArchetype": "recruitment",
+      "acceptableArchetypes": ["recruitment", "crm"],
+      "semanticProfile": "recruitment"
+    },
+    {
+      "id": "REC-05",
+      "industry": "recruitment",
+      "brief": "A candidate portal lets job applicants schedule interviews, upload requested documents, and follow the status of an active application.",
+      "expectedPrimaryArchetype": "recruitment",
+      "acceptableArchetypes": ["recruitment"],
+      "semanticProfile": "recruitment"
+    },
+    {
+      "id": "CON-01",
+      "industry": "consumer",
+      "brief": "A neighborhood social app helps residents share local updates, discover community events, and keep conversations connected to nearby places.",
+      "expectedPrimaryArchetype": "consumer",
+      "acceptableArchetypes": ["consumer"],
+      "semanticProfile": "consumer"
+    },
+    {
+      "id": "CON-02",
+      "industry": "consumer",
+      "brief": "A mobile photo-sharing app lets friends publish albums, react to moments, and manage a private circle of followers.",
+      "expectedPrimaryArchetype": "consumer",
+      "acceptableArchetypes": ["consumer"],
+      "semanticProfile": "consumer"
+    },
+    {
+      "id": "CON-03",
+      "industry": "consumer",
+      "brief": "A local-activity discovery app helps people find nearby events, follow friends’ recommendations, and save plans for the weekend.",
+      "expectedPrimaryArchetype": "consumer",
+      "acceptableArchetypes": ["consumer", "travel"],
+      "semanticProfile": "consumer"
+    },
+    {
+      "id": "CON-04",
+      "industry": "consumer",
+      "brief": "A casual community app lets hobby groups post updates, welcome members, and organize lightweight conversations around shared interests.",
+      "expectedPrimaryArchetype": "consumer",
+      "acceptableArchetypes": ["consumer"],
+      "semanticProfile": "consumer",
+      "requiredContentAnyOf": ["hobby group", "community", "shared interest"],
+      "forbiddenContentAnyOf": [
+        "snap photo",
+        "add stickers",
+        "algorithmic social stream",
+        "camera-capture"
+      ]
+    },
+    {
+      "id": "CON-05",
+      "industry": "consumer",
+      "brief": "A personal streaming companion helps people share playlists, follow friends, and discover independent audio through a simple social feed.",
+      "expectedPrimaryArchetype": "consumer",
+      "acceptableArchetypes": ["consumer", "media"],
+      "semanticProfile": "consumer"
+    }
+  ]
+}

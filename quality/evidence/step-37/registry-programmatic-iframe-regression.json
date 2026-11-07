@@ -1,0 +1,32 @@
+{
+  "findingId": "SEC-37-089",
+  "severity": "high",
+  "title": "Registry isolation allowed programmatic iframe creation outside the static sandbox check",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "document.createElement('iframe') followed by setAttribute('sandbox', ...) and src assignment",
+      "const create = document.createElement; create('iframe') followed by sandbox/src property assignment",
+      "document.createElementNS(htmlNamespace, 'iframe')"
+    ],
+    "beforeFix": "The gate returned pass for programmatic iframe creation, including cases that set sandbox after creation and cases using aliased or namespace-aware factories.",
+    "afterFix": "The gate rejects iframe elements created by registry code because it cannot prove that sandbox attributes and navigation lifecycle remain safe across later mutations."
+  },
+  "rootCause": "The isolation rule validated statically authored JSX iframe attributes but did not track the lifecycle of iframe nodes assembled through DOM APIs.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Reject programmatically created iframe elements from registry resources, including direct, aliased, and createElementNS forms. Keep iframe previewing in the separately controlled opaque-origin preview host.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"programmatically created iframe elements\"",
+    "redBeforeFixResult": "failed as expected: all tested programmatic iframe forms returned pass before the fix",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "59 tests passed",
+    "canonicalResourceReview": "No canonical resource contains a programmatically created iframe; a text-only description references iframe preview isolation.",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "This is a static admission-control finding for untrusted registry source. Canonical resources do not rely on DOM-created iframes. The opaque-origin preview remains the supported iframe boundary; deployed verification remains pending.",
+  "capturedAt": "2026-10-21T16:57:33Z"
+}

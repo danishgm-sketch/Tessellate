@@ -1,0 +1,60 @@
+{
+  "finding": "SEC-37-106",
+  "severity": "medium",
+  "title": "Repeated preview READY messages amplified parent initialization",
+  "scope": "Local ChatGPT Sites Worker browser runtime; no untrusted source code was executed",
+  "route": "/r/button",
+  "attack": {
+    "sender": "The route's opaque sandboxed preview iframe (window.origin is null)",
+    "messages": 8,
+    "includesMismatchedResourceId": true
+  },
+  "before": {
+    "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/sites-preview-csp.spec.ts -g \"a preview can trigger only one parent initialization response\" --project=sites-chromium",
+    "result": "failed as expected before the fix",
+    "expectedInitializationReplies": 1,
+    "observedInitializationReplies": 9,
+    "cause": "The host replied to every READY message from the iframe, without checking that its resource ID matched or limiting initialization to once per iframe load."
+  },
+  "after": {
+    "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/sites-preview-csp.spec.ts",
+    "result": "passed",
+    "testsPassed": 18,
+    "viewports": [
+      {
+        "project": "sites-chromium",
+        "viewport": "1440x900",
+        "initializationRepliesPerLoad": 1,
+        "variantReloadInitializationReplies": 1,
+        "consoleErrors": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      {
+        "project": "sites-mobile-chromium",
+        "viewport": "390x844",
+        "initializationRepliesPerLoad": 1,
+        "variantReloadInitializationReplies": 1,
+        "consoleErrors": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    ],
+    "checks": [
+      "A mismatched resource ID receives no initialization reply.",
+      "Eight replayed READY messages receive only one initialization reply.",
+      "Selecting the Quiet variant reloads the preview and establishes one new handshake."
+    ]
+  },
+  "screenshots": [
+    "quality/evidence/step-37/preview-ready-replay-after-1440.png",
+    "quality/evidence/step-37/preview-ready-replay-after-390.png"
+  ],
+  "affectedFiles": [
+    "apps/site/src/components/ResourcePreviewFrame.tsx",
+    "tests/e2e/sites-preview-csp.spec.ts"
+  ],
+  "deploymentVerification": "pending release-candidate deployment; this local fix is not claimed as verified on the public Site"
+}

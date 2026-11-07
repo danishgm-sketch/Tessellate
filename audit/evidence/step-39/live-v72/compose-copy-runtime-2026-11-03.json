@@ -1,0 +1,87 @@
+{
+  "capturedAt": "2026-11-03",
+  "source": "Chrome DevTools MCP and Playwright CLI",
+  "siteVersion": 72,
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+  "routeClassification": "PASS for the route-readiness and copy sample; not a flagship workflow pass",
+  "catalogue": {
+    "status": "ready",
+    "httpStatus": 200,
+    "revalidatedStatus": 304,
+    "resourceCount": 324,
+    "goldCount": 40
+  },
+  "viewports": {
+    "desktop": {
+      "viewport": "1440x900",
+      "horizontalOverflow": false,
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "uncaughtExceptions": 0,
+      "requests": 30,
+      "failedRequests": 0,
+      "httpErrorResponses": 0,
+      "lighthouseSnapshot": {
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100,
+        "agenticBrowsing": 100,
+        "failedAudits": 0
+      },
+      "screenshot": "public-compose-1440x900-2026-11-03.png"
+    },
+    "mobile": {
+      "viewport": "390x844",
+      "documentClientWidth": 390,
+      "documentScrollWidth": 390,
+      "horizontalOverflow": false,
+      "productBriefTop": 682,
+      "productBriefBottom": 796,
+      "productBriefVisibleInInitialViewport": true,
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "uncaughtExceptions": 0,
+      "requests": 27,
+      "failedRequests": 0,
+      "httpErrorResponses": 0,
+      "lighthouseSnapshot": {
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100,
+        "agenticBrowsing": 100,
+        "failedAudits": 0
+      },
+      "screenshot": "public-compose-390x844-2026-11-03.png"
+    }
+  },
+  "visibleCopyReview": {
+    "catalogueReadinessVisible": true,
+    "productModelAndScreenGraphJargonVisible": false,
+    "schemaOrInferenceJargonVisible": false,
+    "productTypeOverrideIsOptional": true,
+    "advancedConstraintsAreCollapsedByDefault": true
+  },
+  "interaction": {
+    "control": "Playful HR Platform sample brief",
+    "verified": "The alternate Financial Intelligence Terminal sample replaced the brief and feel through the UI; the Playful HR Platform sample restored the employee-experience brief. No composition was submitted in this sample audit."
+  },
+  "keyboard": {
+    "tabbedThrough": [
+      "skip link and primary navigation",
+      "sample brief buttons",
+      "product description",
+      "product type select",
+      "feel input",
+      "visual ambition options",
+      "structural creativity options",
+      "advanced constraints disclosure",
+      "compose submit"
+    ],
+    "visibleFocus": "2px solid blue outline observed on initial keyboard targets",
+    "deadOrSkippedPrimaryControls": false
+  },
+  "limitations": [
+    "This is a scoped route-readiness and copy check. The exact acceptance brief, three directions, Workbench mutations, and exports were audited separately and are not asserted by this record.",
+    "The occurrence of the word Pipeline is the user-facing product-type option CRM & Pipeline; no internal ScreenGraph, ProductModel, schema, or inference terminology appeared in the sampled route copy."
+  ]
+}

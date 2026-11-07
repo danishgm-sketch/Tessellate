@@ -5,7 +5,7 @@
   "name": "FAQ Accordion",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Clean expandable question list with keyboard navigation and smooth disclosure.",
+  "description": "Accessible FAQ accordion with generic example questions and answers.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,15 +130,15 @@
     "questions"
   ],
   "intent": {
-    "summary": "Clean expandable question list with keyboard navigation and smooth disclosure.",
+    "summary": "Accessible FAQ accordion with generic example questions and answers.",
     "idealFor": [
-      "Addressing common developer questions cleanly"
+      "Teams drafting a frequently asked questions section"
     ],
     "avoidFor": [
-      "Complex tutorial walkthroughs"
+      "Published policy or product FAQ until example answers are replaced"
     ],
     "jobs": [
-      "Resolve objections and clarify licensing with expandable accordions"
+      "Present example answers that can be replaced with verified policies"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"
@@ -209,7 +209,7 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
+    "levelTarget": "AA",
     "keyboardVerified": true,
     "screenReaderSemantics": true,
     "reducedMotionVerified": true,
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

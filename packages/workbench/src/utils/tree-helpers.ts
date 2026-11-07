@@ -150,3 +150,8 @@ export function isNodeLocked(node: ProjectNode, lockType?: keyof NodeLocks): boo
   }
   return Object.values(node.locks).some(Boolean);
 }
+
+/** Duplicate an editable subtree without cross-screen selection/history collisions. */
+export function cloneNodeWithNewIds(root: ProjectNode, prefix: string): ProjectNode {
+  return {...structuredClone(root),id:`${prefix}-${root.id}`,children:root.children.map(child=>cloneNodeWithNewIds(child,prefix)),locks:{}};
+}

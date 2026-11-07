@@ -1,0 +1,163 @@
+[
+  {
+    "route": "/",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "accessibleTreeExcerpt": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - link \"Tessellate\":\n    - /url: /\n    - img\n    - text: Tessellate\n  - navigation:\n    - link \"Explore\":\n      - /url: /explore\n    - link \"Showcases\":\n      - /url: /showcases\n    - link \"Compose\":\n      - /url: /compose\n    - link \"Workbench\":\n      - /url: /workbench\n    - link \"Tools\":\n      - /url: /tools\n    - link \"Agents\":\n      - /url: /agents\n    - link \"Creators\":\n      - /url: /creators\n    - link \"Docs\":\n      - /url: /docs\n  - button \"Search ⌘K\":\n    - img\n    - text: Search ⌘K\n  - link \"GitHub Repository\":\n    - /url: https://github.com/danishgm-sketch/Tessellate\n    - img\n  - link \"Local projects\":\n    - /url: /workbench\n  - link \"Start building\":\n    - /url: /workbench\n    - text: Start building\n    - img\n- main:\n  - text: Open Interface Intelligence\n  - heading \"Describe the product. Get the interface.\" [level=1]\n  - paragraph: Tessellate turns product intent into cohesive interface systems using an open library of components, patterns, motion and design intelligence.\n  - text: \"Preset Exemplars:\"\n  - group \"Preset briefs\":\n    - button \"AI research terminal\"\n    - button \"luxury travel marketplace\"\n    - button \"playful HR platform\"\n    - button \"developer observability tool\"\n    - button \"minimalist finance app\"\n  - text: Product Brief\n  - img\n  - text: Deterministic Core Active\n  - textbox \"Product description and requirements\":\n    - /placeholder: Describe what this product does, its users, complexity, and visual atmosphere…\n    - text: A professional but playful employee experience platform for a 500-person technology company. Warm onboarding journeys, team discovery, peer recognition, and trusted workplace policies.\n  - text: Feel\n  - textbox \"Interface feel\": professional but playful\n  - text: Ambition\n  - slider \"Visual ambition level\": \"60\"\n  - text: 60 / 100 Structure\n  - slider \"Structural creativity level\": \"50\"\n  - text: 50 / 100 Stack React 19 + Tailwind CSS 4",
+    "wcagViolations": [],
+    "targetSizeViolations": [],
+    "axeInstrumentation": {
+      "cspConsoleErrors": [],
+      "blockedRequests": []
+    },
+    "runtime": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshot": "sites-v59-desktop--.png"
+  },
+  {
+    "route": "/explore/",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "accessibleTreeExcerpt": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - link \"Tessellate\":\n    - /url: /\n    - img\n    - text: Tessellate\n  - navigation:\n    - link \"Explore\":\n      - /url: /explore\n    - link \"Showcases\":\n      - /url: /showcases\n    - link \"Compose\":\n      - /url: /compose\n    - link \"Workbench\":\n      - /url: /workbench\n    - link \"Tools\":\n      - /url: /tools\n    - link \"Agents\":\n      - /url: /agents\n    - link \"Creators\":\n      - /url: /creators\n    - link \"Docs\":\n      - /url: /docs\n  - button \"Search ⌘K\":\n    - img\n    - text: Search ⌘K\n  - link \"GitHub Repository\":\n    - /url: https://github.com/danishgm-sketch/Tessellate\n    - img\n  - link \"Local projects\":\n    - /url: /workbench\n  - link \"Start building\":\n    - /url: /workbench\n    - text: Start building\n    - img\n- main:\n  - heading \"Explore Resource Library\" [level=1]\n  - paragraph: Discover vetted UI primitives, blocks, and design systems composed for modern products.\n  - img\n  - textbox \"Search catalogue\":\n    - /placeholder: Search by component, outcome, style or vibe…\n  - button \"⌘K\"\n  - img\n  - text: \"Try:\"\n  - button \"Bloomberg-style analytics\"\n  - button \"cinematic product hero\"\n  - button \"AI research sidebar\"\n  - button \"mobile navigation\"\n  - button \"onboarding\"\n  - button \"billing overview\"\n  - button \"data table\"\n  - button \"empty state\"\n  - complementary:\n    - text: Filters\n    - button \"Resource\":\n      - text: Resource\n      - img\n    - checkbox \"primitive\"\n    - text: primitive",
+    "wcagViolations": [],
+    "targetSizeViolations": [],
+    "axeInstrumentation": {
+      "cspConsoleErrors": [
+        "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+      ],
+      "blockedRequests": []
+    },
+    "runtime": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshot": "sites-v59-desktop--explore-.png"
+  },
+  {
+    "route": "/compose/",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "accessibleTreeExcerpt": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - link \"Tessellate Mark Tessellate\":\n    - /url: /\n    - img \"Tessellate Mark\"\n    - text: Tessellate\n  - navigation \"Primary\":\n    - link \"Explore\":\n      - /url: /explore\n    - link \"Compose\":\n      - /url: /compose\n    - link \"Workbench\":\n      - /url: /workbench\n    - link \"Tools\":\n      - /url: /tools\n    - link \"Agents\":\n      - /url: /agents\n    - link \"Creators\":\n      - /url: /creators\n    - link \"Docs\":\n      - /url: /docs\n  - button \"Search... ⌘K\":\n    - img\n    - text: Search... ⌘K\n  - link \"GitHub Repository\":\n    - /url: https://github.com/danishgm-sketch/Tessellate\n    - img\n  - button \"Local projects\"\n  - link \"Start building\":\n    - /url: /compose\n- main:\n  - heading \"Product Composer\" [level=1]\n  - paragraph: Describe what your product needs. Tessellate suggests the people, workflows, screens, and visual direction.\n  - img\n  - text: Local product composer\n  - heading \"Describe the product. Get the interface.\" [level=1]\n  - paragraph: Start with a short brief. Compare three interface directions, then choose one to edit in Workbench.\n  - text: \"Start with a sample brief:\"\n  - button \"Financial Intelligence Terminal\"\n  - button \"Playful HR Platform\"\n  - button \"Luxury Travel Marketplace\"\n  - button \"Developer Observability Platform\"\n  - button \"Minimalist Personal Finance Tool\"\n  - button \"Scientific Research Environment\"\n  - text: Product Description & Objectives\n  - textbox \"Product Description & Objectives\":\n    - /placeholder: Describe what your product does, who it is for, and key operational capabilities...\n    - text: An employee experience platform with a warm marketing site, a refined team dashboard, playful onboarding and conservative settings.\n  - text: Product type (optional)\n  - combobox \"Product type (optional)\":\n    - option \"Auto-Detect from Brief\" [selected]\n    - option \"B2B SaaS\"\n    - option \"AI Product\"\n    - option \"Developer Tools\"\n    - option \"Fintech\"\n    - option \"Ecommerce\"\n    - option \"Marketplace\"\n    - option \"Analytics Platform\"\n    - option \"Research & Intelligence Platform\"",
+    "wcagViolations": [],
+    "targetSizeViolations": [],
+    "axeInstrumentation": {
+      "cspConsoleErrors": [],
+      "blockedRequests": []
+    },
+    "runtime": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshot": "sites-v59-desktop--compose-.png"
+  },
+  {
+    "route": "/workbench/",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "accessibleTreeExcerpt": "- link \"Skip to editor\":\n  - /url: \"#workbench-main\"\n- banner:\n  - link \"T\":\n    - /url: /\n  - button \"Example employee workspace\"\n  - img\n  - text: Local Saved\n  - link \"Compose\":\n    - /url: /compose\n    - img\n    - text: Compose\n  - button \"structure\" [pressed]\n  - button \"style\"\n  - button \"motion\"\n  - button \"content\"\n  - button \"audit\"\n  - button \"Recompose\":\n    - img\n    - text: Recompose\n  - button \"Surprise\":\n    - img\n    - text: Surprise\n  - button \"Blend\":\n    - img\n    - text: Blend\n  - button \"Compare\":\n    - img\n    - text: Compare\n  - button \"Snapshots (1)\":\n    - img\n    - text: Snapshots (1)\n  - button \"Undo\" [disabled]:\n    - img\n  - button \"Redo\" [disabled]:\n    - img\n  - button \"Preview\":\n    - img\n    - text: Preview\n  - button \"Export\":\n    - img\n    - text: Export\n    - img\n- main \"Workbench editor\":\n  - 'heading \"Workbench: Example employee workspace\" [level=1]'\n  - complementary \"Workbench navigation\":\n    - button \"Layers\":\n      - img\n      - text: Layers\n    - button \"Pages\":\n      - img\n      - text: Pages\n    - button \"Library\":\n      - img\n      - text: Library\n    - button \"Brief\":\n      - img\n      - text: Brief\n    - text: Semantic Tree (Marketing Home)\n    - tree \"Semantic layers\":",
+    "wcagViolations": [],
+    "targetSizeViolations": [],
+    "axeInstrumentation": {
+      "cspConsoleErrors": [],
+      "blockedRequests": []
+    },
+    "runtime": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshot": "sites-v59-desktop--workbench-.png"
+  },
+  {
+    "route": "/r/button/",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "accessibleTreeExcerpt": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - link \"Tessellate Mark Tessellate\":\n    - /url: /\n    - img \"Tessellate Mark\"\n    - text: Tessellate\n  - navigation \"Primary\":\n    - link \"Explore\":\n      - /url: /explore\n    - link \"Compose\":\n      - /url: /compose\n    - link \"Workbench\":\n      - /url: /workbench\n    - link \"Tools\":\n      - /url: /tools\n    - link \"Agents\":\n      - /url: /agents\n    - link \"Creators\":\n      - /url: /creators\n    - link \"Docs\":\n      - /url: /docs\n  - button \"Search... ⌘K\":\n    - img\n    - text: Search... ⌘K\n  - link \"GitHub Repository\":\n    - /url: https://github.com/danishgm-sketch/Tessellate\n    - img\n  - button \"Local projects\"\n  - link \"Start building\":\n    - /url: /compose\n- main:\n  - navigation:\n    - link \"Home\":\n      - /url: /\n    - text: /\n    - link \"Explore\":\n      - /url: /explore\n    - text: / primitives / Button\n  - heading \"Button\" [level=1]\n  - text: \"@tess/button v1.0.0 Manifest status: verified\"\n  - paragraph: Tactile, accessible multi-intent button primitive with Quiet, Expressive, and Nocturne curated configurations.\n  - text: \"Install:\"\n  - code: tess add button\n  - code: \"Registry source: /r/button.json\"\n  - list:\n    - listitem: \"#button\"\n    - listitem: \"#action\"\n    - listitem: \"#trigger\"\n    - listitem: \"#input\"\n    - listitem: \"#control\"\n  - text: \"Variant:\"\n  - button \"Quiet\" [pressed]\n  - button \"Expressive\"\n  - button \"Nocturne\"\n  - button \"Desktop (1440px)\":\n    - img\n  - button \"Tablet (768px)\":\n    - img\n  - button \"Mobile (360px)\":",
+    "wcagViolations": [],
+    "targetSizeViolations": [],
+    "axeInstrumentation": {
+      "cspConsoleErrors": [
+        "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+      ],
+      "blockedRequests": []
+    },
+    "runtime": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshot": "sites-v59-desktop--r-button-.png"
+  },
+  {
+    "route": "/preview/?resource=button",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "accessibleTreeExcerpt": "- iframe",
+    "wcagViolations": [],
+    "targetSizeViolations": [],
+    "axeInstrumentation": {
+      "cspConsoleErrors": [
+        "Connecting to 'https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/style.B91OJ-K3.css' violates the following Content Security Policy directive: \"connect-src 'none'\". The action has been blocked.",
+        "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+      ],
+      "blockedRequests": [
+        "GET https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/style.B91OJ-K3.css: csp"
+      ]
+    },
+    "runtime": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshot": "sites-v59-desktop--preview-resource-button.png"
+  },
+  {
+    "route": "/showcase/showcase-playful-hr/",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "accessibleTreeExcerpt": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - link \"Tessellate\":\n    - /url: /\n    - img\n    - text: Tessellate\n  - navigation:\n    - link \"Explore\":\n      - /url: /explore\n    - link \"Showcases\":\n      - /url: /showcases\n    - link \"Compose\":\n      - /url: /compose\n    - link \"Workbench\":\n      - /url: /workbench\n    - link \"Tools\":\n      - /url: /tools\n    - link \"Agents\":\n      - /url: /agents\n    - link \"Creators\":\n      - /url: /creators\n    - link \"Docs\":\n      - /url: /docs\n  - button \"Search ⌘K\":\n    - img\n    - text: Search ⌘K\n  - link \"GitHub Repository\":\n    - /url: https://github.com/danishgm-sketch/Tessellate\n    - img\n  - link \"Local projects\":\n    - /url: /workbench\n  - link \"Start building\":\n    - /url: /workbench\n    - text: Start building\n    - img\n- main:\n  - paragraph: Open interface commons\n  - heading \"Kudos Employee Experience\" [level=1]\n  - paragraph: Example project. Employee experience platform for people, teams, playful onboarding and peer recognition.\n  - complementary \"Beta capability notice\": Beta This is a static demonstration project with sample content. Review its manifest and preview before reuse; it is not customer usage evidence.\n  - paragraph:\n    - link \"Edit a local copy in Workbench\":\n      - /url: /workbench?showcase=showcase-playful-hr\n    - link \"Download exact example manifest\":\n      - /url: /data/showcases/showcase-playful-hr.json\n  - 'region \"Example: Marketing Home\"':\n    - text: Example screen\n    - combobox \"Example screen\":\n      - option \"Marketing Home\" [selected]\n      - option \"Team Overview\"\n      - option \"People Directory\"\n      - option \"Teams\"\n      - option \"Engagement\"\n      - option \"Onboarding\"\n      - option \"Settings & Policies\"\n    - 'heading \"Example: Marketing Home\" [level=2]'\n    - text: People & Co\n    - navigation \"Product screens\":\n      - link \"Marketing Home\":",
+    "wcagViolations": [],
+    "targetSizeViolations": [],
+    "axeInstrumentation": {
+      "cspConsoleErrors": [],
+      "blockedRequests": []
+    },
+    "runtime": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshot": "sites-v59-desktop--showcase-showcase-playful-hr-.png"
+  }
+]

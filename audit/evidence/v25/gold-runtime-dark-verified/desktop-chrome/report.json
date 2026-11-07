@@ -1,0 +1,124 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "capturedAt": "2026-10-24T19:59:52.361Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "diagnostics": {
+    "consoleErrors": [],
+    "warnings": [],
+    "pageErrors": [],
+    "failedRequests": [
+      "GET https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=three-pane-app-shell&variant=quiet&theme=dark&device=desktop&reducedMotion=false net::ERR_ABORTED"
+    ],
+    "httpErrors": []
+  },
+  "results": [
+    {
+      "route": "/resources/advanced-data-table/",
+      "status": 200,
+      "before": "Sample records · 0 selected\n#\tName\tType\tProgress\tStatus\n\tbutton\tprimitive\t98/100\tVERIFIED\n\teditorial-hero\tsection\t96/100\tVERIFIED\n\tadmin-console-shell\tblock\t96/100\tVERIFIED",
+      "visibleText": "Sample records · 0 selected\n#\tName\tType\tProgress\tStatus\n\tbutton\tprimitive\t98/100\tVERIFIED\n\teditorial-hero\tsection\t96/100\tVERIFIED\n\tadmin-console-shell\tblock\t96/100\tVERIFIED",
+      "result": {
+        "nodeCount": 82,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 764,
+          "h": 227
+        },
+        "html": "<div data-node-id=\"preview-advanced-data-table\" data-resource-variant=\"expressive\" data-node-type=\"component\" data-semantic-role=\"resource-preview\" class=\"@container tess-node tess-layout-resource-preview relative transition-all duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ea"
+      },
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-runtime-dark-verified\\desktop-chrome\\advanced-data-table-expressive-dark-1440.png"
+    },
+    {
+      "route": "/resources/error-state/",
+      "status": 200,
+      "before": "⚠️\nManifest Compilation Fault\n\nResource dependency schema validation failed: missing required property \"layoutDNA.density\".\n\nError: [ZodError] layoutDNA: density is required\nRetry Operation",
+      "visibleText": "⚠️\nManifest Compilation Fault\n\nResource dependency schema validation failed: missing required property \"layoutDNA.density\".\n\nError: [ZodError] layoutDNA: density is required\nRetry Operation",
+      "result": {
+        "nodeCount": 10,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 764,
+          "h": 218
+        },
+        "html": "<div data-node-id=\"preview-error-state\" data-resource-variant=\"expressive\" data-node-type=\"component\" data-semantic-role=\"resource-preview\" class=\"@container tess-node tess-layout-resource-preview relative transition-all duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ease-out)]"
+      },
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-runtime-dark-verified\\desktop-chrome\\error-state-expressive-dark-1440.png"
+    },
+    {
+      "route": "/resources/feature-matrix/",
+      "status": 200,
+      "before": "Example capability matrix\nCAPABILITY\tPRIMITIVES\tSHELLS\tSECTIONS\tBLOCKS\nVerified Zod Schemas\tYes\tYes\tYes\tYes\nAccessibility review\tRequired\tRequired\tRequired\tRequired\nZero External CSS Dependencies\tYes\tYes\tYes\tYes\nCurated Nocturne Theme\tYes\tYes\tYes\tYes",
+      "visibleText": "Example capability matrix\nCAPABILITY\tPRIMITIVES\tSHELLS\tSECTIONS\tBLOCKS\nVerified Zod Schemas\tYes\tYes\tYes\tYes\nAccessibility review\tRequired\tRequired\tRequired\tRequired\nZero External CSS Dependencies\tYes\tYes\tYes\tYes\nCurated Nocturne Theme\tYes\tYes\tYes\tYes",
+      "result": {
+        "nodeCount": 38,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 764,
+          "h": 507
+        },
+        "html": "<div data-node-id=\"preview-feature-matrix\" data-resource-variant=\"expressive\" data-node-type=\"component\" data-semantic-role=\"resource-preview\" class=\"@container tess-node tess-layout-resource-preview relative transition-all duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ease-ou"
+      },
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-runtime-dark-verified\\desktop-chrome\\feature-matrix-expressive-dark-1440.png"
+    },
+    {
+      "route": "/resources/three-pane-app-shell/",
+      "status": 200,
+      "before": "Nav Tree\nVisual Canvas\nInspector",
+      "visibleText": "Nav Tree\nVisual Canvas\nInspector",
+      "result": {
+        "nodeCount": 8,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 764,
+          "h": 500
+        },
+        "html": "<div data-node-id=\"preview-three-pane-app-shell\" data-resource-variant=\"expressive\" data-node-type=\"component\" data-semantic-role=\"resource-preview\" class=\"@container tess-node tess-layout-resource-preview relative transition-all duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,e"
+      },
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-runtime-dark-verified\\desktop-chrome\\three-pane-app-shell-expressive-dark-1440.png"
+    },
+    {
+      "route": "/resources/pricing-three-tier/",
+      "status": 200,
+      "before": "Simple, Honest Pricing\nFree Core\n£0\n\nComplete access to all 324 open source resources.\n\nGET STARTED\nTeam Sync\nRECOMMENDED\n£18\n\nCloud project sharing, checkpoint history, and team roles.\n\nGET STARTED\nEnterprise\nCustom\n\nSSO, dedicated SLA, custom DNA tokens, and private registry.\n\nGET STARTED",
+      "visibleText": "Simple, Honest Pricing\nFree Core\n£0\n\nComplete access to all 324 open source resources.\n\nGET STARTED\nTeam Sync\nRECOMMENDED\n£18\n\nCloud project sharing, checkpoint history, and team roles.\n\nGET STARTED\nEnterprise\nCustom\n\nSSO, dedicated SLA, custom DNA tokens, and private registry.\n\nGET STARTED",
+      "result": {
+        "nodeCount": 27,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 764,
+          "h": 611
+        },
+        "html": "<div data-node-id=\"preview-pricing-three-tier\" data-resource-variant=\"expressive\" data-node-type=\"component\" data-semantic-role=\"resource-preview\" class=\"@container tess-node tess-layout-resource-preview relative transition-all duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,eas"
+      },
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-runtime-dark-verified\\desktop-chrome\\pricing-three-tier-expressive-dark-1440.png"
+    }
+  ],
+  "keyboard": [
+    {
+      "slug": "error-state",
+      "selector": "[aria-label=\"Error code sample\"]",
+      "tabIndex": "0",
+      "focused": true
+    },
+    {
+      "slug": "feature-matrix",
+      "selector": "[aria-label=\"Example capability matrix comparison table\"]",
+      "tabIndex": "0",
+      "focused": true
+    },
+    {
+      "slug": "three-pane-app-shell",
+      "selector": "[aria-label=\"Workspace canvas\"]",
+      "tabIndex": "0",
+      "focused": true
+    }
+  ]
+}

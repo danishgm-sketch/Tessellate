@@ -1,0 +1,1515 @@
+{
+  "schemaVersion": "1.0.0",
+  "siteVersion": 62,
+  "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+  "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+  "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+  "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+  "checkedAt": "2026-10-31T16:24:07:00.000Z",
+  "suite": {
+    "report": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+    "passed": 113,
+    "configuredSkips": 9,
+    "unexpectedFailures": 0,
+    "flaky": 0
+  },
+  "supplementalRuns": [
+    "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/community-targeted-desktop-report.json",
+    "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/community-targeted-mobile-report.json",
+    "quality/evidence/step-48/deployed-v62-2026-10-31/aud068-results/playwright.json",
+    "quality/evidence/step-48/deployed-v62-2026-10-31/aud393-results/playwright.json"
+  ],
+  "findings": [
+    {
+      "id": "AUD-055",
+      "testTitle": "Gold data resources handle empty states, large datasets, long content, and interaction",
+      "kind": "gold",
+      "evidence": [
+        {
+          "viewport": "360x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/resource-states/results/gold-resource-states-final.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/resource-states/after/state-captures/kanban-board-empty-360.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: The 360px empty Kanban preview announced the empty state without unavailable add actions."
+        }
+      ]
+    },
+    {
+      "id": "AUD-056",
+      "testTitle": "Gold data resources handle empty states, large datasets, long content, and interaction",
+      "kind": "gold",
+      "evidence": [
+        {
+          "viewport": "360x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/resource-states/results/gold-resource-states-final.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/resource-states/after/state-captures/kanban-board-large-360.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: The 360px Kanban preview omitted fabricated catalogue completion counts and retained employee task examples."
+        }
+      ]
+    },
+    {
+      "id": "AUD-057",
+      "testTitle": "Gold data resources handle empty states, large datasets, long content, and interaction",
+      "kind": "gold",
+      "evidence": [
+        {
+          "viewport": "360x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/resource-states/after/state-captures/bar-chart-truthful-sample-360.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/resource-states/after/state-captures/bar-chart-truthful-sample-360.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: The bar chart labels its values as illustrative sample data, not live measurements."
+        }
+      ]
+    },
+    {
+      "id": "AUD-058",
+      "testTitle": "Gold data resources handle empty states, large datasets, long content, and interaction",
+      "kind": "gold",
+      "evidence": [
+        {
+          "viewport": "360x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/resource-states/after/state-captures/donut-chart-truthful-sample-360.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/resource-states/after/state-captures/donut-chart-truthful-sample-360.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: The donut chart labels its values as illustrative sample data, not real revenue shares."
+        }
+      ]
+    },
+    {
+      "id": "AUD-059",
+      "testTitle": "Gold data resources handle empty states, large datasets, long content, and interaction",
+      "kind": "gold",
+      "evidence": [
+        {
+          "viewport": "360x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/resource-states/after/state-captures/area-chart-truthful-sample-360.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/resource-states/after/state-captures/area-chart-truthful-sample-360.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: The area chart labels its values as illustrative sample data, not live measurements."
+        }
+      ]
+    },
+    {
+      "id": "AUD-060",
+      "testTitle": "Gold data resources handle empty states, large datasets, long content, and interaction",
+      "kind": "gold",
+      "evidence": [
+        {
+          "viewport": "360x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/resource-states/after/state-captures/time-series-chart-truthful-sample-360.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/resource-states/after/state-captures/time-series-chart-truthful-sample-360.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: The time-series chart labels the series as sample data and makes no live-window claim."
+        }
+      ]
+    },
+    {
+      "id": "AUD-068",
+      "testTitle": "form-control focus does not announce a generic action",
+      "kind": "aud068",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/form-control-focus-does-not-announce-a-generic-action.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/form-control-focus-does-not-announce-a-generic-action.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: desktop form-control focus no longer announces a generic action; runtime diagnostics were empty."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-48/deployed-v62-2026-10-31/aud068-results/input-preview-mobile-390x844.json",
+          "screenshot": "quality/evidence/step-48/deployed-v62-2026-10-31/aud068-results/input-preview-mobile-390x844.png",
+          "testReport": "quality/evidence/step-48/deployed-v62-2026-10-31/aud068-results/playwright.json",
+          "result": "PASS: the mobile input retained Alex Morgan and emitted no generic action status; runtime diagnostics were empty."
+        }
+      ]
+    },
+    {
+      "id": "AUD-104",
+      "testTitle": "review representative marketplace and community compositions in the real browser",
+      "kind": "community",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/community-composition-runtime-desktop.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/desktop-recheck-v62/composition-con-04-direction-01.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/community-targeted-desktop-report.json",
+          "result": "PASS: all three generated community directions used the activity timeline and domain-appropriate copy; unresolved diagnostics and browser/network errors were absent."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/community-composition-runtime-mobile.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/mobile-recheck-v62/composition-con-04-direction-01.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/community-targeted-mobile-report.json",
+          "result": "PASS: all three generated community directions used the activity timeline and domain-appropriate copy; unresolved diagnostics and browser/network errors were absent."
+        }
+      ]
+    },
+    {
+      "id": "AUD-105",
+      "testTitle": "review representative marketplace and community compositions in the real browser",
+      "kind": "community",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/community-composition-runtime-desktop.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/desktop-recheck-v62/composition-con-04-direction-01.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/community-targeted-desktop-report.json",
+          "result": "PASS: all three generated community directions used the activity timeline and domain-appropriate copy; unresolved diagnostics and browser/network errors were absent."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/community-composition-runtime-mobile.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/mobile-recheck-v62/composition-con-04-direction-01.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/community-targeted-mobile-report.json",
+          "result": "PASS: all three generated community directions used the activity timeline and domain-appropriate copy; unresolved diagnostics and browser/network errors were absent."
+        }
+      ]
+    },
+    {
+      "id": "AUD-107",
+      "testTitle": "review representative marketplace and community compositions in the real browser",
+      "kind": "community",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/community-composition-runtime-desktop.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/desktop-recheck-v62/composition-con-04-direction-01.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/community-targeted-desktop-report.json",
+          "result": "PASS: all three generated community directions used the activity timeline and domain-appropriate copy; unresolved diagnostics and browser/network errors were absent."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/community-composition-runtime-mobile.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/mobile-recheck-v62/composition-con-04-direction-01.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/community-targeted-mobile-report.json",
+          "result": "PASS: all three generated community directions used the activity timeline and domain-appropriate copy; unresolved diagnostics and browser/network errors were absent."
+        }
+      ]
+    },
+    {
+      "id": "AUD-108",
+      "testTitle": "review representative marketplace and community compositions in the real browser",
+      "kind": "community",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/community-composition-runtime-desktop.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/desktop-recheck-v62/composition-con-04-direction-01.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/community-targeted-desktop-report.json",
+          "result": "PASS: all three generated community directions used the activity timeline and domain-appropriate copy; unresolved diagnostics and browser/network errors were absent."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/community-composition-runtime-mobile.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-quality/after/mobile-recheck-v62/composition-con-04-direction-01.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/community-targeted-mobile-report.json",
+          "result": "PASS: all three generated community directions used the activity timeline and domain-appropriate copy; unresolved diagnostics and browser/network errors were absent."
+        }
+      ]
+    },
+    {
+      "id": "AUD-114",
+      "testTitle": "returns portal brief composes order lookup, return request, and refund status",
+      "kind": "returns",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/ecom-06-runtime-desktop.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/ecom-06-return-request-direction-03-desktop.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Order Lookup, Return Request, and Refund Status were generated without storefront checkout flow; the disabled request control explained the service requirement."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/ecom-06-runtime-mobile.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/ecom-06-return-request-direction-03-mobile.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Order Lookup, Return Request, and Refund Status were generated without storefront checkout flow; the disabled request control explained the service requirement."
+        }
+      ]
+    },
+    {
+      "id": "AUD-116",
+      "testTitle": "SaaS overview activity uses a truthful chronological feed with human-readable examples",
+      "kind": "saas",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/activity-feed-runtime-desktop.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/activity-feed-sas-01-direction-01-desktop.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: all three generated SaaS dashboards used the timeline resource; activity and KPI copy contained no internal IDs, literal Example values, inbox controls, or repeated page heading."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/activity-feed-runtime-mobile.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/activity-feed-sas-01-direction-01-mobile.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: all three generated SaaS dashboards used the timeline resource; activity and KPI copy contained no internal IDs, literal Example values, inbox controls, or repeated page heading."
+        }
+      ]
+    },
+    {
+      "id": "AUD-117",
+      "testTitle": "SaaS overview activity uses a truthful chronological feed with human-readable examples",
+      "kind": "saas",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/activity-feed-runtime-desktop.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/activity-feed-sas-01-direction-01-desktop.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: all three generated SaaS dashboards used the timeline resource; activity and KPI copy contained no internal IDs, literal Example values, inbox controls, or repeated page heading."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/activity-feed-runtime-mobile.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/activity-feed-sas-01-direction-01-mobile.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: all three generated SaaS dashboards used the timeline resource; activity and KPI copy contained no internal IDs, literal Example values, inbox controls, or repeated page heading."
+        }
+      ]
+    },
+    {
+      "id": "AUD-118",
+      "testTitle": "SaaS overview activity uses a truthful chronological feed with human-readable examples",
+      "kind": "saas",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/activity-feed-runtime-desktop.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/aud-123-kpi-heading-fixed-desktop.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: all three generated SaaS dashboards used the timeline resource; activity and KPI copy contained no internal IDs, literal Example values, inbox controls, or repeated page heading."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/activity-feed-runtime-mobile.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/aud-123-kpi-heading-fixed-mobile.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: all three generated SaaS dashboards used the timeline resource; activity and KPI copy contained no internal IDs, literal Example values, inbox controls, or repeated page heading."
+        }
+      ]
+    },
+    {
+      "id": "AUD-120",
+      "testTitle": "SaaS overview activity uses a truthful chronological feed with human-readable examples",
+      "kind": "saas",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/activity-feed-runtime-desktop.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/aud-123-kpi-heading-fixed-desktop.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: all three generated SaaS dashboards used the timeline resource; activity and KPI copy contained no internal IDs, literal Example values, inbox controls, or repeated page heading."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/activity-feed-runtime-mobile.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/aud-123-kpi-heading-fixed-mobile.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: all three generated SaaS dashboards used the timeline resource; activity and KPI copy contained no internal IDs, literal Example values, inbox controls, or repeated page heading."
+        }
+      ]
+    },
+    {
+      "id": "AUD-177",
+      "testTitle": "AI prompt resource describes and exposes only the behavior that works",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-prompt-resource-describes-and-exposes-only-the-behavior-that-works.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-prompt-resource-describes-and-exposes-only-the-behavior-that-works.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI prompt resource describes and exposes only the behavior that works passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-prompt-resource-describes-and-exposes-only-the-behavior-that-works.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-prompt-resource-describes-and-exposes-only-the-behavior-that-works.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI prompt resource describes and exposes only the behavior that works passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-179",
+      "testTitle": "AI rewrite preview separates fixed examples from an actual model action",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-rewrite-preview-separates-fixed-examples-from-an-actual-model-action.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-rewrite-preview-separates-fixed-examples-from-an-actual-model-action.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI rewrite preview separates fixed examples from an actual model action passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-rewrite-preview-separates-fixed-examples-from-an-actual-model-action.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-rewrite-preview-separates-fixed-examples-from-an-actual-model-action.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI rewrite preview separates fixed examples from an actual model action passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-180",
+      "testTitle": "AI tool timeline labels timings and results as illustrative sample data",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-tool-timeline-labels-timings-and-results-as-illustrative-sample-data.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-tool-timeline-labels-timings-and-results-as-illustrative-sample-data.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI tool timeline labels timings and results as illustrative sample data passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-tool-timeline-labels-timings-and-results-as-illustrative-sample-data.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-tool-timeline-labels-timings-and-results-as-illustrative-sample-data.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI tool timeline labels timings and results as illustrative sample data passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-182",
+      "testTitle": "AI chat panel identifies its local example behavior",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-chat-panel-identifies-its-local-example-behavior.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-chat-panel-identifies-its-local-example-behavior.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI chat panel identifies its local example behavior passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-chat-panel-identifies-its-local-example-behavior.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-chat-panel-identifies-its-local-example-behavior.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI chat panel identifies its local example behavior passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-183",
+      "testTitle": "AI model mode switcher identifies its local example behavior",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-model-mode-switcher-identifies-its-local-example-behavior.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-model-mode-switcher-identifies-its-local-example-behavior.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI model mode switcher identifies its local example behavior passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-model-mode-switcher-identifies-its-local-example-behavior.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-model-mode-switcher-identifies-its-local-example-behavior.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI model mode switcher identifies its local example behavior passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-184",
+      "testTitle": "AI source citations identifies its local example behavior",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-source-citations-identifies-its-local-example-behavior.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-source-citations-identifies-its-local-example-behavior.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI source citations identifies its local example behavior passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-source-citations-identifies-its-local-example-behavior.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-source-citations-identifies-its-local-example-behavior.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI source citations identifies its local example behavior passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-185",
+      "testTitle": "AI research answer identifies its local example behavior",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-research-answer-identifies-its-local-example-behavior.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-research-answer-identifies-its-local-example-behavior.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI research answer identifies its local example behavior passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-research-answer-identifies-its-local-example-behavior.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-research-answer-identifies-its-local-example-behavior.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI research answer identifies its local example behavior passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-190",
+      "testTitle": "resource detail labels status as manifest-provided metadata",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/resource-detail-labels-status-as-manifest-provided-metadata.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/resource-detail-labels-status-as-manifest-provided-metadata.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: resource detail labels status as manifest-provided metadata passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/resource-detail-labels-status-as-manifest-provided-metadata.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/resource-detail-labels-status-as-manifest-provided-metadata.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: resource detail labels status as manifest-provided metadata passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-191",
+      "testTitle": "community CTA uses real destinations and makes no unsupported member-count claim",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/community-cta-uses-real-destinations-and-makes-no-unsupported-member-count-claim.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/community-cta-uses-real-destinations-and-makes-no-unsupported-member-count-claim.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: community CTA uses real destinations and makes no unsupported member-count claim passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/community-cta-uses-real-destinations-and-makes-no-unsupported-member-count-claim.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/community-cta-uses-real-destinations-and-makes-no-unsupported-member-count-claim.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: community CTA uses real destinations and makes no unsupported member-count claim passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-193",
+      "testTitle": "product preview CTA links to Compose and labels its disconnected sample",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/product-preview-cta-links-to-compose-and-labels-its-disconnected-sample.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/product-preview-cta-links-to-compose-and-labels-its-disconnected-sample.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: product preview CTA links to Compose and labels its disconnected sample passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/product-preview-cta-links-to-compose-and-labels-its-disconnected-sample.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/product-preview-cta-links-to-compose-and-labels-its-disconnected-sample.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: product preview CTA links to Compose and labels its disconnected sample passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-194",
+      "testTitle": "product preview CTA links to Compose and labels its disconnected sample",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/product-preview-cta-links-to-compose-and-labels-its-disconnected-sample.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/product-preview-cta-links-to-compose-and-labels-its-disconnected-sample.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: product preview CTA links to Compose and labels its disconnected sample passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/product-preview-cta-links-to-compose-and-labels-its-disconnected-sample.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/product-preview-cta-links-to-compose-and-labels-its-disconnected-sample.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: product preview CTA links to Compose and labels its disconnected sample passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-196",
+      "testTitle": "homepage examples disclose sample data and avoid unsupported product metrics",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-197",
+      "testTitle": "homepage examples disclose sample data and avoid unsupported product metrics",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-198",
+      "testTitle": "homepage examples disclose sample data and avoid unsupported product metrics",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-199",
+      "testTitle": "homepage examples disclose sample data and avoid unsupported product metrics",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-200",
+      "testTitle": "homepage examples disclose sample data and avoid unsupported product metrics",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-201",
+      "testTitle": "homepage examples disclose sample data and avoid unsupported product metrics",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-202",
+      "testTitle": "homepage examples disclose sample data and avoid unsupported product metrics",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-203",
+      "testTitle": "homepage examples disclose sample data and avoid unsupported product metrics",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-206",
+      "testTitle": "homepage examples disclose sample data and avoid unsupported product metrics",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/homepage-examples-disclose-sample-data-and-avoid-unsupported-product-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: homepage examples disclose sample data and avoid unsupported product metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-207",
+      "testTitle": "Section Planner exports examples without inventing proof or runtime behavior",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/section-planner-exports-examples-without-inventing-proof-or-runtime-behavior.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/section-planner-exports-examples-without-inventing-proof-or-runtime-behavior.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Section Planner exports examples without inventing proof or runtime behavior passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/section-planner-exports-examples-without-inventing-proof-or-runtime-behavior.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/section-planner-exports-examples-without-inventing-proof-or-runtime-behavior.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Section Planner exports examples without inventing proof or runtime behavior passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-209",
+      "testTitle": "Section Planner exports examples without inventing proof or runtime behavior",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/section-planner-exports-examples-without-inventing-proof-or-runtime-behavior.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/section-planner-exports-examples-without-inventing-proof-or-runtime-behavior.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Section Planner exports examples without inventing proof or runtime behavior passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/section-planner-exports-examples-without-inventing-proof-or-runtime-behavior.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/section-planner-exports-examples-without-inventing-proof-or-runtime-behavior.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Section Planner exports examples without inventing proof or runtime behavior passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-210",
+      "testTitle": "Section Planner exports examples without inventing proof or runtime behavior",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/section-planner-exports-examples-without-inventing-proof-or-runtime-behavior.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/section-planner-exports-examples-without-inventing-proof-or-runtime-behavior.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Section Planner exports examples without inventing proof or runtime behavior passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/section-planner-exports-examples-without-inventing-proof-or-runtime-behavior.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/section-planner-exports-examples-without-inventing-proof-or-runtime-behavior.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Section Planner exports examples without inventing proof or runtime behavior passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-211",
+      "testTitle": "Typography Lab shows truthful, responsive type specimens",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/typography-lab-shows-truthful-responsive-type-specimens.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/typography-lab-shows-truthful-responsive-type-specimens.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Typography Lab shows truthful, responsive type specimens passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/typography-lab-shows-truthful-responsive-type-specimens.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/typography-lab-shows-truthful-responsive-type-specimens.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Typography Lab shows truthful, responsive type specimens passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-212",
+      "testTitle": "Typography Lab shows truthful, responsive type specimens",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/typography-lab-shows-truthful-responsive-type-specimens.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/typography-lab-shows-truthful-responsive-type-specimens.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Typography Lab shows truthful, responsive type specimens passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/typography-lab-shows-truthful-responsive-type-specimens.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/typography-lab-shows-truthful-responsive-type-specimens.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Typography Lab shows truthful, responsive type specimens passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-214",
+      "testTitle": "Typography Lab shows truthful, responsive type specimens",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/typography-lab-shows-truthful-responsive-type-specimens.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/typography-lab-shows-truthful-responsive-type-specimens.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Typography Lab shows truthful, responsive type specimens passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/typography-lab-shows-truthful-responsive-type-specimens.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/typography-lab-shows-truthful-responsive-type-specimens.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Typography Lab shows truthful, responsive type specimens passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-217",
+      "testTitle": "Accessibility Lab describes the limited checks it performs",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/accessibility-lab-describes-the-limited-checks-it-performs.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/accessibility-lab-describes-the-limited-checks-it-performs.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Accessibility Lab describes the limited checks it performs passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/accessibility-lab-describes-the-limited-checks-it-performs.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/accessibility-lab-describes-the-limited-checks-it-performs.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Accessibility Lab describes the limited checks it performs passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-218",
+      "testTitle": "Background Studio labels its sample and disables unconnected preview controls",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/background-studio-labels-its-sample-and-disables-unconnected-preview-controls.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/background-studio-labels-its-sample-and-disables-unconnected-preview-controls.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Background Studio labels its sample and disables unconnected preview controls passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/background-studio-labels-its-sample-and-disables-unconnected-preview-controls.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/background-studio-labels-its-sample-and-disables-unconnected-preview-controls.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Background Studio labels its sample and disables unconnected preview controls passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-220",
+      "testTitle": "Data Visualisation Styler describes sample recipes and its SVG output",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/data-visualisation-styler-describes-sample-recipes-and-its-svg-output.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/data-visualisation-styler-describes-sample-recipes-and-its-svg-output.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Data Visualisation Styler describes sample recipes and its SVG output passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/data-visualisation-styler-describes-sample-recipes-and-its-svg-output.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/data-visualisation-styler-describes-sample-recipes-and-its-svg-output.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Data Visualisation Styler describes sample recipes and its SVG output passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-221",
+      "testTitle": "Motion Studio labels its sequence as examples instead of measured results",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/motion-studio-labels-its-sequence-as-examples-instead-of-measured-results.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/motion-studio-labels-its-sequence-as-examples-instead-of-measured-results.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Motion Studio labels its sequence as examples instead of measured results passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/motion-studio-labels-its-sequence-as-examples-instead-of-measured-results.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/motion-studio-labels-its-sequence-as-examples-instead-of-measured-results.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Motion Studio labels its sequence as examples instead of measured results passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-222",
+      "testTitle": "Palette Studio limits claims to calculated pairs and disclosed sample data",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/palette-studio-limits-claims-to-calculated-pairs-and-disclosed-sample-data.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/palette-studio-limits-claims-to-calculated-pairs-and-disclosed-sample-data.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Palette Studio limits claims to calculated pairs and disclosed sample data passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/palette-studio-limits-claims-to-calculated-pairs-and-disclosed-sample-data.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/palette-studio-limits-claims-to-calculated-pairs-and-disclosed-sample-data.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Palette Studio limits claims to calculated pairs and disclosed sample data passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-223",
+      "testTitle": "Palette Studio limits claims to calculated pairs and disclosed sample data",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/palette-studio-limits-claims-to-calculated-pairs-and-disclosed-sample-data.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/palette-studio-limits-claims-to-calculated-pairs-and-disclosed-sample-data.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Palette Studio limits claims to calculated pairs and disclosed sample data passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/palette-studio-limits-claims-to-calculated-pairs-and-disclosed-sample-data.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/palette-studio-limits-claims-to-calculated-pairs-and-disclosed-sample-data.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Palette Studio limits claims to calculated pairs and disclosed sample data passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-224",
+      "testTitle": "Design DNA Lab labels parsed values and sample code without fabricated metrics",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/design-dna-lab-labels-parsed-values-and-sample-code-without-fabricated-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/design-dna-lab-labels-parsed-values-and-sample-code-without-fabricated-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Design DNA Lab labels parsed values and sample code without fabricated metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/design-dna-lab-labels-parsed-values-and-sample-code-without-fabricated-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/design-dna-lab-labels-parsed-values-and-sample-code-without-fabricated-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Design DNA Lab labels parsed values and sample code without fabricated metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-228",
+      "testTitle": "Design DNA Lab labels parsed values and sample code without fabricated metrics",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/design-dna-lab-labels-parsed-values-and-sample-code-without-fabricated-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/design-dna-lab-labels-parsed-values-and-sample-code-without-fabricated-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Design DNA Lab labels parsed values and sample code without fabricated metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/design-dna-lab-labels-parsed-values-and-sample-code-without-fabricated-metrics.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/design-dna-lab-labels-parsed-values-and-sample-code-without-fabricated-metrics.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Design DNA Lab labels parsed values and sample code without fabricated metrics passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-226",
+      "testTitle": "Layout Composer describes its schematic preview and copied snippets accurately",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/layout-composer-describes-its-schematic-preview-and-copied-snippets-accurately.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/layout-composer-describes-its-schematic-preview-and-copied-snippets-accurately.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Layout Composer describes its schematic preview and copied snippets accurately passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/layout-composer-describes-its-schematic-preview-and-copied-snippets-accurately.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/layout-composer-describes-its-schematic-preview-and-copied-snippets-accurately.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Layout Composer describes its schematic preview and copied snippets accurately passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-227",
+      "testTitle": "Tools directory descriptions match each tool’s current output",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/tools-directory-descriptions-match-each-tool-s-current-output.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/tools-directory-descriptions-match-each-tool-s-current-output.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Tools directory descriptions match each tool’s current output passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/tools-directory-descriptions-match-each-tool-s-current-output.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/tools-directory-descriptions-match-each-tool-s-current-output.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: Tools directory descriptions match each tool’s current output passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-230",
+      "testTitle": "CLI documentation matches the private package and required command syntax",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/cli-documentation-matches-the-private-package-and-required-command-syntax.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/cli-documentation-matches-the-private-package-and-required-command-syntax.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: CLI documentation matches the private package and required command syntax passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/cli-documentation-matches-the-private-package-and-required-command-syntax.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/cli-documentation-matches-the-private-package-and-required-command-syntax.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: CLI documentation matches the private package and required command syntax passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-231",
+      "testTitle": "CLI documentation matches the private package and required command syntax",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/cli-documentation-matches-the-private-package-and-required-command-syntax.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/cli-documentation-matches-the-private-package-and-required-command-syntax.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: CLI documentation matches the private package and required command syntax passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/cli-documentation-matches-the-private-package-and-required-command-syntax.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/cli-documentation-matches-the-private-package-and-required-command-syntax.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: CLI documentation matches the private package and required command syntax passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-243",
+      "testTitle": "document detail displays a static example without promising universal export or a dead action",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/document-detail-displays-a-static-example-without-promising-universal-export-or-a-dead-action.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/document-detail-displays-a-static-example-without-promising-universal-export-or-a-dead-action.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: document detail displays a static example without promising universal export or a dead action passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/document-detail-displays-a-static-example-without-promising-universal-export-or-a-dead-action.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/document-detail-displays-a-static-example-without-promising-universal-export-or-a-dead-action.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: document detail displays a static example without promising universal export or a dead action passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-245",
+      "testTitle": "accordion motion answers describe the actual disclosure and avoid blanket accessibility claims",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/accordion-motion-answers-describe-the-actual-disclosure-and-avoid-blanket-accessibility-claims.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/accordion-motion-answers-describe-the-actual-disclosure-and-avoid-blanket-accessibility-claims.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: accordion motion answers describe the actual disclosure and avoid blanket accessibility claims passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/accordion-motion-answers-describe-the-actual-disclosure-and-avoid-blanket-accessibility-claims.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/accordion-motion-answers-describe-the-actual-disclosure-and-avoid-blanket-accessibility-claims.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: accordion motion answers describe the actual disclosure and avoid blanket accessibility claims passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-248",
+      "testTitle": "editorial and workflow samples describe current output without production guarantees",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: editorial and workflow samples describe current output without production guarantees passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: editorial and workflow samples describe current output without production guarantees passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-249",
+      "testTitle": "editorial and workflow samples describe current output without production guarantees",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: editorial and workflow samples describe current output without production guarantees passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: editorial and workflow samples describe current output without production guarantees passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-251",
+      "testTitle": "editorial and workflow samples describe current output without production guarantees",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: editorial and workflow samples describe current output without production guarantees passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: editorial and workflow samples describe current output without production guarantees passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-252",
+      "testTitle": "editorial and workflow samples describe current output without production guarantees",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: editorial and workflow samples describe current output without production guarantees passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: editorial and workflow samples describe current output without production guarantees passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-253",
+      "testTitle": "editorial and workflow samples describe current output without production guarantees",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: editorial and workflow samples describe current output without production guarantees passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/editorial-and-workflow-samples-describe-current-output-without-production-guarantees.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: editorial and workflow samples describe current output without production guarantees passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-250",
+      "testTitle": "interactive preview describes its local controls instead of simulated runtime results",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/interactive-preview-describes-its-local-controls-instead-of-simulated-runtime-results.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/interactive-preview-describes-its-local-controls-instead-of-simulated-runtime-results.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: interactive preview describes its local controls instead of simulated runtime results passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/interactive-preview-describes-its-local-controls-instead-of-simulated-runtime-results.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/interactive-preview-describes-its-local-controls-instead-of-simulated-runtime-results.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: interactive preview describes its local controls instead of simulated runtime results passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-254",
+      "testTitle": "AI command and empty-state patterns expose only the actions that are connected",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-command-and-empty-state-patterns-expose-only-the-actions-that-are-connected.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/ai-command-and-empty-state-patterns-expose-only-the-actions-that-are-connected.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI command and empty-state patterns expose only the actions that are connected passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-command-and-empty-state-patterns-expose-only-the-actions-that-are-connected.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/ai-command-and-empty-state-patterns-expose-only-the-actions-that-are-connected.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: AI command and empty-state patterns expose only the actions that are connected passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-257",
+      "testTitle": "palette preset copy limits itself to the selected contrast pairs",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/palette-preset-copy-limits-itself-to-the-selected-contrast-pairs.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/palette-preset-copy-limits-itself-to-the-selected-contrast-pairs.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: palette preset copy limits itself to the selected contrast pairs passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/palette-preset-copy-limits-itself-to-the-selected-contrast-pairs.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/palette-preset-copy-limits-itself-to-the-selected-contrast-pairs.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: palette preset copy limits itself to the selected contrast pairs passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-258",
+      "testTitle": "palette preset copy limits itself to the selected contrast pairs",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/palette-preset-copy-limits-itself-to-the-selected-contrast-pairs.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/palette-preset-copy-limits-itself-to-the-selected-contrast-pairs.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: palette preset copy limits itself to the selected contrast pairs passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/palette-preset-copy-limits-itself-to-the-selected-contrast-pairs.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/palette-preset-copy-limits-itself-to-the-selected-contrast-pairs.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: palette preset copy limits itself to the selected contrast pairs passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-259",
+      "testTitle": "resource scores and accessibility declarations are identified as manifest claims",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/resource-scores-and-accessibility-declarations-are-identified-as-manifest-claims.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/resource-scores-and-accessibility-declarations-are-identified-as-manifest-claims.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: resource scores and accessibility declarations are identified as manifest claims passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/resource-scores-and-accessibility-declarations-are-identified-as-manifest-claims.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/resource-scores-and-accessibility-declarations-are-identified-as-manifest-claims.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: resource scores and accessibility declarations are identified as manifest claims passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-297",
+      "testTitle": "metrics strip catalogue copy matches its real example preview",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/metrics-strip-catalogue-copy-matches-its-real-example-preview.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/metrics-strip-catalogue-copy-matches-its-real-example-preview.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: metrics strip catalogue copy matches its real example preview passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/metrics-strip-catalogue-copy-matches-its-real-example-preview.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/metrics-strip-catalogue-copy-matches-its-real-example-preview.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: metrics strip catalogue copy matches its real example preview passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-298",
+      "testTitle": "logo marquee defaults are not presented as real customer or partner wordmarks",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/logo-marquee-defaults-are-not-presented-as-real-customer-or-partner-wordmarks.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/logo-marquee-defaults-are-not-presented-as-real-customer-or-partner-wordmarks.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: logo marquee defaults are not presented as real customer or partner wordmarks passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/logo-marquee-defaults-are-not-presented-as-real-customer-or-partner-wordmarks.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/logo-marquee-defaults-are-not-presented-as-real-customer-or-partner-wordmarks.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: logo marquee defaults are not presented as real customer or partner wordmarks passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-301",
+      "testTitle": "performance metrics resource describes a template instead of measured evidence",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/performance-metrics-resource-describes-a-template-instead-of-measured-evidence.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/performance-metrics-resource-describes-a-template-instead-of-measured-evidence.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: performance metrics resource describes a template instead of measured evidence passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/performance-metrics-resource-describes-a-template-instead-of-measured-evidence.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/performance-metrics-resource-describes-a-template-instead-of-measured-evidence.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: performance metrics resource describes a template instead of measured evidence passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-302",
+      "testTitle": "social proof hero metadata matches its evidence-labeled sample defaults",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/social-proof-hero-metadata-matches-its-evidence-labeled-sample-defaults.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/social-proof-hero-metadata-matches-its-evidence-labeled-sample-defaults.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: social proof hero metadata matches its evidence-labeled sample defaults passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/social-proof-hero-metadata-matches-its-evidence-labeled-sample-defaults.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/social-proof-hero-metadata-matches-its-evidence-labeled-sample-defaults.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: social proof hero metadata matches its evidence-labeled sample defaults passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-303",
+      "testTitle": "testimonial grid defaults are examples and do not display invented five-star ratings",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/testimonial-grid-defaults-are-examples-and-do-not-display-invented-five-star-ratings.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/testimonial-grid-defaults-are-examples-and-do-not-display-invented-five-star-ratings.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: testimonial grid defaults are examples and do not display invented five-star ratings passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/testimonial-grid-defaults-are-examples-and-do-not-display-invented-five-star-ratings.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/testimonial-grid-defaults-are-examples-and-do-not-display-invented-five-star-ratings.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: testimonial grid defaults are examples and do not display invented five-star ratings passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-304",
+      "testTitle": "testimonial grid defaults are examples and do not display invented five-star ratings",
+      "kind": "generic",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/testimonial-grid-defaults-are-examples-and-do-not-display-invented-five-star-ratings.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-chromium/testimonial-grid-defaults-are-examples-and-do-not-display-invented-five-star-ratings.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: testimonial grid defaults are examples and do not display invented five-star ratings passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/testimonial-grid-defaults-are-examples-and-do-not-display-invented-five-star-ratings.json",
+          "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/issue-evidence/sites-mobile-chromium/testimonial-grid-defaults-are-examples-and-do-not-display-invented-five-star-ratings.png",
+          "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json",
+          "result": "PASS: testimonial grid defaults are examples and do not display invented five-star ratings passed on the public Site; the case runtime recorded no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+        }
+      ]
+    },
+    {
+      "id": "AUD-393",
+      "testTitle": "",
+      "kind": "aud393",
+      "evidence": [
+        {
+          "viewport": "1440x900",
+          "evidence": "quality/evidence/step-48/deployed-v62-2026-10-31/aud393-results/homepage-employee-taxonomy-1440x900.json",
+          "screenshot": "quality/evidence/step-48/deployed-v62-2026-10-31/aud393-results/homepage-employee-taxonomy-1440x900.png",
+          "testReport": "quality/evidence/step-48/deployed-v62-2026-10-31/aud393-results/playwright.json",
+          "result": "PASS: the homepage employee-experience manifest excerpt uses the SaaS tag with no browser/runtime/network errors."
+        },
+        {
+          "viewport": "390x844",
+          "evidence": "quality/evidence/step-48/deployed-v62-2026-10-31/aud393-results/homepage-employee-taxonomy-390x844.json",
+          "screenshot": "quality/evidence/step-48/deployed-v62-2026-10-31/aud393-results/homepage-employee-taxonomy-390x844.png",
+          "testReport": "quality/evidence/step-48/deployed-v62-2026-10-31/aud393-results/playwright.json",
+          "result": "PASS: the homepage employee-experience manifest excerpt uses the SaaS tag with no browser/runtime/network errors."
+        }
+      ]
+    }
+  ]
+}

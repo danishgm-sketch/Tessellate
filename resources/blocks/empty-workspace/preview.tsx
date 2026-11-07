@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { EmptyWorkspace, EmptyWorkspaceVariant } from './index.js';
 
-export function EmptyWorkspacePreview() {
+export function EmptyWorkspacePreview({ onCreateProject }: { onCreateProject?: () => void }) {
   const [variant, setVariant] = useState<EmptyWorkspaceVariant>('quiet');
 
   return (
@@ -24,7 +24,7 @@ export function EmptyWorkspacePreview() {
         </div>
       </div>
       <div className="p-6">
-        <EmptyWorkspace variant={variant} />
+        <EmptyWorkspace variant={variant} onCreateProject={onCreateProject} />
       </div>
     </div>
   );

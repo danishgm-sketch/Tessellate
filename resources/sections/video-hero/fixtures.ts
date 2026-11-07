@@ -1,4 +1,4 @@
 export const videoHeroFixtures = {
-  headline: 'See the composition engine in continuous motion.',
-  videoDuration: '1:45',
+  headline: 'Show your product in motion.',
+  subheadline: 'Use a host-supplied video to show how your product works.',
 };

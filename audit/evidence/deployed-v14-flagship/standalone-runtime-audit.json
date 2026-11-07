@@ -1,0 +1,107 @@
+{
+  "previewUrl": "http://127.0.0.1:4173",
+  "exportDir": "C:\\Users\\ismay\\AppData\\Local\\Temp\\tessellate-v14-export-verified-693a84d89b20471eabc593bd365c5a66",
+  "projectId": "proj-direction-c-9b3c5b345658408e8ba3df812b3f3fa8dirc",
+  "projectName": "Adaptive Architecture — Employee experience",
+  "screenCount": 9,
+  "packageName": "adaptive-architecture-employee-experience",
+  "runtimeDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "lucide-react": "^0.475.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.0.1",
+    "motion": "^12.4.7"
+  },
+  "hasTessellateRuntimeDependency": false,
+  "viewports": [
+    {
+      "viewport": "1440x900",
+      "status": 200,
+      "documentTitle": "Adaptive Architecture — Employee experience",
+      "nav": {
+        "count": 9,
+        "flexWrap": "nowrap",
+        "clientWidth": 943,
+        "scrollWidth": 943,
+        "clientHeight": 32,
+        "buttonTopPositions": [
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12
+        ],
+        "singleRow": true
+      },
+      "activeScreen": "screen-onboarding",
+      "onboardingContentPresent": true,
+      "noUnresolvedResources": true,
+      "dimensions": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      },
+      "noHorizontalOverflow": true,
+      "screenshot": "standalone-export-1440x900.png"
+    },
+    {
+      "viewport": "390x844",
+      "status": 200,
+      "documentTitle": "Adaptive Architecture — Employee experience",
+      "nav": {
+        "count": 9,
+        "flexWrap": "nowrap",
+        "clientWidth": 358,
+        "scrollWidth": 943,
+        "clientHeight": 32,
+        "buttonTopPositions": [
+          44,
+          44,
+          44,
+          44,
+          44,
+          44,
+          44,
+          44,
+          44
+        ],
+        "singleRow": true
+      },
+      "activeScreen": "screen-onboarding",
+      "onboardingContentPresent": true,
+      "noUnresolvedResources": true,
+      "dimensions": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      },
+      "noHorizontalOverflow": true,
+      "screenshot": "standalone-export-390x844.png"
+    }
+  ],
+  "errors": {
+    "console": [],
+    "page": [],
+    "failedRequests": [],
+    "http": []
+  },
+  "summary": {
+    "standaloneHasNoTessellateRuntimeDependency": true,
+    "nineProjectScreensPresentInNavigation": true,
+    "responsiveNavigationStaysInOneRow": true,
+    "projectScreensSwitchThroughUI": true,
+    "noUnresolvedResources": true,
+    "desktopBuildLoads": true,
+    "mobileNoHorizontalOverflow": true,
+    "noConsoleErrors": true,
+    "noUncaughtErrors": true,
+    "noFailedRequests": true,
+    "noHttpErrors": true
+  },
+  "finishedAt": "2026-10-18T01:21:26.985Z"
+}

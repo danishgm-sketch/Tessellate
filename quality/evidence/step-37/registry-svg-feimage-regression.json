@@ -1,0 +1,31 @@
+{
+  "findingId": "SEC-37-096",
+  "severity": "medium",
+  "title": "Remote SVG feImage requests bypassed resource-tag URL checks",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "<svg><feImage href='https://collector.invalid/pixel' /></svg>",
+      "React.createElement('feImage', { href: 'https://collector.invalid/pixel' })"
+    ],
+    "beforeFix": "The gate returned pass because case-sensitive SVG feImage was not normalized as an intrinsic resource element and href was not classified as a network-loading attribute for this SVG element.",
+    "afterFix": "The JSX scanner recognizes the case-sensitive SVG intrinsic name and applies the same remote href check used for SVG image elements."
+  },
+  "rootCause": "Intrinsic JSX recognition accepted only fully lowercase tag spelling, while the resource attribute contract omitted the SVG feImage href attribute.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Normalize the known case-sensitive SVG resource element feImage and classify its href as an external resource request for both JSX and React element factories.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"remote SVG feImage resources\"",
+    "redBeforeFixResult": "failed as expected: JSX and React factory feImage requests passed before the fix",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "65 tests passed",
+    "canonicalResourceIsolationMatrix": "324 resources passed, zero warnings, zero failures",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "Static source analysis only; no resource code or network request executed. Preview CSP is an independent restriction. Deployment verification remains pending.",
+  "capturedAt": "2026-10-21T17:17:01Z"
+}

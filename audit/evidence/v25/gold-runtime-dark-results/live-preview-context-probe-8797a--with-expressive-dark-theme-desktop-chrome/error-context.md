@@ -1,0 +1,225 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: live-preview-context-probe.spec.ts >> published Site: Gold resource frames render and stay accessible with expressive dark theme
+- Location: audit\evidence\v25\live-preview-context-probe.spec.ts:9:1
+
+# Error details
+
+```
+Error: locator.evaluate: TypeError: Cannot read properties of undefined (reading 'run')
+    at eval (eval at evaluate (:311:30), <anonymous>:1:24)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to content" [ref=e3] [cursor=pointer]:
+      - /url: "#main-content"
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Tessellate Mark Tessellate" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Tessellate Mark" [ref=e8]
+            - generic [ref=e13]: Tessellate
+          - navigation "Primary" [ref=e14]:
+            - link "Explore" [ref=e15] [cursor=pointer]:
+              - /url: /explore
+            - link "Compose" [ref=e16] [cursor=pointer]:
+              - /url: /compose
+            - link "Workbench" [ref=e17] [cursor=pointer]:
+              - /url: /workbench
+            - link "Tools" [ref=e18] [cursor=pointer]:
+              - /url: /tools
+            - link "Agents" [ref=e19] [cursor=pointer]:
+              - /url: /agents
+            - link "Creators" [ref=e20] [cursor=pointer]:
+              - /url: /creators
+            - link "Docs" [ref=e21] [cursor=pointer]:
+              - /url: /docs
+        - generic [ref=e22]:
+          - button "Search resources (Press Command-K)" [ref=e23] [cursor=pointer]:
+            - generic [ref=e27]: Search...
+            - generic [ref=e28]: ⌘K
+          - link "GitHub Repository" [ref=e29] [cursor=pointer]:
+            - /url: https://github.com/danishgm-sketch/Tessellate
+          - button "Local projects" [ref=e32] [cursor=pointer]
+          - link "Start building" [ref=e33] [cursor=pointer]:
+            - /url: /compose
+  - main [ref=e34]:
+    - navigation "Resource breadcrumb" [ref=e35]:
+      - link "Home" [ref=e36] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e37]: /
+      - link "Explore" [ref=e38] [cursor=pointer]:
+        - /url: /explore
+      - generic [ref=e39]: /
+      - generic [ref=e40]: blocks
+      - generic [ref=e41]: /
+      - generic [ref=e42]: Advanced Data Table
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - heading "Advanced Data Table" [level=1] [ref=e45]
+        - generic [ref=e46]:
+          - generic [ref=e47]: "@tess/advanced-data-table"
+          - generic [ref=e48]: v1.0.0
+          - generic [ref=e49]: verified
+        - paragraph [ref=e50]: Feature-rich data table with column sorting, checkbox selection, pagination, and filter bar.
+        - generic [ref=e51]:
+          - generic [ref=e52]: "Install:"
+          - code [ref=e53]: tess add advanced-data-table
+          - code [ref=e54]: "Registry source: /r/advanced-data-table.json"
+      - list [ref=e55]:
+        - listitem [ref=e56]: "#advanced-data-table"
+        - listitem [ref=e57]: "#table"
+        - listitem [ref=e58]: "#data-table"
+        - listitem [ref=e59]: "#sorting"
+    - generic [ref=e60]:
+      - generic [ref=e61]:
+        - generic [ref=e63]:
+          - generic [ref=e64]:
+            - generic [ref=e65]:
+              - generic [ref=e66]: "Variant:"
+              - button "Quiet" [ref=e67]
+              - button "Expressive" [active] [ref=e68]
+              - button "Nocturne" [ref=e69]
+            - generic [ref=e70]:
+              - generic [ref=e71]:
+                - button "Desktop (1440px)" [ref=e72]
+                - button "Tablet (768px)" [ref=e75]
+                - button "Mobile (360px)" [ref=e78]
+              - button "Switch to Light theme" [ref=e81]
+              - button "Motion" [ref=e88]
+              - button "Reset preview state" [ref=e92]
+          - iframe [ref=e98]:
+            - generic [ref=f1e3]:
+              - heading "Advanced Data Table preview" [level=1] [ref=f1e4]
+              - generic [ref=f1e8]:
+                - generic [ref=f1e9]:
+                  - generic [ref=f1e10]: Sample records · 0 selected
+                  - textbox "Filter Sample records" [ref=f1e11]:
+                    - /placeholder: Filter records
+                - region "Sample records table" [ref=f1e12]:
+                  - table [ref=f1e13]:
+                    - rowgroup [ref=f1e14]:
+                      - row [ref=f1e15]:
+                        - columnheader "#" [ref=f1e16]
+                        - columnheader "Name" [ref=f1e17]
+                        - columnheader "Type" [ref=f1e18]
+                        - columnheader "Progress" [ref=f1e19]
+                        - columnheader "Status" [ref=f1e20]
+                    - rowgroup [ref=f1e21]:
+                      - row [ref=f1e22]:
+                        - cell [ref=f1e23]:
+                          - checkbox "Select button" [ref=f1e24] [cursor=pointer]
+                        - cell "button" [ref=f1e25]
+                        - cell "primitive" [ref=f1e26]
+                        - cell "98/100" [ref=f1e27]
+                        - cell "verified" [ref=f1e28]
+                      - row [ref=f1e29]:
+                        - cell [ref=f1e30]:
+                          - checkbox "Select editorial-hero" [ref=f1e31] [cursor=pointer]
+                        - cell "editorial-hero" [ref=f1e32]
+                        - cell "section" [ref=f1e33]
+                        - cell "96/100" [ref=f1e34]
+                        - cell "verified" [ref=f1e35]
+                      - row [ref=f1e36]:
+                        - cell [ref=f1e37]:
+                          - checkbox "Select admin-console-shell" [ref=f1e38] [cursor=pointer]
+                        - cell "admin-console-shell" [ref=f1e39]
+                        - cell "block" [ref=f1e40]
+                        - cell "96/100" [ref=f1e41]
+                        - cell "verified" [ref=f1e42]
+        - generic [ref=e100]:
+          - generic [ref=e101]:
+            - button "Intent" [ref=e102]
+            - button "Code" [ref=e106]
+            - button "Variants" [ref=e111]
+            - button "Anatomy" [ref=e119]
+            - button "Accessibility" [ref=e125]
+            - button "Performance" [ref=e130]
+            - button "Dependencies" [ref=e134]
+            - button "Versions" [ref=e140]
+          - generic [ref=e146]:
+            - generic [ref=e147]:
+              - generic [ref=e148]:
+                - heading "Summary & Purpose" [level=2] [ref=e149]
+                - paragraph [ref=e150]: Feature-rich data table with column sorting, checkbox selection, pagination, and filter bar.
+              - generic [ref=e151]:
+                - generic [ref=e152]:
+                  - generic [ref=e153]: When It Works (Ideal For)
+                  - list [ref=e158]:
+                    - listitem [ref=e159]:
+                      - generic [ref=e160]: •
+                      - generic [ref=e161]: Data-heavy administrative workspaces
+                - generic [ref=e162]:
+                  - generic [ref=e163]: When It Is Inappropriate (Avoid For)
+                  - list [ref=e169]:
+                    - listitem [ref=e170]:
+                      - generic [ref=e171]: •
+                      - generic [ref=e172]: Mobile-only vertical cards
+              - generic [ref=e173]:
+                - heading "Jobs To Be Done" [level=2] [ref=e174]
+                - generic [ref=e175]: Support column sorting, multi-row selection, and structured records
+              - generic [ref=e177]:
+                - heading "Expected Content Requirements" [level=2] [ref=e178]
+                - list [ref=e179]:
+                  - listitem [ref=e180]: High data density, keyboard accessibility, semantic tokens
+              - generic [ref=e181]:
+                - heading "Target Product Archetypes" [level=2] [ref=e182]
+                - generic [ref=e183]:
+                  - generic [ref=e184]: b2b-saas (95%)
+                  - generic [ref=e185]: developer-tool (90%)
+                  - generic [ref=e186]: data-product (85%)
+            - status
+      - generic [ref=e189]:
+        - generic [ref=e190]:
+          - link "Use in Workbench" [ref=e191] [cursor=pointer]:
+            - /url: /workbench?resource=advanced-data-table
+          - generic [ref=e196]:
+            - button "Copy import" [ref=e197]
+            - button "npx install" [ref=e202]
+        - generic [ref=e207]:
+          - note [ref=e208]: "Quality assessment: Not assessed."
+          - generic [ref=e209]:
+            - generic [ref=e210]: Category
+            - generic [ref=e211]: blocks
+          - generic [ref=e212]:
+            - generic [ref=e213]: SPDX License
+            - generic [ref=e214]: MIT
+          - generic [ref=e215]:
+            - generic [ref=e216]: Creator
+            - generic [ref=e217]: Tessellate Core
+          - generic [ref=e218]:
+            - generic [ref=e219]: Framework & Styling
+            - generic [ref=e220]: react + tailwind
+        - generic [ref=e222]:
+          - generic [ref=e223]: Design DNA Profile
+          - generic [ref=e237]:
+            - generic [ref=e239]:
+              - generic [ref=e240]: Density
+              - generic [ref=e241]: 70%
+            - generic [ref=e245]:
+              - generic [ref=e246]: Visual Ambition
+              - generic [ref=e247]: 65%
+            - generic [ref=e251]:
+              - generic [ref=e252]: Contrast
+              - generic [ref=e253]: 80%
+            - generic [ref=e257]:
+              - generic [ref=e258]: Curvature
+              - generic [ref=e259]: 35%
+            - generic [ref=e263]:
+              - generic [ref=e264]: Motion
+              - generic [ref=e265]: 25%
+  - contentinfo [ref=e268]: Tessellate Interface Intelligence Layer — Open resource library under MIT License.
+```

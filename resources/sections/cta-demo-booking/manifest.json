@@ -5,7 +5,7 @@
   "name": "CTA Demo Booking",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Calendar booking card with time-slot picker preview and sales team call-to-action.",
+  "description": "Appointment selector with sample times and an optional calendar callback.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,7 +130,7 @@
     "sales"
   ],
   "intent": {
-    "summary": "Calendar booking card with time-slot picker preview and sales team call-to-action.",
+    "summary": "Example scheduling control; times are not live until a calendar is connected.",
     "idealFor": [
       "High ACV enterprise SaaS scheduling"
     ],
@@ -138,7 +138,7 @@
       "Self-serve open source tools"
     ],
     "jobs": [
-      "Schedule an architectural consultation with technical sales"
+      "Select an appointment time and submit it to a connected calendar"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"
@@ -209,12 +209,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

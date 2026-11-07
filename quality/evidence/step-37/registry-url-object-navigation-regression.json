@@ -1,0 +1,23 @@
+{
+  "findingId": "SEC-37-069",
+  "severity": "medium",
+  "title": "CSS URL detection misclassified JavaScript URL objects",
+  "status": "fixed_locally",
+  "reproduction": {
+    "source": "const destination = new URL('https://docs.example.test/guide'); return <a href={destination.href}>Read the guide</a>;",
+    "beforeFix": "The broad case-insensitive url(...) regex treated new URL(...) as a remote CSS asset and returned fail.",
+    "afterFix": "The link-only example returns pass; remote URL objects used as image sources remain rejected by AST resolution."
+  },
+  "rootCause": "The CSS url() matcher also matched JavaScript URL constructors.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Match CSS remote url(https://...) syntax separately from JavaScript new URL(...) and resolve URL object values only at network-loading sinks.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"URL object used only\"",
+    "redBeforeFixResult": "failed as expected: external navigation was rejected",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "29 tests passed"
+  }
+}

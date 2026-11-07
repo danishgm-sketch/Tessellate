@@ -1,0 +1,42 @@
+{
+  "capturedAt": "2026-10-23T22:27:48Z",
+  "command": "pnpm test:e2e",
+  "exitCode": 0,
+  "summary": {
+    "total": 649,
+    "passed": 505,
+    "configuredSkipped": 144,
+    "failed": 0
+  },
+  "phases": [
+    {
+      "name": "Astro desktop and mobile",
+      "tests": 384,
+      "passed": 276,
+      "configuredSkipped": 108,
+      "failed": 0
+    },
+    {
+      "name": "Sites Worker desktop and mobile",
+      "tests": 262,
+      "passed": 226,
+      "configuredSkipped": 36,
+      "failed": 0,
+      "catalogueResourcesCertified": 324,
+      "goldResourcesCertified": 40
+    },
+    {
+      "name": "Isolated preview app",
+      "tests": 3,
+      "passed": 3,
+      "configuredSkipped": 0,
+      "failed": 0
+    }
+  ],
+  "notableCoverage": [
+    "The exact employee-experience flagship UI workflow and independent standalone React export passed.",
+    "The homepage mobile first-viewport regression passed in both mobile-capable Chromium profiles.",
+    "Compose-to-Workbench handoff, responsive layouts, catalogue resources, Gold variants, accessibility, and preview CSP isolation passed in their applicable projects."
+  ],
+  "runtimeEvidence": "quality/evidence/step-40/after/visual-audit.json"
+}

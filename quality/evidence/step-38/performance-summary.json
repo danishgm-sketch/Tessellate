@@ -1,0 +1,448 @@
+{
+  "step": 38,
+  "capturedAt": "2026-10-21T10:08:21.481Z",
+  "status": "local-performance-gates-pass; programme-step-open",
+  "environment": {
+    "runtime": "Local ChatGPT Sites compatibility Worker serving the canonical Astro production artifact",
+    "browser": "Playwright Chromium and WebKit, desktop and mobile viewport profiles; WebKit is not real Safari.",
+    "viewports": [
+      "1440x900",
+      "390x844"
+    ],
+    "throttling": "None; standard laptop CPU and network",
+    "fieldWebVitals": false,
+    "devtoolsTrace": false
+  },
+  "routeBudgets": [
+    {
+      "route": "/",
+      "budgetGzipBytes": 153600,
+      "actualGzipBytes": 98032,
+      "status": "PASS"
+    },
+    {
+      "route": "/explore",
+      "budgetGzipBytes": 204800,
+      "actualGzipBytes": 153126,
+      "status": "PASS"
+    },
+    {
+      "route": "/compose",
+      "budgetGzipBytes": 768000,
+      "actualGzipBytes": 344056,
+      "status": "PASS"
+    },
+    {
+      "route": "/workbench",
+      "budgetGzipBytes": 768000,
+      "actualGzipBytes": 570523,
+      "status": "PASS"
+    },
+    {
+      "route": "/data/catalog.json",
+      "budgetGzipBytes": 2097152,
+      "actualGzipBytes": 114821,
+      "status": "PASS"
+    }
+  ],
+  "homepageTransfer": {
+    "beforeBytes": 202356,
+    "afterBytes": 106382,
+    "reductionBytes": 95974,
+    "reductionPercent": 47.4
+  },
+  "coldRouteMetrics": {
+    "desktop": {
+      "/": {
+        "readyMs": 304,
+        "fcpMs": 144,
+        "labLcpMs": 144,
+        "labCls": 0,
+        "jsTransferBytes": 106382,
+        "jsDecodedBytes": 316232,
+        "documentWidth": 1440
+      },
+      "/explore": {
+        "readyMs": 628,
+        "fcpMs": 80,
+        "labLcpMs": 80,
+        "labCls": 0.031353515625,
+        "jsTransferBytes": 161226,
+        "jsDecodedBytes": 495236,
+        "documentWidth": 1440
+      },
+      "/compose": {
+        "readyMs": 472,
+        "fcpMs": 100,
+        "labLcpMs": 100,
+        "labCls": 0,
+        "jsTransferBytes": 349756,
+        "jsDecodedBytes": 1387940,
+        "documentWidth": 1440
+      },
+      "/workbench": {
+        "readyMs": 617,
+        "fcpMs": 292,
+        "labLcpMs": 476,
+        "labCls": 0,
+        "jsTransferBytes": 582823,
+        "jsDecodedBytes": 2456301,
+        "documentWidth": 1440
+      }
+    },
+    "mobile": {
+      "/": {
+        "readyMs": 335,
+        "fcpMs": 120,
+        "labLcpMs": 120,
+        "labCls": 0,
+        "jsTransferBytes": 106382,
+        "jsDecodedBytes": 316232,
+        "documentWidth": 390
+      },
+      "/explore": {
+        "readyMs": 637,
+        "fcpMs": 60,
+        "labLcpMs": 60,
+        "labCls": 0,
+        "jsTransferBytes": 161226,
+        "jsDecodedBytes": 495236,
+        "documentWidth": 390
+      },
+      "/compose": {
+        "readyMs": 495,
+        "fcpMs": 72,
+        "labLcpMs": 72,
+        "labCls": 0,
+        "jsTransferBytes": 349756,
+        "jsDecodedBytes": 1387940,
+        "documentWidth": 390
+      },
+      "/workbench": {
+        "readyMs": 634,
+        "fcpMs": 292,
+        "labLcpMs": 432,
+        "labCls": 0,
+        "jsTransferBytes": 582823,
+        "jsDecodedBytes": 2456301,
+        "documentWidth": 390
+      }
+    }
+  },
+  "visibleWorkflowMetrics": {
+    "desktop": {
+      "catalogSearchAndFirstPreviewMs": 752,
+      "threeDirectionCompositionMs": 120,
+      "directionCWorkbenchReadyMs": 276,
+      "recomposeVisibleResultMs": 52,
+      "standaloneZipReadyMs": 271,
+      "standaloneZipBytes": 42020
+    },
+    "mobile": {
+      "catalogSearchAndFirstPreviewMs": 442,
+      "threeDirectionCompositionMs": 124,
+      "directionCWorkbenchReadyMs": 185,
+      "recomposeVisibleResultMs": 54,
+      "standaloneZipReadyMs": 207,
+      "standaloneZipBytes": 42018
+    }
+  },
+  "constrainedWorkload": {
+    "evidence": "quality/evidence/step-38/after/constrained-and-large/constrained-4g.json",
+    "capturedAt": "2026-10-21T10:08:19.387Z",
+    "viewport": "1440x900",
+    "throttle": {
+      "latencyMs": 150,
+      "downloadBitsPerSecond": 1600000,
+      "uploadBitsPerSecond": 750000,
+      "cpuSlowdownFactor": 4
+    },
+    "routeReadyMs": 3799,
+    "firstOnboardingPreviewMs": 3342,
+    "lcpMs": 732,
+    "cls": 0.05896394086505487,
+    "longTaskMs": 644,
+    "longTaskCount": 4,
+    "catalogueTransferBytes": 145103,
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "browserCancellations": 6,
+    "cancellationReason": "Preview module requests aborted when nonmatching preview iframes unmount after the user filters the catalogue; recorded separately from failed network requests."
+  },
+  "largeWorkbenchWorkload": {
+    "evidence": "quality/evidence/step-38/after/constrained-and-large/workbench-large-project.json",
+    "capturedAt": "2026-10-21T10:08:21.481Z",
+    "projectId": "performance-large-30-screens",
+    "screens": 30,
+    "nodes": 1830,
+    "compactManifestBytes": 355470,
+    "workbenchReadyMs": 902,
+    "switchScreenMs": 44,
+    "manifestExportMs": 611,
+    "standaloneZipExportMs": 159,
+    "exportedManifestBytes": 681238,
+    "standaloneZipBytes": 52640,
+    "lcpMs": 516,
+    "cls": 0,
+    "longTaskMs": 86,
+    "longTaskCount": 1,
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "horizontalOverflow": false
+  },
+  "crossBrowserLimitations": {
+    "firefox": "Playwright 1.63.0 Firefox revision 1543 was forcibly reinstalled and the browser still fails before navigation. Windows SideBySide Event 33 says the dependent assembly mozglue, version 1.0.0.0, is missing even though mozglue.dll is present beside firefox.exe; Playwright reports spawn UNKNOWN. No Tessellate route was exercised.",
+    "safari": "Real Safari is not available on this Windows host. Playwright WebKit runs are reported separately and do not count as Safari coverage."
+  },
+  "runtime": {
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "browserCancellations": 0,
+    "visibleWorkflowBrowserCancellations": {
+      "desktop": 9,
+      "mobile": 0,
+      "cause": "Preview iframe requests are aborted when search filtering unmounts nonmatching cards; these are browser cancellations, not failed network requests."
+    },
+    "httpErrors": 0,
+    "horizontalOverflowRoutes": 0
+  },
+  "findings": [
+    {
+      "id": "STEP38-MED-001",
+      "severity": "medium",
+      "route": "/explore",
+      "viewport": "390x844",
+      "category": "visual",
+      "title": "Touch action overlay obscured resource previews",
+      "rootCause": "The persistent mobile action overlay reused the desktop full-frame dim and backdrop blur.",
+      "evidenceBefore": "quality/evidence/step-38/before/mobile-explore-preview-obscured-390.png",
+      "evidenceAfter": "quality/evidence/step-38/after/sites-worker/sites-mobile-chromium-explore.png",
+      "fix": "Show mobile actions in a compact opaque bottom bar and keep the full-frame hover/focus overlay at the desktop breakpoint.",
+      "regression": "tests/e2e/site-route-performance-step-38.spec.ts",
+      "preFixResult": "Failed: computed mobile backdrop filter was blur(2px).",
+      "postFixResult": "Passed: no mobile backdrop blur and action bar height below 80 CSS pixels.",
+      "status": "fixed-locally"
+    },
+    {
+      "id": "STEP38-MED-002",
+      "severity": "medium",
+      "route": "/explore?q=onboarding",
+      "viewport": "1440x900 and 390x844",
+      "category": "security-compatibility",
+      "title": "WebKit reported a strict-CSP violation for the empty body rule in mounted Explore previews",
+      "rootCause": "The WebKit violation sample is `body {}`. The event has no source file or DOM target, and the application-side style creation/insertion trace is empty, so the rule's producer remains unidentified.",
+      "evidence": "quality/evidence/step-38/before/webkit-explore-style-csp.json",
+      "screenshots": [
+        "quality/evidence/step-38/after/workload-explore-sites-webkit.png",
+        "quality/evidence/step-38/after/workload-explore-sites-webkit-mobile.png"
+      ],
+      "regression": "tests/e2e/performance-workloads-step-38.spec.ts",
+      "remediation": "The Sites artifact generator adds only the exact SHA-256 hash of the sampled no-op `body {}` rule to style-src and style-src-elem. The rule has no declarations; no unsafe-inline or report-sample source is present in the final policy.",
+      "desktopResult": "Passed: complete Explore-to-Compose-to-Workbench-to-ZIP workload recorded zero CSP events, console errors, uncaught exceptions, failed requests, and HTTP errors.",
+      "mobileResult": "Passed: complete workload recorded zero CSP events, console errors, uncaught exceptions, failed requests, and HTTP errors.",
+      "browserCancellations": "Latest after-fix run recorded 11 desktop and 3 mobile preview request cancellations as filtered frames unmounted; no failed essential requests.",
+      "isolatedCspResult": "8 desktop/mobile CSP scenarios passed, including actual resource inline styles and opaque-origin isolation.",
+      "securityDecision": "Allow only the exact hash for the no-op `body {}` rule; no general style-src relaxation applied.",
+      "status": "fixed-locally; deployment verification pending"
+    }
+  ],
+  "remaining": [
+    "Field LCP, INP, and CLS after public deployment; DevTools-trace CWV is paused at the owner request pending Chrome DevTools MCP setup.",
+    "50+ screen projects, long Workbench sessions, and history stress (Step 43).",
+    "Firefox route measurements; local Firefox fails to launch on this Windows laptop.",
+    "Real Safari and deployed WebKit route/workload verification; local Playwright WebKit now passes the route and flagship workload clean-console criteria."
+  ],
+  "crossBrowserRouteMetrics": {
+    "webkitDesktop": {
+      "capturedAt": "2026-10-21T10:01:28.124Z",
+      "browserProject": "sites-webkit",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "routes": [
+        {
+          "route": "/",
+          "readyMs": 476,
+          "fcpMs": 135,
+          "labLcpMs": 195,
+          "labCls": 0,
+          "longTaskMs": 0,
+          "jsTransferBytes": 106382,
+          "jsDecodedBytes": 316232,
+          "jsResourceCount": 19,
+          "documentWidth": 1440,
+          "viewportWidth": 1440
+        },
+        {
+          "route": "/explore",
+          "readyMs": 982,
+          "fcpMs": 63,
+          "labLcpMs": 63,
+          "labCls": 0,
+          "longTaskMs": 0,
+          "jsTransferBytes": 161226,
+          "jsDecodedBytes": 495236,
+          "jsResourceCount": 27,
+          "documentWidth": 1440,
+          "viewportWidth": 1440
+        },
+        {
+          "route": "/compose",
+          "readyMs": 761,
+          "fcpMs": 76,
+          "labLcpMs": 76,
+          "labCls": 0,
+          "longTaskMs": 0,
+          "jsTransferBytes": 349756,
+          "jsDecodedBytes": 1387940,
+          "jsResourceCount": 19,
+          "documentWidth": 1440,
+          "viewportWidth": 1440
+        },
+        {
+          "route": "/workbench",
+          "readyMs": 956,
+          "fcpMs": 356,
+          "labLcpMs": 658,
+          "labCls": 0,
+          "longTaskMs": 0,
+          "jsTransferBytes": 582823,
+          "jsDecodedBytes": 2456301,
+          "jsResourceCount": 41,
+          "documentWidth": 1440,
+          "viewportWidth": 1440
+        }
+      ],
+      "runtime": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "browserCancellations": 0,
+        "httpErrors": 0
+      }
+    },
+    "webkitMobileViewport": {
+      "capturedAt": "2026-10-21T10:01:33.174Z",
+      "browserProject": "sites-webkit-mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "routes": [
+        {
+          "route": "/",
+          "readyMs": 324,
+          "fcpMs": 122,
+          "labLcpMs": 170,
+          "labCls": 0,
+          "longTaskMs": 0,
+          "jsTransferBytes": 104284,
+          "jsDecodedBytes": 310338,
+          "jsResourceCount": 18,
+          "documentWidth": 390,
+          "viewportWidth": 390
+        },
+        {
+          "route": "/explore",
+          "readyMs": 835,
+          "fcpMs": 63,
+          "labLcpMs": 63,
+          "labCls": 0,
+          "longTaskMs": 0,
+          "jsTransferBytes": 161226,
+          "jsDecodedBytes": 495236,
+          "jsResourceCount": 27,
+          "documentWidth": 390,
+          "viewportWidth": 390
+        },
+        {
+          "route": "/compose",
+          "readyMs": 629,
+          "fcpMs": 69,
+          "labLcpMs": 69,
+          "labCls": 0,
+          "longTaskMs": 0,
+          "jsTransferBytes": 349756,
+          "jsDecodedBytes": 1387940,
+          "jsResourceCount": 19,
+          "documentWidth": 390,
+          "viewportWidth": 390
+        },
+        {
+          "route": "/workbench",
+          "readyMs": 718,
+          "fcpMs": 364,
+          "labLcpMs": 550,
+          "labCls": 0,
+          "longTaskMs": 0,
+          "jsTransferBytes": 582823,
+          "jsDecodedBytes": 2456301,
+          "jsResourceCount": 41,
+          "documentWidth": 390,
+          "viewportWidth": 390
+        }
+      ],
+      "runtime": {
+        "consoleErrors": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "browserCancellations": 0,
+        "httpErrors": 0
+      }
+    }
+  },
+  "latestLocalVerification": {
+    "capturedAt": "2026-10-21T10:08:21.481Z",
+    "astroProductionBuild": {
+      "result": "PASS",
+      "staticPages": 717,
+      "warning": "Vite emitted its existing >500 kB raw minified-chunk advisory."
+    },
+    "sitesWorkerProductionBuild": {
+      "result": "PASS",
+      "canonicalAstroOutput": true,
+      "catalogResources": 324
+    },
+    "bundleBudgets": {
+      "result": "PASS",
+      "routes": [
+        "/",
+        "/explore",
+        "/compose",
+        "/workbench",
+        "/data/catalog.json"
+      ]
+    },
+    "routePerformance": [
+      {
+        "browser": "Chromium",
+        "profile": "desktop 1440x900 and mobile 390x844",
+        "result": "4 passed"
+      },
+      {
+        "browser": "Playwright WebKit",
+        "profile": "desktop 1440x900 and mobile viewport 390x844",
+        "result": "4 passed",
+        "safariCoverage": false
+      }
+    ],
+    "browserRuntime": "All four fresh route-matrix profiles report zero console errors, uncaught exceptions, failed requests, browser cancellations, and HTTP errors.",
+    "visualReview": [
+      "quality/evidence/step-38/after/sites-worker/sites-chromium-workbench.png",
+      "quality/evidence/step-38/after/sites-worker/sites-mobile-chromium-workbench.png",
+      "quality/evidence/step-38/after/sites-worker/sites-chromium-explore-scrolled-preview.png",
+      "quality/evidence/step-38/after/sites-webkit-mobile/sites-webkit-mobile-explore-scrolled-preview.png"
+    ],
+    "stressWorkload": {
+      "capturedAt": "2026-10-21T10:08:21.481Z",
+      "result": "2 passed",
+      "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/performance-stress-step-38.spec.ts --project=sites-chromium"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "capturedAt": "2026-11-03T05:35:13.748Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+  "siteVersion": 72,
+  "viewport": {
+    "width": 1440,
+    "height": 900,
+    "deviceScaleFactor": 1,
+    "cpuThrottlingRate": 4,
+    "network": "Fast 4G emulation"
+  },
+  "delays": [
+    {
+      "path": "/_astro/WorkbenchShell.WojrnSWZ.js",
+      "delayMs": 700
+    },
+    {
+      "path": "/data/workbench-starter.json",
+      "delayMs": 1800
+    }
+  ],
+  "firstVisible": {
+    "text": "T\nTessellate Workbench\n\nLOCAL WORKSPACE\n\nPreparing your local workspace\n\nLoading your project and verified resource catalogue. Projects stay in this browser.\n\nOpen Compose",
+    "bodyHeight": 900,
+    "main": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 900,
+      "top": 0,
+      "right": 1440,
+      "bottom": 900,
+      "left": 0
+    }
+  },
+  "clientStartup": {
+    "text": "Starting your workspace…",
+    "bodyHeight": 900,
+    "main": null
+  },
+  "loaded": {
+    "text": "Skip to editor\nLoading the Workbench toolbar…\nWorkbench: Example employee workspace\nLoading project structure…\nLoading the project canvas…\nPROJECT SCOPE\nExample employee workspace\nIntent\nStyle\nMotion\nContent\nLocks\nResource\nLoading intent controls…\nLoading project commands…",
+    "bodyHeight": 900,
+    "main": {
+      "x": 0,
+      "y": 56,
+      "width": 1440,
+      "height": 780,
+      "top": 56,
+      "right": 1440,
+      "bottom": 836,
+      "left": 0
+    },
+    "cls": 0,
+    "shifts": []
+  },
+  "errors": [],
+  "warnings": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "screenshots": [
+    "public-v72-desktop-initial-before.png",
+    "public-v72-desktop-client-before.png",
+    "public-v72-desktop-loaded-before.png"
+  ]
+}

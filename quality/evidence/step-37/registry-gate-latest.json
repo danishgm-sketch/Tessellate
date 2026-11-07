@@ -1,0 +1,30 @@
+{
+  "capturedAt": "2026-10-22T13:30:41.2689551Z",
+  "commands": {
+    "resourceIsolation": "pnpm audit:resource-isolation",
+    "registryGateTests": "pnpm --filter @tessellate/registry-gate test",
+    "apiRateLimitTests": "pnpm exec vitest run apps/api/src/__tests__/rate-limits.test.ts"
+  },
+  "resourceIsolation": {
+    "scope": "Static source-isolation check; resource source is never executed.",
+    "expectedResourceCount": 324,
+    "scanned": 324,
+    "passed": 324,
+    "skippedSymlinks": 0,
+    "failures": 0
+  },
+  "registryGateTests": {
+    "testFilesPassed": 1,
+    "testsPassed": 74,
+    "testsFailed": 0
+  },
+  "apiRateLimitTests": {
+    "testFilesPassed": 1,
+    "testsPassed": 9,
+    "testsFailed": 0
+  },
+  "limitations": [
+    "Static source isolation and the registry-gate unit suite do not prove that deployed Cloudflare namespace IDs exist.",
+    "Deployed Sites CSP/gateway verification and release-candidate hostile-preview re-audit remain open."
+  ]
+}

@@ -1,8 +1,4 @@
-"""
-Tessellate Bespoke ML Engine - Inference Runtime
-Loads trained Tree-GNN + Bi-GRU weights and executes sub-millisecond forward inference.
-Zero external LLM / transformer weights.
-"""
+"""Experimental laptop proposal adapter; not calibrated or Core-certified."""
 
 import json
 import os
@@ -28,7 +24,7 @@ class BespokeInferenceEngine:
                 self.model.load_weights(data)
                 print(f"[Tessellate DL] Loaded trained weights ({data.get('architecture', 'TreeGNN')})")
         else:
-            print("[Tessellate DL] Warning: weights.json not found, using initialized weights.")
+            raise FileNotFoundError("Trained weights are required before advertising host availability")
 
     @classmethod
     def get_instance(cls):

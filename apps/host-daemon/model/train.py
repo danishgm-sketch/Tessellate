@@ -1,8 +1,4 @@
-"""
-Tessellate Bespoke ML Engine - Training Pipeline
-Trains the Tree-GNN + Bi-GRU network from scratch on design domain data.
-Zero external LLM / transformer weights.
-"""
+"""Fit the experimental action head on the small synthetic prompt dataset."""
 
 import json
 import math
@@ -44,8 +40,8 @@ except ImportError:
 
 
 def train_model(epochs: int = 150, lr: float = 0.05) -> BespokeIntentNetwork:
-    """Trains the bespoke network from scratch using stochastic gradient updates."""
-    print("[Tessellate DL] Initializing bespoke Tree-GNN + Bi-GRU model architecture...")
+    """Fit only the action classifier; other output heads remain untrained."""
+    print("[Tessellate Lab] Initializing the experimental recurrent intent prototype...")
     model = BespokeIntentNetwork(seed=42)
     samples = generate_synthetic_samples()
 
@@ -61,7 +57,7 @@ def train_model(epochs: int = 150, lr: float = 0.05) -> BespokeIntentNetwork:
         ],
     }
 
-    print(f"[Tessellate DL] Training on {len(samples)} domain samples for {epochs} epochs...")
+    print(f"[Tessellate Lab] Fitting the action head on {len(samples)} synthetic pairs for {epochs} epochs...")
 
     for epoch in range(epochs):
         total_loss = 0.0

@@ -5,6 +5,7 @@ import type {
   ProjectScreen,
   DesignDNA,
 } from '@tessellate/schemas';
+import { ProjectManifestSchema, ProjectMutationSchema } from '@tessellate/schemas';
 import { canApplyMutation, LockViolationError, applyLockToNode, removeLockFromNode, syncManifestLocks } from '../locks/lock-engine.js';
 import { generateInverseMutation } from './inverse.js';
 import { updateNodeInTree, deleteNodeInTree, addNodeToTree, findNodeById } from '../utils/tree-helpers.js';
@@ -42,6 +43,10 @@ export function executeMutation(
   mutation: ProjectMutation,
   options?: ExecuteMutationOptions
 ): ExecuteMutationResult {
+  // Mutations are a public contract boundary: validate them before lock checks
+  // or execution so duplicated target IDs cannot point at different nodes.
+  mutation = ProjectMutationSchema.parse(mutation);
+
   // 1. Revision precondition check
   if (!options?.skipRevisionCheck) {
     const currentRev = manifest.historyMeta.headRevision;
@@ -250,9 +255,11 @@ export function executeMutation(
     case 'DELETE_SCREEN': {
       const { screenId } = mutation.payload;
       const targetScreen = updatedManifest.screens.find((s) => s.id === screenId);
+      if (!targetScreen) throw new Error(`Cannot delete missing screen "${screenId}".`);
+      const graphScreenId = targetScreen.screenNodeId;
       const groups = updatedManifest.screenGraph.groups.map((g) => ({
         ...g,
-        screens: g.screens.filter((s) => s.id !== targetScreen?.screenNodeId),
+        screens: g.screens.filter((s) => s.id !== graphScreenId),
       }));
       updatedManifest = {
         ...updatedManifest,
@@ -260,6 +267,18 @@ export function executeMutation(
         screenGraph: {
           ...updatedManifest.screenGraph,
           groups,
+          edges: updatedManifest.screenGraph.edges.filter(
+            (edge) => edge.fromScreenId !== graphScreenId && edge.toScreenId !== graphScreenId
+          ),
+        },
+        navigation: {
+          ...updatedManifest.navigation,
+          primaryItems: updatedManifest.navigation.primaryItems.filter(
+            (item) => item.targetScreenId !== screenId
+          ),
+          secondaryItems: updatedManifest.navigation.secondaryItems?.filter(
+            (item) => item.targetScreenId !== screenId
+          ),
         },
       };
       break;
@@ -323,6 +342,10 @@ export function executeMutation(
     },
     updatedAt: new Date().toISOString(),
   };
+
+  // Keep every mutation result inside the same canonical contract consumed by
+  // persistence, export, CLI, and MCP callers.
+  updatedManifest = ProjectManifestSchema.parse(updatedManifest);
 
   return {
     nextManifest: updatedManifest,

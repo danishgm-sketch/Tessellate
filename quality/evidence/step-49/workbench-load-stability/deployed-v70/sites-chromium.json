@@ -1,0 +1,59 @@
+{
+  "capturedAt": "2026-11-01T13:26:22.406Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+  "delayedChunks": [
+    "TopToolbar",
+    "CommandBar"
+  ],
+  "delayMs": 1200,
+  "viewport": "1440x900",
+  "toolbarBefore": {
+    "x": 299.9375,
+    "y": 785.34375,
+    "width": 780.125,
+    "height": 42.65625
+  },
+  "toolbarAfter": {
+    "x": 299.9375,
+    "y": 785.34375,
+    "width": 780.125,
+    "height": 42.65625
+  },
+  "toolbarMovementPx": 0,
+  "cls": 0.01986111111111111,
+  "shifts": [
+    {
+      "startTime": 1953.8999999761581,
+      "value": 0.01986111111111111,
+      "sources": [
+        {
+          "selector": "main#workbench-main.relative flex flex-1 overflow-hidden",
+          "previousRect": {
+            "x": 0,
+            "y": 56,
+            "width": 1440,
+            "height": 780,
+            "top": 56,
+            "right": 1440,
+            "bottom": 836,
+            "left": 0
+          },
+          "currentRect": {
+            "x": 0,
+            "y": 89,
+            "width": 1440,
+            "height": 747,
+            "top": 89,
+            "right": 1440,
+            "bottom": 836,
+            "left": 0
+          }
+        }
+      ]
+    }
+  ],
+  "consoleErrors": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

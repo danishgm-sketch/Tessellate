@@ -5,7 +5,7 @@
   "name": "Kiosk Display Shell",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Digital signage kiosk shell with high contrast typography, touch safety, and timeout reset.",
+  "description": "Large-format digital signage layout example; no inactivity timer is included.",
   "resourceType": "block",
   "categories": [
     "shells",
@@ -126,15 +126,15 @@
     "touch"
   ],
   "intent": {
-    "summary": "Digital signage kiosk shell with high contrast typography, touch safety, and timeout reset.",
+    "summary": "Large-format signage layout example for a kiosk or public display.",
     "idealFor": [
-      "Unattended touch screen kiosk hardware and public monitors"
+      "Large-format kiosk layouts and public displays"
     ],
     "avoidFor": [
       "Standard desktop multi-window software"
     ],
     "jobs": [
-      "Display large-format touch interactive layout with auto-idle timeout"
+      "Present a large-format interface for a kiosk or public display"
     ],
     "contentRequirements": [
       "Accessible navigation semantics and responsive containment"
@@ -205,12 +205,12 @@
     "defaultStrategy": "collapse"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -233,7 +233,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

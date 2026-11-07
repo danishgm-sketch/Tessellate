@@ -1,0 +1,27 @@
+{
+  "capturedAt": "2026-10-28T05:38:05.069Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/docs/cli",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "status": 200,
+  "layout": {
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "horizontalOverflow": false
+  },
+  "visibleText": "BETA\nCore commands use the deterministic catalogue and Vite/React export. The linter, ingestion, resource scaffolder and contribution gate are Beta. Ingestion provides partial AST-based route/JSX structure only: it leaves source untouched and does not infer product intent, navigation behavior, business logic, CSS Modules or dynamic styles. The linter reports static heuristic findings and does not certify rendered accessibility; color findings are review-only.\n← Back to Documentation\nTessellate CLI (`tess`)\n\nA private workspace CLI for searching the catalogue, composing and validating manifests, and generating standalone Vite/React source. It is not published on npm.\n\nBuild from a Tessellate checkout\n\nThe package is private and is not available from npm. From the repository root, build the bundled catalogue and CLI:\n\npnpm install --frozen-lockfile\npnpm build:catalog\npnpm --filter @tessellate/cli build\nnode packages/cli/dist/index.cjs --help\nCommands\ntess add <slug>\n\nResolves a resource from a local or configured registry and writes its files into the configured components directory.\n\ntess add metric-card\ntess add ai-chat-panel --overwrite\ntess search [query]\n\nSearch the 324-resource open catalogue directly from your terminal.\n\ntess search \"fintech\"\ntess search --category \"data\"\ntess validate <file>\n\nValidates a local ResourceManifest or ProjectManifest against canonical Zod schemas.\n\ntess validate ./resources/my-card/manifest.json\ntess export [project-file]\n\nGenerates a standalone Vite + React + Tailwind project from a ProjectManifest. Next.js and native targets are not selected by this CLI command.\n\ntess export project.tess.json --output ./my-app\n\nOther core commands include init, view, compose, and doctor. See tess --help for their options and for the separately labelled Beta commands.",
+  "accessibility": {
+    "totalViolations": 0,
+    "seriousOrCritical": []
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-39\\public-v52-copy-2026-10-28\\after\\mobile\\cli-reference.png"
+}

@@ -1,0 +1,170 @@
+{
+  "url": "http://localhost:4321/compose",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "cases": [
+    {
+      "id": "MKT-01",
+      "brief": "A freelance services marketplace connects independent designers with clients, supports profile discovery, project proposals, messaging, and mutual reviews.",
+      "directions": [
+        {
+          "id": "01",
+          "screen": "Messages & Inquiries",
+          "roles": [
+            "sidebar-shell",
+            "channels-rail",
+            "main-content-scroll",
+            "message-thread",
+            "message-composer"
+          ],
+          "resourceSlugs": [
+            "collapsible-sidebar",
+            "timeline",
+            "input"
+          ],
+          "diagnostics": [],
+          "screenshot": "composition-mkt-01-direction-01.png",
+          "scrollState": {
+            "clientHeight": 543,
+            "scrollHeight": 543,
+            "overflows": false
+          }
+        },
+        {
+          "id": "02",
+          "screen": "Messages & Inquiries",
+          "roles": [
+            "top-nav-page-canvas",
+            "channels-rail",
+            "message-thread",
+            "message-composer"
+          ],
+          "resourceSlugs": [
+            "collapsible-sidebar",
+            "timeline",
+            "input"
+          ],
+          "diagnostics": [],
+          "screenshot": "composition-mkt-01-direction-02.png",
+          "scrollState": {
+            "clientHeight": 714,
+            "scrollHeight": 714,
+            "overflows": false
+          }
+        },
+        {
+          "id": "03",
+          "screen": "Messages & Inquiries",
+          "roles": [
+            "workspace-dock-shell",
+            "channels-rail",
+            "workspace-multi-pane",
+            "message-thread",
+            "message-composer"
+          ],
+          "resourceSlugs": [
+            "collapsible-sidebar",
+            "timeline",
+            "input"
+          ],
+          "diagnostics": [],
+          "screenshot": "composition-mkt-01-direction-03.png",
+          "scrollState": {
+            "clientHeight": 442,
+            "scrollHeight": 442,
+            "overflows": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "CON-04",
+      "brief": "A casual community app lets hobby groups post updates, welcome members, and organize lightweight conversations around shared interests.",
+      "directions": [
+        {
+          "id": "01",
+          "screen": "Activity Stream",
+          "roles": [
+            "sidebar-shell",
+            "navigation",
+            "main-content-scroll",
+            "overview-header",
+            "metric-cards",
+            "activity-feed"
+          ],
+          "resourceSlugs": [
+            "collapsible-sidebar",
+            "entity-profile-header",
+            "dashboard-kpi-grid",
+            "timeline"
+          ],
+          "diagnostics": [],
+          "screenshot": "composition-con-04-direction-01.png",
+          "scrollState": {
+            "clientHeight": 826,
+            "scrollHeight": 919,
+            "overflows": true
+          },
+          "continuationScreenshot": "composition-con-04-direction-01-continued.png"
+        },
+        {
+          "id": "02",
+          "screen": "Activity Stream",
+          "roles": [
+            "top-nav-page-canvas",
+            "navigation",
+            "overview-header",
+            "metric-cards",
+            "activity-feed"
+          ],
+          "resourceSlugs": [
+            "minimal-top-nav",
+            "entity-profile-header",
+            "dashboard-kpi-grid",
+            "timeline"
+          ],
+          "diagnostics": [],
+          "screenshot": "composition-con-04-direction-02.png",
+          "scrollState": {
+            "clientHeight": 826,
+            "scrollHeight": 988,
+            "overflows": true
+          },
+          "continuationScreenshot": "composition-con-04-direction-02-continued.png"
+        },
+        {
+          "id": "03",
+          "screen": "Activity Stream",
+          "roles": [
+            "workspace-dock-shell",
+            "navigation",
+            "workspace-multi-pane",
+            "overview-header",
+            "metric-cards",
+            "activity-feed"
+          ],
+          "resourceSlugs": [
+            "minimal-top-nav",
+            "entity-profile-header",
+            "dashboard-kpi-grid",
+            "timeline"
+          ],
+          "diagnostics": [],
+          "screenshot": "composition-con-04-direction-03.png",
+          "scrollState": {
+            "clientHeight": 826,
+            "scrollHeight": 984,
+            "overflows": true
+          },
+          "continuationScreenshot": "composition-con-04-direction-03-continued.png"
+        }
+      ]
+    }
+  ],
+  "consoleErrors": [],
+  "uncaught": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

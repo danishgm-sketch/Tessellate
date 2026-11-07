@@ -1,0 +1,37 @@
+{
+  "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+  "siteVersion": 46,
+  "canonicalRuntimeCommit": "351b6d7ac3467fe4c580d1c31533705c16c60490",
+  "sourceMirrorCommit": "520717ada321da3f23d46b000adc8da7d416c52e",
+  "capturedAt": "2026-10-27",
+  "tool": "Chrome DevTools Performance trace",
+  "viewport": "1440x900",
+  "cache": "disabled for reload",
+  "cpuThrottling": "1x",
+  "networkThrottling": "none",
+  "labMetrics": {
+    "lcpMs": 286,
+    "cls": 0,
+    "ttfbMs": 55,
+    "lcpRenderDelayMs": 231,
+    "inp": null,
+    "fieldCruxData": null
+  },
+  "network": {
+    "composeDocument": 200,
+    "catalogue": 304,
+    "criticalPathMaxMs": 642,
+    "criticalPath": ["/compose", "/_astro/ComposeView.nYkQMJWz.js", "/data/catalog.json"],
+    "renderBlockingCssMs": 62,
+    "estimatedFcpSavingsMs": 0,
+    "estimatedLcpSavingsMs": 0
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "notes": [
+    "The LCP element was the page H1; it is text and required no network resource.",
+    "The 304 catalogue response was served from cache and the visible Compose workflow verified catalogue readiness.",
+    "The render-blocking stylesheet had zero estimated FCP or LCP savings, so this trace did not justify a performance change.",
+    "These are single-run lab measurements; Chrome did not provide field CrUX data or a field INP value."
+  ]
+}

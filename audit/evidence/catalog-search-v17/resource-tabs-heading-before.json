@@ -1,0 +1,46 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-agent-activity-feed/",
+  "viewport": "1440x900",
+  "httpStatus": 200,
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "AI Agent Activity Feed"
+    },
+    {
+      "tag": "H4",
+      "text": "Summary & Purpose"
+    },
+    {
+      "tag": "H4",
+      "text": "Jobs To Be Done"
+    },
+    {
+      "tag": "H4",
+      "text": "Expected Content Requirements"
+    },
+    {
+      "tag": "H4",
+      "text": "Target Product Archetypes"
+    }
+  ],
+  "axeViolations": [
+    {
+      "id": "heading-order",
+      "impact": "moderate",
+      "targets": [
+        [
+          ".mb-1"
+        ]
+      ],
+      "html": [
+        "<h4 class=\"text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)] mb-1\">Summary &amp; Purpose</h4>"
+      ]
+    }
+  ],
+  "consoleEvents": [],
+  "uncaught": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "screenshot": "audit/evidence/catalog-search-v17/resource-tabs-heading-before-1440x900.png"
+}

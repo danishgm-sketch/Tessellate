@@ -28,14 +28,14 @@ export function AIMemoryContextPanel({ variant = 'quiet' }: AIMemoryContextPanel
     <div className={`w-full p-6 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>
       <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
         <div>
-          <h4 className="text-sm font-semibold tracking-tight">Active Assistant Memory</h4>
-          <p className="text-xs text-neutral-500">Short & long-term conversational recall</p>
+          <h4 className="text-sm font-semibold tracking-tight">Example assistant memory</h4>
+          <p className="text-xs text-neutral-500">Local preview only; not connected to an assistant.</p>
         </div>
         <button
           onClick={() => setMemories([])}
-          className="text-xs text-rose-500 hover:underline font-mono"
+          className="text-xs text-rose-700 dark:text-rose-300 hover:underline font-mono"
         >
-          Purge All
+          Clear examples
         </button>
       </div>
 
@@ -49,11 +49,17 @@ export function AIMemoryContextPanel({ variant = 'quiet' }: AIMemoryContextPanel
               <span className="text-neutral-400 mr-2">{m.key}:</span>
               <span className="font-semibold">{m.val}</span>
             </div>
-            <button onClick={() => removeMem(m.key)} className="text-neutral-400 hover:text-rose-500 px-1">
-              ✕
+            <button
+              type="button"
+              aria-label={`Remove example ${m.key}`}
+              onClick={() => removeMem(m.key)}
+              className="text-neutral-600 dark:text-neutral-300 hover:text-rose-700 dark:hover:text-rose-300 px-1"
+            >
+              <span aria-hidden="true">✕</span>
             </button>
           </div>
         ))}
+        {memories.length === 0 && <p role="status" className="text-xs text-neutral-500">No example memory entries.</p>}
       </div>
     </div>
   );

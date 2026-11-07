@@ -4,9 +4,10 @@ export type PricingToggleVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface PricingToggleProps {
   variant?: PricingToggleVariant;
+  onSelectPlan?: (plan: string) => void;
 }
 
-export function PricingToggle({ variant = 'quiet' }: PricingToggleProps) {
+export function PricingToggle({ variant = 'quiet', onSelectPlan }: PricingToggleProps) {
   const [annual, setAnnual] = useState(false);
 
   let bg = 'bg-white text-neutral-900 border-neutral-200';
@@ -20,12 +21,13 @@ export function PricingToggle({ variant = 'quiet' }: PricingToggleProps) {
     card = 'bg-[#151921] border-[#2E3440]';
   }
 
-  const price = annual ? '£14' : '£18';
+  const price = annual ? '£14.40' : '£18';
 
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-4xl mx-auto flex flex-col items-center">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Flexible Billing</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Example billing options</h2>
+        <p className="mx-auto mb-8 max-w-2xl text-center text-sm opacity-75">Illustrative pricing only. Replace the sample rate, billing terms, and plan details before use.</p>
 
         <div className="flex items-center gap-3 mb-12 text-xs font-semibold">
           <button
@@ -45,12 +47,13 @@ export function PricingToggle({ variant = 'quiet' }: PricingToggleProps) {
         </div>
 
         <div className={`w-full max-w-sm p-8 rounded-2xl border text-center transition-all ${card}`}>
-          <span className="font-bold text-sm block mb-2">Team Pro Plan</span>
+          <span className="font-bold text-sm block mb-2">Example plan</span>
           <div className="text-4xl font-mono font-bold mb-4">{price}<span className="text-xs font-normal">/mo</span></div>
-          <p className="text-xs opacity-75 mb-6">Billed {annual ? 'annually (£168/yr)' : 'monthly'}. Cancel anytime.</p>
-          <button type="button" className="w-full py-2.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold">
-            Choose Plan
+          <p className="text-xs opacity-75 mb-6">Billed {annual ? 'annually (£172.80/year, 20% less than monthly)' : 'monthly at £18/month'}. Example terms only.</p>
+          <button type="button" onClick={() => onSelectPlan?.('Example plan')} disabled={!onSelectPlan} aria-describedby={!onSelectPlan ? "pricing-toggle-action-help" : undefined} className="w-full py-2.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold disabled:cursor-not-allowed disabled:opacity-60">
+            {onSelectPlan ? 'Choose plan' : 'Connect plan action'}
           </button>
+          {!onSelectPlan && <p id="pricing-toggle-action-help" className="mt-3 text-xs opacity-75">Connect a plan-selection action to enable this example button.</p>}
         </div>
       </div>
     </section>

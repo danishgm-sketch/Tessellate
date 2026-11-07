@@ -1,0 +1,27 @@
+{
+  "findingId": "SEC-37-075",
+  "severity": "medium",
+  "title": "Registry gate allowed outbound fetch calls through static aliases",
+  "status": "fixed_locally",
+  "reproduction": {
+    "source": "const request = fetch; request('https://collector.invalid/pixel');",
+    "beforeFix": "The source-isolation gate returned pass because its text rule only recognized a call written directly as fetch(...).",
+    "afterFix": "Invoked fetch aliases, window.fetch, computed window['fetch'], statically bound functions, and destructured fetch aliases from the browser global fail the source-isolation gate."
+  },
+  "rootCause": "Outbound request detection used direct-call text patterns for fetch and did not resolve a statically aliased function expression in the TypeScript AST.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve direct browser fetch references, member accesses, and static variable aliases in the AST; reject a call through any resolved fetch function without executing resource source.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"outbound requests through a static fetch alias\"",
+    "redBeforeFixResult": "failed as expected: a request through a fetch alias returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "43 tests passed",
+    "packageTypecheck": "passed",
+    "focusedLint": "passed",
+    "untrustedCodeExecuted": false,
+    "runtimeBoundary": "This is local source-gate evidence. The isolated preview CSP still provides runtime network denial and requires deployed verification."
+  }
+}

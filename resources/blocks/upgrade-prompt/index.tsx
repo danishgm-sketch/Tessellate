@@ -4,9 +4,11 @@ export type UpgradePromptVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface UpgradePromptProps {
   variant?: UpgradePromptVariant;
+  onUpgrade?: () => void;
 }
 
-export function UpgradePrompt({ variant = 'quiet' }: UpgradePromptProps) {
+export function UpgradePrompt({ variant = 'quiet', onUpgrade }: UpgradePromptProps) {
+  const noteId = React.useId();
   let bg = 'bg-white text-neutral-900 border-neutral-200';
 
   if (variant === 'expressive') {
@@ -19,14 +21,15 @@ export function UpgradePrompt({ variant = 'quiet' }: UpgradePromptProps) {
     <div className={`w-full p-6 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors ${bg}`}>
       <div>
         <div className="flex items-center gap-2 mb-1">
-          <span className="font-bold text-sm">Unlock Cloud Team Checkpoints</span>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-600 font-bold">TEAM PRO</span>
+          <span className="font-bold text-sm">Example upgrade prompt</span>
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-600 font-bold">PLAN TEMPLATE</span>
         </div>
-        <p className="text-xs opacity-75">Sync projects across devices and collaborate with unlimited teammates.</p>
+        <p className="text-xs opacity-75">Describe a plan and benefits your product actually provides.</p>
       </div>
-      <button type="button" className="px-4 py-2 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold whitespace-nowrap">
-        Upgrade Now →
+      <button type="button" onClick={onUpgrade} disabled={!onUpgrade} aria-describedby={noteId} className="px-4 py-2 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed">
+        {onUpgrade ? 'View available plan' : 'Upgrade destination not configured'}
       </button>
+      <span id={noteId} className="sr-only">{onUpgrade ? 'Opens the configured plan destination.' : 'Connect a plan destination before enabling this action.'}</span>
     </div>
   );
 }

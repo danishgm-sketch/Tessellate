@@ -1,0 +1,43 @@
+{
+  "target": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+  "siteVersion": 16,
+  "viewport": "1440x900",
+  "query": "dashboard",
+  "control": "Density > Dense",
+  "beforeCount": 15,
+  "afterCount": 15,
+  "checkboxAfterSelection": true,
+  "urlAfterSelection": "?q=dashboard",
+  "checkboxAfterReload": false,
+  "consoleErrors": [],
+  "failedRequests": [
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.C5O8u4OV.js",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.BadEttc0.js",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.FbFDgZ7K.js",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.DXN3a7LV.js",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.DW6WVmwc.js",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.DodYLmC6.js",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "httpErrors": [],
+  "expected": "Selecting Dense should narrow matching results and preserve filter state in the URL or documented persistence.",
+  "actual": "Dense becomes checked but the result count does not change, its value is omitted from the URL, and reload clears the selection.",
+  "capturedAt": "2026-10-18T03:08:26.670Z"
+}

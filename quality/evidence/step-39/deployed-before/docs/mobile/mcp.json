@@ -1,0 +1,34 @@
+{
+  "capturedAt": "2026-10-20T19:19:58.185Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/docs/mcp",
+  "viewport": "390x844",
+  "status": 200,
+  "title": "Model Context Protocol (MCP) — Tessellate Documentation",
+  "headings": [
+    "Model Context Protocol (MCP)",
+    "Configuration",
+    "Available MCP Tools",
+    "Start composing in seconds."
+  ],
+  "visibleText": "BETA\nLocal stdio resource discovery and manifest tools are the supported core boundary. Remote HTTP/SSE, recommendations and advanced mutation workflows are Beta; this public Site does not host an MCP process.\n← Back to Documentation\nModel Context Protocol (MCP)\n\nEnable AI coding agents (Claude Desktop, Cursor, Antigravity) to query and integrate Tessellate components autonomously.\n\nConfiguration\n\nAdd the Tessellate MCP server to your AI agent configuration:\n\n{\n  \"mcpServers\": {\n    \"tessellate\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@tessellate/mcp\"]\n    }\n  }\n}\nAvailable MCP Tools\nsearch_resources: Searches the 324-resource catalogue by keyword, category, or role.\nget_resource: Retrieves the complete validated ResourceManifest for a given component slug.\nget_resource_code: Fetches the raw TypeScript React source code for immediate insertion.\nrecommend_resources BETA: Scores and recommends resources for a page goal; semantic quality has not yet been manually adjudicated.\nfind_alternatives BETA: Suggests alternatives; candidate relevance and compatibility need further evaluation.",
+  "links": [
+    {
+      "text": "← Back to Documentation",
+      "href": "/docs"
+    }
+  ],
+  "layout": {
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "horizontalOverflow": false
+  },
+  "accessibility": [],
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\deployed-before\\docs\\mobile\\mcp.png"
+}

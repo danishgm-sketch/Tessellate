@@ -1,0 +1,38 @@
+{
+  "findingId": "SEC-37-067",
+  "severity": "medium",
+  "title": "Registry gate approved statically resolved remote resource requests",
+  "status": "fixed_locally",
+  "reproduction": {
+    "source": [
+      "const collector = 'https://collector.invalid';",
+      "const beacon = collector + '/pixel';",
+      "export function RemoteAsset() { return <img src={beacon} alt='' />; }",
+      "const remoteIcon = 'https://assets.invalid/icon.svg';",
+      "export function RemoteIcon() { return <svg><image href={remoteIcon} /></svg>; }",
+      "// asset-url.ts exports trackingPixel; index.tsx imports it and uses <img src={trackingPixel} />",
+      "const beacon = 'https://collector.invalid/pixel'; const image = new Image(); image.src = beacon; const audio = new Audio(beacon);",
+      "const endpoint = 'https://collector.invalid/submit'; <form action={endpoint}><button formAction={endpoint}>Send</button></form>"
+    ],
+    "beforeFix": "The source-isolation check approved aliases used by JSX images, SVG, cross-file imports, browser media elements, and form submission targets.",
+    "afterFix": "The source-isolation check rejects statically resolved HTTP(S) requests at each covered browser resource sink."
+  },
+  "rootCause": "Regex-only detection matched direct URL literals but did not resolve static values and imports used by JSX or browser API request sinks.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/runner.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "packages/registry-gate/package.json",
+    "pnpm-lock.yaml"
+  ],
+  "remediation": "Use the existing TypeScript compiler API to parse scanned JS/TS sources and resolve statically known const strings, aliases, concatenation, template literals, URL objects, and local imports at resource-loading JSX attributes, media elements, and form request targets. No submitted code is executed.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"statically aliased remote asset|remote SVG image|imported from another resource source|browser-created media|remote form submission\"",
+    "redBeforeFixResult": "Five asset/request-sink regressions failed because security-isolation was pass.",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "29 tests passed",
+    "navigationControl": "External navigation through native and capitalized Link anchors plus local asset aliases remains allowed",
+    "resourceMatrix": "All 324 canonical resource folders pass the source-isolation check."
+  },
+  "runtimeBoundary": "Static source analysis is not a sandbox proof. Isolated preview origin and host CSP remain the runtime controls; deployed verification remains pending."
+}

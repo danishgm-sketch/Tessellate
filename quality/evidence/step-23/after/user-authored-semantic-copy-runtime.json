@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0.0",
+  "issue": "AUD-165",
+  "status": "passed",
+  "project": "Omni Telemetry Suite export fixture",
+  "previewUrl": "http://localhost:4192",
+  "desktopViewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "mobileViewport": {
+    "width": 390,
+    "height": 844
+  },
+  "checks": {
+    "cleanDependencyInstall": true,
+    "productionBuild": true,
+    "quotedHeaderAndMetricTextRendered": true,
+    "quotedActionLabelRendered": true,
+    "angleBracketAndAmpersandTextRenderedLiterally": true,
+    "noInjectedScriptElements": true,
+    "mobileLayoutHasNoHorizontalOverflow": true,
+    "noTessellateRuntimeDependency": true
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "screenshots": [
+    "quality/evidence/step-23/after/user-authored-semantic-copy-desktop-1440.png",
+    "quality/evidence/step-23/after/user-authored-semantic-copy-mobile-390.png"
+  ]
+}

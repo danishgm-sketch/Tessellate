@@ -1,0 +1,299 @@
+{
+  "baseURL": "http://127.0.0.1:4323",
+  "route": "/explore",
+  "before": {
+    "consoleErrors": [],
+    "violations": [
+      {
+        "url": "http://127.0.0.1:4323/explore",
+        "events": []
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
+        "events": []
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview-content/?resource=accordion",
+        "events": []
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview-content/?resource=accordion-spring",
+        "events": []
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
+        "events": []
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
+        "events": []
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
+        "events": []
+      }
+    ]
+  },
+  "after": {
+    "consoleErrors": [
+      "Applying inline style violates the following Content Security Policy directive 'style-src-elem http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-2iPZUh//PgabfVSa4ffCKlgQz8IzcBbmaPslie9chJA='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+      "Applying inline style violates the following Content Security Policy directive 'style-src-elem http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-2iPZUh//PgabfVSa4ffCKlgQz8IzcBbmaPslie9chJA='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+      "Applying inline style violates the following Content Security Policy directive 'style-src-elem http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-2iPZUh//PgabfVSa4ffCKlgQz8IzcBbmaPslie9chJA='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+      "Applying inline style violates the following Content Security Policy directive 'style-src-elem http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-2iPZUh//PgabfVSa4ffCKlgQz8IzcBbmaPslie9chJA='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+      "Applying inline style violates the following Content Security Policy directive 'style-src-elem http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-2iPZUh//PgabfVSa4ffCKlgQz8IzcBbmaPslie9chJA='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+      "Applying inline style violates the following Content Security Policy directive 'style-src-elem http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-2iPZUh//PgabfVSa4ffCKlgQz8IzcBbmaPslie9chJA='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+    ],
+    "frames": [
+      {
+        "url": "http://127.0.0.1:4323/explore",
+        "violations": [],
+        "insertedStyles": [
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          }
+        ],
+        "styles": [
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
+        "violations": [
+          {
+            "directive": "style-src-elem",
+            "blockedURI": "inline",
+            "sample": "",
+            "sourceFile": ""
+          }
+        ],
+        "insertedStyles": [
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          }
+        ],
+        "styles": [
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview-content/?resource=accordion",
+        "violations": [
+          {
+            "directive": "style-src-elem",
+            "blockedURI": "inline",
+            "sample": "",
+            "sourceFile": ""
+          }
+        ],
+        "insertedStyles": [
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          }
+        ],
+        "styles": [
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview-content/?resource=accordion-spring",
+        "violations": [
+          {
+            "directive": "style-src-elem",
+            "blockedURI": "inline",
+            "sample": "",
+            "sourceFile": ""
+          }
+        ],
+        "insertedStyles": [
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          }
+        ],
+        "styles": [
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
+        "violations": [
+          {
+            "directive": "style-src-elem",
+            "blockedURI": "inline",
+            "sample": "",
+            "sourceFile": ""
+          }
+        ],
+        "insertedStyles": [
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          }
+        ],
+        "styles": [
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
+        "violations": [
+          {
+            "directive": "style-src-elem",
+            "blockedURI": "inline",
+            "sample": "",
+            "sourceFile": ""
+          }
+        ],
+        "insertedStyles": [
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          }
+        ],
+        "styles": [
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
+        "violations": [
+          {
+            "directive": "style-src-elem",
+            "blockedURI": "inline",
+            "sample": "",
+            "sourceFile": ""
+          }
+        ],
+        "insertedStyles": [
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          },
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          }
+        ],
+        "styles": [
+          {
+            "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+            "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='"
+          }
+        ]
+      }
+    ]
+  },
+  "axeViolations": [
+    {
+      "id": "heading-order",
+      "impact": "moderate",
+      "targets": [
+        [
+          ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+          "article:nth-child(1) > .items-start.flex.gap-3 > .flex-1.min-w-0 > h3"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "deployment": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "version": 28,
+    "route": "/workbench",
+    "routeStatus": 200,
+    "capturedAt": "2026-10-25"
+  },
+  "profile": {
+    "browser": "Chromium",
+    "viewport": "390x844",
+    "deviceScaleFactor": 1,
+    "cpuSlowdown": 4,
+    "network": {
+      "name": "Slow 4G",
+      "latencyMs": 150,
+      "downloadBitsPerSecond": 1600000,
+      "uploadBitsPerSecond": 768000
+    },
+    "freshBrowserContext": true
+  },
+  "observations": [
+    {
+      "sample": "cold-load-1",
+      "largestContentfulPaintMs": 5664,
+      "cumulativeLayoutShift": 0,
+      "bodyTextPresentAfterMs": 7606,
+      "longTaskDurationsMs": [61, 261, 87, 446]
+    },
+    {
+      "sample": "cold-load-2",
+      "domContentLoadedMs": 595,
+      "bodyTextAt1500Ms": "",
+      "largestContentfulPaintCandidateMs": 6132,
+      "cumulativeLayoutShift": 0,
+      "longTaskDurationsMs": [69, 283, 116, 651]
+    },
+    {
+      "sample": "cold-load-3-candidate-detail",
+      "bodyTextAt1500Ms": "",
+      "largestContentfulPaintCandidates": [
+        {
+          "startTimeMs": 5204,
+          "tag": "DIV",
+          "className": "p-8",
+          "text": "Loading local project and verified catalogue…",
+          "rect": { "x": 0, "y": 0, "width": 390, "height": 88 }
+        },
+        {
+          "startTimeMs": 7776,
+          "tag": "P",
+          "className": "text-lg @sm:text-xl text-balance max-w-2xl mb-10 leading-relaxed opacity-85",
+          "text": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
+          "rect": { "x": 41, "y": 636.75, "width": 308, "height": 117 }
+        }
+      ]
+    }
+  ],
+  "network": {
+    "freshPlaywrightContext": {
+      "observedRequests": 44,
+      "statusCounts": { "200": 44 },
+      "failedRequests": [],
+      "httpErrors": [],
+      "consoleErrors": [],
+      "catalogRequest": {
+        "url": "/data/catalog.json",
+        "status": 200
+      }
+    },
+    "separateWarmedDevToolsTab": {
+      "observedRequests": 45,
+      "statusCounts": { "200": 44, "304": 1 },
+      "interpretation": "A separate warmed-tab capture; not the fresh-context network sample above."
+    },
+    "assetSizesFromDevTools": {
+      "catalogRequest": {
+        "url": "/data/catalog.json",
+        "transferBytes": 140524,
+        "decodedBytes": 2143734
+      },
+      "largestEditorScript": {
+        "url": "/_astro/index.Dp9Elqad.js",
+        "transferBytes": 230896,
+        "decodedBytes": 1102406
+      }
+    }
+  },
+  "consoleErrors": [],
+  "horizontalOverflow": false,
+  "screenshots": {
+    "blankEarlyViewport": "audit/evidence/v28/performance/workbench-mobile-early.png",
+    "settledProject": "audit/evidence/v28/performance/workbench-mobile-settled.png",
+    "postPagesInteraction": "audit/evidence/v28/performance/workbench-mobile-pages-interaction.png"
+  },
+  "fix": {
+    "status": "fixed-awaiting-deployed-verification",
+    "localAstroAndSitesWorker": {
+      "delayedEditorBundleMs": 1600,
+      "fallbackVisibleAtMs": {
+        "desktop": 182,
+        "mobile": 134
+      },
+      "axeViolations": 0,
+      "consoleErrors": 0,
+      "failedRequests": 0,
+      "afterScreenshots": [
+        "quality/evidence/step-38/after/workbench-startup-fallback-sites-chromium.png",
+        "quality/evidence/step-38/after/workbench-startup-fallback-sites-mobile-chromium.png"
+      ]
+    },
+    "deployedRetestRequired": true
+  }
+}

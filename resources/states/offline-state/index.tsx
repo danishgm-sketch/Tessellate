@@ -33,10 +33,10 @@ export function OfflineState({ variant = 'quiet', children }: OfflineStateProps)
 
       <div className="space-y-1">
         <h4 className="text-base font-bold tracking-tight">
-          Working in Local Offline Mode
+          You're offline
         </h4>
         <p className="text-xs text-neutral-500 leading-relaxed max-w-lg">
-          Your changes are securely saved in browser IndexedDB. Remote cloud synchronization will resume automatically once network connectivity is restored.
+          Local changes are available only if the host app has saved them. This example does not configure remote synchronization.
         </p>
       </div>
 

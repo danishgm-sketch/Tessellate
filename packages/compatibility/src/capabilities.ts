@@ -17,7 +17,10 @@ export function isResourceCompositionCapable(
   resource: ResourceManifest | { slug: string; runtimeRenderable?: boolean; browserExportable?: boolean }
 ): boolean {
   if (!resource || !resource.slug) return false;
-  return true;
+  if (!isGoldResource(resource.slug)) return false;
+
+  const declaredCapabilities = resource as { runtimeRenderable?: boolean; browserExportable?: boolean };
+  return declaredCapabilities.runtimeRenderable !== false && declaredCapabilities.browserExportable !== false;
 }
 
 /**
@@ -27,6 +30,8 @@ export function isResourceCompositionCapable(
 export function isResourceComposerEligible(resource: ResourceManifest): boolean {
   if (!resource.id || !resource.slug) return false;
   if (!resource.variants || resource.variants.length === 0) return false;
+  const declaredVariants = new Set(resource.variants.map((variant) => variant.id.toLowerCase()));
+  if (!['quiet', 'expressive', 'nocturne'].every((variant) => declaredVariants.has(variant))) return false;
   return isResourceCompositionCapable(resource);
 }
 

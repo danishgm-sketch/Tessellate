@@ -9,6 +9,8 @@ import {
   SHOWCASE_PROJECTS,
   PRODUCT_BLUEPRINTS,
 } from '../index.js';
+import { interpretProductBrief } from '../interpreter.js';
+import { planScreenGraph } from '../planner.js';
 
 describe('Phase 19 — Page Compositions, Blueprints & Showcases', () => {
   it('defines exactly 36 canonical page compositions', () => {
@@ -42,6 +44,38 @@ describe('Phase 19 — Page Compositions, Blueprints & Showcases', () => {
 
     const unknown = getPageComposition('non-existent-page');
     expect(unknown).toBeUndefined();
+  });
+
+  it('describes role-based onboarding in terms of employee setup, not telemetry', () => {
+    const onboarding = getPageComposition('role-onboarding');
+    expect(onboarding?.description).toMatch(/role, team, and goals/i);
+    expect(onboarding?.description).not.toMatch(/telemetry|developer, designer, or executive persona/i);
+  });
+
+  it('keeps the generic workspace overview recipe out of analytics and developer-tools domains', () => {
+    const overview = getPageComposition('app-overview-dashboard');
+    expect(overview).toBeDefined();
+    expect(overview?.title).toBe('Workspace Overview');
+    expect(overview?.description).not.toMatch(
+      /telemetry|live event feed|metrics|scorecard|chart|dashboard|reports/i
+    );
+
+    const { productModel } = interpretProductBrief({
+      description: `Design a page titled “${overview!.title}”. ${overview!.description}`,
+    });
+    expect(productModel.productArchetypes[0]?.tag).toBe('saas');
+    const { screenGraph } = planScreenGraph(productModel);
+    const screenNames = screenGraph.groups.flatMap((group) =>
+      group.screens.map((screen) => screen.name)
+    );
+    expect(screenNames).not.toContain('Metric Explorer');
+    expect(screenNames).not.toContain('Reports Library');
+    expect(screenNames).not.toContain('Telemetry Dashboard');
+    expect(screenNames).not.toContain('Log Explorer');
+    expect(screenNames).not.toContain('API & Webhooks');
+
+    const resourceSlugs = overview!.createScreen().rootNode.children.map((node) => node.resourceRef?.slug);
+    expect(resourceSlugs).toEqual(['kanban-board', 'timeline', 'notification-centre']);
   });
 
   it('defines exactly 12 product blueprints with full specifications', () => {

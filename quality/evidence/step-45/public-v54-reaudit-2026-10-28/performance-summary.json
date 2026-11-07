@@ -1,0 +1,21 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": 54,
+  "capturedAt": "2026-10-28T10:47:00Z",
+  "tool": "Chrome DevTools performance trace",
+  "conditions": {
+    "cpuThrottling": "1x",
+    "networkThrottling": "none",
+    "cache": "cold reload",
+    "fieldData": "CrUX unavailable for these routes"
+  },
+  "results": [
+    { "route": "/", "lcpMs": 279, "ttfbMs": 52, "renderDelayMs": 227, "cls": 0.0 },
+    { "route": "/compose", "lcpMs": 195, "ttfbMs": 55, "renderDelayMs": 140, "cls": 0.0 },
+    { "route": "/explore", "lcpMs": 229, "ttfbMs": 69, "renderDelayMs": 159, "cls": 0.0 }
+  ],
+  "notes": [
+    "The trace tool reported 0 ms estimated LCP savings for render-blocking resources on all three routes.",
+    "Chrome DevTools did not provide CrUX field measurements or representative INP from these navigation traces."
+  ]
+}

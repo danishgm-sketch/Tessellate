@@ -1,0 +1,19 @@
+{
+  "url": "http://127.0.0.1:4321/workbench?project=local-5101cfb3-8004-4938-b8c8-bfc1dd204ed1#screen-marketing-home",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "status": "passed",
+  "issue": "AUD-159",
+  "checks": {
+    "idbManifestRestoredExactly": true,
+    "undoHistoryRestored": true
+  },
+  "screenshot": "quality/evidence/step-22/after/localstorage-read-blocks-indexeddb-recovery-desktop-1440.png"
+}

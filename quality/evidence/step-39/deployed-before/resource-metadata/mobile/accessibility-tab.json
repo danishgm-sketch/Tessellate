@@ -1,0 +1,46 @@
+{
+  "capturedAt": "2026-10-20T20:45:42.686Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/success-state",
+  "viewport": "390x844",
+  "status": 200,
+  "title": "Success State (@tess/success-state) — Tessellate Resource",
+  "visibleText": "Tessellate\nStart building\nHome\n/\nExplore\n/\nStates\n/\nSuccess State\nSuccess State\n@tess/success-state\nv1.0.0\nverified\n\nCompleted transaction confirmation panel with verified checkmark, output artifact links, and next step suggestions.\n\nInstall:\ntess add success-state\nRegistry source: /r/success-state.json\n#success\n#completed\n#confirmation\n#checkmark\n#done\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\n\nCompliance Level Target:\nWCAG AAA\nKeyboard Navigation\nScreen Reader Semantics\nReduced Motion Verified\nContrast Compatible\nVisible Focus State\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\nDeclared quality\n98 / 100\nCategory\nStates\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n60%\nVisual Ambition\n70%\nContrast\n85%\nCurvature\n30%\nMotion\n35%\nTessellate Interface Intelligence Layer — Open resource library under MIT License.",
+  "layout": {
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "horizontalOverflow": false
+  },
+  "accessibility": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "nodes": [
+        {
+          "target": [
+            "iframe",
+            "h3"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #009966, background color: #ffffff, font size: 13.5pt (18px), font weight: bold). Expected contrast ratio of 4.5:1",
+          "html": "<h3 class=\"text-lg font-bold tracking-tight text-emerald-600 dark:text-emerald-400\">System Export Completed Successfully</h3>"
+        },
+        {
+          "target": [
+            "iframe",
+            "button"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "html": "<button class=\"px-4 py-2 text-xs font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700\">View Exported Files</button>"
+        }
+      ]
+    }
+  ],
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\deployed-before\\resource-metadata\\mobile\\accessibility-tab.png"
+}

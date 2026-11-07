@@ -1,0 +1,38 @@
+{
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/typography",
+  "viewport": "390x844",
+  "status": 200,
+  "title": "Typography Lab — Tessellate Tools",
+  "initial": {
+    "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/typography",
+    "viewport": "390x844",
+    "status": 200,
+    "title": "Typography Lab — Tessellate Tools",
+    "visibleText": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 05 · TYPOGRAPHIC HIERARCHY\nClient-Side · Zero Login\nTypography Lab\n\nExplore harmonic typographic scales, typeface pairing, tabular figures, and dense telemetry typesetting.\n\nCopy Scale CSS\nScale & Pairing Controls\nReset\nMusical Scale Ratio\nMajor Second\n1.125\nMinor Third\n1.2\nMajor Third\n1.25\nPerfect Fourth\n1.333\nGolden Ratio\n1.618\nBase Body Size\n16px\nTypeface Pairing Archetype\nGeist & System Mono\nPrecision engineering grotesque with geometric optical balance.\nNewsreader Editorial & Inter\nBespoke authorial voice with warm literary serif display titles.\nJetBrains Mono & Sans\nTerminal-first technical platform typography for CLI & developer tools.\nOpenType Numerical Features\nTabular Figures (Mono-width align)\nSlashed Zero (0 vs O distinction)\nHierarchical Scale Ladder\nNumerical Telemetry Specimen\nSCALE STEP\nMEASURED METRIC\nDisplay Hero Level (H1)\n33px\nSection Primary Title (H2)\n28px\nCard Subheading & Grouping (H3)\n23px\n\nBody paragraph reading standard. Engineered for calm contrast, optimal line length, and zero cognitive strain during long analytical sessions.\n\n16px\nMICRO METADATA · STATUS INDICATOR AA\n13px",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 2022
+    },
+    "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\deployed-before\\mobile-typography-lab.png"
+  },
+  "numericalSpecimen": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 05 · TYPOGRAPHIC HIERARCHY\nClient-Side · Zero Login\nTypography Lab\n\nExplore harmonic typographic scales, typeface pairing, tabular figures, and dense telemetry typesetting.\n\nCopy Scale CSS\nScale & Pairing Controls\nReset\nMusical Scale Ratio\nMajor Second\n1.125\nMinor Third\n1.2\nMajor Third\n1.25\nPerfect Fourth\n1.333\nGolden Ratio\n1.618\nBase Body Size\n16px\nTypeface Pairing Archetype\nGeist & System Mono\nPrecision engineering grotesque with geometric optical balance.\nNewsreader Editorial & Inter\nBespoke authorial voice with warm literary serif display titles.\nJetBrains Mono & Sans\nTerminal-first technical platform typography for CLI & developer tools.\nOpenType Numerical Features\nTabular Figures (Mono-width align)\nSlashed Zero (0 vs O distinction)\nHierarchical Scale Ladder\nNumerical Telemetry Specimen\nTABULAR LEDGER TEST BENCH\nTABULAR-NUMS SLASHED-ZERO\nASSET ID\tSETTLEMENT\tDELTA %\tLATENCY\n0x8892\t£1,420,890.00\t+12.4%\t00:00:14.02\n0x0014\t£84,000.50\t-0.8%\t00:00:08.90\n0x7B99\t£12,000,000.00\t+104.2%\t00:01:42.15\n0x3301\t£905.10\t+0.0%\t00:00:00.45\n\nNotice how columns with tabular figures remain strictly aligned vertically regardless of character glyphs (1 vs 0).",
+  "goldenRatioScale": {
+    "fontSize": "110px",
+    "text": "Display Hero Level (H1)"
+  },
+  "copiedCss": "/* Tessellate Type Scale: Golden Ratio (1.618) */\r\n:root {\r\n  --font-heading: Geist, Inter, system-ui, sans-serif;\r\n  --font-body: Geist, Inter, system-ui, sans-serif;\r\n  --font-mono: Geist Mono, JetBrains Mono, monospace;\r\n  --font-numeric: tabular-nums slashed-zero;\r\n\r\n  --font-size-h1: 110px;\r\n  --font-size-h2: 68px;\r\n  --font-size-h3: 42px;\r\n  --font-size-h4: 26px;\r\n  --font-size-body: 16px;\r\n  --font-size-small: 10px;\r\n}",
+  "screenshots": [
+    "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\deployed-before\\mobile-typography-lab.png",
+    "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\deployed-before\\mobile-typography-specimen.png",
+    "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\deployed-before\\mobile-typography-interaction.png"
+  ],
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

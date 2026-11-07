@@ -5,7 +5,8 @@ export const SECTIONS_BATCH_4: SectionDef[] = [
   {
     slug: 'faq-two-column',
     name: 'FAQ Two Column',
-    description: 'Dual-column question layout for high question density without excessive vertical length.',
+    description:
+      'Dual-column question layout for high question density without excessive vertical length.',
     categories: ['sections', 'marketing', 'faq'],
     roles: ['faq', 'two-column'],
     purposes: ['High density FAQ', 'Quick answer browsing'],
@@ -201,7 +202,8 @@ Live search input filtering questions dynamically on keypress.`,
   {
     slug: 'security-proof',
     name: 'Security Proof',
-    description: 'Comprehensive enterprise security overview covering encryption, RBAC, and data residency.',
+    description:
+      'Comprehensive enterprise security overview covering encryption, RBAC, and data residency.',
     categories: ['sections', 'marketing', 'technical-proof'],
     roles: ['technical-proof', 'security'],
     purposes: ['Enterprise security clearance', 'Compliance demonstration'],
@@ -292,7 +294,8 @@ Enterprise security section validating sandboxed execution and zero eval policy.
   {
     slug: 'compliance-proof',
     name: 'Compliance Proof',
-    description: 'Regulatory compliance showcase displaying certified badges and downloadable reports.',
+    description:
+      'Regulatory compliance showcase displaying certified badges and downloadable reports.',
     categories: ['sections', 'marketing', 'technical-proof'],
     roles: ['technical-proof', 'compliance'],
     purposes: ['Regulatory audit demonstration', 'Enterprise procurement trust'],
@@ -476,7 +479,8 @@ Three-tier topology diagram explaining client, edge worker, and storage tiers.`,
   {
     slug: 'performance-benchmark-section',
     name: 'Performance Benchmark Section',
-    description: 'Bar chart benchmarks comparing execution latency and throughput against industry baselines.',
+    description:
+      'Bar chart benchmarks comparing execution latency and throughput against industry baselines.',
     categories: ['sections', 'marketing', 'technical-proof'],
     roles: ['technical-proof', 'benchmarks'],
     purposes: ['Speed differentiation', 'Audited benchmarks'],
@@ -840,7 +844,8 @@ Two-column email lead capture banner pairing editorial invitation with responsiv
   {
     slug: 'cta-product-preview',
     name: 'CTA Product Preview',
-    description: 'High-impact banner featuring a peek into the application interface with join action.',
+    description:
+      'Call-to-action banner with an illustrative workspace preview and a configurable composition link.',
     categories: ['sections', 'marketing', 'cta'],
     roles: ['cta', 'preview'],
     purposes: ['Visual temptation', 'Action banner'],
@@ -848,16 +853,20 @@ Two-column email lead capture banner pairing editorial invitation with responsiv
     tags: ['cta-product-preview', 'cta', 'preview', 'marketing'],
     idealFor: ['Visually compelling product teasers right before footer'],
     avoidFor: ['Pure text legal sections'],
-    jobs: ['Show preview of the workspace to entice final clickthrough'],
+    jobs: [
+      'Show an example workspace preview and direct visitors to a configured composition flow',
+    ],
+    previewDefaultProps: { composeHref: '/compose' },
     indexCode: `import React from 'react';
 
 export type CtaProductPreviewVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface CtaProductPreviewProps {
   variant?: CtaProductPreviewVariant;
+  composeHref?: string;
 }
 
-export function CtaProductPreview({ variant = 'quiet' }: CtaProductPreviewProps) {
+export function CtaProductPreview({ variant = 'quiet', composeHref }: CtaProductPreviewProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
   let box = 'bg-white border-neutral-200 shadow-md';
 
@@ -872,14 +881,19 @@ export function CtaProductPreview({ variant = 'quiet' }: CtaProductPreviewProps)
   return (
     <section className={\`relative w-full py-20 px-6 sm:px-12 border-b overflow-hidden transition-colors \${bg}\`}>
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-        <h2 className="text-3xl font-bold tracking-tight mb-4">Build Without Friction</h2>
-        <p className="text-xs sm:text-sm opacity-75 max-w-md mb-8">Join thousands of developers using deterministic composition today.</p>
-        <button type="button" className="px-6 py-3 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold uppercase tracking-wider mb-12">
-          Open Canvas Now
-        </button>
+        <h2 className="text-3xl font-bold tracking-tight mb-4">See how your product could look</h2>
+        <p className="text-xs sm:text-sm opacity-75 max-w-md mb-8">Start with a brief and compare three interface directions.</p>
+        {composeHref ? (
+          <a href={composeHref} className="px-6 py-3 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold uppercase tracking-wider mb-12">
+            Start composing
+          </a>
+        ) : (
+          <p role="status" className="text-xs opacity-75 mb-12">Set composeHref to connect this action.</p>
+        )}
 
-        <div className={\`w-full h-44 rounded-t-2xl border-t border-x p-6 flex items-center justify-center font-mono text-xs opacity-60 \${box}\`}>
-          [Workbench Canvas Active: 324 Verified Manifests Ready]
+        <div className={\`w-full min-h-44 rounded-t-2xl border-t border-x p-6 flex flex-col items-center justify-center gap-2 font-mono text-xs \${box}\`}>
+          <span>Example Workbench preview. No project is connected.</span>
+          <span className="opacity-60">Illustrative interface only</span>
         </div>
       </div>
     </section>
@@ -910,21 +924,22 @@ export function CtaProductPreviewPreview() {
           ))}
         </div>
       </div>
-      <CtaProductPreview variant={variant} />
+      <CtaProductPreview variant={variant} composeHref="/compose" />
     </div>
   );
 }`,
     fixturesCode: `export const ctaProductPreviewFixtures = {};`,
     readmeCode: `# CTA Product Preview
 
-Action callout with peek preview of the live Workbench canvas.`,
+Action callout with an illustrative Workbench preview. Provide composeHref to enable its composition link; the preview points to Tessellate Compose and states that no project is connected.`,
   },
 
   // 65. CTA Demo Booking
   {
     slug: 'cta-demo-booking',
     name: 'CTA Demo Booking',
-    description: 'Calendar booking card with time-slot picker preview and sales team call-to-action.',
+    description:
+      'Calendar booking card with time-slot picker preview and sales team call-to-action.',
     categories: ['sections', 'marketing', 'cta'],
     roles: ['cta', 'demo-booking'],
     purposes: ['Sales meeting scheduling', 'Enterprise demo'],
@@ -1015,7 +1030,8 @@ Interactive calendar slot picker for scheduling enterprise consultations.`,
   {
     slug: 'cta-download',
     name: 'CTA Download',
-    description: 'Multi-platform installer button group (macOS, Windows, Linux, CLI) with version pill.',
+    description:
+      'Multi-platform installer button group (macOS, Windows, Linux, CLI) with version pill.',
     categories: ['sections', 'marketing', 'cta'],
     roles: ['cta', 'download'],
     purposes: ['Desktop app download', 'CLI install options'],
@@ -1102,24 +1118,30 @@ Package manager install options and version notification banner.`,
   {
     slug: 'cta-community',
     name: 'CTA Community',
-    description: 'Invitation banner to Discord / GitHub discussions with member counter badge.',
+    description: 'Community invitation with configurable contributor-guide and repository links.',
     categories: ['sections', 'marketing', 'cta'],
     roles: ['cta', 'community'],
     purposes: ['Community growth', 'Developer engagement'],
     componentName: 'CtaCommunity',
-    tags: ['cta-community', 'community', 'discord', 'github'],
+    tags: ['cta-community', 'community', 'contributing', 'repository'],
     idealFor: ['Open source projects building a developer community'],
     avoidFor: ['Strict enterprise confidentiality sites'],
-    jobs: ['Invite developers to join community forums and Discord server'],
+    jobs: ['Direct visitors to configured contributor guidance or a project repository'],
+    previewDefaultProps: {
+      guideHref: '/creators',
+      repositoryHref: 'https://github.com/danishgm-sketch/Tessellate',
+    },
     indexCode: `import React from 'react';
 
 export type CtaCommunityVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface CtaCommunityProps {
   variant?: CtaCommunityVariant;
+  guideHref?: string;
+  repositoryHref?: string;
 }
 
-export function CtaCommunity({ variant = 'quiet' }: CtaCommunityProps) {
+export function CtaCommunity({ variant = 'quiet', guideHref, repositoryHref }: CtaCommunityProps) {
   let bg = 'bg-white text-neutral-900 border-neutral-200';
 
   if (variant === 'expressive') {
@@ -1131,16 +1153,23 @@ export function CtaCommunity({ variant = 'quiet' }: CtaCommunityProps) {
   return (
     <section className={\`relative w-full py-20 px-6 sm:px-12 border-b transition-colors \${bg}\`}>
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-        <h2 className="text-3xl font-bold tracking-tight mb-4">Join 12,000+ UI Engineers</h2>
-        <p className="text-xs sm:text-sm opacity-75 max-w-md mb-8">Discuss blueprints, contribute verified manifests, and shape the future of composition.</p>
+        <h2 className="text-3xl font-bold tracking-tight mb-4">Contribute to the public commons</h2>
+        <p className="text-xs sm:text-sm opacity-75 max-w-md mb-8">Read the contributor guide or browse the source repository to learn how to share a resource.</p>
 
-        <div className="flex gap-4">
-          <button type="button" className="px-6 py-2.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold">
-            Join Discord Community
-          </button>
-          <button type="button" className="px-6 py-2.5 rounded-lg border text-xs font-semibold hover:bg-neutral-100 dark:hover:bg-neutral-800">
-            Star on GitHub
-          </button>
+        <div className="flex flex-wrap justify-center gap-4">
+          {guideHref && (
+            <a href={guideHref} className="px-6 py-2.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold">
+              Read contributor guide
+            </a>
+          )}
+          {repositoryHref && (
+            <a href={repositoryHref} className="px-6 py-2.5 rounded-lg border text-xs font-semibold hover:bg-neutral-100 dark:hover:bg-neutral-800">
+              View repository
+            </a>
+          )}
+          {!guideHref && !repositoryHref && (
+            <p role="status" className="text-xs opacity-75">Set guideHref or repositoryHref to add a destination.</p>
+          )}
         </div>
       </div>
     </section>
@@ -1171,14 +1200,14 @@ export function CtaCommunityPreview() {
           ))}
         </div>
       </div>
-      <CtaCommunity variant={variant} />
+      <CtaCommunity variant={variant} guideHref="/creators" repositoryHref="https://github.com/danishgm-sketch/Tessellate" />
     </div>
   );
 }`,
     fixturesCode: `export const ctaCommunityFixtures = {};`,
     readmeCode: `# CTA Community
 
-Community engagement invitation with Discord and GitHub star actions.`,
+Community invitation with optional contributor-guide and repository links. Provide guideHref and repositoryHref to enable the destinations; the preview uses Tessellate's contributor guide and source repository.`,
   },
 
   // 68. Footer Minimal
@@ -1266,7 +1295,8 @@ Single-line footer providing copyright, status, and legal links.`,
   {
     slug: 'footer-sitemap',
     name: 'Footer Sitemap',
-    description: 'Multi-column directory footer with category link lists, logo, and language selector.',
+    description:
+      'Multi-column directory footer with category link lists, logo, and language selector.',
     categories: ['sections', 'marketing', 'footer'],
     roles: ['footer', 'sitemap'],
     purposes: ['Comprehensive site navigation', 'SEO link index'],
@@ -1357,7 +1387,8 @@ Multi-column link directory grouping platform documentation, resources, and comm
   {
     slug: 'footer-product',
     name: 'Footer Product',
-    description: 'Product-centric footer featuring release changelog badge, newsletter input, and nav columns.',
+    description:
+      'Product-centric footer featuring release changelog badge, newsletter input, and nav columns.',
     categories: ['sections', 'marketing', 'footer'],
     roles: ['footer', 'product'],
     purposes: ['Product changelog spotlight', 'SaaS footer'],
@@ -1456,7 +1487,8 @@ Product-focused footer featuring release indicator and navigation columns.`,
   {
     slug: 'footer-developer',
     name: 'Footer Developer',
-    description: 'Terminal-styled developer footer with CLI command snippet, API status, and git commit sha.',
+    description:
+      'Terminal-styled developer footer with CLI command snippet, API status, and git commit sha.',
     categories: ['sections', 'marketing', 'footer'],
     roles: ['footer', 'developer'],
     purposes: ['Developer tool branding', 'Technical page closure'],

@@ -9,30 +9,73 @@ export interface Migration<T = unknown> {
 }
 
 const projectMigrations: Migration<Record<string, unknown>>[] = [
-  // Future version migrations will be added here
+  {
+    fromVersion: '0.1.0',
+    toVersion: SCHEMA_VERSION,
+    migrate: (input) => {
+      const product = input.productModel;
+      if (typeof product === 'object' && product !== null && !Array.isArray(product)) {
+        const productModel = product as Record<string, unknown>;
+        const productVersion = productModel.schemaVersion;
+        if (
+          productVersion !== undefined &&
+          productVersion !== '0.1.0' &&
+          productVersion !== SCHEMA_VERSION
+        ) {
+          throw new Error(
+            `Cannot migrate ProductModel schema version ${String(productVersion)} with ProjectManifest 0.1.0.`
+          );
+        }
+        return {
+          ...input,
+          schemaVersion: SCHEMA_VERSION,
+          productModel: { ...productModel, schemaVersion: SCHEMA_VERSION },
+        };
+      }
+
+      return { ...input, schemaVersion: SCHEMA_VERSION };
+    },
+  },
 ];
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
 
 /**
  * Migrates and validates an unknown input into a canonical ProjectManifest.
  */
 export function migrateProjectManifest(input: unknown): ProjectManifest {
-  if (typeof input !== 'object' || input === null) {
+  if (!isRecord(input)) {
     throw new Error('Project manifest must be a non-null object');
   }
 
-  const record = { ...(input as Record<string, unknown>) };
-  const currentVersion = typeof record.schemaVersion === 'string' ? record.schemaVersion : '1.0.0';
-
+  const record = { ...input };
+  const hasVersion = Object.prototype.hasOwnProperty.call(record, 'schemaVersion');
+  if (!hasVersion) {
+    throw new Error('ProjectManifest schema version is required.');
+  }
+  let version = record.schemaVersion;
+  if (typeof version !== 'string') {
+    throw new Error(`Unsupported ProjectManifest schema version: ${String(version)}.`);
+  }
   let migrated: Record<string, unknown> = record;
-  for (const m of projectMigrations) {
-    if (m.fromVersion === currentVersion) {
-      migrated = m.migrate(migrated);
+
+  for (let attempts = 0; version !== SCHEMA_VERSION && attempts < projectMigrations.length + 1; attempts++) {
+    const migration = projectMigrations.find((candidate) => candidate.fromVersion === version);
+    if (!migration) {
+      throw new Error(`Unsupported ProjectManifest schema version: ${version}.`);
     }
+    migrated = migration.migrate(migrated);
+    if (migration.toVersion === version) {
+      throw new Error(`Invalid ProjectManifest migration cycle at version ${version}.`);
+    }
+    version = migration.toVersion;
+    migrated.schemaVersion = version;
   }
 
-  // Ensure current target schema version is recorded
-  if (!migrated.schemaVersion) {
-    migrated.schemaVersion = SCHEMA_VERSION;
+  if (version !== SCHEMA_VERSION) {
+    throw new Error(`Unsupported ProjectManifest schema version: ${version}.`);
   }
 
   const result = ProjectManifestSchema.safeParse(migrated);
@@ -50,13 +93,16 @@ export function migrateProjectManifest(input: unknown): ProjectManifest {
  * Validates and migrates an unknown input into a canonical ResourceManifest.
  */
 export function migrateResourceManifest(input: unknown): ResourceManifest {
-  if (typeof input !== 'object' || input === null) {
+  if (!isRecord(input)) {
     throw new Error('Resource manifest must be a non-null object');
   }
 
-  const record = { ...(input as Record<string, unknown>) };
-  if (!record.schemaVersion) {
-    record.schemaVersion = SCHEMA_VERSION;
+  const record = { ...input };
+  const hasVersion = Object.prototype.hasOwnProperty.call(record, 'schemaVersion');
+  if (!hasVersion) {
+    throw new Error('ResourceManifest schema version is required.');
+  } else if (record.schemaVersion !== SCHEMA_VERSION) {
+    throw new Error(`Unsupported ResourceManifest schema version: ${String(record.schemaVersion)}.`);
   }
 
   const result = ResourceManifestSchema.safeParse(record);

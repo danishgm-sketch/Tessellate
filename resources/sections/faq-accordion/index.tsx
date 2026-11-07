@@ -21,29 +21,30 @@ export function FaqAccordion({ variant = 'quiet' }: FaqAccordionProps) {
   }
 
   const faqs = [
-    { q: 'Is Tessellate really 100% free and open core?', a: 'Yes. All 324 canonical launch resources, Design DNA tools, and export CLI commands are free under MIT.' },
-    { q: 'Can autonomous coding agents use this directly?', a: 'Yes. Tessellate provides OpenAPI schemas, llms.txt, and official MCP server bindings for Cursor, Claude Code, and Antigravity.' },
-    { q: 'Do I need to install any proprietary runtime package?', a: 'No. Tessellate exports pure React and Tailwind CSS source code directly into your repository.' },
+    { q: 'How is a monthly plan price calculated?', a: 'Example answer: multiply the number of seats by the monthly price per seat. Replace this copy with verified billing rules.' },
+    { q: 'Can customers switch plans?', a: 'Example answer: describe when and how customers can change plans under your terms.' },
+    { q: 'Is there a free plan?', a: 'Example answer: describe your trial or free plan here, or remove this question if you do not offer one.' },
   ];
 
   return (
-    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
+    <section className={`relative w-full py-20 px-6 @sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Frequently Asked Questions</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Example FAQ copy</h2>
+        <p className="mx-auto -mt-6 mb-8 max-w-2xl text-center text-sm opacity-75">Example questions and answers only. Replace them with verified product policies.</p>
 
         <div className="space-y-4">
           {faqs.map((f, i) => (
-            <div key={f.q} className={`border rounded-xl p-5 transition-all ${itemBorder}`}>
+            <div key={f.q} className={`border rounded-[var(--tess-radius-xl,8px)] p-5 transition-all ${itemBorder}`}>
               <button
                 type="button"
                 onClick={() => setOpenIdx(openIdx === i ? null : i)}
-                className="w-full text-left font-semibold text-sm sm:text-base flex justify-between items-center"
+                className="w-full text-left font-semibold text-sm @sm:text-base flex justify-between items-center"
               >
                 <span>{f.q}</span>
                 <span className="font-mono text-xs opacity-60">{openIdx === i ? '−' : '+'}</span>
               </button>
               {openIdx === i && (
-                <p className="text-xs sm:text-sm opacity-80 mt-3 pt-3 border-t border-neutral-100 dark:border-neutral-800 leading-relaxed">
+                <p className="text-xs @sm:text-sm opacity-80 mt-3 pt-3 border-t border-neutral-100 dark:border-neutral-800 leading-relaxed">
                   {f.a}
                 </p>
               )}

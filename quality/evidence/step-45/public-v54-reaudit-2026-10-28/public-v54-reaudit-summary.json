@@ -1,0 +1,147 @@
+{
+  "capturedAt": "2026-10-28T10:48:43.526Z",
+  "site": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+    "access": "public",
+    "version": 54,
+    "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d382d94d1508191af1aabf265d808c2",
+    "deploymentId": "appgdep_6ae1d0ad04a48191953b0eb2703b59d1",
+    "canonicalSourceCommit": "e3eff775b9db83fa240b937f3697d52cebcde8c6",
+    "sitesSourceCommit": "9270888d16f69d765d7069b3aa9eb7e17af6892a",
+    "d1Binding": null,
+    "r2Binding": null
+  },
+  "ci": [
+    {
+      "name": "CI pull_request",
+      "result": "success",
+      "headSha": "e3eff775b9db83fa240b937f3697d52cebcde8c6",
+      "url": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40668521047"
+    },
+    {
+      "name": "CI push",
+      "result": "success",
+      "headSha": "e3eff775b9db83fa240b937f3697d52cebcde8c6",
+      "url": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40668505515"
+    },
+    {
+      "name": "Component Quality Gate Sandbox",
+      "result": "success",
+      "headSha": "e3eff775b9db83fa240b937f3697d52cebcde8c6",
+      "url": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40668521098"
+    }
+  ],
+  "routes": {
+    "routeCount": 31,
+    "viewports": ["1440x900", "390x844"],
+    "cases": 62,
+    "httpFailures": 0,
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "badResponses": 0,
+    "horizontalOverflow": 0,
+    "missingMainLandmark": 0,
+    "loadingOrUnavailableVisiblePreviews": 0,
+    "result": "PASS"
+  },
+  "showcases": {
+    "detailPages": 8,
+    "viewportsPerPage": 2,
+    "cases": 16,
+    "runtimeOrNetworkFailures": 0,
+    "duplicateHeadings": 0,
+    "horizontalOverflow": 0,
+    "publicIndexRecords": 8,
+    "indexFieldsMatchingCanonicalDefinitions": 8,
+    "manifestsWithMatchingScreens": 8,
+    "result": "PASS"
+  },
+  "explore": {
+    "visibleDesktopPreviewsLoaded": 6,
+    "visibleDesktopPreviewsLoadingOrUnavailableAfterWait": 0,
+    "visibleMobilePreviewsLoaded": 2,
+    "visibleMobilePreviewsLoadingOrUnavailableAfterWait": 0,
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "badResponses": 0,
+    "result": "PASS"
+  },
+  "flagshipEmployeeExperience": {
+    "brief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+    "catalogueReady": true,
+    "directions": 3,
+    "directionCSelected": true,
+    "workbenchHandoff": "exact project",
+    "operations": [
+      "page intent overrides persisted",
+      "dashboard summary locked",
+      "radical recompose at 95",
+      "UI resource replacement",
+      "Surprise Me",
+      "exact Undo/Redo",
+      "responsive views",
+      "reload and preview",
+      "manifest export",
+      "standalone React ZIP install/build/browser verification"
+    ],
+    "reactExportHasNoTessellateRuntimeDependency": true,
+    "browserUncaughtErrors": 0,
+    "unexpectedFailures": 0,
+    "configuredSkips": 2,
+    "playwrightPassedCases": 4,
+    "result": "PASS"
+  },
+  "responsive": {
+    "widths": [360, 390, 430, 768, 1024, 1280, 1440, 1536],
+    "testsPassed": 5,
+    "unexpectedFailures": 0,
+    "result": "PASS"
+  },
+  "accessibility": {
+    "axeRouteScans": 12,
+    "axeViolations": 0,
+    "generatedWorkbenchScans": 2,
+    "generatedWorkbenchAxeViolations": 0,
+    "note": "Axe's injected inline-style instrumentation itself generated CSP console messages on Explore and one resource detail route. Direct browser route scans and WebKit navigation showed no application console error or CSP violation. The policy was kept strict."
+  },
+  "webkit": {
+    "route": "/explore?q=onboarding",
+    "viewports": ["1440x900", "390x844"],
+    "cspEvents": 0,
+    "consoleErrors": 0,
+    "failedRequests": 0,
+    "badResponses": 0,
+    "warning": "Playwright WebKit emitted its window.styleMedia deprecation warning; this is a browser-runtime warning, not an app warning.",
+    "result": "PASS"
+  },
+  "performance": {
+    "tool": "Chrome DevTools trace",
+    "cpuThrottling": "1x",
+    "networkThrottling": "none",
+    "lcpMs": { "/": 279, "/compose": 195, "/explore": 229 },
+    "cls": { "/": 0, "/compose": 0, "/explore": 0 },
+    "cruxFieldData": "unavailable"
+  },
+  "findings": {
+    "totalLedgerRecords": 377,
+    "severityCounts": { "critical": 0, "high": 69, "medium": 285, "low": 23 },
+    "closedByThisDeployedReaudit": ["AUD-176", "AUD-375", "AUD-376", "AUD-377"],
+    "remainingSiteV54Defects": 0,
+    "broaderProductHardeningProgrammeComplete": false
+  },
+  "evidenceFiles": [
+    "route-audit.json",
+    "showcase-audit.json",
+    "public-index-verification-v54.json",
+    "capture-issue-fixes-v54.mjs",
+    "flagship-acceptance-v54-verified.json",
+    "a11y-playwright.json",
+    "responsive-playwright.json",
+    "axe-route-audit.json",
+    "explore-preview-load-check.json",
+    "webkit-explore-csp-v54.json",
+    "performance-summary.json"
+  ]
+}

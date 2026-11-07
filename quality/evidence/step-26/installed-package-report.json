@@ -1,0 +1,79 @@
+{
+  "package": "@tessellate/cli@0.1.0",
+  "packedAndInstalledOutsideMonorepo": true,
+  "installMode": "npm local tarball; offline; no repository node_modules; no runtime dependencies",
+  "commands": [
+    {
+      "command": "tess --version",
+      "status": 0,
+      "output": "0.1.0"
+    },
+    {
+      "command": "tess --help",
+      "status": 0,
+      "output": "Usage: tess [options] [command]\n\nTessellate CLI — deterministic interface intelligence for humans and agents\n\nOptions:\n  -V, --version                output the version number\n  -h, --help                   display help for command\n\nCommands:\n  init [options]               Initialize Tessellate configuration and semantic\n                               design tokens\n  search [options] [query]     Search the Tessellate component catalogue\n  view <slug>                  View det"
+    },
+    {
+      "command": "tess init",
+      "status": 0,
+      "output": "[tess] Initialized Tessellate configuration at: C:\\Users\\ismay\\AppData\\Local\\Temp\\tess CLI installed package-yp6QtA\\consumer\\tessellate.json\n[tess] Created components directory: C:\\Users\\ismay\\AppData\\Local\\Temp\\tess CLI installed package-yp6QtA\\consumer\\components\\ui\n[tess] Created semantic tokens stylesheet: C:\\Users\\ismay\\AppData\\Local\\Temp\\tess CLI installed package-yp6QtA\\consumer\\styles\\tokens.css\n[tess] Ready! Add components with: tess add <resource-slug>"
+    },
+    {
+      "command": "tess doctor",
+      "status": 0,
+      "output": "[tess] Running Tessellate environment diagnostic...\n\n  ✓ Node.js Runtime: v24.20.0\n  ✓ Tessellate Config: Found (tessellate.json)\n  ✓ Components Directory: components/ui exists\n  ✓ Semantic Tokens: styles/tokens.css exists\n  ⚠ Tailwind CSS: No tailwind config or global stylesheet found\n\n[tess] Diagnostic check complete."
+    },
+    {
+      "command": "tess search button",
+      "status": 0,
+      "output": "[tess] Found 16 resource(s) matching \"button\":\n\n  • AI Prompt History (ai-prompt-history)\n    Category: ai, patterns, history | Type: ai-pattern\n    Searchable log of previous prompts with token stats, execution timestamps, and re-run buttons.\n    Install:  tess add ai-prompt-history\n\n  • API Key Management (api-key-management)\n    Category: blocks, settings, api | Type: block\n    Secret key manager with generate modal, masked token display, and revocation buttons.\n    Instal"
+    },
+    {
+      "command": "tess view button",
+      "status": 0,
+      "output": "========================================================\n Button (@tess/button)\n========================================================\nDescription:  Tactile, accessible multi-intent button primitive with Quiet, Expressive, and Nocturne curated configurations.\nType:         primitive\nCategories:   primitives, inputs, actions\nLicense:      MIT\nDependencies: none\nVariants:     Quiet, Expressive, Nocturne\n\nInstall:      tess add button\nShadcn URL:   https://tessellate.design/r/"
+    },
+    {
+      "command": "tess add cli-smoke-resource",
+      "status": 0,
+      "output": "[tess] Resolving resource \"cli-smoke-resource\"...\n[tess] Installed: components\\ui\\cli-smoke-resource.tsx\n[tess] Successfully added CLI Smoke Resource!"
+    },
+    {
+      "command": "tess compose Employee onboarding and people operations for a 500-person company --name People --output C:\\Users\\ismay\\AppData\\Local\\Temp\\tess CLI installed package-yp6QtA\\consumer\\project.json",
+      "status": 0,
+      "output": "[tess] Composing interface system for: \"Employee onboarding and people operations for a 500-person company\"...\n  • Detected Archetype: recruitment\n  • Planned Screens:    7\n  • Resource Instances: 32\n[tess] Saved composed ProjectManifest to: C:\\Users\\ismay\\AppData\\Local\\Temp\\tess CLI installed package-yp6QtA\\consumer\\project.json"
+    },
+    {
+      "command": "tess validate C:\\Users\\ismay\\AppData\\Local\\Temp\\tess CLI installed package-yp6QtA\\consumer\\project.json",
+      "status": 0,
+      "output": "[tess] Valid ProjectManifest: People (7 screens)"
+    },
+    {
+      "command": "tess export C:\\Users\\ismay\\AppData\\Local\\Temp\\tess CLI installed package-yp6QtA\\consumer\\project.json --output C:\\Users\\ismay\\AppData\\Local\\Temp\\tess CLI installed package-yp6QtA\\consumer\\exported-project",
+      "status": 0,
+      "output": "[tess] Generating standalone project source tree for \"People\"...\n[tess] Successfully exported 32 files to: C:\\Users\\ismay\\AppData\\Local\\Temp\\tess CLI installed package-yp6QtA\\consumer\\exported-project"
+    },
+    {
+      "command": "tess lint C:\\Users\\ismay\\AppData\\Local\\Temp\\tess CLI installed package-yp6QtA\\consumer\\src\\App.tsx",
+      "status": 0,
+      "output": "🔍 Tessellate Design DNA Linter\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n✨ No findings from the current heuristic rules across 1 file(s). Review remains necessary for computed styles, rendered contrast, keyboard behavior and assistive technology."
+    },
+    {
+      "command": "tess ingest C:\\Users\\ismay\\AppData\\Local\\Temp\\tess CLI installed package-yp6QtA\\consumer\\src --output C:\\Users\\ismay\\AppData\\Local\\Temp\\tess CLI installed package-yp6QtA\\consumer\\ingested.json",
+      "status": 0,
+      "output": "[tess] Ingesting codebase from: C:\\Users\\ismay\\AppData\\Local\\Temp\\tess CLI installed package-yp6QtA\\consumer\\src...\n[tess] Identified 1 React route(s) across 1 source file(s).\n  • Detected Palette:   unknown\n  • Curvature Score:    50/100\n  • Visual Mode:        unknown\n  • Design DNA evidence: none; 38 schema defaults are not inferred\n  • Product intent:     not inferred\n  • Original source:    unchanged\n[tess] Scope: Beta analysis: route and JSX structure are inferred from "
+    },
+    {
+      "command": "tess create-resource --slug cli-smoke-scaffold --name CLI Smoke Scaffold",
+      "status": 0,
+      "output": "[tess] Scaffolding new resource: CLI Smoke Scaffold (cli-smoke-scaffold)...\n[tess] Successfully created resource files:\n  ✓ resources\\primitives\\cli-smoke-scaffold\\resource.json\n  ✓ resources\\primitives\\cli-smoke-scaffold\\index.tsx\n  ✓ resources\\primitives\\cli-smoke-scaffold\\README.md\n\nNext: run 'tess validate resources\\primitives\\cli-smoke-scaffold\\resource.json' to test manifest validity."
+    },
+    {
+      "command": "tess gate C:\\Users\\ismay\\AppData\\Local\\Temp\\tess CLI installed package-yp6QtA\\consumer\\resources\\primitives\\button --format json",
+      "status": 0,
+      "output": "{\n  \"resourceSlug\": \"button\",\n  \"resourceName\": \"Button\",\n  \"overallStatus\": \"approved\",\n  \"totalScore\": 98,\n  \"passedChecks\": 7,\n  \"failedChecks\": 0,\n  \"warningChecks\": 1,\n  \"checks\": [\n    {\n      \"id\": \"schema-validation\",\n      \"name\": \"ResourceManifest Schema Compliance\",\n      \"category\": \"schema\",\n      \"status\": \"pass\",\n      \"score\": 100,\n      \"details\": \"Resource manifest conforms 100% to canonical ResourceManifestSchema (v1.0.0).\"\n    },\n    {\n      \"id\": \"token-h"
+    }
+  ],
+  "commandCount": 14,
+  "status": "passed"
+}

@@ -1,0 +1,24 @@
+{
+  "capturedAt": "2026-10-26",
+  "issue": "Playwright could silently reuse an Astro preview from a different checkout.",
+  "evidenceBefore": {
+    "config": "playwright.config.ts set reuseExistingServer to true on fixed port 4321.",
+    "listener": "The owner of port 4321 was an Astro preview launched from C:/Users/ismay/Development/Tessellate, not this worktree.",
+    "misleadingResult": "The homepage preset test failed at 390px against that other checkout (scrollWidth 691px, clientWidth 342px). The suite was stopped after 150 of 436 tests; those results are discarded."
+  },
+  "remediation": {
+    "files": [
+      "playwright.config.ts",
+      "tests/e2e/preview-app.playwright.config.ts",
+      "tests/e2e/performance-matrix.playwright.config.ts"
+    ],
+    "behavior": "Playwright starts an isolated local server by default, supports a per-run port, and reuses an existing server only after an explicit environment opt-in."
+  },
+  "verificationAfter": {
+    "command": "TESSELLATE_ASTRO_PREVIEW_PORT=4322 pnpm exec playwright test tests/e2e/home-preset-chips-responsive-step-45.spec.ts --project desktop-chrome",
+    "result": "passed",
+    "tests": 1,
+    "note": "The test ran against this worktree's freshly built Astro artifact; the overlapping 4321 server was left untouched."
+  },
+  "fullSuite": "A complete test:e2e run against isolated current-worktree servers is still required."
+}

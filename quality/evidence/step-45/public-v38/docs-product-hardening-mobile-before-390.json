@@ -1,0 +1,41 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/docs/product-hardening/",
+  "siteVersion": 38,
+  "viewport": {
+    "device": "mobile",
+    "cssPixels": [
+      390,
+      844
+    ],
+    "visualViewport": [
+      390,
+      844
+    ],
+    "layoutViewport": [
+      730,
+      1578
+    ]
+  },
+  "document": {
+    "scrollWidth": 730,
+    "clientWidth": 390,
+    "horizontalOverflow": 340
+  },
+  "httpStatus": 200,
+  "console": {
+    "errors": 0,
+    "uncaughtExceptions": 0,
+    "platformDeprecationIssues": 3
+  },
+  "network": {
+    "requestCount": 20,
+    "documentStatus": 200,
+    "essentialFailures": 0,
+    "notes": [
+      "Astro assets returned 200.",
+      "Sites-injected challenge script redirected 302 then returned 200; its three deprecation issues are recorded as AUD-356."
+    ]
+  },
+  "screenshot": "quality/evidence/step-45/public-v38/docs-product-hardening-mobile-before-390.png",
+  "observedAt": "2026-10-26T22:29:48.124Z"
+}

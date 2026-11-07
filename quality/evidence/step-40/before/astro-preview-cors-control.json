@@ -1,0 +1,564 @@
+{
+  "capturedAt": "2026-10-23T21:39:32.370Z",
+  "baseUrl": "http://127.0.0.1:4321",
+  "routes": [
+    {
+      "id": "VIS40-001",
+      "url": "/",
+      "viewport": "desktop",
+      "requestedViewport": "1440x900",
+      "status": 200,
+      "elapsedMs": 2377,
+      "navigationError": null,
+      "visual": {
+        "title": "Tessellate — Describe the product. Get the interface.",
+        "h1": "Describe the product.\nGet the interface.",
+        "bodyTextLength": 10816,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "horizontalOverflow": false,
+        "viewport": "1440x900"
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "httpErrors": [],
+      "screenshotViewport": "quality/evidence/step-40/before/home-desktop-viewport.png",
+      "screenshotFull": "quality/evidence/step-40/before/home-desktop-full.png"
+    },
+    {
+      "id": "VIS40-002",
+      "url": "/explore",
+      "viewport": "desktop",
+      "requestedViewport": "1440x900",
+      "status": 200,
+      "elapsedMs": 2418,
+      "navigationError": null,
+      "visual": {
+        "title": "Explore — Tessellate Open Interface Library",
+        "h1": "Explore Resource Library",
+        "bodyTextLength": 6923,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "horizontalOverflow": false,
+        "viewport": "1440x900"
+      },
+      "consoleErrors": [
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://127.0.0.1:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://127.0.0.1:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://127.0.0.1:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://127.0.0.1:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://127.0.0.1:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://127.0.0.1:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550049' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.Chh1BKWm.js TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550049",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791550049' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550049' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.Chh1BKWm.js TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550049",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550055' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.Chh1BKWm.js TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550055",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550056' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.Chh1BKWm.js TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550056",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791550055' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791550056' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.Chh1BKWm.js TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791550056",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791550049' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550056' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.Chh1BKWm.js TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550056",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791550055' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550056' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791550055' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550049",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791550049",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550049",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550055",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550056",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791550055",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791550056",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791550049",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550056",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791550055",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791550056",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791550055",
+          "failure": "net::ERR_FAILED"
+        }
+      ],
+      "httpErrors": [],
+      "screenshotViewport": "quality/evidence/step-40/before/explore-desktop-viewport.png",
+      "screenshotFull": "quality/evidence/step-40/before/explore-desktop-full.png"
+    },
+    {
+      "id": "VIS40-003",
+      "url": "/compose",
+      "viewport": "desktop",
+      "requestedViewport": "1440x900",
+      "status": 200,
+      "elapsedMs": 2059,
+      "navigationError": null,
+      "visual": {
+        "title": "Compose — Tessellate Interface Intelligence",
+        "h1": "Product Composer",
+        "bodyTextLength": 1548,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "horizontalOverflow": false,
+        "viewport": "1440x900"
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "httpErrors": [],
+      "screenshotViewport": "quality/evidence/step-40/before/compose-desktop-viewport.png",
+      "screenshotFull": "quality/evidence/step-40/before/compose-desktop-full.png"
+    },
+    {
+      "id": "VIS40-004",
+      "url": "/workbench",
+      "viewport": "desktop",
+      "requestedViewport": "1440x900",
+      "status": 200,
+      "elapsedMs": 2046,
+      "navigationError": null,
+      "visual": {
+        "title": "Workbench — Tessellate Composition Engine",
+        "h1": "Workbench: Example employee workspace",
+        "bodyTextLength": 2599,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "horizontalOverflow": false,
+        "viewport": "1440x900"
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "httpErrors": [],
+      "screenshotViewport": "quality/evidence/step-40/before/workbench-desktop-viewport.png",
+      "screenshotFull": "quality/evidence/step-40/before/workbench-desktop-full.png"
+    },
+    {
+      "id": "VIS40-005",
+      "url": "/showcase/showcase-playful-hr",
+      "viewport": "desktop",
+      "requestedViewport": "1440x900",
+      "status": 200,
+      "elapsedMs": 2063,
+      "navigationError": null,
+      "visual": {
+        "title": "Kudos Employee Experience — Tessellate",
+        "h1": "Kudos Employee Experience",
+        "bodyTextLength": 2044,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "horizontalOverflow": false,
+        "viewport": "1440x900"
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "httpErrors": [],
+      "screenshotViewport": "quality/evidence/step-40/before/showcase-playful-hr-desktop-viewport.png",
+      "screenshotFull": "quality/evidence/step-40/before/showcase-playful-hr-desktop-full.png"
+    },
+    {
+      "id": "VIS40-006",
+      "url": "/r/testimonial-grid",
+      "viewport": "desktop",
+      "requestedViewport": "1440x900",
+      "status": 200,
+      "elapsedMs": 2019,
+      "navigationError": null,
+      "visual": {
+        "title": "Testimonial Grid (@tess/testimonial-grid) — Tessellate Resource",
+        "h1": "Testimonial Grid",
+        "bodyTextLength": 1611,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "horizontalOverflow": false,
+        "viewport": "1440x900"
+      },
+      "consoleErrors": [
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://127.0.0.1:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791558635' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.Chh1BKWm.js TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791558635",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791558634' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791558635",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791558634",
+          "failure": "net::ERR_FAILED"
+        }
+      ],
+      "httpErrors": [],
+      "screenshotViewport": "quality/evidence/step-40/before/resource-testimonial-grid-desktop-viewport.png",
+      "screenshotFull": "quality/evidence/step-40/before/resource-testimonial-grid-desktop-full.png"
+    },
+    {
+      "id": "VIS40-007",
+      "url": "/",
+      "viewport": "mobile",
+      "requestedViewport": "390x844",
+      "status": 200,
+      "elapsedMs": 2170,
+      "navigationError": null,
+      "visual": {
+        "title": "Tessellate — Describe the product. Get the interface.",
+        "h1": "Describe the product.\nGet the interface.",
+        "bodyTextLength": 10496,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "horizontalOverflow": false,
+        "viewport": "390x844"
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "httpErrors": [],
+      "screenshotViewport": "quality/evidence/step-40/before/home-mobile-viewport.png",
+      "screenshotFull": "quality/evidence/step-40/before/home-mobile-full.png"
+    },
+    {
+      "id": "VIS40-008",
+      "url": "/explore",
+      "viewport": "mobile",
+      "requestedViewport": "390x844",
+      "status": 200,
+      "elapsedMs": 2359,
+      "navigationError": null,
+      "visual": {
+        "title": "Explore — Tessellate Open Interface Library",
+        "h1": "Explore Resource Library",
+        "bodyTextLength": 6647,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "horizontalOverflow": false,
+        "viewport": "390x844"
+      },
+      "consoleErrors": [
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://127.0.0.1:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://127.0.0.1:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791563136' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.Chh1BKWm.js TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791563136",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791563135' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791563136' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.Chh1BKWm.js TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791563136",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791563135' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791563136",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791563135",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791563136",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791563135",
+          "failure": "net::ERR_FAILED"
+        }
+      ],
+      "httpErrors": [],
+      "screenshotViewport": "quality/evidence/step-40/before/explore-mobile-viewport.png",
+      "screenshotFull": "quality/evidence/step-40/before/explore-mobile-full.png"
+    },
+    {
+      "id": "VIS40-009",
+      "url": "/compose",
+      "viewport": "mobile",
+      "requestedViewport": "390x844",
+      "status": 200,
+      "elapsedMs": 1989,
+      "navigationError": null,
+      "visual": {
+        "title": "Compose — Tessellate Interface Intelligence",
+        "h1": "Product Composer",
+        "bodyTextLength": 1467,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "horizontalOverflow": false,
+        "viewport": "390x844"
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "httpErrors": [],
+      "screenshotViewport": "quality/evidence/step-40/before/compose-mobile-viewport.png",
+      "screenshotFull": "quality/evidence/step-40/before/compose-mobile-full.png"
+    },
+    {
+      "id": "VIS40-010",
+      "url": "/workbench",
+      "viewport": "mobile",
+      "requestedViewport": "390x844",
+      "status": 200,
+      "elapsedMs": 2001,
+      "navigationError": null,
+      "visual": {
+        "title": "Workbench — Tessellate Composition Engine",
+        "h1": "Workbench: Example employee workspace",
+        "bodyTextLength": 1503,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "horizontalOverflow": false,
+        "viewport": "390x844"
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "httpErrors": [],
+      "screenshotViewport": "quality/evidence/step-40/before/workbench-mobile-viewport.png",
+      "screenshotFull": "quality/evidence/step-40/before/workbench-mobile-full.png"
+    },
+    {
+      "id": "VIS40-011",
+      "url": "/showcase/showcase-playful-hr",
+      "viewport": "mobile",
+      "requestedViewport": "390x844",
+      "status": 200,
+      "elapsedMs": 1964,
+      "navigationError": null,
+      "visual": {
+        "title": "Kudos Employee Experience — Tessellate",
+        "h1": "Kudos Employee Experience",
+        "bodyTextLength": 1956,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "horizontalOverflow": false,
+        "viewport": "390x844"
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "httpErrors": [],
+      "screenshotViewport": "quality/evidence/step-40/before/showcase-playful-hr-mobile-viewport.png",
+      "screenshotFull": "quality/evidence/step-40/before/showcase-playful-hr-mobile-full.png"
+    },
+    {
+      "id": "VIS40-012",
+      "url": "/r/testimonial-grid",
+      "viewport": "mobile",
+      "requestedViewport": "390x844",
+      "status": 200,
+      "elapsedMs": 1913,
+      "navigationError": null,
+      "visual": {
+        "title": "Testimonial Grid (@tess/testimonial-grid) — Tessellate Resource",
+        "h1": "Testimonial Grid",
+        "bodyTextLength": 1530,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "horizontalOverflow": false,
+        "viewport": "390x844"
+      },
+      "consoleErrors": [
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://127.0.0.1:4321' that is not equal to the supplied origin.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to script at 'http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791571486' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "[astro-island] Error hydrating /_astro/PreviewHost.Chh1BKWm.js TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791571486",
+        "Access to script at 'http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791571485' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/PreviewHost.Chh1BKWm.js?astro-retry=1792791571486",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "url": "http://127.0.0.1:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792791571485",
+          "failure": "net::ERR_FAILED"
+        }
+      ],
+      "httpErrors": [],
+      "screenshotViewport": "quality/evidence/step-40/before/resource-testimonial-grid-mobile-viewport.png",
+      "screenshotFull": "quality/evidence/step-40/before/resource-testimonial-grid-mobile-full.png"
+    }
+  ]
+}

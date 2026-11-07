@@ -26,12 +26,12 @@ export function DashboardSkeleton({ variant = 'quiet', children }: DashboardSkel
     <div
       role="status"
       aria-label="Loading dashboard metrics"
-      className={`p-6 md:p-8 rounded-xl border max-w-4xl mx-auto space-y-6 animate-pulse transition-colors ${containerBg}`}
+      className={`p-6 @md:p-8 rounded-[var(--tess-radius-xl,8px)] border max-w-4xl mx-auto space-y-6 animate-pulse transition-colors ${containerBg}`}
     >
       {/* 4 Metric cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 @md:grid-cols-4 gap-4">
         {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="p-4 rounded-lg border border-neutral-200/20 space-y-2">
+          <div key={i} className="p-4 rounded-[var(--tess-radius-lg,8px)] border border-neutral-200/20 space-y-2">
             <div className={`h-3 w-16 rounded ${blockBg}`} />
             <div className={`h-7 w-24 rounded ${blockBg}`} />
             <div className={`h-3 w-12 rounded ${blockBg}`} />
@@ -40,7 +40,7 @@ export function DashboardSkeleton({ variant = 'quiet', children }: DashboardSkel
       </div>
 
       {/* Main chart placeholder */}
-      <div className="p-6 rounded-lg border border-neutral-200/20 space-y-4">
+      <div className="p-6 rounded-[var(--tess-radius-lg,8px)] border border-neutral-200/20 space-y-4">
         <div className="flex justify-between items-center">
           <div className={`h-5 w-40 rounded ${blockBg}`} />
           <div className={`h-6 w-28 rounded ${blockBg}`} />

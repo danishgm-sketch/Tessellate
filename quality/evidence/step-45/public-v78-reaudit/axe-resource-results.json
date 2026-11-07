@@ -1,0 +1,189 @@
+{
+  "capturedAt": "2026-11-06T07:00:31.588Z",
+  "publicSite": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": 78,
+  "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67206589708c81919ade92023cb90608",
+  "deploymentId": "appgdep_6aed6cf7cc288191a4ba98ee07ef81fc",
+  "canonicalSourceCommit": "3e889d0ca68345c5ccf5ef767c3c05ebc07716ca",
+  "siteSourceCommit": "e6387f7ff8e1080a5a4c191cf00faef813719a3d",
+  "standard": "WCAG 2.2 A/AA axe-core tags",
+  "note": "App console/network telemetry is captured before Axe instrumentation. Axe-generated CSP messages are not counted as application errors.",
+  "resources": [
+    "button",
+    "ai-empty-state"
+  ],
+  "viewports": [
+    "desktop-1440x900",
+    "mobile-390x844"
+  ],
+  "results": [
+    {
+      "slug": "button",
+      "viewport": "desktop-1440x900",
+      "surface": "resource-detail-shell",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/button/",
+      "status": 200,
+      "layout": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axeViolations": [],
+      "screenshot": "quality/evidence/step-45/public-v78-reaudit/axe/button-desktop-1440x900-detail.png"
+    },
+    {
+      "slug": "button",
+      "viewport": "desktop-1440x900",
+      "surface": "isolated-preview-content",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=button&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+      "status": 200,
+      "layout": {
+        "viewportWidth": 764,
+        "documentWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axeViolations": [],
+      "screenshot": "quality/evidence/step-45/public-v78-reaudit/axe/button-desktop-1440x900-preview.png"
+    },
+    {
+      "slug": "ai-empty-state",
+      "viewport": "desktop-1440x900",
+      "surface": "resource-detail-shell",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-empty-state/",
+      "status": 200,
+      "layout": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axeViolations": [],
+      "screenshot": "quality/evidence/step-45/public-v78-reaudit/axe/ai-empty-state-desktop-1440x900-detail.png"
+    },
+    {
+      "slug": "ai-empty-state",
+      "viewport": "desktop-1440x900",
+      "surface": "isolated-preview-content",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-empty-state&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+      "status": 200,
+      "layout": {
+        "viewportWidth": 764,
+        "documentWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axeViolations": [],
+      "screenshot": "quality/evidence/step-45/public-v78-reaudit/axe/ai-empty-state-desktop-1440x900-preview.png"
+    },
+    {
+      "slug": "button",
+      "viewport": "mobile-390x844",
+      "surface": "resource-detail-shell",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/button/",
+      "status": 200,
+      "layout": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axeViolations": [],
+      "screenshot": "quality/evidence/step-45/public-v78-reaudit/axe/button-mobile-390x844-detail.png"
+    },
+    {
+      "slug": "button",
+      "viewport": "mobile-390x844",
+      "surface": "isolated-preview-content",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=button&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+      "status": 200,
+      "layout": {
+        "viewportWidth": 322,
+        "documentWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axeViolations": [],
+      "screenshot": "quality/evidence/step-45/public-v78-reaudit/axe/button-mobile-390x844-preview.png"
+    },
+    {
+      "slug": "ai-empty-state",
+      "viewport": "mobile-390x844",
+      "surface": "resource-detail-shell",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-empty-state/",
+      "status": 200,
+      "layout": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axeViolations": [],
+      "screenshot": "quality/evidence/step-45/public-v78-reaudit/axe/ai-empty-state-mobile-390x844-detail.png"
+    },
+    {
+      "slug": "ai-empty-state",
+      "viewport": "mobile-390x844",
+      "surface": "isolated-preview-content",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-empty-state&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+      "status": 200,
+      "layout": {
+        "viewportWidth": 322,
+        "documentWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "axeViolations": [],
+      "screenshot": "quality/evidence/step-45/public-v78-reaudit/axe/ai-empty-state-mobile-390x844-preview.png"
+    }
+  ]
+}

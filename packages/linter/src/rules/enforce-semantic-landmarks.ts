@@ -2,12 +2,16 @@ import type { LintRule, LintIssue } from '../types.js';
 
 export const enforceSemanticLandmarksRule: LintRule = {
   id: 'enforce-semantic-landmarks',
-  description: 'Ensures page or layout components declare semantic HTML landmarks (<main>, <header>, <nav>).',
+  description:
+    'Uses page-like filenames to flag missing main landmarks; it does not inspect the rendered accessibility tree.',
   check({ filePath, code }) {
     const issues: LintIssue[] = [];
 
-    // Only apply to page, layout, or screen files
-    const isPageOrLayout = /page\.(?:tsx|jsx)|layout\.(?:tsx|jsx)|Screen\.(?:tsx|jsx)/i.test(filePath);
+    const normalizedPath = filePath.replaceAll('\\', '/').toLowerCase();
+    const isInRouteDirectory = /\/(?:app|pages?|routes?|screens?)\//.test(normalizedPath);
+    const isNamedPageFile = /(?:^|\/)(?:page|layout|screen)\.(?:tsx|jsx)$/.test(normalizedPath);
+    const isReusableComponent = /\/components?\//.test(normalizedPath);
+    const isPageOrLayout = isInRouteDirectory || (isNamedPageFile && !isReusableComponent);
     if (!isPageOrLayout) return issues;
 
     const hasMain = /<main[\s>]|role=["']main["']/i.test(code);
@@ -15,7 +19,8 @@ export const enforceSemanticLandmarksRule: LintRule = {
       issues.push({
         ruleId: 'enforce-semantic-landmarks',
         severity: 'warning',
-        message: 'Page component is missing a <main> landmark or role="main". Required for screen readers and WCAG AA/AAA.',
+        message:
+          'This page-like file has no <main> landmark or role="main". Review whether this component owns the page main landmark.',
         file: filePath,
         line: 1,
         column: 1,

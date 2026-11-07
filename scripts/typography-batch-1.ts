@@ -522,29 +522,28 @@ Architectural hollow stroked display type for large-scale spatial layering.`,
   // 6. Marquee Typography
   {
     slug: 'marquee-typography',
-    name: 'Marquee Typography',
-    description: 'Continuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.',
-    categories: ['typography', 'display', 'marquee'],
-    roles: ['typography', 'marquee'],
-    purposes: ['brand-slogan', 'social-proof-ticker', 'event-banner'],
+    name: 'Repeating Typography Strip',
+    description: 'Repeating text strip for short brand or campaign messages, with horizontal overflow for narrow containers.',
+    categories: ['typography', 'display', 'ticker'],
+    roles: ['typography', 'ticker'],
+    purposes: ['brand-slogan', 'campaign-message', 'event-banner'],
     componentName: 'MarqueeTypography',
-    tags: ['typography', 'marquee', 'ticker', 'continuous', 'scroll'],
-    idealFor: ['Partner logo and quote banners', 'Product feature ticker bars', 'Conference site headers'],
+    tags: ['typography', 'repeat', 'campaign', 'ticker'],
+    idealFor: ['Short campaign messages', 'A repeating row of product phrases', 'Conference site banners'],
     avoidFor: ['Critical safety warnings', 'Lengthy legal disclosures'],
-    jobs: ['Generate continuous kinetic forward momentum across wide viewport sections'],
+    jobs: ['Repeat short messages in a horizontally scrollable strip'],
     indexCode: `import React from 'react';
 
 export type MarqueeTypographyVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface MarqueeTypographyProps {
   items?: string[];
-  speedSec?: number;
   variant?: MarqueeTypographyVariant;
   children?: React.ReactNode;
 }
 
 export function MarqueeTypography({
-  items = ['ZERO LOCK-IN', 'MIT LICENSED', 'DETERMINISTIC COMPOSITION', '972 CONFIGURATIONS', 'WCAG AA VERIFIED'],
+  items = ['DESIGN WITH CLARITY', 'MAKE ROOM TO THINK', 'BUILT FOR REAL WORK', 'LET IDEAS MOVE'],
   variant = 'quiet',
   children,
 }: MarqueeTypographyProps) {
@@ -608,8 +607,8 @@ export function MarqueeTypographyPreview() {
   );
 }`,
     fixturesCode: `export const marqueeTypographyFixtures = {};`,
-    readmeCode: `# Marquee Typography
+    readmeCode: `# Repeating Typography Strip
 
-Continuous horizontal scrolling typographic ticker tape with pause on hover.`,
+Repeating text strip for short messages. The content is duplicated for visual continuity, but the component does not animate automatically.`,
   },
 ];

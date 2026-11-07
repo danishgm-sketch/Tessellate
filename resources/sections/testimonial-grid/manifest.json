@@ -5,7 +5,7 @@
   "name": "Testimonial Grid",
   "version": "1.0.0",
   "status": "verified",
-  "description": "3-column card grid of customer endorsements with rating stars and company tags.",
+  "description": "Responsive grid template for approved customer statements, with default example copy clearly identified as illustrative.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -17,8 +17,8 @@
     "testimonials"
   ],
   "purposes": [
-    "Social proof volume",
-    "Community feedback showcase"
+    "Approved customer statement layout",
+    "Community feedback template"
   ],
   "productArchetypes": [
     {
@@ -130,18 +130,18 @@
     "social-proof"
   ],
   "intent": {
-    "summary": "3-column card grid of customer endorsements with rating stars and company tags.",
+    "summary": "Responsive grid template for approved customer statements, with default example copy clearly identified as illustrative.",
     "idealFor": [
-      "Broad social proof across varied developer personas"
+      "Presenting approved customer statements with speaker roles and organizations"
     ],
     "avoidFor": [
-      "Single-partner exclusive launches"
+      "Publishing unapproved statements, identities, or ratings"
     ],
     "jobs": [
-      "Display multiple enthusiastic customer endorsements in a readable grid"
+      "Display approved customer statements with speaker role and organization"
     ],
     "contentRequirements": [
-      "Clear hierarchy, responsive layout, accessible typography"
+      "Replace illustrative quotes with approved statements; provide a rating only when supported by a supplied value"
     ],
     "notes": [
       "Responsive stacking down to 360px with reduced-motion support"
@@ -209,7 +209,7 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
+    "levelTarget": "AA",
     "keyboardVerified": true,
     "screenReaderSemantics": true,
     "reducedMotionVerified": true,
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

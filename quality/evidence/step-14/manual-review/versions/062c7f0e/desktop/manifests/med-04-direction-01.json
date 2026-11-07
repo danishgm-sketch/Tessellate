@@ -1,0 +1,537 @@
+{
+  "id": "proj-direction-a-af4dcb21db6844d19d76b6f2a752b5acdira",
+  "dna": {
+    "professionalism": 100,
+    "playfulness": 53,
+    "luxury": 40,
+    "warmth": 45,
+    "technicality": 65,
+    "editorial": 35,
+    "futurism": 35,
+    "visualAmbition": 30,
+    "structuralCreativity": 20,
+    "density": 60,
+    "whitespace": 65,
+    "contrast": 75,
+    "colourfulness": 54,
+    "curvature": 53,
+    "depth": 35,
+    "motion": 35,
+    "motionPlayfulness": 25,
+    "typographicExpression": 43,
+    "imageryIntensity": 35,
+    "videoIntensity": 15,
+    "threeDIntensity": 6,
+    "dataDensity": 65,
+    "interactionDensity": 60,
+    "asymmetry": 24,
+    "conversionIntensity": 55,
+    "trust": 100,
+    "accessibilityPriority": 100,
+    "performancePriority": 97,
+    "primaryArchetype": "media",
+    "visualMode": "light",
+    "geometryFamily": "pill",
+    "navigationModel": "sidebar",
+    "responsivePhilosophy": "desktop-dense-mobile-focused",
+    "contentTone": "calm",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "playful-spring",
+    "typographyPersonality": "geist-system",
+    "surfacePersonality": "subtle-contrast"
+  },
+  "navigation": {
+    "model": "sidebar",
+    "primaryItems": [
+      {
+        "label": "Front Page Feed",
+        "targetScreenId": "screen-marketing-home"
+      },
+      {
+        "label": "Section Explorer",
+        "targetScreenId": "screen-collection-index"
+      }
+    ],
+    "secondaryItems": [
+      {
+        "label": "Article Reader",
+        "targetScreenId": "screen-article-reader"
+      }
+    ]
+  },
+  "grammar": "classic-sidebar-dashboard",
+  "screens": [
+    {
+      "id": "screen-marketing-home",
+      "screenNodeId": "screen-marketing-home",
+      "name": "Front Page Feed",
+      "slug": "/",
+      "rootNode": {
+        "id": "root-screen-marketing-home",
+        "nodeType": "layout",
+        "semanticRole": "marketing-page",
+        "children": [
+          {
+            "id": "node-screen-marketing-home-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Article Workspace",
+              "links": [
+                {
+                  "label": "Front Page Feed",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Section Explorer",
+                  "href": "#screen-collection-index"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-hero-2",
+            "nodeType": "section",
+            "semanticRole": "hero",
+            "resourceRef": {
+              "id": "res_sec_editorial_hero",
+              "slug": "editorial-hero",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "eyebrow": "Example organisation · sample content",
+              "headline": "Deliver breaking journalism, compelling editorial reads, and immersive streaming",
+              "subheadline": "A workspace for readers, viewers, editors, and digital journalists.",
+              "primaryCta": {
+                "label": "Read stories",
+                "href": "#screen-marketing-home"
+              },
+              "secondaryCta": {
+                "label": "See how it works",
+                "href": "#screen-article-reader"
+              },
+              "note": "Example interface · replace sample data with your organisation"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-value-proposition-3",
+            "nodeType": "section",
+            "semanticRole": "value-proposition",
+            "resourceRef": {
+              "id": "res_sec_feature_bento",
+              "slug": "feature-bento",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Front Page Feed",
+              "items": [
+                {
+                  "title": "Article",
+                  "description": "Published story with byline, hero media, and body",
+                  "detail": "Example content"
+                },
+                {
+                  "title": "Section",
+                  "description": "Category vertical (e.g. Technology, Opinion)",
+                  "detail": "Example content"
+                },
+                {
+                  "title": "Edition",
+                  "description": "Curated daily or weekly bundle",
+                  "detail": "Example content"
+                }
+              ]
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-conversion-cta-4",
+            "nodeType": "section",
+            "semanticRole": "conversion-cta",
+            "resourceRef": {
+              "id": "res_sec_cta_minimal",
+              "slug": "cta-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "headline": "Deliver breaking journalism, compelling editorial reads, and immersive streaming",
+              "description": "A workspace for readers, viewers, editors, and digital journalists.",
+              "label": "Read stories",
+              "href": "#screen-marketing-home"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-footer-5",
+            "nodeType": "section",
+            "semanticRole": "footer",
+            "resourceRef": {
+              "id": "res_sec_footer_product",
+              "slug": "footer-product",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Article Workspace",
+              "description": "A workspace for readers, viewers, editors, and digital journalists.",
+              "links": [
+                {
+                  "label": "Front Page Feed",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Section Explorer",
+                  "href": "#screen-collection-index"
+                }
+              ]
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutFamily": "sidebar-card-grid"
+        }
+      }
+    },
+    {
+      "id": "screen-article-reader",
+      "screenNodeId": "screen-article-reader",
+      "name": "Article Reader",
+      "slug": "/articles/:id",
+      "rootNode": {
+        "id": "root-screen-article-reader",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-article-reader-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Article Workspace",
+              "links": [
+                {
+                  "label": "Front Page Feed",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Section Explorer",
+                  "href": "#screen-collection-index"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-article-reader-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-article-reader-entity-header-2",
+                "nodeType": "section",
+                "semanticRole": "entity-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Article Reader",
+                  "subtitle": "High-readability serif column with photo galleries and pullquotes",
+                  "badge": "EXAMPLE",
+                  "initials": "AW"
+                }
+              },
+              {
+                "id": "node-screen-article-reader-detail-tabs-3",
+                "nodeType": "section",
+                "semanticRole": "detail-tabs",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Article Workspace",
+                  "links": [
+                    {
+                      "label": "Front Page Feed",
+                      "href": "#screen-marketing-home"
+                    },
+                    {
+                      "label": "Section Explorer",
+                      "href": "#screen-collection-index"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-article-reader-main-content-pane-4",
+                "nodeType": "section",
+                "semanticRole": "main-content-pane",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Article Reader",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Article",
+                      "type": "Published story with byline, hero media, and body",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Section",
+                      "type": "Category vertical (e.g. Technology, Opinion)",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Edition",
+                      "type": "Curated daily or weekly bundle",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-article-reader-metadata-sidebar-5",
+                "nodeType": "section",
+                "semanticRole": "metadata-sidebar",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Article Reader",
+                  "subtitle": "High-readability serif column with photo galleries and pullquotes",
+                  "badge": "EXAMPLE",
+                  "initials": "AW"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        }
+      }
+    },
+    {
+      "id": "screen-collection-index",
+      "screenNodeId": "screen-collection-index",
+      "name": "Section Explorer",
+      "slug": "/section-explorer",
+      "rootNode": {
+        "id": "root-screen-collection-index",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-collection-index-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Article Workspace",
+              "links": [
+                {
+                  "label": "Front Page Feed",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Section Explorer",
+                  "href": "#screen-collection-index"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-collection-index-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-collection-index-index-header-2",
+                "nodeType": "section",
+                "semanticRole": "index-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Section Explorer",
+                  "subtitle": "Archive by topic and author bylines",
+                  "badge": "EXAMPLE",
+                  "initials": "AW"
+                }
+              },
+              {
+                "id": "node-screen-collection-index-filter-bar-3",
+                "nodeType": "section",
+                "semanticRole": "filter-bar",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-collection-index-data-table-4",
+                "nodeType": "section",
+                "semanticRole": "data-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Section Explorer",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Article",
+                      "type": "Published story with byline, hero media, and body",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Section",
+                      "type": "Category vertical (e.g. Technology, Opinion)",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Edition",
+                      "type": "Curated daily or weekly bundle",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-collection-index-pagination-5",
+                "nodeType": "section",
+                "semanticRole": "pagination",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Continue",
+                  "disabled": false,
+                  "title": "Section Explorer"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        }
+      }
+    }
+  ],
+  "diagnostics": []
+}

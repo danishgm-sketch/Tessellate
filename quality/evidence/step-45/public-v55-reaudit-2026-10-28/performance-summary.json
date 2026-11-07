@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-10-28T12:08:23.856Z",
+  "source": "Chrome DevTools trace",
+  "scope": "Single unthrottled lab trace per route; field CrUX data unavailable. Treat these as observed trace values, not field-user Core Web Vitals.",
+  "cpuThrottling": "1x",
+  "networkThrottling": "none",
+  "routes": {
+    "/": { "lcpMs": 369, "cls": 0 },
+    "/compose": { "lcpMs": 203, "cls": 0 },
+    "/workbench": { "lcpMs": 670, "cls": 0 }
+  },
+  "fieldCrux": "unavailable",
+  "result": "PASS"
+}

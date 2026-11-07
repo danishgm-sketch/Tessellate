@@ -1,0 +1,77 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": 54,
+  "capturedAt": "2026-10-28T10:42:28.580Z",
+  "routes": {
+    "index": "/data/showcases/index.json",
+    "catalogue": "/data/catalog.json",
+    "manifests": "/data/showcases/[id].json"
+  },
+  "httpStatus": {
+    "index": 200,
+    "catalogue": 200
+  },
+  "expectedCount": 8,
+  "actualCount": 8,
+  "uniqueIds": 8,
+  "indexFieldDiffs": [],
+  "manifests": [
+    {
+      "id": "showcase-financial-terminal",
+      "status": 200,
+      "expectedScreenCount": 4,
+      "actualScreenCount": 4,
+      "match": true
+    },
+    {
+      "id": "showcase-ai-developer-platform",
+      "status": 200,
+      "expectedScreenCount": 3,
+      "actualScreenCount": 3,
+      "match": true
+    },
+    {
+      "id": "showcase-luxury-hospitality",
+      "status": 200,
+      "expectedScreenCount": 3,
+      "actualScreenCount": 3,
+      "match": true
+    },
+    {
+      "id": "showcase-playful-hr",
+      "status": 200,
+      "expectedScreenCount": 7,
+      "actualScreenCount": 7,
+      "match": true
+    },
+    {
+      "id": "showcase-luxury-ecommerce",
+      "status": 200,
+      "expectedScreenCount": 4,
+      "actualScreenCount": 4,
+      "match": true
+    },
+    {
+      "id": "showcase-scientific-research",
+      "status": 200,
+      "expectedScreenCount": 4,
+      "actualScreenCount": 4,
+      "match": true
+    },
+    {
+      "id": "showcase-creator-analytics",
+      "status": 200,
+      "expectedScreenCount": 3,
+      "actualScreenCount": 3,
+      "match": true
+    },
+    {
+      "id": "showcase-minimal-productivity",
+      "status": 200,
+      "expectedScreenCount": 3,
+      "actualScreenCount": 3,
+      "match": true
+    }
+  ],
+  "result": "PASS"
+}

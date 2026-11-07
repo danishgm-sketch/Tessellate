@@ -2,11 +2,11 @@
   "schemaVersion": "1.0.0",
   "id": "showcase-creator-analytics",
   "name": "Pulse Media Creator Studio",
-  "description": "Multi-platform creator subscriber revenue and attribution curves.",
+  "description": "Example project. Multi-platform creator subscriber revenue and attribution curves.",
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z",
-  "catalogVersion": "1.0.0",
-  "seed": "seed_showcase-creator-analytics",
+  "catalogVersion": "0.1.0",
+  "seed": "showcase-creator-analytics",
   "productModel": {
     "schemaVersion": "1.0.0",
     "productArchetypes": [
@@ -15,39 +15,145 @@
         "weight": 100
       }
     ],
-    "primaryAudience": "Domain specialists",
+    "primaryAudience": "Data analysts, executives, and growth product managers",
     "userSophistication": 80,
-    "primaryObjective": "Multi-platform creator subscriber revenue and attribution curves.",
+    "primaryObjective": "Transform raw event data into actionable quantitative intelligence and reports",
     "secondaryObjectives": [
-      "Maximize workflow speed and cognitive clarity"
+      "Ensure high accessibility standards",
+      "Maintain responsive layout across devices"
     ],
     "jobsToBeDone": [
-      "Analyze domain data",
-      "Execute actions",
-      "Inspect telemetry"
+      "Authenticate and access Analytics Platform",
+      "Review the overview and priority actions",
+      "Create, update, and manage records",
+      "Construct custom chart visualization with filters",
+      "Inspect unexpected metric dip and isolate segment"
     ],
-    "entities": [],
-    "workflows": [],
-    "trustRequirement": 92,
+    "entities": [
+      {
+        "name": "Metric",
+        "description": "Time-series quantitative indicator",
+        "fields": [
+          "id",
+          "name",
+          "value",
+          "change",
+          "period"
+        ]
+      },
+      {
+        "name": "Report",
+        "description": "Collection of charts, pivots, and explanatory notes",
+        "fields": [
+          "id",
+          "title",
+          "author",
+          "updatedAt"
+        ]
+      },
+      {
+        "name": "Cohort",
+        "description": "Segment of entities sharing common behavior",
+        "fields": [
+          "id",
+          "criteria",
+          "size",
+          "retentionRate"
+        ]
+      }
+    ],
+    "workflows": [
+      {
+        "id": "build-report",
+        "name": "Construct custom chart visualization with filters",
+        "steps": [
+          "select-dataset",
+          "choose-aggregation",
+          "apply-date-range",
+          "save-to-dashboard"
+        ]
+      },
+      {
+        "id": "drilldown-anomaly",
+        "name": "Inspect unexpected metric dip and isolate segment",
+        "steps": [
+          "click-datapoint",
+          "segment-by-dimension",
+          "export-findings"
+        ]
+      }
+    ],
+    "trustRequirement": 90,
     "informationComplexity": 85,
-    "dataDensity": 85,
-    "collaborationLevel": 50,
-    "transactionCriticality": 70,
-    "navigationComplexity": 60,
-    "mobileImportance": 50,
-    "likelyScreens": [],
-    "requiredCapabilities": [
-      "export",
-      "search",
-      "audit"
+    "dataDensity": 95,
+    "collaborationLevel": 55,
+    "transactionCriticality": 40,
+    "navigationComplexity": 70,
+    "mobileImportance": 45,
+    "likelyScreens": [
+      {
+        "name": "Executive Overview",
+        "screenType": "dashboard",
+        "purpose": "High-level KPI scorecard and top drivers",
+        "jobs": [
+          "scan-kpis",
+          "view-growth-rates"
+        ],
+        "required": true
+      },
+      {
+        "name": "Metric Explorer",
+        "screenType": "analytics-reporting",
+        "purpose": "Interactive time-series canvas with drilldowns",
+        "jobs": [
+          "slice-by-dimension",
+          "compare-cohorts"
+        ],
+        "required": true
+      },
+      {
+        "name": "Reports Library",
+        "screenType": "index-list",
+        "purpose": "Scheduled and saved analyst dashboards",
+        "jobs": [
+          "browse-reports",
+          "schedule-email"
+        ],
+        "required": true
+      }
     ],
-    "forbiddenPatterns": [],
+    "requiredCapabilities": [
+      "time-series-brushing",
+      "csv-export",
+      "density-toggle"
+    ],
+    "forbiddenPatterns": [
+      "inaccurate-zero-scaling-on-bar-charts",
+      "sluggish-canvas-repaints"
+    ],
     "constraints": {
       "accessibilityFloor": "AA",
-      "performanceCeiling": "rich",
+      "performanceCeiling": "balanced",
       "targetDevices": [
         "desktop",
-        "tablet"
+        "tablet",
+        "mobile"
+      ],
+      "allowedDependencies": [
+        "react",
+        "tailwindcss",
+        "lucide-react"
+      ],
+      "prohibitedDependencies": [
+        "jquery",
+        "bootstrap"
+      ],
+      "requiredScreens": [],
+      "forbiddenScreens": [],
+      "requiredPatterns": [],
+      "forbiddenPatterns": [
+        "inaccurate-zero-scaling-on-bar-charts",
+        "sluggish-canvas-repaints"
       ]
     }
   },
@@ -81,9 +187,9 @@
     "accessibilityPriority": 97,
     "performancePriority": 97,
     "primaryArchetype": "analytics",
-    "visualMode": "adaptive",
+    "visualMode": "light",
     "geometryFamily": "rounded",
-    "navigationModel": "sidebar-standard",
+    "navigationModel": "sidebar",
     "responsivePhilosophy": "equal-capability-adaptive",
     "contentTone": "insightful-empowering",
     "primaryStack": "react-tailwind",
@@ -91,292 +197,611 @@
     "typographyPersonality": "dynamic-metric",
     "surfacePersonality": "gradient-accented-cards"
   },
+  "brand": {
+    "name": "Metric Workspace"
+  },
   "constraints": {
     "accessibilityFloor": "AA",
-    "performanceCeiling": "rich",
+    "performanceCeiling": "balanced",
     "targetDevices": [
       "desktop",
-      "tablet"
+      "tablet",
+      "mobile"
+    ],
+    "allowedDependencies": [
+      "react",
+      "tailwindcss",
+      "lucide-react"
+    ],
+    "prohibitedDependencies": [
+      "jquery",
+      "bootstrap"
+    ],
+    "requiredScreens": [],
+    "forbiddenScreens": [],
+    "requiredPatterns": [],
+    "forbiddenPatterns": [
+      "inaccurate-zero-scaling-on-bar-charts",
+      "sluggish-canvas-repaints"
     ]
   },
   "screenGraph": {
-    "id": "sg_showcase-creator-analytics",
+    "id": "graph-analytics-54u716",
     "groups": [
       {
-        "id": "group_main",
-        "name": "Main Workspace",
+        "id": "group-app",
+        "name": "Application",
         "screens": [
           {
-            "id": "node-app-overview",
-            "name": "Application Overview Dashboard",
+            "id": "screen-overview",
+            "name": "Executive Overview",
             "slug": "/overview",
-            "screenType": "application-overview-dashboard",
-            "purpose": "Application Overview Dashboard",
+            "screenType": "dashboard",
+            "purpose": "High-level KPI scorecard and top drivers",
             "jobs": [
-              "inspect-view"
+              "scan-kpis",
+              "view-growth-rates"
             ],
             "required": true,
             "navigationVisibility": "primary",
-            "importance": 80,
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Metric.id",
+              "Metric.name",
+              "Metric.value",
+              "Metric.change",
+              "Metric.period"
             ],
             "requiredRoles": [
-              "content"
+              "overview-header",
+              "metric-cards",
+              "activity-feed"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "quick-action-bar",
+              "data-table",
+              "alert-banner",
+              "insight-rail"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           },
           {
-            "id": "node-analytics-dashboard",
-            "name": "Analytics Dashboard",
-            "slug": "/analytics",
-            "screenType": "analytics-dashboard",
-            "purpose": "Analytics Dashboard",
+            "id": "screen-metric-explorer",
+            "name": "Metric Explorer",
+            "slug": "/metric-explorer",
+            "screenType": "analytics-reporting",
+            "purpose": "Interactive time-series canvas with drilldowns",
             "jobs": [
-              "inspect-view"
+              "slice-by-dimension",
+              "compare-cohorts"
             ],
-            "required": false,
+            "required": true,
             "navigationVisibility": "primary",
-            "importance": 75,
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Metric.id",
+              "Metric.name",
+              "Metric.value",
+              "Metric.change",
+              "Metric.period"
             ],
             "requiredRoles": [
-              "content"
+              "date-range-picker",
+              "chart-canvas",
+              "summary-kpis"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "dimension-slicer",
+              "cohort-table",
+              "export-drawer"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           },
           {
-            "id": "node-billing",
-            "name": "Billing & Usage",
-            "slug": "/settings/billing",
-            "screenType": "billing-&-usage",
-            "purpose": "Billing & Usage",
+            "id": "screen-collection-index",
+            "name": "Reports Library",
+            "slug": "/reports-library",
+            "screenType": "index-list",
+            "purpose": "Scheduled and saved analyst dashboards",
             "jobs": [
-              "inspect-view"
+              "browse-reports",
+              "schedule-email"
             ],
-            "required": false,
+            "required": true,
             "navigationVisibility": "primary",
-            "importance": 70,
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Report.id",
+              "Report.title",
+              "Report.author",
+              "Report.updatedAt"
             ],
             "requiredRoles": [
-              "content"
+              "index-header",
+              "filter-bar",
+              "data-table",
+              "pagination"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "bulk-action-bar",
+              "view-mode-toggle",
+              "stats-summary"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           }
         ]
       }
     ],
     "edges": [
       {
-        "id": "edge_0",
-        "fromScreenId": "node-app-overview",
-        "toScreenId": "node-analytics-dashboard"
+        "id": "edge-screen-overview-to-screen-metric-explorer",
+        "fromScreenId": "screen-overview",
+        "toScreenId": "screen-metric-explorer",
+        "label": "Metric Explorer"
       },
       {
-        "id": "edge_1",
-        "fromScreenId": "node-app-overview",
-        "toScreenId": "node-billing"
+        "id": "edge-screen-overview-to-screen-collection-index",
+        "fromScreenId": "screen-overview",
+        "toScreenId": "screen-collection-index",
+        "label": "Reports Library"
       }
     ]
   },
   "screens": [
     {
-      "id": "screen-app-overview",
-      "screenNodeId": "node-app-overview",
-      "name": "Application Overview Dashboard",
+      "id": "screen-overview",
+      "screenNodeId": "screen-overview",
+      "name": "Executive Overview",
       "slug": "/overview",
       "rootNode": {
-        "id": "root-app-overview",
+        "id": "root-screen-overview",
         "nodeType": "layout",
-        "semanticRole": "dashboard-canvas",
+        "semanticRole": "sidebar-shell",
         "children": [
           {
-            "id": "sec-dash-metrics",
-            "nodeType": "section",
-            "semanticRole": "kpi-metrics",
+            "id": "node-screen-overview-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_metrics_scorecard",
-              "slug": "metrics-scorecard",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "quiet",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Metric Workspace",
+              "links": [
+                {
+                  "label": "Executive Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Metric Explorer",
+                  "href": "#screen-metric-explorer"
+                },
+                {
+                  "label": "Reports Library",
+                  "href": "#screen-collection-index"
+                }
+              ],
+              "orientation": "horizontal"
+            }
           },
           {
-            "id": "sec-dash-chart",
-            "nodeType": "section",
-            "semanticRole": "trend-chart",
-            "resourceRef": {
-              "id": "res_time_series_chart",
-              "slug": "time-series-chart",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-overview-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-overview-overview-header-2",
+                "nodeType": "block",
+                "semanticRole": "overview-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Executive Overview",
+                  "subtitle": "High-level KPI scorecard and top drivers",
+                  "badge": "EXAMPLE",
+                  "initials": "MW"
+                }
+              },
+              {
+                "id": "node-screen-overview-metric-cards-3",
+                "nodeType": "block",
+                "semanticRole": "metric-cards",
+                "resourceRef": {
+                  "id": "res_blk_dashboard_kpi_grid",
+                  "slug": "dashboard-kpi-grid",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Key metrics",
+                  "cards": [
+                    {
+                      "label": "Metric",
+                      "val": "—",
+                      "status": "No connected data"
+                    },
+                    {
+                      "label": "Report",
+                      "val": "—",
+                      "status": "No connected data"
+                    },
+                    {
+                      "label": "Cohort",
+                      "val": "—",
+                      "status": "No connected data"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-overview-activity-feed-4",
+                "nodeType": "block",
+                "semanticRole": "activity-feed",
+                "resourceRef": {
+                  "id": "res_blk_timeline",
+                  "slug": "timeline",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Recent activity",
+                  "events": [
+                    {
+                      "time": "Today",
+                      "title": "Construct custom chart visualization with filters",
+                      "desc": "Select dataset → Choose aggregation → Apply date range → Save to dashboard"
+                    },
+                    {
+                      "time": "Yesterday",
+                      "title": "Inspect unexpected metric dip and isolate segment",
+                      "desc": "Click datapoint → Segment by dimension → Export findings"
+                    }
+                  ]
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-dash-activity",
-            "nodeType": "section",
-            "semanticRole": "recent-activity",
-            "resourceRef": {
-              "id": "res_activity_timeline",
-              "slug": "activity-timeline",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "sidebar"
+        }
       }
     },
     {
-      "id": "screen-analytics-dashboard",
-      "screenNodeId": "node-analytics-dashboard",
-      "name": "Analytics Dashboard",
-      "slug": "/analytics",
+      "id": "screen-metric-explorer",
+      "screenNodeId": "screen-metric-explorer",
+      "name": "Metric Explorer",
+      "slug": "/metric-explorer",
       "rootNode": {
-        "id": "root-analytics-dashboard",
+        "id": "root-screen-metric-explorer",
         "nodeType": "layout",
-        "semanticRole": "analytics-canvas",
+        "semanticRole": "sidebar-shell",
         "children": [
           {
-            "id": "sec-an-kpis",
-            "nodeType": "section",
-            "semanticRole": "summary-kpis",
+            "id": "node-screen-metric-explorer-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_metrics_scorecard",
-              "slug": "metrics-scorecard",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "quiet",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Metric Workspace",
+              "links": [
+                {
+                  "label": "Executive Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Metric Explorer",
+                  "href": "#screen-metric-explorer"
+                },
+                {
+                  "label": "Reports Library",
+                  "href": "#screen-collection-index"
+                }
+              ],
+              "orientation": "horizontal"
+            }
           },
           {
-            "id": "sec-an-trend",
-            "nodeType": "section",
-            "semanticRole": "trend-chart",
-            "resourceRef": {
-              "id": "res_time_series_chart",
-              "slug": "time-series-chart",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-metric-explorer-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-metric-explorer-date-range-picker-2",
+                "nodeType": "block",
+                "semanticRole": "date-range-picker",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-metric-explorer-chart-canvas-3",
+                "nodeType": "component",
+                "semanticRole": "chart-canvas",
+                "resourceRef": {
+                  "id": "res_dat_time_series_chart",
+                  "slug": "time-series-chart",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-metric-explorer-summary-kpis-4",
+                "nodeType": "block",
+                "semanticRole": "summary-kpis",
+                "resourceRef": {
+                  "id": "res_blk_dashboard_kpi_grid",
+                  "slug": "dashboard-kpi-grid",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Key metrics",
+                  "cards": [
+                    {
+                      "label": "Metric",
+                      "val": "—",
+                      "status": "No connected data"
+                    },
+                    {
+                      "label": "Report",
+                      "val": "—",
+                      "status": "No connected data"
+                    },
+                    {
+                      "label": "Cohort",
+                      "val": "—",
+                      "status": "No connected data"
+                    }
+                  ]
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-an-bar",
-            "nodeType": "section",
-            "semanticRole": "distribution",
-            "resourceRef": {
-              "id": "res_bar_chart",
-              "slug": "bar-chart",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-an-cohort",
-            "nodeType": "section",
-            "semanticRole": "retention-cohort",
-            "resourceRef": {
-              "id": "res_cohort_matrix",
-              "slug": "cohort-matrix",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "sidebar"
+        }
       }
     },
     {
-      "id": "screen-billing",
-      "screenNodeId": "node-billing",
-      "name": "Billing & Usage",
-      "slug": "/settings/billing",
+      "id": "screen-collection-index",
+      "screenNodeId": "screen-collection-index",
+      "name": "Reports Library",
+      "slug": "/reports-library",
       "rootNode": {
-        "id": "root-billing",
+        "id": "root-screen-collection-index",
         "nodeType": "layout",
-        "semanticRole": "billing-canvas",
+        "semanticRole": "sidebar-shell",
         "children": [
           {
-            "id": "sec-bill-plan",
-            "nodeType": "section",
-            "semanticRole": "plan",
+            "id": "node-screen-collection-index-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_billing_plan_card",
-              "slug": "billing-plan-card",
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
               "version": "1.0.0"
             },
             "variant": "quiet",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Metric Workspace",
+              "links": [
+                {
+                  "label": "Executive Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Metric Explorer",
+                  "href": "#screen-metric-explorer"
+                },
+                {
+                  "label": "Reports Library",
+                  "href": "#screen-collection-index"
+                }
+              ],
+              "orientation": "horizontal"
+            }
           },
           {
-            "id": "sec-bill-invoices",
-            "nodeType": "section",
-            "semanticRole": "invoices",
-            "resourceRef": {
-              "id": "res_invoices_history_table",
-              "slug": "invoices-history-table",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-collection-index-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-collection-index-index-header-2",
+                "nodeType": "block",
+                "semanticRole": "index-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Reports Library",
+                  "subtitle": "Scheduled and saved analyst dashboards",
+                  "badge": "EXAMPLE",
+                  "initials": "MW"
+                }
+              },
+              {
+                "id": "node-screen-collection-index-filter-bar-3",
+                "nodeType": "block",
+                "semanticRole": "filter-bar",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-collection-index-data-table-4",
+                "nodeType": "block",
+                "semanticRole": "data-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Reports Library",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Metric",
+                      "type": "Time-series quantitative indicator",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Report",
+                      "type": "Collection of charts, pivots, and explanatory notes",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Cohort",
+                      "type": "Segment of entities sharing common behavior",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-collection-index-pagination-5",
+                "nodeType": "element",
+                "semanticRole": "pagination",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Paging unavailable",
+                  "disabled": true,
+                  "title": "Connect a paging data source before navigating additional records.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "sidebar"
+        }
       }
     }
   ],
   "navigation": {
-    "model": "sidebar-standard",
+    "model": "sidebar",
     "primaryItems": [
       {
-        "label": "Dashboard",
-        "targetScreenId": "node-app-overview"
+        "label": "Executive Overview",
+        "targetScreenId": "screen-overview"
       },
       {
-        "label": "Analytics",
-        "targetScreenId": "node-analytics-dashboard"
+        "label": "Metric Explorer",
+        "targetScreenId": "screen-metric-explorer"
       },
       {
-        "label": "Billing",
-        "targetScreenId": "node-billing"
+        "label": "Reports Library",
+        "targetScreenId": "screen-collection-index"
       }
-    ]
+    ],
+    "secondaryItems": []
   },
   "assets": [],
   "locks": [],
   "historyMeta": {
-    "totalOperations": 12,
-    "headRevision": 1
+    "totalOperations": 0,
+    "headRevision": 0
   },
   "exportSettings": {
     "framework": "react",

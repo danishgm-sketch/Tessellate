@@ -1,0 +1,48 @@
+{
+  "capturedAt": "2026-10-23T19:05:22.9813588Z",
+  "command": "pnpm test:e2e",
+  "exitCode": 0,
+  "result": "passed",
+  "projects": [
+    {
+      "skipped": 108,
+      "elapsed": "7.6m",
+      "failed": 0,
+      "declared": 382,
+      "passed": 274,
+      "name": "Astro preview"
+    },
+    {
+      "skipped": 36,
+      "elapsed": "17.8m",
+      "failed": 0,
+      "declared": 248,
+      "passed": 212,
+      "name": "Sites Worker"
+    },
+    {
+      "skipped": 0,
+      "elapsed": "8.9s",
+      "failed": 0,
+      "declared": 3,
+      "passed": 3,
+      "name": "Isolated preview app"
+    }
+  ],
+  "totals": {
+    "failed": 0,
+    "skipped": 144,
+    "passed": 489,
+    "declared": 633
+  },
+  "highValueCoverage": [
+    "All 324 catalogue resources rendered in real Sites Worker browser certification.",
+    "All 40 Gold resources rendered across declared variants and certified widths.",
+    "Flagship employee-experience UI flow and independent React export passed on desktop and mobile.",
+    "Compose Direction C exact handoff, Recompose, Surprise Me, locks, Undo/Redo, persistence, responsive behavior, and CSP isolation passed.",
+    "New Compose progress acknowledgement regression passed under 4x CPU emulation in desktop and mobile projects."
+  ],
+  "environmentWarnings": [
+    "Playwright/Node warned that NO_COLOR was ignored because FORCE_COLOR was also set; no browser console errors or test failures resulted."
+  ]
+}

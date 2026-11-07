@@ -17,11 +17,11 @@
     "@tessellate/dna": "workspace:*",
     "@tessellate/renderer": "workspace:*",
     "@tessellate/schemas": "workspace:*",
-    "glob": "^11.0.1"
+    "glob": "^14.0.2",
+    "typescript": "^5.7.3"
   },
   "devDependencies": {
     "@types/node": "^22.13.4",
-    "typescript": "^5.7.3",
-    "vitest": "^3.0.5"
+    "vitest": "^4.1.12"
   }
 }

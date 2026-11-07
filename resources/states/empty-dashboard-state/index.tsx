@@ -34,18 +34,27 @@ export function EmptyDashboardState({ onConnect, variant = 'quiet', children }: 
           No telemetry events recorded yet
         </h3>
         <p className="text-xs text-neutral-500 max-w-md mx-auto leading-relaxed">
-          Connect your application telemetry stream or run `tess compose` to populate live metrics and component audits.
+          This preview does not connect to a data source. Connect a telemetry source in your host application to populate this dashboard.
         </p>
       </div>
 
       <div className="pt-2 flex justify-center gap-3">
         <button
+          type="button"
           onClick={onConnect}
-          className="px-4 py-2 text-xs font-semibold rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:opacity-90"
+          disabled={!onConnect}
+          aria-describedby={!onConnect ? 'empty-dashboard-connect-help' : undefined}
+          className="px-4 py-2 text-xs font-semibold rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
         >
           Connect Telemetry Source
         </button>
       </div>
+
+      {!onConnect && (
+        <p id="empty-dashboard-connect-help" role="note" className="text-xs text-neutral-500">
+          Connect a telemetry source in the host application to enable this action.
+        </p>
+      )}
 
       {children}
     </div>

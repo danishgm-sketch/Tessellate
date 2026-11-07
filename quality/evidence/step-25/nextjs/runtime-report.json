@@ -1,0 +1,85 @@
+{
+  "url": "http://127.0.0.1:4179/",
+  "project": "Employee experience Next.js export from Step 24 handoff manifest",
+  "viewports": [
+    {
+      "name": "desktop-1440x900",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "title": "Adaptive Architecture — Employee experience",
+      "heading": "A better workday starts with people.",
+      "hasEmployeeExperienceCopy": true,
+      "hasExpectedProductName": true,
+      "navigationLabels": [
+        "Marketing Home",
+        "Team Overview",
+        "People Directory",
+        "Teams",
+        "Engagement",
+        "Settings & Policies"
+      ],
+      "navigationTargetHeights": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "minimumNavigationTargetHeight": 44,
+      "navigationHasLiteralQuotes": false,
+      "overflow": {
+        "documentWidth": 1440,
+        "viewportWidth": 1440,
+        "bodyWidth": 1440
+      },
+      "screenshot": "desktop-1440x900.png",
+      "settingsNavigationHash": "#screen-settings",
+      "settingsScreenTextPresent": true,
+      "settingsScreenshot": "desktop-settings-1440x900.png"
+    },
+    {
+      "name": "mobile-390x844",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Adaptive Architecture — Employee experience",
+      "heading": "A better workday starts with people.",
+      "hasEmployeeExperienceCopy": true,
+      "hasExpectedProductName": true,
+      "navigationLabels": [
+        "Marketing Home",
+        "Team Overview",
+        "People Directory",
+        "Teams",
+        "Engagement",
+        "Settings & Policies"
+      ],
+      "navigationTargetHeights": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "minimumNavigationTargetHeight": 44,
+      "navigationHasLiteralQuotes": false,
+      "overflow": {
+        "documentWidth": 390,
+        "viewportWidth": 390,
+        "bodyWidth": 390
+      },
+      "screenshot": "mobile-390x844.png"
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "httpFailures": [],
+  "axe": {
+    "violations": [],
+    "seriousOrCritical": 0
+  }
+}

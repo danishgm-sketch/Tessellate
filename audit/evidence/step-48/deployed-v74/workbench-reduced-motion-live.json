@@ -1,0 +1,108 @@
+{
+  "deployment": "v74",
+  "sourceCommit": "75276e8078e908b8258fa3d2cba629d71b85cd60",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=proj-direction-c-bd718893322f4df19f5c66da5e7eb13ddirc#screen-marketing-home",
+  "selectedProjectId": "proj-direction-c-bd718893322f4df19f5c66da5e7eb13ddirc",
+  "exactBrief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+  "catalogueReady": true,
+  "directionCount": 3,
+  "directionC": {
+    "unresolvedResources": 0,
+    "unresolvedRoles": 0
+  },
+  "reducedMotion": true,
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "renderedNodeCount": 6,
+    "renderedMotion": [
+      {
+        "role": "marketing-page",
+        "transitionProperty": "none",
+        "transitionDuration": "0s",
+        "animationName": "none",
+        "animationDuration": "0s"
+      },
+      {
+        "role": "navigation",
+        "transitionProperty": "none",
+        "transitionDuration": "0s",
+        "animationName": "none",
+        "animationDuration": "0s"
+      },
+      {
+        "role": "hero",
+        "transitionProperty": "none",
+        "transitionDuration": "0s",
+        "animationName": "none",
+        "animationDuration": "0s"
+      },
+      {
+        "role": "value-proposition",
+        "transitionProperty": "none",
+        "transitionDuration": "0s",
+        "animationName": "none",
+        "animationDuration": "0s"
+      },
+      {
+        "role": "conversion-cta",
+        "transitionProperty": "none",
+        "transitionDuration": "0s",
+        "animationName": "none",
+        "animationDuration": "0s"
+      },
+      {
+        "role": "footer",
+        "transitionProperty": "none",
+        "transitionDuration": "0s",
+        "animationName": "none",
+        "animationDuration": "0s"
+      }
+    ]
+  },
+  "mobile": {
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "documentHeight": 844,
+    "visibleLoadingStates": [
+      {
+        "text": "Loading feature-bento when this section is in view…",
+        "inViewport": false,
+        "width": 356,
+        "height": 224
+      },
+      {
+        "text": "Loading cta-minimal when this section is in view…",
+        "inViewport": false,
+        "width": 356,
+        "height": 256
+      },
+      {
+        "text": "Loading footer-product when this section is in view…",
+        "inViewport": false,
+        "width": 356,
+        "height": 192
+      }
+    ]
+  },
+  "visibleLoadingStates": [
+    "Loading feature-bento when this section is in view…",
+    "Loading cta-minimal when this section is in view…",
+    "Loading footer-product when this section is in view…"
+  ],
+  "reducedMotionEvents": [],
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": [],
+    "reducedMotionEvents": []
+  },
+  "screenshots": [
+    "workbench-desktop-1440x900.png",
+    "workbench-mobile-390x844.png"
+  ]
+}

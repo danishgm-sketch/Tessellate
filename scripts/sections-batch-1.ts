@@ -5,7 +5,8 @@ export const SECTIONS_BATCH_1: SectionDef[] = [
   {
     slug: 'editorial-hero',
     name: 'Editorial Hero',
-    description: 'Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs.',
+    description:
+      'Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'headline'],
     purposes: ['Product launches', 'SaaS homepages', 'Creative studio landing pages'],
@@ -154,7 +155,8 @@ Commanding typographic header section designed for high-craft tech and design pr
   {
     slug: 'product-screenshot-hero',
     name: 'Product Screenshot Hero',
-    description: 'Centered headline with perspective tilted application screenshot frame and browser chrome.',
+    description:
+      'Centered headline with perspective tilted application screenshot frame and browser chrome.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'showcase'],
     purposes: ['SaaS marketing', 'Developer tool showcase', 'Web app launch'],
@@ -281,7 +283,8 @@ Showcases software UI with authentic browser chrome and responsive perspective c
   {
     slug: 'split-product-hero',
     name: 'Split Product Hero',
-    description: '50/50 split layout with narrative copy on left and live interactive widget on right.',
+    description:
+      '50/50 split layout with narrative copy on left and live interactive widget on right.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'split-view'],
     purposes: ['SaaS feature launches', 'Conversion-focused homepages'],
@@ -434,7 +437,8 @@ Balanced two-column hero uniting persuasive narrative with interactive token ins
   {
     slug: 'video-hero',
     name: 'Video Hero',
-    description: 'Cinematic header with ambient video background placeholder, gradient veil, and play trigger.',
+    description:
+      'Cinematic marketing section with optional host-supplied video and native playback controls.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'media'],
     purposes: ['Product launches', 'Showreels', 'Design agency portfolios'],
@@ -451,16 +455,16 @@ export interface VideoHeroProps {
   variant?: VideoHeroVariant;
   headline?: string;
   subheadline?: string;
-  videoDuration?: string;
+  videoSrc?: string;
 }
 
 export function VideoHero({
   variant = 'quiet',
-  headline = 'See the composition engine in continuous motion.',
-  subheadline = 'Watch how arbitrary manifests transform into production-ready React applications with zero manual wiring.',
-  videoDuration = '1:45',
+  headline = 'Show your product in motion.',
+  subheadline = 'Use a host-supplied video to show how your product works.',
+  videoSrc,
 }: VideoHeroProps) {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [playbackError, setPlaybackError] = useState(false);
 
   let bg = 'bg-neutral-900 text-white';
   let badgeColor = 'bg-white/10 text-white border-white/20';
@@ -477,34 +481,34 @@ export function VideoHero({
     <section className={\`relative w-full py-24 sm:py-32 px-6 sm:px-12 overflow-hidden transition-colors \${bg}\`}>
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center relative z-10">
         <span className={\`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono border mb-6 \${badgeColor}\`}>
-          <span>SHOWREEL</span>
-          <span>•</span>
-          <span>{videoDuration}</span>
+          <span>{videoSrc ? 'SHOWREEL' : 'VIDEO SOURCE REQUIRED'}</span>
         </span>
         <h1 className="text-4xl sm:text-6xl font-bold tracking-tight max-w-3xl mb-6">{headline}</h1>
         <p className="text-lg text-neutral-300 max-w-2xl mb-10 leading-relaxed">{subheadline}</p>
 
         <div className="relative w-full max-w-3xl aspect-video rounded-2xl border border-white/10 overflow-hidden bg-black/60 flex items-center justify-center group shadow-2xl">
-          <div className="absolute inset-0 bg-radial from-transparent via-black/40 to-black/80" />
-          <button
-            type="button"
-            onClick={() => setIsPlaying(!isPlaying)}
-            aria-label={isPlaying ? 'Pause video showreel' : 'Play video showreel'}
-            className="relative z-20 w-16 h-16 rounded-full bg-white text-neutral-950 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform"
-          >
-            {isPlaying ? (
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            )}
-          </button>
-          <span className="absolute bottom-4 left-6 z-20 text-xs font-mono text-white/70">
-            {isPlaying ? 'Playing High-Fidelity Showreel (4K)' : 'Click to launch preview playback'}
-          </span>
+          {videoSrc ? (
+            <video
+              src={videoSrc}
+              controls
+              playsInline
+              preload="metadata"
+              aria-label={headline}
+              onError={() => setPlaybackError(true)}
+              onLoadedData={() => setPlaybackError(false)}
+              className="absolute inset-0 z-0 h-full w-full object-cover"
+            />
+          ) : (
+            <p role="note" className="relative z-20 max-w-md px-6 text-center text-sm text-white/80">
+              This preview contains no video media. Add a video source in your host application to enable playback.
+            </p>
+          )}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 bg-radial from-transparent via-black/20 to-black/70" />
+          {playbackError && (
+            <p role="alert" className="absolute bottom-4 left-4 right-4 z-20 rounded-md bg-black/80 px-3 py-2 text-sm text-white">
+              The video could not be loaded. Check the source in your host application.
+            </p>
+          )}
         </div>
       </div>
     </section>
@@ -540,19 +544,20 @@ export function VideoHeroPreview() {
   );
 }`,
     fixturesCode: `export const videoHeroFixtures = {
-  headline: 'See the composition engine in continuous motion.',
-  videoDuration: '1:45',
+  headline: 'Show your product in motion.',
+  subheadline: 'Use a host-supplied video to show how your product works.',
 };`,
     readmeCode: `# Video Hero
 
-Ambient media showcase hero with accessible play/pause states and WCAG AA contrast.`,
+Cinematic marketing section with an optional host-supplied video source. Native video controls provide playback when a source is configured; without a source, the component displays a clear static message and makes no media request. Video files and licences are supplied by the host application.`,
   },
 
   // 5. Cinematic Media Hero
   {
     slug: 'cinematic-media-hero',
     name: 'Cinematic Media Hero',
-    description: 'Full-bleed immersive atmospheric hero with dark contrast, floating badge, and headline.',
+    description:
+      'Full-bleed immersive atmospheric hero with dark contrast, floating badge, and headline.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'cinematic'],
     purposes: ['Flagship product drops', 'Next-gen enterprise software'],
@@ -654,7 +659,8 @@ Full-bleed atmospheric presentation section with subtle radial illumination.`,
   {
     slug: 'interactive-demo-hero',
     name: 'Interactive Demo Hero',
-    description: 'Hero with inline interactive tabbed preview allowing immediate hands-on feature exploration.',
+    description:
+      'Hero with inline interactive tabbed preview allowing immediate hands-on feature exploration.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'interactive'],
     purposes: ['Product walkthroughs', 'Developer conversion', 'Interactive demos'],
@@ -785,7 +791,8 @@ Hero with embedded stateful preview allowing visitors to manipulate tokens and i
   {
     slug: 'search-first-hero',
     name: 'Search-First Hero',
-    description: 'Command-bar-centric hero with prominent search input, trending suggestions, and category chips.',
+    description:
+      'Command-bar-centric hero with prominent search input, trending suggestions, and category chips.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'search'],
     purposes: ['Resource catalogues', 'Documentation hubs', 'Marketplaces'],
@@ -907,15 +914,16 @@ Primary exploration hero designed for extensive component registries and documen
   {
     slug: 'ai-prompt-hero',
     name: 'AI Prompt Hero',
-    description: 'Conversational prompt bar with preset suggestions, model picker pill, and generate CTA.',
+    description:
+      'Prompt input section with local example prompts and an optional host-provided generation callback. It includes no model or generation service.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'ai'],
     purposes: ['AI products', 'Generative UI tools', 'Autonomous developer engines'],
     componentName: 'AiPromptHero',
     tags: ['ai-prompt-hero', 'hero', 'ai', 'prompt', 'marketing'],
-    idealFor: ['Next-gen AI assistant tools and generative software platforms'],
+    idealFor: ['Applications that collect a product brief before a host-defined action'],
     avoidFor: ['Standard brochureware sites'],
-    jobs: ['Prompt the user to express natural-language intent for interface generation'],
+    jobs: ['Collect a short product brief before a host-defined action'],
     indexCode: `import React, { useState } from 'react';
 
 export type AiPromptHeroVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -924,18 +932,22 @@ export interface AiPromptHeroProps {
   variant?: AiPromptHeroVariant;
   headline?: string;
   subheadline?: string;
+  onGenerate?: (prompt: string) => void;
 }
 
 export function AiPromptHero({
   variant = 'quiet',
-  headline = 'Describe your product. Generate the entire interface system.',
-  subheadline = 'Tessellate pairs natural language intent with deterministic layout grammars and accessible schemas.',
+  headline = 'Describe the product you want to shape.',
+  subheadline = 'Start with a plain-language brief. Connect this pattern to your own generation flow when you use it in an application.',
+  onGenerate,
 }: AiPromptHeroProps) {
   const [prompt, setPrompt] = useState('');
+  const inputId = React.useId();
+  const instructionsId = inputId + '-instructions';
   const presets = [
-    'A high-density trading terminal with Nocturne styling',
-    'A modern B2B SaaS analytics dashboard with 3-tier pricing',
-    'A minimalist developer documentation portal',
+    'An employee onboarding workspace for a growing team',
+    'A developer documentation portal with searchable guides',
+    'A subscription billing dashboard for small businesses',
   ];
 
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
@@ -960,19 +972,29 @@ export function AiPromptHero({
 
         <div className={\`w-full rounded-2xl border p-4 text-left transition-all \${box}\`}>
           <textarea
+            id={inputId}
             rows={3}
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
-            placeholder="E.g. Create a healthcare admin console with patient timeline and audit log..."
-            className="w-full bg-transparent text-sm sm:text-base outline-none resize-none placeholder:text-neutral-400"
+            aria-label="Describe the product or workflow"
+            aria-describedby={instructionsId}
+            placeholder="Describe the product or workflow you have in mind..."
+            className="w-full bg-transparent text-sm sm:text-base outline-none resize-none placeholder:text-neutral-400 focus-visible:ring-2 focus-visible:ring-blue-600"
           />
           <div className="flex items-center justify-between pt-3 border-t border-neutral-100 dark:border-neutral-800">
-            <span className="text-xs font-mono opacity-60">Engine: Gemini 2.5 Flash / BYO Key</span>
+            <p id={instructionsId} className="min-w-0 flex-1 text-xs opacity-75">
+              {onGenerate
+                ? 'This example sends the prompt only to the onGenerate handler supplied by its host.'
+                : 'Preview only. This example keeps your prompt on this page and does not generate a blueprint.'}
+            </p>
             <button
               type="button"
+              disabled={!onGenerate || !prompt.trim()}
+              onClick={() => onGenerate?.(prompt.trim())}
+              aria-describedby={instructionsId}
               className={\`px-4 py-2 rounded-lg text-xs font-semibold transition-all \${btn}\`}
             >
-              Synthesize Blueprint →
+              Generate Blueprint
             </button>
           </div>
         </div>
@@ -1023,18 +1045,21 @@ export function AiPromptHeroPreview() {
   );
 }`,
     fixturesCode: `export const aiPromptHeroFixtures = {
-  headline: 'Describe your product. Generate the entire interface system.',
+  headline: 'Describe the product you want to shape.',
 };`,
     readmeCode: `# AI Prompt Hero
 
-Natural-language generative interface prompt section with multi-line input and instant presets.`,
+A responsive prompt-input section with local example prompts. It does not include an AI model, send network requests, or generate a blueprint.
+
+Pass an optional onGenerate(prompt) callback to connect the button to a host application's existing workflow. Without that callback, the button stays disabled and the prompt remains in the component's page state.`,
   },
 
   // 9. Code Hero
   {
     slug: 'code-hero',
     name: 'Code Hero',
-    description: 'Developer-focused hero with syntax-highlighted editor preview, copy button, and package manager tabs.',
+    description:
+      'Developer-focused hero with syntax-highlighted editor preview, copy button, and package manager tabs.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'developer'],
     purposes: ['Developer tools', 'CLI tools', 'Open-source libraries'],
@@ -1142,15 +1167,16 @@ Terminal-styled developer hero prioritizing one-line package installation.`,
   {
     slug: 'data-hero',
     name: 'Data Hero',
-    description: 'Financial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.',
+    description:
+      'Analytical hero layout with sample metric cards and an optional host-supplied data set.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'data'],
-    purposes: ['Fintech platforms', 'Trading terminals', 'Telemetry portals'],
+    purposes: ['Analytics products', 'Operational dashboards', 'Data-led product pages'],
     componentName: 'DataHero',
-    tags: ['data-hero', 'hero', 'data', 'finance', 'marketing'],
-    idealFor: ['Data-intensive SaaS and quantitative products'],
+    tags: ['data-hero', 'hero', 'data', 'analytics', 'marketing'],
+    idealFor: ['Product analytics and operational dashboards'],
     avoidFor: ['Content marketing blogs'],
-    jobs: ['Communicate analytical density and real-time computation speeds'],
+    jobs: ['Give important product metrics a clear place in a page'],
     indexCode: `import React from 'react';
 
 export type DataHeroVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -1163,11 +1189,11 @@ export interface DataHeroProps {
 
 export function DataHero({
   variant = 'quiet',
-  headline = 'Real-time telemetry and programmatic precision.',
+  headline = 'A focused overview of your data.',
   metrics = [
-    { label: 'Ingestion Rate', value: '4.2M req/s', change: '+12.4%' },
-    { label: 'P99 Latency', value: '1.4 ms', change: '-8.1%' },
-    { label: 'Memory Footprint', value: '18.2 MB', change: '-45.0%' },
+    { label: 'Events processed', value: '12.8k', change: 'Example trend: +12%' },
+    { label: 'Response time', value: '186 ms', change: 'Example trend: -8%' },
+    { label: 'Active workspaces', value: '24', change: 'Example trend: +4%' },
   ],
 }: DataHeroProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
@@ -1186,8 +1212,9 @@ export function DataHero({
       <div className="max-w-5xl mx-auto text-center flex flex-col items-center mb-12">
         <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-6 max-w-2xl">{headline}</h1>
         <p className="text-base text-neutral-600 dark:text-neutral-400 max-w-xl">
-          Engineered for mission-critical dashboards where microsecond delays are unacceptable.
+          Use this layout to give important product metrics a clear place.
         </p>
+        <p role="note" className="mt-3 text-xs text-neutral-500">Sample metrics only — no live telemetry or measurements are connected.</p>
       </div>
 
       <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -1195,7 +1222,7 @@ export function DataHero({
           <div key={m.label} className={\`p-6 rounded-xl border flex flex-col items-start \${card}\`}>
             <span className="text-xs uppercase tracking-wider text-neutral-500 mb-2 font-mono">{m.label}</span>
             <span className="text-3xl font-bold font-mono tracking-tight mb-2">{m.value}</span>
-            <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">{m.change} vs baseline</span>
+            <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">{m.change}</span>
           </div>
         ))}
       </div>
@@ -1232,11 +1259,11 @@ export function DataHeroPreview() {
   );
 }`,
     fixturesCode: `export const dataHeroFixtures = {
-  headline: 'Real-time telemetry and programmatic precision.',
+  headline: 'A focused overview of your data.',
 };`,
     readmeCode: `# Data Hero
 
-Financial and quantitative hero section emphasizing live throughput metrics and low latency.`,
+Analytical hero layout with illustrative metric cards. Values are examples; no telemetry or measurements are connected.`,
   },
 
   // 11. Minimal Statement Hero
@@ -1329,7 +1356,8 @@ Oversized typography statement hero maximizing negative space and editorial grav
   {
     slug: 'social-proof-hero',
     name: 'Social Proof Hero',
-    description: 'Headline anchored by trust metrics, customer avatar stack, and star review rating strip.',
+    description:
+      'Headline anchored by trust metrics, customer avatar stack, and star review rating strip.',
     categories: ['sections', 'marketing', 'hero'],
     roles: ['hero', 'social-proof'],
     purposes: ['Consumer SaaS', 'Growth landing pages', 'High-conversion funnels'],
@@ -1618,7 +1646,8 @@ Horizontal partner wordmark strip supporting smooth responsive containment.`,
   {
     slug: 'customer-metrics-strip',
     name: 'Customer Metrics Strip',
-    description: 'Four-column KPI impact bar highlighting uptime, volume, latency, and scale numbers.',
+    description:
+      'Four-column KPI impact bar highlighting uptime, volume, latency, and scale numbers.',
     categories: ['sections', 'marketing', 'trust'],
     roles: ['trust', 'metrics'],
     purposes: ['Quantifiable business impact', 'Infrastructure credibility'],
@@ -1714,7 +1743,8 @@ Four-column KPI strip proving enterprise scale and performance.`,
   {
     slug: 'press-mentions-strip',
     name: 'Press Mentions Strip',
-    description: 'Curated editorial press quote row with publication logos and external publication links.',
+    description:
+      'Curated editorial press quote row with publication logos and external publication links.',
     categories: ['sections', 'marketing', 'trust'],
     roles: ['trust', 'press'],
     purposes: ['Media coverage', 'Third-party editorial recognition'],
@@ -1896,7 +1926,8 @@ Security and regulatory certification chips assuring prospective enterprise buye
   {
     slug: 'testimonial-quote',
     name: 'Testimonial Quote',
-    description: 'Featured customer pull-quote with oversized quotation mark, portrait avatar, and bio.',
+    description:
+      'Featured customer pull-quote with oversized quotation mark, portrait avatar, and bio.',
     categories: ['sections', 'marketing', 'trust'],
     roles: ['trust', 'testimonial'],
     purposes: ['High-impact customer endorsement', 'Case study preview'],

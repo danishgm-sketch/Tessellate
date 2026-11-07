@@ -1,0 +1,27 @@
+{
+  "findingId": "SEC-37-105",
+  "severity": "medium",
+  "title": "Registry admission accepted dynamic iframe srcDoc payloads",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "example": "export function EmbeddedDocument({ html }: { html: string }) { return <iframe sandbox=\"allow-scripts\" srcDoc={html} />; }",
+    "beforeFix": "The registry gate returned pass because it checked iframe sandbox flags but did not inspect inline srcDoc documents or the dynamic source value.",
+    "runtimeBoundary": "The Sites preview policy includes frame-src 'none'; a desktop/mobile Chromium probe inserted a nested sandboxed srcDoc frame containing a postMessage script, and the message never reached the parent. The iframe sandbox remained active."
+  },
+  "rootCause": "Iframe source validation covered src URLs and sandbox flags but omitted srcDoc, an inline HTML document input that can carry executable markup when sandbox flags permit scripts.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "tests/e2e/sites-preview-csp.spec.ts"
+  ],
+  "remediation": "Reject JSX srcDoc attributes and unresolved srcDoc spreads, and reject direct srcdoc assignment, setAttribute, Reflect.set, and defineProperty writes. Keep the preview frame-src 'none' policy and outer sandbox as runtime controls.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"dynamic iframe srcDoc payloads\"",
+    "redBeforeFixResult": "failed as expected: dynamic JSX srcDoc was accepted",
+    "targetedAfterFix": "the same registry regression passes for JSX, direct property assignment, setAttribute, and Object.defineProperty",
+    "registrySuite": "70 tests passed",
+    "browserProbe": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/sites-preview-csp.spec.ts -g \"untrusted preview cannot send data\" passed for desktop and mobile Chromium; nested srcDoc script did not execute and no external request was observed"
+  },
+  "capturedAt": "2026-10-21T18:37:22Z"
+}

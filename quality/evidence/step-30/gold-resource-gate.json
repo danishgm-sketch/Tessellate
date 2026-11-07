@@ -1,0 +1,499 @@
+{
+  "capturedAt": "2026-10-19T20:33:09.030Z",
+  "gateName": "8-Check Static Registry Contribution Gate (Gold resources)",
+  "resourcesAudited": 40,
+  "approved": 13,
+  "rejectedOrNeedsReview": 27,
+  "checkStatusCounts": {
+    "schema-validation": {
+      "pass": 40
+    },
+    "token-hygiene": {
+      "warn": 27,
+      "fail": 12,
+      "pass": 1
+    },
+    "accessibility-audit": {
+      "fail": 16,
+      "pass": 24
+    },
+    "responsive-strategy": {
+      "pass": 39,
+      "warn": 1
+    },
+    "reduced-motion": {
+      "pass": 28,
+      "fail": 12
+    },
+    "security-isolation": {
+      "pass": 40
+    },
+    "bundle-budget": {
+      "pass": 40
+    },
+    "license-provenance": {
+      "pass": 40
+    }
+  },
+  "failures": [
+    {
+      "resource": "ai/ai-prompt-composer",
+      "status": "rejected",
+      "score": 96,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "warn",
+          "details": "Uses 3 canonical Design DNA palette hex values. Recommend migrating to semantic CSS variables."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 1 issue(s): Icon-only <button> missing aria-label or accessible text name."
+        }
+      ]
+    },
+    {
+      "resource": "ai/ai-suggested-actions",
+      "status": "rejected",
+      "score": 87,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "fail",
+          "details": "Detected 1 unapproved arbitrary color utility class(es): bg-[#151921]."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 1 issue(s): Interactive button elements missing explicit focus-visible states."
+        },
+        {
+          "id": "reduced-motion",
+          "status": "fail",
+          "details": "Component includes motion or animations without a Tailwind motion-reduce fallback or prefers-reduced-motion stylesheet rule."
+        }
+      ]
+    },
+    {
+      "resource": "blocks/dashboard-kpi-grid",
+      "status": "rejected",
+      "score": 97,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "fail",
+          "details": "Detected 1 unapproved arbitrary color utility class(es): bg-[#151921]."
+        }
+      ]
+    },
+    {
+      "resource": "blocks/empty-workspace",
+      "status": "rejected",
+      "score": 93,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "warn",
+          "details": "Uses 3 canonical Design DNA palette hex values. Recommend migrating to semantic CSS variables."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 2 issue(s): Icon-only <button> missing aria-label or accessible text name; Interactive button elements missing explicit focus-visible states."
+        }
+      ]
+    },
+    {
+      "resource": "blocks/filter-builder",
+      "status": "rejected",
+      "score": 93,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "warn",
+          "details": "Uses 3 canonical Design DNA palette hex values. Recommend migrating to semantic CSS variables."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 2 issue(s): Icon-only <button> missing aria-label or accessible text name; Interactive button elements missing explicit focus-visible states."
+        }
+      ]
+    },
+    {
+      "resource": "blocks/kanban-board",
+      "status": "rejected",
+      "score": 89,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "fail",
+          "details": "Detected 2 unapproved arbitrary color utility class(es): bg-[#151921], bg-[#0E1217]."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 2 issue(s): Icon-only <button> missing aria-label or accessible text name; Interactive button elements missing explicit focus-visible states."
+        }
+      ]
+    },
+    {
+      "resource": "blocks/notification-centre",
+      "status": "rejected",
+      "score": 93,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "warn",
+          "details": "Uses 3 canonical Design DNA palette hex values. Recommend migrating to semantic CSS variables."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 2 issue(s): Icon-only <button> missing aria-label or accessible text name; Interactive button elements missing explicit focus-visible states."
+        }
+      ]
+    },
+    {
+      "resource": "data/bar-chart",
+      "status": "rejected",
+      "score": 91,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "warn",
+          "details": "Uses 3 canonical Design DNA palette hex values. Recommend migrating to semantic CSS variables."
+        },
+        {
+          "id": "reduced-motion",
+          "status": "fail",
+          "details": "Component includes motion or animations without a Tailwind motion-reduce fallback or prefers-reduced-motion stylesheet rule."
+        }
+      ]
+    },
+    {
+      "resource": "data/donut-chart",
+      "status": "rejected",
+      "score": 91,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "warn",
+          "details": "Uses 3 canonical Design DNA palette hex values. Recommend migrating to semantic CSS variables."
+        },
+        {
+          "id": "reduced-motion",
+          "status": "fail",
+          "details": "Component includes motion or animations without a Tailwind motion-reduce fallback or prefers-reduced-motion stylesheet rule."
+        }
+      ]
+    },
+    {
+      "resource": "motion/fade-up-reveal",
+      "status": "rejected",
+      "score": 93,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "warn",
+          "details": "Uses 5 canonical Design DNA palette hex values. Recommend migrating to semantic CSS variables."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 2 issue(s): Icon-only <button> missing aria-label or accessible text name; Interactive button elements missing explicit focus-visible states."
+        }
+      ]
+    },
+    {
+      "resource": "motion/magnetic-button",
+      "status": "rejected",
+      "score": 98,
+      "checks": [
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 1 issue(s): Interactive button elements missing explicit focus-visible states."
+        }
+      ]
+    },
+    {
+      "resource": "primitives/dialog",
+      "status": "rejected",
+      "score": 96,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "warn",
+          "details": "Uses 3 canonical Design DNA palette hex values. Recommend migrating to semantic CSS variables."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 1 issue(s): Non-interactive <div> with onClick missing role=\"button\" and tabIndex={0}."
+        }
+      ]
+    },
+    {
+      "resource": "primitives/input",
+      "status": "rejected",
+      "score": 91,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "warn",
+          "details": "Uses 4 canonical Design DNA palette hex values. Recommend migrating to semantic CSS variables."
+        },
+        {
+          "id": "reduced-motion",
+          "status": "fail",
+          "details": "Component includes motion or animations without a Tailwind motion-reduce fallback or prefers-reduced-motion stylesheet rule."
+        }
+      ]
+    },
+    {
+      "resource": "primitives/select",
+      "status": "rejected",
+      "score": 91,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "warn",
+          "details": "Uses 4 canonical Design DNA palette hex values. Recommend migrating to semantic CSS variables."
+        },
+        {
+          "id": "reduced-motion",
+          "status": "fail",
+          "details": "Component includes motion or animations without a Tailwind motion-reduce fallback or prefers-reduced-motion stylesheet rule."
+        }
+      ]
+    },
+    {
+      "resource": "sections/cta-minimal",
+      "status": "rejected",
+      "score": 86,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "fail",
+          "details": "Detected 2 unapproved arbitrary color utility class(es): bg-[#FAF8F5], bg-[#1B35B4]."
+        },
+        {
+          "id": "reduced-motion",
+          "status": "fail",
+          "details": "Component includes motion or animations without a Tailwind motion-reduce fallback or prefers-reduced-motion stylesheet rule."
+        }
+      ]
+    },
+    {
+      "resource": "sections/editorial-hero",
+      "status": "rejected",
+      "score": 80,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "fail",
+          "details": "Detected 4 unapproved arbitrary color utility class(es): bg-[#FAF8F5], bg-[#1B35B4], bg-[#151921]."
+        },
+        {
+          "id": "reduced-motion",
+          "status": "fail",
+          "details": "Component includes motion or animations without a Tailwind motion-reduce fallback or prefers-reduced-motion stylesheet rule."
+        }
+      ]
+    },
+    {
+      "resource": "sections/faq-accordion",
+      "status": "rejected",
+      "score": 87,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "fail",
+          "details": "Detected 1 unapproved arbitrary color utility class(es): bg-[#FAF8F5]."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 1 issue(s): Interactive button elements missing explicit focus-visible states."
+        },
+        {
+          "id": "reduced-motion",
+          "status": "fail",
+          "details": "Component includes motion or animations without a Tailwind motion-reduce fallback or prefers-reduced-motion stylesheet rule."
+        }
+      ]
+    },
+    {
+      "resource": "sections/feature-bento",
+      "status": "rejected",
+      "score": 97,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "fail",
+          "details": "Detected 1 unapproved arbitrary color utility class(es): bg-[#151921]."
+        }
+      ]
+    },
+    {
+      "resource": "sections/footer-product",
+      "status": "rejected",
+      "score": 97,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "fail",
+          "details": "Detected 1 unapproved arbitrary color utility class(es): bg-[#FAF8F5]."
+        }
+      ]
+    },
+    {
+      "resource": "sections/pricing-three-tier",
+      "status": "rejected",
+      "score": 81,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "fail",
+          "details": "Detected 3 unapproved arbitrary color utility class(es): bg-[#FAF8F5], bg-[#151921], bg-[#151921]."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 1 issue(s): Interactive button elements missing explicit focus-visible states."
+        },
+        {
+          "id": "reduced-motion",
+          "status": "fail",
+          "details": "Component includes motion or animations without a Tailwind motion-reduce fallback or prefers-reduced-motion stylesheet rule."
+        }
+      ]
+    },
+    {
+      "resource": "sections/split-product-hero",
+      "status": "rejected",
+      "score": 84,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "fail",
+          "details": "Detected 2 unapproved arbitrary color utility class(es): bg-[#FAF8F5], bg-[#151921]."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 1 issue(s): Interactive button elements missing explicit focus-visible states."
+        },
+        {
+          "id": "reduced-motion",
+          "status": "fail",
+          "details": "Component includes motion or animations without a Tailwind motion-reduce fallback or prefers-reduced-motion stylesheet rule."
+        }
+      ]
+    },
+    {
+      "resource": "sections/testimonial-grid",
+      "status": "rejected",
+      "score": 94,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "fail",
+          "details": "Detected 2 unapproved arbitrary color utility class(es): bg-[#FAF8F5], bg-[#151921]."
+        }
+      ]
+    },
+    {
+      "resource": "shells/collapsible-sidebar",
+      "status": "rejected",
+      "score": 94,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "fail",
+          "details": "Detected 1 unapproved arbitrary color utility class(es): bg-[#252C39]."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 1 issue(s): Interactive button elements missing explicit focus-visible states."
+        }
+      ]
+    },
+    {
+      "resource": "shells/marketing-nav-cta",
+      "status": "rejected",
+      "score": 86,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "warn",
+          "details": "Uses 3 canonical Design DNA palette hex values. Recommend migrating to semantic CSS variables."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 2 issue(s): Icon-only <button> missing aria-label or accessible text name; Interactive button elements missing explicit focus-visible states."
+        },
+        {
+          "id": "reduced-motion",
+          "status": "fail",
+          "details": "Component includes motion or animations without a Tailwind motion-reduce fallback or prefers-reduced-motion stylesheet rule."
+        }
+      ]
+    },
+    {
+      "resource": "shells/two-pane-master-detail-shell",
+      "status": "rejected",
+      "score": 96,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "warn",
+          "details": "Uses 2 canonical Design DNA palette hex values. Recommend migrating to semantic CSS variables."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 1 issue(s): Interactive button elements missing explicit focus-visible states."
+        }
+      ]
+    },
+    {
+      "resource": "states/dashboard-skeleton",
+      "status": "rejected",
+      "score": 91,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "warn",
+          "details": "Uses 3 canonical Design DNA palette hex values. Recommend migrating to semantic CSS variables."
+        },
+        {
+          "id": "reduced-motion",
+          "status": "fail",
+          "details": "Component includes motion or animations without a Tailwind motion-reduce fallback or prefers-reduced-motion stylesheet rule."
+        }
+      ]
+    },
+    {
+      "resource": "states/error-state",
+      "status": "rejected",
+      "score": 96,
+      "checks": [
+        {
+          "id": "token-hygiene",
+          "status": "warn",
+          "details": "Uses 1 canonical Design DNA palette hex values. Recommend migrating to semantic CSS variables."
+        },
+        {
+          "id": "accessibility-audit",
+          "status": "fail",
+          "details": "Accessibility audit identified 1 issue(s): Icon-only <button> missing aria-label or accessible text name."
+        }
+      ]
+    }
+  ]
+}

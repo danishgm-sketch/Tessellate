@@ -20,8 +20,7 @@ test.describe('Accessibility & WCAG 2.2 AA Audits', () => {
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
-      .disableRules(['color-contrast', 'target-size'])
-      .analyze();
+            .analyze();
 
     expect(accessibilityScanResults.violations).toEqual([]);
   });
@@ -32,7 +31,24 @@ test.describe('Accessibility & WCAG 2.2 AA Audits', () => {
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
-      .disableRules(['color-contrast', 'target-size'])
+            .analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
+
+  test('resource detail gives primary and breadcrumb navigation unique landmark names', async ({ page }) => {
+    await page.goto('/resources/ai-agent-activity-feed/');
+    const primaryNavigation = page.locator('nav[aria-label="Primary"]');
+    await expect(primaryNavigation).toHaveCount(1);
+    if ((page.viewportSize()?.width ?? 0) >= 1280) {
+      await expect(page.getByRole('navigation', { name: 'Primary' })).toBeVisible();
+    } else {
+      await expect(primaryNavigation).toBeHidden();
+    }
+    await expect(page.getByRole('navigation', { name: 'Resource breadcrumb' })).toBeVisible();
+
+    const accessibilityScanResults = await new AxeBuilder({ page })
+      .withRules(['landmark-unique'])
       .analyze();
 
     expect(accessibilityScanResults.violations).toEqual([]);

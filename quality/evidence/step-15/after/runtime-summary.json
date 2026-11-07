@@ -1,0 +1,31 @@
+{
+  "scope": "Step 15 Compose UX local browser audit",
+  "testedAt": "2026-10-18T21:29:02.582Z",
+  "sourceBranch": "consolidation/product-hardening",
+  "sourceCommit": "37d9acacc343f71a51af68fa8728fc372c2f51c6",
+  "viewports": {
+    "desktop": "1440x900",
+    "mobile": "390x844"
+  },
+  "testCases": 8,
+  "browserRuns": 16,
+  "viewportsObserved": [
+    "1440x900",
+    "390x844"
+  ],
+  "runtime": {
+    "consoleErrors": 2,
+    "expectedConsoleErrorsFromInjectedCatalogueFailure": 2,
+    "unexpectedConsoleErrors": 0,
+    "consoleWarnings": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 2,
+    "expectedFailedCatalogueRequests": 2,
+    "httpErrors": 0,
+    "responseStatusCounts": {
+      "200": 448
+    }
+  },
+  "reportFiles": 16,
+  "notes": "Two test runs deliberately abort the first catalogue request; each yields one expected browser net::ERR_FAILED message and request failure, then retry succeeds. All other runs are clean."
+}

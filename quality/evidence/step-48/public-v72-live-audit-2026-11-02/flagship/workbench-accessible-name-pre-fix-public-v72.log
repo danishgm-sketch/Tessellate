@@ -1,0 +1,37 @@
+
+Running 1 test using 1 worker
+
+(node:82876) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [sites-mobile-chromium] › tests\e2e\workbench-mobile-accessible-label.spec.ts:3:1 › Mobile Workbench navigation includes its visible Menu label in the accessible name (6.2s)
+
+
+  1) [sites-mobile-chromium] › tests\e2e\workbench-mobile-accessible-label.spec.ts:3:1 › Mobile Workbench navigation includes its visible Menu label in the accessible name
+
+    Error: expect(locator).toHaveAccessibleName(expected) failed
+
+    Locator:  locator('main [data-node-id] button[aria-controls]')
+    Expected: "Menu, open navigation"
+    Received: "Open navigation"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAccessibleName" locator('main [data-node-id] button[aria-controls]') with timeout 5000ms
+      - waiting for locator('main [data-node-id] button[aria-controls]')
+        14 × locator resolved to <button type="button" aria-controls="_r_0_" aria-expanded="false" aria-label="Open navigation" class="hidden @max-md:inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-md border border-current/20 px-3 text-xs font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">…</button>
+           - unexpected value "Open navigation"
+
+
+      23 |   await expect(toggle).toBeVisible();
+      24 |   await expect(toggle).toHaveText('Menu');
+    > 25 |   await expect(toggle).toHaveAccessibleName('Menu, open navigation');
+         |                        ^
+      26 |   await page.screenshot({ path: testInfo.outputPath('workbench-mobile-menu-label-after.png') });
+      27 |
+      28 |   await toggle.tap();
+        at <LOCAL_PATH>
+
+    Error Context: test-results\workbench-mobile-accessibl-35a7d-abel-in-the-accessible-name-sites-mobile-chromium\error-context.md
+
+  1 failed
+    [sites-mobile-chromium] › tests\e2e\workbench-mobile-accessible-label.spec.ts:3:1 › Mobile Workbench navigation includes its visible Menu label in the accessible name

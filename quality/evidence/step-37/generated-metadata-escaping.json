@@ -1,0 +1,28 @@
+{
+  "findingId": "SEC-37-065",
+  "severity": "high",
+  "title": "Manifest IDs were interpolated as executable registry keys",
+  "affectedFiles": [
+    "scripts/generate-gold-artifacts.ts",
+    "tests/security/gold-artifacts.test.ts"
+  ],
+  "reproduction": {
+    "manifestId": "A non-empty ID accepted by ResourceManifestSchema containing a quote followed by a TypeScript expression.",
+    "beforeFix": "generateGoldRendererRegistry and generatePreviewsRegistry emitted the expression outside the quoted key, producing executable TypeScript syntax.",
+    "afterFix": "Both registries emit the complete ID as a JSON-encoded string key."
+  },
+  "rootCause": "Generated source wrapped manifest IDs and resource slugs in single quotes using raw string interpolation.",
+  "remediation": "Serialize import paths, IDs, and slugs as JSON string literals; validate slugs and generated component identifiers before emitting code.",
+  "verification": {
+    "redBeforeFix": "The generated-metadata test failed because the expected JSON-encoded key was absent; the output contained a throw expression as TypeScript syntax.",
+    "command": "pnpm exec vitest run tests/security/gold-artifacts.test.ts -t \"serializes validated manifest IDs\"",
+    "result": "passed",
+    "testFiles": 1,
+    "testsPassed": 1,
+    "coveredRegistries": [
+      "Gold renderer registry",
+      "resource preview registry"
+    ],
+    "deployedVerification": "pending"
+  }
+}

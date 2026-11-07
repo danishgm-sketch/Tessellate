@@ -1,0 +1,45 @@
+{
+  "capturedAt": "2026-10-27T17:56:26Z",
+  "repository": "danishgm-sketch/Tessellate",
+  "beforeCommit": "816057952bf31131ecf891d7bc81fe91bb46ae64",
+  "fixCommit": "227d8e509ee3d07d8a21eef75e96c9bf28396218",
+  "advisory": "GHSA-6pq8-jhm2-2vcw",
+  "package": "qs",
+  "vulnerableRange": ">=6.7.0 <=6.16.0",
+  "patchedRange": ">=6.16.1",
+  "dependencyPath": [
+    "@modelcontextprotocol/sdk > express > qs",
+    "@modelcontextprotocol/sdk > express-rate-limit > express > qs"
+  ],
+  "beforeEvidence": {
+    "ciRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40554043456",
+    "failingStep": "Complete audits with fresh build prerequisites / pnpm audit:all / pnpm audit",
+    "result": "1 moderate vulnerability; qs 6.16.0"
+  },
+  "change": {
+    "override": "qs@6.16.0: 6.16.1",
+    "files": [
+      "pnpm-workspace.yaml",
+      "pnpm-lock.yaml"
+    ]
+  },
+  "afterChecks": [
+    {
+      "command": "pnpm install --frozen-lockfile --offline",
+      "exitCode": 0,
+      "result": "Lockfile is up to date; install completed."
+    },
+    {
+      "command": "pnpm audit",
+      "exitCode": 0,
+      "result": "No known vulnerabilities found"
+    },
+    {
+      "command": "pnpm why qs",
+      "exitCode": 0,
+      "result": "Found 1 version of qs: 6.16.1"
+    }
+  ],
+  "sitePublishRequired": false,
+  "exactHeadCi": "Pending"
+}

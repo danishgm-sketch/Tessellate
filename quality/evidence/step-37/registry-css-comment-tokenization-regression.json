@@ -1,0 +1,30 @@
+{
+  "findingId": "SEC-37-098",
+  "severity": "medium",
+  "title": "CSS comments bypassed remote URL token detection",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "const css = '.hero { background-image: url/**/(//collector.invalid/pixel) }';",
+      "const css = '.hero { background-image: u/**/rl(//collector.invalid/pixel) }';"
+    ],
+    "beforeFix": "The gate returned pass for protocol-relative CSS URLs when comments split the url function token or its opening parenthesis.",
+    "afterFix": "The CSS source normalizer removes CSS block comments before matching URL functions, so both forms are rejected."
+  },
+  "rootCause": "The URL detector normalized CSS escapes but did not account for CSS comment removal before tokenization.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Remove CSS block comments from the normalized scan text before testing for url() external requests.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"protocol-relative remote CSS\"",
+    "redBeforeFixResult": "failed as expected: url/**/(//host/...) returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"protocol-relative remote CSS\"",
+    "targetedAfterFixResult": "1 targeted test passed; the 65-test registry suite includes this regression",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "Static CSS source analysis only; the source was not mounted or executed. Deployed CSP verification remains pending.",
+  "capturedAt": "2026-10-21T17:25:32Z"
+}

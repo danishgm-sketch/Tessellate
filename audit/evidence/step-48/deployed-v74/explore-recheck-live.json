@@ -1,0 +1,552 @@
+{
+  "capturedAt": "2026-11-03T14:09:00.234Z",
+  "deployment": "v74",
+  "sourceCommit": "75276e8078e908b8258fa3d2cba629d71b85cd60",
+  "results": [
+    {
+      "repeat": 1,
+      "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "throttle": {
+        "latencyMs": 150,
+        "downloadBitsPerSecond": 1600000,
+        "uploadBitsPerSecond": 750000,
+        "cpuSlowdownFactor": 4
+      },
+      "routeReadyMs": 5754,
+      "firstPreviewReadyMs": 4794,
+      "browserMetrics": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "navigation": [
+          {
+            "responseStartMs": 1162,
+            "domContentLoadedMs": 1820,
+            "loadEventMs": 1820,
+            "durationMs": 1820,
+            "transferBytes": 7196
+          }
+        ],
+        "catalogue": [
+          {
+            "startMs": 3177,
+            "durationMs": 871,
+            "transferBytes": 140645,
+            "encodedBytes": 140345
+          }
+        ],
+        "firstPreviewTitle": "Onboarding Role Select actual preview",
+        "readyMessages": [
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "first-run-state",
+            "error": null,
+            "at": 10191,
+            "frameSrc": "/preview-content/?resource=first-run-state"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "feature-steps",
+            "error": null,
+            "at": 10455,
+            "frameSrc": "/preview-content/?resource=feature-steps"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "onboarding-wizard",
+            "error": null,
+            "at": 10494,
+            "frameSrc": "/preview-content/?resource=onboarding-wizard"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "onboarding-role-select",
+            "error": null,
+            "at": 10495,
+            "frameSrc": "/preview-content/?resource=onboarding-role-select"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "onboarding-checklist",
+            "error": null,
+            "at": 10495,
+            "frameSrc": "/preview-content/?resource=onboarding-checklist"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "ai-empty-state",
+            "error": null,
+            "at": 10495,
+            "frameSrc": "/preview-content/?resource=ai-empty-state"
+          }
+        ],
+        "previewErrors": [],
+        "visibleUnavailable": []
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "browserCancellations": [
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/react.B6PPDU_E.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accessibility-commitment-section",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/react.B6PPDU_E.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/react.B6PPDU_E.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion-spring",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/react.B6PPDU_E.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=activity-feed",
+            "phase": "user-filtered-catalogue"
+          }
+        ]
+      },
+      "screenshot": "explore-recheck-1-1440x900.png"
+    },
+    {
+      "repeat": 2,
+      "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "throttle": {
+        "latencyMs": 150,
+        "downloadBitsPerSecond": 1600000,
+        "uploadBitsPerSecond": 750000,
+        "cpuSlowdownFactor": 4
+      },
+      "routeReadyMs": 4705,
+      "firstPreviewReadyMs": 4514,
+      "browserMetrics": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "navigation": [
+          {
+            "responseStartMs": 100,
+            "domContentLoadedMs": 784,
+            "loadEventMs": 785,
+            "durationMs": 785,
+            "transferBytes": 7197
+          }
+        ],
+        "catalogue": [
+          {
+            "startMs": 2144,
+            "durationMs": 888,
+            "transferBytes": 140645,
+            "encodedBytes": 140345
+          }
+        ],
+        "firstPreviewTitle": "Onboarding Role Select actual preview",
+        "readyMessages": [
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "onboarding-wizard",
+            "error": null,
+            "at": 8813,
+            "frameSrc": "/preview-content/?resource=onboarding-wizard"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "onboarding-checklist",
+            "error": null,
+            "at": 9098,
+            "frameSrc": "/preview-content/?resource=onboarding-checklist"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "first-run-state",
+            "error": null,
+            "at": 9101,
+            "frameSrc": "/preview-content/?resource=first-run-state"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "onboarding-role-select",
+            "error": null,
+            "at": 9176,
+            "frameSrc": "/preview-content/?resource=onboarding-role-select"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "ai-empty-state",
+            "error": null,
+            "at": 9185,
+            "frameSrc": "/preview-content/?resource=ai-empty-state"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "feature-steps",
+            "error": null,
+            "at": 9186,
+            "frameSrc": "/preview-content/?resource=feature-steps"
+          }
+        ],
+        "previewErrors": [],
+        "visibleUnavailable": []
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "browserCancellations": [
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/src.BdH8G51d.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accessibility-commitment-section",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest-renderer-core.sr8ItgYK.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accessibility-commitment-section",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest-renderer-core.sr8ItgYK.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/src.BdH8G51d.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest-renderer-core.sr8ItgYK.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion-spring",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/src.BdH8G51d.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion-spring",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/src.BdH8G51d.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=activity-feed",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest-renderer-core.sr8ItgYK.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=activity-feed",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest-renderer-core.sr8ItgYK.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=admin-console-shell",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/src.BdH8G51d.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=admin-console-shell",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/src.BdH8G51d.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=advanced-data-table",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest-renderer-core.sr8ItgYK.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=advanced-data-table",
+            "phase": "user-filtered-catalogue"
+          }
+        ]
+      },
+      "screenshot": "explore-recheck-2-1440x900.png"
+    },
+    {
+      "repeat": 3,
+      "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "throttle": {
+        "latencyMs": 150,
+        "downloadBitsPerSecond": 1600000,
+        "uploadBitsPerSecond": 750000,
+        "cpuSlowdownFactor": 4
+      },
+      "routeReadyMs": 4596,
+      "firstPreviewReadyMs": 4312,
+      "browserMetrics": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "navigation": [
+          {
+            "responseStartMs": 118,
+            "domContentLoadedMs": 828,
+            "loadEventMs": 829,
+            "durationMs": 829,
+            "transferBytes": 7199
+          }
+        ],
+        "catalogue": [
+          {
+            "startMs": 2180,
+            "durationMs": 878,
+            "transferBytes": 140645,
+            "encodedBytes": 140345
+          }
+        ],
+        "firstPreviewTitle": "Onboarding Role Select actual preview",
+        "readyMessages": [
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "ai-empty-state",
+            "error": null,
+            "at": 8587,
+            "frameSrc": "/preview-content/?resource=ai-empty-state"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "onboarding-checklist",
+            "error": null,
+            "at": 8859,
+            "frameSrc": "/preview-content/?resource=onboarding-checklist"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "onboarding-role-select",
+            "error": null,
+            "at": 8860,
+            "frameSrc": "/preview-content/?resource=onboarding-role-select"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "feature-steps",
+            "error": null,
+            "at": 8860,
+            "frameSrc": "/preview-content/?resource=feature-steps"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "first-run-state",
+            "error": null,
+            "at": 8861,
+            "frameSrc": "/preview-content/?resource=first-run-state"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "onboarding-wizard",
+            "error": null,
+            "at": 8870,
+            "frameSrc": "/preview-content/?resource=onboarding-wizard"
+          }
+        ],
+        "previewErrors": [],
+        "visibleUnavailable": []
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "browserCancellations": [
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/react.B6PPDU_E.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accessibility-commitment-section",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/react.B6PPDU_E.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/react.B6PPDU_E.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion-spring",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/react.B6PPDU_E.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=admin-console-shell",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/react.B6PPDU_E.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=advanced-data-table",
+            "phase": "user-filtered-catalogue"
+          }
+        ]
+      },
+      "screenshot": "explore-recheck-3-1440x900.png"
+    },
+    {
+      "repeat": 4,
+      "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "throttle": {
+        "latencyMs": 150,
+        "downloadBitsPerSecond": 1600000,
+        "uploadBitsPerSecond": 750000,
+        "cpuSlowdownFactor": 4
+      },
+      "routeReadyMs": 4417,
+      "firstPreviewReadyMs": 4455,
+      "browserMetrics": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "navigation": [
+          {
+            "responseStartMs": 88,
+            "domContentLoadedMs": 794,
+            "loadEventMs": 795,
+            "durationMs": 795,
+            "transferBytes": 7199
+          }
+        ],
+        "catalogue": [
+          {
+            "startMs": 2058,
+            "durationMs": 876,
+            "transferBytes": 140645,
+            "encodedBytes": 140345
+          }
+        ],
+        "firstPreviewTitle": "Onboarding Role Select actual preview",
+        "readyMessages": [
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "feature-steps",
+            "error": null,
+            "at": 8488,
+            "frameSrc": "/preview-content/?resource=feature-steps"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "ai-empty-state",
+            "error": null,
+            "at": 8791,
+            "frameSrc": "/preview-content/?resource=ai-empty-state"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "onboarding-checklist",
+            "error": null,
+            "at": 8796,
+            "frameSrc": "/preview-content/?resource=onboarding-checklist"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "first-run-state",
+            "error": null,
+            "at": 8816,
+            "frameSrc": "/preview-content/?resource=first-run-state"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "onboarding-wizard",
+            "error": null,
+            "at": 8817,
+            "frameSrc": "/preview-content/?resource=onboarding-wizard"
+          },
+          {
+            "type": "TESSELLATE_PREVIEW_READY",
+            "resourceId": "onboarding-role-select",
+            "error": null,
+            "at": 8817,
+            "frameSrc": "/preview-content/?resource=onboarding-role-select"
+          }
+        ],
+        "previewErrors": [],
+        "visibleUnavailable": []
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "browserCancellations": [
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/browser.6rTDn1Tu.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accessibility-commitment-section",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.DHhhL8Zf.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accessibility-commitment-section",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.DHhhL8Zf.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/browser.6rTDn1Tu.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.DHhhL8Zf.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion-spring",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/browser.6rTDn1Tu.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion-spring",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/browser.6rTDn1Tu.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=activity-feed",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.DHhhL8Zf.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=activity-feed",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.DHhhL8Zf.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=admin-console-shell",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/browser.6rTDn1Tu.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=admin-console-shell",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/browser.6rTDn1Tu.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=advanced-data-table",
+            "phase": "user-filtered-catalogue"
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.DHhhL8Zf.js",
+            "frameUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=advanced-data-table",
+            "phase": "user-filtered-catalogue"
+          }
+        ]
+      },
+      "screenshot": "explore-recheck-4-1440x900.png"
+    }
+  ],
+  "observations": [
+    "An earlier exploratory route-ready result of 15,582ms was not reproduced in this four-run fresh-browser repeat (4,417–5,754ms). The four measured first relevant previews were all under the 8,000ms budget.",
+    "A long-lived DevTools tab briefly showed Preview unavailable for First Run State. The direct resource detail route and all four fresh preview runs loaded the resource and emitted READY with no preview error; no separate defect was filed."
+  ]
+}

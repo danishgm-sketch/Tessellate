@@ -1,0 +1,29 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=local-ebad6eca-215a-402b-859a-8dd99d86f35a",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "checks": {
+    "duplicateScreenCards": [
+      "Marketing Home (Copy)/marketing-home-copy",
+      "Marketing Home (Copy 2)/marketing-home-copy-2"
+    ],
+    "duplicateSlugs": [
+      "/marketing-home-copy",
+      "/marketing-home-copy-2"
+    ],
+    "duplicateIds": {
+      "screenIds": [],
+      "nodeIds": [],
+      "duplicateRoutes": []
+    },
+    "exportedSchemaValid": true
+  },
+  "screenshot": "quality\\evidence\\step-19\\after\\duplicate-screen-collision.png"
+}

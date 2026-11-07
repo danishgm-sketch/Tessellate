@@ -1,0 +1,33 @@
+{
+  "findingId": "SEC-37-072",
+  "severity": "medium",
+  "title": "Registry gate accepted executable URLs passed to browser navigation methods",
+  "status": "fixed_locally",
+  "reproduction": {
+    "source": "const destination = 'java' + 'script:alert(1)'; window.location.assign(destination); window.location.replace('javascript:alert(2)');",
+    "additionalAliases": "const navigation = window.location; navigation.assign(destination); location = 'javascript:alert(3)';",
+    "mutableAndComputedReferences": "let navigation = window.location; navigation.assign(destination); window['location'].assign(destination); window.location['replace'](destination);",
+    "beforeFix": "The source-isolation check returned pass for location navigation calls, const and mutable aliases of window.location, computed location/method properties, and assignment to the bare global location identifier.",
+    "afterFix": "Calls to location.assign() and location.replace(), statically resolved const or mutable location aliases, computed browser location/method properties, and browser location assignments with executable or active-document URLs fail the source-isolation check."
+  },
+  "rootCause": "The AST source scanner inspected URL-valued JSX attributes and some DOM assignments but did not inspect navigation calls on browser location objects.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Recognize browser location objects on window, document, globalThis, self, parent, top and the global location identifier. Inspect assign() and replace() arguments using the existing static-string resolver and apply the executable-scheme checks without executing submitted source.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"browser navigation methods\"",
+    "redBeforeFixResult": "failed as expected: executable URLs passed to assign() and replace() returned pass",
+    "aliasAndAssignmentRedBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"bare and aliased location references\"",
+    "aliasAndAssignmentRedBeforeFixResult": "failed as expected: executable navigation through a const location alias and bare global assignment returned pass",
+    "mutableAndComputedRedBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"mutable and computed location references\"",
+    "mutableAndComputedRedBeforeFixResult": "failed as expected: mutable aliases and computed location/method properties returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "38 tests passed",
+    "packageTypecheck": "passed",
+    "focusedLint": "passed",
+    "untrustedCodeExecuted": false,
+    "runtimeBoundary": "This is local registry-gate evidence; sandbox and deployed CSP verification remain separate release-candidate checks."
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "1.0.0",
+  "site": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "version": 39,
+    "deploymentId": "appgdep_6adfddd3ee18819186f51d6ae8069741",
+    "canonicalCommit": "0c9e3910466626f16a545a65eb4570959023a936",
+    "sitesSourceCommit": "3831c70ea17200b93eb4b18b2e537c1da418f597"
+  },
+  "browser": "Chrome DevTools MCP",
+  "capturedAt": "2026-10-26",
+  "fieldData": "CrUX has no field data for this URL; these are individual lab traces, not 75th-percentile field results.",
+  "traces": [
+    {
+      "viewport": "1440x900",
+      "network": "Fast 3G",
+      "cpuSlowdown": "1x",
+      "coldLoad": true,
+      "lcpMs": 1484,
+      "ttfbMs": 61,
+      "renderDelayMs": 1423,
+      "cls": 0,
+      "lcpElement": "Hero supporting text (text node; no external resource load)"
+    },
+    {
+      "viewport": "390x844",
+      "network": "Fast 3G",
+      "cpuSlowdown": "4x",
+      "coldLoad": true,
+      "lcpMs": 1741,
+      "ttfbMs": 56,
+      "renderDelayMs": 1685,
+      "cls": 0,
+      "lcpElement": "Hero supporting text (text node; no external resource load)",
+      "forcedReflow": {
+        "durationMs": 99,
+        "attribution": "Unattributed; Chrome identified no top-level function",
+        "estimatedMetricSavings": "none"
+      },
+      "dom": {
+        "elements": 855,
+        "depth": 13,
+        "maximumChildren": 14,
+        "estimatedSavings": "none"
+      }
+    }
+  ],
+  "lighthouse": {
+    "desktop": {
+      "accessibility": 100,
+      "bestPractices": 81,
+      "seo": 100,
+      "agenticBrowsing": 100,
+      "passed": 53,
+      "failed": 1
+    },
+    "mobile": {
+      "accessibility": 100,
+      "bestPractices": 81,
+      "seo": 100,
+      "agenticBrowsing": 100,
+      "passed": 53,
+      "failed": 1
+    },
+    "onlyFailedAudit": "deprecations: three deprecated API issue messages from the Sites/Cloudflare challenge bootstrap; tracked separately as AUD-356, not attributed to Tessellate application code."
+  },
+  "network": {
+    "desktopRequests": 29,
+    "applicationFailures": 0,
+    "applicationConsoleErrors": 0,
+    "hostConsoleIssues": 3,
+    "hostChallenge": "Injected challenge bootstrap redirected (302) then loaded (200); its host POST returned 200. No essential application request failed.",
+    "catalogue": "Homepage did not request /data/catalog.json; catalogue loading is scoped to Compose."
+  },
+  "assessment": {
+    "lcpThresholdReference": "https://web.dev/articles/vitals",
+    "observedLabLcp": "Both one-run lab LCP readings are below 2500ms; do not infer field percentiles or INP from this load trace.",
+    "layoutStability": "CLS was 0.00 in both traces.",
+    "action": "No application change from these traces: Chrome estimated zero LCP/FCP savings for render-blocking requests; the forced-reflow attribution had no identified owner and no estimated savings. Retain the separate host warning AUD-356."
+  },
+  "limitations": [
+    "A single cold trace per viewport is a smoke measurement, not a repeatable distribution.",
+    "INP was not measured; field CrUX data is unavailable.",
+    "The page was tested with synthetic Fast 3G and CPU throttling; these conditions are not user field data."
+  ]
+}

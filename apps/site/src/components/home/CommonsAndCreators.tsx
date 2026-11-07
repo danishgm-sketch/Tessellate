@@ -19,7 +19,9 @@ export function CommonsAndCreators() {
           </h3>
 
           <p className="text-sm sm:text-base text-[#62666F] leading-relaxed">
-            Interface building blocks belong in the public commons. Tessellate will never lock high-value tables or charts behind a paywalled subscription. The entire component and pattern vocabulary is freely accessible to developers and autonomous agents forever.
+            Interface building blocks belong in the public commons. Tessellate will never lock
+            high-value tables or charts behind a paywalled subscription. The entire component and
+            pattern vocabulary is freely accessible to developers and autonomous agents forever.
           </p>
 
           <div className="flex flex-wrap gap-2 pt-2">
@@ -45,11 +47,13 @@ export function CommonsAndCreators() {
           </div>
 
           <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#111217]">
-            Publish once. Compatible with every system.
+            Publish resources with a declared contract.
           </h3>
 
           <p className="text-sm sm:text-base text-[#62666F] leading-relaxed">
-            Authors and designers publish resources using shadcn-compatible schema manifests. Because every resource declares its Design DNA priors and slots, other developers can instantly integrate and re-theme your components without CSS conflicts.
+            Resource manifests can describe variants, slots, dependencies, and Design DNA priors.
+            This helps compatible React tools inspect a resource before integration; each target
+            application still needs its own review.
           </p>
 
           <div className="pt-2">

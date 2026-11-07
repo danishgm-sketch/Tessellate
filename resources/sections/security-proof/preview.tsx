@@ -7,7 +7,7 @@ export function SecurityProofPreview() {
   return (
     <div className="w-full flex flex-col">
       <div className="p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs">
-        <span className="font-semibold text-neutral-600">Security Proof Preview</span>
+        <span className="font-semibold text-neutral-600">Security Review Preview</span>
         <div className="flex items-center gap-1.5">
           {(['quiet', 'expressive', 'nocturne'] as SecurityProofVariant[]).map((v) => (
             <button

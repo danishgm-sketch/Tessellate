@@ -10,9 +10,9 @@ export interface TestimonialCarouselProps {
 export function TestimonialCarousel({
   variant = 'quiet',
   items = [
-    { quote: 'We rebuilt our entire data suite using Tessellate in under three weeks.', author: 'Samantha Reed', company: 'Nova Logic' },
-    { quote: 'The Design DNA system eliminated endless meetings about spacing and colors.', author: 'Liam Gallagher', company: 'Aether OS' },
-    { quote: 'Our lighthouse scores went from 68 to 100 on desktop and mobile.', author: 'Kenji Sato', company: 'HyperScale' },
+    { quote: 'Illustrative story: describe a customer workflow with their permission.', author: 'Example Customer A', company: 'Example Organisation A' },
+    { quote: 'Illustrative story: include a specific, verifiable outcome.', author: 'Example Customer B', company: 'Example Organisation B' },
+    { quote: 'Illustrative story: link any performance claim to measured evidence.', author: 'Example Customer C', company: 'Example Organisation C' },
   ],
 }: TestimonialCarouselProps) {
   const [index, setIndex] = useState(0);

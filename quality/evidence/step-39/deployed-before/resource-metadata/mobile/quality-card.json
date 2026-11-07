@@ -1,0 +1,46 @@
+{
+  "capturedAt": "2026-10-20T20:45:46.474Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=success-state",
+  "viewport": "390x844",
+  "status": 200,
+  "title": "Explore — Tessellate Open Interface Library",
+  "visibleText": "Tessellate\nStart building\nExplore Resource Library\n\nDiscover vetted UI primitives, blocks, and design systems composed for modern products.\n\nFilters\nTry:\nBloomberg-style analytics\ncinematic product hero\nAI research sidebar\nmobile navigation\nonboarding\nbilling overview\ndata table\nempty state\nShowing 1 of 1 resource\nPreview\nSuccess State\nstate\nTessellate Core\n98\nMIT\n\nLive sandbox preview · source download\n\nTessellate Interface Intelligence Layer — Free, open resource vocabulary under permissive licenses.",
+  "layout": {
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "horizontalOverflow": false
+  },
+  "accessibility": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "nodes": [
+        {
+          "target": [
+            "iframe",
+            "h3"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.37 (foreground color: #009966, background color: #f0f8f1, font size: 13.5pt (18px), font weight: bold). Expected contrast ratio of 4.5:1",
+          "html": "<h3 class=\"text-lg font-bold tracking-tight text-emerald-600 dark:text-emerald-400\">System Export Completed Successfully</h3>"
+        },
+        {
+          "target": [
+            "iframe",
+            "button"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "html": "<button class=\"px-4 py-2 text-xs font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700\">View Exported Files</button>"
+        }
+      ]
+    }
+  ],
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\deployed-before\\resource-metadata\\mobile\\quality-card.png"
+}

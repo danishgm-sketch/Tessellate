@@ -1,0 +1,34 @@
+{
+  "capturedAt": "2026-11-03T04:11:07.108Z",
+  "route": "http://127.0.0.1:4323/explore?q=onboarding",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "throttle": {
+    "latencyMs": 150,
+    "downloadBitsPerSecond": 1600000,
+    "uploadBitsPerSecond": 750000,
+    "cpuSlowdownFactor": 4
+  },
+  "routeReadyMs": 4618,
+  "firstPreviewReadyMs": 3498,
+  "browserMetrics": {
+    "lcpMs": 780,
+    "cls": 0.02761042524005487,
+    "longTaskMs": 1264,
+    "longTaskCount": 12,
+    "catalogueTransferBytes": 145640,
+    "documentWidth": 1440,
+    "viewportWidth": 1440
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "browserCancellations": [],
+    "httpErrors": []
+  },
+  "cancellationDisposition": "Preview module requests aborted when nonmatching preview iframes unmount after the user filters the catalogue; recorded separately from failed network requests.",
+  "screenshot": "quality\\evidence\\step-38\\after\\constrained-and-large\\explore-slow-4g-cpu4.png"
+}

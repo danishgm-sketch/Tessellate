@@ -1,0 +1,48 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": 52,
+  "observedAt": "2026-10-28",
+  "tool": "Chrome DevTools MCP performance trace",
+  "traceMode": "Cold navigation, 1x CPU, no network throttling.",
+  "fieldData": "No CrUX data is available; navigation traces do not synthesize representative INP.",
+  "traces": [
+    {
+      "route": "/",
+      "viewport": "1440x900",
+      "lcpMs": 278,
+      "ttfbMs": null,
+      "renderDelayMs": null,
+      "cls": 0,
+      "notes": "Value was captured in the prior v52 DevTools trace; detailed breakdown unavailable in this continuation."
+    },
+    {
+      "route": "/compose",
+      "viewport": "1440x900",
+      "lcpMs": 140,
+      "ttfbMs": 40,
+      "renderDelayMs": 100,
+      "cls": 0,
+      "renderBlockingEstimatedSavingsMs": 0
+    },
+    {
+      "route": "/explore",
+      "viewport": "1440x900",
+      "lcpMs": 142,
+      "ttfbMs": 44,
+      "renderDelayMs": 98,
+      "cls": 0,
+      "renderBlockingEstimatedSavingsMs": 0,
+      "advisory": "ForcedReflow insight 52ms; unattributed and no top-level task or estimated savings."
+    },
+    {
+      "route": "/workbench?project=proj-direction-c-fac3e48987084b118aaa2b606861e08ddirc",
+      "viewport": "1440x900",
+      "lcpMs": 635,
+      "ttfbMs": 66,
+      "renderDelayMs": 569,
+      "cls": 0,
+      "renderBlockingEstimatedSavingsMs": 0
+    }
+  ],
+  "traceArtifact": "Chrome DevTools MCP returned inline trace metrics but denied trace export outside its configured workspace roots."
+}

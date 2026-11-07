@@ -1,3 +1,3 @@
 # Plan Feature Matrix
 
-Categorized feature audit table grouping capabilities under distinct architectural pillars.
+Grouped plan comparison with four illustrative rows. Replace sample labels and values before publication.

@@ -23,7 +23,7 @@ export async function runGate(
   }
 
   // Pretty terminal formatting
-  console.log('\n🛡️  Tessellate Registry Quality Gate');
+  console.log(`\n🛡️  Tessellate Registry ${report.checks.length}-Check Static Contribution Gate`);
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log(`Resource:     ${report.resourceName} (${report.resourceSlug})`);
   console.log(`Directory:    ${dir}`);
@@ -31,10 +31,10 @@ export async function runGate(
 
   const statusSymbol =
     report.overallStatus === 'approved'
-      ? '🟢 APPROVED FOR REGISTRY'
+      ? '🟢 STATIC CHECKS PASSED — READY FOR HUMAN REVIEW'
       : report.overallStatus === 'rejected'
-      ? '🔴 REJECTED'
-      : '🟡 NEEDS REVIEW';
+        ? '🔴 REJECTED'
+        : '🟡 NEEDS REVIEW';
 
   console.log(`Verdict:      ${statusSymbol}`);
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');

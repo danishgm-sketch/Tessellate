@@ -1,0 +1,264 @@
+{
+  "step": 29,
+  "status": "complete",
+  "completedAt": "2026-10-19",
+  "branch": "consolidation/product-hardening",
+  "capabilityTier": "BETA",
+  "completionRationale": "The supported Beta contract passes real Vite and Next starter builds/browser checks, a 3,504-file shadcn route/layout mapping, and safe source-preserving patch verification. Partial fidelity and patch limits remain visible in the CLI and persisted manifest.",
+  "fixCommit": null,
+  "verification": {
+    "pnpm install --frozen-lockfile": "PASS (baseline)",
+    "focused ingestion and CLI tests": {
+      "status": "PASS",
+      "files": 4,
+      "tests": 53
+    },
+    "pnpm test": {
+      "status": "PASS",
+      "files": 67,
+      "tests": 977
+    },
+    "pnpm typecheck": "PASS",
+    "pnpm lint": {
+      "status": "PASS",
+      "errors": 0,
+      "existingWarningsOutsideIngestion": 43
+    },
+    "pnpm audit:all": {
+      "status": "PASS",
+      "releaseGates": 16,
+      "catalogueResources": 324,
+      "astroPages": 717,
+      "securityViolations": 0,
+      "licenceProvenanceFailures": 0,
+      "gzipBundleBudgets": "PASS"
+    },
+    "pnpm test:e2e": {
+      "status": "PASS",
+      "passed": 253,
+      "skipped": 94,
+      "failed": 0,
+      "mainChromium": { "passed": 205, "skipped": 67 },
+      "sitesWorkerChromium": { "passed": 45, "skipped": 27 },
+      "previewAppChromium": { "passed": 3, "skipped": 0 },
+      "sitesWorkerResources": 324,
+      "sitesWorkerCertifiedWidths": "all configured",
+      "scopeNote": "This run predates later importer-only DNA and route-discovery fixes; ingestion is not shipped in the browser bundles and CLI ingestion is not exercised by browser E2E."
+    },
+    "externalFixtures": {
+      "evidence": "quality/evidence/step-29/upstream-fixtures.json",
+      "vite": "PASS: clean install, build, desktop/mobile browser and patch interaction",
+      "next": "PASS: clean install, build and desktop/mobile browser",
+      "shadcn": "DEGRADED: ingestion associates 11 layout files across 19 routes; install and upstream generation pass; Webpack build plus three-route browser smoke pass with warnings; default Turbopack build and local Vercel Analytics requests fail as documented."
+    },
+    "git diff --check": "PASS (after evidence refresh)"
+  },
+  "findings": [
+    {
+      "id": "ING-29-01",
+      "severity": "high",
+      "title": "Reusable TSX files were treated as product routes",
+      "rootCause": "Route and screen discovery relied on filename and source-string heuristics.",
+      "remediation": "Use TypeScript AST route entrypoint detection for supported Vite and Next conventions; exclude component directories and reject unsupported empty input.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: maps Vite and Next route entrypoints",
+        "packages/ingest/src/__tests__/ingest.test.ts: recognizes anonymous default React route components"
+      ],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-02",
+      "severity": "high",
+      "title": "Ingestion fabricated product intent and navigation",
+      "rootCause": "Regex matches assigned archetypes, generic screen roles, and sidebar assumptions.",
+      "remediation": "Emit unknown archetype and unspecified navigation; disclose that product intent, data bindings, and business behavior are not inferred.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: maps Vite and Next routes with unknown product intent",
+        "packages/cli/src/__tests__/cli.test.ts: ingestion output labels partial scope"
+      ],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-03",
+      "severity": "high",
+      "title": "Malformed TSX could produce inferred structure",
+      "rootCause": "Source was not parsed and checked before mapping.",
+      "remediation": "Reject TypeScript parser diagnostics before producing a manifest or attempting a patch.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: rejects malformed TSX entrypoints",
+        "packages/ingest/src/__tests__/ingest.test.ts: rejects syntactically invalid patch input"
+      ],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-04",
+      "severity": "high",
+      "title": "Arbitrary regex or string replacement could edit unrelated source",
+      "rootCause": "A broad text replacement function was presented as AST-aware source mutation.",
+      "remediation": "Use SAFE, REVIEW_REQUIRED, and UNSUPPORTED; permit only one exact static className edit and preserve source for uncertain cases.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: applies a unique static class mutation",
+        "packages/ingest/src/__tests__/ingest.test.ts: rejects stale, dynamic, and broad text edits"
+      ],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-05",
+      "severity": "high",
+      "title": "Patch paths and unified diffs were unsafe or unusable",
+      "rootCause": "Diff generation did not validate paths and generated incorrect hunk context.",
+      "remediation": "Reject unsafe paths and emit valid hunks with source line counts and final-newline markers.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: Git apply-checks and applies edits",
+        "packages/ingest/src/__tests__/ingest.test.ts: rejects unsafe diff paths"
+      ],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-06",
+      "severity": "medium",
+      "title": "DNA inference treated comments and absent style evidence as live values",
+      "rootCause": "Raw source text and fallback defaults were treated as style evidence.",
+      "remediation": "Read static JSX class attributes through the AST and return unknown with zero confidence for unsupported or absent evidence.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: ignores comments and CSS-module class decoys",
+        "packages/ingest/src/__tests__/ingest.test.ts: dynamic-style decoys keep values unknown"
+      ],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-07",
+      "severity": "high",
+      "title": "CLI manifest output could overwrite an input source file",
+      "rootCause": "Resolved output paths were not compared with source paths or real symlink targets.",
+      "remediation": "Resolve absolute and real paths and reject source-file collisions before writing.",
+      "evidence": ["packages/cli/src/__tests__/cli.test.ts: refuses to overwrite an input source"],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-08",
+      "severity": "medium",
+      "title": "A helper component without a default export could satisfy a Next route",
+      "rootCause": "Any JSX component declaration could satisfy a conventional route file.",
+      "remediation": "Require a default export for app, pages, and routes entrypoints; keep named-component inference only for Vite entrypoints.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: rejects helper without default page export"
+      ],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-09",
+      "severity": "medium",
+      "title": "Palette-only evidence overstated Design DNA confidence",
+      "rootCause": "Confidence counted palette evidence despite no matching Design DNA field being inferred.",
+      "remediation": "Count confidence only for supported Design DNA fields and disclose inferred fields separately from schema defaults.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: palette-only evidence has zero DNA confidence",
+        "quality/evidence/step-29/upstream-fixtures.json: official Vite and Next imports"
+      ],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-10",
+      "severity": "high",
+      "title": "Next catch-all route paths were malformed",
+      "rootCause": "Generic parameter normalization rewrote bracketed catch-all syntax.",
+      "remediation": "Preserve Next catch-all and optional catch-all segments while normalizing simple dynamic parameters.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: preserves dynamic and catch-all routes",
+        "quality/evidence/step-29/upstream-fixtures.json: shadcn v4 route mapping"
+      ],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-11",
+      "severity": "low",
+      "title": "A root Next page was labelled with its generic function name",
+      "rootCause": "Root screen naming reused the implementation component name.",
+      "remediation": "Name the root route Home in the manifest and screen graph.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: names a Next.js root route Home",
+        "quality/evidence/step-29/upstream-fixtures.json: official Next starter"
+      ],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-12",
+      "severity": "medium",
+      "title": "A dark-mode override was treated as the default visual mode",
+      "rootCause": "Mode detection stripped Tailwind variant prefixes and counted dark: overrides as base classes.",
+      "remediation": "Ignore variant-prefixed class tokens when inferring the base mode and disclose unknown when only overrides are present.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: does not infer the default visual mode from dark-mode override classes"
+      ],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-13",
+      "severity": "low",
+      "title": "CLI black-box tests used a timeout shorter than cold subprocess startup",
+      "rootCause": "A generic five-second Vitest timeout was shorter than tsx startup on the Windows workspace, despite the CLI command having a 30-second cap.",
+      "remediation": "Set a 15-second timeout on the CLI black-box test file, which exercises fresh subprocess launches.",
+      "evidence": ["packages/cli/src/__tests__/cli.test.ts: cold subprocess tests"],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-14",
+      "severity": "medium",
+      "title": "Variant-prefixed palette and curvature utilities polluted base DNA inference",
+      "rootCause": "Palette and curvature matching counted responsive and interaction variants even though variants do not establish the default visual state.",
+      "remediation": "Infer palette, curvature, and visual mode only from static unprefixed class tokens; preserve variant utilities as unsupported evidence.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: variant-prefixed utilities do not alter base palette or curvature",
+        "Regression failed before the fix (reported emerald) and passes after the fix (unknown/default)."
+      ],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-15",
+      "severity": "medium",
+      "title": "Next.js layout files were not associated with individual routes",
+      "rootCause": "Layout discovery collected file paths without matching directory ancestry to route entrypoints.",
+      "remediation": "Report applicable layout paths per IngestedScreen, outermost to innermost, including route groups; disclose that the ProjectManifest tree still does not compose them.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: route layout association covers root, nested, route-group, and unrelated routes",
+        "Regression failed before the change because layoutFilePaths was undefined on each screen."
+      ],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-16",
+      "severity": "medium",
+      "title": "An isolated capitalized component was presented as an imported route",
+      "rootCause": "A generic root-file fallback treated any capitalized TSX filename as a route without evidence of a supported router entrypoint.",
+      "remediation": "Restrict route recognition to supported Vite App and conventional Next.js route files; reject isolated helper/component files.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: rejects an isolated reusable component instead of presenting it as a route",
+        "Regression failed before the fix because src/Button.tsx was reported as /button."
+      ],
+      "status": "fixed_locally"
+    },
+    {
+      "id": "ING-29-17",
+      "severity": "medium",
+      "title": "The saved manifest lost the Next.js layout omission warning",
+      "rootCause": "Layout omission was recorded only in transient ingestion warnings and not in the persisted ProjectManifest.",
+      "remediation": "Include the missing-layout caveat in the manifest description whenever Next.js layouts are found; verify the serialized CLI output.",
+      "evidence": [
+        "packages/ingest/src/__tests__/ingest.test.ts: layout route mapping keeps the manifest limitation explicit",
+        "packages/cli/src/__tests__/cli.test.ts: saved manifest preserves the omitted Next.js layout limitation",
+        "Regression failed before the change because the persisted description omitted layout fidelity."
+      ],
+      "status": "fixed_locally"
+    }
+  ],
+  "openAcceptance": [],
+  "betaLimitations": [
+    "Imported project output is a partial route and JSX structure, not a source-preserving application representation.",
+    "CSS Modules, inline/dynamic styles, composed layouts, static props, data bindings, and business behavior are not reconstructed; the saved manifest and CLI disclose these limits.",
+    "Patch emission supports only an exact, unique static JSX className edit and rejects broader or ambiguous edits.",
+    "The shadcn fixture's default Turbopack build and local Vercel Analytics requests remain degraded upstream fixture behavior, not Tessellate guarantees."
+  ],
+  "evidenceDocument": "quality/STEP_29_EVIDENCE.md",
+  "upstreamFixtureEvidence": "quality/evidence/step-29/upstream-fixtures.json"
+}

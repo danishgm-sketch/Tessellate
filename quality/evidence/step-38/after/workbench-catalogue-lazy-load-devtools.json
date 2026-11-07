@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-10-26",
+  "route": "http://127.0.0.1:4323/workbench?project=aud343-local-postfix",
+  "environment": {
+    "runtime": "local Sites Worker",
+    "browser": "Chrome DevTools MCP",
+    "viewport": "390x844",
+    "deviceScaleFactor": 1,
+    "cpuThrottlingRate": 4,
+    "network": "Fast 4G",
+    "cache": "cold, bypassed"
+  },
+  "project": {
+    "id": "aud343-local-postfix",
+    "fixture": "apps/site/public/data/showcases/showcase-playful-hr.json",
+    "screens": 7,
+    "storage": "browser localStorage"
+  },
+  "runs": [
+    { "lcpMs": 2176, "ttfbMs": 6, "renderDelayMs": 2170, "cls": 0 },
+    { "lcpMs": 2126, "ttfbMs": 6, "renderDelayMs": 2119, "cls": 0 },
+    { "lcpMs": 2162, "ttfbMs": 11, "renderDelayMs": 2151, "cls": 0 }
+  ],
+  "lcpElement": "text paragraph; no network resource",
+  "networkDependencyTree": {
+    "maximumCriticalPathLatencyMs": 1197,
+    "catalogueRequestedBeforeSavedCanvas": false,
+    "criticalRequests": [
+      "/workbench?project=aud343-local-postfix",
+      "/_astro/index.DabJZWf4.js",
+      "/_astro/client.CZ5CiHPg.js",
+      "/_astro/react.B6PPDU_E.js"
+    ],
+    "estimatedLcpSavingsMs": null
+  },
+  "dom": {
+    "elements": 225,
+    "depth": 16,
+    "largestLayoutUpdateMs": 282,
+    "estimatedSavings": "none"
+  },
+  "beforeComparison": {
+    "source": "public v30 audit, same viewport/network/CPU profile",
+    "lcpSamplesMs": [2415, 2427, 2447],
+    "note": "Different runtime endpoint than the local candidate; treat as directional rather than a controlled A/B comparison. Earlier public v30 samples in the audit were 2559ms and 2809ms."
+  },
+  "limitations": [
+    "CrUX field data is unavailable.",
+    "Approximately 2.1 seconds of the local LCP remains client render delay.",
+    "Chrome DevTools identified no source-level hotspot or credible LCP saving."
+  ],
+  "rawTrace": "Not persisted: Chrome DevTools MCP rejected writing trace files into the repository workspace. Metrics and insights were transcribed from the live trace output."
+}

@@ -1,0 +1,34 @@
+{
+  "findingId": "SEC-37-100",
+  "severity": "medium",
+  "title": "Scheme-relative and scheme-only resource URLs bypassed network admission checks",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "<img src=\"//collector.invalid/pixel\" alt=\"\" />",
+      "<video poster=\"//collector.invalid/poster.png\" />",
+      "React.createElement('img', { src: 'https:collector.invalid/pixel' })",
+      "Object.assign(document.createElement('img'), { src: '//collector.invalid/pixel' })",
+      "<img srcSet=\"/local.png 1x, //collector.invalid/retina.png 2x\" alt=\"\" />"
+    ],
+    "beforeFix": "The registry gate returned pass for protocol-relative media/resource attributes and for scheme-only HTTP(S) URLs in React/DOM forms.",
+    "browserEvidence": "Chromium on an HTTP preview origin requested http://collector.invalid/pixel for //collector.invalid/pixel and https://collector.invalid/pixel for https:collector.invalid/pixel. Playwright intercepted and aborted both requests before network access."
+  },
+  "rootCause": "Resource-attribute checks used a strict /^https?:\\/\\// expression, unlike the broadened CSS check, and did not inspect every srcset candidate.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Use one normalized HTTP(S)/scheme-relative classifier for resource attributes, reflected DOM mutations, resource constructors, module/network URL arguments, and each candidate in srcset.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"scheme-relative and scheme-only forms\"",
+    "redBeforeFixResult": "failed as expected: JSX img src=//collector.invalid/pixel returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"scheme-relative and scheme-only forms\"",
+    "targetedAfterFixResult": "passed; JSX, React factory, DOM property, setAttribute, Object.assign, and later srcset candidates are rejected",
+    "fullRegistrySuite": "67 tests passed",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "Static source admission plus a browser URL-loading probe with collector.invalid requests intercepted and aborted. Deployed CSP verification remains pending.",
+  "capturedAt": "2026-10-21T18:05:28Z"
+}

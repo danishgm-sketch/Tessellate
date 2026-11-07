@@ -49,6 +49,7 @@ function createShowcaseManifest(params: {
     requiredRoles: ['content'],
     optionalRoles: [],
   }));
+  const screenIdsByGraphNodeId = new Map(screens.map((screen) => [screen.screenNodeId, screen.id]));
 
   const manifest: ProjectManifest = {
     schemaVersion: '1.0.0',
@@ -109,7 +110,10 @@ function createShowcaseManifest(params: {
     screens,
     navigation: {
       model: params.navigationModel,
-      primaryItems: params.navItems,
+      primaryItems: params.navItems.map((item) => ({
+        ...item,
+        targetScreenId: screenIdsByGraphNodeId.get(item.targetScreenId) ?? item.targetScreenId,
+      })),
     },
     assets: [],
     locks: [],
@@ -245,7 +249,7 @@ const dnaHospitality: DesignDNA = {
   surfacePersonality: 'warm-vellum-paper',
 };
 
-// 4. Playful Collaborative HR (Professional + Playful, Pill Rail)
+// 4. Employee Experience (Professional + Playful, Pill Rail)
 const dnaHr: DesignDNA = {
   ...DEFAULT_DESIGN_DNA,
   professionalism: 85,
@@ -273,7 +277,7 @@ const dnaHr: DesignDNA = {
   trust: 90,
   accessibilityPriority: 98,
   performancePriority: 96,
-  primaryArchetype: 'hr',
+  primaryArchetype: 'saas',
   visualMode: 'light',
   geometryFamily: 'soft-pill',
   navigationModel: 'pill-rail',
@@ -464,7 +468,12 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
         { label: 'Watchlists', targetScreenId: 'node-watchlists' },
         { label: 'Reports', targetScreenId: 'node-reports-library' },
       ],
-      pageIds: ['app-overview-dashboard', 'analytics-dashboard-page', 'watchlists-page', 'reports-library'],
+      pageIds: [
+        'app-overview-dashboard',
+        'analytics-dashboard-page',
+        'watchlists-page',
+        'reports-library',
+      ],
     }),
   },
 
@@ -491,7 +500,12 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
         { label: 'Developers', targetScreenId: 'node-developers' },
         { label: 'Integrations', targetScreenId: 'node-integrations' },
       ],
-      pageIds: ['marketing-home', 'research-workspace', 'developer-api-landing', 'api-integrations'],
+      pageIds: [
+        'marketing-home',
+        'research-workspace',
+        'developer-api-landing',
+        'api-integrations',
+      ],
     }),
   },
 
@@ -499,7 +513,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
   {
     id: 'showcase-luxury-hospitality',
     name: 'Velluto Private Estate Residences',
-    tagline: 'Bespoke global villa reservations and editorial destination dossiers',
+    tagline: 'Private estate stays with thoughtful concierge service and clear reservation terms',
     archetypeId: 'hospitality',
     navigationModel: 'split-horizontal',
     dnaPresetName: 'luxury-editorial',
@@ -508,8 +522,9 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     manifest: createShowcaseManifest({
       id: 'showcase-luxury-hospitality',
       name: 'Velluto Private Estate Residences',
-      description: 'Curated 5-star private estate reservations with editorial travel essays.',
-      archetypeTag: 'hospitality',
+      description:
+        'Luxury hospitality for private estate stays, with residence discovery, room details, concierge assistance, and clear reservation terms.',
+      archetypeTag: 'travel',
       dna: dnaHospitality,
       navigationModel: 'split-horizontal',
       navItems: [
@@ -524,18 +539,19 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
   // 4. Playful Collaborative HR
   {
     id: 'showcase-playful-hr',
-    name: 'Kudos Team Culture & Hiring',
-    tagline: 'Joyful applicant pipelines, peer recognition kudos, and people operations',
-    archetypeId: 'hr',
+    name: 'Kudos Employee Experience',
+    tagline: 'A warm workspace for colleagues to connect, onboard, and recognise one another',
+    archetypeId: 'saas',
     navigationModel: 'pill-rail',
     dnaPresetName: 'professional-playful',
     colorMode: 'light',
     designDNA: dnaHr,
     manifest: createShowcaseManifest({
       id: 'showcase-playful-hr',
-      name: 'Kudos Team Culture & Hiring',
-      description: 'Approachably joyful hiring pipelines and peer recognition kudos.',
-      archetypeTag: 'hr',
+      name: 'Kudos Employee Experience',
+      description:
+        'A connected employee experience for colleagues, teams, playful onboarding, peer recognition, and trusted workplace policies.',
+      archetypeTag: 'saas',
       dna: dnaHr,
       navigationModel: 'pill-rail',
       navItems: [
@@ -551,7 +567,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
   {
     id: 'showcase-luxury-ecommerce',
     name: 'Atelier Chronos Horology',
-    tagline: 'Artisanal mechanical timepieces and bespoke bespoke leatherwork catalogue',
+    tagline: 'Artisanal mechanical timepieces and bespoke leatherwork',
     archetypeId: 'ecommerce',
     navigationModel: 'minimal-editorial',
     dnaPresetName: 'high-end-commerce',
@@ -629,7 +645,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
   {
     id: 'showcase-minimal-productivity',
     name: 'Scribe Zen Monastic Notes',
-    tagline: 'Distraction-free markdown thought buffer with zero cloud latency',
+    tagline: 'A quiet markdown workspace for notes, focus, and the week ahead',
     archetypeId: 'productivity',
     navigationModel: 'floating-dock',
     dnaPresetName: 'quiet-productivity',

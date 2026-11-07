@@ -1,0 +1,28 @@
+{
+  "step": 42,
+  "id": "zip-download-failure-visible",
+  "status": "pass",
+  "url": "http://127.0.0.1:4323/workbench/?project=local-092898fd-79a7-46b5-aa45-25c9617e9389#screen-marketing-home",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "browser": "Chromium",
+  "injectedFailures": [
+    "URL.createObjectURL throws only for the generated application/zip Blob."
+  ],
+  "checks": {
+    "browserDownloadFailureShownToUser": true,
+    "failureDetailsPreserved": true,
+    "uncaughtExceptions": 0
+  },
+  "runtime": {
+    "consoleErrors": [
+      "Failed to generate standalone ZIP project: Error: Injected ZIP download creation failure\n    at URL.createObjectURL (<anonymous>:6:15)\n    at ie (http://127.0.0.1:4323/_astro/TopToolbar.CA0qmZkU.js:2:6274)"
+    ],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "quality/evidence/step-42/zip-download-failure-visible-sites-chromium.png"
+}

@@ -1,6 +1,9 @@
 ---
 import '../../styles/global.css';
-import { WorkbenchShell } from '@tessellate/workbench';
+import { WorkbenchShell } from '@tessellate/workbench/shell';
+import { WorkbenchStartup } from '@tessellate/workbench/startup';
+
+const hasProjectQuery = ['project', 'showcase', 'resource'].some((key) => Astro.url.searchParams.has(key));
 ---
 
 <!doctype html>
@@ -13,8 +16,32 @@ import { WorkbenchShell } from '@tessellate/workbench';
       name="description"
       content="Tessellate Workbench: Structured UI composition environment driven by semantic project nodes, Design DNA, resources and validated mutations."
     />
+    <script>
+      if (window.innerWidth < 1024) {
+        const starterRequest = (window as Window & { __tessellateWorkbenchStarterRequest?: Promise<unknown> }).__tessellateWorkbenchStarterRequest;
+        if (starterRequest) {
+          void import('@tessellate/renderer/browser').then(({ preloadManifestInitialViewportResources }) =>
+            starterRequest.then((manifest) => preloadManifestInitialViewportResources(manifest, 'screen-marketing-home')),
+          ).catch(() => undefined);
+        }
+      }
+    </script>
+    <script is:inline>
+      (() => {
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('project') || params.has('showcase') || params.has('resource')) return;
+        const request = fetch('/data/workbench-starter.json').then(async (response) => {
+          if (!response.ok) throw new Error(`Workbench starter HTTP ${response.status}`);
+          return response.json();
+        });
+        void request.catch(() => undefined);
+        window.__tessellateWorkbenchStarterRequest = request;
+      })();
+    </script>
   </head>
   <body class="h-full overflow-hidden bg-[#FAF9F6] text-[#111217] dark:bg-[#0B0D10] dark:text-[#F5F7FA] antialiased font-sans">
-    <WorkbenchShell client:only="react" />
+    <WorkbenchShell client:only="react">
+      <WorkbenchStartup slot="fallback" hasProjectQuery={hasProjectQuery} />
+    </WorkbenchShell>
   </body>
 </html>

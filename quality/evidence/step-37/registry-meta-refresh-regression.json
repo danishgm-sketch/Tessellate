@@ -1,0 +1,32 @@
+{
+  "findingId": "SEC-37-097",
+  "severity": "medium",
+  "title": "Automatic meta refresh navigation was not isolated in registry resources",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "<meta httpEquiv='refresh' content='0;url=https://collector.invalid/' />",
+      "React.createElement('meta', { httpEquiv: 'refresh', content: '0;url=https://collector.invalid/' })",
+      "document.createElement('meta') followed by httpEquiv='refresh' assignment or mutation"
+    ],
+    "beforeFix": "The gate returned pass for automatic redirects in JSX, React factories, and DOM-created meta elements.",
+    "afterFix": "The source gate rejects a known or unresolved refresh directive across JSX, React factories, direct DOM assignments, setAttribute, Object.assign, and property descriptor mutations."
+  },
+  "rootCause": "URL inspection covered navigation and resource attributes but did not classify meta httpEquiv refresh, an automatic navigation directive outside those attribute sets.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Reject static or unresolved meta refresh declarations across declarative, React factory, and DOM mutation forms; registry resources must not trigger automatic navigation.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"automatic meta refresh navigation\"",
+    "redBeforeFixResult": "failed as expected: JSX and React factory redirects passed before the fix; probes also passed for direct DOM property and setAttribute forms",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "65 tests passed",
+    "canonicalResourceIsolationMatrix": "324 resources passed, zero warnings, zero failures",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "Static parsing only; no meta element was mounted and no redirect occurred. Release-candidate browser verification remains pending.",
+  "capturedAt": "2026-10-21T17:17:01Z"
+}

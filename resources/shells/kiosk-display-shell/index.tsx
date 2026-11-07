@@ -13,15 +13,15 @@ export function KioskDisplayShell({ variant = 'quiet' }: KioskDisplayShellProps)
   return (
     <div className={`w-full h-screen p-12 flex flex-col justify-between select-none ${theme}`}>
       <header className="flex justify-between items-center pb-6 border-b">
-        <span className="text-xl font-bold">Tessellate Signage Hub</span>
-        <span className="text-sm font-mono opacity-50">KIOSK #04</span>
+        <span className="text-xl font-bold">Example signage interface</span>
+        <span className="text-sm font-mono opacity-50">Example screen</span>
       </header>
       <main className="text-center space-y-4">
-        <h2 className="text-3xl font-extrabold tracking-tight">Touch Screen to Begin</h2>
-        <p className="text-sm opacity-60">Interactive self-service interface system</p>
+        <h2 className="text-3xl font-extrabold tracking-tight">Welcome to the event</h2>
+        <p className="text-sm opacity-60">Sample message for a public display.</p>
       </main>
       <footer className="text-center text-xs opacity-40">
-        Resets automatically after 60 seconds of inactivity
+        Preview only — no inactivity timer is running.
       </footer>
     </div>
   );

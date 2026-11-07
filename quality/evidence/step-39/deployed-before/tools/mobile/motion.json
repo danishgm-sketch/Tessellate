@@ -1,0 +1,39 @@
+{
+  "capturedAt": "2026-10-20T18:45:18.131Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/motion",
+  "viewport": "390x844",
+  "title": "Motion Studio — Tessellate Tools",
+  "status": 200,
+  "visibleText": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 03 · KINETIC PHYSICS\nClient-Side · Zero Login\nMotion Studio\n\nAuthor and inspect easing curves, spring dynamics, stagger pacing, and WCAG reduced motion floors.\n\nPlay Animation\nCopy CSS\nPERSONALITY PRESETS\nCalm Precision\nEditorial Glide\nEnergetic Tactile\nDeliberate Command\nReduced Motion Safe\nKinetic Physics Model\nReduced Motion\nCubic-Bezier\nSpring Physics\nPacing Duration\n220ms\nStagger Delay (per item)\n40ms\nBezier Curve Coordinates\n[0.16, 1, 0.3, 1]\nX1 / Y1 (In)\nX2 / Y2 (Out)\nKINETIC SIMULATION BENCH\n220ms · CUBIC-BEZIER\nStaggered Component Sequence\n01 · System Architecture Audit\n20/20 PASS\n02 · Cryptographic Token Verification\nVALIDATED\n03 · Latency SLA Telemetry Sync\n38ms OPTIMAL\nInteractive Tactile Press Target\nPress Me for Spring Response\nClick to test physical depression & rebound feedback.\nCSS TRANSITION\nCopy\n/* Tessellate Motion Preset: calm-precision */\ntransition-property: transform, opacity, box-shadow;\ntransition-duration: 220ms;\ntransition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);\nMOTION PROPS\nCopy\n{\n  duration: 0.22,\n  ease: [0.16, 1, 0.3, 1]\n}",
+  "buttons": [
+    "Search⌘K",
+    "",
+    "Play Animation",
+    "Copy CSS",
+    "Calm Precision",
+    "Editorial Glide",
+    "Energetic Tactile",
+    "Deliberate Command",
+    "Reduced Motion Safe",
+    "Cubic-Bezier",
+    "Spring Physics",
+    "Press Me for Spring Response",
+    "Copy",
+    "Copy"
+  ],
+  "layout": {
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "documentHeight": 2030,
+    "horizontalOverflow": false
+  },
+  "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\deployed-before\\tools\\mobile\\motion.png",
+  "accessibility": [],
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

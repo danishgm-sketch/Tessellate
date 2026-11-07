@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "testimonial-grid",
+  "stateProp": "testimonials",
+  "viewport": "390x844",
+  "empty": "PASS",
+  "largeCount": 40,
+  "large": "PASS",
+  "overflow": "PASS",
+  "diagnostics": {
+    "consoleErrors": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshots": [
+    "audit/evidence/step-06/before/gold-state-matrix/testimonial-grid-before-390.png",
+    "audit/evidence/step-06/after/gold-state-matrix/testimonial-grid-empty-390.png",
+    "audit/evidence/step-06/after/gold-state-matrix/testimonial-grid-large-390.png"
+  ]
+}

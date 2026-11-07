@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1.0.0",
+  "check": "baseline-screenshot-write-once",
+  "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/gold-resource-state-certification.spec.ts --project=sites-chromium",
+  "file": "audit/evidence/step-06/before/state-captures/time-series-chart-empty-360-before.png",
+  "sha256Before": "B02F6A5249C6C2C3749167F200D138B87FF704A6C706AC2985F52FC6E002D36D",
+  "sha256After": "B02F6A5249C6C2C3749167F200D138B87FF704A6C706AC2985F52FC6E002D36D",
+  "result": "PASS"
+}

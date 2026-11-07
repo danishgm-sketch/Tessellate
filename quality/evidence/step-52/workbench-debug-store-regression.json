@@ -1,0 +1,43 @@
+{
+  "capturedAt": "2026-10-21T20:50:39.5574007Z",
+  "issueId": "AUD-272",
+  "scope": "Local browser acceptance instrumentation; not a deployed runtime defect",
+  "before": {
+    "storeHook": "The prior Workbench source attached useWorkbenchStore to window on localhost and 127.0.0.1.",
+    "acceptance": "The previous flagship acceptance test read and mutated Workbench state through that global.",
+    "source": [
+      "packages/workbench/src/store/workbench-store.ts (removed local diagnostics hook)",
+      "tests/e2e/flagship-acceptance-journey.spec.ts (replaced internal-store interactions)"
+    ]
+  },
+  "after": {
+    "storeGlobalPresent": false,
+    "desktop": {
+      "route": "http://localhost:4321/workbench?project=proj-direction-c-4e211082a61742fa889937267985996fdirc",
+      "viewport": "1440x900",
+      "screenshot": "quality/evidence/step-52/after/employee-workbench-desktop-1440.png",
+      "workflow": "Direction C handoff, local onboarding/settings DNA overrides, lock, recomposition, replacement, Surprise Me, exact undo/redo, Preview, manifest and standalone ZIP export",
+      "browserErrors": [],
+      "consoleWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "cleanStandaloneInstallBuildBrowser": true
+    },
+    "mobile": {
+      "route": "http://localhost:4321/workbench?project=proj-direction-c-4f775dcc9e644c6f99901d4b29272da7dirc",
+      "viewport": "390x844",
+      "screenshot": "quality/evidence/step-52/after/employee-workbench-mobile-390.png",
+      "workflow": "Same visible flagship workflow through export; manifest/ZIP parity verified",
+      "browserErrors": [],
+      "consoleWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": []
+    }
+  },
+  "limitations": [
+    "The public ChatGPT Sites review version has not been refreshed from this branch.",
+    "Trace-based Core Web Vitals remain paused pending Chrome DevTools MCP setup."
+  ]
+}

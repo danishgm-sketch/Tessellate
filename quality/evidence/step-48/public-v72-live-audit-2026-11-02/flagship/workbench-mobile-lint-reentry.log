@@ -1,0 +1,44 @@
+$ eslint . --max-warnings=51
+
+<LOCAL_PATH>
+  3:10  warning  'mkdir' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+<LOCAL_PATH>
+  17:51   error  'document' is not defined    no-undef
+  17:140  error  'document' is not defined    no-undef
+  17:225  error  'document' is not defined    no-undef
+  18:53   error  'document' is not defined    no-undef
+  18:223  error  'document' is not defined    no-undef
+  21:46   error  'location' is not defined    no-undef
+  21:66   error  'document' is not defined    no-undef
+  21:88   error  'document' is not defined    no-undef
+  21:177  error  'document' is not defined    no-undef
+  21:275  error  'document' is not defined    no-undef
+  21:359  error  'document' is not defined    no-undef
+  21:420  error  'document' is not defined    no-undef
+  21:533  error  'document' is not defined    no-undef
+  21:578  error  'document' is not defined    no-undef
+  21:629  error  'innerWidth' is not defined  no-undef
+
+<LOCAL_PATH>
+  19:50   error  'location' is not defined    no-undef
+  19:70   error  'document' is not defined    no-undef
+  19:98   error  'document' is not defined    no-undef
+  19:169  error  'document' is not defined    no-undef
+  19:212  error  'document' is not defined    no-undef
+  19:349  error  'document' is not defined    no-undef
+  19:400  error  'innerWidth' is not defined  no-undef
+
+<LOCAL_PATH>
+  12:128  error  Empty block statement        no-empty
+  13:44   error  'location' is not defined    no-undef
+  13:64   error  'document' is not defined    no-undef
+  13:91   error  'document' is not defined    no-undef
+  13:213  error  'document' is not defined    no-undef
+  13:248  error  'document' is not defined    no-undef
+  13:293  error  'document' is not defined    no-undef
+  13:344  error  'innerWidth' is not defined  no-undef
+
+✖ 31 problems (30 errors, 1 warning)
+
+[ELIFECYCLE] Command failed with exit code 1.

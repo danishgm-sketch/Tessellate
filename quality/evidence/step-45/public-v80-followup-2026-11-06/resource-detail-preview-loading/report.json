@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.0.0",
+  "issue": "AUD-510",
+  "route": "/r/app-sidebar-expanded/",
+  "deployment": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "siteVersionNumber": 80,
+    "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+    "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+    "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+    "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2"
+  },
+  "reproduction": {
+    "viewport": "1440x900",
+    "network": "Slow 3G",
+    "cpuThrottling": "4x",
+    "observedBeforeResourceReady": {
+      "httpStatus": 304,
+      "ariaBusy": "false",
+      "visibleLoadingStatus": [],
+      "previewFrame": "blank white surface",
+      "screenshot": "before-v80-slow3g-1440x900.png"
+    },
+    "observedAfterResourceReady": {
+      "visibleResourceContent": "Tessellate Console sidebar",
+      "ariaBusy": "false",
+      "screenshot": "after-v80-slow3g-1440x900.png"
+    },
+    "consoleErrorsAndWarnings": [],
+    "failedRequestsAndHttpErrors": []
+  },
+  "redTest": {
+    "test": "tests/e2e/resource-detail-preview-loading-state.spec.ts",
+    "target": "Public v80 via a live Playwright reproduction; this red run used the deployed Site, not the local Sites Worker",
+    "result": "failed before fix as expected",
+    "assertion": "expected aria-busy=true while /preview-content/ was deliberately delayed",
+    "actual": "aria-busy=false"
+  },
+  "localFix": {
+    "status": "implemented and locally verified",
+    "changes": [
+      "ResourcePreviewFrame retains its accessible loading overlay until the isolated renderer sends READY or ERROR.",
+      "PreviewHost sends READY after the selected resource component is available.",
+      "Renderer errors clear the overlay and expose the isolated error panel."
+    ],
+    "regressionTests": {
+      "sitesDesktop": 2,
+      "sitesMobile": 2,
+      "passed": 4,
+      "failed": 0
+    }
+  },
+  "performanceTrace": {
+    "route": "/r/ai-memory-context-panel/",
+    "viewport": "1440x900",
+    "cpuThrottling": "1x",
+    "network": "unthrottled",
+    "lcpMs": 239,
+    "lcpTtfbMs": 52,
+    "lcpRenderDelayMs": 187,
+    "cls": 0,
+    "fieldData": "Unavailable in CrUX for this page",
+    "estimatedRenderBlockingSavingsMs": {
+      "fcp": 0,
+      "lcp": 0
+    }
+  },
+  "localQuality": {
+    "frozenInstall": "PASS",
+    "catalogueBuild": "PASS (324 resources; 40 Gold)",
+    "typecheck": "PASS (22 packages)",
+    "lint": "PASS",
+    "unitTests": "PASS (95 files; 1,343 passed; 1 skipped)",
+    "auditAll": "PASS (16/16 behavioural gates; resource isolation; production build and budget; provenance/licence; secrets/security; dependency audit)",
+    "playwright": {
+      "astro": {
+        "passed": 396,
+        "configuredSkips": 136
+      },
+      "sitesDesktop": {
+        "passed": 244,
+        "configuredSkips": 11
+      },
+      "sitesMobile": {
+        "passed": 211,
+        "configuredSkips": 44
+      },
+      "standalonePreview": {
+        "passed": 3,
+        "configuredSkips": 0
+      },
+      "totals": {
+        "passed": 854,
+        "configuredSkips": 191,
+        "failed": 0
+      }
+    }
+  }
+}

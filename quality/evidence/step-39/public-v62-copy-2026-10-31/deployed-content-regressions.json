@@ -1,0 +1,301 @@
+{
+  "siteVersion": 62,
+  "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+  "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+  "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+  "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+  "checkedAt": "2026-10-31T16:58:26Z",
+  "testSuites": [
+    {
+      "report": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/domain-content-playwright.json",
+      "expected": 13,
+      "skipped": 1,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    {
+      "report": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/sas-content-playwright.json",
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    {
+      "report": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/docs-resource-playwright.json",
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    {
+      "report": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/flagship-v62-playwright.json",
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  ],
+  "findings": [
+    {
+      "id": "AUD-122",
+      "testTitle": "SaaS overview activity uses a truthful chronological feed with human-readable examples",
+      "testReport": "runner/sas-content-playwright.json",
+      "evidence": [
+        {
+          "resultId": "AUD-122",
+          "viewport": "1440x900",
+          "result": "PASS: Workspace branding is Team Workspace with matching TW initials and no duplicate Workspace label across all three directions.",
+          "runtime": "composition-after/activity-feed-runtime-desktop.json",
+          "screenshot": "composition-after/activity-feed-sas-01-direction-01-desktop.png",
+          "testReport": "runner/sas-content-playwright.json"
+        },
+        {
+          "resultId": "AUD-122",
+          "viewport": "390x844",
+          "result": "PASS: Workspace branding is Team Workspace with matching TW initials and no duplicate Workspace label across all three directions.",
+          "runtime": "composition-after/activity-feed-runtime-mobile.json",
+          "screenshot": "composition-after/activity-feed-sas-01-direction-01-mobile.png",
+          "testReport": "runner/sas-content-playwright.json"
+        }
+      ]
+    },
+    {
+      "id": "AUD-123",
+      "testTitle": "SaaS overview activity uses a truthful chronological feed with human-readable examples",
+      "testReport": "runner/sas-content-playwright.json",
+      "evidence": [
+        {
+          "resultId": "AUD-123",
+          "viewport": "1440x900",
+          "result": "PASS: Overview Dashboard has one page heading; KPI group is labeled Key metrics in all three directions.",
+          "runtime": "composition-after/activity-feed-runtime-desktop.json",
+          "screenshot": "composition-after/aud-123-kpi-heading-fixed-desktop.png",
+          "testReport": "runner/sas-content-playwright.json"
+        },
+        {
+          "resultId": "AUD-123",
+          "viewport": "390x844",
+          "result": "PASS: Overview Dashboard has one page heading; KPI group is labeled Key metrics in all three directions.",
+          "runtime": "composition-after/activity-feed-runtime-mobile.json",
+          "screenshot": "composition-after/aud-123-kpi-heading-fixed-mobile.png",
+          "testReport": "runner/sas-content-playwright.json"
+        }
+      ]
+    },
+    {
+      "id": "AUD-124",
+      "testTitle": "SaaS overview activity uses a truthful chronological feed with human-readable examples",
+      "testReport": "runner/sas-content-playwright.json",
+      "evidence": [
+        {
+          "resultId": "AUD-124",
+          "viewport": "1440x900",
+          "result": "PASS: All three directions use human-readable Today timestamps and the feed has no literal Example timestamp.",
+          "runtime": "composition-after/activity-feed-runtime-desktop.json",
+          "screenshot": "composition-after/aud-124-activity-timestamp-fixed-desktop.png",
+          "testReport": "runner/sas-content-playwright.json"
+        },
+        {
+          "resultId": "AUD-124",
+          "viewport": "390x844",
+          "result": "PASS: All three directions use human-readable Today timestamps and the feed has no literal Example timestamp.",
+          "runtime": "composition-after/activity-feed-runtime-mobile.json",
+          "screenshot": "composition-after/aud-124-activity-timestamp-fixed-mobile.png",
+          "testReport": "runner/sas-content-playwright.json"
+        }
+      ]
+    },
+    {
+      "id": "AUD-125",
+      "testTitle": "real-estate and travel directions use truthful, domain-fit content",
+      "testReport": "runner/domain-content-playwright.json",
+      "evidence": [
+        {
+          "resultId": "AUD-125",
+          "viewport": "1440x900",
+          "result": "PASS: Property Search uses a property-search label, advanced-data-table, property listing copy and disconnected-price disclosure; no unrelated telemetry copy.",
+          "runtime": "composition-after/domain-content-runtime-desktop.json",
+          "screenshot": "composition-after/rea-01-direction-01-desktop.png",
+          "testReport": "runner/domain-content-playwright.json"
+        },
+        {
+          "resultId": "AUD-125",
+          "viewport": "390x844",
+          "result": "PASS: Property Search uses a property-search label, advanced-data-table, property listing copy and disconnected-price disclosure; no unrelated telemetry copy.",
+          "runtime": "composition-after/domain-content-runtime-mobile.json",
+          "screenshot": "composition-after/rea-01-direction-01-mobile.png",
+          "testReport": "runner/domain-content-playwright.json"
+        }
+      ]
+    },
+    {
+      "id": "AUD-126",
+      "testTitle": "real-estate and travel directions use truthful, domain-fit content",
+      "testReport": "runner/domain-content-playwright.json",
+      "evidence": [
+        {
+          "resultId": "AUD-126",
+          "viewport": "1440x900",
+          "result": "PASS: Marketplace Explore Listings uses listing search and listings data; it does not contain onboarding copy.",
+          "runtime": "composition-after/domain-content-runtime-desktop.json",
+          "screenshot": "composition-after/mkt-01-search-direction-01-desktop.png",
+          "testReport": "runner/domain-content-playwright.json"
+        },
+        {
+          "resultId": "AUD-126",
+          "viewport": "390x844",
+          "result": "PASS: Marketplace Explore Listings uses listing search and listings data; it does not contain onboarding copy.",
+          "runtime": "composition-after/domain-content-runtime-mobile.json",
+          "screenshot": "composition-after/mkt-01-search-direction-01-mobile.png",
+          "testReport": "runner/domain-content-playwright.json"
+        }
+      ]
+    },
+    {
+      "id": "AUD-127",
+      "testTitle": "real-estate and travel directions use truthful, domain-fit content",
+      "testReport": "runner/domain-content-playwright.json",
+      "evidence": [
+        {
+          "resultId": "AUD-127",
+          "viewport": "1440x900",
+          "result": "PASS: Destination Search presents destinations and shared-trip content without repeating the objective or contaminating the domain with infrastructure terms.",
+          "runtime": "composition-after/domain-content-runtime-desktop.json",
+          "screenshot": "composition-after/trv-01-direction-01-desktop.png",
+          "testReport": "runner/domain-content-playwright.json"
+        },
+        {
+          "resultId": "AUD-127",
+          "viewport": "390x844",
+          "result": "PASS: Destination Search presents destinations and shared-trip content without repeating the objective or contaminating the domain with infrastructure terms.",
+          "runtime": "composition-after/domain-content-runtime-mobile.json",
+          "screenshot": "composition-after/trv-01-direction-01-mobile.png",
+          "testReport": "runner/domain-content-playwright.json"
+        }
+      ]
+    },
+    {
+      "id": "AUD-138",
+      "testTitle": "real-estate and travel directions use truthful, domain-fit content",
+      "testReport": "runner/domain-content-playwright.json",
+      "evidence": [
+        {
+          "resultId": "AUD-138",
+          "viewport": "1440x900",
+          "result": "PASS: Destination search input is labeled Search destinations and the result table is Search results; no flight-oriented prompt remains.",
+          "runtime": "composition-after/domain-content-runtime-desktop.json",
+          "screenshot": "composition-after/trv-01-direction-01-desktop.png",
+          "testReport": "runner/domain-content-playwright.json"
+        },
+        {
+          "resultId": "AUD-138",
+          "viewport": "390x844",
+          "result": "PASS: Destination search input is labeled Search destinations and the result table is Search results; no flight-oriented prompt remains.",
+          "runtime": "composition-after/domain-content-runtime-mobile.json",
+          "screenshot": "composition-after/trv-01-direction-01-mobile.png",
+          "testReport": "runner/domain-content-playwright.json"
+        }
+      ]
+    },
+    {
+      "id": "AUD-308",
+      "testTitle": "documentation index links to canonical repository contracts",
+      "testReport": "runner/docs-resource-playwright.json",
+      "evidence": [
+        {
+          "resultId": "AUD-308",
+          "viewport": "1440x900",
+          "result": "PASS: Documentation index exposes 16 working links; canonical repository guide links exist and Product Specification opens at desktop and mobile.",
+          "runtime": "documentation/sites-chromium.json",
+          "screenshot": "documentation/sites-chromium-index.png",
+          "testReport": "runner/docs-resource-playwright.json"
+        },
+        {
+          "resultId": "AUD-308",
+          "viewport": "390x844",
+          "result": "PASS: Documentation index exposes 16 working links; canonical repository guide links exist and Product Specification opens at desktop and mobile.",
+          "runtime": "documentation/sites-mobile-chromium.json",
+          "screenshot": "documentation/sites-mobile-chromium-index.png",
+          "testReport": "runner/docs-resource-playwright.json"
+        }
+      ]
+    },
+    {
+      "id": "AUD-309",
+      "testTitle": "activity feed discloses its built-in entries are samples",
+      "testReport": "runner/docs-resource-playwright.json",
+      "evidence": [
+        {
+          "resultId": "AUD-309",
+          "viewport": "1440x900",
+          "result": "PASS: Activity Feed labels built-in entries as samples and removes fabricated identities, counts and revision claims at desktop and mobile.",
+          "runtime": "activity-feed/sites-chromium.json",
+          "screenshot": "activity-feed/sites-chromium.png",
+          "testReport": "runner/docs-resource-playwright.json"
+        },
+        {
+          "resultId": "AUD-309",
+          "viewport": "390x844",
+          "result": "PASS: Activity Feed labels built-in entries as samples and removes fabricated identities, counts and revision claims at desktop and mobile.",
+          "runtime": "activity-feed/sites-mobile-chromium.json",
+          "screenshot": "activity-feed/sites-mobile-chromium.png",
+          "testReport": "runner/docs-resource-playwright.json"
+        }
+      ]
+    },
+    {
+      "id": "AUD-171",
+      "testTitle": "Compose Direction C opens the exact selected manifest in Workbench",
+      "testReport": "runner/flagship-v62-playwright.json",
+      "evidence": [
+        {
+          "resultId": "AUD-171",
+          "route": "/compose → /workbench Preview / Settings & Policies",
+          "viewport": "1440x900",
+          "result": "PASS: policy acknowledgement is labeled preview only, explicitly not stored, Save preferences is disabled, and persistence connection copy is visible.",
+          "runtime": "flagship/compose-workbench-handoff-sites-chromium.json",
+          "screenshot": "flagship/employee-product-settings-policies-sites-chromium.png",
+          "testReport": "runner/flagship-v62-playwright.json",
+          "project": "sites-chromium"
+        },
+        {
+          "resultId": "AUD-171",
+          "route": "/compose → /workbench Preview / Settings & Policies",
+          "viewport": "390x844",
+          "result": "PASS: policy acknowledgement is labeled preview only, explicitly not stored, Save preferences is disabled, and persistence connection copy is visible.",
+          "runtime": "flagship/compose-workbench-handoff-sites-mobile-chromium.json",
+          "screenshot": "flagship/employee-product-settings-policies-sites-mobile-chromium.png",
+          "testReport": "runner/flagship-v62-playwright.json",
+          "project": "sites-mobile-chromium"
+        }
+      ]
+    },
+    {
+      "id": "AUD-155",
+      "testTitle": "Compose Direction C opens the exact selected manifest in Workbench and exposes only supported operations",
+      "testReport": "runner/flagship-v62-playwright.json",
+      "evidence": [
+        {
+          "resultId": "AUD-155",
+          "route": "/compose -> /workbench",
+          "viewport": "1440x900",
+          "result": "PASS: Each of Improve, Simplify, Intensify and Match DNA has zero visible action buttons. The Workbench screenshot shows only implemented controls.",
+          "runtime": "flagship/compose-workbench-handoff-sites-chromium.json",
+          "screenshot": "flagship/employee-workbench-controls-sites-chromium.png",
+          "testReport": "runner/flagship-v62-playwright.json",
+          "project": "sites-chromium"
+        },
+        {
+          "resultId": "AUD-155",
+          "route": "/compose -> /workbench",
+          "viewport": "390x844",
+          "result": "PASS: Each of Improve, Simplify, Intensify and Match DNA has zero visible action buttons. The Workbench screenshot shows only implemented controls.",
+          "runtime": "flagship/compose-workbench-handoff-sites-mobile-chromium.json",
+          "screenshot": "flagship/employee-workbench-controls-sites-mobile-chromium.png",
+          "testReport": "runner/flagship-v62-playwright.json",
+          "project": "sites-mobile-chromium"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=local-7067b2a9-8296-4217-8bee-c88f8b425b90",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "status": "passed",
+  "issue": "AUD-160",
+  "checks": {
+    "workbenchStayedEditable": true,
+    "indexedDbSaveSurvivedReload": true,
+    "exactManifestRestored": true
+  },
+  "screenshot": "quality/evidence/step-22/after/recovery-journal-quota-indexeddb-fallback-mobile-390.png"
+}

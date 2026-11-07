@@ -93,6 +93,21 @@ Use:
 
 Never pretend deterministic interpretation has model-level semantic depth. Show the user inferred assumptions where ambiguity matters.
 
+Archetype selection gives high-information domain phrases more weight than broad
+cues such as “workspace”, “stream” or “order”. Supporting keywords can refine a
+match, but a secondary archetype is emitted only when it has corroborating
+weight (at least 28 points and 45% of the leading score). Hyphenated phrases
+are normalized before matching. The 0–100 weights are relative deterministic
+ranking signals, not calibrated probabilities.
+
+ProductModel metric priors and forbidden-pattern defaults come from the
+selected archetype definition. A matching blueprint may still shape downstream
+composition, but a generic SaaS blueprint fallback must not overwrite the
+archetype’s trust, collaboration, navigation or mobile assumptions. Fiscal
+transaction elevation is limited to explicit payment, checkout or money
+transfer language; operational work orders and procurement requests are not
+treated as financial transactions.
+
 ### AI interpretation
 
 If provider configured, send compact structured prompt and require JSON matching `ProductModel` schema.
@@ -142,6 +157,8 @@ Each screen node contains:
 - navigation visibility;
 - device relevance.
 
+The planner preserves the interpreter's recommended screen names, types, purposes, jobs, and required flags. It derives route suggestions from screen semantics and the ProductModel's entities, validates route uniqueness, groups by screen grammar, and connects the public entry to application destinations. It does not append a generic dashboard, sign-in, settings, documentation, or entity-detail screen when the ProductModel did not recommend one. If an explicit required-screen constraint cannot be matched to a recommendation or supported screen class, planning fails with an actionable error.
+
 ### Example
 
 For research/intelligence:
@@ -165,7 +182,9 @@ App
 └── Settings
 ```
 
-The planner should not automatically create pricing/billing for products that do not imply commerce.
+The planner should not automatically create pricing/billing for products that do not imply commerce. In particular, SaaS classification alone is not evidence of paid plans; billing screens and workflows require explicit monetization intent. Payment and checkout screens remain separate transaction flows.
+
+When mobile is a target and the inferred mobile importance or navigation complexity is high, no more than five destinations remain in primary navigation. Lower-priority routes remain in secondary navigation, and the planned screen graph retains their device relevance and routes.
 
 ## 5. Design DNA
 
@@ -422,7 +441,7 @@ Weights:
 - 8% performance
 - 6% responsive fit
 - 5% composition synergy
-- 4% quality score
+- 4% reviewed quality score (neutral score when assessment is unassessed)
 - 3% novelty preference
 - 2% diversity adjustment
 

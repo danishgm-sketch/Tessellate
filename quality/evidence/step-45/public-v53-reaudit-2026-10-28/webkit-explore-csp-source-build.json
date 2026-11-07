@@ -1,0 +1,39 @@
+{
+  "site": "http://127.0.0.1:4435",
+  "siteVersion": "source-build",
+  "browser": "Playwright WebKit (not Safari)",
+  "capturedAt": "2026-10-28T10:05:14.296Z",
+  "route": "/explore?q=onboarding",
+  "results": [
+    {
+      "viewport": "desktop-1440x900",
+      "url": "http://127.0.0.1:4435/explore?q=onboarding",
+      "status": 200,
+      "navigationError": null,
+      "cspEvents": [],
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "resourceFrameCount": 6,
+      "screensRendered": 6,
+      "screenshot": "quality/evidence/step-45/public-v53-reaudit-2026-10-28/webkit/explore-onboarding-desktop-1440x900-vsource-build.png"
+    },
+    {
+      "viewport": "mobile-390x844",
+      "url": "http://127.0.0.1:4435/explore?q=onboarding",
+      "status": 200,
+      "navigationError": null,
+      "cspEvents": [],
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "resourceFrameCount": 2,
+      "screensRendered": 2,
+      "screenshot": "quality/evidence/step-45/public-v53-reaudit-2026-10-28/webkit/explore-onboarding-mobile-390x844-vsource-build.png"
+    }
+  ]
+}

@@ -1,0 +1,1663 @@
+[
+  {
+    "route": "/explore",
+    "console": [
+      {
+        "type": "error",
+        "text": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "location": {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.CZ5CiHPg.js",
+          "line": 7,
+          "column": 0,
+          "lineNumber": 7,
+          "columnNumber": 0
+        }
+      }
+    ],
+    "pageErrors": [],
+    "failedRequests": [],
+    "previewResponses": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion-spring",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=admin-console-shell",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accessibility-commitment-section",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=activity-feed",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=advanced-data-table",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-memory-context-panel",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-agent-activity-feed",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-file-context-picker",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-command-bar",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-chat-panel",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-empty-state",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-generation-compare",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-approval-request",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-copilot-sidebar",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-prompt-composer",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-prompt-history",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-model-mode-switcher",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-prompt-hero",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-multi-agent-board",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-plan-review",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-source-citations",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=alert-dialog",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=analytics-shell",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-research-answer",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-tool-execution-timeline",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-suggested-actions",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=app-sidebar-compact",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-wave-field",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=api-key-management",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=api-capability-section",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-gradient-line",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-border-trace",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=area-chart",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=aurora-field",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=architecture-diagram-section",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=approval-queue",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=app-sidebar-expanded",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=audit-log",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=beam-grid",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=avatar",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=autocomplete",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=bar-chart",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=badge",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=avatar-group",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=bottom-sheet",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=breadcrumb-header",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=blur-to-sharp-reveal",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=breadcrumb",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=billing-overview",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      }
+    ],
+    "frames": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+        "title": "Explore — Tessellate Open Interface Library",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Skip to content\nTessellate\nExplore\nShowcases\nCompose\nWorkbench\nTools\nAgents\nCreators\nDocs\nSearch\n⌘K\nLocal projects\nStart building\nExplore Resource Library\n\nDiscover vetted UI primitives, blocks, and design systems composed for modern products.\n\n⌘K\nTry:\nBloomberg-style analytics\ncinematic product hero\nAI research sidebar\nmobile navigation\nonboarding\nbilling overview\ndata table\nempty state\nFilters\nResource\nPrimitive\nSection\nBlock\nBackground\nTypography\nMotion\nData-Visualization\nAi-Pattern\nState\nPur"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accessibility-commitment-section",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Accessibility commitments — WCAG 2.2 AA target\nDESIGN TARGET\nKeyboard First\n\nDesign goal: support Tab, Enter, Space and Escape for every core control; verify keyboard behavior in your integration.\n\nDESIGN TARGET\nContrast Guardrails\n\nDesign goal: maintain WCAG AA contrast; test your final foreground and background combinations.\n\nDESIGN TARGET\nReduced Motion\n\nDesign goal: honor prefers-reduced-motion and verify that essential interactions work without animation."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "What is this example?\n▼\nA real interactive accordion. Open and close each item.\nPortable source\n▼"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion-spring",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Animated Accordion Disclosure\nWhich dependencies does this component use?\n▼\nThis example uses React and CSS transitions. Check your project manifest for its complete dependency list.\nDo the example colors meet WCAG AA automatically?\n▼\nColor pairs depend on the chosen values. Check text, icons, and focus states in the rendered project."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=activity-feed",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Workspace Activity Feed\nSample activity\nE\nExample teammate published a project update\n12m ago\nE\nExample agent reviewed an onboarding section\n44m ago\nE\nExample collaborator updated a team task\n2h ago"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=admin-console-shell",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Admin Console\n\nUser permissions & security enforcement\n\nInvite User\n\nActive Organization Members (14)\n\nAll members authenticated with GitHub OAuth."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=advanced-data-table",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Sample records · 0 selected\nbutton\nType\nprimitive\nProgress\n98/100\nStatus\nVERIFIED\neditorial-hero\nType\nsection\nProgress\n96/100\nStatus\nVERIFIED\nadmin-console-shell\nType\nblock\nProgress\n96/100\nStatus\nVERIFIED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-agent-activity-feed",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Example agent activity\nSTATIC SAMPLE DATA\nAll Events\nMilestones\n09:14\nCatalog review\nChecked sample UI resources for duplicate patterns\n09:16\nAccessibility review\nReviewed keyboard flow for a sample onboarding screen\n09:18\nComponent review\nCompared responsive behavior across dashboard examples\n09:20\nRelease review\nPrepared a review summary for a person to verify"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-approval-request",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "⚠\nHuman Approval Required\nHIGH IMPACT\n\nAutonomous Agent requests permission to overwrite 4 design tokens in tokens.css\n\nThis modification alters border-hairline, canvas-bg, accent-primary, and typography scale across 24 screen layouts.\n\nAgent ID: agy_builder_04\nReject Action\nApprove & Proceed"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-chat-panel",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Example assistant conversation\n\nExample conversation. This preview does not connect to a model; sending adds a fixed local example reply.\n\nYOU\nHow could we make the onboarding steps easier to follow?\nASSISTANT\nExample reply: group related steps and show progress. This sample is not generated by a model.\nSend example"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-command-bar",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "✦\nESC\n\nDemo only. Typing filters the sample list; commands are not run here.\n\nTheme\nSwitch to Nocturne visual mode\n⌘ T\nExport\nExport current workspace as standalone Vite project\n⌘ E\nReview\nReview contrast for selected colors\n⌘ A\nRegistry\nGenerate Shadcn registry manifest\n⌘ G"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-copilot-sidebar",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Active Context Copilot\nCollapse\nInspecting DashboardView.tsx. Found 2 token inconsistencies in border contrast.\nFix border contrast token\nReplaces hardcoded border-slate-300 with semantic border-border-default.\nAdd keyboard shortcuts\nRegisters ArrowUp / ArrowDown navigation for search table results.\nApply All Recommended Fixes"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-empty-state",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "✦\nHow can Tessellate assist your build?\n\nSelect a starter prompt to continue. The host application decides how selected text is handled.\n\nConnect a prompt handler to enable these starters.\n\nCompose B2B SaaS Dashboard\nCreate an analytics dashboard with KPI delta card, time series line chart, and audit log block.\nReview color contrast\nCompare these selected color pairs against common contrast thresholds and explain what was checked.\nExport Standalone Vite App\nExport workspace to a pure Vite + Reac"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-file-context-picker",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Attach File Context\n\nInject workspace files into prompt memory\n\nSelected: 1070 tokens\nsrc/tokens.css\n2.4 KB\n~620 tok\nsrc/manifest.json\n1.8 KB\n~450 tok\nsrc/Workbench.tsx\n14.2 KB\n~3600 tok\ndocs/DESIGN_SYSTEM.md\n8.6 KB\n~2150 tok"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-generation-compare",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Illustrative composition comparison\n\nExample previews; no AI generation or measurement service is connected.\n\nPrompt: \"Executive Dashboard Header\"\nCandidate A (Quiet)\nExample latency · not measured\n\nMonochrome high-density header with hairline dividers, compact breadcrumbs, and right-aligned metric sparklines.\n\nExample score · not measured\nSelect A\nCandidate B (Nocturne)\nExample latency · not measured\n\nObsidian backdrop with cyan hairline accents, high-contrast KPI counters, and status pulse ind"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-memory-context-panel",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Active Assistant Memory\n\nShort & long-term conversational recall\n\nPurge All\npreferred_mode:Nocturne (dark obsidian canvas)\n✕\nstack_target:React 19 + Tailwind CSS 4\n✕\ndependency_rule:0 undeclared dependencies allowed\n✕"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-model-mode-switcher",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Example model modes\n\nExample selector. Options change this preview only; no provider or local model is connected.\n\nNo model connected\nFast\nExample mode for short, quick tasks\nExample\nBalanced\nExample mode for general tasks\nExample\nLong context\nExample mode for longer inputs\nExample"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-multi-agent-board",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Autonomous Agent Swarm\n\n3 subagents coordinated via Antigravity SDK\n\nActive Swarm\nQUEUED\nTestingAgent\nExecute Playwright suite\nIN PROGRESS\nCatalogAgent\nValidating 324 resources\nCOMPLETE\nArchitectAgent\nDesign Schema 1.0.0"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-plan-review",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Proposed Implementation Plan\n\nAutonomous execution strategy for Phase 18\n\n4 Steps | ~2m runtime\n01\nGenerate Manifest Contracts\n\nCreate 20 validated ResourceManifest JSON schemas with 0 dependencies.\n\n02\nSynthesize React Components\n\nAuthor clean, accessible pure SVG + Tailwind components for all 3 variants.\n\n03\nMonorepo Typecheck & Lint Gate\n\nRun pnpm typecheck and pnpm lint to verify 0 errors and 0 warnings.\n\n04\nTest Suite & Phase Gate Commit\n\nExecute 253 tests across packages and commit with co"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-prompt-composer",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Prompt Studio\nContext: 2 files\n~240 tokens\n📄 tokens.css\n×\n📄 workbench.ts\n×\n+ Add Context\nShift + Enter for newline\nExecute Prompt"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-prompt-hero",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Describe the product you want to shape.\n\nStart with a plain-language brief. Connect this pattern to your own generation flow when you use it in an application.\n\nPreview only. This example keeps your prompt on this page and does not generate a blueprint.\n\nGenerate Blueprint\nAn employee onboarding workspace for a growing team\nA developer documentation portal with searchable guides\nA subscription billing dashboard for small businesses"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-prompt-history",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Prompt History\n\nReplay or inspect previous generation requests\n\nAudit Design DNA alignment for all 56 application blocks\n10 mins ago • 1,420 tokens\nReplay\nGenerate 24 data visualization resources with zero runtime deps\n1 hour ago • 4,850 tokens\nReplay\nScaffold Phase 17 CLI with shadcn registry integration\nYesterday • 3,210 tokens\nReplay"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-research-answer",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Example research answer\n\nExample research answer. No sources were retrieved and no confidence score was calculated.\n\nExample\nEXECUTIVE SUMMARY\nA team comparing a monolithic application with independently deployed modules can weigh ownership, deployment needs, integration work, and operational complexity.\n1.\nA monolith can keep shared changes and deployments within one codebase.\n2.\nIndependent modules can support separate ownership when team boundaries are stable.\n3.\nThe better fit depends on tea"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-source-citations",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Example citations (3)\n\nExample citations. These sample sources were not retrieved or verified.\n\n[1] Example product brief\nexample/product-brief.md#overview\n\n\"Example excerpt: teams need a clear place to review the product brief.\"\n\n[2] Example research notes\nexample/research-notes.md#finding-1\n\n\"Example excerpt: users asked for a simpler way to compare options.\"\n\n[3] Example design review\nexample/design-review.md#navigation\n\n\"Example excerpt: keep the primary navigation visible on small screens.\""
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-suggested-actions",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "✦\nSuggested Next Steps\nExport as Vite App\nBundle React + Tailwind 4 source tree\nRun Contrast Audit\nValidate WCAG 2.2 AA against 3 presets\nGenerate Shadcn Manifest\nCreate registry schema item file"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-tool-execution-timeline",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Example agent tool trace\nSample total: 190ms\n\nExample trace. Sample calls and timings only; this preview does not run tools or create files.\n\nsearch_catalog()\n32ms · sample\n▼\nvalidate_manifest()\n18ms · sample\n▲\nArguments:\ntarget: \"example-manifest.json\"\nSample output:\nExample result: the sample manifest passed validation.\nexport_vite_project()\n140ms · sample\n▼"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=alert-dialog",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Confirm example action\n\nThis demonstration changes local preview state only.\n\nCancel\nDelete"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=analytics-shell",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Analytics & Growth\n\nTrailing 30 days telemetry\n\nLast 30 Days\nExport CSV\nMRR: $84k\nDAU: 12.4k\nChurn: 0.8%\nNPS: 74"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-border-trace",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Hairline Tracer\nActive Perimeter Trace\n\nContinuous stroke-dasharray orbital animation tracing rectangular perimeter coordinates."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-gradient-line",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [
+          {
+            "blockedURI": "inline",
+            "effectiveDirective": "style-src-elem",
+            "violatedDirective": "style-src-elem",
+            "sourceFile": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.CZ5CiHPg.js",
+            "lineNumber": 8,
+            "columnNumber": 97909,
+            "sample": ""
+          }
+        ],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}",
+          "\n          @keyframes moveBeam {\n            0% { transform: translateX(-100%); }\n            100% { transform: translateX(500%); }\n          }\n        "
+        ],
+        "bodyText": "Luminescent Divider Beam\n\nHorizontal gradient beam sweeping continuously across boundary"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-wave-field",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "HARMONIC MOTION\nAnimated Wave Field\n\nSmooth harmonic sine curve baseline providing organic fluid movement under section copy."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=api-capability-section",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Programmatic API Access\nGET\n/api/v1/resources/:slug\nRetrieve verified JSON manifest\nPOST\n/api/v1/compose\nValidate and compile project tree\nGET\n/api/v1/dna/tokens\nQuery calibrated Design DNA dimensions"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=api-key-management",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "API Tokens\n+ Create New Token\nProduction Agent Token\ntess_live_••••••••••••94b2\nRevoke\nLocal Development Key\ntess_test_••••••••••••11a0\nRevoke"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=app-sidebar-compact",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "⌘\n◫\n🧬\n⇪"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=app-sidebar-expanded",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Tessellate Console\n\nWORKSPACE\n\nDashboard\nTelemetry\nComposition Engine\n\nSETTINGS\n\nDesign DNA\nAPI Tokens"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=approval-queue",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Pending Approvals (1)\nPublish Revision 1.0.4\nSubmitted by Agent Antigravity • 14m ago\nReject\nApprove"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=architecture-diagram-section",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Reference Architecture\n\nOptional services shown for illustration; D1 and R2 are not provisioned for this review Site.\n\nCLIENT LAYER\nReact + Zustand\n\nIn-memory graph & DNA mutations\n\nEDGE LAYER\nCloudflare Workers\n\nHono API routes\n\nSTORAGE LAYER\nOptional D1 + R2\n\nExample database and object storage; not a live binding here"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=area-chart",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Sample ingestion volume\n\nIllustrative sample data — not live measurements.\n\nSample peak: 420 GB\n0\n100\n250\n500\nWeek 1\nWeek 2\nWeek 3\nWeek 4\nWeek 5\nWeek 6\nWeek 7"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=audit-log",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Security Audit Trail\nAPI_KEY_ROTATED\nActor: usr_admin99 • IP: 192.0.2.1\n10m ago\nPROJECT_CHECKPOINT_SAVED\nActor: usr_sarah • IP: 198.51.100.4\n1h ago\nDNA_TOKENS_MUTATED\nActor: agent_cursor • IP: local\n3h ago"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=aurora-field",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "CYBER LUMINESCENCE\nAurora Wave Field\n\nDual chromatic ribbon fields crossing with soft blur to simulate undulating northern lights."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=autocomplete",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Find a team"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=avatar",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "TL"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=avatar-group",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "AB\nCD\nEF"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=badge",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Example status"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=bar-chart",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Sample daily sign-ups\n\nIllustrative sample data — not live measurements.\n\nSample total: 430\n0\n25\n50\n75\n100\nMon\nTue\nWed\nThu\nFri\nSat\nSun"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=beam-grid",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "OPTICAL INFRASTRUCTURE\nBeam Grid\n\nOrthogonal coordinate network featuring directional traveling light energy along telemetry lines."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=billing-overview",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Subscription & Billing\nTeam Pro Subscription\nRenews on Nov 1, 2026 • £18/month\nACTIVE\nUpdate Payment Method"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=blur-to-sharp-reveal",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Optical Blur-to-Sharp Focus\nReplay\nRazor-Sharp Artifact Output\n\nThe blur-to-sharp transition provides a cinematic optical settling effect while gracefully degrading under reduced motion preferences."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=bottom-sheet",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "An example sheet with local controls."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=breadcrumb",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Library\n/\nExample"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=breadcrumb-header",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Projects\n/\nTelemetry\n/\nAnalytics Node\nExport\nSave"
+      }
+    ]
+  },
+  {
+    "route": "/components",
+    "console": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "previewResponses": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=avatar",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=autocomplete",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=badge",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=avatar-group",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=alert-dialog",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      }
+    ],
+    "frames": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/components",
+        "title": "Components — Tessellate",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Skip to content\nTessellate\nExplore\nShowcases\nCompose\nWorkbench\nTools\nAgents\nCreators\nDocs\nSearch\n⌘K\nLocal projects\nStart building\n\nOPEN INTERFACE COMMONS\n\nComponents\n\nControls and primitives for product interfaces.\n\n⌘K\nTry:\nBloomberg-style analytics\ncinematic product hero\nAI research sidebar\nmobile navigation\nonboarding\nbilling overview\ndata table\nempty state\nFilters\nResource\nPrimitive\nPurpose\nMarketing\nApplication\nAuthentication\nNavigation\nData Entry\nFeel\nProfessional\nTechnical\nEditorial\nIntens"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "What is this example?\n▼\nA real interactive accordion. Open and close each item.\nPortable source\n▼"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=alert-dialog",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Confirm example action\n\nThis demonstration changes local preview state only.\n\nCancel\nDelete"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=autocomplete",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Find a team"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=avatar",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "TL"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=avatar-group",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "AB\nCD\nEF"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=badge",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Example status"
+      }
+    ]
+  },
+  {
+    "route": "/motion",
+    "console": [
+      {
+        "type": "error",
+        "text": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+        "location": {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.CZ5CiHPg.js",
+          "line": 7,
+          "column": 0,
+          "lineNumber": 7,
+          "columnNumber": 0
+        }
+      }
+    ],
+    "pageErrors": [],
+    "failedRequests": [],
+    "previewResponses": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=card-tilt",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=blur-to-sharp-reveal",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=card-hover-lift",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-gradient-line",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion-spring",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-border-trace",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=fade-up-reveal",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=kpi-delta-motion",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=cursor-spotlight",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=character-stagger-reveal",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=horizontal-scroll-story",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=drawer-spring",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=number-count-up",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=scale-reveal",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=masked-text-reveal",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=magnetic-button",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=loading-orbit",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=parallax-media",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=word-stagger-reveal",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=shared-element-transition",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=success-celebration",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=sticky-scroll-story",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=slide-clip-reveal",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=scroll-progress",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      }
+    ],
+    "frames": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/motion",
+        "title": "Motion — Tessellate",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Skip to content\nTessellate\nExplore\nShowcases\nCompose\nWorkbench\nTools\nAgents\nCreators\nDocs\nSearch\n⌘K\nLocal projects\nStart building\n\nOPEN INTERFACE COMMONS\n\nMotion\n\nMotion resources with reduced-motion strategies.\n\n⌘K\nTry:\nBloomberg-style analytics\ncinematic product hero\nAI research sidebar\nmobile navigation\nonboarding\nbilling overview\ndata table\nempty state\nFilters\nResource\nMotion\nFeel\nProfessional\nTechnical\nEditorial\nFuturistic\nIntensity\nMotion\nDensity\nPerformance\nAccessibility\nDependencies\nShow"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion-spring",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Animated Accordion Disclosure\nWhich dependencies does this component use?\n▼\nThis example uses React and CSS transitions. Check your project manifest for its complete dependency list.\nDo the example colors meet WCAG AA automatically?\n▼\nColor pairs depend on the chosen values. Check text, icons, and focus states in the rendered project."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-border-trace",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Hairline Tracer\nActive Perimeter Trace\n\nContinuous stroke-dasharray orbital animation tracing rectangular perimeter coordinates."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-gradient-line",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [
+          {
+            "blockedURI": "inline",
+            "effectiveDirective": "style-src-elem",
+            "violatedDirective": "style-src-elem",
+            "sourceFile": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.CZ5CiHPg.js",
+            "lineNumber": 8,
+            "columnNumber": 97909,
+            "sample": ""
+          }
+        ],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}",
+          "\n          @keyframes moveBeam {\n            0% { transform: translateX(-100%); }\n            100% { transform: translateX(500%); }\n          }\n        "
+        ],
+        "bodyText": "Luminescent Divider Beam\n\nHorizontal gradient beam sweeping continuously across boundary"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=blur-to-sharp-reveal",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Optical Blur-to-Sharp Focus\nReplay\nRazor-Sharp Artifact Output\n\nThe blur-to-sharp transition provides a cinematic optical settling effect while gracefully degrading under reduced motion preferences."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=card-hover-lift",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Elevation Affordance\nHover Lift Elevation\n\nSubtle vertical translation paired with expanded shadow bloom signals clickability."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=card-tilt",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "3D Perspective Matrix\nPerspective Tilt Card\n\nHover across corners to test pitch and roll rotational transforms with smooth spring return."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=character-stagger-reveal",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Kinetic Character Cascade\nReplay\nT\nE\nS\nS\nE\nL\nL\nA\nT\nE"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=cursor-spotlight",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Ambient Surface Luster\nInteractive Cursor Spotlight\n\nMove your pointer over this surface to reveal radial illumination gradients tracking mouse coordinates in real-time."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=drawer-spring",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Open Spring Drawer →"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=fade-up-reveal",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Replay Entrance\nDeterministic Fade-Up Reveal\n\nEntrance animation triggered with CSS transitions. Respects prefers-reduced-motion to eliminate motion sickness."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=horizontal-scroll-story",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Horizontal Build Order\n\nStep 1 of 3\n\n←\n→\nPhase 01\nCatalog Discovery\n\nAuto-scan verified components in repository.\n\nPhase 02\nConstraint Solving\n\nDeterministic compatibility checks for tokens.\n\nPhase 03\nStandalone Export\n\nPure React output with 0 runtime lock-in."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=kpi-delta-motion",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Directional Metric Ticker\n+ Tick\n- Tick\n$$4,250\n▲ +2.9%"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=loading-orbit",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Synthesizing System..."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=magnetic-button",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Explore Interface System →"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=masked-text-reveal",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Masked Overflow Clip\nReplay\nSoftware Composed, Not Stitched."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=number-count-up",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Logarithmic Counter\nReplay Count\n324\nCanonical Resources Verified"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=parallax-media",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "MULTI-PLANE PARALLAX\nForeground Reactive Layer"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=scale-reveal",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Replay Pop\nScale Pop Dialog\n\nPops into view using an intentional slight spring overshoot curve, delivering satisfying tactile feedback."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=scroll-progress",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Article Reading Progress\n\nFixed top hairline telemetry\n\n65% Completed\nSimulate Scroll:"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=shared-element-transition",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Card Element\nCompact\nDesign DNA Matrix\n\nClick to morph into expanded detailed view."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=slide-clip-reveal",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Clip-Path Wipe Comparison\n50%\nQUIET MODE\nCalm Slate Minimalist Baseline\nNOCTURNE MODE\nObsidian Razor-Sharp Luminescence"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=sticky-scroll-story",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Sticky Story Chapters\n01. Ingestion\nTelemetry streams continuously into edge workers with sub-5ms routing.\n02. Validation\nDeterministic schema validation rejects malformed packets at the gateway boundary.\n03. Synthesis\nComposed UI manifests update in real-time with zero client bundle penalties.\nACTIVE VISUAL STATE\n01. Ingestion\n1"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=success-celebration",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "✓\nDeployment Succeeded\n\nAutonomous build phase completed without errors.\n\nReplay Celebration"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=word-stagger-reveal",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Word Stagger Sequence\nReplay\nPrecision\ndesign\nsystems\nengineered\nfor\nautonomous\nagents."
+      }
+    ]
+  },
+  {
+    "route": "/backgrounds",
+    "console": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "previewResponses": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=aurora-field",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=cursor-reactive-field",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=data-stream-field",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=conic-light-field",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-wave-field",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=beam-grid",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=dot-matrix-field",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=paper-texture",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=editorial-grain",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=metallic-sheen",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=noise-gradient",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=glass-refraction-panel",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=soft-mesh-gradient",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=shader-noise-field",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=shader-liquid-field",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=particle-constellation",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=radial-spotlight",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=subtle-grid-field",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=topographic-lines",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=three-d-orbital-field",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      }
+    ],
+    "frames": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/backgrounds",
+        "title": "Backgrounds — Tessellate",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Skip to content\nTessellate\nExplore\nShowcases\nCompose\nWorkbench\nTools\nAgents\nCreators\nDocs\nSearch\n⌘K\nLocal projects\nStart building\n\nOPEN INTERFACE COMMONS\n\nBackgrounds\n\nCSS fields and visual surfaces with declared performance metadata.\n\n⌘K\nTry:\nBloomberg-style analytics\ncinematic product hero\nAI research sidebar\nmobile navigation\nonboarding\nbilling overview\ndata table\nempty state\nFilters\nResource\nBackground\nFeel\nProfessional\nTechnical\nEditorial\nFuturistic\nIntensity\nMotion\nDensity\nPerformance\nAcce"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-wave-field",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "HARMONIC MOTION\nAnimated Wave Field\n\nSmooth harmonic sine curve baseline providing organic fluid movement under section copy."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=aurora-field",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "CYBER LUMINESCENCE\nAurora Wave Field\n\nDual chromatic ribbon fields crossing with soft blur to simulate undulating northern lights."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=beam-grid",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "OPTICAL INFRASTRUCTURE\nBeam Grid\n\nOrthogonal coordinate network featuring directional traveling light energy along telemetry lines."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=conic-light-field",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "ANGULAR RADIANCE\nConic Light Field\n\nSwept 360-degree conic gradient providing sophisticated specular reflections with zero canvas overhead."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=cursor-reactive-field",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "REACTIVE ATMOSPHERE\nCursor Reactive Field\n\nHover cursor across the container to illuminate localized coordinate vectors with zero performance penalty."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=data-stream-field",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "0x7F\n0x4A\n0x9B\n0x1C\n0x8E\n0x3D\n0xA1\n0x52\n0x0F\n0xEE\n0x74\n0x90\n0x33\n0xC8\n0xD1\n0x45\n0x2B\n0x88\n0xF0\n0x12\n0x99\n0xAA\n0x67\n0xBC\nCONTINUOUS THROUGHPUT\nData Stream Field\n\nLow-overhead vertical hexadecimal telemetry columns indicating active real-time ingest pipeline status."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=dot-matrix-field",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "TECHNICAL PATTERN\nDot Matrix Field\n\nGeometric 24px-spaced point matrix lending tactile engineering presence to interface surfaces."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=editorial-grain",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "ANALOG TACTILITY\nEditorial Film Grain\n\nProcedural SVG fractal noise filter evoking physical print paper and film grain tactility."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=glass-refraction-panel",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "OPTICAL SUBSTRATE\nGlass Refraction Panel\n\nFrosted acrylic panel with hairline specular borders and depth blur for spatial interface layering."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=metallic-sheen",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "MACHINED FINISH\nMetallic Sheen\n\nAnodized metal specular luster engineered for titanium cards and aerospace hardware control panels."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=noise-gradient",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "DITHERED TEXTURE\nNoise-Diffused Gradient\n\nSmooth continuous tone graduation without digital quantization artifacts or color banding."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=paper-texture",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "TACTILE SUBSTRATE\nPaper Texture\n\nCellulose paper stock simulation engineered for editorial typography and physical publication warmth."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=particle-constellation",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "KINETIC TOPOLOGY\nParticle Constellation Field\n\nDynamic interconnected vector star nodes forming reactive celestial geometry."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=radial-spotlight",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "FOCAL HIERARCHY\nRadial Top Spotlight\n\nCentered elliptical gradient cone casting focus downwards across critical headline copy."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=shader-liquid-field",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "VISCOUS DYNAMIC\nShader Liquid Field\n\nLightweight SVG liquid wave contours creating organic fluid motion without GPU shader battery drain."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=shader-noise-field",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "PROCEDURAL TERRAIN\nShader Noise Field\n\nMulti-octave procedural turbulence contours generating unique topographic elevation gradients."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=soft-mesh-gradient",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "ATMOSPHERIC DEPTH\nSoft Mesh Gradient\n\nMulti-stop blurred gradient blending atmospheric chroma into clean editorial canvases."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=subtle-grid-field",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "ARCHITECTURAL SURFACE\nSubtle Grid Field\n\nVector coordinate grid providing structural rhythm with zero client bundle overhead."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=three-d-orbital-field",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "CELESTIAL GEOMETRY\n3D Orbital Field\n\nElliptical perspective rings and satellite telemetry nodes simulating global orbital trajectories."
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=topographic-lines",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "CARTOGRAPHIC CONTOURS\nTopographic Isolines\n\nVector elevation lines undulating across the canvas evoking cartographic maps and terrain contours."
+      }
+    ]
+  },
+  {
+    "route": "/r/advanced-data-table",
+    "console": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "previewResponses": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=advanced-data-table&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+        "status": 200,
+        "csp": "default-src 'none'; form-action 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; sandbox allow-scripts; object-src 'none'; base-uri 'self';"
+      }
+    ],
+    "frames": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/advanced-data-table",
+        "title": "Advanced Data Table (@tess/advanced-data-table) — Tessellate Resource",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Skip to content\nTessellate\nExplore\nCompose\nWorkbench\nTools\nAgents\nCreators\nDocs\nSearch...\n⌘K\nLocal projects\nStart building\nHome\n/\nExplore\n/\nBlocks\n/\nAdvanced Data Table\nAdvanced Data Table\n@tess/advanced-data-table\nv1.0.0\nManifest status: verified\n\nFeature-rich data table with column sorting, checkbox selection, pagination, and filter bar.\n\nInstall:\ntess add advanced-data-table\nRegistry source: /r/advanced-data-table.json\n#advanced-data-table\n#table\n#data-table\n#sorting\nVARIANT:\nQuiet\nExpressive"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=advanced-data-table&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+        "title": "Tessellate Isolated Resource Preview",
+        "csp": null,
+        "violations": [],
+        "styles": [
+          "astro-island,astro-slot,astro-static-slot{display:contents}"
+        ],
+        "bodyText": "Sample records · 0 selected\n#\tName\tType\tProgress\tStatus\n\tbutton\tprimitive\t98/100\tVERIFIED\n\teditorial-hero\tsection\t96/100\tVERIFIED\n\tadmin-console-shell\tblock\t96/100\tVERIFIED"
+      }
+    ]
+  }
+]

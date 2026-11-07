@@ -13,8 +13,8 @@ export function DonutChart({ variant = 'quiet' }: DonutChartProps) {
     variant === 'nocturne'
       ? 'bg-[#0B0D10] border-[#2E3440] text-white'
       : variant === 'expressive'
-      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'
-      : 'bg-white border-neutral-200 text-neutral-900';
+      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm dark:bg-[#0B0D10] dark:border-[#2E3440] dark:text-white'
+      : 'bg-white border-neutral-200 text-neutral-900 dark:bg-[#0B0D10] dark:border-[#2E3440] dark:text-white';
 
   const colors =
     variant === 'nocturne'
@@ -39,15 +39,20 @@ export function DonutChart({ variant = 'quiet' }: DonutChartProps) {
   let currentOffset = 0;
 
   return (
-    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>
+    <div
+      style={{
+        ...(variant === 'nocturne' ? { '--tess-ink-muted': '#A8AFBA', '--tess-ink-secondary': '#D1D5DB' } : {}),
+      } as React.CSSProperties}
+      className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col transition-colors ${cardBg}`}
+    >
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h4 className="text-sm font-semibold tracking-tight">Subscription Shares</h4>
-          <p className="text-xs text-neutral-500">Tier revenue contribution</p>
+          <h4 className="text-sm font-semibold tracking-tight">Sample subscription mix</h4>
+          <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Illustrative sample data — not live measurements.</p>
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-8 py-4">
+      <div className="flex flex-col @sm:flex-row items-center justify-center gap-8 py-4">
         <div className="relative w-[180px] h-[180px] flex items-center justify-center select-none">
           <svg width={size} height={size} className="transform -rotate-90">
             {segments.map((seg, idx) => {
@@ -79,7 +84,7 @@ export function DonutChart({ variant = 'quiet' }: DonutChartProps) {
             <span className="text-2xl font-bold font-mono">
               {activeSegment !== null ? segments[activeSegment]?.value ?? total : `${total}%`}
             </span>
-            <span className="text-[10px] text-neutral-400 font-medium">
+            <span className="text-[10px] text-neutral-600 dark:text-neutral-300 font-medium">
               {activeSegment !== null ? segments[activeSegment]?.label : 'Total'}
             </span>
           </div>

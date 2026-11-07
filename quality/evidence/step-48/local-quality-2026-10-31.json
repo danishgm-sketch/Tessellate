@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-10-31T10:01:53Z",
+  "canonicalCommit": "5dfb5b7207dd04b007e551add27aad7e5f918d91",
+  "checks": {
+    "pnpm install --frozen-lockfile": { "status": "PASS", "detail": "23 workspace projects, already up to date." },
+    "pnpm build:catalog": { "status": "PASS", "detail": "324 canonical resources validated; 40 Gold resources registered." },
+    "pnpm typecheck": { "status": "PASS" },
+    "pnpm lint": { "status": "PASS_WITH_WARNING", "detail": "Zero errors. One unused-variable warning came from the unlicensed private Verso Phase A inventory script, which is excluded from the Tessellate commit." },
+    "pnpm test": { "status": "PASS", "passed": 1244, "skipped": 1, "failed": 0 },
+    "pnpm audit:all": { "status": "PASS", "behaviouralReleaseGate": "16/16", "resourceIsolation": "324/324", "bundleBudgets": "PASS", "licenceProvenance": "324/324", "secretSecurityIsolation": "0 violations", "dependencyAudit": "0 known vulnerabilities", "astroPages": 733 },
+    "pnpm test:e2e": { "status": "PASS", "passed": 724, "configuredSkips": 167, "failed": 0, "profiles": ["desktop-chrome", "mobile-chrome", "sites-chromium", "sites-mobile-chromium", "preview-app-chromium"] },
+    "deployedV59CorrectedAxe": { "status": "PASS_WITH_FINDING", "detail": "Core route and Workbench mode states pass; generated employee Workbench exposed AUD-401 on desktop." },
+    "localGeneratedEmployeeAxeAfterFix": { "status": "PASS", "viewports": ["1440x900", "390x844"], "wcagViolations": 0, "targetSizeViolations": 0, "consoleErrors": 0, "uncaughtExceptions": 0, "failedRequests": 0, "httpErrors": 0 }
+  },
+  "buildNotes": [
+    "The preview bundle advisory is 921.91 kB raw and 191.01 kB gzip; compressed route budgets pass.",
+    "The public Site is still v59 until exact-head CI passes and the v60 fixed build is deployed and re-audited."
+  ]
+}

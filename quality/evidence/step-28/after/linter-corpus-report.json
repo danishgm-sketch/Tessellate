@@ -1,0 +1,1450 @@
+{
+  "generatedAt": "2026-10-19T07:38:34.517Z",
+  "corpus": {
+    "paths": [
+      "apps/site/src/**/*.{tsx,jsx,ts,js,css}",
+      "apps/preview/src/**/*.{tsx,jsx,ts,js,css}",
+      "packages/workbench/src/**/*.{tsx,jsx,ts,js,css}",
+      "resources/**/*.{tsx,jsx,ts,js,css}"
+    ],
+    "purpose": "Read-only baseline over production React/TypeScript application and canonical resource source."
+  },
+  "totals": {
+    "files": 1095,
+    "issues": 3677,
+    "errors": 0,
+    "warnings": 3677,
+    "information": 0,
+    "automaticFixesOffered": 0
+  },
+  "byRule": {
+    "enforce-reduced-motion": {
+      "count": 18,
+      "files": 16,
+      "examples": [
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-spin\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ComposeView.tsx",
+          "line": 469,
+          "column": 45,
+          "snippet": "animate-spin"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\packages\\workbench\\src\\components\\CommandBar.tsx",
+          "line": 166,
+          "column": 233,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\typography\\monospace-data-headline\\index.tsx",
+          "line": 53,
+          "column": 37,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\table-skeleton\\index.tsx",
+          "line": 30,
+          "column": 69,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\progressive-loader\\index.tsx",
+          "line": 56,
+          "column": 66,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\processing-queued-state\\index.tsx",
+          "line": 36,
+          "column": 101,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\page-skeleton\\index.tsx",
+          "line": 29,
+          "column": 76,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-spin\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\inline-spinner\\index.tsx",
+          "line": 38,
+          "column": 21,
+          "snippet": "animate-spin"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\dashboard-skeleton\\index.tsx",
+          "line": 29,
+          "column": 102,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\card-grid-skeleton\\index.tsx",
+          "line": 30,
+          "column": 76,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\primitives\\skeleton\\index.tsx",
+          "line": 16,
+          "column": 22,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\sections\\cinematic-media-hero\\index.tsx",
+          "line": 45,
+          "column": 68,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\data\\interactive-globe\\index.tsx",
+          "line": 57,
+          "column": 70,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-ping\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\data\\interactive-globe\\index.tsx",
+          "line": 104,
+          "column": 112,
+          "snippet": "animate-ping"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\data\\geographic-map\\index.tsx",
+          "line": 86,
+          "column": 113,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\backgrounds\\beam-grid\\index.tsx",
+          "line": 32,
+          "column": 71,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\backgrounds\\beam-grid\\index.tsx",
+          "line": 35,
+          "column": 71,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\ai\\ai-chat-panel\\index.tsx",
+          "line": 59,
+          "column": 68,
+          "snippet": "animate-pulse"
+        }
+      ],
+      "oneFindingPerFileSample": [
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-spin\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ComposeView.tsx",
+          "line": 469,
+          "column": 45,
+          "snippet": "animate-spin"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\packages\\workbench\\src\\components\\CommandBar.tsx",
+          "line": 166,
+          "column": 233,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\typography\\monospace-data-headline\\index.tsx",
+          "line": 53,
+          "column": 37,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\table-skeleton\\index.tsx",
+          "line": 30,
+          "column": 69,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\progressive-loader\\index.tsx",
+          "line": 56,
+          "column": 66,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\processing-queued-state\\index.tsx",
+          "line": 36,
+          "column": 101,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\page-skeleton\\index.tsx",
+          "line": 29,
+          "column": 76,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-spin\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\inline-spinner\\index.tsx",
+          "line": 38,
+          "column": 21,
+          "snippet": "animate-spin"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\dashboard-skeleton\\index.tsx",
+          "line": 29,
+          "column": 102,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\card-grid-skeleton\\index.tsx",
+          "line": 30,
+          "column": 76,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\primitives\\skeleton\\index.tsx",
+          "line": 16,
+          "column": 22,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\sections\\cinematic-media-hero\\index.tsx",
+          "line": 45,
+          "column": 68,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\data\\interactive-globe\\index.tsx",
+          "line": 57,
+          "column": 70,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\data\\geographic-map\\index.tsx",
+          "line": 86,
+          "column": 113,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\backgrounds\\beam-grid\\index.tsx",
+          "line": 32,
+          "column": 71,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks a same-element \"motion-reduce:animate-none\" fallback.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\ai\\ai-chat-panel\\index.tsx",
+          "line": 59,
+          "column": 68,
+          "snippet": "animate-pulse"
+        }
+      ]
+    },
+    "no-arbitrary-spacing": {
+      "count": 1,
+      "files": 1,
+      "examples": [
+        {
+          "ruleId": "no-arbitrary-spacing",
+          "severity": "warning",
+          "message": "Off-grid spacing \"mb-[1px]\" needs a human layout decision; no automatic replacement is safe.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ResourceTabs.tsx",
+          "line": 66,
+          "column": 123,
+          "snippet": "mb-[1px]"
+        }
+      ],
+      "oneFindingPerFileSample": [
+        {
+          "ruleId": "no-arbitrary-spacing",
+          "severity": "warning",
+          "message": "Off-grid spacing \"mb-[1px]\" needs a human layout decision; no automatic replacement is safe.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ResourceTabs.tsx",
+          "line": 66,
+          "column": 123,
+          "snippet": "mb-[1px]"
+        }
+      ]
+    },
+    "no-hardcoded-colors": {
+      "count": 3658,
+      "files": 428,
+      "examples": [
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#62666F]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 30,
+          "column": 36,
+          "snippet": "text-[#62666F]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 30,
+          "column": 56,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#2547E8]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 36,
+          "column": 32,
+          "snippet": "bg-[#2547E8]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#6782FF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 36,
+          "column": 95,
+          "snippet": "bg-[#6782FF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#0B0D10]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 36,
+          "column": 113,
+          "snippet": "text-[#0B0D10]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 42,
+          "column": 39,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#111217]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 42,
+          "column": 99,
+          "snippet": "text-[#111217]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#FAF9F6]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 42,
+          "column": 120,
+          "snippet": "bg-[#FAF9F6]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#272C34]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 42,
+          "column": 138,
+          "snippet": "border-[#272C34]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#171B21]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 42,
+          "column": 160,
+          "snippet": "bg-[#171B21]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#F5F7FA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 42,
+          "column": 178,
+          "snippet": "text-[#F5F7FA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 52,
+          "column": 68,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#FFFFFF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 52,
+          "column": 85,
+          "snippet": "bg-[#FFFFFF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#272C34]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 52,
+          "column": 107,
+          "snippet": "border-[#272C34]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#111419]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 52,
+          "column": 129,
+          "snippet": "bg-[#111419]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 75,
+          "column": 78,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#FFFFFF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 75,
+          "column": 95,
+          "snippet": "bg-[#FFFFFF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#272C34]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 75,
+          "column": 117,
+          "snippet": "border-[#272C34]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#111419]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 75,
+          "column": 139,
+          "snippet": "bg-[#111419]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 89,
+          "column": 82,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#FFFFFF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 89,
+          "column": 99,
+          "snippet": "bg-[#FFFFFF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#272C34]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 89,
+          "column": 121,
+          "snippet": "border-[#272C34]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#111419]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 89,
+          "column": 143,
+          "snippet": "bg-[#111419]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#62666F]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 91,
+          "column": 57,
+          "snippet": "text-[#62666F]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 91,
+          "column": 77,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#62666F]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 94,
+          "column": 57,
+          "snippet": "text-[#62666F]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 94,
+          "column": 77,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#62666F]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 97,
+          "column": 57,
+          "snippet": "text-[#62666F]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 97,
+          "column": 77,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#62666F]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 109,
+          "column": 57,
+          "snippet": "text-[#62666F]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 109,
+          "column": 77,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 118,
+          "column": 78,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#FFFFFF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 118,
+          "column": 95,
+          "snippet": "bg-[#FFFFFF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#272C34]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 118,
+          "column": 117,
+          "snippet": "border-[#272C34]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#111419]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 118,
+          "column": 139,
+          "snippet": "bg-[#111419]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 130,
+          "column": 54,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#FFFFFF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 130,
+          "column": 71,
+          "snippet": "bg-[#FFFFFF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#272C34]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 130,
+          "column": 93,
+          "snippet": "border-[#272C34]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#111419]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 130,
+          "column": 115,
+          "snippet": "bg-[#111419]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#62666F]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 132,
+          "column": 56,
+          "snippet": "text-[#62666F]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 132,
+          "column": 76,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#62666F]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 145,
+          "column": 56,
+          "snippet": "text-[#62666F]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 145,
+          "column": 76,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#272C34]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 170,
+          "column": 60,
+          "snippet": "border-[#272C34]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#0B0D10]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 170,
+          "column": 77,
+          "snippet": "bg-[#0B0D10]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#F5F7FA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 170,
+          "column": 90,
+          "snippet": "text-[#F5F7FA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#6782FF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 196,
+          "column": 33,
+          "snippet": "text-[#6782FF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 197,
+          "column": 38,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 198,
+          "column": 38,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 199,
+          "column": 38,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 209,
+          "column": 45,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 210,
+          "column": 45,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 211,
+          "column": 45,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#111217]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 21,
+          "column": 22,
+          "snippet": "bg-[#111217]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#111217]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 21,
+          "column": 46,
+          "snippet": "border-[#111217]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#62666F]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 22,
+          "column": 34,
+          "snippet": "text-[#62666F]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 22,
+          "column": 49,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#111217]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 22,
+          "column": 72,
+          "snippet": "border-[#111217]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#111217]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 22,
+          "column": 95,
+          "snippet": "text-[#111217]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#0B0D10]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 34,
+          "column": 14,
+          "snippet": "bg-[#0B0D10]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#2E3440]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 34,
+          "column": 38,
+          "snippet": "border-[#2E3440]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#111217]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 35,
+          "column": 23,
+          "snippet": "text-[#111217]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 35,
+          "column": 38,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#E8E6DF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 41,
+          "column": 109,
+          "snippet": "bg-[#E8E6DF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#111217]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 41,
+          "column": 122,
+          "snippet": "text-[#111217]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#2547E8]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 77,
+          "column": 100,
+          "snippet": "bg-[#2547E8]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#1E3AB8]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 77,
+          "column": 130,
+          "snippet": "bg-[#1E3AB8]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#E7EBFF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ResourcePreviewFrame.tsx",
+          "line": 161,
+          "column": 56,
+          "snippet": "bg-[#E7EBFF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#0B0D10]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ResourcePreviewFrame.tsx",
+          "line": 184,
+          "column": 147,
+          "snippet": "bg-[#0B0D10]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#C83D48]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ExploreView.tsx",
+          "line": 317,
+          "column": 60,
+          "snippet": "border-[#C83D48]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#C83D48]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ExploreView.tsx",
+          "line": 453,
+          "column": 61,
+          "snippet": "border-[#C83D48]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#8F2530]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ExploreView.tsx",
+          "line": 453,
+          "column": 99,
+          "snippet": "text-[#8F2530]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 130,
+          "column": 52,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#272C34]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 130,
+          "column": 79,
+          "snippet": "border-[#272C34]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#E7EBFF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 132,
+          "column": 71,
+          "snippet": "bg-[#E7EBFF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#2547E8]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 132,
+          "column": 124,
+          "snippet": "text-[#2547E8]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#1C2752]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 132,
+          "column": 144,
+          "snippet": "bg-[#1C2752]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#879DFF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 132,
+          "column": 162,
+          "snippet": "text-[#879DFF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#111217]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 135,
+          "column": 65,
+          "snippet": "text-[#111217]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#F5F7FA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 135,
+          "column": 85,
+          "snippet": "text-[#F5F7FA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#62666F]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 138,
+          "column": 38,
+          "snippet": "text-[#62666F]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 138,
+          "column": 58,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 147,
+          "column": 75,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#111217]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 147,
+          "column": 133,
+          "snippet": "text-[#111217]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#FAF9F6]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 147,
+          "column": 154,
+          "snippet": "bg-[#FAF9F6]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#272C34]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 147,
+          "column": 172,
+          "snippet": "border-[#272C34]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#171B21]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 147,
+          "column": 194,
+          "snippet": "bg-[#171B21]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#F5F7FA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 147,
+          "column": 212,
+          "snippet": "text-[#F5F7FA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#1C2128]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 147,
+          "column": 238,
+          "snippet": "bg-[#1C2128]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 156,
+          "column": 53,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#272C34]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 156,
+          "column": 80,
+          "snippet": "border-[#272C34]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#2547E8]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 175,
+          "column": 22,
+          "snippet": "bg-[#2547E8]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#6782FF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 175,
+          "column": 61,
+          "snippet": "bg-[#6782FF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#0B0D10]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 175,
+          "column": 79,
+          "snippet": "text-[#0B0D10]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#62666F]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 176,
+          "column": 37,
+          "snippet": "text-[#62666F]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#FAF9F6]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 176,
+          "column": 58,
+          "snippet": "bg-[#FAF9F6]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#111217]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 176,
+          "column": 77,
+          "snippet": "text-[#111217]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#A8AFBA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 176,
+          "column": 97,
+          "snippet": "text-[#A8AFBA]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#171B21]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 176,
+          "column": 123,
+          "snippet": "bg-[#171B21]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#F5F7FA]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 176,
+          "column": 147,
+          "snippet": "text-[#F5F7FA]"
+        }
+      ],
+      "oneFindingPerFileSample": [
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#62666F]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 30,
+          "column": 36,
+          "snippet": "text-[#62666F]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#111217]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 21,
+          "column": 22,
+          "snippet": "bg-[#111217]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#E7EBFF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ResourcePreviewFrame.tsx",
+          "line": 161,
+          "column": 56,
+          "snippet": "bg-[#E7EBFF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#C83D48]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ExploreView.tsx",
+          "line": 317,
+          "column": 60,
+          "snippet": "border-[#C83D48]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 130,
+          "column": 52,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#E7EBFF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ComposeView.tsx",
+          "line": 187,
+          "column": 69,
+          "snippet": "bg-[#E7EBFF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\tools\\TypographyLab.tsx",
+          "line": 112,
+          "column": 96,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#62666F]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\tools\\ToolsHub.tsx",
+          "line": 147,
+          "column": 85,
+          "snippet": "text-[#62666F]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\tools\\SectionPlanner.tsx",
+          "line": 189,
+          "column": 96,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\tools\\PaletteStudio.tsx",
+          "line": 212,
+          "column": 96,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\tools\\MotionStudio.tsx",
+          "line": 151,
+          "column": 96,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#F4F2ED]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\tools\\LayoutComposer.tsx",
+          "line": 95,
+          "column": 47,
+          "snippet": "bg-[#F4F2ED]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\tools\\IconLab.tsx",
+          "line": 120,
+          "column": 96,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\tools\\DatavizStyler.tsx",
+          "line": 105,
+          "column": 96,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\tools\\BackgroundStudio.tsx",
+          "line": 255,
+          "column": 96,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\tools\\AccessibilityLab.tsx",
+          "line": 67,
+          "column": 96,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"bg-[#0B0D10]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\home\\WorkbenchReveal.tsx",
+          "line": 6,
+          "column": 25,
+          "snippet": "bg-[#0B0D10]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"text-[#62666F]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\home\\ThreeDirectionsDemo.tsx",
+          "line": 17,
+          "column": 183,
+          "snippet": "text-[#62666F]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#D9D6CF]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\home\\StructureComparison.tsx",
+          "line": 7,
+          "column": 80,
+          "snippet": "border-[#D9D6CF]"
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Tailwind arbitrary color class \"border-[#DEDAD2]\" needs a human-selected semantic token if this value should follow Design DNA.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\home\\SiteHeader.tsx",
+          "line": 25,
+          "column": 65,
+          "snippet": "border-[#DEDAD2]"
+        }
+      ]
+    }
+  }
+}

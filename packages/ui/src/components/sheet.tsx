@@ -1,3 +1,4 @@
+import { useDialogFocus } from '../use-dialog-focus.js';
 import React, { useEffect } from 'react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -19,6 +20,7 @@ export function Sheet({
   children,
   className,
 }: SheetProps) {
+  const dialogRef=useDialogFocus<HTMLDivElement>(open,onClose);
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
@@ -56,7 +58,7 @@ export function Sheet({
       role="presentation"
     >
       <div
-        role="dialog"
+        ref={dialogRef} tabIndex={-1} role="dialog"
         aria-modal="true"
         aria-label={title || 'Sheet'}
         className={twMerge(
@@ -77,7 +79,7 @@ export function Sheet({
           <button
             type="button"
             onClick={onClose}
-            className="ml-auto rounded-lg p-1 text-[#8B8F97] hover:text-[#111217] dark:hover:text-[#F5F7FA] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2547E8]"
+            className="ml-auto rounded-lg p-1 text-[var(--text-muted)] hover:text-[#111217] dark:hover:text-[#F5F7FA] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2547E8]"
             aria-label="Close sheet"
           >
             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

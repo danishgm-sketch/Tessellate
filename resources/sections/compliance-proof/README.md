@@ -1,3 +1,3 @@
-# Compliance Proof
+# Compliance Evidence Template
 
-Regulatory compliance section outlining SOC2, GDPR, and independent verification.
+Illustrative layout for presenting compliance documentation. Add current evidence, scope, and review dates before making claims about a product.

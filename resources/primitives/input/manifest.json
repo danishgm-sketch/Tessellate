@@ -82,7 +82,10 @@
   },
   "preview": {
     "component": "InputPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "label": "Full name",
+      "placeholder": "Ada Lovelace"
+    },
     "viewport": 1440
   },
   "slots": [
@@ -206,7 +209,7 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
+    "levelTarget": "AA",
     "keyboardVerified": true,
     "screenReaderSemantics": true,
     "reducedMotionVerified": true,
@@ -234,7 +237,11 @@
     "composability": 95,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

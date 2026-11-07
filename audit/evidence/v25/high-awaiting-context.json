@@ -1,0 +1,302 @@
+[
+  {
+    "id": "AUD-001",
+    "rootCause": "MarketingNavCta declared no action prop and rendered an unconditional button; the resource preview host could not supply a meaningful demo action.",
+    "affectedCode": null,
+    "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+    "reproduction": [
+      "Open /resources/marketing-nav-cta/.",
+      "Focus Start Free and press Enter; no navigation or state change occurs."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-002",
+    "rootCause": "PricingThreeTier rendered three static buttons without an onSelectPlan integration contract.",
+    "affectedCode": null,
+    "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+    "reproduction": [
+      "Open /resources/pricing-three-tier/.",
+      "Focus the first Get Started button and press Enter; no state change occurs."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-003",
+    "rootCause": "EmptyWorkspace exposed no host callback and rendered the action unconditionally enabled.",
+    "affectedCode": null,
+    "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+    "reproduction": [
+      "Open /resources/empty-workspace/.",
+      "Focus Create New Project and press Enter; nothing happens."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-004",
+    "rootCause": "MagneticButton implemented only pointer tracking and omitted a click callback contract.",
+    "affectedCode": null,
+    "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+    "reproduction": [
+      "Open /resources/magnetic-button/.",
+      "Focus the button and press Enter; it remains unchanged."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-005",
+    "rootCause": "The preview host mapped several generic example callbacks but omitted the existing onRetry prop.",
+    "affectedCode": null,
+    "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+    "reproduction": [
+      "Open /resources/error-state/.",
+      "Activate Retry Operation; there is no visible response."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-030",
+    "rootCause": "The Astro template split one title string across multiple text/interpolation segments containing parentheses. The compiler hoisted closing head markup between those segments, corrupting all following body markup.",
+    "affectedCode": null,
+    "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+    "reproduction": [
+      "Open /resources/ai-prompt-hero/ at 1280x900.",
+      "Inspect the document title and resource preview; the title was truncated, the detail DOM was misnested and the preview was too narrow."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-066",
+    "rootCause": "The manifest supplied no preview props, so PreviewHost rendered Input without its optional label.",
+    "affectedCode": null,
+    "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
+    "reproduction": [
+      "Open /preview/?resource=input&variant=quiet at 1440x900.",
+      "Run the Gold-resource Axe matrix with WCAG 2.2 AA tags.",
+      "Compare the retained before and after captures."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-067",
+    "rootCause": "PreviewHost treated React's native onChange SyntheticEvent as a resource value instead of reading target.value or target.checked.",
+    "affectedCode": null,
+    "fixCommit": "c7d3a7cdec9ab7f0702cc5898a9bfe440a510e95",
+    "reproduction": [
+      "Open /resources/input/ at 1440x900 and type Ada Lovelace into Full name.",
+      "Open /resources/textarea/ and type a sentence into its live preview.",
+      "Open /resources/select/ and choose Second option.",
+      "Observe the preview value after React applies the controlled props update."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-069",
+    "rootCause": "The Dialog component rendered only a visual overlay and panel; it did not implement the semantic and keyboard behavior promised by its manifest.",
+    "affectedCode": null,
+    "fixCommit": "f486af22975f14ed3acf39fcf5ba1cd2e62ab136",
+    "reproduction": [
+      "Open /resources/dialog/ at 390x844.",
+      "Inspect the live preview accessibility tree; the visible modal has no dialog role or accessible name relationship.",
+      "Run the Gold dialog browser regression; it fails on the missing role before remediation."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-070",
+    "rootCause": "The component rendered the primary action without an onExecute contract or disabled fallback, while the preview host intentionally did not provide a callback for this resource.",
+    "affectedCode": null,
+    "fixCommit": "f486af22975f14ed3acf39fcf5ba1cd2e62ab136",
+    "reproduction": [
+      "Open /resources/ai-prompt-composer/ at 390x844.",
+      "Enter a prompt and click Execute Prompt.",
+      "Observe no confirmation, disabled state, or provider request. The pre-fix browser regression fails because no status is present."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-101",
+    "rootCause": "The generic marketplace archetype reused accommodation and transactional workflows for a freelance-services marketplace.",
+    "affectedCode": null,
+    "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
+    "reproduction": [
+      "Open /compose at 1440x900.",
+      "Enter benchmark brief MKT-01 and compose.",
+      "Inspect Direction A on Messages & Inquiries."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-102",
+    "rootCause": "The shared activity-feed role admitted an inbox resource whose semantics conflict with community posts and conversation chronology.",
+    "affectedCode": null,
+    "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
+    "reproduction": [
+      "Open /compose at 1440x900.",
+      "Enter benchmark brief CON-04 and compose.",
+      "Inspect Activity Stream in Directions A, B, and C."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-103",
+    "rootCause": "The semantic role allowlist omitted channels-rail, message-thread, and message-composer contracts.",
+    "affectedCode": null,
+    "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
+    "reproduction": [
+      "Run the no-override composition benchmark before adding role mappings.",
+      "Inspect required-role diagnostics for the marketplace message screens."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-111",
+    "rootCause": "The archetype content binder had no e-commerce CTA label or destination rule, so it fell through to a generic onboarding label and overview-screen fragment.",
+    "affectedCode": null,
+    "fixCommit": "77cbad5f",
+    "reproduction": [
+      "Open /compose at 1440x900.",
+      "Compose benchmark brief ECOM-01.",
+      "Inspect the Storefront Catalog preview in Directions A, B, and C.",
+      "Activate the primary conversion CTA and inspect the selected screen."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-112",
+    "rootCause": "The interpreter used the single generic ecommerce archetype for explicit returns-portal intent; it had no domain specialization, so the screen planner inherited a new-purchase funnel.",
+    "affectedCode": null,
+    "fixCommit": "77cbad5f",
+    "reproduction": [
+      "Open /compose at 1440x900.",
+      "Compose benchmark brief ECOM-06 without an archetype override.",
+      "Inspect Product Architecture and each direction’s visible screen selector."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-119",
+    "rootCause": "The broad fintech defaults did not specialize explicit trading-terminal, market-depth, and equity-dealer language, so the bank-account workflow was reused.",
+    "affectedCode": null,
+    "fixCommit": "a8735ca2",
+    "reproduction": [
+      "Open /compose at desktop or mobile size and enter the FIN-05 brokerage terminal brief from the composition benchmark.",
+      "Compose and inspect Direction 01 Account Balances and Direction 03 Market Overview.",
+      "Observe banking screens, statement copy, or raw workflow IDs."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-236",
+    "rootCause": "The manifest described an aspirational checklist as an implemented compliance audit.",
+    "affectedCode": null,
+    "fixCommit": null,
+    "reproduction": [
+      "Open /r/accessibility-commitment-section at 1440x900 and 390x844.",
+      "Compare the detail description with the preview checklist.",
+      "Pre-fix runtime record: quality/evidence/step-39/deployed-before/resource-claims/desktop/accessibility-commitment-section.json; primary route returned HTTP 200; no console, uncaught, failed-request, or HTTP errors were recorded."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-237",
+    "rootCause": "Resource metadata was copied from a planned product behavior rather than the component contract.",
+    "affectedCode": null,
+    "fixCommit": null,
+    "reproduction": [
+      "Open /r/compliance-proof at desktop and mobile widths.",
+      "Compare the detail description with the rendered template and controls.",
+      "Pre-fix runtime record: quality/evidence/step-39/deployed-before/resource-claims/desktop/compliance-proof.json; primary route returned HTTP 200; no console, uncaught, failed-request, or HTTP errors were recorded."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-238",
+    "rootCause": "The sample used a success icon as decoration without connecting it to verification state.",
+    "affectedCode": null,
+    "fixCommit": null,
+    "reproduction": [
+      "Open /preview/?resource=trust-badges-strip at desktop and mobile widths.",
+      "Inspect the icons next to EVIDENCE REQUIRED, VERIFY SCOPE, REVIEW POLICY, and TARGET.",
+      "Pre-fix runtime record: quality/evidence/step-39/deployed-before/resource-previews/desktop/trust-badges-strip.json; primary route returned HTTP 200; no console, uncaught, failed-request, or HTTP errors were recorded."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-239",
+    "rootCause": "A presentation component was written as if it were a security scanner and product attestation.",
+    "affectedCode": null,
+    "fixCommit": null,
+    "reproduction": [
+      "Open /r/security-proof at desktop and mobile widths.",
+      "Inspect its detail description and the three preview checklist rows.",
+      "Pre-fix runtime record: quality/evidence/step-39/deployed-before/resource-claims/desktop/security-proof.json; primary route returned HTTP 200; no console, uncaught, failed-request, or HTTP errors were recorded."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-240",
+    "rootCause": "Static demo values and export-specific copy were embedded as default component props.",
+    "affectedCode": null,
+    "fixCommit": null,
+    "reproduction": [
+      "Open /preview/?resource=success-state at desktop and mobile widths.",
+      "Read the completion title and message.",
+      "Pre-fix runtime record: quality/evidence/step-39/deployed-before/resource-previews/desktop/success-state.json; primary route returned HTTP 200; no console, uncaught, failed-request, or HTTP errors were recorded."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-242",
+    "rootCause": "Green-on-pale-green heading and button colors were selected without checking their rendered contrast.",
+    "affectedCode": null,
+    "fixCommit": null,
+    "reproduction": [
+      "Open /preview/?resource=success-state at 1440x900.",
+      "Run Axe with WCAG 2.2 AA tags.",
+      "Pre-fix runtime record: quality/evidence/step-39/deployed-before/resource-previews/desktop/success-state.json; primary route returned HTTP 200; no console, uncaught, failed-request, or HTTP errors were recorded."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-261",
+    "rootCause": "The example success title used emerald-600 on a pale surface and the disabled action retained an emerald-600 background, both below the normal-text AA threshold.",
+    "affectedCode": null,
+    "fixCommit": null,
+    "reproduction": [
+      "Open /preview/?resource=success-state at 1440×900 or 390×844.",
+      "Run Axe against the rendered preview; the title and View Exported Files action are reported as serious color-contrast.",
+      "Pre-fix runtime record: quality/evidence/step-39/deployed-before/resource-previews/desktop/success-state.json; primary route returned HTTP 200; no console, uncaught, failed-request, or HTTP errors were recorded."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-263",
+    "rootCause": "Resource builders stamped generic high quality scores, AAA targets and true accessibility verification flags into every manifest. The contract had no quality evidence state, and UI/search/compatibility treated the values as assessed inputs.",
+    "affectedCode": "scripts/*-builder.ts; resources/**/manifest.json; packages/schemas/src/resource.ts; packages/catalog/src/validator.ts; packages/compatibility/src/{scoring,accessibility-model}.ts; packages/search/src/{indexer,query,types}.ts; apps/site/src/components/{ResourceInspector,ResourceTabs}.tsx; packages/workbench/src/components/right-inspector/ResourceTab.tsx.",
+    "fixCommit": null,
+    "reproduction": [
+      "Open https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/success-state at 1440x900.",
+      "Open the Accessibility tab; observe a WCAG AAA target and green checks on this non-Gold resource. Deployed capture: quality/evidence/step-39/deployed-before/resource-metadata/desktop/accessibility-tab.png.",
+      "Inspect all 324 resources/ manifests; before the fix every one has keyboardVerified, screenReaderSemantics, reducedMotionVerified, contrastTokenCompatible and focusVisible set true, while only the Gold 40 have retained browser certification evidence.",
+      "Inspect the resource builders and catalogue search/compatibility paths; template scores are used by quality filtering and candidate ranking without evidence."
+    ],
+    "verification": null
+  },
+  {
+    "id": "AUD-275",
+    "rootCause": "PreviewHost treated MessageEvent.origin as the renderer origin rather than the sender origin, rejecting same-origin application-host messages because the renderer itself is sandboxed.",
+    "affectedCode": [
+      "apps/site/src/components/PreviewHost.tsx",
+      "apps/site/src/components/ResourcePreviewFrame.tsx",
+      "apps/site/src/scripts/preview-wrapper.ts"
+    ],
+    "fixCommit": null,
+    "reproduction": [
+      "Open /resources/advanced-data-table/ in the local Sites Worker at 360x844.",
+      "Send the visible preview update for title People directory and rows []. Before the fix, the filter textbox never appeared.",
+      "Open /r/button, click Expressive, and compare the rendered Button class. Before the fix it stayed Quiet."
+    ],
+    "verification": "The state flow passes after the fix. Focused Sites preview/state/accessibility tests pass 14/14; the Gold accessibility matrix passes all 120 variants; the variant change regression passes desktop and mobile. Typecheck, lint, 1204 unit tests, and audit:all pass."
+  }
+]

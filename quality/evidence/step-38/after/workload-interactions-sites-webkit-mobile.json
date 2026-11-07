@@ -1,0 +1,67 @@
+{
+  "capturedAt": "2026-10-21T09:20:01.168Z",
+  "method": "Visible Playwright UI workflow on the local ChatGPT Sites compatibility Worker preview, unthrottled laptop CPU/network. Timings run from user action to visible completion; they are lab observations, not field metrics.",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "browserProject": "sites-webkit-mobile",
+  "url": "http://127.0.0.1:4323/workbench?project=proj-direction-c-f9365992130f450b920b190b44760741dirc",
+  "interactions": {
+    "catalogueSearchAndFirstPreviewMs": 836,
+    "threeDirectionCompositionMs": 253,
+    "directionCWorkbenchReadyMs": 945,
+    "recomposeVisibleResultMs": 150,
+    "standaloneZipReadyMs": 308,
+    "standaloneZipBytes": 40720
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "browserCancellations": [],
+    "httpErrors": [],
+    "previewPolicies": [
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=accessibility-commitment-section",
+        "status": 200,
+        "policy": "default-src 'none'; script-src http://127.0.0.1:4323/_astro/ 'sha256-eIXWvAmxkr251LJZkjniEK5LcPF3NkapbJepohwYRIc=' 'sha256-Ya0pUYrC7nM5Cn/056TyVuEiz6dFGrzmkWzgON0pF0U='; style-src http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4323 data:; font-src http://127.0.0.1:4323 data:; connect-src http://127.0.0.1:4323/_astro/; frame-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'self';"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=accordion",
+        "status": 200,
+        "policy": "default-src 'none'; script-src http://127.0.0.1:4323/_astro/ 'sha256-eIXWvAmxkr251LJZkjniEK5LcPF3NkapbJepohwYRIc=' 'sha256-Ya0pUYrC7nM5Cn/056TyVuEiz6dFGrzmkWzgON0pF0U='; style-src http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4323 data:; font-src http://127.0.0.1:4323 data:; connect-src http://127.0.0.1:4323/_astro/; frame-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'self';"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=onboarding-role-select",
+        "status": 200,
+        "policy": "default-src 'none'; script-src http://127.0.0.1:4323/_astro/ 'sha256-eIXWvAmxkr251LJZkjniEK5LcPF3NkapbJepohwYRIc=' 'sha256-Ya0pUYrC7nM5Cn/056TyVuEiz6dFGrzmkWzgON0pF0U='; style-src http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4323 data:; font-src http://127.0.0.1:4323 data:; connect-src http://127.0.0.1:4323/_astro/; frame-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'self';"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=onboarding-wizard",
+        "status": 200,
+        "policy": "default-src 'none'; script-src http://127.0.0.1:4323/_astro/ 'sha256-eIXWvAmxkr251LJZkjniEK5LcPF3NkapbJepohwYRIc=' 'sha256-Ya0pUYrC7nM5Cn/056TyVuEiz6dFGrzmkWzgON0pF0U='; style-src http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-elem http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA='; style-src-attr 'unsafe-inline'; img-src http://127.0.0.1:4323 data:; font-src http://127.0.0.1:4323 data:; connect-src http://127.0.0.1:4323/_astro/; frame-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'self';"
+      }
+    ],
+    "cspViolationEvents": [],
+    "inlineStyles": [
+      {
+        "frameUrl": "http://127.0.0.1:4323/preview/?resource=onboarding-role-select",
+        "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+        "sha256": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+        "astroIslandDisplay": "contents"
+      },
+      {
+        "frameUrl": "http://127.0.0.1:4323/preview/?resource=onboarding-wizard",
+        "text": "astro-island,astro-slot,astro-static-slot{display:contents}",
+        "sha256": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+        "astroIslandDisplay": "contents"
+      }
+    ]
+  },
+  "screenshots": [
+    "quality/evidence/step-38/after/workload-explore-sites-webkit-mobile.png",
+    "quality/evidence/step-38/after/workload-compose-sites-webkit-mobile.png",
+    "quality/evidence/step-38/after/workload-workbench-sites-webkit-mobile.png"
+  ]
+}

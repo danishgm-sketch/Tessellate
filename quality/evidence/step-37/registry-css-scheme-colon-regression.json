@@ -1,0 +1,33 @@
+{
+  "findingId": "SEC-37-099",
+  "severity": "medium",
+  "title": "Scheme-only HTTP(S) CSS URLs bypassed external request detection",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "const css = '.hero { background-image: url(http:collector.invalid/pixel) }';",
+      "const css = '.hero { background-image: url(http\\\\3a collector.invalid/pixel) }';",
+      "const css = '.hero { background-image: url(https:collector.invalid/pixel) }';",
+      "const css = '.hero { background-image: url(https\\\\3a collector.invalid/pixel) }';"
+    ],
+    "beforeFix": "The gate returned pass because the detector required // after the scheme. An HTTPS scheme-only URL is an external request from an HTTP preview origin (new URL('https:collector.invalid/pixel', 'http://app.example/') resolves to https://collector.invalid/pixel).",
+    "afterFix": "The normalized CSS URL matcher rejects HTTP and HTTPS schemes with or without slashes, including CSS-escaped colons."
+  },
+  "rootCause": "The remote CSS matcher recognized explicit HTTP(S) schemes only when followed by //, missing scheme-only forms that resolve to another origin when the preview uses the other HTTP scheme.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Recognize both HTTP and HTTPS schemes after CSS escape normalization regardless of whether // follows, alongside scheme-relative URLs.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"protocol-relative remote CSS\"",
+    "redBeforeFixResult": "failed as expected: both url(http:collector.invalid/pixel) and url(https:collector.invalid/pixel) returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"protocol-relative remote CSS\"",
+    "targetedAfterFixResult": "1 targeted test passed; direct and escaped HTTP and HTTPS scheme-only forms are rejected",
+    "urlResolutionProbe": "Node URL parsing resolves http:collector.invalid/pixel against https://app.example/ to http://collector.invalid/pixel, and https:collector.invalid/pixel against http://app.example/ to https://collector.invalid/pixel",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "Static CSS source analysis plus URL parsing; no resource code was run. Deployed CSP verification remains pending.",
+  "capturedAt": "2026-10-21T17:56:29Z"
+}

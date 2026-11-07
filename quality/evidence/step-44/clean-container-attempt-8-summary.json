@@ -1,0 +1,26 @@
+{
+  "attempt": 8,
+  "status": "failed_after_all_app_checks_passed",
+  "container": "tessellate-step44-20261024T044542Z",
+  "frozen_install": "pass; 570 packages, zero store reuse",
+  "catalogue": "pass; 324 resources, 40 Gold",
+  "typecheck": "pass",
+  "lint": "pass",
+  "unit_tests": "pass",
+  "audit_all": "pass; behavioral release gate 16/16 and 324 isolation checks passed",
+  "production_build": "pass",
+  "browser_profiles": {
+    "astro_preview": {"passed": 286, "skipped": 108, "failed": 0},
+    "sites_preview": {"passed": 250, "skipped": 41, "failed": 1},
+    "standalone_preview_app": "not run because Sites profile exited nonzero"
+  },
+  "single_failure": {
+    "route": "/",
+    "viewport": "mobile",
+    "category": "test_harness",
+    "title": "Mobile homepage full-page screenshot capture exceeded Chromium protocol limit",
+    "evidence": "sites-homepage-copy-mobile-error-context.md",
+    "app_assertions": "passed before screenshot capture",
+    "fix": "Capture the mobile viewport and keep focused section screenshots; retain full-page capture for desktop only"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "capturedAt": "2026-10-31T23:13:35.216Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/logo-cloud-marquee/",
+  "version": 64,
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "console": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "status": 200,
+  "before": {
+    "clientWidth": 716,
+    "scrollWidth": 1635,
+    "scrollLeft": 0
+  },
+  "focused": true,
+  "after": {
+    "scrollLeft": 25,
+    "firstVisibleLabel": "Sample Partner A"
+  },
+  "expected": "ArrowRight advances the focusable horizontally scrollable partner-name region.",
+  "actual": "Public v64 on this Windows Chromium browser advanced using the native browser default; Linux headless Chromium in GitHub CI recorded scrollLeft=0 for the same ten key presses.",
+  "screenshots": {
+    "before": "audit/evidence/deployed-v64-2026-10-31/logo-marquee-keyboard/before-arrow-navigation.png",
+    "after": "audit/evidence/deployed-v64-2026-10-31/logo-marquee-keyboard/after-arrow-navigation.png"
+  }
+}

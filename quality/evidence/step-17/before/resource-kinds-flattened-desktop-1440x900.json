@@ -1,0 +1,24 @@
+{
+  "id": "STEP-17-DESKTOP",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "url": "http://localhost:4321/workbench?project=proj-direction-c-eb4d8434d41641b69ac788144ac687e7dirc",
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "checks": {
+    "shell": {
+      "viewportWidth": 1440,
+      "documentWidth": 1440,
+      "leftPanelWidth": 280,
+      "rightPanelWidth": 340,
+      "canvasWidth": 820
+    },
+    "failure": "The Workbench layer tree contained no resource-backed component node, so visible component selection could not continue."
+  },
+  "screenshot": "quality/evidence/step-17/before/resource-kinds-flattened-desktop-1440x900.png"
+}

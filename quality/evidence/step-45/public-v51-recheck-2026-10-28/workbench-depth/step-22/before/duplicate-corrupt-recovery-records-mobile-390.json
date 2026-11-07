@@ -1,0 +1,17 @@
+{
+  "url": "http://localhost:4321/workbench?project=corrupt-e56dca6c-cff1-43aa-a194-5f8e40280cbd",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "status": "reproduced",
+  "issue": "AUD-163",
+  "expected": "A single invalid local record is listed once even when mirrored in the active-project journal.",
+  "actual": "The same raw project is listed twice with duplicate export links.",
+  "screenshot": "quality/evidence/step-22/before/duplicate-corrupt-recovery-records-mobile-390.png"
+}

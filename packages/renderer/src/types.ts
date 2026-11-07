@@ -6,6 +6,9 @@ export interface RenderContext {
   tokenOverrides?: Record<string, string | number>;
   viewport?: 'desktop' | 'tablet' | 'mobile';
   reducedMotion?: boolean;
+  systemMode?:'light'|'dark';
+  /** Defer resource module loading until its editor viewport approaches the node. */
+  deferOffscreenResources?: boolean;
   selectedNodeId?: string;
   hoveredNodeId?: string;
   onNodeSelect?: (nodeId: string) => void;

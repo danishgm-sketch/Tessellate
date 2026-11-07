@@ -1,3 +1,3 @@
 # AI Plan Review
 
-Multi-stage structured action plan with phase gates, estimated complexities, and proceed confirmations.
+A structured sample plan with a local approval-state preview. No coding agent or task runner is connected.

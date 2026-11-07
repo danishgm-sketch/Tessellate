@@ -1,0 +1,44 @@
+{
+  "capturedAt": "2026-10-23T18:30:44.1171740Z",
+  "environment": "Local ChatGPT Sites compatibility Worker at 127.0.0.1:4323; Chrome DevTools MCP; CPU 1x; no network throttling; CrUX field data unavailable.",
+  "browser": "Chrome 156",
+  "route": "/compose",
+  "viewport": "1440x900",
+  "brief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+  "selection": {
+    "structuralCreativity": "Radical (75)",
+    "visualAmbition": "Refined"
+  },
+  "before": {
+    "inputDelayMs": 4,
+    "inpMs": 299,
+    "interaction": "pointerdown",
+    "presentationDelayMs": 175,
+    "processingMs": 120
+  },
+  "after": {
+    "interaction": "pointerdown",
+    "processingMs": 11,
+    "inpMs": 32,
+    "lcpMs": 119,
+    "cls": 0,
+    "presentationDelayMs": 20,
+    "inputDelayMs": 0.8
+  },
+  "result": {
+    "consoleWarnings": [],
+    "failedRequests": [],
+    "primaryArchetype": "Employee Experience",
+    "directionsRendered": 3,
+    "routeRequestCount": 22,
+    "consoleErrors": [],
+    "httpStatusCounts": {
+      "200": 20,
+      "304": 2
+    }
+  },
+  "evidenceLimitations": [
+    "Lab measurement from one visible interaction; it is not a field INP or a CrUX result.",
+    "DevTools MCP did not permit saving the raw trace under the repository workspace. Metrics and INP breakdown are recorded inline here."
+  ]
+}

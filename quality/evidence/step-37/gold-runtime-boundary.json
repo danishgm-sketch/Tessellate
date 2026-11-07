@@ -1,0 +1,48 @@
+{
+  "finding": "SEC-37-066",
+  "severity": "high",
+  "date": "2026-10-21",
+  "status": "fixed_locally",
+  "scenario": "Unverified non-Gold resource referenced by a project manifest",
+  "resource": "ai-chat-panel",
+  "before": {
+    "test_command": "pnpm exec vitest run packages/renderer/src/__tests__/gold-registry.test.tsx",
+    "result": "failed_as_expected",
+    "failure": "DEFAULT_RESOURCE_RENDERERS['ai-chat-panel'] returned the AIChatPanel component; 51 other tests in the file passed"
+  },
+  "after": {
+    "test_command": "pnpm exec vitest run packages/renderer/src/__tests__/gold-registry.test.tsx",
+    "result": "passed",
+    "test_files": 1,
+    "tests_passed": 52,
+    "assertions": [
+      "ai-chat-panel is not a Gold resource",
+      "the default app renderer has no ai-chat-panel entry",
+      "NodeRenderer shows the recoverable missing-resource diagnostic"
+    ]
+  },
+  "catalog_build": {
+    "command": "pnpm build:catalog",
+    "result": "passed",
+    "validated_catalog_resources": 324,
+    "generated_main_renderer_resources": 40
+  },
+  "security_audit": {
+    "command": "pnpm audit:secrets",
+    "result": "passed",
+    "check": "main-origin renderer imports exactly the certified Gold 40 resource implementations"
+  },
+  "full_repository_checks": {
+    "result": "passed",
+    "catalogue_resources": 324,
+    "app_renderer_resources": 40,
+    "unit_tests": "1143 passed across 76 files",
+    "typecheck": "passed across 22 workspace packages",
+    "lint": "passed with 0 errors and 33 warnings; changed files also pass focused ESLint",
+    "audit_all": "passed: 16/16 behavioral checks, 717 Astro pages, Sites Worker build, bundle budgets, license/provenance, Gold runtime security boundary, and dependency audit with zero advisories",
+    "e2e": "passed: Astro 263 passed / 99 skipped; Sites Worker 160 passed / 32 skipped; isolated preview 3 passed; total 426 passed / 131 skipped"
+  },
+  "deployment_verification": "pending",
+  "screenshots": [],
+  "notes": "The main app renderer imports exactly the certified Gold 40. The local build, complete unit suite, repository audit, and full Astro/Sites Worker/isolated-preview E2E chain pass. The Sites Worker resource render matrix covers 324 resources, and focused tests cover non-Gold fail-closed behavior. Public deployment verification remains pending for the release-candidate stage."
+}

@@ -5,7 +5,7 @@
   "name": "AI Model Mode Switcher",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Segmented switcher and credential dropdown to toggle between fast, reasoning, and local models.",
+  "description": "Model-mode selector UI with local selection state; it does not connect to providers or manage credentials.",
   "resourceType": "ai-pattern",
   "categories": [
     "ai",
@@ -17,9 +17,8 @@
     "models"
   ],
   "purposes": [
-    "model-selection",
-    "byo-key-management",
-    "reasoning-toggle"
+    "mode-selector-layout",
+    "local-selection-state"
   ],
   "productArchetypes": [
     {
@@ -102,7 +101,7 @@
     {
       "id": "quiet",
       "name": "Quiet",
-      "description": "Subtle slate borders, minimal badge accents, calm tool call telemetry for deep work.",
+      "description": "Low-emphasis neutral styling with restrained borders and accent color.",
       "props": {
         "variant": "quiet"
       }
@@ -110,7 +109,7 @@
     {
       "id": "expressive",
       "name": "Expressive",
-      "description": "Vibrant cobalt highlights, fluid gradient thinking indicators, and rich model card pills.",
+      "description": "More prominent color contrast and emphasis for key controls.",
       "props": {
         "variant": "expressive"
       }
@@ -118,7 +117,7 @@
     {
       "id": "nocturne",
       "name": "Nocturne",
-      "description": "Obsidian dark canvas, electric cyan luminescence, and high-contrast monospace code surfaces.",
+      "description": "Dark surface with high-contrast text and a restrained accent color.",
       "props": {
         "variant": "nocturne"
       }
@@ -126,30 +125,29 @@
   ],
   "tags": [
     "ai",
-    "models",
+    "mode",
     "switcher",
-    "reasoning",
-    "byo-endpoint"
+    "example"
   ],
   "intent": {
-    "summary": "Segmented switcher and credential dropdown to toggle between fast, reasoning, and local models.",
+    "summary": "Model-mode selector UI with local selection state; it does not connect to providers or manage credentials.",
     "idealFor": [
-      "Model selection toolbar",
-      "BYO-API-key configuration",
-      "Thinking mode toggles"
+      "Example mode selector",
+      "Local selection state studies"
     ],
     "avoidFor": [
-      "Standard navigation tab bars",
-      "Radio input forms"
+      "Provider configuration",
+      "Credential management",
+      "Live model selection"
     ],
     "jobs": [
-      "Switch active LLM backend and thinking mode with visual latency and cost badges"
+      "Change a local example mode in the preview without connecting to a model"
     ],
     "contentRequirements": [
-      "Model state reflection, streaming message blocks, citation cards, human-in-the-loop approvals"
+      "Explain that options are examples and no model or provider is connected."
     ],
     "notes": [
-      "Local state mockable, BYO endpoint compatible, zero lock-in contracts"
+      "Selections are local UI state only; credential and provider integration belong to the host application."
     ]
   },
   "visualDNA": {
@@ -214,12 +212,12 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -242,7 +240,11 @@
     "composability": 96,
     "visualCraft": 96,
     "dependencyCleanliness": 100,
-    "documentation": 96
+    "documentation": 96,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

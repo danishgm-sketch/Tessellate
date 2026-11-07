@@ -170,12 +170,12 @@ export function writeShell(def: ShellDef, repoRoot: string) {
       defaultStrategy: 'collapse',
     },
     accessibility: {
-      levelTarget: 'AAA',
-      keyboardVerified: true,
-      screenReaderSemantics: true,
-      reducedMotionVerified: true,
-      contrastTokenCompatible: true,
-      focusVisible: true,
+      levelTarget: 'AA',
+      keyboardVerified: false,
+      screenReaderSemantics: false,
+      reducedMotionVerified: false,
+      contrastTokenCompatible: false,
+      focusVisible: false,
     },
     performance: {
       jsCost: 'tiny',
@@ -190,6 +190,7 @@ export function writeShell(def: ShellDef, repoRoot: string) {
     compatibility: {},
     relationships: [],
     quality: {
+      assessment: { status: 'unassessed', evidence: [] },
       overall: 96,
       accessibility: 98,
       responsive: 95,

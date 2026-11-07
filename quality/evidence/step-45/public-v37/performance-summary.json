@@ -1,0 +1,77 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "deploymentVersion": 37,
+  "source": {
+    "canonicalAppCommit": "e08c34021bcf13fbe603f86803cb4d7f7eb443b8",
+    "sitesMirrorCommit": "c2cd798a3b253a80395febea1f61ab2dd71ca347",
+    "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_918118e36d4c819196088b063bfab113",
+    "deploymentId": "appgdep_6adfb7fd932c8191ae443e9a0af85c25"
+  },
+  "methodology": {
+    "provider": "Chrome DevTools MCP",
+    "labOnly": true,
+    "fieldCrUXAvailable": false
+  },
+  "homeDesktop1440": {
+    "lcpMs": 270,
+    "ttfbMs": 58,
+    "cls": 0,
+    "cache": "cold"
+  },
+  "workbenchMobile390": {
+    "viewport": "390x844",
+    "cpuSlowdown": "4x",
+    "network": "Fast 4G",
+    "reducedMotion": true,
+    "coldLoadSamples": [
+      {
+        "lcpMs": 1747,
+        "ttfbMs": 50,
+        "cls": 0,
+        "source": "initial v37 trace"
+      },
+      {
+        "lcpMs": 2994,
+        "ttfbMs": 1184,
+        "renderDelayMs": 1810,
+        "cls": 0,
+        "source": "fresh DevTools trace"
+      },
+      {
+        "lcpMs": 1762,
+        "ttfbMs": 66,
+        "renderDelayMs": 1697,
+        "cls": 0,
+        "source": "fresh DevTools trace"
+      },
+      {
+        "lcpMs": 1739,
+        "ttfbMs": 69,
+        "renderDelayMs": 1669,
+        "cls": 0,
+        "source": "fresh DevTools trace"
+      }
+    ],
+    "below2500ms": 3,
+    "totalSamples": 4,
+    "interpretation": "Three of four cold lab samples were below 2.5s. The outlier was driven by a 1,184ms document TTFB; its LCP element was text, and the trace estimated zero savings from render-blocking requests. No CrUX field data is available."
+  },
+  "lighthouseDesktop": {
+    "accessibility": 100,
+    "seo": 100,
+    "agenticBrowsing": 100,
+    "bestPractices": 81,
+    "failedAudit": "deprecations",
+    "externalWarnings": [
+      "FencedFrame",
+      "StorageType.persistent",
+      "Protected Audience API"
+    ],
+    "source": "/cdn-cgi/challenge-platform/scripts/jsd/main.js"
+  },
+  "noCspCompromise": {
+    "scriptSrcUnsafeInline": false,
+    "loopbackOrigins": false,
+    "freshResponseNonceRotates": true
+  }
+}

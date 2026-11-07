@@ -1,0 +1,829 @@
+# Step 39 — Language and copy evidence
+
+Step 39 remains in progress. Findings close as deployed only after version-specific browser evidence is recorded in audit/runtime-audit.json. Public v80 closes AUD-496–AUD-505 after issue-specific checks at 1440×900 and 390×844. The wider manual language review across the full public catalogue, documentation, CLI, MCP, errors, and secondary workflows remains incomplete. Older issue sections below preserve their contemporaneous status and are superseded by dated closeouts and continuation notes.
+
+## AUD-177 — AI Prompt Hero advertised an unavailable generation service
+
+- Severity: Medium; route /r/ai-prompt-hero.
+- Before evidence: quality/evidence/step-39/before/ (the prompt hero capture is historical local evidence).
+- Observed: the resource promised to generate an entire interface system, named Gemini 2.5 Flash / BYO Key, described a model picker that was absent, and exposed an enabled Synthesize Blueprint button with no action. Its first preset described a trading terminal.
+- Root cause: component copy and manifest claims assumed a provider and generation workflow that were not implemented.
+- Affected source: resources/sections/ai-prompt-hero, scripts/sections-batch-1.ts.
+- Remediation: describe a prompt-input pattern, remove the provider and unrelated preset, label the input, and disable the action without a host callback or prompt.
+- Regression: desktop and mobile tests check copy, preset input, disabled action, and zero browser/network errors. Local Sites Worker verification passes; deployed verification is pending.
+
+## AUD-178 — Sandboxed resource previews fail in plain Astro preview
+
+- Severity: Medium; open pending Pages-runtime verification; route /r/ai-prompt-hero.
+- Evidence: quality/evidence/step-39/astro-failure/ records the blank preview and failed opaque-origin module requests from plain Astro preview.
+- Root cause: plain Astro preview does not apply the static host’s scoped CORS headers for immutable JavaScript assets.
+- Remediation: apps/site/public/_headers allows cross-origin requests only for /_astro/* assets. It does not weaken CSP or iframe isolation.
+- Status: local Sites Worker has its own asset policy. The Cloudflare Pages runtime has not been checked, so this finding remains open.
+
+## AUD-179 — Inline Rewrite implied generated content and a completed action
+
+- Severity: Medium; route /r/inline-ai-rewrite.
+- Evidence: corrected local screenshots and runtime JSON are in quality/evidence/step-39/after/. The earlier implementation is preserved in pre-fix-source-diff.patch. Several route files under before/ were overwritten by a successful rerun and are invalid pre-fix screenshots.
+- Root cause: fixed sample text and local state appeared to be generated output and an accepted external edit.
+- Affected source: resources/ai/inline-ai-rewrite, scripts/ai-batch-1.ts, scripts/ai-builder.ts.
+- Remediation: label fixed examples and local preview behavior, begin idle, and use accurate local action labels and feedback.
+- Verification: desktop/mobile browser checks pass with no runtime or network errors. Deployment verification is pending.
+
+## AUD-180 — Tool timeline presented example timings and output as execution
+
+- Severity: Medium; route /r/ai-tool-execution-timeline.
+- Evidence: corrected local captures are in quality/evidence/step-39/after/. The earlier implementation is preserved in pre-fix-source-diff.patch; later files under before/ are invalid as pre-fix captures.
+- Root cause: a static sample trace claimed successful search/export and measured timings without running tools.
+- Affected source: resources/ai/ai-tool-execution-timeline, scripts/ai-batch-1.ts, scripts/ai-builder.ts.
+- Remediation: identify trace values as sample data, remove unrelated finance content, and state that no tools or files are created.
+- Verification: desktop/mobile checks pass with no browser or network errors. Deployment verification is pending.
+
+## AUD-181 — Shared AI metadata claimed capabilities unrelated to each component
+
+- Severity: Medium; all 20 AI resource detail routes.
+- Evidence: quality/evidence/step-39/ai-generator-metadata.json preserves the shared metadata before and after. Corrected route captures are in after/; later captures under before/ are not pre-fix images.
+- Root cause: scripts/ai-builder.ts applied capability boilerplate about streaming, citations, approvals, model cards, and BYO endpoints to every resource.
+- Remediation: use accurate shared style descriptions and allow per-resource content requirements and notes. Six audited seeds now describe their actual behavior.
+- Verification: the catalogue validates 324 resources; representative desktop/mobile detail routes show corrected metadata. Full resource-by-resource copy review and deployed verification remain open.
+
+## AUD-182 — Chat Panel named a provider and portrayed a fixed answer as live
+
+- Severity: Medium; route /r/ai-chat-panel.
+- Evidence: corrected local screenshots and interaction JSON are in after/. The prior implementation is in pre-fix-source-diff.patch; later files under before/ are invalid as pre-fix screenshots.
+- Root cause: a static sample was branded as a connected assistant.
+- Remediation: remove provider branding, label the fixed sample and reply, and describe local-only behavior in the manifest and readme.
+- Verification: desktop/mobile tests exercise two sends, confirm the visible latest reply, and record no browser or network errors. Deployment verification is pending.
+
+## AUD-183 — Model Mode Switcher falsely reported credentials and model access
+
+- Severity: Medium; route /r/ai-model-mode-switcher.
+- Evidence: corrected local screenshots and interaction JSON are in after/. The prior implementation is in pre-fix-source-diff.patch; later files under before/ are invalid as pre-fix screenshots.
+- Root cause: a local example selector displayed commercial model/provider claims and BYO Key Active without a connection.
+- Remediation: replace provider claims with example modes and disclose that no model is connected.
+- Verification: desktop/mobile keyboard tests change the selected mode and aria-pressed state. Deployment verification is pending.
+
+## AUD-184 — Source Citations claimed unverified examples were grounded
+
+- Severity: Medium; route /r/ai-source-citations.
+- Evidence: corrected local screenshots and interaction JSON are in after/. The prior implementation is in pre-fix-source-diff.patch; later files under before/ are invalid as pre-fix screenshots.
+- Root cause: invented paths and excerpts were marked Grounded and 100% Verified without retrieval.
+- Remediation: label sources and excerpts as examples, disclose that no retrieval or verification occurs, and make the selection keyboard-operable.
+- Verification: desktop/mobile tests select and deselect with Enter and Space. Deployment verification is pending.
+
+## AUD-185 — Research Answer fabricated source count, confidence, and latency
+
+- Severity: Medium; route /r/ai-research-answer.
+- Evidence: corrected local screenshots and runtime JSON are in after/. The prior implementation is in pre-fix-source-diff.patch; later files under before/ are invalid as pre-fix screenshots.
+- Root cause: sample copy claimed twelve documents, 98% confidence, and sub-150ms output without retrieval or measurement.
+- Remediation: use a general example answer and disclose that no sources or confidence score were produced.
+- Verification: desktop/mobile tests confirm the disclosure and remove the fabricated claims. Deployment verification is pending.
+
+## AUD-186 — Chat submit and Enter did not add the typed example
+
+- Severity: Medium; route /r/ai-chat-panel.
+- Evidence: the earlier implementation is in pre-fix-source-diff.patch; corrected interaction states are in after/. The initial red-run output was not retained.
+- Root cause: the isolated preview did not update the controlled input state used by submit, and Enter did not reliably reach the form handler.
+- Remediation: read the current value through an input ref, bind the send button directly, and handle Enter while respecting IME composition.
+- Regression: browser tests submit by button and Enter, verify both replies and cleared input, and report no browser/network errors. Deployment verification is pending.
+
+## AUD-187 — Chat preview clipped the composer and hid the newest reply
+
+- Severity: Medium; route /r/ai-chat-panel.
+- Before evidence: quality/evidence/step-39/before/desktop/ai-chat-panel-composer-clipped.png and ai-chat-panel-latest-reply-hidden.png preserve the two observed defects.
+- Root cause: the message list had no bounded scroll area and did not follow new messages.
+- Remediation: bound the panel to preview height, make the message list scroll, keep the composer visible, and scroll to the latest message after updates.
+- Verification: desktop/mobile regression checks keep composer and latest reply inside the iframe. Deployment verification is pending.
+
+## AUD-188 — Model-mode options were not keyboard-operable
+
+- Severity: Medium; route /r/ai-model-mode-switcher.
+- Evidence: corrected captures are in after/; the prior pointer-only markup is in pre-fix-source-diff.patch. Other files under before/ are invalid pre-fix screenshots.
+- Root cause: selectable rows were clickable div elements without keyboard semantics.
+- Remediation: use buttons with aria-pressed and visible focus.
+- Verification: Enter selects Long context at desktop and mobile. Deployment verification is pending.
+
+## AUD-189 — Citation rows were not keyboard-operable
+
+- Severity: Medium; route /r/ai-source-citations.
+- Evidence: corrected captures are in after/; the prior pointer-only markup is in pre-fix-source-diff.patch. Other files under before/ are invalid pre-fix screenshots.
+- Root cause: citation controls were pointer-only containers.
+- Remediation: use labelled buttons with aria-pressed, focus styling, and keyboard activation.
+- Verification: Enter selects and Space deselects at desktop and mobile. Deployment verification is pending.
+
+## AUD-190 — Resource detail status looked like independent verification
+
+- Severity: Medium; route /r/ai-chat-panel; the status template is shared across resource details.
+- Before evidence: quality/evidence/step-39/before/desktop/ai-chat-panel-status-unqualified.png and the corresponding mobile image show the unqualified badge.
+- Root cause: the detail page rendered ResourceManifest.status without identifying it as manifest-provided metadata. Runtime composition eligibility is separately determined by the validated Gold registry.
+- Remediation: prefix the badge with Manifest status:.
+- Regression: the browser test failed at both viewports before the copy change and passes at both afterward. Post-fix screenshots are in quality/evidence/step-39/after/.
+- Deployment verification remains pending.
+
+## AUD-191 — Community CTA asserted an unsupported membership count
+
+- Severity: Medium; route /r/cta-community.
+- Deployed-before evidence: desktop/mobile screenshots and browser records are in quality/evidence/step-39/deployed-before/. Both routes returned HTTP 200 and recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors. The frame displayed “Join 12,000+ UI Engineers.”
+- Root cause: a specific member count was hard-coded without a source; the manifest also described a member counter.
+- Affected code: resources/sections/cta-community/{index.tsx,manifest.json,README.md}, scripts/sections-batch-4.ts, and the Step 39 browser regression.
+- Remediation and verification: remove the unsupported count and describe the component as a contributor/repository invitation. Local desktop/mobile regression checks pass. Public redeployment verification is pending.
+
+## AUD-192 — Community CTA actions had no destinations
+
+- Severity: Medium; route /r/cta-community.
+- Deployed-before evidence: the screenshots in quality/evidence/step-39/deployed-before/ show “Join Discord Community” and “Star on GitHub” as buttons with no handlers or destinations.
+- Root cause: the component used hard-coded buttons rather than configured links.
+- Affected code: resources/sections/cta-community/{index.tsx,preview.tsx,manifest.json}, scripts/sections-batch-4.ts, and the Step 39 browser regression.
+- Remediation and verification: add optional guideHref and repositoryHref, configure real destinations in the preview manifest, and render an explanatory status when neither is configured. Local desktop/mobile browser checks verify the links and destination attributes. Public redeployment verification is pending.
+
+## AUD-193 — Product preview CTA claimed unsupported adoption
+
+- Severity: Medium; route /r/cta-product-preview.
+- Deployed-before evidence: the screenshots in quality/evidence/step-39/deployed-before/ show “Join thousands of developers” without an attributable adoption measure; browser logs recorded HTTP 200 and no runtime/network errors.
+- Root cause: generic social-proof text was hard-coded as a product claim.
+- Affected code: resources/sections/cta-product-preview/{index.tsx,manifest.json,README.md}, scripts/sections-batch-4.ts, and the Step 39 browser regression.
+- Remediation and verification: describe the Compose workflow directly and remove the adoption claim. Local desktop/mobile regression checks pass; public redeployment verification is pending.
+
+## AUD-194 — Static sample claimed a live Workbench and verified-resource count
+
+- Severity: Medium; route /r/cta-product-preview.
+- Deployed-before evidence: the preview displayed “[Workbench Canvas Active: 324 Verified Manifests Ready]” although the frame was a static sample without a connected project.
+- Root cause: illustrative placeholder text was written as live status telemetry and a certification result.
+- Affected code: resources/sections/cta-product-preview/{index.tsx,manifest.json,README.md}, scripts/sections-batch-4.ts, and the Step 39 browser regression.
+- Remediation and verification: identify the panel as an example Workbench preview with no connected project. Local desktop/mobile tests check for the disclosure and reject the old live-status claim. Public redeployment verification is pending.
+
+## AUD-195 — Product preview CTA did not open Compose
+
+- Severity: Medium; route /r/cta-product-preview.
+- Deployed-before evidence: the screenshots in quality/evidence/step-39/deployed-before/ show “Open Canvas Now” as an inert button.
+- Root cause: the action was a button without an href or handler.
+- Affected code: resources/sections/cta-product-preview/{index.tsx,preview.tsx,manifest.json}, scripts/sections-batch-4.ts, and the Step 39 browser regression.
+- Remediation and verification: use optional composeHref, configure the preview destination as /compose, and show a truthful status when none is configured. Local desktop/mobile browser checks confirm the link and destination. Public redeployment verification is pending.
+
+## AUD-196 — Composition outcome promised a certified production result
+
+- Severity: Medium; route /.
+- Before evidence: deployed-before desktop/mobile homepage screenshots and JSON show the zero-debt, fully accessible, complete-cohesion claim; both route loads returned HTTP 200 with no browser or network errors.
+- Root cause: the page described an export as a guaranteed production outcome.
+- Affected code: apps/site/src/components/home/NotComponentLibrary.tsx.
+- Remediation: describe export capability without guaranteeing debt, accessibility, or cohesion. The corrected copy is captured in after/ homepage full-page screenshots and text JSON.
+
+## AUD-197 — Manifest audit was presented as runtime certification
+
+- Severity: Medium; route /.
+- Before evidence: the comparison card said the 100-point audit evaluates WCAG AA/AAA, performance, and responsive layout before export.
+- Root cause: manifest scoring and browser/build verification were conflated.
+- Remediation: identify the 100-point manifest rubric and state it does not certify the rendered interface. The desktop/mobile regression checks this distinction.
+
+## AUD-198 — Workbench marketing copy overstated its scope
+
+- Severity: Medium; route /.
+- Before evidence: the deployed copy called Workbench a full deterministic operating environment and promised 100-point audits and adjective-feel mixing.
+- Remediation: describe project structure and Design DNA inspection, lock-aware changes, and manifest checks before export.
+
+## AUD-199 — Agent section claimed zero hallucinations
+
+- Severity: Medium; route /.
+- Before evidence: the deployed page used the absolute “Zero Hallucinations” guarantee.
+- Remediation: explain registry-backed resource selection and visible unsupported-role diagnostics.
+
+## AUD-200 — Agent handoff section named a nonexistent file
+
+- Severity: Medium; route /.
+- Before evidence: the page promised AGENT_HANDOFF.md. The exporter source instead emits project.tess.json, PRODUCT.md, DESIGN.md, IMPLEMENTATION.md, COMPONENTS.md, dependencies.json, and AGENT_PROMPT.md.
+- Remediation: describe the files the handoff actually contains; the browser test verifies the updated description.
+
+## AUD-201 — Compatibility score was overstated as universal automatic repair
+
+- Severity: Medium; route /.
+- Before evidence: the page said every combination was scored and DNA discrepancies were automatically resolved.
+- Remediation: explain candidate ranking and keep the normalized Design DNA fit score as one signal.
+
+## AUD-202 — Homepage promised automatic mobile substitution
+
+- Severity: Medium; route /.
+- Before evidence: the page promised that desktop tables automatically become stacked cards on mobile.
+- Remediation: describe declared responsive strategies and require preview checks at the target widths.
+
+## AUD-203 — Creator section promised universal integration
+
+- Severity: Medium; route /.
+- Before evidence: the page promised compatibility with every system, instant integration, and no CSS conflicts.
+- Remediation: explain that manifests help compatible React tools inspect a resource and that target applications still require review.
+
+## AUD-204 — Resource badge overlapped its sample label
+
+- Severity: Medium; route /; desktop and mobile.
+- Before evidence: before/desktop/homepage-resource-badge-overlap.png and before/mobile/homepage-resource-badge-overlap.png show the DATA badge covering the chart’s “Sample values” label.
+- Root cause: the absolute badge had no reserved space in the header row.
+- Remediation: reserve space at all breakpoints; the browser test checks label/badge geometry. Corrected screenshots are in after/{desktop,mobile}/homepage-resource-mosaic.png.
+
+## AUD-205 — Workbench toolbar overlapped at mobile width
+
+- Severity: Medium; route /; 390x844.
+- Before evidence: before/mobile/homepage-workbench-header-overlap.png.
+- Root cause: a fixed-height desktop toolbar was forced into one row on mobile.
+- Remediation: allow the toolbar to grow and stack status beneath the title. The browser test checks non-overlapping bounding boxes. The corrected capture and geometry JSON are after/mobile/homepage-workbench-example.png and .json.
+
+## AUD-206 — Final CTA promised an unmeasured completion time
+
+- Severity: Medium; route /.
+- Before evidence: the deployed page said “Start composing in seconds.”
+- Remediation: replace it with “Start with a product brief.” Local browser regressions reject the unsupported time claim.
+
+## AUD-207–210 — Section Planner truthfulness and action labels
+
+- Severity: AUD-207–209 Medium; AUD-210 Low; route `/tools/section-planner`.
+- Deployed-before evidence: `quality/evidence/step-39/deployed-before/desktop-section-planner.{png,json}` and `mobile-section-planner.{png,json}` record five templates containing unverified feature, certification, benchmark, and integration claims; the primary action said “Export” while only copying; the counts were called telemetry; and the UI used “1 sections.” Requests returned successfully and the runtime logs recorded no console, uncaught, failed-request, or HTTP errors.
+- Root causes: template copy implied product facts; a clipboard handler was mislabeled; static section counts were framed as telemetry; and count grammar always used plural.
+- Affected source: `apps/site/src/components/tools/SectionPlanner.tsx`, `apps/site/src/components/tools/ToolsHub.tsx`, and browser tests in `tests/e2e/copy-quality-step-39.spec.ts` and `tests/e2e/tools-hardening.spec.ts`.
+- Remediation: use sourced-details prompts, explain that the planner does not implement or certify sections, relabel the control “Copy Section Graph JSON,” rename the count panel “Section Mix Guide,” and pluralize accurately.
+- Verification: the copy-quality regression selects all five archetypes, parses the actual JSON output, and checks desktop/mobile copy, with zero browser/network errors. The interaction regression reorders and adds a section, confirms the copied JSON reflects both changes, and resets the blueprint. Local Sites Worker tests pass. Screenshots and JSON after the fixes are in `quality/evidence/step-39/after/{desktop,mobile}/section-planner.{png,json}`. Public review deployment verification remains pending; all four findings stay open for deployed closure.
+
+## AUD-211–216 — Typography Lab copy and responsive rendering
+
+- Severity: AUD-211–213, AUD-215–216 Medium; AUD-214 Low. Route `/tools/typography`.
+- Deployed-before evidence: desktop/mobile captures in `quality/evidence/step-39/deployed-before/` show an undisclosed finance ledger, the “zero cognitive strain” promise, “Status Indicator AA,” and “MEASURED METRIC.” The mobile table clipped its fourth column. Selecting Golden Ratio at 390px made the document 515px wide because the preview used a fixed 110px heading.
+- Root causes: fabricated finance data and unverified claims were used as generic sample copy; calculated font sizes were described as measured telemetry; desktop-only table layout and fixed heading sizes were used at mobile widths.
+- Affected code: `apps/site/src/components/tools/TypographyLab.tsx`, `tests/e2e/tools-hardening.spec.ts`, and `tests/e2e/copy-quality-step-39.spec.ts`.
+- Remediation: replace ledger copy with neutral disclosed sample values, remove unsupported outcomes and AA wording, label calculated maximum sizes accurately, render labelled record cards on mobile, and generate fluid heading sizes using the same `clamp()` values in the preview and copied CSS.
+- Verification: pre-fix browser regressions reproduced missing sample disclosure and missing mobile cards; the mobile fluid-scale test recorded 515px document width at a 390px viewport. The Sites Worker desktop/mobile regression now passes 2/2 at 1440x900 and 390x844, verifies the CSS output and every mobile field, records zero serious/critical Axe violations, and captures HTTP 200 with no console errors, uncaught exceptions, failed requests, or HTTP errors. Corrected screenshots and JSON are in `quality/evidence/step-39/after/{desktop,mobile}/typography-*`. Public review deployment verification remains pending; these findings are not closed.
+
+## AUD-217–229 — Ten-tool claims, sample data, and reset state
+
+- Deployed-before audit: all ten tool routes and `/tools` were inspected at 1440x900 and 390x844. Separate interaction captures exercise Design DNA Reset Baseline at both widths. The 24 deployed evidence files report HTTP 200, no console errors, uncaught exceptions, failed requests, or HTTP errors, and no Axe violations. Screenshots and JSON are under `quality/evidence/step-39/deployed-before/tools/`, `tools-hub/`, and `dna-reset/`.
+- Findings: Accessibility Lab overstated its WCAG scope (AUD-217); Background Studio used fabricated telemetry and inert actions (AUD-218–219); Data Visualisation and Motion used unsupported capability or fabricated-result copy (AUD-220–221); Palette Studio overstated selected-pair contrast checks and used an undisclosed finance value (AUD-222–223); Design DNA used a telemetry label and fabricated latency/score sample (AUD-224–225); Layout Composer called a schematic a stress test (AUD-226); the shared Tools directory descriptions overstated tool behavior (AUD-227); preset descriptions promised unmeasured outcomes (AUD-228); and Reset Baseline did not restore its selected-preset state on the deployed page (AUD-229).
+- Remediation: correct descriptions and metadata, use neutral disclosed samples, disable unconnected sample actions with an explanation, label the layout as a schematic preview, and reset the DNA values and selected preset together. A pre-fix browser test for reset failed; the fixed UI regression passes and saves `quality/evidence/step-39/after/desktop/dna-reset-baseline.{png,json}`.
+- Local verification: the Sites Worker copy-quality suite passes 44/44 desktop/mobile cases, including the new tools hub, DNA, Layout, and sample-content checks. The separate tool browser suite passes 41 tests with 21 viewport-specific skips; all ten routes render at desktop/mobile widths, and the reset interaction passes on Astro preview. Updated copy-quality after-captures cover nine scenarios at both widths; all are HTTP 200 with zero serious/critical Axe violations, console errors, uncaught exceptions, failed requests, or HTTP errors. Detailed results are in `quality/evidence/step-39/after/{desktop,mobile}/`.
+- Public review deployment is still serving the earlier copy and reset behavior. These findings remain fixed-awaiting-deployed-verification and are not closed. No Site version has been published for this hardening work.
+
+## AUD-230–235 — CLI, MCP, and generated contribution claims
+
+- Deployed-before evidence: `/docs/cli` and `/docs/mcp` were captured at 1440×900 and 390×844 in `quality/evidence/step-39/deployed-before/docs/{desktop,mobile}/`. Both pages returned HTTP 200 with no overflow, console errors or warnings, uncaught exceptions, failed requests, HTTP errors, or serious/critical Axe violations.
+- Findings: CLI docs instructed users to install the private, unpublished package from npm (AUD-230) and made the required `validate` filename look optional (AUD-231). MCP tool metadata called lexical substring matches “the best” resources (AUD-232). The `create-resource` scaffold marked unreviewed content experimental and prefilled unsupported contributor, provenance, licensing, accessibility, responsive, and quality assertions (AUD-233); its README implied an unregistered draft could be installed (AUD-234); and its display-only root had inert focus/hover styling (AUD-235).
+- Root-cause fixes: document the checkout-based CLI build and exact required argument; describe MCP recommendations as lexical candidates; generate drafts with unknown provenance, unasserted licensing, no verified widths, untested accessibility, and zero quality scores; label the scaffold unpublished; and remove the inert interaction affordances. The registry gate now rejects unknown provenance rather than treating the scaffold as publishable. Schema contracts and tests permit an empty verified-width list to mean “none verified.”
+- Regression evidence: the CLI and MCP docs tests failed against the deployed baseline and pass against the local Sites Worker at both viewports (four browser cases). A built CLI was run from a clean OS temporary directory; it created and validated a draft and captured the manifest, source, README, and outputs at `quality/evidence/step-39/after/cli/draft-scaffold.json`. MCP protocol, schema, CLI, and registry-gate tests cover the changed behavior. Local browser evidence is in `quality/evidence/step-39/after/{desktop,mobile}/{cli-reference,mcp-reference}.{png,json}`.
+- Disposition: AUD-230–231 remain fixed-awaiting-deployed-verification because the public Site still serves the earlier docs. AUD-232–235 are fixed and verified locally; none of these findings is closed on local evidence alone.
+
+## Validation and scope
+
+The focused Step 39 Sites Worker suite passes 48/48 desktop/mobile cases, including the new CLI and MCP documentation regressions. It records zero console errors, uncaught exceptions, failed requests, or HTTP errors, and zero serious/critical Axe violations on all captured tool routes. The ten-tool browser suite passes 41 checks with 21 viewport-specific skips. Design DNA Reset Baseline has a red-to-green regression. The latest Vitest suite passes 1,120 tests in 74 files; full typecheck passes across 22 packages; full lint reports zero errors and 33 existing warnings; `pnpm audit:all` passes all 16 behavioral release-gate checks, builds all 717 Astro pages and the Sites adapter, passes bundle budgets, audits all 324 licenses/provenance records, reports zero secret/security violations, and finds no dependency advisories. The latest complete E2E run passes: Astro 263 passed/105 skipped, Sites Worker 154 passed/32 skipped, and preview app 3 passed. `git diff --check` passes. Astro still emits an existing Vite chunk-size warning over 500 kB. The review Site has not been updated. Trace-based Core Web Vitals work is paused pending Chrome DevTools MCP setup; no Web Vitals result is claimed. Step 39 remains open pending the wider public product, resource metadata, and deployed re-verification.
+
+**Evidence retention note:** a prior successful Playwright rerun overwrote some legacy resource captures under before/; those captures remain invalid as pre-fix evidence. The original AI chat clipping and resource-status screenshots remain valid. Use deployed-before/ for remote baseline evidence on AUD-191–203 and AUD-206; use the local before screenshots for AUD-204–205, captured before the responsive layout correction. CTA files under before/ are invalid; the correct deployed evidence is in deployed-before/. Tests save the corrected homepage and resource screenshots under after/. The original implementation is preserved in pre-fix-source-diff.patch. The initial red-run output for AUD-186 was not retained. No post-fix public deployment verification was performed.
+
+## 2026-10-21 continuation — Inline AI Rewrite responsive/export parity
+
+The Sites Worker browser check reproduced AUD-262 at `/resources/inline-ai-rewrite/`, 360×844. The preview iframe had 292px of available width; the three tone states measured 316px (Concise), 317px (Professional), and 317px (Energetic) of document scroll width. Before screenshots and JSON are in `quality/evidence/step-39/before/responsive/`. The fix makes the root shrinkable, reduces narrow-screen padding, stacks the heading and wraps tone buttons, adds `aria-pressed`, and removes an unsupported keyboard-shortcut hint. After screenshots and measurements are in `quality/evidence/step-39/after/responsive/`; all three states now measure 292px client and scroll width. The fresh run recorded HTTP 200 and zero console errors, uncaught exceptions, failed requests, or HTTP errors. The earlier baseline record contains one `net::ERR_ABORTED` Astro module request during the viewport update; it is preserved in the record, and the fresh run produced no failed request.
+
+The shared runtime component had an embedded exporter copy. Regenerating Gold artifacts updated `packages/exporter/src/generated-gold-sources.ts` so clean standalone exports receive the same responsive source. A focused exporter fidelity regression checks the emitted component source; it passes, as do exporter typecheck, targeted ESLint, and the focused Sites Worker browser regression (1 pass, 1 mobile-project skip). The latest complete `pnpm test:e2e` run finished with no failures: Astro had 263 passes and 105 configured skips, Sites Worker had 154 passes and 32 configured skips, and the preview app had 3 passes. The 324-resource matrix and Gold accessibility/render certifications passed; the constrained-network Explore check recorded 3.745 seconds to render the first filtered preview in the full Worker run and 4.447 seconds in isolation, following one 8.845-second observation in an earlier run. The latest Vitest suite passes 1,120 tests. Public review verification remains pending, so AUD-262 stays `fixed-awaiting-deployed-verification`.
+
+## 2026-10-21 continuation — evidence-based resource metadata and mobile status layout
+
+### AUD-263 — Unassessed resource quality/accessibility was presented as verified
+
+The deployed-before `/r/success-state` capture displayed a WCAG AAA label and green verification icons, while the canonical manifest inventory showed that 324 resources had inherited five true accessibility flags and 310 generic AAA targets. Only the 40 Gold resources had retained browser-certification evidence; the remaining 284 were unverified. Template quality numbers (overall 96–98, accessibility 98–99) had no assessment status or evidence but flowed into compatibility ranking and minimum-quality search filters. Deployed-before evidence is `quality/evidence/step-39/deployed-before/resource-metadata/desktop/accessibility-tab.png` and `.json`; the inventory is `quality/evidence/step-39/resource-assessment-audit.json`.
+
+The contract now distinguishes `unassessed` from `reviewed`, and reviewed assessments require evidence references. Legacy/unassessed scores are hidden, excluded from quality filters and given neutral ranking weight. All resource builders default to unassessed with WCAG AA as a target. Non-Gold accessibility verification flags are cleared while Gold claims remain. Detail pages say “Quality assessment: Not assessed,” describe WCAG as a target, and distinguish Gold browser checks from unverified manifest claims. Schema, catalogue, compatibility, search, CLI and resource-page regressions pass. Corrected desktop/mobile runtime captures are `quality/evidence/step-39/after/{desktop,mobile}/resource-assessment.png` and `.json`.
+
+### AUD-264 — Four accessibility status cards clipped at 390px
+
+While visually inspecting the corrected mobile Accessibility tab, four “Not independently verified” labels were visibly clipped. The document width remained 390px, so the global overflow check missed the card-level defect. A red browser run recorded four overflowing text bounds: 146px card content widths versus 154–169px scroll widths. Evidence: `quality/evidence/step-39/before/resource-accessibility-overflow-mobile.png` and `.json`.
+
+The root cause was a two-column grid below 768px combined with a horizontal label/status row inside each card. `ResourceTabs` now uses one column below 640px, two columns from 640px, and three from 1024px. The red-to-green regression checks card/text geometry at 360, 390, 430, 640, 768, 1024 and 1440px in both desktop and mobile Chromium profiles. All five cards fit at every width; at 390px each has 306px content width. The after screenshot and seven-width record are `quality/evidence/step-39/after/resource-accessibility-overflow-responsive.png` and `.json`. Every request returned HTTP 200, with no user-session console errors, uncaught exceptions, failed requests, HTTP errors, document overflow, or serious/critical Axe findings. Axe emits a separate CSP message when its audit instrumentation injects a temporary inline style; this is recorded separately from user-session errors.
+
+Focused validation after these changes: the complete resource-copy Sites Worker browser file passes 22/22 desktop/mobile cases, including the seven-width card regression. Focused schema/catalogue/compatibility/search/CLI tests passed 98/98; full workspace typecheck passed across 22 packages; targeted ESLint passed; Astro built all 717 pages and the Sites Worker adapter built. The fixed Site has not been deployed, so AUD-263 and AUD-264 remain `fixed-awaiting-deployed-verification`. Chrome DevTools became available on 2026-10-23 and local cold-route traces are now recorded in `quality/evidence/step-38/after/chrome-devtools-lab.json`; field CrUX/INP and deployed Web Vitals are still unverified.
+
+### 2026-10-21 E2E and typecheck follow-up
+
+The full `pnpm test:e2e` matrix passed with no failures: Astro preview 263 passed / 105 skipped, Sites Worker 154 passed / 32 skipped, and the isolated preview app 3 passed. The Sites Worker suite rendered all 324 catalogue resources; Gold variant/accessibility, CSP isolation, seven-width responsive resource-status, copy-truthfulness and network-stress checks passed. A resource-preview test was moved from plain Astro preview into the Sites Worker suite because Astro preview does not apply the deployed `_headers` CORS policy used by opaque sandbox iframes; preview isolation and CSP were not weakened. Workbench E2E assertions now select the resource-backed `section` nodes that the composer actually creates, rather than assuming these generated screens contain component/element nodes. Full workspace `pnpm typecheck` passed across 22 packages; targeted ESLint and `git diff --check` pass. No separate product defect was added from these harness corrections. Public review deployment verification remains pending; AUD-263 and AUD-264 are fixed-awaiting-deployed-verification. Trace-based Core Web Vitals are paused pending DevTools MCP setup.
+
+### 2026-10-21 local verification follow-up — AUD-178
+
+The earlier blank iframe reproduction came from plain Astro preview, which does not apply the static `_headers` CORS policy. The production-oriented local Sites Worker adapter was then tested at 390×844 and 1440×900: the opaque sandboxed preview rendered `.tess-screen`, all relevant requests returned HTTP 200, and console, uncaught-exception, failed-request, and HTTP-error arrays were empty. The focused Sites Worker resource-route browser test passed. Evidence is `audit/evidence/step-06/results/canonical-resource-route.json` with screenshots under `audit/evidence/step-06/after/resource-layout/`. The adapter check does not certify the published Pages runtime; AUD-178 remains fixed-awaiting-deployed-verification until Step 45.
+
+### 2026-10-21 continuation — AUD-269 mobile homepage filter hydration
+
+The first complete local `pnpm test:e2e` run exposed a dropped tap on `/` at 390×844: the `data` filter stayed `aria-pressed=false` through 14 retries. The catalogue control was server-rendered but the `CatalogueMosaic` Astro island used `client:visible`, so its event handler was not ready when the button became visible. Changing the island to `client:load` fixed the first-tap behavior. This adds no new dependency; the production homepage bundle remains within its 150 KB gzip budget (99.09 KB).
+
+The filter regression now checks the before/after ARIA state, that only the selected filter has selected styling, the final computed foreground/background colors after the transition, and that the result list contains only the Area Chart. Fresh desktop and mobile captures and runtime details are in `quality/evidence/step-39/after/{desktop,mobile}/homepage-resource-filter.{png,json}` (with `-before` and `-selected` screenshot names). The selected mobile screenshot was visually checked: Data is the only dark pill. Both focused Sites Worker cases pass; browser records show no console errors, uncaught exceptions, failed requests, or HTTP errors. The full local E2E run after the runtime fix passed 433 checks with 134 configured skips: Astro 263 passed/101 skipped, Sites Worker 167 passed/33 skipped, and preview app 3 passed. Public review verification remains pending, so AUD-269 is fixed-awaiting-deployed-verification.
+
+### 2026-10-23 continuation — AUD-283 Section Planner hydration
+
+A 100-run repeat of the Sites Worker mobile preset interaction reproduced one
+lost click on run 92. The rendered preset appeared active before the
+`client:load` island had registered its handler, leaving the selected objective
+and copied section graph unchanged. A deterministic browser regression now
+holds JavaScript requests and verifies the visible loading status, disabled
+controls, ready state after script release, and a successful objective/graph
+update. `SectionPlanner` disables its interactive controls until its first
+client effect and announces “Loading planner controls…” while disabled. The
+existing preset export test and new delayed-script test pass in Sites Worker
+Chromium desktop and mobile (4/4). Before evidence is
+`quality/evidence/step-39/before/section-planner-mobile-one-of-100-lost-preset-click.log`;
+after screenshots and machine records are in
+`quality/evidence/step-39/after/section-planner-hydration-sites-{chromium,mobile-chromium}.{png,json}`.
+The finding is AUD-283 and remains pending public review verification.
+
+The final post-dependency `pnpm test:e2e` matrix passed with 489 tests and 144
+project-scoped skips: Astro preview 274/108, Sites Worker 212/36, and isolated
+preview app 3/0. It includes AUD-283's hydration regression on desktop/mobile,
+the full copy-truthfulness and responsive resource audit, and the Compose
+progress fix; there were zero failures. The Sites Worker copy-quality suite
+passes its 48 desktop/mobile cases with no runtime/network errors, horizontal
+overflow, or serious/critical Axe findings. Frozen install, 324-resource
+catalogue build, 22-package typecheck, 1,208 unit tests, lint, `pnpm audit:all`,
+and `git diff --check` also pass. Chrome DevTools traces now provide local
+interaction and route lab measurements under Step 38 evidence. CrUX field INP
+and deployed performance evidence remain unavailable until the public review
+version is updated and observed.
+
+### 2026-10-23 continuation — AUD-297 metrics copy truthfulness
+
+The deployed before captures at 1440×900 and 390×844 in
+`quality/evidence/step-39/before/customer-metrics-copy-deployed-before-{desktop,mobile}.{png,json}`
+show the detail page describing uptime, volume, latency, and scale despite a
+preview containing only illustrative project, team, task, and completion
+counts. Both routes returned HTTP 200 with no browser errors, failed requests,
+or horizontal overflow. The metadata and README now describe those actual
+values, warn that the defaults are examples, and avoid implying unmeasured
+customer or infrastructure outcomes. The regression failed on desktop and
+mobile before the content fix; after rebuilding the Astro output and Sites Worker static asset, both cases
+pass. Screenshots and runtime evidence are in
+`quality/evidence/step-39/after/customer-metrics-copy-{desktop,mobile}.{png,json}`
+with matching preview screenshots. Both runs return HTTP 200 with no console
+errors or warnings, uncaught exceptions, failed requests, or HTTP errors.
+AUD-297 remains fixed-awaiting-deployed-verification until the public review
+Site is updated.
+
+### 2026-10-23 continuation — AUD-298/299 logo cloud truth and clipping
+
+The deployed logo-cloud detail page presented eight real vendor names as
+partner/customer wordmarks and claimed high customer-adopter volume. Its default
+data had no relationship evidence or sample label. The same preview also
+centered an overflowing row, clipping the first name at scrollLeft 0: the
+deployed desktop trace measured `trackLeft: 24` and `firstLeft: -141.55` while
+the page itself had no overflow. Before screenshots and runtime/geometry JSON
+are in `quality/evidence/step-39/before/logo-cloud-marquee-deployed-before-{desktop,mobile}.{png,json}`.
+
+Defaults now use visibly labeled “Sample Partner” names; metadata and README
+explain they are placeholders and must be replaced with approved identities.
+Caller-supplied names remain unlabeled. The horizontal viewport is a named,
+keyboard-focusable scroll region with an intrinsic-width inner row, keeping its
+first name visible while the rest remain reachable. The red-to-green Sites
+Worker browser checks pass on desktop and mobile, confirming truthful labels,
+zero initial clipping, pointer-scroll extent, region focus, keyboard scrolling,
+and final-label reachability. After screenshots and machine-readable evidence
+are in `quality/evidence/step-39/after/logo-cloud-marquee-{desktop,mobile}.{png,json}`;
+both captures report zero console errors/warnings, uncaught exceptions, failed
+requests, HTTP errors, or page-level overflow. AUD-298 and AUD-299 remain
+fixed-awaiting-deployed-verification.
+
+### 2026-10-23 continuation — AUD-300 homepage hydration guard
+
+The desktop Sites Worker regression exposed a deferred-island timing gap in
+the homepage Visual Spectrum demo: its server-rendered Essential button was
+enabled before React attached the click handler, so a click on entry to the
+section could leave the display on Elevated. The matching mobile run also
+passed before the fix, so this is recorded as a desktop race rather than a
+universal failure. The red capture at
+`quality/evidence/step-39/before/desktop/homepage-spectrum-controls-before-hydration.{png,json}`
+records HTTP 200, `buttonDisabled: false`, no preparing status, and zero
+console, exception, failed-request, or HTTP errors.
+
+The below-fold island remains deferred. It now renders all three selectors
+disabled and exposes “Preparing comparison controls” until its hydration effect
+enables them. The JavaScript-disabled regression verifies this safe server
+state; the normal browser regression selects Essential and confirms the
+`aria-pressed` state and “Level 01 · Ambition 20–35” result on desktop and
+mobile. Green captures are in `quality/evidence/step-39/after/{desktop,mobile}/`.
+The full post-fix E2E run passed 274 Astro, 218 Sites Worker, and 3 isolated
+preview checks, with 144 project-scoped skips and no failures. `pnpm audit:all`
+passed all 16 release gates, the 324-resource isolation scan, bundle budgets,
+provenance/licence, secrets, and dependency audits. AUD-300 remains
+fixed-awaiting-deployed-verification.
+
+### 2026-10-23 continuation — AUD-301–304 social-proof and metrics truth
+
+The deployed desktop/mobile resource review found three copy mismatches and
+one fabricated metric display. `feature-metrics` claimed empirical benchmark
+graphs and statistics while the preview asked the author to add reports;
+`social-proof-hero` claimed verified customer proof while showing an example
+rating and count; and `testimonial-grid` metadata called its default examples
+real endorsements. The testimonial preview also hard-coded five stars on every
+sample card without accepting rating data. Before screenshots and JSON are in
+`quality/evidence/step-39/before/{feature-metrics,social-proof-hero,testimonial-grid}-deployed-before-{desktop,mobile}.*`.
+Each route returned HTTP 200 at 1440×900 and 390×844 with no console errors or
+warnings, uncaught exceptions, failed requests, HTTP errors, or horizontal
+overflow.
+
+The manifests and READMEs now describe the actual evidence-ready templates.
+Social Proof Hero no longer adds a star beside its “Example rating” label.
+Testimonial Grid accepts an optional 1–5 integer rating and renders it with an
+accessible label only when supplied; its sample cards have no rating. The
+pre-fix unit and desktop/mobile Sites Worker regressions failed on these cases;
+the updated unit test passes 37/37 and the six targeted Sites Worker cases pass.
+Green screenshots and machine-readable browser evidence are in
+`quality/evidence/step-39/after/resource-proofs/`. The captures were visually
+checked at both viewports. AUD-301–304 remain fixed-awaiting-deployed-verification
+until the public review Site is updated.
+
+### 2026-10-23 continuation — AUD-305 bounded validation and Zod advisory
+
+The dependency gate found high advisory GHSA-mrhx-c7xc-m3w5 through the
+workspace's Zod 4.6.5 resolution, while direct Zod 3 dependencies prevented a
+single consistent collection-validation policy. Public collection schemas also
+contained arrays without upper bounds. The regression evidence is
+`quality/evidence/step-39/zod-collection-audit.json`.
+
+Direct Zod dependencies and Better Auth's transitive resolution now use 4.6.7.
+Public collection contracts have product-scale caps, API byte limits remain in
+place, and the recursive project-node depth remains capped. Two hostile-input
+regressions supply 25,000 malformed screens and children and verify length
+rejection before per-item validation. The focused schema suite passes 144 tests,
+workspace typecheck passes across 22 packages, lint has zero errors with 33
+existing warnings, and the full unit suite passes 1,212 tests across 77 files.
+`pnpm audit:all` passes all 16 behavioral gates, 324/324 resource-isolation
+checks, the 718-page Astro build and Sites artifact, bundle budgets,
+provenance/licence, security/secrets, and dependency audit. Full Playwright
+passes 274 application, 224 Sites Worker, and 3 preview tests with 144
+configured skips and zero failures. Captured logs and counts are recorded in
+`quality/evidence/step-39/`. Public review verification remains pending.
+
+### 2026-10-25 continuation — public v30 route and interaction follow-up
+
+The targeted live v30 sweep captured 28 intended routes at desktop 1440×900 and
+mobile 390×844 (56 route/viewport records): the homepage, Tools hub, all ten
+tool routes, CLI and MCP docs, and 14 representative resource details. All 56
+returned HTTP 200 with no horizontal document overflow, uncaught exceptions,
+failed requests, or 4xx/5xx responses. Every page emitted the same separate
+ChatGPT Sites dynamic inline-bootstrap CSP error (AUD-342); it remained blocked
+and no CSP exception was added. Creators was captured at both widths in a
+separate run. The machine-readable route report and screenshots are in
+`quality/evidence/step-39/deployed-v30-route-audit.json` and
+`quality/evidence/step-39/deployed-v30-routes/`. This is targeted Step 39
+coverage, not the full public route or employee flagship audit.
+
+The homepage Visual Spectrum control was checked in fresh public v30 sessions at
+both widths. The server state was disabled with a visible preparing message;
+after scrolling and hydration, selecting Experimental updated `aria-pressed`
+and the displayed ambition range. This closes AUD-300. Evidence and screenshots
+are in `deployed-v30-home-spectrum.json` and its recorded screenshot paths.
+
+The same mobile capture exposed AUD-345: the illustrative preview heading was
+compressed beside two status badges and wrapped to three lines. The local Sites
+Worker regression failed before the fix with a 60px title box. The header now
+stacks on narrow screens and wraps badges while preserving the desktop row. The
+mobile regression passes, and the after screenshot was visually inspected at
+`quality/evidence/step-39/after/mobile/homepage-spectrum-preview-header.png`.
+The source change has not yet been verified on a published Site.
+
+The public CTA Product Preview was exercised at 1440×900 and 390×844. On both,
+START COMPOSING navigated only the opaque preview frame while the top-level page
+stayed on `/r/cta-product-preview`; `/data/catalog.json` failed with
+`net::ERR_FAILED` from the frame's null origin. The mobile before screenshot
+and request details are in `deployed-v30-interactions.json`. This is AUD-344. The fix forwards a bounded
+typed link request only after a trusted link activation. The parent validates
+the expected iframe, opaque origin and resource ID, then presents an explicit
+confirmation link. It does not grant top-navigation permission or change CSP.
+The local Sites Worker suite passes all six detail, Explore and direct-preview
+desktop/mobile cases; the confirmed top-level Compose route reaches Catalogue
+ready with submission enabled. The public Site remains v30, so AUD-344 is
+fixed-awaiting-deployed-verification.
+
+The step audit now contains 345 findings: 0 Critical, 66 High, 262 Medium and
+17 Low. Statuses are 40 closed after deployed verification, 212 fixed locally
+and awaiting issue-specific deployment checks, 89 locally verified, 2 legacy
+fixed, and 2 open (AUD-342 and AUD-343). On 2026-10-26 the full local gates
+passed after these changes: frozen install, catalogue build (324 resources / 40
+Gold), 22-package typecheck, lint, 1,220 unit tests (one skipped), all 16
+`audit:all` gates, and the production build. The aggregate E2E run passed 316
+Astro tests, 309 Sites Worker desktop/mobile tests, and 3 isolated-preview
+tests (628 passed, 149 configured skips, zero failures). The public Site remains
+v30, so AUD-344 and AUD-345 still await issue-specific deployed verification.
+
+### 2026-10-26 continuation — public v32 spot verification
+
+The owner-approved Sites v32 is now live at the existing review URL from
+canonical commit `4eca97890e2d8182bcd72edfe5659997d4317c21` (Sites mirror
+`5533d1082b649ec4429bb356cdc91ab3e2f2daf5`). The Home and Compose spot checks
+returned HTTP 200 at 1440×900 and 390×844; Compose reached `Catalogue ready`
+and fetched `/data/catalog.json` once per fresh load. The saved Workbench
+project rendered without waiting for the catalogue; the Library 503/retry
+flow recovered and retained the project. This closes AUD-346 after deployed
+verification. Each checked public response still emits the blocked Sites
+bootstrap CSP error (AUD-342), and the mobile home still clips preset 3
+(AUD-351), so there were not zero browser console errors or zero visual
+defects. Evidence: `quality/evidence/step-45/public-v32/`. This spot check does
+not complete Step 39's copy/resource review or the full Step 45 public route,
+accessibility, flagship, and standalone-export audit.
+
+The expanded v32 route sweep captured all 26 requested product-shell routes plus
+five representative details at 1440×900 and 390×844 (31 paths / 62 captures).
+Every path returned HTTP 200 with no document overflow, uncaught exceptions,
+failed requests, unexpected HTTP status, or visible-preview timeout. The route
+records classify all 62 captures as DEGRADED because each response emits the
+same blocked platform CSP script error (AUD-342). Route screenshots and the
+machine record are under `quality/evidence/step-45/public-v32/routes/` and
+`quality/evidence/step-45/public-v32/route-audit.json`.
+
+This sweep also found AUD-353 on `/pages`: the Role-Based Onboarding recipe
+used the phrase “interface telemetry” for persona setup. Before screenshots at
+both viewports and the observed copy are in
+`quality/evidence/step-45/public-v32/onboarding-copy-before.json`. A focused
+composer test reproduced the bad phrase before the fix (1 failed, 6 passed),
+then passed after the shared page-composition description was corrected (7/7).
+The 733-page Astro production build passed; the corrected recipe rendered at
+desktop and mobile with HTTP 200, no console errors, and no failed requests.
+After screenshots and browser records are under
+`quality/evidence/step-45/public-v32/onboarding-copy-local-after-*`. The
+correction is local only; public v32 remains unchanged, so AUD-353 awaits
+issue-specific deployed verification. Step 39 and the full Step 45 audit remain
+in progress.
+
+The current working tree passes the full Vitest run at bounded concurrency
+(`pnpm exec vitest run --maxWorkers=4`: 1,221 passed, one configured skip),
+root typecheck, ESLint, production build, and `pnpm audit:all`. The audit passed
+all 16 behavioral gates, all 324 resource-isolation and licence/provenance
+checks, gzip bundle budgets, and security/dependency audits. The default
+parallel Vitest run had one artifact-isolation test timeout under contention;
+that test passed alone and the bounded full suite passed. This is local evidence
+only; no new Site version has been deployed.
+
+### 2026-10-27 continuation — public v43 intermediate and v44 page-recipe verification
+
+The live v42 `/pages` → Compose path exposed AUD-359 and AUD-360. For “Application Overview Dashboard”, v42 populated `Build a Application Overview Dashboard. Primary operational hub featuring real-time health scorecard, telemetry metric charts, and live event feed.` It inferred Developer Tools and planned Documentation & SDKs, Telemetry Dashboard, Log Explorer, and API & Webhooks. The v42 screenshots and machine record are under `quality/evidence/step-39/public-v42/page-recipes/`; the browser reported both routes and `/data/catalog.json` at HTTP 200, with no console errors or warnings, uncaught exceptions, failed requests, HTTP errors, or horizontal overflow.
+
+The first correction deployed as v43 fixed the grammar and removed explicit telemetry wording, but retained metrics, scorecard, chart, and analytics archetype cues. The real browser then inferred Analytics Platform and planned Metric Explorer and Reports Library. This showed the first fix was incomplete; v43 evidence is preserved under `quality/evidence/step-39/public-v43/page-recipes/` and AUD-359 remained open.
+
+The root correction changes the recipe to “Workspace Overview”, describes active projects, recent updates, and priority alerts, and maps its screen to existing Gold resources `kanban-board`, `timeline`, and `notification-centre`. The unit regression checks the actual refs, B2B SaaS inference, and exclusion of analytics/observability screens. The visible-browser regression checks the architecture at desktop and mobile. The focused Vitest and Playwright tests passed; the complete local run passed 1,223 unit/integration tests (one configured skip), all 16 behavioral gates, 324 resource isolation and provenance checks, and 665 browser tests (166 configured skips, zero failures). Exact-head GitHub CI run [40451817272](https://github.com/danishgm-sketch/Tessellate/actions/runs/40451817272) passed, including the Playwright/Axe stage.
+
+Sites v44 is public at the existing review URL. It serves canonical commit `f49e14f3cfe93f8c077f32ad8eb2aa5e2ffee9e5` as Site-source commit `58db77b5e8f06f2ab0600f36ccd0f21da9188998` (version `appgprj_6acc036de8cc8191a823339566972d85~appgver_54ef3a323f708191ad053237ee2343d8`, deployment `appgdep_6ae036ed60e08191a40842ff57bb9e84`). The deployed flow was exercised at 1440×900 and 390×844. `/pages`, the linked `/compose` route, and `/data/catalog.json` returned HTTP 200. Catalogue readiness completed. Both viewports had zero console errors or warnings, uncaught exceptions, failed requests, HTTP errors, document overflow, or unresolved-resource text. The brief is grammatical. The architecture inferred B2B SaaS and planned Marketing Home, Overview Dashboard, Projects Index, and Team & Permissions; no Metric Explorer, Reports Library, Telemetry Dashboard, Log Explorer, or API & Webhooks appeared. At handoff, `scrollY` was 0 and the title and brief were in the initial viewport. Screenshots and the full machine record are under `quality/evidence/step-39/public-v44/page-recipes/`, including page, Compose handoff, and generated-direction captures for desktop and mobile. AUD-359 and AUD-360 are closed after this issue-specific live verification. Step 39 and the wider Step 45 audit remain in progress; the latest broad route/flagship/Axe checkpoint remains v37.
+
+### 2026-10-27 continuation — public v45 route audit and two regressions
+
+The public v45 route audit captured 32 routes at 1440×900 and 390×844 (64 route/viewport captures). All requested shell routes and representative resource, tool, showcase, blueprint, and documentation routes returned HTTP 200. The sweep recorded zero document overflow, console errors or warnings, uncaught exceptions, and failed requests. Two followed Cloudflare challenge redirects completed normally. Machine results and route screenshots are under `quality/evidence/step-39/public-v45/`.
+
+Issue-specific browser regressions then found two defects which the route sweep could not reveal. AUD-362 reproduces Typography Lab's enabled tab during a held client-bundle load at both viewports; its public v45 before screenshots and Playwright error contexts are in `interaction-readiness/red-before-fix/`. AUD-363 records Compose's visible schema and inference jargon; the route sweep's desktop and mobile screenshots show the copy. Both defects failed new browser assertions against the deployed v45 Site. Their root causes are fixed locally: Typography Lab now gates all controls behind client readiness and announces that state; Compose now explains the brief, three directions, and Workbench handoff in user-facing language, including a plain-language screen-plan summary. The red-to-green regressions passed on a clean local Sites Worker (63 related cases passed, one configured skip; focused desktop/mobile regressions passed 4/4). The 1,223-test unit suite passed with one configured skip, 22-package typecheck and targeted lint passed, and `pnpm audit:all` passed. Compose Axe reported zero WCAG 2.2 A/AA violations at both viewports. Local after screenshots and runtime records are in `interaction-readiness/after-local/`. Exact-head CI and deployed verification remain pending; neither finding is closed until the updated review Site passes the same desktop/mobile checks.
+
+The full visible Compose workflow then exposed additional copies of the same problem after generation: assumption sentences, summary labels, raw section-role IDs, and direction rationales. The focused browser regression now enters the exact employee-experience brief, waits for all three direction previews, checks the generated plan and copy, rejects finance/observability residue, verifies `/compose` and `/data/catalog.json` return 200, records runtime/overflow evidence, and runs Axe at both viewports. The local Sites Worker cases pass 2/2 (1440×900 and 390×844); both report zero Axe violations, console warnings/errors, uncaught exceptions, failed requests, HTTP errors, and horizontal overflow. All previews finish loading. The updated local build passes catalogue generation (324 resources, 40 Gold), all workspace builds, 733 Astro pages, and 731 CSP records. Focused composer/interpreter and composition tests pass 29/29; composer, compatibility, and site typechecks and changed-file ESLint pass. The final local screenshots and machine records remain under `quality/evidence/step-39/public-v45/interaction-readiness/after-local/`. Exact-head CI and public deployed re-verification are still required; AUD-362 and AUD-363 remain open until then.
+
+### 2026-10-27 continuation — public Sites v46 deployed verification
+
+Public v46 serves canonical commit `351b6d7ac3467fe4c580d1c31533705c16c60490` from Sites source mirror `520717ada321da3f23d46b000adc8da7d416c52e`. The live route sweep captured 32 routes at desktop and mobile widths (64 screenshots): all 64 route states classified PASS, with zero route HTTP failures, overflow, console warnings/errors, uncaught exceptions, or failed requests. The two 302 responses were Cloudflare challenge-script redirects. The route sweep checks initial content and visible previews; it does not claim exhaustive operation of every secondary route control.
+
+The focused deployed regression suite passed 4/4 cases on `/compose` and `/tools/typography`. The exact employee-experience brief passed the visible Compose → three populated directions → Direction C → Workbench workflow at 1440×900 and 390×844, including DNA overrides, a locked dashboard summary, radical recomposition, Gold-compatible replacement, Surprise Me, exact Undo/Redo, Preview, manifest export, and standalone ZIP. The ZIP installed and built in a clean temporary directory outside the repository; the exported browser was checked at both desktop and mobile sizes without `@tessellate/*` runtime dependencies or console errors. Full Axe WCAG 2.2 A/AA checks on the generated Workbench passed at both viewports with zero violations. The deployed checks close AUD-362 and AUD-363. Screenshots, manifests, ZIPs, route records, and performance measurements are under `quality/evidence/step-39/public-v46/`.
+
+The cold desktop `/compose` trace measured LCP 286 ms, CLS 0.00, and TTFB 55 ms. The maximum critical path was 642 ms through `/data/catalog.json`; render-blocking CSS had zero estimated FCP/LCP savings. These are lab measurements, with no field CrUX or INP data. The public product-hardening programme remains incomplete.
+
+### 2026-10-28 continuation — public v51 Footer Minimal copy regression
+
+The v51 live copy suite exposed that AUD-029 was not fully resolved: `/resources/footer-minimal/` still described a status indicator, and its sandbox preview showed a static, unlinked “System status” label. Public-before screenshots and machine-readable desktop/mobile records are under `quality/evidence/step-39/public-v51-copy-2026-10-28/footer-minimal-live-status/`. The route returned HTTP 200 with zero console errors or warnings, uncaught exceptions, failed requests, or HTTP errors.
+
+The correction removes the unsupported claims from `resources/sections/footer-minimal/manifest.json` and changes the component default to copyright only; links remain available when a caller supplies real destinations. A visible-browser regression covers both viewport sizes, the detail metadata, preview text, route status, and runtime/network errors. The local Sites Worker regression passed 2/2. After screenshots and records are in `footer-minimal-live-status/local-after/`; visual inspection confirmed the compact footer content, no inert status/legal labels, and no mobile overflow. At this checkpoint exact-head CI and deployed verification were pending; the follow-up below records the v52 result.
+
+### 2026-10-28 continuation — public Sites v52 Footer Minimal verification
+
+Sites v52 is live at the public review URL and serves canonical commit `00aee74806dacec62bc4a14986f51e284f083c46` from Sites mirror commit `286fccc39903e6b945e1608ce791d5b6e58ac2a2`. The full public copy/resource suite passed 113 checks with 9 configured skips and zero failures across desktop 1440×900 and mobile 390×844. AUD-029 passed in both viewports: `/resources/footer-minimal/` returned HTTP 200, metadata describes optional project links, the preview contains only the copyright notice by default, and both machine records report no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors. The screenshots and JSON records are in `quality/evidence/step-39/public-v52-copy-2026-10-28/footer-minimal-live-status/`; the complete Playwright report is in `quality/evidence/step-39/public-v52-copy-2026-10-28/runner/report.json`. AUD-029 is closed. Step 39 and the product-hardening programme remain incomplete.
+
+### 2026-10-30 continuation — public Sites v56 copy/resource suite
+
+The current public review Site is v56 at
+https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ (version
+`appgprj_6acc036de8cc8191a823339566972d85~appgver_a265d974a0cc8191b4bfd079767f8624`,
+deployment `appgdep_6ae4cc6dfba48191984d011a62d11de8`). The copied versioned
+Playwright runner tested the deployed site at desktop 1440×900 and mobile
+390×844. It passed 113 cases, skipped 9 configured cases, and reported zero
+unexpected failures in 4.6 minutes. The suite covers composition identity and
+domain copy, tool and documentation claims, resource metadata, truthful sample
+content, Gold resource interaction/state, live preview controls, and reduced
+motion. Full results are in
+`quality/evidence/step-39/public-v56-copy-2026-10-30/runner/report.json`.
+
+The first harness attempt exposed two test setup defects: the preview assertion
+could run while the renderer was still in its explicitly announced loading
+state, and a report writer assumed its evidence directory existed. The copied
+runner now waits for the loading state to settle and creates that directory; a
+focused deployed rerun passed 3 cases with 1 configured skip, followed by the
+complete 113/9/0 run. These were audit-harness issues, not defects in the live
+product. Historical v52 evidence was restored and left unchanged. This is a
+deployed copy/resource check, not a new full route, flagship, Axe, responsive,
+or export re-audit; v55 remains the latest complete product checkpoint. Step
+39 remains open for the remaining catalogue-wide/manual review and any
+outstanding issue-specific deployed verification.
+
+### 2026-10-31 continuation — public Sites v62 copy/resource closeout
+
+Public review version 62 is live at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. It serves canonical source 64cdf8eb5467e2a870f09d158906652e6449451f, captured in Sites mirror commit d695a5b6e78f5ca7ba53719f1e26fac2c91b522d, deployment appgdep_6ae5fcf2ee008191852bbf74a77b369e. D1/R2 remain unprovisioned.
+
+The deployed copy/resource browser suite passed 113 cases, had 9 configured profile skips, and had zero unexpected failures or flaky results. The suite exercised desktop 1440×900 and mobile 390×844. Each of the 73 content findings that had been awaiting deployed verification now has a result, screenshot, and test-report path for both viewports in quality/evidence/step-39/public-v62-copy-2026-10-31/issue-coverage.json; the exact findings are marked closed-deployed-verified in audit/runtime-audit.json. The deployed verification totals are now 209 closed-deployed-verified; 111 still await deployed verification. The 111 comprise 107 medium and 4 low findings.
+
+Supplemental v62 browser checks passed the community-composition case at desktop and mobile, AUD-068 mobile input retention, AUD-393 employee-domain homepage taxonomy at both viewports, and Gold resource state interactions at 360px page width. These are supplementary checks; the full suite's nine configured skips remain disclosed in its report.
+
+This closes the 73 mapped deployed-verification items only. It does not complete Step 39: a manual copy review of every string across the 324-resource catalogue, remaining unresolved findings, and the broader hardening sequence still need work. Four unrelated telemetry cases logged Axe CSP style-injection errors from the audit harness; their pre-Axe product runtime evidence was clean, and none is being presented here as an Axe pass. The suite is a copy/resource regression suite, not a full route/flagship/accessibility release gate.
+
+Machine-readable closeout: quality/evidence/step-39/public-v62-copy-2026-10-31/issue-coverage.json; full suite: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json; community desktop/mobile targeted reports and captures are in that directory's runner/ and composition-quality/after/ trees. The broader v62 audit record is audit/runtime-audit.json.
+### 2026-10-31 continuation — v62 detail-route sweep across all catalogue resources
+
+A deployed browser sweep opened every one of the 324 catalogue resource detail routes at desktop 1440×900 and mobile 390×844 (648 visits). The settled rerun waited for network idle, including the sandboxed resource preview request, before moving to the next route. It recorded HTTP 200 for all 648 visits; exact H1/catalogue-name agreement for all 648; no empty detail pages; zero browser console errors, warnings, uncaught exceptions, failed requests or HTTP errors; zero document-width overflow; no broken images; and zero matches against the explicit copy-risk scan. The scan is a targeted regression screen and not a subjective/manual review of every sentence. The domain-specific order-book language is expected for the Order Book Depth Chart resource.
+
+The first pass navigated before outstanding preview iframe requests settled. It reported 20 ERR_ABORTED events on preview-content requests, all emitted as the worker moved from a completed detail view to its next route; it also flagged the finance-specific Order Book detail page as a broad-regex false positive. No HTTP failures, page errors, missing headings or overflow were observed. The corrected settled pass waited for network idle and scopes finance terminology to the resource's declared domain. This is an audit-harness correction, not a product defect; both passes are retained.
+
+Evidence and reproducible runner:
+- Settled report: quality/evidence/step-39/public-v62-copy-2026-10-31/resource-route-sweep-settled/report.json
+- Settled runner: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/resource-route-copy-sweep-settled.mjs
+- Initial pass report (preserved cancellation diagnostics): quality/evidence/step-39/public-v62-copy-2026-10-31/resource-route-sweep/report.json
+- Initial runner: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/resource-route-copy-sweep.mjs
+
+This route/copy-risk sweep extends Step 39's deployed coverage to all 324 resource detail pages. It does not replace the required human copy review of all visible strings, nor does it certify all resources' interactions, accessibility or exports. Step 39 remains open.
+### 2026-10-31 continuation — public v62 generated-content, documentation and resource regressions
+
+The deployed Sites v62 browser regression run verified the SaaS consultancy activity feed, marketplace listing search, real-estate property search, travel destination search, documentation index and Activity Feed resource at desktop 1440×900 and mobile 390×844.
+
+The composition/domain Playwright report has 13 passes, one configured mobile-only skip (the community visual-review test is desktop-reference-only), zero unexpected failures and zero flaky results. The targeted consultancy regression passed at both viewports and inspected all three directions for duplicate Workspace branding, repeated page headings/KPI labels, and literal Example timestamps. The marketplace/property/travel regression passed at both viewports and inspected all three directions per brief, including semantic resource references, search labels, result content and zero unresolved-role diagnostics. The retained community fixture was exercised at desktop; its separate targeted community run passed at both viewports.
+
+The targeted consultancy report has 2/2 passes and the combined docs/resource report has 4/4 passes, all with zero unexpected failures or flaky results. The docs check verified 16 links and opened the Product Specification; the Activity Feed page disclosed its fixture entries as samples and did not show the fabricated identities/counts/revision. The browser reports record zero console errors/warnings, uncaught exceptions, failed requests or HTTP errors.
+
+This deployed verification closes AUD-122, AUD-123, AUD-124, AUD-125, AUD-126, AUD-127, AUD-138, AUD-308 and AUD-309 in the audit ledger. The ledger now has 218 deployed-verified findings; 111 findings remain awaiting deployed verification. The total 111 is unchanged because these nine were previously local-verified; the remaining content findings that have not yet been deployed-verified are AUD-155, AUD-171, AUD-232 and AUD-234.
+
+Reports and screenshots:
+- Exact finding map: quality/evidence/step-39/public-v62-copy-2026-10-31/deployed-content-regressions.json
+- Composition/domain Playwright report and harness: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/domain-content-playwright.json and domain-content.public-v62.spec.ts
+- SaaS content Playwright report and harness: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/sas-content-playwright.json and sas-content.public-v62.spec.ts
+- Documentation/resource Playwright report and harness: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/docs-resource-playwright.json, docs-index.public-v62.spec.ts and activity-feed.public-v62.spec.ts
+- Desktop/mobile screenshots and runtime records are in composition-after/, documentation/ and activity-feed/ below the same v62 evidence root.
+
+This remains a scoped v62 regression check, not a full Site-version release gate. Step 39 remains open for manual review of every resource's copy and the other outstanding findings.
+### 2026-10-31 continuation — deployed employee Settings preview truthfulness
+
+The exact employee-experience brief was composed on public v62 at 1440×900 and 390×844. Direction C opened the selected project in Workbench; the live test compared project identity, Design DNA, navigation, screen/node tree, resource refs, variants, props and locks between the selected preview, Workbench local record, and manifest export. It then used Workbench Preview and opened Settings & Policies at both viewports.
+
+The UI labels the policy control “Policy acknowledgement (preview only),” says acknowledgements are not stored in the preview, disables Save preferences, and says “Connect persistence to save.” The manifest-level and visible-state checks passed; no console errors/warnings, uncaught exceptions, failed requests, or HTTP failures occurred. The Playwright result is 2/2 passed with no skips or flaky cases.
+
+AUD-171 is now closed as deployed-verified. Combined with the nine prior v62 content closures, the audit ledger now records 219 closed-deployed-verified findings; 111 still await deployed verification. Only AUD-155, AUD-232 and AUD-234 remain in the content category as locally verified pending their own evidence gates.
+
+Evidence:
+- Report: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/flagship-v62-playwright.json
+- Reproducible copied runner/config: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/flagship-v62.public.spec.ts and flagship-v62.public.config.ts
+- Machine telemetry and exact manifest comparison: quality/evidence/step-39/public-v62-copy-2026-10-31/flagship/compose-workbench-handoff-sites-chromium.json and compose-workbench-handoff-sites-mobile-chromium.json
+- Settings screenshots: quality/evidence/step-39/public-v62-copy-2026-10-31/flagship/employee-product-settings-policies-sites-chromium.png and employee-product-settings-policies-sites-mobile-chromium.png
+- Consolidated issue map: quality/evidence/step-39/public-v62-copy-2026-10-31/deployed-content-regressions.json
+## Public Sites v62 Workbench capability and local tooling copy closeout — 2026-10-31
+
+The deployed flagship handoff was rerun at 1440×900 and 390×844. Direction C opened with seven screens and 45 nodes; stored, active, previewed, and exported manifest identities matched within each run. The regression records zero visible Workbench action buttons for Improve, Simplify, Intensify, and Match DNA at both sizes, with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. This issue-specific result closes AUD-155 as deployed-verified. The copied browser assertion initially needed to target visible status text because the preview keeps matching status nodes mounted for inactive screens; the corrected test passed on both viewports.
+
+Two non-Site copy findings were separately verified at their real process boundary. The MCP SDK client workflow passed 7/7, including tool discovery over stdio and a compose → mutate → validate → audit → export flow; its tool metadata accurately discloses lexical matching limits (AUD-232). A CLI child-process regression passed 1/1 from a fresh temporary working directory; the generated resource remains a draft, states that it is not registered, lists review steps, and does not advertise install commands (AUD-234). These local checks are not claimed as deployed Site behavior.
+
+The v62 ledger now records 220 issue-specific deployed verifications. The 111 findings that were already awaiting hosted verification remain open and consist of 107 Medium and 4 Low items. The four previously outstanding content findings AUD-155/171/232/234 now have issue-appropriate verification; this does not complete the 324-resource subjective copy review, Step 39, or the wider product-hardening programme.
+
+Evidence: `quality/evidence/step-39/public-v62-copy-2026-10-31/deployed-content-regressions.json`, `non-site-content-verification.json`, `runner/flagship-v62-playwright.json`, the two `flagship/compose-workbench-handoff-sites-*.json` runtime records and screenshots, `mcp-client-workflow-report.json`, and `cli-black-box-scaffold-report.json`.
+
+### 2026-10-31 continuation — AUD-405 AI Copilot Sidebar copy and inert action
+
+Manual review of `/r/ai-copilot-sidebar/` on public v62 found that the preview's fixed `DashboardView.tsx` sample was described as real-time AI analysis and file diffs. “Apply All Recommended Fixes” was enabled without an action and produced no visible result. The public v62 desktop/mobile screenshots and browser reports are preserved under `quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/before-v62/`.
+
+The component and manifest now identify the file context and recommendations as examples, explain that the preview does not inspect or modify source, and disable Apply until a host supplies an action callback. Static recommendation rows no longer show hover behavior. A production-equivalent local Sites Worker test passes at 1440×900 and 390×844 (2/2) with no console errors/warnings, uncaught exceptions, failed requests, HTTP errors or overflow. The first local run caught a missing React `useId` import introduced by the fix; that hydration/runtime error was corrected and the regression now also asserts runtime/network cleanliness.
+
+Evidence: `tests/e2e/ai-copilot-sidebar-truthfulness-step-39.spec.ts`; the focused Sites Worker test passed for desktop and mobile; the complete `pnpm test:e2e` run passed 734 tests with 167 expected profile/environment skips and zero failures across Astro desktop/mobile, Sites desktop/mobile, and the Preview app projects. The same Playwright regression passed against public Sites v63 at 1440×900 and 390×844 (2/2); both records show zero browser console errors or warnings, uncaught exceptions, failed requests, and HTTP errors. Screenshots and machine-readable results are under `quality/evidence/step-39/public-v62-copy-2026-10-31/ai-resource-defects/after-v63/`. AUD-405 is closed after deployed verification. This one-resource fix does not complete the subjective review of all 324 resources or Step 39.
+
+Public Sites v63 serves canonical commit `9dc6789f60e70315d49e4f589eeb584aa5d0af8e` as Site-source mirror `1878a33889ac4d7d47b5e868e931427f9d1b545e`; deployment `appgdep_6ae63885bb3481918422880871256018` is active at the review URL. GitHub CI and the Component Quality Gate both passed on that exact canonical commit. The audit ledger now records 221 issue-specific deployed closures, 111 findings awaiting their individual hosted checks, and 61 locally verified fixes. The remaining backlog and Step 39/hardening programme remain incomplete.
+
+### 2026-10-31 continuation — AUD-406 resource detail tab semantics
+
+Manual browser review of `/r/ai-empty-state/` on public Sites v63 confirmed that the preview and all eight information panels load, and each selector changes visible content. However, the accessibility tree exposed the selectors as generic buttons with no `aria-selected` state or tablist/tabpanel relationship. The public-v63 desktop/mobile regression therefore failed because the named tablist did not exist. The route and its assets returned successfully; no application console errors/warnings, uncaught exceptions, failed requests, or HTTP errors were recorded. Cloudflare's injected challenge issued an expected redirect. Axe itself reported zero WCAG 2.2 A/AA violations but generated a separate CSP-blocked inline-style message; the harness output is kept separate from app telemetry.
+
+The shared `ResourceTabs` component now uses a named tablist, tabs with accurate selected state and roving focus, a labelled tabpanel, and ArrowLeft/ArrowRight/Home/End keyboard navigation. The regression waits for the Astro island to hydrate and the isolated preview to render. It passes 2/2 on the production-equivalent Sites Worker at desktop and mobile, with zero Axe WCAG 2.2 A/AA violations and zero app console/runtime/network errors. The rendered before/after captures and reports are in `quality/evidence/step-39/public-v63-manual-review/`.
+
+At this local-only checkpoint, AUD-406 awaited publication and the deployed browser check; that status is superseded by the public v64 closeout below. This scoped accessibility fix does not close Step 39 or the broader product-hardening programme.
+
+
+### 2026-10-31 continuation — AUD-406 closed on public Sites v64
+
+The shared resource-detail tabs fix is now deployed at the public review Site. The issue-specific Playwright regression passed 2/2 at 1440×900 and 390×844 on /r/ai-empty-state/ and also navigated to /resources/ai-empty-state/, verifying the same tab semantics and keyboard interaction on the alias route. A separate deployed capture recorded both routes at both viewports: all returned HTTP 200; the eight tabs exposed the selected state and labelled panel; there was no horizontal overflow; and browser console errors/warnings, uncaught exceptions, failed requests, and HTTP errors were zero. Axe WCAG 2.2 A/AA reported zero violations on the primary route.
+
+Before/after screenshots and machine-readable evidence are under quality/evidence/step-39/public-v63-manual-review/before-v63-tabs-*.png and quality/evidence/step-39/public-v63-manual-review/after-public-v64/. The ledger marks AUD-406 closed-deployed-verified; totals are 406 findings (0 Critical, 79 High, 303 Medium, 24 Low), 222 issue-specific deployed verifications, 111 awaiting issue-specific deployed verification, 61 locally verified fixes, 9 other closed entries, 2 legacy fixed records, and 1 documented Sites-host limitation. The public Site remains static/browser-first; D1 and R2 are not provisioned. Step 39 and the broader hardening programme remain incomplete.
+
+Sites v64 version appgprj_6acc036de8cc8191a823339566972d85~appgver_47afec8b52c08191b061951c1ae62bb1 is deployed as appgdep_6ae650c685a48191b78c4d41686f5cf7 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site. It serves canonical source commit 248a2a09c84a0734998850f8f3b85a14ddf3b78c from Sites mirror commit 8aca504b5d4231509bfd4d90d13aec949e979f58. Exact deployment evidence is in audit/runtime-audit.json.
+
+### 2026-11-01 continuation — public v65 Compose heading hierarchy
+
+The public v65 Compose route was inspected at desktop 1440×900 and mobile 390×844 before code changes. Both screenshots showed the route heading “Product Composer” followed by the visually prominent composer title “Describe the product. Get the interface.” The accessibility tree exposed both as H1. The route returned a cached 304, `/data/catalog.json` returned 304 after its ready state, all observed Astro CSS/JavaScript assets returned 200, and the browser reported no console errors or warnings, uncaught exceptions, failed requests, HTTP errors, or mobile width overflow. The screenshots are in `quality/evidence/step-39/public-v65-current/`.
+
+The root cause was that the Astro route and `ComposeView` each supplied a page-level H1. A new visible-browser regression failed against the pre-fix production preview because it found two H1 headings. `ComposeView` now renders the descriptive title at level 2 while retaining the same visual styling; the route title remains the single H1. The regression passes desktop and mobile (2/2), checks the descriptive title's level, and records zero browser console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Before/after screenshots and machine records are under `quality/evidence/step-39/compose-heading-order/`.
+
+AUD-409 is fixed-local-verified and remains open until the same browser regression passes on a new deployed Sites version. Step 39 remains in progress: the full manual copy review of every visible catalogue string has not been completed, and existing fixed findings still require issue-specific deployed verification.
+
+### 2026-11-03 continuation — public v72 homepage copy and runtime sample
+
+The homepage was reviewed on the deployed v72 Site at desktop 1440×900 and mobile 390×844. Both profiles had no horizontal overflow, app console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Lighthouse snapshot checks returned 100 for accessibility, best practices, SEO, and agentic browsing at both sizes. A Fast 4G Chrome DevTools navigation trace measured desktop LCP 364ms / CLS 0 and mobile LCP 337ms / CLS 0 (1× CPU; no field data is available). Screenshots and the machine record are in `audit/evidence/step-39/live-v72/`.
+
+The homepage discloses that catalogue values are sample data and that the product-spectrum and layout examples are illustrative and disconnected from a live project. No lorem, TODO, or live-usage claim was found in the sampled copy. The “luxury travel marketplace” preset changed the brief, feel, ambition, and structure as expected; “playful HR platform” was already the active default. Lazy comparison controls displayed a preparing status while offscreen, then enabled after entering the viewport; the status was not a dead-control failure. The full-page screenshot command exceeded Chromium's maximum raster height on mobile at the device's pixel ratio, so the captured mobile evidence is a viewport screenshot; DOM measurements confirmed the 390px document width. This is a scoped route sample, not completion of the exhaustive copy review, mobile release gate, or Step 39.
+
+### 2026-11-03 continuation — public v72 Compose readiness and copy sample
+
+The deployed `/compose` route was checked at 1440×900 and 390×844. Catalogue readiness completed and `/data/catalog.json` returned 200 with 324 resources (40 `verified-gold`); the mobile revalidation returned 304 and the UI showed “Catalogue ready.” At both sizes the route had no horizontal overflow, app console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Lighthouse snapshots passed 34/34 audits on mobile and desktop, scoring 100 for accessibility, best practices, SEO, and agentic browsing. At 390×844 the product-description field was visible in the initial viewport. The sample-brief controls changed and restored the visible brief through the UI. Keyboard Tab reached the sample controls, brief, product-type selector, feel input, ambition/structure choices, advanced disclosure, and submit control; a 2px blue focus outline was visible. The sampled route copy does not expose ProductModel, ScreenGraph, schema, or inference terms; “Pipeline” occurs only in the user-facing “CRM & Pipeline” product type. Screenshots and route evidence are in `audit/evidence/step-39/live-v72/`. This does not repeat the full flagship journey or complete the all-resource copy review.
+
+### 2026-11-03 continuation — public v72 Explore route sample
+
+The deployed `/explore` route was inspected at desktop 1440×900 and mobile 390×844. It reported 50 of 324 resources with 40 Gold resources in the full catalogue. Desktop loaded six visible cards and seven visible/near-visible preview frames across 129 requests; mobile loaded two preview frames across 66 requests. There was no document overflow at 390px, and the mobile capture recorded zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. Mobile Lighthouse snapshot checks scored 100 for accessibility, best practices, SEO, and agentic browsing. Search for `pricing` returned ten declared-use matches (eight pricing sections and two motion resources); query plus Block returned zero, then adding Section returned the eight matching sections and preserved both query and filters in the URL. The mobile filter dialog received focus on its close control, closed with Escape, and restored focus to the trigger. Screenshots and detailed request/interaction evidence are in `audit/evidence/step-39/live-v72/`. This is a representative search/filter sample, not full catalogue relevance certification.
+
+### 2026-11-03 continuation — v72 resource detail route sweep
+
+The deployed v72 Site's 324 catalogue detail routes were visited at desktop 1440×900 and mobile 390×844 (648 settled route captures). Every route returned HTTP 200 with a visible main H1; the sweep recorded zero document overflow, broken images, console errors/warnings, uncaught exceptions, failed requests, HTTP errors, or matches for its seven conservative placeholder/claim/domain-risk patterns. A preview-frame JPEG screenshot is retained for every resource and viewport under `audit/evidence/step-39/live-v72/resource-route-sweep/screenshots/`; the complete machine report and repeatable runner are beside that directory. Zero pattern matches are only a useful copy-risk screen, not a semantic truth or accessibility certification; variants, all interaction states, and manual copy review still remain.
+
+The same deployed copy/route sample checked `/tools/` and all ten tool detail routes at desktop and mobile (22 captures). All returned HTTP 200 with a visible main H1, no overflow, console errors/warnings, uncaught exceptions, failed requests or HTTP errors, and no hit on the configured copy-risk patterns. Each screenshot and the captured text/control labels are in `audit/evidence/step-39/live-v72/tools-route-sweep/`. This is route and copy evidence only; every tool's interactions, keyboard operation and actual output still require the later tools gate.
+
+### 2026-11-03 continuation — manual v72 resource-preview content review
+
+Reading the isolated preview text (rather than relying only on page copy-risk patterns) found seven defects on the public v72 Site. Four pricing/feature templates made unsupported plan and entitlement claims; three calculators/pricing samples presented invented billing rates as live terms; the FAQ made unsupported first-party licensing/capability claims; Billing Overview fabricated an active plan and renewal date and exposed an unconnected payment action; and Recent Items included trading-domain content and a pointer cursor on inert rows. Findings AUD-457–AUD-463 preserve separate causes in `audit/runtime-audit.json` and `audit/RUNTIME_AUDIT.md`. Before screenshots and route reports are under `audit/evidence/step-39/live-v72/`.
+
+The existing resources were corrected without changing the resource architecture: examples now disclose sample terms, unsupported billing state/action is removed or explicitly disabled, generic FAQ/activity copy is neutral, and inert rows no longer imply clickability. A Sites Worker Playwright regression covers detail routes, isolated previews, plan selection, annual price arithmetic, billing action state, and recent-items affordances. It passes at desktop 1440×900 and mobile 390×844 with zero console errors, uncaught exceptions, failed requests, or HTTP errors; component-level screenshots and machine-readable browser results are in `quality/evidence/step-39/pricing-truthfulness-local/`. A separate interaction assertion exposed and fixed a duplicate “plan” announcement in the shared preview host. These findings remain open for issue-specific verification on a new deployed review version; public v72 is still the pre-fix baseline.
+
+Visual inspection of the tool index, Section Planner, and mobile Design DNA Lab samples found the shared Beta disclosure and client-side scope clear, with the expected Tessellate editorial shell and no obvious clipped desktop layout or mobile document overflow. This sample is not a full design-system comparison or a functional tool audit.
+
+A narrow source-text check across CLI/MCP strings, site pages/components, and docs found no matches for the selected lorem, unverified accessibility/performance guarantee, fake customer-count, or unrelated finance-residue patterns. Its only finance-text hits were the intentionally named `Order Book Depth Chart` entry in the launch inventory and a negative contamination assertion in a test. This is not a black-box CLI/MCP language audit and does not replace review of all docs, errors, empty states, metadata, or generated output.
+
+### 2026-11-01 continuation — Compose, Surprise Me, rail navigation, and resource failure recovery
+
+The v65 public baseline is captured in `quality/evidence/step-39/public-v65-current/`. It exposed a duplicate Compose H1 (AUD-409), an enabled Surprise Me action without a visible canvas change (AUD-410), and Direction C's `rail` model paired with horizontal `minimal-top-nav` (AUD-411). Local fixes retain the existing design and composition architecture: the Compose description is now H2 with unchanged styling; Surprise Me applies a supported visual variant to an unlocked rendered component and names the actual variant change; and `rail` uses the existing collapsible sidebar resource on application screens.
+
+Fault injection also found AUD-412: importing the renderer root from Surprise Me coupled Workbench hydration to the generated Gold registry, so a single resource module 503 prevented the editor from loading. A narrow `@tessellate/renderer/resource-variants` export removes that startup coupling. The injected failure is now confined to the resource error boundary, while Workbench remains interactive and exports a schema-valid manifest preserving the original resource reference.
+
+Before/after screenshots and machine-readable runs are recorded in `quality/evidence/step-39/compose-heading-order/`, `surprise-visible-change/`, and `resource-chunk-failure/`; the Direction C handoff evidence is in `quality/evidence/step-16/after/`. The relevant source commits are AUD-409 `9af41cd80076b11d782369879ad59d1fcac15886`, AUD-411 `39b9f1bf66c8f3d1cc5baef5500aa4ad65d4704c`, and AUD-410/AUD-412 `7c1ffab74205470c8970785cdca85f4c5631f5cf`.
+
+The frozen install, catalogue generation, typecheck, lint, 1,250 unit tests, 16-point release gate, production builds, bundle budgets, licence/provenance/security/dependency audits, and complete local Playwright matrix all passed. The full E2E run had zero failures. Public Site v65 remains unchanged until the exact pushed branch is saved and deployed; the four findings remain open pending that deployed re-audit.
+
+### 2026-11-03 continuation — public v74 resource copy and interaction sweep
+
+The public v74 catalogue detail sweep visited all 324 resource routes at 1440×900 and 390×844 (648 settled captures) and rendered all three requested variants for every resource (1,944 variant renders). All routes returned HTTP 200; the final run found zero route failures, preview runtime failures, or empty previews. Screenshots and the machine-readable report are under `quality/evidence/step-39/public-v74-copy-review-2026-11-03/`. The conservative copy scanner flagged 20 strings solely because they used “placeholder” for loading/skeleton states; manual adjudication found those usages accurate.
+
+Visible interaction review on the live Site exposed five findings (AUD-466–AUD-470): Video Hero reported playback without media and included unsupported media/production claims; Empty Dashboard State made an unsupported claim that composition creates live telemetry and exposed an unconnected enabled CTA. Dashboard Skeleton metadata separately recommended a trading portal (AUD-470). The empty-workspace project creation action was clicked at desktop and mobile and correctly showed “Project creation previewed.”, so it was not recorded as a deployed defect. Live baseline evidence and screenshots are in `baseline-interactions.json` and its `screenshots/` sibling.
+
+The source resources and batch templates now use host-supplied native video playback, truthful no-media copy, explicit telemetry limitations, disabled empty-state actions without a callback, and analytics-specific dashboard recommendations. The regression suite passes all four targeted Sites Worker regressions in desktop and mobile profiles after `pnpm build` (8/8). Evidence is in `quality/evidence/step-39/empty-workspace-action/local-after/`. These changes are local to the hardening branch and remain open pending exact-source CI and a public deployed re-audit; Steps 39 and 48 remain incomplete.
+
+The subsequent complete `pnpm test:e2e` run passed 794 tests with 189 configured profile skips and zero failures across Astro desktop/mobile, Sites Worker desktop/mobile, and standalone preview. All four new resource regressions passed in both Sites Worker profiles. After the dashboard-skeleton screenshot test was corrected to wait for the actual isolated preview before capture, the eight focused desktop/mobile checks passed again. This remains local verification; the public v74 Site has not received these fixes.
+
+### 2026-11-03 continuation — public v75 resource claims and controls
+
+The public v75 resource-detail audit captured 13 high-risk resources at 1440×900 and 390×844 before code changes. All 26 page/viewport captures returned HTTP 200 with no console errors or warnings, uncaught exceptions, failed requests, HTTP errors, or horizontal overflow. Manual interaction and copy review found 21 medium defects (AUD-471–AUD-491): example AI workflows and data were presented as live execution or telemetry; certification, performance and partner claims were unsupported; several restore/export/date controls did nothing; a connection state used a fake retry countdown; kiosk copy promised unavailable behavior; and globe rotation was pointer-only. The evidence and before screenshots are under `quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/`.
+
+Fixes are grouped by the source resource and its batch-generation template. They disclose sample content, remove unsupported claims, give local preview actions accurate feedback or disable them with an explanation, keep live-host callbacks limited to the matching error resource, honor reduced motion, and make the globe keyboard-operable. The regression suite passed 30/30 checks across desktop and mobile and captured 26 after screenshots under `quality/evidence/step-39/public-v75-fixes-2026-11-03/`. Source fix commit: `71fd293e5e7bea118f310fde414ad6adfc24d6cf`.
+
+The complete local `pnpm test:e2e` rerun passed 824 tests with 189 configured profile skips and zero failures: Astro desktop/mobile 396/136; Sites Worker desktop 228/11; Sites Worker mobile 197/42; standalone preview 3/0. This includes the 324-resource responsive/variant browser certification, the 40 Gold resources, the 120-variant Gold accessibility matrix, strict preview CSP checks, the flagship employee workflow, and the independent React export. The first full run recorded a single mobile Workbench startup outlier at 15.7 seconds against a 5-second lab budget. It passed the next isolated run, three repeat runs (3.7–4.0 seconds), and the clean full run (3.8 seconds); no code change or budget relaxation was made. Evidence is in `quality/evidence/step-39/public-v75-fixes-2026-11-03/test-e2e-final-retry.log`, `test-e2e-final-stability.log`, and `quality/evidence/step-47/performance/workbench-mobile-startup-stability-2026-11-03.json`.
+
+The 21 issues remain `fixed-awaiting-deployed-verification`. v75 is the before-state; none is closed until the exact pushed source is published to the review Site and the same resource behaviors pass against the live deployment.
+
+### 2026-11-06 continuation — v79 preview accessibility audit
+
+The manual v79 audit visited eight higher-risk resource detail/preview routes at 1440×900 and 390×844 (16 captures). All routes returned HTTP 200 with zero application console errors/warnings, uncaught exceptions, failed requests, HTTP errors, or horizontal overflow. Axe found three distinct text contrast failures and one keyboard-inaccessible horizontal data table (AUD-506–AUD-509). Evidence includes full route text, screenshots before changes, per-route Axe output, and telemetry in `quality/evidence/step-45/public-v79-reaudit/manual-copy-suspects/`.
+
+Contrast-safe foregrounds were added to the AI memory, API capability, and audit-log previews. Cohort retention table scrolling now has a named region, keyboard focus, and visible focus styling. The four new browser regressions failed against public v79 before code changes, then passed in both desktop and mobile Sites Worker profiles. The complete local quality suite passed: frozen installation, catalogue generation (324/40), 22 typechecks, lint, 1,343 unit tests, `pnpm audit:all`, and 850 Playwright passes with 191 configured skips and zero failures. Machine summary: `quality/evidence/step-45/public-v79-reaudit/local-quality-run.json`. The findings remain open until the same checks pass against the deployed v80 Site.
+
+
+The first exact-head GitHub Actions run caught a literal backslash-n line in the captured audit runner, which ESLint rejected although the resource regressions and local application workflow had passed. Removing that stray line restores the audit script; targeted ESLint and the full pnpm lint gate now pass locally. The correction is isolated to the audit runner and does not change product behavior.
+
+Exact-head GitHub Actions runs 41715426290 and 41715451928 initially failed because the root Astro Playwright profile picked up resource-claims-and-controls-step-39.spec.ts, which inspects assets inside opaque sandbox frames. Plain Astro preview does not apply the hosting _headers CORS policy; this suite belongs only in the production-like Sites Worker profile. The local worktree already contained the corresponding testIgnore entry, but it had not been committed with the test. After committing that entry, the Astro test listing returns zero cases for this file and the dedicated Sites Worker run passes all 30 desktop/mobile cases. The preview sandbox and CSP remain unchanged.
+
+## Public v78 route, resource, and copy re-audit — 2026-11-06
+
+Sites v78 serves canonical source 3e889d0ca68345c5ccf5ef767c3c05ebc07716ca via mirror e6387f7ff8e1080a5a4c191cf00faef813719a3d. The 31 requested product routes passed at 1440×900 and 390×844 (62 captures, HTTP 200); this is a route/content/responsive-shell smoke, not a claim that every secondary control was exercised. All 324 resource detail pages were visited at both sizes, all 1,944 Quiet/Expressive/Nocturne renders completed, and the 30 targeted issue assertions passed at both sizes. Eight representative detail-shell and isolated-preview Axe scans reported zero violations. All runtime/network failures were zero; one window.styleMedia deprecation warning appeared once and did not recur in the route, corpus, preview, or explicit warning rechecks.
+
+AUD-471–AUD-491 are closed after deployed verification. Machine evidence and screenshots: [v78 route audit](evidence/step-45/public-v78-reaudit/ROUTE_AUDIT.md), [runtime ledger records](../audit/runtime-audit.json), [targeted Playwright log](evidence/step-45/public-v78-reaudit/copy-sweep-runtime.jsonl), [resource corpus](evidence/step-45/public-v78-reaudit/resource-copy-corpus/copy-corpus.json), and [Axe results](evidence/step-45/public-v78-reaudit/axe-resource-results.json).
+
+This does not close Step 39. The scanner's 14 conservative hits across seven resources were manually reviewed as intentional skeleton, empty-state, or sample-price labels, but the required human review of every public string—including docs, CLI/MCP copy, and the complete set of secondary workflows—remains incomplete. The runtime ledger now has 495 findings: 0 Critical, 87 High, 379 Medium, 29 Low; 270 deployed-verified, 112 awaiting deployed verification, 98 locally verified, and the other documented historical/local/host-limitation statuses. AUD-419 remains the one nonclosed High finding.
+
+## Manual preview-copy follow-up — AUD-496–AUD-505 (2026-11-06)
+
+After the v78 route/corpus sweep, eight higher-risk resource previews were used as a normal user at desktop (1440×900) and mobile (390×844). The screenshots, per-route text, button state, click result, and console/network telemetry are in `evidence/step-45/public-v78-reaudit/manual-copy-suspects/`. All eight routes returned HTTP 200 at both sizes, with zero console errors/warnings, uncaught exceptions, failed requests, HTTP errors, or overflow.
+
+Ten separate findings capture the defects: unsupported organization-member/OAuth claims and an inert invitation action; local state presented as active assistant memory; fabricated prompt history/usage records and an inert replay action; suggested actions that only changed selection styling; API paths shown as implemented despite being absent from the Hono API; a static audit log described as immutable; an unconnected command-centre preview claiming healthy systems; and undisclosed cohort sizes/retention values. The local fixes update resource components and manifests, add host callbacks or truthful disabled states, and make preview feedback explicit. Regression coverage is `tests/resource-v78-truthfulness-regression.test.tsx` plus the eight browser cases appended to `tests/e2e/resource-claims-and-controls-step-39.spec.ts`.
+
+The component tests passed 18/18 after the original red run (9/9 failing before source changes). The clean detached worktree passed the full 1,343-test Vitest suite, all 22 typechecks, lint, production build, and `pnpm audit:all`. The issue-specific Sites Worker browser regressions passed 16/16 across desktop and mobile. The full `pnpm test:e2e` matrix completed with zero failures: 532 Astro tests in 93 files (pass/skip split not retained by the list reporter), 238 Sites Worker desktop passes/11 configured skips, 205 mobile passes/44 configured skips, and 3 standalone preview passes. Machine summary: `evidence/step-45/public-v78-reaudit/local-quality-run.json`. Code fix commit: `735cefa3`. Exact-head CI and deployed Site verification are still required before these issues close. The runtime ledger now contains 505 issues (0 Critical, 87 High, 389 Medium, 29 Low); all ten new findings are `fixed-awaiting-deployed-verification`.
+
+### 2026-11-06 continuation — v80 closes AUD-506–AUD-509
+
+The v80 live audit repeated the eight high-risk resource previews at 1440×900 and 390×844 (16 captures). All routes returned HTTP 200, with zero application console errors or warnings, uncaught exceptions, failed requests, HTTP errors, overflow, or Axe violations. The cohort table was keyboard reachable on mobile and ArrowRight scrolled it 40px. The three contrast fixes and named keyboard-scroll region therefore pass on the deployed Site; AUD-506–AUD-509 are closed. Axe emitted 16 CSP-blocked inline-style messages during its instrumentation, separated from clean application telemetry; no security policy was weakened. Evidence is in `quality/evidence/step-45/public-v80-reaudit/closure-summary.json` and `quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/`.
+
+The four closures do not close Step 39. AUD-496–AUD-505 remain fixed awaiting their own deployed interaction checks; the full language/copy review across public pages, documentation, CLI, MCP, errors, and secondary workflows is still incomplete. The current 509-item ledger has 0 Critical, 91 High, 389 Medium, and 29 Low findings. Status counts: 253 deployed-verified, 143 awaiting deployed verification, 98 locally verified, 9 historical closed, 2 closed-local, 2 legacy fixed, and 2 documented Sites limitations. AUD-419 remains the only nonclosed High.
+## 2026-11-06 continuation — v80 closes AUD-496–AUD-505
+
+The eight affected resource routes were revisited on the public v80 Site at 1440×900 and 390×844. The route report contains 16 successful HTTP 200 captures, zero navigation failures, zero horizontal overflow, zero Axe violations, and zero application console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. A focused follow-up corrected a false negative in the earlier suggested-action locator: clicking “Export as Vite App” now has deployed evidence that it reports “Example action previewed locally; no product operation was run.”
+
+Verified behavior:
+- Admin Console labels organization data as an example, explains identity provider state is not connected, and disables Invite User until a host handler exists.
+- AI Memory labels local sample preferences and clears only those examples.
+- Prompt History labels sample records, disables Replay without a host callback, and filters to a truthful empty state.
+- Suggested Actions identifies example cards and reports local preview without claiming the export or audit ran.
+- API route cards say they are illustrative examples, not API documentation.
+- Audit Log labels example events and disclaims live/immutable status.
+- Command Centre identifies sample telemetry/status and never claims systems are operational.
+- Cohort Matrix identifies values as illustrative and gives the scroll area a keyboard name and focusable region; the deployed keyboard check is in cohort-matrix-keyboard-v80.json.
+
+Evidence: quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/report.json, ai-suggested-action-followup-v80.json, and the desktop/mobile screenshots in the same directory. Runtime ledger entries AUD-496–AUD-505 now have v80 deployment verification. This closes those ten issue-specific findings only; the 324-resource manual language review and the full Step 39 scope remain open.
+
+
+## Public v83 route/content/responsive sweep and AUD-513 — 2026-11-06
+
+The current public v83 Site was visited at 1440×900 and 390×844 across the 31 required public routes (62 route/viewport captures). Every response was HTTP 200. The captures recorded zero console errors/warnings, uncaught exceptions, failed requests, HTTP errors, and horizontal overflow. All 31 desktop captures were manually reviewed; mobile screenshots were sampled across 15 representative shells/details, while machine capture and overflow checks covered all 31. The route-level classifications and scope boundary are in audit/evidence/step-39/public-v83-route-sweep/ROUTE_AUDIT.md; source telemetry, visible text, links/buttons and screenshots are in the adjacent report.json and screenshots/ directory. PASS is limited to the route shell and visible content sample, not exhaustive control coverage.
+
+That visual review found AUD-513 on /blocks and /r/api-key-management. The resource advertised live credential generation/revocation, showed “Production Agent Token” and token-shaped tess_live_/tess_test_ examples, and had enabled controls that produced no visible change. The before screenshot and deployed interaction reproduction are in audit/evidence/step-39/public-v83-api-key-management/. The regression in tests/e2e/resource-claims-and-controls-step-39.spec.ts failed before the fix against the old preview, then passed in Sites Worker desktop and mobile profiles. The generator, component, manifest and README now describe sample-only rows, provide local add/remove interactions with accessible feedback, and show an empty state. Local after screenshots/report are captured at desktop and mobile in the same evidence folder. This is fixed-awaiting-deployed-verification; it is not closed until it passes on a new deployed Site.
+
+The copy-pattern scan returned zero hits on the route samples but missed AUD-513, so pattern scans remain supplementary to screenshot and interaction review. Step 39 remains open: full manual string review across catalogue resources, docs, CLI/MCP copy, errors and secondary workflows is still incomplete.

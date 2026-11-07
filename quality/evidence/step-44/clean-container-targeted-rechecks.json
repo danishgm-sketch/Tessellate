@@ -1,0 +1,26 @@
+{
+  "step": 44,
+  "status": "passed",
+  "image": "mcr.microsoft.com/playwright:v1.63.0-noble",
+  "containerName": "tessellate-step44-20261024T034947Z",
+  "checks": [
+    {
+      "id": "uppercase-tsx-source-scan",
+      "status": "PASS"
+    },
+    {
+      "id": "extension-case-collision-fails-closed",
+      "status": "PASS"
+    },
+    {
+      "id": "mcp-stdio-workflow-direct-node-launch",
+      "status": "PASS"
+    },
+    {
+      "id": "installed-cli-package-network-install",
+      "status": "PASS"
+    }
+  ],
+  "log": "quality/evidence/step-44/clean-container-targeted-rechecks.log",
+  "capturedAtUtc": "2026-10-24T03:57:38.5296423Z"
+}

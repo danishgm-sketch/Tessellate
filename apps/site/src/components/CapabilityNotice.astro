@@ -1,0 +1,22 @@
+---
+interface Props {
+  tier: 'Beta' | 'Lab';
+  note: string;
+}
+
+const { tier, note } = Astro.props;
+const isLab = tier === 'Lab';
+const label = isLab ? 'Experimental Lab' : 'Beta';
+const styles = isLab
+  ? 'border-[#C7D9A2] bg-[#EDF4DC] text-[#3E5B16]'
+  : 'border-[#E9D3A7] bg-[#F8F0DF] text-[#6D4A12]';
+---
+
+<aside
+  aria-label={`${label} capability notice`}
+  data-capability-tier={tier.toLowerCase()}
+  class={`mb-6 flex flex-wrap items-start gap-x-3 gap-y-1 border px-3 py-2 text-xs ${styles}`}
+>
+  <span class="shrink-0 font-mono font-semibold uppercase tracking-wide">{label}</span>
+  <span class="leading-relaxed">{note}</span>
+</aside>

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import {
   Search,
   Copy,
@@ -31,42 +31,174 @@ import {
   Minimize2,
   Trash2,
   Plus,
+  type LucideIcon,
 } from 'lucide-react';
+import { CopyFailureNotice, useToolClipboard } from './useToolClipboard';
 
 interface IconEntry {
   name: string;
   category: string;
   keywords: string[];
-  Component: React.ComponentType<{ size?: number | string; strokeWidth?: number | string; color?: string; className?: string }>;
+  Component: LucideIcon;
 }
 
 const ICONS_CATALOG: IconEntry[] = [
-  { name: 'ArrowRight', category: 'Navigation', keywords: ['arrow', 'next', 'forward', 'right'], Component: ArrowRight },
-  { name: 'ArrowUpRight', category: 'Navigation', keywords: ['external', 'link', 'outbound', 'corner'], Component: ArrowUpRight },
-  { name: 'CheckCircle2', category: 'Feedback', keywords: ['success', 'done', 'confirmed', 'check'], Component: CheckCircle2 },
-  { name: 'AlertCircle', category: 'Feedback', keywords: ['warning', 'error', 'alert', 'notice'], Component: AlertCircle },
-  { name: 'Activity', category: 'Analytics', keywords: ['pulse', 'chart', 'health', 'heartbeat'], Component: Activity },
-  { name: 'Terminal', category: 'Developer', keywords: ['cli', 'command', 'prompt', 'code'], Component: Terminal },
-  { name: 'Shield', category: 'Security', keywords: ['security', 'protect', 'safe', 'audit'], Component: Shield },
-  { name: 'Zap', category: 'Actions', keywords: ['lightning', 'fast', 'quick', 'energy'], Component: Zap },
-  { name: 'Layers', category: 'Interface', keywords: ['stack', 'layout', 'components', 'hierarchy'], Component: Layers },
-  { name: 'Sparkles', category: 'Interface', keywords: ['magic', 'ai', 'generate', 'clean'], Component: Sparkles },
-  { name: 'Command', category: 'Developer', keywords: ['keyboard', 'cmd', 'shortcut', 'macro'], Component: Command },
-  { name: 'Heart', category: 'Actions', keywords: ['like', 'love', 'favorite', 'sponsor'], Component: Heart },
-  { name: 'Globe2', category: 'Navigation', keywords: ['world', 'web', 'internet', 'global'], Component: Globe2 },
-  { name: 'Eye', category: 'Interface', keywords: ['view', 'inspect', 'preview', 'look'], Component: Eye },
-  { name: 'SlidersHorizontal', category: 'Interface', keywords: ['settings', 'tune', 'filter', 'adjust'], Component: SlidersHorizontal },
-  { name: 'Table', category: 'Analytics', keywords: ['records', 'grid', 'rows', 'spreadsheet'], Component: Table },
-  { name: 'Cpu', category: 'Developer', keywords: ['processor', 'hardware', 'compute', 'chip'], Component: Cpu },
-  { name: 'RefreshCw', category: 'Actions', keywords: ['reload', 'sync', 'reset', 'update'], Component: RefreshCw },
-  { name: 'Folder', category: 'Files', keywords: ['directory', 'storage', 'collection', 'archive'], Component: Folder },
-  { name: 'FileText', category: 'Files', keywords: ['document', 'page', 'manifest', 'article'], Component: FileText },
-  { name: 'Lock', category: 'Security', keywords: ['locked', 'protect', 'immutable', 'safe'], Component: Lock },
-  { name: 'Unlock', category: 'Security', keywords: ['unlocked', 'open', 'mutable', 'free'], Component: Unlock },
-  { name: 'Maximize2', category: 'Interface', keywords: ['expand', 'fullscreen', 'grow', 'zoom'], Component: Maximize2 },
-  { name: 'Minimize2', category: 'Interface', keywords: ['collapse', 'shrink', 'dock', 'reduce'], Component: Minimize2 },
-  { name: 'Trash2', category: 'Actions', keywords: ['delete', 'remove', 'discard', 'clear'], Component: Trash2 },
-  { name: 'Plus', category: 'Actions', keywords: ['add', 'create', 'new', 'insert'], Component: Plus },
+  {
+    name: 'ArrowRight',
+    category: 'Navigation',
+    keywords: ['arrow', 'next', 'forward', 'right'],
+    Component: ArrowRight,
+  },
+  {
+    name: 'ArrowUpRight',
+    category: 'Navigation',
+    keywords: ['external', 'link', 'outbound', 'corner'],
+    Component: ArrowUpRight,
+  },
+  {
+    name: 'CheckCircle2',
+    category: 'Feedback',
+    keywords: ['success', 'done', 'confirmed', 'check'],
+    Component: CheckCircle2,
+  },
+  {
+    name: 'AlertCircle',
+    category: 'Feedback',
+    keywords: ['warning', 'error', 'alert', 'notice'],
+    Component: AlertCircle,
+  },
+  {
+    name: 'Activity',
+    category: 'Analytics',
+    keywords: ['pulse', 'chart', 'health', 'heartbeat'],
+    Component: Activity,
+  },
+  {
+    name: 'Terminal',
+    category: 'Developer',
+    keywords: ['cli', 'command', 'prompt', 'code'],
+    Component: Terminal,
+  },
+  {
+    name: 'Shield',
+    category: 'Security',
+    keywords: ['security', 'protect', 'safe', 'audit'],
+    Component: Shield,
+  },
+  {
+    name: 'Zap',
+    category: 'Actions',
+    keywords: ['lightning', 'fast', 'quick', 'energy'],
+    Component: Zap,
+  },
+  {
+    name: 'Layers',
+    category: 'Interface',
+    keywords: ['stack', 'layout', 'components', 'hierarchy'],
+    Component: Layers,
+  },
+  {
+    name: 'Sparkles',
+    category: 'Interface',
+    keywords: ['magic', 'ai', 'generate', 'clean'],
+    Component: Sparkles,
+  },
+  {
+    name: 'Command',
+    category: 'Developer',
+    keywords: ['keyboard', 'cmd', 'shortcut', 'macro'],
+    Component: Command,
+  },
+  {
+    name: 'Heart',
+    category: 'Actions',
+    keywords: ['like', 'love', 'favorite', 'sponsor'],
+    Component: Heart,
+  },
+  {
+    name: 'Globe2',
+    category: 'Navigation',
+    keywords: ['world', 'web', 'internet', 'global'],
+    Component: Globe2,
+  },
+  {
+    name: 'Eye',
+    category: 'Interface',
+    keywords: ['view', 'inspect', 'preview', 'look'],
+    Component: Eye,
+  },
+  {
+    name: 'SlidersHorizontal',
+    category: 'Interface',
+    keywords: ['settings', 'tune', 'filter', 'adjust'],
+    Component: SlidersHorizontal,
+  },
+  {
+    name: 'Table',
+    category: 'Analytics',
+    keywords: ['records', 'grid', 'rows', 'spreadsheet'],
+    Component: Table,
+  },
+  {
+    name: 'Cpu',
+    category: 'Developer',
+    keywords: ['processor', 'hardware', 'compute', 'chip'],
+    Component: Cpu,
+  },
+  {
+    name: 'RefreshCw',
+    category: 'Actions',
+    keywords: ['reload', 'sync', 'reset', 'update'],
+    Component: RefreshCw,
+  },
+  {
+    name: 'Folder',
+    category: 'Files',
+    keywords: ['directory', 'storage', 'collection', 'archive'],
+    Component: Folder,
+  },
+  {
+    name: 'FileText',
+    category: 'Files',
+    keywords: ['document', 'page', 'manifest', 'article'],
+    Component: FileText,
+  },
+  {
+    name: 'Lock',
+    category: 'Security',
+    keywords: ['locked', 'protect', 'immutable', 'safe'],
+    Component: Lock,
+  },
+  {
+    name: 'Unlock',
+    category: 'Security',
+    keywords: ['unlocked', 'open', 'mutable', 'free'],
+    Component: Unlock,
+  },
+  {
+    name: 'Maximize2',
+    category: 'Interface',
+    keywords: ['expand', 'fullscreen', 'grow', 'zoom'],
+    Component: Maximize2,
+  },
+  {
+    name: 'Minimize2',
+    category: 'Interface',
+    keywords: ['collapse', 'shrink', 'dock', 'reduce'],
+    Component: Minimize2,
+  },
+  {
+    name: 'Trash2',
+    category: 'Actions',
+    keywords: ['delete', 'remove', 'discard', 'clear'],
+    Component: Trash2,
+  },
+  {
+    name: 'Plus',
+    category: 'Actions',
+    keywords: ['add', 'create', 'new', 'insert'],
+    Component: Plus,
+  },
 ];
 
 export function IconLab() {
@@ -78,8 +210,20 @@ export function IconLab() {
   const [colorHex, setColorHex] = useState<string>('#2547E8');
   const [hasBadge, setHasBadge] = useState<boolean>(false);
   const [copiedFormat, setCopiedFormat] = useState<'jsx' | 'svg' | null>(null);
+  const { copyText, copyFailed } = useToolClipboard();
+  const selectedIconSvgRef = useRef<SVGSVGElement>(null);
 
-  const categories = ['All', 'Navigation', 'Feedback', 'Analytics', 'Developer', 'Security', 'Interface', 'Actions', 'Files'];
+  const categories = [
+    'All',
+    'Navigation',
+    'Feedback',
+    'Analytics',
+    'Developer',
+    'Security',
+    'Interface',
+    'Actions',
+    'Files',
+  ];
 
   const filteredIcons = useMemo(() => {
     return ICONS_CATALOG.filter((i) => {
@@ -103,19 +247,32 @@ export function IconLab() {
     return `<${selectedIcon.name} size={${iconSize}} strokeWidth={${strokeWidth}} color="${colorHex}" />`;
   }, [selectedIcon, iconSize, strokeWidth, colorHex]);
 
-  // Generated SVG snippet
-  const generatedSvg = useMemo(() => {
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="${iconSize}" height="${iconSize}" viewBox="0 0 24 24" fill="none" stroke="${colorHex}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round">\n  <!-- ${selectedIcon.name} (Lucide ISC Permissive License) -->\n</svg>`;
-  }, [selectedIcon, iconSize, strokeWidth, colorHex]);
+  const copyToClipboard = async (text: string, format: 'jsx' | 'svg') => {
+    const copied = await copyText(text);
+    setCopiedFormat(copied ? format : null);
+    if (copied) setTimeout(() => setCopiedFormat(null), 2000);
+  };
 
-  const copyToClipboard = (text: string, format: 'jsx' | 'svg') => {
-    navigator.clipboard.writeText(text);
-    setCopiedFormat(format);
-    setTimeout(() => setCopiedFormat(null), 2000);
+  const copySelectedSvg = () => {
+    const preview = selectedIconSvgRef.current;
+    if (!preview) return;
+    const standalone = preview.cloneNode(true) as SVGSVGElement;
+    standalone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    standalone.setAttribute('width', String(iconSize));
+    standalone.setAttribute('height', String(iconSize));
+    standalone.setAttribute('viewBox', '0 0 24 24');
+    standalone.setAttribute('fill', 'none');
+    standalone.setAttribute('stroke', colorHex);
+    standalone.setAttribute('stroke-width', String(strokeWidth));
+    standalone.setAttribute('stroke-linecap', 'round');
+    standalone.setAttribute('stroke-linejoin', 'round');
+    const licenseComment = document.createComment(`${selectedIcon.name} (Lucide ISC License)`);
+    standalone.insertBefore(licenseComment, standalone.firstChild);
+    copyToClipboard(new XMLSerializer().serializeToString(standalone), 'svg');
   };
 
   return (
-    <div className="space-y-8 select-none">
+    <div className="space-y-8">
       {/* Header Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#D9D6CF] pb-6">
         <div>
@@ -131,7 +288,8 @@ export function IconLab() {
             SVG / Icon Lab
           </h1>
           <p className="text-sm text-[#62666F] mt-1">
-            Inspect, tune stroke geometry, recolour, and export permissively licensed icons for production.
+            Inspect, tune stroke geometry, recolour, and export permissively licensed icons for
+            production.
           </p>
         </div>
 
@@ -142,11 +300,17 @@ export function IconLab() {
             onClick={() => copyToClipboard(generatedJsx, 'jsx')}
             className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2547E8] text-white text-xs font-semibold hover:bg-[#1E3CCD] transition-all shadow-sm"
           >
-            {copiedFormat === 'jsx' ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+            {copiedFormat === 'jsx' ? (
+              <Check className="h-3.5 w-3.5" />
+            ) : (
+              <Copy className="h-3.5 w-3.5" />
+            )}
             <span>Copy React Icon JSX</span>
           </button>
         </div>
       </div>
+
+      <CopyFailureNotice failed={copyFailed} />
 
       {/* Main Grid: Parameters (Left 4), Library Grid (Center 5), Preview Inspector (Right 3) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -165,7 +329,7 @@ export function IconLab() {
                 setColorHex('#2547E8');
                 setHasBadge(false);
               }}
-              className="text-xs font-mono text-[#8B8F97] hover:text-[#111217] flex items-center gap-1"
+              className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
             >
               <RotateCcw className="h-3 w-3" />
               <span>Reset</span>
@@ -179,6 +343,7 @@ export function IconLab() {
               <span className="font-mono text-[#62666F]">{iconSize}px</span>
             </div>
             <input
+              aria-label="Icon size"
               type="range"
               min="16"
               max="64"
@@ -196,6 +361,7 @@ export function IconLab() {
               <span className="font-mono text-[#62666F]">{strokeWidth}px</span>
             </div>
             <input
+              aria-label="Icon stroke width"
               type="range"
               min="1"
               max="3.5"
@@ -208,17 +374,17 @@ export function IconLab() {
 
           {/* Color Selector */}
           <div className="space-y-2 pt-2 border-t border-[#D9D6CF]">
-            <label className="block text-xs font-semibold text-[#111217]">
-              Icon Chroma
-            </label>
+            <label className="block text-xs font-semibold text-[#111217]">Icon Chroma</label>
             <div className="flex items-center gap-2">
               <input
+                aria-label="Icon colour picker"
                 type="color"
                 value={colorHex}
                 onChange={(e) => setColorHex(e.target.value)}
                 className="h-8 w-8 rounded cursor-pointer border border-[#D9D6CF]"
               />
               <input
+                aria-label="Icon colour hex value"
                 type="text"
                 value={colorHex}
                 onChange={(e) => setColorHex(e.target.value)}
@@ -231,6 +397,7 @@ export function IconLab() {
           <div className="pt-2 border-t border-[#D9D6CF] flex items-center justify-between">
             <span className="text-xs font-medium text-[#111217]">Background Tile Badge</span>
             <input
+              aria-label="Has badge"
               type="checkbox"
               checked={hasBadge}
               onChange={(e) => setHasBadge(e.target.checked)}
@@ -244,8 +411,9 @@ export function IconLab() {
           {/* Search Bar + Categories */}
           <div className="flex flex-col sm:flex-row gap-3 items-center justify-between">
             <div className="relative w-full sm:w-64">
-              <Search className="h-3.5 w-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#8B8F97]" />
+              <Search className="h-3.5 w-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" />
               <input
+                aria-label="Filter presets"
                 type="text"
                 placeholder="Search icons (e.g. arrow, lock)..."
                 value={searchQuery}
@@ -282,6 +450,7 @@ export function IconLab() {
                   key={item.name}
                   type="button"
                   onClick={() => setSelectedIconName(item.name)}
+                  aria-pressed={isSelected}
                   className={`flex flex-col items-center justify-center p-3 rounded-xl border transition-all ${
                     isSelected
                       ? 'border-[#2547E8] bg-[#E7EBFF] shadow-sm'
@@ -305,7 +474,13 @@ export function IconLab() {
           <div className="pt-4 border-t border-[#D9D6CF] flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3 text-xs">
               <div className="p-1.5 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF]">
-                <SelectedComponent size={18} strokeWidth={strokeWidth} color={colorHex} />
+                <SelectedComponent
+                  ref={selectedIconSvgRef}
+                  aria-hidden="true"
+                  size={18}
+                  strokeWidth={strokeWidth}
+                  color={colorHex}
+                />
               </div>
               <span className="font-semibold text-[#111217]">Selected: {selectedIcon.name}</span>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#FAF9F6] border border-[#D9D6CF] text-[#62666F]">
@@ -323,7 +498,7 @@ export function IconLab() {
               </button>
               <button
                 type="button"
-                onClick={() => copyToClipboard(generatedSvg, 'svg')}
+                onClick={copySelectedSvg}
                 className="px-3 py-1.5 rounded-lg bg-[#111217] text-white text-xs font-semibold hover:bg-[#2547E8]"
               >
                 {copiedFormat === 'svg' ? 'Copied SVG!' : 'Copy SVG'}

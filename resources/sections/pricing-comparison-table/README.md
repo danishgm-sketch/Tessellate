@@ -1,3 +1,3 @@
 # Pricing Comparison Table
 
-Comprehensive plan feature matrix with checkmarks and breakdown rows.
+Compact plan comparison with four illustrative feature rows. Replace labels and values before publication.

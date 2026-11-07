@@ -1,0 +1,10 @@
+[WebServer] (node:72716) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:87616) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [sites-mobile-chromium] › tests\e2e\accessibility-hardening-step-35.spec.ts:355:1 › Workbench landmarks and every primary mode pass WCAG 2.2 A/AA (3.9s)
+
+  1 passed (9.4s)

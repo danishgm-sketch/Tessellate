@@ -5,7 +5,7 @@
   "name": "Analytics Shell",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Metric-dense business intelligence dashboard shell with date picker bar and KPI grid.",
+  "description": "Responsive analytics shell with illustrative metric cards and an optional host export callback.",
   "resourceType": "block",
   "categories": [
     "shells",
@@ -126,21 +126,21 @@
     "bi"
   ],
   "intent": {
-    "summary": "Metric-dense business intelligence dashboard shell with date picker bar and KPI grid.",
+    "summary": "Responsive dashboard shell that labels its default metrics as examples.",
     "idealFor": [
-      "Business telemetry monitoring with time interval controls"
+      "Presenting key metrics in a responsive dashboard shell"
     ],
     "avoidFor": [
       "Content reading sites"
     ],
     "jobs": [
-      "Coordinate executive KPI summaries and interactive time-series plots"
+      "Present summary metrics with a clear sample period"
     ],
     "contentRequirements": [
       "Accessible navigation semantics and responsive containment"
     ],
     "notes": [
-      "Supports responsive collapsing and reduced motion"
+      "Default metrics are illustrative. A host callback is needed to enable CSV export."
     ]
   },
   "visualDNA": {
@@ -205,12 +205,12 @@
     "defaultStrategy": "collapse"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -233,7 +233,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

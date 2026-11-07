@@ -1,0 +1,2413 @@
+{
+  "capturedAt": "2026-10-27T22:00:18.529Z",
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": 50,
+  "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_90ffb7eea6f0819187554301d0a0011f",
+  "canonicalSourceCommit": "d4b0fd88a722225c221d8264b89af70525cb1d7d",
+  "siteSourceCommit": "11d7a1439caaf641a2d2f78eb2555c00cf30cc34",
+  "routeCount": 4,
+  "viewportCount": 2,
+  "results": [
+    {
+      "id": "home-desktop-1440x900",
+      "route": "/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "viewport": "desktop-1440x900",
+      "httpStatus": 200,
+      "navigationError": null,
+      "axeTags": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag21a",
+        "wcag21aa",
+        "wcag22aa"
+      ],
+      "violations": [],
+      "passedRuleCount": 26,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": [
+            {
+              "target": [
+                ".pb-1\\.5 > span:nth-child(3)"
+              ],
+              "html": "<span>TYPE</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined because it is overlapped by another element",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "8.3pt (11px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgOverlap",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".hover\\:shadow-md.group[data-testid=\"home-resource-card\"]:nth-child(5) > div > .aspect-\\[16\\/10\\].border-\\[\\#D9D6CF\\]\\/70.group-hover\\:bg-\\[\\#F4F2ED\\] > .top-3.right-3.bg-white\\/90"
+              ],
+              "html": "<div data-testid=\"home-resource-type-badge\" class=\"absolute top-3 right-3 text-[10px] font-mono uppercase font-semibold text-[var(--text-muted)] bg-white/90 border border-[#D9D6CF] px-2 py-0.5 rounded-full\">ai</div>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "7.5pt (10px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".hover\\:shadow-md.group[data-testid=\"home-resource-card\"]:nth-child(6) > div > .aspect-\\[16\\/10\\].border-\\[\\#D9D6CF\\]\\/70.group-hover\\:bg-\\[\\#F4F2ED\\] > .top-3.right-3.bg-white\\/90"
+              ],
+              "html": "<div data-testid=\"home-resource-type-badge\" class=\"absolute top-3 right-3 text-[10px] font-mono uppercase font-semibold text-[var(--text-muted)] bg-white/90 border border-[#D9D6CF] px-2 py-0.5 rounded-full\">shell</div>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "7.5pt (10px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".tracking-wider.text-\\[\\#A8AFBA\\].uppercase"
+              ],
+              "html": "<span class=\"font-mono text-xs font-semibold uppercase tracking-wider text-[#A8AFBA]\">Command Studio</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined due to a background gradient",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".z-10 > .max-w-3xl.space-y-4 > .leading-\\[1\\.08\\].md\\:text-5xl.sm\\:text-4xl"
+              ],
+              "html": "<h2 class=\"text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white leading-[1.08]\">Step inside the engine.<br>Inspect every design decision.</h2>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined due to a background gradient",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "36.0pt (48px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "3:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".text-lg.font-normal.text-\\[\\#A8AFBA\\]"
+              ],
+              "html": "<p class=\"text-lg text-[#A8AFBA] font-normal leading-relaxed\">Inspect a project’s structure and Design DNA, make lock-aware changes, and review its manifest checks before exporting.</p>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined due to a background gradient",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "13.5pt (18px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".text-sm.text-\\[\\#A8AFBA\\]"
+              ],
+              "html": "<div class=\"text-sm text-[#A8AFBA]\">Editing works in browser storage after the application and catalogue load. Export a copy for safekeeping.</div>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined due to a background gradient",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "seriousOrCritical": [],
+      "axeError": null,
+      "productDiagnostics": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "axeInstrumentation": {
+          "consoleErrors": [],
+          "failedRequests": []
+        }
+      },
+      "axeInstrumentation": {
+        "consoleErrors": [],
+        "failedRequests": []
+      },
+      "screenshot": "quality/evidence/step-45/public-v50/axe-core-routes/home-desktop-1440x900.png",
+      "result": "PASS"
+    },
+    {
+      "id": "explore-desktop-1440x900",
+      "route": "/explore",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+      "viewport": "desktop-1440x900",
+      "httpStatus": 200,
+      "navigationError": null,
+      "axeTags": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag21a",
+        "wcag21aa",
+        "wcag22aa"
+      ],
+      "violations": [],
+      "passedRuleCount": 28,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": [
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(1) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "h2"
+              ],
+              "html": "<h2 class=\"text-3xl font-bold tracking-tight text-center mb-16\">Accessibility commitments — WCAG 2.2 AA target</h2>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#f6f4f1",
+                    "contrastRatio": 0,
+                    "fontSize": "22.5pt (30px)",
+                    "fontWeight": "bold",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "3:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(1) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".p-6.rounded-2xl.border:nth-child(1) > h3"
+              ],
+              "html": "<h3 class=\"font-bold text-base mb-2\">Keyboard First</h3>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "bold",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(1) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".p-6.rounded-2xl.border:nth-child(1) > p"
+              ],
+              "html": "<p class=\"text-xs sm:text-sm opacity-75 leading-relaxed\">Design goal: support Tab, Enter, Space and Escape for every core control; verify keyboard behavior in your integration.</p>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(1) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".p-6.rounded-2xl.border:nth-child(2) > h3"
+              ],
+              "html": "<h3 class=\"font-bold text-base mb-2\">Contrast Guardrails</h3>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "bold",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(1) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".p-6.rounded-2xl.border:nth-child(2) > p"
+              ],
+              "html": "<p class=\"text-xs sm:text-sm opacity-75 leading-relaxed\">Design goal: maintain WCAG AA contrast; test your final foreground and background combinations.</p>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(1) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".p-6.rounded-2xl.border:nth-child(3) > h3"
+              ],
+              "html": "<h3 class=\"font-bold text-base mb-2\">Reduced Motion</h3>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "bold",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(1) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".p-6.rounded-2xl.border:nth-child(3) > p"
+              ],
+              "html": "<p class=\"text-xs sm:text-sm opacity-75 leading-relaxed\">Design goal: honor prefers-reduced-motion and verify that essential interactions work without animation.</p>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Accordion actual preview\"]",
+                ".rotate-180"
+              ],
+              "html": "<span class=\"transition-transform duration-200 text-xs rotate-180\">▼</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element content contains only non-text characters",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Accordion actual preview\"]",
+                ".pt-0"
+              ],
+              "html": "<div class=\"p-4 pt-0 text-neutral-600 dark:text-neutral-300 text-xs leading-relaxed\">A real interactive accordion. Open and close each item.</div>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.439 0 none)",
+                  "data": {
+                    "bgColor": "#f4f2ed",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.439 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Accordion actual preview\"]",
+                ".text-sm:nth-child(2) > button > .transition-transform.duration-200.text-xs"
+              ],
+              "html": "<span class=\"transition-transform duration-200 text-xs \">▼</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element content contains only non-text characters",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(3) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "h2"
+              ],
+              "html": "<h2 class=\"text-sm font-semibold tracking-tight pb-2 border-b border-neutral-100 dark:border-neutral-800\">Animated Accordion Disclosure</h2>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.205 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.205 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(3) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "#accordion-trigger-0 > span:nth-child(1)"
+              ],
+              "html": "<span>Which dependencies does this component use?</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.205 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.205 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(3) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".rotate-180"
+              ],
+              "html": "<span aria-hidden=\"true\" class=\"transform transition-transform duration-200 motion-reduce:transition-none rotate-180\">▼</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element content contains only non-text characters",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(3) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "#accordion-panel-0 > .overflow-hidden > .bg-neutral-50\\/50.dark\\:bg-black\\/30.border-t"
+              ],
+              "html": "<div class=\"p-3 bg-neutral-50/50 dark:bg-black/30 border-t border-neutral-200 dark:border-neutral-800 text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed\">This example uses React and CSS transitions. Check your project manifest for its complete dependency list.</div>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.439 0 none)",
+                  "data": {
+                    "bgColor": "#fcfcfc",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.439 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(3) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "#accordion-trigger-1 > span:nth-child(1)"
+              ],
+              "html": "<span>Do the example colors meet WCAG AA automatically?</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.205 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.205 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(3) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "#accordion-trigger-1 > .transform.transition-transform.duration-200"
+              ],
+              "html": "<span aria-hidden=\"true\" class=\"transform transition-transform duration-200 motion-reduce:transition-none \">▼</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element content contains only non-text characters",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Activity Feed actual preview\"]",
+                "h2"
+              ],
+              "html": "<h2 class=\"text-sm font-semibold\">Workspace Activity Feed</h2>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#f6f5f2",
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Activity Feed actual preview\"]",
+                ".bg-neutral-100"
+              ],
+              "html": "<span class=\"rounded-full bg-neutral-100 px-2 py-1 font-mono text-[10px] text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300\">Sample activity</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.439 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "7.5pt (10px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.439 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Activity Feed actual preview\"]",
+                ".text-xs.py-2.border-b:nth-child(1) > .gap-3.flex.items-center > .h-6.w-6.bg-neutral-300"
+              ],
+              "html": "<span class=\"h-6 w-6 rounded-full bg-neutral-300 dark:bg-neutral-700 font-bold flex items-center justify-center text-[10px]\">E</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element content is too short to determine if it is actual text content",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "7.5pt (10px)",
+                    "fontWeight": "bold",
+                    "messageKey": "shortTextContent",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Activity Feed actual preview\"]",
+                ".text-xs.py-2.border-b:nth-child(1) > .gap-3.flex.items-center > span:nth-child(2)"
+              ],
+              "html": "<span><strong>Example teammate</strong> published a project update</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#f6f5f2",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Activity Feed actual preview\"]",
+                ".text-xs.py-2.border-b:nth-child(1) > .gap-3.flex.items-center > span:nth-child(2) > strong"
+              ],
+              "html": "<strong>Example teammate</strong>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#f6f5f2",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "bold",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Activity Feed actual preview\"]",
+                ".text-xs.py-2.border-b:nth-child(1) > .opacity-50.text-\\[11px\\].font-mono"
+              ],
+              "html": "<span class=\"font-mono opacity-50 text-[11px]\">12m ago</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#f6f5f2",
+                    "contrastRatio": 0,
+                    "fontSize": "8.3pt (11px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Activity Feed actual preview\"]",
+                ".text-xs.py-2.border-b:nth-child(2) > .gap-3.flex.items-center > .h-6.w-6.bg-neutral-300"
+              ],
+              "html": "<span class=\"h-6 w-6 rounded-full bg-neutral-300 dark:bg-neutral-700 font-bold flex items-center justify-center text-[10px]\">E</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element content is too short to determine if it is actual text content",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "7.5pt (10px)",
+                    "fontWeight": "bold",
+                    "messageKey": "shortTextContent",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Activity Feed actual preview\"]",
+                ".text-xs.py-2.border-b:nth-child(2) > .gap-3.flex.items-center > span:nth-child(2)"
+              ],
+              "html": "<span><strong>Example agent</strong> reviewed an onboarding section</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#f6f5f2",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Activity Feed actual preview\"]",
+                ".text-xs.py-2.border-b:nth-child(2) > .gap-3.flex.items-center > span:nth-child(2) > strong"
+              ],
+              "html": "<strong>Example agent</strong>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#f6f5f2",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "bold",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Activity Feed actual preview\"]",
+                ".text-xs.py-2.border-b:nth-child(2) > .opacity-50.text-\\[11px\\].font-mono"
+              ],
+              "html": "<span class=\"font-mono opacity-50 text-[11px]\">44m ago</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#f6f5f2",
+                    "contrastRatio": 0,
+                    "fontSize": "8.3pt (11px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Activity Feed actual preview\"]",
+                ".text-xs.py-2.border-b:nth-child(3) > .gap-3.flex.items-center > .h-6.w-6.bg-neutral-300"
+              ],
+              "html": "<span class=\"h-6 w-6 rounded-full bg-neutral-300 dark:bg-neutral-700 font-bold flex items-center justify-center text-[10px]\">E</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element content is too short to determine if it is actual text content",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "7.5pt (10px)",
+                    "fontWeight": "bold",
+                    "messageKey": "shortTextContent",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Activity Feed actual preview\"]",
+                ".text-xs.py-2.border-b:nth-child(3) > .gap-3.flex.items-center > span:nth-child(2)"
+              ],
+              "html": "<span><strong>Example collaborator</strong> updated a team task</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#f6f5f2",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Activity Feed actual preview\"]",
+                ".text-xs.py-2.border-b:nth-child(3) > .gap-3.flex.items-center > span:nth-child(2) > strong"
+              ],
+              "html": "<strong>Example collaborator</strong>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#f6f5f2",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "bold",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Activity Feed actual preview\"]",
+                ".text-xs.py-2.border-b:nth-child(3) > .opacity-50.text-\\[11px\\].font-mono"
+              ],
+              "html": "<span class=\"font-mono opacity-50 text-[11px]\">2h ago</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#f6f5f2",
+                    "contrastRatio": 0,
+                    "fontSize": "8.3pt (11px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(5) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".text-base"
+              ],
+              "html": "<h1 class=\"text-base font-bold\">Admin Console</h1>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.205 0 none)",
+                  "data": {
+                    "bgColor": "#faf9f6",
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "bold",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.205 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(5) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".flex > div > .opacity-60"
+              ],
+              "html": "<p class=\"text-xs opacity-60\">User permissions &amp; security enforcement</p>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.205 0 none)",
+                  "data": {
+                    "bgColor": "#faf9f6",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.205 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(5) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "button"
+              ],
+              "html": "<button class=\"px-3 py-1.5 bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 rounded-lg text-xs font-medium\">Invite User</button>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.205 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.205 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(5) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".font-semibold"
+              ],
+              "html": "<p class=\"font-semibold mb-2\">Active Organization Members (14)</p>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.205 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.205 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(5) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".border > .opacity-60"
+              ],
+              "html": "<p class=\"opacity-60\">All members authenticated with GitHub OAuth.</p>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.205 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.205 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "span"
+              ],
+              "html": "<span class=\"font-semibold\">Sample records · 0 selected</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "#_r_0_-filter"
+              ],
+              "html": "<input id=\"_r_0_-filter\" aria-label=\"Filter Sample records\" placeholder=\"Filter records\" class=\"min-w-0 w-32 px-2 py-1 rounded border bg-transparent\" value=\"\" name=\"_r_0_-filter\" style=\"\">",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(1) > .items-start.flex.gap-3 > .flex-1.min-w-0 > p"
+              ],
+              "html": "<p class=\"break-words text-sm font-semibold\">button</p>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(1) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(1) > dt"
+              ],
+              "html": "<dt class=\"font-semibold text-neutral-500\">Type</dt>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.556 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.556 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(1) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(1) > dd"
+              ],
+              "html": "<dd class=\"mt-0.5 break-words\">primitive</dd>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(1) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(2) > dt"
+              ],
+              "html": "<dt class=\"font-semibold text-neutral-500\">Progress</dt>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.556 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.556 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(1) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(2) > .text-emerald-800"
+              ],
+              "html": "<dd class=\"mt-0.5 break-words font-semibold text-emerald-800\">98/100</dd>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.985 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.985 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(1) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(3) > dt"
+              ],
+              "html": "<dt class=\"font-semibold text-neutral-500\">Status</dt>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.556 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.556 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(1) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(3) > .uppercase"
+              ],
+              "html": "<dd class=\"mt-0.5 break-words uppercase\">verified</dd>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(2) > .items-start.flex.gap-3 > .flex-1.min-w-0 > p"
+              ],
+              "html": "<p class=\"break-words text-sm font-semibold\">editorial-hero</p>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(2) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(1) > dt"
+              ],
+              "html": "<dt class=\"font-semibold text-neutral-500\">Type</dt>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.556 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.556 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(2) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(1) > dd"
+              ],
+              "html": "<dd class=\"mt-0.5 break-words\">section</dd>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(2) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(2) > dt"
+              ],
+              "html": "<dt class=\"font-semibold text-neutral-500\">Progress</dt>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.556 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.556 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(2) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(2) > .text-emerald-800"
+              ],
+              "html": "<dd class=\"mt-0.5 break-words font-semibold text-emerald-800\">96/100</dd>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.985 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.985 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(2) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(3) > dt"
+              ],
+              "html": "<dt class=\"font-semibold text-neutral-500\">Status</dt>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.556 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.556 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(2) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(3) > .uppercase"
+              ],
+              "html": "<dd class=\"mt-0.5 break-words uppercase\">verified</dd>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(3) > .items-start.flex.gap-3 > .flex-1.min-w-0 > p"
+              ],
+              "html": "<p class=\"break-words text-sm font-semibold\">admin-console-shell</p>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(3) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(1) > dt"
+              ],
+              "html": "<dt class=\"font-semibold text-neutral-500\">Type</dt>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.556 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.556 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(3) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(1) > dd"
+              ],
+              "html": "<dd class=\"mt-0.5 break-words\">block</dd>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(3) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(2) > dt"
+              ],
+              "html": "<dt class=\"font-semibold text-neutral-500\">Progress</dt>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.556 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.556 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(3) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(2) > .text-emerald-800"
+              ],
+              "html": "<dd class=\"mt-0.5 break-words font-semibold text-emerald-800\">96/100</dd>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.985 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.985 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(3) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(3) > dt"
+              ],
+              "html": "<dt class=\"font-semibold text-neutral-500\">Status</dt>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.556 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.556 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(6) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "article:nth-child(3) > .items-start.flex.gap-3 > .flex-1.min-w-0 > dl > .min-w-0:nth-child(3) > .uppercase"
+              ],
+              "html": "<dd class=\"mt-0.5 break-words uppercase\">verified</dd>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "seriousOrCritical": [],
+      "axeError": null,
+      "productDiagnostics": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "axeInstrumentation": {
+          "consoleErrors": [],
+          "failedRequests": []
+        }
+      },
+      "axeInstrumentation": {
+        "consoleErrors": [
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+            "message": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+            "message": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+            "message": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+            "message": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+            "message": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+            "message": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          }
+        ],
+        "failedRequests": []
+      },
+      "screenshot": "quality/evidence/step-45/public-v50/axe-core-routes/explore-desktop-1440x900.png",
+      "result": "PASS"
+    },
+    {
+      "id": "compose-desktop-1440x900",
+      "route": "/compose",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+      "viewport": "desktop-1440x900",
+      "httpStatus": 200,
+      "navigationError": null,
+      "axeTags": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag21a",
+        "wcag21aa",
+        "wcag22aa"
+      ],
+      "violations": [],
+      "passedRuleCount": 25,
+      "incomplete": [],
+      "seriousOrCritical": [],
+      "axeError": null,
+      "productDiagnostics": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "axeInstrumentation": {
+          "consoleErrors": [],
+          "failedRequests": []
+        }
+      },
+      "axeInstrumentation": {
+        "consoleErrors": [],
+        "failedRequests": []
+      },
+      "screenshot": "quality/evidence/step-45/public-v50/axe-core-routes/compose-desktop-1440x900.png",
+      "result": "PASS"
+    },
+    {
+      "id": "resource-button-desktop-1440x900",
+      "route": "/r/button/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/button/",
+      "viewport": "desktop-1440x900",
+      "httpStatus": 200,
+      "navigationError": null,
+      "axeTags": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag21a",
+        "wcag21aa",
+        "wcag22aa"
+      ],
+      "violations": [],
+      "passedRuleCount": 26,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": [
+            {
+              "target": [
+                "iframe",
+                "button"
+              ],
+              "html": "<button type=\"button\" class=\"inline-flex items-ce...\">",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.205 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.205 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "seriousOrCritical": [],
+      "axeError": null,
+      "productDiagnostics": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "axeInstrumentation": {
+          "consoleErrors": [],
+          "failedRequests": []
+        }
+      },
+      "axeInstrumentation": {
+        "consoleErrors": [
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/button/",
+            "message": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          }
+        ],
+        "failedRequests": []
+      },
+      "screenshot": "quality/evidence/step-45/public-v50/axe-core-routes/resource-button-desktop-1440x900.png",
+      "result": "PASS"
+    },
+    {
+      "id": "home-mobile-390x844",
+      "route": "/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "viewport": "mobile-390x844",
+      "httpStatus": 200,
+      "navigationError": null,
+      "axeTags": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag21a",
+        "wcag21aa",
+        "wcag22aa"
+      ],
+      "violations": [],
+      "passedRuleCount": 28,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": [
+            {
+              "target": [
+                ".pb-1\\.5 > span:nth-child(3)"
+              ],
+              "html": "<span>TYPE</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined because it is overlapped by another element",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "8.3pt (11px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgOverlap",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".hover\\:shadow-md.group[data-testid=\"home-resource-card\"]:nth-child(5) > div > .aspect-\\[16\\/10\\].border-\\[\\#D9D6CF\\]\\/70.group-hover\\:bg-\\[\\#F4F2ED\\] > .top-3.right-3.bg-white\\/90"
+              ],
+              "html": "<div data-testid=\"home-resource-type-badge\" class=\"absolute top-3 right-3 text-[10px] font-mono uppercase font-semibold text-[var(--text-muted)] bg-white/90 border border-[#D9D6CF] px-2 py-0.5 rounded-full\">ai</div>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "7.5pt (10px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".hover\\:shadow-md.group[data-testid=\"home-resource-card\"]:nth-child(6) > div > .aspect-\\[16\\/10\\].border-\\[\\#D9D6CF\\]\\/70.group-hover\\:bg-\\[\\#F4F2ED\\] > .top-3.right-3.bg-white\\/90"
+              ],
+              "html": "<div data-testid=\"home-resource-type-badge\" class=\"absolute top-3 right-3 text-[10px] font-mono uppercase font-semibold text-[var(--text-muted)] bg-white/90 border border-[#D9D6CF] px-2 py-0.5 rounded-full\">shell</div>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "7.5pt (10px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".sm\\:items-center.sm\\:flex-row.pt-2 > span:nth-child(1)"
+              ],
+              "html": "<span>Best for: Executive Dashboards, Settings, Documentation</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined because it partially overlaps other elements",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "8.3pt (11px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscuring",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".tracking-wider.text-\\[\\#A8AFBA\\].uppercase"
+              ],
+              "html": "<span class=\"font-mono text-xs font-semibold uppercase tracking-wider text-[#A8AFBA]\">Command Studio</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined due to a background gradient",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".z-10 > .max-w-3xl.space-y-4 > .leading-\\[1\\.08\\].md\\:text-5xl.sm\\:text-4xl"
+              ],
+              "html": "<h2 class=\"text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white leading-[1.08]\">Step inside the engine.<br>Inspect every design decision.</h2>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined due to a background gradient",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "22.5pt (30px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "3:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".text-lg.font-normal.text-\\[\\#A8AFBA\\]"
+              ],
+              "html": "<p class=\"text-lg text-[#A8AFBA] font-normal leading-relaxed\">Inspect a project’s structure and Design DNA, make lock-aware changes, and review its manifest checks before exporting.</p>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined due to a background gradient",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "13.5pt (18px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".font-bold.text-base.text-white"
+              ],
+              "html": "<span class=\"font-bold text-white text-base\">Team overview</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined because it partially overlaps other elements",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "bold",
+                    "messageKey": "elmPartiallyObscuring",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".text-sm.text-\\[\\#A8AFBA\\]"
+              ],
+              "html": "<div class=\"text-sm text-[#A8AFBA]\">Editing works in browser storage after the application and catalogue load. Export a copy for safekeeping.</div>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined due to a background gradient",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "seriousOrCritical": [],
+      "axeError": null,
+      "productDiagnostics": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "axeInstrumentation": {
+          "consoleErrors": [],
+          "failedRequests": []
+        }
+      },
+      "axeInstrumentation": {
+        "consoleErrors": [],
+        "failedRequests": []
+      },
+      "screenshot": "quality/evidence/step-45/public-v50/axe-core-routes/home-mobile-390x844.png",
+      "result": "PASS"
+    },
+    {
+      "id": "explore-mobile-390x844",
+      "route": "/explore",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+      "viewport": "mobile-390x844",
+      "httpStatus": 200,
+      "navigationError": null,
+      "axeTags": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag21a",
+        "wcag21aa",
+        "wcag22aa"
+      ],
+      "violations": [],
+      "passedRuleCount": 25,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": [
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(1) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                "h2"
+              ],
+              "html": "<h2 class=\"text-3xl font-bold tracking-tight text-center mb-16\">Accessibility commitments — WCAG 2.2 AA target</h2>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#f6f4f1",
+                    "contrastRatio": 0,
+                    "fontSize": "22.5pt (30px)",
+                    "fontWeight": "bold",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "3:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(1) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".p-6.rounded-2xl.border:nth-child(1) > h3"
+              ],
+              "html": "<h3 class=\"font-bold text-base mb-2\">Keyboard First</h3>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "bold",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(1) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".p-6.rounded-2xl.border:nth-child(1) > p"
+              ],
+              "html": "<p class=\"text-xs sm:text-sm opacity-75 leading-relaxed\">Design goal: support Tab, Enter, Space and Escape for every core control; verify keyboard behavior in your integration.</p>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(1) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".p-6.rounded-2xl.border:nth-child(2) > h3"
+              ],
+              "html": "<h3 class=\"font-bold text-base mb-2\">Contrast Guardrails</h3>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "bold",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(1) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".p-6.rounded-2xl.border:nth-child(2) > p"
+              ],
+              "html": "<p class=\"text-xs sm:text-sm opacity-75 leading-relaxed\">Design goal: maintain WCAG AA contrast; test your final foreground and background combinations.</p>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(1) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".p-6.rounded-2xl.border:nth-child(3) > h3"
+              ],
+              "html": "<h3 class=\"font-bold text-base mb-2\">Reduced Motion</h3>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "bold",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".transition-all.duration-200.hover\\:shadow-md:nth-child(1) > .aspect-\\[16\\/10\\].p-6.bg-\\[var\\(--tess-canvas\\,\\#F4F2ED\\)\\] > iframe",
+                ".p-6.rounded-2xl.border:nth-child(3) > p"
+              ],
+              "html": "<p class=\"text-xs sm:text-sm opacity-75 leading-relaxed\">Design goal: honor prefers-reduced-motion and verify that essential interactions work without animation.</p>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.145 0 none)",
+                  "data": {
+                    "bgColor": "#ffffff",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.145 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Accordion actual preview\"]",
+                ".rotate-180"
+              ],
+              "html": "<span class=\"transition-transform duration-200 text-xs rotate-180\">▼</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element content contains only non-text characters",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Accordion actual preview\"]",
+                ".pt-0"
+              ],
+              "html": "<div class=\"p-4 pt-0 text-neutral-600 dark:text-neutral-300 text-xs leading-relaxed\">A real interactive accordion. Open and close each item.</div>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.439 0 none)",
+                  "data": {
+                    "bgColor": "#f4f2ed",
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.439 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "iframe[title=\"Accordion actual preview\"]",
+                ".text-sm:nth-child(2) > button > .transition-transform.duration-200.text-xs"
+              ],
+              "html": "<span class=\"transition-transform duration-200 text-xs \">▼</span>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element content contains only non-text characters",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "seriousOrCritical": [],
+      "axeError": null,
+      "productDiagnostics": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "axeInstrumentation": {
+          "consoleErrors": [],
+          "failedRequests": []
+        }
+      },
+      "axeInstrumentation": {
+        "consoleErrors": [
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+            "message": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          },
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+            "message": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          }
+        ],
+        "failedRequests": []
+      },
+      "screenshot": "quality/evidence/step-45/public-v50/axe-core-routes/explore-mobile-390x844.png",
+      "result": "PASS"
+    },
+    {
+      "id": "compose-mobile-390x844",
+      "route": "/compose",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+      "viewport": "mobile-390x844",
+      "httpStatus": 200,
+      "navigationError": null,
+      "axeTags": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag21a",
+        "wcag21aa",
+        "wcag22aa"
+      ],
+      "violations": [],
+      "passedRuleCount": 25,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": [
+            {
+              "target": [
+                "div[aria-label=\"Visual Ambition\"] > .hover\\:bg-white.p-2.text-center:nth-child(5)"
+              ],
+              "html": "<button type=\"button\" aria-pressed=\"false\" class=\"rounded-md p-2 text-center text-xs transition-all border border-[#D9D6CF] bg-[#FAF9F6] text-[#62666F] hover:bg-white dark:border-[#272C34] dark:bg-[#0B0D10] dark:text-[#A8AFBA]\">Experimental</button>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "div[aria-label=\"Structural Creativity\"] > .hover\\:bg-white.p-2.text-center:nth-child(5)"
+              ],
+              "html": "<button type=\"button\" aria-pressed=\"false\" class=\"rounded-md p-2 text-center text-xs transition-all border border-[#D9D6CF] bg-[#FAF9F6] text-[#62666F] hover:bg-white dark:border-[#272C34] dark:bg-[#0B0D10] dark:text-[#A8AFBA]\">Experimental</button>",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "seriousOrCritical": [],
+      "axeError": null,
+      "productDiagnostics": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "axeInstrumentation": {
+          "consoleErrors": [],
+          "failedRequests": []
+        }
+      },
+      "axeInstrumentation": {
+        "consoleErrors": [],
+        "failedRequests": []
+      },
+      "screenshot": "quality/evidence/step-45/public-v50/axe-core-routes/compose-mobile-390x844.png",
+      "result": "PASS"
+    },
+    {
+      "id": "resource-button-mobile-390x844",
+      "route": "/r/button/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/button/",
+      "viewport": "mobile-390x844",
+      "httpStatus": 200,
+      "navigationError": null,
+      "axeTags": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag21a",
+        "wcag21aa",
+        "wcag22aa"
+      ],
+      "violations": [],
+      "passedRuleCount": 26,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": [
+            {
+              "target": [
+                "iframe",
+                "button"
+              ],
+              "html": "<button type=\"button\" class=\"inline-flex items-ce...\">",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "message": "Could not parse color string oklch(0.205 0 none)",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "colorParse",
+                    "expectedContrastRatio": "4.5:1",
+                    "colorParse": "oklch(0.205 0 none)"
+                  }
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "seriousOrCritical": [],
+      "axeError": null,
+      "productDiagnostics": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "axeInstrumentation": {
+          "consoleErrors": [],
+          "failedRequests": []
+        }
+      },
+      "axeInstrumentation": {
+        "consoleErrors": [
+          {
+            "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/button/",
+            "message": "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+          }
+        ],
+        "failedRequests": []
+      },
+      "screenshot": "quality/evidence/step-45/public-v50/axe-core-routes/resource-button-mobile-390x844.png",
+      "result": "PASS"
+    }
+  ],
+  "summary": {
+    "passed": 8,
+    "failed": 0,
+    "violations": 0,
+    "seriousOrCritical": 0,
+    "incompleteChecks": 7,
+    "productConsoleErrors": 0,
+    "productUncaught": 0,
+    "productFailedRequests": 0,
+    "productHttpErrors": 0,
+    "axeInstrumentationErrors": 10,
+    "axeInstrumentationFailedRequests": 0
+  }
+}

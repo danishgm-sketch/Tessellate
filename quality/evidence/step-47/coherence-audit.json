@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-10-30",
+  "branch": "release/v1-utility-rc1",
+  "sourceHeadBeforeDocumentationCorrections": "f9011a4ff8094e9ce288f63d8ade08cc5f117765",
+  "publicRuntime": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "version": 55,
+    "sitesSourceCommit": "b356ef849431d53eda8f5f052ff65bacf0d477d4",
+    "canonicalRuntimeCommit": "2ffe98ac669e97f9a766acdcbe71f62c4ea14691",
+    "applicationCodeCommit": "e3eff775b9db83fa240b937f3697d52cebcde8c6",
+    "d1Binding": null,
+    "r2Binding": null,
+    "applicationCodeChangesSinceCanonicalRuntimeCommit": false,
+    "publicDocumentationRoutesSource": "docs/*.md",
+    "documentationChangesRequireNewPublishedSiteVersion": true,
+    "result": "RUNTIME_VERIFIED; DOCUMENTATION_DEPLOYMENT_PENDING"
+  },
+  "sharedContracts": {
+    "canonicalManifestSchema": "@tessellate/schemas",
+    "sharedDesignDna": "@tessellate/dna",
+    "sharedComposePipeline": "@tessellate/compatibility",
+    "sharedExporter": "@tessellate/exporter",
+    "consumers": ["apps/site", "packages/workbench", "packages/cli", "packages/mcp", "apps/api"],
+    "crossSurfaceEvidence": "quality/STEP_41_EVIDENCE.md",
+    "result": "PASS"
+  },
+  "localValidation": {
+    "frozenInstall": "PASS",
+    "catalogue": { "result": "PASS", "resources": 324, "goldRuntimeResources": 40 },
+    "typecheck": { "result": "PASS", "workspacePackages": 22 },
+    "lint": "PASS",
+    "unitIntegration": { "result": "PASS", "passed": 1224, "skipped": 1 },
+    "releaseGate": { "result": "PASS", "checks": 16 },
+    "resourceIsolation": { "result": "PASS", "passed": 324, "total": 324 },
+    "licenceProvenanceSecurityDependencyAndBundleAudits": "PASS",
+    "playwright": { "result": "PASS", "passed": 696, "configuredSkips": 167, "failures": 0 },
+    "notes": [
+      "The preview app and Site emitted existing raw chunk-size warnings; enforced gzip budgets passed.",
+      "Playwright Node processes warned that NO_COLOR was ignored while FORCE_COLOR was set; tests passed."
+    ]
+  },
+  "coherenceFindings": [
+    {
+      "id": "COH-001",
+      "severity": "low",
+      "title": "Decision register named scoped D-046 as operating authority",
+      "rootCause": "The current authority line was not updated when D-042 established the hardening programme.",
+      "affectedFiles": ["docs/DECISIONS.md"],
+      "status": "fixed"
+    },
+    {
+      "id": "COH-002",
+      "severity": "medium",
+      "title": "Human-study requirements contradicted the owner waiver",
+      "rootCause": "Step 46 and README described external sessions as still required after the owner waived them for this release gate.",
+      "affectedFiles": [
+        "README.md",
+        "quality/STEP_46_EVIDENCE.md",
+        "docs/PRODUCT_HARDENING.md",
+        "docs/DECISIONS.md"
+      ],
+      "status": "fixed; step is waived and not passed"
+    },
+    {
+      "id": "COH-003",
+      "severity": "low",
+      "title": "Initial feature inventory did not point to superseding deployed evidence",
+      "rootCause": "The Step 03 snapshot retained pre-release route audit wording with no direct evidence precedence note.",
+      "affectedFiles": ["docs/CURRENT_PRODUCT_INVENTORY.md"],
+      "status": "fixed; per-feature gaps remain explicit"
+    },
+    {
+      "id": "COH-004",
+      "severity": "low",
+      "title": "Sites adapter README named v37 as the latest complete runtime audit",
+      "rootCause": "The adapter's audit checkpoint paragraph was not refreshed after the broader v55 public re-audit.",
+      "affectedFiles": ["apps/sites/README.md"],
+      "status": "fixed; updated with v55 source identity and audit limits"
+    },
+    {
+      "id": "COH-005",
+      "severity": "low",
+      "title": "Public deployment pointers still described v30 and v50 as current",
+      "rootCause": "Dated deployment snapshots were not distinguished from the latest complete v55 deployed re-audit after newer Site versions were published.",
+      "affectedFiles": ["apps/sites/LATEST_DEPLOYMENT.md", "docs/PRODUCT_HARDENING.md"],
+      "status": "fixed; publication record defers live version to Sites metadata and hardening plan identifies the v55 audit as the latest complete re-audit"
+    }
+  ],
+  "release": {
+    "pullRequest": "https://github.com/danishgm-sketch/Tessellate/pull/5",
+    "stateBeforeThisCommit": "OPEN_DRAFT",
+    "requiredStatusCheck": "validate",
+    "requiredApprovals": 0,
+    "administratorEnforcement": true,
+    "step48": "OPEN_UNTIL_EXACT_HEAD_CI_AND_PROTECTED_MERGE"
+  }
+}

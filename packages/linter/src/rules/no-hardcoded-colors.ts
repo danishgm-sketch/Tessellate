@@ -2,7 +2,8 @@ import type { LintRule, LintIssue } from '../types.js';
 
 export const noHardcodedColorsRule: LintRule = {
   id: 'no-hardcoded-colors',
-  description: 'Disallow hardcoded hex and rgb color values in favor of Design DNA semantic tokens.',
+  description:
+    'Flags Tailwind arbitrary hex-color classes for review; it does not infer the correct semantic token.',
   check({ filePath, code }) {
     const issues: LintIssue[] = [];
     const hexPattern = /(?:bg|text|border|fill|stroke)-\[#([0-9a-fA-F]{3,8})\]/g;
@@ -17,28 +18,14 @@ export const noHardcodedColorsRule: LintRule = {
       const line = linesUpToMatch.length;
       const column = linesUpToMatch[linesUpToMatch.length - 1]!.length + 1;
 
-      let replacement = fullMatch;
-      if (fullMatch.startsWith('bg-[')) {
-        replacement = 'bg-[var(--tess-surface-secondary,#F2EFE9)]';
-      } else if (fullMatch.startsWith('text-[')) {
-        replacement = 'text-[var(--tess-ink,#111217)]';
-      } else if (fullMatch.startsWith('border-[')) {
-        replacement = 'border-[var(--tess-hairline,#D9D6CF)]';
-      }
-
       issues.push({
         ruleId: 'no-hardcoded-colors',
         severity: 'warning',
-        message: `Hardcoded color "${fullMatch}" detected. Replace with Design DNA semantic variable.`,
+        message: `Tailwind arbitrary color class "${fullMatch}" needs a human-selected semantic token if this value should follow Design DNA.`,
         file: filePath,
         line,
         column,
         snippet: fullMatch,
-        fix: {
-          replacement,
-          startIndex: index,
-          endIndex: index + fullMatch.length,
-        },
       });
     }
 

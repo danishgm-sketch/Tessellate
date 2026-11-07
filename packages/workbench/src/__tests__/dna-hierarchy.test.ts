@@ -1,11 +1,13 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import { findNodeById } from '../utils/tree-helpers.js';
+import { nodeRuntimeVariant } from '@tessellate/renderer';
 import {
   getEffectiveNodeDNA,
   getDnaPropertyStatus,
   extractFeelTraits,
   mapFeelPhraseToDna,
+  getScopedDNA,
 } from '../utils/dna-helpers.js';
 
 describe('Phase 9 Gate — Design DNA Inheritance & Multi-Hierarchy Overrides', () => {
@@ -109,6 +111,29 @@ describe('Phase 9 Gate — Design DNA Inheritance & Multi-Hierarchy Overrides', 
     const effective = getEffectiveNodeDNA(useWorkbenchStore.getState().manifest.designDNA, node.dnaOverrides);
     expect(effective.curvature).toBe(25); // Restored Project DNA value
     expect(getDnaPropertyStatus(useWorkbenchStore.getState().manifest.designDNA, node.dnaOverrides, 'curvature')).toBe('inherited');
+  });
+
+  it('restores inherited resource variants after resetting a visual-mode override', () => {
+    const store = useWorkbenchStore.getState();
+    const screenId = 'screen-overview';
+    const containerId = 'node-kpi-group';
+    const resourceId = 'node-metric-arr';
+    const before = findNodeById(
+      useWorkbenchStore.getState().manifest.screens.find((screen) => screen.id === screenId)!.rootNode,
+      resourceId
+    )!;
+    expect(before.variant).toBeUndefined();
+
+    store.updateNodeDNA(containerId, { visualMode: 'dark' });
+    let manifest = useWorkbenchStore.getState().manifest;
+    let resource = findNodeById(manifest.screens.find((screen) => screen.id === screenId)!.rootNode, resourceId)!;
+    expect(nodeRuntimeVariant(resource, getScopedDNA(manifest, screenId, resourceId))).toBe('nocturne');
+
+    useWorkbenchStore.getState().resetNodeDNA(containerId);
+    manifest = useWorkbenchStore.getState().manifest;
+    resource = findNodeById(manifest.screens.find((screen) => screen.id === screenId)!.rootNode, resourceId)!;
+    expect(nodeRuntimeVariant(resource, getScopedDNA(manifest, screenId, resourceId))).toBeUndefined();
+    expect(resource.variant).toBeUndefined();
   });
 
   it('updates project-level DNA and propagates to inherited nodes while preserving local overrides', () => {

@@ -1,10 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import {
-  Play,
-  Copy,
-  Check,
-  Sliders,
-} from 'lucide-react';
+import { Play, Copy, Check, RotateCcw, Sliders } from 'lucide-react';
+import { CopyFailureNotice, useToolClipboard } from './useToolClipboard';
 
 export type MotionMode = 'cubic-bezier' | 'spring';
 
@@ -68,7 +64,7 @@ const MOTION_PRESETS: MotionPreset[] = [
     damping: 36,
     mass: 0.9,
     staggerMs: 25,
-    description: 'Near-instantaneous UI feedback tailored for dense trading terminals.',
+    description: 'Quick feedback for dense, keyboard-driven interfaces.',
   },
   {
     id: 'reduced-motion',
@@ -80,7 +76,7 @@ const MOTION_PRESETS: MotionPreset[] = [
     damping: 100,
     mass: 1,
     staggerMs: 0,
-    description: 'Zero translation motion; pure alpha crossfade obeying WCAG 2.2 AA.',
+    description: 'A no-motion preset for this generated example; it does not certify conformance.',
   },
 ];
 
@@ -98,6 +94,7 @@ export function MotionStudio() {
   // Play animation trigger count
   const [animationKey, setAnimationKey] = useState<number>(0);
   const [copiedFormat, setCopiedFormat] = useState<'css' | 'framer' | null>(null);
+  const { copyText, copyFailed } = useToolClipboard();
 
   const applyPreset = (p: MotionPreset) => {
     setSelectedPresetId(p.id);
@@ -115,6 +112,19 @@ export function MotionStudio() {
     setAnimationKey((k) => k + 1);
   };
 
+  const resetMotion = () => {
+    setSelectedPresetId('calm-precision');
+    setMode('cubic-bezier');
+    setDurationMs(220);
+    setBezier([0.16, 1, 0.3, 1]);
+    setStiffness(300);
+    setDamping(30);
+    setMass(1);
+    setStaggerMs(40);
+    setIsReducedMotion(false);
+    setAnimationKey(0);
+  };
+
   // Bezier CSS timing function string
   const cubicBezierString = useMemo(() => {
     if (isReducedMotion) return 'linear';
@@ -126,7 +136,7 @@ export function MotionStudio() {
   // Generated CSS snippet
   const generatedCss = useMemo(() => {
     if (isReducedMotion) {
-      return `/* Reduced Motion Mode (WCAG 2.2 compliant) */\ntransition: opacity 0ms linear;`;
+      return `/* Reduced motion example: transitions disabled in this snippet */\ntransition: opacity 0ms linear;`;
     }
     return `/* Tessellate Motion Preset: ${selectedPresetId} */\ntransition-property: transform, opacity, box-shadow;\ntransition-duration: ${durationMs}ms;\ntransition-timing-function: ${cubicBezierString};`;
   }, [selectedPresetId, durationMs, cubicBezierString, isReducedMotion]);
@@ -139,14 +149,14 @@ export function MotionStudio() {
     return `{\n  duration: ${activeDurationMs / 1000},\n  ease: [${bezier.join(', ')}]\n}`;
   }, [mode, stiffness, damping, mass, activeDurationMs, bezier]);
 
-  const copyToClipboard = (text: string, format: 'css' | 'framer') => {
-    navigator.clipboard.writeText(text);
-    setCopiedFormat(format);
-    setTimeout(() => setCopiedFormat(null), 2000);
+  const copyToClipboard = async (text: string, format: 'css' | 'framer') => {
+    const copied = await copyText(text);
+    setCopiedFormat(copied ? format : null);
+    if (copied) setTimeout(() => setCopiedFormat(null), 2000);
   };
 
   return (
-    <div className="space-y-8 select-none">
+    <div className="space-y-8">
       {/* Header Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#D9D6CF] pb-6">
         <div>
@@ -162,7 +172,8 @@ export function MotionStudio() {
             Motion Studio
           </h1>
           <p className="text-sm text-[#62666F] mt-1">
-            Author and inspect easing curves, spring dynamics, stagger pacing, and WCAG reduced motion floors.
+            Create and compare easing curves, spring dynamics, stagger timing, and a reduced-motion
+            example.
           </p>
         </div>
 
@@ -181,15 +192,21 @@ export function MotionStudio() {
             onClick={() => copyToClipboard(generatedCss, 'css')}
             className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-[#D9D6CF] bg-white text-xs font-semibold text-[#111217] hover:border-[#111217] transition-all"
           >
-            {copiedFormat === 'css' ? <Check className="h-3.5 w-3.5 text-[#177B55]" /> : <Copy className="h-3.5 w-3.5" />}
+            {copiedFormat === 'css' ? (
+              <Check className="h-3.5 w-3.5 text-[#12603F]" />
+            ) : (
+              <Copy className="h-3.5 w-3.5" />
+            )}
             <span>Copy CSS</span>
           </button>
         </div>
       </div>
 
+      <CopyFailureNotice failed={copyFailed} />
+
       {/* Preset Selector Chips */}
       <div className="space-y-2">
-        <span className="block font-mono text-xs font-semibold uppercase text-[#8B8F97]">
+        <span className="block font-mono text-xs font-semibold uppercase text-[var(--text-muted)]">
           Personality Presets
         </span>
         <div className="flex flex-wrap gap-2">
@@ -198,10 +215,11 @@ export function MotionStudio() {
               key={p.id}
               type="button"
               onClick={() => applyPreset(p)}
+              aria-pressed={selectedPresetId === p.id}
               className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                 selectedPresetId === p.id
                   ? 'border-[#111217] bg-[#111217] text-white shadow-sm'
-                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#8B8F97]'
+                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#62666F]'
               }`}
             >
               {p.name}
@@ -219,16 +237,27 @@ export function MotionStudio() {
               <Sliders className="h-4 w-4 text-[#2547E8]" />
               <h2 className="text-sm font-semibold text-[#111217]">Kinetic Physics Model</h2>
             </div>
-            {/* Reduced motion toggle */}
-            <label className="flex items-center gap-1.5 cursor-pointer text-xs font-medium text-[#62666F]">
-              <input
-                type="checkbox"
-                checked={isReducedMotion}
-                onChange={(e) => setIsReducedMotion(e.target.checked)}
-                className="accent-[#2547E8] rounded"
-              />
-              <span>Reduced Motion</span>
-            </label>
+            <div className="flex items-center gap-3">
+              <label className="flex items-center gap-1.5 cursor-pointer text-xs font-medium text-[#62666F]">
+                <input
+                  aria-label="Is reduced motion"
+                  type="checkbox"
+                  checked={isReducedMotion}
+                  onChange={(e) => setIsReducedMotion(e.target.checked)}
+                  className="accent-[#2547E8] rounded"
+                />
+                <span>Reduced Motion</span>
+              </label>
+              <button
+                type="button"
+                onClick={resetMotion}
+                aria-label="Reset motion settings"
+                className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
+              >
+                <RotateCcw className="h-3 w-3" />
+                <span>Reset</span>
+              </button>
+            </div>
           </div>
 
           {/* Model Mode Toggle: Bezier vs Spring */}
@@ -236,6 +265,7 @@ export function MotionStudio() {
             <button
               type="button"
               onClick={() => setMode('cubic-bezier')}
+              aria-pressed={mode === 'cubic-bezier'}
               className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
                 mode === 'cubic-bezier' ? 'bg-[#111217] text-white shadow-sm' : 'text-[#62666F]'
               }`}
@@ -245,6 +275,7 @@ export function MotionStudio() {
             <button
               type="button"
               onClick={() => setMode('spring')}
+              aria-pressed={mode === 'spring'}
               className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
                 mode === 'spring' ? 'bg-[#111217] text-white shadow-sm' : 'text-[#62666F]'
               }`}
@@ -261,6 +292,7 @@ export function MotionStudio() {
                 <span className="font-mono text-[#62666F]">{durationMs}ms</span>
               </div>
               <input
+                aria-label="Duration ms"
                 type="range"
                 min="0"
                 max="800"
@@ -277,6 +309,7 @@ export function MotionStudio() {
                 <span className="font-mono text-[#62666F]">{staggerMs}ms</span>
               </div>
               <input
+                aria-label="Stagger ms"
                 type="range"
                 min="0"
                 max="150"
@@ -295,9 +328,7 @@ export function MotionStudio() {
                 <label className="text-xs font-semibold text-[#111217]">
                   Bezier Curve Coordinates
                 </label>
-                <span className="font-mono text-[11px] text-[#2547E8]">
-                  [{bezier.join(', ')}]
-                </span>
+                <span className="font-mono text-[11px] text-[#2547E8]">[{bezier.join(', ')}]</span>
               </div>
 
               {/* Curve Graph Visualizer */}
@@ -305,12 +336,28 @@ export function MotionStudio() {
                 <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
                   {/* Grid Lines */}
                   <line x1="0" y1="100" x2="100" y2="100" stroke="#D9D6CF" strokeWidth="1" />
-                  <line x1="0" y1="0" x2="100" y2="0" stroke="#D9D6CF" strokeWidth="1" strokeDasharray="2" />
+                  <line
+                    x1="0"
+                    y1="0"
+                    x2="100"
+                    y2="0"
+                    stroke="#D9D6CF"
+                    strokeWidth="1"
+                    strokeDasharray="2"
+                  />
                   <line x1="0" y1="0" x2="0" y2="100" stroke="#D9D6CF" strokeWidth="1" />
                   <line x1="100" y1="0" x2="100" y2="100" stroke="#D9D6CF" strokeWidth="1" />
 
                   {/* Linear reference */}
-                  <line x1="0" y1="100" x2="100" y2="0" stroke="#D9D6CF" strokeWidth="1" strokeDasharray="4" />
+                  <line
+                    x1="0"
+                    y1="100"
+                    x2="100"
+                    y2="0"
+                    stroke="#D9D6CF"
+                    strokeWidth="1"
+                    strokeDasharray="4"
+                  />
 
                   {/* Bezier Curve */}
                   <path
@@ -320,47 +367,73 @@ export function MotionStudio() {
                     strokeWidth="3"
                   />
                   {/* Control Points */}
-                  <circle cx={bezier[0] * 100} cy={100 - bezier[1] * 100} r="4" fill="#C9FF57" stroke="#111217" strokeWidth="1.5" />
-                  <circle cx={bezier[2] * 100} cy={100 - bezier[3] * 100} r="4" fill="#2547E8" stroke="#FFFFFF" strokeWidth="1.5" />
+                  <circle
+                    cx={bezier[0] * 100}
+                    cy={100 - bezier[1] * 100}
+                    r="4"
+                    fill="#C9FF57"
+                    stroke="#111217"
+                    strokeWidth="1.5"
+                  />
+                  <circle
+                    cx={bezier[2] * 100}
+                    cy={100 - bezier[3] * 100}
+                    r="4"
+                    fill="#2547E8"
+                    stroke="#FFFFFF"
+                    strokeWidth="1.5"
+                  />
                 </svg>
               </div>
 
               {/* Bezier Individual Inputs */}
               <div className="grid grid-cols-2 gap-3 font-mono text-xs">
                 <div>
-                  <span className="text-[#8B8F97]">X1 / Y1 (In)</span>
+                  <span className="text-[var(--text-muted)]">X1 / Y1 (In)</span>
                   <div className="flex gap-1 mt-1">
                     <input
+                      aria-label="Bezier[0]"
                       type="number"
                       step="0.05"
                       value={bezier[0]}
-                      onChange={(e) => setBezier([Number(e.target.value), bezier[1], bezier[2], bezier[3]])}
+                      onChange={(e) =>
+                        setBezier([Number(e.target.value), bezier[1], bezier[2], bezier[3]])
+                      }
                       className="w-full p-1.5 rounded border border-[#D9D6CF] bg-[#FAF9F6]"
                     />
                     <input
+                      aria-label="Bezier[1]"
                       type="number"
                       step="0.05"
                       value={bezier[1]}
-                      onChange={(e) => setBezier([bezier[0], Number(e.target.value), bezier[2], bezier[3]])}
+                      onChange={(e) =>
+                        setBezier([bezier[0], Number(e.target.value), bezier[2], bezier[3]])
+                      }
                       className="w-full p-1.5 rounded border border-[#D9D6CF] bg-[#FAF9F6]"
                     />
                   </div>
                 </div>
                 <div>
-                  <span className="text-[#8B8F97]">X2 / Y2 (Out)</span>
+                  <span className="text-[var(--text-muted)]">X2 / Y2 (Out)</span>
                   <div className="flex gap-1 mt-1">
                     <input
+                      aria-label="Bezier[2]"
                       type="number"
                       step="0.05"
                       value={bezier[2]}
-                      onChange={(e) => setBezier([bezier[0], bezier[1], Number(e.target.value), bezier[3]])}
+                      onChange={(e) =>
+                        setBezier([bezier[0], bezier[1], Number(e.target.value), bezier[3]])
+                      }
                       className="w-full p-1.5 rounded border border-[#D9D6CF] bg-[#FAF9F6]"
                     />
                     <input
+                      aria-label="Bezier[3]"
                       type="number"
                       step="0.05"
                       value={bezier[3]}
-                      onChange={(e) => setBezier([bezier[0], bezier[1], bezier[2], Number(e.target.value)])}
+                      onChange={(e) =>
+                        setBezier([bezier[0], bezier[1], bezier[2], Number(e.target.value)])
+                      }
                       className="w-full p-1.5 rounded border border-[#D9D6CF] bg-[#FAF9F6]"
                     />
                   </div>
@@ -379,6 +452,7 @@ export function MotionStudio() {
                     <span className="font-mono text-[#62666F]">{stiffness}</span>
                   </div>
                   <input
+                    aria-label="Spring stiffness"
                     type="range"
                     min="100"
                     max="800"
@@ -394,6 +468,7 @@ export function MotionStudio() {
                     <span className="font-mono text-[#62666F]">{damping}</span>
                   </div>
                   <input
+                    aria-label="Spring damping"
                     type="range"
                     min="10"
                     max="60"
@@ -409,6 +484,7 @@ export function MotionStudio() {
                     <span className="font-mono text-[#62666F]">{mass}</span>
                   </div>
                   <input
+                    aria-label="Spring mass"
                     type="range"
                     min="0.5"
                     max="3"
@@ -426,10 +502,12 @@ export function MotionStudio() {
         {/* Live Simulation Stage Column */}
         <div className="lg:col-span-7 space-y-6">
           <div className="rounded-2xl border border-[#D9D6CF] bg-[#FAF9F6] p-6 shadow-sm space-y-6">
-            <div className="flex items-center justify-between pb-3 text-xs font-mono text-[#8B8F97] border-b border-[#D9D6CF]">
+            <div className="flex items-center justify-between pb-3 text-xs font-mono text-[var(--text-muted)] border-b border-[#D9D6CF]">
               <span>KINETIC SIMULATION BENCH</span>
               <span className="text-[#111217] font-semibold">
-                {isReducedMotion ? 'REDUCED MOTION' : `${activeDurationMs}ms · ${mode.toUpperCase()}`}
+                {isReducedMotion
+                  ? 'REDUCED MOTION'
+                  : `${activeDurationMs}ms · ${mode.toUpperCase()}`}
               </span>
             </div>
 
@@ -440,9 +518,9 @@ export function MotionStudio() {
               </span>
               <div key={animationKey} className="space-y-2">
                 {[
-                  { label: '01 · System Architecture Audit', tag: '20/20 PASS' },
-                  { label: '02 · Cryptographic Token Verification', tag: 'VALIDATED' },
-                  { label: '03 · Latency SLA Telemetry Sync', tag: '38ms OPTIMAL' },
+                  { label: '01 · Example architecture review', tag: 'SAMPLE' },
+                  { label: '02 · Example token check', tag: 'SAMPLE' },
+                  { label: '03 · Example response timing', tag: 'SAMPLE' },
                 ].map((item, idx) => (
                   <div
                     key={idx}
@@ -458,7 +536,7 @@ export function MotionStudio() {
                     }}
                   >
                     <span className="text-xs font-semibold text-[#111217]">{item.label}</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#FAF9F6] border border-[#D9D6CF] text-[#177B55] font-semibold">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#FAF9F6] border border-[#D9D6CF] text-[#12603F] font-semibold">
                       {item.tag}
                     </span>
                   </div>
@@ -491,7 +569,7 @@ export function MotionStudio() {
           {/* Generated Code Blocks */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="rounded-xl border border-[#D9D6CF] bg-[#0B0D10] text-[#F5F7FA] p-4 space-y-2 font-mono text-xs">
-              <div className="flex items-center justify-between border-b border-[#272B33] pb-1.5 text-[#8B8F97]">
+              <div className="flex items-center justify-between border-b border-[#272B33] pb-1.5 text-[#A8AFBA]">
                 <span>CSS TRANSITION</span>
                 <button
                   type="button"
@@ -501,13 +579,16 @@ export function MotionStudio() {
                   {copiedFormat === 'css' ? 'Copied!' : 'Copy'}
                 </button>
               </div>
-              <pre className="overflow-x-auto text-[10px] text-[#D9D6CF] leading-relaxed">
+              <pre
+                tabIndex={0}
+                className="overflow-x-auto text-[10px] text-[#D9D6CF] leading-relaxed"
+              >
                 {generatedCss}
               </pre>
             </div>
 
             <div className="rounded-xl border border-[#D9D6CF] bg-[#0B0D10] text-[#F5F7FA] p-4 space-y-2 font-mono text-xs">
-              <div className="flex items-center justify-between border-b border-[#272B33] pb-1.5 text-[#8B8F97]">
+              <div className="flex items-center justify-between border-b border-[#272B33] pb-1.5 text-[#A8AFBA]">
                 <span>MOTION PROPS</span>
                 <button
                   type="button"
@@ -517,7 +598,10 @@ export function MotionStudio() {
                   {copiedFormat === 'framer' ? 'Copied!' : 'Copy'}
                 </button>
               </div>
-              <pre className="overflow-x-auto text-[10px] text-[#D9D6CF] leading-relaxed">
+              <pre
+                tabIndex={0}
+                className="overflow-x-auto text-[10px] text-[#D9D6CF] leading-relaxed"
+              >
                 {generatedFramer}
               </pre>
             </div>

@@ -1,0 +1,2044 @@
+{
+  "capturedAt": "2026-11-03",
+  "deployment": "v74",
+  "sourceCommit": "75276e8078e908b8258fa3d2cba629d71b85cd60",
+  "redaction": "HAR cookie and set-cookie values are not retained; query strings and Cloudflare challenge token paths are removed; response bodies are omitted.",
+  "captures": [
+    {
+      "capture": "explore-desktop.har",
+      "requestCount": 128,
+      "statusCounts": [
+        {
+          "status": 200,
+          "count": 127
+        },
+        {
+          "status": 302,
+          "count": 1
+        }
+      ],
+      "failedCount": 0,
+      "redirectCount": 1,
+      "transferBytes": null,
+      "redactedHeaderValueCount": 65.0,
+      "requests": [
+        {
+          "method": "GET",
+          "route": "/explore",
+          "status": 200,
+          "mimeType": "text/html; charset=utf-8",
+          "transferBytes": null,
+          "durationMs": 5.7,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/style.CGC4ReOc.css",
+          "status": 200,
+          "mimeType": "text/css",
+          "transferBytes": null,
+          "durationMs": 9.5,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/SiteHeader.C7OZ7KlQ.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.1,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/client.CZ5CiHPg.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 12.7,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/ExploreView.ku2MT8th.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 3.9,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/cdn-cgi/challenge-platform/<redacted>",
+          "status": 302,
+          "mimeType": "x-unknown",
+          "transferBytes": null,
+          "durationMs": 2.8,
+          "sensitiveValuesRemoved": [
+            "cookie",
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/react.B6PPDU_E.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.7,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/jsx-runtime.BZkYIGyD.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BdH8G51d.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 6.5,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/fetch-json-with-retry.CYGzYGh1.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.4,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/chevron-down.DtfZPbTK.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.5,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/chevron-right.BhTF9xXd.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.7,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/clock.BSWorZFx.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.8,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/CommandPalette.CQW2-QbW.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 3.5,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/rotate-ccw.divXcstY.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.0,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/search.CyDEvGzC.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.2,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/sliders-horizontal.B8xEUDjw.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.1,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/sparkles.Cox_DJ6k.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.9,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/x.K_99xudA.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 3.9,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/ResourceCard.CklnKrXB.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 7.0,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/cdn-cgi/challenge-platform/<redacted>",
+          "status": 200,
+          "mimeType": "application/javascript; charset=UTF-8",
+          "transferBytes": null,
+          "durationMs": 3.4,
+          "sensitiveValuesRemoved": [
+            "cookie",
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BX1lhOTL.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.0,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/createLucideIcon.14lUEEec.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/arrow-right.CrL0QBhc.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/github.61P_G89B.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.6,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "POST",
+          "route": "/cdn-cgi/challenge-platform/<redacted>",
+          "status": 200,
+          "mimeType": "text/plain; charset=UTF-8",
+          "transferBytes": null,
+          "durationMs": 4.4,
+          "sensitiveValuesRemoved": [
+            "cookie",
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/book-open.CAas_EJc.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/compass.P0TncO_g.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/sliders-vertical.Bj_t08Fa.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.9,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/gold.CeiPxNV6.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/arrow-up-right.ERzt_9ei.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.6,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/bookmark.BGuXTOA4.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.9,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/check.DZheQPi7.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.9,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/copy.BIIza9m3.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.7,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/eye.uoIoxOcf.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preview-protocol.CKCD-MJb.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.0,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/PreviewNavigationConfirmation.CYyIAI7A.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.0,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/data/catalog.json",
+          "status": 200,
+          "mimeType": "application/json",
+          "transferBytes": null,
+          "durationMs": 19.5,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/preview-content/",
+          "status": 200,
+          "mimeType": "text/html; charset=utf-8",
+          "transferBytes": null,
+          "durationMs": 4.1,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/preview-content/",
+          "status": 200,
+          "mimeType": "text/html; charset=utf-8",
+          "transferBytes": null,
+          "durationMs": 2.9,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/preview-content/",
+          "status": 200,
+          "mimeType": "text/html; charset=utf-8",
+          "transferBytes": null,
+          "durationMs": 1.4,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/preview-content/",
+          "status": 200,
+          "mimeType": "text/html; charset=utf-8",
+          "transferBytes": null,
+          "durationMs": 1.9,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/preview-content/",
+          "status": 200,
+          "mimeType": "text/html; charset=utf-8",
+          "transferBytes": null,
+          "durationMs": 0.7,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/preview-content/",
+          "status": 200,
+          "mimeType": "text/html; charset=utf-8",
+          "transferBytes": null,
+          "durationMs": 1.2,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/style.CGC4ReOc.css",
+          "status": 200,
+          "mimeType": "text/css",
+          "transferBytes": null,
+          "durationMs": 1.1,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/style.CGC4ReOc.css",
+          "status": 200,
+          "mimeType": "text/css",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/style.CGC4ReOc.css",
+          "status": 200,
+          "mimeType": "text/css",
+          "transferBytes": null,
+          "durationMs": 0.9,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/style.CGC4ReOc.css",
+          "status": 200,
+          "mimeType": "text/css",
+          "transferBytes": null,
+          "durationMs": 1.0,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/PreviewHost.DoxBRGW2.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 5.6,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/client.CZ5CiHPg.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.5,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/style.CGC4ReOc.css",
+          "status": 200,
+          "mimeType": "text/css",
+          "transferBytes": null,
+          "durationMs": 0.9,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/PreviewHost.DoxBRGW2.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.7,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/client.CZ5CiHPg.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.3,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/style.CGC4ReOc.css",
+          "status": 200,
+          "mimeType": "text/css",
+          "transferBytes": null,
+          "durationMs": 0.7,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/PreviewHost.DoxBRGW2.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.6,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/client.CZ5CiHPg.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.4,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/PreviewHost.DoxBRGW2.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.4,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/client.CZ5CiHPg.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.9,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/PreviewHost.DoxBRGW2.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.3,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/client.CZ5CiHPg.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.5,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/PreviewHost.DoxBRGW2.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.3,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/client.CZ5CiHPg.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.0,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/react.B6PPDU_E.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/react.B6PPDU_E.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.4,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/react.B6PPDU_E.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.7,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/react.B6PPDU_E.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/react.B6PPDU_E.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.7,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/react.B6PPDU_E.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/jsx-runtime.BZkYIGyD.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.9,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preload-helper.DHhhL8Zf.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.8,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/browser.6rTDn1Tu.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.1,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preview-protocol.CKCD-MJb.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.5,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/jsx-runtime.BZkYIGyD.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.9,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preload-helper.DHhhL8Zf.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.9,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/browser.6rTDn1Tu.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.9,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preview-protocol.CKCD-MJb.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.4,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/jsx-runtime.BZkYIGyD.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.5,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preload-helper.DHhhL8Zf.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.6,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/browser.6rTDn1Tu.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preview-protocol.CKCD-MJb.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.7,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/jsx-runtime.BZkYIGyD.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.3,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preload-helper.DHhhL8Zf.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.4,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/browser.6rTDn1Tu.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.1,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preview-protocol.CKCD-MJb.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.8,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/jsx-runtime.BZkYIGyD.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preload-helper.DHhhL8Zf.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.3,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/browser.6rTDn1Tu.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.9,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preview-protocol.CKCD-MJb.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.4,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/jsx-runtime.BZkYIGyD.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.6,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preload-helper.DHhhL8Zf.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.9,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/browser.6rTDn1Tu.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.8,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preview-protocol.CKCD-MJb.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.2,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BdH8G51d.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.6,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest-renderer-core.sr8ItgYK.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 3.7,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BdH8G51d.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.3,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest-renderer-core.sr8ItgYK.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 3.3,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BdH8G51d.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.0,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest-renderer-core.sr8ItgYK.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 3.5,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BdH8G51d.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.5,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest-renderer-core.sr8ItgYK.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 3.9,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BdH8G51d.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.4,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest-renderer-core.sr8ItgYK.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.0,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BdH8G51d.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.3,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest-renderer-core.sr8ItgYK.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 4.2,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/resource-variants.DapNdg5J.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.5,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BcZfIrEJ.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 3.0,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/resource-variants.DapNdg5J.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.9,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BcZfIrEJ.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.2,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/resource-variants.DapNdg5J.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BcZfIrEJ.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.7,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/resource-variants.DapNdg5J.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BcZfIrEJ.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.4,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/resource-variants.DapNdg5J.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.6,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BcZfIrEJ.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.2,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/resource-variants.DapNdg5J.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.6,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BcZfIrEJ.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.1,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/ai-empty-state.CfJPzDUw.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.2,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest.KId_YCb0.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.0,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/feature-steps.ClXF3gZK.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest.D0wbI94B.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.6,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/first-run-state.CfG-qPle.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.6,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest.CmN7qKdR.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.4,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/onboarding-role-select.D944vmyr.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.4,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest.BaV_vAAv.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.9,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/onboarding-checklist.iGmfb_-T.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.4,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest.DRR5D9mX.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.4,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/onboarding-wizard.BF3XgnkH.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.5,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest.DW2996dl.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.4,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        }
+      ],
+      "transferNote": "HAR body sizes were omitted by Chrome; the live constrained runs recorded the catalogue response at 140,645 transfer bytes."
+    },
+    {
+      "capture": "explore-mobile.har",
+      "requestCount": 68,
+      "statusCounts": [
+        {
+          "status": 200,
+          "count": 67
+        },
+        {
+          "status": 302,
+          "count": 1
+        }
+      ],
+      "failedCount": 0,
+      "redirectCount": 1,
+      "transferBytes": null,
+      "redactedHeaderValueCount": 53.0,
+      "requests": [
+        {
+          "method": "GET",
+          "route": "/explore",
+          "status": 200,
+          "mimeType": "text/html; charset=utf-8",
+          "transferBytes": null,
+          "durationMs": 2.1,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/style.CGC4ReOc.css",
+          "status": 200,
+          "mimeType": "text/css",
+          "transferBytes": null,
+          "durationMs": 8.6,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/SiteHeader.C7OZ7KlQ.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.9,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/client.CZ5CiHPg.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 17.8,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/ExploreView.ku2MT8th.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 5.4,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/cdn-cgi/challenge-platform/<redacted>",
+          "status": 302,
+          "mimeType": "x-unknown",
+          "transferBytes": null,
+          "durationMs": 1.0,
+          "sensitiveValuesRemoved": [
+            "cookie",
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/cdn-cgi/challenge-platform/<redacted>",
+          "status": 200,
+          "mimeType": "application/javascript; charset=UTF-8",
+          "transferBytes": null,
+          "durationMs": 5.7,
+          "sensitiveValuesRemoved": [
+            "cookie",
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/react.B6PPDU_E.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.4,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/jsx-runtime.BZkYIGyD.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BdH8G51d.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 6.2,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/fetch-json-with-retry.CYGzYGh1.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.0,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/chevron-down.DtfZPbTK.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.1,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/chevron-right.BhTF9xXd.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.3,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/clock.BSWorZFx.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.5,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/CommandPalette.CQW2-QbW.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.3,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/rotate-ccw.divXcstY.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.5,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/search.CyDEvGzC.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.2,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/sliders-horizontal.B8xEUDjw.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.7,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/sparkles.Cox_DJ6k.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.8,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/x.K_99xudA.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 3.9,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/ResourceCard.CklnKrXB.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.6,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "POST",
+          "route": "/cdn-cgi/challenge-platform/<redacted>",
+          "status": 200,
+          "mimeType": "text/plain; charset=UTF-8",
+          "transferBytes": null,
+          "durationMs": 1.0,
+          "sensitiveValuesRemoved": [
+            "cookie",
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/createLucideIcon.14lUEEec.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.6,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/book-open.CAas_EJc.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.5,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/compass.P0TncO_g.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.6,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/sliders-vertical.Bj_t08Fa.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.6,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/gold.CeiPxNV6.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.4,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/arrow-up-right.ERzt_9ei.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/bookmark.BGuXTOA4.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.4,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/check.DZheQPi7.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.5,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/copy.BIIza9m3.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.1,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/eye.uoIoxOcf.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.1,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preview-protocol.CKCD-MJb.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/PreviewNavigationConfirmation.CYyIAI7A.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.2,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BX1lhOTL.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 3.2,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/arrow-right.CrL0QBhc.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.6,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/github.61P_G89B.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.9,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/data/catalog.json",
+          "status": 200,
+          "mimeType": "application/json",
+          "transferBytes": null,
+          "durationMs": 16.1,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/preview-content/",
+          "status": 200,
+          "mimeType": "text/html; charset=utf-8",
+          "transferBytes": null,
+          "durationMs": 1.0,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/preview-content/",
+          "status": 200,
+          "mimeType": "text/html; charset=utf-8",
+          "transferBytes": null,
+          "durationMs": 2.5,
+          "sensitiveValuesRemoved": [
+            "cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/style.CGC4ReOc.css",
+          "status": 200,
+          "mimeType": "text/css",
+          "transferBytes": null,
+          "durationMs": 1.0,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/style.CGC4ReOc.css",
+          "status": 200,
+          "mimeType": "text/css",
+          "transferBytes": null,
+          "durationMs": 0.9,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/PreviewHost.DoxBRGW2.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.8,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/client.CZ5CiHPg.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.3,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/PreviewHost.DoxBRGW2.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.3,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/client.CZ5CiHPg.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.0,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/react.B6PPDU_E.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.7,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/react.B6PPDU_E.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.4,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/jsx-runtime.BZkYIGyD.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.6,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preload-helper.DHhhL8Zf.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.8,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/browser.6rTDn1Tu.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.0,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preview-protocol.CKCD-MJb.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.2,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/jsx-runtime.BZkYIGyD.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.1,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preload-helper.DHhhL8Zf.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.1,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/browser.6rTDn1Tu.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.3,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/preview-protocol.CKCD-MJb.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.4,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BdH8G51d.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.7,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest-renderer-core.sr8ItgYK.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 3.2,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BdH8G51d.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.7,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest-renderer-core.sr8ItgYK.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 3.1,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/resource-variants.DapNdg5J.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.9,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BcZfIrEJ.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 3.4,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/resource-variants.DapNdg5J.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.8,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/src.BcZfIrEJ.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 3.2,
+          "sensitiveValuesRemoved": []
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/onboarding-wizard.BF3XgnkH.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.0,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest.DW2996dl.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 1.0,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/onboarding-role-select.D944vmyr.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 0.5,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        },
+        {
+          "method": "GET",
+          "route": "/_astro/manifest.BaV_vAAv.js",
+          "status": 200,
+          "mimeType": "text/javascript",
+          "transferBytes": null,
+          "durationMs": 2.3,
+          "sensitiveValuesRemoved": [
+            "set-cookie"
+          ]
+        }
+      ],
+      "transferNote": "HAR body sizes were omitted by Chrome; the live constrained runs recorded the catalogue response at 140,645 transfer bytes."
+    }
+  ]
+}

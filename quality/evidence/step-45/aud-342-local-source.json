@@ -1,0 +1,37 @@
+{
+  "issueId": "AUD-342",
+  "capturedAt": "2026-10-26",
+  "environment": "Local Sites Worker adapter tests; hosted edge not exercised",
+  "redBeforeFix": {
+    "command": "pnpm exec vitest run apps/sites/worker.test.ts",
+    "result": "failed",
+    "failure": "The public HTML script-src policy had no nonce, so the regression expecting a response nonce failed."
+  },
+  "change": {
+    "file": "apps/sites/worker.ts",
+    "behavior": "Generate a cryptographically random 128-bit nonce per public HTML response and include it in script-src alongside the build-certified script hashes.",
+    "security": "No unsafe-inline or unsafe-eval script source was added. HTML bytes remain unchanged. Isolated preview routes retain their existing sandbox CSP and no-transform headers without a nonce."
+  },
+  "greenAfterFix": {
+    "command": "pnpm exec vitest run apps/sites/worker.test.ts",
+    "result": "passed",
+    "tests": "6 passed",
+    "assertions": [
+      "Nonce is present in public HTML script-src.",
+      "Two responses receive different nonces.",
+      "The static HTML body is unchanged and contains no generated nonce.",
+      "The public cache policy remains compression-friendly.",
+      "Preview wrapper and content responses have no nonce and retain sandbox policies."
+    ]
+  },
+  "lint": {
+    "command": "pnpm exec eslint apps/sites/worker.ts apps/sites/worker.test.ts",
+    "result": "passed",
+    "exitCode": 0
+  },
+  "deployedVerification": {
+    "status": "pending",
+    "currentLiveVersion": 32,
+    "note": "The live v32 Site still has the recorded CSP console error. This local test does not prove Cloudflare's hosted edge adds the nonce to its injected bootstrap. Save a new version, obtain approval for that exact version, then verify the deployed browser console before closing AUD-342."
+  }
+}

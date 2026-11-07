@@ -2,10 +2,10 @@
   "schemaVersion": "1.0.0",
   "id": "res_sec_compliance_proof",
   "slug": "compliance-proof",
-  "name": "Compliance Proof",
+  "name": "Compliance Evidence Template",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Regulatory compliance showcase displaying certified badges and downloadable reports.",
+  "description": "Illustrative layout for presenting compliance evidence after its scope and source have been verified.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,15 +130,15 @@
     "gdpr"
   ],
   "intent": {
-    "summary": "Regulatory compliance showcase displaying certified badges and downloadable reports.",
+    "summary": "Illustrative layout for presenting compliance evidence after its scope and source have been verified.",
     "idealFor": [
-      "Healthcare, finance, and enterprise sales pages"
+      "Product pages that need to explain current compliance evidence and its scope"
     ],
     "avoidFor": [
       "Casual developer side projects"
     ],
     "jobs": [
-      "Show downloadable audit attestations and compliance badges"
+      "Present links to current evidence and explain the scope each record covers"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"
@@ -209,12 +209,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

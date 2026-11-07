@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-10-28T04:12:46.000Z",
+  "sourceCommit": "c12a71de3a90a395240324c7abb8c6f53bd145b2",
+  "cli": {
+    "command": "node packages/cli/dist/index.cjs create-resource --slug provenance-audit",
+    "cwd": "clean temporary directory outside repository",
+    "status": "draft",
+    "checks": {
+      "draft": true,
+      "unknownProvenance": true,
+      "unassignedCreator": true,
+      "licenseUnasserted": true,
+      "responsiveUnverified": true,
+      "accessibilityUnverified": true,
+      "qualityUnscored": true,
+      "READMETruthful": true
+    },
+    "passed": true
+  },
+  "hostileCollectionRegression": {
+    "command": "pnpm exec vitest run packages/schemas/src/__tests__/schemas.test.ts -t \"rejects oversized project collections before parsing hostile entries\"",
+    "passed": 1,
+    "skipped": 54,
+    "failed": 0
+  },
+  "dependencyAudit": {
+    "command": "pnpm audit:dependencies",
+    "result": "No known vulnerabilities found",
+    "exitCode": 0
+  },
+  "resolvedVersions": {
+    "bodyParser": "2.4.0",
+    "undici": [
+      "7.30.1",
+      "8.12.2"
+    ]
+  },
+  "exactHeadCi": {
+    "url": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40628686624",
+    "auditAllStep": "success",
+    "playwrightAxe": "in progress at evidence capture"
+  }
+}

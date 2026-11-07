@@ -2,10 +2,10 @@
   "schemaVersion": "1.0.0",
   "id": "res_sec_security_proof",
   "slug": "security-proof",
-  "name": "Security Proof",
+  "name": "Security Review Prompts",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Comprehensive enterprise security overview covering encryption, RBAC, and data residency.",
+  "description": "Review-prompt section for documenting a product's security controls and evidence.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,15 +130,15 @@
     "compliance"
   ],
   "intent": {
-    "summary": "Comprehensive enterprise security overview covering encryption, RBAC, and data residency.",
+    "summary": "Review-prompt section for documenting a product's security controls and evidence.",
     "idealFor": [
-      "Convincing security architects and enterprise CISOs"
+      "Explaining security controls and where to find their evidence"
     ],
     "avoidFor": [
       "Casual hobby websites"
     ],
     "jobs": [
-      "Outline security safeguards and zero-vulnerability guarantees"
+      "Record the deployment-specific safeguards and checks completed by the product team"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"
@@ -209,12 +209,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

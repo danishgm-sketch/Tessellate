@@ -1,0 +1,52 @@
+{
+  "capturedAt": "2026-10-27T16:34:19.375Z",
+  "id": "AUD-366",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=catalogue-loading-sites-chromium",
+  "viewport": "1440x900",
+  "observedProjectVisibleMs": 14132,
+  "expectedUnderMs": 5000,
+  "initialCatalogRequests": 0,
+  "catalogRequestsAfterLibraryOpen": 1,
+  "axeViolations": [],
+  "consoleErrors": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "reproduction": "First Playwright public v49 saved-project check immediately after publication used page.goto() with its default waitUntil=load. It reported 14132ms before the test checked the visible project.",
+  "followUp": {
+    "defaultWaitRepeatMs": [
+      2923,
+      3420
+    ],
+    "correctedVisibleStartMeasurementMs": {
+      "desktop1440": 3201,
+      "mobile390": 983
+    },
+    "axeViolations": 0,
+    "consoleErrors": 0,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "devtoolsTraces": [
+      {
+        "lcpMs": 835,
+        "ttfbMs": 84,
+        "renderDelayMs": 751,
+        "cls": 0,
+        "cacheBypassed": true,
+        "networkThrottle": "none",
+        "cpuThrottle": 1
+      },
+      {
+        "lcpMs": 757,
+        "ttfbMs": 52,
+        "renderDelayMs": 705,
+        "cls": 0,
+        "cacheBypassed": true,
+        "networkThrottle": "none",
+        "cpuThrottle": 1
+      }
+    ]
+  },
+  "screenshot": "quality/evidence/step-45/public-v49/aud-364-365/aud-365-desktop-saved-project-1440.png",
+  "screenshotNote": "This is the equivalent successful follow-up screen; the first failing-run screenshot path was overwritten by the later verification run."
+}

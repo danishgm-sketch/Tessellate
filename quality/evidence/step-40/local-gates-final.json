@@ -1,0 +1,36 @@
+{
+  "capturedAt": "2026-10-23T22:38:06Z",
+  "branch": "consolidation/product-hardening",
+  "checks": {
+    "pnpm install --frozen-lockfile": "passed",
+    "pnpm build": "passed as part of pnpm audit:all; 718 Astro pages and Sites Worker artifact",
+    "pnpm typecheck": "passed across 22 workspace projects",
+    "pnpm lint": "passed",
+    "pnpm test": {
+      "passed": 1212,
+      "files": 77,
+      "failed": 0
+    },
+    "pnpm test:e2e": {
+      "passed": 505,
+      "configuredSkipped": 144,
+      "failed": 0,
+      "fullRunBeforeBodyParserOverride": true,
+      "postOverrideMcpClientSseTests": "7/7 passed"
+    },
+    "pnpm audit:all": {
+      "passed": true,
+      "releaseGateChecks": "16/16",
+      "resourceIsolation": "324/324",
+      "bundleBudgets": "passed",
+      "licenseProvenance": "passed for all 324 resources",
+      "securitySecrets": "passed with zero violations",
+      "dependencyAudit": "no known vulnerabilities"
+    },
+    "git diff --check": "passed"
+  },
+  "deployment": {
+    "publicReviewSiteUpdated": false,
+    "deployedVerification": "pending release-candidate phase"
+  }
+}

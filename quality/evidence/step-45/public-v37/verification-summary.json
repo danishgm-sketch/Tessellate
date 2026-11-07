@@ -1,0 +1,263 @@
+{
+  "schemaVersion": "1.0.0",
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "deploymentVersion": 37,
+  "deploymentStatus": "succeeded",
+  "source": {
+    "canonicalAppCommit": "e08c34021bcf13fbe603f86803cb4d7f7eb443b8",
+    "sitesMirrorCommit": "c2cd798a3b253a80395febea1f61ab2dd71ca347",
+    "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_918118e36d4c819196088b063bfab113",
+    "deploymentId": "appgdep_6adfb7fd932c8191ae443e9a0af85c25"
+  },
+  "routeSweep": {
+    "routeCount": 31,
+    "viewportCount": 2,
+    "resultCount": 62,
+    "http200": 62,
+    "classifications": {
+      "PASS": 62
+    },
+    "consoleErrors": 0,
+    "uncaughtErrors": 0,
+    "failedRequests": 0,
+    "badResponses": 0,
+    "limitation": "PASS is a route/runtime/layout smoke classification, not a claim that every page interaction and content item was exhaustively tested."
+  },
+  "visibleFlagship": {
+    "expected": 4,
+    "skipped": 2,
+    "unexpected": 0,
+    "configuredSkips": true,
+    "viewportRuns": [
+      "1440x900",
+      "390x844"
+    ]
+  },
+  "axe": {
+    "genericExpected": 15,
+    "genericSkipped": 1,
+    "generatedProductExpected": 2,
+    "generatedProductSkipped": 0,
+    "hydrationExpected": 12,
+    "hydrationSkipped": 4,
+    "axeViolations": 0
+  },
+  "responsive": {
+    "widths": [
+      360,
+      390,
+      430,
+      768,
+      1024,
+      1280,
+      1440
+    ],
+    "homeHeroAt390": {
+      "heightPx": 647.53125,
+      "max90svhPx": 759.6,
+      "composeBottomPx": 678.53125,
+      "allFivePresetsVisible": true
+    },
+    "presetInteractions": {
+      "employeePresetApplied": true,
+      "travelPresetApplied": true
+    }
+  },
+  "previewComposeHandoff": {
+    "viewports": [
+      "1440x900",
+      "390x844"
+    ],
+    "runsPassed": 2,
+    "httpStatus": 200,
+    "catalogueStatuses": [
+      200
+    ],
+    "consoleErrors": [],
+    "uncaughtErrors": [],
+    "failedRequests": [],
+    "badResponses": []
+  },
+  "workbenchReplacement": {
+    "passed": 1,
+    "candidate": {
+      "name": "Split Product Hero",
+      "role": "hero",
+      "status": "Gold",
+      "hasPreview": true
+    },
+    "axeViolations": [],
+    "dialogKeyboardClose": {
+      "closed": true,
+      "focusReturnedToOpener": true
+    },
+    "accessibleMoveActions": [
+      "Move up",
+      "Move down"
+    ]
+  },
+  "performance": {
+    "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "deploymentVersion": 37,
+    "source": {
+      "canonicalAppCommit": "e08c34021bcf13fbe603f86803cb4d7f7eb443b8",
+      "sitesMirrorCommit": "c2cd798a3b253a80395febea1f61ab2dd71ca347",
+      "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_918118e36d4c819196088b063bfab113",
+      "deploymentId": "appgdep_6adfb7fd932c8191ae443e9a0af85c25"
+    },
+    "methodology": {
+      "provider": "Chrome DevTools MCP",
+      "labOnly": true,
+      "fieldCrUXAvailable": false
+    },
+    "homeDesktop1440": {
+      "lcpMs": 270,
+      "ttfbMs": 58,
+      "cls": 0,
+      "cache": "cold"
+    },
+    "workbenchMobile390": {
+      "viewport": "390x844",
+      "cpuSlowdown": "4x",
+      "network": "Fast 4G",
+      "reducedMotion": true,
+      "coldLoadSamples": [
+        {
+          "lcpMs": 1747,
+          "ttfbMs": 50,
+          "cls": 0,
+          "source": "initial v37 trace"
+        },
+        {
+          "lcpMs": 2994,
+          "ttfbMs": 1184,
+          "renderDelayMs": 1810,
+          "cls": 0,
+          "source": "fresh DevTools trace"
+        },
+        {
+          "lcpMs": 1762,
+          "ttfbMs": 66,
+          "renderDelayMs": 1697,
+          "cls": 0,
+          "source": "fresh DevTools trace"
+        },
+        {
+          "lcpMs": 1739,
+          "ttfbMs": 69,
+          "renderDelayMs": 1669,
+          "cls": 0,
+          "source": "fresh DevTools trace"
+        }
+      ],
+      "below2500ms": 3,
+      "totalSamples": 4,
+      "interpretation": "Three of four cold lab samples were below 2.5s. The outlier was driven by a 1,184ms document TTFB; its LCP element was text, and the trace estimated zero savings from render-blocking requests. No CrUX field data is available."
+    },
+    "lighthouseDesktop": {
+      "accessibility": 100,
+      "seo": 100,
+      "agenticBrowsing": 100,
+      "bestPractices": 81,
+      "failedAudit": "deprecations",
+      "externalWarnings": [
+        "FencedFrame",
+        "StorageType.persistent",
+        "Protected Audience API"
+      ],
+      "source": "/cdn-cgi/challenge-platform/scripts/jsd/main.js"
+    },
+    "noCspCompromise": {
+      "scriptSrcUnsafeInline": false,
+      "loopbackOrigins": false,
+      "freshResponseNonceRotates": true
+    }
+  },
+  "bundleBudgets": {
+    "homepage": {
+      "gzipKb": 99.62,
+      "budgetKb": 150,
+      "pass": true
+    },
+    "explore": {
+      "gzipKb": 177.37,
+      "budgetKb": 200,
+      "pass": true
+    },
+    "compose": {
+      "gzipKb": 270.83,
+      "budgetKb": 750,
+      "pass": true
+    },
+    "workbench": {
+      "gzipKb": 495.08,
+      "budgetKb": 750,
+      "pass": true
+    },
+    "searchCatalog": {
+      "gzipKb": 112.52,
+      "budgetKb": 2048,
+      "pass": true
+    }
+  },
+  "localValidation": {
+    "frozenDependencyInstall": "pass",
+    "catalogueBuild": {
+      "status": "pass",
+      "resources": 324,
+      "goldRuntimeResources": 40
+    },
+    "typecheck": {
+      "status": "pass",
+      "workspaceProjects": 22
+    },
+    "lint": {
+      "status": "pass"
+    },
+    "unitTests": {
+      "status": "pass",
+      "passed": 1222,
+      "skipped": 1,
+      "failed": 0
+    },
+    "auditAll": {
+      "status": "pass",
+      "behavioralReleaseGateCriteria": "16/16",
+      "resourceIsolationResources": 324,
+      "licenceProvenanceResources": 324,
+      "securityViolations": 0,
+      "dependencyAdvisories": 0
+    },
+    "productionBuild": {
+      "status": "pass",
+      "staticPages": 733
+    },
+    "focusedLocalGeneratedProductAxe": {
+      "desktopPassed": 1,
+      "mobilePassed": 1
+    },
+    "fullRepositoryE2E": "Exact-head GitHub CI verification pending after this evidence commit."
+  },
+  "persistenceAndBindings": {
+    "persistence": "browser/local-first for the reviewed static staging experience",
+    "d1Provisioned": false,
+    "r2Provisioned": false,
+    "newDatabase": false
+  },
+  "unverifiedLocalFixes": {
+    "bySeverity": {
+      "high": 25,
+      "medium": 178,
+      "low": 7
+    },
+    "total": 210,
+    "note": "These findings have local fixes but do not count as deployed-verified until their specific behavior is checked on the active Site. The full hardening programme remains incomplete."
+  },
+  "documentedHostLimitations": [
+    {
+      "id": "AUD-356",
+      "severity": "low",
+      "title": "Sites-injected challenge script triggers Lighthouse deprecated API warnings"
+    }
+  ]
+}

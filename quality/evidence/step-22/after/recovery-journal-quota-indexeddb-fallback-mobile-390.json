@@ -1,0 +1,20 @@
+{
+  "url": "http://127.0.0.1:4321/workbench?project=local-cbd14734-276b-4c78-9f2f-6b39ec684dd9#screen-marketing-home",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "status": "passed",
+  "issue": "AUD-160",
+  "checks": {
+    "workbenchStayedEditable": true,
+    "indexedDbSaveSurvivedReload": true,
+    "exactManifestRestored": true
+  },
+  "screenshot": "quality/evidence/step-22/after/recovery-journal-quota-indexeddb-fallback-mobile-390.png"
+}

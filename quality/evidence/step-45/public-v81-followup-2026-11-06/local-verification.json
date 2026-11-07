@@ -1,0 +1,46 @@
+{
+  "capturedAt": "2026-11-06T17:12:57Z",
+  "scope": "Local repository verification for AUD-511 renderer loading feedback fix. This does not verify the fix on the public Site.",
+  "focusedRegression": {
+    "command": "pnpm exec vitest run packages/renderer/src/__tests__/renderer.test.tsx -t \"keeps lazy-load feedback\"",
+    "passed": 1,
+    "skipped": 16,
+    "failed": 0
+  },
+  "qualityCommands": [
+    { "command": "pnpm install --frozen-lockfile", "status": "passed" },
+    { "command": "pnpm build:catalog", "status": "passed", "resources": 324, "goldResources": 40 },
+    { "command": "pnpm typecheck", "status": "passed", "workspacePackages": 22 },
+    { "command": "pnpm lint", "status": "passed" },
+    { "command": "pnpm test", "status": "passed", "passed": 1344, "skipped": 1, "failed": 0 },
+    {
+      "command": "pnpm audit:all",
+      "status": "passed",
+      "behavioralReleaseGate": "16/16",
+      "staticPages": 733,
+      "bundleBudgets": "passed",
+      "resourceProvenanceAndLicences": "324/324 passed",
+      "securityViolations": 0,
+      "dependencyAudit": "no known vulnerabilities"
+    },
+    {
+      "command": "pnpm test:e2e",
+      "status": "passed",
+      "passed": 854,
+      "configuredSkips": 191,
+      "failed": 0,
+      "projects": {
+        "default desktop/mobile": { "passed": 396, "skipped": 136 },
+        "sites-chromium": { "passed": 244, "skipped": 11 },
+        "sites-mobile-chromium": { "passed": 211, "skipped": 44 },
+        "preview-app-chromium": { "passed": 3, "skipped": 0 }
+      }
+    },
+    { "command": "git diff --check", "status": "passed" }
+  ],
+  "buildWarnings": [
+    "Existing large JavaScript chunk warning remains; configured eager-route budgets pass.",
+    "Existing ineffective dynamic import warning for the Button module remains."
+  ],
+  "deploymentVerification": "pending"
+}

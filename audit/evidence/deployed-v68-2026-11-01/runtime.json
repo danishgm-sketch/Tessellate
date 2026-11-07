@@ -1,0 +1,206 @@
+{
+  "schemaVersion": "1.0.0",
+  "deployment": {
+    "siteVersion": 68,
+    "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d374528cccc8191835b84c8fcee4754",
+    "deploymentId": "appgdep_6ae6e3c67d0481918a3963fdeb7460a7",
+    "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "audience": "public",
+    "canonicalCommit": "82f944a6dc5a1eaac6337120d5f3e8e1717b2592",
+    "sitesSourceCommit": "a651c4943c171bd2c7a66d639eacdc8ed0f67d9f",
+    "d1": null,
+    "r2": null,
+    "buildFiles": 1863,
+    "archiveBytes": 56535040
+  },
+  "route": "/workbench?project=proj-direction-c-a71079ab6bf64084b7e45093aaf01da4dirc#screen-overview",
+  "states": [
+    {
+      "name": "Brief panel",
+      "viewport": "1440x900",
+      "result": "PASS",
+      "headingOrder": [
+        "H1 Workbench",
+        "H2 project title"
+      ],
+      "lighthouse": {
+        "accessibility": 100,
+        "failedAudits": 0,
+        "headingOrderScore": 1
+      },
+      "screenshot": "audit/evidence/deployed-v68-2026-11-01/brief-desktop-1440x900.png",
+      "report": "audit/evidence/deployed-v68-2026-11-01/lighthouse-brief-desktop.json"
+    },
+    {
+      "name": "Team Overview",
+      "viewport": "1440x900",
+      "result": "PASS",
+      "headingOrder": [
+        "H1 Workbench",
+        "H2 Your organisation at a glance",
+        "H2 Team Overview",
+        "H3 People updates"
+      ],
+      "lighthouse": {
+        "accessibility": 100,
+        "failedAudits": 0,
+        "headingOrderScore": 1
+      },
+      "screenshot": "audit/evidence/deployed-v68-2026-11-01/team-overview-desktop-1440x900.png",
+      "report": "audit/evidence/deployed-v68-2026-11-01/lighthouse-team-overview-desktop.json"
+    },
+    {
+      "name": "Team Overview",
+      "viewport": "390x844",
+      "result": "PASS",
+      "headingOrder": [
+        "H1 Workbench",
+        "H2 Your organisation at a glance",
+        "H2 Team Overview",
+        "H3 People updates"
+      ],
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "lighthouse": {
+        "accessibility": 100,
+        "failedAudits": 0,
+        "headingOrderScore": 1
+      },
+      "screenshot": "audit/evidence/deployed-v68-2026-11-01/team-overview-mobile-390x844.png",
+      "report": "audit/evidence/deployed-v68-2026-11-01/lighthouse-team-overview-mobile.json"
+    }
+  ],
+  "runtime": {
+    "requestCount": 97,
+    "statusCounts": {
+      "200": 95,
+      "304": 2
+    },
+    "failedHttpRequests": 0,
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "observedStatusClasses": [
+      "200",
+      "304"
+    ]
+  },
+  "auditedAt": "2026-11-01T07:23:11Z",
+  "routeHttpStatus": 200,
+  "workflowRechecks": {
+    "compose": {
+      "route": "/compose",
+      "viewport": "390x844",
+      "result": "PASS",
+      "catalogue": "ready",
+      "brief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+      "feel": "professional but playful",
+      "visualAmbition": "Refined",
+      "structuralCreativity": "Inventive",
+      "directions": [
+        {
+          "name": "Clean Operations",
+          "navigation": "sidebar",
+          "grammar": "cards"
+        },
+        {
+          "name": "Vibrant Velocity",
+          "navigation": "top navigation",
+          "grammar": "feature grid"
+        },
+        {
+          "name": "Master-Detail Explorer",
+          "navigation": "rail",
+          "grammar": "three-column workspace"
+        }
+      ],
+      "screenshot": "audit/evidence/deployed-v68-2026-11-01/compose-directions-mobile-390-full.png"
+    },
+    "directionCWorkbench": {
+      "route": "/workbench?project=proj-direction-c-c3e5b144c27f429ab54d95fadc85c958dirc#screen-overview",
+      "viewport": "1440x900",
+      "result": "PASS",
+      "projectId": "proj-direction-c-c3e5b144c27f429ab54d95fadc85c958dirc",
+      "screenCount": 7,
+      "screens": [
+        "Marketing Home",
+        "Team Overview",
+        "People Directory",
+        "Teams",
+        "Engagement",
+        "Onboarding",
+        "Settings & Policies"
+      ],
+      "applicationNavigationResource": "collapsible-sidebar",
+      "marketingNavigationResource": "minimal-top-nav",
+      "computedNavigation": {
+        "flexDirection": "column",
+        "unscaledWidth": 154,
+        "documentWidth": 1440
+      },
+      "screenshot": "audit/evidence/deployed-v68-2026-11-01/workbench-direction-c-1440-rail-fit.png"
+    },
+    "surpriseMe": {
+      "route": "/workbench?project=proj-direction-c-a71079ab6bf64084b7e45093aaf01da4dirc#screen-overview",
+      "viewport": "1440x900",
+      "result": "PASS",
+      "divergence": 60,
+      "resource": "entity-profile-header",
+      "variantBefore": "quiet",
+      "variantAfter": "expressive",
+      "lockedNode": "Your organisation at a glance (dashboard-kpi-grid)",
+      "lockedNodePreserved": true,
+      "undoRestoredVariant": "quiet",
+      "redoRestoredVariant": "expressive",
+      "finalUndoRestoredBaseline": true,
+      "screenshotAfter": "audit/evidence/deployed-v68-2026-11-01/surprise-after-desktop-1440x900-live-recheck.png",
+      "screenshotUndo": "audit/evidence/deployed-v68-2026-11-01/surprise-undo-desktop-1440x900.png"
+    },
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedEssentialRequests": 0,
+    "staleVersionTabObservation": {
+      "sourceVersionContext": "an already-open pre-v68 tab",
+      "request": "/_astro/dashboard-kpi-grid.BJFAlBzq.js",
+      "result": "404 from a stale content-hashed asset request before a cache-bypassing reload; the v68 reload fetched the current dashboard-kpi-grid chunk with HTTP 200, generated all three directions, and produced no failed requests.",
+      "recovery": "Reload the page to retry the resource."
+    }
+  },
+  "faultInjection": {
+    "finding": "AUD-412",
+    "viewports": [
+      "1440x900",
+      "390x844"
+    ],
+    "desktopEvidence": "audit/evidence/deployed-v68-2026-11-01/gold-chunk-failure-desktop-1440x900.json",
+    "mobileEvidence": "audit/evidence/deployed-v68-2026-11-01/gold-chunk-failure-mobile-390x844.json",
+    "schemaValidation": "ProjectManifestSchema passed on both downloaded manifests.",
+    "expectedFailure": "One deliberately intercepted editorial-hero chunk returned 503 per viewport.",
+    "unexpectedConsoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "otherHttpFailures": 0,
+    "screenshots": [
+      "audit/evidence/deployed-v68-2026-11-01/gold-chunk-failure-desktop-1440x900.png",
+      "audit/evidence/deployed-v68-2026-11-01/gold-chunk-failure-mobile-390x844.png"
+    ]
+  },
+  "surpriseMeVisualComparison": {
+    "finding": "AUD-410",
+    "baselineToSurpriseChangedPixels": 71915,
+    "baselineToUndoChangedPixels": 0,
+    "crop": {
+      "x": 329,
+      "y": 515,
+      "width": 707,
+      "height": 106
+    },
+    "result": "The overview-header changes on Surprise Me and returns pixel-identically to baseline after Undo."
+  },
+  "staleVersionTabObservation": {
+    "sourceVersionContext": "an already-open pre-v68 tab",
+    "request": "/_astro/dashboard-kpi-grid.BJFAlBzq.js",
+    "result": "One 404 occurred from stale content-hashed code before a cache-bypassing reload. The fresh v68 Compose retry loaded the current dashboard-kpi-grid chunk with HTTP 200 and generated all three directions without failed requests.",
+    "recovery": "Reload the page to retry the resource."
+  }
+}

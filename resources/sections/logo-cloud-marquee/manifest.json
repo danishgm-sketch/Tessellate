@@ -5,7 +5,7 @@
   "name": "Logo Cloud Marquee",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Smooth continuous horizontal strip of partner and customer wordmarks.",
+  "description": "Horizontal partner-wordmark strip; default names are illustrative and are not customer claims.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -17,8 +17,8 @@
     "marquee"
   ],
   "purposes": [
-    "Dynamic brand proof",
-    "Ecosystem partner showcase"
+    "Display approved ecosystem partners",
+    "Preview a partner strip with clearly identified sample names"
   ],
   "productArchetypes": [
     {
@@ -130,20 +130,22 @@
     "trust"
   ],
   "intent": {
-    "summary": "Smooth continuous horizontal strip of partner and customer wordmarks.",
+    "summary": "Horizontal partner-wordmark strip; default names are illustrative and are not customer claims.",
     "idealFor": [
-      "High-energy marketing landing pages"
+      "Marketing pages with approved partner identities"
     ],
     "avoidFor": [
+      "Unverified customer or partner claims",
       "Static PDF export formats"
     ],
     "jobs": [
-      "Show high volume of customer adopters in a compact vertical height"
+      "Display approved partner names or visibly labeled sample names in a compact strip"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"
     ],
     "notes": [
+      "Default labels are samples; replace them with approved names before publishing",
       "Responsive stacking down to 360px with reduced-motion support"
     ]
   },
@@ -209,12 +211,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +239,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

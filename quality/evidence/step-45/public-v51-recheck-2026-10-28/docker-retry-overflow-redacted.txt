@@ -1,0 +1,31 @@
+Tessellate laptop backend recovery defect — sanitized evidence
+Date: 2026-10-28 (UTC)
+
+Observed before the fix
+- The laptop host container had restarted four times while the API was unavailable.
+- The API container did not accept connections during the incident.
+- Sanitized host traceback: OverflowError: int too large to convert to float
+  in retry_delay while computing POLL_INTERVAL_SEC * (2 ** (consecutive_failures - 1)).
+- The cap was applied after the exponent expression, so the cap did not prevent
+  conversion of the very large integer to float.
+
+Regression check
+- Added an extreme input case: retry_delay(1_000_000) must return 30.0.
+- The pre-fix implementation failed this check with the observed OverflowError.
+- The bounded doubling implementation passes the case and all host-daemon unit tests.
+
+After the fix
+- Rebuilt only tessellate-laptop-api and tessellate-laptop-host from the candidate checkout.
+- Both containers reported healthy; API /health returned HTTP 200.
+- scripts/verify-laptop-backend.mjs passed all eight lifecycle checks:
+  model completion, host authentication, rate limit, queue recovery after API restart,
+  truthful 503 while the host is paused, queue recovery after resume, host restart
+  recovery, and API-unreachable behavior while stopped.
+- No secret values, credentials, environment dumps, or authorization headers are
+  included in this evidence.
+
+Scope
+- This fix is in the optional local laptop daemon. It does not change the static
+  public Sites app. The public Site continues to report local inference unavailable
+  because no laptop tunnel/API connection is configured. Browser-local Core
+  composition and export remain independent of that service.

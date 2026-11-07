@@ -1,0 +1,21 @@
+{
+  "findingId": "SEC-37-085",
+  "runtimeAuditId": "AUD-268",
+  "severity": "medium",
+  "before": "quality/evidence/step-37/site-shell-csp-live-probe.json",
+  "after": "audit/evidence/step-37/site-shell-csp-local-after.json",
+  "screenshots": {
+    "beforeDesktop": "audit/evidence/step-37/site-shell-csp-before-1440.png",
+    "beforeMobile": "audit/evidence/step-37/site-shell-csp-before-390.png",
+    "afterDesktop": "audit/evidence/step-37/site-shell-csp-after-1440.png",
+    "afterMobile": "audit/evidence/step-37/site-shell-csp-after-390.png"
+  },
+  "regression": {
+    "redBeforeFix": true,
+    "focusedDesktopMobile": "14 passed, 0 failed",
+    "fullE2E": "431 passed, 134 configured skips, 0 failed",
+    "liveBefore": "harmless injected inline script executed",
+    "localAfter": "harmless injected inline script blocked; certified page scripts hydrate"
+  },
+  "remaining": "The deployed review Site still serves the old policy. Keep the finding open until Step 45 re-verifies the deployed fix."
+}

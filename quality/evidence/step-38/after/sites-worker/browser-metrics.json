@@ -1,0 +1,241 @@
+{
+  "capturedAt": "2026-10-20T09:24:38.927Z",
+  "method": "Local ChatGPT Sites compatibility Worker preview, Playwright Chromium, standard laptop CPU/network without throttling. LCP/CLS are lab PerformanceObserver samples; Long Tasks is supplemental. Not field Web Vitals or DevTools traces.",
+  "results": [
+    {
+      "route": "/",
+      "url": "http://127.0.0.1:4323/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "readyMs": 932,
+      "fcp": 200,
+      "lcp": 200,
+      "cls": 0,
+      "longTaskMs": 132,
+      "longTaskCount": 1,
+      "domContentLoaded": 50.5,
+      "load": 63.79999998211861,
+      "resourceCount": 20,
+      "jsTransferBytes": 106329,
+      "jsDecodedBytes": 316128,
+      "jsResourceCount": 19,
+      "catalogRequests": [],
+      "viewportWidth": 1440,
+      "documentWidth": 1440,
+      "screenshot": "quality\\evidence\\step-38\\after\\sites-worker\\sites-chromium-home.png"
+    },
+    {
+      "route": "/explore",
+      "url": "http://127.0.0.1:4323/explore",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "readyMs": 1422,
+      "fcp": 84,
+      "lcp": 84,
+      "cls": 0.031353515625,
+      "longTaskMs": 68,
+      "longTaskCount": 1,
+      "domContentLoaded": 29.5,
+      "load": 31.899999976158142,
+      "resourceCount": 37,
+      "jsTransferBytes": 160690,
+      "jsDecodedBytes": 494878,
+      "jsResourceCount": 26,
+      "catalogRequests": [
+        {
+          "url": "http://127.0.0.1:4323/data/catalog.json",
+          "transferBytes": 141802,
+          "decodedBytes": 2111226
+        }
+      ],
+      "viewportWidth": 1440,
+      "documentWidth": 1440,
+      "screenshot": "quality\\evidence\\step-38\\after\\sites-worker\\sites-chromium-explore.png"
+    },
+    {
+      "route": "/compose",
+      "url": "http://127.0.0.1:4323/compose",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "readyMs": 1080,
+      "fcp": 120,
+      "lcp": 120,
+      "cls": 0,
+      "longTaskMs": 0,
+      "longTaskCount": 0,
+      "domContentLoaded": 39.19999998807907,
+      "load": 85.7999999821186,
+      "resourceCount": 41,
+      "jsTransferBytes": 586727,
+      "jsDecodedBytes": 2476450,
+      "jsResourceCount": 39,
+      "catalogRequests": [
+        {
+          "url": "http://127.0.0.1:4323/data/catalog.json",
+          "transferBytes": 141802,
+          "decodedBytes": 2111226
+        }
+      ],
+      "viewportWidth": 1440,
+      "documentWidth": 1440,
+      "screenshot": "quality\\evidence\\step-38\\after\\sites-worker\\sites-chromium-compose.png"
+    },
+    {
+      "route": "/workbench",
+      "url": "http://127.0.0.1:4323/workbench",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "readyMs": 1297,
+      "fcp": 424,
+      "lcp": 628,
+      "cls": 0,
+      "longTaskMs": 60,
+      "longTaskCount": 1,
+      "domContentLoaded": 43.89999997615814,
+      "load": 43.89999997615814,
+      "resourceCount": 41,
+      "jsTransferBytes": 579811,
+      "jsDecodedBytes": 2447786,
+      "jsResourceCount": 38,
+      "catalogRequests": [
+        {
+          "url": "http://127.0.0.1:4323/data/catalog.json",
+          "transferBytes": 141802,
+          "decodedBytes": 2111226
+        }
+      ],
+      "viewportWidth": 1440,
+      "documentWidth": 1440,
+      "screenshot": "quality\\evidence\\step-38\\after\\sites-worker\\sites-chromium-workbench.png"
+    },
+    {
+      "route": "/",
+      "url": "http://127.0.0.1:4323/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "readyMs": 969,
+      "fcp": 176,
+      "lcp": 176,
+      "cls": 0,
+      "longTaskMs": 105,
+      "longTaskCount": 1,
+      "domContentLoaded": 55.400000005960464,
+      "load": 65.19999998807907,
+      "resourceCount": 20,
+      "jsTransferBytes": 106329,
+      "jsDecodedBytes": 316128,
+      "jsResourceCount": 19,
+      "catalogRequests": [],
+      "viewportWidth": 390,
+      "documentWidth": 390,
+      "screenshot": "quality\\evidence\\step-38\\after\\sites-worker\\sites-mobile-chromium-home.png"
+    },
+    {
+      "route": "/explore",
+      "url": "http://127.0.0.1:4323/explore",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "readyMs": 1281,
+      "fcp": 68,
+      "lcp": 68,
+      "cls": 0,
+      "longTaskMs": 79,
+      "longTaskCount": 1,
+      "domContentLoaded": 34.30000001192093,
+      "load": 36.400000005960464,
+      "resourceCount": 30,
+      "jsTransferBytes": 160690,
+      "jsDecodedBytes": 494878,
+      "jsResourceCount": 26,
+      "catalogRequests": [
+        {
+          "url": "http://127.0.0.1:4323/data/catalog.json",
+          "transferBytes": 141802,
+          "decodedBytes": 2111226
+        }
+      ],
+      "viewportWidth": 390,
+      "documentWidth": 390,
+      "screenshot": "quality\\evidence\\step-38\\after\\sites-worker\\sites-mobile-chromium-explore.png"
+    },
+    {
+      "route": "/compose",
+      "url": "http://127.0.0.1:4323/compose",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "readyMs": 1152,
+      "fcp": 84,
+      "lcp": 84,
+      "cls": 0,
+      "longTaskMs": 0,
+      "longTaskCount": 0,
+      "domContentLoaded": 33.30000001192093,
+      "load": 73.2000000178814,
+      "resourceCount": 41,
+      "jsTransferBytes": 586727,
+      "jsDecodedBytes": 2476450,
+      "jsResourceCount": 39,
+      "catalogRequests": [
+        {
+          "url": "http://127.0.0.1:4323/data/catalog.json",
+          "transferBytes": 141802,
+          "decodedBytes": 2111226
+        }
+      ],
+      "viewportWidth": 390,
+      "documentWidth": 390,
+      "screenshot": "quality\\evidence\\step-38\\after\\sites-worker\\sites-mobile-chromium-compose.png"
+    },
+    {
+      "route": "/workbench",
+      "url": "http://127.0.0.1:4323/workbench",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "readyMs": 1155,
+      "fcp": 372,
+      "lcp": 548,
+      "cls": 0,
+      "longTaskMs": 56,
+      "longTaskCount": 1,
+      "domContentLoaded": 37.30000001192093,
+      "load": 38.30000001192093,
+      "resourceCount": 40,
+      "jsTransferBytes": 579811,
+      "jsDecodedBytes": 2447786,
+      "jsResourceCount": 38,
+      "catalogRequests": [
+        {
+          "url": "http://127.0.0.1:4323/data/catalog.json",
+          "transferBytes": 141802,
+          "decodedBytes": 2111226
+        }
+      ],
+      "viewportWidth": 390,
+      "documentWidth": 390,
+      "screenshot": "quality\\evidence\\step-38\\after\\sites-worker\\sites-mobile-chromium-workbench.png"
+    }
+  ],
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "browserCancellations": [],
+    "httpErrors": []
+  }
+}

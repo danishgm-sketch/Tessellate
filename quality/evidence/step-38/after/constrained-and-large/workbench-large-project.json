@@ -1,0 +1,35 @@
+{
+  "capturedAt": "2026-11-03T04:11:09.223Z",
+  "source": "Derived from the current employee-experience showcase manifest, expanded to 30 screens and 1,830 nodes, then loaded from browser storage; interaction and export steps use the visible Workbench UI.",
+  "project": {
+    "id": "performance-large-30-screens",
+    "screens": 30,
+    "nodes": 1830,
+    "jsonBytes": 355228
+  },
+  "timingsMs": {
+    "workbenchReady": 955,
+    "switchToFinalScreen": 28,
+    "manifestExport": 149,
+    "standaloneZipExport": 392
+  },
+  "artifactSizes": {
+    "manifestBytes": 680933,
+    "standaloneZipBytes": 52912
+  },
+  "browserMetrics": {
+    "lcpMs": 100,
+    "cls": 0.01986111111111111,
+    "longTaskMs": 53,
+    "longTaskCount": 1,
+    "documentWidth": 1440,
+    "viewportWidth": 1440
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "quality\\evidence\\step-38\\after\\constrained-and-large\\workbench-30-screens.png"
+}

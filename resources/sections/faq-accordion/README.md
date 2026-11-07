@@ -1,3 +1,3 @@
 # FAQ Accordion
 
-Expandable question accordion resolving pre-sale and architectural objections.
+Accordion with generic sample questions and answers. Replace the copy with verified information before publication.

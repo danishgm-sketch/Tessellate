@@ -1,0 +1,183 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "quality/evidence/step-45/public-v37/flagship-generated-a11y.config.ts"
+    ],
+    "configFile": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\flagship-generated-a11y.config.ts",
+    "rootDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/quality/evidence/step-45/public-v37/generated-a11y/playwright-output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "sites-live-desktop-1440",
+        "name": "sites-live-desktop-1440",
+        "testDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "flagship-generated-product-a11y.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/quality/evidence/step-45/public-v37/generated-a11y/playwright-output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "sites-live-mobile-390",
+        "name": "sites-live-mobile-390",
+        "testDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "flagship-generated-product-a11y.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\generated-a11y\\playwright-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "flagship-generated-product-a11y.spec.ts",
+      "file": "flagship-generated-product-a11y.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "the generated employee experience opens in Workbench without serious accessibility violations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-desktop-1440",
+              "projectName": "sites-live-desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8547,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:49:20.418Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "generated-employee-workbench-sites-live-desktop-1440.json",
+                      "contentType": "application/json",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\generated-a11y\\playwright-output\\flagship-generated-product-e7b63-us-accessibility-violations-sites-live-desktop-1440\\attachments\\generated-employee-workbench-sites-live-desktop-1440-json-38fded2db3db427ab2cc029f5a287b3cc49db193.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0ada432daa7c1f6ed6a1-c904cb14a3e534f80216",
+          "file": "flagship-generated-product-a11y.spec.ts",
+          "line": 9,
+          "column": 1
+        },
+        {
+          "title": "the generated employee experience opens in Workbench without serious accessibility violations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-mobile-390",
+              "projectName": "sites-live-mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3062,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:49:30.802Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "generated-employee-workbench-sites-live-mobile-390.json",
+                      "contentType": "application/json",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\generated-a11y\\playwright-output\\flagship-generated-product-e7b63-us-accessibility-violations-sites-live-mobile-390\\attachments\\generated-employee-workbench-sites-live-mobile-390-json-4e28a013c62d1adb365abef562b762f5af47b7fb.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0ada432daa7c1f6ed6a1-61ba41c786a325b1bde5",
+          "file": "flagship-generated-product-a11y.spec.ts",
+          "line": 9,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T20:49:19.805Z",
+    "duration": 14277.548,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

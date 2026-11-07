@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-10-24",
+  "scope": "User-provided live Tessellate review Site; page does not expose its source SHA. Findings describe this deployment only and are not claims about the current consolidation branch.",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "route": "/",
+  "screenshots": [
+    "quality/evidence/step-38/review-v20-home-desktop-1440.png",
+    "quality/evidence/step-38/review-v20-home-mobile-390.png"
+  ],
+  "desktop": {
+    "viewport": "1440x900",
+    "browser": "Chrome DevTools MCP",
+    "cache": "cold, bypassed",
+    "cpuThrottlingRate": 1,
+    "networkConditions": "none",
+    "metrics": {
+      "lcpMs": 1971,
+      "ttfbMs": 838,
+      "lcpRenderDelayMs": 1133,
+      "cls": 0,
+      "inpMs": null,
+      "cruxDataAvailable": false,
+      "estimatedDocumentLatencySavingsMs": 736,
+      "estimatedUncompressedWasteBytes": 56900
+    },
+    "document": {
+      "status": 200,
+      "contentLengthBytes": 84920,
+      "contentEncoding": null,
+      "cacheControl": "no-transform",
+      "redirects": 0
+    },
+    "network": {
+      "requestCount": 27,
+      "httpErrors": 0,
+      "failedRequests": 0,
+      "jsResourceCount": 25,
+      "jsDecodedBytes": 571112,
+      "jsTransferBytes": 170561,
+      "cssDecodedBytes": 197153,
+      "cssTransferBytes": 25874
+    },
+    "console": {
+      "errors": 0,
+      "warnings": 0,
+      "browserIssues": [
+        {
+          "kind": "form-field-identity",
+          "count": 4,
+          "message": "A form field element should have an id or name attribute",
+          "trackedFinding": "AUD-318"
+        }
+      ]
+    },
+    "layout": {
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "horizontalOverflow": false
+    },
+    "visibleContent": {
+      "homepageBrief": "An AI market-intelligence platform for procurement teams…",
+      "trackedFinding": "AUD-317"
+    },
+    "security": {
+    "scriptSrcContainsUnsafeInline": true,
+    "styleSrcContainsUnsafeInline": true,
+    "inlineScriptProbeExecuted": true,
+    "securityPolicyViolations": 0,
+      "trackedFinding": "AUD-268"
+    }
+  },
+  "mobile": {
+    "viewport": "390x844",
+    "browser": "Chrome DevTools MCP",
+    "cache": "cold, bypassed",
+    "cpuThrottlingRate": 4,
+    "networkConditions": "Fast 4G",
+    "evidenceFile": "quality/evidence/step-38/review-v20-home-mobile-390.json",
+    "observedMetrics": {
+      "lcpMs": 925,
+      "ttfbMs": 65,
+      "lcpRenderDelayMs": 861,
+      "cls": 0,
+      "inpMs": null,
+      "cruxDataAvailable": false
+    },
+    "network": {
+      "requestCount": 27,
+      "httpErrors": 0,
+      "failedRequests": 0
+    },
+    "console": {
+      "errors": 0,
+      "warnings": 0,
+      "formFieldIdentityIssueCount": 4
+    },
+    "layout": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "horizontalOverflow": false
+    }
+  },
+  "interpretation": "The live review page has stable layout and acceptable lab LCP in these captures, with a variable document response (838 ms TTFB on the cold desktop capture versus 65 ms mobile/4G) and 170,561 bytes of initial JavaScript transfer on desktop. The current local source has a separate recorded homepage transfer of about 106–111 kB and already fixes the stale finance brief and form identity attributes; those fixes remain unverified on the published Site. The live CSP and form issues are existing tracked findings AUD-268, AUD-317, and AUD-318. The Site host returned no content-encoding for the 84,920-byte document; this host behavior is not attributed to the repository without deployed-source parity."
+}

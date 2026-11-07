@@ -1,0 +1,69 @@
+{
+  "target": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "deployment": {
+    "siteVersion": 16,
+    "canonicalGitCommit": "7b49224898066edc9162d901e0cc945af7b24105",
+    "sitesSourceCommit": "37fd259499ac4a634db77e091f0a8cd3ff6f1464"
+  },
+  "setup": "Schema-valid diagnostic manifests were loaded through the deployed Workbench local-project persistence key. All renderer and export interactions were performed through the deployed UI.",
+  "findings": {
+    "AUD-072": {
+      "bothPropAndNestedChildrenVisible": true
+    },
+    "AUD-075": {
+      "bothDeclaredSlotAndNestedChildrenVisible": true
+    },
+    "AUD-077": {
+      "dataTrackingAttribute": "parity-action",
+      "ariaLabel": "Parity action"
+    },
+    "AUD-078": {
+      "dialogOpened": true,
+      "escapeClosedWithoutHostCallback": true
+    },
+    "AUD-076": {
+      "responsiveViewport": "mobile",
+      "omitNodeAbsent": true,
+      "stackDirection": "column",
+      "collapseMaxHeight": "192px"
+    },
+    "AUD-074": {
+      "visibleDiagnostic": "Unsupported variant \"deliberately-unsupported\" for resource \"button\".\n\nSupported variants: quiet, expressive, nocturne.\n\nThis resource was not rendered; the manifest value remains available to correct.",
+      "invalidResourceNotRendered": true,
+      "manifestValuePreservedInDiagnostic": "deliberately-unsupported",
+      "exportRejectedWithSupportedValues": true,
+      "exportAlertMessage": "Export failed: Unsupported variant \"deliberately-unsupported\" for resource \"button\". Supported variants: quiet, expressive, nocturne.",
+      "unexpectedExportDownload": null,
+      "invalidZipPath": null
+    }
+  },
+  "console": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "deploymentRuntime": {
+    "status": 200,
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=deployed-renderer-parity-diagnostic",
+    "projectId": "deployed-renderer-parity-diagnostic"
+  },
+  "export": {
+    "filename": "renderer-parity-diagnostic.zip",
+    "path": "deployed-renderer-parity-export.zip",
+    "bytes": 12655
+  },
+  "summary": {
+    "siteResponded": true,
+    "AUD072": true,
+    "AUD073": null,
+    "AUD074": true,
+    "AUD075": true,
+    "AUD076": true,
+    "AUD077": true,
+    "AUD078": true,
+    "zeroConsoleErrors": true,
+    "zeroUncaughtErrors": true,
+    "zeroFailedRequests": true,
+    "zeroHttpErrors": true
+  },
+  "finishedAt": "2026-10-18T02:53:05.564Z"
+}

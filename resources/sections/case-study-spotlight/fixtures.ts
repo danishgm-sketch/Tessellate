@@ -1,4 +1,7 @@
 export const caseStudySpotlightFixtures = {
-  client: 'KRONOS ANALYTICS',
-  metric: '4.2x',
+  client: 'Example organisation',
+  metric: '—',
+  metricLabel: 'Add a verified outcome before publishing',
+  headline: 'Example customer result',
+  summary: 'Add a customer-approved story and evidence for each outcome before publishing this section.',
 };

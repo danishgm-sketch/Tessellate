@@ -1,0 +1,26 @@
+{
+  "findingId": "SEC-37-064",
+  "severity": "high",
+  "title": "Gold artifact generation bypassed validated resource discovery",
+  "affectedFiles": [
+    "scripts/generate-gold-artifacts.ts",
+    "scripts/build-catalog.ts",
+    "tests/security/gold-artifacts.test.ts"
+  ],
+  "reproduction": {
+    "setup": "Create a symlinked category under resources/ that points to an external directory containing resource/index.tsx with a unique probe string.",
+    "catalogue": "buildCatalogueFromDirectory accepted 324 real resources and excluded the symlinked category.",
+    "beforeFix": "discoverAllComponents independently scanned the resources tree, followed the category link, and returned the external component source.",
+    "afterFix": "discoverAllComponents consumes the validated catalogue directory map; the external probe is absent."
+  },
+  "rootCause": "Gold artifact generation performed a second filesystem walk and bypassed canonical catalogue discovery.",
+  "remediation": "Pass the validated manifest-to-directory map into artifact generation. Direct generation first builds the catalogue; every resource root and source file is canonically contained and source reads are capped at 1 MiB.",
+  "verification": {
+    "redBeforeFix": "tests/security/gold-artifacts.test.ts failed because the external probe was present in generated components.",
+    "command": "pnpm exec vitest run tests/security/gold-artifacts.test.ts -t \"uses only resources admitted by canonical catalogue validation\"",
+    "result": "passed",
+    "testFiles": 1,
+    "testsPassed": 1,
+    "deployedVerification": "pending"
+  }
+}

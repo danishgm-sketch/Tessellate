@@ -1,5 +1,22 @@
-import type { DesignDNA, PartialDesignDNA } from '@tessellate/schemas';
+import type { DesignDNA, PartialDesignDNA, ProjectManifest } from '@tessellate/schemas';
+import { getNodePath } from './tree-helpers.js';
 import type { InheritanceStatus, FeelTrait } from '../types.js';
+
+export function getScopedTokens(manifest:ProjectManifest,screenId:string,nodeId:string|null):Record<string,string|number> {
+ const root=manifest.screens.find(screen=>screen.id===screenId)?.rootNode;
+ return root ? getNodePath(root,nodeId ?? root.id).reduce((tokens,node)=>({...tokens,...node.tokenOverrides}),{} as Record<string,string|number>) : {};
+}
+
+/** Resolve every ancestor, in the same order as the runtime renderer. */
+export function getScopedDNA(manifest: ProjectManifest, screenId: string, nodeId: string | null): DesignDNA {
+  const root = manifest.screens.find(screen=>screen.id===screenId)?.rootNode;
+  return root && nodeId ? getNodePath(root,nodeId).reduce((dna,node)=>({...dna,...node.dnaOverrides}),manifest.designDNA) : manifest.designDNA;
+}
+
+export function isScopeLocked(manifest: ProjectManifest, screenId: string, nodeId: string | null, kind: 'dna'|'content'|'structure' = 'dna'): boolean {
+  const root = manifest.screens.find(screen=>screen.id===screenId)?.rootNode;
+  return Boolean(root && nodeId && getNodePath(root,nodeId).some(node=>node.locks?.node || node.locks?.[kind] || (kind==='dna' && (node.locks?.style || node.locks?.motion))));
+}
 
 /**
  * Computes effective Design DNA for a node given root project DNA and node overrides.

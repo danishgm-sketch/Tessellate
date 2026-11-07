@@ -1,3 +1,3 @@
-# Security Proof
+# Security Review Prompts
 
-Enterprise security section validating sandboxed execution and zero eval policy.
+Review-prompt section for documenting product security controls. Verify each statement against the actual application and deployment before publishing it.

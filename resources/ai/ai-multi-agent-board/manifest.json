@@ -5,7 +5,7 @@
   "name": "AI Multi-Agent Board",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Kanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.",
+  "description": "Kanban-style example board showing how tasks can be grouped into workflow lanes.",
   "resourceType": "ai-pattern",
   "categories": [
     "ai",
@@ -14,12 +14,12 @@
   ],
   "roles": [
     "board",
-    "swarm"
+    "workflow"
   ],
   "purposes": [
-    "swarm-coordination",
-    "subagent-management",
-    "concurrent-execution"
+    "task-lane-example",
+    "workflow-planning",
+    "team-task-review"
   ],
   "productArchetypes": [
     {
@@ -102,7 +102,7 @@
     {
       "id": "quiet",
       "name": "Quiet",
-      "description": "Subtle slate borders, minimal badge accents, calm tool call telemetry for deep work.",
+      "description": "Low-emphasis neutral styling with restrained borders and accent color.",
       "props": {
         "variant": "quiet"
       }
@@ -110,7 +110,7 @@
     {
       "id": "expressive",
       "name": "Expressive",
-      "description": "Vibrant cobalt highlights, fluid gradient thinking indicators, and rich model card pills.",
+      "description": "More prominent color contrast and emphasis for key controls.",
       "props": {
         "variant": "expressive"
       }
@@ -118,7 +118,7 @@
     {
       "id": "nocturne",
       "name": "Nocturne",
-      "description": "Obsidian dark canvas, electric cyan luminescence, and high-contrast monospace code surfaces.",
+      "description": "Dark surface with high-contrast text and a restrained accent color.",
       "props": {
         "variant": "nocturne"
       }
@@ -127,29 +127,29 @@
   "tags": [
     "ai",
     "multi-agent",
-    "swarm",
     "kanban",
+    "workflow",
     "tasks"
   ],
   "intent": {
-    "summary": "Kanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.",
+    "summary": "Kanban-style example board showing tasks in queued, active, and completed lanes.",
     "idealFor": [
-      "Multi-agent orchestration displays",
-      "Autonomous team work distribution",
-      "Subagent task lane tracking"
+      "Showing task progress across workflow lanes",
+      "Planning work across a team",
+      "Demonstrating an agent interface pattern"
     ],
     "avoidFor": [
       "Single user personal to-do lists",
       "Static blog articles"
     ],
     "jobs": [
-      "Coordinate and monitor parallel subagent workstreams in designated status lanes"
+      "Present example tasks in queued, active, and completed lanes"
     ],
     "contentRequirements": [
-      "Model state reflection, streaming message blocks, citation cards, human-in-the-loop approvals"
+      "Describe the behavior represented by the interface and clearly label any illustrative data."
     ],
     "notes": [
-      "Local state mockable, BYO endpoint compatible, zero lock-in contracts"
+      "The preview uses fixed example tasks. It does not start or monitor agents."
     ]
   },
   "visualDNA": {
@@ -214,12 +214,12 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -242,7 +242,11 @@
     "composability": 96,
     "visualCraft": 96,
     "dependencyCleanliness": 100,
-    "documentation": 96
+    "documentation": 96,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

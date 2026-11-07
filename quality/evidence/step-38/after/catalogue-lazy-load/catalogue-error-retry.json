@@ -1,0 +1,14 @@
+{
+  "capturedAt": "2026-11-03T04:11:13.465Z",
+  "route": "http://127.0.0.1:4323/workbench?project=catalogue-loading-retry#screen-marketing-home",
+  "projectPreservedAcrossFailureAndRetry": "catalogue-loading-retry",
+  "catalogueRequests": 2,
+  "firstFailure": {
+    "expected": "HTTP 503",
+    "actual": "Library shows a retryable catalogue-unavailable message"
+  },
+  "retry": {
+    "expected": "HTTP 200",
+    "actual": "Gold runtime resources are visible"
+  }
+}

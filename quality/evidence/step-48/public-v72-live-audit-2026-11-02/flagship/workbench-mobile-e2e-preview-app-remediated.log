@@ -1,0 +1,15 @@
+[WebServer] (node:65748) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ vite "--host" "127.0.0.1" "--port" "4324"
+[WebServer] (node:86324) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:69136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [preview-app-chromium] › tests\e2e\preview-reduced-motion.spec.ts:5:1 › preview app compiles the utility styles used by canonical resources (3.4s)
+  ok 2 [preview-app-chromium] › tests\e2e\preview-reduced-motion.spec.ts:36:1 › preview app applies and restores its reduced-motion state (647ms)
+  ok 3 [preview-app-chromium] › tests\e2e\preview-unknown-resource-regression.spec.ts:5:1 › unknown resource preview reports a visible error instead of substituting the Button preview (575ms)
+
+  3 passed (8.0s)

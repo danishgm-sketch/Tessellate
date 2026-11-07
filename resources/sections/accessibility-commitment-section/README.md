@@ -1,3 +1,3 @@
 # Accessibility Commitment Section
 
-WCAG 2.2 AA conformance manifesto guaranteeing full keyboard traversal and contrast.
+Section template for describing accessibility goals. The copy presents design targets and asks teams to test the integrated experience; it does not claim WCAG conformance.

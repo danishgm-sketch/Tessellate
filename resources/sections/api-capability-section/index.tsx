@@ -27,13 +27,14 @@ export function ApiCapabilitySection({ variant = 'quiet' }: ApiCapabilitySection
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Programmatic API Access</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-3">Illustrative API examples</h2>
+        <p className="mx-auto mb-12 max-w-2xl text-center text-sm opacity-75">These route patterns are examples, not API documentation. Check the current API reference before integrating.</p>
 
         <div className="space-y-4">
           {endpoints.map((ep) => (
             <div key={ep.path} className={`p-4 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${card}`}>
               <div className="flex items-center gap-3">
-                <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold">{ep.method}</span>
+                <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-800 dark:text-emerald-200 font-bold">{ep.method}</span>
                 <span className="font-semibold">{ep.path}</span>
               </div>
               <span className="text-xs opacity-70 font-sans">{ep.desc}</span>

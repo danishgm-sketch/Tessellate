@@ -1,0 +1,25 @@
+{
+  "deployment": "Tessellate Sites v62",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench/?project=local-40c3f216-3afd-40a3-af19-ca077a93ef9f",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "browserProject": "sites-mobile-chromium",
+  "runtime": {
+    "consoleErrors": [
+      "Failed to generate standalone ZIP project: Error: Injected ZIP download creation failure\n    at URL.createObjectURL (<anonymous>:6:15)\n    at ie (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/TopToolbar.Cm46s7GF.js:2:6266)"
+    ],
+    "consoleWarnings": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "checks": {
+    "inlineAlert": "Export failed: Injected ZIP download creation failure",
+    "nativeDialogs": [],
+    "seriousOrCriticalAxeViolations": [],
+    "noHorizontalOverflow": true
+  },
+  "screenshot": "quality\\evidence\\step-48\\deployed-v62-2026-10-31\\browser-recheck\\aud404-inline-export-error-sites-mobile-chromium.png"
+}

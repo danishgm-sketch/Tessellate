@@ -1,0 +1,224 @@
+{
+  "status": "passed",
+  "startedAt": "2026-10-24T02:06:31.502Z",
+  "endedAt": "2026-10-24T03:06:40.376Z",
+  "elapsedMs": 3608874,
+  "projectUrl": "http://127.0.0.1:4323/workbench?project=local-4d752a9b-16ce-404d-9b59-293902dd12dc",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "plannedMutations": 240,
+  "completedMutations": 240,
+  "idleBetweenMutationsMs": 15000,
+  "initialVisualAmbition": 70,
+  "finalVisualAmbition": 37,
+  "checkpoints": [
+    {
+      "mutation": 10,
+      "visualAmbition": 80,
+      "mutationMs": 16,
+      "usedHeapBytes": 15200000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:08:46.846Z"
+    },
+    {
+      "mutation": 20,
+      "visualAmbition": 90,
+      "mutationMs": 15,
+      "usedHeapBytes": 15200000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:11:17.114Z"
+    },
+    {
+      "mutation": 30,
+      "visualAmbition": 9,
+      "mutationMs": 15,
+      "usedHeapBytes": 15200000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:13:47.386Z"
+    },
+    {
+      "mutation": 40,
+      "visualAmbition": 19,
+      "mutationMs": 259,
+      "usedHeapBytes": 15200000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:16:17.872Z"
+    },
+    {
+      "mutation": 50,
+      "visualAmbition": 29,
+      "mutationMs": 13,
+      "usedHeapBytes": 15200000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:18:48.214Z"
+    },
+    {
+      "mutation": 60,
+      "visualAmbition": 39,
+      "mutationMs": 19,
+      "usedHeapBytes": 15200000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:21:18.503Z"
+    },
+    {
+      "mutation": 70,
+      "visualAmbition": 49,
+      "mutationMs": 13,
+      "usedHeapBytes": 15200000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:23:48.783Z"
+    },
+    {
+      "mutation": 80,
+      "visualAmbition": 59,
+      "mutationMs": 457,
+      "usedHeapBytes": 15200000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:26:19.473Z"
+    },
+    {
+      "mutation": 90,
+      "visualAmbition": 69,
+      "mutationMs": 14,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:28:49.835Z"
+    },
+    {
+      "mutation": 100,
+      "visualAmbition": 79,
+      "mutationMs": 12,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:31:20.117Z"
+    },
+    {
+      "mutation": 110,
+      "visualAmbition": 89,
+      "mutationMs": 14,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:33:50.413Z"
+    },
+    {
+      "mutation": 120,
+      "visualAmbition": 8,
+      "mutationMs": 211,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:36:20.855Z"
+    },
+    {
+      "mutation": 130,
+      "visualAmbition": 18,
+      "mutationMs": 15,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:38:51.191Z"
+    },
+    {
+      "mutation": 140,
+      "visualAmbition": 28,
+      "mutationMs": 15,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:41:21.468Z"
+    },
+    {
+      "mutation": 150,
+      "visualAmbition": 38,
+      "mutationMs": 14,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:43:51.747Z"
+    },
+    {
+      "mutation": 160,
+      "visualAmbition": 48,
+      "mutationMs": 447,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:46:22.410Z"
+    },
+    {
+      "mutation": 170,
+      "visualAmbition": 58,
+      "mutationMs": 14,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:48:52.751Z"
+    },
+    {
+      "mutation": 180,
+      "visualAmbition": 68,
+      "mutationMs": 12,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:51:23.051Z"
+    },
+    {
+      "mutation": 190,
+      "visualAmbition": 78,
+      "mutationMs": 13,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:53:53.327Z"
+    },
+    {
+      "mutation": 200,
+      "visualAmbition": 88,
+      "mutationMs": 229,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:56:23.778Z"
+    },
+    {
+      "mutation": 210,
+      "visualAmbition": 7,
+      "mutationMs": 14,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T02:58:54.103Z"
+    },
+    {
+      "mutation": 220,
+      "visualAmbition": 17,
+      "mutationMs": 14,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T03:01:24.373Z"
+    },
+    {
+      "mutation": 230,
+      "visualAmbition": 27,
+      "mutationMs": 13,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T03:03:54.672Z"
+    },
+    {
+      "mutation": 240,
+      "visualAmbition": 37,
+      "mutationMs": 407,
+      "usedHeapBytes": 23100000,
+      "saved": true,
+      "timestamp": "2026-10-24T03:06:25.324Z"
+    }
+  ],
+  "modeSwitches": 24,
+  "reloads": [
+    80,
+    160,
+    240
+  ],
+  "finalHeapBytes": 23100000,
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

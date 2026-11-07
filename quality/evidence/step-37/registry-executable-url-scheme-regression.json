@@ -1,0 +1,30 @@
+{
+  "findingId": "SEC-37-071",
+  "severity": "medium",
+  "title": "Registry gate accepted executable and active-document URL schemes",
+  "status": "fixed_locally",
+  "reproduction": {
+    "directNavigation": "<a href=\"javascript:alert(1)\">Open</a>",
+    "staticAlias": "const scheme = 'java' + 'script:'; const destination = scheme + 'alert(1)'; return <a href={destination}>Open</a>;",
+    "activeDocument": "<iframe sandbox=\"\" src=\"data:text/html,untrusted content\" />",
+    "beforeFix": "The direct and statically aliased javascript: navigation cases passed the source-isolation gate.",
+    "browserStrippedNewline": "const destination = 'java\\nscript:alert(1)'; return <a href={destination}>Open</a>;",
+    "afterFix": "Direct and aliased executable schemes, schemes with browser-stripped newlines, and active HTML/SVG data documents fail; HTTPS, fragments, and ordinary text with an internal space pass."
+  },
+  "rootCause": "The TypeScript AST scanner resolved remote HTTP(S) asset and module requests but did not inspect executable schemes in navigation attributes or active data documents in embedding contexts.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve URL-like JSX attributes and DOM property assignments through the existing static-string AST resolver. Normalize surrounding whitespace and URL-parser tabs/newlines, reject javascript:/vbscript: schemes, and reject HTML/XHTML/SVG data documents in navigation and embedding contexts without rejecting safe HTTPS or local navigation.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"executable URL schemes|safe local and HTTPS\"",
+    "redBeforeFixResult": "failed as expected: direct and statically aliased executable schemes returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "35 tests passed",
+    "packageTypecheck": "passed",
+    "focusedLint": "passed",
+    "untrustedCodeExecuted": false,
+    "runtimeBoundary": "This is local registry-gate evidence. The isolated preview and deployed CSP remain separate controls and must still be verified against the release-candidate deployment."
+  }
+}

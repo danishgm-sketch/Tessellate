@@ -544,16 +544,16 @@ Horizontal moving gradient beam sweeping continuously across section divider tra
   {
     slug: 'number-count-up',
     name: 'Number Count Up',
-    description: 'Eased numeric counter animating from zero to target value on viewport entrance with monospace stability.',
+    description: 'Linear count-up animation that starts when the replay control is activated.',
     categories: ['motion', 'microinteractions', 'numbers'],
     roles: ['counter', 'numbers'],
-    purposes: ['numeric-count-up', 'metric-celebration', 'telemetry-load'],
+    purposes: ['numeric-count-up', 'metric-celebration', 'count-up-demo'],
     componentName: 'NumberCountUp',
     tags: ['motion', 'count-up', 'numbers', 'metric', 'counter'],
-    idealFor: ['Social proof metric counters', 'Customer tally stats', 'Benchmark speed metrics'],
+    idealFor: ['Demonstrating an animated number', 'Highlighting an example count', 'Showing a count-up interaction pattern'],
     avoidFor: ['Real-time clock seconds', 'Pagination page numbers'],
-    jobs: ['Animate integers from 0 to destination with smooth logarithmic easing'],
-    indexCode: `import React, { useState } from 'react';
+    jobs: ['Animate an example integer from zero to a target after activation'],
+    indexCode: `import React, { useEffect, useRef, useState } from 'react';
 
 export type NumberCountUpVariant = 'quiet' | 'expressive' | 'nocturne';
 
@@ -562,7 +562,12 @@ export interface NumberCountUpProps {
 }
 
 export function NumberCountUp({ variant = 'quiet' }: NumberCountUpProps) {
-  const [count, setCount] = useState(324);
+  const [count, setCount] = useState(1284);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  }, []);
 
   const cardBg =
     variant === 'nocturne'
@@ -572,14 +577,20 @@ export function NumberCountUp({ variant = 'quiet' }: NumberCountUpProps) {
       : 'bg-white border-neutral-200 text-neutral-900';
 
   const restart = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    const target = 1284;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setCount(target);
+      return;
+    }
     setCount(0);
-    const target = 324;
     let current = 0;
-    const interval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       current += 12;
       if (current >= target) {
         setCount(target);
-        clearInterval(interval);
+        if (intervalRef.current) clearInterval(intervalRef.current);
+        intervalRef.current = null;
       } else {
         setCount(current);
       }
@@ -589,8 +600,9 @@ export function NumberCountUp({ variant = 'quiet' }: NumberCountUpProps) {
   return (
     <div className={\`w-full p-8 rounded-xl border flex flex-col items-center gap-4 transition-colors \${cardBg}\`}>
       <div className="w-full flex justify-between items-center pb-2 border-b border-neutral-100 dark:border-neutral-800">
-        <span className="text-xs font-mono text-neutral-400">Logarithmic Counter</span>
+        <span className="text-xs font-mono text-neutral-400">Count-up preview</span>
         <button
+          type="button"
           onClick={restart}
           className="text-xs px-2.5 py-1 rounded border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-current"
         >
@@ -600,7 +612,7 @@ export function NumberCountUp({ variant = 'quiet' }: NumberCountUpProps) {
 
       <div className="py-4 text-center">
         <span className="text-5xl font-mono font-extrabold tracking-tight">{count}</span>
-        <div className="text-xs text-neutral-500 mt-1">Canonical Resources Verified</div>
+        <div className="text-xs text-neutral-500 mt-1">Example count</div>
       </div>
     </div>
   );
@@ -633,7 +645,7 @@ export function NumberCountUpPreview() {
     fixturesCode: `export const numberCountUpFixtures = {};`,
     readmeCode: `# Number Count Up
 
-Logarithmically eased numeric counter animating from zero to target value.`,
+Linear count-up demonstration. The displayed value is example content, not a measured or certified resource count.`,
   },
 
   // 20. KPI Delta Motion

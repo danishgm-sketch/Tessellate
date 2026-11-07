@@ -173,7 +173,7 @@
     "typographicExpression": 45,
     "imageryIntensity": 0,
     "videoIntensity": 0,
-    "threeDIntensity": 0,
+    "threeDIntensity": 25,
     "dataDensity": 60,
     "interactionDensity": 65,
     "asymmetry": 15,
@@ -213,12 +213,12 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -241,7 +241,11 @@
     "composability": 96,
     "visualCraft": 97,
     "dependencyCleanliness": 100,
-    "documentation": 96
+    "documentation": 96,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

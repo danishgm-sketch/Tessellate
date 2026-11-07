@@ -19,9 +19,9 @@ export function HowItWorksSteps({ variant = 'quiet' }: HowItWorksStepsProps) {
   }
 
   const steps = [
-    { step: '01', title: 'Browse or Query', desc: 'Find validated primitives or let your coding agent query the MCP registry.' },
-    { step: '02', title: 'Harmonize DNA', desc: 'Inspect density, curvature, and typography tokens with mathematical consistency.' },
-    { step: '03', title: 'Compile & Ship', desc: 'Direct code emission to your local repository with zero SaaS runtime tax.' },
+    { step: '01', title: 'Describe the product', desc: 'Start in Compose with the product brief and constraints.' },
+    { step: '02', title: 'Choose and refine', desc: 'Compare interface directions, then edit the selected project in Workbench.' },
+    { step: '03', title: 'Export the project', desc: 'Download a React/Vite project to continue in your own repository.' },
   ];
 
   return (

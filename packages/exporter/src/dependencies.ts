@@ -47,6 +47,10 @@ export function collectProjectDependencies(manifest: ProjectManifest): Collected
 
   if (requiresMotion || manifest.designDNA.motion > 40) {
     dependencies['motion'] = '^12.4.7';
+    // Motion's published dependency ranges include tslib. Keep the standalone
+    // export on the verified registry artifact rather than allowing a clean
+    // install to resolve an unavailable newer tarball.
+    dependencies['tslib'] = '2.8.1';
   }
 
   return {

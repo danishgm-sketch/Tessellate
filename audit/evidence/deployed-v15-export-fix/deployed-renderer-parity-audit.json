@@ -1,0 +1,76 @@
+{
+  "target": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "deployment": {
+    "siteVersion": 15,
+    "canonicalGitCommit": "8222a16defce36cc5b7ee3eae581e53bfc0f6b23",
+    "sitesSourceCommit": "b38d87b369e77a2d70e2a0ec4f697f345a1bf0dc"
+  },
+  "setup": "Schema-valid diagnostic manifests were loaded through the deployed Workbench local-project persistence key. All renderer and export interactions were performed through the deployed UI.",
+  "findings": {
+    "AUD-072": {
+      "bothPropAndNestedChildrenVisible": true
+    },
+    "AUD-075": {
+      "bothDeclaredSlotAndNestedChildrenVisible": true
+    },
+    "AUD-077": {
+      "dataTrackingAttribute": "parity-action",
+      "ariaLabel": "Parity action"
+    },
+    "AUD-078": {
+      "dialogOpened": true,
+      "escapeClosedWithoutHostCallback": true
+    },
+    "AUD-076": {
+      "responsiveViewport": "mobile",
+      "omitNodeAbsent": true,
+      "stackDirection": "column",
+      "collapseMaxHeight": "192px"
+    },
+    "AUD-074": {
+      "visibleDiagnostic": "Unsupported variant \"deliberately-unsupported\" for resource \"button\".\n\nSupported variants: quiet, expressive, nocturne.\n\nThis resource was not rendered; the manifest value remains available to correct.",
+      "invalidResourceNotRendered": true,
+      "manifestValuePreservedInDiagnostic": "deliberately-unsupported",
+      "exportRejectedWithSupportedValues": true,
+      "exportAlertMessage": "Export failed: Unsupported variant \"deliberately-unsupported\" for resource \"button\". Supported variants: quiet, expressive, nocturne.",
+      "unexpectedExportDownload": null,
+      "invalidZipPath": null
+    }
+  },
+  "console": [
+    {
+      "level": "error",
+      "text": "Failed to generate standalone ZIP project: Error: Unsupported variant \"deliberately-unsupported\" for resource \"button\". Supported variants: quiet, expressive, nocturne.\n    at Re (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18126:1014)\n    at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18130:21\n    at Array.map (<anonymous>)\n    at Re (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18130:14)\n    at Hr (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18122:9)\n    at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18030:917\n    at Array.forEach (<anonymous>)\n    at Ua (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18030:716)\n    at Ja (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18212:130)\n    at M (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18339:12883)",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js",
+      "viewport": "1440x900"
+    }
+  ],
+  "pageErrors": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "deploymentRuntime": {
+    "status": 200,
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=deployed-renderer-parity-diagnostic",
+    "projectId": "deployed-renderer-parity-diagnostic"
+  },
+  "export": {
+    "filename": "renderer-parity-diagnostic.zip",
+    "path": "deployed-renderer-parity-export.zip",
+    "bytes": 12654
+  },
+  "summary": {
+    "siteResponded": true,
+    "AUD072": true,
+    "AUD073": null,
+    "AUD074": true,
+    "AUD075": true,
+    "AUD076": true,
+    "AUD077": true,
+    "AUD078": true,
+    "zeroConsoleErrors": false,
+    "zeroUncaughtErrors": true,
+    "zeroFailedRequests": true,
+    "zeroHttpErrors": true
+  },
+  "finishedAt": "2026-10-18T02:17:54.905Z"
+}

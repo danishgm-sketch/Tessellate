@@ -1,6 +1,8 @@
 import { Hono } from 'hono';
+import { aiRateLimitKey, enforceApiRateLimit } from '../rate-limit.js';
+import type { Env } from '../types.js';
 
-export const aiProxyRoute = new Hono();
+export const aiProxyRoute = new Hono<{ Bindings: Env }>();
 
 const ALLOWED_PROVIDERS: Record<string, string> = {
   openai: 'https://api.openai.com',
@@ -10,6 +12,48 @@ const ALLOWED_PROVIDERS: Record<string, string> = {
 };
 
 const MAX_BODY_SIZE_BYTES = 512 * 1024; // 512 KB
+const MAX_PROVIDER_RESPONSE_BYTES = 8 * 1024 * 1024; // 8 MB
+
+class PayloadTooLargeError extends Error {}
+
+async function readBoundedBody(
+  stream: ReadableStream<Uint8Array> | null,
+  limit: number
+): Promise<ArrayBuffer> {
+  if (!stream) return new ArrayBuffer(0);
+
+  const reader = stream.getReader();
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      size += value.byteLength;
+      if (size > limit) {
+        await reader.cancel();
+        throw new PayloadTooLargeError();
+      }
+      chunks.push(value);
+    }
+  } finally {
+    reader.releaseLock();
+  }
+
+  const result = new ArrayBuffer(size);
+  const resultView = new Uint8Array(result);
+  let offset = 0;
+  for (const chunk of chunks) {
+    resultView.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return result;
+}
+
+function exceedsLimit(contentLength: string | null, limit: number): boolean {
+  if (!contentLength || !/^\d+$/.test(contentLength)) return false;
+  return Number(contentLength) > limit;
+}
 
 aiProxyRoute.all('/:provider/*', async (c) => {
   const provider = c.req.param('provider')?.toLowerCase();
@@ -24,6 +68,13 @@ aiProxyRoute.all('/:provider/*', async (c) => {
       400
     );
   }
+
+  const rateLimitResponse = await enforceApiRateLimit(
+    c.env,
+    'API_AI_LIMITER',
+    await aiRateLimitKey(c.env, c.req.raw)
+  );
+  if (rateLimitResponse) return rateLimitResponse;
 
   // Extract wildcard subpath
   const fullUrl = new URL(c.req.url);
@@ -63,14 +114,23 @@ aiProxyRoute.all('/:provider/*', async (c) => {
 
   let body: ArrayBuffer | undefined = undefined;
   if (c.req.method !== 'GET' && c.req.method !== 'HEAD') {
-    const rawBody = await c.req.raw.arrayBuffer();
-    if (rawBody.byteLength > MAX_BODY_SIZE_BYTES) {
+    if (exceedsLimit(c.req.header('Content-Length') ?? null, MAX_BODY_SIZE_BYTES)) {
       return c.json(
         { error: 'Payload too large', message: 'Request exceeds maximum allowed size (512 KB).' },
         413
       );
     }
-    body = rawBody;
+    try {
+      body = await readBoundedBody(c.req.raw.body, MAX_BODY_SIZE_BYTES);
+    } catch (err) {
+      if (err instanceof PayloadTooLargeError) {
+        return c.json(
+          { error: 'Payload too large', message: 'Request exceeds maximum allowed size (512 KB).' },
+          413
+        );
+      }
+      throw err;
+    }
   }
 
   try {
@@ -92,7 +152,26 @@ aiProxyRoute.all('/:provider/*', async (c) => {
       responseHeaders.set('content-type', contentType);
     }
 
-    const respBody = await targetResponse.arrayBuffer();
+    if (exceedsLimit(targetResponse.headers.get('content-length'), MAX_PROVIDER_RESPONSE_BYTES)) {
+      await targetResponse.body?.cancel();
+      return c.json(
+        { error: 'Provider response too large', message: 'The upstream response exceeds the 8 MB limit.' },
+        502
+      );
+    }
+
+    let respBody: ArrayBuffer;
+    try {
+      respBody = await readBoundedBody(targetResponse.body, MAX_PROVIDER_RESPONSE_BYTES);
+    } catch (err) {
+      if (err instanceof PayloadTooLargeError) {
+        return c.json(
+          { error: 'Provider response too large', message: 'The upstream response exceeds the 8 MB limit.' },
+          502
+        );
+      }
+      throw err;
+    }
     return new Response(respBody, {
       status: targetResponse.status,
       headers: responseHeaders,

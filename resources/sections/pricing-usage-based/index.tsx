@@ -25,11 +25,12 @@ export function PricingUsageBased({ variant = 'quiet' }: PricingUsageBasedProps)
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-4xl mx-auto flex flex-col items-center">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Pay Only for Verified Compilations</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Usage pricing example</h2>
+        <p className="mx-auto mb-8 max-w-2xl text-center text-sm opacity-75">Illustrative estimate at £0.40 per 1,000 runs. Replace the sample rate and terms before use.</p>
 
         <div className={`w-full p-8 rounded-2xl border max-w-xl transition-all ${card}`}>
           <div className="flex justify-between items-center mb-6">
-            <span className="text-xs font-semibold">Monthly AST Compilations:</span>
+            <span className="text-xs font-semibold">Monthly usage:</span>
             <span className="font-mono font-bold text-lg">{units}k runs</span>
           </div>
 

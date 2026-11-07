@@ -1,0 +1,1079 @@
+{
+  "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersion": 71,
+  "canonicalCommit": "7ac7783de83e175ac410055da736b2218e2ba213",
+  "sitesSourceCommit": "0bce228a4fbd5fedad02a3186cd6af62690d8405",
+  "viewport": "mobile-chrome",
+  "routesRequested": 31,
+  "routes": [
+    {
+      "route": "/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Tessellate — Describe the product. Get the interface.",
+      "headings": [
+        "Describe the product.Get the interface.",
+        "Choose a direction. Or blend them.",
+        "Not a component library.A composition system.",
+        "Open resources. Clear sample data.",
+        "Essential → Experimental.",
+        "Familiar → Experimental structure.",
+        "Step inside the engine.Inspect every design decision.",
+        "Compatibility scoring & normalisation."
+      ],
+      "bodyCharacters": 10434,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/01-home.png",
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious"
+          }
+        ],
+        "instrumentationConsole": []
+      }
+    },
+    {
+      "route": "/explore",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Explore — Tessellate Open Interface Library",
+      "headings": [
+        "Explore Resource Library",
+        "Catalogue results"
+      ],
+      "bodyCharacters": 6700,
+      "catalogueReady": true,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [
+        "Couldn't load preload assets:  TypeError: Cannot read properties of null (reading 'href')\n    at parseStylesheet (eval at evaluate (:311:30), <anonymous>:19955:57)\n    at eval (eval at evaluate (:311:30), <anonymous>:19995:16)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)",
+        "Couldn't load preload assets:  TypeError: Cannot read properties of null (reading 'href')\n    at parseStylesheet (eval at evaluate (:311:30), <anonymous>:19955:57)\n    at eval (eval at evaluate (:311:30), <anonymous>:19995:16)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)"
+      ],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/02-explore.png",
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious"
+          }
+        ],
+        "instrumentationConsole": [
+          "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-X4nZixkfetzT/Jya51N+IoJWJNHa6eHLD1TY5VKqVQE='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+          "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-X4nZixkfetzT/Jya51N+IoJWJNHa6eHLD1TY5VKqVQE='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+        ]
+      }
+    },
+    {
+      "route": "/components",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/components",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Components — Tessellate",
+      "headings": [
+        "Components",
+        "Catalogue results"
+      ],
+      "bodyCharacters": 5557,
+      "catalogueReady": true,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/03-components.png"
+    },
+    {
+      "route": "/sections",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/sections",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Sections — Tessellate",
+      "headings": [
+        "Sections",
+        "Catalogue results"
+      ],
+      "bodyCharacters": 6613,
+      "catalogueReady": true,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/04-sections.png"
+    },
+    {
+      "route": "/blocks",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/blocks",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Application blocks — Tessellate",
+      "headings": [
+        "Application blocks",
+        "Catalogue results"
+      ],
+      "bodyCharacters": 6442,
+      "catalogueReady": true,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/05-blocks.png"
+    },
+    {
+      "route": "/pages",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/pages",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Page architectures — Tessellate",
+      "headings": [
+        "Page architectures",
+        "Marketing Home",
+        "Product Overview",
+        "Use Case Landing",
+        "Industry Landing",
+        "Pricing",
+        "Security & Trust",
+        "Developer/API Landing"
+      ],
+      "bodyCharacters": 8713,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/06-pages.png"
+    },
+    {
+      "route": "/effects",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/effects",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Effects — Tessellate",
+      "headings": [
+        "Effects",
+        "Catalogue results"
+      ],
+      "bodyCharacters": 6644,
+      "catalogueReady": true,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/07-effects.png"
+    },
+    {
+      "route": "/motion",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/motion",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Motion — Tessellate",
+      "headings": [
+        "Motion",
+        "Catalogue results"
+      ],
+      "bodyCharacters": 3313,
+      "catalogueReady": true,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/08-motion.png"
+    },
+    {
+      "route": "/backgrounds",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/backgrounds",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Backgrounds — Tessellate",
+      "headings": [
+        "Backgrounds",
+        "Catalogue results"
+      ],
+      "bodyCharacters": 2898,
+      "catalogueReady": true,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/09-backgrounds.png"
+    },
+    {
+      "route": "/ai",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ai",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "AI patterns — Tessellate",
+      "headings": [
+        "AI patterns",
+        "Catalogue results"
+      ],
+      "bodyCharacters": 2984,
+      "catalogueReady": true,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/10-ai.png"
+    },
+    {
+      "route": "/data",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/data",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Data visualisation — Tessellate",
+      "headings": [
+        "Data visualisation",
+        "Catalogue results"
+      ],
+      "bodyCharacters": 4888,
+      "catalogueReady": true,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/11-data.png"
+    },
+    {
+      "route": "/compose",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Compose — Tessellate",
+      "headings": [
+        "Product Composer",
+        "Describe the product. Get the interface."
+      ],
+      "bodyCharacters": 1349,
+      "catalogueReady": true,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/12-compose.png",
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious"
+          }
+        ],
+        "instrumentationConsole": []
+      }
+    },
+    {
+      "route": "/workbench",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Workbench — Tessellate Composition Engine",
+      "headings": [
+        "Workbench: Example employee workspace",
+        "A better workday starts with people.",
+        "Made for everyday employee experiences",
+        "Make the next step easier for every colleague."
+      ],
+      "bodyCharacters": 1403,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/13-workbench.png",
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious"
+          }
+        ],
+        "instrumentationConsole": []
+      }
+    },
+    {
+      "route": "/blueprints",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/blueprints",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Product blueprints — Tessellate",
+      "headings": [
+        "Product blueprints",
+        "AI Product",
+        "B2B SaaS",
+        "Developer Platform",
+        "Fintech",
+        "Ecommerce",
+        "Marketplace",
+        "Analytics Platform"
+      ],
+      "bodyCharacters": 2225,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/14-blueprints.png"
+    },
+    {
+      "route": "/collections",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/collections",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Your resource collection — Tessellate",
+      "headings": [
+        "Your resource collection"
+      ],
+      "bodyCharacters": 467,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/15-collections.png"
+    },
+    {
+      "route": "/creators",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/creators",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Resource creators — Tessellate",
+      "headings": [
+        "Resource creators",
+        "Tessellate Core"
+      ],
+      "bodyCharacters": 6113,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/16-creators.png"
+    },
+    {
+      "route": "/showcase",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/showcase",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Showcase projects — Tessellate",
+      "headings": [
+        "Showcase projects",
+        "Apex Financial Intelligence Terminal",
+        "Synthetix AI Developer Platform",
+        "Velluto Private Estate Residences",
+        "Kudos Employee Experience",
+        "Atelier Chronos Horology",
+        "Cortex Laboratory Environment",
+        "Pulse Media Creator Studio"
+      ],
+      "bodyCharacters": 1601,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/17-showcase.png"
+    },
+    {
+      "route": "/trends",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/trends",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Catalogue signals — Tessellate",
+      "headings": [
+        "Catalogue signals",
+        "sections",
+        "marketing",
+        "technical-proof",
+        "primitives",
+        "layout",
+        "motion",
+        "microinteractions"
+      ],
+      "bodyCharacters": 12969,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/18-trends.png"
+    },
+    {
+      "route": "/tools",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Ten Tools — Tessellate Interface Intelligence",
+      "headings": [
+        "Ten Interface Tools."
+      ],
+      "bodyCharacters": 2022,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/19-tools.png"
+    },
+    {
+      "route": "/agents",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/agents",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Tessellate for agents — Tessellate",
+      "headings": [
+        "Tessellate for agents",
+        "Discover the catalogue",
+        "Compose and mutate",
+        "Review capability boundary"
+      ],
+      "bodyCharacters": 1135,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/20-agents.png"
+    },
+    {
+      "route": "/docs",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/docs",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Documentation — Tessellate",
+      "headings": [
+        "Documentation"
+      ],
+      "bodyCharacters": 524,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/21-docs.png"
+    },
+    {
+      "route": "/sponsor",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/sponsor",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Support the open commons — Tessellate",
+      "headings": [
+        "Support the open commons",
+        "Contribute",
+        "Sponsorship"
+      ],
+      "bodyCharacters": 780,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/22-sponsor.png"
+    },
+    {
+      "route": "/about",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/about",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "About Tessellate — Tessellate",
+      "headings": [
+        "About Tessellate",
+        "A coherent product, not a pile of components",
+        "Open and portable",
+        "This review version"
+      ],
+      "bodyCharacters": 909,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/23-about.png"
+    },
+    {
+      "route": "/license",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/license",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Licences and provenance — Tessellate",
+      "headings": [
+        "Licences and provenance",
+        "Resource licences",
+        "Repository licence",
+        "Exports"
+      ],
+      "bodyCharacters": 856,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/24-license.png"
+    },
+    {
+      "route": "/privacy",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/privacy",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Privacy in this review — Tessellate",
+      "headings": [
+        "Privacy in this review",
+        "Local project storage",
+        "Credentials",
+        "Hosting",
+        "Public previews"
+      ],
+      "bodyCharacters": 1175,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/25-privacy.png"
+    },
+    {
+      "route": "/terms",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/terms",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Review terms — Tessellate",
+      "headings": [
+        "Review terms",
+        "Review status",
+        "Your content",
+        "Source and redistribution"
+      ],
+      "bodyCharacters": 880,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/26-terms.png"
+    },
+    {
+      "route": "/r/advanced-data-table",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/advanced-data-table",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Advanced Data Table (@tess/advanced-data-table) — Tessellate Resource",
+      "headings": [
+        "Advanced Data Table",
+        "Summary & Purpose",
+        "Jobs To Be Done",
+        "Expected Content Requirements",
+        "Target Product Archetypes"
+      ],
+      "bodyCharacters": 1367,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [
+        "Couldn't load preload assets:  TypeError: Cannot read properties of null (reading 'href')\n    at parseStylesheet (eval at evaluate (:311:30), <anonymous>:19955:57)\n    at eval (eval at evaluate (:311:30), <anonymous>:19995:16)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)"
+      ],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/27-r-advanced-data-table.png",
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious"
+          }
+        ],
+        "instrumentationConsole": [
+          "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-X4nZixkfetzT/Jya51N+IoJWJNHa6eHLD1TY5VKqVQE='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+        ]
+      }
+    },
+    {
+      "route": "/showcase/showcase-playful-hr/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/showcase/showcase-playful-hr/",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Kudos Employee Experience — Tessellate",
+      "headings": [
+        "Kudos Employee Experience",
+        "Example: Marketing Home",
+        "A better workday starts with people.",
+        "Made for everyday employee experiences",
+        "Make the next step easier for every colleague."
+      ],
+      "bodyCharacters": 1857,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/28-showcase-showcase-playful-hr.png",
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious"
+          }
+        ],
+        "instrumentationConsole": []
+      }
+    },
+    {
+      "route": "/blueprints/b2b-saas/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/blueprints/b2b-saas/",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "B2B SaaS — Tessellate",
+      "headings": [
+        "B2B SaaS",
+        "Audience and objective",
+        "Required page classes",
+        "Anti-patterns",
+        "Architecture priors"
+      ],
+      "bodyCharacters": 1185,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/29-blueprints-b2b-saas.png"
+    },
+    {
+      "route": "/tools/palette",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/palette",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "Palette Studio — Tessellate Tools",
+      "headings": [
+        "Palette Studio"
+      ],
+      "bodyCharacters": 431,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/30-tools-palette.png"
+    },
+    {
+      "route": "/docs/cli",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/docs/cli",
+      "viewport": "mobile-chrome",
+      "status": 200,
+      "title": "CLI Reference — Tessellate Documentation",
+      "headings": [
+        "Tessellate CLI (`tess`)",
+        "Build from a Tessellate checkout",
+        "Commands",
+        "Start with a product brief."
+      ],
+      "bodyCharacters": 2445,
+      "catalogueReady": null,
+      "classification": "PASS",
+      "classificationReasons": [
+        "route-specific heading rendered",
+        "meaningful content rendered",
+        "no observed browser, network, HTTP, or overflow failures"
+      ],
+      "overflow": false,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "screenshotInstrumentationWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "navigationAborts": [],
+      "httpErrors": [],
+      "screenshot": "screenshots/mobile-chrome/31-docs-cli.png"
+    }
+  ],
+  "totals": {
+    "httpFailures": 0,
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "navigationAborts": 0,
+    "badResponses": 0,
+    "overflow": 0,
+    "axeScans": 6,
+    "axeViolations": 0,
+    "axeIncomplete": 6,
+    "screenshotInstrumentationWarnings": 0,
+    "pass": 31,
+    "degraded": 0,
+    "broken": 0,
+    "placeholder": 0,
+    "misleading": 0
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "finding": "AUD-267",
+  "severity": "medium",
+  "date": "2026-10-21",
+  "route": "/resources/textarea/",
+  "viewport": "1440x900",
+  "before": {
+    "command": "pnpm test:e2e (Sites Worker project)",
+    "result": "failed_as_expected",
+    "expected": "No role=status after focusing a text field",
+    "actual": "One role=status was present: “Selected [object Object]”; the focused textbox value was “[object Object]”",
+    "test": "tests/e2e/preview-form-interactions.spec.ts > form-control focus does not announce a generic action",
+    "capture": "Playwright failure snapshot from the initial full Sites Worker run. This machine record preserves it because Playwright clears its temporary error-context directory after subsequent runs."
+  },
+  "after": {
+    "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts preview-form-interactions.spec.ts --grep \"form-control focus|Combobox selection\" --project=sites-chromium",
+    "result": "passed",
+    "tests_passed": 2,
+    "assertions": [
+      "Input remains empty on focus and exposes no status announcement",
+      "Textarea remains empty on focus and exposes no status announcement",
+      "No console errors, uncaught exceptions, failed requests, or HTTP error responses during the focus regression",
+      "Combobox still selects the second option and announces “Selected second”"
+    ],
+    "full_e2e": {
+      "command": "pnpm test:e2e",
+      "result": "passed",
+      "astro_preview": {
+        "passed": 263,
+        "skipped": 99
+      },
+      "sites_worker": {
+        "passed": 160,
+        "skipped": 32
+      },
+      "isolated_preview": {
+        "passed": 3,
+        "skipped": 0
+      },
+      "total_passed": 426,
+      "total_skipped": 131
+    },
+    "screenshot": "audit/evidence/step-06/after/form-interactions/textarea-no-false-action-status-1440.png",
+    "focused_followup": {
+      "tests_passed": 2,
+      "command": "pnpm exec playwright test on preview-form-interactions.spec.ts for Sites Chromium"
+    }
+  },
+  "deployment_verification": "pending; public review deployment is a later release-candidate step"
+}

@@ -1,3 +1,3 @@
 # Pricing Three Tier
 
-Standard three-column pricing section with prominent recommended tier styling.
+Three-column plan layout with illustrative values and disabled actions until connected. Replace sample terms before publication.

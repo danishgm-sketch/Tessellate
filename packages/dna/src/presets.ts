@@ -19,7 +19,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'institutional-intelligence',
     name: 'Institutional Intelligence',
-    description: 'High-trust, disciplined information environment for strategic analysis and governance.',
+    description:
+      'High-trust, disciplined information environment for strategic analysis and governance.',
     version: '1.0.0',
     category: 'enterprise',
     recommendedPalette: 'institutional-navy',
@@ -181,7 +182,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'calm-saas',
     name: 'Calm SaaS',
-    description: 'Low-cognitive-load software with gentle contrast, spacious paddings, and soft motion.',
+    description:
+      'Soft contrast, generous spacing, and restrained motion for a calm interface direction.',
     version: '1.0.0',
     category: 'enterprise',
     recommendedPalette: 'clinical-calm',
@@ -397,7 +399,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'luxury-editorial',
     name: 'Luxury Editorial',
-    description: 'Haute-couture storytelling, dramatic serifs, rich imagery, and slow gliding animations.',
+    description:
+      'Haute-couture storytelling, dramatic serifs, rich imagery, and slow gliding animations.',
     version: '1.0.0',
     category: 'editorial',
     recommendedPalette: 'luxury-ink',
@@ -451,7 +454,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'warm-professional',
     name: 'Warm Professional',
-    description: 'Human-centric service aesthetic with earth-toned warmth, soft corners, and steady reliability.',
+    description:
+      'Human-centric service aesthetic with earth-toned warmth, soft corners, and steady reliability.',
     version: '1.0.0',
     category: 'enterprise',
     recommendedPalette: 'sand-copper',
@@ -505,7 +509,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'professional-playful',
     name: 'Professional Playful',
-    description: 'Balanced enterprise rigor with joyful micro-interactions and approachable accents.',
+    description:
+      'Balanced enterprise rigor with joyful micro-interactions and approachable accents.',
     version: '1.0.0',
     category: 'enterprise',
     recommendedPalette: 'coral-human',
@@ -559,7 +564,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'bold-startup',
     name: 'Bold Startup',
-    description: 'High-contrast typography, energetic neon accents, high visual ambition, and rapid conversion drive.',
+    description:
+      'High-contrast typography, energetic neon accents, and expressive layouts with strong calls to action.',
     version: '1.0.0',
     category: 'creative',
     recommendedPalette: 'graphite-lime',
@@ -613,7 +619,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'quiet-productivity',
     name: 'Quiet Productivity',
-    description: 'Zero distraction, ultra-fast latency, restrained styling, and maximum keyboard efficiency.',
+    description:
+      'Restrained styling, keyboard-oriented controls, and a clear, minimal interface direction.',
     version: '1.0.0',
     category: 'consumer',
     recommendedPalette: 'paper-cobalt',
@@ -667,7 +674,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'dense-terminal',
     name: 'Dense Terminal',
-    description: 'Financial trading and operational cockpit with maximal telemetry per square inch.',
+    description:
+      'Financial trading and operational cockpit with maximal telemetry per square inch.',
     version: '1.0.0',
     category: 'technical',
     recommendedPalette: 'financial-terminal',
@@ -721,7 +729,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'scientific-instrument',
     name: 'Scientific Instrument',
-    description: 'Empirical data analysis, high-resolution charting, and reproducible research parameters.',
+    description:
+      'Empirical data analysis, high-resolution charting, and reproducible research parameters.',
     version: '1.0.0',
     category: 'technical',
     recommendedPalette: 'scientific-blue',
@@ -775,7 +784,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'financial-authority',
     name: 'Financial Authority',
-    description: 'Institutional asset management tone with rock-solid security proof and audit visibility.',
+    description:
+      'Institutional asset-management styling with formal typography and visible audit-oriented information.',
     version: '1.0.0',
     category: 'enterprise',
     recommendedPalette: 'institutional-navy',
@@ -829,7 +839,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'creative-studio',
     name: 'Creative Studio',
-    description: 'Portfolio-grade presentation, asymmetric grids, variable type, and experimental kinetic feel.',
+    description:
+      'Portfolio-grade presentation, asymmetric grids, variable type, and experimental kinetic feel.',
     version: '1.0.0',
     category: 'creative',
     recommendedPalette: 'future-violet',
@@ -883,7 +894,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'fashion-forward',
     name: 'Fashion Forward',
-    description: 'High-contrast luxury commerce with full-bleed lookbooks and dramatic display typography.',
+    description:
+      'High-contrast luxury commerce with full-bleed lookbooks and dramatic display typography.',
     version: '1.0.0',
     category: 'editorial',
     recommendedPalette: 'high-contrast-mono',
@@ -937,7 +949,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'soft-consumer',
     name: 'Soft Consumer',
-    description: 'Pill-shaped friendly interface, pastel palettes, inviting illustrations, and gentle feedback.',
+    description:
+      'Pill-shaped friendly interface, pastel palettes, inviting illustrations, and gentle feedback.',
     version: '1.0.0',
     category: 'consumer',
     recommendedPalette: 'muted-pastel',
@@ -991,7 +1004,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'youthful-social',
     name: 'Youthful Social',
-    description: 'High-energy, mobile-first social experience with rich reactions, dynamic media, and bouncy motion.',
+    description:
+      'High-energy, mobile-first social experience with rich reactions, dynamic media, and bouncy motion.',
     version: '1.0.0',
     category: 'consumer',
     recommendedPalette: 'playful-primary',
@@ -1045,7 +1059,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'playful-education',
     name: 'Playful Education',
-    description: 'Gamified learning paths, progress milestones, vibrant rewards, and encouraging feedback loops.',
+    description:
+      'Gamified learning paths, progress milestones, vibrant rewards, and encouraging feedback loops.',
     version: '1.0.0',
     category: 'consumer',
     recommendedPalette: 'playful-primary',
@@ -1099,7 +1114,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'trustworthy-healthcare',
     name: 'Trustworthy Healthcare',
-    description: 'Clinical clarity, accessible contrast, calm soothing blues, and stringent privacy confidence.',
+    description:
+      'Clinical layout cues, clear contrast, calm blue accents, and privacy-sensitive content framing.',
     version: '1.0.0',
     category: 'specialized',
     recommendedPalette: 'clinical-calm',
@@ -1153,7 +1169,7 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'civic-government',
     name: 'Civic / Government',
-    description: 'Universal accessibility, clear form flows, plain language, and zero decorative overhead.',
+    description: 'Plain language, clear form flows, and restrained decoration.',
     version: '1.0.0',
     category: 'specialized',
     recommendedPalette: 'high-contrast-mono',
@@ -1207,7 +1223,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'industrial-operations',
     name: 'Industrial Operations',
-    description: 'SCADA monitoring, rugged status badges, high density alerts, and safety-critical ergonomics.',
+    description:
+      'SCADA-inspired status badges, dense alerts, and high-visibility operational styling.',
     version: '1.0.0',
     category: 'specialized',
     recommendedPalette: 'slate-signal',
@@ -1261,7 +1278,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'high-end-commerce',
     name: 'High-End Commerce',
-    description: 'Premium curated catalog, crisp checkout architecture, and tactile luxury product galleries.',
+    description:
+      'Premium curated catalog, crisp checkout architecture, and tactile luxury product galleries.',
     version: '1.0.0',
     category: 'editorial',
     recommendedPalette: 'sand-copper',
@@ -1315,7 +1333,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'cinematic-launch',
     name: 'Cinematic Launch',
-    description: 'Keynote-grade reveal, rich ambient video canvas, grand hero typography, and narrative pacing.',
+    description:
+      'Keynote-grade reveal, rich ambient video canvas, grand hero typography, and narrative pacing.',
     version: '1.0.0',
     category: 'creative',
     recommendedPalette: 'nocturne-cobalt',
@@ -1369,7 +1388,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'future-command',
     name: 'Future Command',
-    description: 'Sci-fi telemetry cockpit with cybernetic accents, spatial hierarchy, and predictive HUD elements.',
+    description:
+      'Sci-fi telemetry cockpit with cybernetic accents, spatial hierarchy, and predictive HUD elements.',
     version: '1.0.0',
     category: 'specialized',
     recommendedPalette: 'future-violet',
@@ -1423,7 +1443,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'brutalist-digital',
     name: 'Brutalist Digital',
-    description: 'Raw web aesthetics, visible heavy border grids, mono typography, and unapologetic contrast.',
+    description:
+      'Raw web aesthetics, visible heavy border grids, mono typography, and unapologetic contrast.',
     version: '1.0.0',
     category: 'creative',
     recommendedPalette: 'brutalist-red',
@@ -1477,7 +1498,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'organic-human',
     name: 'Organic Human',
-    description: 'Earthy terracotta tones, fluid curved contours, warm humanist fonts, and hand-crafted feel.',
+    description:
+      'Earthy terracotta tones, fluid curved contours, warm humanist fonts, and hand-crafted feel.',
     version: '1.0.0',
     category: 'editorial',
     recommendedPalette: 'forest-product',
@@ -1531,7 +1553,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'data-first-analytical',
     name: 'Data-First Analytical',
-    description: 'Metric drilldowns, structured pivot tables, multi-metric filtering, and crisp visualization.',
+    description:
+      'Metric drilldowns, structured pivot tables, multi-metric filtering, and crisp visualization.',
     version: '1.0.0',
     category: 'technical',
     recommendedPalette: 'ocean-product',
@@ -1585,7 +1608,8 @@ export const DNA_PRESETS: DNAPreset[] = [
   {
     id: 'experimental-spatial',
     name: 'Experimental Spatial',
-    description: 'Boundary-pushing 3D spatial viewport, floating canvases, perspective transforms, and novel IA.',
+    description:
+      'Boundary-pushing 3D spatial viewport, floating canvases, perspective transforms, and novel IA.',
     version: '1.0.0',
     category: 'creative',
     recommendedPalette: 'future-violet',

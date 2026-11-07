@@ -1,0 +1,33 @@
+{
+  "issueId": "AUD-364",
+  "source": "GitHub Actions",
+  "runId": 40523492535,
+  "runUrl": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40523492535",
+  "jobId": 122256621457,
+  "headRevision": "dbc3fce4efdee0d60156a0ec67211fedb40cdc54",
+  "test": "tests/e2e/site-route-performance-step-38.spec.ts",
+  "project": "mobile-chrome",
+  "route": "/workbench",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "delayedClientBundleMs": 1600,
+  "result": "failed",
+  "axe": {
+    "id": "color-contrast",
+    "impact": "serious",
+    "targetHtml": "<div role=\"status\" class=\"flex h-full min-h-12 items-center justify-center px-4 py-3 text-xs text-[#A8AFBA]\">Opening the mobile workspace…</div>",
+    "foreground": "#A8AFBA",
+    "background": "#F4F2ED",
+    "contrastRatio": 1.97,
+    "requiredContrastRatio": 4.5
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "screenshot": null,
+  "screenshotNote": "The CI workflow did not upload Playwright screenshots or traces. The live public v46 route-context capture is stored separately; it does not reproduce this newer branch-only lazy status."
+}

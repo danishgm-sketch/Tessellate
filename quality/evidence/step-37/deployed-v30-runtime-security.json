@@ -1,0 +1,91 @@
+{
+  "capturedAt": "2026-10-25T22:39:19Z",
+  "site": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+    "version": 30,
+    "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_1fe420879f388191941cb1f369e6bee3",
+    "deploymentId": "appgdep_6ade82e018c88191896a14c837910918",
+    "canonicalSourceCommit": "2a201f4d13dbf5d2339994fd14dc2fe92c3e92ff",
+    "sitesSourceMirrorCommit": "775af0c92354e8fdf33af60b8c0cc31b396c0ab6",
+    "deploymentStatus": "succeeded"
+  },
+  "previewRoute": {
+    "path": "/preview/?resource=button",
+    "viewport": "1440x900",
+    "status": 200,
+    "frameStatus": 200,
+    "frameSandbox": "allow-scripts",
+    "opaqueOrigin": true,
+    "parentCannotReadChildDocument": true,
+    "csp": {
+      "formAction": "none",
+      "scriptPolicy": "same-origin Astro assets plus build-certified hashes",
+      "connectPolicy": "same-origin Astro assets only",
+      "frameSrc": "none",
+      "sandbox": "allow-scripts"
+    },
+    "requests": 17,
+    "failedRequests": 0,
+    "externalRequests": 0,
+    "consoleMessages": []
+  },
+  "homepageRoute": {
+    "path": "/",
+    "viewport": "1440x900",
+    "status": 200,
+    "catalogStatus": 200,
+    "catalogBytes": 2143734,
+    "catalogSha256": "cb618c184c8907c4c92c2cec93a851df205565673ecf922c1fcc150bcec2c61b",
+    "resourceArraySha256": "2c3b075fdf1794359f176e999a2196af38c5595ac8acf675c6f8d570f472f0ad",
+    "resources": 324,
+    "uniqueSlugs": 324,
+    "verifiedResources": 284,
+    "verifiedGoldResources": 40,
+    "requestsBeforeCatalogFetch": 25,
+    "failedRequests": 0,
+    "externalRequests": 0,
+    "interaction": "The AI research terminal preset changed the brief and feel through the visible homepage controls.",
+    "console": {
+      "errors": 1,
+      "message": "The browser blocked a per-response inline script that assigns window.__CF$cv$params; its request-specific hash is absent from Tessellate's strict CSP.",
+      "scriptExecuted": false,
+      "evidence": "The required CSP hash differed between two fresh page responses; the script is absent from repository sources; it appears in the runtime HTML response; no challenge-script request or external network request was emitted."
+    },
+    "screenshot": "quality/evidence/step-37/deployed-v30-csp-error-1440x900.png"
+  },
+  "resourceIsolation": {
+    "command": "pnpm audit:resource-isolation",
+    "expected": 324,
+    "scanned": 324,
+    "passed": 324,
+    "skippedSymlinks": 0,
+    "failures": 0,
+    "sourceExecuted": false,
+    "evidence": "quality/evidence/step-37/registry-source-isolation-latest.json"
+  },
+  "ci": {
+    "headSha": "218f74276acdc552ec92b47c4542e82c03ef2159",
+    "validateRuns": [
+      {
+        "id": 40237832312,
+        "status": "success",
+        "url": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40237832312"
+      },
+      {
+        "id": 40237840026,
+        "status": "success",
+        "url": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40237840026"
+      }
+    ],
+    "securitySandboxRun": {
+      "id": 40237840028,
+      "status": "success",
+      "url": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40237840028"
+    }
+  },
+  "findings": {
+    "closed": ["AUD-274"],
+    "open": ["AUD-342"],
+    "note": "AUD-342 is a Sites/Cloudflare runtime CSP violation. No unsafe-inline script permission was added."
+  }
+}

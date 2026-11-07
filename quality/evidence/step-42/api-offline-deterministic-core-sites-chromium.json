@@ -1,0 +1,29 @@
+{
+  "step": 42,
+  "id": "api-offline-deterministic-core",
+  "status": "pass",
+  "url": "http://127.0.0.1:4323/workbench/?project=local-cb8a73ce-204b-4653-9af8-b185f8db19a0#screen-marketing-home",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "browser": "Chromium",
+  "injectedFailures": [
+    "The laptop backend health probe returned the Sites adapter’s normal HTTP 200 offline response."
+  ],
+  "checks": {
+    "hostLabDisabled": true,
+    "deterministicMutationCompleted": true,
+    "projectIdentityPreserved": true,
+    "motionReduced": true,
+    "offlineHealthResponsesObserved": 1,
+    "deterministicCommandMadeNoBackendRequest": true
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "quality/evidence/step-42/api-offline-deterministic-core-sites-chromium.png"
+}

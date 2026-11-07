@@ -1,3 +1,6 @@
+import {composeShowcase, composeProjectPipeline} from '../packages/compatibility/src/index.js';
+import {SHOWCASE_PROJECTS} from '../packages/composer/src/showcases.js';
+import {ProjectManifestSchema} from '../packages/schemas/src/index.js';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -24,7 +27,7 @@ const previewPublicDir = path.join(rootDir, 'apps', 'preview', 'public');
 
 async function main() {
   console.log('[build-catalog] Scanning and validating resources at:', resourcesDir);
-  const { artifact } = await buildCatalogueFromDirectory(resourcesDir);
+  const { artifact, resourceDirectories } = await buildCatalogueFromDirectory(resourcesDir);
 
   console.log(`[build-catalog] Successfully validated ${artifact.count} resource(s).`);
 
@@ -53,6 +56,31 @@ async function main() {
   fs.writeFileSync(path.join(previewPublicDir, 'data', 'catalog.min.json'), minifiedContent, 'utf-8');
   console.log('[build-catalog] Wrote catalog and catalog.min.json to site & preview public dirs.');
 
+  // Generate the Workbench first-run sample at build time. Composing it in the
+  // browser made a fresh Workbench wait for the full catalogue and engine before
+  // it could show an editable project.
+  const starterProject = composeProjectPipeline(
+    {
+      description: 'An employee experience platform with people, teams, onboarding and policies. This is a sample local project.',
+      feel: 'professional but playful',
+      visualAmbition: 40,
+      structuralCreativity: 55,
+      targetDevices: ['desktop', 'tablet', 'mobile'],
+    },
+    { catalogResources: artifact.resources, seed: 'workbench-starter-v1' },
+  ).directionA.manifest;
+  starterProject.id = 'workbench-starter-template';
+  starterProject.name = 'Example employee workspace';
+  const validatedStarter = ProjectManifestSchema.parse(starterProject);
+  for (const publicDir of [sitePublicDir, previewPublicDir]) {
+    fs.writeFileSync(
+      path.join(publicDir, 'data', 'workbench-starter.json'),
+      JSON.stringify(validatedStarter, null, 2),
+      'utf-8',
+    );
+  }
+  console.log('[build-catalog] Generated the validated Workbench first-run sample for site and preview.');
+
   // 2. Generate registry items and index
   const registryItems = [];
   const registryOutputDir = path.join(sitePublicDir, 'r');
@@ -61,8 +89,11 @@ async function main() {
   }
 
   for (const manifest of artifact.resources) {
-    const resDir = path.join(resourcesDir, manifest.categories[0] ?? 'primitives', manifest.slug);
-    const item = generateRegistryItem(manifest, fs.existsSync(resDir) ? resDir : resourcesDir);
+    const resDir = resourceDirectories.get(manifest);
+    if (!resDir) {
+      throw new Error(`Validated resource directory missing for '${manifest.id}'.`);
+    }
+    const item = generateRegistryItem(manifest, resDir);
     registryItems.push(item);
 
     const itemPath = path.join(registryOutputDir, `${manifest.slug}.json`);
@@ -93,8 +124,31 @@ async function main() {
   fs.writeFileSync(path.join(sitePublicDir, 'openapi.json'), JSON.stringify(openApiSpec, null, 2), 'utf-8');
   console.log('[build-catalog] Generated /openapi.json');
 
+  const generatedShowcases = SHOWCASE_PROJECTS.map((showcase) => ({
+    showcase,
+    manifest: composeShowcase(showcase.id, artifact.resources),
+  }));
+  const showcaseIndex = generatedShowcases.map(({ showcase, manifest }) => ({
+    id: showcase.id,
+    name: showcase.name,
+    tagline: showcase.tagline,
+    archetypeId: showcase.archetypeId,
+    navigationModel: showcase.navigationModel,
+    dnaPresetName: showcase.dnaPresetName,
+    colorMode: showcase.colorMode,
+    screenCount: manifest.screens.length,
+  }));
+  for (const publicDir of [sitePublicDir, previewPublicDir]) {
+    const showcasesDir = path.join(publicDir, 'data', 'showcases');
+    fs.mkdirSync(showcasesDir, { recursive: true });
+    fs.writeFileSync(path.join(showcasesDir, 'index.json'), JSON.stringify(showcaseIndex, null, 2), 'utf8');
+    for (const { showcase, manifest } of generatedShowcases) {
+      fs.writeFileSync(path.join(showcasesDir, `${showcase.id}.json`), JSON.stringify(manifest, null, 2), 'utf8');
+    }
+  }
+  console.log('[build-catalog] Generated showcase manifests and synchronized public indexes.');
   // 5. Generate Gold 40 runtime registry & exporter sources
-  await generateGoldArtifacts();
+  await generateGoldArtifacts(resourceDirectories);
 }
 
 main().catch((err) => {

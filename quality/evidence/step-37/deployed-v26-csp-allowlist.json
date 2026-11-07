@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "SEC-DEPLOYED-V26-CSP-ALLOWLIST-2026-10-25",
+  "verifiedAt": "2026-10-25T01:37:30Z",
+  "deployment": {
+    "siteVersion": 26,
+    "deploymentId": "appgdep_6add2f20b5f88191828044362a2fbc3e",
+    "status": "succeeded",
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "siteSourceCommit": "94822e00baaefa20dd01895e43469c3c3d9fac9"
+  },
+  "browser": {
+    "name": "Chrome DevTools MCP",
+    "viewport": "1440x900",
+    "isolatedContext": true
+  },
+  "route": {
+    "path": "/",
+    "status": 200,
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "observedRequests": 27,
+    "failedRequests": 0,
+    "connectSrc": "connect-src 'self' https://api.tessellate.design http://localhost:8787 https://api.github.com",
+    "frameSrc": "frame-src 'self' https://preview.tessellate.design http://localhost:4321 http://localhost:5173",
+    "scriptSrcHasUnsafeInline": false,
+    "screenshot": "quality/evidence/step-37/deployed-v26-home-1440.png"
+  },
+  "finding": {
+    "id": "AUD-336",
+    "severity": "medium",
+    "result": "fixed-awaiting-deployed-verification",
+    "fixCommit": "a302e1dd7072ecb5605282b3fa1ecdd35d658519",
+    "impact": "The public shell policy lets its scripts attempt connections to a visitor's local development API and frame local development servers. This unnecessarily expands the impact of a future script-injection defect.",
+    "runtimeNeed": "None found. The Sites UI uses its same-origin /preview-content/ path and no client runtime references the three loopback origins.",
+    "remediation": "Remove loopback origins from the Sites Worker and static fallback policies while preserving intended production API and preview origins.",
+    "regression": "apps/sites/worker.test.ts fails before the fix and passes afterward for both the Worker policy and static _headers fallback.",
+    "deployedVerification": "Pending a newly saved and owner-approved Sites version. The current public v26 still contains the loopback origins."
+  },
+  "localValidation": {
+    "frozenInstall": "passed",
+    "unitTests": "1,216 passed; 1 skipped",
+    "typecheck": "passed across 22 workspace packages",
+    "lint": "passed",
+    "auditAll": "passed; 16 behavioral gates, 324/324 source-isolation checks, production build, bundle budgets, provenance/licence, security/secrets, and dependency audits",
+    "playwright": {
+      "astro": "304 passed; 108 configured skips",
+      "sitesWorker": "295 passed; 41 configured skips",
+      "previewApp": "3 passed; 0 skipped"
+    }
+  },
+  "credentialAndCookieValuesRecorded": false
+}

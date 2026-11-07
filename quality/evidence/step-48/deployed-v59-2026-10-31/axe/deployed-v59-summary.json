@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.0.0",
+  "deployment": {
+    "version": 59,
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "sitesSourceCommit": "1cb4327f8d28d6ee842ac88a80189c872cfa77d6",
+    "canonicalCommit": "9a93b41c080cc214313532807a336b4780ae73e4"
+  },
+  "wcagScan": {
+    "tags": ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"],
+    "targetSizeScannedSeparately": true,
+    "coreRouteStates": 14,
+    "coreRouteViolations": 0,
+    "workbenchModeStates": 10,
+    "workbenchModeViolations": 0,
+    "generatedFlagshipStates": 2,
+    "generatedFlagshipViolations": [
+      {
+        "viewport": "1440x900",
+        "impact": "serious",
+        "rule": "scrollable-region-focusable",
+        "help": "Scrollable region must have keyboard access",
+        "target": ".w-\\[280px\\] > .overflow-y-auto.flex-1",
+        "screenshot": "quality/evidence/step-48/deployed-v59-2026-10-31/flagship/employee-workbench-desktop-1440.png",
+        "runtimeConsoleErrors": 0,
+        "failedRequests": 0
+      },
+      {
+        "viewport": "390x844",
+        "impact": null,
+        "violations": [],
+        "runtimeConsoleErrors": 0,
+        "failedRequests": 0
+      }
+    ]
+  },
+  "verificationCorrection": {
+    "previousTestBehavior": "AxeBuilder.withRules() overwrote the runOnly tag filter set by withTags(), leaving only the target-size rule active.",
+    "correctedBehavior": "The suite executes the WCAG tag scan and the target-size rule scan independently.",
+    "liveV59CoreResult": "Both scans passed for Home, Explore, Compose, Workbench, resource detail, isolated preview and the employee showcase at desktop and mobile. All five Workbench modes also passed at both viewports.",
+    "axeCspInstrumentation": "CSP-blocked style probes generated while Axe inspected isolated previews are recorded separately from product runtime. No CSP policy was weakened."
+  },
+  "localAfterFix": {
+    "runtime": "Built Sites Worker",
+    "desktop": {
+      "viewport": "1440x900",
+      "wcagViolations": 0,
+      "targetSizeViolations": 0,
+      "tabOrder": "Layers tab → Pages → Library → Brief → focusable Layers panel",
+      "visibleFocus": true
+    },
+    "mobile": {
+      "viewport": "390x844",
+      "wcagViolations": 0,
+      "targetSizeViolations": 0
+    },
+    "screenshots": [
+      "quality/evidence/step-48/deployed-v59-2026-10-31/axe/local-after/desktop/generated-employee-workbench-desktop-chromium-1440.png",
+      "quality/evidence/step-48/deployed-v59-2026-10-31/axe/local-after/mobile/generated-employee-workbench-mobile-chromium-390.png"
+    ],
+    "deploymentClosure": "Pending v60 public re-audit."
+  }
+}

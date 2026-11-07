@@ -5,7 +5,7 @@
   "name": "AI Source Citations",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Grounding source cards and citation tags attributing AI assertions back to documents, files, and URLs.",
+  "description": "Citation panel UI pattern with illustrative sources; it does not retrieve documents or verify claims.",
   "resourceType": "ai-pattern",
   "categories": [
     "ai",
@@ -17,9 +17,9 @@
     "grounding"
   ],
   "purposes": [
-    "provenance-verification",
-    "source-attribution",
-    "hallucination-mitigation"
+    "citation-panel-layout",
+    "source-reference-presentation",
+    "local-selection-state"
   ],
   "productArchetypes": [
     {
@@ -102,7 +102,7 @@
     {
       "id": "quiet",
       "name": "Quiet",
-      "description": "Subtle slate borders, minimal badge accents, calm tool call telemetry for deep work.",
+      "description": "Low-emphasis neutral styling with restrained borders and accent color.",
       "props": {
         "variant": "quiet"
       }
@@ -110,7 +110,7 @@
     {
       "id": "expressive",
       "name": "Expressive",
-      "description": "Vibrant cobalt highlights, fluid gradient thinking indicators, and rich model card pills.",
+      "description": "More prominent color contrast and emphasis for key controls.",
       "props": {
         "variant": "expressive"
       }
@@ -118,7 +118,7 @@
     {
       "id": "nocturne",
       "name": "Nocturne",
-      "description": "Obsidian dark canvas, electric cyan luminescence, and high-contrast monospace code surfaces.",
+      "description": "Dark surface with high-contrast text and a restrained accent color.",
       "props": {
         "variant": "nocturne"
       }
@@ -132,24 +132,23 @@
     "provenance"
   ],
   "intent": {
-    "summary": "Grounding source cards and citation tags attributing AI assertions back to documents, files, and URLs.",
+    "summary": "Citation panel UI pattern with illustrative sources; it does not retrieve documents or verify claims.",
     "idealFor": [
-      "RAG query responses",
-      "Research paper summaries",
-      "Legal/compliance policy answers"
+      "Example citation panel layout",
+      "Source-list interaction studies"
     ],
     "avoidFor": [
-      "Pure non-grounded creative copywriting",
-      "Simple color picker controls"
+      "Verified citations",
+      "Legal, compliance, or research claims without source retrieval"
     ],
     "jobs": [
-      "Attribute AI-generated claims to concrete source documents with quote snippets"
+      "Present illustrative source references and allow local selection"
     ],
     "contentRequirements": [
-      "Model state reflection, streaming message blocks, citation cards, human-in-the-loop approvals"
+      "Label sample sources and excerpts until the host application resolves real citations."
     ],
     "notes": [
-      "Local state mockable, BYO endpoint compatible, zero lock-in contracts"
+      "The listed sources are illustrative and are not retrieved or verified by this component."
     ]
   },
   "visualDNA": {
@@ -214,12 +213,12 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -242,7 +241,11 @@
     "composability": 96,
     "visualCraft": 96,
     "dependencyCleanliness": 100,
-    "documentation": 96
+    "documentation": 96,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

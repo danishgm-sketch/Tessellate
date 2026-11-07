@@ -1,0 +1,356 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "quality/evidence/step-45/public-v54-reaudit-2026-10-28/flagship-verified-v54.config.mjs"
+    ],
+    "configFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v54-reaudit-2026-10-28\\flagship-verified-v54.config.mjs",
+    "rootDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-45/public-v54-reaudit-2026-10-28/flagship-results-verified-v54",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-1440x900",
+        "name": "desktop-1440x900",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "flagship-acceptance-live-v26.spec.ts"
+        ],
+        "timeout": 240000
+      },
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-45/public-v54-reaudit-2026-10-28/flagship-results-verified-v54",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-390x844",
+        "name": "mobile-390x844",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "flagship-acceptance-live-v26.spec.ts"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v54-reaudit-2026-10-28\\flagship-acceptance-v54-verified.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "flagship-acceptance-live-v26.spec.ts",
+      "file": "flagship-acceptance-live-v26.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Flagship Acceptance & Merge Gate Verification",
+          "file": "flagship-acceptance-live-v26.spec.ts",
+          "line": 181,
+          "column": 6,
+          "specs": [
+            {
+              "title": "flagship employee experience journey uses the visible UI through independent React export",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-1440x900",
+                  "projectName": "desktop-1440x900",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 50758,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-28T10:43:36.187Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "14ce2235c1253e80a1c4-080d3e1b941c127283af",
+              "file": "flagship-acceptance-live-v26.spec.ts",
+              "line": 183,
+              "column": 3
+            },
+            {
+              "title": "regression suite: financial trading terminal flow with locks, recomposition and zip export",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-1440x900",
+                  "projectName": "desktop-1440x900",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4756,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-28T10:44:27.062Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "14ce2235c1253e80a1c4-3a42ddd375b4b98497ce",
+              "file": "flagship-acceptance-live-v26.spec.ts",
+              "line": 711,
+              "column": 3
+            },
+            {
+              "title": "mobile composer to workbench acceptance flow",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Mobile-specific flow",
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\flagship-acceptance-live-v26.spec.ts",
+                        "line": 843,
+                        "column": 10
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "desktop-1440x900",
+                  "projectName": "desktop-1440x900",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 189,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-28T10:44:31.834Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Mobile-specific flow",
+                          "location": {
+                            "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\flagship-acceptance-live-v26.spec.ts",
+                            "line": 843,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "14ce2235c1253e80a1c4-d25ed9908e9bbec8cd99",
+              "file": "flagship-acceptance-live-v26.spec.ts",
+              "line": 842,
+              "column": 3
+            },
+            {
+              "title": "flagship employee experience journey uses the visible UI through independent React export",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-390x844",
+                  "projectName": "mobile-390x844",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 20499,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-28T10:44:33.073Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "14ce2235c1253e80a1c4-4df00aecda6ab599dfa7",
+              "file": "flagship-acceptance-live-v26.spec.ts",
+              "line": 183,
+              "column": 3
+            },
+            {
+              "title": "regression suite: financial trading terminal flow with locks, recomposition and zip export",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop studio workflow targets desktop viewport",
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\flagship-acceptance-live-v26.spec.ts",
+                        "line": 715,
+                        "column": 10
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "mobile-390x844",
+                  "projectName": "mobile-390x844",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 213,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-28T10:44:53.688Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop studio workflow targets desktop viewport",
+                          "location": {
+                            "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\flagship-acceptance-live-v26.spec.ts",
+                            "line": 715,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "14ce2235c1253e80a1c4-fda035ac63bdef06fdc6",
+              "file": "flagship-acceptance-live-v26.spec.ts",
+              "line": 711,
+              "column": 3
+            },
+            {
+              "title": "mobile composer to workbench acceptance flow",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-390x844",
+                  "projectName": "mobile-390x844",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2471,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-28T10:44:53.907Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "14ce2235c1253e80a1c4-14450ad27f6fffec87fb",
+              "file": "flagship-acceptance-live-v26.spec.ts",
+              "line": 842,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T10:43:35.013Z",
+    "duration": 81509.55,
+    "expected": 4,
+    "skipped": 2,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

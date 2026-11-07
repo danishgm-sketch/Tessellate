@@ -1,0 +1,185 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": 52,
+  "capturedAt": "2026-10-28T07:06:35.425Z",
+  "checks": [
+    {
+      "route": "/explore",
+      "viewport": "desktop-1440x900",
+      "console": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=card-hover-lift",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=card-tilt",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "badResponses": [],
+      "httpStatus": 200,
+      "search": {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=dashboard",
+        "count": "25 of 25"
+      },
+      "combinedFilter": {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=dashboard&type=motion",
+        "count": "0 of 0"
+      },
+      "clearSearchPreservesMotionFilter": {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?type=motion",
+        "count": "24 of 24"
+      },
+      "clearFilter": {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+        "count": "50 of 324"
+      },
+      "expectedPreviewCancellations": 8
+    },
+    {
+      "route": "/tools/section-planner/",
+      "viewport": "desktop-1440x900",
+      "console": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "httpStatus": 200,
+      "inputBefore": {
+        "id": null,
+        "name": null,
+        "ariaLabel": "Custom section title"
+      },
+      "addSection": {
+        "heading": "Page Sections (9 active)",
+        "sectionVisible": true
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "route": "/explore",
+      "viewport": "mobile-390x844",
+      "console": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "badResponses": [],
+      "httpStatus": 200,
+      "search": {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=dashboard",
+        "count": "25 of 25"
+      },
+      "combinedFilter": {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=dashboard&type=motion",
+        "count": "0 of 0"
+      },
+      "clearSearchPreservesMotionFilter": {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?type=motion",
+        "count": "24 of 24"
+      },
+      "clearFilter": {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+        "count": "50 of 324"
+      },
+      "expectedPreviewCancellations": 2
+    },
+    {
+      "route": "/tools/section-planner/",
+      "viewport": "mobile-390x844",
+      "console": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "httpStatus": 200,
+      "inputBefore": {
+        "id": null,
+        "name": null,
+        "ariaLabel": "Custom section title"
+      },
+      "addSection": {
+        "heading": "Page Sections (9 active)",
+        "sectionVisible": true
+      },
+      "horizontalOverflow": false
+    }
+  ],
+  "requestCancellationAssessment": {
+    "observedCount": 10,
+    "meaning": "During rapid query/facet changes, the result list unmounts previews and Chromium cancels their in-flight scripts/iframes. These cancellations are explicitly recorded as ERR_ABORTED; no HTTP 4xx/5xx, console errors, or uncaught errors accompanied them. Stable route sweeps and the final catalogue request returned 200. They are not silently treated as successful HTTP responses.",
+    "requests": [
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=card-hover-lift",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=card-tilt",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.DAV-MAxd.js",
+        "error": "net::ERR_ABORTED"
+      }
+    ]
+  }
+}

@@ -25,6 +25,29 @@ export * from './commands/gate.js';
 
 const program = new Command();
 
+function commandFailed(result: unknown): boolean {
+  if (result === null || result === false) return true;
+  if (typeof result !== 'object') return false;
+  const outcome = result as Record<string, unknown>;
+  if (typeof outcome.valid === 'boolean') return !outcome.valid;
+  if (typeof outcome.success === 'boolean') return !outcome.success;
+  if (typeof outcome.passed === 'boolean') return !outcome.passed;
+  if (typeof outcome.overallStatus === 'string') return outcome.overallStatus !== 'approved';
+  if (typeof outcome.errorCount === 'number') return outcome.errorCount > 0;
+  return false;
+}
+
+async function executeCommand(action: () => Promise<unknown>): Promise<void> {
+  try {
+    const result = await action();
+    if (commandFailed(result)) process.exitCode = 1;
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error(message);
+    process.exitCode = 1;
+  }
+}
+
 program
   .name('tess')
   .description('Tessellate CLI — deterministic interface intelligence for humans and agents')
@@ -37,7 +60,7 @@ program
   .option('-t, --tokens-path <path>', 'Path for semantic tokens stylesheet', 'styles/tokens.css')
   .option('-y, --yes', 'Skip prompts and accept defaults', false)
   .action(async (opts) => {
-    await runInit(opts);
+    await executeCommand(() => runInit(opts));
   });
 
 program
@@ -45,14 +68,14 @@ program
   .description('Search the Tessellate component catalogue')
   .option('--category <category>', 'Filter by category')
   .action(async (query = '', opts) => {
-    await runSearch(query, opts);
+    await executeCommand(() => runSearch(query, opts));
   });
 
 program
   .command('view <slug>')
   .description('View details of a catalogue resource')
   .action(async (slug) => {
-    await runView(slug);
+    await executeCommand(() => runView(slug));
   });
 
 program
@@ -60,17 +83,20 @@ program
   .description('Download and install a resource from the Tessellate registry')
   .option('-o, --overwrite', 'Overwrite existing files', false)
   .action(async (slug, opts) => {
-    await runAdd(slug, opts);
+    await executeCommand(() => runAdd(slug, opts));
   });
 
 program
   .command('compose <prompt>')
   .description('Deterministically compose an interface from a product brief')
   .option('-n, --name <name>', 'Project name', 'Composed Interface')
-  .option('-a, --archetype <archetype>', 'Override product archetype (saas, ecommerce, portfolio, etc.)')
+  .option(
+    '-a, --archetype <archetype>',
+    'Override product archetype (saas, ecommerce, portfolio, etc.)'
+  )
   .option('-o, --output <path>', 'Save ProjectManifest to file')
   .action(async (prompt, opts) => {
-    await runCompose(prompt, opts);
+    await executeCommand(() => runCompose(prompt, opts));
   });
 
 program
@@ -78,53 +104,59 @@ program
   .description('Export a ProjectManifest into standalone Vite + React + Tailwind source code')
   .option('-o, --output <dir>', 'Output directory', './dist/export')
   .action(async (manifest = 'project.json', opts) => {
-    await runExport(manifest, opts);
+    await executeCommand(() => runExport(manifest, opts));
   });
 
 program
   .command('validate <file>')
   .description('Validate a ResourceManifest or ProjectManifest against canonical schemas')
   .action(async (file) => {
-    await runValidate(file);
+    await executeCommand(() => runValidate(file));
   });
 
 program
   .command('lint [path]')
-  .description('Lint UI components and pages against Design DNA and accessibility standards')
-  .option('--fix', 'Automatically fix hardcoded colors and off-grid spacing')
+  .description('[Beta] Run heuristic token, spacing, selected contrast/motion, and landmark checks')
+  .option(
+    '--fix',
+    'Apply only small, non-zero spacing adjustments; color findings remain report-only'
+  )
   .option('-f, --format <format>', 'Output format: pretty, json, sarif', 'pretty')
   .action(async (targetPath = '.', opts) => {
-    await runLint(targetPath, opts);
+    await executeCommand(() => runLint(targetPath, opts));
   });
 
 program
   .command('ingest [dir]')
-  .description('Ingest an existing React/Tailwind codebase into a canonical Tessellate ProjectManifest AST')
+  .description(
+    '[Beta] Analyze supported React route and JSX structure; product intent and source mutation are not inferred'
+  )
   .option('-o, --output <path>', 'Destination output path for project manifest')
   .option('-n, --name <name>', 'Project name')
   .action(async (dir = '.', opts) => {
-    await runIngest(dir, opts);
+    await executeCommand(() => runIngest(dir, opts));
   });
 
 program
   .command('gate [dir]')
-  .description('Audit a component directory against the 16-point Quality & Security Gate')
+  .description(
+    '[Beta] Audit a component directory against the current Registry Quality & Security Gate'
+  )
   .option('-f, --format <format>', 'Output format: pretty, json, markdown', 'pretty')
   .action(async (dir = '.', opts) => {
-    await runGate(dir, opts);
+    await executeCommand(() => runGate(dir, opts));
   });
-
 
 program
   .command('doctor')
   .description('Check project environment and Tessellate setup')
   .action(async () => {
-    await runDoctor();
+    await executeCommand(() => runDoctor());
   });
 
 program
   .command('create-resource')
-  .description('Scaffold a new validated Tessellate resource (Contribution Wizard)')
+  .description('[Beta] Create a draft Tessellate resource scaffold for review')
   .option('-s, --slug <slug>', 'Resource slug (e.g. stat-counter-ticker)')
   .option('-n, --name <name>', 'Resource display name')
   .option('-c, --category <category>', 'Category (primitives, blocks, sections)', 'primitives')
@@ -132,19 +164,7 @@ program
   .option('-a, --author <author>', 'Author / Creator name')
   .option('-d, --description <desc>', 'Short summary of the resource')
   .action(async (opts) => {
-    await runCreateResource(opts);
+    await executeCommand(() => runCreateResource(opts));
   });
 
-import { pathToFileURL } from 'node:url';
-
-// Execute when run as CLI
-if (
-  process.argv[1] &&
-  (pathToFileURL(process.argv[1]).href.toLowerCase() === import.meta.url.toLowerCase() ||
-    import.meta.url.toLowerCase().endsWith(process.argv[1].replace(/\\/g, '/').toLowerCase()))
-) {
-  program.parse();
-}
-
 export default program;
-

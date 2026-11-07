@@ -1,0 +1,52 @@
+{
+  "route": "http://localhost:4321/r/ai-prompt-hero",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "frameDetails": [
+    {
+      "url": "http://localhost:4321/r/ai-prompt-hero",
+      "bodyText": "Skip to content\nTessellate\nStart building\nHome\n/\nExplore\n/\nSections\n/\nAI Prompt Hero\nAI Prompt Hero\n@tess/ai-prompt-hero\nv1.0.0\nverified\n\nPrompt input section with local example prompts and an optional host-provided generation callback. It includes no model or generation service.\n\nInstall:\ntess add ai-prompt-hero\nRegistry source: /r/ai-prompt-hero.json\n#ai-prompt-hero\n#hero\n#ai\n#prompt\n#marketing\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nCollect a product brief with local example prompts, then optionally pass it to a host-provided callback.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nApplications that collect a product brief before a host-defined action\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStandard brochureware sites\nJOBS TO BE DONE\nCollect a short product brief before a host-defined action\nEXPECTED CONTENT REQUIREMENTS\nClear hierarchy, responsive layout, a labelled input, and truthful helper text\nTARGET PRODUCT ARCHETYPES\nmarketing-site (95%)\nb2b-saas (90%)\ndeveloper-tool (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\nDeclared quality\n96 / 100\nCategory\nSections\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n50%\nVisual Ambition\n70%\nContrast\n80%\nCurvature\n35%\nMotion\n30%\nTessellate Interface Intelligence Layer — Open resource library under MIT License.",
+      "bodyHtml": "<style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event(\"astro:load\"));})();</script><script>(()=>{var g=Object.defineProperty;var w=(a,s,c)=>s in a?g(a,s,{enumerable:!0,configurable:!0,writable:!0,value:c}):a[s]=c;var l=(a,s,c)=>w(a,typeof s!=\"symbol\"?s+\"\":s,c);var E=new Set([\"__proto__\",\"constructor\",\"prototype\"]);{let a={0:t=>y(t),1:t=>c(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(c(t)),5:t=>new Set(c(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>Number.POSITIVE_INFINITY*t},s=t=>{let[p,e]=t;return p in a?a[p](e):void 0},c=t=>t.map(s),y=t=>typeof t!=\"object\"||t===null?t:Object.fromEntries(Object.entries(t).map(([p,e])=>[p,s(e)]));class f extends HTMLElement{constructor(){super(...arguments);l(this,\"Component\");l(this,\"hydrator\");l(this,\"hydrate\",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest(\"astro-island[ssr]\");if(e){e.addEventListener(\"astro:hydrate\",this.hydrate,{once:!0});return}let r=this.querySelectorAll(\"astro-slot\"),n={},d=this.querySelectorAll(\"template[data-astro-template]\");for(let o of d){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute(\"data-astro-template\")||\"default\"]=o.innerHTML,o.remove())}for(let o of r){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute(\"name\")||\"default\"]=o.innerHTML)}let u;try{u=this.hasAttribute(\"props\")?y(JSON.parse(this.getAttribute(\"props\"))):{}}catch(o){let i=this.getAttribute(\"component-url\")||\"<unknown>\",v=this.getAttribute(\"component-export\");throw v&&(i+=` (export ${v})`),console.error(`[hydrate] E"
+    },
+    {
+      "url": "http://localhost:4321/preview?resource=ai-prompt-hero&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+      "bodyText": "",
+      "bodyHtml": "<style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).only=e;window.dispatchEvent(new Event(\"astro:only\"));})();</script><script>(()=>{var g=Object.defineProperty;var w=(a,s,c)=>s in a?g(a,s,{enumerable:!0,configurable:!0,writable:!0,value:c}):a[s]=c;var l=(a,s,c)=>w(a,typeof s!=\"symbol\"?s+\"\":s,c);var E=new Set([\"__proto__\",\"constructor\",\"prototype\"]);{let a={0:t=>y(t),1:t=>c(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(c(t)),5:t=>new Set(c(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>Number.POSITIVE_INFINITY*t},s=t=>{let[p,e]=t;return p in a?a[p](e):void 0},c=t=>t.map(s),y=t=>typeof t!=\"object\"||t===null?t:Object.fromEntries(Object.entries(t).map(([p,e])=>[p,s(e)]));class f extends HTMLElement{constructor(){super(...arguments);l(this,\"Component\");l(this,\"hydrator\");l(this,\"hydrate\",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest(\"astro-island[ssr]\");if(e){e.addEventListener(\"astro:hydrate\",this.hydrate,{once:!0});return}let r=this.querySelectorAll(\"astro-slot\"),n={},d=this.querySelectorAll(\"template[data-astro-template]\");for(let o of d){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute(\"data-astro-template\")||\"default\"]=o.innerHTML,o.remove())}for(let o of r){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute(\"name\")||\"default\"]=o.innerHTML)}let u;try{u=this.hasAttribute(\"props\")?y(JSON.parse(this.getAttribute(\"props\"))):{}}catch(o){let i=this.getAttribute(\"component-url\")||\"<unknown>\",v=this.getAttribute(\"component-export\");throw v&&(i+=` (export ${v})`),console.error(`[hydrate] E"
+    }
+  ],
+  "runtime": {
+    "consoleErrors": [
+      "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:4321' that is not equal to the supplied origin.",
+      "Failed to load resource: net::ERR_FAILED",
+      "Access to script at 'http://localhost:4321/_astro/PreviewHost.CSio4GPq.js' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+      "Failed to load resource: net::ERR_FAILED",
+      "Access to script at 'http://localhost:4321/_astro/PreviewHost.CSio4GPq.js?astro-retry=1792499398711' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+      "Failed to load resource: net::ERR_FAILED",
+      "[astro-island] Error hydrating /_astro/PreviewHost.CSio4GPq.js TypeError: Failed to fetch dynamically imported module: http://localhost:4321/_astro/PreviewHost.CSio4GPq.js?astro-retry=1792499398711",
+      "Access to script at 'http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792499398711' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+      "Failed to load resource: net::ERR_FAILED"
+    ],
+    "uncaughtExceptions": [],
+    "failedRequests": [
+      {
+        "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+        "error": "net::ERR_FAILED"
+      },
+      {
+        "url": "http://localhost:4321/_astro/PreviewHost.CSio4GPq.js",
+        "error": "net::ERR_FAILED"
+      },
+      {
+        "url": "http://localhost:4321/_astro/PreviewHost.CSio4GPq.js?astro-retry=1792499398711",
+        "error": "net::ERR_FAILED"
+      },
+      {
+        "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js?astro-retry=1792499398711",
+        "error": "net::ERR_FAILED"
+      }
+    ],
+    "httpErrors": []
+  }
+}

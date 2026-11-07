@@ -3,12 +3,15 @@ import type {
   ProjectMutation,
   HistoryOperation,
 } from '@tessellate/schemas';
-import { flattenTree } from '../utils/tree-helpers.js';
+import {applyNavigationLayout} from '../utils/navigation-layout.js';
+import { flattenTree, findNodeById } from '../utils/tree-helpers.js';
 import { isNodeLocked } from '../locks/lock-engine.js';
 import { createHistoryOperation } from '../history/history-manager.js';
 import { recomposeScreenAroundLocks } from './recomposition.js';
+import { getSupportedResourceVariants, nodeRuntimeVariant } from '@tessellate/renderer/resource-variants';
 
 export interface SurpriseMeOptions {
+  screenId?:string;
   divergenceLevel?: number; // 0 - 100, default 40
   /** @deprecated Do not use `divergence`. Use `divergenceLevel`. */
   divergence?: never;
@@ -19,6 +22,47 @@ export interface SurpriseMeResult {
   operation: HistoryOperation;
   explanation: string;
   lockedNodesPreserved: number;
+}
+
+interface VisibleVariantCandidate {
+  nodeId: string;
+  resourceId: string;
+  slug: string;
+  currentVariant: string;
+}
+
+function findVisibleVariantCandidate(
+  root: ProjectManifest['screens'][number]['rootNode'],
+  designDNA: ProjectManifest['designDNA'],
+): VisibleVariantCandidate | undefined {
+  const visit = (
+    node: ProjectManifest['screens'][number]['rootNode'],
+    inheritedDNA: ProjectManifest['designDNA'],
+    insideLockedSubtree: boolean,
+  ): VisibleVariantCandidate | undefined => {
+    const effectiveDNA = { ...inheritedDNA, ...node.dnaOverrides };
+    const locked = insideLockedSubtree || isNodeLocked(node);
+    if (!locked && node.resourceRef && node.semanticRole !== 'navigation') {
+      const variants = getSupportedResourceVariants(node.resourceRef.slug, node.resourceRef.id);
+      const currentVariant = nodeRuntimeVariant(node, effectiveDNA) ?? 'quiet';
+      if (variants?.some((variant) => variant !== currentVariant)) {
+        return {
+          nodeId: node.id,
+          resourceId: node.resourceRef.id,
+          slug: node.resourceRef.slug,
+          currentVariant,
+        };
+      }
+    }
+    if (locked) return undefined;
+    for (const child of node.children) {
+      const candidate = visit(child, effectiveDNA, false);
+      if (candidate) return candidate;
+    }
+    return undefined;
+  };
+
+  return visit(root, designDNA, false);
 }
 
 class SimpleDeterministicRNG {
@@ -58,6 +102,10 @@ export function surpriseMe(
   const currentDNA = manifest.designDNA;
   const appliedExplanations: string[] = [];
   const mutations: ProjectMutation[] = [];
+  const targetScreen = manifest.screens.find((screen) => screen.id === options?.screenId) ?? manifest.screens[0];
+  const visualVariantCandidate = targetScreen
+    ? findVisibleVariantCandidate(targetScreen.rootNode, currentDNA)
+    : undefined;
 
   // 1. Count preserved locked nodes across all screens
   let totalLockedNodes = 0;
@@ -135,8 +183,9 @@ export function surpriseMe(
 
   // Typography personality
   if (divergence >= 45) {
+    const isFinancialProduct = manifest.productModel.productArchetypes[0]?.tag === 'fintech';
     const typoOptions = [
-      'financial-sans-tabular-mono',
+      ...(isFinancialProduct ? ['financial-sans-tabular-mono'] : []),
       'technical-mono-geist',
       'editorial-serif-display',
       'modern-geometric',
@@ -183,11 +232,14 @@ export function surpriseMe(
     preconditionRevision: manifest.historyMeta.headRevision,
   });
 
+  let nextNavigation:string|undefined;
   // 3. Navigation Model Modification (if divergence >= 60)
   if (divergence >= 60) {
     const navCandidates = ['sidebar', 'top-nav', 'command-palette', 'rail'] as const;
     const availableNavs = navCandidates.filter((n) => n !== manifest.navigation.model);
     const nextNav = rng.pick(availableNavs);
+    nextNavigation=nextNav;
+    mutations.push({id:`mut-surprise-dna-nav-${Date.now()}`,type:'SET_DESIGN_TOKEN',targetId:'project',payload:{key:'navigationModel',value:nextNav},actor:'deterministic-engine',timestamp:new Date().toISOString(),preconditionRevision:manifest.historyMeta.headRevision});
 
     mutations.push({
       id: `mut-surprise-nav-${Date.now()}`,
@@ -208,8 +260,8 @@ export function surpriseMe(
   }
 
   // 4. Hierarchy and Layout Transformation
-  if (manifest.screens.length > 0) {
-    const targetScreen = manifest.screens[0]!;
+  let recomposeReplacement: Extract<ProjectMutation, { type: 'REPLACE_NODE' }> | undefined;
+  if (targetScreen) {
     const recomposeResult = recomposeScreenAroundLocks(manifest, targetScreen.id, {
       divergenceLevel: divergence,
       seed: `${seed}-screen-recompose`,
@@ -217,7 +269,12 @@ export function surpriseMe(
 
     // Append the recomposition mutation
     for (const mut of recomposeResult.operation.mutations) {
-      mutations.push(mut);
+      if (!isNodeLocked(targetScreen.rootNode)) {
+        mutations.push(mut);
+        if (mut.type === 'REPLACE_NODE' && mut.targetId === targetScreen.rootNode.id) {
+          recomposeReplacement = mut;
+        }
+      }
     }
 
     appliedExplanations.push(
@@ -225,12 +282,54 @@ export function surpriseMe(
     );
   }
 
+  if(nextNavigation)for(const screen of manifest.screens){
+    if(isNodeLocked(screen.rootNode))continue;
+    const existing=mutations.find((mutation):mutation is Extract<ProjectMutation,{type:'REPLACE_NODE'}>=>mutation.type==='REPLACE_NODE' && mutation.targetId===screen.rootNode.id);
+    const root=existing?.payload.replacementNode as typeof screen.rootNode | undefined;
+    const replacement=applyNavigationLayout(root ?? screen.rootNode,nextNavigation);
+    if(existing)existing.payload.replacementNode=replacement;
+    else if(replacement!==screen.rootNode)mutations.push({id:`mut-surprise-layout-${screen.id}`,type:'REPLACE_NODE',targetId:screen.rootNode.id,payload:{targetNodeId:screen.rootNode.id,replacementNode:replacement},actor:'deterministic-engine',timestamp:new Date().toISOString(),preconditionRevision:manifest.historyMeta.headRevision});
+  }
+
+  if (targetScreen && visualVariantCandidate) {
+    const replacement = mutations.find(
+      (mutation): mutation is Extract<ProjectMutation, { type: 'REPLACE_NODE' }> =>
+        mutation.type === 'REPLACE_NODE' && mutation.targetId === targetScreen.rootNode.id,
+    ) ?? recomposeReplacement;
+    const resultingRoot = replacement?.payload.replacementNode ?? targetScreen.rootNode;
+    const resultingNode = findNodeById(resultingRoot, visualVariantCandidate.nodeId);
+    const sameResource =
+      resultingNode?.resourceRef?.slug === visualVariantCandidate.slug &&
+      resultingNode.resourceRef.id === visualVariantCandidate.resourceId;
+    const variants = resultingNode?.resourceRef && sameResource
+      ? getSupportedResourceVariants(resultingNode.resourceRef.slug, resultingNode.resourceRef.id)
+      : undefined;
+    const previousVariant = visualVariantCandidate.currentVariant;
+    const nextVariant = variants?.filter((variant) => variant !== previousVariant);
+    if (resultingNode?.resourceRef && sameResource && nextVariant?.length) {
+      const variant = rng.pick(nextVariant);
+      mutations.push({
+        id: `mut-surprise-variant-${Date.now()}`,
+        type: 'CHANGE_VARIANT',
+        targetId: resultingNode.id,
+        payload: { targetNodeId: resultingNode.id, variant },
+        actor: 'deterministic-engine',
+        timestamp: new Date().toISOString(),
+        preconditionRevision: manifest.historyMeta.headRevision,
+      });
+      appliedExplanations.push(
+        `Changed the visible variant for ${visualVariantCandidate.slug} from ${previousVariant} to ${variant}`,
+      );
+    }
+  } else if (targetScreen) {
+    appliedExplanations.push('No unlocked runtime component on the active screen supports a visual variant change');
+  }
   const explanation = `Surprise Me (divergence: ${divergence}%): ${appliedExplanations.join(
     '; '
   )}. Preserved ${totalLockedNodes} locked node(s).`;
 
   const operation = createHistoryOperation(
-    `Surprise Me: Diverged by ${divergence}%`,
+    explanation,
     mutations,
     'deterministic-engine'
   );

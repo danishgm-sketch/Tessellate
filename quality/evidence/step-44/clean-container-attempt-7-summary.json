@@ -1,0 +1,16 @@
+{
+  "attempt": 7,
+  "status": "failed",
+  "container": "tessellate-step44-20261024T035745Z",
+  "checksBeforeBrowserRerun": "all passed in attempt 6: frozen install, catalogue build, typecheck, lint, unit tests, audit:all, production build",
+  "astroBrowserProfile": {"passed": 283, "skipped": 108, "flaky": 1, "failedAfterRetries": 0},
+  "sitesPreviewProfile": {"passed": 242, "skipped": 41, "failed": 5},
+  "previewAppProfile": "not run because the Sites Preview profile failed",
+  "failures": [
+    {"title":"Catalogue certification counted superseded isolated preview navigations as failed requests", "rootCause":"The audit recognized /preview and /preview/ cancellations, but the Sites Worker uses /preview-content/ for the same intentionally replaced iframe navigation."},
+    {"title":"CLI documentation overflows at 360 CSS pixels", "rootCause":"Several inline command code blocks in pre elements lack a shared horizontal-overflow rule; their unbroken text widens the mobile document to 389 pixels."},
+    {"title":"Workbench project name collapses at 430 CSS pixels", "rootCause":"The wrapping top toolbar lets its flex-1 first cluster shrink to 2 pixels when center and action clusters share a flex row."},
+    {"title":"The same two responsive defects reproduce in the Sites mobile profile", "rootCause":"Both are shared application layout issues, not Sites-only behavior."}
+  ],
+  "statusPolicy": "No defects marked closed until post-fix browser verification."
+}

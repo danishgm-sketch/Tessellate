@@ -1,0 +1,31 @@
+{
+  "capturedAt": "2026-10-20T18:45:30.258Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/accessibility",
+  "viewport": "390x844",
+  "title": "Accessibility Lab — Tessellate Tools",
+  "status": 200,
+  "visibleText": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 09 · INCLUSIVE COMPLIANCE\nClient-Side · Zero Login\nAccessibility Lab\n\nAudit contrast floors, focus indicators, minimum touch targets, and reduced-motion fallbacks against WCAG 2.2 AA.\n\nWCAG 2.2 AA Baseline Guaranteed\nContrast Matrix\nFocus Ring Studio\nTouch Target Size\nColor Pair Calibration\nAuto-Fix Contrast\nForeground (Text / Icon)\nBackground (Surface / Canvas)\nCONTRAST RATIO\n16.72:1\nAAA HIGHEST\nNORMAL TEXT (16px)\nPASS\nReq: 4.5:1\nLARGE TEXT (18pt+)\nPASS\nReq: 3.0:1\nUI COMPONENTS\nPASS\nReq: 3.0:1\nAccessible Typographic Contrast\n\nVerify readability and optical legibility in real conditions. Even when users browse with low screen brightness or high ambient glare, text must remain distinct.\n\nFG: #111217\n·\nBG: #F4F2ED",
+  "buttons": [
+    "Search⌘K",
+    "",
+    "Contrast Matrix",
+    "Focus Ring Studio",
+    "Touch Target Size",
+    "Auto-Fix Contrast"
+  ],
+  "layout": {
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "documentHeight": 1406,
+    "horizontalOverflow": false
+  },
+  "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\deployed-before\\tools\\mobile\\accessibility.png",
+  "accessibility": [],
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

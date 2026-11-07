@@ -4,9 +4,10 @@ export type FooterMinimalVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface FooterMinimalProps {
   variant?: FooterMinimalVariant;
+  links?: Array<{ label: string; href?: string }>;
 }
 
-export function FooterMinimal({ variant = 'quiet' }: FooterMinimalProps) {
+export function FooterMinimal({ variant = 'quiet', links = [] }: FooterMinimalProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-600 border-neutral-200';
 
   if (variant === 'expressive') {
@@ -23,9 +24,9 @@ export function FooterMinimal({ variant = 'quiet' }: FooterMinimalProps) {
           <span>© {new Date().getFullYear()} Tessellate Core. MIT License.</span>
         </div>
         <div className="flex items-center gap-6">
-          <a href="#" className="hover:underline">Privacy</a>
-          <a href="#" className="hover:underline">Terms</a>
-          <a href="#" className="hover:underline">Status: Operational</a>
+          {links.map((link) => link.href
+            ? <a key={link.label} href={link.href} className="hover:underline">{link.label}</a>
+            : <span key={link.label}>{link.label}</span>)}
         </div>
       </div>
     </footer>

@@ -81,6 +81,7 @@ export function evaluateHardConstraints(input: HardConstraintEvaluationInput): H
 
   // 3. Prohibited Dependencies
   const prohibited = input.constraints?.prohibitedDependencies ?? [];
+  const allowed = input.constraints?.allowedDependencies;
   const declaredDeps: string[] = Array.isArray(flexRes.dependencies)
     ? flexRes.dependencies.map((d) => d.package)
     : [
@@ -88,8 +89,16 @@ export function evaluateHardConstraints(input: HardConstraintEvaluationInput): H
         ...Object.keys(flexRes.dependencies?.peerDependencies ?? {}),
       ];
   for (const dep of declaredDeps) {
-    if (prohibited.some((p) => p.toLowerCase() === dep.toLowerCase())) {
+    if (prohibited.some((p) => p.trim().toLowerCase() === dep.trim().toLowerCase())) {
       reasons.push(`Prohibited dependency detected: '${dep}'.`);
+    }
+  }
+  if (allowed) {
+    const approvedDependencies = new Set(allowed.map((dependency) => dependency.trim().toLowerCase()));
+    for (const dep of declaredDeps) {
+      if (!approvedDependencies.has(dep.trim().toLowerCase())) {
+        reasons.push(`Dependency '${dep}' is not in the approved allowlist [${allowed.join(', ')}].`);
+      }
     }
   }
 
@@ -105,10 +114,11 @@ export function evaluateHardConstraints(input: HardConstraintEvaluationInput): H
 
   // 5. License Compatibility
   const licenseAllowlist = input.requestedLicenseAllowlist ?? input.constraints?.licenseAllowlist;
-  const resLicense = (flexRes.license?.spdx ?? flexRes.provenance?.license ?? '').toLowerCase();
-  if (licenseAllowlist && licenseAllowlist.length > 0 && resLicense) {
-    const isAllowed = licenseAllowlist.some((lic) => lic.toLowerCase() === resLicense);
-    if (!isAllowed) {
+  const resLicense = (flexRes.license?.spdx ?? flexRes.provenance?.license ?? '').trim().toLowerCase();
+  if (licenseAllowlist && licenseAllowlist.length > 0) {
+    if (!resLicense) {
+      reasons.push('License metadata is missing while the project requires an approved license allowlist.');
+    } else if (!licenseAllowlist.some((lic) => lic.trim().toLowerCase() === resLicense)) {
       reasons.push(
         `License '${resLicense}' is not in the approved allowlist [${licenseAllowlist.join(', ')}].`
       );
@@ -138,32 +148,28 @@ export function evaluateHardConstraints(input: HardConstraintEvaluationInput): H
 
   // 7. Performance Class Ceiling
   const perfCeiling = input.performanceCeiling ?? input.constraints?.performanceCeiling;
-  if (perfCeiling === 'lightweight') {
-    const jsRank = PERFORMANCE_COST_RANK[resource.performance.jsCost] ?? 0;
-    const gpuRank = PERFORMANCE_COST_RANK[resource.performance.gpuCost] ?? 0;
-    const mediaRank = PERFORMANCE_COST_RANK[resource.performance.mediaCost] ?? 0;
+  if (perfCeiling === 'lightweight' || perfCeiling === 'balanced') {
+    const maximumCost = perfCeiling === 'lightweight' ? 'low' : 'medium';
+    const maximumRank = PERFORMANCE_COST_RANK[maximumCost]!;
+    const costs = [
+      ['jsCost', resource.performance.jsCost],
+      ['gpuCost', resource.performance.gpuCost],
+      ['mediaCost', resource.performance.mediaCost],
+    ] as const;
 
-    if (jsRank > PERFORMANCE_COST_RANK['low']!) {
-      reasons.push(`Performance ceiling violation: jsCost '${resource.performance.jsCost}' exceeds lightweight limit.`);
-    }
-    if (gpuRank > PERFORMANCE_COST_RANK['low']!) {
-      reasons.push(`Performance ceiling violation: gpuCost '${resource.performance.gpuCost}' exceeds lightweight limit.`);
-    }
-    if (mediaRank > PERFORMANCE_COST_RANK['low']!) {
-      reasons.push(`Performance ceiling violation: mediaCost '${resource.performance.mediaCost}' exceeds lightweight limit.`);
+    for (const [name, cost] of costs) {
+      const rank = PERFORMANCE_COST_RANK[cost] ?? Number.POSITIVE_INFINITY;
+      if (rank > maximumRank) {
+        reasons.push(`Performance ceiling violation: ${name} '${cost}' exceeds ${perfCeiling} limit.`);
+      }
     }
 
-    const heavyTags = ['webgl', '3d', 'threejs', 'physics', 'particle-system', 'particles', 'simulation'];
-    const hasHeavyTag = (resource.tags ?? []).some((t) => heavyTags.includes(t.toLowerCase()));
-    if (hasHeavyTag) {
-      reasons.push(`Performance ceiling violation: heavy graphics or simulation tags detected for lightweight target.`);
-    }
-  } else if (perfCeiling === 'balanced') {
-    if (resource.performance.jsCost === 'high') {
-      reasons.push("Performance ceiling violation: jsCost 'high' exceeds balanced limit.");
-    }
-    if (resource.performance.gpuCost === 'high') {
-      reasons.push("Performance ceiling violation: gpuCost 'high' exceeds balanced limit.");
+    if (perfCeiling === 'lightweight') {
+      const heavyTags = ['webgl', '3d', 'threejs', 'physics', 'particle-system', 'particles', 'simulation'];
+      const hasHeavyTag = (resource.tags ?? []).some((t) => heavyTags.includes(t.toLowerCase()));
+      if (hasHeavyTag) {
+        reasons.push(`Performance ceiling violation: heavy graphics or simulation tags detected for lightweight target.`);
+      }
     }
   }
 
@@ -171,8 +177,9 @@ export function evaluateHardConstraints(input: HardConstraintEvaluationInput): H
   const targetDevices = input.targetDevices ?? input.constraints?.targetDevices ?? ['desktop', 'tablet', 'mobile'];
   if (targetDevices.includes('mobile')) {
     const hasSmallVerifiedWidth = resource.responsive.verifiedWidths.some((w) => w <= 480);
-    const hasBreakpointOverride =
-      resource.responsive.breakpointStrategies && resource.responsive.breakpointStrategies.length > 0;
+    const hasBreakpointOverride = (resource.responsive.breakpointStrategies ?? []).some(
+      (breakpoint) => breakpoint.maxWidth >= 360,
+    );
     const defaultStrategy = resource.responsive.defaultStrategy;
 
     if (!hasSmallVerifiedWidth && !hasBreakpointOverride && defaultStrategy === 'compress') {

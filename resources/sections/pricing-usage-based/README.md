@@ -1,3 +1,3 @@
 # Pricing Usage Based
 
-Interactive slider calculator demonstrating consumption-based billing models.
+Slider-driven usage estimate at an illustrative rate. Replace the rate, currency, and terms before publication.

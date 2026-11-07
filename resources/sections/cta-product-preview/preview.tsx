@@ -15,7 +15,9 @@ export function CtaProductPreviewPreview() {
               type="button"
               onClick={() => setVariant(v)}
               className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${
-                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'
+                variant === v
+                  ? 'bg-neutral-900 text-white'
+                  : 'bg-white text-neutral-700 hover:bg-neutral-200'
               }`}
             >
               {v}
@@ -23,7 +25,7 @@ export function CtaProductPreviewPreview() {
           ))}
         </div>
       </div>
-      <CtaProductPreview variant={variant} />
+      <CtaProductPreview variant={variant} composeHref="/compose" />
     </div>
   );
 }

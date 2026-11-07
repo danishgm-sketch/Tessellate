@@ -52,19 +52,19 @@ export function UiGallery() {
         <div className="flex items-center gap-6 rounded-2xl border border-[#D9D6CF] bg-[#FFFFFF] p-6 dark:border-[#272C34] dark:bg-[#111419]">
           <div className="flex flex-col items-center gap-2">
             <Mark size={16} />
-            <span className="text-[11px] text-[#8B8F97]">16px</span>
+            <span className="text-[11px] text-[var(--text-muted)]">16px</span>
           </div>
           <div className="flex flex-col items-center gap-2">
             <Mark size={24} />
-            <span className="text-[11px] text-[#8B8F97]">24px</span>
+            <span className="text-[11px] text-[var(--text-muted)]">24px</span>
           </div>
           <div className="flex flex-col items-center gap-2">
             <Mark size={36} />
-            <span className="text-[11px] text-[#8B8F97]">36px</span>
+            <span className="text-[11px] text-[var(--text-muted)]">36px</span>
           </div>
           <div className="flex flex-col items-center gap-2">
             <Mark size={48} />
-            <span className="text-[11px] text-[#8B8F97]">48px</span>
+            <span className="text-[11px] text-[var(--text-muted)]">48px</span>
           </div>
         </div>
       </section>
@@ -184,7 +184,7 @@ export function UiGallery() {
             }
             right={
               <div className="flex items-center gap-2">
-                <span className="text-[11px] text-[#707986]">100%</span>
+                <span className="text-[11px] text-[var(--text-muted)]">100%</span>
                 <Button size="sm" variant="primary">Export</Button>
               </div>
             }
@@ -200,7 +200,7 @@ export function UiGallery() {
               </div>
             </WorkbenchPanel>
 
-            <div className="flex-1 flex items-center justify-center p-6 text-center text-xs text-[#707986]">
+            <div className="flex-1 flex items-center justify-center p-6 text-center text-xs text-[var(--text-muted)]">
               [Central Composition Canvas with 24px subtle grid]
             </div>
 

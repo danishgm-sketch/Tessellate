@@ -108,22 +108,47 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "bio": {
-                    "type": "string"
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 80
                   },
-                  "githubUrl": {
-                    "type": "string"
+                  "bio": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 2000
+                  },
+                  "avatarUrl": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "uri",
+                    "description": "HTTPS URL"
+                  },
+                  "githubHandle": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 39
                   },
                   "specialtyTags": {
                     "type": "array",
+                    "maxItems": 20,
                     "items": {
-                      "type": "string"
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
                     }
                   },
                   "isAvailableForWork": {
                     "type": "boolean"
                   }
-                }
+                },
+                "additionalProperties": false
               }
             }
           }

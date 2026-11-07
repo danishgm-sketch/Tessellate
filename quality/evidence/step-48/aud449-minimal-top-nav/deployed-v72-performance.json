@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-11-01T22:22:21Z",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/resources/minimal-top-nav/",
+  "trace": {
+    "reload": true,
+    "ignoreCache": true,
+    "cpuThrottling": 1,
+    "networkThrottling": "none",
+    "rawTraceRetained": false
+  },
+  "metrics": {
+    "lcpMs": 243,
+    "lcpElement": "resource page H1 text",
+    "ttfbMs": 50,
+    "renderDelayMs": 194,
+    "cls": 0.0,
+    "inp": null,
+    "fieldData": null
+  },
+  "renderBlocking": {
+    "resource": "/_astro/style.B-SA8okk.css",
+    "status": 200,
+    "totalDurationMs": 72,
+    "estimatedFcpSavingsMs": 0,
+    "estimatedLcpSavingsMs": 0,
+    "action": "No change recommended from this trace because DevTools estimated zero savings."
+  }
+}

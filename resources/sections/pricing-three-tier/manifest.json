@@ -5,7 +5,7 @@
   "name": "Pricing Three Tier",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Canonical 3-card pricing table (Free, Pro, Enterprise) with highlighted recommended tier.",
+  "description": "Example three-plan pricing section. Plan names, prices, and included features are placeholders to replace before publication.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,15 +130,15 @@
     "conversion"
   ],
   "intent": {
-    "summary": "Canonical 3-card pricing table (Free, Pro, Enterprise) with highlighted recommended tier.",
+    "summary": "Example three-plan pricing section. Plan names, prices, and included features are placeholders to replace before publication.",
     "idealFor": [
-      "Standard B2B SaaS pricing models"
+      "Teams building a pricing page with their own verified plan terms"
     ],
     "avoidFor": [
-      "Free-only open source projects without paid tiers"
+      "Published pricing pages until all example values are replaced"
     ],
     "jobs": [
-      "Provide clean comparative pricing with transparent features"
+      "Compare clearly disclosed example plan tiers"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"
@@ -209,7 +209,7 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
+    "levelTarget": "AA",
     "keyboardVerified": true,
     "screenReaderSemantics": true,
     "reducedMotionVerified": true,
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

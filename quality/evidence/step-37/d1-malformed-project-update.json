@@ -1,0 +1,91 @@
+{
+  "id": "SEC-37-057",
+  "severity": "medium",
+  "route": "PUT /api/projects/:id",
+  "environment": "Miniflare D1 with authenticated test user",
+  "request": {
+    "url": "/api/projects/malformed-json-project",
+    "contentType": "application/json",
+    "body": "{\"expectedRevision\":1,,}"
+  },
+  "expected": {
+    "status": 400,
+    "error": "Validation Error"
+  },
+  "beforeFix": {
+    "status": 428,
+    "error": "PreconditionRequired",
+    "test": "pnpm exec vitest run apps/api/src/__tests__/cloud-sync-d1.test.ts -t \"rejects malformed cloud project update JSON as invalid input\"",
+    "result": "failed: expected 400, received 428"
+  },
+  "afterFix": {
+    "status": 400,
+    "error": "Validation Error",
+    "test": "pnpm exec vitest run apps/api/src/__tests__/cloud-sync-d1.test.ts -t \"rejects malformed cloud project update JSON as invalid input\"",
+    "result": "passed"
+  },
+  "malformedJsonRouteMatrix": {
+    "result": "passed",
+    "status": 400,
+    "error": "Validation Error",
+    "routes": [
+      "POST /api/projects",
+      "PUT /api/projects/:id",
+      "POST /api/projects/:id/revisions",
+      "POST /api/projects/:id/publish",
+      "PUT /api/me",
+      "POST /api/favorites",
+      "POST /api/collections",
+      "POST /api/collections/:id/items",
+      "POST /api/creator-links",
+      "POST /api/reports"
+    ],
+    "test": "apps/api/src/__tests__/cloud-sync-d1.test.ts: rejects malformed JSON consistently across D1-backed mutation routes"
+  },
+  "privateRouteAuthorizationMatrix": {
+    "result": "passed",
+    "status": 401,
+    "error": "Unauthorized",
+    "routes": [
+      "GET /api/projects",
+      "POST /api/projects",
+      "GET /api/projects/:id",
+      "PUT /api/projects/:id",
+      "DELETE /api/projects/:id",
+      "GET /api/projects/:id/revisions",
+      "POST /api/projects/:id/revisions",
+      "POST /api/projects/:id/publish",
+      "PUT /api/me",
+      "GET /api/favorites",
+      "POST /api/favorites",
+      "DELETE /api/favorites/:slug",
+      "GET /api/collections",
+      "POST /api/collections",
+      "POST /api/collections/:id/items",
+      "DELETE /api/collections/:id/items/:slug",
+      "DELETE /api/collections/:id",
+      "POST /api/creator-links",
+      "DELETE /api/creator-links/:id"
+    ],
+    "test": "apps/api/src/__tests__/cloud-sync-d1.test.ts: requires a valid account session on every private D1 API route"
+  },
+  "publicReadLoadSmoke": {
+    "result": "passed",
+    "concurrentRequests": 60,
+    "routes": {
+      "GET /api/published/:slug": 20,
+      "GET /api/collections/:id": 20,
+      "GET /api/creator-links/:userId": 20
+    },
+    "httpStatus": 200,
+    "responseByteCeiling": 2097152,
+    "assertion": "No 5xx responses; every response stayed below 2 MiB.",
+    "test": "apps/api/src/__tests__/cloud-sync-d1.test.ts: serves concurrent public D1 reads without 5xx responses or oversized payloads"
+  },
+  "rootCause": "JSON parse failure fell back to an empty object and was misclassified as a missing expectedRevision precondition.",
+  "affectedFiles": [
+    "apps/api/src/routes/projects.ts",
+    "apps/api/src/__tests__/cloud-sync-d1.test.ts"
+  ],
+  "status": "fixed locally; deployed verification pending"
+}

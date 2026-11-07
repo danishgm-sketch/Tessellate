@@ -1,5 +1,7 @@
 # Tessellate Build Order
 
+> The 2026-10-16 owner-directed [Product Hardening programme](PRODUCT_HARDENING.md) supersedes this historical feature-build sequence until release. Existing checkmarks record previous implementation assertions, not current certification. Start with consolidation and the green baseline; do not expand the product.
+
 This is the authoritative autonomous implementation sequence. Start at the first unchecked item. Do not reorder phases for convenience.
 
 Use `[x]` only after the acceptance criteria for that item are actually satisfied.

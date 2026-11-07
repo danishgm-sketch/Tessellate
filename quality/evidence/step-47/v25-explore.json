@@ -1,0 +1,41 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+  "siteVersion": 25,
+  "capturedAt": "2026-10-24T21:01:18.931Z",
+  "tool": "Chrome DevTools MCP performance trace",
+  "fieldData": "CrUX unavailable for this route",
+  "desktop": {
+    "viewport": "1440x900",
+    "cpuThrottling": "1x",
+    "networkThrottling": "none",
+    "lcpMs": 192,
+    "ttfbMs": 42,
+    "renderDelayMs": 149,
+    "cls": 0,
+    "requestCount": 107,
+    "consoleMessages": 0,
+    "failedRequests": 0,
+    "htmlCompression": "not applied",
+    "estimatedUncompressedTransferBytes": 47400,
+    "estimatedFcpSavingsMs": 0,
+    "estimatedLcpSavingsMs": 0
+  },
+  "mobile": {
+    "viewport": "390x844",
+    "devicePixelRatio": 3,
+    "cpuThrottling": "4x",
+    "networkThrottling": "Fast 4G",
+    "lcpMs": 600,
+    "ttfbMs": 58,
+    "renderDelayMs": 542,
+    "cls": 0,
+    "requestCount": 56,
+    "consoleMessages": 0,
+    "failedRequests": 0
+  },
+  "limitations": [
+    "Single lab navigation per viewport; do not treat as field Core Web Vitals.",
+    "Raw trace export was not persisted because the DevTools MCP file path was outside its configured workspace roots; this record captures the returned trace summary."
+  ],
+  "result": "No measurable page-load performance defect identified in these Explore traces. The uncompressed HTML observation had zero estimated FCP/LCP savings."
+}

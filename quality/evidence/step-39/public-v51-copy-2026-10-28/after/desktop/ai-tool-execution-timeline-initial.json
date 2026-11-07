@@ -1,0 +1,14 @@
+{
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-tool-execution-timeline",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "visibleText": "AI Tool Execution Timeline preview\nExample agent tool trace\nSample total: 190ms\n\nExample trace. Sample calls and timings only; this preview does not run tools or create files.\n\nsearch_catalog()\n32ms · sample\n▼\nvalidate_manifest()\n18ms · sample\n▲\nArguments:\ntarget: \"example-manifest.json\"\nSample output:\nExample result: the sample manifest passed validation.\nexport_vite_project()\n140ms · sample\n▼",
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

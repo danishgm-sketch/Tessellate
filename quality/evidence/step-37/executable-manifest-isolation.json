@@ -1,0 +1,30 @@
+{
+  "findingId": "SEC-37-063",
+  "severity": "high",
+  "title": "Catalogue builds executed contributed manifest modules",
+  "affectedFiles": [
+    "packages/catalog/src/loader.ts",
+    "packages/catalog/src/__tests__/catalog.test.ts",
+    "docs/ARCHITECTURE.md",
+    "docs/QUALITY_SECURITY.md",
+    "docs/DECISIONS.md"
+  ],
+  "reproduction": {
+    "manifest": "manifest.js with an import from node:fs, a top-level writeFileSync call, and a schema-valid export default object",
+    "beforeFix": "loadManifest dynamically imported the module, created the marker file, and returned the parsed manifest.",
+    "test": "packages/catalog/src/__tests__/catalog.test.ts > does not execute a contributed JavaScript manifest during catalogue loading"
+  },
+  "rootCause": "loadManifest used dynamic import for every non-JSON manifest, executing module initialization before schema validation.",
+  "remediation": "Parse TypeScript and JavaScript modules as static data with the TypeScript AST. Reject imports, executable statements, calls, computed values, spreads, and nonliteral identifiers. Retain static object manifests, and cap source size at 1 MiB.",
+  "compatibility": "Existing JSON resources are unchanged; static export const manifest = { ... } as const remains supported. Dynamic module behavior is no longer supported.",
+  "verification": {
+    "redBeforeFix": "The hostile-module test failed because loadManifest resolved instead of rejecting, and the marker write occurred.",
+    "command": "pnpm exec vitest run packages/catalog/src/__tests__/catalog.test.ts -t \"contributed JavaScript manifest|static TypeScript manifest\"",
+    "result": "passed",
+    "testsPassed": 2,
+    "testsSkipped": 14,
+    "markerCreatedAfterFix": false,
+    "staticTypeScriptCompatibility": "passed",
+    "deployedVerification": "pending"
+  }
+}

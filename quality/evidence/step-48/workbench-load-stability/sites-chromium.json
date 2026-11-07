@@ -1,0 +1,147 @@
+{
+  "capturedAt": "2026-11-03T05:16:59.140Z",
+  "route": "http://127.0.0.1:4323/workbench#screen-marketing-home",
+  "delayedChunks": [
+    "WorkbenchShell",
+    "TopToolbar",
+    "CommandBar"
+  ],
+  "delayedStartupChunks": [
+    "/_astro/WorkbenchShell.K4klj2bv.js"
+  ],
+  "delayedStarterRequests": [
+    "/data/workbench-starter.json"
+  ],
+  "delayMs": 1600,
+  "viewport": "1440x900",
+  "toolbarBefore": {
+    "x": 299.9375,
+    "y": 785.34375,
+    "width": 780.125,
+    "height": 42.65625
+  },
+  "toolbarAfter": {
+    "x": 299.9375,
+    "y": 785.34375,
+    "width": 780.125,
+    "height": 42.65625
+  },
+  "toolbarMovementPx": 0,
+  "cls": 0.07349993837877229,
+  "shifts": [
+    {
+      "startTime": 3210.600000023842,
+      "value": 0.01986111111111111,
+      "sources": [
+        {
+          "selector": "main#workbench-main.relative flex flex-1 overflow-hidden",
+          "previousRect": {
+            "x": 0,
+            "y": 56,
+            "width": 1440,
+            "height": 780,
+            "top": 56,
+            "right": 1440,
+            "bottom": 836,
+            "left": 0
+          },
+          "currentRect": {
+            "x": 0,
+            "y": 89,
+            "width": 1440,
+            "height": 747,
+            "top": 89,
+            "right": 1440,
+            "bottom": 836,
+            "left": 0
+          }
+        }
+      ]
+    },
+    {
+      "startTime": 3803.100000023842,
+      "value": 0.05363882726766118,
+      "sources": [
+        {
+          "selector": "div.@container tess-node tess-layout-hero relative transition-all duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ease-out)]  ",
+          "previousRect": {
+            "x": 313,
+            "y": 226,
+            "width": 754,
+            "height": 448,
+            "top": 226,
+            "right": 1067,
+            "bottom": 674,
+            "left": 313
+          },
+          "currentRect": {
+            "x": 313,
+            "y": 218,
+            "width": 754,
+            "height": 559.34375,
+            "top": 218,
+            "right": 1067,
+            "bottom": 777.34375,
+            "left": 313
+          }
+        },
+        {
+          "selector": "div.@container tess-node tess-layout-value-proposition relative transition-all duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ease-out)]  ",
+          "previousRect": {
+            "x": 313,
+            "y": 698,
+            "width": 754,
+            "height": 79.34375,
+            "top": 698,
+            "right": 1067,
+            "bottom": 777.34375,
+            "left": 313
+          },
+          "currentRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ]
+    },
+    {
+      "startTime": 5024.100000023842,
+      "value": 0.001129238468792867,
+      "sources": [
+        {
+          "selector": "section.relative w-full py-24 @sm:py-32 px-6 @sm:px-12 border-b transition-colors bg-[#FAF8F5] text-neutral-900 border-neutral-200",
+          "previousRect": {
+            "x": 313,
+            "y": 218,
+            "width": 754,
+            "height": 559.34375,
+            "top": 218,
+            "right": 1067,
+            "bottom": 777.34375,
+            "left": 313
+          },
+          "currentRect": {
+            "x": 313,
+            "y": 223,
+            "width": 754,
+            "height": 554.34375,
+            "top": 223,
+            "right": 1067,
+            "bottom": 777.34375,
+            "left": 313
+          }
+        }
+      ]
+    }
+  ],
+  "consoleErrors": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

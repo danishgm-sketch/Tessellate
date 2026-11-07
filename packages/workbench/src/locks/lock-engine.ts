@@ -4,29 +4,14 @@ import type {
   ProjectMutation,
   NodeLocks,
   LockSpec,
+  LockTypeName,
 } from '@tessellate/schemas';
+import { LOCK_TYPES } from '@tessellate/schemas';
 import { findNodeById, getNodePath, flattenTree } from '../utils/tree-helpers.js';
 
-export type LockType =
-  | 'node'
-  | 'structure'
-  | 'content'
-  | 'style'
-  | 'motion'
-  | 'media'
-  | 'responsive'
-  | 'dna';
+export type LockType = LockTypeName;
 
-export const ALL_LOCK_TYPES: LockType[] = [
-  'node',
-  'structure',
-  'content',
-  'style',
-  'motion',
-  'media',
-  'responsive',
-  'dna',
-];
+export const ALL_LOCK_TYPES: LockType[] = [...LOCK_TYPES];
 
 export class LockViolationError extends Error {
   constructor(
@@ -102,12 +87,21 @@ export function canApplyMutation(
     // If all root nodes in screen are unlocked, screen can be manipulated
     const screenId = mutation.payload.screenId;
     const screen = manifest.screens.find((s) => s.id === screenId);
-    if (!screen) return { allowed: true };
+    if (!screen) return { allowed: false, reason: `Screen "${screenId}" does not exist.` };
     if (isNodeLocked(screen.rootNode, 'structure') || isNodeLocked(screen.rootNode, 'node')) {
       return {
         allowed: false,
         reason: `Screen root node "${screen.rootNode.id}" is locked with structure/node lock.`,
       };
+    }
+    if (mutation.type === 'DELETE_SCREEN') {
+      const lockedNodes = getLockedDescendantIds(screen.rootNode);
+      if (lockedNodes.length > 0) {
+        return {
+          allowed: false,
+          reason: `Screen contains locked node${lockedNodes.length === 1 ? '' : 's'}: ${lockedNodes.join(', ')}.`,
+        };
+      }
     }
     return { allowed: true };
   }

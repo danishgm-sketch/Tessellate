@@ -1,0 +1,11 @@
+{
+  "attempt": 6,
+  "status": "browser_tests_failed_after_build_passed",
+  "container": "tessellate-step44-20261024T035745Z",
+  "diagnosis": [
+    {"failure": "CLI/MCP cross-surface tests spawned pnpm via Corepack 12.15.0 despite the repository pin", "hostFix": "launch the MCP server with the current Node executable and local tsx CLI"},
+    {"failure": "Gold resource contrast evidence attempted git rev-parse inside the sanitized source tree", "hostFix": "pass the source revision explicitly into clean-container browser tests"},
+    {"failure": "one-hour Sites-specific soak ran under the default Astro browser project and expected a Sites project name", "hostFix": "exclude the dedicated soak from the default Playwright config; it has its own Sites config"}
+  ],
+  "note": "Full test suite result is preserved in clean-container-attempt-6.log. These were harness/configuration failures; final recheck required before closing Step 44."
+}

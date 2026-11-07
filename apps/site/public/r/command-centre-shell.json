@@ -3,14 +3,14 @@
   "name": "command-centre-shell",
   "type": "registry:block",
   "title": "Command Centre Shell",
-  "description": "Mission control telemetry layout with multi-panel monitoring grids and emergency alerts.",
+  "description": "Example multi-panel operations layout. Its status and node labels are sample content, not live telemetry.",
   "dependencies": [],
   "devDependencies": [],
   "registryDependencies": [],
   "files": [
     {
       "path": "index.tsx",
-      "content": "import React from 'react';\n\nexport type CommandCentreShellVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CommandCentreShellProps {\n  variant?: CommandCentreShellVariant;\n  children?: React.ReactNode;\n}\n\nexport function CommandCentreShell({\n  variant = 'quiet',\n  children = <div className=\"grid grid-cols-3 gap-4\"><div className=\"border p-4 rounded-xl\">Node A</div><div className=\"border p-4 rounded-xl\">Node B</div><div className=\"border p-4 rounded-xl\">Node C</div></div>,\n}: CommandCentreShellProps) {\n  let theme = 'bg-[#FAF9F6] text-neutral-900';\n  if (variant === 'nocturne') theme = 'bg-[#0B0D10] text-neutral-100';\n\n  return (\n    <div className={`min-h-screen p-6 space-y-6 ${theme}`}>\n      <header className=\"flex justify-between items-center pb-4 border-b\">\n        <div>\n          <h1 className=\"text-base font-bold\">Mission Control</h1>\n          <p className=\"text-xs opacity-60\">Global Cluster Telemetry</p>\n        </div>\n        <div className=\"flex gap-2\">\n          <span className=\"px-2.5 py-1 bg-emerald-500/20 text-emerald-500 rounded text-xs font-mono font-bold\">ALL SYSTEMS OPERATIONAL</span>\n        </div>\n      </header>\n      <main className=\"text-xs\">{children}</main>\n    </div>\n  );\n}\n",
+      "content": "import React from 'react';\n\nexport type CommandCentreShellVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CommandCentreShellProps {\n  variant?: CommandCentreShellVariant;\n  children?: React.ReactNode;\n}\n\nexport function CommandCentreShell({\n  variant = 'quiet',\n  children = <div className=\"grid grid-cols-1 gap-4 sm:grid-cols-3\"><div className=\"border p-4 rounded-xl\">Example node A</div><div className=\"border p-4 rounded-xl\">Example node B</div><div className=\"border p-4 rounded-xl\">Example node C</div></div>,\n}: CommandCentreShellProps) {\n  let theme = 'bg-[#FAF9F6] text-neutral-900';\n  if (variant === 'nocturne') theme = 'bg-[#0B0D10] text-neutral-100';\n\n  return (\n    <div className={`min-h-screen p-6 space-y-6 ${theme}`}>\n      <header className=\"flex justify-between items-center pb-4 border-b\">\n        <div>\n          <h1 className=\"text-base font-bold\">Mission Control</h1>\n          <p className=\"text-xs opacity-60\">Example telemetry layout</p>\n        </div>\n        <div className=\"flex gap-2\">\n          <span className=\"px-2.5 py-1 bg-neutral-200 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200 rounded text-xs font-mono font-bold\">Sample status · not live</span>\n        </div>\n      </header>\n      <main className=\"text-xs\">{children}</main>\n    </div>\n  );\n}\n",
       "type": "registry:block",
       "target": "components/ui/index.tsx"
     },

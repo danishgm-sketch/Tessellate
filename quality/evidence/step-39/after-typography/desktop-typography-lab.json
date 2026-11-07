@@ -1,0 +1,30 @@
+{
+  "capturedAt": "2026-10-20T18:40:55.426Z",
+  "route": "http://localhost:4321/tools/typography",
+  "viewport": "1440x900",
+  "status": 200,
+  "title": "Typography Lab — Tessellate Tools",
+  "layout": {
+    "viewportWidth": 1440,
+    "documentWidth": 1440,
+    "documentHeight": 1318,
+    "horizontalOverflow": false
+  },
+  "specimenText": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 05 · TYPOGRAPHIC HIERARCHY\nClient-Side · Zero Login\nTypography Lab\n\nCompare type scales and font pairings, then test how tabular figures affect number alignment.\n\nCopy Scale CSS\nScale & Pairing Controls\nReset\nMusical Scale Ratio\nMajor Second\n1.125\nMinor Third\n1.2\nMajor Third\n1.25\nPerfect Fourth\n1.333\nGolden Ratio\n1.618\nBase Body Size\n16px\nTypeface Pairing Archetype\nGeist & System Mono\nPrecision engineering grotesque with geometric optical balance.\nNewsreader Editorial & Inter\nBespoke authorial voice with warm literary serif display titles.\nJetBrains Mono & Sans\nTerminal-first technical platform typography for CLI & developer tools.\nOpenType Numerical Features\nTabular Figures (Mono-width align)\nSlashed Zero (0 vs O distinction)\nHierarchical Scale Ladder\nTabular Figure Sample\nILLUSTRATIVE NUMBER SAMPLE\nTABULAR-NUMS SLASHED-ZERO\n\nIllustrative sample data for comparing numeral alignment; these values are not live metrics.\n\nIllustrative numeric sample records for checking number alignment.\nRECORD ID\tVALUE\tCHANGE\tELAPSED\nA-1024\t1,420.89\t+12.4%\t00:14.02\nB-0318\t84.50\t-0.8%\t00:08.90\nC-7750\t12,000.00\t+104.2%\t01:42.15\nD-4402\t905.10\t+0.0%\t00:00.45\n\nTabular figures give digits a consistent width when the selected font supports them.",
+  "computedHeading": {
+    "text": "A product, shaped by people.",
+    "fontSize": "110px"
+  },
+  "copiedCss": "/* Tessellate Type Scale: Golden Ratio (1.618) */\r\n:root {\r\n  --font-heading: Geist, Inter, system-ui, sans-serif;\r\n  --font-body: Geist, Inter, system-ui, sans-serif;\r\n  --font-mono: Geist Mono, JetBrains Mono, monospace;\r\n  --font-numeric: tabular-nums slashed-zero;\r\n\r\n  --font-size-h1: clamp(36px, 7.64vw, 110px);\r\n  --font-size-h2: clamp(30px, 4.72vw, 68px);\r\n  --font-size-h3: clamp(24px, 2.92vw, 42px);\r\n  --font-size-h4: clamp(20px, 1.81vw, 26px);\r\n  --font-size-body: 16px;\r\n  --font-size-small: 10px;\r\n}",
+  "screenshots": {
+    "hierarchy": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\after-typography\\desktop-typography-lab.png",
+    "specimen": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\after-typography\\desktop-typography-specimen.png",
+    "interaction": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\after-typography\\desktop-typography-interaction.png"
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

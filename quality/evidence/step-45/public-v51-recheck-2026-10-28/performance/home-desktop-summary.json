@@ -1,0 +1,30 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "version": 51,
+  "source": {
+    "canonical": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+    "sitesMirror": "e19db8af22097eb6d20a9fb2555157234ea1831d"
+  },
+  "viewport": "1440x900",
+  "tool": "Chrome DevTools Performance trace",
+  "traceMode": "cold navigation, cache bypassed, CPU 1x, no network throttling",
+  "lcpMs": 286,
+  "lcpBreakdownMs": {
+    "ttfb": 47,
+    "renderDelay": 239
+  },
+  "cls": 0,
+  "inp": null,
+  "inpNote": "No field INP data is available in CrUX for this page; this navigation trace did not synthesize a representative interaction INP.",
+  "insights": [
+    {
+      "name": "RenderBlocking",
+      "estimatedFcpSavingsMs": 0,
+      "estimatedLcpSavingsMs": 0
+    },
+    "NetworkDependencyTree",
+    "DOMSize"
+  ],
+  "traceArtifact": "Not saved: Chrome DevTools MCP denied file export outside its configured workspace roots. Metrics were copied from the inline trace result.",
+  "observedAt": "2026-10-28"
+}

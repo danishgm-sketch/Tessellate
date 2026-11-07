@@ -1,0 +1,43 @@
+{
+  "capturedAt": "2026-10-31T20:35:26.749Z",
+  "siteVersion": 64,
+  "canonicalSourceCommit": "248a2a09c84a0734998850f8f3b85a14ddf3b78c",
+  "siteSourceCommit": "8aca504b5d4231509bfd4d90d13aec949e979f58",
+  "deployment": "appgdep_6ae650c685a48191b78c4d41686f5cf7",
+  "observations": [
+    {
+      "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-empty-state/",
+      "viewport": "1440x900",
+      "status": 200,
+      "tablistRole": "tablist",
+      "tabCount": 8,
+      "activeTabRole": "tab",
+      "selected": "true",
+      "tabpanelRole": "tabpanel",
+      "tabpanelLabelledBy": "resource-tab-intent",
+      "screenshot": "resource-tabs-desktop-1440x900.png",
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "exceptions": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    {
+      "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-empty-state/",
+      "viewport": "390x844",
+      "status": 200,
+      "tablistRole": "tablist",
+      "tabCount": 8,
+      "activeTabRole": "tab",
+      "selected": "true",
+      "tabpanelRole": "tabpanel",
+      "tabpanelLabelledBy": "resource-tab-intent",
+      "screenshot": "resource-tabs-mobile-390x844.png",
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "exceptions": [],
+      "failedRequests": [],
+      "httpErrors": []
+    }
+  ]
+}

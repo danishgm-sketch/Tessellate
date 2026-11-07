@@ -1,3 +1,5 @@
+import './configure-zod.js';
+
 export * from './version.js';
 export * from './id.js';
 export * from './dna.js';
@@ -6,6 +8,8 @@ export * from './product.js';
 export * from './project.js';
 export * from './mutations.js';
 export * from './audit.js';
+export * from './intent-command.js';
+export * from './intent-language.js';
 export * from './migrations/index.js';
 export * from './json-schema.js';
 export * from './fixtures/valid-project.js';

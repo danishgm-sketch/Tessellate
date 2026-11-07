@@ -1,0 +1,81 @@
+{
+  "route": "http://127.0.0.1:4323/workbench#screen-marketing-home",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "delayedResources": [
+    "/_astro/editorial-hero.CN6KYWuK.js",
+    "/_astro/minimal-top-nav.BckvualU.js",
+    "/_astro/feature-bento.CR3oOG6T.js"
+  ],
+  "cls": 0.00783578371484911,
+  "shifts": [
+    {
+      "value": 0.00783578371484911,
+      "startTime": 2427.1000000089407,
+      "sources": [
+        {
+          "tag": "DIV",
+          "className": "@container tess-node tess-layout-value-proposition relative transition-colors duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ease-out)]  ",
+          "text": "Loading interface element…",
+          "previousRect": {
+            "x": 313,
+            "y": 698,
+            "width": 754,
+            "height": 79.34375,
+            "top": 698,
+            "right": 1067,
+            "bottom": 777.34375,
+            "left": 313
+          },
+          "currentRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ]
+    },
+    {
+      "value": 0.0006714827674897119,
+      "startTime": 4227.800000011921,
+      "sources": [
+        {
+          "tag": "SECTION",
+          "className": "relative w-full py-24 @sm:py-32 px-6 @sm:px-12 border-b transition-colors bg-[#FAF8F5] text-neutral-900 border-neutral-200",
+          "text": "Example organisation · sample contentA better workday starts with people.Bring your people, teams an",
+          "previousRect": {
+            "x": 313,
+            "y": 226,
+            "width": 754,
+            "height": 551.34375,
+            "top": 226,
+            "right": 1067,
+            "bottom": 777.34375,
+            "left": 313
+          },
+          "currentRect": {
+            "x": 313,
+            "y": 223,
+            "width": 754,
+            "height": 554.34375,
+            "top": 223,
+            "right": 1067,
+            "bottom": 777.34375,
+            "left": 313
+          }
+        }
+      ]
+    }
+  ],
+  "consoleErrors": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

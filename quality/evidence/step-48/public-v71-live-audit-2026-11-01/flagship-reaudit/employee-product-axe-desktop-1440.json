@@ -1,0 +1,509 @@
+{
+  "issue": "FLAGSHIP-ACCESSIBILITY-V71",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=proj-direction-c-adbbcf88970543d2adf0f8fbbc219b5edirc#screen-overview",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "scope": "The generated employee-experience product shown in the Workbench Preview dialog.",
+  "screenshot": "quality\\evidence\\step-48\\public-v71-live-audit-2026-11-01\\flagship-reaudit\\employee-product-preview-desktop-1440.png",
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "nodes": [
+        {
+          "target": [
+            "button[aria-label=\"Collapse navigation\"]"
+          ],
+          "html": "<button type=\"button\" aria-label=\"Collapse navigation\" aria-expanded=\"true\" class=\"p-2 border rounded\">−</button>",
+          "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+        },
+        {
+          "target": [
+            "a[href$=\"#screen-marketing-home\"]"
+          ],
+          "html": "<a href=\"#screen-marketing-home\" class=\"block rounded px-3 py-2 text-xs hover:bg-[#252C39] text-neutral-200\">Marketing Home</a>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.922 0 none)"
+        },
+        {
+          "target": [
+            "a[href$=\"#screen-overview\"]"
+          ],
+          "html": "<a href=\"#screen-overview\" class=\"block rounded px-3 py-2 text-xs hover:bg-[#252C39] text-neutral-200\">Team Overview</a>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.922 0 none)"
+        },
+        {
+          "target": [
+            "a[href$=\"#screen-collection-index\"]"
+          ],
+          "html": "<a href=\"#screen-collection-index\" class=\"block rounded px-3 py-2 text-xs hover:bg-[#252C39] text-neutral-200\">People Directory</a>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.922 0 none)"
+        },
+        {
+          "target": [
+            "a[href$=\"#screen-teams\"]"
+          ],
+          "html": "<a href=\"#screen-teams\" class=\"block rounded px-3 py-2 text-xs hover:bg-[#252C39] text-neutral-200\">Teams</a>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.922 0 none)"
+        },
+        {
+          "target": [
+            "a[href$=\"#screen-engagement\"]"
+          ],
+          "html": "<a href=\"#screen-engagement\" class=\"block rounded px-3 py-2 text-xs hover:bg-[#252C39] text-neutral-200\">Engagement</a>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.922 0 none)"
+        },
+        {
+          "target": [
+            "a[href$=\"#screen-settings\"]"
+          ],
+          "html": "<a href=\"#screen-settings\" class=\"block rounded px-3 py-2 text-xs hover:bg-[#252C39] text-neutral-200\">Settings &amp; Policies</a>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.922 0 none)"
+        },
+        {
+          "target": [
+            ".bg-\\[\\#151921\\].p-4.border-\\[\\#2E3440\\]:nth-child(2) > .bg-neutral-700\\/50.py-0\\.5.text-\\[10px\\]"
+          ],
+          "html": "<span class=\"text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-700/50 text-neutral-300 font-bold\">No connected data</span>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.87 0 none)"
+        },
+        {
+          "target": [
+            ".bg-\\[\\#151921\\].p-4.border-\\[\\#2E3440\\]:nth-child(3) > .bg-neutral-700\\/50.py-0\\.5.text-\\[10px\\]"
+          ],
+          "html": "<span class=\"text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-700/50 text-neutral-300 font-bold\">No connected data</span>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.87 0 none)"
+        },
+        {
+          "target": [
+            ".h-14"
+          ],
+          "html": "<div class=\"h-14 w-14 rounded-[var(--tess-radius-xl,8px)] bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-100 font-bold text-xl flex items-center justify-center\">PC</div>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.269 0 none)"
+        },
+        {
+          "target": [
+            ".text-lg"
+          ],
+          "html": "<h2 class=\"text-lg font-bold\">Team Overview</h2>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.205 0 none)"
+        },
+        {
+          "target": [
+            ".gap-4.items-center.flex > div:nth-child(2) > p"
+          ],
+          "html": "<p class=\"text-xs font-mono\">Refined employee summary and upcoming team actions</p>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.205 0 none)"
+        },
+        {
+          "target": [
+            ".hover\\:bg-neutral-50.dark\\:hover\\:bg-neutral-900\\/40:nth-child(1) > .text-neutral-300.font-bold"
+          ],
+          "html": "<td class=\"p-3 text-neutral-300 font-bold\">Progress not connected</td>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.87 0 none)"
+        },
+        {
+          "target": [
+            ".hover\\:bg-neutral-50.dark\\:hover\\:bg-neutral-900\\/40:nth-child(2) > .text-neutral-300.font-bold"
+          ],
+          "html": "<td class=\"p-3 text-neutral-300 font-bold\">Progress not connected</td>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.87 0 none)"
+        },
+        {
+          "target": [
+            ".hover\\:bg-neutral-50.dark\\:hover\\:bg-neutral-900\\/40:nth-child(3) > .text-neutral-300.font-bold"
+          ],
+          "html": "<td class=\"p-3 text-neutral-300 font-bold\">Progress not connected</td>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.87 0 none)"
+        },
+        {
+          "target": [
+            "h3"
+          ],
+          "html": "<h3 class=\"text-sm font-semibold\">People updates</h3>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.145 0 none)"
+        },
+        {
+          "target": [
+            ".hover\\:underline"
+          ],
+          "html": "<button type=\"button\" class=\"text-xs text-[var(--tess-ink-muted,#62666F)] hover:underline disabled:cursor-not-allowed disabled:opacity-50\">Mark all as read</button>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.985 0 none)"
+        },
+        {
+          "target": [
+            ".rounded-\\[var\\(--tess-radius-lg\\,8px\\)\\].justify-between.border-neutral-200:nth-child(1) > .gap-2.items-center.flex > span:nth-child(2)"
+          ],
+          "html": "<span class=\"font-semibold\">Welcome to the team</span>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.145 0 none)"
+        },
+        {
+          "target": [
+            ".rounded-\\[var\\(--tess-radius-lg\\,8px\\)\\].justify-between.border-neutral-200:nth-child(1) > .text-neutral-600.text-\\[11px\\].font-mono"
+          ],
+          "html": "<span class=\"font-mono text-[11px] text-neutral-600\">Today</span>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.439 0 none)"
+        },
+        {
+          "target": [
+            ".rounded-\\[var\\(--tess-radius-lg\\,8px\\)\\].justify-between.border-neutral-200:nth-child(2) > .gap-2.items-center.flex > span:nth-child(2)"
+          ],
+          "html": "<span class=\"font-semibold\">Team check-in</span>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.145 0 none)"
+        },
+        {
+          "target": [
+            ".rounded-\\[var\\(--tess-radius-lg\\,8px\\)\\].justify-between.border-neutral-200:nth-child(2) > .text-neutral-600.text-\\[11px\\].font-mono"
+          ],
+          "html": "<span class=\"font-mono text-[11px] text-neutral-600\">This week</span>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.439 0 none)"
+        },
+        {
+          "target": [
+            ".rounded-\\[var\\(--tess-radius-lg\\,8px\\)\\].justify-between.border-neutral-200:nth-child(3) > .gap-2.items-center.flex > span:nth-child(2)"
+          ],
+          "html": "<span class=\"font-semibold\">Policies and preferences</span>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.145 0 none)"
+        },
+        {
+          "target": [
+            ".rounded-\\[var\\(--tess-radius-lg\\,8px\\)\\].justify-between.border-neutral-200:nth-child(3) > .text-neutral-600.text-\\[11px\\].font-mono"
+          ],
+          "html": "<span class=\"font-mono text-[11px] text-neutral-600\">Next milestone</span>",
+          "failureSummary": "Fix any of the following:\n  Could not parse color string oklch(0.439 0 none)"
+        }
+      ]
+    }
+  ],
+  "manualContrast": {
+    "checkedCount": 23,
+    "checked": [
+      {
+        "selector": "button[aria-label=\"Collapse navigation\"]",
+        "text": "−",
+        "color": "rgb(255, 255, 255)",
+        "background": [
+          17,
+          20,
+          27,
+          1
+        ],
+        "contrast": 18.43,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": "a[href$=\"#screen-marketing-home\"]",
+        "text": "Marketing Home",
+        "color": "oklch(0.922 0 none)",
+        "background": [
+          17,
+          20,
+          27,
+          1
+        ],
+        "contrast": 14.63,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": "a[href$=\"#screen-overview\"]",
+        "text": "Team Overview",
+        "color": "oklch(0.922 0 none)",
+        "background": [
+          17,
+          20,
+          27,
+          1
+        ],
+        "contrast": 14.63,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": "a[href$=\"#screen-collection-index\"]",
+        "text": "People Directory",
+        "color": "oklch(0.922 0 none)",
+        "background": [
+          17,
+          20,
+          27,
+          1
+        ],
+        "contrast": 14.63,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": "a[href$=\"#screen-teams\"]",
+        "text": "Teams",
+        "color": "oklch(0.922 0 none)",
+        "background": [
+          17,
+          20,
+          27,
+          1
+        ],
+        "contrast": 14.63,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": "a[href$=\"#screen-engagement\"]",
+        "text": "Engagement",
+        "color": "oklch(0.922 0 none)",
+        "background": [
+          17,
+          20,
+          27,
+          1
+        ],
+        "contrast": 14.63,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": "a[href$=\"#screen-settings\"]",
+        "text": "Settings & Policies",
+        "color": "oklch(0.922 0 none)",
+        "background": [
+          17,
+          20,
+          27,
+          1
+        ],
+        "contrast": 14.63,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".bg-\\[\\#151921\\].p-4.border-\\[\\#2E3440\\]:nth-child(2) > .bg-neutral-700\\/50.py-0\\.5.text-\\[10px\\]",
+        "text": "No connected data",
+        "color": "oklch(0.87 0 none)",
+        "background": [
+          42.435,
+          44.435,
+          48.435,
+          1
+        ],
+        "contrast": 9.38,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".bg-\\[\\#151921\\].p-4.border-\\[\\#2E3440\\]:nth-child(3) > .bg-neutral-700\\/50.py-0\\.5.text-\\[10px\\]",
+        "text": "No connected data",
+        "color": "oklch(0.87 0 none)",
+        "background": [
+          42.435,
+          44.435,
+          48.435,
+          1
+        ],
+        "contrast": 9.38,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".h-14",
+        "text": "PC",
+        "color": "oklch(0.269 0 none)",
+        "background": [
+          229.031,
+          229.031,
+          229.031,
+          1
+        ],
+        "contrast": 12,
+        "threshold": 3,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".text-lg",
+        "text": "Team Overview",
+        "color": "oklch(0.205 0 none)",
+        "background": [
+          255,
+          255,
+          255,
+          1
+        ],
+        "contrast": 17.91,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".gap-4.items-center.flex > div:nth-child(2) > p",
+        "text": "Refined employee summary and upcoming team actions",
+        "color": "oklch(0.205 0 none)",
+        "background": [
+          255,
+          255,
+          255,
+          1
+        ],
+        "contrast": 17.91,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".hover\\:bg-neutral-50.dark\\:hover\\:bg-neutral-900\\/40:nth-child(1) > .text-neutral-300.font-bold",
+        "text": "Progress not connected",
+        "color": "oklch(0.87 0 none)",
+        "background": [
+          11,
+          13,
+          16,
+          1
+        ],
+        "contrast": 13.13,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".hover\\:bg-neutral-50.dark\\:hover\\:bg-neutral-900\\/40:nth-child(2) > .text-neutral-300.font-bold",
+        "text": "Progress not connected",
+        "color": "oklch(0.87 0 none)",
+        "background": [
+          11,
+          13,
+          16,
+          1
+        ],
+        "contrast": 13.13,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".hover\\:bg-neutral-50.dark\\:hover\\:bg-neutral-900\\/40:nth-child(3) > .text-neutral-300.font-bold",
+        "text": "Progress not connected",
+        "color": "oklch(0.87 0 none)",
+        "background": [
+          11,
+          13,
+          16,
+          1
+        ],
+        "contrast": 13.13,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": "h3",
+        "text": "People updates",
+        "color": "oklch(0.145 0 none)",
+        "background": [
+          249.965,
+          249.965,
+          249.965,
+          1
+        ],
+        "contrast": 18.96,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".hover\\:underline",
+        "text": "Mark all as read",
+        "color": "rgb(98, 102, 111)",
+        "background": [
+          249.965,
+          249.965,
+          249.965,
+          1
+        ],
+        "contrast": 5.51,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".rounded-\\[var\\(--tess-radius-lg\\,8px\\)\\].justify-between.border-neutral-200:nth-child(1) > .gap-2.items-center.flex > span:nth-child(2)",
+        "text": "Welcome to the team",
+        "color": "oklch(0.145 0 none)",
+        "background": [
+          249.965,
+          249.965,
+          249.965,
+          1
+        ],
+        "contrast": 18.96,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".rounded-\\[var\\(--tess-radius-lg\\,8px\\)\\].justify-between.border-neutral-200:nth-child(1) > .text-neutral-600.text-\\[11px\\].font-mono",
+        "text": "Today",
+        "color": "oklch(0.439 0 none)",
+        "background": [
+          249.965,
+          249.965,
+          249.965,
+          1
+        ],
+        "contrast": 7.47,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".rounded-\\[var\\(--tess-radius-lg\\,8px\\)\\].justify-between.border-neutral-200:nth-child(2) > .gap-2.items-center.flex > span:nth-child(2)",
+        "text": "Team check-in",
+        "color": "oklch(0.145 0 none)",
+        "background": [
+          249.965,
+          249.965,
+          249.965,
+          1
+        ],
+        "contrast": 18.96,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".rounded-\\[var\\(--tess-radius-lg\\,8px\\)\\].justify-between.border-neutral-200:nth-child(2) > .text-neutral-600.text-\\[11px\\].font-mono",
+        "text": "This week",
+        "color": "oklch(0.439 0 none)",
+        "background": [
+          249.965,
+          249.965,
+          249.965,
+          1
+        ],
+        "contrast": 7.47,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".rounded-\\[var\\(--tess-radius-lg\\,8px\\)\\].justify-between.border-neutral-200:nth-child(3) > .gap-2.items-center.flex > span:nth-child(2)",
+        "text": "Policies and preferences",
+        "color": "oklch(0.145 0 none)",
+        "background": [
+          249.965,
+          249.965,
+          249.965,
+          1
+        ],
+        "contrast": 18.96,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      },
+      {
+        "selector": ".rounded-\\[var\\(--tess-radius-lg\\,8px\\)\\].justify-between.border-neutral-200:nth-child(3) > .text-neutral-600.text-\\[11px\\].font-mono",
+        "text": "Next milestone",
+        "color": "oklch(0.439 0 none)",
+        "background": [
+          249.965,
+          249.965,
+          249.965,
+          1
+        ],
+        "contrast": 7.47,
+        "threshold": 4.5,
+        "gradientAncestor": null
+      }
+    ],
+    "failures": [],
+    "unverified": []
+  }
+}

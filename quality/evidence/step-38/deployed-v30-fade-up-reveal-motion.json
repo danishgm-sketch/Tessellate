@@ -1,0 +1,36 @@
+{
+  "siteVersion": "v30",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/resources/fade-up-reveal/",
+  "viewport": {
+    "width": 1440,
+    "documentWidth": 1440,
+    "height": 900
+  },
+  "interaction": [
+    "Click Motion from the default Reduced Motion OFF state.",
+    "Click Replay Entrance inside the isolated preview."
+  ],
+  "observedState": "Reduced Motion: ON",
+  "iframeUrlBefore": "/preview-content/?resource=fade-up-reveal&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+  "iframeUrlAfter": "/preview-content/?resource=fade-up-reveal&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+  "previewDocumentResponsesBeforeToggle": 1,
+  "previewDocumentResponsesAfterToggle": 1,
+  "noIframeNavigation": true,
+  "previewReplayStatus": "Entrance animation skipped because reduced motion is enabled.",
+  "reducedMotionBehaviorVerifiedThroughPreviewUI": true,
+  "responseCount": 41,
+  "responseStatusCounts": {
+    "200": 41
+  },
+  "failedRequests": [],
+  "consoleErrors": [
+    "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-FyvVrvREnyUZ0VAMpY9mvbKGab4jfIhNGai6qM2eUw4='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+  ],
+  "warnings": [],
+  "screenshots": [
+    "quality/evidence/step-38/deployed-v30-fade-up-reveal-motion-before-1440x900.png",
+    "quality/evidence/step-38/deployed-v30-fade-up-reveal-motion-after-1440x900.png",
+    "quality/evidence/step-38/deployed-v30-fade-up-reveal-reduced-motion-status-1440x900.png"
+  ],
+  "note": "The only console error observed was the Sites-injected inline bootstrap rejected by the application strict CSP (AUD-342); no application exception was observed."
+}

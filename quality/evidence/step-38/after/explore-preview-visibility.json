@@ -1,0 +1,59 @@
+{
+  "capturedAt": "2026-10-21",
+  "route": "/explore",
+  "browser": "Playwright Chromium against the local Sites compatibility Worker",
+  "measurementNote": "Encoded script-body measurements use Playwright Request.sizes responseBodySize and count each URL once. Main-frame transferSize excludes sandboxed child-frame resources; full browser metrics are recorded in the profile-specific reports.",
+  "before": {
+    "rootMargin": "160px",
+    "desktopViewport": "1440x900",
+    "loadedPreviewFrames": 9,
+    "visiblePreviewFrames": 6,
+    "offscreenPreviewFrames": 3,
+    "scriptResponsesAcrossMainPageAndFrames": 108,
+    "uniqueScriptAssetsWithPositiveEncodedSize": 41,
+    "uniqueMeasuredEncodedScriptBodyBytes": 333558
+  },
+  "after": {
+    "rootMargin": "0px",
+    "desktop": {
+      "viewport": "1440x900",
+      "loadedPreviewFrames": 6,
+      "visiblePreviewFrames": 6,
+      "offscreenPreviewFrames": 0,
+      "scriptResponsesAcrossMainPageAndFrames": 87,
+      "uniqueScriptAssetsWithPositiveEncodedSize": 38,
+      "uniqueMeasuredEncodedScriptBodyBytes": 326813,
+      "scrollInteraction": {
+        "resource": "/r/ai-agent-activity-feed",
+        "scrollY": 1000,
+        "iframeVisible": true,
+        "actualResourceScreenVisible": true,
+        "screenshot": "quality/evidence/step-38/after/sites-worker/sites-chromium-explore-scrolled-preview.png"
+      },
+      "initialScreenshot": "quality/evidence/step-38/after/sites-worker/sites-chromium-explore.png"
+    },
+    "mobile": {
+      "viewport": "390x844",
+      "loadedPreviewFrames": 2,
+      "visiblePreviewFrames": 2,
+      "offscreenPreviewFrames": 0,
+      "scriptResponsesAcrossMainPageAndFrames": 47,
+      "uniqueScriptAssetsWithPositiveEncodedSize": 34,
+      "uniqueMeasuredEncodedScriptBodyBytes": 318219,
+      "scrollInteraction": {
+        "resource": "/r/accordion-spring",
+        "scrollY": 1000,
+        "iframeVisible": true,
+        "actualResourceScreenVisible": true,
+        "screenshot": "quality/evidence/step-38/after/sites-worker/sites-mobile-chromium-explore-scrolled-preview.png"
+      },
+      "initialScreenshot": "quality/evidence/step-38/after/sites-worker/sites-mobile-chromium-explore.png"
+    }
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

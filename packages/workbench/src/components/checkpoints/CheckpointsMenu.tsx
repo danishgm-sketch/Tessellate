@@ -36,7 +36,7 @@ export const CheckpointsMenu: React.FC<CheckpointsMenuProps> = ({ onClose }) => 
     <div
       role="menu"
       aria-label="Checkpoints Menu"
-      className="absolute right-0 top-full mt-2 w-80 rounded-xl border border-zinc-800 bg-zinc-900 shadow-2xl p-4 text-zinc-100 z-50 space-y-4"
+      className="absolute right-0 top-full mt-2 w-80 max-w-[calc(100vw-16px)] rounded-xl border border-zinc-800 bg-zinc-900 shadow-2xl p-4 text-zinc-100 z-50 space-y-4"
     >
       <div className="flex items-center justify-between border-b border-zinc-800/80 pb-2.5">
         <div className="flex items-center gap-2">
@@ -50,14 +50,14 @@ export const CheckpointsMenu: React.FC<CheckpointsMenuProps> = ({ onClose }) => 
       {/* Create Named Checkpoint Input */}
       <form onSubmit={handleCreate} className="flex gap-2">
         <input
-          type="text"
+          type="text" aria-label="Checkpoint name"
           value={namedInput}
           onChange={(e) => setNamedInput(e.target.value)}
           placeholder="Name checkpoint..."
-          className="flex-1 rounded-md border border-zinc-700 bg-zinc-950 px-2.5 py-1.5 text-xs text-zinc-200 placeholder-zinc-500 focus:border-indigo-500 focus:outline-none"
+          className="min-w-0 flex-1 rounded-md border border-zinc-700 bg-zinc-950 px-2.5 py-1.5 text-xs text-zinc-200 placeholder-zinc-500 focus:border-indigo-500 focus:outline-none"
         />
         <button
-          type="submit"
+          type="submit" disabled={!namedInput.trim()}
           className="flex items-center gap-1 rounded-md bg-indigo-600 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-indigo-500 transition-colors"
         >
           <Plus className="h-3.5 w-3.5" />
@@ -85,7 +85,7 @@ export const CheckpointsMenu: React.FC<CheckpointsMenuProps> = ({ onClose }) => 
               </span>
             </div>
 
-            <div className="flex items-center gap-1 text-[10px] text-zinc-500 font-mono">
+            <div className="flex items-center gap-1 text-[10px] text-zinc-400 font-mono">
               <Clock className="h-2.5 w-2.5" />
               <span>{new Date(chk.timestamp).toLocaleTimeString()}</span>
               {chk.description && <span>• {chk.description}</span>}

@@ -851,24 +851,25 @@ HTTP REST endpoint signature cards demonstrating programmatic developer interfac
   {
     slug: 'pricing-three-tier',
     name: 'Pricing Three Tier',
-    description: 'Canonical 3-card pricing table (Free, Pro, Enterprise) with highlighted recommended tier.',
+    description: 'Example three-plan pricing section. Plan names, prices, and included features are placeholders to replace before publication.',
     categories: ['sections', 'marketing', 'pricing'],
     roles: ['pricing', 'three-tier'],
     purposes: ['SaaS monetization', 'Plan comparison'],
     componentName: 'PricingThreeTier',
     tags: ['pricing-three-tier', 'pricing', 'plans', 'conversion'],
-    idealFor: ['Standard B2B SaaS pricing models'],
-    avoidFor: ['Free-only open source projects without paid tiers'],
-    jobs: ['Provide clean comparative pricing with transparent features'],
+    idealFor: ['Teams building a pricing page with their own verified plan terms'],
+    avoidFor: ['Published pricing pages until all example values are replaced'],
+    jobs: ['Compare clearly disclosed example plan tiers'],
     indexCode: `import React from 'react';
 
 export type PricingThreeTierVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface PricingThreeTierProps {
   variant?: PricingThreeTierVariant;
+  onSelectPlan?: (plan: string) => void;
 }
 
-export function PricingThreeTier({ variant = 'quiet' }: PricingThreeTierProps) {
+export function PricingThreeTier({ variant = 'quiet', onSelectPlan }: PricingThreeTierProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
   let card = 'bg-white border-neutral-200';
   let featuredCard = 'bg-white border-neutral-900 shadow-lg ring-1 ring-neutral-900';
@@ -884,35 +885,40 @@ export function PricingThreeTier({ variant = 'quiet' }: PricingThreeTierProps) {
   }
 
   const tiers = [
-    { name: 'Free Core', price: '£0', desc: 'Complete access to all 324 open source resources.', featured: false },
-    { name: 'Team Sync', price: '£18', desc: 'Cloud project sharing, checkpoint history, and team roles.', featured: true },
-    { name: 'Enterprise', price: 'Custom', desc: 'SSO, dedicated SLA, custom DNA tokens, and private registry.', featured: false },
+    { name: 'Starter example', price: '£0', desc: 'Example of a free tier. Replace this description with your offer.', featured: false },
+    { name: 'Team example', price: '£18', desc: 'Example team tier. Replace the price and features with your offer.', featured: true },
+    { name: 'Scale example', price: 'Custom', desc: 'Example custom tier. Replace the scope, price, and terms with your offer.', featured: false },
   ];
 
   return (
-    <section className={\`relative w-full py-20 px-6 sm:px-12 border-b transition-colors \${bg}\`}>
+    <section className={\`relative w-full py-20 px-6 @sm:px-12 border-b transition-colors \${bg}\`}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-center mb-16">Simple, Honest Pricing</h2>
+        <h2 className="text-3xl @sm:text-5xl font-bold tracking-tight text-center mb-16">Example plans</h2>
+        <p className="mx-auto -mt-10 mb-10 max-w-2xl text-center text-sm opacity-75">Illustrative example only. Replace sample prices, tiers, and included features with your published terms.</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 @md:grid-cols-3 gap-8 items-stretch">
           {tiers.map((t) => (
-            <div key={t.name} className={\`p-8 rounded-2xl border flex flex-col justify-between transition-all \${t.featured ? featuredCard : card}\`}>
+            <div key={t.name} className={\`p-8 rounded-[var(--tess-radius-xl,8px)] border flex flex-col justify-between transition-all \${t.featured ? featuredCard : card}\`}>
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-bold text-lg">{t.name}</span>
-                  {t.featured && <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold">Recommended</span>}
+                  {t.featured && <span className={\`text-[10px] font-mono uppercase px-2 py-0.5 rounded font-bold \${variant === 'nocturne' ? 'bg-emerald-500/20 text-emerald-300' : 'bg-emerald-500/10 text-emerald-800'}\`}>Recommended</span>}
                 </div>
                 <div className="text-4xl font-mono font-bold mb-4">{t.price}</div>
-                <p className="text-xs sm:text-sm opacity-75 mb-6">{t.desc}</p>
+                <p className="text-xs @sm:text-sm opacity-75 mb-6">{t.desc}</p>
               </div>
               <button
                 type="button"
-                className={\`w-full py-3 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors \${
+                onClick={() => onSelectPlan?.(t.name)}
+                disabled={!onSelectPlan}
+                aria-describedby={!onSelectPlan ? \`pricing-\${t.name.toLowerCase().replaceAll(' ', '-')}-action-help\` : undefined}
+                className={\`w-full py-3 rounded-[var(--tess-radius-lg,8px)] text-xs font-semibold uppercase tracking-wider transition-colors disabled:cursor-not-allowed disabled:opacity-60 \${
                   t.featured ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'border hover:bg-neutral-100 dark:hover:bg-neutral-800'
                 }\`}
               >
                 Get Started
               </button>
+              {!onSelectPlan && <span id={\`pricing-\${t.name.toLowerCase().replaceAll(' ', '-')}-action-help\`} className="mt-3 block text-center text-xs opacity-75">Connect a plan selection action to enable this example button.</span>}
             </div>
           ))}
         </div>
@@ -952,31 +958,32 @@ export function PricingThreeTierPreview() {
     fixturesCode: `export const pricingThreeTierFixtures = {};`,
     readmeCode: `# Pricing Three Tier
 
-Standard three-column pricing section with prominent recommended tier styling.`,
+Three-column plan layout with illustrative values and disabled actions until connected. Replace sample terms before publication.`,
   },
 
   // 47. Pricing Two Tier
   {
     slug: 'pricing-two-tier',
     name: 'Pricing Two Tier',
-    description: 'Focused 2-card comparison (Starter vs Business) for streamlined product offerings.',
+    description: 'Example two-plan comparison with sample plan names, prices, and terms.',
     categories: ['sections', 'marketing', 'pricing'],
     roles: ['pricing', 'two-tier'],
     purposes: ['Streamlined pricing', 'Binary plan choice'],
     componentName: 'PricingTwoTier',
     tags: ['pricing-two-tier', 'pricing', 'two-tier', 'plans'],
-    idealFor: ['Straightforward products with minimal tier complexity'],
-    avoidFor: ['Complex enterprise sales matrices'],
-    jobs: ['Keep buying decisions simple with two clear choices'],
+    idealFor: ['Products that need a simple, two-option pricing layout'],
+    avoidFor: ['Published pricing pages until all example values are replaced'],
+    jobs: ['Compare two example plans without implying live checkout'],
     indexCode: `import React from 'react';
 
 export type PricingTwoTierVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface PricingTwoTierProps {
   variant?: PricingTwoTierVariant;
+  onSelectPlan?: (plan: string) => void;
 }
 
-export function PricingTwoTier({ variant = 'quiet' }: PricingTwoTierProps) {
+export function PricingTwoTier({ variant = 'quiet', onSelectPlan }: PricingTwoTierProps) {
   let bg = 'bg-white text-neutral-900 border-neutral-200';
   let card = 'bg-neutral-50 border-neutral-200';
 
@@ -991,25 +998,28 @@ export function PricingTwoTier({ variant = 'quiet' }: PricingTwoTierProps) {
   return (
     <section className={\`relative w-full py-20 px-6 sm:px-12 border-b transition-colors \${bg}\`}>
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-16">Choose Your Plan</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-16">Example plan comparison</h2>
+        <p className="mx-auto -mt-6 mb-8 max-w-2xl text-center text-sm opacity-75">Illustrative example only. Replace sample prices, tiers, and included features with your published terms.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className={\`p-8 rounded-2xl border flex flex-col justify-between \${card}\`}>
             <div>
-              <span className="font-bold text-lg mb-2 block">Starter Edition</span>
+              <span className="font-bold text-lg mb-2 block">Starter example</span>
               <div className="text-4xl font-mono font-bold mb-4">Free</div>
               <p className="text-xs sm:text-sm opacity-75 mb-6">Local development and individual exploration.</p>
             </div>
-            <button type="button" className="w-full py-2.5 rounded-lg border text-xs font-semibold">Start Free</button>
+            <button type="button" onClick={() => onSelectPlan?.('Starter example')} disabled={!onSelectPlan} aria-describedby={!onSelectPlan ? "pricing-two-tier-starter-help" : undefined} className="w-full py-2.5 rounded-lg border text-xs font-semibold disabled:cursor-not-allowed disabled:opacity-60">{onSelectPlan ? 'Choose Starter' : 'Connect plan action'}</button>
+            {!onSelectPlan && <p id="pricing-two-tier-starter-help" className="mt-3 text-center text-xs opacity-75">Connect a selection action to enable this example button.</p>}
           </div>
 
           <div className={\`p-8 rounded-2xl border flex flex-col justify-between \${card}\`}>
             <div>
-              <span className="font-bold text-lg mb-2 block">Organization Pro</span>
+              <span className="font-bold text-lg mb-2 block">Team example</span>
               <div className="text-4xl font-mono font-bold mb-4">£29<span className="text-xs font-normal">/mo</span></div>
               <p className="text-xs sm:text-sm opacity-75 mb-6">Centralized token libraries, audit logs, and priority updates.</p>
             </div>
-            <button type="button" className="w-full py-2.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold">Upgrade Now</button>
+            <button type="button" onClick={() => onSelectPlan?.('Team example')} disabled={!onSelectPlan} aria-describedby={!onSelectPlan ? "pricing-two-tier-team-help" : undefined} className="w-full py-2.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold disabled:cursor-not-allowed disabled:opacity-60">{onSelectPlan ? 'Choose Team' : 'Connect plan action'}</button>
+            {!onSelectPlan && <p id="pricing-two-tier-team-help" className="mt-3 text-center text-xs opacity-75">Connect a selection action to enable this example button.</p>}
           </div>
         </div>
       </div>
@@ -1048,22 +1058,22 @@ export function PricingTwoTierPreview() {
     fixturesCode: `export const pricingTwoTierFixtures = {};`,
     readmeCode: `# Pricing Two Tier
 
-Two-card pricing layout offering a clean binary choice between Starter and Pro.`,
+Two-column plan comparison with illustrative values. Plan actions remain disabled until connected.`,
   },
 
   // 48. Pricing Usage Based
   {
     slug: 'pricing-usage-based',
     name: 'Pricing Usage Based',
-    description: 'Pay-as-you-go pricing card with tier volume sliders and unit-cost breakdowns.',
+    description: 'Usage-based pricing estimator with an illustrative per-unit rate.',
     categories: ['sections', 'marketing', 'pricing'],
     roles: ['pricing', 'usage-based'],
     purposes: ['Consumption billing', 'API pricing'],
     componentName: 'PricingUsageBased',
     tags: ['pricing-usage-based', 'pricing', 'consumption', 'api'],
-    idealFor: ['Compute, bandwidth, and API credit monetization'],
-    avoidFor: ['Fixed seat-license SaaS'],
-    jobs: ['Explain consumption-based meter charges transparently'],
+    idealFor: ['Products that need to explain a verified usage-based rate'],
+    avoidFor: ['Live invoices or estimates until the sample rate is replaced'],
+    jobs: ['Show how a sample usage rate changes an estimate'],
     indexCode: `import React, { useState } from 'react';
 
 export type PricingUsageBasedVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -1091,11 +1101,12 @@ export function PricingUsageBased({ variant = 'quiet' }: PricingUsageBasedProps)
   return (
     <section className={\`relative w-full py-20 px-6 sm:px-12 border-b transition-colors \${bg}\`}>
       <div className="max-w-4xl mx-auto flex flex-col items-center">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Pay Only for Verified Compilations</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Usage pricing example</h2>
+        <p className="mx-auto mb-8 max-w-2xl text-center text-sm opacity-75">Illustrative estimate at £0.40 per 1,000 runs. Replace the sample rate and terms before use.</p>
 
         <div className={\`w-full p-8 rounded-2xl border max-w-xl transition-all \${card}\`}>
           <div className="flex justify-between items-center mb-6">
-            <span className="text-xs font-semibold">Monthly AST Compilations:</span>
+            <span className="text-xs font-semibold">Monthly usage:</span>
             <span className="font-mono font-bold text-lg">{units}k runs</span>
           </div>
 
@@ -1149,7 +1160,7 @@ export function PricingUsageBasedPreview() {
     fixturesCode: `export const pricingUsageBasedFixtures = {};`,
     readmeCode: `# Pricing Usage Based
 
-Interactive slider calculator demonstrating consumption-based billing models.`,
+Slider-driven usage estimate at an illustrative rate. Replace the rate, currency, and terms before publication.`,
   },
 
   // 49. Pricing Enterprise
@@ -1241,15 +1252,15 @@ Dedicated high-touch enterprise section for custom procurement and compliance ag
   {
     slug: 'pricing-comparison-table',
     name: 'Pricing Comparison Table',
-    description: 'Exhaustive checkmark matrix comparing feature tiers across 20+ dimensions.',
+    description: 'Responsive four-row example feature comparison. Plan labels and feature claims are placeholders.',
     categories: ['sections', 'marketing', 'pricing'],
     roles: ['pricing', 'comparison'],
     purposes: ['In-depth plan analysis', 'Transparency'],
     componentName: 'PricingComparisonTable',
     tags: ['pricing-comparison-table', 'pricing', 'matrix', 'comparison'],
-    idealFor: ['Detailed side-by-side plan feature breakdown'],
-    avoidFor: ['Mobile-only minimal splash pages'],
-    jobs: ['Provide thorough checkmark comparison between plans'],
+    idealFor: ['Teams presenting a concise comparison of their own verified plan features'],
+    avoidFor: ['Exhaustive feature matrices or unverified published terms'],
+    jobs: ['Compare example plan features in a readable table'],
     indexCode: `import React from 'react';
 
 export type PricingComparisonTableVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -1271,25 +1282,26 @@ export function PricingComparisonTable({ variant = 'quiet' }: PricingComparisonT
   }
 
   const rows = [
-    { feature: 'All 324 Launch Resources', free: '✓', team: '✓', enterprise: '✓' },
-    { feature: 'TypeScript Source Code Export', free: '✓', team: '✓', enterprise: '✓' },
-    { feature: 'Cloud Checkpoints & Sync', free: '—', team: '✓', enterprise: '✓' },
-    { feature: 'Custom DNA Token Storage', free: '—', team: '—', enterprise: '✓' },
+    { feature: 'Core feature set', free: '✓', team: '✓', enterprise: '✓' },
+    { feature: 'Additional workspace features', free: '—', team: '✓', enterprise: '✓' },
+    { feature: 'Team collaboration features', free: '—', team: '✓', enterprise: '✓' },
+    { feature: 'Custom support options', free: '—', team: '—', enterprise: '✓' },
   ];
 
   return (
     <section className={\`relative w-full py-20 px-6 sm:px-12 border-b transition-colors \${bg}\`}>
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Detailed Feature Matrix</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Example feature comparison</h2>
+        <p className="mx-auto -mt-6 mb-8 max-w-2xl text-center text-sm opacity-75">Illustrative example only. Replace sample prices, tiers, and included features with your published terms.</p>
 
         <div className={\`overflow-x-auto rounded-xl border \${tableBorder}\`}>
           <table className="w-full text-left text-xs sm:text-sm">
             <thead className="border-b bg-neutral-100/60 dark:bg-neutral-900/60 font-mono text-xs uppercase">
               <tr>
                 <th className="p-4">Feature</th>
-                <th className="p-4">Free Core</th>
-                <th className="p-4">Team</th>
-                <th className="p-4">Enterprise</th>
+                <th className="p-4">Plan A (example)</th>
+                <th className="p-4">Plan B (example)</th>
+                <th className="p-4">Plan C (example)</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-200 dark:divide-neutral-800">
@@ -1340,31 +1352,32 @@ export function PricingComparisonTablePreview() {
     fixturesCode: `export const pricingComparisonTableFixtures = {};`,
     readmeCode: `# Pricing Comparison Table
 
-Comprehensive plan feature matrix with checkmarks and breakdown rows.`,
+Compact plan comparison with four illustrative feature rows. Replace labels and values before publication.`,
   },
 
   // 51. Pricing Toggle
   {
     slug: 'pricing-toggle',
     name: 'Pricing Toggle',
-    description: 'Billing interval switcher (Monthly vs Annual with discount badge) above plan cards.',
+    description: 'Monthly and annual pricing-toggle example with illustrative rates and a disabled plan action.',
     categories: ['sections', 'marketing', 'pricing'],
     roles: ['pricing', 'toggle'],
     purposes: ['Annual discount incentive', 'Billing interval selector'],
     componentName: 'PricingToggle',
     tags: ['pricing-toggle', 'pricing', 'annual', 'toggle'],
-    idealFor: ['Offering discounted annual contracts to increase retention'],
-    avoidFor: ['Non-recurring pricing'],
-    jobs: ['Toggle between monthly and annual subscription rates'],
+    idealFor: ['Products demonstrating recurring billing choices after replacing sample terms'],
+    avoidFor: ['Live checkout or billing without a connected payment flow'],
+    jobs: ['Show monthly and annual example prices with consistent arithmetic'],
     indexCode: `import React, { useState } from 'react';
 
 export type PricingToggleVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface PricingToggleProps {
   variant?: PricingToggleVariant;
+  onSelectPlan?: (plan: string) => void;
 }
 
-export function PricingToggle({ variant = 'quiet' }: PricingToggleProps) {
+export function PricingToggle({ variant = 'quiet', onSelectPlan }: PricingToggleProps) {
   const [annual, setAnnual] = useState(false);
 
   let bg = 'bg-white text-neutral-900 border-neutral-200';
@@ -1378,12 +1391,13 @@ export function PricingToggle({ variant = 'quiet' }: PricingToggleProps) {
     card = 'bg-[#151921] border-[#2E3440]';
   }
 
-  const price = annual ? '£14' : '£18';
+  const price = annual ? '£14.40' : '£18';
 
   return (
     <section className={\`relative w-full py-20 px-6 sm:px-12 border-b transition-colors \${bg}\`}>
       <div className="max-w-4xl mx-auto flex flex-col items-center">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Flexible Billing</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Example billing options</h2>
+        <p className="mx-auto mb-8 max-w-2xl text-center text-sm opacity-75">Illustrative pricing only. Replace the sample rate, billing terms, and plan details before use.</p>
 
         <div className="flex items-center gap-3 mb-12 text-xs font-semibold">
           <button
@@ -1403,12 +1417,13 @@ export function PricingToggle({ variant = 'quiet' }: PricingToggleProps) {
         </div>
 
         <div className={\`w-full max-w-sm p-8 rounded-2xl border text-center transition-all \${card}\`}>
-          <span className="font-bold text-sm block mb-2">Team Pro Plan</span>
+          <span className="font-bold text-sm block mb-2">Example plan</span>
           <div className="text-4xl font-mono font-bold mb-4">{price}<span className="text-xs font-normal">/mo</span></div>
-          <p className="text-xs opacity-75 mb-6">Billed {annual ? 'annually (£168/yr)' : 'monthly'}. Cancel anytime.</p>
-          <button type="button" className="w-full py-2.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold">
-            Choose Plan
+          <p className="text-xs opacity-75 mb-6">Billed {annual ? 'annually (£172.80/year, 20% less than monthly)' : 'monthly at £18/month'}. Example terms only.</p>
+          <button type="button" onClick={() => onSelectPlan?.('Example plan')} disabled={!onSelectPlan} aria-describedby={!onSelectPlan ? "pricing-toggle-action-help" : undefined} className="w-full py-2.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold disabled:cursor-not-allowed disabled:opacity-60">
+            {onSelectPlan ? 'Choose plan' : 'Connect plan action'}
           </button>
+          {!onSelectPlan && <p id="pricing-toggle-action-help" className="mt-3 text-xs opacity-75">Connect a plan-selection action to enable this example button.</p>}
         </div>
       </div>
     </section>
@@ -1446,22 +1461,22 @@ export function PricingTogglePreview() {
     fixturesCode: `export const pricingToggleFixtures = {};`,
     readmeCode: `# Pricing Toggle
 
-Billing frequency switcher dynamically calculating discounted annual rates.`,
+Interactive monthly/annual price example. Values are illustrative and the plan action is disabled until connected.`,
   },
 
   // 52. Pricing Calculator Shell
   {
     slug: 'pricing-calculator-shell',
     name: 'Pricing Calculator Shell',
-    description: 'Interactive slider calculator estimating monthly cost based on MAU or compute units.',
+    description: 'Seat-cost calculator with an illustrative per-member monthly rate.',
     categories: ['sections', 'marketing', 'pricing'],
     roles: ['pricing', 'calculator'],
     purposes: ['Cost estimation', 'Interactive pricing forecast'],
     componentName: 'PricingCalculatorShell',
     tags: ['pricing-calculator-shell', 'calculator', 'pricing', 'estimate'],
-    idealFor: ['Helping enterprise buyers estimate monthly infrastructure invoices'],
-    avoidFor: ['Flat rate plans'],
-    jobs: ['Calculate estimated invoice according to user-selected scale sliders'],
+    idealFor: ['Products that price by seats or team members'],
+    avoidFor: ['Live billing estimates until the sample rate is replaced'],
+    jobs: ['Show a sample monthly estimate as team size changes'],
     indexCode: `import React, { useState } from 'react';
 
 export type PricingCalculatorShellVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -1489,11 +1504,12 @@ export function PricingCalculatorShell({ variant = 'quiet' }: PricingCalculatorS
   return (
     <section className={\`relative w-full py-20 px-6 sm:px-12 border-b transition-colors \${bg}\`}>
       <div className="max-w-4xl mx-auto flex flex-col items-center">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Team Cost Calculator</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Seat cost example</h2>
+        <p className="mx-auto mb-8 max-w-2xl text-center text-sm opacity-75">Illustrative estimate at £15 per member per month. Replace the sample rate and billing terms before use.</p>
 
         <div className={\`w-full max-w-lg p-8 rounded-2xl border transition-all \${card}\`}>
           <div className="flex justify-between items-center mb-4">
-            <span className="text-xs font-semibold">Active Developers:</span>
+            <span className="text-xs font-semibold">Team members:</span>
             <span className="font-mono font-bold text-lg">{teamSize} seats</span>
           </div>
 
@@ -1507,7 +1523,7 @@ export function PricingCalculatorShell({ variant = 'quiet' }: PricingCalculatorS
           />
 
           <div className="border-t border-neutral-200 dark:border-neutral-800 pt-6 flex items-center justify-between">
-            <span className="text-xs opacity-75">Estimated Invoice:</span>
+            <span className="text-xs opacity-75">Example estimate:</span>
             <span className="text-3xl font-mono font-bold">£{total}/mo</span>
           </div>
         </div>
@@ -1547,22 +1563,22 @@ export function PricingCalculatorShellPreview() {
     fixturesCode: `export const pricingCalculatorShellFixtures = {};`,
     readmeCode: `# Pricing Calculator Shell
 
-Interactive slider-driven billing estimator for team seats and resource scale.`,
+Slider-driven seat-cost example with a stated sample rate. Replace the rate and terms before use.`,
   },
 
   // 53. Plan Feature Matrix
   {
     slug: 'plan-feature-matrix',
     name: 'Plan Feature Matrix',
-    description: 'Segmented feature comparison with expandable category groupings.',
+    description: 'Grouped four-row example feature table with sample plan labels and values.',
     categories: ['sections', 'marketing', 'pricing'],
     roles: ['pricing', 'matrix'],
     purposes: ['Category-by-category plan audit', 'Thorough technical comparison'],
     componentName: 'PlanFeatureMatrix',
     tags: ['plan-feature-matrix', 'pricing', 'features', 'matrix'],
-    idealFor: ['Exhaustive pricing audits categorizing security, storage, and tooling'],
-    avoidFor: ['Quick marketing teasers'],
-    jobs: ['Organize features into grouped sections for comprehensive evaluation'],
+    idealFor: ['Teams organizing a concise plan comparison by feature group'],
+    avoidFor: ['Published comparison until all example values are verified'],
+    jobs: ['Group example plan features for side-by-side review'],
     indexCode: `import React from 'react';
 
 export type PlanFeatureMatrixVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -1584,16 +1600,17 @@ export function PlanFeatureMatrix({ variant = 'quiet' }: PlanFeatureMatrixProps)
   }
 
   const items = [
-    { group: 'Core Composition', feature: 'Full Resource Manifests', free: 'Yes', pro: 'Yes' },
-    { group: 'Core Composition', feature: 'React + Tailwind AST Output', free: 'Yes', pro: 'Yes' },
-    { group: 'Team Collaboration', feature: 'Real-time Project Checkpoints', free: 'No', pro: 'Yes' },
-    { group: 'Team Collaboration', feature: 'Role-Based Access Control', free: 'No', pro: 'Yes' },
+    { group: 'Core features', feature: 'Feature group one', free: 'Yes', pro: 'Yes' },
+    { group: 'Core features', feature: 'Feature group two', free: 'Yes', pro: 'Yes' },
+    { group: 'Optional features', feature: 'Feature group three', free: 'No', pro: 'Yes' },
+    { group: 'Optional features', feature: 'Feature group four', free: 'No', pro: 'Yes' },
   ];
 
   return (
     <section className={\`relative w-full py-20 px-6 sm:px-12 border-b transition-colors \${bg}\`}>
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Categorized Feature Matrix</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Example feature matrix</h2>
+        <p className="mx-auto -mt-6 mb-8 max-w-2xl text-center text-sm opacity-75">Illustrative example only. Replace sample prices, tiers, and included features with your published terms.</p>
 
         <div className={\`overflow-x-auto rounded-xl border \${tableBorder}\`}>
           <table className="w-full text-left text-xs sm:text-sm">
@@ -1601,8 +1618,8 @@ export function PlanFeatureMatrix({ variant = 'quiet' }: PlanFeatureMatrixProps)
               <tr>
                 <th className="p-4">Group</th>
                 <th className="p-4">Feature</th>
-                <th className="p-4">Free</th>
-                <th className="p-4">Pro</th>
+                <th className="p-4">Plan A (example)</th>
+                <th className="p-4">Plan B (example)</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-200 dark:divide-neutral-800">
@@ -1653,22 +1670,22 @@ export function PlanFeatureMatrixPreview() {
     fixturesCode: `export const planFeatureMatrixFixtures = {};`,
     readmeCode: `# Plan Feature Matrix
 
-Categorized feature audit table grouping capabilities under distinct architectural pillars.`,
+Grouped plan comparison with four illustrative rows. Replace sample labels and values before publication.`,
   },
 
   // 54. FAQ Accordion
   {
     slug: 'faq-accordion',
     name: 'FAQ Accordion',
-    description: 'Clean expandable question list with keyboard navigation and smooth disclosure.',
+    description: 'Accessible FAQ accordion with generic example questions and answers.',
     categories: ['sections', 'marketing', 'faq'],
     roles: ['faq', 'accordion'],
     purposes: ['Objection resolution', 'Pre-sale answers'],
     componentName: 'FaqAccordion',
     tags: ['faq-accordion', 'faq', 'accordion', 'questions'],
-    idealFor: ['Addressing common developer questions cleanly'],
-    avoidFor: ['Complex tutorial walkthroughs'],
-    jobs: ['Resolve objections and clarify licensing with expandable accordions'],
+    idealFor: ['Teams drafting a frequently asked questions section'],
+    avoidFor: ['Published policy or product FAQ until example answers are replaced'],
+    jobs: ['Present example answers that can be replaced with verified policies'],
     indexCode: `import React, { useState } from 'react';
 
 export type FaqAccordionVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -1692,29 +1709,30 @@ export function FaqAccordion({ variant = 'quiet' }: FaqAccordionProps) {
   }
 
   const faqs = [
-    { q: 'Is Tessellate really 100% free and open core?', a: 'Yes. All 324 canonical launch resources, Design DNA tools, and export CLI commands are free under MIT.' },
-    { q: 'Can autonomous coding agents use this directly?', a: 'Yes. Tessellate provides OpenAPI schemas, llms.txt, and official MCP server bindings for Cursor, Claude Code, and Antigravity.' },
-    { q: 'Do I need to install any proprietary runtime package?', a: 'No. Tessellate exports pure React and Tailwind CSS source code directly into your repository.' },
+    { q: 'How is a monthly plan price calculated?', a: 'Example answer: multiply the number of seats by the monthly price per seat. Replace this copy with verified billing rules.' },
+    { q: 'Can customers switch plans?', a: 'Example answer: describe when and how customers can change plans under your terms.' },
+    { q: 'Is there a free plan?', a: 'Example answer: describe your trial or free plan here, or remove this question if you do not offer one.' },
   ];
 
   return (
-    <section className={\`relative w-full py-20 px-6 sm:px-12 border-b transition-colors \${bg}\`}>
+    <section className={\`relative w-full py-20 px-6 @sm:px-12 border-b transition-colors \${bg}\`}>
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Frequently Asked Questions</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Example FAQ copy</h2>
+        <p className="mx-auto -mt-6 mb-8 max-w-2xl text-center text-sm opacity-75">Example questions and answers only. Replace them with verified product policies.</p>
 
         <div className="space-y-4">
           {faqs.map((f, i) => (
-            <div key={f.q} className={\`border rounded-xl p-5 transition-all \${itemBorder}\`}>
+            <div key={f.q} className={\`border rounded-[var(--tess-radius-xl,8px)] p-5 transition-all \${itemBorder}\`}>
               <button
                 type="button"
                 onClick={() => setOpenIdx(openIdx === i ? null : i)}
-                className="w-full text-left font-semibold text-sm sm:text-base flex justify-between items-center"
+                className="w-full text-left font-semibold text-sm @sm:text-base flex justify-between items-center"
               >
                 <span>{f.q}</span>
                 <span className="font-mono text-xs opacity-60">{openIdx === i ? '−' : '+'}</span>
               </button>
               {openIdx === i && (
-                <p className="text-xs sm:text-sm opacity-80 mt-3 pt-3 border-t border-neutral-100 dark:border-neutral-800 leading-relaxed">
+                <p className="text-xs @sm:text-sm opacity-80 mt-3 pt-3 border-t border-neutral-100 dark:border-neutral-800 leading-relaxed">
                   {f.a}
                 </p>
               )}
@@ -1757,6 +1775,6 @@ export function FaqAccordionPreview() {
     fixturesCode: `export const faqAccordionFixtures = {};`,
     readmeCode: `# FAQ Accordion
 
-Expandable question accordion resolving pre-sale and architectural objections.`,
+Accordion with generic sample questions and answers. Replace the copy with verified information before publication.`,
   },
 ];

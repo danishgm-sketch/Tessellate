@@ -36,7 +36,12 @@ export const GOLDEN_PRODUCT_BRIEFS: GoldenBrief[] = [
       minDataDensity: 80,
       minSophistication: 70,
     },
-    expectedScreens: ['screen-overview', 'screen-collection-index', 'screen-settings'],
+    expectedScreens: [
+      'screen-overview',
+      'screen-collection-index',
+      'screen-positions-and-risk',
+      'screen-trade-history',
+    ],
   },
 
   // 2. Playful HR Platform
@@ -59,7 +64,7 @@ export const GOLDEN_PRODUCT_BRIEFS: GoldenBrief[] = [
       minTrustRequirement: 80,
       minDataDensity: 50,
     },
-    expectedScreens: ['screen-overview', 'screen-collection-index'],
+    expectedScreens: ['screen-workspace', 'screen-candidate-profile', 'screen-collection-index'],
   },
 
   // 3. Luxury Travel Marketplace
@@ -81,7 +86,7 @@ export const GOLDEN_PRODUCT_BRIEFS: GoldenBrief[] = [
     expectedPriors: {
       minTrustRequirement: 85,
     },
-    expectedScreens: ['screen-marketing-home', 'screen-overview'],
+    expectedScreens: ['screen-marketing-home', 'screen-property-detail'],
   },
 
   // 4. Developer Observability Platform
@@ -105,7 +110,7 @@ export const GOLDEN_PRODUCT_BRIEFS: GoldenBrief[] = [
       minDataDensity: 85,
       minSophistication: 85,
     },
-    expectedScreens: ['screen-overview', 'screen-documentation'],
+    expectedScreens: ['screen-trace-explorer', 'screen-overview', 'screen-span-detail'],
   },
 
   // 5. Minimalist Personal Finance Tool
@@ -127,7 +132,7 @@ export const GOLDEN_PRODUCT_BRIEFS: GoldenBrief[] = [
     expectedPriors: {
       minTrustRequirement: 75,
     },
-    expectedScreens: ['screen-overview', 'screen-collection-index'],
+    expectedScreens: ['screen-overview', 'screen-workspace'],
   },
 
   // 6. Scientific Research Environment

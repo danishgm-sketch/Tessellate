@@ -1,3 +1,3 @@
 # Case Study Spotlight
 
-Enterprise customer outcome card pairing bold metric multiplier with technical narrative.
+Customer outcome card template. Add customer-approved copy, verified measures, and a real case-study URL before publishing.

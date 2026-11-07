@@ -1,0 +1,36 @@
+{
+  "capturedAt": "2026-10-24T00:04:25.7334166Z",
+  "command": "pnpm test:e2e",
+  "exitCode": 0,
+  "suites": [
+    {
+      "config": "playwright.config.ts",
+      "passed": 278,
+      "skipped": 108,
+      "failed": 0,
+      "duration": "7.0m"
+    },
+    {
+      "config": "tests/e2e/sites-preview.playwright.config.ts",
+      "passed": 228,
+      "skipped": 36,
+      "failed": 0,
+      "duration": "16.0m",
+      "includes": "Activity Feed sample disclosure on desktop and mobile; 324-resource browser certification"
+    },
+    {
+      "config": "tests/e2e/preview-app.playwright.config.ts",
+      "passed": 3,
+      "skipped": 0,
+      "failed": 0,
+      "duration": "9.3s"
+    }
+  ],
+  "total": {
+    "passed": 509,
+    "skipped": 144,
+    "failed": 0
+  },
+  "harnessCorrection": "The first post-AUD-309 run exposed that the Activity Feed opaque-origin preview test was also selected by plain Astro preview. The default Playwright config now excludes it; the dedicated Sites Worker config continues to run it, where desktop and mobile pass. The product CORS and sandbox policy was unchanged.",
+  "log": "quality/evidence/step-40/e2e-activity-feed-final.log"
+}

@@ -1,0 +1,815 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "checked": 40,
+  "total": 40,
+  "diagnostics": {
+    "console": [],
+    "warnings": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "results": [
+    {
+      "slug": "advanced-data-table",
+      "route": "/resources/advanced-data-table/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\advanced-data-table-390x844.png"
+    },
+    {
+      "slug": "ai-prompt-composer",
+      "route": "/resources/ai-prompt-composer/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "Context: 2 files",
+          "tag": "span",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "fontSize": "11px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "~ 240 tokens",
+          "tag": "span",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "fontSize": "11px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Shift + Enter for newline",
+          "tag": "span",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "fontSize": "11px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\ai-prompt-composer-390x844.png"
+    },
+    {
+      "slug": "ai-research-answer",
+      "route": "/resources/ai-research-answer/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "1.",
+          "tag": "span",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "700"
+        },
+        {
+          "text": "2.",
+          "tag": "span",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "700"
+        },
+        {
+          "text": "3.",
+          "tag": "span",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "700"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\ai-research-answer-390x844.png"
+    },
+    {
+      "slug": "ai-suggested-actions",
+      "route": "/resources/ai-suggested-actions/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "✦",
+          "tag": "span",
+          "foreground": "oklch(0.769 0.188 70.08)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 2.13,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "600"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\ai-suggested-actions-390x844.png"
+    },
+    {
+      "slug": "area-chart",
+      "route": "/resources/area-chart/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\area-chart-390x844.png"
+    },
+    {
+      "slug": "badge",
+      "route": "/resources/badge/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\badge-390x844.png"
+    },
+    {
+      "slug": "bar-chart",
+      "route": "/resources/bar-chart/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\bar-chart-390x844.png"
+    },
+    {
+      "slug": "button",
+      "route": "/resources/button/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\button-390x844.png"
+    },
+    {
+      "slug": "collapsible-sidebar",
+      "route": "/resources/collapsible-sidebar/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\collapsible-sidebar-390x844.png"
+    },
+    {
+      "slug": "cta-minimal",
+      "route": "/resources/cta-minimal/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "Example content. Replace it with your product story.",
+          "tag": "p",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(102, 106, 112)",
+          "ratio": 2.93,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\cta-minimal-390x844.png"
+    },
+    {
+      "slug": "dashboard-kpi-grid",
+      "route": "/resources/dashboard-kpi-grid/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\dashboard-kpi-grid-390x844.png"
+    },
+    {
+      "slug": "dashboard-skeleton",
+      "route": "/resources/dashboard-skeleton/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\dashboard-skeleton-390x844.png"
+    },
+    {
+      "slug": "dialog",
+      "route": "/resources/dialog/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\dialog-390x844.png"
+    },
+    {
+      "slug": "donut-chart",
+      "route": "/resources/donut-chart/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "Total",
+          "tag": "span",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "fontSize": "10px",
+          "fontWeight": "500"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\donut-chart-390x844.png"
+    },
+    {
+      "slug": "editorial-hero",
+      "route": "/resources/editorial-hero/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\editorial-hero-390x844.png"
+    },
+    {
+      "slug": "empty-workspace",
+      "route": "/resources/empty-workspace/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "No Projects Found",
+          "tag": "h3",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(107, 108, 110)",
+          "ratio": 3.77,
+          "threshold": 4.5,
+          "fontSize": "16px",
+          "fontWeight": "700"
+        },
+        {
+          "text": "Start by creating a new composition or choose from 12 pre-built blueprints.",
+          "tag": "p",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(107, 108, 110)",
+          "ratio": 3,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\empty-workspace-390x844.png"
+    },
+    {
+      "slug": "entity-profile-header",
+      "route": "/resources/entity-profile-header/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\entity-profile-header-390x844.png"
+    },
+    {
+      "slug": "error-state",
+      "route": "/resources/error-state/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\error-state-390x844.png"
+    },
+    {
+      "slug": "fade-up-reveal",
+      "route": "/resources/fade-up-reveal/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\fade-up-reveal-390x844.png"
+    },
+    {
+      "slug": "faq-accordion",
+      "route": "/resources/faq-accordion/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\faq-accordion-390x844.png"
+    },
+    {
+      "slug": "feature-bento",
+      "route": "/resources/feature-bento/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\feature-bento-390x844.png"
+    },
+    {
+      "slug": "feature-matrix",
+      "route": "/resources/feature-matrix/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "Example capability matrix",
+          "tag": "h2",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 2.64,
+          "threshold": 3,
+          "fontSize": "30px",
+          "fontWeight": "700"
+        },
+        {
+          "text": "Verified Zod Schemas",
+          "tag": "td",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 2.64,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "600"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Accessibility review",
+          "tag": "td",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 2.64,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "600"
+        },
+        {
+          "text": "Required",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Required",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Required",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Required",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Zero External CSS Dependencies",
+          "tag": "td",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 2.64,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "600"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Curated Nocturne Theme",
+          "tag": "td",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 2.64,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "600"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 1.02,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\feature-matrix-390x844.png"
+    },
+    {
+      "slug": "filter-builder",
+      "route": "/resources/filter-builder/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "Filter Rules",
+          "tag": "h3",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(107, 108, 110)",
+          "ratio": 3.77,
+          "threshold": 4.5,
+          "fontSize": "14px",
+          "fontWeight": "600"
+        },
+        {
+          "text": "+ Add Condition",
+          "tag": "button",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(107, 108, 110)",
+          "ratio": 3.77,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "No conditions yet. Add a condition to build a filter.",
+          "tag": "p",
+          "foreground": "oklch(0.439 0 none)",
+          "background": "rgb(107, 108, 110)",
+          "ratio": 1.49,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Example rules only. Connect a data source to apply filters.",
+          "tag": "p",
+          "foreground": "oklch(0.439 0 none)",
+          "background": "rgb(107, 108, 110)",
+          "ratio": 1.49,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\filter-builder-390x844.png"
+    },
+    {
+      "slug": "footer-product",
+      "route": "/resources/footer-product/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\footer-product-390x844.png"
+    },
+    {
+      "slug": "input",
+      "route": "/resources/input/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "Full name",
+          "tag": "label",
+          "foreground": "oklch(0.371 0 none)",
+          "background": "rgb(11, 13, 16)",
+          "ratio": 1.88,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "600"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\input-390x844.png"
+    },
+    {
+      "slug": "kanban-board",
+      "route": "/resources/kanban-board/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "Sample task board",
+          "tag": "h3",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(83, 85, 87)",
+          "ratio": 2.64,
+          "threshold": 4.5,
+          "fontSize": "14px",
+          "fontWeight": "600"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\kanban-board-390x844.png"
+    },
+    {
+      "slug": "logo-cloud-minimal",
+      "route": "/resources/logo-cloud-minimal/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "Illustrative logos · replace with approved marks before publishing",
+          "tag": "p",
+          "foreground": "rgb(168, 175, 186)",
+          "background": "rgb(250, 250, 250)",
+          "ratio": 2.12,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "600"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\logo-cloud-minimal-390x844.png"
+    },
+    {
+      "slug": "magnetic-button",
+      "route": "/resources/magnetic-button/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\magnetic-button-390x844.png"
+    },
+    {
+      "slug": "marketing-nav-cta",
+      "route": "/resources/marketing-nav-cta/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "BETA",
+          "tag": "span",
+          "foreground": "rgb(168, 175, 186)",
+          "background": "rgb(245, 245, 245)",
+          "ratio": 2.03,
+          "threshold": 4.5,
+          "fontSize": "10px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\marketing-nav-cta-390x844.png"
+    },
+    {
+      "slug": "minimal-top-nav",
+      "route": "/resources/minimal-top-nav/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\minimal-top-nav-390x844.png"
+    },
+    {
+      "slug": "notification-centre",
+      "route": "/resources/notification-centre/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "2m ago",
+          "tag": "span",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(250, 250, 250)",
+          "ratio": 3.68,
+          "threshold": 4.5,
+          "fontSize": "11px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "1h ago",
+          "tag": "span",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(250, 250, 250)",
+          "ratio": 3.68,
+          "threshold": 4.5,
+          "fontSize": "11px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "1d ago",
+          "tag": "span",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(250, 250, 250)",
+          "ratio": 3.68,
+          "threshold": 4.5,
+          "fontSize": "11px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\notification-centre-390x844.png"
+    },
+    {
+      "slug": "pricing-three-tier",
+      "route": "/resources/pricing-three-tier/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\pricing-three-tier-390x844.png"
+    },
+    {
+      "slug": "select",
+      "route": "/resources/select/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "Select an option",
+          "tag": "label",
+          "foreground": "oklch(0.371 0 none)",
+          "background": "rgb(11, 13, 16)",
+          "ratio": 1.88,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "600"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\select-390x844.png"
+    },
+    {
+      "slug": "split-product-hero",
+      "route": "/resources/split-product-hero/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\split-product-hero-390x844.png"
+    },
+    {
+      "slug": "subtle-grid-field",
+      "route": "/resources/subtle-grid-field/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "Architectural Surface",
+          "tag": "span",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(131, 132, 133)",
+          "ratio": 1.45,
+          "threshold": 4.5,
+          "fontSize": "10px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Vector coordinate grid providing structural rhythm with zero client bundle overhead.",
+          "tag": "p",
+          "foreground": "rgb(168, 175, 186)",
+          "background": "rgb(131, 132, 133)",
+          "ratio": 1.7,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\subtle-grid-field-390x844.png"
+    },
+    {
+      "slug": "testimonial-grid",
+      "route": "/resources/testimonial-grid/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\testimonial-grid-390x844.png"
+    },
+    {
+      "slug": "three-pane-app-shell",
+      "route": "/resources/three-pane-app-shell/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\three-pane-app-shell-390x844.png"
+    },
+    {
+      "slug": "time-series-chart",
+      "route": "/resources/time-series-chart/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "req/s",
+          "tag": "span",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\time-series-chart-390x844.png"
+    },
+    {
+      "slug": "timeline",
+      "route": "/resources/timeline/",
+      "status": 200,
+      "failures": [],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\timeline-390x844.png"
+    },
+    {
+      "slug": "two-pane-master-detail-shell",
+      "route": "/resources/two-pane-master-detail-shell/",
+      "status": 200,
+      "failures": [
+        {
+          "text": "10m ago",
+          "tag": "p",
+          "foreground": "oklch(0.205 0 none)",
+          "background": "rgb(250, 250, 250)",
+          "ratio": 3.4,
+          "threshold": 4.5,
+          "fontSize": "10px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "1h ago",
+          "tag": "p",
+          "foreground": "oklch(0.205 0 none)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 3.41,
+          "threshold": 4.5,
+          "fontSize": "10px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "3h ago",
+          "tag": "p",
+          "foreground": "oklch(0.205 0 none)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 3.41,
+          "threshold": 4.5,
+          "fontSize": "10px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-accurate\\mobile-chrome\\two-pane-master-detail-shell-390x844.png"
+    }
+  ]
+}

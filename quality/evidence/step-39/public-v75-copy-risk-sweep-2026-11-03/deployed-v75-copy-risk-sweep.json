@@ -1,0 +1,898 @@
+{
+  "capturedAt": "2026-11-03T17:59:47.819Z",
+  "publicSite": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "publicVersion": 75,
+  "canonicalSourceCommit": "8e1b07a7def8e94abaaf5701f758dd4812636d12",
+  "resultCount": 26,
+  "failures": [],
+  "results": [
+    {
+      "id": "ai-multi-agent-board-1440x900",
+      "route": "/r/ai-multi-agent-board/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-multi-agent-board/",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "title": "AI Multi-Agent Board (@tess/ai-multi-agent-board) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nAi\n/\nAI Multi-Agent Board\nAI Multi-Agent Board\n@tess/ai-multi-agent-board\nv1.0.0\nManifest status: verified\n\nKanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.\n\nInstall:\ntess add ai-multi-agent-board\nRegistry source: /r/ai-multi-agent-board.json\n#ai\n#multi-agent\n#swarm\n#kanban\n#tasks\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nKanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nMulti-agent orchestration displays\n•\nAutonomous team work distribution\n•\nSubagent task lane tracking\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nSingle user personal to-do lists\n•\nStatic blog articles\nJOBS TO BE DONE\nCoordinate and monitor parallel subagent workstreams in designated status lanes\nEXPECTED CONTENT REQUIREMENTS\nDescribe the behavior represented by the interface and clearly label any illustrative data.\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (95%)\nb2b-saas (90%)\ndata-product (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nAi\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n75%\nContrast\n85%\nCurvature\n35%\nMotion\n30%",
+      "previewText": "AI Multi-Agent Board preview\nAutonomous Agent Swarm\n\n3 subagents coordinated via Antigravity SDK\n\nActive Swarm\nQUEUED\nTestingAgent\nExecute Playwright suite\nIN PROGRESS\nCatalogAgent\nValidating 324 resources\nCOMPLETE\nArchitectAgent\nDesign Schema 1.0.0",
+      "buttons": [],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 764,
+        "scrollWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-multi-agent-board-1440x900.png"
+    },
+    {
+      "id": "ai-plan-review-1440x900",
+      "route": "/r/ai-plan-review/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-plan-review/",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "title": "AI Plan Review (@tess/ai-plan-review) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nAi\n/\nAI Plan Review\nAI Plan Review\n@tess/ai-plan-review\nv1.0.0\nManifest status: verified\n\nMulti-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.\n\nInstall:\ntess add ai-plan-review\nRegistry source: /r/ai-plan-review.json\n#ai\n#plan\n#review\n#phases\n#tasks\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nMulti-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nAutonomous build order roadmaps\n•\nComplex architectural refactor reviews\n•\nPre-flight deployment planning\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStandard task item checklists\n•\nSimple single-command terminals\nJOBS TO BE DONE\nPresent structured multi-step execution plans with actionable proceed confirmations\nEXPECTED CONTENT REQUIREMENTS\nDescribe the behavior represented by the interface and clearly label any illustrative data.\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (95%)\nb2b-saas (90%)\ndata-product (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nAi\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n75%\nContrast\n85%\nCurvature\n35%\nMotion\n30%",
+      "previewText": "AI Plan Review preview\nProposed Implementation Plan\n\nAutonomous execution strategy for Phase 18\n\n4 Steps | ~2m runtime\n01\nGenerate Manifest Contracts\n\nCreate 20 validated ResourceManifest JSON schemas with 0 dependencies.\n\n02\nSynthesize React Components\n\nAuthor clean, accessible pure SVG + Tailwind components for all 3 variants.\n\n03\nMonorepo Typecheck & Lint Gate\n\nRun pnpm typecheck and pnpm lint to verify 0 errors and 0 warnings.\n\n04\nTest Suite & Phase Gate Commit\n\nExecute 253 tests across packages and commit with conventional commit message.\n\nAccept Plan & Proceed",
+      "buttons": [
+        {
+          "text": "Accept Plan & Proceed",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": true
+        }
+      ],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 764,
+        "scrollWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-plan-review-1440x900.png"
+    },
+    {
+      "id": "marquee-typography-1440x900",
+      "route": "/r/marquee-typography/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/marquee-typography/",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "title": "Marquee Typography (@tess/marquee-typography) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nTypography\n/\nMarquee Typography\nMarquee Typography\n@tess/marquee-typography\nv1.0.0\nManifest status: verified\n\nContinuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.\n\nInstall:\ntess add marquee-typography\nRegistry source: /r/marquee-typography.json\n#typography\n#marquee\n#ticker\n#continuous\n#scroll\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nContinuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nPartner logo and quote banners\n•\nProduct feature ticker bars\n•\nConference site headers\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nCritical safety warnings\n•\nLengthy legal disclosures\nJOBS TO BE DONE\nGenerate continuous kinetic forward momentum across wide viewport sections\nEXPECTED CONTENT REQUIREMENTS\nHigh-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics\nTARGET PRODUCT ARCHETYPES\nb2b-saas (95%)\ndeveloper-tool (90%)\nconsumer-subscription (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nTypography\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n60%\nVisual Ambition\n75%\nContrast\n85%\nCurvature\n25%\nMotion\n30%",
+      "previewText": "Marquee Typography preview\nZERO LOCK-IN\n✦\nMIT LICENSED\n✦\nDETERMINISTIC COMPOSITION\n✦\n972 CONFIGURATIONS\n✦\nWCAG AA VERIFIED\n✦\nZERO LOCK-IN\n✦\nMIT LICENSED\n✦\nDETERMINISTIC COMPOSITION\n✦\n972 CONFIGURATIONS\n✦\nWCAG AA VERIFIED\n✦",
+      "buttons": [],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 764,
+        "scrollWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/marquee-typography-1440x900.png"
+    },
+    {
+      "id": "sticky-scroll-story-1440x900",
+      "route": "/r/sticky-scroll-story/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/sticky-scroll-story/",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "title": "Sticky Scroll Story (@tess/sticky-scroll-story) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nMotion\n/\nSticky Scroll Story\nSticky Scroll Story\n@tess/sticky-scroll-story\nv1.0.0\nManifest status: verified\n\nSticky viewport container pairing stationary preview graphic with scrolling narrative chapters.\n\nInstall:\ntess add sticky-scroll-story\nRegistry source: /r/sticky-scroll-story.json\n#motion\n#sticky\n#scroll\n#story\n#chapters\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nSticky viewport container pairing stationary preview graphic with scrolling narrative chapters.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nProduct capability stories\n•\nOnboarding walkthroughs\n•\nInteractive architecture tours\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nDense spreadsheet editing\n•\nCommand palettes\nJOBS TO BE DONE\nPair scrolling narrative chapter copy with a pinned, reactive visual display\nEXPECTED CONTENT REQUIREMENTS\nCSS transition and animation transforms, reduced-motion fallbacks\nTARGET PRODUCT ARCHETYPES\nb2b-saas (90%)\ndeveloper-tool (90%)\nconsumer-subscription (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nMotion\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n80%\nContrast\n85%\nCurvature\n35%\nMotion\n50%",
+      "previewText": "Sticky Scroll Story preview\nSticky Story Chapters\n01. Ingestion\nTelemetry streams continuously into edge workers with sub-5ms routing.\n02. Validation\nDeterministic schema validation rejects malformed packets at the gateway boundary.\n03. Synthesis\nComposed UI manifests update in real-time with zero client bundle penalties.\nACTIVE VISUAL STATE\n01. Ingestion\n1",
+      "buttons": [],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 764,
+        "scrollWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/sticky-scroll-story-1440x900.png"
+    },
+    {
+      "id": "number-count-up-1440x900",
+      "route": "/r/number-count-up/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/number-count-up/",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "title": "Number Count Up (@tess/number-count-up) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nMotion\n/\nNumber Count Up\nNumber Count Up\n@tess/number-count-up\nv1.0.0\nManifest status: verified\n\nEased numeric counter animating from zero to target value on viewport entrance with monospace stability.\n\nInstall:\ntess add number-count-up\nRegistry source: /r/number-count-up.json\n#motion\n#count-up\n#numbers\n#metric\n#counter\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nEased numeric counter animating from zero to target value on viewport entrance with monospace stability.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nSocial proof metric counters\n•\nCustomer tally stats\n•\nBenchmark speed metrics\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nReal-time clock seconds\n•\nPagination page numbers\nJOBS TO BE DONE\nAnimate integers from 0 to destination with smooth logarithmic easing\nEXPECTED CONTENT REQUIREMENTS\nCSS transition and animation transforms, reduced-motion fallbacks\nTARGET PRODUCT ARCHETYPES\nb2b-saas (90%)\ndeveloper-tool (90%)\nconsumer-subscription (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nMotion\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n80%\nContrast\n85%\nCurvature\n35%\nMotion\n50%",
+      "previewText": "Number Count Up preview\nLogarithmic Counter\nReplay Count\n324\nCanonical Resources Verified",
+      "buttons": [
+        {
+          "text": "Replay Count",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": true
+        }
+      ],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 764,
+        "scrollWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/number-count-up-1440x900.png"
+    },
+    {
+      "id": "version-history-1440x900",
+      "route": "/r/version-history/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/version-history/",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "title": "Version History (@tess/version-history) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nBlocks\n/\nVersion History\nVersion History\n@tess/version-history\nv1.0.0\nManifest status: verified\n\nChangelog of document revisions with restore buttons, diff flags, and author details.\n\nInstall:\ntess add version-history\nRegistry source: /r/version-history.json\n#version-history\n#history\n#revisions\n#checkpoints\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nChangelog of document revisions with restore buttons, diff flags, and author details.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nRollback panels and cloud project revision histories\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nEphemeral unversioned scratchpads\nJOBS TO BE DONE\nList historical revisions with restore triggers\nEXPECTED CONTENT REQUIREMENTS\nHigh data density, keyboard accessibility, semantic tokens\nTARGET PRODUCT ARCHETYPES\nb2b-saas (95%)\ndeveloper-tool (90%)\ndata-product (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nBlocks\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n65%\nContrast\n80%\nCurvature\n35%\nMotion\n25%",
+      "previewText": "Version History preview\nRevision History\nv1.0.4\nCURRENT\nAdded 72 verified marketing sections\nv1.0.3\nStabilized 36 navigation shells\nRestore\nv1.0.2\nInitialized 44 primitives\nRestore",
+      "buttons": [
+        {
+          "text": "Restore",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": false
+        },
+        {
+          "text": "Restore",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": false
+        }
+      ],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 764,
+        "scrollWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/version-history-1440x900.png"
+    },
+    {
+      "id": "data-hero-1440x900",
+      "route": "/r/data-hero/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/data-hero/",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "title": "Data Hero (@tess/data-hero) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nSections\n/\nData Hero\nData Hero\n@tess/data-hero\nv1.0.0\nManifest status: verified\n\nFinancial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.\n\nInstall:\ntess add data-hero\nRegistry source: /r/data-hero.json\n#data-hero\n#hero\n#data\n#finance\n#marketing\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nFinancial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nData-intensive SaaS and quantitative products\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nContent marketing blogs\nJOBS TO BE DONE\nCommunicate analytical density and real-time computation speeds\nEXPECTED CONTENT REQUIREMENTS\nClear hierarchy, responsive layout, accessible typography\nTARGET PRODUCT ARCHETYPES\nmarketing-site (95%)\nb2b-saas (90%)\ndeveloper-tool (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nSections\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n50%\nVisual Ambition\n70%\nContrast\n80%\nCurvature\n35%\nMotion\n30%",
+      "previewText": "Data Hero preview\nReal-time telemetry and programmatic precision.\n\nEngineered for mission-critical dashboards where microsecond delays are unacceptable.\n\nINGESTION RATE\n4.2M req/s\n+12.4% vs baseline\nP99 LATENCY\n1.4 ms\n-8.1% vs baseline\nMEMORY FOOTPRINT\n18.2 MB\n-45.0% vs baseline",
+      "buttons": [],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 764,
+        "scrollWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/data-hero-1440x900.png"
+    },
+    {
+      "id": "analytics-shell-1440x900",
+      "route": "/r/analytics-shell/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/analytics-shell/",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "title": "Analytics Shell (@tess/analytics-shell) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nShells\n/\nAnalytics Shell\nAnalytics Shell\n@tess/analytics-shell\nv1.0.0\nManifest status: verified\n\nMetric-dense business intelligence dashboard shell with date picker bar and KPI grid.\n\nInstall:\ntess add analytics-shell\nRegistry source: /r/analytics-shell.json\n#analytics-shell\n#analytics\n#dashboard\n#bi\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nMetric-dense business intelligence dashboard shell with date picker bar and KPI grid.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nBusiness telemetry monitoring with time interval controls\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nContent reading sites\nJOBS TO BE DONE\nCoordinate executive KPI summaries and interactive time-series plots\nEXPECTED CONTENT REQUIREMENTS\nAccessible navigation semantics and responsive containment\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (90%)\nb2b-saas (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nShells\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n65%\nVisual Ambition\n60%\nContrast\n75%\nCurvature\n40%\nMotion\n35%",
+      "previewText": "Analytics Shell preview\nAnalytics & Growth\n\nTrailing 30 days telemetry\n\nLast 30 Days\nExport CSV\nMRR: $84k\nDAU: 12.4k\nChurn: 0.8%\nNPS: 74",
+      "buttons": [
+        {
+          "text": "Last 30 Days",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": false
+        },
+        {
+          "text": "Export CSV",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": false
+        }
+      ],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 764,
+        "scrollWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/analytics-shell-1440x900.png"
+    },
+    {
+      "id": "data-terminal-header-1440x900",
+      "route": "/r/data-terminal-header/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/data-terminal-header/",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "title": "Data Terminal Header (@tess/data-terminal-header) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nShells\n/\nData Terminal Header\nData Terminal Header\n@tess/data-terminal-header\nv1.0.0\nManifest status: verified\n\nHigh-density monospace financial header with ticker feed, clock, and connection latency.\n\nInstall:\ntess add data-terminal-header\nRegistry source: /r/data-terminal-header.json\n#data-terminal-header\n#terminal\n#finance\n#monospace\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nHigh-density monospace financial header with ticker feed, clock, and connection latency.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nReal-time streaming dashboards and Bloomberg-style terminals\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nCasual marketing blogs\nJOBS TO BE DONE\nStream critical telemetry status and ticker feeds in header strip\nEXPECTED CONTENT REQUIREMENTS\nAccessible navigation semantics and responsive containment\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (90%)\nb2b-saas (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nShells\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n65%\nVisual Ambition\n60%\nContrast\n75%\nCurvature\n40%\nMotion\n35%",
+      "previewText": "Data Terminal Header preview\n● LIVE\nBTC/USD $94,320.50\n+2.4%\nRTT: 12ms\nUTC 14:02:49",
+      "buttons": [],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 764,
+        "scrollWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/data-terminal-header-1440x900.png"
+    },
+    {
+      "id": "connection-lost-state-1440x900",
+      "route": "/r/connection-lost-state/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/connection-lost-state/",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "title": "Connection Lost State (@tess/connection-lost-state) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nStates\n/\nConnection Lost State\nConnection Lost State\n@tess/connection-lost-state\nv1.0.0\nManifest status: verified\n\nActive socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button.\n\nInstall:\ntess add connection-lost-state\nRegistry source: /r/connection-lost-state.json\n#connection\n#lost\n#reconnect\n#socket\n#retry\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nActive socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nLive collaborative editing sessions\n•\nReal-time telemetry streams\n•\nRemote preview bridges\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStandard 404 page routes\n•\nPlanned maintenance modals\nJOBS TO BE DONE\nInform users of active websocket connection dropouts and provide automatic reconnect attempts\nEXPECTED CONTENT REQUIREMENTS\nHigh-contrast state feedback, ARIA live region semantics, clear recovery action trigger\nTARGET PRODUCT ARCHETYPES\nb2b-saas (95%)\ndeveloper-tool (90%)\nconsumer-subscription (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nStates\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n60%\nVisual Ambition\n70%\nContrast\n85%\nCurvature\n30%\nMotion\n35%",
+      "previewText": "Connection Lost State preview\n⚡\nTelemetry Connection Dropped\n\nThe real-time preview socket disconnected unexpectedly. Reconnecting automatically in 5s...\n\nReconnect Now",
+      "buttons": [
+        {
+          "text": "Reconnect Now",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": true
+        }
+      ],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 764,
+        "scrollWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/connection-lost-state-1440x900.png"
+    },
+    {
+      "id": "feature-with-live-demo-1440x900",
+      "route": "/r/feature-with-live-demo/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/feature-with-live-demo/",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "title": "Feature with Live Demo (@tess/feature-with-live-demo) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nSections\n/\nFeature with Live Demo\nFeature with Live Demo\n@tess/feature-with-live-demo\nv1.0.0\nManifest status: verified\n\nFeature showcase paired directly with an interactive sandbox state toggle.\n\nInstall:\ntess add feature-with-live-demo\nRegistry source: /r/feature-with-live-demo.json\n#feature-with-live-demo\n#features\n#interactive\n#demo\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nFeature showcase paired directly with an interactive sandbox state toggle.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nFeatures best demonstrated by direct state interaction\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStatic brochure sites\nJOBS TO BE DONE\nGive visitor tactile control of a real component inside the feature card\nEXPECTED CONTENT REQUIREMENTS\nClear hierarchy, responsive layout, accessible typography\nTARGET PRODUCT ARCHETYPES\nmarketing-site (95%)\nb2b-saas (90%)\ndeveloper-tool (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nSections\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n50%\nVisual Ambition\n70%\nContrast\n80%\nCurvature\n35%\nMotion\n30%",
+      "previewText": "Feature with Live Demo preview\nLIVE SANDBOX\nTactile state transitions without re-render cascades.\n\nObserve how state toggles propagate smoothly across nested manifests without incurring unwanted DOM rewrites.\n\nInteractive Toggle Component\nSYSTEM ACTIVE [ONLINE]",
+      "buttons": [
+        {
+          "text": "SYSTEM ACTIVE [ONLINE]",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": true
+        }
+      ],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 764,
+        "scrollWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/feature-with-live-demo-1440x900.png"
+    },
+    {
+      "id": "kiosk-display-shell-1440x900",
+      "route": "/r/kiosk-display-shell/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/kiosk-display-shell/",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "title": "Kiosk Display Shell (@tess/kiosk-display-shell) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nShells\n/\nKiosk Display Shell\nKiosk Display Shell\n@tess/kiosk-display-shell\nv1.0.0\nManifest status: verified\n\nDigital signage kiosk shell with high contrast typography, touch safety, and timeout reset.\n\nInstall:\ntess add kiosk-display-shell\nRegistry source: /r/kiosk-display-shell.json\n#kiosk-display-shell\n#kiosk\n#signage\n#touch\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nDigital signage kiosk shell with high contrast typography, touch safety, and timeout reset.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nUnattended touch screen kiosk hardware and public monitors\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStandard desktop multi-window software\nJOBS TO BE DONE\nDisplay large-format touch interactive layout with auto-idle timeout\nEXPECTED CONTENT REQUIREMENTS\nAccessible navigation semantics and responsive containment\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (90%)\nb2b-saas (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nShells\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n65%\nVisual Ambition\n60%\nContrast\n75%\nCurvature\n40%\nMotion\n35%",
+      "previewText": "Kiosk Display Shell preview\nTessellate Signage Hub\nKIOSK #04\nTouch Screen to Begin\n\nInteractive self-service interface system\n\nResets automatically after 60 seconds of inactivity",
+      "buttons": [],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 764,
+        "scrollWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-1440x900.png"
+    },
+    {
+      "id": "interactive-globe-1440x900",
+      "route": "/r/interactive-globe/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/interactive-globe/",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "title": "Interactive Globe (@tess/interactive-globe) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nData\n/\nInteractive Globe\nInteractive Globe\n@tess/interactive-globe\nv1.0.0\nManifest status: verified\n\nOrthographic projection vector wireframe globe with latitude/longitude meridians, active data nodes, and orbit pulse.\n\nInstall:\ntess add interactive-globe\nRegistry source: /r/interactive-globe.json\n#globe\n#wireframe\n#orthographic\n#svg\n#orbital\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nOrthographic projection vector wireframe globe with latitude/longitude meridians, active data nodes, and orbit pulse.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nGlobal cybersecurity telemetry\n•\nInternational traffic landing pages\n•\nReal-time threat monitoring\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStandard 2D tabular accounting\n•\nSingle variable KPIs\nJOBS TO BE DONE\nProvide high-ambition vector globe presence for worldwide telemetry data\nEXPECTED CONTENT REQUIREMENTS\nStructured numerical data points, semantic color tokens, SVG vector rendering\nTARGET PRODUCT ARCHETYPES\ndata-product (95%)\nb2b-saas (90%)\ndeveloper-tool (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nData\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n75%\nVisual Ambition\n70%\nContrast\n85%\nCurvature\n30%\nMotion\n20%",
+      "previewText": "Interactive Globe preview\nWorldwide Telemetry Mesh\n\nOrthographic orbital projection (Drag to rotate)\n\n● Live Orbit\nAzimuth: 0°\n•\nMesh: Orthographic-4X",
+      "buttons": [],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 764,
+        "scrollWidth": 764,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/interactive-globe-1440x900.png"
+    },
+    {
+      "id": "ai-multi-agent-board-390x844",
+      "route": "/r/ai-multi-agent-board/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-multi-agent-board/",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "title": "AI Multi-Agent Board (@tess/ai-multi-agent-board) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nAi\n/\nAI Multi-Agent Board\nAI Multi-Agent Board\n@tess/ai-multi-agent-board\nv1.0.0\nManifest status: verified\n\nKanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.\n\nInstall:\ntess add ai-multi-agent-board\nRegistry source: /r/ai-multi-agent-board.json\n#ai\n#multi-agent\n#swarm\n#kanban\n#tasks\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nKanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nMulti-agent orchestration displays\n•\nAutonomous team work distribution\n•\nSubagent task lane tracking\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nSingle user personal to-do lists\n•\nStatic blog articles\nJOBS TO BE DONE\nCoordinate and monitor parallel subagent workstreams in designated status lanes\nEXPECTED CONTENT REQUIREMENTS\nDescribe the behavior represented by the interface and clearly label any illustrative data.\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (95%)\nb2b-saas (90%)\ndata-product (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nAi\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n75%\nContrast\n85%\nCurvature\n35%\nMotion\n30%",
+      "previewText": "AI Multi-Agent Board preview\nAutonomous Agent Swarm\n\n3 subagents coordinated via Antigravity SDK\n\nActive Swarm\nQUEUED\nTestingAgent\nExecute Playwright suite\nIN PROGRESS\nCatalogAgent\nValidating 324 resources\nCOMPLETE\nArchitectAgent\nDesign Schema 1.0.0",
+      "buttons": [],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 322,
+        "scrollWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-multi-agent-board-390x844.png"
+    },
+    {
+      "id": "ai-plan-review-390x844",
+      "route": "/r/ai-plan-review/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-plan-review/",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "title": "AI Plan Review (@tess/ai-plan-review) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nAi\n/\nAI Plan Review\nAI Plan Review\n@tess/ai-plan-review\nv1.0.0\nManifest status: verified\n\nMulti-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.\n\nInstall:\ntess add ai-plan-review\nRegistry source: /r/ai-plan-review.json\n#ai\n#plan\n#review\n#phases\n#tasks\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nMulti-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nAutonomous build order roadmaps\n•\nComplex architectural refactor reviews\n•\nPre-flight deployment planning\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStandard task item checklists\n•\nSimple single-command terminals\nJOBS TO BE DONE\nPresent structured multi-step execution plans with actionable proceed confirmations\nEXPECTED CONTENT REQUIREMENTS\nDescribe the behavior represented by the interface and clearly label any illustrative data.\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (95%)\nb2b-saas (90%)\ndata-product (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nAi\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n75%\nContrast\n85%\nCurvature\n35%\nMotion\n30%",
+      "previewText": "AI Plan Review preview\nProposed Implementation Plan\n\nAutonomous execution strategy for Phase 18\n\n4 Steps | ~2m runtime\n01\nGenerate Manifest Contracts\n\nCreate 20 validated ResourceManifest JSON schemas with 0 dependencies.\n\n02\nSynthesize React Components\n\nAuthor clean, accessible pure SVG + Tailwind components for all 3 variants.\n\n03\nMonorepo Typecheck & Lint Gate\n\nRun pnpm typecheck and pnpm lint to verify 0 errors and 0 warnings.\n\n04\nTest Suite & Phase Gate Commit\n\nExecute 253 tests across packages and commit with conventional commit message.\n\nAccept Plan & Proceed",
+      "buttons": [
+        {
+          "text": "Accept Plan & Proceed",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": true
+        }
+      ],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 322,
+        "scrollWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/ai-plan-review-390x844.png"
+    },
+    {
+      "id": "marquee-typography-390x844",
+      "route": "/r/marquee-typography/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/marquee-typography/",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "title": "Marquee Typography (@tess/marquee-typography) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nTypography\n/\nMarquee Typography\nMarquee Typography\n@tess/marquee-typography\nv1.0.0\nManifest status: verified\n\nContinuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.\n\nInstall:\ntess add marquee-typography\nRegistry source: /r/marquee-typography.json\n#typography\n#marquee\n#ticker\n#continuous\n#scroll\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nContinuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nPartner logo and quote banners\n•\nProduct feature ticker bars\n•\nConference site headers\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nCritical safety warnings\n•\nLengthy legal disclosures\nJOBS TO BE DONE\nGenerate continuous kinetic forward momentum across wide viewport sections\nEXPECTED CONTENT REQUIREMENTS\nHigh-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics\nTARGET PRODUCT ARCHETYPES\nb2b-saas (95%)\ndeveloper-tool (90%)\nconsumer-subscription (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nTypography\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n60%\nVisual Ambition\n75%\nContrast\n85%\nCurvature\n25%\nMotion\n30%",
+      "previewText": "Marquee Typography preview\nZERO LOCK-IN\n✦\nMIT LICENSED\n✦\nDETERMINISTIC COMPOSITION\n✦\n972 CONFIGURATIONS\n✦\nWCAG AA VERIFIED\n✦\nZERO LOCK-IN\n✦\nMIT LICENSED\n✦\nDETERMINISTIC COMPOSITION\n✦\n972 CONFIGURATIONS\n✦\nWCAG AA VERIFIED\n✦",
+      "buttons": [],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 322,
+        "scrollWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/marquee-typography-390x844.png"
+    },
+    {
+      "id": "sticky-scroll-story-390x844",
+      "route": "/r/sticky-scroll-story/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/sticky-scroll-story/",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "title": "Sticky Scroll Story (@tess/sticky-scroll-story) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nMotion\n/\nSticky Scroll Story\nSticky Scroll Story\n@tess/sticky-scroll-story\nv1.0.0\nManifest status: verified\n\nSticky viewport container pairing stationary preview graphic with scrolling narrative chapters.\n\nInstall:\ntess add sticky-scroll-story\nRegistry source: /r/sticky-scroll-story.json\n#motion\n#sticky\n#scroll\n#story\n#chapters\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nSticky viewport container pairing stationary preview graphic with scrolling narrative chapters.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nProduct capability stories\n•\nOnboarding walkthroughs\n•\nInteractive architecture tours\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nDense spreadsheet editing\n•\nCommand palettes\nJOBS TO BE DONE\nPair scrolling narrative chapter copy with a pinned, reactive visual display\nEXPECTED CONTENT REQUIREMENTS\nCSS transition and animation transforms, reduced-motion fallbacks\nTARGET PRODUCT ARCHETYPES\nb2b-saas (90%)\ndeveloper-tool (90%)\nconsumer-subscription (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nMotion\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n80%\nContrast\n85%\nCurvature\n35%\nMotion\n50%",
+      "previewText": "Sticky Scroll Story preview\nSticky Story Chapters\n01. Ingestion\nTelemetry streams continuously into edge workers with sub-5ms routing.\n02. Validation\nDeterministic schema validation rejects malformed packets at the gateway boundary.\n03. Synthesis\nComposed UI manifests update in real-time with zero client bundle penalties.\nACTIVE VISUAL STATE\n01. Ingestion\n1",
+      "buttons": [],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 322,
+        "scrollWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/sticky-scroll-story-390x844.png"
+    },
+    {
+      "id": "number-count-up-390x844",
+      "route": "/r/number-count-up/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/number-count-up/",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "title": "Number Count Up (@tess/number-count-up) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nMotion\n/\nNumber Count Up\nNumber Count Up\n@tess/number-count-up\nv1.0.0\nManifest status: verified\n\nEased numeric counter animating from zero to target value on viewport entrance with monospace stability.\n\nInstall:\ntess add number-count-up\nRegistry source: /r/number-count-up.json\n#motion\n#count-up\n#numbers\n#metric\n#counter\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nEased numeric counter animating from zero to target value on viewport entrance with monospace stability.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nSocial proof metric counters\n•\nCustomer tally stats\n•\nBenchmark speed metrics\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nReal-time clock seconds\n•\nPagination page numbers\nJOBS TO BE DONE\nAnimate integers from 0 to destination with smooth logarithmic easing\nEXPECTED CONTENT REQUIREMENTS\nCSS transition and animation transforms, reduced-motion fallbacks\nTARGET PRODUCT ARCHETYPES\nb2b-saas (90%)\ndeveloper-tool (90%)\nconsumer-subscription (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nMotion\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n80%\nContrast\n85%\nCurvature\n35%\nMotion\n50%",
+      "previewText": "Number Count Up preview\nLogarithmic Counter\nReplay Count\n324\nCanonical Resources Verified",
+      "buttons": [
+        {
+          "text": "Replay Count",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": true
+        }
+      ],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 322,
+        "scrollWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/number-count-up-390x844.png"
+    },
+    {
+      "id": "version-history-390x844",
+      "route": "/r/version-history/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/version-history/",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "title": "Version History (@tess/version-history) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nBlocks\n/\nVersion History\nVersion History\n@tess/version-history\nv1.0.0\nManifest status: verified\n\nChangelog of document revisions with restore buttons, diff flags, and author details.\n\nInstall:\ntess add version-history\nRegistry source: /r/version-history.json\n#version-history\n#history\n#revisions\n#checkpoints\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nChangelog of document revisions with restore buttons, diff flags, and author details.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nRollback panels and cloud project revision histories\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nEphemeral unversioned scratchpads\nJOBS TO BE DONE\nList historical revisions with restore triggers\nEXPECTED CONTENT REQUIREMENTS\nHigh data density, keyboard accessibility, semantic tokens\nTARGET PRODUCT ARCHETYPES\nb2b-saas (95%)\ndeveloper-tool (90%)\ndata-product (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nBlocks\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n65%\nContrast\n80%\nCurvature\n35%\nMotion\n25%",
+      "previewText": "Version History preview\nRevision History\nv1.0.4\nCURRENT\nAdded 72 verified marketing sections\nv1.0.3\nStabilized 36 navigation shells\nRestore\nv1.0.2\nInitialized 44 primitives\nRestore",
+      "buttons": [
+        {
+          "text": "Restore",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": false
+        },
+        {
+          "text": "Restore",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": false
+        }
+      ],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 322,
+        "scrollWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/version-history-390x844.png"
+    },
+    {
+      "id": "data-hero-390x844",
+      "route": "/r/data-hero/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/data-hero/",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "title": "Data Hero (@tess/data-hero) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nSections\n/\nData Hero\nData Hero\n@tess/data-hero\nv1.0.0\nManifest status: verified\n\nFinancial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.\n\nInstall:\ntess add data-hero\nRegistry source: /r/data-hero.json\n#data-hero\n#hero\n#data\n#finance\n#marketing\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nFinancial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nData-intensive SaaS and quantitative products\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nContent marketing blogs\nJOBS TO BE DONE\nCommunicate analytical density and real-time computation speeds\nEXPECTED CONTENT REQUIREMENTS\nClear hierarchy, responsive layout, accessible typography\nTARGET PRODUCT ARCHETYPES\nmarketing-site (95%)\nb2b-saas (90%)\ndeveloper-tool (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nSections\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n50%\nVisual Ambition\n70%\nContrast\n80%\nCurvature\n35%\nMotion\n30%",
+      "previewText": "Data Hero preview\nReal-time telemetry and programmatic precision.\n\nEngineered for mission-critical dashboards where microsecond delays are unacceptable.\n\nINGESTION RATE\n4.2M req/s\n+12.4% vs baseline\nP99 LATENCY\n1.4 ms\n-8.1% vs baseline\nMEMORY FOOTPRINT\n18.2 MB\n-45.0% vs baseline",
+      "buttons": [],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 322,
+        "scrollWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/data-hero-390x844.png"
+    },
+    {
+      "id": "analytics-shell-390x844",
+      "route": "/r/analytics-shell/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/analytics-shell/",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "title": "Analytics Shell (@tess/analytics-shell) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nShells\n/\nAnalytics Shell\nAnalytics Shell\n@tess/analytics-shell\nv1.0.0\nManifest status: verified\n\nMetric-dense business intelligence dashboard shell with date picker bar and KPI grid.\n\nInstall:\ntess add analytics-shell\nRegistry source: /r/analytics-shell.json\n#analytics-shell\n#analytics\n#dashboard\n#bi\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nMetric-dense business intelligence dashboard shell with date picker bar and KPI grid.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nBusiness telemetry monitoring with time interval controls\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nContent reading sites\nJOBS TO BE DONE\nCoordinate executive KPI summaries and interactive time-series plots\nEXPECTED CONTENT REQUIREMENTS\nAccessible navigation semantics and responsive containment\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (90%)\nb2b-saas (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nShells\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n65%\nVisual Ambition\n60%\nContrast\n75%\nCurvature\n40%\nMotion\n35%",
+      "previewText": "Analytics Shell preview\nAnalytics & Growth\n\nTrailing 30 days telemetry\n\nLast 30 Days\nExport CSV\nMRR: $84k\nDAU: 12.4k\nChurn: 0.8%\nNPS: 74",
+      "buttons": [
+        {
+          "text": "Last 30 Days",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": false
+        },
+        {
+          "text": "Export CSV",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": false
+        }
+      ],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 322,
+        "scrollWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/analytics-shell-390x844.png"
+    },
+    {
+      "id": "data-terminal-header-390x844",
+      "route": "/r/data-terminal-header/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/data-terminal-header/",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "title": "Data Terminal Header (@tess/data-terminal-header) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nShells\n/\nData Terminal Header\nData Terminal Header\n@tess/data-terminal-header\nv1.0.0\nManifest status: verified\n\nHigh-density monospace financial header with ticker feed, clock, and connection latency.\n\nInstall:\ntess add data-terminal-header\nRegistry source: /r/data-terminal-header.json\n#data-terminal-header\n#terminal\n#finance\n#monospace\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nHigh-density monospace financial header with ticker feed, clock, and connection latency.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nReal-time streaming dashboards and Bloomberg-style terminals\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nCasual marketing blogs\nJOBS TO BE DONE\nStream critical telemetry status and ticker feeds in header strip\nEXPECTED CONTENT REQUIREMENTS\nAccessible navigation semantics and responsive containment\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (90%)\nb2b-saas (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nShells\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n65%\nVisual Ambition\n60%\nContrast\n75%\nCurvature\n40%\nMotion\n35%",
+      "previewText": "Data Terminal Header preview\n● LIVE\nBTC/USD $94,320.50\n+2.4%\nRTT: 12ms\nUTC 14:02:49",
+      "buttons": [],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 322,
+        "scrollWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/data-terminal-header-390x844.png"
+    },
+    {
+      "id": "connection-lost-state-390x844",
+      "route": "/r/connection-lost-state/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/connection-lost-state/",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "title": "Connection Lost State (@tess/connection-lost-state) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nStates\n/\nConnection Lost State\nConnection Lost State\n@tess/connection-lost-state\nv1.0.0\nManifest status: verified\n\nActive socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button.\n\nInstall:\ntess add connection-lost-state\nRegistry source: /r/connection-lost-state.json\n#connection\n#lost\n#reconnect\n#socket\n#retry\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nActive socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nLive collaborative editing sessions\n•\nReal-time telemetry streams\n•\nRemote preview bridges\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStandard 404 page routes\n•\nPlanned maintenance modals\nJOBS TO BE DONE\nInform users of active websocket connection dropouts and provide automatic reconnect attempts\nEXPECTED CONTENT REQUIREMENTS\nHigh-contrast state feedback, ARIA live region semantics, clear recovery action trigger\nTARGET PRODUCT ARCHETYPES\nb2b-saas (95%)\ndeveloper-tool (90%)\nconsumer-subscription (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nStates\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n60%\nVisual Ambition\n70%\nContrast\n85%\nCurvature\n30%\nMotion\n35%",
+      "previewText": "Connection Lost State preview\n⚡\nTelemetry Connection Dropped\n\nThe real-time preview socket disconnected unexpectedly. Reconnecting automatically in 5s...\n\nReconnect Now",
+      "buttons": [
+        {
+          "text": "Reconnect Now",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": true
+        }
+      ],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 322,
+        "scrollWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/connection-lost-state-390x844.png"
+    },
+    {
+      "id": "feature-with-live-demo-390x844",
+      "route": "/r/feature-with-live-demo/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/feature-with-live-demo/",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "title": "Feature with Live Demo (@tess/feature-with-live-demo) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nSections\n/\nFeature with Live Demo\nFeature with Live Demo\n@tess/feature-with-live-demo\nv1.0.0\nManifest status: verified\n\nFeature showcase paired directly with an interactive sandbox state toggle.\n\nInstall:\ntess add feature-with-live-demo\nRegistry source: /r/feature-with-live-demo.json\n#feature-with-live-demo\n#features\n#interactive\n#demo\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nFeature showcase paired directly with an interactive sandbox state toggle.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nFeatures best demonstrated by direct state interaction\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStatic brochure sites\nJOBS TO BE DONE\nGive visitor tactile control of a real component inside the feature card\nEXPECTED CONTENT REQUIREMENTS\nClear hierarchy, responsive layout, accessible typography\nTARGET PRODUCT ARCHETYPES\nmarketing-site (95%)\nb2b-saas (90%)\ndeveloper-tool (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nSections\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n50%\nVisual Ambition\n70%\nContrast\n80%\nCurvature\n35%\nMotion\n30%",
+      "previewText": "Feature with Live Demo preview\nLIVE SANDBOX\nTactile state transitions without re-render cascades.\n\nObserve how state toggles propagate smoothly across nested manifests without incurring unwanted DOM rewrites.\n\nInteractive Toggle Component\nSYSTEM ACTIVE [ONLINE]",
+      "buttons": [
+        {
+          "text": "SYSTEM ACTIVE [ONLINE]",
+          "disabled": false,
+          "ariaDisabled": null,
+          "hasHandler": true
+        }
+      ],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 322,
+        "scrollWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/feature-with-live-demo-390x844.png"
+    },
+    {
+      "id": "kiosk-display-shell-390x844",
+      "route": "/r/kiosk-display-shell/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/kiosk-display-shell/",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "title": "Kiosk Display Shell (@tess/kiosk-display-shell) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nShells\n/\nKiosk Display Shell\nKiosk Display Shell\n@tess/kiosk-display-shell\nv1.0.0\nManifest status: verified\n\nDigital signage kiosk shell with high contrast typography, touch safety, and timeout reset.\n\nInstall:\ntess add kiosk-display-shell\nRegistry source: /r/kiosk-display-shell.json\n#kiosk-display-shell\n#kiosk\n#signage\n#touch\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nDigital signage kiosk shell with high contrast typography, touch safety, and timeout reset.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nUnattended touch screen kiosk hardware and public monitors\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStandard desktop multi-window software\nJOBS TO BE DONE\nDisplay large-format touch interactive layout with auto-idle timeout\nEXPECTED CONTENT REQUIREMENTS\nAccessible navigation semantics and responsive containment\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (90%)\nb2b-saas (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nShells\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n65%\nVisual Ambition\n60%\nContrast\n75%\nCurvature\n40%\nMotion\n35%",
+      "previewText": "Kiosk Display Shell preview\nTessellate Signage Hub\nKIOSK #04\nTouch Screen to Begin\n\nInteractive self-service interface system\n\nResets automatically after 60 seconds of inactivity",
+      "buttons": [],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 322,
+        "scrollWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/kiosk-display-shell-390x844.png"
+    },
+    {
+      "id": "interactive-globe-390x844",
+      "route": "/r/interactive-globe/",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/interactive-globe/",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "title": "Interactive Globe (@tess/interactive-globe) — Tessellate Resource",
+      "mainText": "Home\n/\nExplore\n/\nData\n/\nInteractive Globe\nInteractive Globe\n@tess/interactive-globe\nv1.0.0\nManifest status: verified\n\nOrthographic projection vector wireframe globe with latitude/longitude meridians, active data nodes, and orbit pulse.\n\nInstall:\ntess add interactive-globe\nRegistry source: /r/interactive-globe.json\n#globe\n#wireframe\n#orthographic\n#svg\n#orbital\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nOrthographic projection vector wireframe globe with latitude/longitude meridians, active data nodes, and orbit pulse.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nGlobal cybersecurity telemetry\n•\nInternational traffic landing pages\n•\nReal-time threat monitoring\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStandard 2D tabular accounting\n•\nSingle variable KPIs\nJOBS TO BE DONE\nProvide high-ambition vector globe presence for worldwide telemetry data\nEXPECTED CONTENT REQUIREMENTS\nStructured numerical data points, semantic color tokens, SVG vector rendering\nTARGET PRODUCT ARCHETYPES\ndata-product (95%)\nb2b-saas (90%)\ndeveloper-tool (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nData\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n75%\nVisual Ambition\n70%\nContrast\n85%\nCurvature\n30%\nMotion\n20%",
+      "previewText": "Interactive Globe preview\nWorldwide Telemetry Mesh\n\nOrthographic orbital projection (Drag to rotate)\n\n● Live Orbit\nAzimuth: 0°\n•\nMesh: Orthographic-4X",
+      "buttons": [],
+      "links": [],
+      "geometry": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "previewGeometry": {
+        "clientWidth": 322,
+        "scrollWidth": 322,
+        "horizontalOverflow": false
+      },
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "quality/evidence/step-39/public-v75-copy-risk-sweep-2026-11-03/screenshots/interactive-globe-390x844.png"
+    }
+  ]
+}

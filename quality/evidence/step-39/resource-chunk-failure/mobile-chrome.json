@@ -1,0 +1,31 @@
+{
+  "capturedAt": "2026-11-03T03:56:10.854Z",
+  "route": "/workbench",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "result": "Workbench remains interactive; the expected console errors are limited to the injected resource failure, its local error boundary preserves the canonical reference, and no unexpected console, network, or page errors occur.",
+  "projectId": "local-12eb1cb5-dce4-42fb-a4c6-7122fb635816",
+  "preservedResource": {
+    "nodeId": "node-screen-marketing-home-hero-2",
+    "slug": "editorial-hero"
+  },
+  "injectedFailures": [
+    {
+      "url": "http://127.0.0.1:4321/_astro/editorial-hero.CN6KYWuK.js",
+      "status": 503
+    }
+  ],
+  "otherHttpErrors": [],
+  "failedRequests": [
+    "http://127.0.0.1:4321/_astro/editorial-hero.CN6KYWuK.js net::ERR_ABORTED"
+  ],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+    "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4321/_astro/editorial-hero.CN6KYWuK.js"
+  ],
+  "unexpectedConsoleErrors": [],
+  "pageErrors": [],
+  "screenshot": "mobile-chrome-after.png"
+}

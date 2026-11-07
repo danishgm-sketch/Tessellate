@@ -488,15 +488,15 @@ RBAC permission matrix charting authorized actions across user roles.`,
   {
     slug: 'api-key-management',
     name: 'API Key Management',
-    description: 'Secret key manager with generate modal, masked token display, and revocation buttons.',
+    description: 'Preview-only token manager with sample rows and local add/remove interactions. It never handles credentials.',
     categories: ['blocks', 'settings', 'api'],
     roles: ['settings', 'api-keys'],
     purposes: ['Developer credential administration', 'API token management'],
     componentName: 'ApiKeyManagement',
     tags: ['api-key-management', 'api-keys', 'tokens', 'credentials'],
-    idealFor: ['Developer portals managing authentication tokens'],
-    avoidFor: ['Consumer frontends without API keys'],
-    jobs: ['Generate, view, and revoke programmatic developer API keys'],
+    idealFor: ['Demonstrating token-management layouts and local preview interactions'],
+    avoidFor: ['Creating, storing, rotating, or revoking credentials'],
+    jobs: ['Show a token-management pattern without processing credentials'],
     indexCode: `import React from 'react';
 
 export type ApiKeyManagementVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -506,6 +506,9 @@ export interface ApiKeyManagementProps {
 }
 
 export function ApiKeyManagement({ variant = 'quiet' }: ApiKeyManagementProps) {
+  const [tokens, setTokens] = React.useState([1, 2]);
+  const [nextToken, setNextToken] = React.useState(3);
+  const [status, setStatus] = React.useState('');
   let bg = 'bg-white text-neutral-900 border-neutral-200';
 
   if (variant === 'expressive') {
@@ -514,33 +517,44 @@ export function ApiKeyManagement({ variant = 'quiet' }: ApiKeyManagementProps) {
     bg = 'bg-[#0B0D10] text-white border-[#2E3440]';
   }
 
-  const keys = [
-    { label: 'Production Agent Token', key: 'tess_live_••••••••••••94b2', created: '3d ago' },
-    { label: 'Local Development Key', key: 'tess_test_••••••••••••11a0', created: '2w ago' },
-  ];
+  const addExampleToken = () => {
+    const tokenNumber = nextToken;
+    setTokens((current) => [...current, tokenNumber]);
+    setNextToken((current) => current + 1);
+    setStatus('Example token ' + tokenNumber + ' added to this preview. No credential was created.');
+  };
+
+  const removeExampleToken = (tokenNumber: number) => {
+    setTokens((current) => current.filter((token) => token !== tokenNumber));
+    setStatus('Example token ' + tokenNumber + ' removed from this preview. No credential was revoked.');
+  };
 
   return (
     <div className={\`w-full p-6 sm:p-8 rounded-xl border transition-colors \${bg}\`}>
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="text-base font-bold">API Tokens</h3>
-        <button type="button" className="px-3 py-1.5 rounded-lg border text-xs font-semibold">
-          + Create New Token
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4">
+        <h3 className="text-base font-bold">Example API tokens</h3>
+        <button type="button" onClick={addExampleToken} className="px-3 py-1.5 rounded-lg border text-xs font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+          Add example token
         </button>
       </div>
 
-      <div className="space-y-3 font-mono text-xs">
-        {keys.map((k) => (
-          <div key={k.label} className="p-3 rounded-lg border border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
+      <p className="mb-5 text-xs opacity-75">Preview only. Actions change these example rows; no credentials are created or revoked.</p>
+
+      <div className="space-y-3 text-xs">
+        {tokens.map((tokenNumber) => (
+          <div key={tokenNumber} className="p-3 rounded-lg border border-neutral-200 dark:border-neutral-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-              <div className="font-semibold font-sans">{k.label}</div>
-              <div className="text-[11px] opacity-60">{k.key}</div>
+              <div className="font-semibold">Example token {tokenNumber}</div>
+              <div className="text-[11px] opacity-70">Sample row · not a credential</div>
             </div>
-            <button type="button" className="text-rose-500 hover:underline text-[11px]">
-              Revoke
+            <button type="button" aria-label={'Remove example token ' + tokenNumber} onClick={() => removeExampleToken(tokenNumber)} className="inline-flex min-h-7 self-start items-center rounded px-2 text-rose-600 hover:underline text-[11px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:self-auto">
+              Remove example
             </button>
           </div>
         ))}
       </div>
+      {tokens.length === 0 && <p className="rounded-lg border border-dashed border-neutral-300 p-4 text-sm opacity-75">No example tokens in this preview.</p>}
+      <p className="sr-only" role="status" aria-live="polite">{status}</p>
     </div>
   );
 }`,
@@ -553,7 +567,7 @@ export function ApiKeyManagementPreview() {
   return (
     <div className="w-full flex flex-col">
       <div className="p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs">
-        <span className="font-semibold text-neutral-600">API Key Management Preview</span>
+        <span className="font-semibold text-neutral-600">API Token Manager · Example Preview</span>
         <div className="flex items-center gap-1.5">
           {(['quiet', 'expressive', 'nocturne'] as ApiKeyManagementVariant[]).map((v) => (
             <button
@@ -578,7 +592,7 @@ export function ApiKeyManagementPreview() {
     fixturesCode: `export const apiKeyManagementFixtures = {};`,
     readmeCode: `# API Key Management
 
-Developer token manager displaying masked secret keys and revocation triggers.`,
+Preview-only token-management pattern with example rows and local add/remove interactions. No credentials are created, stored, or revoked.`,
   },
 
   // 43. Webhook Management
@@ -681,7 +695,7 @@ Webhook endpoint manager tracking destination URLs and HTTP response codes.`,
   {
     slug: 'billing-overview',
     name: 'Billing Overview',
-    description: 'Subscription status panel with card on file, next invoice date, and plan upgrade trigger.',
+    description: 'Example subscription summary with clearly labelled sample values and a disabled payment action.',
     categories: ['blocks', 'settings', 'billing'],
     roles: ['settings', 'billing'],
     purposes: ['Invoice administration', 'Subscription management'],
@@ -709,17 +723,19 @@ export function BillingOverview({ variant = 'quiet' }: BillingOverviewProps) {
 
   return (
     <div className={\`w-full p-6 sm:p-8 rounded-xl border transition-colors \${bg}\`}>
-      <h3 className="text-base font-bold mb-4">Subscription & Billing</h3>
+      <h3 className="text-base font-bold mb-1">Example subscription</h3>
+      <p className="mb-4 text-xs opacity-70">Sample account details and pricing. Replace with live billing data before use.</p>
       <div className="p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 flex justify-between items-center mb-6 text-xs">
         <div>
-          <span className="font-bold">Team Pro Subscription</span>
-          <div className="text-[11px] opacity-60">Renews on Nov 1, 2026 • £18/month</div>
+          <span className="font-bold">Example team plan</span>
+          <div className="text-[11px] opacity-60">£18/month · illustrative price</div>
         </div>
-        <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold font-mono">ACTIVE</span>
+        <span className="px-2 py-0.5 rounded bg-neutral-500/10 text-neutral-600 font-bold font-mono">EXAMPLE</span>
       </div>
-      <button type="button" className="px-4 py-2 rounded-lg border text-xs font-semibold">
-        Update Payment Method
+      <button type="button" disabled aria-describedby="billing-payment-action-help" className="px-4 py-2 rounded-lg border text-xs font-semibold disabled:cursor-not-allowed disabled:opacity-60">
+        Connect payment action
       </button>
+      <p id="billing-payment-action-help" className="mt-2 text-xs opacity-70">Payment updates are not connected in this example.</p>
     </div>
   );
 }`,
@@ -1235,7 +1251,7 @@ Drag-and-drop file ingestion zone for importing project manifests.`,
   {
     slug: 'empty-workspace',
     name: 'Empty Workspace',
-    description: 'Empty state placeholder card with welcoming illustration and primary create action.',
+    description: 'Empty workspace state with a welcoming illustration and a project-creation action.',
     categories: ['blocks', 'onboarding', 'empty'],
     roles: ['empty-state', 'workspace'],
     purposes: ['Zero-data illustration', 'First action invitation'],
@@ -1250,9 +1266,10 @@ export type EmptyWorkspaceVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface EmptyWorkspaceProps {
   variant?: EmptyWorkspaceVariant;
+  onCreateProject?: () => void;
 }
 
-export function EmptyWorkspace({ variant = 'quiet' }: EmptyWorkspaceProps) {
+export function EmptyWorkspace({ variant = 'quiet', onCreateProject }: EmptyWorkspaceProps) {
   let bg = 'bg-white text-neutral-900 border-neutral-200';
 
   if (variant === 'expressive') {
@@ -1270,16 +1287,27 @@ export function EmptyWorkspace({ variant = 'quiet' }: EmptyWorkspaceProps) {
       <p className="text-xs opacity-75 max-w-sm mb-6">
         Start by creating a new composition or choose from 12 pre-built blueprints.
       </p>
-      <button type="button" className="px-5 py-2.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold">
+      <button
+        type="button"
+        onClick={onCreateProject}
+        disabled={!onCreateProject}
+        aria-describedby={!onCreateProject ? 'empty-workspace-action-help' : undefined}
+        className="px-5 py-2.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold disabled:cursor-not-allowed disabled:opacity-60"
+      >
         + Create New Project
       </button>
+      {!onCreateProject && (
+        <p id="empty-workspace-action-help" className="mt-3 text-xs opacity-75">
+          Connect a project creation action in the host application to enable this control.
+        </p>
+      )}
     </div>
   );
 }`,
     previewCode: `import React, { useState } from 'react';
 import { EmptyWorkspace, EmptyWorkspaceVariant } from './index.js';
 
-export function EmptyWorkspacePreview() {
+export function EmptyWorkspacePreview({ onCreateProject }: { onCreateProject?: () => void }) {
   const [variant, setVariant] = useState<EmptyWorkspaceVariant>('quiet');
 
   return (
@@ -1302,7 +1330,7 @@ export function EmptyWorkspacePreview() {
         </div>
       </div>
       <div className="p-6">
-        <EmptyWorkspace variant={variant} />
+        <EmptyWorkspace variant={variant} onCreateProject={onCreateProject} />
       </div>
     </div>
   );
@@ -1310,7 +1338,7 @@ export function EmptyWorkspacePreview() {
     fixturesCode: `export const emptyWorkspaceFixtures = {};`,
     readmeCode: `# Empty Workspace
 
-Empty-state container welcoming user with create project trigger.`,
+Empty workspace state with an optional project-creation callback. The action is disabled with an explanation when no host action is supplied.`,
   },
 
   // 51. Upgrade Prompt

@@ -1,0 +1,28 @@
+{
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "infoPage": {
+    "status": 200,
+    "title": "Dialog (@tess/dialog) — Tessellate Resource",
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/resources/dialog/",
+    "iframeCount": 1,
+    "iframeVisible": true,
+    "iframeSrc": "/preview-content/?resource=dialog&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+    "bodyText": "Skip to content\nTessellate\nExplore\nCompose\nWorkbench\nTools\nAgents\nCreators\nDocs\nSearch...\n⌘K\nLocal projects\nStart building\nHome\n/\nExplore\n/\nPrimitives\n/\nDialog\nDialog\n@tess/dialog\nv1.0.0\nverified\n\nAccessible modal dialog window with backdrop scrim, focus trapping, and header/footer slots.\n\nInstall:\ntess add dialog\nRegistry source: /r/dialog.json\n#dialog\n#modal\n#overlay\n#window\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nAccessible modal dialog window with backdrop scrim, focus trapping, and header/footer slots.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nFocused multi-field forms or critical intermediate workflows\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nSmall lightweight tooltips or non-blocking alerts\nJOBS TO BE DONE\nTrap focus inside modal until user explicitly confirms or closes\nEXPECTED CONTENT REQUIREMENTS\nAccessible label and appropriate semantic tokens\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (90%)\nb2b",
+    "frameUrls": [
+      "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/resources/dialog/",
+      "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=dialog&variant=quiet&theme=light&device=desktop&reducedMotion=false"
+    ],
+    "diagnostics": {
+      "console": [],
+      "errors": [],
+      "failed": []
+    }
+  },
+  "frameInfo": {
+    "error": "TypeError: frame.evaluate is not a function"
+  },
+  "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\dialog-preview-inspect\\desktop-chrome\\dialog-resource-1440.png"
+}

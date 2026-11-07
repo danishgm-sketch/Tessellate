@@ -1,0 +1,24 @@
+{
+  "id": "STEP-17-MOBILE",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "url": "http://localhost:4321/workbench?project=proj-direction-c-8d7c8783ea014737bb59c75e2aa43846dirc",
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "checks": {
+    "shell": {
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "documentWidth": 390,
+      "navigationHeight": 64,
+      "shellHeight": 844
+    },
+    "failure": "Tapping the disabled canvas action left Preview active and no Node: component inspector was present."
+  },
+  "screenshot": "quality/evidence/step-17/before/disabled-resource-canvas-selection-not-selectable-mobile-390x844.png"
+}

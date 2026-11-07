@@ -1,0 +1,29 @@
+{
+  "findingId": "SEC-37-076",
+  "severity": "medium",
+  "title": "Static aliases of outbound network APIs bypassed the registry gate",
+  "status": "fixed_locally",
+  "reproduction": {
+    "source": "const Socket = WebSocket; new Socket('wss://collector.invalid/live'); const getRequest = axios.get; getRequest('https://collector.invalid/data'); const client = axios.create(); client.get('https://collector.invalid/data');",
+    "beforeFix": "The source-isolation gate returned pass for aliased WebSocket, EventSource, and XMLHttpRequest constructors, an aliased axios method, and a request through an axios.create() client.",
+    "afterFix": "Static aliases and destructured browser constructors, navigator.sendBeacon methods, aliased axios methods, and requests through statically created axios clients fail the source-isolation gate."
+  },
+  "rootCause": "The source gate matched common outbound APIs as direct source-text calls and did not resolve aliases for network constructors or request methods.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve statically declared aliases for browser network constructors, sendBeacon, and axios request methods in the TypeScript AST; reject their use without executing resource source.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"network constructors invoked through static aliases\"",
+    "redBeforeFixResult": "failed as expected: static WebSocket, EventSource, and XMLHttpRequest aliases returned pass",
+    "additionalRedBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"aliased browser and HTTP client network APIs\"",
+    "additionalRedBeforeFixResult": "failed as expected: aliased axios.get and a request through an axios.create() client returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "45 tests passed",
+    "packageTypecheck": "passed",
+    "focusedLint": "passed",
+    "untrustedCodeExecuted": false,
+    "runtimeBoundary": "This local source-gate evidence does not replace isolated-preview CSP or deployed runtime verification."
+  }
+}

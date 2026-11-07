@@ -1,0 +1,25 @@
+{
+  "capturedAt": "2026-10-20T19:49:11.419Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=document-detail",
+  "viewport": "390x844",
+  "status": 200,
+  "title": "Tessellate Resource Preview",
+  "visibleText": "ARCHITECTURE SPEC\nDeterministic Composition Invariants\n\nAll Tessellate interfaces compose through validated manifests rather than arbitrary runtime code mutations. This guarantees full exportability to any modern React environment.\n\nExport Spec (PDF / Markdown)",
+  "buttons": [
+    "Export Spec (PDF / Markdown)"
+  ],
+  "layout": {
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "horizontalOverflow": false
+  },
+  "accessibility": [],
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\deployed-before\\resource-previews\\mobile\\document-detail.png"
+}

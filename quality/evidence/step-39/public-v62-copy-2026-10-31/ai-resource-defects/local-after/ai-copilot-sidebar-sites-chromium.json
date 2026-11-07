@@ -1,0 +1,29 @@
+{
+  "siteVersion": 0,
+  "site": "http://127.0.0.1:4323",
+  "route": "http://127.0.0.1:4323/r/ai-copilot-sidebar/",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "project": "sites-chromium",
+  "visibleDescriptionClaims": [
+    "Example copilot sidebar with sample file context and suggested fixes",
+    "The preview does not inspect files or change source code"
+  ],
+  "applyButton": {
+    "label": "Apply All Recommended Fixes",
+    "initiallyEnabled": false,
+    "textBeforeClick": "AI Copilot Sidebar preview\nCopilot suggestions (example)\nCollapse\n\nExample content only. This preview does not inspect files or change source code.\nSample context: DashboardView.tsx\n\nExample: use a contrast token\nWould replace a hardcoded border color with the host design token.\nExample: add table shortcuts\nWould add keyboard navigation when implemented by the host application.\nApply All Recommended Fixes\n\nUnavailable until the host connects a validated apply action.",
+    "textAfterClick": "AI Copilot Sidebar preview\nCopilot suggestions (example)\nCollapse\n\nExample content only. This preview does not inspect files or change source code.\nSample context: DashboardView.tsx\n\nExample: use a contrast token\nWould replace a hardcoded border color with the host design token.\nExample: add table shortcuts\nWould add keyboard navigation when implemented by the host application.\nApply All Recommended Fixes\n\nUnavailable until the host connects a validated apply action.",
+    "visibleOutcome": "Action is unavailable until a host connects it."
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "local-after/ai-copilot-sidebar-sites-chromium.png"
+}

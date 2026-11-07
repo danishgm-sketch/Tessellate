@@ -1,0 +1,414 @@
+{
+  "generatedAt": "2026-10-25T23:21:10.554Z",
+  "siteVersion": 30,
+  "results": [
+    {
+      "slug": "ai-prompt-hero",
+      "httpStatus": 200,
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-prompt-hero&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "title": "Tessellate Isolated Resource Preview",
+          "text": "AI Prompt Hero preview\nDescribe the product you want to shape.\n\nStart with a plain-language brief. Connect this pattern to your own generation flow when you use it in an application.\n\nPreview only. This example keeps your prompt on this page and does not generate a blueprint.\n\nGenerate Blueprint\nAn employee onboarding workspace for a growing team\nA developer documentation portal with searchable guides\nA subscription billing dashboard for small businesses",
+          "controls": [
+            {
+              "tag": "TEXTAREA",
+              "type": null,
+              "role": null,
+              "label": "Describe the product or workflow",
+              "value": "",
+              "disabled": false,
+              "pressed": null
+            },
+            {
+              "tag": "BUTTON",
+              "type": "button",
+              "role": null,
+              "label": "Generate Blueprint",
+              "value": "",
+              "disabled": true,
+              "pressed": null
+            },
+            {
+              "tag": "BUTTON",
+              "type": "button",
+              "role": null,
+              "label": "An employee onboarding workspace for a growing team",
+              "value": "",
+              "disabled": false,
+              "pressed": null
+            },
+            {
+              "tag": "BUTTON",
+              "type": "button",
+              "role": null,
+              "label": "A developer documentation portal with searchable guides",
+              "value": "",
+              "disabled": false,
+              "pressed": null
+            },
+            {
+              "tag": "BUTTON",
+              "type": "button",
+              "role": null,
+              "label": "A subscription billing dashboard for small businesses",
+              "value": "",
+              "disabled": false,
+              "pressed": null
+            }
+          ],
+          "layout": {
+            "width": 764,
+            "height": 736,
+            "clientWidth": 764
+          }
+        }
+      ],
+      "console": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-UODqdsXbgkExG64y0WLFbwJqGIdaglCdzs75yCV827c='), or a nonce ('nonce-...') is "
+      ],
+      "failed": []
+    },
+    {
+      "slug": "inline-ai-rewrite",
+      "httpStatus": 200,
+      "frames": [],
+      "console": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-W1lDmQ96VOOoHWtNBXFtHMAksUTKRtutiPkJoY/oVeQ='), or a nonce ('nonce-...') is "
+      ],
+      "failed": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=inline-ai-rewrite&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "error": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "slug": "ai-tool-execution-timeline",
+      "httpStatus": 200,
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-tool-execution-timeline&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "title": "Tessellate Isolated Resource Preview",
+          "text": "AI Tool Execution Timeline preview\nExample agent tool trace\nSample total: 190ms\n\nExample trace. Sample calls and timings only; this preview does not run tools or create files.\n\nsearch_catalog()\n32ms · sample\n▼\nvalidate_manifest()\n18ms · sample\n▲\nArguments:\ntarget: \"example-manifest.json\"\nSample output:\nExample result: the sample manifest passed validation.\nexport_vite_project()\n140ms · sample\n▼",
+          "controls": [],
+          "layout": {
+            "width": 764,
+            "height": 500,
+            "clientWidth": 764
+          }
+        }
+      ],
+      "console": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-hl1ZZfBVmvNKtwMVf8VooEU7aFEyoT7izgns2GN6i9Y='), or a nonce ('nonce-...') is "
+      ],
+      "failed": []
+    },
+    {
+      "slug": "ai-chat-panel",
+      "httpStatus": 200,
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-chat-panel&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "title": "Tessellate Isolated Resource Preview",
+          "text": "AI Chat Panel preview\nExample assistant conversation\n\nExample conversation. This preview does not connect to a model; sending adds a fixed local example reply.\n\nYOU\nHow could we make the onboarding steps easier to follow?\nASSISTANT\nExample reply: group related steps and show progress. This sample is not generated by a model.\nSend example",
+          "controls": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "role": null,
+              "label": "Message to the example assistant",
+              "value": "",
+              "disabled": false,
+              "pressed": null
+            },
+            {
+              "tag": "BUTTON",
+              "type": "button",
+              "role": null,
+              "label": "Send example",
+              "value": "",
+              "disabled": false,
+              "pressed": null
+            }
+          ],
+          "layout": {
+            "width": 764,
+            "height": 500,
+            "clientWidth": 764
+          }
+        }
+      ],
+      "console": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-gq/QOOFwgMUMcaQAWj3Xi2dZGxqLPZ3MI5gaPxHr2xE='), or a nonce ('nonce-...') is "
+      ],
+      "failed": []
+    },
+    {
+      "slug": "ai-model-mode-switcher",
+      "httpStatus": 200,
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-model-mode-switcher&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "title": "Tessellate Isolated Resource Preview",
+          "text": "AI Model Mode Switcher preview\nExample model modes\n\nExample selector. Options change this preview only; no provider or local model is connected.\n\nNo model connected\nFast\nExample mode for short, quick tasks\nExample\nBalanced\nExample mode for general tasks\nExample\nLong context\nExample mode for longer inputs\nExample",
+          "controls": [
+            {
+              "tag": "BUTTON",
+              "type": "button",
+              "role": null,
+              "label": "Fast\nExample mode for short, quick tasks\nExample",
+              "value": "",
+              "disabled": false,
+              "pressed": "false"
+            },
+            {
+              "tag": "BUTTON",
+              "type": "button",
+              "role": null,
+              "label": "Balanced\nExample mode for general tasks\nExample",
+              "value": "",
+              "disabled": false,
+              "pressed": "true"
+            },
+            {
+              "tag": "BUTTON",
+              "type": "button",
+              "role": null,
+              "label": "Long context\nExample mode for longer inputs\nExample",
+              "value": "",
+              "disabled": false,
+              "pressed": "false"
+            }
+          ],
+          "layout": {
+            "width": 764,
+            "height": 500,
+            "clientWidth": 764
+          }
+        }
+      ],
+      "console": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-aUswMqBUP2jcRPO1Aat+cwHIhq2MwsScqzYCwYLk/y4='), or a nonce ('nonce-...') is "
+      ],
+      "failed": []
+    },
+    {
+      "slug": "ai-source-citations",
+      "httpStatus": 200,
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-source-citations&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "title": "Tessellate Isolated Resource Preview",
+          "text": "AI Source Citations preview\nExample citations (3)\n\nExample citations. These sample sources were not retrieved or verified.\n\n[1] Example product brief\nexample/product-brief.md#overview\n\n\"Example excerpt: teams need a clear place to review the product brief.\"\n\n[2] Example research notes\nexample/research-notes.md#finding-1\n\n\"Example excerpt: users asked for a simpler way to compare options.\"\n\n[3] Example design review\nexample/design-review.md#navigation\n\n\"Example excerpt: keep the primary navigation visible on small screens.\"",
+          "controls": [
+            {
+              "tag": "BUTTON",
+              "type": "button",
+              "role": null,
+              "label": "[1] Example product brief\nexample/product-brief.md#overview\n\n\"Example excerpt: teams need a clear place to review the product brief.\"",
+              "value": "",
+              "disabled": false,
+              "pressed": "false"
+            },
+            {
+              "tag": "BUTTON",
+              "type": "button",
+              "role": null,
+              "label": "[2] Example research notes\nexample/research-notes.md#finding-1\n\n\"Example excerpt: users asked for a simpler way to compare options.\"",
+              "value": "",
+              "disabled": false,
+              "pressed": "false"
+            },
+            {
+              "tag": "BUTTON",
+              "type": "button",
+              "role": null,
+              "label": "[3] Example design review\nexample/design-review.md#navigation\n\n\"Example excerpt: keep the primary navigation visible on small screens.\"",
+              "value": "",
+              "disabled": false,
+              "pressed": "false"
+            }
+          ],
+          "layout": {
+            "width": 764,
+            "height": 500,
+            "clientWidth": 764
+          }
+        }
+      ],
+      "console": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-mTAFuk0AJbQzKnQvQf9lrliRzLQjGzwSiO8fdpT8w54='), or a nonce ('nonce-...') is "
+      ],
+      "failed": []
+    },
+    {
+      "slug": "ai-research-answer",
+      "httpStatus": 200,
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-research-answer&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "title": "Tessellate Isolated Resource Preview",
+          "text": "AI Research Answer preview\nExample research answer\n\nExample research answer. No sources were retrieved and no confidence score was calculated.\n\nExample\nEXECUTIVE SUMMARY\nA team comparing a monolithic application with independently deployed modules can weigh ownership, deployment needs, integration work, and operational complexity.\n1.\nA monolith can keep shared changes and deployments within one codebase.\n2.\nIndependent modules can support separate ownership when team boundaries are stable.\n3.\nThe better fit depends on team structure, deployment needs, and operational overhead.",
+          "controls": [],
+          "layout": {
+            "width": 764,
+            "height": 500,
+            "clientWidth": 764
+          }
+        }
+      ],
+      "console": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-tIs7J+WVxv+CtLIL18YSPVaYYoPRAg5rrukRuY6ZHes='), or a nonce ('nonce-...') is "
+      ],
+      "failed": []
+    },
+    {
+      "slug": "cta-community",
+      "httpStatus": 200,
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=cta-community&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "title": "Tessellate Isolated Resource Preview",
+          "text": "CTA Community preview\nContribute to the public commons\n\nRead the contributor guide or browse the source repository to learn how to share a resource.\n\nRead contributor guide\nView repository",
+          "controls": [],
+          "layout": {
+            "width": 764,
+            "height": 500,
+            "clientWidth": 764
+          }
+        }
+      ],
+      "console": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-3WLpxSnFY9X5EP7S7ezuF3fpsQuW/wSrDlBZJRPSShg='), or a nonce ('nonce-...') is "
+      ],
+      "failed": []
+    },
+    {
+      "slug": "cta-product-preview",
+      "httpStatus": 200,
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=cta-product-preview&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "title": "Tessellate Isolated Resource Preview",
+          "text": "CTA Product Preview preview\nSee how your product could look\n\nStart with a brief and compare three interface directions.\n\nSTART COMPOSING\nExample Workbench preview. No project is connected.\nIllustrative interface only",
+          "controls": [],
+          "layout": {
+            "width": 764,
+            "height": 529,
+            "clientWidth": 764
+          }
+        }
+      ],
+      "console": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-xM/6vNqlWn/z7YrcA0YJnRgWPvHcS0txkbNsI8TrgKM='), or a nonce ('nonce-...') is "
+      ],
+      "failed": []
+    },
+    {
+      "slug": "customer-metrics-strip",
+      "httpStatus": 200,
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=customer-metrics-strip&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "title": "Tessellate Isolated Resource Preview",
+          "text": "Customer Metrics Strip preview\n128\nExample Projects\nIllustrative metrics; replace with measured data\n12\nExample Teams\nIllustrative team count\n320\nExample Tasks\nIllustrative task count\n78%\nExample Completion\nIllustrative progress",
+          "controls": [],
+          "layout": {
+            "width": 764,
+            "height": 500,
+            "clientWidth": 764
+          }
+        }
+      ],
+      "console": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-3CUgB+VxdGEvNrvI85GaRxIjuBNzPMF4U8X9kcWnE8k='), or a nonce ('nonce-...') is "
+      ],
+      "failed": []
+    },
+    {
+      "slug": "logo-cloud-marquee",
+      "httpStatus": 200,
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=logo-cloud-marquee&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "title": "Tessellate Isolated Resource Preview",
+          "text": "Logo Cloud Marquee preview\n\nSample names only — replace with approved partner wordmarks before publishing.\n\nScroll horizontally to view all labels.\n\nSample Partner A\nSample Partner B\nSample Partner C\nSample Partner D\nSample Partner E\nSample Partner F\nSample Partner G\nSample Partner H",
+          "controls": [],
+          "layout": {
+            "width": 764,
+            "height": 500,
+            "clientWidth": 764
+          }
+        }
+      ],
+      "console": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-3gnniof++WGc5BbVcEJpxzxqdh8wMrtw+oJKzCFqN2A='), or a nonce ('nonce-...') is "
+      ],
+      "failed": []
+    },
+    {
+      "slug": "feature-metrics",
+      "httpStatus": 200,
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=feature-metrics&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "title": "Tessellate Isolated Resource Preview",
+          "text": "Feature Metrics preview\nPerformance Evidence Template\n< 150 KB\nPUBLIC JS BUDGET TARGET\n\nExample target; measure each deployed route.\n\nReview\nTRACKING POLICY\n\nVerify actual requests and consent behaviour.\n\nMeasure\nLIGHTHOUSE PERFORMANCE\n\nAdd dated desktop and mobile reports.",
+          "controls": [],
+          "layout": {
+            "width": 764,
+            "height": 500,
+            "clientWidth": 764
+          }
+        }
+      ],
+      "console": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-tdimuUEaoI6LeEn7suxvycE7UqRiZeCe8a0+hyLvmD0='), or a nonce ('nonce-...') is "
+      ],
+      "failed": []
+    },
+    {
+      "slug": "social-proof-hero",
+      "httpStatus": 200,
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=social-proof-hero&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "title": "Tessellate Isolated Resource Preview",
+          "text": "Social Proof Hero preview\nExample rating\nMake customer proof verifiable.\n\nExample layout. Add approved customer stories and measured adoption before publishing.\n\nExample: 128 teams\n•\nIllustrative content\n•\nEvidence required",
+          "controls": [],
+          "layout": {
+            "width": 764,
+            "height": 572,
+            "clientWidth": 764
+          }
+        }
+      ],
+      "console": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-FML/tiK5C/cnVttWRuRFHJVk/fQ3JcD7cLSzP2j8SU4='), or a nonce ('nonce-...') is "
+      ],
+      "failed": []
+    },
+    {
+      "slug": "testimonial-grid",
+      "httpStatus": 200,
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=testimonial-grid&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "title": "Tessellate Isolated Resource Preview",
+          "text": "Testimonial Grid preview\nExample customer story layout\n\n\"Illustrative quote: replace with an approved customer statement.\"\n\nExample Customer A\nStaff Engineer, Example Organisation A\n\n\"Illustrative quote: describe a measured customer outcome.\"\n\nExample Customer B\nCTO, Example Organisation B\n\n\"Illustrative quote: include specific context and customer approval.\"\n\nExample Customer C\nLead Architect, Example Organisation C",
+          "controls": [],
+          "layout": {
+            "width": 764,
+            "height": 560,
+            "clientWidth": 764
+          }
+        }
+      ],
+      "console": [
+        "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-uxxRs7eSMdK6CeGXdxewMvKE6Ymz4dMFOt0VXA++CZ4='), or a nonce ('nonce-...') is "
+      ],
+      "failed": []
+    }
+  ]
+}

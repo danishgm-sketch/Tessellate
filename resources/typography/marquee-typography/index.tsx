@@ -4,13 +4,12 @@ export type MarqueeTypographyVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface MarqueeTypographyProps {
   items?: string[];
-  speedSec?: number;
   variant?: MarqueeTypographyVariant;
   children?: React.ReactNode;
 }
 
 export function MarqueeTypography({
-  items = ['ZERO LOCK-IN', 'MIT LICENSED', 'DETERMINISTIC COMPOSITION', '972 CONFIGURATIONS', 'WCAG AA VERIFIED'],
+  items = ['DESIGN WITH CLARITY', 'MAKE ROOM TO THINK', 'BUILT FOR REAL WORK', 'LET IDEAS MOVE'],
   variant = 'quiet',
   children,
 }: MarqueeTypographyProps) {

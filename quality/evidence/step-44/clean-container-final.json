@@ -1,0 +1,72 @@
+{
+  "step": 44,
+  "status": "passed_with_test_harness_repair",
+  "date": "2026-10-24",
+  "container": "tessellate-step44-20261024T044542Z",
+  "image": "mcr.microsoft.com/playwright:v1.63.0-noble",
+  "sourceHead": "76812fb26211a779ca93279ec49b7df2d5d02243",
+  "sourceWorktreeDirty": true,
+  "cleanGitCheckout": false,
+  "stagedFileCount": 14946,
+  "stagedBytes": 818625512,
+  "repositoryNodeModulesPresent": false,
+  "developerSecretsPassed": false,
+  "filesystemMode": "container-native",
+  "pnpmVersion": "11.20.0",
+  "frozenInstall": {
+    "status": "passed",
+    "installedPackages": 570,
+    "storeReuse": 0
+  },
+  "catalogue": {
+    "status": "passed",
+    "resources": 324,
+    "goldResources": 40
+  },
+  "checks": {
+    "typecheck": "passed",
+    "lint": "passed",
+    "unitTests": "passed",
+    "auditAll": {
+      "status": "passed",
+      "behavioralGates": "16/16",
+      "resourceIsolationChecks": "324/324"
+    },
+    "productionBuild": "passed"
+  },
+  "browserProfiles": {
+    "astroChromium": {
+      "passed": 286,
+      "skipped": 108,
+      "failed": 0
+    },
+    "sitesWorkerChromium": {
+      "passed": 251,
+      "skipped": 41,
+      "failed": 0,
+      "catalogueResourcesCertified": 324
+    },
+    "isolatedPreviewApp": {
+      "passed": 3,
+      "skipped": 0,
+      "failed": 0
+    },
+    "total": {
+      "passed": 540,
+      "skipped": 149,
+      "failed": 0
+    }
+  },
+  "initialHarnessFailure": {
+    "status": "fixed_and_rerun",
+    "description": "Mobile homepage full-page screenshot exceeded the Chromium capture limit after the page assertions passed.",
+    "repair": "Capture the mobile viewport; retain full-page capture for desktop."
+  },
+  "nonFailingDiagnostic": "Workerd emitted a broken-pipe message from the Sites dev-server process during the browser run; all subsequent browser cases passed and the aggregate browser command exited 0.",
+  "artifacts": [
+    "quality/evidence/step-44/clean-container-attempt-8.json",
+    "quality/evidence/step-44/clean-container-final-e2e-rerun.log",
+    "quality/evidence/step-44/sites-homepage-copy-mobile-error-context.md",
+    "quality/STEP_44_EVIDENCE.md"
+  ]
+}

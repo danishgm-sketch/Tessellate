@@ -19,8 +19,8 @@ export type AuditCategory = z.infer<typeof AuditCategorySchema>;
 
 export const AuditSuggestedFixSchema = z.object({
   description: z.string().min(1),
-  mutations: z.array(ProjectMutationSchema).optional(),
-});
+  mutations: z.array(ProjectMutationSchema).max(500).optional(),
+}).strict();
 export type AuditSuggestedFix = z.infer<typeof AuditSuggestedFixSchema>;
 
 export const AuditIssueSchema = z.object({
@@ -28,9 +28,9 @@ export const AuditIssueSchema = z.object({
   category: AuditCategorySchema,
   severity: AuditSeveritySchema,
   message: z.string().min(1),
-  nodeIds: z.array(z.string()).default([]),
+  nodeIds: z.array(z.string()).max(5_000).default([]),
   suggestedFix: AuditSuggestedFixSchema.optional(),
-});
+}).strict();
 export type AuditIssue = z.infer<typeof AuditIssueSchema>;
 
 export const AuditCategoryScoresSchema = z.object({
@@ -43,12 +43,12 @@ export const AuditCategoryScoresSchema = z.object({
   motionConsistency: z.number().min(0).max(5),
   designSystemCompliance: z.number().min(0).max(5),
   interactionConsistency: z.number().min(0).max(5),
-});
+}).strict();
 export type AuditCategoryScores = z.infer<typeof AuditCategoryScoresSchema>;
 
 export const AuditResultSchema = z.object({
   total: z.number().min(0).max(100),
   scores: AuditCategoryScoresSchema,
-  issues: z.array(AuditIssueSchema).default([]),
-});
+  issues: z.array(AuditIssueSchema).max(1_000).default([]),
+}).strict();
 export type AuditResult = z.infer<typeof AuditResultSchema>;

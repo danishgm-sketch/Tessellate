@@ -245,6 +245,31 @@ export function getStructuralCreativityStop(score: number): StructuralCreativity
   return 'experimental';
 }
 
+function interpolateTargetDimensions<T extends Record<string, number>>(
+  score: number,
+  stops: readonly { defaultScore: number; targetDimensions: T }[]
+): T {
+  const ordered = [...stops].sort((a, b) => a.defaultScore - b.defaultScore);
+  const candidateUpperIndex = ordered.findIndex((stop) => stop.defaultScore >= score);
+  const lowerIndex = candidateUpperIndex === -1
+    ? ordered.length - 2
+    : candidateUpperIndex <= 0
+      ? 0
+      : candidateUpperIndex - 1;
+  const lower = ordered[lowerIndex]!;
+  const upper = ordered[lowerIndex + 1]!;
+  const progress = (score - lower.defaultScore) / (upper.defaultScore - lower.defaultScore);
+  const dimensions = {} as T;
+
+  for (const key of Object.keys(lower.targetDimensions) as (keyof T)[]) {
+    const from = lower.targetDimensions[key] ?? 0;
+    const to = upper.targetDimensions[key] ?? from;
+    dimensions[key] = clampScore(from + (to - from) * progress) as T[keyof T];
+  }
+
+  return dimensions;
+}
+
 /**
  * Applies a Visual Ambition stop or numeric score onto a DesignDNA object.
  */
@@ -255,17 +280,14 @@ export function applyVisualAmbition(
   const stopKey = typeof valueOrStop === 'string' ? valueOrStop : getVisualAmbitionStop(valueOrStop);
   const def = VISUAL_AMBITION_STOPS[stopKey];
   const exactScore = typeof valueOrStop === 'number' ? clampScore(valueOrStop) : def.defaultScore;
+  const targetDimensions = typeof valueOrStop === 'number'
+    ? interpolateTargetDimensions(exactScore, Object.values(VISUAL_AMBITION_STOPS))
+    : def.targetDimensions;
 
-  // Linear blend between stops or exact application
   const updated = {
     ...base,
+    ...targetDimensions,
     visualAmbition: exactScore,
-    typographicExpression: def.targetDimensions.typographicExpression,
-    motion: def.targetDimensions.motion,
-    imageryIntensity: def.targetDimensions.imageryIntensity,
-    videoIntensity: def.targetDimensions.videoIntensity,
-    threeDIntensity: def.targetDimensions.threeDIntensity,
-    depth: def.targetDimensions.depth,
   };
 
   return DesignDNASchema.parse(updated);
@@ -282,11 +304,14 @@ export function applyStructuralCreativity(
     typeof valueOrStop === 'string' ? valueOrStop : getStructuralCreativityStop(valueOrStop);
   const def = STRUCTURAL_CREATIVITY_STOPS[stopKey];
   const exactScore = typeof valueOrStop === 'number' ? clampScore(valueOrStop) : def.defaultScore;
+  const targetDimensions = typeof valueOrStop === 'number'
+    ? interpolateTargetDimensions(exactScore, Object.values(STRUCTURAL_CREATIVITY_STOPS))
+    : def.targetDimensions;
 
   const updated = {
     ...base,
+    ...targetDimensions,
     structuralCreativity: exactScore,
-    asymmetry: def.targetDimensions.asymmetry,
   };
 
   return DesignDNASchema.parse(updated);

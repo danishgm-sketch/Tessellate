@@ -1,0 +1,19 @@
+{
+  "issue": "AUD-419",
+  "status": "feature-unavailable-as-designed",
+  "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "endpoint": "/api/inference/health",
+  "viewport": "mobile-chrome",
+  "httpStatus": 200,
+  "health": {
+    "apiOnline": false,
+    "hostOnline": false,
+    "activeWorkers": 0,
+    "pendingTasks": 0,
+    "engine": "deterministic",
+    "reason": "Laptop backend connection is not configured"
+  },
+  "providerCredentialHeadersSent": false,
+  "providerCredentialPersistenceTested": false,
+  "note": "No provider credential was supplied. This check verifies truthful offline behavior only; it does not verify the header-forwarding fix while the laptop backend is unconfigured."
+}

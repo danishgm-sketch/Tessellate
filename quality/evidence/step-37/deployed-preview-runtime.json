@@ -1,0 +1,49 @@
+{
+  "id": "SEC-37-DEPLOYED-PREVIEW",
+  "checkedAt": "2026-10-20T06:32:52.566Z",
+  "baseURL": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "viewport": "1440x900",
+  "routes": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/r/button",
+      "status": 200
+    }
+  ],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "errorResponses": [],
+  "preview": {
+    "title": "Button live preview",
+    "src": "/preview?resource=button&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+    "sandbox": "allow-scripts",
+    "status": 200,
+    "contentSecurityPolicy": "default-src 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site 'unsafe-inline'; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/; frame-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'self';",
+    "isolation": {
+      "origin": "null",
+      "parentDocumentBlocked": true,
+      "parentStorageBlocked": true,
+      "parentStorageValue": null
+    }
+  },
+  "checks": {
+    "home200": true,
+    "resourceDetail200": true,
+    "preview200": true,
+    "sandboxIsScriptsOnly": true,
+    "opaqueOrigin": true,
+    "parentDocumentBlocked": true,
+    "parentStorageBlocked": true,
+    "previewCspHasNoDefault": true,
+    "previewCspBlocksApi": true,
+    "previewExecutableSourcesScopedToCompiledAssets": false,
+    "zeroUncaughtExceptions": true,
+    "zeroConsoleErrors": true
+  },
+  "result": "failed"
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0.0",
+  "siteVersion": 59,
+  "canonicalSourceCommit": "9a93b41c080cc214313532807a336b4780ae73e4",
+  "sitesSourceCommit": "1cb4327f8d28d6ee842ac88a80189c872cfa77d6",
+  "capturedAt": "2026-10-31T10:01:53Z",
+  "viewports": ["1440x900", "390x844"],
+  "testsPassed": 10,
+  "testsFailed": 0,
+  "checks": {
+    "AUD-396": "Auto-Fix Contrast produced a normal-text foreground/background pair with contrast ratio >= 4.5:1.",
+    "AUD-397": "Keyboard-selected Nocturne variant exposed aria-pressed=true and applied the active visual state.",
+    "AUD-398": "A forced first-request catalogue connection reset recovered automatically; Explore and Compose reached ready state after at least two requests.",
+    "AUD-399": "GET /robots.txt returned HTTP 200 and contained a User-agent directive."
+  },
+  "reproduction": "Public deployed Site; actual UI controls and browser request interception, with no internal store calls.",
+  "evidence": "quality/evidence/step-48/deployed-v59-2026-10-31/closed-findings-playwright.json",
+  "screenshots": [
+    "quality/evidence/step-48/after/accessibility-auto-fix-public-v59-desktop-1440.png",
+    "quality/evidence/step-48/after/accessibility-auto-fix-public-v59-mobile-390.png",
+    "quality/evidence/step-48/after/resource-variant-state-public-v59-desktop-1440.png",
+    "quality/evidence/step-48/after/resource-variant-state-public-v59-mobile-390.png"
+  ]
+}

@@ -38,10 +38,15 @@ export function buildCatalogueArtifact(manifests: ResourceManifest[]): Catalogue
  */
 export async function buildCatalogueFromDirectory(
   resourcesDir: string
-): Promise<{ artifact: CatalogueArtifact; validationResults: ResourceValidationResult[] }> {
+): Promise<{
+  artifact: CatalogueArtifact;
+  validationResults: ResourceValidationResult[];
+  resourceDirectories: ReadonlyMap<ResourceManifest, string>;
+}> {
   const discovered = discoverResources(resourcesDir);
   const validationResults: ResourceValidationResult[] = [];
   const validManifests: ResourceManifest[] = [];
+  const resourceDirectories = new Map<ResourceManifest, string>();
 
   for (const item of discovered) {
     try {
@@ -55,6 +60,7 @@ export async function buildCatalogueFromDirectory(
 
       if (res.valid && res.manifest) {
         validManifests.push(res.manifest);
+        resourceDirectories.set(res.manifest, item.dir);
       } else {
         const errStr = res.errors.join('\n  ');
         throw new Error(`Resource '${item.slug}' failed validation:\n  ${errStr}`);
@@ -73,7 +79,7 @@ export async function buildCatalogueFromDirectory(
   }
 
   const artifact = buildCatalogueArtifact(validManifests);
-  return { artifact, validationResults };
+  return { artifact, validationResults, resourceDirectories };
 }
 
 /**

@@ -1,0 +1,32 @@
+{
+  "capturedAt": "2026-10-25T14:45:30Z",
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "version": 28,
+  "siteSourceCommit": "500dbfc17b13cff99388b5959124b47bf3c1e3cc",
+  "route": "/",
+  "viewport": "1440x900",
+  "httpStatus": 200,
+  "observedRequests": 26,
+  "failedRequests": [],
+  "consoleMessages": [],
+  "responseHeaders": {
+    "contentSecurityPolicy": {
+      "defaultSrc": ["'self'"],
+      "scriptSrcContainsUnsafeInline": false,
+      "styleSrcContainsUnsafeInline": false,
+      "styleAttributeAllowsInline": true,
+      "connectSrc": ["'self'", "https://api.tessellate.design", "https://api.github.com"],
+      "frameSrc": ["'self'", "https://preview.tessellate.design"],
+      "objectSrc": ["'none'"],
+      "baseUri": ["'self'"],
+      "frameAncestors": ["'self'"]
+    },
+    "xContentTypeOptions": "nosniff",
+    "xFrameOptions": "SAMEORIGIN",
+    "referrerPolicy": "strict-origin-when-cross-origin"
+  },
+  "assessment": "The public response has no loopback API/preview origins. Inline application scripts and style elements are protected by build-generated SHA-256 hashes; inline style attributes remain explicitly allowed. No arbitrary inline script policy was observed.",
+  "screenshot": "audit/evidence/v28/home-desktop-1440x900.png",
+  "issuesVerified": ["AUD-268", "AUD-336"],
+  "result": "PASS"
+}

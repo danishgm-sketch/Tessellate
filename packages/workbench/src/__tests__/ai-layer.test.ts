@@ -1,8 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { z } from 'zod';
-import {
-  type ProjectManifest,
-} from '@tessellate/schemas';
+import { type ProjectManifest } from '@tessellate/schemas';
 import {
   OpenAIAdapter,
   AnthropicAdapter,
@@ -18,6 +16,8 @@ import {
   executeNaturalLanguageCommand,
   auditProjectManifest,
   AISchemaValidationError,
+  createHistoryOperation,
+  applyOperation,
 } from '../index.js';
 import { createSampleProject } from '../store/sample-project.js';
 
@@ -160,7 +160,7 @@ describe('Phase 13: AI-assisted layer', () => {
       expect(result.data.mode).toBe('dark');
       expect(result.data.curvature).toBe(12);
 
-      const headers = (mockFetch.mock.calls[0]![1]!.headers as Record<string, string>);
+      const headers = mockFetch.mock.calls[0]![1]!.headers as Record<string, string>;
       expect(headers['x-goog-api-key']).toBe(secretKey);
     });
 
@@ -211,7 +211,9 @@ describe('Phase 13: AI-assisted layer', () => {
 
     it('sanitizes errors to strip any sensitive key traces', () => {
       credentialStore.setCredential('anthropic', { apiKey: 'ant-api-super-confidential-007' });
-      const rawError = new Error('Upstream failed for key ant-api-super-confidential-007 at endpoint');
+      const rawError = new Error(
+        'Upstream failed for key ant-api-super-confidential-007 at endpoint'
+      );
       const sanitized = credentialStore.sanitizeError(rawError);
 
       expect(sanitized.message).not.toContain('ant-api-super-confidential-007');
@@ -282,6 +284,32 @@ describe('Phase 13: AI-assisted layer', () => {
       const plan = planMutationsFromIntent(sampleProject, activeScreen.id, feelCommand);
       expect(plan.mutations.length).toBeGreaterThan(0);
       expect(plan.mutations.some((m) => m.type === 'SET_INTENT')).toBe(true);
+      const projectDnaMutations = plan.mutations.filter(
+        (mutation) => mutation.type === 'SET_INTENT' || mutation.type === 'SET_DESIGN_TOKEN'
+      );
+      expect(projectDnaMutations.length).toBeGreaterThan(0);
+      expect(projectDnaMutations.every((mutation) => mutation.targetId === 'project')).toBe(true);
+      const applied = applyOperation(
+        sampleProject,
+        createHistoryOperation('Apply project feel', plan.mutations, 'ai')
+      ).nextManifest;
+      expect(applied.designDNA).not.toEqual(sampleProject.designDNA);
+    });
+
+    it('applies project-scope DNA proposals to the canonical project target', () => {
+      const activeScreen = sampleProject.screens[0]!;
+      const plan = planMutationsFromIntent(sampleProject, activeScreen.id, {
+        action: 'adjust-dna',
+        summary: 'Make the project more playful',
+        preserveLockedNodes: true,
+        dnaDeltas: { playfulness: 20 },
+      });
+      const dnaMutation = plan.mutations.find((mutation) => mutation.type === 'SET_INTENT');
+
+      expect(dnaMutation?.targetId).toBe('project');
+      const operation = createHistoryOperation('Adjust project DNA', plan.mutations, 'ai');
+      const applied = applyOperation(sampleProject, operation).nextManifest;
+      expect(applied.designDNA.playfulness).toBe(sampleProject.designDNA.playfulness + 20);
     });
   });
 
@@ -326,7 +354,9 @@ describe('Phase 13: AI-assisted layer', () => {
         }),
       } as unknown as Response);
 
-      const viSpy = vi.spyOn(globalThis, 'fetch').mockImplementation(mockFetch as unknown as typeof fetch);
+      const viSpy = vi
+        .spyOn(globalThis, 'fetch')
+        .mockImplementation(mockFetch as unknown as typeof fetch);
 
       const result = await interpretProductWithAI(
         { description: 'Enterprise telemetry tool for data engineers' },
@@ -344,7 +374,9 @@ describe('Phase 13: AI-assisted layer', () => {
 
     it('falls back seamlessly to deterministic interpreter when provider is offline', async () => {
       const mockFailingFetch = vi.fn().mockRejectedValue(new Error('Network connection timeout'));
-      const viSpy = vi.spyOn(globalThis, 'fetch').mockImplementation(mockFailingFetch as unknown as typeof fetch);
+      const viSpy = vi
+        .spyOn(globalThis, 'fetch')
+        .mockImplementation(mockFailingFetch as unknown as typeof fetch);
 
       const result = await interpretProductWithAI(
         { description: 'Developer tools terminal' },
@@ -357,7 +389,9 @@ describe('Phase 13: AI-assisted layer', () => {
       // Deterministic recovery succeeded
       expect(result.productModel).toBeDefined();
       expect(result.productModel.primaryAudience).toBeDefined();
-      expect(result.inferredAssumptions[0]).toContain('Safely recovered using deterministic composer');
+      expect(result.inferredAssumptions[0]).toContain(
+        'Safely recovered using deterministic composer'
+      );
 
       viSpy.mockRestore();
     });
@@ -548,7 +582,9 @@ describe('Phase 13: AI-assisted layer', () => {
       expect(unknownRes.success).toBe(false);
       if (!unknownRes.success) {
         expect(unknownRes.error).toContain('No AI provider configured');
-        expect(unknownRes.preservedPrompt).toBe('add a rotating 3D holographic globe in the footer');
+        expect(unknownRes.preservedPrompt).toBe(
+          'add a rotating 3D holographic globe in the footer'
+        );
       }
     });
   });

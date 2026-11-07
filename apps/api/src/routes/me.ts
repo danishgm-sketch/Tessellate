@@ -4,11 +4,27 @@ import { eq } from 'drizzle-orm';
 import * as schema from '../db/schema.js';
 import { requireAuth, optionalAuth } from '../auth.js';
 import type { Env, AuthenticatedContext } from '../types.js';
+import { enforceApiRateLimit, userWriteRateLimitKey } from '../rate-limit.js';
+import { parseStoredProfile, profileUpdateSchema, type Profile } from '../profile-contract.js';
 
 export const meRoute = new Hono<{ Bindings: Env; Variables: { auth?: AuthenticatedContext } }>();
 
 // In-memory fallback profile store for tests/local mock
-const memoryProfiles = new Map<string, Record<string, unknown>>();
+const memoryProfiles = new Map<string, Profile>();
+
+function defaultProfile(auth: AuthenticatedContext, now: string): Profile {
+  return {
+    userId: auth.user.id,
+    username: auth.user.email.split('@')[0] ?? auth.user.id,
+    bio: null,
+    avatarUrl: auth.user.image ?? null,
+    specialtyTags: [],
+    githubHandle: null,
+    isAvailableForWork: false,
+    createdAt: now,
+    updatedAt: now,
+  };
+}
 
 // GET /api/me — Returns current session and profile
 meRoute.get('/', optionalAuth, async (c) => {
@@ -21,17 +37,16 @@ meRoute.get('/', optionalAuth, async (c) => {
     });
   }
 
-  let profile: Record<string, unknown> | null = null;
+  let profile: Profile | null = null;
 
   if (c.env?.DB) {
     const db = drizzle(c.env.DB, { schema });
     const row = await db.select().from(schema.profiles).where(eq(schema.profiles.userId, auth.user.id)).get();
     if (row) {
-      profile = {
-        ...row,
-        specialtyTags: row.specialtyTags ? JSON.parse(row.specialtyTags) : [],
-        isAvailableForWork: Boolean(row.isAvailableForWork),
-      };
+      profile = parseStoredProfile(row);
+      if (!profile) {
+        return c.json({ error: 'Service Unavailable', message: 'Profile data cannot be validated right now.' }, 503);
+      }
     }
   } else {
     profile = memoryProfiles.get(auth.user.id) ?? null;
@@ -39,17 +54,7 @@ meRoute.get('/', optionalAuth, async (c) => {
 
   // If no profile exists yet, return default profile based on user
   if (!profile) {
-    profile = {
-      userId: auth.user.id,
-      username: auth.user.email.split('@')[0],
-      bio: null,
-      avatarUrl: auth.user.image ?? null,
-      specialtyTags: [],
-      githubHandle: null,
-      isAvailableForWork: false,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
+    profile = defaultProfile(auth, new Date().toISOString());
   }
 
   return c.json({
@@ -63,18 +68,40 @@ meRoute.get('/', optionalAuth, async (c) => {
 // PUT /api/me — Updates profile metadata for authenticated user
 meRoute.put('/', requireAuth, async (c) => {
   const auth = c.get('auth') as AuthenticatedContext;
-  const body = await c.req.json().catch(() => ({}));
+  const rateLimitResponse = await enforceApiRateLimit(c.env, 'API_USER_WRITE_LIMITER', userWriteRateLimitKey(auth.user.id));
+  if (rateLimitResponse) return rateLimitResponse;
+  const body = await c.req.json().catch(() => null);
+  const parsed = profileUpdateSchema.safeParse(body);
+  if (!parsed.success) {
+    return c.json({ error: 'Validation Error', message: 'Profile availability must be a JSON boolean' }, 400);
+  }
+  const input = parsed.data;
 
   const now = new Date().toISOString();
-  const updatedProfile = {
-    userId: auth.user.id,
-    username: typeof body.username === 'string' ? body.username.trim() : auth.user.email.split('@')[0],
-    bio: typeof body.bio === 'string' ? body.bio : null,
-    avatarUrl: typeof body.avatarUrl === 'string' ? body.avatarUrl : auth.user.image ?? null,
-    specialtyTags: Array.isArray(body.specialtyTags) ? body.specialtyTags : [],
-    githubHandle: typeof body.githubHandle === 'string' ? body.githubHandle : null,
-    isAvailableForWork: Boolean(body.isAvailableForWork),
-    createdAt: now,
+  let currentProfile = defaultProfile(auth, now);
+
+  if (c.env?.DB) {
+    const db = drizzle(c.env.DB, { schema });
+    const row = await db.select().from(schema.profiles).where(eq(schema.profiles.userId, auth.user.id)).get();
+    if (row) {
+      const parsedProfile = parseStoredProfile(row);
+      if (!parsedProfile) {
+        return c.json({ error: 'Service Unavailable', message: 'Profile data cannot be validated right now.' }, 503);
+      }
+      currentProfile = parsedProfile;
+    }
+  } else {
+    currentProfile = memoryProfiles.get(auth.user.id) ?? currentProfile;
+  }
+
+  const updatedProfile: Profile = {
+    ...currentProfile,
+    ...(input.username !== undefined ? { username: input.username } : {}),
+    ...(input.bio !== undefined ? { bio: input.bio } : {}),
+    ...(input.avatarUrl !== undefined ? { avatarUrl: input.avatarUrl } : {}),
+    ...(input.githubHandle !== undefined ? { githubHandle: input.githubHandle } : {}),
+    ...(input.specialtyTags !== undefined ? { specialtyTags: input.specialtyTags } : {}),
+    ...(input.isAvailableForWork !== undefined ? { isAvailableForWork: input.isAvailableForWork } : {}),
     updatedAt: now,
   };
 

@@ -1,0 +1,27 @@
+{
+  "step": 42,
+  "id": "unresolved-resource-export-blocked",
+  "status": "pass",
+  "url": "http://127.0.0.1:4323/workbench/?project=fault-injected-step-42-3a74c541-875e-4e1a-b6e2-d99936de8b38#screen-marketing-home",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "browser": "Chromium",
+  "injectedFailures": [
+    "The Workbench-imported manifest referenced an unknown resource slug."
+  ],
+  "checks": {
+    "importedManifestRemainedInspectable": true,
+    "unresolvedResourceRejected": true,
+    "noFallbackExported": true,
+    "uncaughtExceptions": 0
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "quality/evidence/step-42/unresolved-resource-export-blocked-sites-chromium.png"
+}

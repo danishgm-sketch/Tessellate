@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-11-01T22:44:26.000Z",
+  "sourceCommit": "b5f9f1ea9a884c544f3f7c8862655a69648e6464",
+  "generator": "pnpm build:catalog",
+  "result": "PASS",
+  "updatedShowcases": [
+    "showcase-ai-developer-platform",
+    "showcase-financial-terminal",
+    "showcase-luxury-ecommerce",
+    "showcase-luxury-hospitality",
+    "showcase-minimal-productivity",
+    "showcase-playful-hr",
+    "showcase-scientific-research"
+  ],
+  "updatedManifestFiles": 14,
+  "change": "Synchronized the Site and preview copies of the seven generated showcase manifests with canonical composer output. Their app navigation resource references now use collapsible-sidebar rather than stale minimal-top-nav references.",
+  "validation": {
+    "showcaseConsistencyTest": "PASS",
+    "unitTests": { "passed": 1277, "skipped": 1, "failed": 0 },
+    "aggregateAudit": "PASS",
+    "releaseBehavioralGate": "16/16 PASS",
+    "productionBuild": { "astroPages": 733, "result": "PASS" },
+    "bundleBudgets": "PASS",
+    "licenceAndProvenance": "324/324 PASS",
+    "securityAndSecretScan": "0 violations",
+    "dependencyAudit": "No known vulnerabilities"
+  },
+  "notes": [
+    "The first unit run was invoked before the required catalogue build and detected the stale checked-in generated manifests; after running pnpm build:catalog, the same regression passed and the full unit suite passed.",
+    "v72 Sites packaging already runs pnpm build:catalog before the static build, so this synchronizes checked-in outputs and introduces no new runtime code.",
+    "Volatile generatedAt and workbench sample timestamps were excluded from the change."
+  ]
+}

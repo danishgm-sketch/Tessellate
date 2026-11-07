@@ -1,0 +1,36 @@
+{
+  "findingId": "SEC-37-060",
+  "severity": "high",
+  "title": "Standalone export followed hostile resource slugs outside the catalogue",
+  "scope": [
+    "packages/exporter/src/node-disk-resolver.ts",
+    "packages/exporter/src/__tests__/node-disk-resolver-security.test.ts"
+  ],
+  "reproductions": [
+    {
+      "boundary": "resource slug traversal",
+      "test": "does not resolve a resource slug that traverses above the resource root",
+      "beforeFix": "Failed: resolver returned the external index.tsx contents for a ../../resource-resolver-audit-* slug.",
+      "afterFix": "Passed: noncanonical slugs resolve to null."
+    },
+    {
+      "boundary": "external resource-directory junction/symlink",
+      "test": "does not read a resource directory symlink that points outside the resource root",
+      "beforeFix": "Failed: resolver returned source from a valid-looking slug whose resource directory linked to a sibling folder.",
+      "afterFix": "Passed: linked resource directories are skipped."
+    },
+    {
+      "boundary": "standalone project export",
+      "test": "fails a standalone export instead of copying a source file named by a hostile project manifest",
+      "beforeFix": "The direct resolver regressions demonstrated that generateSourceTree would receive the sibling source through the registered Node adapter.",
+      "afterFix": "Passed: export stops with an unresolved-resource error and does not create an output tree containing the external source."
+    }
+  ],
+  "verification": {
+    "command": "pnpm exec vitest run packages/exporter/src/__tests__/node-disk-resolver-security.test.ts",
+    "result": "passed",
+    "testFiles": 1,
+    "testsPassed": 3,
+    "deployedVerification": "pending"
+  }
+}

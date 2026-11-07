@@ -1,0 +1,188 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "quality/evidence/step-48/deployed-v59-2026-10-31/accessibility.playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-48\\deployed-v59-2026-10-31\\accessibility.playwright.config.mjs",
+    "rootDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-48/deployed-v59-2026-10-31/axe-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium-1440",
+        "name": "desktop-chromium-1440",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "flagship-generated-product-a11y.spec.ts"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-48/deployed-v59-2026-10-31/axe-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-chromium-390",
+        "name": "mobile-chromium-390",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "flagship-generated-product-a11y.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-48\\deployed-v59-2026-10-31\\axe-playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "pnpm --filter @tessellate/sites exec wrangler dev --config ../../dist/server/wrangler.json --local --ip 127.0.0.1 --port 4325 --inspector-port 0",
+      "url": "http://127.0.0.1:4325",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "flagship-generated-product-a11y.spec.ts",
+      "file": "flagship-generated-product-a11y.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "the generated employee experience opens in Workbench without serious accessibility violations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium-1440",
+              "projectName": "desktop-chromium-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3464,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:20:32.480Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "generated-employee-workbench-desktop-chromium-1440.json",
+                      "contentType": "application/json",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-48\\deployed-v59-2026-10-31\\axe-results\\flagship-generated-product-e7b63-us-accessibility-violations-desktop-chromium-1440\\attachments\\generated-employee-workbench-desktop-chromium-1440-json-8b3d2e48dcd1360799c5a28216651404194a44eb.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0ada432daa7c1f6ed6a1-3328867cdbd8d6e2f028",
+          "file": "flagship-generated-product-a11y.spec.ts",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "the generated employee experience opens in Workbench without serious accessibility violations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium-390",
+              "projectName": "mobile-chromium-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2728,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T09:20:36.501Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "generated-employee-workbench-mobile-chromium-390.json",
+                      "contentType": "application/json",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-48\\deployed-v59-2026-10-31\\axe-results\\flagship-generated-product-e7b63-us-accessibility-violations-mobile-chromium-390\\attachments\\generated-employee-workbench-mobile-chromium-390-json-eda9e4a96a97cc427b7af8f61d3787d0c76df247.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0ada432daa7c1f6ed6a1-f82abb3f1b87ce481cd2",
+          "file": "flagship-generated-product-a11y.spec.ts",
+          "line": 18,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-31T09:20:27.994Z",
+    "duration": 11863.09,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

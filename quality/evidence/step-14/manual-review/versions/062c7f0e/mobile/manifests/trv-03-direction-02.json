@@ -1,0 +1,469 @@
+{
+  "id": "proj-direction-b-1aad9e477fd943b9a62481c61d6f0840dirb",
+  "dna": {
+    "professionalism": 100,
+    "playfulness": 53,
+    "luxury": 40,
+    "warmth": 45,
+    "technicality": 65,
+    "editorial": 35,
+    "futurism": 35,
+    "visualAmbition": 65,
+    "structuralCreativity": 35,
+    "density": 60,
+    "whitespace": 65,
+    "contrast": 75,
+    "colourfulness": 74,
+    "curvature": 63,
+    "depth": 50,
+    "motion": 55,
+    "motionPlayfulness": 70,
+    "typographicExpression": 68,
+    "imageryIntensity": 55,
+    "videoIntensity": 15,
+    "threeDIntensity": 6,
+    "dataDensity": 65,
+    "interactionDensity": 60,
+    "asymmetry": 24,
+    "conversionIntensity": 55,
+    "trust": 100,
+    "accessibilityPriority": 85,
+    "performancePriority": 82,
+    "primaryArchetype": "travel",
+    "visualMode": "light",
+    "geometryFamily": "pill",
+    "navigationModel": "top-nav",
+    "responsivePhilosophy": "desktop-dense-mobile-focused",
+    "contentTone": "calm",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "playful-spring",
+    "typographyPersonality": "geist-system",
+    "surfacePersonality": "subtle-contrast"
+  },
+  "navigation": {
+    "model": "top-nav",
+    "primaryItems": [
+      {
+        "label": "Destination Showcase",
+        "targetScreenId": "screen-marketing-home"
+      },
+      {
+        "label": "Trip Itinerary",
+        "targetScreenId": "screen-workspace"
+      }
+    ],
+    "secondaryItems": [
+      {
+        "label": "Property Detail",
+        "targetScreenId": "screen-property-detail"
+      }
+    ]
+  },
+  "grammar": "product-proof-marketing",
+  "screens": [
+    {
+      "id": "screen-marketing-home",
+      "screenNodeId": "screen-marketing-home",
+      "name": "Destination Showcase",
+      "slug": "/",
+      "rootNode": {
+        "id": "root-screen-marketing-home",
+        "nodeType": "layout",
+        "semanticRole": "marketing-page",
+        "children": [
+          {
+            "id": "node-screen-marketing-home-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Destination Workspace",
+              "links": [
+                {
+                  "label": "Destination Showcase",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Trip Itinerary",
+                  "href": "#screen-workspace"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-hero-2",
+            "nodeType": "section",
+            "semanticRole": "hero",
+            "resourceRef": {
+              "id": "res_sec_editorial_hero",
+              "slug": "editorial-hero",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [],
+            "slots": {},
+            "props": {
+              "eyebrow": "Example organisation · sample content",
+              "headline": "Inspire destination discovery and provide seamless, transparent booking itineraries",
+              "subheadline": "A workspace for travelers, tourists, hotel concierges, and travel agents.",
+              "primaryCta": {
+                "label": "Explore destinations",
+                "href": "#screen-marketing-home"
+              },
+              "secondaryCta": {
+                "label": "See how it works",
+                "href": "#screen-property-detail"
+              },
+              "note": "Example interface · replace sample data with your organisation"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-value-proposition-3",
+            "nodeType": "section",
+            "semanticRole": "value-proposition",
+            "resourceRef": {
+              "id": "res_sec_feature_bento",
+              "slug": "feature-bento",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Destination Showcase",
+              "items": [
+                {
+                  "title": "Destination",
+                  "description": "City or resort with lodging and attractions",
+                  "detail": "Example content"
+                },
+                {
+                  "title": "Reservation",
+                  "description": "Secured flight, hotel, or excursion booking",
+                  "detail": "Example content"
+                },
+                {
+                  "title": "Itinerary",
+                  "description": "Day-by-day travel calendar with tickets and notes",
+                  "detail": "Example content"
+                }
+              ]
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-conversion-cta-4",
+            "nodeType": "section",
+            "semanticRole": "conversion-cta",
+            "resourceRef": {
+              "id": "res_sec_cta_minimal",
+              "slug": "cta-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [],
+            "slots": {},
+            "props": {
+              "headline": "Inspire destination discovery and provide seamless, transparent booking itineraries",
+              "description": "A workspace for travelers, tourists, hotel concierges, and travel agents.",
+              "label": "Explore destinations",
+              "href": "#screen-marketing-home"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-footer-5",
+            "nodeType": "section",
+            "semanticRole": "footer",
+            "resourceRef": {
+              "id": "res_sec_footer_product",
+              "slug": "footer-product",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Destination Workspace",
+              "description": "A workspace for travelers, tourists, hotel concierges, and travel agents.",
+              "links": [
+                {
+                  "label": "Destination Showcase",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Trip Itinerary",
+                  "href": "#screen-workspace"
+                }
+              ]
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutFamily": "feature-grid"
+        }
+      }
+    },
+    {
+      "id": "screen-property-detail",
+      "screenNodeId": "screen-property-detail",
+      "name": "Property Detail",
+      "slug": "/properties/:id",
+      "rootNode": {
+        "id": "root-screen-property-detail",
+        "nodeType": "layout",
+        "semanticRole": "top-nav-page-canvas",
+        "children": [
+          {
+            "id": "node-screen-property-detail-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Destination Workspace",
+              "links": [
+                {
+                  "label": "Destination Showcase",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Trip Itinerary",
+                  "href": "#screen-workspace"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "node-screen-property-detail-entity-header-2",
+            "nodeType": "section",
+            "semanticRole": "entity-header",
+            "resourceRef": {
+              "id": "res_blk_entity_profile_header",
+              "slug": "entity-profile-header",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Property Detail",
+              "subtitle": "Room galleries, reviews, and interactive map",
+              "badge": "EXAMPLE",
+              "initials": "DW"
+            }
+          },
+          {
+            "id": "node-screen-property-detail-detail-tabs-3",
+            "nodeType": "section",
+            "semanticRole": "detail-tabs",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Destination Workspace",
+              "links": [
+                {
+                  "label": "Destination Showcase",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Trip Itinerary",
+                  "href": "#screen-workspace"
+                }
+              ]
+            }
+          },
+          {
+            "id": "node-screen-property-detail-main-content-pane-4",
+            "nodeType": "section",
+            "semanticRole": "main-content-pane",
+            "resourceRef": {
+              "id": "res_blk_advanced_data_table",
+              "slug": "advanced-data-table",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Property Detail",
+              "rows": [
+                {
+                  "id": 1,
+                  "name": "Example Destination",
+                  "type": "City or resort with lodging and attractions",
+                  "quality": 0,
+                  "status": "Sample",
+                  "displayValue": "Details not connected"
+                },
+                {
+                  "id": 2,
+                  "name": "Example Reservation",
+                  "type": "Secured flight, hotel, or excursion booking",
+                  "quality": 0,
+                  "status": "Sample",
+                  "displayValue": "Details not connected"
+                },
+                {
+                  "id": 3,
+                  "name": "Example Itinerary",
+                  "type": "Day-by-day travel calendar with tickets and notes",
+                  "quality": 0,
+                  "status": "Sample",
+                  "displayValue": "Details not connected"
+                }
+              ],
+              "columnLabels": {
+                "name": "Record",
+                "type": "Context",
+                "quality": "Data",
+                "status": "Status"
+              }
+            }
+          },
+          {
+            "id": "node-screen-property-detail-metadata-sidebar-5",
+            "nodeType": "section",
+            "semanticRole": "metadata-sidebar",
+            "resourceRef": {
+              "id": "res_blk_entity_profile_header",
+              "slug": "entity-profile-header",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Property Detail",
+              "subtitle": "Room galleries, reviews, and interactive map",
+              "badge": "EXAMPLE",
+              "initials": "DW"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "vertical-flow"
+        }
+      }
+    },
+    {
+      "id": "screen-workspace",
+      "screenNodeId": "screen-workspace",
+      "name": "Trip Itinerary",
+      "slug": "/trip-itinerary",
+      "rootNode": {
+        "id": "root-screen-workspace",
+        "nodeType": "layout",
+        "semanticRole": "top-nav-page-canvas",
+        "children": [
+          {
+            "id": "node-screen-workspace-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Destination Workspace",
+              "links": [
+                {
+                  "label": "Destination Showcase",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Trip Itinerary",
+                  "href": "#screen-workspace"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "node-screen-workspace-canvas-viewport-2",
+            "nodeType": "section",
+            "semanticRole": "canvas-viewport",
+            "resourceRef": {
+              "id": "res_blk_kanban_board",
+              "slug": "kanban-board",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Trip Itinerary",
+              "columns": [
+                {
+                  "title": "Select dates, pick room tier, and complete reservation",
+                  "tasks": [
+                    "Enter dates",
+                    "Filter amenities",
+                    "Choose room",
+                    "Pay deposit"
+                  ]
+                },
+                {
+                  "title": "Open check in barcode at hotel desk or airport gate",
+                  "tasks": [
+                    "Open itinerary",
+                    "Display qr code"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "node-screen-workspace-inspector-panel-3",
+            "nodeType": "section",
+            "semanticRole": "inspector-panel",
+            "resourceRef": {
+              "id": "res_blk_entity_profile_header",
+              "slug": "entity-profile-header",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Trip Itinerary",
+              "subtitle": "Chronological timeline of tickets and hotel confirmations",
+              "badge": "EXAMPLE",
+              "initials": "DW"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "vertical-flow"
+        }
+      }
+    }
+  ],
+  "diagnostics": []
+}

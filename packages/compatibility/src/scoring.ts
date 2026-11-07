@@ -282,7 +282,12 @@ export function calculateCompatibilityScore(
   const synergy = synergyResult.score;
 
   // 9. Quality Score (4%)
-  const quality = candidate.quality.overall;
+  const quality = candidate.quality.assessment.status === 'reviewed'
+    ? candidate.quality.overall
+    : 50;
+  if (candidate.quality.assessment.status === 'unassessed') {
+    rationale.push('Resource quality is unassessed; neutral quality weighting applied.');
+  }
 
   // 10. Novelty Preference (3%)
   const novelty = Math.min(100, Math.max(0, noveltyPreferenceScore));

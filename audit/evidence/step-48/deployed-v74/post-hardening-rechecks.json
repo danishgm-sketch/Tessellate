@@ -1,0 +1,42 @@
+{
+  "capturedAt": "2026-11-03T15:14:27.236Z",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "version": 74,
+  "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_a853aa5b01908191b3321c1de656e6c6",
+  "deploymentId": "appgdep_6ae9e3cf216c8191b1f06c5096e01fdd",
+  "canonicalCommit": "75276e8078e908b8258fa3d2cba629d71b85cd60",
+  "sitesSourceCommit": "601d4b4069fdcba6bd57a26e2b625dbd42467602",
+  "verifiedFindings": [
+    "AUD-450",
+    "AUD-451",
+    "AUD-452",
+    "AUD-456"
+  ],
+  "profiles": [
+    "390x844",
+    "412x823 DPR 1.75, 4x CPU"
+  ],
+  "reports": [
+    "audit/evidence/step-48/deployed-v74/aud450-mobile-menu-label.json",
+    "audit/evidence/step-48/deployed-v74/aud451-mobile-tap-and-escape.json",
+    "audit/evidence/step-48/deployed-v74/aud451-mobile-keyboard-enter-and-escape.json",
+    "audit/evidence/step-48/aud452-mobile-cold-resource-load/sites-mobile-chromium-cold-load.json",
+    "audit/evidence/step-48/deployed-v74/sites-mobile-chromium-aud456-startup.json"
+  ],
+  "summary": {
+    "visibleMenuAccessibleName": "Menu, open navigation",
+    "tapPreviewRemainedSelected": true,
+    "keyboardPreviewRemainedSelected": true,
+    "firstLoadCls": 0.017716154259663604,
+    "reloadCls": 0.017716154259663604,
+    "partialResourceFailureCls": 0.017716154259663604,
+    "failedResourceReservedHeightPx": 448,
+    "delayedMobileStartupShellHeightPx": 844,
+    "delayedMobileStartupCls": 0.022379182627155495,
+    "normalConsoleErrors": 0,
+    "normalConsoleWarnings": 0,
+    "uncaughtExceptions": 0,
+    "failedEssentialRequests": 0,
+    "httpErrors": 0
+  }
+}

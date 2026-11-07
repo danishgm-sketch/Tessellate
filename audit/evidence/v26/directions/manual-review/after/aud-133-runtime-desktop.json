@@ -1,0 +1,38 @@
+{
+  "url": "http://localhost:4321/compose",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "status": "passed",
+  "reviewed": [
+    {
+      "direction": "01",
+      "unavailableMetricCount": 2,
+      "badgeClasses": [
+        "text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 font-bold",
+        "text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 font-bold"
+      ]
+    },
+    {
+      "direction": "02",
+      "unavailableMetricCount": 2,
+      "badgeClasses": [
+        "text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 font-bold",
+        "text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 font-bold"
+      ]
+    },
+    {
+      "direction": "03",
+      "unavailableMetricCount": 2,
+      "badgeClasses": [
+        "text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-700/50 text-neutral-300 font-bold",
+        "text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-700/50 text-neutral-300 font-bold"
+      ]
+    }
+  ],
+  "consoleErrors": [],
+  "uncaught": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

@@ -1,0 +1,62 @@
+{
+  "id": "AUD-448",
+  "test": "bounded-healthcheck-container-recovery",
+  "beforeFix": {
+    "containerStatus": "running",
+    "healthStatus": "unhealthy",
+    "restartCount": 0,
+    "reproduction": "A healthy long-running process with a failing Docker healthcheck remained running/unhealthy under restart: unless-stopped."
+  },
+  "afterFix": {
+    "containerStatus": "running",
+    "healthStatus": "healthy",
+    "restartCount": 1,
+    "serverBootCount": 2,
+    "healthcheckLog": [
+      {
+        "exitCode": 1,
+        "output": ""
+      },
+      {
+        "exitCode": 1,
+        "output": ""
+      },
+      {
+        "exitCode": 1,
+        "output": ""
+      },
+      {
+        "exitCode": 137,
+        "output": "[laptop-api-healthcheck] API remained unhealthy for 6 probes; requesting bounded container restart 1/3.\n"
+      },
+      {
+        "exitCode": 0,
+        "output": ""
+      }
+    ]
+  },
+  "isolation": {
+    "boundPorts": [],
+    "secretsMounted": false,
+    "persistentExternalServices": false
+  },
+  "testedAt": "2026-11-01T22:59:48.928Z",
+  "activeRuntime": {
+    "observedAt": "2026-11-01T23:41:05Z",
+    "apiContainer": "tessellate-laptop-api-1",
+    "apiStatus": "running",
+    "apiHealth": "healthy",
+    "restartCount": 0,
+    "healthcheckCommand": [
+      "node",
+      "/app/apps/laptop-backend/healthcheck.mjs"
+    ],
+    "httpStatus": 200,
+    "preservedDataVolume": "tessellate-laptop_laptop-data",
+    "secretMountReadOnly": true,
+    "hostContainer": "tessellate-laptop-host-1",
+    "hostHealth": "healthy",
+    "hostHeartbeatAgeSeconds": 4.3,
+    "scope": "recreated API service only; host was not recreated"
+  }
+}

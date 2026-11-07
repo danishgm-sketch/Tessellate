@@ -41,7 +41,7 @@ export function validateLicense(license: LicenseInfo): LicenseValidationResult {
     };
   }
 
-  if (license.attributionRequired && (!license.attributionText || license.attributionText.trim().length === 0)) {
+  if (license.attributionRequired === true && (!license.attributionText || license.attributionText.trim().length === 0)) {
     return {
       valid: false,
       error: `License '${license.spdx}' specifies attributionRequired=true but is missing attributionText.`,

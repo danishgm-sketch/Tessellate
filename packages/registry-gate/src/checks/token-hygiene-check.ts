@@ -1,7 +1,6 @@
 import type { GateCheckResult } from '../types.js';
 
 export function checkTokenHygiene(code: string): GateCheckResult {
-  const hexColorMatches = code.match(/#[0-9a-fA-F]{3,8}\b/g) || [];
   // Exclude hex colors in comments or SVG path strings if any
   const rawHexInClasses = code.match(/(?:bg|text|border|fill|stroke)-\[#[0-9a-fA-F]{3,8}\]/g) || [];
 

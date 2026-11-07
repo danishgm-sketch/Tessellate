@@ -1,3 +1,3 @@
 # CTA Download
 
-Package manager install options and version notification banner.
+Installation call to action template. Supply a verified distribution and `onInstall` handler before enabling the action.

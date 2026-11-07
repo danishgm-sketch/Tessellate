@@ -1,0 +1,16 @@
+{
+  "command": "node packages/cli/dist/index.cjs create-resource --slug provenance-audit",
+  "cwd": "clean temporary directory outside repository",
+  "status": "draft",
+  "checks": {
+    "draft": true,
+    "unknownProvenance": true,
+    "unassignedCreator": true,
+    "licenseUnasserted": true,
+    "responsiveUnverified": true,
+    "accessibilityUnverified": true,
+    "qualityUnscored": true,
+    "READMETruthful": true
+  },
+  "passed": true
+}

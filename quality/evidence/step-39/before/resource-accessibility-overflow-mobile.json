@@ -1,0 +1,17 @@
+{
+  "capturedAt": "2026-10-21T09:03:55.000Z",
+  "route": "http://127.0.0.1:4323/r/success-state",
+  "viewport": { "width": 390, "height": 844 },
+  "status": 200,
+  "layout": { "viewportWidth": 390, "documentWidth": 390, "horizontalOverflow": false },
+  "geometry": [
+    { "label": "Keyboard Navigation", "left": 41, "right": 189, "scrollWidth": 166, "clientWidth": 146, "overflowingText": [{ "text": "Not independently verified", "left": 111.7, "right": 207.77 }] },
+    { "label": "Screen Reader Semantics", "left": 201, "right": 349, "scrollWidth": 162, "clientWidth": 146, "overflowingText": [{ "text": "Not independently verified", "left": 267.48, "right": 363.55 }] },
+    { "label": "Reduced Motion Verified", "left": 41, "right": 189, "scrollWidth": 154, "clientWidth": 146, "overflowingText": [{ "text": "Not independently verified", "left": 99.84, "right": 195.91 }] },
+    { "label": "Contrast Compatible", "left": 201, "right": 349, "scrollWidth": 169, "clientWidth": 146, "overflowingText": [{ "text": "Not independently verified", "left": 275.17, "right": 371.23 }] }
+  ],
+  "seriousOrCriticalAxe": [],
+  "runtime": { "consoleErrors": [], "consoleWarnings": [], "uncaughtExceptions": [], "failedRequests": [], "httpErrors": [] },
+  "screenshot": "quality/evidence/step-39/before/resource-accessibility-overflow-mobile.png",
+  "note": "Captured from the pre-layout-fix mobile rendering. Browser regression output records four clipped status labels; the document itself did not have horizontal overflow."
+}

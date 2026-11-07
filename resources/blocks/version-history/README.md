@@ -1,3 +1,3 @@
 # Version History
 
-Revision list showcasing past project checkpoints with restore triggers.
+An example revision list with local restore-preview actions. Previewing a restore does not change project data.

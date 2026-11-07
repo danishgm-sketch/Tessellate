@@ -1,0 +1,39 @@
+{
+  "capturedAt": "2026-10-21T07:45:46.744Z",
+  "scope": "canonical resource manifest accessibility and quality-assessment fields before remediation",
+  "sourceManifestCount": 324,
+  "retainedGoldBrowserCertificationCount": 40,
+  "nonGoldResources": 284,
+  "before": {
+    "manifestsWithQualityAssessmentEvidenceState": 0,
+    "resourcesWithAllFiveAccessibilityVerificationFlagsTrue": 324,
+    "nonGoldResourcesWithUnsupportedAllFiveVerificationFlags": 284,
+    "wcagAAADeclaredTargets": 310,
+    "overallQualityScoreRange": [
+      96,
+      98
+    ],
+    "accessibilityQualityScoreRange": [
+      98,
+      99
+    ],
+    "deployedRoute": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/success-state",
+    "deployedStatus": 200,
+    "screenshot": "quality/evidence/step-39/deployed-before/resource-metadata/desktop/accessibility-tab.png",
+    "runtime": {
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "uncaughtExceptions": 0,
+      "failedRequests": 0,
+      "httpErrors": 0
+    }
+  },
+  "afterExpected": {
+    "qualityAssessmentStatus": "unassessed",
+    "nonGoldAccessibilityVerificationFlags": false,
+    "wcagTarget": "AA",
+    "compatibilityWeightForUnassessedQuality": 50,
+    "minimumQualitySearchEligibility": "reviewed assessments only",
+    "publicVerificationStatus": "pending Step 45"
+  }
+}

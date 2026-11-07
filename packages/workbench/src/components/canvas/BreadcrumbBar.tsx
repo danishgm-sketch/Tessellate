@@ -19,7 +19,7 @@ export function BreadcrumbBar() {
   return (
     <div
       data-testid="breadcrumb-bar"
-      className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono bg-white/80 dark:bg-[#111217]/80 backdrop-blur-md rounded-lg border border-[#D9D6CF] dark:border-[#272C34] shadow-sm text-[#62666F] dark:text-[#A8AFBA]"
+      className="dark flex flex-wrap items-center gap-1.5 px-3 py-1.5 text-xs font-mono bg-white/80 dark:bg-[#111217]/80 backdrop-blur-md rounded-lg border border-[#D9D6CF] dark:border-[#272C34] shadow-sm text-[#62666F] dark:text-[#A8AFBA]"
     >
       <button
         onClick={() => selectNode(null)}
@@ -47,7 +47,7 @@ export function BreadcrumbBar() {
               onClick={() => selectNode(node.id)}
               className={`flex items-center gap-1 transition-colors ${
                 isLast
-                  ? 'font-bold text-[#2547E8] dark:text-[#6782FF]'
+                  ? 'font-bold text-[#2547E8] dark:text-[#879DFF]'
                   : 'hover:text-[#111217] dark:hover:text-[#F5F7FA]'
               }`}
             >
@@ -59,7 +59,7 @@ export function BreadcrumbBar() {
       })}
 
       {selectedNodeId && (
-        <span className="ml-2 text-[10px] text-[#8B8F97] hidden sm:inline">
+        <span className="ml-2 text-[10px] text-[var(--text-muted)] hidden sm:inline">
           (Esc to climb)
         </span>
       )}

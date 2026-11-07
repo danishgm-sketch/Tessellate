@@ -1,0 +1,245 @@
+{
+  "id": "AUD-452",
+  "capturedAt": "2026-11-02",
+  "siteVersion": 72,
+  "page": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+  "question": "Is the reported 0.502-0.503 CLS a real user-visible layout shift?",
+  "lighthouseAgenticReports": [
+    {
+      "reportCapturedAt": "2026-11-02T05:16:19.371Z",
+      "page": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+      "reportLocation": "C:/Users/ismay/AppData/Local/Temp/chrome-devtools-mcp-K50pfo/report.json",
+      "lighthouseVersion": "13.5.0",
+      "categoriesRequested": [
+        "accessibility",
+        "seo",
+        "best-practices",
+        "agentic-browsing"
+      ],
+      "emulation": {
+        "formFactor": "mobile",
+        "viewport": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "cpuSlowdownMultiplier": 4,
+        "network": "simulate",
+        "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36"
+      },
+      "agenticBrowsingCls": {
+        "value": 0.501657445528436,
+        "display": "0.502",
+        "score": 0.16,
+        "details": [
+          {
+            "cumulativeLayoutShiftMainFrame": 0.501657445528436,
+            "newEngineResult": {
+              "cumulativeLayoutShift": 0.501657445528436,
+              "cumulativeLayoutShiftMainFrame": 0.501657445528436
+            },
+            "newEngineResultDiffered": false
+          }
+        ]
+      },
+      "runWarnings": [
+        "There may be stored data affecting loading performance in this location: IndexedDB. Audit this page in an incognito window to prevent those resources from affecting your scores."
+      ]
+    },
+    {
+      "reportCapturedAt": "2026-11-02T05:19:21.505Z",
+      "page": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+      "reportLocation": "C:/Users/ismay/AppData/Local/Temp/chrome-devtools-mcp-dQYRpR/report.json",
+      "lighthouseVersion": "13.5.0",
+      "categoriesRequested": [
+        "accessibility",
+        "seo",
+        "best-practices",
+        "agentic-browsing"
+      ],
+      "emulation": {
+        "formFactor": "mobile",
+        "viewport": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "cpuSlowdownMultiplier": 4,
+        "network": "simulate",
+        "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36"
+      },
+      "agenticBrowsingCls": {
+        "value": 0.501657445528436,
+        "display": "0.502",
+        "score": 0.16,
+        "details": [
+          {
+            "cumulativeLayoutShiftMainFrame": 0.501657445528436,
+            "newEngineResult": {
+              "cumulativeLayoutShift": 0.501657445528436,
+              "cumulativeLayoutShiftMainFrame": 0.501657445528436
+            },
+            "newEngineResultDiffered": false
+          }
+        ]
+      },
+      "runWarnings": [
+        "There may be stored data affecting loading performance in this location: IndexedDB. Audit this page in an incognito window to prevent those resources from affecting your scores."
+      ]
+    },
+    {
+      "reportCapturedAt": "2026-11-02T05:20:18.126Z",
+      "page": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench#screen-marketing-home",
+      "reportLocation": "C:/Users/ismay/AppData/Local/Temp/chrome-devtools-mcp-xMoky2/report.json",
+      "lighthouseVersion": "13.5.0",
+      "categoriesRequested": [
+        "accessibility",
+        "seo",
+        "best-practices",
+        "agentic-browsing"
+      ],
+      "emulation": {
+        "formFactor": "mobile",
+        "viewport": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "cpuSlowdownMultiplier": 4,
+        "network": "simulate",
+        "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36"
+      },
+      "agenticBrowsingCls": {
+        "value": 0.5027722398518326,
+        "display": "0.503",
+        "score": 0.16,
+        "details": [
+          {
+            "cumulativeLayoutShiftMainFrame": 0.5027722398518326,
+            "newEngineResult": {
+              "cumulativeLayoutShift": 0.5027722398518326,
+              "cumulativeLayoutShiftMainFrame": 0.5027722398518326
+            },
+            "newEngineResultDiffered": false
+          }
+        ]
+      },
+      "runWarnings": [
+        "There may be stored data affecting loading performance in this location: IndexedDB. Audit this page in an incognito window to prevent those resources from affecting your scores."
+      ]
+    }
+  ],
+  "chromeDevToolsPerformanceTraces": [
+    {
+      "profile": "persisted AUD-443 Disposable Export Test",
+      "viewport": "390x844",
+      "dpr": 1,
+      "cpuSlowdown": 1,
+      "network": "Fast 4G",
+      "traceWindowMs": 6234,
+      "cls": 0,
+      "lcpMs": 1904
+    },
+    {
+      "profile": "persisted AUD-443 Disposable Export Test",
+      "viewport": "390x844",
+      "dpr": 1,
+      "cpuSlowdown": 1,
+      "network": "Fast 4G",
+      "traceWindowMs": 5431,
+      "cls": 0,
+      "lcpMs": 1079
+    },
+    {
+      "profile": "persisted AUD-443 Disposable Export Test",
+      "viewport": "412x823",
+      "dpr": 1.75,
+      "cpuSlowdown": 4,
+      "network": "Fast 4G",
+      "traceWindowMs": 5611,
+      "cls": 0,
+      "lcpMs": 1634
+    },
+    {
+      "profile": "persisted AUD-443 Disposable Export Test",
+      "viewport": "412x823",
+      "dpr": 1.75,
+      "cpuSlowdown": 4,
+      "network": "Fast 4G",
+      "traceWindowMs": 8624,
+      "cls": 0,
+      "lcpMs": 1598
+    },
+    {
+      "profile": "isolated context seeded with Example employee workspace",
+      "viewport": "412x823",
+      "dpr": 1.75,
+      "cpuSlowdown": 4,
+      "network": "Fast 4G",
+      "traceWindowMs": 5567,
+      "cls": 0,
+      "lcpMs": 1561
+    },
+    {
+      "profile": "public v72 cold reload with cache bypass",
+      "viewport": "412x823",
+      "dpr": 1.75,
+      "cpuSlowdown": 4,
+      "network": "Fast 4G",
+      "traceWindowMs": 6657,
+      "cls": 0.5028,
+      "lcpMs": 4844,
+      "ttfbMs": 1195,
+      "renderDelayMs": 3649,
+      "shiftClusterStartMs": 4829,
+      "shiftClusterDurationMs": 1000,
+      "shiftedWrappers": [
+        "hero",
+        "value-proposition",
+        "conversion-cta",
+        "footer"
+      ],
+      "activeScreenGoldChunks": 5,
+      "networkRequests": 42,
+      "failedRequests": 0,
+      "httpErrors": 0,
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "cloudflareDeprecationIssues": [
+        "Fenced Frame API",
+        "StorageType.persistent",
+        "Protected Audience API"
+      ],
+      "rawTraceRetained": false
+    }
+  ],
+  "bufferedLayoutShiftEntriesAfterNavigation": {
+    "pageContext": "isolated Lighthouse audit page",
+    "entries": 0,
+    "reportedSum": 0
+  },
+  "runtimeHealth": {
+    "consoleMessages": 0,
+    "networkRequests": 38,
+    "failedRequests": 0,
+    "httpErrors": 0
+  },
+  "conclusion": "Confirmed cold-load Workbench defect, not a measurement discrepancy. The public v72 cache-bypass trace measured CLS 0.5028 and identified four resource wrappers shifting after five Gold chunks loaded. Mobile now shares the desktop preload gate; the fresh-built local Sites Worker regression records CLS 0.00 on first load and reload. Public v72 remains unchanged, so deployment verification is pending. Raw DevTools trace files were not retained because the MCP file writer rejected workspace paths.",
+  "latestColdReload": {
+    "reproduction": "Cache-bypass reload of public v72 Workbench with mobile viewport, 4x CPU and Fast 4G.",
+    "source": "Chrome DevTools CLSCulprits and NetworkDependencyTree insights",
+    "rootCause": "Five Gold component chunks loaded behind WorkbenchShell and manifest-renderer-core while MobileWorkbench mounted each node fallback at 48px; four wrappers expanded after the chunks arrived.",
+    "localPostFixEvidence": "audit/evidence/step-48/aud452-mobile-cold-resource-load/sites-mobile-chromium-cold-load.json",
+    "localPostFixCls": {
+      "firstLoad": 0,
+      "reload": 0
+    },
+    "traceFileWrite": "Denied by DevTools MCP workspace-path policy; detailed findings recorded inline."
+  }
+}

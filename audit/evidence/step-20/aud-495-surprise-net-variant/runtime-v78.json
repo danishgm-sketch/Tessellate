@@ -1,0 +1,96 @@
+{
+  "auditId": "AUD-495",
+  "result": "PASS",
+  "verifiedAt": "2026-11-06T06:15:45Z",
+  "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersionNumber": 78,
+  "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67206589708c81919ade92023cb90608",
+  "deploymentId": "appgdep_6aed6cf7cc288191a4ba98ee07ef81fc",
+  "canonicalSourceCommit": "3e889d0ca68345c5ccf5ef767c3c05ebc07716ca",
+  "sitesSourceCommit": "e6387f7ff8e1080a5a4c191cf00faef813719a3d",
+  "viewport": [
+    "390x844",
+    "1440x900"
+  ],
+  "workflow": [
+    "On public Sites v78, opened the exact employee-experience Compose result and selected Direction C through the visible UI.",
+    "In Workbench, selected the Marketing Home hero, opened Replace, inspected the Gold Split Product Hero candidate and its rendered preview, and applied it; the selected resource variant was Quiet.",
+    "Clicked Surprise Me at 60% divergence. The selected resource changed Quiet to Nocturne, and the live status reported quiet to nocturne.",
+    "Repeated Surprise Me twice more: Nocturne to Expressive and Expressive to Nocturne. Each visible resource variant matched the status transition.",
+    "Used visible Undo controls three times to restore the Quiet baseline, then repeated the action for the paired before/after screenshots."
+  ],
+  "transitions": [
+    {
+      "before": "quiet",
+      "status": "quiet to nocturne",
+      "after": "nocturne",
+      "result": "PASS"
+    },
+    {
+      "before": "nocturne",
+      "status": "nocturne to expressive",
+      "after": "expressive",
+      "result": "PASS"
+    },
+    {
+      "before": "expressive",
+      "status": "expressive to nocturne",
+      "after": "nocturne",
+      "result": "PASS"
+    },
+    {
+      "before": "quiet",
+      "status": "quiet to nocturne",
+      "after": "nocturne",
+      "result": "PASS",
+      "pairedScreenshots": true
+    },
+    {
+      "viewport": "1440x900",
+      "before": "quiet",
+      "status": "quiet to nocturne",
+      "after": "nocturne",
+      "result": "PASS",
+      "pairedScreenshots": true
+    }
+  ],
+  "console": {
+    "errors": 0,
+    "warnings": 0,
+    "uncaughtExceptions": 0,
+    "messages": []
+  },
+  "network": {
+    "requestsObservedAcrossComposeAndWorkbench": 184,
+    "latestPreservedRequestSnapshot": {
+      "requests": 184,
+      "statuses": {
+        "200": 176,
+        "304": 8
+      },
+      "failedRequests": 0,
+      "httpErrors": 0
+    },
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "catalogueRequests": [
+      200,
+      304
+    ],
+    "initialComposeChain": {
+      "cloudflareDetectionRedirects": 1,
+      "redirectStatus": 302,
+      "completed": true
+    },
+    "note": "The initial Compose chain included the expected Cloudflare JavaScript-detection redirect, which completed successfully. Latest preserved requests across Compose and Workbench were 200/304 only."
+  },
+  "screenshots": {
+    "before": "audit/evidence/step-20/aud-495-surprise-net-variant/deployed-v78-before-surprise-mobile-390x844.png",
+    "after": "audit/evidence/step-20/aud-495-surprise-net-variant/deployed-v78-after-surprise-mobile-390x844.png",
+    "desktopBefore": "audit/evidence/step-20/aud-495-surprise-net-variant/deployed-v78-before-surprise-desktop-1440x900.png",
+    "desktopAfter": "audit/evidence/step-20/aud-495-surprise-net-variant/deployed-v78-after-surprise-desktop-1440x900.png",
+    "composeReady": "audit/evidence/step-20/aud-495-surprise-net-variant/deployed-v78-compose-ready-mobile-390x844.png",
+    "directions": "audit/evidence/step-20/aud-495-surprise-net-variant/deployed-v78-directions-mobile-390x844.png"
+  },
+  "note": "Sites metadata confirmed v78 is the current public version. The product was exercised through real browser controls; no stores or internal application functions were invoked."
+}

@@ -1,0 +1,19 @@
+{
+  "capturedAt": "2026-10-21T20:01:29Z",
+  "scope": "Workspace test-command reliability; not a registry behavior finding.",
+  "before": {
+    "command": "pnpm --filter @tessellate/registry-gate test",
+    "exitCode": 1,
+    "output": "No test files found. The package-level working directory made the root Vitest include patterns relative to packages/registry-gate."
+  },
+  "fix": {
+    "file": "packages/registry-gate/package.json",
+    "testScript": "pnpm --dir ../.. exec vitest run packages/registry-gate/src/__tests__"
+  },
+  "after": {
+    "command": "pnpm --filter @tessellate/registry-gate test",
+    "exitCode": 0,
+    "testFiles": "1/1",
+    "tests": "70/70"
+  }
+}

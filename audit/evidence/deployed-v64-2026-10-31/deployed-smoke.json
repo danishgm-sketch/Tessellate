@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-10-31T21:51:05.714Z",
+  "site": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "version": 64,
+    "deploymentId": "appgdep_6ae650c685a48191b78c4d41686f5cf7",
+    "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_47afec8b52c08191b061951c1ae62bb1",
+    "canonicalCommit": "248a2a09c84a0734998850f8f3b85a14ddf3b78c",
+    "sitesSourceCommit": "8aca504b5d4231509bfd4d90d13aec949e979f58",
+    "audience": "public"
+  },
+  "runtimeAudits": {
+    "home": "audit/evidence/deployed-v64-2026-10-31/home/runtime.json",
+    "coreAxe": "audit/evidence/deployed-v64-2026-10-31/core-axe/results.json",
+    "separateNoAxeRuntime": "audit/evidence/deployed-v64-2026-10-31/core-axe/no-axe-runtime.json",
+    "performance": "audit/evidence/deployed-v64-2026-10-31/home/performance.json"
+  },
+  "flagship": {
+    "desktop": "audit/evidence/deployed-v64-2026-10-31/flagship/employee-workflow-desktop-1440.json",
+    "mobile": "audit/evidence/deployed-v64-2026-10-31/flagship/employee-workflow-mobile-390.json",
+    "result": "PASS",
+    "notes": "Direction C; all three previews; exact manifest handoff; onboarding/settings overrides and reload; locked KPI; divergence 95; semantic replacement; Surprise Me; exact undo/redo; preview; manifest export; standalone ZIP. Desktop export installed and built in a clean OS temp directory, then browsed at 1440x900 and 390x844."
+  },
+  "pageDeletionAndPersistence": {
+    "desktopAndMobile": "audit/evidence/deployed-v64-2026-10-31/page-deletion/",
+    "aud378": "PASS",
+    "aud381": "PASS",
+    "aud382": "PASS",
+    "notes": "Visible UI, schema-validated exported manifests, zero browser errors/warnings/uncaught exceptions/failed requests/HTTP errors."
+  },
+  "accessibility": {
+    "result": "PASS",
+    "surfaceCount": 6,
+    "viewportCount": 2,
+    "axeViolations": 0,
+    "consoleNote": "AxeBuilder CSP/style-injection messages are recorded separately and do not occur in no-Axe site runtime runs."
+  },
+  "infrastructure": {
+    "d1Provisioned": false,
+    "r2Provisioned": false,
+    "paidThirdPartyInfrastructureAdded": false
+  },
+  "remainingEnvironmentLimitation": "AUD-387 is a D1 API persistence contract finding; the public static Site has no D1 binding, so it remains fixed-local-verified and was not represented as live Site verification."
+}

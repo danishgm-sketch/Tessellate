@@ -1,0 +1,11 @@
+{
+  "step": 44,
+  "attempt": 1,
+  "status": "failed",
+  "failureStage": "typecheck",
+  "exitCode": 2,
+  "harnessRootCause": "The staging command excluded every directory named build, including the current apps/sites/build/sites-vite-plugin.ts source needed by the Sites Worker typecheck.",
+  "scope": "No product runtime changes were made by this failed run. Frozen install and catalogue build passed; typecheck stopped before lint, tests, audits, build, and E2E.",
+  "log": "quality/evidence/step-44/clean-container-attempt-1.log",
+  "remediation": "Narrow build exclusion to the repository-root build output and retain nested source directories."
+}

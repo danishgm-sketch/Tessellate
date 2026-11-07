@@ -1,0 +1,24 @@
+{
+  "capturedAt": "2026-10-21T09:21:30.4347055Z",
+  "route": "/compose",
+  "viewport": "1440x900",
+  "project": "sites-firefox",
+  "browser": "Firefox via Playwright Firefox build firefox-1543",
+  "result": "Browser process failed to start before navigation; application route was not exercised.",
+  "error": "browserType.launch: spawn UNKNOWN",
+  "executable": "C:\\Users\\ismay\\AppData\\Local\\ms-playwright\\firefox-1543\\firefox\\firefox.exe",
+  "test": "tests/e2e/site-route-performance-step-38.spec.ts",
+  "command": "pnpm exec playwright test --config tests/e2e/performance-matrix.playwright.config.ts tests/e2e/site-route-performance-step-38.spec.ts --project=sites-firefox --grep \"Compose does not download Workbench editor code\"",
+  "diagnostic": "No screenshot or route metrics exist because Firefox did not create a page. Earlier direct launch diagnosis recorded a Windows side-by-side configuration error; the current Playwright attempt reports spawn UNKNOWN.",
+  "recheckedAt": "2026-10-21T10:01:33.174Z",
+  "recheck": {
+    "playwrightVersion": "1.63.0",
+    "reinstallCommand": "pnpm exec playwright install firefox --force --no-progress",
+    "reinstallResult": "Firefox 155.0 for Playwright revision 1543 downloaded to the expected user-level cache. The primary CDN host returned DNS ENOTFOUND, then the fallback download completed.",
+    "launchCommand": "pnpm exec playwright test --config tests/e2e/performance-matrix.playwright.config.ts tests/e2e/site-route-performance-step-38.spec.ts --project=sites-firefox --grep 'Compose does not download Workbench editor code'",
+    "launchResult": "Failed before navigation with browserType.launch: spawn UNKNOWN.",
+    "windowsDiagnostic": "Application log SideBySide Event 33 reports dependent assembly mozglue, language=*, type=win32, version=1.0.0.0 could not be found; mozglue.dll exists beside firefox.exe. sxstrace StartTrace failed with Unknown Error.",
+    "applicationResult": "No Tessellate page opened; no screenshot, network, console, layout, or timing evidence exists from Firefox.",
+    "classification": "Local Windows Playwright runtime blocker, not an application defect."
+  }
+}

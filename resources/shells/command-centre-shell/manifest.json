@@ -5,7 +5,7 @@
   "name": "Command Centre Shell",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Mission control telemetry layout with multi-panel monitoring grids and emergency alerts.",
+  "description": "Example multi-panel operations layout. Its status and node labels are sample content, not live telemetry.",
   "resourceType": "block",
   "categories": [
     "shells",
@@ -126,7 +126,7 @@
     "telemetry"
   ],
   "intent": {
-    "summary": "Mission control telemetry layout with multi-panel monitoring grids and emergency alerts.",
+    "summary": "Present an operations-monitor layout without claiming live system health.",
     "idealFor": [
       "High-stakes operational monitors requiring multi-pane status displays"
     ],
@@ -134,7 +134,7 @@
       "Standard consumer settings pages"
     ],
     "jobs": [
-      "Coordinate multi-grid operations monitoring"
+      "Demonstrate a monitoring layout and replace sample state with a connected data source."
     ],
     "contentRequirements": [
       "Accessible navigation semantics and responsive containment"
@@ -205,12 +205,12 @@
     "defaultStrategy": "collapse"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -233,7 +233,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

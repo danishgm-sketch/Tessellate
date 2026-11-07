@@ -1,0 +1,6 @@
+> unsupported-variant-diagnostic@0.1.0 build
+> tsc && vite build
+
+src/screens/Overview.tsx(17,253): error TS2322: Type '"deliberately-unsupported"' is not assignable to type '"primary" | "outline" | "ghost" | "quiet" | "expressive" | "nocturne" | undefined'.
+
+The command exited with code 2 after a clean npm install in a fresh temporary directory outside the Tessellate repository.

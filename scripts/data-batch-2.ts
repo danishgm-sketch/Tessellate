@@ -1192,15 +1192,15 @@ Stylized SVG regional map preview with density shading and edge location pins.`,
   {
     slug: 'interactive-globe',
     name: 'Interactive Globe',
-    description: 'Orthographic projection vector wireframe globe with latitude/longitude meridians, active data nodes, and orbit pulse.',
+    description: 'Interactive vector globe illustration with sample location markers and a draggable orientation.',
     categories: ['data', 'visualization', 'maps'],
     roles: ['globe', 'analytics'],
-    purposes: ['global-presence', 'worldwide-telemetry', 'orbital-visualization'],
+    purposes: ['global-presence', 'geographic-overview', 'network-map-illustration'],
     componentName: 'InteractiveGlobe',
     tags: ['globe', 'wireframe', 'orthographic', 'svg', 'orbital'],
-    idealFor: ['Global cybersecurity telemetry', 'International traffic landing pages', 'Real-time threat monitoring'],
+    idealFor: ['Illustrating worldwide presence', 'Explaining a global service footprint', 'Demonstrating a globe visualization'],
     avoidFor: ['Standard 2D tabular accounting', 'Single variable KPIs'],
-    jobs: ['Provide high-ambition vector globe presence for worldwide telemetry data'],
+    jobs: ['Show a globe illustration with sample locations'],
     indexCode: `import React, { useState } from 'react';
 
 export type InteractiveGlobeVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -1211,6 +1211,9 @@ export interface InteractiveGlobeProps {
 
 export function InteractiveGlobe({ variant = 'quiet' }: InteractiveGlobeProps) {
   const [activeNode, setActiveNode] = useState<number | null>(null);
+  const [rotation, setRotation] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
 
   const cardBg =
     variant === 'nocturne'
@@ -1226,22 +1229,53 @@ export function InteractiveGlobe({ variant = 'quiet' }: InteractiveGlobeProps) {
     variant === 'nocturne' ? '#06B6D4' : variant === 'expressive' ? '#2547E8' : '#171717';
 
   const nodes = [
-    { cx: 120, cy: 90, label: 'North America' },
-    { cx: 160, cy: 110, label: 'Europe Hub' },
-    { cx: 190, cy: 130, label: 'Asia-Pacific' },
+    { baseAngle: 0, lat: 90, label: 'North America (US-East)' },
+    { baseAngle: 75, lat: 110, label: 'Europe Hub (FRA-01)' },
+    { baseAngle: 150, lat: 130, label: 'Asia-Pacific (TYO-02)' },
+    { baseAngle: 240, lat: 100, label: 'South America (SAO-01)' },
   ];
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    setDragStartX(e.clientX);
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
+    const delta = e.clientX - dragStartX;
+    setRotation((prev) => (prev + delta * 0.5) % 360);
+    setDragStartX(e.clientX);
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) e.currentTarget.releasePointerCapture(e.pointerId);
+    setIsDragging(false);
+  };
+  const displayedRotation = Math.round((rotation % 360 + 360) % 360);
 
   return (
     <div className={\`w-full p-6 rounded-xl border flex flex-col items-center transition-colors \${cardBg}\`}>
       <div className="w-full flex items-center justify-between mb-4">
         <div>
-          <h4 className="text-sm font-semibold tracking-tight">Worldwide Telemetry Mesh</h4>
-          <p className="text-xs text-neutral-500">Orthographic orbital projection</p>
+          <h4 className="text-sm font-semibold tracking-tight">Illustrative network map</h4>
+          <p className="text-xs text-neutral-500">Schematic globe illustration (drag to rotate)</p>
         </div>
-        <span className="text-xs font-mono font-medium text-cyan-500 animate-pulse">● Live Orbit</span>
+        <span className="text-xs font-mono font-medium text-neutral-500">Pulsing sample markers</span>
       </div>
 
-      <div className="relative w-[240px] h-[240px] flex items-center justify-center select-none">
+      <p role="note" className="mt-3 text-center text-xs text-neutral-500">
+        Illustrative locations — no network or telemetry data is connected.
+      </p>
+
+      <div
+        className="relative w-[240px] h-[240px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+        style={{ touchAction: 'pan-y' }}
+      >
         <svg width="240" height="240" viewBox="0 0 240 240">
           {/* Globe boundary */}
           <circle cx="120" cy="120" r="90" fill="transparent" stroke={wireColor} strokeWidth="2" />
@@ -1251,13 +1285,23 @@ export function InteractiveGlobe({ variant = 'quiet' }: InteractiveGlobeProps) {
           <ellipse cx="120" cy="120" rx="90" ry="60" fill="none" stroke={wireColor} strokeWidth="1" />
           <line x1="30" y1="120" x2="210" y2="120" stroke={wireColor} strokeWidth="1" strokeDasharray="3 3" />
 
-          {/* Longitude lines */}
-          <ellipse cx="120" cy="120" rx="30" ry="90" fill="none" stroke={wireColor} strokeWidth="1" />
-          <ellipse cx="120" cy="120" rx="60" ry="90" fill="none" stroke={wireColor} strokeWidth="1" />
+          {/* Rotated longitude lines */}
+          {[0, 45, 90, 135].map((ang) => {
+            const effectiveAng = ((ang + rotation) % 180) * (Math.PI / 180);
+            const rx = Math.abs(Math.sin(effectiveAng) * 90);
+            return (
+              <ellipse key={ang} cx="120" cy="120" rx={Math.max(1, rx)} ry="90" fill="none" stroke={wireColor} strokeWidth="1" />
+            );
+          })}
           <line x1="120" y1="30" x2="120" y2="210" stroke={wireColor} strokeWidth="1" strokeDasharray="3 3" />
 
           {/* Orbital nodes */}
           {nodes.map((n, idx) => {
+            const rad = ((n.baseAngle + rotation) * Math.PI) / 180;
+            const visible = Math.cos(rad) >= -0.2;
+            if (!visible) return null;
+            const cx = 120 + Math.sin(rad) * 75;
+            const cy = n.lat;
             const isHovered = activeNode === idx;
             return (
               <g
@@ -1266,8 +1310,8 @@ export function InteractiveGlobe({ variant = 'quiet' }: InteractiveGlobeProps) {
                 onMouseLeave={() => setActiveNode(null)}
                 className="cursor-pointer"
               >
-                <circle cx={n.cx} cy={n.cy} r={isHovered ? 6 : 4} fill={pulseColor} />
-                <circle cx={n.cx} cy={n.cy} r={isHovered ? 12 : 8} fill={pulseColor} fillOpacity="0.25" className="animate-ping" />
+                <circle cx={cx} cy={cy} r={isHovered ? 6 : 4} fill={pulseColor} />
+                <circle cx={cx} cy={cy} r={isHovered ? 12 : 8} fill={pulseColor} fillOpacity="0.25" className="motion-safe:animate-ping motion-reduce:animate-none" />
               </g>
             );
           })}
@@ -1278,6 +1322,24 @@ export function InteractiveGlobe({ variant = 'quiet' }: InteractiveGlobeProps) {
             {nodes[activeNode]?.label}
           </div>
         )}
+      </div>
+
+      <label htmlFor="interactive-globe-rotation" className="mt-3 text-xs text-neutral-500">Map rotation</label>
+      <input
+        id="interactive-globe-rotation"
+        type="range"
+        min="0"
+        max="359"
+        value={displayedRotation}
+        onChange={(event) => setRotation(Number(event.currentTarget.value))}
+        aria-label="Map rotation"
+        className="mt-1 w-full max-w-xs accent-indigo-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+      />
+
+      <div className="mt-2 flex items-center gap-2 text-[10px] font-mono text-neutral-400">
+        <span>Azimuth: {displayedRotation}°</span>
+        <span>•</span>
+        <span>Mesh: Orthographic-4X</span>
       </div>
     </div>
   );
@@ -1310,7 +1372,7 @@ export function InteractiveGlobePreview() {
     fixturesCode: `export const interactiveGlobeFixtures = {};`,
     readmeCode: `# Interactive Globe
 
-Orthographic vector wireframe globe with latitude/longitude meridians and orbital nodes.`,
+Interactive vector globe illustration with sample locations and a keyboard-accessible rotation control. No network or telemetry data is connected.`,
   },
 
   // 23. Financial Candlestick Chart

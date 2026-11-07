@@ -1,0 +1,143 @@
+{
+  "test": "Windows OS restart recovery",
+  "capturedAt": "2026-10-23T15:15:12.8956990Z",
+  "computer": "DANISH",
+  "osRestart": {
+    "lastBootLocal": "2026-10-23T15:58:13.5000000+01:00",
+    "eventLogStoppedAtUtc": "2026-10-23T14:57:56.3718728Z",
+    "eventLogStartedAtUtc": "2026-10-23T14:58:33.6517986Z"
+  },
+  "before": {
+    "capturedAt": "2026-10-23T14:57:27.7456155Z",
+    "runningContainerCount": 8,
+    "containers": [
+      {
+        "name": "mgiquantlabs-trader-1",
+        "state": "running",
+        "status": "Up 47 minutes"
+      },
+      {
+        "name": "mgiquantlabs-api-1",
+        "state": "running",
+        "status": "Up 47 minutes"
+      },
+      {
+        "name": "mgiquantlabs-marketdata_service-1",
+        "state": "running",
+        "status": "Up 47 minutes"
+      },
+      {
+        "name": "tessellate-laptop-api-1",
+        "state": "running",
+        "status": "Up 47 minutes (healthy)"
+      },
+      {
+        "name": "tessellate-laptop-host-1",
+        "state": "running",
+        "status": "Up 47 minutes (healthy)"
+      },
+      {
+        "name": "mgiquantlabs-web-1",
+        "state": "running",
+        "status": "Up 47 minutes"
+      },
+      {
+        "name": "mgiquantlabs-postgres-1",
+        "state": "running",
+        "status": "Up 47 minutes (healthy)"
+      },
+      {
+        "name": "mgiquantlabs-cloudflared-1",
+        "state": "running",
+        "status": "Up 47 minutes"
+      }
+    ]
+  },
+  "after": {
+    "runningContainerCount": 8,
+    "allPriorContainersRecovered": true,
+    "containers": [
+      {
+        "name": "mgiquantlabs-trader-1",
+        "state": "running",
+        "health": null,
+        "restartCount": 0,
+        "startedAt": "2026-10-23T14:59:26.026462758Z",
+        "restartPolicy": "unless-stopped"
+      },
+      {
+        "name": "mgiquantlabs-api-1",
+        "state": "running",
+        "health": null,
+        "restartCount": 0,
+        "startedAt": "2026-10-23T14:59:26.09936208Z",
+        "restartPolicy": "unless-stopped"
+      },
+      {
+        "name": "mgiquantlabs-marketdata_service-1",
+        "state": "running",
+        "health": null,
+        "restartCount": 0,
+        "startedAt": "2026-10-23T14:59:26.052492595Z",
+        "restartPolicy": "unless-stopped"
+      },
+      {
+        "name": "tessellate-laptop-api-1",
+        "state": "running",
+        "health": "healthy",
+        "restartCount": 0,
+        "startedAt": "2026-10-23T14:59:26.144247378Z",
+        "restartPolicy": "unless-stopped"
+      },
+      {
+        "name": "tessellate-laptop-host-1",
+        "state": "running",
+        "health": "healthy",
+        "restartCount": 0,
+        "startedAt": "2026-10-23T14:59:25.877305721Z",
+        "restartPolicy": "unless-stopped"
+      },
+      {
+        "name": "mgiquantlabs-web-1",
+        "state": "running",
+        "health": null,
+        "restartCount": 0,
+        "startedAt": "2026-10-23T14:59:25.990103248Z",
+        "restartPolicy": "unless-stopped"
+      },
+      {
+        "name": "mgiquantlabs-postgres-1",
+        "state": "running",
+        "health": "healthy",
+        "restartCount": 0,
+        "startedAt": "2026-10-23T14:59:26.119277289Z",
+        "restartPolicy": "unless-stopped"
+      },
+      {
+        "name": "mgiquantlabs-cloudflared-1",
+        "state": "running",
+        "health": null,
+        "restartCount": 0,
+        "startedAt": "2026-10-23T14:59:26.152903799Z",
+        "restartPolicy": "unless-stopped"
+      }
+    ],
+    "dockerWasManuallyStarted": false
+  },
+  "serviceChecks": [
+    {
+      "url": "http://127.0.0.1:8788/health",
+      "statusCode": 200,
+      "body": {
+        "status": "ok",
+        "service": "tessellate-api",
+        "timestamp": "2026-10-23T15:15:12.326Z"
+      }
+    }
+  ],
+  "result": "passed",
+  "limitations": [
+    "No queued inference job was deliberately held across this reboot; queued-job recovery across full OS restart remains unproven.",
+    "Cloudflare tunnel ingress is outside the laptop-only runtime under D-041."
+  ]
+}

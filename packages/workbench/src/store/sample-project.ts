@@ -1,6 +1,7 @@
 import {
   type ProjectManifest,
   ProjectManifestSchema,
+  SCHEMA_VERSION,
 } from '@tessellate/schemas';
 
 /**
@@ -8,7 +9,7 @@ import {
  */
 export function createSampleProject(): ProjectManifest {
   const manifest: ProjectManifest = {
-    schemaVersion: '0.1.0',
+    schemaVersion: SCHEMA_VERSION,
     id: 'project-fintech-terminal',
     name: 'Apex Financial Intelligence',
     description:
@@ -19,7 +20,7 @@ export function createSampleProject(): ProjectManifest {
     seed: 'apex-terminal-seed-2026',
 
     productModel: {
-      schemaVersion: '0.1.0',
+      schemaVersion: SCHEMA_VERSION,
       productArchetypes: [
         {
           tag: 'fintech',

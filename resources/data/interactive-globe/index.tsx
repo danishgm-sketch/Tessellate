@@ -33,36 +33,46 @@ export function InteractiveGlobe({ variant = 'quiet' }: InteractiveGlobeProps) {
     { baseAngle: 240, lat: 100, label: 'South America (SAO-01)' },
   ];
 
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     setIsDragging(true);
     setDragStartX(e.clientX);
+    e.currentTarget.setPointerCapture(e.pointerId);
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isDragging) return;
     const delta = e.clientX - dragStartX;
     setRotation((prev) => (prev + delta * 0.5) % 360);
     setDragStartX(e.clientX);
   };
 
-  const handleMouseUp = () => setIsDragging(false);
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) e.currentTarget.releasePointerCapture(e.pointerId);
+    setIsDragging(false);
+  };
+  const displayedRotation = Math.round((rotation % 360 + 360) % 360);
 
   return (
     <div className={`w-full p-6 rounded-xl border flex flex-col items-center transition-colors select-none ${cardBg}`}>
       <div className="w-full flex items-center justify-between mb-4">
         <div>
-          <h4 className="text-sm font-semibold tracking-tight">Worldwide Telemetry Mesh</h4>
+          <h4 className="text-sm font-semibold tracking-tight">Illustrative network map</h4>
           <p className="text-xs text-neutral-500">Orthographic orbital projection (Drag to rotate)</p>
         </div>
-        <span className="text-xs font-mono font-medium text-cyan-500 animate-pulse">● Live Orbit</span>
+        <span className="text-xs font-mono font-medium text-neutral-500">Pulsing sample markers</span>
       </div>
+
+      <p role="note" className="mt-3 text-center text-xs text-neutral-500">
+        Illustrative locations — no network or telemetry data is connected.
+      </p>
 
       <div
         className="relative w-[240px] h-[240px] flex items-center justify-center cursor-grab active:cursor-grabbing"
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+        style={{ touchAction: 'pan-y' }}
       >
         <svg width="240" height="240" viewBox="0 0 240 240">
           {/* Globe boundary */}
@@ -82,7 +92,7 @@ export function InteractiveGlobe({ variant = 'quiet' }: InteractiveGlobeProps) {
             );
           })}
 
-          {/* Orbital telemetry nodes */}
+          {/* Sample location markers */}
           {baseNodes.map((n, idx) => {
             const rad = ((n.baseAngle + rotation) * Math.PI) / 180;
             // Only visible on front hemisphere (cos(rad) > -0.2)
@@ -101,7 +111,7 @@ export function InteractiveGlobe({ variant = 'quiet' }: InteractiveGlobeProps) {
                 className="cursor-pointer"
               >
                 <circle cx={cx} cy={cy} r={isHovered ? 6 : 4} fill={pulseColor} />
-                <circle cx={cx} cy={cy} r={isHovered ? 12 : 8} fill={pulseColor} fillOpacity="0.25" className="animate-ping" />
+                <circle cx={cx} cy={cy} r={isHovered ? 12 : 8} fill={pulseColor} fillOpacity="0.25" className="motion-safe:animate-ping motion-reduce:animate-none" />
               </g>
             );
           })}
@@ -114,8 +124,20 @@ export function InteractiveGlobe({ variant = 'quiet' }: InteractiveGlobeProps) {
         )}
       </div>
 
+      <label htmlFor="interactive-globe-rotation" className="mt-3 text-xs text-neutral-500">Map rotation</label>
+      <input
+        id="interactive-globe-rotation"
+        type="range"
+        min="0"
+        max="359"
+        value={displayedRotation}
+        onChange={(event) => setRotation(Number(event.currentTarget.value))}
+        aria-label="Map rotation"
+        className="mt-1 w-full max-w-xs accent-indigo-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+      />
+
       <div className="mt-2 flex items-center gap-2 text-[10px] font-mono text-neutral-400">
-        <span>Azimuth: {Math.round((rotation % 360 + 360) % 360)}°</span>
+        <span>Azimuth: {displayedRotation}°</span>
         <span>•</span>
         <span>Mesh: Orthographic-4X</span>
       </div>

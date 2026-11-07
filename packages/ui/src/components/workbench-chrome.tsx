@@ -57,7 +57,7 @@ export function WorkbenchPanel({
     >
       {(title || tabs) && (
         <div className="flex h-10 items-center justify-between border-b border-[#272C34] px-3 shrink-0">
-          {title && <span className="text-xs font-semibold tracking-wider uppercase text-[#707986]">{title}</span>}
+          {title && <span className="text-xs font-semibold tracking-wider uppercase text-[var(--text-muted)]">{title}</span>}
           {tabs && <div className="flex items-center gap-1">{tabs}</div>}
         </div>
       )}
@@ -87,7 +87,7 @@ export function WorkbenchInspectorSection({
         <span className="font-medium text-[#A8AFBA]">{title}</span>
         <div className="flex items-center gap-1.5">
           {inherited ? (
-            <span className="text-[10px] text-[#707986]">inherited</span>
+            <span className="text-[10px] text-[var(--text-muted)]">inherited</span>
           ) : (
             <button
               type="button"
@@ -143,7 +143,7 @@ export function WorkbenchCommandBar({
           value={value}
           onChange={(e) => onChange?.(e.target.value)}
           placeholder={placeholder}
-          className="flex-1 bg-transparent text-sm text-[#F5F7FA] placeholder:text-[#707986] focus:outline-none"
+          className="flex-1 bg-transparent text-sm text-[#F5F7FA] placeholder:text-[var(--text-muted)] focus:outline-none"
         />
         <div className="hidden md:flex items-center gap-2">
           {examples.map((ex, idx) => (

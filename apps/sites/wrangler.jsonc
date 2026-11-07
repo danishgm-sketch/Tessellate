@@ -1,0 +1,19 @@
+{
+  "name": "tessellate-sites-review",
+  "main": "./worker.ts",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": "./.static",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "vars": { "TESSELLATE_BACKEND_URL": "" }
+}

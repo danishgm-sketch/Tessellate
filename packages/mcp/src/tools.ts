@@ -1,11 +1,44 @@
 import { z } from 'zod';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { ProjectManifestSchema, type ProjectManifest } from '@tessellate/schemas';
-import { DEFAULT_DESIGN_DNA, DNA_PRESETS } from '@tessellate/dna';
+import { PartialDesignDNASchema, ProjectManifestSchema, type ProjectManifest } from '@tessellate/schemas';
+import { DEFAULT_DESIGN_DNA, DNA_PRESETS, getDNAPreset } from '@tessellate/dna';
 import { interpretProductBrief, planScreenGraph } from '@tessellate/composer';
 import { composeProjectPipeline } from '@tessellate/compatibility';
 import { generateSourceTree } from '@tessellate/exporter';
 import { loadMcpCatalogue, findResourceBySlug, getResourceComponentCode } from './catalog-provider.js';
+
+const MAX_MCP_MANIFEST_BYTES = 1024 * 1024;
+const boundedSlug = z.string().trim().min(1).max(160).regex(/^(@tess\/)?[a-z0-9]+(?:-[a-z0-9]+)*$/i);
+const boundedManifest = z.record(z.string(), z.unknown()).superRefine((manifest, context) => {
+  try {
+    if (Buffer.byteLength(JSON.stringify(manifest), 'utf8') > MAX_MCP_MANIFEST_BYTES) {
+      context.addIssue({ code: z.ZodIssueCode.custom, message: 'ProjectManifest exceeds the 1 MiB MCP input limit.' });
+    }
+  } catch {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: 'ProjectManifest could not be safely serialized.' });
+  }
+});
+
+function toolError(message: string, details?: unknown) {
+  return {
+    isError: true,
+    content: [{ type: 'text' as const, text: JSON.stringify({ error: message, ...(details === undefined ? {} : { details }) }, null, 2) }],
+  };
+}
+
+const productBriefControls = {
+  archetype: z.string().trim().max(100).optional().describe('Optional archetype override'),
+  audience: z.string().trim().max(1200).optional().describe('Optional primary audience'),
+  objective: z.string().trim().max(1200).optional().describe('Optional primary product objective'),
+  feel: z.string().trim().max(500).optional().describe('Visual feel descriptors, such as "professional but playful"'),
+  visualAmbition: z.number().int().min(0).max(100).optional().describe('Visual ambition score from 0 to 100'),
+  structuralCreativity: z.number().int().min(0).max(100).optional().describe('Structural creativity score from 0 to 100'),
+  requiredScreens: z.array(z.string().trim().min(1).max(120)).max(40).optional().describe('Screens that the product architecture must include'),
+  forbiddenScreens: z.array(z.string().trim().min(1).max(120)).max(40).optional().describe('Screens the product architecture must exclude'),
+  accessibilityFloor: z.enum(['A', 'AA', 'AAA']).optional().describe('Minimum accessibility target'),
+  performanceCeiling: z.enum(['lightweight', 'balanced', 'rich']).optional().describe('Allowed performance cost'),
+  targetDevices: z.array(z.enum(['desktop', 'tablet', 'mobile'])).max(3).optional().describe('Target device classes'),
+};
 
 export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
   // 1. search_resources
@@ -13,8 +46,8 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
     'search_resources',
     'Search the open Tessellate resource catalogue by query, category, and tags.',
     {
-      query: z.string().optional().describe('Keywords to match name, slug, or description'),
-      category: z.string().optional().describe('Filter by category (e.g. primitives, blocks, sections)'),
+      query: z.string().max(200).optional().describe('Keywords to match name, slug, or description (up to 200 characters)'),
+      category: z.string().trim().max(80).optional().describe('Filter by category (e.g. primitives, blocks, sections)'),
       limit: z.number().int().min(1).max(50).default(20).describe('Max results to return'),
     },
     async ({ query = '', category, limit = 20 }) => {
@@ -61,19 +94,12 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
     'get_resource',
     'Retrieve the complete validated ResourceManifest for a given component slug.',
     {
-      slug: z.string().describe('The resource slug or @tess/{slug}'),
+      slug: boundedSlug.describe('The resource slug or @tess/{slug}'),
     },
     async ({ slug }) => {
       const resource = await findResourceBySlug(slug, cwd);
       if (!resource) {
-        return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify({ error: `Resource "${slug}" not found in catalogue.` }),
-            },
-          ],
-        };
+        return toolError(`Resource "${slug}" not found in catalogue.`);
       }
 
       return {
@@ -92,35 +118,20 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
     'get_resource_code',
     'Retrieve the raw React TypeScript component source code for a resource.',
     {
-      slug: z.string().describe('The resource slug'),
-      variant: z.string().optional().describe('Optional variant name'),
+      slug: boundedSlug.describe('The resource slug'),
+      variant: z.string().trim().max(80).optional().describe('Optional variant name'),
     },
     async ({ slug }) => {
       const resource = await findResourceBySlug(slug, cwd);
       if (!resource) {
-        return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify({ error: `Resource "${slug}" not found in catalogue.` }),
-            },
-          ],
-        };
+        return toolError(`Resource "${slug}" not found in catalogue.`);
       }
 
       const code = getResourceComponentCode(resource, cwd);
       if (!code) {
-        return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify({
-                message: `Source code for "${slug}" is available in the online registry.`,
-                registryUrl: `https://tessellate.design/r/${resource.slug}.json`,
-              }),
-            },
-          ],
-        };
+        return toolError(`Source code for "${slug}" is not present in the local checkout.`, {
+          registryUrl: `https://tessellate.design/r/${resource.slug}.json`,
+        });
       }
 
       return {
@@ -139,19 +150,12 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
     'get_resource_metadata',
     'Retrieve lightweight metadata including dependencies, slots, accessibility level, and performance cost.',
     {
-      slug: z.string().describe('The resource slug'),
+      slug: boundedSlug.describe('The resource slug'),
     },
     async ({ slug }) => {
       const resource = await findResourceBySlug(slug, cwd);
       if (!resource) {
-        return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify({ error: `Resource "${slug}" not found in catalogue.` }),
-            },
-          ],
-        };
+        return toolError(`Resource "${slug}" not found in catalogue.`);
       }
 
       const metadata = {
@@ -180,41 +184,55 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
   // 5. find_alternatives
   server.tool(
     'find_alternatives',
-    'Find structurally or aesthetically compatible substitute resources for a given component.',
+    'List same-type resources that share categories with a resource, ranked against accessibility, runtime cost, or composability metadata. These are candidates, not guaranteed drop-in replacements.',
     {
-      slug: z.string().describe('The resource slug to find substitutes for'),
+      slug: boundedSlug.describe('The resource slug to find substitutes for'),
       criteria: z.enum(['accessibility', 'performance', 'simplicity', 'all']).default('all').describe('Alternative criteria'),
     },
-    async ({ slug }) => {
+    async ({ slug, criteria = 'all' }) => {
       const catalogue = await loadMcpCatalogue(cwd);
       const target = catalogue.resources.find((r) => r.slug === slug.replace(/^@tess\//, ''));
       if (!target) {
-        return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify({ error: `Resource "${slug}" not found.` }),
-            },
-          ],
-        };
+        return toolError(`Resource "${slug}" not found.`);
       }
 
+      const costRank: Record<string, number> = { none: 0, tiny: 1, low: 2, medium: 3, high: 4 };
       const alternatives = catalogue.resources
-        .filter((r) => r.slug !== target.slug && r.categories.some((c) => target.categories.includes(c)))
-        .map((r) => ({
-          slug: r.slug,
-          name: r.name,
-          category: r.categories[0],
-          description: r.description,
-          accessibilityLevel: r.accessibility.levelTarget,
-          performanceJsCost: r.performance.jsCost,
-        }));
+        .filter((resource) => resource.slug !== target.slug && resource.resourceType === target.resourceType && resource.categories.some((category) => target.categories.includes(category)))
+        .map((resource) => {
+          const sharedCategories = resource.categories.filter((category) => target.categories.includes(category));
+          const sharedTags = resource.tags.filter((tag) => target.tags.some((targetTag) => targetTag.toLowerCase() === tag.toLowerCase()));
+          const accessibilityScore = Number(resource.accessibility.levelTarget === 'AAA') * 3 + Number(resource.accessibility.levelTarget === 'AA') * 2 + Number(resource.accessibility.keyboardVerified) + Number(resource.accessibility.focusVisible);
+          const performanceScore = 4 - (costRank[resource.performance.jsCost] ?? 4);
+          const composabilityScore = resource.quality.composability;
+          const score = criteria === 'accessibility'
+            ? accessibilityScore
+            : criteria === 'performance'
+              ? performanceScore
+              : criteria === 'simplicity'
+                ? performanceScore + (resource.performance.runtimeComplexity === 'low' ? 2 : 0)
+                : sharedTags.length * 3 + sharedCategories.length * 2 + composabilityScore / 100;
+          return {
+            slug: resource.slug,
+            name: resource.name,
+            category: resource.categories[0],
+            description: resource.description,
+            resourceType: resource.resourceType,
+            sharedCategories,
+            sharedTagCount: sharedTags.length,
+            accessibilityLevel: resource.accessibility.levelTarget,
+            performanceJsCost: resource.performance.jsCost,
+            score,
+          };
+        })
+        .sort((a, b) => b.score - a.score || a.slug.localeCompare(b.slug))
+        .slice(0, 10);
 
       return {
         content: [
           {
             type: 'text',
-            text: JSON.stringify({ targetSlug: target.slug, alternatives }, null, 2),
+            text: JSON.stringify({ targetSlug: target.slug, criteria, basis: 'same resource type and at least one shared category', alternatives }, null, 2),
           },
         ],
       };
@@ -224,10 +242,10 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
   // 6. recommend_resources
   server.tool(
     'recommend_resources',
-    'Recommend the best resources for a specific page section or product goal.',
+    'Return resource candidates with lexical token overlap against a page section or product goal. This is not semantic ranking or a guarantee of fit.',
     {
-      intent: z.string().describe('Intent or requirement (e.g. "hero with clear CTA", "pricing table with monthly toggle")'),
-      category: z.string().optional().describe('Optional category filter'),
+      intent: z.string().trim().min(1).max(2000).describe('Intent or requirement, up to 2,000 characters'),
+      category: z.string().trim().max(80).optional().describe('Optional category filter'),
     },
     async ({ intent, category }) => {
       const catalogue = await loadMcpCatalogue(cwd);
@@ -243,6 +261,7 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
           }
           return { resource: r, score };
         })
+        .filter(({ score }) => score > 0)
         .sort((a, b) => b.score - a.score)
         .slice(0, 5)
         .map(({ resource, score }) => ({
@@ -257,7 +276,7 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
         content: [
           {
             type: 'text',
-            text: JSON.stringify({ recommendations: scored }, null, 2),
+              text: JSON.stringify({ method: 'lexical-token-overlap', recommendations: scored }, null, 2),
           },
         ],
       };
@@ -267,22 +286,34 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
   // 7. compose_screen
   server.tool(
     'compose_screen',
-    'Deterministically generate a complete ProjectManifest with fully composed screens and nodes from a brief.',
+    'Compose a ProjectManifest through the shared Tessellate product pipeline. The optional brief controls match Compose; provide a seed to reproduce a GUI or CLI composition.',
     {
-      prompt: z.string().describe('Product brief or screen requirement'),
-      name: z.string().optional().describe('Project name'),
-      archetype: z.string().optional().describe('Archetype override (e.g. saas, ecommerce, docs)'),
-      direction: z.enum(['A', 'B', 'C']).default('A').describe('Visual design direction (A: Editorial Precision, B: Kinetic Monolith, C: Atmospheric Depth)'),
+      prompt: z.string().trim().min(1).max(10_000).describe('Product brief or screen requirement, up to 10,000 characters'),
+      name: z.string().trim().max(160).optional().describe('Project name'),
+      ...productBriefControls,
+      seed: z.union([z.string().max(120), z.number()]).optional().describe('Reproducible generation seed; defaults to tessellate-seed-v1'),
+      direction: z.enum(['A', 'B', 'C']).default('A').describe('Composition approach (A: conservative, B: expressive, C: structural alternative)'),
     },
-    async ({ prompt, name = 'Composed Screen', archetype, direction = 'A' }) => {
+    async ({ prompt, name = 'Composed Screen', archetype, audience, objective, feel, visualAmbition, structuralCreativity, requiredScreens, forbiddenScreens, accessibilityFloor, performanceCeiling, targetDevices, seed = 'tessellate-seed-v1', direction = 'A' }) => {
       const catalogue = await loadMcpCatalogue(cwd);
       const pipelineResult = composeProjectPipeline(
         {
           description: prompt,
           archetypeOverride: archetype,
+          audience,
+          objective,
+          feel,
+          visualAmbition,
+          structuralCreativity,
+          requiredScreens,
+          forbiddenScreens,
+          accessibilityFloor,
+          performanceCeiling,
+          targetDevices,
         },
         {
           catalogResources: catalogue.resources,
+          seed,
         }
       );
 
@@ -292,6 +323,10 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
           : direction === 'C'
             ? pipelineResult.directionC
             : pipelineResult.directionA;
+
+      if (selectedOutput.diagnostics?.length) {
+        return toolError('Composition could not resolve every required role. No incomplete project was returned.', selectedOutput.diagnostics);
+      }
 
       const manifest = {
         ...selectedOutput.manifest,
@@ -312,15 +347,25 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
   // 8. compose_product
   server.tool(
     'compose_product',
-    'Interpret product brief into a validated ProductModel and screen hierarchy without generating code.',
+    'Interpret a product brief into the shared ProductModel, initial Design DNA, and planned screen hierarchy without generating code.',
     {
-      description: z.string().describe('Product description'),
-      archetype: z.string().optional().describe('Optional archetype override'),
+      description: z.string().trim().min(1).max(10_000).describe('Product description, up to 10,000 characters'),
+      ...productBriefControls,
     },
-    async ({ description, archetype }) => {
+    async ({ description, archetype, audience, objective, feel, visualAmbition, structuralCreativity, requiredScreens, forbiddenScreens, accessibilityFloor, performanceCeiling, targetDevices }) => {
       const interpreted = interpretProductBrief({
         description,
         archetypeOverride: archetype,
+        audience,
+        objective,
+        feel,
+        visualAmbition,
+        structuralCreativity,
+        requiredScreens,
+        forbiddenScreens,
+        accessibilityFloor,
+        performanceCeiling,
+        targetDevices,
       });
       const plan = planScreenGraph(interpreted.productModel);
 
@@ -331,6 +376,7 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
             text: JSON.stringify(
               {
                 productModel: interpreted.productModel,
+                initialDesignDNA: interpreted.initialDesignDna,
                 assumptions: interpreted.inferredAssumptions,
                 screenPlan: {
                   totalScreens: plan.totalScreens,
@@ -352,29 +398,12 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
     'validate_project',
     'Validate a ProjectManifest object against canonical schemas.',
     {
-      manifest: z.record(z.unknown()).describe('The ProjectManifest object to validate'),
+      manifest: boundedManifest.describe('The ProjectManifest object to validate (up to 1 MiB)'),
     },
     async ({ manifest }) => {
       const parsed = ProjectManifestSchema.safeParse(manifest);
       if (!parsed.success) {
-        return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify(
-                {
-                  valid: false,
-                  errors: parsed.error.issues.map((i) => ({
-                    path: i.path.join('.'),
-                    message: i.message,
-                  })),
-                },
-                null,
-                2
-              ),
-            },
-          ],
-        };
+        return toolError('ProjectManifest validation failed.', parsed.error.issues.map((issue) => ({ path: issue.path.join('.'), message: issue.message })));
       }
 
       return {
@@ -391,21 +420,14 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
   // 10. audit_project
   server.tool(
     'audit_project',
-    'Audit a ProjectManifest for WCAG contrast compliance, reduced-motion compatibility, and performance bounds.',
+    'Run manifest-level heuristics for contrast preference and motion intent. This does not measure rendered WCAG contrast, reduced-motion behavior, or performance.',
     {
-      manifest: z.record(z.unknown()).describe('The ProjectManifest to audit'),
+      manifest: boundedManifest.describe('The ProjectManifest to audit (up to 1 MiB)'),
     },
     async ({ manifest }) => {
       const parsed = ProjectManifestSchema.safeParse(manifest);
       if (!parsed.success) {
-        return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify({ error: 'Invalid manifest', issues: parsed.error.issues }),
-            },
-          ],
-        };
+        return toolError('ProjectManifest validation failed.', parsed.error.issues.map((issue) => ({ path: issue.path.join('.'), message: issue.message })));
       }
 
       const proj = parsed.data;
@@ -435,8 +457,9 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
             type: 'text',
             text: JSON.stringify(
               {
-                summary: 'Manifest audit passed with recommendations.',
-                passed: issues.filter((i) => i.severity === 'error').length === 0,
+                status: 'heuristics_complete_browser_review_required',
+                scope: ['Design DNA contrast preference', 'Design DNA motion intent'],
+                notAssessed: ['Rendered color contrast ratios', 'prefers-reduced-motion behavior', 'Runtime performance'],
                 issues,
               },
               null,
@@ -451,17 +474,19 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
   // 11. get_design_dna
   server.tool(
     'get_design_dna',
-    'Get Design DNA presets and explore the 10-dimensional design parameter space.',
+    'Get the current Design DNA defaults, all canonical presets, or one preset by its canonical ID.',
     {
-      preset: z.string().optional().describe('Preset name to look up (default, editorial, brutalist, minimal, kinetic, terminal)'),
+      preset: z.string().trim().max(80).optional().describe('Preset name to look up (default, editorial, brutalist, minimal, kinetic, terminal)'),
     },
     async ({ preset }) => {
-      if (preset && preset in DNA_PRESETS) {
+      if (preset) {
+        const selected = getDNAPreset(preset);
+        if (!selected) return toolError(`Unknown Design DNA preset "${preset}".`, { availablePresets: DNA_PRESETS.map((item) => item.id) });
         return {
           content: [
             {
               type: 'text',
-              text: JSON.stringify({ preset, dna: DNA_PRESETS[preset as keyof typeof DNA_PRESETS] }, null, 2),
+              text: JSON.stringify({ preset: selected.id, name: selected.name, description: selected.description, dna: selected.dna }, null, 2),
             },
           ],
         };
@@ -474,19 +499,8 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
             text: JSON.stringify(
               {
                 default: DEFAULT_DESIGN_DNA,
-                presets: Object.keys(DNA_PRESETS),
-                dimensions: [
-                  'density',
-                  'chroma',
-                  'contrast',
-                  'radii',
-                  'depth',
-                  'motion',
-                  'scale',
-                  'pattern',
-                  'glass',
-                  'colorMode',
-                ],
+                presets: DNA_PRESETS.map(({ id, name, category, description }) => ({ id, name, category, description })),
+                dimensions: Object.keys(DEFAULT_DESIGN_DNA),
               },
               null,
               2
@@ -500,27 +514,27 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
   // 12. list_design_directions
   server.tool(
     'list_design_directions',
-    'List the three canonical visual reference directions defined in the design spec.',
+    'Describe the three composition approaches. Names and visual details are generated for each brief; the returned labels describe the stable A/B/C approach.',
     {},
     async () => {
       const directions = [
         {
           id: 'direction-a',
-          name: 'Editorial Precision',
-          aesthetic: 'Calm, authoritative typography, quiet confidence, strict grid, restrained chroma.',
-          recommendedArchetypes: ['knowledge-base', 'portfolio', 'developer-platform'],
+          label: 'A',
+          approach: 'conservative',
+          structure: 'Familiar navigation and predictable hierarchy with stronger accessibility and performance priorities.',
         },
         {
           id: 'direction-b',
-          name: 'Kinetic Monolith',
-          aesthetic: 'Bold geometry, purposeful physics-based motion, deep dark mode surfaces, crisp contrast.',
-          recommendedArchetypes: ['saas-analytics', 'fintech', 'creative-tools'],
+          label: 'B',
+          approach: 'expressive',
+          structure: 'Familiar workflow structure with more expressive typography, motion, imagery and visual ambition.',
         },
         {
           id: 'direction-c',
-          name: 'Atmospheric Depth',
-          aesthetic: 'Layered elevation, subtle noise patterns, soft luminous accents, high tactile fidelity.',
-          recommendedArchetypes: ['ai-copilot', 'data-visualisation', 'consumer-experience'],
+          label: 'C',
+          approach: 'structural-alternative',
+          structure: 'An alternate navigation topology and composition grammar with higher structural creativity.',
         },
       ];
 
@@ -538,22 +552,15 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
   // 13. export_project_code
   server.tool(
     'export_project_code',
-    'Compile a ProjectManifest into an exportable, production-ready code tree for Vite or Next.js 15.',
+    'Generate a source tree for the selected Vite or Beta Next.js target. This tool returns files; it does not install, build, or runtime-test the export.',
     {
-      manifest: z.record(z.unknown()).describe('The ProjectManifest object to compile'),
+      manifest: boundedManifest.describe('The ProjectManifest object to compile (up to 1 MiB)'),
       target: z.enum(['vite', 'nextjs']).default('vite').describe('Export target framework (vite SPA or nextjs 15 App Router)'),
     },
     async ({ manifest, target = 'vite' }) => {
       const parsed = ProjectManifestSchema.safeParse(manifest);
       if (!parsed.success) {
-        return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify({ error: 'Invalid ProjectManifest schema', issues: parsed.error.issues }, null, 2),
-            },
-          ],
-        };
+        return toolError('ProjectManifest validation failed.', parsed.error.issues.map((issue) => ({ path: issue.path.join('.'), message: issue.message })));
       }
 
       try {
@@ -576,14 +583,7 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
         };
       } catch (err: unknown) {
         const message = err instanceof Error ? err.message : String(err);
-        return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify({ error: `Export compilation failed: ${message}` }),
-            },
-          ],
-        };
+        return toolError(`Export compilation failed: ${message}`);
       }
     }
   );
@@ -591,21 +591,14 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
   // 14. audit_project_accessibility
   server.tool(
     'audit_project_accessibility',
-    'Deeply audit a ProjectManifest for WCAG AAA compliance, semantic landmarks, and motion reduction.',
+    'Check manifest structure for semantic navigation landmarks. This heuristic does not test rendered contrast, keyboard behavior, screen readers, or reduced motion, so it cannot certify a WCAG level.',
     {
-      manifest: z.record(z.unknown()).describe('The ProjectManifest to audit'),
+      manifest: boundedManifest.describe('The ProjectManifest to audit (up to 1 MiB)'),
     },
     async ({ manifest }) => {
       const parsed = ProjectManifestSchema.safeParse(manifest);
       if (!parsed.success) {
-        return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify({ error: 'Invalid manifest', issues: parsed.error.issues }),
-            },
-          ],
-        };
+        return toolError('ProjectManifest validation failed.', parsed.error.issues.map((issue) => ({ path: issue.path.join('.'), message: issue.message })));
       }
 
       const proj = parsed.data;
@@ -624,7 +617,7 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
       let totalNodes = 0;
       for (const screen of proj.screens) {
         const roles = new Set<string>();
-        const visit = (node: any) => {
+        const visit = (node: ProjectManifest['screens'][number]['rootNode']) => {
           totalNodes++;
           if (node.semanticRole) roles.add(node.semanticRole);
           for (const child of node.children || []) visit(child);
@@ -640,16 +633,16 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
         }
       }
 
-      const isAAA = issues.filter((i) => i.severity === 'error').length === 0;
-
       return {
         content: [
           {
             type: 'text',
             text: JSON.stringify(
               {
-                summary: isAAA ? 'WCAG AAA Accessibility Audit Passed' : 'Accessibility Audit Completed with Issues',
-                levelAchieved: isAAA ? 'AAA' : 'AA',
+                summary: 'Manifest landmark heuristic complete; browser accessibility review required.',
+                status: 'heuristic_only',
+                levelAchieved: 'not-assessed',
+                notAssessed: ['Rendered color contrast', 'Keyboard interaction', 'Screen-reader announcements', 'Reduced-motion runtime behavior'],
                 screenCount: proj.screens.length,
                 totalNodes,
                 issues,
@@ -666,53 +659,81 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
   // 15. mutate_screen_ast
   server.tool(
     'mutate_screen_ast',
-    'Apply atomic mutations or parameter adjustments to a ProjectManifest AST.',
+    'Apply one validated lock, DNA-value, or navigation mutation to a ProjectManifest. Required fields depend on the selected action; unknown node IDs and invalid Design DNA values fail explicitly.',
     {
-      manifest: z.record(z.unknown()).describe('The ProjectManifest object to mutate'),
+      manifest: boundedManifest.describe('The ProjectManifest object to mutate (up to 1 MiB)'),
       action: z.enum(['lock_node', 'unlock_node', 'adjust_dna', 'set_navigation_model']).describe('Mutation action'),
-      nodeId: z.string().optional().describe('Node ID for lock/unlock actions'),
-      dnaDelta: z.record(z.number()).optional().describe('Partial Design DNA deltas to apply'),
+      nodeId: z.string().trim().min(1).max(200).optional().describe('Existing node ID for lock/unlock actions'),
+      dnaDelta: PartialDesignDNASchema.optional().describe('Partial Design DNA values to apply (numeric scores are 0–100)'),
       navigationModel: z.enum(['sidebar-fixed', 'top-nav', 'bottom-dock', 'minimal']).optional().describe('New navigation model'),
     },
     async ({ manifest, action, nodeId, dnaDelta, navigationModel }) => {
       const parsed = ProjectManifestSchema.safeParse(manifest);
       if (!parsed.success) {
-        return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify({ error: 'Invalid manifest', issues: parsed.error.issues }),
-            },
-          ],
-        };
+        return toolError('ProjectManifest validation failed.', parsed.error.issues.map((issue) => ({ path: issue.path.join('.'), message: issue.message })));
       }
 
       const proj = JSON.parse(JSON.stringify(parsed.data)) as ProjectManifest;
+      const nodeIds = new Set<string>();
+      const visit = (node: ProjectManifest['screens'][number]['rootNode']) => {
+        nodeIds.add(node.id);
+        node.children.forEach(visit);
+      };
+      proj.screens.forEach((screen) => visit(screen.rootNode));
 
+      if ((action === 'lock_node' || action === 'unlock_node') && !nodeId) {
+        return toolError(`nodeId is required for ${action}.`);
+      }
+      if ((action === 'lock_node' || action === 'unlock_node') && nodeId && !nodeIds.has(nodeId)) {
+        return toolError(`Node "${nodeId}" does not exist in this project.`);
+      }
+      if (action === 'adjust_dna' && (!dnaDelta || Object.keys(dnaDelta).length === 0)) {
+        return toolError('dnaDelta must contain at least one Design DNA value for adjust_dna.');
+      }
+      if (action === 'set_navigation_model' && !navigationModel) {
+        return toolError('navigationModel is required for set_navigation_model.');
+      }
+
+      let changed = false;
       if (action === 'lock_node' && nodeId) {
         if (!proj.locks.some((l) => l.targetNodeId === nodeId)) {
           proj.locks.push({ targetNodeId: nodeId, lockTypes: ['node', 'structure'] });
+          changed = true;
         }
       } else if (action === 'unlock_node' && nodeId) {
+        const existingLockCount = proj.locks.length;
         proj.locks = proj.locks.filter((l) => l.targetNodeId !== nodeId);
+        changed = proj.locks.length !== existingLockCount;
       } else if (action === 'adjust_dna' && dnaDelta) {
+        changed = Object.entries(dnaDelta).some(([key, value]) => proj.designDNA[key as keyof typeof proj.designDNA] !== value);
         proj.designDNA = {
           ...proj.designDNA,
           ...dnaDelta,
         };
       } else if (action === 'set_navigation_model' && navigationModel) {
+        changed = proj.navigation.model !== navigationModel;
         proj.navigation.model = navigationModel;
       }
 
+      if (!changed) {
+        return {
+          content: [{ type: 'text', text: JSON.stringify({ success: true, changed: false, manifest: proj }, null, 2) }],
+        };
+      }
       proj.updatedAt = new Date().toISOString();
       proj.historyMeta.totalOperations = (proj.historyMeta.totalOperations ?? 0) + 1;
       proj.historyMeta.headRevision = (proj.historyMeta.headRevision ?? 1) + 1;
+
+      const validated = ProjectManifestSchema.safeParse(proj);
+      if (!validated.success) {
+        return toolError('Mutation would produce an invalid ProjectManifest.', validated.error.issues.map((issue) => ({ path: issue.path.join('.'), message: issue.message })));
+      }
 
       return {
         content: [
           {
             type: 'text',
-            text: JSON.stringify({ success: true, manifest: proj }, null, 2),
+            text: JSON.stringify({ success: true, changed, manifest: validated.data }, null, 2),
           },
         ],
       };

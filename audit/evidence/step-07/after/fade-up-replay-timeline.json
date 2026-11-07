@@ -1,0 +1,19 @@
+{
+  "url": "http://127.0.0.1:4323/resources/fade-up-reveal/",
+  "viewport": "1440x900",
+  "hidden": {
+    "className": "opacity-0",
+    "opacity": 0
+  },
+  "entering": {
+    "className": "opacity-100",
+    "opacity": 0.444317
+  },
+  "completed": {
+    "className": "opacity-100",
+    "opacity": 1
+  },
+  "consoleErrors": [],
+  "failedRequests": [],
+  "badResponses": []
+}

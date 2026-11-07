@@ -1,3 +1,3 @@
 # Billing Overview
 
-Subscription panel detailing active billing cycle, plan status, and payment method.
+Subscription summary using sample values. The payment action stays disabled until connected to a billing provider.

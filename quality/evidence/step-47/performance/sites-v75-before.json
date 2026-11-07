@@ -1,0 +1,73 @@
+{
+  "capturedAt": "2026-11-03",
+  "deployment": {
+    "name": "public Sites v75 before remediation",
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "version": 75,
+    "sourceCommit": "7445659e8fa8036605c4da1b0bb2c19df4fcb440"
+  },
+  "method": {
+    "tool": "Chrome DevTools MCP performance trace",
+    "coldLoad": true,
+    "desktop": "1440x900, CPU 1x, network unthrottled",
+    "mobile": "390x844, CPU 4x, Fast 4G",
+    "limitations": [
+      "Lab measurements only; no CrUX field data was available.",
+      "INP was not captured because these traces measured navigation loads rather than a post-load interaction."
+    ]
+  },
+  "routes": [
+    {
+      "route": "/",
+      "viewport": "1440x900",
+      "lcpMs": 988,
+      "ttfbMs": 634,
+      "lcpRenderDelayMs": 354,
+      "cls": 0,
+      "documentStatus": 200,
+      "documentRedirects": 0,
+      "compression": true,
+      "networkRequests": 26,
+      "failedRequests": 0,
+      "insights": ["DocumentLatency: server response exceeded 600ms insight threshold; estimated 532ms FCP/LCP savings, single sample", "LCPBreakdown: no estimated savings", "RenderBlocking: 0ms estimated savings"]
+    },
+    {
+      "route": "/compose",
+      "viewport": "1440x900",
+      "lcpMs": 198,
+      "ttfbMs": 64,
+      "lcpRenderDelayMs": 134,
+      "cls": 0,
+      "documentStatus": 200,
+      "documentRedirects": 0,
+      "networkRequests": null,
+      "failedRequests": 0,
+      "insights": ["LCPBreakdown: no estimated savings", "RenderBlocking: 0ms estimated savings"]
+    },
+    {
+      "route": "/",
+      "viewport": "390x844",
+      "throttling": "4x CPU; Fast 4G",
+      "lcpMs": 640,
+      "ttfbMs": 59,
+      "lcpRenderDelayMs": 581,
+      "cls": 0,
+      "documentStatus": 200,
+      "documentRedirects": 0,
+      "failedRequests": 0
+    },
+    {
+      "route": "/compose",
+      "viewport": "390x844",
+      "throttling": "4x CPU; Fast 4G",
+      "lcpMs": 948,
+      "ttfbMs": 68,
+      "lcpRenderDelayMs": 880,
+      "cls": 0,
+      "documentStatus": 200,
+      "documentRedirects": 0,
+      "failedRequests": 0
+    }
+  ],
+  "interpretation": "All four sampled LCP values are below 1 second and CLS is zero. The first desktop homepage navigation had a 634ms document TTFB, but other page/viewport samples were 59–68ms; repeat on the post-fix deployment before treating this isolated outlier as a product defect."
+}

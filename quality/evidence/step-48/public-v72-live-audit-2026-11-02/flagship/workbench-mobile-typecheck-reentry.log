@@ -1,0 +1,44 @@
+$ pnpm -r --workspace-concurrency=4 run typecheck
+Scope: 22 of 23 workspace projects
+packages/schemas typecheck$ tsc --noEmit
+packages/ui typecheck$ tsc --noEmit
+packages/ui typecheck: Done
+packages/schemas typecheck: Done
+apps/api typecheck$ tsc --noEmit
+packages/catalog typecheck$ tsc --noEmit
+packages/dna typecheck$ tsc --noEmit
+packages/dna typecheck: Done
+packages/catalog typecheck: Done
+apps/api typecheck: Done
+apps/preview typecheck$ tsc --noEmit
+packages/composer typecheck$ tsc --noEmit
+packages/registry typecheck$ tsc --noEmit
+packages/search typecheck$ tsc --noEmit
+packages/registry typecheck: Done
+packages/testing typecheck$ tsc --noEmit
+packages/composer typecheck: Done
+packages/search typecheck: Done
+packages/testing typecheck: Done
+apps/preview typecheck: Done
+packages/renderer typecheck$ tsc --noEmit
+packages/renderer typecheck: Done
+packages/exporter typecheck$ tsc --noEmit
+packages/linter typecheck$ tsc --noEmit
+packages/ingest typecheck$ tsc --noEmit
+packages/ingest typecheck: Done
+packages/linter typecheck: Done
+packages/exporter typecheck: Done
+packages/compatibility typecheck$ tsc --noEmit
+packages/registry-gate typecheck$ tsc --noEmit
+packages/registry-gate typecheck: Done
+packages/compatibility typecheck: Done
+packages/cli typecheck$ tsc --noEmit
+packages/mcp typecheck$ tsc --noEmit
+packages/workbench typecheck$ tsc --noEmit
+packages/cli typecheck: Done
+packages/mcp typecheck: Done
+packages/workbench typecheck: Done
+apps/site typecheck$ tsc --noEmit
+apps/site typecheck: Done
+apps/sites typecheck$ tsc --noEmit
+apps/sites typecheck: Done

@@ -1,0 +1,22 @@
+{
+  "result": "passed",
+  "consumer": "Python 3.13.15 zipfile",
+  "source": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-37\\zip-consumer-fixture.zip",
+  "extraction_directory": "fresh temporary directory (removed automatically)",
+  "entry_count": 3,
+  "files": {
+    "README.md": {
+      "bytes": 65,
+      "sha256": "60014757898dc06f74c2797aeee6fd7d73ce24998c990f1b0f3d74ffad625a5e"
+    },
+    "package.json": {
+      "bytes": 69,
+      "sha256": "cad7112ba45755fd427e3ecdebaefb42e38960eecbb3e0b04584bca5736ca176"
+    },
+    "src/App.tsx": {
+      "bytes": 71,
+      "sha256": "56c830755bf065c5c3dd3a39245bd668b58fd5aafb626a729070d741fc0358b9"
+    }
+  },
+  "archive_crc": "passed"
+}

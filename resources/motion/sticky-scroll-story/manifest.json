@@ -2,24 +2,24 @@
   "schemaVersion": "1.0.0",
   "id": "res_mot_sticky_scroll_story",
   "slug": "sticky-scroll-story",
-  "name": "Sticky Scroll Story",
+  "name": "Story Chapter Selector",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Sticky viewport container pairing stationary preview graphic with scrolling narrative chapters.",
+  "description": "Selectable story chapters paired with a matching content panel.",
   "resourceType": "motion",
   "categories": [
     "motion",
     "microinteractions",
-    "scroll"
+    "story"
   ],
   "roles": [
     "story",
-    "scroll"
+    "chapter-selector"
   ],
   "purposes": [
-    "product-walkthrough",
-    "narrative-demo",
-    "feature-storytelling"
+    "story-navigation",
+    "onboarding-walkthrough",
+    "product-guide"
   ],
   "productArchetypes": [
     {
@@ -126,30 +126,30 @@
   ],
   "tags": [
     "motion",
-    "sticky",
-    "scroll",
+    "chapter-switcher",
+    "selectable-story",
     "story",
     "chapters"
   ],
   "intent": {
-    "summary": "Sticky viewport container pairing stationary preview graphic with scrolling narrative chapters.",
+    "summary": "Select a story chapter to update its related content panel.",
     "idealFor": [
       "Product capability stories",
       "Onboarding walkthroughs",
-      "Interactive architecture tours"
+      "Interactive product guides"
     ],
     "avoidFor": [
       "Dense spreadsheet editing",
       "Command palettes"
     ],
     "jobs": [
-      "Pair scrolling narrative chapter copy with a pinned, reactive visual display"
+      "Select a chapter and view its related content"
     ],
     "contentRequirements": [
       "CSS transition and animation transforms, reduced-motion fallbacks"
     ],
     "notes": [
-      "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+      "Chapter selection is local to the preview; no external data is loaded."
     ]
   },
   "visualDNA": {
@@ -168,8 +168,8 @@
     "colourfulness": 35,
     "curvature": 35,
     "depth": 40,
-    "motion": 50,
-    "motionPlayfulness": 30,
+    "motion": 0,
+    "motionPlayfulness": 0,
     "typographicExpression": 50,
     "imageryIntensity": 0,
     "videoIntensity": 0,
@@ -187,7 +187,7 @@
   },
   "interactionDNA": {
     "interactionDensity": 85,
-    "motionIntensity": 45,
+    "motionIntensity": 0,
     "keyboardComplexity": "medium",
     "hoverDependency": "none",
     "directManipulation": true
@@ -214,16 +214,16 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
-    "gpuCost": "low",
+    "gpuCost": "none",
     "mediaCost": "none",
     "runtimeComplexity": "low",
     "lazyRecommended": false,
@@ -242,7 +242,11 @@
     "composability": 96,
     "visualCraft": 97,
     "dependencyCleanliness": 100,
-    "documentation": 96
+    "documentation": 96,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

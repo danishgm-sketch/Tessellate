@@ -1,6 +1,6 @@
 /**
- * Semantic search adapter boundary with lazy model loading and
- * WebGPU -> WASM -> text fallback capability detection.
+ * Experimental semantic-search boundary. No embedding model is integrated yet;
+ * callers receive an unavailable result and must keep full-text search active.
  */
 
 export type HardwareAcceleration = 'webgpu' | 'wasm' | 'cpu' | 'none';
@@ -22,9 +22,15 @@ export async function detectHardwareAcceleration(): Promise<HardwareAcceleration
   }
 
   // Check WebGPU availability
-  if ('gpu' in navigator && typeof (navigator as unknown as { gpu?: { requestAdapter: () => Promise<unknown> } }).gpu?.requestAdapter === 'function') {
+  if (
+    'gpu' in navigator &&
+    typeof (navigator as unknown as { gpu?: { requestAdapter: () => Promise<unknown> } }).gpu
+      ?.requestAdapter === 'function'
+  ) {
     try {
-      const adapter = await (navigator as unknown as { gpu: { requestAdapter: () => Promise<unknown> } }).gpu.requestAdapter();
+      const adapter = await (
+        navigator as unknown as { gpu: { requestAdapter: () => Promise<unknown> } }
+      ).gpu.requestAdapter();
       if (adapter) {
         return 'webgpu';
       }
@@ -82,25 +88,16 @@ export class LocalSemanticAdapter implements SemanticSearchAdapter {
    * Lazily loads the local embedding model upon explicit activation or user opt-in.
    */
   async loadModel(): Promise<boolean> {
-    try {
-      this.backend = await detectHardwareAcceleration();
-      // Future hook for Transformers.js pipeline('@xenova/all-MiniLM-L6-v2')
-      // For baseline local execution, flag as ready
-      this.modelLoaded = true;
-      return true;
-    } catch {
-      this.modelLoaded = false;
-      this.backend = 'none';
-      return false;
-    }
+    // No embedding model is currently wired. Do not mark the Lab ready just
+    // because this browser has WebGPU or WebAssembly; full-text search remains
+    // the supported discovery path until a real model is bundled and tested.
+    this.modelLoaded = false;
+    this.backend = 'none';
+    return false;
   }
 
   async embedText(_text: string): Promise<Float32Array | null> {
-    if (!this.modelLoaded) {
-      return null;
-    }
-    // Placeholder returning vector for demonstration or testing
-    return new Float32Array(384);
+    return null;
   }
 
   cosineSimilarity(a: Float32Array, b: Float32Array): number {

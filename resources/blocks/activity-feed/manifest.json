@@ -5,7 +5,7 @@
   "name": "Activity Feed",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Chronological timeline of system events, team actions, and commit updates.",
+  "description": "Chronological activity-feed template with clearly labeled sample people, timestamps, and events.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -17,8 +17,8 @@
     "feed"
   ],
   "purposes": [
-    "Team collaboration streams",
-    "Audit history previews"
+    "Illustrative team collaboration stream layouts",
+    "Audit history display patterns"
   ],
   "productArchetypes": [
     {
@@ -209,12 +209,12 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

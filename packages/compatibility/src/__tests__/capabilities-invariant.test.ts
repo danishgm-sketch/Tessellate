@@ -4,6 +4,7 @@ import { loadTestCatalog } from './test-catalog-loader.js';
 import { DEFAULT_RESOURCE_RENDERERS } from '@tessellate/renderer';
 import { GENERATED_GOLD_SOURCES } from '@tessellate/exporter';
 import { isGoldResource } from '@tessellate/catalog/gold';
+import { isResourceComposerEligible } from '../capabilities.js';
 import type { ProjectNode } from '@tessellate/schemas';
 
 const SUPPORTED_ARCHETYPES = [
@@ -79,6 +80,12 @@ describe('Composer Runtime/Export Capability Invariant', () => {
         for (const node of nodesWithRef) {
           const ref = node.resourceRef!;
           const slug = ref.slug;
+          const catalogResource = catalog.find((resource) => resource.slug === slug);
+          expect(catalogResource, `Node ${node.id} must resolve to a catalog resource`).toBeDefined();
+          expect(
+            isResourceComposerEligible(catalogResource!),
+            `Node ${node.id} must use an eligible Core Gold resource`,
+          ).toBe(true);
 
           // 1. Catalogue valid
           expect(

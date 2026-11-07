@@ -1,0 +1,623 @@
+{
+  "capturedAt": "2026-10-24T16:02:18.204Z",
+  "results": [
+    {
+      "route": "/explore",
+      "status": 200,
+      "height": 5609,
+      "errors": [
+        "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+      ],
+      "failed": [],
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Skip to content\nTessellate\nExplore\nShowcases\nCompose\nWorkbench\nTools\nAgents\nCreators\nDocs\nSearch\n⌘K\nLocal projects\nStart building\nExplore Resource Library\n\nDiscover vetted UI primitives, blocks, and d"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accessibility-commitment-section",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Accessibility commitments — WCAG 2.2 AA target\nDESIGN TARGET\nKeyboard First\n\nDesign goal: support Tab, Enter, Space and Escape for every core control; verify keyboard behavior in your integration.\n\nDE"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "What is this example?\n▼\nA real interactive accordion. Open and close each item.\nPortable source\n▼"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=accordion-spring",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Animated Accordion Disclosure\nWhich dependencies does this component use?\n▼\nThis example uses React and CSS transitions. Check your project manifest for its complete dependency list.\nDo the example co"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=activity-feed",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Workspace Activity Feed\nSample activity\nE\nExample teammate published a project update\n12m ago\nE\nExample agent reviewed an onboarding section\n44m ago\nE\nExample collaborator updated a team task\n2h ago"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=admin-console-shell",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Admin Console\n\nUser permissions & security enforcement\n\nInvite User\n\nActive Organization Members (14)\n\nAll members authenticated with GitHub OAuth."
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=advanced-data-table",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Sample records · 0 selected\nbutton\nType\nprimitive\nProgress\n98/100\nStatus\nVERIFIED\neditorial-hero\nType\nsection\nProgress\n96/100\nStatus\nVERIFIED\nadmin-console-shell\nType\nblock\nProgress\n96/100\nStatus\nVERI"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-agent-activity-feed",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Example agent activity\nSTATIC SAMPLE DATA\nAll Events\nMilestones\n09:14\nCatalog review\nChecked sample UI resources for duplicate patterns\n09:16\nAccessibility review\nReviewed keyboard flow for a sample o"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-approval-request",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "⚠\nHuman Approval Required\nHIGH IMPACT\n\nAutonomous Agent requests permission to overwrite 4 design tokens in tokens.css\n\nThis modification alters border-hairline, canvas-bg, accent-primary, and typogra"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-chat-panel",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Example assistant conversation\n\nExample conversation. This preview does not connect to a model; sending adds a fixed local example reply.\n\nYOU\nHow could we make the onboarding steps easier to follow?\n"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-command-bar",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "✦\nESC\n\nDemo only. Typing filters the sample list; commands are not run here.\n\nTheme\nSwitch to Nocturne visual mode\n⌘ T\nExport\nExport current workspace as standalone Vite project\n⌘ E\nReview\nReview cont"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-copilot-sidebar",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Active Context Copilot\nCollapse\nInspecting DashboardView.tsx. Found 2 token inconsistencies in border contrast.\nFix border contrast token\nReplaces hardcoded border-slate-300 with semantic border-borde"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-empty-state",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "✦\nHow can Tessellate assist your build?\n\nSelect a starter prompt to continue. The host application decides how selected text is handled.\n\nConnect a prompt handler to enable these starters.\n\nCompose B2"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-file-context-picker",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Attach File Context\n\nInject workspace files into prompt memory\n\nSelected: 1070 tokens\nsrc/tokens.css\n2.4 KB\n~620 tok\nsrc/manifest.json\n1.8 KB\n~450 tok\nsrc/Workbench.tsx\n14.2 KB\n~3600 tok\ndocs/DESIGN_S"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-generation-compare",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Illustrative composition comparison\n\nExample previews; no AI generation or measurement service is connected.\n\nPrompt: \"Executive Dashboard Header\"\nCandidate A (Quiet)\nExample latency · not measured\n\nM"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-memory-context-panel",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Active Assistant Memory\n\nShort & long-term conversational recall\n\nPurge All\npreferred_mode:Nocturne (dark obsidian canvas)\n✕\nstack_target:React 19 + Tailwind CSS 4\n✕\ndependency_rule:0 undeclared depen"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-model-mode-switcher",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Example model modes\n\nExample selector. Options change this preview only; no provider or local model is connected.\n\nNo model connected\nFast\nExample mode for short, quick tasks\nExample\nBalanced\nExample "
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-multi-agent-board",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Autonomous Agent Swarm\n\n3 subagents coordinated via Antigravity SDK\n\nActive Swarm\nQUEUED\nTestingAgent\nExecute Playwright suite\nIN PROGRESS\nCatalogAgent\nValidating 324 resources\nCOMPLETE\nArchitectAgent"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-plan-review",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Proposed Implementation Plan\n\nAutonomous execution strategy for Phase 18\n\n4 Steps | ~2m runtime\n01\nGenerate Manifest Contracts\n\nCreate 20 validated ResourceManifest JSON schemas with 0 dependencies.\n\n"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-prompt-composer",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Prompt Studio\nContext: 2 files\n~240 tokens\n📄 tokens.css\n×\n📄 workbench.ts\n×\n+ Add Context\nShift + Enter for newline\nExecute Prompt"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-prompt-hero",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Describe the product you want to shape.\n\nStart with a plain-language brief. Connect this pattern to your own generation flow when you use it in an application.\n\nPreview only. This example keeps your p"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-prompt-history",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Prompt History\n\nReplay or inspect previous generation requests\n\nAudit Design DNA alignment for all 56 application blocks\n10 mins ago • 1,420 tokens\nReplay\nGenerate 24 data visualization resources with"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-research-answer",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Example research answer\n\nExample research answer. No sources were retrieved and no confidence score was calculated.\n\nExample\nEXECUTIVE SUMMARY\nA team comparing a monolithic application with independen"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-source-citations",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Example citations (3)\n\nExample citations. These sample sources were not retrieved or verified.\n\n[1] Example product brief\nexample/product-brief.md#overview\n\n\"Example excerpt: teams need a clear place "
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-suggested-actions",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "✦\nSuggested Next Steps\nExport as Vite App\nBundle React + Tailwind 4 source tree\nRun Contrast Audit\nValidate WCAG 2.2 AA against 3 presets\nGenerate Shadcn Manifest\nCreate registry schema item file"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=ai-tool-execution-timeline",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Example agent tool trace\nSample total: 190ms\n\nExample trace. Sample calls and timings only; this preview does not run tools or create files.\n\nsearch_catalog()\n32ms · sample\n▼\nvalidate_manifest()\n18ms "
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=alert-dialog",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Confirm example action\n\nThis demonstration changes local preview state only.\n\nCancel\nDelete"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=analytics-shell",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Analytics & Growth\n\nTrailing 30 days telemetry\n\nLast 30 Days\nExport CSV\nMRR: $84k\nDAU: 12.4k\nChurn: 0.8%\nNPS: 74"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-border-trace",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Hairline Tracer\nActive Perimeter Trace\n\nContinuous stroke-dasharray orbital animation tracing rectangular perimeter coordinates."
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-gradient-line",
+          "events": [
+            {
+              "directive": "style-src-elem",
+              "blockedURI": "inline",
+              "sourceFile": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.CZ5CiHPg.js",
+              "violatedPolicy": "style-src-elem",
+              "styles": [
+                "astro-island,astro-slot,astro-static-slot{display:contents}",
+                "\n          @keyframes moveBeam {\n            0% { transform: translateX(-100%); }\n            100% { transform: translateX(500%); }\n          }\n        "
+              ]
+            }
+          ],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            },
+            {
+              "hash": "'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA='",
+              "text": "\n          @keyframes moveBeam {\n            0% { transform: translateX(-100%); }\n            100% { transform: translateX(500%); }\n          }\n        "
+            }
+          ],
+          "body": "Luminescent Divider Beam\n\nHorizontal gradient beam sweeping continuously across boundary"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=animated-wave-field",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "HARMONIC MOTION\nAnimated Wave Field\n\nSmooth harmonic sine curve baseline providing organic fluid movement under section copy."
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=api-capability-section",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Programmatic API Access\nGET\n/api/v1/resources/:slug\nRetrieve verified JSON manifest\nPOST\n/api/v1/compose\nValidate and compile project tree\nGET\n/api/v1/dna/tokens\nQuery calibrated Design DNA dimensions"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=api-key-management",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "API Tokens\n+ Create New Token\nProduction Agent Token\ntess_live_••••••••••••94b2\nRevoke\nLocal Development Key\ntess_test_••••••••••••11a0\nRevoke"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=app-sidebar-compact",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "⌘\n◫\n🧬\n⇪"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=app-sidebar-expanded",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Tessellate Console\n\nWORKSPACE\n\nDashboard\nTelemetry\nComposition Engine\n\nSETTINGS\n\nDesign DNA\nAPI Tokens"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=approval-queue",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Pending Approvals (1)\nPublish Revision 1.0.4\nSubmitted by Agent Antigravity • 14m ago\nReject\nApprove"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=architecture-diagram-section",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Reference Architecture\n\nOptional services shown for illustration; D1 and R2 are not provisioned for this review Site.\n\nCLIENT LAYER\nReact + Zustand\n\nIn-memory graph & DNA mutations\n\nEDGE LAYER\nCloudfl"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=area-chart",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Sample ingestion volume\n\nIllustrative sample data — not live measurements.\n\nSample peak: 420 GB\n0\n100\n250\n500\nWeek 1\nWeek 2\nWeek 3\nWeek 4\nWeek 5\nWeek 6\nWeek 7"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=audit-log",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Security Audit Trail\nAPI_KEY_ROTATED\nActor: usr_admin99 • IP: 192.0.2.1\n10m ago\nPROJECT_CHECKPOINT_SAVED\nActor: usr_sarah • IP: 198.51.100.4\n1h ago\nDNA_TOKENS_MUTATED\nActor: agent_cursor • IP: local\n3"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=aurora-field",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "CYBER LUMINESCENCE\nAurora Wave Field\n\nDual chromatic ribbon fields crossing with soft blur to simulate undulating northern lights."
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=autocomplete",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Find a team"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=avatar",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "TL"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=avatar-group",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "AB\nCD\nEF"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=badge",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Example status"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=bar-chart",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Sample daily sign-ups\n\nIllustrative sample data — not live measurements.\n\nSample total: 430\n0\n25\n50\n75\n100\nMon\nTue\nWed\nThu\nFri\nSat\nSun"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=beam-grid",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "OPTICAL INFRASTRUCTURE\nBeam Grid\n\nOrthogonal coordinate network featuring directional traveling light energy along telemetry lines."
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=billing-overview",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Subscription & Billing\nTeam Pro Subscription\nRenews on Nov 1, 2026 • £18/month\nACTIVE\nUpdate Payment Method"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=blur-to-sharp-reveal",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Optical Blur-to-Sharp Focus\nReplay\nRazor-Sharp Artifact Output\n\nThe blur-to-sharp transition provides a cinematic optical settling effect while gracefully degrading under reduced motion preferences."
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=bottom-sheet",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "An example sheet with local controls."
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=breadcrumb",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Library\n/\nExample"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=breadcrumb-header",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Projects\n/\nTelemetry\n/\nAnalytics Node\nExport\nSave"
+        }
+      ]
+    },
+    {
+      "route": "/r/advanced-data-table",
+      "status": 200,
+      "height": 1482,
+      "errors": [],
+      "failed": [],
+      "frames": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/advanced-data-table",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Skip to content\nTessellate\nExplore\nCompose\nWorkbench\nTools\nAgents\nCreators\nDocs\nSearch...\n⌘K\nLocal projects\nStart building\nHome\n/\nExplore\n/\nBlocks\n/\nAdvanced Data Table\nAdvanced Data Table\n@tess/advan"
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/?resource=advanced-data-table&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+          "events": [],
+          "styles": [
+            {
+              "hash": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+              "text": "astro-island,astro-slot,astro-static-slot{display:contents}"
+            }
+          ],
+          "body": "Sample records · 0 selected\n#\tName\tType\tProgress\tStatus\n\tbutton\tprimitive\t98/100\tVERIFIED\n\teditorial-hero\tsection\t96/100\tVERIFIED\n\tadmin-console-shell\tblock\t96/100\tVERIFIED"
+        }
+      ]
+    }
+  ]
+}

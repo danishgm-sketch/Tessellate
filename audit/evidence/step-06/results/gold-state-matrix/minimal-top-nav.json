@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "minimal-top-nav",
+  "stateProp": "links",
+  "viewport": "390x844",
+  "empty": "PASS",
+  "largeCount": 40,
+  "large": "PASS",
+  "overflow": "PASS",
+  "diagnostics": {
+    "consoleErrors": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshots": [
+    "audit/evidence/step-06/before/gold-state-matrix/minimal-top-nav-before-390.png",
+    "audit/evidence/step-06/after/gold-state-matrix/minimal-top-nav-empty-390.png",
+    "audit/evidence/step-06/after/gold-state-matrix/minimal-top-nav-large-390.png"
+  ]
+}

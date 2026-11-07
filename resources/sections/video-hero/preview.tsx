@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { VideoHero, VideoHeroVariant } from './index.js';
 
-export function VideoHeroPreview() {
+export function VideoHeroPreview({ videoSrc }: { videoSrc?: string }) {
   const [variant, setVariant] = useState<VideoHeroVariant>('quiet');
 
   return (
@@ -23,7 +23,7 @@ export function VideoHeroPreview() {
           ))}
         </div>
       </div>
-      <VideoHero variant={variant} />
+      <VideoHero variant={variant} videoSrc={videoSrc} />
     </div>
   );
 }

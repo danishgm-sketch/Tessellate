@@ -1,0 +1,737 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\node_modules\\.pnpm\\playwright@1.63.0\\node_modules\\playwright\\cli.js",
+      "test",
+      "--config",
+      "quality/evidence/step-45/public-v37/hydration-live.config.ts"
+    ],
+    "configFile": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\hydration-live.config.ts",
+    "rootDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/quality/evidence/step-45/public-v37",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/quality/evidence/step-45/public-v37/hydration-playwright-output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "sites-chromium",
+        "name": "sites-chromium",
+        "testDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/quality/evidence/step-45/public-v37",
+        "testIgnore": [],
+        "testMatch": [
+          "home-demo-hydration.live.spec.ts",
+          "home-structure-comparison-readiness.live.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/quality/evidence/step-45/public-v37/hydration-playwright-output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "sites-mobile-chromium",
+        "name": "sites-mobile-chromium",
+        "testDir": "C:/Users/ismay/.codex/worktrees/rc1-hardening/Tessellate/quality/evidence/step-45/public-v37",
+        "testIgnore": [],
+        "testMatch": [
+          "home-demo-hydration.live.spec.ts",
+          "home-structure-comparison-readiness.live.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\hydration-playwright-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "home-demo-hydration.live.spec.ts",
+      "file": "home-demo-hydration.live.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "homepage route reaches Compose and waits for the live catalogue",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1069,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:21.867Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7a5edeb082b5988e1e67-acb5e4fed87b9f95a39e",
+          "file": "home-demo-hydration.live.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "homepage example-directions action produces three real previews",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2425,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:23.047Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7a5edeb082b5988e1e67-4793140bbd594e3518ad",
+          "file": "home-demo-hydration.live.spec.ts",
+          "line": 49,
+          "column": 1
+        },
+        {
+          "title": "homepage example control is unavailable until its island is hydrated",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 703,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:25.481Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7a5edeb082b5988e1e67-1d801893e42c303f6765",
+          "file": "home-demo-hydration.live.spec.ts",
+          "line": 137,
+          "column": 1
+        },
+        {
+          "title": "homepage route reaches Compose and waits for the live catalogue",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2716,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:27.841Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7a5edeb082b5988e1e67-e50adcbac3da00a75760",
+          "file": "home-demo-hydration.live.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "homepage example-directions action produces three real previews",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4671,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:30.669Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7a5edeb082b5988e1e67-e7909d153ad0a163ca0c",
+          "file": "home-demo-hydration.live.spec.ts",
+          "line": 49,
+          "column": 1
+        },
+        {
+          "title": "homepage example control is unavailable until its island is hydrated",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 894,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:35.351Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7a5edeb082b5988e1e67-37c86b32d82b681c7fe9",
+          "file": "home-demo-hydration.live.spec.ts",
+          "line": 137,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "home-structure-comparison-readiness.live.spec.ts",
+      "file": "home-structure-comparison-readiness.live.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "homepage structure selectors stay disabled until the visible island hydrates",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Capture the narrow pre-hydration state.",
+                  "location": {
+                    "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\home-structure-comparison-readiness.live.spec.ts",
+                    "line": 31,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 1,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:26.210Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Capture the narrow pre-hydration state.",
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\home-structure-comparison-readiness.live.spec.ts",
+                        "line": 31,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "917f043be2327e52c4bb-dd02e44c62e1a205a0c5",
+          "file": "home-structure-comparison-readiness.live.spec.ts",
+          "line": 30,
+          "column": 1
+        },
+        {
+          "title": "homepage wireframe keeps every pane inside the visible diagram before JavaScript",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Check the narrow layout preview.",
+                  "location": {
+                    "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\home-structure-comparison-readiness.live.spec.ts",
+                    "line": 78,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 1,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:26.223Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Check the narrow layout preview.",
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\home-structure-comparison-readiness.live.spec.ts",
+                        "line": 78,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "917f043be2327e52c4bb-89babaf00c47b89ba536",
+          "file": "home-structure-comparison-readiness.live.spec.ts",
+          "line": 77,
+          "column": 1
+        },
+        {
+          "title": "tablet homepage wireframe keeps the complete three-pane diagram visible",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Check the tablet breakpoint.",
+                  "location": {
+                    "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\home-structure-comparison-readiness.live.spec.ts",
+                    "line": 115,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 1,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:26.235Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Check the tablet breakpoint.",
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\home-structure-comparison-readiness.live.spec.ts",
+                        "line": 115,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "917f043be2327e52c4bb-579429ff6a6a5a170a65",
+          "file": "home-structure-comparison-readiness.live.spec.ts",
+          "line": 114,
+          "column": 1
+        },
+        {
+          "title": "homepage wireframe fits without clipping across phone, tablet, and desktop widths",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Run one explicit width matrix.",
+                  "location": {
+                    "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\home-structure-comparison-readiness.live.spec.ts",
+                    "line": 152,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 115,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:26.253Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Run one explicit width matrix.",
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\rc1-hardening\\Tessellate\\quality\\evidence\\step-45\\public-v37\\home-structure-comparison-readiness.live.spec.ts",
+                        "line": 152,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "917f043be2327e52c4bb-a7bb8e4f544ac3743632",
+          "file": "home-structure-comparison-readiness.live.spec.ts",
+          "line": 151,
+          "column": 1
+        },
+        {
+          "title": "hydrated homepage structure selectors change the visible layout diagram without mobile clipping",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 976,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:26.378Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "917f043be2327e52c4bb-9269e49d9112c0731521",
+          "file": "home-structure-comparison-readiness.live.spec.ts",
+          "line": 211,
+          "column": 1
+        },
+        {
+          "title": "homepage structure selectors stay disabled until the visible island hydrates",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 826,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:36.276Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "917f043be2327e52c4bb-9d11e28276383e5f22fe",
+          "file": "home-structure-comparison-readiness.live.spec.ts",
+          "line": 30,
+          "column": 1
+        },
+        {
+          "title": "homepage wireframe keeps every pane inside the visible diagram before JavaScript",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 738,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:37.119Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "917f043be2327e52c4bb-6438fd201d9bbe26ad90",
+          "file": "home-structure-comparison-readiness.live.spec.ts",
+          "line": 77,
+          "column": 1
+        },
+        {
+          "title": "tablet homepage wireframe keeps the complete three-pane diagram visible",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 871,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:37.868Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "917f043be2327e52c4bb-9d91202000ced81b9ec7",
+          "file": "home-structure-comparison-readiness.live.spec.ts",
+          "line": 114,
+          "column": 1
+        },
+        {
+          "title": "homepage wireframe fits without clipping across phone, tablet, and desktop widths",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3326,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:38.748Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "917f043be2327e52c4bb-f1dfcad6cfa38c5f464a",
+          "file": "home-structure-comparison-readiness.live.spec.ts",
+          "line": 151,
+          "column": 1
+        },
+        {
+          "title": "hydrated homepage structure selectors change the visible layout diagram without mobile clipping",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 965,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T20:38:42.084Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "917f043be2327e52c4bb-0ca0c364cca78cb2edd2",
+          "file": "home-structure-comparison-readiness.live.spec.ts",
+          "line": 211,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T20:38:21.404Z",
+    "duration": 21767.595,
+    "expected": 12,
+    "skipped": 4,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

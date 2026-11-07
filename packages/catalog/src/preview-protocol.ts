@@ -45,9 +45,25 @@ export interface PreviewErrorMessage {
   error: string;
 }
 
+export interface PreviewNavigationRequestMessage {
+  type: 'TESSELLATE_PREVIEW_NAVIGATION_REQUEST';
+  resourceId: string;
+  href: string;
+}
+
 export type ParentToPreviewMessage = PreviewInitMessage | PreviewUpdateMessage;
-export type PreviewToParentMessage = PreviewReadyMessage | PreviewResizeMessage | PreviewErrorMessage;
+export type PreviewToParentMessage =
+  | PreviewReadyMessage
+  | PreviewResizeMessage
+  | PreviewErrorMessage
+  | PreviewNavigationRequestMessage;
 export type TessellatePreviewMessage = ParentToPreviewMessage | PreviewToParentMessage;
+
+export interface PreviewNavigationDestination {
+  href: string;
+  label: string;
+  external: boolean;
+}
 
 export const PREVIEW_MESSAGE_TYPES = [
   'TESSELLATE_PREVIEW_INIT',
@@ -55,6 +71,7 @@ export const PREVIEW_MESSAGE_TYPES = [
   'TESSELLATE_PREVIEW_READY',
   'TESSELLATE_PREVIEW_RESIZE',
   'TESSELLATE_PREVIEW_ERROR',
+  'TESSELLATE_PREVIEW_NAVIGATION_REQUEST',
 ] as const;
 
 export function isTessellatePreviewMessage(data: unknown): data is TessellatePreviewMessage {
@@ -72,9 +89,51 @@ export function isParentToPreviewMessage(data: unknown): data is ParentToPreview
 
 export function isPreviewToParentMessage(data: unknown): data is PreviewToParentMessage {
   if (!isTessellatePreviewMessage(data)) return false;
+  if (data.type === 'TESSELLATE_PREVIEW_NAVIGATION_REQUEST') {
+    const message = data as { resourceId?: unknown; href?: unknown };
+    return (
+      typeof message.resourceId === 'string' &&
+      message.resourceId.length > 0 &&
+      message.resourceId.length <= 120 &&
+      typeof message.href === 'string' &&
+      message.href.length > 0 &&
+      message.href.length <= 2048
+    );
+  }
   return (
     data.type === 'TESSELLATE_PREVIEW_READY' ||
     data.type === 'TESSELLATE_PREVIEW_RESIZE' ||
     data.type === 'TESSELLATE_PREVIEW_ERROR'
   );
+}
+
+/** Resolve a preview-requested link for a trusted parent confirmation control. */
+export function resolvePreviewNavigationDestination(
+  href: string,
+  applicationOrigin: string,
+): PreviewNavigationDestination | null {
+  try {
+    const applicationUrl = new URL(applicationOrigin);
+    const destination = new URL(href, applicationUrl.origin);
+    if (
+      (destination.protocol !== 'http:' && destination.protocol !== 'https:') ||
+      destination.username.length > 0 ||
+      destination.password.length > 0
+    ) {
+      return null;
+    }
+
+    const external = destination.origin !== applicationUrl.origin;
+    return {
+      href: external
+        ? destination.href
+        : `${destination.pathname}${destination.search}${destination.hash}`,
+      label: external
+        ? destination.host
+        : `${destination.pathname}${destination.search}${destination.hash}`,
+      external,
+    };
+  } catch {
+    return null;
+  }
 }

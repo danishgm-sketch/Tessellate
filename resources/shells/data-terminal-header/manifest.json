@@ -5,7 +5,7 @@
   "name": "Data Terminal Header",
   "version": "1.0.0",
   "status": "verified",
-  "description": "High-density monospace financial header with ticker feed, clock, and connection latency.",
+  "description": "Compact data-terminal header showing clearly labelled example market and latency values.",
   "resourceType": "block",
   "categories": [
     "shells",
@@ -105,7 +105,7 @@
     {
       "id": "expressive",
       "name": "Expressive",
-      "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+      "description": "Cobalt surface, a clear accent border, and stronger separation for an expressive technical header.",
       "props": {
         "variant": "expressive"
       }
@@ -126,21 +126,21 @@
     "monospace"
   ],
   "intent": {
-    "summary": "High-density monospace financial header with ticker feed, clock, and connection latency.",
+    "summary": "Compact monospace header with static example market and latency values.",
     "idealFor": [
-      "Real-time streaming dashboards and Bloomberg-style terminals"
+      "Illustrative market and service-status headers"
     ],
     "avoidFor": [
       "Casual marketing blogs"
     ],
     "jobs": [
-      "Stream critical telemetry status and ticker feeds in header strip"
+      "Show sample market and status fields in a compact header"
     ],
     "contentRequirements": [
-      "Accessible navigation semantics and responsive containment"
+      "The preview uses static example values; no market feed or latency probe is connected."
     ],
     "notes": [
-      "Supports responsive collapsing and reduced motion"
+      "Sample fields wrap and stack on narrow viewports"
     ]
   },
   "visualDNA": {
@@ -205,12 +205,12 @@
     "defaultStrategy": "collapse"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -233,7 +233,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

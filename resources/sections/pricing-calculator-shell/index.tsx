@@ -25,11 +25,12 @@ export function PricingCalculatorShell({ variant = 'quiet' }: PricingCalculatorS
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-4xl mx-auto flex flex-col items-center">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Team Cost Calculator</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Seat cost example</h2>
+        <p className="mx-auto mb-8 max-w-2xl text-center text-sm opacity-75">Illustrative estimate at £15 per member per month. Replace the sample rate and billing terms before use.</p>
 
         <div className={`w-full max-w-lg p-8 rounded-2xl border transition-all ${card}`}>
           <div className="flex justify-between items-center mb-4">
-            <span className="text-xs font-semibold">Active Developers:</span>
+            <span className="text-xs font-semibold">Team members:</span>
             <span className="font-mono font-bold text-lg">{teamSize} seats</span>
           </div>
 
@@ -43,7 +44,7 @@ export function PricingCalculatorShell({ variant = 'quiet' }: PricingCalculatorS
           />
 
           <div className="border-t border-neutral-200 dark:border-neutral-800 pt-6 flex items-center justify-between">
-            <span className="text-xs opacity-75">Estimated Invoice:</span>
+            <span className="text-xs opacity-75">Example estimate:</span>
             <span className="text-3xl font-mono font-bold">£{total}/mo</span>
           </div>
         </div>

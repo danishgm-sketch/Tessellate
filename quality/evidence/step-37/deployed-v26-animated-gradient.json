@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "SEC-DEPLOYED-V26-GRADIENT-2026-10-25",
+  "verifiedAt": "2026-10-25T00:31:40Z",
+  "deployment": {
+    "siteVersion": 26,
+    "deploymentId": "appgdep_6add2f20b5f88191828044362a2fbc3e",
+    "sourceCommit": "94822e00baaefa20dd01895e43469c3c3d9fac9a",
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/"
+  },
+  "browser": {
+    "name": "Chrome",
+    "version": "156"
+  },
+  "route": "/r/animated-gradient-line",
+  "variant": "Expressive",
+  "profiles": [
+    {
+      "viewport": "1440x900",
+      "screenshot": "quality/evidence/step-37/deployed-v26-animated-gradient-1440.png"
+    },
+    {
+      "viewport": "390x844",
+      "screenshot": "quality/evidence/step-37/deployed-v26-animated-gradient-390.png",
+      "capture": "Playwright screenshot with viewport-size 390,844"
+    }
+  ],
+  "preview": {
+    "wrapperPath": "/preview/?resource=animated-gradient-line&variant=expressive&theme=light&device=desktop&reducedMotion=false",
+    "iframePath": "/preview-content/?resource=animated-gradient-line&variant=expressive&theme=light&device=desktop&reducedMotion=false",
+    "wrapperStatus": 200,
+    "iframeStatus": 200,
+    "iframeSandbox": ["allow-scripts"],
+    "parentDocumentRead": "SecurityError",
+    "previewCsp": {
+      "scriptSrc": ["same-origin /_astro/ assets", "exact SHA-256 hashes"],
+      "styleSrc": ["same-origin /_astro/ assets", "exact SHA-256 hashes"],
+      "styleSrcElemHasUnsafeInline": false,
+      "styleSrcAttr": ["'unsafe-inline'"],
+      "frameSrc": "'none'",
+      "sandbox": "allow-scripts"
+    },
+    "consoleMessages": 0,
+    "failedRequests": 0,
+    "observedRequests": 18,
+    "requestStatuses": [200],
+    "visual": "The Expressive preview renders its labeled divider-beam sample with a visible blue gradient line."
+  },
+  "disposition": {
+    "finding": "AUD-323",
+    "result": "closed-deployed-verified",
+    "fixCommit": "c82900964b868474b35326a6860f1fbeba3c5ff5"
+  },
+  "credentialAndCookieValuesRecorded": false
+}

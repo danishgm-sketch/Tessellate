@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { GOLD_40_SLUGS } from '../packages/catalog/src/gold.js';
 
 function auditSecurityAndSecrets() {
   console.log('--- AUDITING SECURITY, SECRETS & ISOLATION ---');
@@ -79,7 +80,37 @@ function auditSecurityAndSecrets() {
     }
   }
 
-  // 4. Audit D1 ownership authorization in API routes
+  // 4. Only certified Gold implementations may be statically imported into
+  // the renderer used on the authenticated application origin. Other resource
+  // source remains available through the isolated preview application.
+  const runtimeRendererPaths = [
+    path.resolve('packages/renderer/src/generated-gold-registry.tsx'),
+    path.resolve('packages/renderer/src/generated-gold-registry-sync.tsx'),
+    path.resolve('packages/renderer/src/base-registry.tsx'),
+    path.resolve('packages/renderer/src/default-registry.tsx'),
+    path.resolve('packages/renderer/src/browser-node-renderer.tsx'),
+    path.resolve('packages/renderer/src/node-renderer.tsx'),
+  ];
+  const goldSlugs = new Set<string>(GOLD_40_SLUGS);
+  const importedResourceSlugs = new Set<string>();
+  for (const rendererPath of runtimeRendererPaths) {
+    if (!fs.existsSync(rendererPath)) continue;
+    const source = fs.readFileSync(rendererPath, 'utf-8');
+    const importPattern = /(?:from\s+|import\s*\()\s*["']([^"']*resources[\\/]([^\\/]+)[\\/]([^\\/]+)[\\/]index\.js)["']/g;
+    for (const match of source.matchAll(importPattern)) {
+      importedResourceSlugs.add(match[3]!);
+    }
+  }
+  const unexpectedResourceSlugs = [...importedResourceSlugs].filter((slug) => !goldSlugs.has(slug));
+  const missingGoldSlugs = [...goldSlugs].filter((slug) => !importedResourceSlugs.has(slug));
+  if (importedResourceSlugs.size !== GOLD_40_SLUGS.length || unexpectedResourceSlugs.length > 0 || missingGoldSlugs.length > 0) {
+    console.error(`[RUNTIME ISOLATION VIOLATION] Main-origin renderer must import exactly the Gold resource set (found ${importedResourceSlugs.size}; unexpected: ${unexpectedResourceSlugs.join(', ') || 'none'}; missing: ${missingGoldSlugs.join(', ') || 'none'}).`);
+    violations++;
+  } else {
+    console.log(`[PASS] Main-origin renderer imports exactly the ${GOLD_40_SLUGS.length} certified Gold resource implementations.`);
+  }
+
+  // 5. Audit D1 ownership authorization in API routes
   const apiProjectsPath = path.resolve('apps/api/src/routes/projects.ts');
   const apiAuthPath = path.resolve('apps/api/src/auth.ts');
   if (fs.existsSync(apiProjectsPath) && fs.existsSync(apiAuthPath)) {

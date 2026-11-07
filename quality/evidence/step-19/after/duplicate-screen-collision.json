@@ -1,0 +1,29 @@
+{
+  "url": "http://127.0.0.1:4321/workbench?project=local-3c9f75ab-da6d-4009-a44a-1edbe41014c1#screen_4260cd020dc94823",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "checks": {
+    "duplicateScreenCards": [
+      "Marketing Home (Copy)/marketing-home-copy",
+      "Marketing Home (Copy 2)/marketing-home-copy-2"
+    ],
+    "duplicateSlugs": [
+      "/marketing-home-copy",
+      "/marketing-home-copy-2"
+    ],
+    "duplicateIds": {
+      "screenIds": [],
+      "nodeIds": [],
+      "duplicateRoutes": []
+    },
+    "exportedSchemaValid": true
+  },
+  "screenshot": "quality\\evidence\\step-19\\after\\duplicate-screen-collision.png"
+}

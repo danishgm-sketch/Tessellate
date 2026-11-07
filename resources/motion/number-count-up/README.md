@@ -1,3 +1,3 @@
 # Number Count Up
 
-Logarithmically eased numeric counter animating from zero to target value.
+A linear count-up animation started by the replay control. The displayed value is example content, not a verified catalogue count.

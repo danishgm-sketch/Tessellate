@@ -1,0 +1,37 @@
+{
+  "findingId": "SEC-37-113",
+  "status": "fixed_locally_awaiting_deployed_verification",
+  "route": "/resources/advanced-data-table/",
+  "viewport": "360x844",
+  "category": "state",
+  "expected": "Same-origin resource detail controls update the sandboxed preview props and variant.",
+  "before": {
+    "observed": "A valid host update did not render the requested People directory filter textbox; the visible preview did not receive prop changes.",
+    "reproduction": "quality/evidence/step-37/preview-host-origin-before.md"
+  },
+  "rootCause": "PreviewHost treated MessageEvent.origin as the renderer origin rather than the sender origin and rejected messages from the same-origin app host.",
+  "fix": "Validate event.source against window.parent and event.origin against window.location.origin. Validate child-to-host READY messages against the opaque null origin.",
+  "affectedFiles": [
+    "apps/site/src/components/PreviewHost.tsx",
+    "apps/site/src/components/ResourcePreviewFrame.tsx",
+    "apps/site/src/scripts/preview-wrapper.ts",
+    "tests/e2e/sites-preview-csp.spec.ts",
+    "tests/e2e/gold-resource-accessibility-certification.spec.ts",
+    "tests/e2e/accessibility-hardening-step-35.spec.ts"
+  ],
+  "passingValidation": [
+    "Focused Sites Worker preview, accessibility, and state regressions: 14/14",
+    "Gold resource accessibility and contrast matrix: 120 variants plus the focused Nocturne regression, passed",
+    "pnpm typecheck: 22/22 workspace packages",
+    "pnpm lint: exit 0",
+    "pnpm test: 1204/1204 tests across 76 files",
+    "pnpm audit:all: all 16 behavioral gates, resource isolation 324/324, production build, bundle budgets, provenance, security, and dependency audits passed"
+  ],
+  "screenshots": [
+    "quality/evidence/step-37/preview-host-variant-before-1440.png",
+    "quality/evidence/step-37/preview-host-variant-after-1440.png",
+    "quality/evidence/step-37/preview-host-variant-before-390.png",
+    "quality/evidence/step-37/preview-host-variant-after-390.png"
+  ],
+  "deploymentVerification": "pending release-candidate deployment; the public review Site has not been updated"
+}

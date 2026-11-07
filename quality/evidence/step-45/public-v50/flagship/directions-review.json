@@ -1,0 +1,2062 @@
+{
+  "siteVersion": 50,
+  "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_90ffb7eea6f0819187554301d0a0011f",
+  "canonicalSourceCommit": "d4b0fd88a722225c221d8264b89af70525cb1d7d",
+  "siteSourceCommit": "11d7a1439caaf641a2d2f78eb2555c00cf30cc34",
+  "captures": {
+    "desktop": {
+      "capturedAt": "2026-10-27T22:14:28.694Z",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "directions": [
+        {
+          "direction": "01",
+          "title": "Conservative Fit\nCalm Foundation",
+          "projectId": "proj-direction-a-f40b2c6e80b743079e56598051a1facadira",
+          "designDNA": {
+            "professionalism": 100,
+            "playfulness": 53,
+            "luxury": 40,
+            "warmth": 45,
+            "technicality": 65,
+            "editorial": 35,
+            "futurism": 35,
+            "visualAmbition": 20,
+            "structuralCreativity": 60,
+            "density": 60,
+            "whitespace": 65,
+            "contrast": 75,
+            "colourfulness": 54,
+            "curvature": 53,
+            "depth": 25,
+            "motion": 25,
+            "motionPlayfulness": 25,
+            "typographicExpression": 35,
+            "imageryIntensity": 25,
+            "videoIntensity": 5,
+            "threeDIntensity": 0,
+            "dataDensity": 65,
+            "interactionDensity": 60,
+            "asymmetry": 65,
+            "conversionIntensity": 55,
+            "trust": 100,
+            "accessibilityPriority": 100,
+            "performancePriority": 97,
+            "primaryArchetype": "recruitment",
+            "visualMode": "light",
+            "geometryFamily": "pill",
+            "navigationModel": "sidebar",
+            "responsivePhilosophy": "desktop-dense-mobile-focused",
+            "contentTone": "calm",
+            "primaryStack": "react-tailwind",
+            "motionPersonality": "playful-spring",
+            "typographyPersonality": "geist-system",
+            "surfacePersonality": "subtle-contrast"
+          },
+          "navigation": {
+            "model": "sidebar",
+            "primaryItems": [
+              {
+                "label": "Marketing Home",
+                "targetScreenId": "screen-marketing-home"
+              },
+              {
+                "label": "Team Overview",
+                "targetScreenId": "screen-overview"
+              },
+              {
+                "label": "People Directory",
+                "targetScreenId": "screen-collection-index"
+              },
+              {
+                "label": "Teams",
+                "targetScreenId": "screen-teams"
+              },
+              {
+                "label": "Engagement",
+                "targetScreenId": "screen-engagement"
+              }
+            ],
+            "secondaryItems": [
+              {
+                "label": "Settings & Policies",
+                "targetScreenId": "screen-settings"
+              }
+            ]
+          },
+          "compositionGrammar": "classic-sidebar-dashboard",
+          "layoutStrategy": [
+            "Navigation: SIDEBAR",
+            "Layout: Sidebar with cards"
+          ],
+          "screens": [
+            {
+              "id": "screen-marketing-home",
+              "name": "Marketing Home",
+              "slug": "/"
+            },
+            {
+              "id": "screen-overview",
+              "name": "Team Overview",
+              "slug": "/overview"
+            },
+            {
+              "id": "screen-collection-index",
+              "name": "People Directory",
+              "slug": "/people"
+            },
+            {
+              "id": "screen-teams",
+              "name": "Teams",
+              "slug": "/teams"
+            },
+            {
+              "id": "screen-engagement",
+              "name": "Engagement",
+              "slug": "/engagement"
+            },
+            {
+              "id": "screen-onboarding",
+              "name": "Onboarding",
+              "slug": "/onboarding"
+            },
+            {
+              "id": "screen-settings",
+              "name": "Settings & Policies",
+              "slug": "/settings"
+            }
+          ],
+          "resourceRefs": [
+            {
+              "nodeId": "node-screen-marketing-home-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-hero-2",
+              "role": "hero",
+              "slug": "editorial-hero",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-value-proposition-3",
+              "role": "value-proposition",
+              "slug": "feature-bento",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-conversion-cta-4",
+              "role": "conversion-cta",
+              "slug": "cta-minimal",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-footer-5",
+              "role": "footer",
+              "slug": "footer-product",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-overview-navigation-1",
+              "role": "navigation",
+              "slug": "collapsible-sidebar",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-overview-overview-header-2",
+              "role": "overview-header",
+              "slug": "entity-profile-header",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-overview-metric-cards-3",
+              "role": "metric-cards",
+              "slug": "dashboard-kpi-grid",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-overview-activity-feed-4",
+              "role": "activity-feed",
+              "slug": "timeline",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-overview-data-table-5",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-collection-index-navigation-1",
+              "role": "navigation",
+              "slug": "collapsible-sidebar",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-collection-index-index-header-2",
+              "role": "index-header",
+              "slug": "entity-profile-header",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-collection-index-filter-bar-3",
+              "role": "filter-bar",
+              "slug": "filter-builder",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-collection-index-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-collection-index-pagination-5",
+              "role": "pagination",
+              "slug": "button",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-teams-navigation-1",
+              "role": "navigation",
+              "slug": "collapsible-sidebar",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-teams-index-header-2",
+              "role": "index-header",
+              "slug": "entity-profile-header",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-teams-filter-bar-3",
+              "role": "filter-bar",
+              "slug": "filter-builder",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-teams-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-teams-pagination-5",
+              "role": "pagination",
+              "slug": "button",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-engagement-navigation-1",
+              "role": "navigation",
+              "slug": "collapsible-sidebar",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-engagement-overview-header-2",
+              "role": "overview-header",
+              "slug": "entity-profile-header",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-engagement-metric-cards-3",
+              "role": "metric-cards",
+              "slug": "dashboard-kpi-grid",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-engagement-activity-feed-4",
+              "role": "activity-feed",
+              "slug": "timeline",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-engagement-data-table-5",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-onboarding-navigation-1",
+              "role": "navigation",
+              "slug": "collapsible-sidebar",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-onboarding-progress-stepper-2",
+              "role": "progress-stepper",
+              "slug": "timeline",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-onboarding-wizard-content-3",
+              "role": "wizard-content",
+              "slug": "kanban-board",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-onboarding-action-controls-4",
+              "role": "action-controls",
+              "slug": "button",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-settings-navigation-1",
+              "role": "navigation",
+              "slug": "collapsible-sidebar",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-settings-settings-form-2",
+              "role": "settings-form",
+              "slug": "input",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-settings-save-footer-3",
+              "role": "save-footer",
+              "slug": "button",
+              "variant": "quiet"
+            }
+          ],
+          "selectedResourceSlugs": [
+            "advanced-data-table",
+            "button",
+            "collapsible-sidebar",
+            "cta-minimal",
+            "dashboard-kpi-grid",
+            "editorial-hero",
+            "entity-profile-header",
+            "feature-bento",
+            "filter-builder",
+            "footer-product",
+            "input",
+            "kanban-board",
+            "minimal-top-nav",
+            "timeline"
+          ],
+          "unresolvedDiagnostics": [],
+          "previewSettled": true,
+          "previewSettleMs": 2009,
+          "loadingPlaceholdersAfterSettle": [],
+          "screenshots": {
+            "preview": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-01-desktop-1440.png",
+            "initialPreview": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-01-initial-desktop-1440.png",
+            "dnaDialog": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-01-dna-desktop-1440.png",
+            "dnaDialogDisclosureOpen": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-01-dna-expanded-desktop-1440.png"
+          }
+        },
+        {
+          "direction": "02",
+          "title": "Expressive Fit\nExpressive Horizon",
+          "projectId": "proj-direction-b-f40b2c6e80b743079e56598051a1facadirb",
+          "designDNA": {
+            "professionalism": 100,
+            "playfulness": 53,
+            "luxury": 40,
+            "warmth": 45,
+            "technicality": 65,
+            "editorial": 35,
+            "futurism": 35,
+            "visualAmbition": 55,
+            "structuralCreativity": 75,
+            "density": 60,
+            "whitespace": 65,
+            "contrast": 75,
+            "colourfulness": 74,
+            "curvature": 63,
+            "depth": 40,
+            "motion": 45,
+            "motionPlayfulness": 70,
+            "typographicExpression": 60,
+            "imageryIntensity": 45,
+            "videoIntensity": 5,
+            "threeDIntensity": 0,
+            "dataDensity": 65,
+            "interactionDensity": 60,
+            "asymmetry": 65,
+            "conversionIntensity": 55,
+            "trust": 100,
+            "accessibilityPriority": 85,
+            "performancePriority": 82,
+            "primaryArchetype": "recruitment",
+            "visualMode": "light",
+            "geometryFamily": "pill",
+            "navigationModel": "top-nav",
+            "responsivePhilosophy": "desktop-dense-mobile-focused",
+            "contentTone": "calm",
+            "primaryStack": "react-tailwind",
+            "motionPersonality": "playful-spring",
+            "typographyPersonality": "geist-system",
+            "surfacePersonality": "subtle-contrast"
+          },
+          "navigation": {
+            "model": "top-nav",
+            "primaryItems": [
+              {
+                "label": "Marketing Home",
+                "targetScreenId": "screen-marketing-home"
+              },
+              {
+                "label": "Team Overview",
+                "targetScreenId": "screen-overview"
+              },
+              {
+                "label": "People Directory",
+                "targetScreenId": "screen-collection-index"
+              },
+              {
+                "label": "Teams",
+                "targetScreenId": "screen-teams"
+              },
+              {
+                "label": "Engagement",
+                "targetScreenId": "screen-engagement"
+              }
+            ],
+            "secondaryItems": [
+              {
+                "label": "Settings & Policies",
+                "targetScreenId": "screen-settings"
+              }
+            ]
+          },
+          "compositionGrammar": "product-proof-marketing",
+          "layoutStrategy": [
+            "Navigation: TOP NAVIGATION",
+            "Layout: Feature grid"
+          ],
+          "screens": [
+            {
+              "id": "screen-marketing-home",
+              "name": "Marketing Home",
+              "slug": "/"
+            },
+            {
+              "id": "screen-overview",
+              "name": "Team Overview",
+              "slug": "/overview"
+            },
+            {
+              "id": "screen-collection-index",
+              "name": "People Directory",
+              "slug": "/people"
+            },
+            {
+              "id": "screen-teams",
+              "name": "Teams",
+              "slug": "/teams"
+            },
+            {
+              "id": "screen-engagement",
+              "name": "Engagement",
+              "slug": "/engagement"
+            },
+            {
+              "id": "screen-onboarding",
+              "name": "Onboarding",
+              "slug": "/onboarding"
+            },
+            {
+              "id": "screen-settings",
+              "name": "Settings & Policies",
+              "slug": "/settings"
+            }
+          ],
+          "resourceRefs": [
+            {
+              "nodeId": "node-screen-marketing-home-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-hero-2",
+              "role": "hero",
+              "slug": "editorial-hero",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-value-proposition-3",
+              "role": "value-proposition",
+              "slug": "feature-bento",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-conversion-cta-4",
+              "role": "conversion-cta",
+              "slug": "cta-minimal",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-footer-5",
+              "role": "footer",
+              "slug": "footer-product",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-overview-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-overview-overview-header-2",
+              "role": "overview-header",
+              "slug": "entity-profile-header",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-overview-metric-cards-3",
+              "role": "metric-cards",
+              "slug": "dashboard-kpi-grid",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-overview-activity-feed-4",
+              "role": "activity-feed",
+              "slug": "timeline",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-overview-data-table-5",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-collection-index-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-collection-index-index-header-2",
+              "role": "index-header",
+              "slug": "entity-profile-header",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-collection-index-filter-bar-3",
+              "role": "filter-bar",
+              "slug": "filter-builder",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-collection-index-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-collection-index-pagination-5",
+              "role": "pagination",
+              "slug": "button",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-teams-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-teams-index-header-2",
+              "role": "index-header",
+              "slug": "entity-profile-header",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-teams-filter-bar-3",
+              "role": "filter-bar",
+              "slug": "filter-builder",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-teams-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-teams-pagination-5",
+              "role": "pagination",
+              "slug": "button",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-engagement-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-engagement-overview-header-2",
+              "role": "overview-header",
+              "slug": "entity-profile-header",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-engagement-metric-cards-3",
+              "role": "metric-cards",
+              "slug": "dashboard-kpi-grid",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-engagement-activity-feed-4",
+              "role": "activity-feed",
+              "slug": "timeline",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-engagement-data-table-5",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-onboarding-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-onboarding-progress-stepper-2",
+              "role": "progress-stepper",
+              "slug": "timeline",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-onboarding-wizard-content-3",
+              "role": "wizard-content",
+              "slug": "kanban-board",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-onboarding-action-controls-4",
+              "role": "action-controls",
+              "slug": "button",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-settings-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-settings-settings-form-2",
+              "role": "settings-form",
+              "slug": "input",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-settings-save-footer-3",
+              "role": "save-footer",
+              "slug": "magnetic-button",
+              "variant": "expressive"
+            }
+          ],
+          "selectedResourceSlugs": [
+            "advanced-data-table",
+            "button",
+            "cta-minimal",
+            "dashboard-kpi-grid",
+            "editorial-hero",
+            "entity-profile-header",
+            "feature-bento",
+            "filter-builder",
+            "footer-product",
+            "input",
+            "kanban-board",
+            "magnetic-button",
+            "minimal-top-nav",
+            "timeline"
+          ],
+          "unresolvedDiagnostics": [],
+          "previewSettled": true,
+          "previewSettleMs": 1674,
+          "loadingPlaceholdersAfterSettle": [],
+          "screenshots": {
+            "preview": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-02-desktop-1440.png",
+            "initialPreview": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-02-initial-desktop-1440.png",
+            "dnaDialog": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-02-dna-desktop-1440.png",
+            "dnaDialogDisclosureOpen": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-02-dna-expanded-desktop-1440.png"
+          }
+        },
+        {
+          "direction": "03",
+          "title": "Workspace Alternative\nAdaptive Workspace",
+          "projectId": "proj-direction-c-f40b2c6e80b743079e56598051a1facadirc",
+          "designDNA": {
+            "professionalism": 100,
+            "playfulness": 53,
+            "luxury": 40,
+            "warmth": 45,
+            "technicality": 65,
+            "editorial": 35,
+            "futurism": 35,
+            "visualAmbition": 40,
+            "structuralCreativity": 95,
+            "density": 60,
+            "whitespace": 65,
+            "contrast": 75,
+            "colourfulness": 54,
+            "curvature": 63,
+            "depth": 25,
+            "motion": 25,
+            "motionPlayfulness": 45,
+            "typographicExpression": 35,
+            "imageryIntensity": 25,
+            "videoIntensity": 5,
+            "threeDIntensity": 0,
+            "dataDensity": 65,
+            "interactionDensity": 80,
+            "asymmetry": 80,
+            "conversionIntensity": 55,
+            "trust": 100,
+            "accessibilityPriority": 85,
+            "performancePriority": 82,
+            "primaryArchetype": "recruitment",
+            "visualMode": "dark",
+            "geometryFamily": "pill",
+            "navigationModel": "rail",
+            "responsivePhilosophy": "desktop-dense-mobile-focused",
+            "contentTone": "calm",
+            "primaryStack": "react-tailwind",
+            "motionPersonality": "playful-spring",
+            "typographyPersonality": "geist-system",
+            "surfacePersonality": "subtle-contrast"
+          },
+          "navigation": {
+            "model": "rail",
+            "primaryItems": [
+              {
+                "label": "Marketing Home",
+                "targetScreenId": "screen-marketing-home"
+              },
+              {
+                "label": "Team Overview",
+                "targetScreenId": "screen-overview"
+              },
+              {
+                "label": "People Directory",
+                "targetScreenId": "screen-collection-index"
+              },
+              {
+                "label": "Teams",
+                "targetScreenId": "screen-teams"
+              },
+              {
+                "label": "Engagement",
+                "targetScreenId": "screen-engagement"
+              }
+            ],
+            "secondaryItems": [
+              {
+                "label": "Settings & Policies",
+                "targetScreenId": "screen-settings"
+              }
+            ]
+          },
+          "compositionGrammar": "three-pane-intelligence-workspace",
+          "layoutStrategy": [
+            "Navigation: NAVIGATION RAIL",
+            "Layout: Three-column workspace"
+          ],
+          "screens": [
+            {
+              "id": "screen-marketing-home",
+              "name": "Marketing Home",
+              "slug": "/"
+            },
+            {
+              "id": "screen-overview",
+              "name": "Team Overview",
+              "slug": "/overview"
+            },
+            {
+              "id": "screen-collection-index",
+              "name": "People Directory",
+              "slug": "/people"
+            },
+            {
+              "id": "screen-teams",
+              "name": "Teams",
+              "slug": "/teams"
+            },
+            {
+              "id": "screen-engagement",
+              "name": "Engagement",
+              "slug": "/engagement"
+            },
+            {
+              "id": "screen-onboarding",
+              "name": "Onboarding",
+              "slug": "/onboarding"
+            },
+            {
+              "id": "screen-settings",
+              "name": "Settings & Policies",
+              "slug": "/settings"
+            }
+          ],
+          "resourceRefs": [
+            {
+              "nodeId": "node-screen-marketing-home-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-hero-2",
+              "role": "hero",
+              "slug": "editorial-hero",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-value-proposition-3",
+              "role": "value-proposition",
+              "slug": "feature-bento",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-conversion-cta-4",
+              "role": "conversion-cta",
+              "slug": "cta-minimal",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-footer-5",
+              "role": "footer",
+              "slug": "footer-product",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-overview-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-overview-overview-header-2",
+              "role": "overview-header",
+              "slug": "entity-profile-header",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-overview-metric-cards-3",
+              "role": "metric-cards",
+              "slug": "dashboard-kpi-grid",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-overview-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-overview-activity-feed-5",
+              "role": "activity-feed",
+              "slug": "timeline",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-collection-index-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-collection-index-index-header-2",
+              "role": "index-header",
+              "slug": "entity-profile-header",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-collection-index-filter-bar-3",
+              "role": "filter-bar",
+              "slug": "filter-builder",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-collection-index-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-collection-index-pagination-5",
+              "role": "pagination",
+              "slug": "button",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-teams-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-teams-index-header-2",
+              "role": "index-header",
+              "slug": "entity-profile-header",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-teams-filter-bar-3",
+              "role": "filter-bar",
+              "slug": "filter-builder",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-teams-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-teams-pagination-5",
+              "role": "pagination",
+              "slug": "button",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-engagement-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-engagement-overview-header-2",
+              "role": "overview-header",
+              "slug": "entity-profile-header",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-engagement-metric-cards-3",
+              "role": "metric-cards",
+              "slug": "dashboard-kpi-grid",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-engagement-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-engagement-activity-feed-5",
+              "role": "activity-feed",
+              "slug": "timeline",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-onboarding-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-onboarding-progress-stepper-2",
+              "role": "progress-stepper",
+              "slug": "timeline",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-onboarding-wizard-content-3",
+              "role": "wizard-content",
+              "slug": "kanban-board",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-onboarding-action-controls-4",
+              "role": "action-controls",
+              "slug": "button",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-settings-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-settings-settings-form-2",
+              "role": "settings-form",
+              "slug": "input",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-settings-save-footer-3",
+              "role": "save-footer",
+              "slug": "button",
+              "variant": "nocturne"
+            }
+          ],
+          "selectedResourceSlugs": [
+            "advanced-data-table",
+            "button",
+            "cta-minimal",
+            "dashboard-kpi-grid",
+            "editorial-hero",
+            "entity-profile-header",
+            "feature-bento",
+            "filter-builder",
+            "footer-product",
+            "input",
+            "kanban-board",
+            "minimal-top-nav",
+            "timeline"
+          ],
+          "unresolvedDiagnostics": [],
+          "previewSettled": true,
+          "previewSettleMs": 1716,
+          "loadingPlaceholdersAfterSettle": [],
+          "screenshots": {
+            "preview": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-03-desktop-1440.png",
+            "initialPreview": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-03-initial-desktop-1440.png",
+            "dnaDialog": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-03-dna-desktop-1440.png",
+            "dnaDialogDisclosureOpen": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-03-dna-expanded-desktop-1440.png"
+          }
+        }
+      ],
+      "diagnostics": {
+        "consoleErrors": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "badResponses": []
+      }
+    },
+    "mobile": {
+      "capturedAt": "2026-10-27T22:14:27.083Z",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "directions": [
+        {
+          "direction": "01",
+          "title": "Conservative Fit\nCalm Foundation",
+          "projectId": "proj-direction-a-537228886b894a84ba85eab7d504e002dira",
+          "designDNA": {
+            "professionalism": 100,
+            "playfulness": 53,
+            "luxury": 40,
+            "warmth": 45,
+            "technicality": 65,
+            "editorial": 35,
+            "futurism": 35,
+            "visualAmbition": 20,
+            "structuralCreativity": 60,
+            "density": 60,
+            "whitespace": 65,
+            "contrast": 75,
+            "colourfulness": 54,
+            "curvature": 53,
+            "depth": 25,
+            "motion": 25,
+            "motionPlayfulness": 25,
+            "typographicExpression": 35,
+            "imageryIntensity": 25,
+            "videoIntensity": 5,
+            "threeDIntensity": 0,
+            "dataDensity": 65,
+            "interactionDensity": 60,
+            "asymmetry": 65,
+            "conversionIntensity": 55,
+            "trust": 100,
+            "accessibilityPriority": 100,
+            "performancePriority": 97,
+            "primaryArchetype": "recruitment",
+            "visualMode": "light",
+            "geometryFamily": "pill",
+            "navigationModel": "sidebar",
+            "responsivePhilosophy": "desktop-dense-mobile-focused",
+            "contentTone": "calm",
+            "primaryStack": "react-tailwind",
+            "motionPersonality": "playful-spring",
+            "typographyPersonality": "geist-system",
+            "surfacePersonality": "subtle-contrast"
+          },
+          "navigation": {
+            "model": "sidebar",
+            "primaryItems": [
+              {
+                "label": "Marketing Home",
+                "targetScreenId": "screen-marketing-home"
+              },
+              {
+                "label": "Team Overview",
+                "targetScreenId": "screen-overview"
+              },
+              {
+                "label": "People Directory",
+                "targetScreenId": "screen-collection-index"
+              },
+              {
+                "label": "Teams",
+                "targetScreenId": "screen-teams"
+              },
+              {
+                "label": "Engagement",
+                "targetScreenId": "screen-engagement"
+              }
+            ],
+            "secondaryItems": [
+              {
+                "label": "Settings & Policies",
+                "targetScreenId": "screen-settings"
+              }
+            ]
+          },
+          "compositionGrammar": "classic-sidebar-dashboard",
+          "layoutStrategy": [
+            "Navigation: SIDEBAR",
+            "Layout: Sidebar with cards"
+          ],
+          "screens": [
+            {
+              "id": "screen-marketing-home",
+              "name": "Marketing Home",
+              "slug": "/"
+            },
+            {
+              "id": "screen-overview",
+              "name": "Team Overview",
+              "slug": "/overview"
+            },
+            {
+              "id": "screen-collection-index",
+              "name": "People Directory",
+              "slug": "/people"
+            },
+            {
+              "id": "screen-teams",
+              "name": "Teams",
+              "slug": "/teams"
+            },
+            {
+              "id": "screen-engagement",
+              "name": "Engagement",
+              "slug": "/engagement"
+            },
+            {
+              "id": "screen-onboarding",
+              "name": "Onboarding",
+              "slug": "/onboarding"
+            },
+            {
+              "id": "screen-settings",
+              "name": "Settings & Policies",
+              "slug": "/settings"
+            }
+          ],
+          "resourceRefs": [
+            {
+              "nodeId": "node-screen-marketing-home-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-hero-2",
+              "role": "hero",
+              "slug": "editorial-hero",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-value-proposition-3",
+              "role": "value-proposition",
+              "slug": "feature-bento",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-conversion-cta-4",
+              "role": "conversion-cta",
+              "slug": "cta-minimal",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-footer-5",
+              "role": "footer",
+              "slug": "footer-product",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-overview-navigation-1",
+              "role": "navigation",
+              "slug": "collapsible-sidebar",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-overview-overview-header-2",
+              "role": "overview-header",
+              "slug": "entity-profile-header",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-overview-metric-cards-3",
+              "role": "metric-cards",
+              "slug": "dashboard-kpi-grid",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-overview-activity-feed-4",
+              "role": "activity-feed",
+              "slug": "timeline",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-overview-data-table-5",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-collection-index-navigation-1",
+              "role": "navigation",
+              "slug": "collapsible-sidebar",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-collection-index-index-header-2",
+              "role": "index-header",
+              "slug": "entity-profile-header",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-collection-index-filter-bar-3",
+              "role": "filter-bar",
+              "slug": "filter-builder",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-collection-index-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-collection-index-pagination-5",
+              "role": "pagination",
+              "slug": "button",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-teams-navigation-1",
+              "role": "navigation",
+              "slug": "collapsible-sidebar",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-teams-index-header-2",
+              "role": "index-header",
+              "slug": "entity-profile-header",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-teams-filter-bar-3",
+              "role": "filter-bar",
+              "slug": "filter-builder",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-teams-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-teams-pagination-5",
+              "role": "pagination",
+              "slug": "button",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-engagement-navigation-1",
+              "role": "navigation",
+              "slug": "collapsible-sidebar",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-engagement-overview-header-2",
+              "role": "overview-header",
+              "slug": "entity-profile-header",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-engagement-metric-cards-3",
+              "role": "metric-cards",
+              "slug": "dashboard-kpi-grid",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-engagement-activity-feed-4",
+              "role": "activity-feed",
+              "slug": "timeline",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-engagement-data-table-5",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-onboarding-navigation-1",
+              "role": "navigation",
+              "slug": "collapsible-sidebar",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-onboarding-progress-stepper-2",
+              "role": "progress-stepper",
+              "slug": "timeline",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-onboarding-wizard-content-3",
+              "role": "wizard-content",
+              "slug": "kanban-board",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-onboarding-action-controls-4",
+              "role": "action-controls",
+              "slug": "button",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-settings-navigation-1",
+              "role": "navigation",
+              "slug": "collapsible-sidebar",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-settings-settings-form-2",
+              "role": "settings-form",
+              "slug": "input",
+              "variant": "quiet"
+            },
+            {
+              "nodeId": "node-screen-settings-save-footer-3",
+              "role": "save-footer",
+              "slug": "button",
+              "variant": "quiet"
+            }
+          ],
+          "selectedResourceSlugs": [
+            "advanced-data-table",
+            "button",
+            "collapsible-sidebar",
+            "cta-minimal",
+            "dashboard-kpi-grid",
+            "editorial-hero",
+            "entity-profile-header",
+            "feature-bento",
+            "filter-builder",
+            "footer-product",
+            "input",
+            "kanban-board",
+            "minimal-top-nav",
+            "timeline"
+          ],
+          "unresolvedDiagnostics": [],
+          "previewSettled": true,
+          "previewSettleMs": 1583,
+          "loadingPlaceholdersAfterSettle": [],
+          "screenshots": {
+            "preview": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-01-mobile-390.png",
+            "initialPreview": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-01-initial-mobile-390.png",
+            "dnaDialog": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-01-dna-mobile-390.png",
+            "dnaDialogDisclosureOpen": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-01-dna-expanded-mobile-390.png"
+          }
+        },
+        {
+          "direction": "02",
+          "title": "Expressive Fit\nExpressive Horizon",
+          "projectId": "proj-direction-b-537228886b894a84ba85eab7d504e002dirb",
+          "designDNA": {
+            "professionalism": 100,
+            "playfulness": 53,
+            "luxury": 40,
+            "warmth": 45,
+            "technicality": 65,
+            "editorial": 35,
+            "futurism": 35,
+            "visualAmbition": 55,
+            "structuralCreativity": 75,
+            "density": 60,
+            "whitespace": 65,
+            "contrast": 75,
+            "colourfulness": 74,
+            "curvature": 63,
+            "depth": 40,
+            "motion": 45,
+            "motionPlayfulness": 70,
+            "typographicExpression": 60,
+            "imageryIntensity": 45,
+            "videoIntensity": 5,
+            "threeDIntensity": 0,
+            "dataDensity": 65,
+            "interactionDensity": 60,
+            "asymmetry": 65,
+            "conversionIntensity": 55,
+            "trust": 100,
+            "accessibilityPriority": 85,
+            "performancePriority": 82,
+            "primaryArchetype": "recruitment",
+            "visualMode": "light",
+            "geometryFamily": "pill",
+            "navigationModel": "top-nav",
+            "responsivePhilosophy": "desktop-dense-mobile-focused",
+            "contentTone": "calm",
+            "primaryStack": "react-tailwind",
+            "motionPersonality": "playful-spring",
+            "typographyPersonality": "geist-system",
+            "surfacePersonality": "subtle-contrast"
+          },
+          "navigation": {
+            "model": "top-nav",
+            "primaryItems": [
+              {
+                "label": "Marketing Home",
+                "targetScreenId": "screen-marketing-home"
+              },
+              {
+                "label": "Team Overview",
+                "targetScreenId": "screen-overview"
+              },
+              {
+                "label": "People Directory",
+                "targetScreenId": "screen-collection-index"
+              },
+              {
+                "label": "Teams",
+                "targetScreenId": "screen-teams"
+              },
+              {
+                "label": "Engagement",
+                "targetScreenId": "screen-engagement"
+              }
+            ],
+            "secondaryItems": [
+              {
+                "label": "Settings & Policies",
+                "targetScreenId": "screen-settings"
+              }
+            ]
+          },
+          "compositionGrammar": "product-proof-marketing",
+          "layoutStrategy": [
+            "Navigation: TOP NAVIGATION",
+            "Layout: Feature grid"
+          ],
+          "screens": [
+            {
+              "id": "screen-marketing-home",
+              "name": "Marketing Home",
+              "slug": "/"
+            },
+            {
+              "id": "screen-overview",
+              "name": "Team Overview",
+              "slug": "/overview"
+            },
+            {
+              "id": "screen-collection-index",
+              "name": "People Directory",
+              "slug": "/people"
+            },
+            {
+              "id": "screen-teams",
+              "name": "Teams",
+              "slug": "/teams"
+            },
+            {
+              "id": "screen-engagement",
+              "name": "Engagement",
+              "slug": "/engagement"
+            },
+            {
+              "id": "screen-onboarding",
+              "name": "Onboarding",
+              "slug": "/onboarding"
+            },
+            {
+              "id": "screen-settings",
+              "name": "Settings & Policies",
+              "slug": "/settings"
+            }
+          ],
+          "resourceRefs": [
+            {
+              "nodeId": "node-screen-marketing-home-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-hero-2",
+              "role": "hero",
+              "slug": "editorial-hero",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-value-proposition-3",
+              "role": "value-proposition",
+              "slug": "feature-bento",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-conversion-cta-4",
+              "role": "conversion-cta",
+              "slug": "cta-minimal",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-footer-5",
+              "role": "footer",
+              "slug": "footer-product",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-overview-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-overview-overview-header-2",
+              "role": "overview-header",
+              "slug": "entity-profile-header",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-overview-metric-cards-3",
+              "role": "metric-cards",
+              "slug": "dashboard-kpi-grid",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-overview-activity-feed-4",
+              "role": "activity-feed",
+              "slug": "timeline",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-overview-data-table-5",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-collection-index-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-collection-index-index-header-2",
+              "role": "index-header",
+              "slug": "entity-profile-header",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-collection-index-filter-bar-3",
+              "role": "filter-bar",
+              "slug": "filter-builder",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-collection-index-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-collection-index-pagination-5",
+              "role": "pagination",
+              "slug": "button",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-teams-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-teams-index-header-2",
+              "role": "index-header",
+              "slug": "entity-profile-header",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-teams-filter-bar-3",
+              "role": "filter-bar",
+              "slug": "filter-builder",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-teams-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-teams-pagination-5",
+              "role": "pagination",
+              "slug": "button",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-engagement-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-engagement-overview-header-2",
+              "role": "overview-header",
+              "slug": "entity-profile-header",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-engagement-metric-cards-3",
+              "role": "metric-cards",
+              "slug": "dashboard-kpi-grid",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-engagement-activity-feed-4",
+              "role": "activity-feed",
+              "slug": "timeline",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-engagement-data-table-5",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-onboarding-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-onboarding-progress-stepper-2",
+              "role": "progress-stepper",
+              "slug": "timeline",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-onboarding-wizard-content-3",
+              "role": "wizard-content",
+              "slug": "kanban-board",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-onboarding-action-controls-4",
+              "role": "action-controls",
+              "slug": "button",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-settings-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-settings-settings-form-2",
+              "role": "settings-form",
+              "slug": "input",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-settings-save-footer-3",
+              "role": "save-footer",
+              "slug": "magnetic-button",
+              "variant": "expressive"
+            }
+          ],
+          "selectedResourceSlugs": [
+            "advanced-data-table",
+            "button",
+            "cta-minimal",
+            "dashboard-kpi-grid",
+            "editorial-hero",
+            "entity-profile-header",
+            "feature-bento",
+            "filter-builder",
+            "footer-product",
+            "input",
+            "kanban-board",
+            "magnetic-button",
+            "minimal-top-nav",
+            "timeline"
+          ],
+          "unresolvedDiagnostics": [],
+          "previewSettled": true,
+          "previewSettleMs": 1128,
+          "loadingPlaceholdersAfterSettle": [],
+          "screenshots": {
+            "preview": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-02-mobile-390.png",
+            "initialPreview": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-02-initial-mobile-390.png",
+            "dnaDialog": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-02-dna-mobile-390.png",
+            "dnaDialogDisclosureOpen": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-02-dna-expanded-mobile-390.png"
+          }
+        },
+        {
+          "direction": "03",
+          "title": "Workspace Alternative\nAdaptive Workspace",
+          "projectId": "proj-direction-c-537228886b894a84ba85eab7d504e002dirc",
+          "designDNA": {
+            "professionalism": 100,
+            "playfulness": 53,
+            "luxury": 40,
+            "warmth": 45,
+            "technicality": 65,
+            "editorial": 35,
+            "futurism": 35,
+            "visualAmbition": 40,
+            "structuralCreativity": 95,
+            "density": 60,
+            "whitespace": 65,
+            "contrast": 75,
+            "colourfulness": 54,
+            "curvature": 63,
+            "depth": 25,
+            "motion": 25,
+            "motionPlayfulness": 45,
+            "typographicExpression": 35,
+            "imageryIntensity": 25,
+            "videoIntensity": 5,
+            "threeDIntensity": 0,
+            "dataDensity": 65,
+            "interactionDensity": 80,
+            "asymmetry": 80,
+            "conversionIntensity": 55,
+            "trust": 100,
+            "accessibilityPriority": 85,
+            "performancePriority": 82,
+            "primaryArchetype": "recruitment",
+            "visualMode": "dark",
+            "geometryFamily": "pill",
+            "navigationModel": "rail",
+            "responsivePhilosophy": "desktop-dense-mobile-focused",
+            "contentTone": "calm",
+            "primaryStack": "react-tailwind",
+            "motionPersonality": "playful-spring",
+            "typographyPersonality": "geist-system",
+            "surfacePersonality": "subtle-contrast"
+          },
+          "navigation": {
+            "model": "rail",
+            "primaryItems": [
+              {
+                "label": "Marketing Home",
+                "targetScreenId": "screen-marketing-home"
+              },
+              {
+                "label": "Team Overview",
+                "targetScreenId": "screen-overview"
+              },
+              {
+                "label": "People Directory",
+                "targetScreenId": "screen-collection-index"
+              },
+              {
+                "label": "Teams",
+                "targetScreenId": "screen-teams"
+              },
+              {
+                "label": "Engagement",
+                "targetScreenId": "screen-engagement"
+              }
+            ],
+            "secondaryItems": [
+              {
+                "label": "Settings & Policies",
+                "targetScreenId": "screen-settings"
+              }
+            ]
+          },
+          "compositionGrammar": "three-pane-intelligence-workspace",
+          "layoutStrategy": [
+            "Navigation: NAVIGATION RAIL",
+            "Layout: Three-column workspace"
+          ],
+          "screens": [
+            {
+              "id": "screen-marketing-home",
+              "name": "Marketing Home",
+              "slug": "/"
+            },
+            {
+              "id": "screen-overview",
+              "name": "Team Overview",
+              "slug": "/overview"
+            },
+            {
+              "id": "screen-collection-index",
+              "name": "People Directory",
+              "slug": "/people"
+            },
+            {
+              "id": "screen-teams",
+              "name": "Teams",
+              "slug": "/teams"
+            },
+            {
+              "id": "screen-engagement",
+              "name": "Engagement",
+              "slug": "/engagement"
+            },
+            {
+              "id": "screen-onboarding",
+              "name": "Onboarding",
+              "slug": "/onboarding"
+            },
+            {
+              "id": "screen-settings",
+              "name": "Settings & Policies",
+              "slug": "/settings"
+            }
+          ],
+          "resourceRefs": [
+            {
+              "nodeId": "node-screen-marketing-home-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-hero-2",
+              "role": "hero",
+              "slug": "editorial-hero",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-value-proposition-3",
+              "role": "value-proposition",
+              "slug": "feature-bento",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-conversion-cta-4",
+              "role": "conversion-cta",
+              "slug": "cta-minimal",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-marketing-home-footer-5",
+              "role": "footer",
+              "slug": "footer-product",
+              "variant": "expressive"
+            },
+            {
+              "nodeId": "node-screen-overview-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-overview-overview-header-2",
+              "role": "overview-header",
+              "slug": "entity-profile-header",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-overview-metric-cards-3",
+              "role": "metric-cards",
+              "slug": "dashboard-kpi-grid",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-overview-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-overview-activity-feed-5",
+              "role": "activity-feed",
+              "slug": "timeline",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-collection-index-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-collection-index-index-header-2",
+              "role": "index-header",
+              "slug": "entity-profile-header",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-collection-index-filter-bar-3",
+              "role": "filter-bar",
+              "slug": "filter-builder",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-collection-index-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-collection-index-pagination-5",
+              "role": "pagination",
+              "slug": "button",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-teams-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-teams-index-header-2",
+              "role": "index-header",
+              "slug": "entity-profile-header",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-teams-filter-bar-3",
+              "role": "filter-bar",
+              "slug": "filter-builder",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-teams-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-teams-pagination-5",
+              "role": "pagination",
+              "slug": "button",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-engagement-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-engagement-overview-header-2",
+              "role": "overview-header",
+              "slug": "entity-profile-header",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-engagement-metric-cards-3",
+              "role": "metric-cards",
+              "slug": "dashboard-kpi-grid",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-engagement-data-table-4",
+              "role": "data-table",
+              "slug": "advanced-data-table",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-engagement-activity-feed-5",
+              "role": "activity-feed",
+              "slug": "timeline",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-onboarding-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-onboarding-progress-stepper-2",
+              "role": "progress-stepper",
+              "slug": "timeline",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-onboarding-wizard-content-3",
+              "role": "wizard-content",
+              "slug": "kanban-board",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-onboarding-action-controls-4",
+              "role": "action-controls",
+              "slug": "button",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-settings-navigation-1",
+              "role": "navigation",
+              "slug": "minimal-top-nav",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-settings-settings-form-2",
+              "role": "settings-form",
+              "slug": "input",
+              "variant": "nocturne"
+            },
+            {
+              "nodeId": "node-screen-settings-save-footer-3",
+              "role": "save-footer",
+              "slug": "button",
+              "variant": "nocturne"
+            }
+          ],
+          "selectedResourceSlugs": [
+            "advanced-data-table",
+            "button",
+            "cta-minimal",
+            "dashboard-kpi-grid",
+            "editorial-hero",
+            "entity-profile-header",
+            "feature-bento",
+            "filter-builder",
+            "footer-product",
+            "input",
+            "kanban-board",
+            "minimal-top-nav",
+            "timeline"
+          ],
+          "unresolvedDiagnostics": [],
+          "previewSettled": true,
+          "previewSettleMs": 1104,
+          "loadingPlaceholdersAfterSettle": [],
+          "screenshots": {
+            "preview": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-03-mobile-390.png",
+            "initialPreview": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-03-initial-mobile-390.png",
+            "dnaDialog": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-03-dna-mobile-390.png",
+            "dnaDialogDisclosureOpen": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-03-dna-expanded-mobile-390.png"
+          }
+        }
+      ],
+      "diagnostics": {
+        "consoleErrors": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "badResponses": []
+      }
+    }
+  }
+}

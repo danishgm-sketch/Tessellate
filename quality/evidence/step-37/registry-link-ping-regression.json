@@ -1,0 +1,32 @@
+{
+  "findingId": "SEC-37-101",
+  "severity": "medium",
+  "title": "Link ping attributes enabled hidden outbound beacons",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "<a href=\"/docs\" ping=\"https://collector.invalid/ping\">Docs</a>",
+      "React.createElement('area', { href: '/map', ping: '//collector.invalid/ping' })",
+      "Object.assign(document.createElement('a'), { ping: 'https://collector.invalid/ping' })"
+    ],
+    "beforeFix": "All link ping variants returned pass through registry admission. Chromium confirms that clicking an anchor with ping=https://collector.invalid/ping emits a request to that URL.",
+    "browserEvidence": "The probe used a local HTTP page, clicked the link, observed https://collector.invalid/ping, and aborted the request in Playwright before network access."
+  },
+  "rootCause": "The registry URL-attribute allowlist omitted ping, an attribute that sends one or more hidden POST beacons when a link is activated.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Treat ping on anchor and area elements as an outbound request; inspect JSX, React factories, object spreads, assignments, setAttribute, and Object.assign using the normalized resource URL classifier.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"hidden outbound link ping beacons\"",
+    "redBeforeFixResult": "failed as expected: JSX anchor ping returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"hidden outbound link ping beacons\"",
+    "targetedAfterFixResult": "passed; JSX, React factory, direct property, setAttribute URL list, and Object.assign beacons are rejected",
+    "fullRegistrySuite": "67 tests passed",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "A browser beacon probe was intercepted and aborted before external network access. No contributed script or component code was executed. Deployed CSP verification remains pending.",
+  "capturedAt": "2026-10-21T18:05:28Z"
+}

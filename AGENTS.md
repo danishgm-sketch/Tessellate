@@ -2,6 +2,10 @@
 
 This file is the authoritative operating contract for any autonomous coding agent working in this repository.
 
+## Current programme — 2026-10-16
+
+Follow `docs/PRODUCT_HARDENING.md` in order. No major features until its release gate passes. Work on `consolidation/product-hardening` or scoped PR branches; never develop or commit directly on `main`. Main is protected and substantial changes require a PR with passing CI. Do not bypass protection. Historical BUILD_ORDER checkmarks do not override the owner's hardening programme.
+
 ## 0. Owner intent
 
 The owner expects an agent to be able to receive only the repository URL, inspect the repository, read this file, and begin implementation without asking for a project brief.

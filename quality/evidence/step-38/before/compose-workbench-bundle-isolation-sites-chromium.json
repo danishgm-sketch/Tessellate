@@ -1,0 +1,20 @@
+{
+  "capturedAt": "2026-10-21T08:49:15.855Z",
+  "route": "http://127.0.0.1:4323/compose",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "baselineSource": "Previously captured local Sites Worker route metrics before narrow persistence entry point",
+  "baselineJavaScriptTransferBytes": 588997,
+  "baselineJavaScriptDecodedBytes": 2486336,
+  "baselineJavaScriptResourceCount": 39,
+  "redRegressionRun": {
+    "test": "Compose does not download Workbench editor code before project handoff",
+    "thresholdBytes": 450000,
+    "observedJavaScriptTransferBytes": 588984,
+    "expected": "below 450000 bytes",
+    "result": "failed as expected before the package import was narrowed"
+  },
+  "screenshot": "quality/evidence/step-38/before/compose-workbench-bundle-isolation-sites-chromium.png"
+}

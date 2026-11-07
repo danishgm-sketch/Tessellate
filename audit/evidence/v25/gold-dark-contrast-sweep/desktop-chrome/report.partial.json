@@ -1,0 +1,881 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "checked": 40,
+  "total": 40,
+  "diagnostics": {
+    "console": [],
+    "warnings": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "results": [
+    {
+      "slug": "advanced-data-table",
+      "route": "/resources/advanced-data-table/",
+      "status": 200,
+      "textCount": 18,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "ai-prompt-composer",
+      "route": "/resources/ai-prompt-composer/",
+      "status": 200,
+      "textCount": 10,
+      "failures": [
+        {
+          "text": "Context: 2 files",
+          "tag": "span",
+          "className": "",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255,255,255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "11px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "~ 240 tokens",
+          "tag": "span",
+          "className": "",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255,255,255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "11px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Shift + Enter for newline",
+          "tag": "span",
+          "className": "text-[11px] text-neutral-400",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255,255,255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "11px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\ai-prompt-composer-1440x900.png"
+    },
+    {
+      "slug": "ai-research-answer",
+      "route": "/resources/ai-research-answer/",
+      "status": 200,
+      "textCount": 11,
+      "failures": [
+        {
+          "text": "1.",
+          "tag": "span",
+          "className": "font-mono text-neutral-400 font-bold",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255,255,255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "12px",
+          "fontWeight": "700"
+        },
+        {
+          "text": "2.",
+          "tag": "span",
+          "className": "font-mono text-neutral-400 font-bold",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255,255,255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "12px",
+          "fontWeight": "700"
+        },
+        {
+          "text": "3.",
+          "tag": "span",
+          "className": "font-mono text-neutral-400 font-bold",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255,255,255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "12px",
+          "fontWeight": "700"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\ai-research-answer-1440x900.png"
+    },
+    {
+      "slug": "ai-suggested-actions",
+      "route": "/resources/ai-suggested-actions/",
+      "status": 200,
+      "textCount": 8,
+      "failures": [
+        {
+          "text": "✦",
+          "tag": "span",
+          "className": "text-amber-500",
+          "foreground": "oklch(0.769 0.188 70.08)",
+          "background": "rgb(255,255,255)",
+          "ratio": 2.13,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "12px",
+          "fontWeight": "600"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\ai-suggested-actions-1440x900.png"
+    },
+    {
+      "slug": "area-chart",
+      "route": "/resources/area-chart/",
+      "status": 200,
+      "textCount": 14,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "badge",
+      "route": "/resources/badge/",
+      "status": 200,
+      "textCount": 1,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "bar-chart",
+      "route": "/resources/bar-chart/",
+      "status": 200,
+      "textCount": 16,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "button",
+      "route": "/resources/button/",
+      "status": 200,
+      "textCount": 1,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "collapsible-sidebar",
+      "route": "/resources/collapsible-sidebar/",
+      "status": 200,
+      "textCount": 4,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "cta-minimal",
+      "route": "/resources/cta-minimal/",
+      "status": 200,
+      "textCount": 3,
+      "failures": [
+        {
+          "text": "Example content. Replace it with your product story.",
+          "tag": "p",
+          "className": "text-xs @sm:text-sm opacity-75 mb-8",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(103,106,112)",
+          "ratio": 3.65,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\cta-minimal-1440x900.png"
+    },
+    {
+      "slug": "dashboard-kpi-grid",
+      "route": "/resources/dashboard-kpi-grid/",
+      "status": 200,
+      "textCount": 19,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "dashboard-skeleton",
+      "route": "/resources/dashboard-skeleton/",
+      "status": 200,
+      "textCount": 0,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "dialog",
+      "route": "/resources/dialog/",
+      "status": 200,
+      "textCount": 2,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "donut-chart",
+      "route": "/resources/donut-chart/",
+      "status": 200,
+      "textCount": 12,
+      "failures": [
+        {
+          "text": "Total",
+          "tag": "span",
+          "className": "text-[10px] text-neutral-400 font-medium",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255,255,255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "10px",
+          "fontWeight": "500"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\donut-chart-1440x900.png"
+    },
+    {
+      "slug": "editorial-hero",
+      "route": "/resources/editorial-hero/",
+      "status": 200,
+      "textCount": 6,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "empty-workspace",
+      "route": "/resources/empty-workspace/",
+      "status": 200,
+      "textCount": 4,
+      "failures": [
+        {
+          "text": "No Projects Found",
+          "tag": "h3",
+          "className": "text-base font-bold mb-2",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(107,108,110)",
+          "ratio": 3.77,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "16px",
+          "fontWeight": "700"
+        },
+        {
+          "text": "Start by creating a new composition or choose from 12 pre-built blueprints.",
+          "tag": "p",
+          "className": "text-xs opacity-75 max-w-sm mb-6",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(107,108,110)",
+          "ratio": 3.77,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\empty-workspace-1440x900.png"
+    },
+    {
+      "slug": "entity-profile-header",
+      "route": "/resources/entity-profile-header/",
+      "status": 200,
+      "textCount": 4,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "error-state",
+      "route": "/resources/error-state/",
+      "status": 200,
+      "textCount": 5,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "fade-up-reveal",
+      "route": "/resources/fade-up-reveal/",
+      "status": 200,
+      "textCount": 3,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "faq-accordion",
+      "route": "/resources/faq-accordion/",
+      "status": 200,
+      "textCount": 8,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "feature-bento",
+      "route": "/resources/feature-bento/",
+      "status": 200,
+      "textCount": 14,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "feature-matrix",
+      "route": "/resources/feature-matrix/",
+      "status": 200,
+      "textCount": 26,
+      "failures": [
+        {
+          "text": "Example capability matrix",
+          "tag": "h2",
+          "className": "text-3xl font-bold tracking-tight text-center mb-12",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(83,84,86)",
+          "ratio": 2.61,
+          "threshold": 3,
+          "gradient": false,
+          "fontSize": "30px",
+          "fontWeight": "700"
+        },
+        {
+          "text": "Verified Zod Schemas",
+          "tag": "td",
+          "className": "p-4 font-semibold",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(83,84,86)",
+          "ratio": 2.61,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "600"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Accessibility review",
+          "tag": "td",
+          "className": "p-4 font-semibold",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(83,84,86)",
+          "ratio": 2.61,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "600"
+        },
+        {
+          "text": "Required",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Required",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Required",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Required",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Zero External CSS Dependencies",
+          "tag": "td",
+          "className": "p-4 font-semibold",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(83,84,86)",
+          "ratio": 2.61,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "600"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Curated Nocturne Theme",
+          "tag": "td",
+          "className": "p-4 font-semibold",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(83,84,86)",
+          "ratio": 2.61,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "600"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Yes",
+          "tag": "td",
+          "className": "p-4 text-emerald-800 dark:text-emerald-300 font-mono",
+          "foreground": "oklch(0.432 0.095 166.913)",
+          "background": "rgb(83,84,86)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\feature-matrix-1440x900.png"
+    },
+    {
+      "slug": "filter-builder",
+      "route": "/resources/filter-builder/",
+      "status": 200,
+      "textCount": 4,
+      "failures": [
+        {
+          "text": "Filter Rules",
+          "tag": "h3",
+          "className": "text-sm font-semibold",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(107,108,110)",
+          "ratio": 3.77,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "600"
+        },
+        {
+          "text": "+ Add Condition",
+          "tag": "button",
+          "className": "text-xs px-2.5 py-2 rounded border min-h-10",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(107,108,110)",
+          "ratio": 3.77,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "No conditions yet. Add a condition to build a filter.",
+          "tag": "p",
+          "className": "text-xs text-neutral-600 dark:text-neutral-300 py-3",
+          "foreground": "oklch(0.439 0 none)",
+          "background": "rgb(107,108,110)",
+          "ratio": 1.49,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Example rules only. Connect a data source to apply filters.",
+          "tag": "p",
+          "className": "mt-4 text-xs text-neutral-600 dark:text-neutral-300",
+          "foreground": "oklch(0.439 0 none)",
+          "background": "rgb(107,108,110)",
+          "ratio": 1.49,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\filter-builder-1440x900.png"
+    },
+    {
+      "slug": "footer-product",
+      "route": "/resources/footer-product/",
+      "status": 200,
+      "textCount": 6,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "input",
+      "route": "/resources/input/",
+      "status": 200,
+      "textCount": 1,
+      "failures": [
+        {
+          "text": "Full name",
+          "tag": "label",
+          "className": "block text-xs font-semibold text-neutral-700 dark:text-neutral-300",
+          "foreground": "oklch(0.371 0 none)",
+          "background": "rgb(11,13,16)",
+          "ratio": 1.88,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "12px",
+          "fontWeight": "600"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\input-1440x900.png"
+    },
+    {
+      "slug": "kanban-board",
+      "route": "/resources/kanban-board/",
+      "status": 200,
+      "textCount": 12,
+      "failures": [
+        {
+          "text": "Sample task board",
+          "tag": "h3",
+          "className": "text-sm font-semibold mb-6",
+          "foreground": "oklch(0.145 0 none)",
+          "background": "rgb(83,84,86)",
+          "ratio": 2.61,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "14px",
+          "fontWeight": "600"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\kanban-board-1440x900.png"
+    },
+    {
+      "slug": "logo-cloud-minimal",
+      "route": "/resources/logo-cloud-minimal/",
+      "status": 200,
+      "textCount": 4,
+      "failures": [
+        {
+          "text": "Illustrative logos · replace with approved marks before publishing",
+          "tag": "p",
+          "className": "text-xs uppercase tracking-widest mb-10 text-[var(--tess-ink-secondary,#62666F)] font-semibold",
+          "foreground": "rgb(168, 175, 186)",
+          "background": "rgb(250,250,250)",
+          "ratio": 2.12,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "12px",
+          "fontWeight": "600"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\logo-cloud-minimal-1440x900.png"
+    },
+    {
+      "slug": "magnetic-button",
+      "route": "/resources/magnetic-button/",
+      "status": 200,
+      "textCount": 1,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "marketing-nav-cta",
+      "route": "/resources/marketing-nav-cta/",
+      "status": 200,
+      "textCount": 5,
+      "failures": [
+        {
+          "text": "BETA",
+          "tag": "span",
+          "className": "text-[10px] bg-neutral-100 dark:bg-neutral-800 text-[var(--tess-ink-secondary,#62666F)] dark:text-ne",
+          "foreground": "rgb(168, 175, 186)",
+          "background": "rgb(245,245,245)",
+          "ratio": 2.03,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "10px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\marketing-nav-cta-1440x900.png"
+    },
+    {
+      "slug": "minimal-top-nav",
+      "route": "/resources/minimal-top-nav/",
+      "status": 200,
+      "textCount": 4,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "notification-centre",
+      "route": "/resources/notification-centre/",
+      "status": 200,
+      "textCount": 8,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "pricing-three-tier",
+      "route": "/resources/pricing-three-tier/",
+      "status": 200,
+      "textCount": 14,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "select",
+      "route": "/resources/select/",
+      "status": 200,
+      "textCount": 2,
+      "failures": [
+        {
+          "text": "Select an option",
+          "tag": "label",
+          "className": "block text-xs font-semibold text-neutral-700 dark:text-neutral-300",
+          "foreground": "oklch(0.371 0 none)",
+          "background": "rgb(11,13,16)",
+          "ratio": 1.88,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "12px",
+          "fontWeight": "600"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\select-1440x900.png"
+    },
+    {
+      "slug": "split-product-hero",
+      "route": "/resources/split-product-hero/",
+      "status": 200,
+      "textCount": 10,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "subtle-grid-field",
+      "route": "/resources/subtle-grid-field/",
+      "status": 200,
+      "textCount": 3,
+      "failures": [
+        {
+          "text": "Architectural Surface",
+          "tag": "span",
+          "className": "text-[10px] font-mono uppercase tracking-wider text-neutral-400",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(130,131,133)",
+          "ratio": 1.47,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "10px",
+          "fontWeight": "400"
+        },
+        {
+          "text": "Vector coordinate grid providing structural rhythm with zero client bundle overhead.",
+          "tag": "p",
+          "className": "text-xs text-[var(--tess-ink-muted,#62666F)] leading-relaxed",
+          "foreground": "rgb(168, 175, 186)",
+          "background": "rgb(130,131,133)",
+          "ratio": 1.72,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\subtle-grid-field-1440x900.png"
+    },
+    {
+      "slug": "testimonial-grid",
+      "route": "/resources/testimonial-grid/",
+      "status": 200,
+      "textCount": 10,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "three-pane-app-shell",
+      "route": "/resources/three-pane-app-shell/",
+      "status": 200,
+      "textCount": 3,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "time-series-chart",
+      "route": "/resources/time-series-chart/",
+      "status": 200,
+      "textCount": 16,
+      "failures": [
+        {
+          "text": "req/s",
+          "tag": "span",
+          "className": "text-xs text-neutral-400 ml-1",
+          "foreground": "oklch(0.708 0 none)",
+          "background": "rgb(255,255,255)",
+          "ratio": 2.58,
+          "threshold": 4.5,
+          "gradient": false,
+          "fontSize": "12px",
+          "fontWeight": "400"
+        }
+      ],
+      "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\audit\\evidence\\v25\\gold-dark-contrast-sweep\\desktop-chrome\\time-series-chart-1440x900.png"
+    },
+    {
+      "slug": "timeline",
+      "route": "/resources/timeline/",
+      "status": 200,
+      "textCount": 10,
+      "failures": [],
+      "screenshot": null
+    },
+    {
+      "slug": "two-pane-master-detail-shell",
+      "route": "/resources/two-pane-master-detail-shell/",
+      "status": 200,
+      "textCount": 9,
+      "failures": [],
+      "screenshot": null
+    }
+  ]
+}

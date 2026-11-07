@@ -5,15 +5,18 @@
 export async function verifyTurnstileToken(
   secretKey?: string,
   token?: string,
-  remoteIp?: string
-): Promise<{ success: boolean; error?: string }> {
-  // If not configured, bypass cleanly (e.g. in test or local dev environments)
+  remoteIp?: string,
+  allowUnconfigured = false
+): Promise<{ success: true } | { success: false; error: string; status: 403 | 503 }> {
+  // Bypass only when the server explicitly identifies itself as local or test.
   if (!secretKey) {
-    return { success: true };
+    return allowUnconfigured
+      ? { success: true }
+      : { success: false, error: 'Turnstile verification is not configured', status: 503 };
   }
 
   if (!token) {
-    return { success: false, error: 'Turnstile verification token required' };
+    return { success: false, error: 'Turnstile verification token required', status: 403 };
   }
 
   try {
@@ -32,13 +35,20 @@ export async function verifyTurnstileToken(
       },
     });
 
+    if (!response.ok) {
+      return { success: false, error: 'Turnstile verification is unavailable', status: 503 };
+    }
     const result = (await response.json()) as { success: boolean; 'error-codes'?: string[] };
     if (!result.success) {
-      return { success: false, error: result['error-codes']?.join(', ') ?? 'Verification failed' };
+      return {
+        success: false,
+        error: result['error-codes']?.join(', ') ?? 'Verification failed',
+        status: 403,
+      };
     }
 
     return { success: true };
-  } catch (err) {
-    return { success: false, error: (err as Error).message };
+  } catch {
+    return { success: false, error: 'Turnstile verification is unavailable', status: 503 };
   }
 }

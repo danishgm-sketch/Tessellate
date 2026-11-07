@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "1.0.0",
+  "browserProject": "sites-chromium",
+  "findings": 0,
+  "viewport": "360x844",
+  "diagnostics": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "resources": [
+    {
+      "slug": "advanced-data-table",
+      "route": "/resources/advanced-data-table/",
+      "viewport": "360x844",
+      "emptyState": "PASS",
+      "largeData": "PASS",
+      "interaction": "PASS",
+      "screenshots": [
+        "audit/evidence/step-06/after/state-captures/advanced-data-table-empty-360.png",
+        "audit/evidence/step-06/after/state-captures/advanced-data-table-large-360.png"
+      ]
+    },
+    {
+      "slug": "timeline",
+      "route": "/resources/timeline/",
+      "viewport": "360x844",
+      "emptyState": "PASS",
+      "largeData": "PASS",
+      "interaction": "NOT_APPLICABLE",
+      "screenshots": [
+        "audit/evidence/step-06/after/state-captures/timeline-empty-360.png",
+        "audit/evidence/step-06/after/state-captures/timeline-large-360.png"
+      ]
+    },
+    {
+      "slug": "dashboard-kpi-grid",
+      "route": "/resources/dashboard-kpi-grid/",
+      "viewport": "360x844",
+      "emptyState": "PASS",
+      "largeData": "PASS",
+      "interaction": "NOT_APPLICABLE",
+      "screenshots": [
+        "audit/evidence/step-06/after/state-captures/dashboard-kpi-grid-empty-360.png",
+        "audit/evidence/step-06/after/state-captures/dashboard-kpi-grid-large-360.png"
+      ]
+    },
+    {
+      "slug": "notification-centre",
+      "route": "/resources/notification-centre/",
+      "viewport": "360x844",
+      "emptyState": "PASS",
+      "largeData": "PASS",
+      "interaction": "PASS",
+      "screenshots": [
+        "audit/evidence/step-06/after/state-captures/notification-centre-before-mark-read-360.png",
+        "audit/evidence/step-06/after/state-captures/notification-centre-read-feedback-360.png",
+        "audit/evidence/step-06/after/state-captures/notification-centre-empty-360.png",
+        "audit/evidence/step-06/after/state-captures/notification-centre-large-360.png"
+      ]
+    },
+    {
+      "slug": "time-series-chart",
+      "route": "/resources/time-series-chart/",
+      "viewport": "360x844",
+      "emptyState": "PASS",
+      "largeData": "PASS",
+      "interaction": "NOT_APPLICABLE",
+      "screenshots": [
+        "audit/evidence/step-06/after/state-captures/time-series-chart-empty-360.png",
+        "audit/evidence/step-06/after/state-captures/time-series-chart-large-360.png"
+      ]
+    },
+    {
+      "slug": "kanban-board",
+      "route": "/resources/kanban-board/",
+      "viewport": "360x844",
+      "emptyState": "PASS",
+      "largeData": "PASS",
+      "interaction": "PASS",
+      "screenshots": [
+        "audit/evidence/step-06/after/state-captures/kanban-board-empty-360.png",
+        "audit/evidence/step-06/after/state-captures/kanban-board-large-360.png"
+      ]
+    }
+  ]
+}

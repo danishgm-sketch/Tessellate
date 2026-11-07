@@ -1,0 +1,197 @@
+{
+  "schemaVersion": "1.0.0",
+  "browserProject": "sites-chromium",
+  "widths": [
+    1440,
+    390
+  ],
+  "resourceCount": 13,
+  "findings": 0,
+  "resources": [
+    {
+      "slug": "app-sidebar-expanded",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/app-sidebar-expanded-1440-after.png",
+        "test-results/resource-certification/catalog-324/app-sidebar-expanded-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/app-sidebar-expanded/"
+    },
+    {
+      "slug": "breadcrumb-header",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/breadcrumb-header-1440-after.png",
+        "test-results/resource-certification/catalog-324/breadcrumb-header-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/breadcrumb-header/"
+    },
+    {
+      "slug": "centered-top-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/centered-top-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/centered-top-nav-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/centered-top-nav/"
+    },
+    {
+      "slug": "collapsible-sidebar",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/collapsible-sidebar-1440-after.png",
+        "test-results/resource-certification/catalog-324/collapsible-sidebar-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/collapsible-sidebar/"
+    },
+    {
+      "slug": "floating-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/floating-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/floating-nav-390-after.png",
+        "test-results/resource-certification/catalog-324/floating-nav-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/floating-nav/"
+    },
+    {
+      "slug": "footer-minimal",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/footer-minimal-1440-after.png",
+        "test-results/resource-certification/catalog-324/footer-minimal-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/footer-minimal/"
+    },
+    {
+      "slug": "footer-sitemap",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/footer-sitemap-1440-after.png",
+        "test-results/resource-certification/catalog-324/footer-sitemap-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/footer-sitemap/"
+    },
+    {
+      "slug": "marketing-nav-cta",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/marketing-nav-cta-1440-after.png",
+        "test-results/resource-certification/catalog-324/marketing-nav-cta-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/marketing-nav-cta/"
+    },
+    {
+      "slug": "mega-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/mega-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/mega-nav-disclosure-after.png",
+        "test-results/resource-certification/catalog-324/mega-nav-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/mega-nav/"
+    },
+    {
+      "slug": "minimal-top-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/minimal-top-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/minimal-top-nav-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/minimal-top-nav/"
+    },
+    {
+      "slug": "mobile-drawer-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/mobile-drawer-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/mobile-drawer-nav-menu-390-after.png",
+        "test-results/resource-certification/catalog-324/mobile-drawer-nav-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/mobile-drawer-nav/"
+    },
+    {
+      "slug": "responsive-app-shell",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/responsive-app-shell-1440-after.png",
+        "test-results/resource-certification/catalog-324/responsive-app-shell-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/responsive-app-shell/"
+    },
+    {
+      "slug": "transparent-solid-nav",
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "findings": [],
+      "screenshots": [
+        "test-results/resource-certification/catalog-324/transparent-solid-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/transparent-solid-nav-390-after.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/transparent-solid-nav/"
+    }
+  ]
+}

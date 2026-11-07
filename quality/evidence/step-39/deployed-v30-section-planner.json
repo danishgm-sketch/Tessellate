@@ -1,0 +1,137 @@
+{
+  "generatedAt": "2026-10-25T23:37:15.315Z",
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "version": 30,
+  "route": "/tools/section-planner",
+  "viewport": "390x844",
+  "httpStatus": 200,
+  "samples": [
+    {
+      "name": "B2B SaaS Conversion Landing",
+      "selected": "true",
+      "text": "BETA Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project. TOOL 07 · PAGE STRUCTURE Client-Side · Zero Login Section Planner Plan and edit example section structures for conversion pages, technical documentation, and editorial sites. The planner does not implement the described sections. Copy Section Graph JSON Template descriptions are planning prompts, not implementation or verified proof. Replace sample claims with sourced product details before publishing. PAGE OBJECTIVE ARCHETYPES B2B SaaS Conversion Landing Developer Documentation Hub Fintech Analytics Cockpit Luxury Editorial Sanctuary Operational Triage & Admin Tool Page Sections (8 active) Reset Blueprint 01 Hero Value Proposition HERO State the product’s value and link to an implemented primary action. Active 02 Evidence and Customer References PROOF Use certifications and customer references only when they are documented and approved. Active 03 Interactive Feature Playground INTERACTIVE Add a product demo; connect a working sandbox before presenting it as interactive. Active 04 Architectural Difference Matrix FEA",
+      "unsubstantiatedClaims": []
+    },
+    {
+      "name": "Developer Documentation Hub",
+      "selected": "true",
+      "text": "BETA Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project. TOOL 07 · PAGE STRUCTURE Client-Side · Zero Login Section Planner Plan and edit example section structures for conversion pages, technical documentation, and editorial sites. The planner does not implement the described sections. Copy Section Graph JSON Template descriptions are planning prompts, not implementation or verified proof. Replace sample claims with sourced product details before publishing. PAGE OBJECTIVE ARCHETYPES B2B SaaS Conversion Landing Developer Documentation Hub Fintech Analytics Cockpit Luxury Editorial Sanctuary Operational Triage & Admin Tool Page Sections (6 active) Reset Blueprint 01 Quickstart Hero & CLI Installation HERO Show a verified install command and a first task that works with the current package. Active 02 API Reference FEATURE Link to current endpoints, request schemas, and response schemas. Active 03 Code Example FEATURE Show a code sample; add an executable sandbox only when one is connected. Active 04 Architecture & Security Spec PROOF Describe the security boundaries and dat",
+      "unsubstantiatedClaims": []
+    },
+    {
+      "name": "Fintech Analytics Cockpit",
+      "selected": "true",
+      "text": "BETA Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project. TOOL 07 · PAGE STRUCTURE Client-Side · Zero Login Section Planner Plan and edit example section structures for conversion pages, technical documentation, and editorial sites. The planner does not implement the described sections. Copy Section Graph JSON Template descriptions are planning prompts, not implementation or verified proof. Replace sample claims with sourced product details before publishing. PAGE OBJECTIVE ARCHETYPES B2B SaaS Conversion Landing Developer Documentation Hub Fintech Analytics Cockpit Luxury Editorial Sanctuary Operational Triage & Admin Tool Page Sections (5 active) Reset Blueprint 01 Financial Overview HERO Show organization-approved measures from the selected data source. Active 02 Time-Series Chart INTERACTIVE Plot the selected series and state its update cadence only when measured. Active 03 Transaction Table FEATURE Present transaction records and disclose whether data is sample, delayed, or live. Active 04 Risk & Compliance Scorecard PROOF Summarize risk measures with their source, sco",
+      "unsubstantiatedClaims": []
+    },
+    {
+      "name": "Luxury Editorial Sanctuary",
+      "selected": "true",
+      "text": "BETA Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project. TOOL 07 · PAGE STRUCTURE Client-Side · Zero Login Section Planner Plan and edit example section structures for conversion pages, technical documentation, and editorial sites. The planner does not implement the described sections. Copy Section Graph JSON Template descriptions are planning prompts, not implementation or verified proof. Replace sample claims with sourced product details before publishing. PAGE OBJECTIVE ARCHETYPES B2B SaaS Conversion Landing Developer Documentation Hub Fintech Analytics Cockpit Luxury Editorial Sanctuary Operational Triage & Admin Tool Page Sections (4 active) Reset Blueprint 01 Cinematic Visual Hero HERO Use licensed imagery with meaningful alt text and reduced-motion support for entrances. Active 02 Curated Collection Narrative FEATURE Describe craftsmanship and origin using details supplied by the product owner. Active 03 Interactive Lookbook Pacing INTERACTIVE If using a moving image reel, support keyboard, touch, and reduced-motion preferences. Active 04 Private Concierge Reservat",
+      "unsubstantiatedClaims": []
+    },
+    {
+      "name": "Operational Triage & Admin Tool",
+      "selected": "true",
+      "text": "BETA Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project. TOOL 07 · PAGE STRUCTURE Client-Side · Zero Login Section Planner Plan and edit example section structures for conversion pages, technical documentation, and editorial sites. The planner does not implement the described sections. Copy Section Graph JSON Template descriptions are planning prompts, not implementation or verified proof. Replace sample claims with sourced product details before publishing. PAGE OBJECTIVE ARCHETYPES B2B SaaS Conversion Landing Developer Documentation Hub Fintech Analytics Cockpit Luxury Editorial Sanctuary Operational Triage & Admin Tool Page Sections (4 active) Reset Blueprint 01 Global Command Bar & Filters HERO Expose keyboard commands only when the application handles them. Active 02 Triage Queue Table FEATURE Describe available bulk actions and confirm high-impact changes. Active 03 Side Inspector Panel INTERACTIVE Show fields authorized for the current user and handle sensitive values carefully. Active 04 Audit Action Trail PROOF List supported audit events with their access and re",
+      "unsubstantiatedClaims": []
+    }
+  ],
+  "moveButtons": [
+    {
+      "label": "Move Global Command Bar & Filters up",
+      "disabled": true
+    },
+    {
+      "label": "Move Global Command Bar & Filters down",
+      "disabled": false
+    },
+    {
+      "label": "Move Triage Queue Table up",
+      "disabled": false
+    },
+    {
+      "label": "Move Triage Queue Table down",
+      "disabled": false
+    },
+    {
+      "label": "Move Side Inspector Panel up",
+      "disabled": false
+    },
+    {
+      "label": "Move Side Inspector Panel down",
+      "disabled": false
+    },
+    {
+      "label": "Move Audit Action Trail up",
+      "disabled": false
+    },
+    {
+      "label": "Move Audit Action Trail down",
+      "disabled": true
+    }
+  ],
+  "movedSection": "Move Global Command Bar & Filters down",
+  "orderBefore": [
+    "Global Command Bar & Filters",
+    "Triage Queue Table",
+    "Side Inspector Panel",
+    "Audit Action Trail"
+  ],
+  "orderAfter": [
+    "Triage Queue Table",
+    "Global Command Bar & Filters",
+    "Side Inspector Panel",
+    "Audit Action Trail"
+  ],
+  "orderChanged": true,
+  "clipboardJsonValid": true,
+  "clipboardBytes": 979,
+  "clipboardGraph": {
+    "pageObjective": "internal-tool",
+    "totalSections": 4,
+    "grammar": [
+      {
+        "order": 1,
+        "id": "sec-2",
+        "name": "Triage Queue Table",
+        "semanticRole": "feature",
+        "description": "Describe available bulk actions and confirm high-impact changes."
+      },
+      {
+        "order": 2,
+        "id": "sec-1",
+        "name": "Global Command Bar & Filters",
+        "semanticRole": "hero",
+        "description": "Expose keyboard commands only when the application handles them."
+      },
+      {
+        "order": 3,
+        "id": "sec-3",
+        "name": "Side Inspector Panel",
+        "semanticRole": "interactive",
+        "description": "Show fields authorized for the current user and handle sensitive values carefully."
+      },
+      {
+        "order": 4,
+        "id": "sec-4",
+        "name": "Audit Action Trail",
+        "semanticRole": "proof",
+        "description": "List supported audit events with their access and retention rules."
+      }
+    ]
+  },
+  "status": [],
+  "runtime": {
+    "console": [
+      {
+        "type": "error",
+        "text": "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-2chxLuYXl4716HX1ka2naCaNyWx6/CD8+i6M2sqEAbY='), or a nonce ('nonce-...') is "
+      }
+    ],
+    "uncaught": [],
+    "failed": [],
+    "badResponses": []
+  },
+  "screenshot": "quality\\evidence\\step-39\\deployed-v30-interactions\\section-planner-live-390x844.png"
+}

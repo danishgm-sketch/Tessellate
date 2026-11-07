@@ -1,0 +1,127 @@
+{
+  "capturedAtUtc": "2026-10-24T15:05:24.0641263Z",
+  "gitBranch": "consolidation/product-hardening",
+  "gitHead": "bea2c70f60813bad3f0ae8a380dcd1c3cca84964",
+  "workingTree": "dirty",
+  "dockerContainers": [
+    {
+      "name": "tessellate-step44-20261024T044542Z",
+      "image": "mcr.microsoft.com/playwright:v1.63.0-noble",
+      "status": "running",
+      "health": "n/a",
+      "restartPolicy": "no",
+      "mounts": []
+    },
+    {
+      "name": "tessellate-step44-20261024T035745Z",
+      "image": "mcr.microsoft.com/playwright:v1.63.0-noble",
+      "status": "running",
+      "health": "n/a",
+      "restartPolicy": "no",
+      "mounts": []
+    },
+    {
+      "name": "tessellate-step44-20261024T034947Z",
+      "image": "mcr.microsoft.com/playwright:v1.63.0-noble",
+      "status": "running",
+      "health": "n/a",
+      "restartPolicy": "no",
+      "mounts": []
+    },
+    {
+      "name": "mgiquantlabs-trader-1",
+      "image": "mgiquantlabs-trader",
+      "status": "running",
+      "health": "n/a",
+      "restartPolicy": "unless-stopped",
+      "mounts": [
+        "bind:/run/quantlabs/clock",
+        "bind:/run/secrets/ctrader-handoff-key",
+        "bind:/run/secrets/ctrader-token-key",
+        "volume:/var/lib/quantlabs/market-data"
+      ]
+    },
+    {
+      "name": "mgiquantlabs-api-1",
+      "image": "mgiquantlabs-api",
+      "status": "running",
+      "health": "n/a",
+      "restartPolicy": "unless-stopped",
+      "mounts": [
+        "bind:/backup-status",
+        "volume:/host-storage",
+        "bind:/run/quantlabs/clock",
+        "bind:/run/secrets/ctrader-handoff-key"
+      ]
+    },
+    {
+      "name": "mgiquantlabs-marketdata_service-1",
+      "image": "mgiquantlabs-marketdata_service",
+      "status": "running",
+      "health": "n/a",
+      "restartPolicy": "unless-stopped",
+      "mounts": [
+        "volume:/var/lib/quantlabs/market-data"
+      ]
+    },
+    {
+      "name": "tessellate-laptop-api-1",
+      "image": "tessellate-laptop-api",
+      "status": "running",
+      "health": "healthy",
+      "restartPolicy": "unless-stopped",
+      "mounts": [
+        "volume:/data",
+        "bind:/app/apps/laptop-backend/.dev.vars"
+      ]
+    },
+    {
+      "name": "tessellate-laptop-host-1",
+      "image": "tessellate-laptop-host",
+      "status": "running",
+      "health": "healthy",
+      "restartPolicy": "unless-stopped",
+      "mounts": [
+        "bind:/run/secrets/host-secret"
+      ]
+    },
+    {
+      "name": "mgiquantlabs-web-1",
+      "image": "mgiquantlabs-web",
+      "status": "running",
+      "health": "n/a",
+      "restartPolicy": "unless-stopped",
+      "mounts": []
+    },
+    {
+      "name": "mgiquantlabs-postgres-1",
+      "image": "postgres:16-alpine@sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685",
+      "status": "running",
+      "health": "healthy",
+      "restartPolicy": "unless-stopped",
+      "mounts": [
+        "volume:/var/lib/postgresql/data"
+      ]
+    },
+    {
+      "name": "mgiquantlabs-cloudflared-1",
+      "image": "cloudflare/cloudflared:2026.8.2@sha256:0aa26e284f05e6c77ae375b8c9c11d9eb6a448fb7bcd8d40f31cb6176189eb38",
+      "status": "running",
+      "health": "n/a",
+      "restartPolicy": "unless-stopped",
+      "mounts": [
+        "bind:/run/secrets/cloudflared-token"
+      ]
+    }
+  ],
+  "browser": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=proj-direction-c-190e6f1d50e740b78c8478705dd240d8dirc",
+    "projectSavedLocally": true,
+    "consoleErrorsAndWarnings": 0
+  },
+  "deployedReview": {
+    "siteVersion": 24,
+    "sourceMirrorCommit": "46b9833aef759046d7dae02b3915fc7a6acee653",
+    "canonicalCommit": "bea2c70f60813bad3f0ae8a380dcd1c3cca84964"
+  }
+}

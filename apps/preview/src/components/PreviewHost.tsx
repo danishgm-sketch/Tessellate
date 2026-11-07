@@ -1,0 +1,337 @@
+import React, { useEffect, useState, useRef } from 'react';
+import {
+  isParentToPreviewMessage,
+  type PreviewNavigationRequestMessage,
+  type PreviewTheme,
+  type PreviewDevice,
+  type PreviewReadyMessage,
+  type PreviewResizeMessage,
+  type PreviewErrorMessage,
+} from '@tessellate/catalog/protocol';
+import { BrowserNodeRenderer as NodeRenderer } from '@tessellate/renderer/browser';
+import { loadPrivateVersoResource, PrivateVersoProvider } from 'virtual:tessellate-private-verso';
+import 'virtual:tessellate-private-verso.css';
+import { resolvePreviewParentOrigin } from '../lib/preview-parent-origin';
+import { filterPrivatePreviewActionProps } from '../lib/preview-action-props';
+
+function readChangeValue(input: unknown): unknown {
+  if (typeof input !== 'object' || input === null || !('target' in input)) return input;
+
+  const target = (input as { target?: unknown }).target;
+  if (typeof target !== 'object' || target === null) return input;
+
+  const control = target as { type?: unknown; checked?: unknown; value?: unknown };
+  if ((control.type === 'checkbox' || control.type === 'radio') && typeof control.checked === 'boolean') {
+    return control.checked;
+  }
+  return 'value' in control ? control.value : input;
+}
+
+const resourceManifests=import.meta.glob<{default:{name?:string;preview:{defaultProps?:Record<string,unknown>}}}>('../../../../resources/**/manifest.json');
+const resourceModules=import.meta.glob<Record<string,unknown>>('../../../../resources/**/index.tsx');
+function isResourceComponent(value:unknown):value is React.ComponentType<Record<string,unknown>> {return typeof value==='function' || (typeof value==='object' && value!==null && '$$typeof' in value && (value.$$typeof===Symbol.for('react.forward_ref') || value.$$typeof===Symbol.for('react.memo')));}
+
+function getParentOrigin(): string | null {
+  return resolvePreviewParentOrigin({
+    parentIsSelf: window.parent === window,
+    referrer: document.referrer,
+    previewDocumentUrl: window.location.href,
+    allowedOrigins: import.meta.env.VITE_TESSELLATE_PARENT_ORIGINS,
+  });
+}
+
+export default function PreviewHost() {
+  const [resourceId, setResourceId] = useState<string>(()=>typeof window!=='undefined' ? new URLSearchParams(window.location.search).get('resource') ?? 'button' : 'button');
+  const [resourceName, setResourceName] = useState<string>(() => resourceId.replace(/-/g, ' '));
+  const [component,setComponent]=useState<React.ComponentType<Record<string,unknown>>|null>(null);
+  const [isPrivateVerso,setIsPrivateVerso]=useState(false);
+  const [privatePropNames, setPrivatePropNames] = useState<ReadonlySet<string>>(() => new Set());
+  const [loadError,setLoadError]=useState('');
+  const [variant, setVariant] = useState<string>('expressive');
+  const [theme, setTheme] = useState<PreviewTheme>('light');
+  const [device, setDevice] = useState<PreviewDevice>('desktop');
+  const [actionStatus,setActionStatus]=useState('');
+  const [props, setProps] = useState<Record<string, unknown>>({});
+  const [reducedMotion, setReducedMotion] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const parentOrigin = getParentOrigin();
+
+  useEffect(()=>{
+    if (window.parent !== window && !parentOrigin) {
+      setComponent(null);
+      setLoadError('Preview host origin is not authorized. The resource was not loaded.');
+      return undefined;
+    }
+    let disposed=false;setComponent(null);setLoadError('');
+    setIsPrivateVerso(false);
+    setPrivatePropNames(new Set());
+    const fallbackName = resourceId.replace(/-/g, ' ');
+    setResourceName(fallbackName);
+    const load = async () => {
+      const privateResource = await loadPrivateVersoResource(resourceId);
+      if (privateResource) {
+        if (!disposed) {
+          setProps(privateResource.manifest.preview.defaultProps ?? {});
+          setResourceName(privateResource.manifest.name);
+          setPrivatePropNames(new Set(privateResource.source.props.map((prop) => prop.name)));
+          setIsPrivateVerso(true);
+          setComponent(() => privateResource.component);
+        }
+        return;
+      }
+      const loader=Object.entries(resourceModules).find(([modulePath])=>modulePath.endsWith(`/${resourceId}/index.tsx`))?.[1];
+      if(!loader)throw new Error(`Unknown resource: ${resourceId}`);
+      const metadataLoader=Object.entries(resourceManifests).find(([modulePath])=>modulePath.endsWith(`/${resourceId}/manifest.json`))?.[1];
+      const [module,metadata]=await Promise.all([loader(),metadataLoader?.()]);
+      if(!disposed){setProps(metadata?.default.preview.defaultProps??{});setResourceName(metadata?.default.name??fallbackName);}
+      const exported=Object.entries(module).find(([name,value])=>/^[A-Z]/.test(name) && isResourceComponent(value))?.[1];
+      if(!isResourceComponent(exported))throw new Error('Resource has no valid React component export.');
+      if(!disposed)setComponent(()=>exported);
+    };
+    void load().catch(cause=>{if(!disposed)setLoadError(String(cause));});
+    return ()=>{disposed=true;};
+  },[resourceId]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const res = params.get('resource');
+    if (res) setResourceId(res);
+    const v = params.get('variant');
+    if (v) setVariant(v);
+    const th = params.get('theme') as PreviewTheme;
+    if (th === 'light' || th === 'dark') setTheme(th);
+    const dev = params.get('device') as PreviewDevice;
+    if (dev === 'desktop' || dev === 'tablet' || dev === 'mobile') setDevice(dev);
+    const rm = params.get('reducedMotion');
+    if (rm === 'true') setReducedMotion(true);
+  }, []);
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.removeAttribute('data-theme');
+    }
+  }, [theme]);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      document.documentElement.dataset.tessellateReducedMotion = 'true';
+    } else {
+      delete document.documentElement.dataset.tessellateReducedMotion;
+    }
+  }, [reducedMotion]);
+
+  useEffect(() => {
+    function handleMessage(event: MessageEvent) {
+      if (
+        window.parent === window ||
+        event.source !== window.parent ||
+        !parentOrigin ||
+        event.origin !== parentOrigin ||
+        !isParentToPreviewMessage(event.data)
+      ) {
+        return;
+      }
+
+      const msg = event.data;
+      if (msg.type === 'TESSELLATE_PREVIEW_INIT') {
+        if (msg.resourceId) setResourceId(msg.resourceId);
+        if (msg.variant) setVariant(msg.variant);
+        if (msg.theme) setTheme(msg.theme);
+        if (msg.device) setDevice(msg.device);
+        if (msg.props) setProps(msg.props);
+        if (typeof msg.reducedMotion === 'boolean') setReducedMotion(msg.reducedMotion);
+      } else if (msg.type === 'TESSELLATE_PREVIEW_UPDATE') {
+        if (msg.variant) setVariant(msg.variant);
+        if (msg.theme) setTheme(msg.theme);
+        if (msg.device) setDevice(msg.device);
+        if (msg.props) setProps((prev) => ({ ...prev, ...msg.props }));
+        if (typeof msg.reducedMotion === 'boolean') setReducedMotion(msg.reducedMotion);
+      }
+    }
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || window.parent === window) return undefined;
+
+    const forwardLinkRequest = (event: MouseEvent) => {
+      if (!event.isTrusted || !(event.target instanceof Element)) return;
+      const anchor = event.target.closest<HTMLAnchorElement>('a[href]');
+      if (!anchor || anchor.hasAttribute('download')) return;
+
+      let destination: URL;
+      try {
+        destination = new URL(anchor.href, window.location.href);
+      } catch {
+        event.preventDefault();
+        return;
+      }
+      if (destination.protocol !== 'http:' && destination.protocol !== 'https:') {
+        event.preventDefault();
+        return;
+      }
+
+      event.preventDefault();
+      const message: PreviewNavigationRequestMessage = {
+        type: 'TESSELLATE_PREVIEW_NAVIGATION_REQUEST',
+        resourceId,
+        href: destination.href,
+      };
+      // The trusted /preview wrapper is sandboxed by the response CSP and has
+      // an opaque origin, so there is no origin string that can target it.
+      // Send only the bounded protocol message to the direct parent; each host
+      // validates this frame's WindowProxy and the opaque sender origin.
+      if (parentOrigin) window.parent.postMessage(message, '*');
+    };
+
+    container.addEventListener('click', forwardLinkRequest);
+    return () => container.removeEventListener('click', forwardLinkRequest);
+  }, [component, resourceId, parentOrigin]);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || window.parent === window || !parentOrigin || !component) return;
+
+    const readyMsg: PreviewReadyMessage = {
+      type: 'TESSELLATE_PREVIEW_READY',
+      resourceId,
+      width: el.scrollWidth,
+      height: el.scrollHeight,
+    };
+    try {
+      window.parent.postMessage(readyMsg, '*');
+    } catch {
+      // Ignore
+    }
+
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const resizeMsg: PreviewResizeMessage = {
+          type: 'TESSELLATE_PREVIEW_RESIZE',
+          resourceId,
+          width: Math.round(entry.contentRect.width),
+          height: Math.round(entry.contentRect.height),
+        };
+        try {
+          window.parent.postMessage(resizeMsg, '*');
+        } catch {
+          // Ignore
+        }
+      }
+    });
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [resourceId, variant, theme, component, parentOrigin]);
+
+  const onChange = (input: unknown) => {
+    const value=readChangeValue(input);
+    setProps(previous=>({...previous,...(resourceId==='checkbox'||resourceId==='switch'?{checked:value}:resourceId==='multi-select'?{selected:value}:resourceId==='tabs'?{activeId:value}:{value})}));
+  };
+  const onClick = () => setActionStatus('Example action activated.');
+  const previewActionProps = {
+    onChange,
+    ...(['command-menu', 'combobox', 'dropdown-menu'].includes(resourceId)
+      ? {
+          onSelect: (value: unknown) => {
+            setProps((previous) => ({ ...previous, value }));
+            setActionStatus(`Selected ${String(value)}`);
+          },
+        }
+      : {}),
+    onClose: () => setProps(previous => ({ ...previous, open: false })),
+    onConfirm: () => {
+      setProps(previous => ({ ...previous, open: false }));
+      setActionStatus('Example action confirmed.');
+    },
+    onPageChange: (currentPage: number) => setProps(previous => ({ ...previous, currentPage })),
+    ...(['button', 'icon-button', 'tag-chip', 'split-button'].includes(resourceId) ? { onClick } : {}),
+    onCtaClick: () => setActionStatus('Start action previewed.'),
+    onLaunch: () => setActionStatus('Launch action previewed.'),
+    onOpen: () => setActionStatus('Open action previewed.'),
+    onDocsClick: () => setActionStatus('Documentation action previewed.'),
+    onExport: () => setActionStatus('Export action previewed.'),
+    onSave: () => setActionStatus('Save action previewed.'),
+    onSelectPlan: (plan: string) => {
+      const planName = plan.trim();
+      const announcement = /\bplan$/i.test(planName)
+        ? `${planName} selected.`
+        : `${planName} plan selected.`;
+      setActionStatus(announcement);
+    },
+    onCreateProject: () => setActionStatus('Project creation previewed.'),
+    onAction: () => setActionStatus('Example action previewed locally; no product operation was run.'),
+    ...(resourceId === 'ai-prompt-composer' ? {
+      onExecute: () => setActionStatus('Prompt previewed locally; no provider request was sent.'),
+    } : {}),
+    ...(resourceId === 'error-state' ? {
+      onRetry: () => setActionStatus('Retry action previewed.'),
+    } : {}),
+  };
+  const interactiveProps = {
+    ...props,
+    ...(isPrivateVerso
+      ? filterPrivatePreviewActionProps(previewActionProps, privatePropNames)
+      : previewActionProps),
+  };
+  const available = Boolean(component);
+
+  if (loadError) {
+    const errorMsg: PreviewErrorMessage = {
+      type: 'TESSELLATE_PREVIEW_ERROR',
+      resourceId,
+      error: loadError,
+    };
+    try {
+      if (parentOrigin && window.parent !== window) window.parent.postMessage(errorMsg, '*');
+    } catch {
+      // Ignore
+    }
+
+    return (
+      <div role="alert" aria-live="assertive" className="flex min-h-screen items-center justify-center bg-white p-6 text-sm text-neutral-800">
+        Preview failed: {loadError}. The original source remains available; no substitute component is rendered.
+      </div>
+    );
+  }
+
+  if(!available || !component) return <div role="status" className="p-6">Loading the actual resource…</div>;
+
+  const deviceStyles: Record<PreviewDevice, string> = {
+    desktop: 'w-full',
+    tablet: 'max-w-[768px] mx-auto shadow-md border-x border-neutral-200 dark:border-neutral-800',
+    mobile: 'max-w-[360px] mx-auto shadow-md border-x border-neutral-200 dark:border-neutral-800',
+  };
+
+  const previewContent = (
+    <div className="tess-screen @container">
+      <NodeRenderer node={{id:`preview-${resourceId}`,nodeType:'component',semanticRole:'resource-preview',resourceRef:{id:resourceId,slug:resourceId,version:'1.0.0'},variant,props:interactiveProps,slots:{},children:[]}} context={{viewport:device,reducedMotion,designDNA:{visualMode:theme},customComponents:{[resourceId]:component}}}/>
+    </div>
+  );
+  return (
+    <div
+      ref={containerRef}
+      className={`min-h-screen w-full transition-colors ${
+        reducedMotion ? 'motion-reduce:transition-none' : ''
+      }`}
+    >
+      <h1 className="sr-only">{resourceName} preview</h1>
+      <div className={deviceStyles[device]}>
+        {props.open===false && <button onClick={()=>setProps(previous=>({...previous,open:true}))}>Reopen example</button>}
+        {actionStatus && <p role="status" className="text-sm p-2">{actionStatus}</p>}
+        {isPrivateVerso && PrivateVersoProvider ? (
+          <PrivateVersoProvider palette="espresso" mode={theme === 'dark' ? 'ink' : 'paper'}>
+            {previewContent}
+          </PrivateVersoProvider>
+        ) : previewContent}
+      </div>
+    </div>
+  );
+}

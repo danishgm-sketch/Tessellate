@@ -5,7 +5,7 @@
   "name": "Feature Grid 3x2",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Balanced 6-card grid with icon headers, descriptive copy, and subtle hover borders.",
+  "description": "Balanced feature grid with capability claims supplied for the deployed product.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,7 +130,7 @@
     "capabilities"
   ],
   "intent": {
-    "summary": "Balanced 6-card grid with icon headers, descriptive copy, and subtle hover borders.",
+    "summary": "Feature grid; verify each claim and distinguish tested results from targets.",
     "idealFor": [
       "Presenting the 6 fundamental pillars of a platform"
     ],
@@ -138,7 +138,7 @@
       "Single focused metric callouts"
     ],
     "jobs": [
-      "Explain comprehensive breadth of features with clean symmetry"
+      "Explain capabilities available in the current deployment"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"
@@ -209,12 +209,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

@@ -48,7 +48,7 @@ export function MultiSeriesLineChart({ variant = 'quiet' }: MultiSeriesLineChart
           <h4 className="text-sm font-semibold tracking-tight">Traffic Comparison</h4>
           <p className="text-xs text-neutral-500">Monthly throughput across deploy tiers</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex max-w-full flex-wrap items-center gap-2">
           {seriesData.map((s) => {
             const isVisible = activeSeries[s.name] ?? true;
             const color = seriesColors[s.name as keyof typeof seriesColors] ?? '#171717';

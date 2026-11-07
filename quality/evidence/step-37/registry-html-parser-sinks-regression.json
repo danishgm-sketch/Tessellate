@@ -1,0 +1,33 @@
+{
+  "findingId": "SEC-37-090",
+  "severity": "high",
+  "title": "Registry isolation missed browser APIs that parse and materialize untrusted HTML",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "document.createRange().createContextualFragment(userHtml)",
+      "new DOMParser().parseFromString(userHtml, 'text/html')",
+      "element.setHTMLUnsafe(userHtml)",
+      "bound, destructured, and reflected forms of the same sinks"
+    ],
+    "beforeFix": "The gate returned pass for contextual-fragment parsing, DOMParser parsing, and setHTMLUnsafe, including bound/destructured/reflected aliases.",
+    "afterFix": "The gate rejects these unsafe HTML materialization sinks while retaining the safe setHTML API path covered by a positive regression."
+  },
+  "rootCause": "The scanner checked common React and DOM raw-HTML setters but did not classify newer or indirect browser parsing APIs that turn strings into DOM nodes.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Track and reject createContextualFragment, DOMParser.parseFromString, and setHTMLUnsafe through aliases, destructuring, binding, and reflection as unsafe markup sinks; retain the explicitly tested safe setHTML case.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"browser HTML parsing sinks\"",
+    "redBeforeFixResult": "failed as expected: all covered parsing sinks were admitted before the fix",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "59 tests passed",
+    "safeSetHTMLRegression": "passed: element.setHTML(userHtml) remains allowed",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "This is static registry source analysis. The probes were parsed only and never executed. The separate preview CSP and origin sandbox remain required defenses; deployment verification remains pending.",
+  "capturedAt": "2026-10-21T16:57:33Z"
+}

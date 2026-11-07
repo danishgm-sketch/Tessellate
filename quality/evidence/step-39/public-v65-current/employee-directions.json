@@ -1,0 +1,563 @@
+{
+  "capturedAt": "2026-11-01",
+  "siteVersion": 65,
+  "route": "/compose",
+  "viewport": "1440x900",
+  "brief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+  "feel": "professional but playful",
+  "visualAmbition": "Refined",
+  "structuralCreativity": "Inventive",
+  "directions": {
+    "A": {
+      "id": "proj-direction-a-0bc92821950644cab14bda3484edd413dira",
+      "dna": {
+        "professionalism": 100,
+        "playfulness": 53,
+        "luxury": 40,
+        "warmth": 45,
+        "technicality": 65,
+        "editorial": 35,
+        "futurism": 35,
+        "visualAmbition": 30,
+        "structuralCreativity": 40,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 75,
+        "colourfulness": 54,
+        "curvature": 53,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 25,
+        "typographicExpression": 43,
+        "imageryIntensity": 35,
+        "videoIntensity": 15,
+        "threeDIntensity": 6,
+        "dataDensity": 65,
+        "interactionDensity": 60,
+        "asymmetry": 40,
+        "conversionIntensity": 55,
+        "trust": 100,
+        "accessibilityPriority": 100,
+        "performancePriority": 97,
+        "primaryArchetype": "saas",
+        "visualMode": "light",
+        "geometryFamily": "pill",
+        "navigationModel": "sidebar",
+        "responsivePhilosophy": "desktop-dense-mobile-focused",
+        "contentTone": "calm",
+        "primaryStack": "react-tailwind",
+        "motionPersonality": "playful-spring",
+        "typographyPersonality": "geist-system",
+        "surfacePersonality": "subtle-contrast"
+      },
+      "screens": [
+        {
+          "name": "Marketing Home",
+          "slug": "/"
+        },
+        {
+          "name": "Team Overview",
+          "slug": "/overview"
+        },
+        {
+          "name": "People Directory",
+          "slug": "/people"
+        },
+        {
+          "name": "Teams",
+          "slug": "/teams"
+        },
+        {
+          "name": "Engagement",
+          "slug": "/engagement"
+        },
+        {
+          "name": "Onboarding",
+          "slug": "/onboarding"
+        },
+        {
+          "name": "Settings & Policies",
+          "slug": "/settings"
+        }
+      ],
+      "navigationModel": {
+        "model": "sidebar",
+        "primaryItems": [
+          {
+            "label": "Marketing Home",
+            "targetScreenId": "screen-marketing-home"
+          },
+          {
+            "label": "Team Overview",
+            "targetScreenId": "screen-overview"
+          },
+          {
+            "label": "People Directory",
+            "targetScreenId": "screen-collection-index"
+          },
+          {
+            "label": "Teams",
+            "targetScreenId": "screen-teams"
+          },
+          {
+            "label": "Engagement",
+            "targetScreenId": "screen-engagement"
+          }
+        ],
+        "secondaryItems": [
+          {
+            "label": "Settings & Policies",
+            "targetScreenId": "screen-settings"
+          }
+        ]
+      },
+      "resourceRefs": [
+        {
+          "slug": "minimal-top-nav",
+          "variant": "quiet",
+          "role": "navigation"
+        },
+        {
+          "slug": "editorial-hero",
+          "variant": "quiet",
+          "role": "hero"
+        },
+        {
+          "slug": "feature-bento",
+          "variant": "quiet",
+          "role": "value-proposition"
+        },
+        {
+          "slug": "cta-minimal",
+          "variant": "quiet",
+          "role": "conversion-cta"
+        },
+        {
+          "slug": "footer-product",
+          "variant": "quiet",
+          "role": "footer"
+        },
+        {
+          "slug": "collapsible-sidebar",
+          "variant": "quiet",
+          "role": "navigation"
+        },
+        {
+          "slug": "entity-profile-header",
+          "variant": "quiet",
+          "role": "overview-header"
+        },
+        {
+          "slug": "dashboard-kpi-grid",
+          "variant": "quiet",
+          "role": "metric-cards"
+        },
+        {
+          "slug": "timeline",
+          "variant": "quiet",
+          "role": "progress-stepper"
+        },
+        {
+          "slug": "advanced-data-table",
+          "variant": "quiet",
+          "role": "data-table"
+        },
+        {
+          "slug": "filter-builder",
+          "variant": "quiet",
+          "role": "filter-bar"
+        },
+        {
+          "slug": "button",
+          "variant": "quiet",
+          "role": "save-footer"
+        },
+        {
+          "slug": "kanban-board",
+          "variant": "quiet",
+          "role": "wizard-content"
+        },
+        {
+          "slug": "input",
+          "variant": "quiet",
+          "role": "settings-form"
+        }
+      ],
+      "diagnostics": []
+    },
+    "B": {
+      "id": "proj-direction-b-0bc92821950644cab14bda3484edd413dirb",
+      "dna": {
+        "professionalism": 100,
+        "playfulness": 53,
+        "luxury": 40,
+        "warmth": 45,
+        "technicality": 65,
+        "editorial": 35,
+        "futurism": 35,
+        "visualAmbition": 65,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 75,
+        "colourfulness": 74,
+        "curvature": 63,
+        "depth": 50,
+        "motion": 55,
+        "motionPlayfulness": 70,
+        "typographicExpression": 68,
+        "imageryIntensity": 55,
+        "videoIntensity": 15,
+        "threeDIntensity": 6,
+        "dataDensity": 65,
+        "interactionDensity": 60,
+        "asymmetry": 40,
+        "conversionIntensity": 55,
+        "trust": 100,
+        "accessibilityPriority": 85,
+        "performancePriority": 82,
+        "primaryArchetype": "saas",
+        "visualMode": "light",
+        "geometryFamily": "pill",
+        "navigationModel": "top-nav",
+        "responsivePhilosophy": "desktop-dense-mobile-focused",
+        "contentTone": "calm",
+        "primaryStack": "react-tailwind",
+        "motionPersonality": "playful-spring",
+        "typographyPersonality": "geist-system",
+        "surfacePersonality": "subtle-contrast"
+      },
+      "screens": [
+        {
+          "name": "Marketing Home",
+          "slug": "/"
+        },
+        {
+          "name": "Team Overview",
+          "slug": "/overview"
+        },
+        {
+          "name": "People Directory",
+          "slug": "/people"
+        },
+        {
+          "name": "Teams",
+          "slug": "/teams"
+        },
+        {
+          "name": "Engagement",
+          "slug": "/engagement"
+        },
+        {
+          "name": "Onboarding",
+          "slug": "/onboarding"
+        },
+        {
+          "name": "Settings & Policies",
+          "slug": "/settings"
+        }
+      ],
+      "navigationModel": {
+        "model": "top-nav",
+        "primaryItems": [
+          {
+            "label": "Marketing Home",
+            "targetScreenId": "screen-marketing-home"
+          },
+          {
+            "label": "Team Overview",
+            "targetScreenId": "screen-overview"
+          },
+          {
+            "label": "People Directory",
+            "targetScreenId": "screen-collection-index"
+          },
+          {
+            "label": "Teams",
+            "targetScreenId": "screen-teams"
+          },
+          {
+            "label": "Engagement",
+            "targetScreenId": "screen-engagement"
+          }
+        ],
+        "secondaryItems": [
+          {
+            "label": "Settings & Policies",
+            "targetScreenId": "screen-settings"
+          }
+        ]
+      },
+      "resourceRefs": [
+        {
+          "slug": "minimal-top-nav",
+          "variant": "expressive",
+          "role": "navigation"
+        },
+        {
+          "slug": "editorial-hero",
+          "variant": "expressive",
+          "role": "hero"
+        },
+        {
+          "slug": "feature-bento",
+          "variant": "expressive",
+          "role": "value-proposition"
+        },
+        {
+          "slug": "cta-minimal",
+          "variant": "expressive",
+          "role": "conversion-cta"
+        },
+        {
+          "slug": "footer-product",
+          "variant": "expressive",
+          "role": "footer"
+        },
+        {
+          "slug": "entity-profile-header",
+          "variant": "expressive",
+          "role": "overview-header"
+        },
+        {
+          "slug": "dashboard-kpi-grid",
+          "variant": "expressive",
+          "role": "metric-cards"
+        },
+        {
+          "slug": "timeline",
+          "variant": "expressive",
+          "role": "progress-stepper"
+        },
+        {
+          "slug": "advanced-data-table",
+          "variant": "expressive",
+          "role": "data-table"
+        },
+        {
+          "slug": "filter-builder",
+          "variant": "expressive",
+          "role": "filter-bar"
+        },
+        {
+          "slug": "button",
+          "variant": "expressive",
+          "role": "action-controls"
+        },
+        {
+          "slug": "kanban-board",
+          "variant": "expressive",
+          "role": "wizard-content"
+        },
+        {
+          "slug": "input",
+          "variant": "expressive",
+          "role": "settings-form"
+        },
+        {
+          "slug": "magnetic-button",
+          "variant": "expressive",
+          "role": "save-footer"
+        }
+      ],
+      "diagnostics": []
+    },
+    "C": {
+      "id": "proj-direction-c-0bc92821950644cab14bda3484edd413dirc",
+      "dna": {
+        "professionalism": 100,
+        "playfulness": 53,
+        "luxury": 40,
+        "warmth": 45,
+        "technicality": 65,
+        "editorial": 35,
+        "futurism": 35,
+        "visualAmbition": 50,
+        "structuralCreativity": 85,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 75,
+        "colourfulness": 54,
+        "curvature": 63,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 45,
+        "typographicExpression": 43,
+        "imageryIntensity": 35,
+        "videoIntensity": 15,
+        "threeDIntensity": 6,
+        "dataDensity": 65,
+        "interactionDensity": 80,
+        "asymmetry": 65,
+        "conversionIntensity": 55,
+        "trust": 100,
+        "accessibilityPriority": 85,
+        "performancePriority": 82,
+        "primaryArchetype": "saas",
+        "visualMode": "dark",
+        "geometryFamily": "pill",
+        "navigationModel": "rail",
+        "responsivePhilosophy": "desktop-dense-mobile-focused",
+        "contentTone": "calm",
+        "primaryStack": "react-tailwind",
+        "motionPersonality": "playful-spring",
+        "typographyPersonality": "geist-system",
+        "surfacePersonality": "subtle-contrast"
+      },
+      "screens": [
+        {
+          "name": "Marketing Home",
+          "slug": "/"
+        },
+        {
+          "name": "Team Overview",
+          "slug": "/overview"
+        },
+        {
+          "name": "People Directory",
+          "slug": "/people"
+        },
+        {
+          "name": "Teams",
+          "slug": "/teams"
+        },
+        {
+          "name": "Engagement",
+          "slug": "/engagement"
+        },
+        {
+          "name": "Onboarding",
+          "slug": "/onboarding"
+        },
+        {
+          "name": "Settings & Policies",
+          "slug": "/settings"
+        }
+      ],
+      "navigationModel": {
+        "model": "rail",
+        "primaryItems": [
+          {
+            "label": "Marketing Home",
+            "targetScreenId": "screen-marketing-home"
+          },
+          {
+            "label": "Team Overview",
+            "targetScreenId": "screen-overview"
+          },
+          {
+            "label": "People Directory",
+            "targetScreenId": "screen-collection-index"
+          },
+          {
+            "label": "Teams",
+            "targetScreenId": "screen-teams"
+          },
+          {
+            "label": "Engagement",
+            "targetScreenId": "screen-engagement"
+          }
+        ],
+        "secondaryItems": [
+          {
+            "label": "Settings & Policies",
+            "targetScreenId": "screen-settings"
+          }
+        ]
+      },
+      "resourceRefs": [
+        {
+          "slug": "minimal-top-nav",
+          "variant": "expressive",
+          "role": "navigation"
+        },
+        {
+          "slug": "editorial-hero",
+          "variant": "expressive",
+          "role": "hero"
+        },
+        {
+          "slug": "feature-bento",
+          "variant": "expressive",
+          "role": "value-proposition"
+        },
+        {
+          "slug": "cta-minimal",
+          "variant": "expressive",
+          "role": "conversion-cta"
+        },
+        {
+          "slug": "footer-product",
+          "variant": "expressive",
+          "role": "footer"
+        },
+        {
+          "slug": "minimal-top-nav",
+          "variant": "nocturne",
+          "role": "navigation"
+        },
+        {
+          "slug": "entity-profile-header",
+          "variant": "nocturne",
+          "role": "overview-header"
+        },
+        {
+          "slug": "dashboard-kpi-grid",
+          "variant": "nocturne",
+          "role": "metric-cards"
+        },
+        {
+          "slug": "advanced-data-table",
+          "variant": "nocturne",
+          "role": "data-table"
+        },
+        {
+          "slug": "timeline",
+          "variant": "nocturne",
+          "role": "progress-stepper"
+        },
+        {
+          "slug": "filter-builder",
+          "variant": "nocturne",
+          "role": "filter-bar"
+        },
+        {
+          "slug": "button",
+          "variant": "nocturne",
+          "role": "action-controls"
+        },
+        {
+          "slug": "kanban-board",
+          "variant": "nocturne",
+          "role": "wizard-content"
+        },
+        {
+          "slug": "input",
+          "variant": "nocturne",
+          "role": "settings-form"
+        },
+        {
+          "slug": "magnetic-button",
+          "variant": "nocturne",
+          "role": "save-footer"
+        }
+      ],
+      "diagnostics": []
+    }
+  },
+  "visualEvidence": {
+    "A": "quality/evidence/step-39/public-v65-current/direction-a-inspect-1440x900.png",
+    "B": "quality/evidence/step-39/public-v65-current/direction-b-inspect-1440x900.png",
+    "C": "quality/evidence/step-39/public-v65-current/direction-c-inspect-1440x900.png"
+  },
+  "runtime": {
+    "catalogueReady": true,
+    "catalogueRequestStatus": 304,
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": [],
+    "documentOverflow": false
+  }
+}

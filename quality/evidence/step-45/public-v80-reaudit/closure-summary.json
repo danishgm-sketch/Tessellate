@@ -1,0 +1,126 @@
+{
+  "capturedAt": "2026-11-06T12:17:07.824Z",
+  "result": "PASS",
+  "publicUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersionNumber": 80,
+  "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_56589d25bfc08191a0d6573198babd0a",
+  "deploymentId": "appgdep_6aedc4b71fdc8191a977d4ffa397e928",
+  "canonicalSourceCommit": "888c9dab36f044c86fe2802d423590112ac24146",
+  "sitesSourceCommit": "13e0b8e8f7802c59d95ffdea2da4ae21ed75afd2",
+  "resourceReview": {
+    "routes": [
+      "/r/admin-console-shell/",
+      "/r/ai-memory-context-panel/",
+      "/r/ai-prompt-history/",
+      "/r/ai-suggested-actions/",
+      "/r/api-capability-section/",
+      "/r/audit-log/",
+      "/r/command-centre-shell/",
+      "/r/cohort-matrix/"
+    ],
+    "viewports": [
+      "desktop-1440x900",
+      "mobile-390x844"
+    ],
+    "captures": 16,
+    "http200": 16,
+    "navigationFailures": 0,
+    "horizontalOverflow": 0,
+    "axeViolations": 0,
+    "applicationTelemetry": {
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "uncaughtExceptions": 0,
+      "failedRequests": 0,
+      "httpErrors": 0
+    },
+    "axeInstrumentationConsoleErrors": 16,
+    "interactions": [
+      {
+        "slug": "admin-console-shell",
+        "viewport": "desktop-1440x900",
+        "visible": true,
+        "disabled": true,
+        "clicked": false,
+        "visibleTextChanged": false
+      },
+      {
+        "slug": "ai-memory-context-panel",
+        "viewport": "desktop-1440x900",
+        "visible": true,
+        "disabled": false,
+        "clicked": true,
+        "visibleTextChanged": true
+      },
+      {
+        "slug": "ai-prompt-history",
+        "viewport": "desktop-1440x900",
+        "visible": true,
+        "disabled": true,
+        "clicked": false,
+        "visibleTextChanged": false
+      },
+      {
+        "slug": "ai-suggested-actions",
+        "viewport": "desktop-1440x900",
+        "visible": false,
+        "disabled": null,
+        "clicked": false,
+        "visibleTextChanged": false
+      },
+      {
+        "slug": "admin-console-shell",
+        "viewport": "mobile-390x844",
+        "visible": true,
+        "disabled": true,
+        "clicked": false,
+        "visibleTextChanged": false
+      },
+      {
+        "slug": "ai-memory-context-panel",
+        "viewport": "mobile-390x844",
+        "visible": true,
+        "disabled": false,
+        "clicked": true,
+        "visibleTextChanged": true
+      },
+      {
+        "slug": "ai-prompt-history",
+        "viewport": "mobile-390x844",
+        "visible": true,
+        "disabled": true,
+        "clicked": false,
+        "visibleTextChanged": false
+      },
+      {
+        "slug": "ai-suggested-actions",
+        "viewport": "mobile-390x844",
+        "visible": false,
+        "disabled": null,
+        "clicked": false,
+        "visibleTextChanged": false
+      }
+    ]
+  },
+  "cohortKeyboard": {
+    "evidence": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/cohort-matrix-keyboard-v80.json",
+    "status": 200,
+    "viewport": "390x844",
+    "regionName": "Cohort retention table",
+    "tabindex": "0",
+    "clientWidth": 340,
+    "scrollWidth": 393,
+    "focusConfirmed": true,
+    "scrollLeftBefore": 0,
+    "scrollLeftAfterArrowRight": 40,
+    "keyboardScrollWorked": true,
+    "telemetry": {
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": []
+    }
+  },
+  "screenshotDirectory": "quality/evidence/step-45/public-v80-reaudit/manual-copy-suspects/"
+}

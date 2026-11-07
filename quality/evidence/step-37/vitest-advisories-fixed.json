@@ -1,0 +1,57 @@
+{
+  "findingIds": ["SEC-37-107", "SEC-37-108"],
+  "severity": "medium",
+  "dependency": "@vitest/mocker",
+  "before": {
+    "resolvedVersion": "4.1.11",
+    "auditResult": "2 moderate vulnerabilities",
+    "affectedPaths": [
+      ".>vitest>@vitest/mocker",
+      "apps__api>better-auth>vitest>@vitest/mocker",
+      "packages__ingest>vitest>@vitest/mocker",
+      "packages__linter>vitest>@vitest/mocker",
+      "packages__registry-gate>vitest>@vitest/mocker"
+    ]
+  },
+  "advisories": [
+    {
+      "findingId": "SEC-37-107",
+      "githubAdvisory": "GHSA-qxg6-89mg-rqv8",
+      "title": "Vitest code injection via unauthenticated manual mock registration",
+      "vulnerableVersions": ">=2.1.0-beta.7 <4.1.12",
+      "patchedVersion": "4.1.12",
+      "source": "https://github.com/advisories/GHSA-qxg6-89mg-rqv8"
+    },
+    {
+      "findingId": "SEC-37-108",
+      "githubAdvisory": "GHSA-xp26-3454-mjgp",
+      "title": "Vitest Windows backslash traversal bypasses the mocker redirect allowlist",
+      "vulnerableVersions": ">=4.1.11 <4.1.12",
+      "patchedVersion": "4.1.12",
+      "source": "https://github.com/advisories/GHSA-xp26-3454-mjgp"
+    }
+  ],
+  "remediation": {
+    "command": "pnpm up -r vitest@4.1.12",
+    "resolvedVersion": "4.1.12",
+    "affectedFiles": [
+      "package.json",
+      "packages/ingest/package.json",
+      "packages/linter/package.json",
+      "packages/registry-gate/package.json",
+      "pnpm-lock.yaml"
+    ],
+    "frozenInstall": "passed"
+  },
+  "after": {
+    "pnpmAudit": "No known vulnerabilities found",
+    "unitTests": "1195 passed across 76 files",
+    "typecheck": "passed across 22 workspace packages",
+    "lint": "passed",
+    "releaseAudit": "passed all 16 gates, including build, route bundle budgets, resource isolation, provenance, security and dependency audit",
+    "previewCspBrowserTests": "18 passed in desktop and mobile Chromium",
+    "untrustedCodeExecuted": false
+  },
+  "capturedAt": "2026-10-21T21:24:41Z",
+  "deploymentVerification": "not applicable to the local development-tool dependency update; no public deployment was made"
+}

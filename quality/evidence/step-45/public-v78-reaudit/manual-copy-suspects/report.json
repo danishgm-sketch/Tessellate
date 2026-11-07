@@ -1,0 +1,637 @@
+{
+  "capturedAt": "2026-11-06T07:37:02.409Z",
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": 78,
+  "resources": [
+    "admin-console-shell",
+    "ai-memory-context-panel",
+    "ai-prompt-history",
+    "ai-suggested-actions",
+    "api-capability-section",
+    "audit-log",
+    "command-centre-shell",
+    "cohort-matrix"
+  ],
+  "viewports": [
+    "desktop-1440x900",
+    "mobile-390x844"
+  ],
+  "results": [
+    {
+      "slug": "admin-console-shell",
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/admin-console-shell/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nShells\n/\nAdmin Console Shell\nAdmin Console Shell\n@tess/admin-console-shell\nv1.0.0\nManifest status: verified\n\nEnterprise administration layout with organization selector, user table, and security audit tab.\n\nInstall:\ntess add admin-console-shell\nRegistry source: /r/admin-console-shell.json\n#admin-console-shell\n#admin\n#enterprise\n#roles\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nEnterprise administration layout with organization selector, user table, and security audit tab.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nIT administrative management surfaces\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nCasual public homepages\nJOBS TO BE DONE\nManage users, access permissions, and audit logs safely\nEXPECTED CONTENT REQUIREMENTS\nAccessible navigation semantics and responsive containment\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (90%)\nb2b-saas (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nShells\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n65%\nVisual Ambition\n60%\nContrast\n75%\nCurvature\n40%\nMotion\n35%",
+      "frameText": "Admin Console Shell preview\nAdmin Console\n\nUser permissions & security enforcement\n\nInvite User\n\nActive Organization Members (14)\n\nAll members authenticated with GitHub OAuth.",
+      "buttons": [
+        {
+          "text": "Invite User",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        }
+      ],
+      "interaction": {
+        "actionName": "Invite User",
+        "visible": true,
+        "disabled": false,
+        "clicked": true,
+        "visibleTextChanged": false,
+        "beforeText": "Admin Console Shell preview\nAdmin Console\n\nUser permissions & security enforcement\n\nInvite User\n\nActive Organization Members (14)\n\nAll members authenticated with GitHub OAuth.",
+        "afterText": "Admin Console Shell preview\nAdmin Console\n\nUser permissions & security enforcement\n\nInvite User\n\nActive Organization Members (14)\n\nAll members authenticated with GitHub OAuth."
+      },
+      "metrics": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "ai-memory-context-panel",
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-memory-context-panel/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nAi\n/\nAI Memory Context Panel\nAI Memory Context Panel\n@tess/ai-memory-context-panel\nv1.0.0\nManifest status: verified\n\nInspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls.\n\nInstall:\ntess add ai-memory-context-panel\nRegistry source: /r/ai-memory-context-panel.json\n#ai\n#memory\n#context\n#inspector\n#preferences\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nInspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nUser preference management\n•\nSession memory inspection\n•\nAI privacy controls\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStandard public footer links\n•\nPassword inputs\nJOBS TO BE DONE\nInspect and manage persisted memory entities remembered by the assistant\nEXPECTED CONTENT REQUIREMENTS\nDescribe the behavior represented by the interface and clearly label any illustrative data.\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (95%)\nb2b-saas (90%)\ndata-product (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nAi\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n75%\nContrast\n85%\nCurvature\n35%\nMotion\n30%",
+      "frameText": "AI Memory Context Panel preview\nActive Assistant Memory\n\nShort & long-term conversational recall\n\nPurge All\npreferred_mode:Nocturne (dark obsidian canvas)\n✕\nstack_target:React 19 + Tailwind CSS 4\n✕\ndependency_rule:0 undeclared dependencies allowed\n✕",
+      "buttons": [
+        {
+          "text": "Purge All",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        },
+        {
+          "text": "✕",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        },
+        {
+          "text": "✕",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        },
+        {
+          "text": "✕",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        }
+      ],
+      "interaction": {
+        "actionName": "Purge All",
+        "visible": true,
+        "disabled": false,
+        "clicked": true,
+        "visibleTextChanged": true,
+        "beforeText": "AI Memory Context Panel preview\nActive Assistant Memory\n\nShort & long-term conversational recall\n\nPurge All\npreferred_mode:Nocturne (dark obsidian canvas)\n✕\nstack_target:React 19 + Tailwind CSS 4\n✕\ndependency_rule:0 undeclared dependencies allowed\n✕",
+        "afterText": "AI Memory Context Panel preview\nActive Assistant Memory\n\nShort & long-term conversational recall\n\nPurge All"
+      },
+      "metrics": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "ai-prompt-history",
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-prompt-history/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nAi\n/\nAI Prompt History\nAI Prompt History\n@tess/ai-prompt-history\nv1.0.0\nManifest status: verified\n\nSearchable log of previous prompts with token stats, execution timestamps, and re-run buttons.\n\nInstall:\ntess add ai-prompt-history\nRegistry source: /r/ai-prompt-history.json\n#ai\n#prompt\n#history\n#log\n#replay\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nSearchable log of previous prompts with token stats, execution timestamps, and re-run buttons.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nPrompt experimentation logs\n•\nTeam prompt review libraries\n•\nToken spend inspection\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nReal-time streaming chat messages\n•\nSingle character typing fields\nJOBS TO BE DONE\nAudit and replay past prompts with execution metrics and one-click reload\nEXPECTED CONTENT REQUIREMENTS\nDescribe the behavior represented by the interface and clearly label any illustrative data.\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (95%)\nb2b-saas (90%)\ndata-product (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nAi\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n75%\nContrast\n85%\nCurvature\n35%\nMotion\n30%",
+      "frameText": "AI Prompt History preview\nPrompt History\n\nReplay or inspect previous generation requests\n\nAudit Design DNA alignment for all 56 application blocks\n10 mins ago • 1,420 tokens\nReplay\nGenerate 24 data visualization resources with zero runtime deps\n1 hour ago • 4,850 tokens\nReplay\nScaffold Phase 17 CLI with shadcn registry integration\nYesterday • 3,210 tokens\nReplay",
+      "buttons": [
+        {
+          "text": "Replay",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        },
+        {
+          "text": "Replay",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        },
+        {
+          "text": "Replay",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        }
+      ],
+      "interaction": {
+        "actionName": "Replay",
+        "visible": true,
+        "disabled": false,
+        "clicked": true,
+        "visibleTextChanged": false,
+        "beforeText": "AI Prompt History preview\nPrompt History\n\nReplay or inspect previous generation requests\n\nAudit Design DNA alignment for all 56 application blocks\n10 mins ago • 1,420 tokens\nReplay\nGenerate 24 data visualization resources with zero runtime deps\n1 hour ago • 4,850 tokens\nReplay\nScaffold Phase 17 CLI with shadcn registry integration\nYesterday • 3,210 tokens\nReplay",
+        "afterText": "AI Prompt History preview\nPrompt History\n\nReplay or inspect previous generation requests\n\nAudit Design DNA alignment for all 56 application blocks\n10 mins ago • 1,420 tokens\nReplay\nGenerate 24 data visualization resources with zero runtime deps\n1 hour ago • 4,850 tokens\nReplay\nScaffold Phase 17 CLI with shadcn registry integration\nYesterday • 3,210 tokens\nReplay"
+      },
+      "metrics": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "ai-suggested-actions",
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-suggested-actions/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nAi\n/\nAI Suggested Actions\nAI Suggested Actions\n@tess/ai-suggested-actions\nv1.0.0\nManifest status: verified\n\nContext-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts.\n\nInstall:\ntess add ai-suggested-actions\nRegistry source: /r/ai-suggested-actions.json\n#ai\n#suggestions\n#actions\n#chips\n#workflow\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nContext-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nPost-generation next step recommendations\n•\nChat conclusion action pills\n•\nEmpty project initial ideas\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nComplex nested menus\n•\nStatic disclaimer footers\nJOBS TO BE DONE\nSuggest high-probability next steps based on recent conversation or generation state\nEXPECTED CONTENT REQUIREMENTS\nDescribe the behavior represented by the interface and clearly label any illustrative data.\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (95%)\nb2b-saas (90%)\ndata-product (85%)\n\nUse in Workbench\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nAi\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n75%\nContrast\n85%\nCurvature\n35%\nMotion\n30%",
+      "frameText": "AI Suggested Actions preview\n✦\nSuggested Next Steps\nExport as Vite App\nBundle React + Tailwind 4 source tree\nRun Contrast Audit\nValidate WCAG 2.2 AA against 3 presets\nGenerate Shadcn Manifest\nCreate registry schema item file",
+      "buttons": [
+        {
+          "text": "Export as Vite App\nBundle React + Tailwind 4 source tree",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        },
+        {
+          "text": "Run Contrast Audit\nValidate WCAG 2.2 AA against 3 presets",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        },
+        {
+          "text": "Generate Shadcn Manifest\nCreate registry schema item file",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        }
+      ],
+      "interaction": {
+        "actionName": "Export as Vite App",
+        "visible": false,
+        "disabled": null,
+        "clicked": false,
+        "visibleTextChanged": false,
+        "beforeText": "AI Suggested Actions preview\n✦\nSuggested Next Steps\nExport as Vite App\nBundle React + Tailwind 4 source tree\nRun Contrast Audit\nValidate WCAG 2.2 AA against 3 presets\nGenerate Shadcn Manifest\nCreate registry schema item file",
+        "afterText": "AI Suggested Actions preview\n✦\nSuggested Next Steps\nExport as Vite App\nBundle React + Tailwind 4 source tree\nRun Contrast Audit\nValidate WCAG 2.2 AA against 3 presets\nGenerate Shadcn Manifest\nCreate registry schema item file"
+      },
+      "metrics": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "api-capability-section",
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/api-capability-section/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nSections\n/\nAPI Capability Section\nAPI Capability Section\n@tess/api-capability-section\nv1.0.0\nManifest status: verified\n\nDeveloper section highlighting REST / GraphQL / SDK methods with endpoint pill tags.\n\nInstall:\ntess add api-capability-section\nRegistry source: /r/api-capability-section.json\n#api-capability-section\n#api\n#endpoints\n#developer\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nDeveloper section highlighting REST / GraphQL / SDK methods with endpoint pill tags.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nTechnical products exposing webhooks and APIs\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nConsumer non-technical apps\nJOBS TO BE DONE\nDemonstrate clean API endpoint signatures and fast HTTP responses\nEXPECTED CONTENT REQUIREMENTS\nClear hierarchy, responsive layout, accessible typography\nTARGET PRODUCT ARCHETYPES\nmarketing-site (95%)\nb2b-saas (90%)\ndeveloper-tool (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nSections\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n50%\nVisual Ambition\n70%\nContrast\n80%\nCurvature\n35%\nMotion\n30%",
+      "frameText": "API Capability Section preview\nProgrammatic API Access\nGET\n/api/v1/resources/:slug\nRetrieve verified JSON manifest\nPOST\n/api/v1/compose\nValidate and compile project tree\nGET\n/api/v1/dna/tokens\nQuery calibrated Design DNA dimensions",
+      "buttons": [],
+      "interaction": null,
+      "metrics": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "audit-log",
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/audit-log/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nBlocks\n/\nAudit Log\nAudit Log\n@tess/audit-log\nv1.0.0\nManifest status: verified\n\nSecurity and governance audit log table recording user actions, IP addresses, and hashes.\n\nInstall:\ntess add audit-log\nRegistry source: /r/audit-log.json\n#audit-log\n#audit\n#security\n#compliance\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nSecurity and governance audit log table recording user actions, IP addresses, and hashes.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nSecurity settings panels and enterprise administrative audit tracks\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nCasual public feeds\nJOBS TO BE DONE\nRecord immutable audit trail of system modifications and logins\nEXPECTED CONTENT REQUIREMENTS\nHigh data density, keyboard accessibility, semantic tokens\nTARGET PRODUCT ARCHETYPES\nb2b-saas (95%)\ndeveloper-tool (90%)\ndata-product (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nBlocks\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n65%\nContrast\n80%\nCurvature\n35%\nMotion\n25%",
+      "frameText": "Audit Log preview\nSecurity Audit Trail\nAPI_KEY_ROTATED\nActor: usr_admin99 • IP: 192.0.2.1\n10m ago\nPROJECT_CHECKPOINT_SAVED\nActor: usr_sarah • IP: 198.51.100.4\n1h ago\nDNA_TOKENS_MUTATED\nActor: agent_cursor • IP: local\n3h ago",
+      "buttons": [],
+      "interaction": null,
+      "metrics": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "command-centre-shell",
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/command-centre-shell/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nShells\n/\nCommand Centre Shell\nCommand Centre Shell\n@tess/command-centre-shell\nv1.0.0\nManifest status: verified\n\nMission control telemetry layout with multi-panel monitoring grids and emergency alerts.\n\nInstall:\ntess add command-centre-shell\nRegistry source: /r/command-centre-shell.json\n#command-centre-shell\n#mission-control\n#noc\n#telemetry\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nMission control telemetry layout with multi-panel monitoring grids and emergency alerts.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nHigh-stakes operational monitors requiring multi-pane status displays\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStandard consumer settings pages\nJOBS TO BE DONE\nCoordinate multi-grid operations monitoring\nEXPECTED CONTENT REQUIREMENTS\nAccessible navigation semantics and responsive containment\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (90%)\nb2b-saas (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nShells\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n65%\nVisual Ambition\n60%\nContrast\n75%\nCurvature\n40%\nMotion\n35%",
+      "frameText": "Command Centre Shell preview\nMission Control\n\nGlobal Cluster Telemetry\n\nALL SYSTEMS OPERATIONAL\nNode A\nNode B\nNode C",
+      "buttons": [],
+      "interaction": null,
+      "metrics": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "cohort-matrix",
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/cohort-matrix/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nData\n/\nCohort Matrix\nCohort Matrix\n@tess/cohort-matrix\nv1.0.0\nManifest status: verified\n\nRetention table displaying user cohorts over weekly/monthly periods with color-coded retention percentage cells.\n\nInstall:\ntess add cohort-matrix\nRegistry source: /r/cohort-matrix.json\n#retention\n#cohort\n#matrix\n#table\n#analytics\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nRetention table displaying user cohorts over weekly/monthly periods with color-coded retention percentage cells.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nSaaS weekly retention matrices\n•\nE-commerce repeat purchase cohorts\n•\nUser activation decay\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nReal-time 1-second stock tickers\n•\nGeometric geospatial maps\nJOBS TO BE DONE\nTrack user engagement and retention drop-offs grouped by sign-up cohort\nEXPECTED CONTENT REQUIREMENTS\nStructured numerical data points, semantic color tokens, SVG vector rendering\nTARGET PRODUCT ARCHETYPES\ndata-product (95%)\nb2b-saas (90%)\ndeveloper-tool (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nData\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n75%\nVisual Ambition\n70%\nContrast\n85%\nCurvature\n30%\nMotion\n20%",
+      "frameText": "Cohort Matrix preview\nUser Retention Cohort Matrix\n\nMonthly active user persistence\n\nCohort\tSize\tM0\tM1\tM2\tM3\tM4\tM5\nJan 2026\t1,240\t\n100%\n\t\n78%\n\t\n64%\n\t\n52%\n\t\n45%\n\t\n41%\n\nFeb 2026\t1,480\t\n100%\n\t\n81%\n\t\n68%\n\t\n59%\n\t\n49%\n\t-\nMar 2026\t1,620\t\n100%\n\t\n84%\n\t\n72%\n\t\n63%\n\t-\t-\nApr 2026\t1,890\t\n100%\n\t\n86%\n\t\n75%\n\t-\t-\t-\nMay 2026\t2,100\t\n100%\n\t\n88%\n\t-\t-\t-\t-",
+      "buttons": [],
+      "interaction": null,
+      "metrics": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "admin-console-shell",
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/admin-console-shell/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nShells\n/\nAdmin Console Shell\nAdmin Console Shell\n@tess/admin-console-shell\nv1.0.0\nManifest status: verified\n\nEnterprise administration layout with organization selector, user table, and security audit tab.\n\nInstall:\ntess add admin-console-shell\nRegistry source: /r/admin-console-shell.json\n#admin-console-shell\n#admin\n#enterprise\n#roles\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nEnterprise administration layout with organization selector, user table, and security audit tab.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nIT administrative management surfaces\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nCasual public homepages\nJOBS TO BE DONE\nManage users, access permissions, and audit logs safely\nEXPECTED CONTENT REQUIREMENTS\nAccessible navigation semantics and responsive containment\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (90%)\nb2b-saas (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nShells\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n65%\nVisual Ambition\n60%\nContrast\n75%\nCurvature\n40%\nMotion\n35%",
+      "frameText": "Admin Console Shell preview\nAdmin Console\n\nUser permissions & security enforcement\n\nInvite User\n\nActive Organization Members (14)\n\nAll members authenticated with GitHub OAuth.",
+      "buttons": [
+        {
+          "text": "Invite User",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        }
+      ],
+      "interaction": {
+        "actionName": "Invite User",
+        "visible": true,
+        "disabled": false,
+        "clicked": true,
+        "visibleTextChanged": false,
+        "beforeText": "Admin Console Shell preview\nAdmin Console\n\nUser permissions & security enforcement\n\nInvite User\n\nActive Organization Members (14)\n\nAll members authenticated with GitHub OAuth.",
+        "afterText": "Admin Console Shell preview\nAdmin Console\n\nUser permissions & security enforcement\n\nInvite User\n\nActive Organization Members (14)\n\nAll members authenticated with GitHub OAuth."
+      },
+      "metrics": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "ai-memory-context-panel",
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-memory-context-panel/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nAi\n/\nAI Memory Context Panel\nAI Memory Context Panel\n@tess/ai-memory-context-panel\nv1.0.0\nManifest status: verified\n\nInspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls.\n\nInstall:\ntess add ai-memory-context-panel\nRegistry source: /r/ai-memory-context-panel.json\n#ai\n#memory\n#context\n#inspector\n#preferences\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nInspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nUser preference management\n•\nSession memory inspection\n•\nAI privacy controls\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStandard public footer links\n•\nPassword inputs\nJOBS TO BE DONE\nInspect and manage persisted memory entities remembered by the assistant\nEXPECTED CONTENT REQUIREMENTS\nDescribe the behavior represented by the interface and clearly label any illustrative data.\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (95%)\nb2b-saas (90%)\ndata-product (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nAi\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n75%\nContrast\n85%\nCurvature\n35%\nMotion\n30%",
+      "frameText": "AI Memory Context Panel preview\nActive Assistant Memory\n\nShort & long-term conversational recall\n\nPurge All\npreferred_mode:Nocturne (dark obsidian canvas)\n✕\nstack_target:React 19 + Tailwind CSS 4\n✕\ndependency_rule:0 undeclared dependencies allowed\n✕",
+      "buttons": [
+        {
+          "text": "Purge All",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        },
+        {
+          "text": "✕",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        },
+        {
+          "text": "✕",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        },
+        {
+          "text": "✕",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        }
+      ],
+      "interaction": {
+        "actionName": "Purge All",
+        "visible": true,
+        "disabled": false,
+        "clicked": true,
+        "visibleTextChanged": true,
+        "beforeText": "AI Memory Context Panel preview\nActive Assistant Memory\n\nShort & long-term conversational recall\n\nPurge All\npreferred_mode:Nocturne (dark obsidian canvas)\n✕\nstack_target:React 19 + Tailwind CSS 4\n✕\ndependency_rule:0 undeclared dependencies allowed\n✕",
+        "afterText": "AI Memory Context Panel preview\nActive Assistant Memory\n\nShort & long-term conversational recall\n\nPurge All"
+      },
+      "metrics": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "ai-prompt-history",
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-prompt-history/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nAi\n/\nAI Prompt History\nAI Prompt History\n@tess/ai-prompt-history\nv1.0.0\nManifest status: verified\n\nSearchable log of previous prompts with token stats, execution timestamps, and re-run buttons.\n\nInstall:\ntess add ai-prompt-history\nRegistry source: /r/ai-prompt-history.json\n#ai\n#prompt\n#history\n#log\n#replay\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nSearchable log of previous prompts with token stats, execution timestamps, and re-run buttons.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nPrompt experimentation logs\n•\nTeam prompt review libraries\n•\nToken spend inspection\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nReal-time streaming chat messages\n•\nSingle character typing fields\nJOBS TO BE DONE\nAudit and replay past prompts with execution metrics and one-click reload\nEXPECTED CONTENT REQUIREMENTS\nDescribe the behavior represented by the interface and clearly label any illustrative data.\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (95%)\nb2b-saas (90%)\ndata-product (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nAi\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n75%\nContrast\n85%\nCurvature\n35%\nMotion\n30%",
+      "frameText": "AI Prompt History preview\nPrompt History\n\nReplay or inspect previous generation requests\n\nAudit Design DNA alignment for all 56 application blocks\n10 mins ago • 1,420 tokens\nReplay\nGenerate 24 data visualization resources with zero runtime deps\n1 hour ago • 4,850 tokens\nReplay\nScaffold Phase 17 CLI with shadcn registry integration\nYesterday • 3,210 tokens\nReplay",
+      "buttons": [
+        {
+          "text": "Replay",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        },
+        {
+          "text": "Replay",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        },
+        {
+          "text": "Replay",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        }
+      ],
+      "interaction": {
+        "actionName": "Replay",
+        "visible": true,
+        "disabled": false,
+        "clicked": true,
+        "visibleTextChanged": false,
+        "beforeText": "AI Prompt History preview\nPrompt History\n\nReplay or inspect previous generation requests\n\nAudit Design DNA alignment for all 56 application blocks\n10 mins ago • 1,420 tokens\nReplay\nGenerate 24 data visualization resources with zero runtime deps\n1 hour ago • 4,850 tokens\nReplay\nScaffold Phase 17 CLI with shadcn registry integration\nYesterday • 3,210 tokens\nReplay",
+        "afterText": "AI Prompt History preview\nPrompt History\n\nReplay or inspect previous generation requests\n\nAudit Design DNA alignment for all 56 application blocks\n10 mins ago • 1,420 tokens\nReplay\nGenerate 24 data visualization resources with zero runtime deps\n1 hour ago • 4,850 tokens\nReplay\nScaffold Phase 17 CLI with shadcn registry integration\nYesterday • 3,210 tokens\nReplay"
+      },
+      "metrics": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "ai-suggested-actions",
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-suggested-actions/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nAi\n/\nAI Suggested Actions\nAI Suggested Actions\n@tess/ai-suggested-actions\nv1.0.0\nManifest status: verified\n\nContext-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts.\n\nInstall:\ntess add ai-suggested-actions\nRegistry source: /r/ai-suggested-actions.json\n#ai\n#suggestions\n#actions\n#chips\n#workflow\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nContext-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nPost-generation next step recommendations\n•\nChat conclusion action pills\n•\nEmpty project initial ideas\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nComplex nested menus\n•\nStatic disclaimer footers\nJOBS TO BE DONE\nSuggest high-probability next steps based on recent conversation or generation state\nEXPECTED CONTENT REQUIREMENTS\nDescribe the behavior represented by the interface and clearly label any illustrative data.\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (95%)\nb2b-saas (90%)\ndata-product (85%)\n\nUse in Workbench\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nAi\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n75%\nContrast\n85%\nCurvature\n35%\nMotion\n30%",
+      "frameText": "AI Suggested Actions preview\n✦\nSuggested Next Steps\nExport as Vite App\nBundle React + Tailwind 4 source tree\nRun Contrast Audit\nValidate WCAG 2.2 AA against 3 presets\nGenerate Shadcn Manifest\nCreate registry schema item file",
+      "buttons": [
+        {
+          "text": "Export as Vite App\nBundle React + Tailwind 4 source tree",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        },
+        {
+          "text": "Run Contrast Audit\nValidate WCAG 2.2 AA against 3 presets",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        },
+        {
+          "text": "Generate Shadcn Manifest\nCreate registry schema item file",
+          "ariaLabel": null,
+          "disabled": false,
+          "expanded": null,
+          "pressed": null,
+          "title": null
+        }
+      ],
+      "interaction": {
+        "actionName": "Export as Vite App",
+        "visible": false,
+        "disabled": null,
+        "clicked": false,
+        "visibleTextChanged": false,
+        "beforeText": "AI Suggested Actions preview\n✦\nSuggested Next Steps\nExport as Vite App\nBundle React + Tailwind 4 source tree\nRun Contrast Audit\nValidate WCAG 2.2 AA against 3 presets\nGenerate Shadcn Manifest\nCreate registry schema item file",
+        "afterText": "AI Suggested Actions preview\n✦\nSuggested Next Steps\nExport as Vite App\nBundle React + Tailwind 4 source tree\nRun Contrast Audit\nValidate WCAG 2.2 AA against 3 presets\nGenerate Shadcn Manifest\nCreate registry schema item file"
+      },
+      "metrics": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "api-capability-section",
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/api-capability-section/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nSections\n/\nAPI Capability Section\nAPI Capability Section\n@tess/api-capability-section\nv1.0.0\nManifest status: verified\n\nDeveloper section highlighting REST / GraphQL / SDK methods with endpoint pill tags.\n\nInstall:\ntess add api-capability-section\nRegistry source: /r/api-capability-section.json\n#api-capability-section\n#api\n#endpoints\n#developer\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nDeveloper section highlighting REST / GraphQL / SDK methods with endpoint pill tags.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nTechnical products exposing webhooks and APIs\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nConsumer non-technical apps\nJOBS TO BE DONE\nDemonstrate clean API endpoint signatures and fast HTTP responses\nEXPECTED CONTENT REQUIREMENTS\nClear hierarchy, responsive layout, accessible typography\nTARGET PRODUCT ARCHETYPES\nmarketing-site (95%)\nb2b-saas (90%)\ndeveloper-tool (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nSections\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n50%\nVisual Ambition\n70%\nContrast\n80%\nCurvature\n35%\nMotion\n30%",
+      "frameText": "API Capability Section preview\nProgrammatic API Access\nGET\n/api/v1/resources/:slug\nRetrieve verified JSON manifest\nPOST\n/api/v1/compose\nValidate and compile project tree\nGET\n/api/v1/dna/tokens\nQuery calibrated Design DNA dimensions",
+      "buttons": [],
+      "interaction": null,
+      "metrics": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "audit-log",
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/audit-log/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nBlocks\n/\nAudit Log\nAudit Log\n@tess/audit-log\nv1.0.0\nManifest status: verified\n\nSecurity and governance audit log table recording user actions, IP addresses, and hashes.\n\nInstall:\ntess add audit-log\nRegistry source: /r/audit-log.json\n#audit-log\n#audit\n#security\n#compliance\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nSecurity and governance audit log table recording user actions, IP addresses, and hashes.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nSecurity settings panels and enterprise administrative audit tracks\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nCasual public feeds\nJOBS TO BE DONE\nRecord immutable audit trail of system modifications and logins\nEXPECTED CONTENT REQUIREMENTS\nHigh data density, keyboard accessibility, semantic tokens\nTARGET PRODUCT ARCHETYPES\nb2b-saas (95%)\ndeveloper-tool (90%)\ndata-product (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nBlocks\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n70%\nVisual Ambition\n65%\nContrast\n80%\nCurvature\n35%\nMotion\n25%",
+      "frameText": "Audit Log preview\nSecurity Audit Trail\nAPI_KEY_ROTATED\nActor: usr_admin99 • IP: 192.0.2.1\n10m ago\nPROJECT_CHECKPOINT_SAVED\nActor: usr_sarah • IP: 198.51.100.4\n1h ago\nDNA_TOKENS_MUTATED\nActor: agent_cursor • IP: local\n3h ago",
+      "buttons": [],
+      "interaction": null,
+      "metrics": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "command-centre-shell",
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/command-centre-shell/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nShells\n/\nCommand Centre Shell\nCommand Centre Shell\n@tess/command-centre-shell\nv1.0.0\nManifest status: verified\n\nMission control telemetry layout with multi-panel monitoring grids and emergency alerts.\n\nInstall:\ntess add command-centre-shell\nRegistry source: /r/command-centre-shell.json\n#command-centre-shell\n#mission-control\n#noc\n#telemetry\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nMission control telemetry layout with multi-panel monitoring grids and emergency alerts.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nHigh-stakes operational monitors requiring multi-pane status displays\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nStandard consumer settings pages\nJOBS TO BE DONE\nCoordinate multi-grid operations monitoring\nEXPECTED CONTENT REQUIREMENTS\nAccessible navigation semantics and responsive containment\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (90%)\nb2b-saas (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nShells\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n65%\nVisual Ambition\n60%\nContrast\n75%\nCurvature\n40%\nMotion\n35%",
+      "frameText": "Command Centre Shell preview\nMission Control\n\nGlobal Cluster Telemetry\n\nALL SYSTEMS OPERATIONAL\nNode A\nNode B\nNode C",
+      "buttons": [],
+      "interaction": null,
+      "metrics": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    },
+    {
+      "slug": "cohort-matrix",
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/cohort-matrix/",
+      "status": 200,
+      "navigationError": null,
+      "detailText": "Home\n/\nExplore\n/\nData\n/\nCohort Matrix\nCohort Matrix\n@tess/cohort-matrix\nv1.0.0\nManifest status: verified\n\nRetention table displaying user cohorts over weekly/monthly periods with color-coded retention percentage cells.\n\nInstall:\ntess add cohort-matrix\nRegistry source: /r/cohort-matrix.json\n#retention\n#cohort\n#matrix\n#table\n#analytics\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nRetention table displaying user cohorts over weekly/monthly periods with color-coded retention percentage cells.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nSaaS weekly retention matrices\n•\nE-commerce repeat purchase cohorts\n•\nUser activation decay\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nReal-time 1-second stock tickers\n•\nGeometric geospatial maps\nJOBS TO BE DONE\nTrack user engagement and retention drop-offs grouped by sign-up cohort\nEXPECTED CONTENT REQUIREMENTS\nStructured numerical data points, semantic color tokens, SVG vector rendering\nTARGET PRODUCT ARCHETYPES\ndata-product (95%)\nb2b-saas (90%)\ndeveloper-tool (85%)\n\nSource and sandbox preview available. Workbench composition is restricted to the validated Gold runtime registry.\n\nCopy import\nnpx install\n\nQuality assessment: Not assessed.\n\nCategory\nData\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n75%\nVisual Ambition\n70%\nContrast\n85%\nCurvature\n30%\nMotion\n20%",
+      "frameText": "Cohort Matrix preview\nUser Retention Cohort Matrix\n\nMonthly active user persistence\n\nCohort\tSize\tM0\tM1\tM2\tM3\tM4\tM5\nJan 2026\t1,240\t\n100%\n\t\n78%\n\t\n64%\n\t\n52%\n\t\n45%\n\t\n41%\n\nFeb 2026\t1,480\t\n100%\n\t\n81%\n\t\n68%\n\t\n59%\n\t\n49%\n\t-\nMar 2026\t1,620\t\n100%\n\t\n84%\n\t\n72%\n\t\n63%\n\t-\t-\nApr 2026\t1,890\t\n100%\n\t\n86%\n\t\n75%\n\t-\t-\t-\nMay 2026\t2,100\t\n100%\n\t\n88%\n\t-\t-\t-\t-",
+      "buttons": [],
+      "interaction": null,
+      "metrics": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "horizontalOverflow": false
+      },
+      "telemetry": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    }
+  ]
+}

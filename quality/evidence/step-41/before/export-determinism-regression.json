@@ -1,0 +1,9 @@
+{
+  "id": "AUD-310",
+  "observed": "2026-10-24",
+  "command": "pnpm exec vitest run packages/exporter/src/__tests__/exporter.test.ts -t \"reproducible source trees\"",
+  "exitCode": 1,
+  "failingAssertion": "vite output should be deterministic",
+  "difference": "README.md contained a different new Date().toISOString() on consecutive calls with the same ProjectManifest.",
+  "impact": "Workbench ZIP, CLI, MCP, and exporter target output differed only by a generated timestamp; byte-for-byte parity and reproducible artifacts were impossible."
+}

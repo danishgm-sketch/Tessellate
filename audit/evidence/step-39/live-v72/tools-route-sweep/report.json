@@ -1,0 +1,2659 @@
+{
+  "capturedAt": "2026-11-03T06:49:39.426Z",
+  "siteVersion": 72,
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "routeCount": 11,
+  "viewportCount": 2,
+  "captures": 22,
+  "failureCount": 0,
+  "failures": [],
+  "copyFlagCount": 0,
+  "results": [
+    {
+      "route": "/tools/",
+      "viewport": "1440x900",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Ten Tools — Tessellate Interface Intelligence",
+        "h1": "Ten Interface Tools.",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTESSELLATE INTERFACE SUITE\nBETA\n10 client-side tools · no login required\nTen Interface Tools.\n\nThese browser-based tools are useful for exploration, but their interactions and outputs are still being validated. They do not certify or change a saved Workbench project.\n\nBETA\n01\nSYSTEM INTELLIGENCE\nDesign DNA Lab\n\nExplore presets, adjust Design DNA dimensions, compare samples, and inspect inheritance examples.\n\nLaunch Studio\nBETA\n02\nSURFACE FIELDS\nBackground Studio\n\nAdjust background patterns and copy the CSS or Tailwind examples for use in a project.\n\nLaunch Studio\nBETA\n03\nKINETIC PHYSICS\nMotion Studio\n\nAdjust easing, spring, and stagger settings, then preview and copy example motion values.\n\nLaunch Studio\nBETA\n04\nCHROMA ARCHITECTURE\nPalette Studio\n\nEdit semantic colour tokens and inspect calculated contrast for selected colour pairs.\n\nLaunch Studio\nBETA\n05\nHIERARCHICAL SCALE\nTypography Lab\n\nExplore type scales, font-pairing previews, numeric samples, and OpenType feature settings.\n\nLaunch Studio\nBETA\n06\nSTRUCTURAL GRAMMARS\nLayout Composer\n\nAdjust a responsive wireframe preview and copy its CSS or Tailwind layout snippet.\n\nLaunch Studio\nBETA\n07\nPAGE STRUCTURE\nSection Planner\n\nPlan and reorder example sections, then copy a JSON outline for review.\n\nLaunch Studio\nBETA\n08\nINFORMATION GRAPHICS\nData Visualisation Styler\n\nAdjust sample chart recipes and copy the rendered SVG for review or adaptation.\n\nLaunch Studio\nBETA\n09\nINCLUSIVE COMPLIANCE\nAccessibility Lab\n\nCheck selected colour contrast, focus-ring dimensions, and minimum touch-target size.\n\nLaunch Studio\nBETA\n10\nPERMISSIVE VOCABULARY\nSVG / Icon Lab\n\nSearch and adjust ISC-licensed Lucide icons, then copy React JSX or SVG for project review.\n\nLaunch Studio",
+        "textLength": 1901,
+        "documentWidth": 1440,
+        "innerWidth": 1440,
+        "buttons": [],
+        "links": [
+          {
+            "name": "BETA 01 SYSTEM INTELLIGENCE Design DNA Lab Explore presets, adjust Design DNA dimensions, compare sa",
+            "href": "/tools/dna"
+          },
+          {
+            "name": "BETA 02 SURFACE FIELDS Background Studio Adjust background patterns and copy the CSS or Tailwind exa",
+            "href": "/tools/backgrounds"
+          },
+          {
+            "name": "BETA 03 KINETIC PHYSICS Motion Studio Adjust easing, spring, and stagger settings, then preview and ",
+            "href": "/tools/motion"
+          },
+          {
+            "name": "BETA 04 CHROMA ARCHITECTURE Palette Studio Edit semantic colour tokens and inspect calculated contra",
+            "href": "/tools/palette"
+          },
+          {
+            "name": "BETA 05 HIERARCHICAL SCALE Typography Lab Explore type scales, font-pairing previews, numeric sample",
+            "href": "/tools/typography"
+          },
+          {
+            "name": "BETA 06 STRUCTURAL GRAMMARS Layout Composer Adjust a responsive wireframe preview and copy its CSS o",
+            "href": "/tools/layout"
+          },
+          {
+            "name": "BETA 07 PAGE STRUCTURE Section Planner Plan and reorder example sections, then copy a JSON outline f",
+            "href": "/tools/section-planner"
+          },
+          {
+            "name": "BETA 08 INFORMATION GRAPHICS Data Visualisation Styler Adjust sample chart recipes and copy the rend",
+            "href": "/tools/dataviz"
+          },
+          {
+            "name": "BETA 09 INCLUSIVE COMPLIANCE Accessibility Lab Check selected colour contrast, focus-ring dimensions",
+            "href": "/tools/accessibility"
+          },
+          {
+            "name": "BETA 10 PERMISSIVE VOCABULARY SVG / Icon Lab Search and adjust ISC-licensed Lucide icons, then copy ",
+            "href": "/tools/icons"
+          }
+        ]
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-1440x900.jpg"
+    },
+    {
+      "route": "/tools/accessibility/",
+      "viewport": "1440x900",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Accessibility Lab — Tessellate Tools",
+        "h1": "Accessibility Lab",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 09 · INCLUSIVE COMPLIANCE\nClient-Side · Zero Login\nAccessibility Lab\n\nCheck colour contrast, focus-ring dimensions, and minimum touch-target size. These checks do not certify a complete interface.\n\nThree checks · Not a full audit\nContrast Matrix\nFocus Ring Studio\nTouch Target Size\nColor Pair Calibration\nAuto-Fix Contrast\nForeground (Text / Icon)\nBackground (Surface / Canvas)\n\nEnter six-digit hex colours in the form #2547E8.\n\nCONTRAST RATIO\n16.72:1\nAAA HIGHEST\nNORMAL TEXT (16px)\nPASS\nReq: 4.5:1\nLARGE TEXT (18pt+)\nPASS\nReq: 3.0:1\nUI COMPONENTS\nPASS\nReq: 3.0:1\nAccessible Typographic Contrast\n\nVerify readability and optical legibility in real conditions. Even when users browse with low screen brightness or high ambient glare, text must remain distinct.\n\nFG: #111217\n·\nBG: #F4F2ED",
+        "textLength": 959,
+        "documentWidth": 1440,
+        "innerWidth": 1440,
+        "buttons": [
+          {
+            "name": "Contrast Matrix",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Focus Ring Studio",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Touch Target Size",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Auto-Fix Contrast",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-accessibility-1440x900.jpg"
+    },
+    {
+      "route": "/tools/backgrounds/",
+      "viewport": "1440x900",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Background Studio — Tessellate Tools",
+        "h1": "Background Studio",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 02 · SURFACE INTELLIGENCE\nClient-Side · Zero Login\nBackground Studio\n\nGenerate mathematical gradients, meshes, Cartesian grids, noise, and CSS visual fields.\n\nCopy CSS\nCopy Tailwind\nCURATED STUDIO PRESETS\nRadial Aurora Mesh\nSubtle Hairline Grid\nDense Dot Matrix\nEditorial Duotone Gradient\nCommand Scanlines\nArchitectural Hatch\nField Parameters\nReset\nPattern Geometry\nMesh\nGrid\nDots\nGradient\nScanline\nHatch\nChroma Tokens\nPrimary\nSecondary\nBase Canvas\nGrid / Cell Pitch\n60px\nField Opacity\n35%\nDiffusion Blur\n40px\nLIVE COMPOSITION STAGE\nMESH FIELD\nExample surface\nSAMPLE\n\nThis static preview helps compare text and controls against the selected background. Its content and status are illustrative only.\n\nExample controls are shown for layout only; they are not connected.\n\nDismiss\nAcknowledge\nGENERATED STYLESHEET\nCopy\nbackground-color: #111217;\nbackground-image:\n  radial-gradient(at 0% 0%, #2547E8 0px, transparent 50%),\n  radial-gradient(at 100% 0%, #C9FF57 0px, transparent 50%),\n  radial-gradient(at 50% 100%, #2547E8 0px, transparent 50%);\nopacity: 0.35;",
+        "textLength": 1231,
+        "documentWidth": 1440,
+        "innerWidth": 1440,
+        "buttons": [
+          {
+            "name": "Copy CSS",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy Tailwind",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Radial Aurora Mesh",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Subtle Hairline Grid",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Dense Dot Matrix",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Editorial Duotone Gradient",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Command Scanlines",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Architectural Hatch",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Mesh",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Grid",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Dots",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Gradient",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Scanline",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Hatch",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Dismiss sample",
+            "disabled": true,
+            "visible": true
+          },
+          {
+            "name": "Acknowledge sample",
+            "disabled": true,
+            "visible": true
+          },
+          {
+            "name": "Copy",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-backgrounds-1440x900.jpg"
+    },
+    {
+      "route": "/tools/dataviz/",
+      "viewport": "1440x900",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Data Visualisation Styler — Tessellate Tools",
+        "h1": "Data Visualisation Styler",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 08 · INFORMATION VISUALIZATION\nClient-Side · Zero Login\nData Visualisation Styler\n\nTune sample chart recipes, density, curve, and display settings, then copy the rendered SVG.\n\nCopy SVG Chart Code\nCHART RECIPES\nTime Series Line Spline\nGradient Area Stream\nCategorical Column Ledger\nRadial Allocation Ring\nChart Parameters\nReset\nInterpolation Curve\nSmooth\nLinear\nStepped\nData Density Bias\n75/100\nLine / area stroke width\n2.5px\nCartesian Hairline Grid\nCanvas Theme\nLight\nDark\nSVG VECTOR RENDER ENGINE\nSTATIC SAMPLE DATA",
+        "textLength": 691,
+        "documentWidth": 1440,
+        "innerWidth": 1440,
+        "buttons": [
+          {
+            "name": "Copy SVG Chart Code",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Time Series Line Spline",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Gradient Area Stream",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Categorical Column Ledger",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Radial Allocation Ring",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Smooth",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Linear",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Stepped",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Light",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Dark",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-dataviz-1440x900.jpg"
+    },
+    {
+      "route": "/tools/dna/",
+      "viewport": "1440x900",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Design DNA Lab — Tessellate Tools",
+        "h1": "Design DNA Lab",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nPreset & DNA Explorer\nDesign DNA Lab\n\nExplore 30 canonical presets, 28 numeric dimensions, feel mappings, 5-stop ambition & structure sliders, and 5-level node inheritance.\n\nReset Baseline\nPresets (30)\nFeel Mixer\nAmbition & Structure\nPalettes (20)\nTypography (16)\nMotion (24)\nInheritance Explorer\nInstitutional Intelligence\nENTERPRISE\n\nHigh-trust, disciplined information environment for strategic analysis and governance.\n\nEditorial Research\nEDITORIAL\n\nDeep reading rhythm, refined serif typography, and calm analytical depth.\n\nModern Enterprise\nENTERPRISE\n\nClean, reliable, scalable B2B architecture with contemporary SaaS polish.\n\nCalm SaaS\nENTERPRISE\n\nSoft contrast, generous spacing, and restrained motion for a calm interface direction.\n\nTechnical Precision\nTECHNICAL\n\nDense, crisp data systems with razor-sharp borders and monospace precision.\n\nDeveloper Native\nTECHNICAL\n\nCode-first aesthetic, command-driven shortcuts, and dark high-contrast surfaces.\n\nPremium Minimal\nEDITORIAL\n\nStripped-down luxury, immaculate alignment, expansive space, and subtle depth.\n\nLuxury Editorial\nEDITORIAL\n\nHaute-couture storytelling, dramatic serifs, rich imagery, and slow gliding animations.\n\nWarm Professional\nENTERPRISE\n\nHuman-centric service aesthetic with earth-toned warmth, soft corners, and steady reliability.\n\nProfessional Playful\nENTERPRISE\n\nBalanced enterprise rigor with joyful micro-interactions and approachable accents.\n\nBold Startup\nCREATIVE\n\nHigh-contrast typography, energetic neon accents, and expressive layouts with strong calls to action.\n\nQuiet Productivity\nCONSUMER\n\nRestrained styling, keyboard-oriented controls, and a clear, minimal interface direction.\n\nDense Terminal\nTECHNICAL\n\nFinancial trading and operational cockpit with maximal telemetry per square inch.\n\nScientific Instrument\nTECHNICAL\n\nEmpirical data analysis, high-resolution charting, and reproducible research parameters.\n\nFinancial Authority\nENTERPRISE\n\nInstitutional asset-management styling with formal typography and visible audit-oriented information.\n\nCreative Studio\nCREATIVE\n\nPortfolio-grade presentation, asymmetric grids, variable type, and experimental kinetic feel.\n\nFashion Forward\nEDITORIAL\n\nHigh-contrast luxury commerce with full-bleed lookbooks and dramatic display typography.\n\nSoft Consumer\nCONSUMER\n\nPill-shaped friendly interface, pastel palettes, inviting illustrations, and gentle feedback.\n\nYouthful Social\nCONSUMER\n\nHigh-energy, mobile-first social experience with rich reactions, dynamic media, and bouncy motion.\n\nPlayful Education\nCONSUMER\n\nGamified learning paths, progress milestones, vibrant rewards, and encouraging feedback loops.\n\nTrustworthy Healthcare\nSPECIALIZED\n\nClinical layout cues, clear contrast, calm blue accents, and privacy-sensitive content framing.\n\nCivic / Government\nSPECIALIZED\n\nPlain language, clear form flows, and restrained decoration.\n\nIndustrial Operations\nSPECIALIZED\n\nSCADA-inspired status badges, dense alerts, and high-visibility operational styling.\n\nHigh-End Commerce\nEDITORIAL\n\nPremium curated catalog, crisp checkout architecture, and tactile luxury product galleries.\n\nCinematic Launch\nCREATIVE\n\nKeynote-grade reveal, rich ambient video canvas, grand hero typography, and narrative pacing.\n\nFuture Command\nSPECIALIZED\n\nSci-fi telemetry cockpit with cybernetic accents, spatial hierarchy, and predictive HUD elements.\n\nBrutalist Digital\nCREATIVE\n\nRaw web aesthetics, visible heavy border grids, mono typography, and unapologetic contrast.\n\nOrganic Human\nEDITORIAL\n\nEarthy terracotta tones, fluid curved contours, warm humanist fonts, and hand-crafted feel.\n\nData-First Analytical\nTECHNICAL\n\nMetric drilldowns, structured pivot tables, multi-metric filtering, and crisp visualization.\n\nExperimental Spatial\nCREATIVE\n\nBoundary-pushing 3D spatial viewport, floating canvases, perspective transforms, and novel IA.\n\nInstitutional Intelligence\n\nHigh-trust, disciplined information environment for strategic analysis and governance.\n\nPalette: institutional-navy\nType: financial-sans-tabular-mono\nMotion: calm-precision\n28 CANONICAL DIMENSIONS\nProfessionalism\n92\n\nDegree of formality, institutional polish, and structural discipline.\n\nPlayfulness\n10\n\nWhimsy, lighthearted interaction patterns, and energetic visual tone.\n\nLuxury\n45\n\nGenerous whitespace, premium materials, high craft, and aspirational restraint.\n\nWarmth\n30\n\nHuman approachability, organic rounding, soft contrast, and inviting tone.\n\nTechnicality\n82\n\nScientific precision, monospace accents, data fidelity, and tool-like aesthetic.\n\nEditorial\n45\n\nMagazine-like storytelling, prominent typography hierarchy, and reading rhythm.\n\nFuturism\n25\n\nForward-looking aesthetic, luminous accents, cyber/spatial cues, and modern edge.\n\nVisual Ambition\n30\n\nExpressive surface design budget, from essential clarity to experimental spectacle.\n\nStructural Creativity\n20\n\nInformation architecture freedom, from familiar conventions to inventive layouts.\n\nDensity\n75\n\nInformation compactness and component tightness.\n\nWhitespace\n50\n\nBreathing room, margins, and negative space allocation.\n\nContrast\n85\n\nValue separation between foreground elements, text, and canvas backgrounds.\n\nColourfulness\n25\n\nChroma saturation, palette breadth, and chromatic accents across surfaces.\n\nCurvature\n25\n\nCorner radius progression from crisp rectangular edges to pill shapes.\n\nDepth\n25\n\nElevation, multi-layer shadows, surface bevels, and atmospheric layering.\n\nMotion\n25\n\nOverall animation intensity, transition durations, and interface movement.\n\nMotion Playfulness\n10\n\nSpring physics, overshoot, bounce, and kinetic micro-delight vs linear precision.\n\nTypographic Expression\n35\n\nHero scale variance, display font character, and custom typographic weight.\n\nImagery Intensity\n20\n\nDependence on photography, illustrations, and visual assets.\n\nVideo Intensit",
+        "textLength": 6991,
+        "documentWidth": 1440,
+        "innerWidth": 1440,
+        "buttons": [
+          {
+            "name": "Reset Baseline",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Presets (30)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Feel Mixer",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Ambition & Structure",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Palettes (20)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Typography (16)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Motion (24)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Inheritance Explorer",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Institutional Intelligence ENTERPRISE High-trust, disciplined information environment for strategic ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Editorial Research EDITORIAL Deep reading rhythm, refined serif typography, and calm analytical dept",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Modern Enterprise ENTERPRISE Clean, reliable, scalable B2B architecture with contemporary SaaS polis",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Calm SaaS ENTERPRISE Soft contrast, generous spacing, and restrained motion for a calm interface dir",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Technical Precision TECHNICAL Dense, crisp data systems with razor-sharp borders and monospace preci",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Developer Native TECHNICAL Code-first aesthetic, command-driven shortcuts, and dark high-contrast su",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Premium Minimal EDITORIAL Stripped-down luxury, immaculate alignment, expansive space, and subtle de",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Luxury Editorial EDITORIAL Haute-couture storytelling, dramatic serifs, rich imagery, and slow glidi",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Warm Professional ENTERPRISE Human-centric service aesthetic with earth-toned warmth, soft corners, ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Professional Playful ENTERPRISE Balanced enterprise rigor with joyful micro-interactions and approac",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Bold Startup CREATIVE High-contrast typography, energetic neon accents, and expressive layouts with ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Quiet Productivity CONSUMER Restrained styling, keyboard-oriented controls, and a clear, minimal int",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Dense Terminal TECHNICAL Financial trading and operational cockpit with maximal telemetry per square",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Scientific Instrument TECHNICAL Empirical data analysis, high-resolution charting, and reproducible ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Financial Authority ENTERPRISE Institutional asset-management styling with formal typography and vis",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Creative Studio CREATIVE Portfolio-grade presentation, asymmetric grids, variable type, and experime",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Fashion Forward EDITORIAL High-contrast luxury commerce with full-bleed lookbooks and dramatic displ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Soft Consumer CONSUMER Pill-shaped friendly interface, pastel palettes, inviting illustrations, and ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Youthful Social CONSUMER High-energy, mobile-first social experience with rich reactions, dynamic me",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Playful Education CONSUMER Gamified learning paths, progress milestones, vibrant rewards, and encour",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Trustworthy Healthcare SPECIALIZED Clinical layout cues, clear contrast, calm blue accents, and priv",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Civic / Government SPECIALIZED Plain language, clear form flows, and restrained decoration.",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Industrial Operations SPECIALIZED SCADA-inspired status badges, dense alerts, and high-visibility op",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "High-End Commerce EDITORIAL Premium curated catalog, crisp checkout architecture, and tactile luxury",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Cinematic Launch CREATIVE Keynote-grade reveal, rich ambient video canvas, grand hero typography, an",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Future Command SPECIALIZED Sci-fi telemetry cockpit with cybernetic accents, spatial hierarchy, and ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Brutalist Digital CREATIVE Raw web aesthetics, visible heavy border grids, mono typography, and unap",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Organic Human EDITORIAL Earthy terracotta tones, fluid curved contours, warm humanist fonts, and han",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Data-First Analytical TECHNICAL Metric drilldowns, structured pivot tables, multi-metric filtering, ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Experimental Spatial CREATIVE Boundary-pushing 3D spatial viewport, floating canvases, perspective t",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-dna-1440x900.jpg"
+    },
+    {
+      "route": "/tools/icons/",
+      "viewport": "1440x900",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "SVG / Icon Lab — Tessellate Tools",
+        "h1": "SVG / Icon Lab",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 10 · PERMISSIVE ICON VOCABULARY\nClient-Side · Zero Login · ISC License\nSVG / Icon Lab\n\nInspect, tune stroke geometry, recolour, and export permissively licensed icons for production.\n\nCopy React Icon JSX\nIcon Geometry Tuner\nReset\nOptical Box Size\n24px\nStroke Weight\n2px\nIcon Chroma\nBackground Tile Badge\nAll\nNavigation\nFeedback\nAnalytics\nDeveloper\nSecurity\nInterface\nActions\nFiles\nArrowRight\nArrowUpRight\nCheckCircle2\nAlertCircle\nActivity\nTerminal\nShield\nZap\nLayers\nSparkles\nCommand\nHeart\nGlobe2\nEye\nSlidersHorizontal\nTable\nCpu\nRefreshCw\nFolder\nFileText\nLock\nUnlock\nMaximize2\nMinimize2\nTrash2\nPlus\nSelected: Sparkles\nInterface\nCopy JSX\nCopy SVG",
+        "textLength": 818,
+        "documentWidth": 1440,
+        "innerWidth": 1440,
+        "buttons": [
+          {
+            "name": "Copy React Icon JSX",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "All",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Navigation",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Feedback",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Analytics",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Developer",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Security",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Interface",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Actions",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Files",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "ArrowRight",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "ArrowUpRight",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "CheckCircle2",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "AlertCircle",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Activity",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Terminal",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Shield",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Zap",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Layers",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Sparkles",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Command",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Heart",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Globe2",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Eye",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "SlidersHorizontal",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Table",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Cpu",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "RefreshCw",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Folder",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "FileText",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Lock",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Unlock",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Maximize2",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Minimize2",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Trash2",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Plus",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy JSX",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy SVG",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-icons-1440x900.jpg"
+    },
+    {
+      "route": "/tools/layout/",
+      "viewport": "1440x900",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Layout Composer — Tessellate Tools",
+        "h1": "Layout Composer",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 06 · STRUCTURAL GRAMMAR\nClient-Side · Zero Login\nLayout Composer\n\nAdjust container and grid settings, inspect a responsive wireframe preview, and copy a CSS or Tailwind layout snippet.\n\nCopy Layout Snippet\nARCHITECTURAL GRAMMARS\nStandard Application Sidebar\nThree-Pane Modular Cockpit\nAsymmetric Bento Grid\nAsymmetric Editorial Split\nSpatial Infinite Canvas\nContainer & Grid Settings\nReset\nMax Container Bounds\n1024px\n1280px\n1440px\n100%\nGrid Columns (Desktop)\n12 cols\nGutter Pitch (Gap)\n24px\nWIREFRAME PREVIEW\nStandard Application Sidebar\n375px\n768px\n1440px\n\nSchematic preview for comparing layout options; it does not run or test a generated page.\n\nTop Bar Navigation",
+        "textLength": 842,
+        "documentWidth": 1440,
+        "innerWidth": 1440,
+        "buttons": [
+          {
+            "name": "Copy Layout Snippet",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Standard Application Sidebar",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Three-Pane Modular Cockpit",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Asymmetric Bento Grid",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Asymmetric Editorial Split",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Spatial Infinite Canvas",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "1024px",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "1280px",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "1440px",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "100%",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Mobile preview (375px)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Tablet preview (768px)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Desktop preview (1440px)",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-layout-1440x900.jpg"
+    },
+    {
+      "route": "/tools/motion/",
+      "viewport": "1440x900",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Motion Studio — Tessellate Tools",
+        "h1": "Motion Studio",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 03 · KINETIC PHYSICS\nClient-Side · Zero Login\nMotion Studio\n\nCreate and compare easing curves, spring dynamics, stagger timing, and a reduced-motion example.\n\nPlay Animation\nCopy CSS\nPERSONALITY PRESETS\nCalm Precision\nEditorial Glide\nEnergetic Tactile\nDeliberate Command\nReduced Motion Safe\nKinetic Physics Model\nReduced Motion\nReset\nCubic-Bezier\nSpring Physics\nPacing Duration\n220ms\nStagger Delay (per item)\n40ms\nBezier Curve Coordinates\n[0.16, 1, 0.3, 1]\nX1 / Y1 (In)\nX2 / Y2 (Out)\nKINETIC SIMULATION BENCH\n220ms · CUBIC-BEZIER\nStaggered Component Sequence\n01 · Example architecture review\nSAMPLE\n02 · Example token check\nSAMPLE\n03 · Example response timing\nSAMPLE\nInteractive Tactile Press Target\nPress Me for Spring Response\nClick to test physical depression & rebound feedback.\nCSS TRANSITION\nCopy\n/* Tessellate Motion Preset: calm-precision */\ntransition-property: transform, opacity, box-shadow;\ntransition-duration: 220ms;\ntransition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);\nMOTION PROPS\nCopy\n{\n  duration: 0.22,\n  ease: [0.16, 1, 0.3, 1]\n}",
+        "textLength": 1229,
+        "documentWidth": 1440,
+        "innerWidth": 1440,
+        "buttons": [
+          {
+            "name": "Play Animation",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy CSS",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Calm Precision",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Editorial Glide",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Energetic Tactile",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Deliberate Command",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reduced Motion Safe",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset motion settings",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Cubic-Bezier",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Spring Physics",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Press Me for Spring Response",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-motion-1440x900.jpg"
+    },
+    {
+      "route": "/tools/palette/",
+      "viewport": "1440x900",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Palette Studio — Tessellate Tools",
+        "h1": "Palette Studio",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 04 · CHROMA ARCHITECTURE\nClient-Side · Zero Login\nPalette Studio\n\nSet semantic colour tokens and inspect calculated contrast for selected colour pairs.\n\nCopy CSS Variables\nCopy Tailwind @theme\nTHEME PRESETS\nZinc Editorial (Tessellate Default)\nDeep Future Command (Dark Studio)\nWarm Parchment & Espresso\nSlate Institutional\nPure Monochrome\n\nCalm architectural warm paper canvas with crisp ink and electric cobalt accent.\n\nSemantic Token Roles\nReset\nSURFACES & CANVASES\nCanvas\nSurface\nSurface Raised\nTYPOGRAPHY & INKS\nInk\nInk Secondary\nInk Muted\nACCENTS & STRUCTURAL BORDERS\nAccent\nHairline\nHairline Strong\nSelected Pair Contrast Check\nReference: 4.5:1 (AA) / 7.0:1 (AAA)\n\nChecks these four token pairs only. It does not audit rendered components, states, or every color combination.\n\nInk / Canvas\n16.7:1\nAAA PASS\nInk-Sec / Surface\n5.5:1\nAA PASS\nAccent / Canvas\n6.0:1\nAA (UI) PASS\nWhite on Accent\n6.7:1\nAA PASS\n\nThese calculations cover the listed token pairs; they do not certify a full interface.\n\nActive Surface Preview\nPREVIEW PORT\nSample token preview\nEXAMPLE\n\nExample text for previewing the selected colours together. This is a static sample, not a live product screen.\n\nSample value: 1,284\nTry sample action",
+        "textLength": 1387,
+        "documentWidth": 1440,
+        "innerWidth": 1440,
+        "buttons": [
+          {
+            "name": "Copy CSS Variables",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy Tailwind @theme",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Zinc Editorial (Tessellate Default)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Deep Future Command (Dark Studio)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Warm Parchment & Espresso",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Slate Institutional",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Pure Monochrome",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Try sample action",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-palette-1440x900.jpg"
+    },
+    {
+      "route": "/tools/section-planner/",
+      "viewport": "1440x900",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Section Planner — Tessellate Tools",
+        "h1": "Section Planner",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 07 · PAGE STRUCTURE\nClient-Side · Zero Login\nSection Planner\n\nPlan and edit example section structures for conversion pages, technical documentation, and editorial sites. The planner does not implement the described sections.\n\nCopy Section Graph JSON\n\nTemplate descriptions are planning prompts, not implementation or verified proof. Replace sample claims with sourced product details before publishing.\n\nPAGE OBJECTIVE ARCHETYPES\nB2B SaaS Conversion Landing\nDeveloper Documentation Hub\nFintech Analytics Cockpit\nLuxury Editorial Sanctuary\nOperational Triage & Admin Tool\nPage Sections (8 active)\nReset Blueprint\n01\nHero Value Proposition\nHERO\nState the product’s value and link to an implemented primary action.\nActive\n02\nEvidence and Customer References\nPROOF\nUse certifications and customer references only when they are documented and approved.\nActive\n03\nInteractive Feature Playground\nINTERACTIVE\nAdd a product demo; connect a working sandbox before presenting it as interactive.\nActive\n04\nArchitectural Difference Matrix\nFEATURE\nCompare product capabilities using criteria that are specific and supported.\nActive\n05\nMeasured Performance Evidence\nPROOF\nInclude measured benchmarks and their methodology, or omit this section.\nActive\n06\nPricing and Plan Details\nPRICING\nList current plan names and terms supplied by the product owner.\nActive\n07\nTechnical Evaluation FAQ\nFAQ\nAnswer security, hosting, and export questions from verified product documentation.\nActive\n08\nFinal Call to Action\nCTA\nUse configured URLs or actions for web and CLI entry points.\nActive\nAdd\nSection Mix Guide\nWITHIN GUIDE\nAttention (Hero & Visual)\n1 section\n(guide 1-2)\nProof & Trust (Audit / Metrics)\n2 sections\n(guide 1-3)\nInteraction (Playground / Sandbox)\n1 section\n(guide 1-2)\nInformation (Features / FAQ)\n2 sections\n(guide 2-4)\nAction & Conversion (Pricing / CTA)\n2 sections\n(guide 1-2)\n\nThese reference ranges are prompts for review, not a quality score. Adjust the sequence to fit the product goal.\n\nGRAMMAR MANIFEST\nCopy\n{\n  \"pageObjective\": \"saas-conversion\",\n  \"totalSections\": 8,\n  \"grammar\": [\n    {\n      \"order\": 1,\n      \"id\": \"sec-1\",\n      \"name\": \"Hero Value Proposition\",\n      \"semanticRole\": \"hero\",\n      \"description\": \"State the product’s value and link to an implemented primary action.\"\n    },\n    {\n      \"order\": 2,\n      \"id\": \"sec-2\",\n      \"name\": \"Evidence and Customer References\",\n      \"semanticRole\": \"proof\",\n      \"description\": \"Use certifications and customer references only when they are documented and approved.\"\n    },\n    {\n      \"order\": 3,\n      \"id\": \"sec-3\",\n      \"name\": \"Interactive Feature Playground\",\n      \"semanticRole\": \"interactive\",\n      \"description\": \"Add a product demo; connect a working sandbox before presenting it as interactive.\"\n    },\n    {\n      \"order\": 4,\n      \"id\": \"sec-4\",\n      \"name\": \"Architectural Difference Matrix\",\n      \"semanticRole\": \"feature\",\n      \"description\": \"Compare product capabilities using criteria that are specific and supported.\"\n    },\n    {\n      \"order\": 5,\n      \"id\": \"sec-5\",\n      \"name\": \"Measured Performance Evidence\",\n      \"semanticRole\": \"proof\",\n      \"description\": \"Include measured benchmarks and their methodology, or omit this section.\"\n    },\n    {\n      \"order\": 6,\n      \"id\": \"sec-6\",\n      \"name\": \"Pricing and Plan Details\",\n      \"semanticRole\": \"pricing\",\n      \"description\": \"List current plan names and terms supplied by the product owner.\"\n    },\n    {\n      \"order\": 7,\n      \"id\": \"sec-7\",\n      \"name\": \"Technical Evaluation FAQ\",\n      \"semanticRole\": \"faq\",\n      \"description\": \"Answer security, hosting, and export questions from verified product documentation.\"\n    },\n    {\n      \"order\": 8,\n      \"id\": \"sec-8\",\n      \"name\": \"Final Call to Action\",\n      \"semanticRole\": \"cta\",\n      \"description\": \"Use configured URLs or actions for web and CLI entry points.\"\n    }\n  ]\n}",
+        "textLength": 4071,
+        "documentWidth": 1440,
+        "innerWidth": 1440,
+        "buttons": [
+          {
+            "name": "Copy Section Graph JSON",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "B2B SaaS Conversion Landing",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Developer Documentation Hub",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Fintech Analytics Cockpit",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Luxury Editorial Sanctuary",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Operational Triage & Admin Tool",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset Blueprint",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Hero Value Proposition up",
+            "disabled": true,
+            "visible": true
+          },
+          {
+            "name": "Move Hero Value Proposition down",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Omit Hero Value Proposition",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Hero Value Proposition",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Evidence and Customer References up",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Evidence and Customer References down",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Omit Evidence and Customer References",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Evidence and Customer References",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Interactive Feature Playground up",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Interactive Feature Playground down",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Omit Interactive Feature Playground",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Interactive Feature Playground",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Architectural Difference Matrix up",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Architectural Difference Matrix down",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Omit Architectural Difference Matrix",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Architectural Difference Matrix",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Measured Performance Evidence up",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Measured Performance Evidence down",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Omit Measured Performance Evidence",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Measured Performance Evidence",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Pricing and Plan Details up",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Pricing and Plan Details down",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Omit Pricing and Plan Details",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Pricing and Plan Details",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Technical Evaluation FAQ up",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Technical Evaluation FAQ down",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Omit Technical Evaluation FAQ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Technical Evaluation FAQ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Final Call to Action up",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Final Call to Action down",
+            "disabled": true,
+            "visible": true
+          },
+          {
+            "name": "Omit Final Call to Action",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Final Call to Action",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Add",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-section-planner-1440x900.jpg"
+    },
+    {
+      "route": "/tools/typography/",
+      "viewport": "1440x900",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Typography Lab — Tessellate Tools",
+        "h1": "Typography Lab",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 05 · TYPOGRAPHIC HIERARCHY\nClient-Side · Zero Login\nTypography Lab\n\nCompare type scales and font pairings, then test how tabular figures affect number alignment.\n\nCopy Scale CSS\nScale & Pairing Controls\nReset\nMusical Scale Ratio\nMajor Second\n1.125\nMinor Third\n1.2\nMajor Third\n1.25\nPerfect Fourth\n1.333\nGolden Ratio\n1.618\nBase Body Size\n16px\nTypeface Pairing Archetype\nGeist & System Mono\nPrecision engineering grotesque with geometric optical balance.\nNewsreader Editorial & Inter\nBespoke authorial voice with warm literary serif display titles.\nJetBrains Mono & Sans\nTerminal-first technical platform typography for CLI & developer tools.\nOpenType Numerical Features\nTabular Figures (Mono-width align)\nSlashed Zero (0 vs O distinction)\nHierarchical Scale Ladder\nTabular Figure Sample\nSCALE STEP\nMAXIMUM SIZE\nA product, shaped by people.\n33px max\nWorkspace activity\n28px max\nRecent updates\n23px max\n\nClear type sizes help people scan information and understand how each part of a page fits together.\n\n16px\nCOMPACT METADATA · EXAMPLE STATUS\n13px",
+        "textLength": 1218,
+        "documentWidth": 1440,
+        "innerWidth": 1440,
+        "buttons": [
+          {
+            "name": "Copy Scale CSS",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Major Second 1.125",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Minor Third 1.2",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Major Third 1.25",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Perfect Fourth 1.333",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Golden Ratio 1.618",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Geist & System Mono Precision engineering grotesque with geometric optical balance.",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Newsreader Editorial & Inter Bespoke authorial voice with warm literary serif display titles.",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "JetBrains Mono & Sans Terminal-first technical platform typography for CLI & developer tools.",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Hierarchical Scale Ladder",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Tabular Figure Sample",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-typography-1440x900.jpg"
+    },
+    {
+      "route": "/tools/",
+      "viewport": "390x844",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Ten Tools — Tessellate Interface Intelligence",
+        "h1": "Ten Interface Tools.",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTESSELLATE INTERFACE SUITE\nBETA\n10 client-side tools · no login required\nTen Interface Tools.\n\nThese browser-based tools are useful for exploration, but their interactions and outputs are still being validated. They do not certify or change a saved Workbench project.\n\nBETA\n01\nSYSTEM INTELLIGENCE\nDesign DNA Lab\n\nExplore presets, adjust Design DNA dimensions, compare samples, and inspect inheritance examples.\n\nLaunch Studio\nBETA\n02\nSURFACE FIELDS\nBackground Studio\n\nAdjust background patterns and copy the CSS or Tailwind examples for use in a project.\n\nLaunch Studio\nBETA\n03\nKINETIC PHYSICS\nMotion Studio\n\nAdjust easing, spring, and stagger settings, then preview and copy example motion values.\n\nLaunch Studio\nBETA\n04\nCHROMA ARCHITECTURE\nPalette Studio\n\nEdit semantic colour tokens and inspect calculated contrast for selected colour pairs.\n\nLaunch Studio\nBETA\n05\nHIERARCHICAL SCALE\nTypography Lab\n\nExplore type scales, font-pairing previews, numeric samples, and OpenType feature settings.\n\nLaunch Studio\nBETA\n06\nSTRUCTURAL GRAMMARS\nLayout Composer\n\nAdjust a responsive wireframe preview and copy its CSS or Tailwind layout snippet.\n\nLaunch Studio\nBETA\n07\nPAGE STRUCTURE\nSection Planner\n\nPlan and reorder example sections, then copy a JSON outline for review.\n\nLaunch Studio\nBETA\n08\nINFORMATION GRAPHICS\nData Visualisation Styler\n\nAdjust sample chart recipes and copy the rendered SVG for review or adaptation.\n\nLaunch Studio\nBETA\n09\nINCLUSIVE COMPLIANCE\nAccessibility Lab\n\nCheck selected colour contrast, focus-ring dimensions, and minimum touch-target size.\n\nLaunch Studio\nBETA\n10\nPERMISSIVE VOCABULARY\nSVG / Icon Lab\n\nSearch and adjust ISC-licensed Lucide icons, then copy React JSX or SVG for project review.\n\nLaunch Studio",
+        "textLength": 1901,
+        "documentWidth": 390,
+        "innerWidth": 390,
+        "buttons": [],
+        "links": [
+          {
+            "name": "BETA 01 SYSTEM INTELLIGENCE Design DNA Lab Explore presets, adjust Design DNA dimensions, compare sa",
+            "href": "/tools/dna"
+          },
+          {
+            "name": "BETA 02 SURFACE FIELDS Background Studio Adjust background patterns and copy the CSS or Tailwind exa",
+            "href": "/tools/backgrounds"
+          },
+          {
+            "name": "BETA 03 KINETIC PHYSICS Motion Studio Adjust easing, spring, and stagger settings, then preview and ",
+            "href": "/tools/motion"
+          },
+          {
+            "name": "BETA 04 CHROMA ARCHITECTURE Palette Studio Edit semantic colour tokens and inspect calculated contra",
+            "href": "/tools/palette"
+          },
+          {
+            "name": "BETA 05 HIERARCHICAL SCALE Typography Lab Explore type scales, font-pairing previews, numeric sample",
+            "href": "/tools/typography"
+          },
+          {
+            "name": "BETA 06 STRUCTURAL GRAMMARS Layout Composer Adjust a responsive wireframe preview and copy its CSS o",
+            "href": "/tools/layout"
+          },
+          {
+            "name": "BETA 07 PAGE STRUCTURE Section Planner Plan and reorder example sections, then copy a JSON outline f",
+            "href": "/tools/section-planner"
+          },
+          {
+            "name": "BETA 08 INFORMATION GRAPHICS Data Visualisation Styler Adjust sample chart recipes and copy the rend",
+            "href": "/tools/dataviz"
+          },
+          {
+            "name": "BETA 09 INCLUSIVE COMPLIANCE Accessibility Lab Check selected colour contrast, focus-ring dimensions",
+            "href": "/tools/accessibility"
+          },
+          {
+            "name": "BETA 10 PERMISSIVE VOCABULARY SVG / Icon Lab Search and adjust ISC-licensed Lucide icons, then copy ",
+            "href": "/tools/icons"
+          }
+        ]
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-390x844.jpg"
+    },
+    {
+      "route": "/tools/accessibility/",
+      "viewport": "390x844",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Accessibility Lab — Tessellate Tools",
+        "h1": "Accessibility Lab",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 09 · INCLUSIVE COMPLIANCE\nClient-Side · Zero Login\nAccessibility Lab\n\nCheck colour contrast, focus-ring dimensions, and minimum touch-target size. These checks do not certify a complete interface.\n\nThree checks · Not a full audit\nContrast Matrix\nFocus Ring Studio\nTouch Target Size\nColor Pair Calibration\nAuto-Fix Contrast\nForeground (Text / Icon)\nBackground (Surface / Canvas)\n\nEnter six-digit hex colours in the form #2547E8.\n\nCONTRAST RATIO\n16.72:1\nAAA HIGHEST\nNORMAL TEXT (16px)\nPASS\nReq: 4.5:1\nLARGE TEXT (18pt+)\nPASS\nReq: 3.0:1\nUI COMPONENTS\nPASS\nReq: 3.0:1\nAccessible Typographic Contrast\n\nVerify readability and optical legibility in real conditions. Even when users browse with low screen brightness or high ambient glare, text must remain distinct.\n\nFG: #111217\n·\nBG: #F4F2ED",
+        "textLength": 959,
+        "documentWidth": 390,
+        "innerWidth": 390,
+        "buttons": [
+          {
+            "name": "Contrast Matrix",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Focus Ring Studio",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Touch Target Size",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Auto-Fix Contrast",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-accessibility-390x844.jpg"
+    },
+    {
+      "route": "/tools/backgrounds/",
+      "viewport": "390x844",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Background Studio — Tessellate Tools",
+        "h1": "Background Studio",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 02 · SURFACE INTELLIGENCE\nClient-Side · Zero Login\nBackground Studio\n\nGenerate mathematical gradients, meshes, Cartesian grids, noise, and CSS visual fields.\n\nCopy CSS\nCopy Tailwind\nCURATED STUDIO PRESETS\nRadial Aurora Mesh\nSubtle Hairline Grid\nDense Dot Matrix\nEditorial Duotone Gradient\nCommand Scanlines\nArchitectural Hatch\nField Parameters\nReset\nPattern Geometry\nMesh\nGrid\nDots\nGradient\nScanline\nHatch\nChroma Tokens\nPrimary\nSecondary\nBase Canvas\nGrid / Cell Pitch\n60px\nField Opacity\n35%\nDiffusion Blur\n40px\nLIVE COMPOSITION STAGE\nMESH FIELD\nExample surface\nSAMPLE\n\nThis static preview helps compare text and controls against the selected background. Its content and status are illustrative only.\n\nExample controls are shown for layout only; they are not connected.\n\nDismiss\nAcknowledge\nGENERATED STYLESHEET\nCopy\nbackground-color: #111217;\nbackground-image:\n  radial-gradient(at 0% 0%, #2547E8 0px, transparent 50%),\n  radial-gradient(at 100% 0%, #C9FF57 0px, transparent 50%),\n  radial-gradient(at 50% 100%, #2547E8 0px, transparent 50%);\nopacity: 0.35;",
+        "textLength": 1231,
+        "documentWidth": 390,
+        "innerWidth": 390,
+        "buttons": [
+          {
+            "name": "Copy CSS",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy Tailwind",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Radial Aurora Mesh",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Subtle Hairline Grid",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Dense Dot Matrix",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Editorial Duotone Gradient",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Command Scanlines",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Architectural Hatch",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Mesh",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Grid",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Dots",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Gradient",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Scanline",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Hatch",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Dismiss sample",
+            "disabled": true,
+            "visible": true
+          },
+          {
+            "name": "Acknowledge sample",
+            "disabled": true,
+            "visible": true
+          },
+          {
+            "name": "Copy",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-backgrounds-390x844.jpg"
+    },
+    {
+      "route": "/tools/dataviz/",
+      "viewport": "390x844",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Data Visualisation Styler — Tessellate Tools",
+        "h1": "Data Visualisation Styler",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 08 · INFORMATION VISUALIZATION\nClient-Side · Zero Login\nData Visualisation Styler\n\nTune sample chart recipes, density, curve, and display settings, then copy the rendered SVG.\n\nCopy SVG Chart Code\nCHART RECIPES\nTime Series Line Spline\nGradient Area Stream\nCategorical Column Ledger\nRadial Allocation Ring\nChart Parameters\nReset\nInterpolation Curve\nSmooth\nLinear\nStepped\nData Density Bias\n75/100\nLine / area stroke width\n2.5px\nCartesian Hairline Grid\nCanvas Theme\nLight\nDark\nSVG VECTOR RENDER ENGINE\nSTATIC SAMPLE DATA",
+        "textLength": 691,
+        "documentWidth": 390,
+        "innerWidth": 390,
+        "buttons": [
+          {
+            "name": "Copy SVG Chart Code",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Time Series Line Spline",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Gradient Area Stream",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Categorical Column Ledger",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Radial Allocation Ring",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Smooth",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Linear",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Stepped",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Light",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Dark",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-dataviz-390x844.jpg"
+    },
+    {
+      "route": "/tools/dna/",
+      "viewport": "390x844",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Design DNA Lab — Tessellate Tools",
+        "h1": "Design DNA Lab",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nPreset & DNA Explorer\nDesign DNA Lab\n\nExplore 30 canonical presets, 28 numeric dimensions, feel mappings, 5-stop ambition & structure sliders, and 5-level node inheritance.\n\nReset Baseline\nPresets (30)\nFeel Mixer\nAmbition & Structure\nPalettes (20)\nTypography (16)\nMotion (24)\nInheritance Explorer\nInstitutional Intelligence\nENTERPRISE\n\nHigh-trust, disciplined information environment for strategic analysis and governance.\n\nEditorial Research\nEDITORIAL\n\nDeep reading rhythm, refined serif typography, and calm analytical depth.\n\nModern Enterprise\nENTERPRISE\n\nClean, reliable, scalable B2B architecture with contemporary SaaS polish.\n\nCalm SaaS\nENTERPRISE\n\nSoft contrast, generous spacing, and restrained motion for a calm interface direction.\n\nTechnical Precision\nTECHNICAL\n\nDense, crisp data systems with razor-sharp borders and monospace precision.\n\nDeveloper Native\nTECHNICAL\n\nCode-first aesthetic, command-driven shortcuts, and dark high-contrast surfaces.\n\nPremium Minimal\nEDITORIAL\n\nStripped-down luxury, immaculate alignment, expansive space, and subtle depth.\n\nLuxury Editorial\nEDITORIAL\n\nHaute-couture storytelling, dramatic serifs, rich imagery, and slow gliding animations.\n\nWarm Professional\nENTERPRISE\n\nHuman-centric service aesthetic with earth-toned warmth, soft corners, and steady reliability.\n\nProfessional Playful\nENTERPRISE\n\nBalanced enterprise rigor with joyful micro-interactions and approachable accents.\n\nBold Startup\nCREATIVE\n\nHigh-contrast typography, energetic neon accents, and expressive layouts with strong calls to action.\n\nQuiet Productivity\nCONSUMER\n\nRestrained styling, keyboard-oriented controls, and a clear, minimal interface direction.\n\nDense Terminal\nTECHNICAL\n\nFinancial trading and operational cockpit with maximal telemetry per square inch.\n\nScientific Instrument\nTECHNICAL\n\nEmpirical data analysis, high-resolution charting, and reproducible research parameters.\n\nFinancial Authority\nENTERPRISE\n\nInstitutional asset-management styling with formal typography and visible audit-oriented information.\n\nCreative Studio\nCREATIVE\n\nPortfolio-grade presentation, asymmetric grids, variable type, and experimental kinetic feel.\n\nFashion Forward\nEDITORIAL\n\nHigh-contrast luxury commerce with full-bleed lookbooks and dramatic display typography.\n\nSoft Consumer\nCONSUMER\n\nPill-shaped friendly interface, pastel palettes, inviting illustrations, and gentle feedback.\n\nYouthful Social\nCONSUMER\n\nHigh-energy, mobile-first social experience with rich reactions, dynamic media, and bouncy motion.\n\nPlayful Education\nCONSUMER\n\nGamified learning paths, progress milestones, vibrant rewards, and encouraging feedback loops.\n\nTrustworthy Healthcare\nSPECIALIZED\n\nClinical layout cues, clear contrast, calm blue accents, and privacy-sensitive content framing.\n\nCivic / Government\nSPECIALIZED\n\nPlain language, clear form flows, and restrained decoration.\n\nIndustrial Operations\nSPECIALIZED\n\nSCADA-inspired status badges, dense alerts, and high-visibility operational styling.\n\nHigh-End Commerce\nEDITORIAL\n\nPremium curated catalog, crisp checkout architecture, and tactile luxury product galleries.\n\nCinematic Launch\nCREATIVE\n\nKeynote-grade reveal, rich ambient video canvas, grand hero typography, and narrative pacing.\n\nFuture Command\nSPECIALIZED\n\nSci-fi telemetry cockpit with cybernetic accents, spatial hierarchy, and predictive HUD elements.\n\nBrutalist Digital\nCREATIVE\n\nRaw web aesthetics, visible heavy border grids, mono typography, and unapologetic contrast.\n\nOrganic Human\nEDITORIAL\n\nEarthy terracotta tones, fluid curved contours, warm humanist fonts, and hand-crafted feel.\n\nData-First Analytical\nTECHNICAL\n\nMetric drilldowns, structured pivot tables, multi-metric filtering, and crisp visualization.\n\nExperimental Spatial\nCREATIVE\n\nBoundary-pushing 3D spatial viewport, floating canvases, perspective transforms, and novel IA.\n\nInstitutional Intelligence\n\nHigh-trust, disciplined information environment for strategic analysis and governance.\n\nPalette: institutional-navy\nType: financial-sans-tabular-mono\nMotion: calm-precision\n28 CANONICAL DIMENSIONS\nProfessionalism\n92\n\nDegree of formality, institutional polish, and structural discipline.\n\nPlayfulness\n10\n\nWhimsy, lighthearted interaction patterns, and energetic visual tone.\n\nLuxury\n45\n\nGenerous whitespace, premium materials, high craft, and aspirational restraint.\n\nWarmth\n30\n\nHuman approachability, organic rounding, soft contrast, and inviting tone.\n\nTechnicality\n82\n\nScientific precision, monospace accents, data fidelity, and tool-like aesthetic.\n\nEditorial\n45\n\nMagazine-like storytelling, prominent typography hierarchy, and reading rhythm.\n\nFuturism\n25\n\nForward-looking aesthetic, luminous accents, cyber/spatial cues, and modern edge.\n\nVisual Ambition\n30\n\nExpressive surface design budget, from essential clarity to experimental spectacle.\n\nStructural Creativity\n20\n\nInformation architecture freedom, from familiar conventions to inventive layouts.\n\nDensity\n75\n\nInformation compactness and component tightness.\n\nWhitespace\n50\n\nBreathing room, margins, and negative space allocation.\n\nContrast\n85\n\nValue separation between foreground elements, text, and canvas backgrounds.\n\nColourfulness\n25\n\nChroma saturation, palette breadth, and chromatic accents across surfaces.\n\nCurvature\n25\n\nCorner radius progression from crisp rectangular edges to pill shapes.\n\nDepth\n25\n\nElevation, multi-layer shadows, surface bevels, and atmospheric layering.\n\nMotion\n25\n\nOverall animation intensity, transition durations, and interface movement.\n\nMotion Playfulness\n10\n\nSpring physics, overshoot, bounce, and kinetic micro-delight vs linear precision.\n\nTypographic Expression\n35\n\nHero scale variance, display font character, and custom typographic weight.\n\nImagery Intensity\n20\n\nDependence on photography, illustrations, and visual assets.\n\nVideo Intensit",
+        "textLength": 6991,
+        "documentWidth": 390,
+        "innerWidth": 390,
+        "buttons": [
+          {
+            "name": "Reset Baseline",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Presets (30)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Feel Mixer",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Ambition & Structure",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Palettes (20)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Typography (16)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Motion (24)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Inheritance Explorer",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Institutional Intelligence ENTERPRISE High-trust, disciplined information environment for strategic ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Editorial Research EDITORIAL Deep reading rhythm, refined serif typography, and calm analytical dept",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Modern Enterprise ENTERPRISE Clean, reliable, scalable B2B architecture with contemporary SaaS polis",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Calm SaaS ENTERPRISE Soft contrast, generous spacing, and restrained motion for a calm interface dir",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Technical Precision TECHNICAL Dense, crisp data systems with razor-sharp borders and monospace preci",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Developer Native TECHNICAL Code-first aesthetic, command-driven shortcuts, and dark high-contrast su",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Premium Minimal EDITORIAL Stripped-down luxury, immaculate alignment, expansive space, and subtle de",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Luxury Editorial EDITORIAL Haute-couture storytelling, dramatic serifs, rich imagery, and slow glidi",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Warm Professional ENTERPRISE Human-centric service aesthetic with earth-toned warmth, soft corners, ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Professional Playful ENTERPRISE Balanced enterprise rigor with joyful micro-interactions and approac",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Bold Startup CREATIVE High-contrast typography, energetic neon accents, and expressive layouts with ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Quiet Productivity CONSUMER Restrained styling, keyboard-oriented controls, and a clear, minimal int",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Dense Terminal TECHNICAL Financial trading and operational cockpit with maximal telemetry per square",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Scientific Instrument TECHNICAL Empirical data analysis, high-resolution charting, and reproducible ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Financial Authority ENTERPRISE Institutional asset-management styling with formal typography and vis",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Creative Studio CREATIVE Portfolio-grade presentation, asymmetric grids, variable type, and experime",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Fashion Forward EDITORIAL High-contrast luxury commerce with full-bleed lookbooks and dramatic displ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Soft Consumer CONSUMER Pill-shaped friendly interface, pastel palettes, inviting illustrations, and ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Youthful Social CONSUMER High-energy, mobile-first social experience with rich reactions, dynamic me",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Playful Education CONSUMER Gamified learning paths, progress milestones, vibrant rewards, and encour",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Trustworthy Healthcare SPECIALIZED Clinical layout cues, clear contrast, calm blue accents, and priv",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Civic / Government SPECIALIZED Plain language, clear form flows, and restrained decoration.",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Industrial Operations SPECIALIZED SCADA-inspired status badges, dense alerts, and high-visibility op",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "High-End Commerce EDITORIAL Premium curated catalog, crisp checkout architecture, and tactile luxury",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Cinematic Launch CREATIVE Keynote-grade reveal, rich ambient video canvas, grand hero typography, an",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Future Command SPECIALIZED Sci-fi telemetry cockpit with cybernetic accents, spatial hierarchy, and ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Brutalist Digital CREATIVE Raw web aesthetics, visible heavy border grids, mono typography, and unap",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Organic Human EDITORIAL Earthy terracotta tones, fluid curved contours, warm humanist fonts, and han",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Data-First Analytical TECHNICAL Metric drilldowns, structured pivot tables, multi-metric filtering, ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Experimental Spatial CREATIVE Boundary-pushing 3D spatial viewport, floating canvases, perspective t",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-dna-390x844.jpg"
+    },
+    {
+      "route": "/tools/icons/",
+      "viewport": "390x844",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "SVG / Icon Lab — Tessellate Tools",
+        "h1": "SVG / Icon Lab",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 10 · PERMISSIVE ICON VOCABULARY\nClient-Side · Zero Login · ISC License\nSVG / Icon Lab\n\nInspect, tune stroke geometry, recolour, and export permissively licensed icons for production.\n\nCopy React Icon JSX\nIcon Geometry Tuner\nReset\nOptical Box Size\n24px\nStroke Weight\n2px\nIcon Chroma\nBackground Tile Badge\nAll\nNavigation\nFeedback\nAnalytics\nDeveloper\nSecurity\nInterface\nActions\nFiles\nArrowRight\nArrowUpRight\nCheckCircle2\nAlertCircle\nActivity\nTerminal\nShield\nZap\nLayers\nSparkles\nCommand\nHeart\nGlobe2\nEye\nSlidersHorizontal\nTable\nCpu\nRefreshCw\nFolder\nFileText\nLock\nUnlock\nMaximize2\nMinimize2\nTrash2\nPlus\nSelected: Sparkles\nInterface\nCopy JSX\nCopy SVG",
+        "textLength": 818,
+        "documentWidth": 390,
+        "innerWidth": 390,
+        "buttons": [
+          {
+            "name": "Copy React Icon JSX",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "All",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Navigation",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Feedback",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Analytics",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Developer",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Security",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Interface",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Actions",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Files",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "ArrowRight",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "ArrowUpRight",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "CheckCircle2",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "AlertCircle",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Activity",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Terminal",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Shield",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Zap",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Layers",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Sparkles",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Command",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Heart",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Globe2",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Eye",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "SlidersHorizontal",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Table",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Cpu",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "RefreshCw",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Folder",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "FileText",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Lock",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Unlock",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Maximize2",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Minimize2",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Trash2",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Plus",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy JSX",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy SVG",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-icons-390x844.jpg"
+    },
+    {
+      "route": "/tools/layout/",
+      "viewport": "390x844",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Layout Composer — Tessellate Tools",
+        "h1": "Layout Composer",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 06 · STRUCTURAL GRAMMAR\nClient-Side · Zero Login\nLayout Composer\n\nAdjust container and grid settings, inspect a responsive wireframe preview, and copy a CSS or Tailwind layout snippet.\n\nCopy Layout Snippet\nARCHITECTURAL GRAMMARS\nStandard Application Sidebar\nThree-Pane Modular Cockpit\nAsymmetric Bento Grid\nAsymmetric Editorial Split\nSpatial Infinite Canvas\nContainer & Grid Settings\nReset\nMax Container Bounds\n1024px\n1280px\n1440px\n100%\nGrid Columns (Desktop)\n12 cols\nGutter Pitch (Gap)\n24px\nWIREFRAME PREVIEW\nStandard Application Sidebar\n\nSchematic preview for comparing layout options; it does not run or test a generated page.\n\nTop Bar Navigation",
+        "textLength": 823,
+        "documentWidth": 390,
+        "innerWidth": 390,
+        "buttons": [
+          {
+            "name": "Copy Layout Snippet",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Standard Application Sidebar",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Three-Pane Modular Cockpit",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Asymmetric Bento Grid",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Asymmetric Editorial Split",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Spatial Infinite Canvas",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "1024px",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "1280px",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "1440px",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "100%",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Mobile preview (375px)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Tablet preview (768px)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Desktop preview (1440px)",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-layout-390x844.jpg"
+    },
+    {
+      "route": "/tools/motion/",
+      "viewport": "390x844",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Motion Studio — Tessellate Tools",
+        "h1": "Motion Studio",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 03 · KINETIC PHYSICS\nClient-Side · Zero Login\nMotion Studio\n\nCreate and compare easing curves, spring dynamics, stagger timing, and a reduced-motion example.\n\nPlay Animation\nCopy CSS\nPERSONALITY PRESETS\nCalm Precision\nEditorial Glide\nEnergetic Tactile\nDeliberate Command\nReduced Motion Safe\nKinetic Physics Model\nReduced Motion\nReset\nCubic-Bezier\nSpring Physics\nPacing Duration\n220ms\nStagger Delay (per item)\n40ms\nBezier Curve Coordinates\n[0.16, 1, 0.3, 1]\nX1 / Y1 (In)\nX2 / Y2 (Out)\nKINETIC SIMULATION BENCH\n220ms · CUBIC-BEZIER\nStaggered Component Sequence\n01 · Example architecture review\nSAMPLE\n02 · Example token check\nSAMPLE\n03 · Example response timing\nSAMPLE\nInteractive Tactile Press Target\nPress Me for Spring Response\nClick to test physical depression & rebound feedback.\nCSS TRANSITION\nCopy\n/* Tessellate Motion Preset: calm-precision */\ntransition-property: transform, opacity, box-shadow;\ntransition-duration: 220ms;\ntransition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);\nMOTION PROPS\nCopy\n{\n  duration: 0.22,\n  ease: [0.16, 1, 0.3, 1]\n}",
+        "textLength": 1229,
+        "documentWidth": 390,
+        "innerWidth": 390,
+        "buttons": [
+          {
+            "name": "Play Animation",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy CSS",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Calm Precision",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Editorial Glide",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Energetic Tactile",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Deliberate Command",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reduced Motion Safe",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset motion settings",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Cubic-Bezier",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Spring Physics",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Press Me for Spring Response",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-motion-390x844.jpg"
+    },
+    {
+      "route": "/tools/palette/",
+      "viewport": "390x844",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Palette Studio — Tessellate Tools",
+        "h1": "Palette Studio",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 04 · CHROMA ARCHITECTURE\nClient-Side · Zero Login\nPalette Studio\n\nSet semantic colour tokens and inspect calculated contrast for selected colour pairs.\n\nCopy CSS Variables\nCopy Tailwind @theme\nTHEME PRESETS\nZinc Editorial (Tessellate Default)\nDeep Future Command (Dark Studio)\nWarm Parchment & Espresso\nSlate Institutional\nPure Monochrome\n\nCalm architectural warm paper canvas with crisp ink and electric cobalt accent.\n\nSemantic Token Roles\nReset\nSURFACES & CANVASES\nCanvas\nSurface\nSurface Raised\nTYPOGRAPHY & INKS\nInk\nInk Secondary\nInk Muted\nACCENTS & STRUCTURAL BORDERS\nAccent\nHairline\nHairline Strong\nSelected Pair Contrast Check\nReference: 4.5:1 (AA) / 7.0:1 (AAA)\n\nChecks these four token pairs only. It does not audit rendered components, states, or every color combination.\n\nInk / Canvas\n16.7:1\nAAA PASS\nInk-Sec / Surface\n5.5:1\nAA PASS\nAccent / Canvas\n6.0:1\nAA (UI) PASS\nWhite on Accent\n6.7:1\nAA PASS\n\nThese calculations cover the listed token pairs; they do not certify a full interface.\n\nActive Surface Preview\nPREVIEW PORT\nSample token preview\nEXAMPLE\n\nExample text for previewing the selected colours together. This is a static sample, not a live product screen.\n\nSample value: 1,284\nTry sample action",
+        "textLength": 1387,
+        "documentWidth": 390,
+        "innerWidth": 390,
+        "buttons": [
+          {
+            "name": "Copy CSS Variables",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy Tailwind @theme",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Zinc Editorial (Tessellate Default)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Deep Future Command (Dark Studio)",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Warm Parchment & Espresso",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Slate Institutional",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Pure Monochrome",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Try sample action",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-palette-390x844.jpg"
+    },
+    {
+      "route": "/tools/section-planner/",
+      "viewport": "390x844",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Section Planner — Tessellate Tools",
+        "h1": "Section Planner",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 07 · PAGE STRUCTURE\nClient-Side · Zero Login\nSection Planner\n\nPlan and edit example section structures for conversion pages, technical documentation, and editorial sites. The planner does not implement the described sections.\n\nCopy Section Graph JSON\n\nTemplate descriptions are planning prompts, not implementation or verified proof. Replace sample claims with sourced product details before publishing.\n\nPAGE OBJECTIVE ARCHETYPES\nB2B SaaS Conversion Landing\nDeveloper Documentation Hub\nFintech Analytics Cockpit\nLuxury Editorial Sanctuary\nOperational Triage & Admin Tool\nPage Sections (8 active)\nReset Blueprint\n01\nHero Value Proposition\nHERO\nState the product’s value and link to an implemented primary action.\nActive\n02\nEvidence and Customer References\nPROOF\nUse certifications and customer references only when they are documented and approved.\nActive\n03\nInteractive Feature Playground\nINTERACTIVE\nAdd a product demo; connect a working sandbox before presenting it as interactive.\nActive\n04\nArchitectural Difference Matrix\nFEATURE\nCompare product capabilities using criteria that are specific and supported.\nActive\n05\nMeasured Performance Evidence\nPROOF\nInclude measured benchmarks and their methodology, or omit this section.\nActive\n06\nPricing and Plan Details\nPRICING\nList current plan names and terms supplied by the product owner.\nActive\n07\nTechnical Evaluation FAQ\nFAQ\nAnswer security, hosting, and export questions from verified product documentation.\nActive\n08\nFinal Call to Action\nCTA\nUse configured URLs or actions for web and CLI entry points.\nActive\nAdd\nSection Mix Guide\nWITHIN GUIDE\nAttention (Hero & Visual)\n1 section\n(guide 1-2)\nProof & Trust (Audit / Metrics)\n2 sections\n(guide 1-3)\nInteraction (Playground / Sandbox)\n1 section\n(guide 1-2)\nInformation (Features / FAQ)\n2 sections\n(guide 2-4)\nAction & Conversion (Pricing / CTA)\n2 sections\n(guide 1-2)\n\nThese reference ranges are prompts for review, not a quality score. Adjust the sequence to fit the product goal.\n\nGRAMMAR MANIFEST\nCopy\n{\n  \"pageObjective\": \"saas-conversion\",\n  \"totalSections\": 8,\n  \"grammar\": [\n    {\n      \"order\": 1,\n      \"id\": \"sec-1\",\n      \"name\": \"Hero Value Proposition\",\n      \"semanticRole\": \"hero\",\n      \"description\": \"State the product’s value and link to an implemented primary action.\"\n    },\n    {\n      \"order\": 2,\n      \"id\": \"sec-2\",\n      \"name\": \"Evidence and Customer References\",\n      \"semanticRole\": \"proof\",\n      \"description\": \"Use certifications and customer references only when they are documented and approved.\"\n    },\n    {\n      \"order\": 3,\n      \"id\": \"sec-3\",\n      \"name\": \"Interactive Feature Playground\",\n      \"semanticRole\": \"interactive\",\n      \"description\": \"Add a product demo; connect a working sandbox before presenting it as interactive.\"\n    },\n    {\n      \"order\": 4,\n      \"id\": \"sec-4\",\n      \"name\": \"Architectural Difference Matrix\",\n      \"semanticRole\": \"feature\",\n      \"description\": \"Compare product capabilities using criteria that are specific and supported.\"\n    },\n    {\n      \"order\": 5,\n      \"id\": \"sec-5\",\n      \"name\": \"Measured Performance Evidence\",\n      \"semanticRole\": \"proof\",\n      \"description\": \"Include measured benchmarks and their methodology, or omit this section.\"\n    },\n    {\n      \"order\": 6,\n      \"id\": \"sec-6\",\n      \"name\": \"Pricing and Plan Details\",\n      \"semanticRole\": \"pricing\",\n      \"description\": \"List current plan names and terms supplied by the product owner.\"\n    },\n    {\n      \"order\": 7,\n      \"id\": \"sec-7\",\n      \"name\": \"Technical Evaluation FAQ\",\n      \"semanticRole\": \"faq\",\n      \"description\": \"Answer security, hosting, and export questions from verified product documentation.\"\n    },\n    {\n      \"order\": 8,\n      \"id\": \"sec-8\",\n      \"name\": \"Final Call to Action\",\n      \"semanticRole\": \"cta\",\n      \"description\": \"Use configured URLs or actions for web and CLI entry points.\"\n    }\n  ]\n}",
+        "textLength": 4071,
+        "documentWidth": 390,
+        "innerWidth": 390,
+        "buttons": [
+          {
+            "name": "Copy Section Graph JSON",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "B2B SaaS Conversion Landing",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Developer Documentation Hub",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Fintech Analytics Cockpit",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Luxury Editorial Sanctuary",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Operational Triage & Admin Tool",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset Blueprint",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Hero Value Proposition up",
+            "disabled": true,
+            "visible": true
+          },
+          {
+            "name": "Move Hero Value Proposition down",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Omit Hero Value Proposition",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Hero Value Proposition",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Evidence and Customer References up",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Evidence and Customer References down",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Omit Evidence and Customer References",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Evidence and Customer References",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Interactive Feature Playground up",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Interactive Feature Playground down",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Omit Interactive Feature Playground",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Interactive Feature Playground",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Architectural Difference Matrix up",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Architectural Difference Matrix down",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Omit Architectural Difference Matrix",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Architectural Difference Matrix",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Measured Performance Evidence up",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Measured Performance Evidence down",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Omit Measured Performance Evidence",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Measured Performance Evidence",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Pricing and Plan Details up",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Pricing and Plan Details down",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Omit Pricing and Plan Details",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Pricing and Plan Details",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Technical Evaluation FAQ up",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Technical Evaluation FAQ down",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Omit Technical Evaluation FAQ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Technical Evaluation FAQ",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Final Call to Action up",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Move Final Call to Action down",
+            "disabled": true,
+            "visible": true
+          },
+          {
+            "name": "Omit Final Call to Action",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Delete Final Call to Action",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Add",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Copy",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-section-planner-390x844.jpg"
+    },
+    {
+      "route": "/tools/typography/",
+      "viewport": "390x844",
+      "status": 200,
+      "navigationError": null,
+      "view": {
+        "title": "Typography Lab — Tessellate Tools",
+        "h1": "Typography Lab",
+        "text": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 05 · TYPOGRAPHIC HIERARCHY\nClient-Side · Zero Login\nTypography Lab\n\nCompare type scales and font pairings, then test how tabular figures affect number alignment.\n\nCopy Scale CSS\nScale & Pairing Controls\nReset\nMusical Scale Ratio\nMajor Second\n1.125\nMinor Third\n1.2\nMajor Third\n1.25\nPerfect Fourth\n1.333\nGolden Ratio\n1.618\nBase Body Size\n16px\nTypeface Pairing Archetype\nGeist & System Mono\nPrecision engineering grotesque with geometric optical balance.\nNewsreader Editorial & Inter\nBespoke authorial voice with warm literary serif display titles.\nJetBrains Mono & Sans\nTerminal-first technical platform typography for CLI & developer tools.\nOpenType Numerical Features\nTabular Figures (Mono-width align)\nSlashed Zero (0 vs O distinction)\nHierarchical Scale Ladder\nTabular Figure Sample\nSCALE STEP\nMAXIMUM SIZE\nA product, shaped by people.\n33px max\nWorkspace activity\n28px max\nRecent updates\n23px max\n\nClear type sizes help people scan information and understand how each part of a page fits together.\n\n16px\nCOMPACT METADATA · EXAMPLE STATUS\n13px",
+        "textLength": 1218,
+        "documentWidth": 390,
+        "innerWidth": 390,
+        "buttons": [
+          {
+            "name": "Copy Scale CSS",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Reset",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Major Second 1.125",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Minor Third 1.2",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Major Third 1.25",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Perfect Fourth 1.333",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Golden Ratio 1.618",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Geist & System Mono Precision engineering grotesque with geometric optical balance.",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Newsreader Editorial & Inter Bespoke authorial voice with warm literary serif display titles.",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "JetBrains Mono & Sans Terminal-first technical platform typography for CLI & developer tools.",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Hierarchical Scale Ladder",
+            "disabled": false,
+            "visible": true
+          },
+          {
+            "name": "Tabular Figure Sample",
+            "disabled": false,
+            "visible": true
+          }
+        ],
+        "links": []
+      },
+      "copyFlags": [],
+      "runtime": {
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "screenshot": "audit/evidence/step-39/live-v72/tools-route-sweep/screenshots/tools-typography-390x844.jpg"
+    }
+  ],
+  "limitations": [
+    "This route/copy sample records rendered text and control labels but does not activate every tool control; functional tool certification belongs to the later ordered tools gate.",
+    "Risk patterns are only a conservative manual-review aid; a match may be accurate and a no-match is not semantic proof."
+  ]
+}

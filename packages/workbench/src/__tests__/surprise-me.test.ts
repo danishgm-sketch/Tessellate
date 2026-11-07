@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import * as crypto from 'node:crypto';
 import type { ProjectNode } from '@tessellate/schemas';
+import { ProjectManifestSchema } from '@tessellate/schemas';
 import { createSampleProject } from '../store/sample-project.js';
 import { surpriseMe } from '../mutations/surprise.js';
 import { HistoryManager } from '../history/history-manager.js';
@@ -21,6 +22,103 @@ function computeCanonicalSubtreeHash(node: ProjectNode): string {
 }
 
 describe('Requirement 7: True Surprise Me Execution & Lock Preservation', () => {
+  it('keeps Surprise Me variant feedback aligned with the net rendered change after recomposition', () => {
+    const manifest = createSampleProject();
+    const screen = manifest.screens[0]!;
+    manifest.seed = 'net-0';
+    manifest.locks = [];
+    screen.rootNode = {
+      id: 'marketing-root',
+      nodeType: 'layout',
+      semanticRole: 'marketing-page',
+      children: [
+        {
+          id: 'surprise-hero',
+          nodeType: 'section',
+          semanticRole: 'hero',
+          resourceRef: {
+            id: 'res-split-product-hero-01',
+            slug: 'split-product-hero',
+            version: '1.0.0',
+          },
+          variant: 'quiet',
+          children: [],
+          slots: {},
+          props: {},
+        },
+      ],
+      slots: {},
+      props: {},
+    };
+
+    const beforeVariant = 'quiet';
+    const result = surpriseMe(manifest, { screenId: screen.id, divergenceLevel: 60 });
+    const nextManifest = new HistoryManager().execute(manifest, result.operation).nextManifest;
+    const heroAfter = findNodeById(nextManifest.screens[0]!.rootNode, 'surprise-hero');
+
+    expect(heroAfter?.variant, 'Surprise Me should make a net visible variant change.').not.toBe(beforeVariant);
+    expect(result.explanation).toContain(
+      `Changed the visible variant for split-product-hero from ${beforeVariant} to ${heroAfter?.variant}`,
+    );
+  });
+
+  it('changes a supported visible resource variant when an unlocked candidate exists', () => {
+    const manifest = createSampleProject();
+    findNodeById(manifest.screens[0]!.rootNode, 'node-chart-overview')!.variant = 'quiet';
+
+    const result = surpriseMe(manifest, {
+      screenId: manifest.screens[0]!.id,
+      divergenceLevel: 60,
+      seed: 'visible-surprise-variant-regression',
+    });
+    const variantMutation = result.operation.mutations.find(
+      (mutation) => mutation.type === 'CHANGE_VARIANT'
+    );
+
+    expect(variantMutation, 'Surprise Me should include a concrete rendered change').toBeDefined();
+    if (!variantMutation || variantMutation.type !== 'CHANGE_VARIANT') return;
+
+    const previous = findNodeById(manifest.screens[0]!.rootNode, variantMutation.payload.targetNodeId);
+    expect(previous?.resourceRef?.slug).toBe('area-chart');
+    expect(previous?.locks?.node).not.toBe(true);
+    expect(variantMutation.payload.variant).not.toBe(previous?.variant);
+
+    const nextManifest = new HistoryManager().execute(manifest, result.operation).nextManifest;
+    const next = findNodeById(nextManifest.screens[0]!.rootNode, variantMutation.payload.targetNodeId);
+    expect(next?.variant).toBe(variantMutation.payload.variant);
+    expect(result.explanation).toContain('Changed the visible variant');
+  });
+
+  it('keeps Surprise Me typography relevant to the employee product archetype', () => {
+    const manifest = createSampleProject();
+    manifest.seed = '22c8a6fd-24fb-4be2-80cc-457350c086b6-dir-c';
+    manifest.name = 'Employee experience';
+    manifest.productModel.productArchetypes = [{ tag: 'saas', weight: 100 }];
+    manifest.designDNA.primaryArchetype = 'saas';
+    manifest.designDNA.typographyPersonality = 'geist-system';
+
+    const result = surpriseMe(manifest, { divergenceLevel: 60 });
+    const typographyMutation = result.operation.mutations.find(
+      (mutation) => mutation.type === 'SET_DESIGN_TOKEN' && mutation.payload.key === 'typographyPersonality'
+    );
+
+    expect(typographyMutation).toBeDefined();
+    expect(typographyMutation?.payload).not.toMatchObject({ value: 'financial-sans-tabular-mono' });
+  });
+
+  it('keeps the financial typography option available to fintech projects', () => {
+    const manifest = createSampleProject();
+    manifest.seed = '22c8a6fd-24fb-4be2-80cc-457350c086b6-dir-c';
+    manifest.designDNA.typographyPersonality = 'geist-system';
+
+    const result = surpriseMe(manifest, { divergenceLevel: 60 });
+    const typographyMutation = result.operation.mutations.find(
+      (mutation) => mutation.type === 'SET_DESIGN_TOKEN' && mutation.payload.key === 'typographyPersonality'
+    );
+
+    expect(typographyMutation?.payload).toMatchObject({ value: 'financial-sans-tabular-mono' });
+  });
+
   it('divergenceLevel: 20 performs minor styling/palette variation while preserving locked nodes', () => {
     const manifest = createSampleProject();
 
@@ -142,6 +240,55 @@ describe('Requirement 7: True Surprise Me Execution & Lock Preservation', () => 
     // Radical DNA jump
     expect(nextManifest.designDNA.visualAmbition).toBeGreaterThanOrEqual(50);
     expect(nextManifest.designDNA.structuralCreativity).toBeGreaterThanOrEqual(50);
+  });
+
+  it('preserves a locked content container when Surprise Me switches to top navigation', () => {
+    const manifest = createSampleProject();
+    const screen = manifest.screens[0]!;
+    const [header, main] = screen.rootNode.children;
+    if (!header || !main) throw new Error('Sample screen is missing its navigation or content node.');
+    const navigation = { ...header, semanticRole: 'navigation', locks: undefined };
+    const content = {
+      ...main,
+      id: 'locked-main-content',
+      semanticRole: 'main-content-scroll',
+      locks: undefined,
+    };
+    const layoutManifest = {
+      ...manifest,
+      navigation: { ...manifest.navigation, model: 'sidebar' as const },
+      screens: manifest.screens.map((candidate) => candidate.id === screen.id
+        ? { ...candidate, rootNode: { ...candidate.rootNode, children: [navigation, content] } }
+        : candidate),
+    };
+    const lockedManifest = executeMutation(layoutManifest, {
+      id: 'lock-content-pane',
+      type: 'LOCK_NODE',
+      targetId: 'locked-main-content',
+      payload: { targetNodeId: 'locked-main-content', lockTypes: ['structure'] },
+      actor: 'user',
+      timestamp: new Date().toISOString(),
+      preconditionRevision: layoutManifest.historyMeta.headRevision,
+    }).nextManifest;
+
+    const lockedPane = findNodeById(lockedManifest.screens.find((candidate) => candidate.id === screen.id)!.rootNode, 'locked-main-content')!;
+    const lockedPaneHash = computeCanonicalSubtreeHash(lockedPane);
+    const result = surpriseMe(lockedManifest, {
+      screenId: screen.id,
+      divergenceLevel: 95,
+      seed: 'locked-pane-2',
+    });
+    expect(result.operation.mutations).toContainEqual(expect.objectContaining({
+      type: 'SET_DESIGN_TOKEN',
+      payload: expect.objectContaining({ key: 'navigationModel', value: 'top-nav' }),
+    }));
+
+    const nextManifest = new HistoryManager().execute(lockedManifest, result.operation).nextManifest;
+    const nextRoot = nextManifest.screens.find((candidate) => candidate.id === screen.id)!.rootNode;
+    const preservedContent = findNodeById(nextRoot, 'locked-main-content');
+    expect(preservedContent?.locks?.structure).toBe(true);
+    expect(computeCanonicalSubtreeHash(preservedContent!)).toBe(lockedPaneHash);
+    expect(ProjectManifestSchema.safeParse(nextManifest).success).toBe(true);
   });
 
   it('guarantees deterministic repeatability using seed and divergence level', () => {

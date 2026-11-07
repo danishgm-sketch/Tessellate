@@ -1,0 +1,436 @@
+{
+  "schemaVersion": "1.0.0",
+  "deployment": {
+    "siteVersion": 58,
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "auditDate": "2026-10-31",
+    "canonicalCommit": "43b80d4f7f39e092d060086959ee0c745c3f87cb"
+  },
+  "routeResults": [
+    {
+      "route": "/",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/home-desktop.png"
+    },
+    {
+      "route": "/explore",
+      "classification": "DEGRADED",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/explore-catalogue-transient-error.png",
+      "notes": "One cold fetch failure; Retry recovered; three reloads and a second clean context passed."
+    },
+    {
+      "route": "/components",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-3-components.jpg"
+    },
+    {
+      "route": "/sections",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-4-sections.jpg"
+    },
+    {
+      "route": "/blocks",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-5-blocks.jpg"
+    },
+    {
+      "route": "/pages",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-6-pages.jpg"
+    },
+    {
+      "route": "/effects",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-7-effects.jpg"
+    },
+    {
+      "route": "/motion",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-8-motion.jpg"
+    },
+    {
+      "route": "/backgrounds",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-9-backgrounds.jpg"
+    },
+    {
+      "route": "/ai",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-10-ai.jpg"
+    },
+    {
+      "route": "/data",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-11-data.jpg"
+    },
+    {
+      "route": "/compose",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-12-compose.jpg"
+    },
+    {
+      "route": "/workbench",
+      "classification": "DEGRADED",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/audit-false-hierarchy-flagship.jpg",
+      "notes": "Audit marks all seven valid screens as missing a focal header/navigation landmark."
+    },
+    {
+      "route": "/blueprints",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-14-blueprints.jpg",
+      "notes": "Beta boundary disclosed."
+    },
+    {
+      "route": "/collections",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-15-collections.jpg",
+      "notes": "Browser-local save worked."
+    },
+    {
+      "route": "/creators",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-16-creators.jpg",
+      "notes": "Beta boundary disclosed."
+    },
+    {
+      "route": "/showcase",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-17-showcase.jpg"
+    },
+    {
+      "route": "/trends",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-18-trends.jpg",
+      "notes": "Beta/demo scope disclosed."
+    },
+    {
+      "route": "/tools",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-19-tools.jpg",
+      "notes": "Ten existing client-side tools are labelled Beta."
+    },
+    {
+      "route": "/agents",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-20-agents.jpg",
+      "notes": "Hosted versus local capability boundary disclosed."
+    },
+    {
+      "route": "/docs",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-21-docs.jpg"
+    },
+    {
+      "route": "/sponsor",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-22-sponsor.jpg"
+    },
+    {
+      "route": "/about",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-23-about.jpg"
+    },
+    {
+      "route": "/license",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-24-license.jpg"
+    },
+    {
+      "route": "/privacy",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-25-privacy.jpg"
+    },
+    {
+      "route": "/terms",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/route-26-terms.jpg"
+    },
+    {
+      "route": "/r/collapsible-sidebar/",
+      "classification": "DEGRADED",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/resource-variant-nocturne-selection.jpg",
+      "notes": "Preview reacts to Nocturne; toggle button does not expose selected state with aria-pressed."
+    },
+    {
+      "route": "/showcase/showcase-playful-hr/",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/detail-showcase-employee-experience.jpg",
+      "notes": "Employee domain and sample data disclosed."
+    },
+    {
+      "route": "/blueprints/b2b-saas/",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/detail-blueprint-b2b-saas.jpg",
+      "notes": "Beta functionality disclosed."
+    },
+    {
+      "route": "/tools/dna",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/detail-tool-dna.jpg"
+    },
+    {
+      "route": "/tools/backgrounds",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/tool-backgrounds.jpg"
+    },
+    {
+      "route": "/tools/motion",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/tool-motion.jpg"
+    },
+    {
+      "route": "/tools/palette",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/tool-palette.jpg"
+    },
+    {
+      "route": "/tools/typography",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/tool-typography.jpg"
+    },
+    {
+      "route": "/tools/layout",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/tool-layout.jpg"
+    },
+    {
+      "route": "/tools/section-planner",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/tool-section-planner.jpg"
+    },
+    {
+      "route": "/tools/dataviz",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/tool-dataviz.jpg"
+    },
+    {
+      "route": "/tools/accessibility",
+      "classification": "DEGRADED",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/tool-accessibility-autofix-fails-text.jpg",
+      "notes": "Auto-Fix Contrast selects a pair still below 4.5:1 normal-text AA."
+    },
+    {
+      "route": "/tools/icons",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/tool-icons.jpg"
+    },
+    {
+      "route": "/docs/architecture/",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/detail-doc-architecture.jpg"
+    },
+    {
+      "route": "/showcases",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/showcases-index.jpg"
+    },
+    {
+      "route": "/llms.txt",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "notes": "Direct text has a # Tessellate H1; Lighthouse finding is a false positive."
+    },
+    {
+      "route": "/data/catalog.json",
+      "classification": "PASS",
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "notes": "324 canonical resources; 40 Gold runtime resources."
+    },
+    {
+      "route": "/robots.txt",
+      "classification": "BROKEN",
+      "viewport": "1440x900",
+      "httpStatus": 404,
+      "screenshot": "quality/evidence/step-48/deployed-v58-2026-10-31/robots-txt-404.png",
+      "notes": "Missing root static metadata file."
+    }
+  ],
+  "flagshipWorkflow": {
+    "brief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+    "catalogue": {
+      "ready": true,
+      "canonicalResourceCount": 324,
+      "goldRuntimeCount": 40
+    },
+    "directions": [
+      {
+        "direction": "A",
+        "name": "Clean Operations",
+        "navigation": "sidebar",
+        "grammar": "classic-sidebar-dashboard",
+        "evidence": "quality/evidence/step-48/deployed-v58-2026-10-31/direction-a-detail.jpg"
+      },
+      {
+        "direction": "B",
+        "name": "Vibrant Velocity",
+        "navigation": "top navigation",
+        "grammar": "product-proof-marketing",
+        "evidence": "quality/evidence/step-48/deployed-v58-2026-10-31/direction-b-detail.jpg"
+      },
+      {
+        "direction": "C",
+        "name": "Master-Detail Explorer",
+        "navigation": "navigation rail",
+        "grammar": "three-pane-intelligence-workspace",
+        "evidence": "quality/evidence/step-48/deployed-v58-2026-10-31/direction-c-detail.jpg"
+      }
+    ],
+    "selectedProject": {
+      "id": "proj-direction-c-91638aded39a4948a39c237cfe26bed0dirc",
+      "screenCount": 7,
+      "manifestSchemaValid": true,
+      "resourceRefCount": 32,
+      "uniqueResourceCount": 15,
+      "allResourceRefsVerifiedGold": true,
+      "unresolvedResourceRefs": [],
+      "lockedNodeId": "node-screen-overview-metric-cards-3",
+      "lockedResource": "dashboard-kpi-grid",
+      "lockedVariant": "nocturne"
+    },
+    "mutations": [
+      "Onboarding local Design DNA override persisted after navigation.",
+      "Dashboard summary lock remained intact after recomposition at divergence 95.",
+      "Collapsible Sidebar replacement was applied through the candidate drawer.",
+      "Surprise Me changed surrounding hierarchy and preserved the locked subtree.",
+      "Undo and Redo restored recomposition, replacement, and Surprise Me in sequence."
+    ],
+    "standaloneExport": {
+      "zip": "quality/evidence/step-48/deployed-v58-2026-10-31/direction-c-mutated.zip",
+      "manifest": "quality/evidence/step-48/deployed-v58-2026-10-31/direction-c-mutated.tess.json",
+      "cleanInstallDirectory": "C:/Users/ismay/AppData/Local/Temp/tessellate-v58-clean-2134efd4230c4956883442a6d3fe0f8a",
+      "npmInstall": "PASS",
+      "build": "PASS",
+      "runtime": "PASS",
+      "runtimeDependencyContainsTessellatePackages": false,
+      "desktopViewport": "1440x900",
+      "mobileViewport": "390x844",
+      "consoleErrors": 0,
+      "networkFailures": 0,
+      "documentOverflow": false,
+      "screenshots": [
+        "quality/evidence/step-48/deployed-v58-2026-10-31/export-final-mutated-desktop.png",
+        "quality/evidence/step-48/deployed-v58-2026-10-31/export-final-mutated-390.png"
+      ]
+    }
+  },
+  "networkAndAccessibility": {
+    "consoleErrors": {
+      "flagshipWorkbench": 0,
+      "standaloneExport": 0,
+      "ExploreColdLoadObserved": 1
+    },
+    "catalogueEndpoint": {
+      "resourceCount": 324,
+      "observedHttpStatuses": [
+        200,
+        304
+      ],
+      "oneColdFetchRejected": true,
+      "visibleRetrySucceeded": true,
+      "threeFurtherReloadsPassed": true,
+      "secondCleanContextPassed": true
+    },
+    "failedEssentialNetworkEvents": 1,
+    "nonEssentialAbortedRequests": "Not observed on the isolated standalone export. Long Workbench session showed host-health polling and cancellation during interactions; a fresh page showed one successful request per 10-second interval.",
+    "axe": {
+      "homepage": 100,
+      "explore": 100,
+      "compose": 100,
+      "workbench": 100,
+      "resourceDetail": 100,
+      "employeeShowcase": 100,
+      "seriousOrCriticalViolations": 0
+    },
+    "mobile": {
+      "viewport": "390x844",
+      "composeOverflow": false,
+      "workbenchOverflow": false,
+      "standaloneExportOverflow": false
+    }
+  },
+  "screenshotDirectory": "quality/evidence/step-48/deployed-v58-2026-10-31/"
+}

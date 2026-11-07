@@ -1,0 +1,238 @@
+{
+  "generatedAt": "2026-10-19T07:40:37.982Z",
+  "methodology": "Manually adjudicated static TSX cases, separate from the 1,095-file repository corpus. Excluded cases document unsupported dynamic CSS contexts and do not count as false negatives.",
+  "corpusCases": {
+    "included": 20,
+    "excluded": 3
+  },
+  "totals": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "tn": 10
+  },
+  "byRule": {
+    "enforce-accessible-contrast": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "tn": 2,
+      "precision": 1,
+      "recall": 1
+    },
+    "enforce-reduced-motion": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 3,
+      "precision": 1,
+      "recall": 1
+    },
+    "enforce-semantic-landmarks": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 2,
+      "precision": 1,
+      "recall": 1
+    },
+    "no-arbitrary-spacing": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 2,
+      "precision": 1,
+      "recall": 1
+    },
+    "no-hardcoded-colors": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "tn": 1,
+      "precision": 1,
+      "recall": 1
+    }
+  },
+  "passed": true,
+  "failures": [],
+  "cases": [
+    {
+      "id": "color-positive-bg",
+      "scope": "included",
+      "rule": "no-hardcoded-colors",
+      "expected": true,
+      "predicted": true,
+      "pass": true
+    },
+    {
+      "id": "color-comment-negative",
+      "scope": "included",
+      "rule": "no-hardcoded-colors",
+      "expected": false,
+      "predicted": false,
+      "pass": true
+    },
+    {
+      "id": "color-inline-style-out-of-scope",
+      "scope": "excluded",
+      "expected": false,
+      "limitation": "The rule currently scans Tailwind arbitrary hex utility text, not CSS or inline styles."
+    },
+    {
+      "id": "spacing-positive",
+      "scope": "included",
+      "rule": "no-arbitrary-spacing",
+      "expected": true,
+      "predicted": true,
+      "pass": true
+    },
+    {
+      "id": "spacing-near-zero-positive",
+      "scope": "included",
+      "rule": "no-arbitrary-spacing",
+      "expected": true,
+      "predicted": true,
+      "pass": true
+    },
+    {
+      "id": "spacing-token-negative",
+      "scope": "included",
+      "rule": "no-arbitrary-spacing",
+      "expected": false,
+      "predicted": false,
+      "pass": true
+    },
+    {
+      "id": "spacing-comment-negative",
+      "scope": "included",
+      "rule": "no-arbitrary-spacing",
+      "expected": false,
+      "predicted": false,
+      "pass": true
+    },
+    {
+      "id": "contrast-explicit-hex-low",
+      "scope": "included",
+      "rule": "enforce-accessible-contrast",
+      "expected": true,
+      "predicted": true,
+      "pass": true
+    },
+    {
+      "id": "contrast-selected-gray-low",
+      "scope": "included",
+      "rule": "enforce-accessible-contrast",
+      "expected": true,
+      "predicted": true,
+      "pass": true
+    },
+    {
+      "id": "contrast-explicit-hex-readable",
+      "scope": "included",
+      "rule": "enforce-accessible-contrast",
+      "expected": false,
+      "predicted": false,
+      "pass": true
+    },
+    {
+      "id": "contrast-readable-gray-black",
+      "scope": "included",
+      "rule": "enforce-accessible-contrast",
+      "expected": false,
+      "predicted": false,
+      "pass": true
+    },
+    {
+      "id": "contrast-dark-variant-low",
+      "scope": "included",
+      "rule": "enforce-accessible-contrast",
+      "expected": true,
+      "predicted": true,
+      "pass": true
+    },
+    {
+      "id": "contrast-opacity-out-of-scope",
+      "scope": "excluded",
+      "expected": false,
+      "limitation": "Opacity and composited colors are not modeled."
+    },
+    {
+      "id": "motion-positive",
+      "scope": "included",
+      "rule": "enforce-reduced-motion",
+      "expected": true,
+      "predicted": true,
+      "pass": true
+    },
+    {
+      "id": "motion-reduce-fallback-negative",
+      "scope": "included",
+      "rule": "enforce-reduced-motion",
+      "expected": false,
+      "predicted": false,
+      "pass": true
+    },
+    {
+      "id": "motion-safe-fallback-negative",
+      "scope": "included",
+      "rule": "enforce-reduced-motion",
+      "expected": false,
+      "predicted": false,
+      "pass": true
+    },
+    {
+      "id": "motion-separate-element-positive",
+      "scope": "included",
+      "rule": "enforce-reduced-motion",
+      "expected": true,
+      "predicted": true,
+      "pass": true
+    },
+    {
+      "id": "motion-comment-negative",
+      "scope": "included",
+      "rule": "enforce-reduced-motion",
+      "expected": false,
+      "predicted": false,
+      "pass": true
+    },
+    {
+      "id": "landmark-route-missing-main-positive",
+      "scope": "included",
+      "rule": "enforce-semantic-landmarks",
+      "expected": true,
+      "predicted": true,
+      "pass": true
+    },
+    {
+      "id": "landmark-route-present-main-negative",
+      "scope": "included",
+      "rule": "enforce-semantic-landmarks",
+      "expected": false,
+      "predicted": false,
+      "pass": true
+    },
+    {
+      "id": "landmark-component-name-negative",
+      "scope": "included",
+      "rule": "enforce-semantic-landmarks",
+      "expected": false,
+      "predicted": false,
+      "pass": true
+    },
+    {
+      "id": "landmark-routes-directory-positive",
+      "scope": "included",
+      "rule": "enforce-semantic-landmarks",
+      "expected": true,
+      "predicted": true,
+      "pass": true
+    },
+    {
+      "id": "motion-computed-expression-out-of-scope",
+      "scope": "excluded",
+      "expected": false,
+      "limitation": "Computed class values are not analyzed."
+    }
+  ]
+}

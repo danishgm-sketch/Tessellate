@@ -17,7 +17,7 @@ import { surpriseMe } from '../mutations/surprise.js';
 import { createCheckpoint, restoreCheckpoint } from '../history/checkpoints.js';
 import { compareManifests } from '../compare/compare-engine.js';
 import { blendManifests } from '../blend/blend-engine.js';
-import type { ProjectMutation, ProjectNode } from '@tessellate/schemas';
+import { ProjectManifestSchema, type ProjectMutation, type ProjectNode } from '@tessellate/schemas';
 
 describe('Phase 10: Mutation, Locks and History Gate', () => {
   it('Phase 10 Gate: lock navigation + chart, recompose dashboard, verify locked semantic nodes survive unchanged and undo restores exact prior manifest', () => {
@@ -177,6 +177,77 @@ describe('Phase 10: Mutation, Locks and History Gate', () => {
     expect(() => executeMutation(lockedManifest, deleteChildMutation)).toThrow(
       LockViolationError
     );
+  });
+
+  it('rejects a mismatched target before an unlocked node can bypass a locked node', () => {
+    const manifest = createSampleProject();
+    const mismatch: ProjectMutation = {
+      id: 'mut-target-mismatch',
+      type: 'CHANGE_VARIANT',
+      targetId: 'node-metric-arr',
+      payload: { targetNodeId: 'node-header', variant: 'nocturne' },
+      actor: 'user',
+      timestamp: new Date().toISOString(),
+      preconditionRevision: manifest.historyMeta.headRevision,
+    };
+
+    expect(() => executeMutation(manifest, mismatch)).toThrow();
+    expect(findNodeById(manifest.screens[0]!.rootNode, 'node-header')?.variant).toBeUndefined();
+  });
+
+  it('keeps graph edges and navigation valid after deleting a screen', () => {
+    const manifest = createSampleProject();
+    expect(manifest.screens.length).toBeGreaterThan(1);
+    const screen = manifest.screens.at(-1)!;
+    const mutation: ProjectMutation = {
+      id: 'mut-delete-screen-contract',
+      type: 'DELETE_SCREEN',
+      targetId: screen.id,
+      payload: { screenId: screen.id },
+      actor: 'user',
+      timestamp: new Date().toISOString(),
+      preconditionRevision: manifest.historyMeta.headRevision,
+    };
+
+    const result = executeMutation(manifest, mutation);
+
+    expect(ProjectManifestSchema.safeParse(result.nextManifest).success).toBe(true);
+    expect(result.nextManifest.navigation.primaryItems.every((item) =>
+      result.nextManifest.screens.some((remaining) => remaining.id === item.targetScreenId)
+    )).toBe(true);
+    expect(result.nextManifest.screenGraph.edges.every((edge) =>
+      result.nextManifest.screenGraph.groups.some((group) =>
+        group.screens.some((node) => node.id === edge.fromScreenId || node.id === edge.toScreenId)
+      )
+    )).toBe(true);
+  });
+
+  it('does not delete a screen that contains a locked descendant', () => {
+    const manifest = createSampleProject();
+    const screen = manifest.screens.at(-1)!;
+    const child = screen.rootNode.children[0]!;
+    const lockMutation: ProjectMutation = {
+      id: 'mut-lock-screen-child',
+      type: 'LOCK_NODE',
+      targetId: child.id,
+      payload: { targetNodeId: child.id, lockTypes: ['structure'] },
+      actor: 'user',
+      timestamp: new Date().toISOString(),
+      preconditionRevision: manifest.historyMeta.headRevision,
+    };
+    const locked = executeMutation(manifest, lockMutation).nextManifest;
+    const deleteMutation: ProjectMutation = {
+      id: 'mut-delete-screen-with-lock',
+      type: 'DELETE_SCREEN',
+      targetId: screen.id,
+      payload: { screenId: screen.id },
+      actor: 'user',
+      timestamp: new Date().toISOString(),
+      preconditionRevision: locked.historyMeta.headRevision,
+    };
+
+    expect(() => executeMutation(locked, deleteMutation)).toThrow(/contains locked node/);
+    expect(locked.screens.some((item) => item.id === screen.id)).toBe(true);
   });
 
   it('generates accurate inverse mutations for full reversible roundtrips', () => {

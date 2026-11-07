@@ -1,26 +1,33 @@
 import * as fs from 'node:fs';
-import { pathToFileURL } from 'node:url';
 import { ResourceManifestSchema, type ResourceManifest } from '@tessellate/schemas';
+
+const MAX_STATIC_MANIFEST_BYTES = 1024 * 1024;
 
 /**
  * Loads and parses a resource manifest from disk.
- * Supports both JSON and TypeScript/JavaScript module formats.
+ * Supports JSON and static TypeScript/JavaScript object manifests without executing modules.
  */
 export async function loadManifest(manifestPath: string): Promise<ResourceManifest> {
   if (!fs.existsSync(manifestPath)) {
     throw new Error(`Manifest file does not exist at path: ${manifestPath}`);
   }
 
-  let rawData: unknown;
+  const isJson = manifestPath.toLowerCase().endsWith('.json');
+  if (!isJson && fs.statSync(manifestPath).size > MAX_STATIC_MANIFEST_BYTES) {
+    throw new Error(`Manifest module '${manifestPath}' exceeds the ${MAX_STATIC_MANIFEST_BYTES}-byte limit.`);
+  }
 
-  if (manifestPath.endsWith('.json')) {
-    const content = fs.readFileSync(manifestPath, 'utf-8');
+  const content = fs.readFileSync(manifestPath, 'utf-8');
+  let rawData: unknown;
+  if (isJson) {
     rawData = JSON.parse(content);
   } else {
-    // Dynamic import for .ts or .js
-    const fileUrl = pathToFileURL(manifestPath).href;
-    const module = await import(fileUrl);
-    rawData = module.default ?? module.manifest ?? module;
+    const byteLength = Buffer.byteLength(content, 'utf-8');
+    if (byteLength > MAX_STATIC_MANIFEST_BYTES) {
+      throw new Error(`Manifest module '${manifestPath}' exceeds the ${MAX_STATIC_MANIFEST_BYTES}-byte limit.`);
+    }
+    const { readStaticManifestModule } = await import('./static-manifest.js');
+    rawData = readStaticManifestModule(manifestPath, content);
   }
 
   return ResourceManifestSchema.parse(rawData);

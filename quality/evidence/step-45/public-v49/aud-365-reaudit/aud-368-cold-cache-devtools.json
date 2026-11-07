@@ -1,0 +1,63 @@
+{
+  "capturedAt": "2026-10-27T17:50:00Z",
+  "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": 49,
+  "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+  "route": "/workbench",
+  "project": "Saved employee showcase project using the showcase-playful-hr fixture",
+  "traces": [
+    {
+      "capture": "Chrome DevTools Performance, cache-bypass reload",
+      "viewport": "1440x900",
+      "cpuThrottling": "1x",
+      "networkThrottling": "none",
+      "lcpMs": 1036,
+      "ttfbMs": 80,
+      "lcpRenderDelayMs": 957,
+      "cls": 0,
+      "fieldData": "Unavailable in CrUX for this page"
+    },
+    {
+      "capture": "Chrome DevTools Performance, cache-bypass reload",
+      "viewport": "500x844",
+      "cpuThrottling": "1x",
+      "networkThrottling": "none",
+      "lcpMs": 881,
+      "ttfbMs": 160,
+      "lcpRenderDelayMs": 721,
+      "cls": 0,
+      "fieldData": "Unavailable in CrUX for this page"
+    }
+  ],
+  "playwrightFollowUp": {
+    "desktopRunsPassed": 8,
+    "mobileRunsPassed": 2,
+    "latestVisibleProjectMs": {
+      "desktop1440x900": 1740,
+      "mobile390x844": 1527
+    },
+    "axeViolations": 0,
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "initialCatalogRequests": 0,
+    "responsesOver500ms": 0
+  },
+  "networkReview": {
+    "devtoolsRequestsObserved": 41,
+    "applicationRequestsWithHttpErrors": 0,
+    "cloudflareChallenge": "One managed challenge GET returned 302 then its follow-up GET and XHR returned 200; this is a successful redirect sequence, not a failed request.",
+    "consoleIssues": [
+      "Fenced Frame API deprecation from /cdn-cgi/challenge-platform/scripts/jsd/main.js",
+      "StorageType.persistent deprecation from /cdn-cgi/challenge-platform/scripts/jsd/main.js",
+      "Protected Audience API deprecation from /cdn-cgi/challenge-platform/scripts/jsd/main.js"
+    ],
+    "consoleErrors": 0
+  },
+  "traceArtifact": {
+    "rawTraceSaved": false,
+    "note": "Chrome DevTools returned the trace insight summary, but rejected filePath writes because its configured workspace roots did not include this checkout. The performance metrics above are transcribed from the two completed trace results."
+  },
+  "disposition": "The one 11,344ms real-content startup sample did not recur across eight later desktop and two mobile public runs or either cache-bypass trace. No product code defect was reproduced; the outlier is closed with an explicit reopen condition if a future cold startup exceeds five seconds."
+}

@@ -1,0 +1,20 @@
+{
+  "url": "http://127.0.0.1:4321/workbench?project=local-e8fe2983-438f-4b60-ad76-92c97fd47e59#screen_dc8b038054df4f02",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "checks": {
+    "routeCollisionRejected": "/people",
+    "screenCountBefore": 7,
+    "screenCountAfterRejectedAdd": 7,
+    "validRouteAdded": "/people-route-check",
+    "screenCountAfterValidAdd": 8
+  },
+  "screenshot": "quality\\evidence\\step-19\\after\\add-screen-valid-route.png"
+}

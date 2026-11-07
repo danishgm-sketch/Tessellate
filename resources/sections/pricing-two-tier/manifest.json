@@ -5,7 +5,7 @@
   "name": "Pricing Two Tier",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Focused 2-card comparison (Starter vs Business) for streamlined product offerings.",
+  "description": "Example two-plan comparison with placeholder plan names, prices, and terms.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,15 +130,15 @@
     "plans"
   ],
   "intent": {
-    "summary": "Focused 2-card comparison (Starter vs Business) for streamlined product offerings.",
+    "summary": "Example two-plan comparison with placeholder plan names, prices, and terms.",
     "idealFor": [
-      "Straightforward products with minimal tier complexity"
+      "Products that need a simple, two-option pricing layout"
     ],
     "avoidFor": [
-      "Complex enterprise sales matrices"
+      "Published pricing pages until all example values are replaced"
     ],
     "jobs": [
-      "Keep buying decisions simple with two clear choices"
+      "Compare two example plans without implying live checkout"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"
@@ -209,12 +209,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

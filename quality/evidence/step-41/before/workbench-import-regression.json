@@ -1,0 +1,9 @@
+{
+  "id": "AUD-311",
+  "observed": "2026-10-24",
+  "test": "tests/e2e/cross-surface-manifest-step-41.spec.ts: opens a CLI-composed manifest in Workbench and exports its edited project",
+  "runtime": "Local Sites Worker preview, Chromium desktop, 1440x900",
+  "exitCode": 1,
+  "failingAssertion": "getByTestId('import-manifest-btn') expected visible; no element was found after opening the Workbench Export menu.",
+  "impact": "A CLI- or MCP-produced .tess.json could be validated and exported but could not be opened through the Workbench UI."
+}

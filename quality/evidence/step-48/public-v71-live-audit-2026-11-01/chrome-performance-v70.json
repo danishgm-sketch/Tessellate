@@ -1,0 +1,35 @@
+{
+  "deploymentUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "version": 70,
+  "browser": "Chromium via Chrome DevTools",
+  "network": "Fast 4G",
+  "cpuThrottlingRate": 1,
+  "viewport": "1440x900",
+  "homepage": {
+    "lcpMs": 593,
+    "cls": 0,
+    "requests": 29,
+    "httpErrors": 0,
+    "failedRequests": 0,
+    "consoleErrors": 0,
+    "devtoolsIssues": 3,
+    "renderBlocking": {
+      "resource": "/_astro/style.C6QP0S3X.css",
+      "durationMs": 211,
+      "status": 200,
+      "estimatedLcpSavingsMs": 0
+    }
+  },
+  "workbench": {
+    "lcpMs": 2266,
+    "cls": 0.0199,
+    "requests": 66,
+    "httpErrors": 0,
+    "failedRequests": 0,
+    "consoleErrors": 0,
+    "largestObservedLayoutUpdateMs": 86,
+    "totalDomElements": 579,
+    "estimatedLcpSavingsMs": null
+  },
+  "source": "Chrome DevTools Performance trace, cold reload with cache bypassed"
+}

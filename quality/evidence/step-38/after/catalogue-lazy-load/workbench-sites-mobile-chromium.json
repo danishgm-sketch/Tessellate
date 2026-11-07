@@ -1,0 +1,31 @@
+{
+  "capturedAt": "2026-11-03T04:16:34.160Z",
+  "route": "http://127.0.0.1:4323/workbench?project=catalogue-loading-sites-mobile-chromium#screen-marketing-home",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "project": {
+    "id": "catalogue-loading-sites-mobile-chromium",
+    "name": "Saved employee workspace"
+  },
+  "timingsMs": {
+    "savedProjectVisible": 867,
+    "readyState": "complete",
+    "domContentLoadedMs": 107.29999995231628,
+    "domInteractiveMs": 79.29999995231628,
+    "loadEventMs": 107.5,
+    "responseStartMs": 6.699999988079071,
+    "responseEndMs": 11.399999976158142
+  },
+  "initialCatalogRequests": 0,
+  "catalogRequestsAfterLibraryOpen": 0,
+  "axeViolations": [],
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "quality/evidence/step-38/after/catalogue-lazy-load/workbench-sites-mobile-chromium.png"
+}
