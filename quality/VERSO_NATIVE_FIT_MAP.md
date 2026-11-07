@@ -24,6 +24,36 @@ already implemented.
 
 ## Functional-family fit
 
+### Aggregate coverage of the supplied inventory
+
+The owner-supplied Verso README lists 1,053 components. The following count
+crosswalk accounts for those entries by broad functional role, while omitting
+private component identifiers, names, descriptions, source, and visual
+expression. These are source-inventory counts, not Tessellate resource counts
+or per-item parity claims.
+
+| Functional role in the supplied inventory | Entries | Tessellate destination | Current fit and gap |
+| --- | ---: | --- | --- |
+| Ambient backgrounds and spatial/depth visuals | 152 (103 + 49) | Backgrounds, Effects, Motion, Data, resource preview | Partial/Lab. Existing effects cover selected use cases; there is no certified general 3D scene authoring or runtime. |
+| Kinetic typography | 35 | Typography and Motion catalogue; Typography Lab; Motion Studio | Partial. Selected text effects exist; each resource still needs its own accessibility, reduced-motion, responsiveness, performance, and export evidence. |
+| Pointer-driven visual feedback | 23 | Motion catalogue and Workbench replacement | Partial. Only certified touch/keyboard-safe behavior is Core; the remaining pointer effects stay outside Core rendering. |
+| Interactive objects and application/agent interfaces | 399 (99 + 300) | Components, Blocks, AI resources, `ResourceManifest`, Workbench | Strong for validated, composable UI patterns; partial for application-specific behavior. Tessellate does not import arbitrary event logic or agent workflows. |
+| Marketing sections and complete page examples | 396 (378 + 18) | Sections, Pages, Blueprints, Showcases, `ProjectManifest` | Strong for product/page hierarchy; no one-to-one visual or behavioral parity is asserted. |
+| Multi-part compositions with shared state | 24 | `ScreenGraph`, `ProjectManifest`, validated Workbench mutations | Strong for state represented by Tessellate contracts; no private state implementation is imported. |
+| Authoring instruments | 24 | The existing ten `/tools` surfaces and Workbench | Partial. Existing tools cover selected jobs; they do not represent one-to-one equivalents for every instrument. |
+| **Total component entries** | **1,053** |  | **All source entries are accounted for at this aggregate level; none are cleared for redistribution.** |
+
+The separate 20-document Scribe kit is not included in the component total. Its
+general authoring jobs map to Tessellate's existing public documentation, CLI,
+and MCP contracts. No Scribe text or source-specific recipe is transferred.
+
+The counts above were checked against the current owner-supplied source README.
+They are useful for coverage accounting only: they do not prove that a given
+source item maps to a particular Tessellate resource, that a behavior is
+implemented, or that the item is licensed. The source package remains private
+and `UNLICENSED`; public eligibility remains 0/1,053 until written rights cover
+each implementation and its lineage.
+
 | Functional family | Existing Tessellate home | Existing examples / status | Fit and remaining limit |
 | --- | --- | --- | --- |
 | Ambient visual layers and backgrounds | Backgrounds and Effects catalogue; Background Studio; resource preview | `subtle-grid-field` (Gold); other effects remain individually classified | Partial. Composition can select a certified background resource. A general shader authoring surface and every private visual effect are not part of Core. |
@@ -60,14 +90,15 @@ already implemented.
 
 ## Completion assessment
 
-The private source has a safe inspection boundary and each broad functional
-family has a destination in Tessellate's existing architecture. **This is not a
-claim that 1,053 components have been individually integrated, that every
-family is fully implemented, or that any private entry is eligible for public
-redistribution.** No private code or metadata is added to the product by this
-document. The current next action is product hardening of these existing
-surfaces, in the ordered programme; new resource work remains subject to its
-feature-freeze and release gates.
+The private source has a safe inspection boundary and all 1,053 component
+entries now have an aggregate functional-role destination in Tessellate's
+existing architecture. **This is not a claim that the entries have been
+individually integrated, that every behavior is implemented, that the mapping
+is one-to-one, or that any private entry is eligible for public redistribution.**
+No private code, component identifier, description, or design expression is
+added to the product by this document. The current next action is product
+hardening of the existing Tessellate surfaces, in the ordered programme; new
+resource work remains subject to its feature-freeze and release gates.
 
 Evidence: `quality/PRIVATE_VERSO_LOCAL_PREVIEW.md`,
 `quality/VERSO_LOCAL_INTEGRATION_EVIDENCE.md`, the source package's `UNLICENSED`
