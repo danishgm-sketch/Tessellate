@@ -1,0 +1,31 @@
+{
+  "audit": "AUD-515",
+  "scope": "Repository HAR evidence privacy, excluding screenshots and source code.",
+  "files": [
+    {
+      "path": "quality/evidence/step-39/public-v42/page-recipes/pages-before-desktop.har",
+      "requestCookieHeadersRedacted": 18,
+      "responseSetCookieHeadersRedacted": 5
+    },
+    {
+      "path": "quality/evidence/step-39/public-v42/page-recipes/pages-before-mobile.har",
+      "requestCookieHeadersRedacted": 18,
+      "responseSetCookieHeadersRedacted": 5
+    }
+  ],
+  "scanner": {
+    "path": "scripts/audit-security-secrets.ts",
+    "beforeRedaction": "pnpm audit:secrets failed with 46 sensitive-header findings and did not print values.",
+    "afterRedaction": "pnpm audit:secrets passed with zero violations.",
+    "checks": [
+      "Authorization",
+      "Proxy-Authorization",
+      "Cookie",
+      "Set-Cookie",
+      "X-API-Key",
+      "request and response cookie records"
+    ]
+  },
+  "historyRewrite": "Not performed; the older committed revisions retain their previous artifact copies.",
+  "status": "fixed-local-verified"
+}

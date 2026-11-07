@@ -24654,6 +24654,31 @@
       ],
       "fixCommit": null,
       "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-515",
+      "severity": "medium",
+      "route": "Repository HAR evidence",
+      "viewport": "not applicable",
+      "category": "security",
+      "title": "Browser HAR evidence retained host cookie headers",
+      "expected": "Network evidence should not retain browser authentication or session material.",
+      "actual": "Two tracked public-page HAR captures contained populated request Cookie and response Set-Cookie headers. Values were not repeated in the audit report.",
+      "reproduction": [
+        "Open either affected HAR as JSON.",
+        "Inspect log.entries[*].request.headers and log.entries[*].response.headers for Cookie or Set-Cookie fields."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "HAR files preserved browser-provided headers, while the existing security audit scanned application source but did not inspect evidence artifacts.",
+      "affectedCode": [
+        "scripts/audit-security-secrets.ts",
+        "quality/evidence/step-39/public-v42/page-recipes/pages-before-desktop.har",
+        "quality/evidence/step-39/public-v42/page-recipes/pages-before-mobile.har"
+      ],
+      "fixCommit": null,
+      "status": "fixed-local-verified"
     }
   ],
   "generatedAt": "2026-11-07T00:44:25.635Z",
