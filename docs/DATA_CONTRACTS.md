@@ -445,6 +445,11 @@ interface ScreenNode {
 
 Newly planned graphs preserve each recommendation's `required` value and record the product's target devices. Older serialized graphs may omit `deviceRelevance`; consumers use the project target-device set for those records.
 
+Screen route identity is compared after trimming whitespace, ignoring leading
+and trailing slashes, and folding case. `ScreenGraph` and `ProjectManifest`
+reject duplicate route identities so forms such as `overview`, `/overview/`,
+and `/OVERVIEW` cannot describe competing screens.
+
 ## 20. ProjectManifest
 
 ```ts

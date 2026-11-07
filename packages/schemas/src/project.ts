@@ -2,7 +2,12 @@ import { z } from 'zod';
 import { SchemaVersionSchema } from './version.js';
 import { DesignDNASchema, PartialDesignDNASchema } from './dna.js';
 import { ResourceRefSchema, type ResourceRef } from './resource.js';
-import { ProductModelSchema, ScreenGraphSchema, ProjectConstraintsSchema } from './product.js';
+import {
+  normalizeScreenRouteSlug,
+  ProductModelSchema,
+  ScreenGraphSchema,
+  ProjectConstraintsSchema,
+} from './product.js';
 
 export const NodeLocksSchema = z.object({
   node: z.boolean().optional(),
@@ -247,14 +252,15 @@ export const ProjectManifestSchema = ProjectManifestBaseSchema.superRefine((mani
       });
     }
 
-    if (projectSlugs.has(screen.slug)) {
+    const normalizedSlug = normalizeScreenRouteSlug(screen.slug);
+    if (projectSlugs.has(normalizedSlug)) {
       context.addIssue({
         code: z.ZodIssueCode.custom,
         path: ['screens', index, 'slug'],
-        message: `Duplicate project screen slug: ${screen.slug}.`,
+        message: `Duplicate project screen route: ${screen.slug}.`,
       });
     }
-    projectSlugs.add(screen.slug);
+    projectSlugs.add(normalizedSlug);
     visitNode(screen.rootNode, ['screens', index, 'rootNode']);
   });
 
