@@ -1,0 +1,55 @@
+{
+  "id": "AUD-513",
+  "severity": "medium",
+  "siteVersion": 84,
+  "deploymentId": "appgdep_6aee718d5b9c81918d02a57458f7aa34",
+  "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_3098af34049c81919c7c9500b993591c",
+  "canonicalCommit": "5582e4d6306711606c9396a17d73c292ba546009",
+  "siteSourceCommit": "562af7748ca831a3b382c4884816929089d85e82",
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "route": "/preview/?resource=api-key-management",
+  "auditedAt": "2026-11-07T00:42:28.000Z",
+  "result": "PASS",
+  "expected": "Example credentials are clearly identified as local preview data; Add and Remove work with truthful status; no credential-like values are shown.",
+  "actual": "Public v84 labels both rows as examples, discloses that no credentials are created or revoked, contains no credential-shaped sample values, provides keyboard and pointer Add/Remove behavior, and presents an empty state.",
+  "reproduction": [
+    "Open /preview/?resource=api-key-management at 1440x900 or 390x844.",
+    "Press Enter on Add example token; Example token 3 appears with a no-credential-created status.",
+    "Press Space on Remove example token 3; it disappears with a no-credential-revoked status.",
+    "Remove example token 1 and 2; the empty-state message appears."
+  ],
+  "checks": [
+    {
+      "viewport": "1440x900",
+      "httpStatus": 200,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "networkSummary": { "requests": 19, "statusCounts": { "200": 18, "304": 1 } },
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "screenshot": "audit/evidence/AUD-513/deployed-v84/playwright-desktop-1440x900.png"
+    },
+    {
+      "viewport": "390x844",
+      "httpStatus": 200,
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "networkSummary": { "requests": 19, "statusCounts": { "200": 18, "304": 1 } },
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "screenshot": "audit/evidence/AUD-513/deployed-v84/playwright-mobile-390x844.png"
+    }
+  ],
+  "focusedRegression": {
+    "desktop": "1 passed",
+    "mobile": "1 passed",
+    "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts --grep 'API token manager' tests/e2e/resource-claims-and-controls-step-39.spec.ts"
+  },
+  "status": "closed-deployed-verified"
+}

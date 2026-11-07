@@ -24589,21 +24589,44 @@
         "tests/e2e/resource-claims-and-controls-step-39.spec.ts"
       ],
       "fixCommit": "5a0c4392bba35006232e3d941fb1428eff112590",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "red": "The new Sites Worker UI regression failed before the source fix because the preview showed API Tokens, Production Agent Token, tess_live_…, Local Development Key, and inert controls.",
         "green": "After the fix, the regression passes in desktop and mobile Sites Worker profiles. It checks the sample disclosure, absence of credential-shaped values, add/remove actions, live feedback, and empty state.",
         "focusedCommand": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts --project=sites-chromium --grep \"API token manager discloses\" (1 passed); same with --project=sites-mobile-chromium (1 passed).",
         "screenshots": [
           "audit/evidence/step-39/public-v83-api-key-management/local-after-desktop-1440x900.png",
-          "audit/evidence/step-39/public-v83-api-key-management/local-after-mobile-390x844.png"
+          "audit/evidence/step-39/public-v83-api-key-management/local-after-mobile-390x844.png",
+          "audit/evidence/AUD-513/deployed-v84/playwright-desktop-1440x900.png",
+          "audit/evidence/AUD-513/deployed-v84/playwright-mobile-390x844.png"
         ],
-        "telemetry": "Local preview: HTTP 200; zero console errors, failed requests, or HTTP errors at both viewport sizes. The source change has not been deployed, so AUD-513 remains open for hosted verification."
+        "telemetry": "Public Sites v84 was verified on desktop and mobile: 19 requests each, all 200 or cache-valid 304; zero console messages, uncaught exceptions, failed requests, HTTP errors, or overflow. Keyboard and pointer Add/Remove actions show truthful local status and reach the empty state."
+      },
+      "deployedVerification": {
+        "siteVersion": 84,
+        "versionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_3098af34049c81919c7c9500b993591c",
+        "deploymentId": "appgdep_6aee718d5b9c81918d02a57458f7aa34",
+        "canonicalCommit": "5582e4d6306711606c9396a17d73c292ba546009",
+        "siteSourceCommit": "562af7748ca831a3b382c4884816929089d85e82",
+        "route": "/preview/?resource=api-key-management",
+        "result": "PASS at 1440x900 and 390x844",
+        "consoleErrors": 0,
+        "consoleWarnings": 0,
+        "uncaughtExceptions": 0,
+        "failedRequests": 0,
+        "httpErrors": 0,
+        "horizontalOverflow": false,
+        "keyboard": "Enter adds an example row; Space removes it; status text reports local preview-only changes.",
+        "screenshots": [
+          "audit/evidence/AUD-513/deployed-v84/playwright-desktop-1440x900.png",
+          "audit/evidence/AUD-513/deployed-v84/playwright-mobile-390x844.png"
+        ],
+        "evidence": "audit/evidence/AUD-513/deployed-v84/runtime-audit.json"
       }
     }
   ],
-  "generatedAt": "2026-11-06T22:30:53.167Z",
-  "latestDeploymentEvidence": "audit/evidence/step-47/AUD-512/public-v83/runtime-audit.json",
+  "generatedAt": "2026-11-07T00:44:25.635Z",
+  "latestDeploymentEvidence": "audit/evidence/AUD-513/deployed-v84/runtime-audit.json",
   "latestLocalQualityRun": {
     "capturedAt": "2026-11-06T20:53:08.000Z",
     "command": "pnpm install --frozen-lockfile; pnpm build:catalog; pnpm typecheck; pnpm lint; pnpm test; pnpm audit:all; pnpm test:e2e",
