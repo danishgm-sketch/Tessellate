@@ -1,6 +1,6 @@
 const STANDARD_REACT_EVENT_PROPS = new Set(['onChange', 'onClick', 'onClose', 'onSelect']);
 
-export function filterPrivatePreviewActionProps<T extends Record<string, unknown>>(
+export function filterPreviewActionProps<T extends Record<string, unknown>>(
   actions: T,
   declaredProps: ReadonlySet<string>,
 ): Partial<T> {
