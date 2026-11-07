@@ -2,6 +2,10 @@
 
 Step 39 remains in progress. Findings close as deployed only after version-specific browser evidence is recorded in audit/runtime-audit.json. Public v80 closes AUD-496–AUD-505 after issue-specific checks at 1440×900 and 390×844. The wider manual language review across the full public catalogue, documentation, CLI, MCP, errors, and secondary workflows remains incomplete. Older issue sections below preserve their contemporaneous status and are superseded by dated closeouts and continuation notes.
 
+## Public v87 targeted claims and controls — 2026-11-07
+
+On public Sites v87, the deployed Step 39 claims/control Playwright suite passed 48 cases across desktop and mobile (24 per profile). It covered the audited sample-data disclosures, API token manager truthfulness, local action feedback, disabled unconnected actions, reduced-motion behavior, catalogue sample counts, and related tested controls. It reported no new defect in those cases. This is a targeted regression suite; it does not complete the manual copy review across all 324 resources, documentation, CLI, MCP, errors, and secondary workflows. Step 39 remains open. The run summary is in `audit/evidence/step-45/public-v87-route-sweep/deployed-runtime-summary.json`.
+
 ## AUD-177 — AI Prompt Hero advertised an unavailable generation service
 
 - Severity: Medium; route /r/ai-prompt-hero.

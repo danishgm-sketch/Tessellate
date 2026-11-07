@@ -1,0 +1,87 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersion": 87,
+  "canonicalCommit": "73cca33c263d8c1f6ae93fb35347ad7e33b7e749",
+  "sitesMirrorCommit": "20ebad8da9aa0ead9fff30581986f671be7d8a00",
+  "capturedAt": "2026-11-07",
+  "routeSweep": {
+    "requestedRoutes": 31,
+    "viewports": ["1440x900", "390x844"],
+    "captures": 62,
+    "classification": { "PASS": 31 },
+    "httpFailures": 0,
+    "navigationFailures": 0,
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "horizontalOverflowCaptures": 0,
+    "scope": "Visible route shell/content, runtime/network health, and overflow only; every secondary control was not activated."
+  },
+  "flagship": {
+    "brief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+    "desktop": {
+      "result": "PASS",
+      "projectId": "proj-direction-c-96e61473d0ce4b2b992b4202b366fda2dirc",
+      "selectedDirection": "C",
+      "screens": ["Marketing Home", "Team Overview", "People Directory", "Teams", "Engagement", "Onboarding", "Settings & Policies"],
+      "lockedNode": {
+        "id": "node-screen-overview-metric-cards-3",
+        "resource": "dashboard-kpi-grid",
+        "subtreeSha256": "f23205c7366f907557f65f9b433ad6788ed497044d5defe5248a33350741c560"
+      },
+      "replacement": {
+        "nodeId": "node-screen-overview-activity-feed-5",
+        "resource": "notification-centre"
+      },
+      "consoleErrors": 0,
+      "failedRequests": 0
+    },
+    "mobile": {
+      "result": "PASS",
+      "projectId": "proj-direction-c-8dbb19e740994e58b5eae08fc3fc2ab7dirc",
+      "selectedDirection": "C",
+      "screens": ["Marketing Home", "Team Overview", "People Directory", "Teams", "Engagement", "Onboarding", "Settings & Policies"],
+      "lockedNode": {
+        "id": "node-screen-overview-metric-cards-3",
+        "resource": "dashboard-kpi-grid",
+        "subtreeSha256": "f23205c7366f907557f65f9b433ad6788ed497044d5defe5248a33350741c560"
+      },
+      "replacement": {
+        "nodeId": "node-screen-overview-activity-feed-5",
+        "resource": "notification-centre"
+      },
+      "consoleErrors": 0,
+      "failedRequests": 0
+    },
+    "history": "Surprise Me, replacement, and recomposition were undone and redone with exact manifest restoration.",
+    "standaloneReactExport": {
+      "downloaded": true,
+      "files": 35,
+      "cleanInstallOutsideRepository": true,
+      "build": true,
+      "browserViewports": ["1440x900", "390x844"],
+      "runtimeTessellateDependencies": 0,
+      "consoleErrors": 0
+    }
+  },
+  "step39TargetedClaimsAndControls": {
+    "result": "PASS",
+    "passed": 48,
+    "failed": 0,
+    "desktop": 24,
+    "mobile": 24,
+    "scope": "Sample disclosures and selected control truthfulness regressions, not the complete Step 39 manual copy review."
+  },
+  "limitations": [
+    "Axe was not rerun during this v87 continuation; refer to the v81 evidence for prior scan scope and incomplete contrast checks.",
+    "The full language review and the Step 39 and Step 45 programme gates remain open.",
+    "The runtime ledger still has unresolved findings; AUD-419 remains a nonclosed High due to the intentionally unconfigured public laptop/provider connection."
+  ],
+  "infrastructure": {
+    "d1Bound": false,
+    "r2Bound": false,
+    "newPaidService": false
+  }
+}
