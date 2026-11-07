@@ -24632,7 +24632,7 @@
       "category": "state",
       "title": "Reset preview state did not clear local state inside the isolated resource iframe",
       "expected": "Reset preview state should restore the resource and host controls to their initial values.",
-      "actual": "After adding Example token 3 and activating Reset preview state on public v88, the third sample remained in the iframe and the status still said it had been added.",
+      "actual": "Public v88 reproduced the defect. On public v89, adding Example token 3 and activating Reset preview state restored the initial two-row preview and cleared the added-token state at both 1440x900 and 390x844.",
       "reproduction": [
         "Open /r/api-key-management on the public review Site.",
         "Wait for the isolated preview to show Example API tokens.",
@@ -24640,20 +24640,20 @@
         "Activate Reset preview state and observe Example token 3 remains."
       ],
       "console": [
-        "No application console errors, uncaught exceptions, or mobile browser issues. Desktop DevTools reported three deprecated-feature issues from the host-injected Cloudflare challenge script; details are in the issue-specific evidence."
+        "Desktop and mobile: zero application console errors/warnings and zero uncaught exceptions. Desktop DevTools also reported three deprecated-feature issues from the host-injected Cloudflare challenge; no application issue was reported."
       ],
       "network": [
-        "Desktop: 48 requests; mobile: 46 requests. Essential document, application assets, and preview requests returned 200 or cache-valid 304; no failed essential requests or HTTP errors."
+        "Desktop: 63 requests; mobile: 61 requests. No failed requests or HTTP errors. Essential document, application, catalogue, and preview requests returned 200 or cache-valid 304; the host-injected Cloudflare challenge completed its expected 302-to-200 flow."
       ],
-      "screenshot": "quality/evidence/step-39/public-v88-api-token-preview/deployed-desktop-after-reset-still-added.jpg; quality/evidence/step-39/public-v88-api-token-preview/deployed-mobile-after-reset-still-added.jpg",
+      "screenshot": "quality/evidence/AUD-514/deployed-v89-desktop-added.png; quality/evidence/AUD-514/deployed-v89-desktop-after.png; quality/evidence/AUD-514/deployed-v89-mobile-added.png; quality/evidence/AUD-514/deployed-v89-mobile-after.png",
       "rootCause": "The reset handler reset only host toolbar state. The isolated iframe retained its own local React state and received an update message instead of a fresh preview initialization.",
       "affectedCode": [
         "apps/site/src/components/ResourcePreviewFrame.tsx",
         "tests/e2e/resource-preview-reset-state.spec.ts",
         "tests/e2e/sites-preview.playwright.config.ts"
       ],
-      "fixCommit": null,
-      "status": "fixed-local-verified"
+      "fixCommit": "bef26443fcd972b1e302d91613ac8c22352518e2",
+      "status": "closed-deployed-verified"
     },
     {
       "id": "AUD-515",
@@ -24681,8 +24681,8 @@
       "status": "fixed-local-verified"
     }
   ],
-  "generatedAt": "2026-11-07T00:44:25.635Z",
-  "latestDeploymentEvidence": "audit/evidence/AUD-513/deployed-v84/runtime-audit.json",
+  "generatedAt": "2026-11-07T12:35:17Z",
+  "latestDeploymentEvidence": "quality/evidence/AUD-514/deployed-v89-runtime.json",
   "latestLocalQualityRun": {
     "capturedAt": "2026-11-06T20:53:08.000Z",
     "command": "pnpm install --frozen-lockfile; pnpm build:catalog; pnpm typecheck; pnpm lint; pnpm test; pnpm audit:all; pnpm test:e2e",
