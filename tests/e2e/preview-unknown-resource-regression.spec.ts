@@ -33,6 +33,7 @@ test('unknown resource preview reports a visible error instead of substituting t
   }));
   await page.goto('/__preview_test_host');
   const preview = page.frameLocator('iframe[title="Resource preview"]');
+  await expect(preview.getByRole('main')).toBeVisible();
   await expect(preview.getByRole('alert')).toContainText('Unknown resource: __missing-resource-for-renderer-audit__');
   await expect(preview.getByRole('button')).toHaveCount(0);
   await expect.poll(() => page.evaluate(() => {
