@@ -43,6 +43,30 @@ export review. The current feature freeze therefore keeps the source outside pub
 the ordered hardening gate allows resource integration. Human usability sessions are owner-waived,
 not passed. Decision: D-067.
 
+### 2026-11-07 local municipal-water composition review
+
+A realistic public drinking-water utility brief exposed a generic-composition gap: the initial
+preview had no outage, repair, water-quality clearance, or resident-update workflows. The existing
+ERP archetype now specializes clear water-utility field-response briefs while preserving the same
+manifest and resource pipeline. All three directions carry five screens, domain workflows, safety
+constraints, disconnected sample metrics/records, and explicit prototype limitations. This adds no
+route, resource, backend binding, paid service, or export target and has not been deployed.
+
+Desktop (1440×900) and mobile (390×844) Sites Worker browser runs passed the visible Compose flow,
+all three directions, all five screens, keyboard selection and Escape dismissal, required-resource
+resolution, truthful disconnected-data copy, and preview overflow checks. Both reported zero console
+errors, uncaught exceptions, failed requests, and HTTP errors. Evidence is in
+`quality/evidence/step-39/water-utility-local-2026-11-07/`. Vitest passed 1,356 tests with one
+configured skip; all 22 workspace typechecks, lint, and the 16/16 `audit:all` gates passed. The
+Astro desktop/mobile E2E phase passed 402 with 140 configured skips, Sites Worker mobile passed 214
+with 46 skips, and standalone preview passed 3/3. The Sites Worker desktop profile had four
+timing/loading failures (245 passed, 11 skips); each failed case passed individually on retry. One
+ordered reproduction of the 324-resource sweep had an unsettled
+`/_astro/manifest.3vTMqesi.js` request for `multi-series-line-chart`; ten repeated seven-width runs
+of that resource passed, as did the downstream timing cases in sequence. The full browser matrix
+remains imperfect and this asset-load instability remains under investigation. Steps 39 and 48
+remain open; this local review is not deployed or release evidence.
+
 ### 2026-11-07 continuation — Step 5 screen-route contract
 
 A regression showed that `ProjectManifestSchema` accepted two project screens whose route slugs differ only by case and leading/trailing slashes, even though route consumers canonicalize those forms to the same destination. The regression failed before the fix. `normalizeScreenRouteSlug` is now shared by `ScreenGraphSchema` and `ProjectManifestSchema`, and focused schema tests pass (164 passed). `docs/DATA_CONTRACTS.md` records the route-identity rule. PR #13 is merged at canonical commit `3cd019803b03282aa43f31d92591c83f2ac0bd85`; both exact-head CI workflows passed. Public Sites v86 carries that source through mirror commit `42b992ac04816eab5d16f20f95516cdd2b5031ed`. The deployed desktop/mobile browser smoke returned 200 for homepage, Explore, Compose, Workbench and a resource page; `/data/catalog.json` returned all 324 resources; Compose and Workbench had no mobile horizontal overflow; console errors, failed requests and HTTP errors were zero. This verifies the schema change's release and the app's basic deployed health, not a new full product audit. No D1/R2 binding, paid service, or secret was added.

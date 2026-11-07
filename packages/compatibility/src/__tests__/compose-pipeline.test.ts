@@ -38,6 +38,9 @@ function composeEmployeeExperience() {
 const offshoreWindBrief =
   'A field safety intelligence and equipment maintenance platform for a 1,200-person offshore wind operator. Dispatch crews across three time zones. Technicians use rugged tablets with intermittent connectivity; control room teams manage turbine status, sea conditions, permits to work, lockout/tagout, and incident escalation.';
 
+const municipalWaterBrief =
+  'A public drinking-water utility operations workspace helps field crews and control-room dispatchers respond to burst mains and planned outages across three districts. Teams need to locate affected streets, assign qualified repair crews, verify isolation and water-quality clearance before service returns, and prepare accessible resident updates. Technicians use phones with intermittent connectivity. This is an offline product prototype with sample data only.';
+
 const mutualAidBrief =
   'A mobile-first neighbourhood social and mutual-aid app for 30,000 residents in a dense city. Verified residents share local updates, organise cleanup events and skill swaps, ask neighbours for help, and follow street-by-street notices. Volunteer moderators handle reports and privacy controls. Users have limited data plans; motion should be optional and every action accessible.';
 
@@ -45,6 +48,13 @@ function composeOffshoreWind() {
   return composeProjectPipeline(
     { description: offshoreWindBrief },
     { catalogResources: loadTestCatalog(), seed: 'offshore-wind-safety-preview' }
+  );
+}
+
+function composeMunicipalWater() {
+  return composeProjectPipeline(
+    { description: municipalWaterBrief },
+    { catalogResources: loadTestCatalog(), seed: 'municipal-water-response-preview' }
   );
 }
 
@@ -187,6 +197,80 @@ describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
     expect(
       result.screenGraph.groups.flatMap((group) => group.screens.map((screen) => screen.name))
     ).toEqual(expect.arrayContaining(['Permits to Work', 'Incident Response', 'Crew & Vessel Dispatch']));
+  });
+
+  it('carries municipal water response into all three real previews', () => {
+    const result = composeMunicipalWater();
+    const manifests = [
+      result.directionA.manifest,
+      result.directionB.manifest,
+      result.directionC.manifest,
+    ];
+    const requiredScreens = [
+      'Network Operations',
+      'Outage & Incident Queue',
+      'Repair Work Orders',
+      'Water Quality Clearance',
+      'Resident Updates',
+    ];
+
+    expect(result.directionA.diagnostics).toEqual([]);
+    expect(result.directionB.diagnostics).toEqual([]);
+    expect(result.directionC.diagnostics).toEqual([]);
+
+    for (const manifest of manifests) {
+      expect(manifest.brand?.name).toBe('Water Network Operations');
+
+      const dashboard = nodesForScreen(manifest, 'Network Operations');
+      const metricCards = dashboard.find((node) => node.semanticRole === 'metric-cards');
+      const cards = metricCards?.props.cards as Array<{ label: string; status: string }>;
+
+      expect(cards.map((card) => card.label)).toEqual([
+        'Open service incidents',
+        'Affected service areas',
+        'Crews available to dispatch',
+        'Repairs awaiting review',
+        'Water-quality clearances',
+        'Resident updates due',
+      ]);
+      expect(cards.every((card) => card.status === 'No connected data')).toBe(true);
+
+      for (const [screenName, recordName, status] of [
+        ['Outage & Incident Queue', 'Example service incident', 'Incident service not connected'],
+        ['Water Quality Clearance', 'Example water-quality clearance', 'Clearance service not connected'],
+      ] as const) {
+        const table = nodesForScreen(manifest, screenName).find(
+          (node) => node.semanticRole === 'data-table'
+        );
+        const rows = table?.props.rows as Array<{ name: string; status: string }>;
+
+        expect(rows, `${screenName} should contain a bound example record table`).toBeDefined();
+        expect(rows.every((row) => row.name.startsWith(recordName))).toBe(true);
+        expect(rows.every((row) => row.status === status)).toBe(true);
+      }
+
+      const repairNodes = nodesForScreen(manifest, 'Repair Work Orders');
+      const repairInspector = repairNodes.find((node) => node.semanticRole === 'inspector-panel');
+      expect(repairNodes.some((node) => node.semanticRole === 'canvas-viewport')).toBe(true);
+      expect(repairInspector?.props.subtitle).toMatch(/crew competencies, isolation evidence/i);
+      expect(repairInspector?.props.subtitle).toMatch(
+        /Example prototype; utility systems and records are not connected/
+      );
+
+      const residentNodes = nodesForScreen(manifest, 'Resident Updates');
+      const residentInspector = residentNodes.find((node) => node.semanticRole === 'inspector-panel');
+      expect(residentNodes.some((node) => node.semanticRole === 'canvas-viewport')).toBe(true);
+      expect(residentInspector?.props.subtitle).toMatch(
+        /accessible service notices with verified affected areas and a clear next-update time/i
+      );
+      expect(residentInspector?.props.subtitle).toMatch(
+        /Example prototype; utility systems and records are not connected/
+      );
+    }
+
+    expect(
+      result.screenGraph.groups.flatMap((group) => group.screens.map((screen) => screen.name))
+    ).toEqual(expect.arrayContaining(requiredScreens));
   });
 
   it('keeps resource navigation branding identical to the project brand', () => {

@@ -22,6 +22,7 @@ import {
   specialiseFintechTrading,
   specialiseMedia,
   specialiseMarketplace,
+  specialiseMunicipalWaterOperations,
   specialisePeopleOperations,
   specialiseOffshoreWindOperations,
   specialiseTravel,
@@ -135,7 +136,10 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
       )
     : undefined;
   const archetypeDef = baseArchetypeDef
-    ? specialiseOffshoreWindOperations(baseArchetypeDef, text)
+    ? specialiseMunicipalWaterOperations(
+        specialiseOffshoreWindOperations(baseArchetypeDef, text),
+        text
+      )
     : undefined;
   const blueprint = findBlueprintByArchetype(primaryTag);
 

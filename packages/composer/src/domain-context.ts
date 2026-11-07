@@ -2469,3 +2469,165 @@ export function specialiseOffshoreWindOperations(
     ],
   };
 }
+
+/** Keep public drinking-water service response distinct from generic inventory ERP. */
+export function specialiseMunicipalWaterOperations(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  const waterUtility =
+    /\b(?:water utility|water authority|water network|water distribution utility|drinking[- ]water utility|wastewater utility)\b/i.test(
+      text
+    );
+  const operationalResponse =
+    /\b(?:field crews?|dispatchers?|burst mains?|planned outages?|service outages?|repair crews?|network isolation|water[- ]quality clearance|service restoration|resident updates?|water main repairs?|leak repairs?)\b/i.test(
+      text
+    );
+
+  if (
+    base.id !== 'erp-operations' ||
+    base.name !== 'ERP & Operations' ||
+    !waterUtility ||
+    !operationalResponse
+  ) {
+    return base;
+  }
+
+  return {
+    ...base,
+    name: 'Public Water Operations',
+    description: 'Public water network incident response, qualified field repair, service clearance, and resident communication.',
+    primaryAudience:
+      'Network controllers, water-quality reviewers, field technicians, dispatchers, and resident communications teams',
+    primaryObjective:
+      'Restore public water service safely by coordinating network incidents, controlled isolation, qualified repairs, documented water-quality clearance, and accessible outage updates',
+    userSophistication: 74,
+    trustRequirement: 99,
+    informationComplexity: 84,
+    dataDensity: 78,
+    collaborationLevel: 94,
+    transactionCriticality: 99,
+    navigationComplexity: 83,
+    mobileImportance: 98,
+    defaultEntities: [
+      {
+        name: 'Water Network Asset',
+        description: 'A water main, valve, treatment works, or other network asset with a district and service state',
+        fields: ['id', 'assetType', 'district', 'location', 'serviceStatus', 'lastInspected'],
+      },
+      {
+        name: 'Service Incident',
+        description: 'A service interruption with a verified network location, affected area, and response status',
+        fields: ['id', 'assetId', 'affectedArea', 'reportedAt', 'severity', 'status'],
+      },
+      {
+        name: 'Work Order',
+        description: 'A repair task linked to an incident, network asset, qualified crew, and isolation record',
+        fields: ['id', 'incidentId', 'assetId', 'crewId', 'isolationStatus', 'status'],
+      },
+      {
+        name: 'Field Crew',
+        description: 'A field team with recorded competencies, shift coverage, and assigned repair equipment',
+        fields: ['id', 'members', 'competencies', 'shift', 'equipment', 'dispatchStatus'],
+      },
+      {
+        name: 'Water Quality Clearance',
+        description: 'A reviewed water-quality record for a defined sampling location, time, and test method',
+        fields: ['id', 'sampleLocation', 'sampledAt', 'testMethod', 'reviewer', 'status'],
+      },
+      {
+        name: 'Resident Notice',
+        description: 'A service update with an affected area, next-update time, accessible formats, and review status',
+        fields: ['id', 'affectedArea', 'issuedAt', 'nextUpdateAt', 'formats', 'approvalStatus'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'respond-to-water-service-incident',
+        name: 'Triage a water service interruption and dispatch a qualified repair crew',
+        steps: [
+          'Review the service report and verify the affected network asset',
+          'Confirm the affected streets and the current service impact',
+          'Assign a crew with the required recorded competencies',
+          'Verify isolation and record repair progress against the work order',
+        ],
+      },
+      {
+        id: 'clear-water-service-restoration',
+        name: 'Review water quality evidence before returning service',
+        steps: [
+          'Record the sampling location, collection time, and approved test method',
+          'Route results to an authorised water-quality reviewer',
+          'Record the evidence, decision, reviewer, and timestamp',
+          'Return service only after the responsible utility confirms its clearance procedure',
+        ],
+      },
+      {
+        id: 'prepare-resident-outage-update',
+        name: 'Prepare an accessible update for residents in an affected area',
+        steps: [
+          'Confirm the affected area and describe the known service impact',
+          'State the next update time without inventing a restoration estimate',
+          'Check accessible and translated formats required by the utility',
+          'Submit the notice to an authorised communications reviewer',
+        ],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Network Operations',
+        screenType: 'dashboard',
+        purpose: 'Review network incidents, affected service areas, qualified crew coverage, and outstanding water-quality clearances',
+        jobs: ['review-network-status', 'triage-service-incidents', 'monitor-clearance-status'],
+        required: true,
+      },
+      {
+        name: 'Outage & Incident Queue',
+        screenType: 'index-list',
+        purpose: 'Prioritise reported outages by verified asset, affected area, response state, and next action',
+        jobs: ['triage-outage', 'confirm-affected-area', 'assign-response-owner'],
+        required: true,
+      },
+      {
+        name: 'Repair Work Orders',
+        screenType: 'workspace-editor',
+        purpose: 'Coordinate repair scope, recorded crew competencies, isolation evidence, and offline field drafts',
+        jobs: ['review-repair-scope', 'dispatch-qualified-crew', 'record-isolation-and-progress'],
+        required: true,
+      },
+      {
+        name: 'Water Quality Clearance',
+        screenType: 'index-list',
+        purpose: 'Review sampling records and authorised water-quality decisions before service restoration',
+        jobs: ['inspect-sample-record', 'review-test-evidence', 'record-clearance-decision'],
+        required: true,
+      },
+      {
+        name: 'Resident Updates',
+        screenType: 'workspace-editor',
+        purpose: 'Prepare accessible service notices with verified affected areas and a clear next-update time',
+        jobs: ['draft-outage-notice', 'check-accessible-formats', 'request-authorised-review'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      ...base.requiredCapabilities,
+      'water-network-incident-triage',
+      'outage-area-verification',
+      'qualified-crew-dispatch',
+      'isolation-verification',
+      'water-quality-clearance',
+      'accessible-resident-notices',
+      'offline-field-drafts',
+    ],
+    forbiddenPatterns: [
+      ...base.forbiddenPatterns,
+      'service-restoration-without-authorised-clearance',
+      'unverified-water-quality-marked-safe',
+      'stale-outage-update-presented-as-current',
+      'offline-field-draft-presented-as-synchronised',
+      'safety-state-distinguished-by-colour-alone',
+      'unreviewed-resident-notice-presented-as-published',
+    ],
+  };
+}

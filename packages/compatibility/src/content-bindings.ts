@@ -34,12 +34,17 @@ export function resolveWorkspaceBrand(product: ProductModel, briefDescription = 
     primaryArchetype === 'erp-operations' &&
     product.entities.some((entity) => entity.name === 'Turbine') &&
     product.entities.some((entity) => entity.name === 'Permit to Work');
+  const municipalWaterOperations =
+    primaryArchetype === 'erp-operations' &&
+    product.entities.some((entity) => entity.name === 'Water Network Asset') &&
+    product.entities.some((entity) => entity.name === 'Water Quality Clearance');
 
   if (employee) return 'People & Co';
   if (mutualAidCommunity) return 'Neighbourhood Commons';
   if (community) return 'Example Community';
   if (tradingTerminal) return 'Market Workspace';
   if (offshoreWindOperations) return 'Wind Operations';
+  if (municipalWaterOperations) return 'Water Network Operations';
   return workspaceBrand(product.entities[0]?.name);
 }
 
@@ -101,6 +106,80 @@ function offshoreWindRecordSet(screenName: string): {
               statusLabel: 'Operational status',
               status: 'Telemetry not connected',
               displayValue: 'Availability not connected',
+            };
+
+  return {
+    columnLabels: {
+      name: record.name,
+      type: record.type,
+      quality: record.quality,
+      status: record.statusLabel,
+    },
+    rows: ['A', 'B', 'C'].map((letter, index) => ({
+      id: index + 1,
+      name: `Example ${record.name} ${letter}`,
+      type: record.type,
+      quality: 0,
+      status: record.status,
+      displayValue: record.displayValue,
+    })),
+  };
+}
+
+function municipalWaterRecordSet(screenName: string): {
+  columnLabels: { name: string; type: string; quality: string; status: string };
+  rows: Array<{
+    id: number;
+    name: string;
+    type: string;
+    quality: number;
+    status: string;
+    displayValue: string;
+  }>;
+} {
+  const record = /clearance|water quality/i.test(screenName)
+    ? {
+        name: 'water-quality clearance',
+        type: 'Sample location, time, and approved test method',
+        quality: 'Review state',
+        statusLabel: 'Clearance status',
+        status: 'Clearance service not connected',
+        displayValue: 'Test results not connected',
+      }
+    : /resident|notice|update/i.test(screenName)
+      ? {
+          name: 'resident notice',
+          type: 'Affected area, next update, and accessible formats',
+          quality: 'Review state',
+          statusLabel: 'Notice status',
+          status: 'Notice service not connected',
+          displayValue: 'Publishing is not connected',
+        }
+      : /repair|work order/i.test(screenName)
+        ? {
+            name: 'repair work order',
+            type: 'Network asset, qualified crew, and isolation record',
+            quality: 'Repair progress',
+            statusLabel: 'Work order status',
+            status: 'Work order service not connected',
+            displayValue: 'Crew and repair data not connected',
+          }
+        : /outage|incident/i.test(screenName)
+          ? {
+              name: 'service incident',
+              type: 'Verified network asset and affected service area',
+              quality: 'Response state',
+              statusLabel: 'Incident status',
+              status: 'Incident service not connected',
+              displayValue: 'Affected area not connected',
+            }
+          : {
+              name: 'water network asset',
+              type: 'Asset type, district, and service state',
+              quality: 'Inspection state',
+              statusLabel: 'Service status',
+              status: 'Network data not connected',
+              displayValue: 'Asset location not connected',
             };
 
   return {
@@ -213,6 +292,11 @@ export function bindResourceContent(
     primaryArchetype === 'erp-operations' &&
     product.entities.some((entity) => entity.name === 'Turbine') &&
     product.entities.some((entity) => entity.name === 'Permit to Work');
+  const isMunicipalWaterOperations =
+    primaryArchetype === 'erp-operations' &&
+    product.entities.some((entity) => entity.name === 'Water Network Asset') &&
+    product.entities.some((entity) => entity.name === 'Water Quality Clearance') &&
+    product.entities.some((entity) => entity.name === 'Resident Notice');
   const isRealEstate = primaryArchetype === 'real-estate';
   const isMarketplaceListings =
     primaryArchetype === 'marketplace' && screen.name === 'Explore Listings';
@@ -308,6 +392,8 @@ export function bindResourceContent(
   };
   const primaryActionLabel = employee
     ? 'Meet your team'
+    : isMunicipalWaterOperations
+      ? 'Review water service incidents'
     : isOffshoreWindOperations
       ? 'Review turbine operations'
       : isMutualAidCommunity
@@ -348,6 +434,8 @@ export function bindResourceContent(
   };
   const preferredTargetPattern = employee
     ? /^teams?$/i
+    : isMunicipalWaterOperations
+      ? /network operations/i
     : isOffshoreWindOperations
       ? /turbine operations/i
       : isMutualAidCommunity
@@ -376,7 +464,10 @@ export function bindResourceContent(
     screens.find((item) => preferredTargetPattern.test(item.name)) ??
     screens.find((item) => /overview|dashboard|home|workspace/i.test(item.name)) ??
     screens[0];
-  const secondaryActionScreen = employee
+  const secondaryActionScreen = isMunicipalWaterOperations
+    ? screens.find((item) => /water quality clearance/i.test(item.name)) ??
+      screens.find((item) => item.id !== primaryActionScreen?.id)
+    : employee
     ? screens.find((item) => /onboarding|welcome/i.test(item.name)) ??
       screens.find((item) => item.id !== primaryActionScreen?.id)
     : screens.find((item) => item.id !== primaryActionScreen?.id);
@@ -394,6 +485,8 @@ export function bindResourceContent(
     ? 'Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.'
     : isReturnsPortal
       ? 'Find a previous purchase, choose eligible items, and follow each return and refund step.'
+      : isMunicipalWaterOperations
+        ? 'Coordinate example network incidents, repair drafts, clearance review, and resident updates. Utility dispatch, live locations, water tests, and public notices are not connected.'
       : isOffshoreWindOperations
         ? 'Coordinate turbine maintenance, sea conditions, permits to work, verified energy isolation, and incident response. Live operational data appears only when its source is connected.'
       : isMutualAidCommunity
@@ -404,6 +497,8 @@ export function bindResourceContent(
     : `Ready to ${primaryActionLabel.toLowerCase()}?`;
   const conversionCtaDescription = employee
     ? 'Help colleagues find their team, support and policies in one clear place.'
+    : isMunicipalWaterOperations
+      ? 'Review the example response plan. No utility control system, water-quality service, or resident notification channel is connected.'
     : isMutualAidCommunity
       ? 'Find or offer local help, with contact details shared only after both residents consent.'
       : `Continue with ${primaryActionLabel.toLowerCase()} for ${product.primaryAudience.toLowerCase()}.`;
@@ -501,7 +596,13 @@ export function bindResourceContent(
       helperText: 'Example search only. Connect your service to search live developer records.',
     },
   };
-  const searchCopy = isOffshoreWindOperations
+  const searchCopy = isMunicipalWaterOperations
+    ? {
+        label: 'Search incidents and network assets',
+        placeholder: 'Search by incident, asset, or district',
+        helperText: 'Example search only. No utility incidents or live locations are connected.',
+      }
+    : isOffshoreWindOperations
     ? {
         label: 'Search turbines and work orders',
         placeholder: 'Search by turbine, permit, or work order',
@@ -519,7 +620,30 @@ export function bindResourceContent(
         placeholder: 'Search records',
         helperText: 'Example search only. Connect your data source to search live records.',
       };
-  const items = isOffshoreWindOperations
+  const items = isMunicipalWaterOperations
+    ? [
+        {
+          title: 'Outage response',
+          description: 'Review example incident reports and confirm their affected service areas.',
+          detail: 'Outage & Incident Queue',
+        },
+        {
+          title: 'Field repair',
+          description: 'Coordinate repair scope, crew competencies, and isolation records.',
+          detail: 'Repair Work Orders',
+        },
+        {
+          title: 'Water-quality review',
+          description: 'Route sample evidence for an authorised utility decision.',
+          detail: 'Water Quality Clearance',
+        },
+        {
+          title: 'Resident updates',
+          description: 'Prepare accessible notices with a verified area and next-update time.',
+          detail: 'Resident Updates',
+        },
+      ]
+    : isOffshoreWindOperations
     ? [
         {
           title: 'Fleet status',
@@ -693,6 +817,14 @@ export function bindResourceContent(
                 desc: 'A colleague responds with context and a suggested next step.',
               },
             ];
+  const waterWorkflowIndexes = /water quality|clearance/i.test(screen.name)
+    ? [1]
+    : /resident|notice|update/i.test(screen.name)
+      ? [2]
+      : /outage|incident|repair|work order/i.test(screen.name)
+        ? [0]
+        : [0, 1, 2];
+  const waterWorkflows = product.workflows.filter((_, index) => waterWorkflowIndexes.includes(index));
   const events =
     role === 'message-thread'
       ? conversationExamples
@@ -776,7 +908,15 @@ export function bindResourceContent(
                   desc: 'Shared-interest groups can bring introductions and upcoming events together.',
                 },
               ]
-            : product.workflows.slice(0, 3).map((workflow, index) => ({
+            : isMunicipalWaterOperations
+              ? waterWorkflows.map((workflow, index) => ({
+                  time: sampleActivityTime(index),
+                  title: humanizeWorkflowLabel(workflow.name),
+                  desc:
+                    workflow.steps.map(humanizeWorkflowLabel).join(' → ') ||
+                    'Example workflow. Live utility services are not connected.',
+                }))
+              : product.workflows.slice(0, 3).map((workflow, index) => ({
                 time: sampleActivityTime(index),
                 title: humanizeWorkflowLabel(workflow.name),
                 desc:
@@ -788,7 +928,24 @@ export function bindResourceContent(
     ?.replaceAll(',', '');
   const offshoreWindRecords = offshoreWindRecordSet(screen.name);
   const mutualAidRecords = mutualAidRecordSet(screen.name);
-  const titles: Record<string, string> = isOffshoreWindOperations
+  const municipalWaterRecords = municipalWaterRecordSet(screen.name);
+  const titles: Record<string, string> = isMunicipalWaterOperations
+    ? {
+        'metric-cards': 'Water service response status',
+        'summary-kpis': 'Water service response status',
+        'activity-feed': 'Example response activity',
+        'activity-timeline': 'Example response activity',
+        'data-table': /clearance|water quality/i.test(screen.name)
+          ? 'Water-quality review queue'
+          : /resident|notice|update/i.test(screen.name)
+            ? 'Resident update drafts'
+            : /repair|work order/i.test(screen.name)
+              ? 'Repair work orders'
+              : /outage|incident/i.test(screen.name)
+                ? 'Outage and incident queue'
+                : 'Water network status',
+      }
+    : isOffshoreWindOperations
     ? {
         'metric-cards': 'Fleet and safety status',
         'summary-kpis': 'Fleet and safety status',
@@ -908,8 +1065,12 @@ export function bindResourceContent(
         : role === 'footer' && employee
           ? footerDescription
           : description,
-    subtitle: screen.purpose,
-    panelTitle: isOffshoreWindOperations
+    subtitle: isMunicipalWaterOperations
+      ? `${screen.purpose}. Example prototype; utility systems and records are not connected.`
+      : screen.purpose,
+    panelTitle: isMunicipalWaterOperations
+      ? 'Water service response priorities'
+      : isOffshoreWindOperations
       ? 'Control room priorities'
       : isMutualAidCommunity
         ? 'Community coordination'
@@ -923,7 +1084,9 @@ export function bindResourceContent(
     })),
     primaryCta: { label: primaryActionLabel, href: primaryActionHref },
     secondaryCta: {
-      label: isOffshoreWindOperations
+      label: isMunicipalWaterOperations
+        ? 'Review water-quality clearances'
+        : isOffshoreWindOperations
         ? 'Check work orders'
         : isMutualAidCommunity
           ? 'See local events'
@@ -932,12 +1095,23 @@ export function bindResourceContent(
           : 'See how it works',
       href: secondaryActionHref,
     },
-    note: isMutualAidCommunity
+    note: isMunicipalWaterOperations
+      ? 'Example prototype · utility systems, water tests, live locations, and resident notices are not connected'
+      : isMutualAidCommunity
       ? 'Example preview · no resident data is connected; verify notices before sharing'
       : 'Example interface · replace sample data with your organisation',
     items,
     events,
-    cards: isOffshoreWindOperations
+    cards: isMunicipalWaterOperations
+      ? [
+          { label: 'Open service incidents', val: '—', status: 'No connected data' },
+          { label: 'Affected service areas', val: '—', status: 'No connected data' },
+          { label: 'Crews available to dispatch', val: '—', status: 'No connected data' },
+          { label: 'Repairs awaiting review', val: '—', status: 'No connected data' },
+          { label: 'Water-quality clearances', val: '—', status: 'No connected data' },
+          { label: 'Resident updates due', val: '—', status: 'No connected data' },
+        ]
+      : isOffshoreWindOperations
       ? [
           { label: 'Fleet availability', val: '—', status: 'No connected data' },
           { label: 'Active work orders', val: '—', status: 'No connected data' },
@@ -974,7 +1148,9 @@ export function bindResourceContent(
           val: '—',
           status: isTradingTerminal ? 'Market data not connected' : 'No connected data',
         })),
-    rows: isOffshoreWindOperations
+    rows: isMunicipalWaterOperations
+      ? municipalWaterRecords.rows
+      : isOffshoreWindOperations
       ? offshoreWindRecords.rows
       : isMutualAidCommunity
         ? mutualAidRecords.rows
@@ -1153,7 +1329,9 @@ export function bindResourceContent(
                               ? 'Market data not connected'
                               : 'Details not connected',
                           })),
-    columnLabels: isOffshoreWindOperations
+    columnLabels: isMunicipalWaterOperations
+      ? municipalWaterRecords.columnLabels
+      : isOffshoreWindOperations
       ? offshoreWindRecords.columnLabels
       : isMutualAidCommunity
         ? mutualAidRecords.columnLabels
@@ -1239,6 +1417,11 @@ export function bindResourceContent(
             tasks: ['Read organisational policies', 'Share your first-week feedback'],
           },
         ]
+      : isMunicipalWaterOperations
+        ? waterWorkflows.map((workflow) => ({
+            title: humanizeWorkflowLabel(workflow.name),
+            tasks: workflow.steps.map(humanizeWorkflowLabel),
+          }))
       : product.workflows.map((workflow) => ({
           title: humanizeWorkflowLabel(workflow.name),
           tasks: workflow.steps.map(humanizeWorkflowLabel),
