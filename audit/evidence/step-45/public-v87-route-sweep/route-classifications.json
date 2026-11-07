@@ -1,0 +1,1102 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": 87,
+  "canonicalCommit": "73cca33c263d8c1f6ae93fb35347ad7e33b7e749",
+  "sitesMirrorCommit": "20ebad8da9aa0ead9fff30581986f671be7d8a00",
+  "capturedAt": "2026-11-07T08:26:31.500Z",
+  "viewports": [
+    "1440x900",
+    "390x844"
+  ],
+  "classificationMeaning": "PASS means both viewport captures returned HTTP 200, contained a visible H1 and at least 300 characters of main content, had no observed browser/network errors, and had no horizontal overflow. It is a route-shell/content classification, not a claim that every route control or all WCAG checks passed.",
+  "counts": {
+    "PASS": 31
+  },
+  "routes": [
+    {
+      "route": "/",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Tessellate — Describe the product. Get the interface.",
+          "h1": "Describe the product.\nGet the interface.",
+          "mainTextLength": 10700,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/home-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Tessellate — Describe the product. Get the interface.",
+          "h1": "Describe the product.\nGet the interface.",
+          "mainTextLength": 10326,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/home-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/explore",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Explore — Tessellate Open Interface Library",
+          "h1": "Explore Resource Library",
+          "mainTextLength": 6711,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/explore-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Explore — Tessellate Open Interface Library",
+          "h1": "Explore Resource Library",
+          "mainTextLength": 6523,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/explore-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/components",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Components — Tessellate",
+          "h1": "Components",
+          "mainTextLength": 5490,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/components-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Components — Tessellate",
+          "h1": "Components",
+          "mainTextLength": 5407,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/components-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/sections",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Sections — Tessellate",
+          "h1": "Sections",
+          "mainTextLength": 6488,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/sections-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Sections — Tessellate",
+          "h1": "Sections",
+          "mainTextLength": 6474,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/sections-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/blocks",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Application blocks — Tessellate",
+          "h1": "Application blocks",
+          "mainTextLength": 6305,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/blocks-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Application blocks — Tessellate",
+          "h1": "Application blocks",
+          "mainTextLength": 6293,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/blocks-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/pages",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Page architectures — Tessellate",
+          "h1": "Page architectures",
+          "mainTextLength": 8598,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/pages-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Page architectures — Tessellate",
+          "h1": "Page architectures",
+          "mainTextLength": 8598,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/pages-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/effects",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Effects — Tessellate",
+          "h1": "Effects",
+          "mainTextLength": 6567,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/effects-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Effects — Tessellate",
+          "h1": "Effects",
+          "mainTextLength": 6506,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/effects-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/motion",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Motion — Tessellate",
+          "h1": "Motion",
+          "mainTextLength": 3190,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/motion-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Motion — Tessellate",
+          "h1": "Motion",
+          "mainTextLength": 3166,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/motion-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/backgrounds",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Backgrounds — Tessellate",
+          "h1": "Backgrounds",
+          "mainTextLength": 2776,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/backgrounds-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Backgrounds — Tessellate",
+          "h1": "Backgrounds",
+          "mainTextLength": 2748,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/backgrounds-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/ai",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "AI patterns — Tessellate",
+          "h1": "AI patterns",
+          "mainTextLength": 2862,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/ai-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "AI patterns — Tessellate",
+          "h1": "AI patterns",
+          "mainTextLength": 2834,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/ai-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/data",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Data visualisation — Tessellate",
+          "h1": "Data visualisation",
+          "mainTextLength": 4769,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/data-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Data visualisation — Tessellate",
+          "h1": "Data visualisation",
+          "mainTextLength": 4738,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/data-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/compose",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Compose — Tessellate",
+          "h1": "Product Composer",
+          "mainTextLength": 1209,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/compose-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Compose — Tessellate",
+          "h1": "Product Composer",
+          "mainTextLength": 1209,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/compose-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/workbench",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Workbench — Tessellate Composition Engine",
+          "h1": "Workbench: Example employee workspace",
+          "mainTextLength": 1885,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/workbench-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Workbench — Tessellate Composition Engine",
+          "h1": "Workbench: Example employee workspace",
+          "mainTextLength": 501,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/workbench-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/blueprints",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Product blueprints — Tessellate",
+          "h1": "Product blueprints",
+          "mainTextLength": 2109,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/blueprints-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Product blueprints — Tessellate",
+          "h1": "Product blueprints",
+          "mainTextLength": 2109,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/blueprints-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/collections",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Your resource collection — Tessellate",
+          "h1": "Your resource collection",
+          "mainTextLength": 423,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/collections-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Your resource collection — Tessellate",
+          "h1": "Your resource collection",
+          "mainTextLength": 423,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/collections-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/creators",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Resource creators — Tessellate",
+          "h1": "Resource creators",
+          "mainTextLength": 6019,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/creators-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Resource creators — Tessellate",
+          "h1": "Resource creators",
+          "mainTextLength": 6019,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/creators-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/showcase",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Showcase projects — Tessellate",
+          "h1": "Showcase projects",
+          "mainTextLength": 1486,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/showcase-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Showcase projects — Tessellate",
+          "h1": "Showcase projects",
+          "mainTextLength": 1486,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/showcase-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/trends",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Catalogue signals — Tessellate",
+          "h1": "Catalogue signals",
+          "mainTextLength": 12930,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/trends-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Catalogue signals — Tessellate",
+          "h1": "Catalogue signals",
+          "mainTextLength": 12930,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/trends-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/tools",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Ten Tools — Tessellate Interface Intelligence",
+          "h1": "Ten Interface Tools.",
+          "mainTextLength": 1901,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/tools-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Ten Tools — Tessellate Interface Intelligence",
+          "h1": "Ten Interface Tools.",
+          "mainTextLength": 1901,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/tools-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/agents",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Tessellate for agents — Tessellate",
+          "h1": "Tessellate for agents",
+          "mainTextLength": 1020,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/agents-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Tessellate for agents — Tessellate",
+          "h1": "Tessellate for agents",
+          "mainTextLength": 1020,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/agents-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/docs",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Documentation — Tessellate",
+          "h1": "Documentation",
+          "mainTextLength": 409,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/docs-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Documentation — Tessellate",
+          "h1": "Documentation",
+          "mainTextLength": 409,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/docs-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/sponsor",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Support the open commons — Tessellate",
+          "h1": "Support the open commons",
+          "mainTextLength": 664,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/sponsor-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Support the open commons — Tessellate",
+          "h1": "Support the open commons",
+          "mainTextLength": 664,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/sponsor-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/about",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "About Tessellate — Tessellate",
+          "h1": "About Tessellate",
+          "mainTextLength": 793,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/about-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "About Tessellate — Tessellate",
+          "h1": "About Tessellate",
+          "mainTextLength": 793,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/about-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/license",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Licences and provenance — Tessellate",
+          "h1": "Licences and provenance",
+          "mainTextLength": 740,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/license-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Licences and provenance — Tessellate",
+          "h1": "Licences and provenance",
+          "mainTextLength": 740,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/license-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/privacy",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Privacy in this review — Tessellate",
+          "h1": "Privacy in this review",
+          "mainTextLength": 1059,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/privacy-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Privacy in this review — Tessellate",
+          "h1": "Privacy in this review",
+          "mainTextLength": 1059,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/privacy-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/terms",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Review terms — Tessellate",
+          "h1": "Review terms",
+          "mainTextLength": 764,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/terms-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Review terms — Tessellate",
+          "h1": "Review terms",
+          "mainTextLength": 764,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/terms-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/r/editorial-hero",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Editorial Hero (@tess/editorial-hero) — Tessellate Resource",
+          "h1": "Editorial Hero",
+          "mainTextLength": 1185,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/r_editorial-hero-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Editorial Hero (@tess/editorial-hero) — Tessellate Resource",
+          "h1": "Editorial Hero",
+          "mainTextLength": 1185,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/r_editorial-hero-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/showcase/showcase-playful-hr",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Kudos Employee Experience — Tessellate",
+          "h1": "Kudos Employee Experience",
+          "mainTextLength": 1742,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/showcase_showcase-playful-hr-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Kudos Employee Experience — Tessellate",
+          "h1": "Kudos Employee Experience",
+          "mainTextLength": 1664,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/showcase_showcase-playful-hr-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/blueprints/b2b-saas",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "B2B SaaS — Tessellate",
+          "h1": "B2B SaaS",
+          "mainTextLength": 1070,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/blueprints_b2b-saas-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "B2B SaaS — Tessellate",
+          "h1": "B2B SaaS",
+          "mainTextLength": 1070,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/blueprints_b2b-saas-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/tools/palette",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "Palette Studio — Tessellate Tools",
+          "h1": "Palette Studio",
+          "mainTextLength": 1387,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/tools_palette-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "Palette Studio — Tessellate Tools",
+          "h1": "Palette Studio",
+          "mainTextLength": 1387,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/tools_palette-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    },
+    {
+      "route": "/docs/cli",
+      "classification": "PASS",
+      "captures": [
+        {
+          "viewport": "1440x900",
+          "status": 200,
+          "title": "CLI Reference — Tessellate Documentation",
+          "h1": "Tessellate CLI (`tess`)",
+          "mainTextLength": 1817,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/docs_cli-desktop-1440x900.png"
+        },
+        {
+          "viewport": "390x844",
+          "status": 200,
+          "title": "CLI Reference — Tessellate Documentation",
+          "h1": "Tessellate CLI (`tess`)",
+          "mainTextLength": 1817,
+          "horizontalOverflow": false,
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0,
+          "screenshot": "audit/evidence/step-45/public-v87-route-sweep/screenshots/docs_cli-mobile-390x844.png"
+        }
+      ],
+      "note": "PASS is scoped to populated route shell/content, runtime/network health, and responsive overflow at the recorded viewports. It does not certify every control on this route."
+    }
+  ]
+}
