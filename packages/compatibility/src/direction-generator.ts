@@ -73,6 +73,21 @@ const DIRECTION_NAMES: Record<
   },
 };
 
+const PUBLIC_LIBRARY_DIRECTION_NAMES: (typeof DIRECTION_NAMES)['default'] = {
+  conservative: {
+    name: 'Community Catalogue',
+    tagline: 'Clear book discovery, branch availability, and private holds.',
+  },
+  expressive: {
+    name: 'Reading Commons',
+    tagline: 'An inviting editorial view of books and local reading programmes.',
+  },
+  structural: {
+    name: 'Branch Network',
+    tagline: 'A connected view of collections, branch services, and events.',
+  },
+};
+
 /**
  * Deterministically generates exactly three distinct product directions:
  * - Direction A: Conservative Fit (closest to baseline, familiar grammar, high a11y/perf priority)
@@ -88,7 +103,12 @@ export function generateDirections(input: DirectionGenerationInput): DirectionGe
   const rng = new SeededRandom(seed);
 
   const primaryArch = productModel.productArchetypes[0]?.tag ?? 'saas';
-  const namePack = DIRECTION_NAMES[primaryArch] ?? DIRECTION_NAMES['default']!;
+  const isPublicLibrary = productModel.requiredCapabilities.includes(
+    'public-library-service-workflow'
+  );
+  const namePack = isPublicLibrary
+    ? PUBLIC_LIBRARY_DIRECTION_NAMES
+    : (DIRECTION_NAMES[primaryArch] ?? DIRECTION_NAMES['default']!);
 
   // 1. DIRECTION A: Conservative Fit
   const dnaA: DesignDNA = {

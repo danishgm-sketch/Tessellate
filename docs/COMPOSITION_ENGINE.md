@@ -371,6 +371,8 @@ Direction generation is deterministic by default using controlled divergence.
 
 Names are selected from a controlled vocabulary by archetype/personality combination. AI may propose better names and rationale but does not alter structural facts unless validated.
 
+A narrowly recognized product capability may select a domain-specific name pack while preserving the three direction types and their product jobs. Public-library service directions use **Community Catalogue**, **Reading Commons**, and **Branch Network**, with a **Community Library** preview brand. Their project manifests retain the concise direction name so the Workbench title stays fully readable on narrow screens.
+
 ## 8. Composition grammar
 
 A grammar is not a fixed template. It defines:

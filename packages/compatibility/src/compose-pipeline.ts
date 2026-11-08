@@ -455,11 +455,22 @@ export function composeProjectForDirection(options: DirectionCompositionOptions)
   }
 
   const manifestId = `proj-${direction.id}-${String(seed).replace(/[^a-z0-9]/gi, '')}`;
+  const isPublicLibraryService = productModel.requiredCapabilities.includes(
+    'public-library-service-workflow'
+  );
+  const productLabel = isPublicLibraryService
+    ? 'Public Library Service'
+    : productModel.entities.some((entity) => entity.name === 'Employee')
+      ? 'Employee experience'
+      : primaryArchetype.toUpperCase();
+  const manifestName = isPublicLibraryService
+    ? direction.name
+    : `${direction.name} — ${productLabel}`;
 
   const manifest: ProjectManifest = {
     schemaVersion: '1.0.0',
     id: manifestId,
-    name: `${direction.name} — ${productModel.entities.some((entity) => entity.name === 'Employee') ? 'Employee experience' : primaryArchetype.toUpperCase()}`,
+    name: manifestName,
     description: options.briefDescription ?? direction.rationale,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),

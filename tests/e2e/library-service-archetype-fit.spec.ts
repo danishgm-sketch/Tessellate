@@ -41,7 +41,7 @@ test('public library brief preserves lending, programme, accessibility, and priv
   test.setTimeout(120_000);
   const viewportLabel = isMobile ? 'mobile' : 'desktop';
   const runtimeLabel = testInfo.project.name.startsWith('sites-') ? 'sites-' : '';
-  const evidenceDirectory = path.resolve(process.cwd(), 'quality/evidence/AUD-525');
+  const evidenceDirectory = path.resolve(process.cwd(), 'quality/evidence/AUD-526');
   mkdirSync(evidenceDirectory, { recursive: true });
   const runtime = {
     consoleErrors: [] as string[],
@@ -100,6 +100,8 @@ test('public library brief preserves lending, programme, accessibility, and priv
     await expect(preview.getByTestId('resource-loading')).toHaveCount(0, { timeout: 30_000 });
     const visibleText = await card.innerText();
     expect(visibleText).toContain('4 SCREENS');
+    expect(visibleText).toContain('Community Library');
+    expect(visibleText).not.toContain('BookRecord Workspace');
 
     await card.getByRole('button', { name: 'Inspect full preview and DNA' }).click();
     const dialog = page.getByRole('dialog');
@@ -147,6 +149,14 @@ test('public library brief preserves lending, programme, accessibility, and priv
 
   await page.getByTestId('open-workbench-dir-01').click();
   await expect(page.getByTestId('top-toolbar')).toBeVisible({ timeout: 45_000 });
+  await expect(page.getByTestId('top-toolbar')).toContainText('Community Catalogue');
+  const projectTitle = page
+    .getByTestId('top-toolbar')
+    .getByRole('button', { name: 'Community Catalogue' });
+  await expect(projectTitle).toBeVisible();
+  expect(await projectTitle.evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(
+    true
+  );
   if (isMobile) await expect(page.getByTestId('mobile-workbench')).toBeVisible();
   else await expect(page.getByTestId('workbench-shell')).toBeVisible();
 
@@ -155,6 +165,8 @@ test('public library brief preserves lending, programme, accessibility, and priv
     return record ? JSON.parse(record) : null;
   });
   const activeManifest = ProjectManifestSchema.parse(activeValue);
+  expect(activeManifest.name).toBe('Community Catalogue');
+  expect(activeManifest.brand?.name).toBe('Community Library');
   const storedValue = await page.evaluate((projectId) => {
     const record = localStorage.getItem(`tessellate_project_${projectId}`);
     return record ? JSON.parse(record) : null;

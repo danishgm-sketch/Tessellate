@@ -20,6 +20,7 @@ export function resolveWorkspaceBrand(product: ProductModel, briefDescription = 
   const employee = product.entities.some((entity) => entity.name === 'Employee');
   const isLanguageLearning = product.requiredCapabilities.includes('short-session-learning');
   const primaryArchetype = product.productArchetypes[0]?.tag ?? '';
+  const isPublicLibrary = product.requiredCapabilities.includes('public-library-service-workflow');
   const community = /community|neighborhood/i.test(
     `${product.primaryAudience} ${product.primaryObjective}`
   );
@@ -30,6 +31,7 @@ export function resolveWorkspaceBrand(product: ProductModel, briefDescription = 
     );
 
   if (employee) return 'People & Co';
+  if (isPublicLibrary) return 'Community Library';
   if (isLanguageLearning) return 'Language Learning';
   if (community) return 'Example Community';
   if (tradingTerminal) return 'Market Workspace';

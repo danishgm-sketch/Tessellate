@@ -388,9 +388,16 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
       'accessible-reading-controls',
       'private-reading-history',
     ];
+    const directions = [result.directionA, result.directionB, result.directionC];
 
     expect(result.productModel.productArchetypes[0]?.tag).toBe('media');
-    for (const direction of [result.directionA, result.directionB, result.directionC]) {
+    expect(directions.map(({ manifest }) => manifest.name)).toEqual([
+      'Community Catalogue',
+      'Reading Commons',
+      'Branch Network',
+    ]);
+    for (const direction of directions) {
+      expect(direction.manifest.brand?.name).toBe('Community Library');
       const nodes = direction.manifest.screens.flatMap((screen) => collectNodes(screen.rootNode));
       const search = nodes.find((node) => node.semanticRole === 'search-header');
       expect(search?.props.label).toBe('Search the book catalogue');
