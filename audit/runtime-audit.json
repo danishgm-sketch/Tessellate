@@ -24685,7 +24685,7 @@
       "viewport": "390x844",
       "console": [],
       "network": [],
-      "fixCommit": null,
+      "fixCommit": "985ece50fd51498e7f014c17db6604d8d1f588ff",
       "status": "fixed-local-verified",
       "id": "AUD-516",
       "route": "/compose",
@@ -24726,7 +24726,7 @@
       "viewport": "390x844",
       "console": [],
       "network": [],
-      "fixCommit": null,
+      "fixCommit": "985ece50fd51498e7f014c17db6604d8d1f588ff",
       "status": "fixed-local-verified",
       "id": "AUD-517",
       "route": "/compose",
@@ -24782,7 +24782,7 @@
       ],
       "console": [],
       "network": [],
-      "fixCommit": null,
+      "fixCommit": "985ece50fd51498e7f014c17db6604d8d1f588ff",
       "status": "fixed-local-verified",
       "localVerification": {
         "red": "The full browser matrix previously failed marketplace and returns form label queries while the same resource was rendered in inline and dialog previews.",
@@ -24822,11 +24822,11 @@
             "failed": 0
           }
         },
-        "note": "The Sites Worker artifact was rebuilt before the full matrix. Exact-head CI and applicable public verification are still pending."
+        "note": "The Sites Worker artifact was rebuilt before the full matrix. Exact-head CI passed implementation commit 985ece50fd51498e7f014c17db6604d8d1f588ff in validation runs 42436708005 and 42436727640; the 16-point Component Quality & Security Sandbox Audit passed in run 42436727616. Issue-specific public verification remains pending."
       }
     }
   ],
-  "generatedAt": "2026-11-08T01:57:04.640Z",
+  "generatedAt": "2026-11-08T02:48:32.906Z",
   "latestDeploymentEvidence": "quality/evidence/AUD-514/deployed-v89-runtime.json",
   "latestLocalQualityRun": {
     "capturedAt": "2026-11-06T20:53:08.000Z",
