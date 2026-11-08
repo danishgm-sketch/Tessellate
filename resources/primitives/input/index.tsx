@@ -55,7 +55,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         />
         {error && <p className="text-xs text-rose-600">{error}</p>}
         {!error && helperText && (
-          <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">{helperText}</p>
+          <p
+            className={`text-xs ${variant === 'nocturne' ? 'text-white' : 'text-[var(--tess-ink,#111217)]'}`}
+          >
+            {helperText}
+          </p>
         )}
       </div>
     );

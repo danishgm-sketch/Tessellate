@@ -42,6 +42,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     };
     void ignoredFormAction;
     const helperId = React.useId();
+    const helperTextClassName =
+      variant === 'nocturne' ? 'text-white' : 'text-[var(--tess-ink,#111217)]';
     // Base interactive styles
     const baseClasses =
       'inline-flex items-center justify-center font-medium select-none transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-40 cursor-pointer active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100';
@@ -138,7 +140,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <span className="inline-flex flex-col items-start gap-1">
         {button}
-        <span id={helperId} className="text-xs text-[var(--tess-ink-muted,#62666F)]">
+        <span id={helperId} className={`text-xs ${helperTextClassName}`}>
           {helperText}
         </span>
       </span>

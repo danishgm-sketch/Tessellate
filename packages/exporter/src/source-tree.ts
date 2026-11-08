@@ -630,7 +630,7 @@ export function Button({ variant = 'primary', label, children, className = '', h
       <button className={\`\${base} \${styles[variant] ?? styles.primary} \${className}\`} {...props} title={title} aria-describedby={descriptionReferences}>
         {label || children}
       </button>
-      {helperText && <p id={helperTextId} className="mt-1 text-xs leading-relaxed text-[var(--tess-ink-secondary,#62666F)]">{helperText}</p>}
+      {helperText && <p id={helperTextId} className="mt-1 text-xs leading-relaxed text-[var(--tess-ink,#111217)]">{helperText}</p>}
     </>
   );
 }

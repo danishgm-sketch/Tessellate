@@ -1,6 +1,6 @@
 {
   "brief": "A volunteer mutual-aid network for a flood-prone coastal town. Coordinate requests for bottled water, charging, blankets, accessible transport, and welfare checks between three shelters and six neighborhood hubs. Needs shared-tablet intake that works during outages, multilingual updates, disability-aware prioritisation, volunteer shift handoffs, and stock visibility. Never collect immigration status, diagnoses, or financial data; no payments or fundraising. Public status should show only aggregated capacity and safe pickup points. Record requests locally for later sync, but do not imply that SMS dispatch, live mapping, or synchronisation works while disconnected.",
-  "route": "http://127.0.0.1:4321/workbench?project=proj-direction-a-69e2288b46454bfea1f2a20fb389ab11dira#screen-overview",
+  "route": "http://127.0.0.1:4321/workbench?project=proj-direction-a-00cc2ea9a39947d39bca744a21c80e72dira#screen-overview",
   "viewport": {
     "width": 1440,
     "height": 900
@@ -43,7 +43,390 @@
       "resourceCount": 27
     }
   ],
-  "selectedProjectId": "proj-direction-a-69e2288b46454bfea1f2a20fb389ab11dira",
+  "accessibilityChecks": [
+    {
+      "direction": "Coordination Desk",
+      "screen": "Request Intake & Triage",
+      "tags": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag2aaa",
+        "wcag21a",
+        "wcag21aa",
+        "wcag21aaa",
+        "wcag22aa"
+      ],
+      "violations": 0,
+      "incompleteContrastFindings": [
+        {
+          "id": "color-contrast-enhanced",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"quiet\"] > .min-w-0.w-full > aside > .mb-4.gap-2.justify-between > .p-2[aria-label=\"Collapse navigation\"][type=\"button\"]"
+          ],
+          "html": "<button type=\"button\" aria-label=\"Collapse navigation\" aria-expanded=\"true\" class=\"p-2 border rounded\">−</button>",
+          "messages": [
+            "Element content contains only non-text characters"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"quiet\"] > .min-w-0.w-full > aside > .mb-4.gap-2.justify-between > .text-sm.font-semibold"
+          ],
+          "html": "<span class=\"font-semibold text-sm\">Community Response</span>",
+          "messages": [
+            "Could not parse color string oklch(0.205 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"quiet\"] > .min-w-0.w-full > aside > .mb-4.gap-2.justify-between > .p-2[aria-label=\"Collapse navigation\"][type=\"button\"]"
+          ],
+          "html": "<button type=\"button\" aria-label=\"Collapse navigation\" aria-expanded=\"true\" class=\"p-2 border rounded\">−</button>",
+          "messages": [
+            "Element content contains only non-text characters"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"quiet\"] > .min-w-0.w-full > aside > .\\@3xl\\:flex-col[aria-label=\"Workspace screens\"] > .hover\\:bg-neutral-100.text-neutral-700[href$=\"#screen-overview\"]"
+          ],
+          "html": "<a href=\"#screen-overview\" class=\"block rounded px-3 py-2 text-xs hover:bg-neutral-100 text-neutral-700\">Coordination Overview</a>",
+          "messages": [
+            "Could not parse color string oklch(0.371 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"quiet\"] > .min-w-0.w-full > aside > .\\@3xl\\:flex-col[aria-label=\"Workspace screens\"] > .hover\\:bg-neutral-100.text-neutral-700[href$=\"#screen-workspace\"]"
+          ],
+          "html": "<a href=\"#screen-workspace\" class=\"block rounded px-3 py-2 text-xs hover:bg-neutral-100 text-neutral-700\">Request Intake &amp; Triage</a>",
+          "messages": [
+            "Could not parse color string oklch(0.371 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"quiet\"] > .min-w-0.w-full > aside > .\\@3xl\\:flex-col[aria-label=\"Workspace screens\"] > .hover\\:bg-neutral-100.text-neutral-700[href$=\"#screen-collection-index\"]"
+          ],
+          "html": "<a href=\"#screen-collection-index\" class=\"block rounded px-3 py-2 text-xs hover:bg-neutral-100 text-neutral-700\">Shelter &amp; Hub Capacity</a>",
+          "messages": [
+            "Could not parse color string oklch(0.371 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"quiet\"] > .min-w-0.w-full > aside > .\\@3xl\\:flex-col[aria-label=\"Workspace screens\"] > .hover\\:bg-neutral-100.text-neutral-700.py-2:nth-child(4)"
+          ],
+          "html": "<a href=\"#screen-supplies-and-distribution\" class=\"block rounded px-3 py-2 text-xs hover:bg-neutral-100 text-neutral-700\">Supplies &amp; Distribution</a>",
+          "messages": [
+            "Could not parse color string oklch(0.371 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"quiet\"] > .min-w-0.w-full > aside > .\\@3xl\\:flex-col[aria-label=\"Workspace screens\"] > .hover\\:bg-neutral-100.text-neutral-700.py-2:nth-child(5)"
+          ],
+          "html": "<a href=\"#screen-volunteer-shift-handover\" class=\"block rounded px-3 py-2 text-xs hover:bg-neutral-100 text-neutral-700\">Volunteer Shift Handover</a>",
+          "messages": [
+            "Could not parse color string oklch(0.371 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"quiet\"] > .min-w-0.w-full > aside > .\\@3xl\\:flex-col[aria-label=\"Workspace screens\"] > .hover\\:bg-neutral-100.text-neutral-700[href=\"#screen-public-capacity-status\"]"
+          ],
+          "html": "<a href=\"#screen-public-capacity-status\" class=\"block rounded px-3 py-2 text-xs hover:bg-neutral-100 text-neutral-700\">Public Capacity Status</a>",
+          "messages": [
+            "Could not parse color string oklch(0.371 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            ".tess-layout-entity-header > .min-w-0.w-full > .rounded-\\[var\\(--tess-radius-xl\\,8px\\)\\].text-neutral-900.p-6 > .\\@sm\\:flex-row.\\@sm\\:items-center.gap-4 > .gap-3.\\@sm\\:gap-4.\\@sm\\:items-center > .h-12.w-12.bg-neutral-200"
+          ],
+          "html": "<div class=\"h-12 w-12 shrink-0 rounded-[var(--tess-radius-xl,8px)] bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-100 font-bold text-xl flex items-center justify-center @sm:h-14 @sm:w-14\">CR</div>",
+          "messages": [
+            "Could not parse color string oklch(0.269 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            ".tess-layout-entity-header > .min-w-0.w-full > .rounded-\\[var\\(--tess-radius-xl\\,8px\\)\\].text-neutral-900.p-6 > .\\@sm\\:flex-row.\\@sm\\:items-center.gap-4 > .gap-3.\\@sm\\:gap-4.\\@sm\\:items-center > .flex-1.min-w-0 > .\\@sm\\:gap-2.\\@sm\\:flex-row.\\@sm\\:items-center > .break-words.\\@sm\\:w-auto.\\@sm\\:text-lg"
+          ],
+          "html": "<h2 class=\"w-full min-w-0 break-words text-base font-bold @sm:w-auto @sm:text-lg\">Request Intake &amp; Triage</h2>",
+          "messages": [
+            "Could not parse color string oklch(0.205 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            ".tess-layout-entity-header > .min-w-0.w-full > .rounded-\\[var\\(--tess-radius-xl\\,8px\\)\\].text-neutral-900.p-6 > .\\@sm\\:flex-row.\\@sm\\:items-center.gap-4 > .gap-3.\\@sm\\:gap-4.\\@sm\\:items-center > .flex-1.min-w-0 > p"
+          ],
+          "html": "<p class=\"text-xs font-mono\">Record an aid type and assigned hub for manual priority review using minimal personal data</p>",
+          "messages": [
+            "Could not parse color string oklch(0.205 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            ":root"
+          ],
+          "html": "<div role=\"status\" aria-label=\"Loading interface element\" data-testid=\"resource-loading\" class=\"px-4 py-3 text-xs text-neutral-500 dark:text-neutral-400 motion-reduce:animate-none min-h-56\">Loading interface element…</div>",
+          "messages": [
+            "Could not parse color string oklch(0.556 0 none)"
+          ]
+        }
+      ],
+      "screenshot": "quality/evidence/AUD-528/community-emergency-intake-desktop-chrome.png"
+    },
+    {
+      "direction": "Neighbourhood Commons",
+      "screen": "Request Intake & Triage",
+      "tags": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag2aaa",
+        "wcag21a",
+        "wcag21aa",
+        "wcag21aaa",
+        "wcag22aa"
+      ],
+      "violations": 0,
+      "incompleteContrastFindings": [
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"expressive\"] > .min-w-0.w-full > .bg-white\\/90 > .max-w-7xl.mx-auto.flex-wrap > .\\@max-md\\:w-full.flex-wrap.gap-4 > .tracking-tight.gap-2.text-sm > span:nth-child(2)"
+          ],
+          "html": "<span>Community Response</span>",
+          "messages": [
+            "Could not parse color string oklch(0.205 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "#_r3r_f_ > .\\@md\\:min-h-0.\\@md\\:px-0[href$=\"#screen-overview\"]"
+          ],
+          "html": "<a href=\"#screen-overview\" class=\"min-h-11 flex items-center px-3 transition-colors @md:min-h-0 @md:px-0 text-neutral-700 hover:text-[#2547E8] font-medium\">Coordination Overview</a>",
+          "messages": [
+            "Could not parse color string oklch(0.371 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "#_r3r_f_ > .\\@md\\:min-h-0.\\@md\\:px-0[href$=\"#screen-workspace\"]"
+          ],
+          "html": "<a href=\"#screen-workspace\" class=\"min-h-11 flex items-center px-3 transition-colors @md:min-h-0 @md:px-0 text-neutral-700 hover:text-[#2547E8] font-medium\">Request Intake &amp; Triage</a>",
+          "messages": [
+            "Could not parse color string oklch(0.371 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "#_r3r_f_ > .\\@md\\:min-h-0.\\@md\\:px-0[href$=\"#screen-collection-index\"]"
+          ],
+          "html": "<a href=\"#screen-collection-index\" class=\"min-h-11 flex items-center px-3 transition-colors @md:min-h-0 @md:px-0 text-neutral-700 hover:text-[#2547E8] font-medium\">Shelter &amp; Hub Capacity</a>",
+          "messages": [
+            "Could not parse color string oklch(0.371 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "#_r3r_f_ > .\\@md\\:min-h-0.\\@md\\:px-0.min-h-11:nth-child(4)"
+          ],
+          "html": "<a href=\"#screen-supplies-and-distribution\" class=\"min-h-11 flex items-center px-3 transition-colors @md:min-h-0 @md:px-0 text-neutral-700 hover:text-[#2547E8] font-medium\">Supplies &amp; Distribution</a>",
+          "messages": [
+            "Could not parse color string oklch(0.371 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "#_r3r_f_ > .\\@md\\:min-h-0.\\@md\\:px-0.min-h-11:nth-child(5)"
+          ],
+          "html": "<a href=\"#screen-volunteer-shift-handover\" class=\"min-h-11 flex items-center px-3 transition-colors @md:min-h-0 @md:px-0 text-neutral-700 hover:text-[#2547E8] font-medium\">Volunteer Shift Handover</a>",
+          "messages": [
+            "Could not parse color string oklch(0.371 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "#_r3r_f_ > .\\@md\\:min-h-0.\\@md\\:px-0[href=\"#screen-public-capacity-status\"]"
+          ],
+          "html": "<a href=\"#screen-public-capacity-status\" class=\"min-h-11 flex items-center px-3 transition-colors @md:min-h-0 @md:px-0 text-neutral-700 hover:text-[#2547E8] font-medium\">Public Capacity Status</a>",
+          "messages": [
+            "Could not parse color string oklch(0.371 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            ".tess-layout-entity-header > .min-w-0.w-full > .bg-neutral-50.text-neutral-950.rounded-\\[var\\(--tess-radius-xl\\,8px\\)\\] > .\\@sm\\:flex-row.\\@sm\\:items-center.gap-4 > .\\@sm\\:gap-4.gap-3.\\@sm\\:items-center > .h-12.w-12.bg-neutral-200"
+          ],
+          "html": "<div class=\"h-12 w-12 shrink-0 rounded-[var(--tess-radius-xl,8px)] bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-100 font-bold text-xl flex items-center justify-center @sm:h-14 @sm:w-14\">CR</div>",
+          "messages": [
+            "Could not parse color string oklch(0.269 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            ".tess-layout-entity-header > .min-w-0.w-full > .bg-neutral-50.text-neutral-950.rounded-\\[var\\(--tess-radius-xl\\,8px\\)\\] > .\\@sm\\:flex-row.\\@sm\\:items-center.gap-4 > .\\@sm\\:gap-4.gap-3.\\@sm\\:items-center > .flex-1.min-w-0 > .\\@sm\\:gap-2.\\@sm\\:flex-row.gap-1 > .break-words.\\@sm\\:w-auto.\\@sm\\:text-lg"
+          ],
+          "html": "<h2 class=\"w-full min-w-0 break-words text-base font-bold @sm:w-auto @sm:text-lg\">Request Intake &amp; Triage</h2>",
+          "messages": [
+            "Could not parse color string oklch(0.145 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            ".tess-layout-entity-header > .min-w-0.w-full > .bg-neutral-50.text-neutral-950.rounded-\\[var\\(--tess-radius-xl\\,8px\\)\\] > .\\@sm\\:flex-row.\\@sm\\:items-center.gap-4 > .\\@sm\\:gap-4.gap-3.\\@sm\\:items-center > .flex-1.min-w-0 > .\\@sm\\:gap-2.\\@sm\\:flex-row.gap-1 > .bg-emerald-500\\/10.shrink-0.text-\\[var\\(--tess-ink\\,\\#111217\\)\\]"
+          ],
+          "html": "<span class=\"shrink-0 text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-[var(--tess-ink,#111217)] font-bold\">EXAMPLE</span>",
+          "messages": [
+            "Unable to determine contrast ratio"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            ".tess-layout-entity-header > .min-w-0.w-full > .bg-neutral-50.text-neutral-950.rounded-\\[var\\(--tess-radius-xl\\,8px\\)\\] > .\\@sm\\:flex-row.\\@sm\\:items-center.gap-4 > .\\@sm\\:gap-4.gap-3.\\@sm\\:items-center > .flex-1.min-w-0 > p"
+          ],
+          "html": "<p class=\"text-xs font-mono\">Record an aid type and assigned hub for manual priority review using minimal personal data</p>",
+          "messages": [
+            "Could not parse color string oklch(0.145 0 none)"
+          ]
+        }
+      ],
+      "screenshot": "quality/evidence/AUD-528/community-emergency-intake-desktop-chrome.png"
+    },
+    {
+      "direction": "Field Operations",
+      "screen": "Request Intake & Triage",
+      "tags": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag2aaa",
+        "wcag21a",
+        "wcag21aa",
+        "wcag21aaa",
+        "wcag22aa"
+      ],
+      "violations": 0,
+      "incompleteContrastFindings": [
+        {
+          "id": "color-contrast-enhanced",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"nocturne\"] > .min-w-0.w-full > aside > .mb-4.gap-2.justify-between > .p-2[aria-label=\"Collapse navigation\"][type=\"button\"]"
+          ],
+          "html": "<button type=\"button\" aria-label=\"Collapse navigation\" aria-expanded=\"true\" class=\"p-2 border rounded\">−</button>",
+          "messages": [
+            "Element content contains only non-text characters"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"nocturne\"] > .min-w-0.w-full > aside > .mb-4.gap-2.justify-between > .p-2[aria-label=\"Collapse navigation\"][type=\"button\"]"
+          ],
+          "html": "<button type=\"button\" aria-label=\"Collapse navigation\" aria-expanded=\"true\" class=\"p-2 border rounded\">−</button>",
+          "messages": [
+            "Element content contains only non-text characters"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"nocturne\"] > .min-w-0.w-full > aside > .\\@3xl\\:flex-col[aria-label=\"Workspace screens\"] > .hover\\:bg-\\[\\#252C39\\].text-neutral-200[href$=\"#screen-overview\"]"
+          ],
+          "html": "<a href=\"#screen-overview\" class=\"block rounded px-3 py-2 text-xs hover:bg-[#252C39] text-neutral-200\">Coordination Overview</a>",
+          "messages": [
+            "Could not parse color string oklch(0.922 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"nocturne\"] > .min-w-0.w-full > aside > .\\@3xl\\:flex-col[aria-label=\"Workspace screens\"] > .hover\\:bg-\\[\\#252C39\\].text-neutral-200[href$=\"#screen-workspace\"]"
+          ],
+          "html": "<a href=\"#screen-workspace\" class=\"block rounded px-3 py-2 text-xs hover:bg-[#252C39] text-neutral-200\">Request Intake &amp; Triage</a>",
+          "messages": [
+            "Could not parse color string oklch(0.922 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"nocturne\"] > .min-w-0.w-full > aside > .\\@3xl\\:flex-col[aria-label=\"Workspace screens\"] > .hover\\:bg-\\[\\#252C39\\].text-neutral-200[href$=\"#screen-collection-index\"]"
+          ],
+          "html": "<a href=\"#screen-collection-index\" class=\"block rounded px-3 py-2 text-xs hover:bg-[#252C39] text-neutral-200\">Shelter &amp; Hub Capacity</a>",
+          "messages": [
+            "Could not parse color string oklch(0.922 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"nocturne\"] > .min-w-0.w-full > aside > .\\@3xl\\:flex-col[aria-label=\"Workspace screens\"] > .hover\\:bg-\\[\\#252C39\\].text-neutral-200.py-2:nth-child(4)"
+          ],
+          "html": "<a href=\"#screen-supplies-and-distribution\" class=\"block rounded px-3 py-2 text-xs hover:bg-[#252C39] text-neutral-200\">Supplies &amp; Distribution</a>",
+          "messages": [
+            "Could not parse color string oklch(0.922 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"nocturne\"] > .min-w-0.w-full > aside > .\\@3xl\\:flex-col[aria-label=\"Workspace screens\"] > .hover\\:bg-\\[\\#252C39\\].text-neutral-200.py-2:nth-child(5)"
+          ],
+          "html": "<a href=\"#screen-volunteer-shift-handover\" class=\"block rounded px-3 py-2 text-xs hover:bg-[#252C39] text-neutral-200\">Volunteer Shift Handover</a>",
+          "messages": [
+            "Could not parse color string oklch(0.922 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            "div[data-node-id=\"root-screen-workspace\"] > .tess-layout-navigation[data-semantic-role=\"navigation\"][data-resource-variant=\"nocturne\"] > .min-w-0.w-full > aside > .\\@3xl\\:flex-col[aria-label=\"Workspace screens\"] > .hover\\:bg-\\[\\#252C39\\].text-neutral-200[href=\"#screen-public-capacity-status\"]"
+          ],
+          "html": "<a href=\"#screen-public-capacity-status\" class=\"block rounded px-3 py-2 text-xs hover:bg-[#252C39] text-neutral-200\">Public Capacity Status</a>",
+          "messages": [
+            "Could not parse color string oklch(0.922 0 none)"
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "target": [
+            ".tess-layout-entity-header > .min-w-0.w-full > .bg-\\[\\#0B0D10\\].border-\\[\\#2E3440\\].rounded-\\[var\\(--tess-radius-xl\\,8px\\)\\] > .\\@sm\\:flex-row.\\@sm\\:items-center.gap-4 > .\\@sm\\:gap-4.gap-3.\\@sm\\:items-center > .h-12.w-12.bg-neutral-200"
+          ],
+          "html": "<div class=\"h-12 w-12 shrink-0 rounded-[var(--tess-radius-xl,8px)] bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-100 font-bold text-xl flex items-center justify-center @sm:h-14 @sm:w-14\">CR</div>",
+          "messages": [
+            "Could not parse color string oklch(0.97 0 none)"
+          ]
+        }
+      ],
+      "screenshot": "quality/evidence/AUD-528/community-emergency-intake-desktop-chrome.png"
+    }
+  ],
+  "selectedProjectId": "proj-direction-a-00cc2ea9a39947d39bca744a21c80e72dira",
   "editPersistedAcrossReload": true,
   "manifestExportMatchesSavedProject": true,
   "standaloneZipFiles": [

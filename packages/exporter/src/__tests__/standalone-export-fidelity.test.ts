@@ -376,6 +376,7 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     expect(viteButton).toContain('const descriptionReferences = [ariaDescribedBy, helperText ? helperTextId : undefined]');
     expect(viteButton).toContain('aria-describedby={descriptionReferences}');
     expect(viteButton).toContain('<p id={helperTextId}');
+    expect(viteButton).toContain('text-[var(--tess-ink,#111217)]');
     expect(viteButton).toContain('{helperText}</p>');
     expect(viteButton).toContain('focus-visible:ring-2');
     expect(viteButton).toContain('disabled:cursor-not-allowed disabled:opacity-60');
@@ -388,6 +389,7 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     expect(nextButton).toContain('const descriptionReferences = [ariaDescribedBy, helperText ? helperTextId : undefined]');
     expect(nextButton).toContain('aria-describedby={descriptionReferences}');
     expect(nextButton).toContain('<p id={helperTextId}');
+    expect(nextButton).toContain('text-[var(--tess-ink,#111217)]');
     expect(nextButton).toContain('{helperText}</p>');
     expect(nextButton).toContain('focus-visible:ring-2');
     expect(nextButton).toContain('disabled:cursor-not-allowed disabled:opacity-60');

@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
 import { createRequire } from 'node:module';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -17,6 +18,7 @@ const { strFromU8, unzipSync } = requireExporterDependency('fflate') as {
 };
 
 const evidenceDirectory = path.resolve(process.cwd(), 'quality/evidence/AUD-527');
+const accessibilityEvidenceDirectory = path.resolve(process.cwd(), 'quality/evidence/AUD-528');
 const exactBrief =
   'A volunteer mutual-aid network for a flood-prone coastal town. Coordinate requests for bottled water, charging, blankets, accessible transport, and welfare checks between three shelters and six neighborhood hubs. Needs shared-tablet intake that works during outages, multilingual updates, disability-aware prioritisation, volunteer shift handoffs, and stock visibility. Never collect immigration status, diagnoses, or financial data; no payments or fundraising. Public status should show only aggregated capacity and safe pickup points. Record requests locally for later sync, but do not imply that SMS dispatch, live mapping, or synchronisation works while disconnected.';
 const expectedScreens = [
@@ -66,6 +68,28 @@ test('community emergency response composes, edits, persists, and exports honest
   await expect(page.getByText('Community Emergency Response', { exact: true })).toBeVisible();
   await expect(page.locator('[data-testid^="direction-card-"]')).toHaveCount(3);
   const snapshots: Array<{ direction: string; screenNames: string[]; resourceCount: number }> = [];
+  const accessibilityChecks: Array<{
+    direction: string;
+    screen: string;
+    tags: string[];
+    violations: number;
+    incompleteContrastFindings: Array<{
+      id: string;
+      target: string[];
+      html: string;
+      messages: string[];
+    }>;
+    screenshot: string;
+  }> = [];
+  const accessibilityTags = [
+    'wcag2a',
+    'wcag2aa',
+    'wcag2aaa',
+    'wcag21a',
+    'wcag21aa',
+    'wcag21aaa',
+    'wcag22aa',
+  ];
 
   for (const [index, name] of directionNames.entries()) {
     const number = String(index + 1).padStart(2, '0');
@@ -110,9 +134,58 @@ test('community emergency response composes, edits, persists, and exports honest
     expect(resourceCount).toBeGreaterThan(0);
     snapshots.push({ direction: name, screenNames, resourceCount });
 
+    const screenSelect = dialog.getByLabel('Direction preview screen');
+    const canvas = dialog.locator('.tess-screen');
+    await screenSelect.selectOption({ label: 'Request Intake & Triage' });
+    const headerTitle = canvas.getByRole('heading', { name: 'Request Intake & Triage' });
+    const headerBadge = canvas.getByText('EXAMPLE', { exact: true });
+    const [headerTitleBox, headerBadgeBox] = await Promise.all([
+      headerTitle.boundingBox(),
+      headerBadge.boundingBox(),
+    ]);
+    expect(headerTitleBox).not.toBeNull();
+    expect(headerBadgeBox).not.toBeNull();
+    if ((page.viewportSize()?.width ?? 0) <= 390) {
+      expect(headerBadgeBox!.y).toBeGreaterThanOrEqual(headerTitleBox!.y + headerTitleBox!.height);
+    } else {
+      expect(headerBadgeBox!.x).toBeGreaterThanOrEqual(headerTitleBox!.x + headerTitleBox!.width);
+      const verticalOverlap =
+        Math.min(
+          headerTitleBox!.y + headerTitleBox!.height,
+          headerBadgeBox!.y + headerBadgeBox!.height
+        ) - Math.max(headerTitleBox!.y, headerBadgeBox!.y);
+      expect(verticalOverlap).toBeGreaterThan(0);
+    }
+    const accessibility = await new AxeBuilder({ page })
+      .include('[role="dialog"] .tess-screen')
+      .withTags(accessibilityTags)
+      .analyze();
+    expect(accessibility.violations, JSON.stringify(accessibility.violations, null, 2)).toEqual([]);
+    mkdirSync(accessibilityEvidenceDirectory, { recursive: true });
+    const accessibilityScreenshot = path.join(
+      accessibilityEvidenceDirectory,
+      `community-emergency-intake-${testInfo.project.name}.png`
+    );
+    await canvas.screenshot({ path: accessibilityScreenshot });
+    accessibilityChecks.push({
+      direction: name,
+      screen: 'Request Intake & Triage',
+      tags: accessibilityTags,
+      violations: accessibility.violations.length,
+      incompleteContrastFindings: accessibility.incomplete
+        .filter((result) => result.id.startsWith('color-contrast'))
+        .flatMap((result) =>
+          result.nodes.map((node) => ({
+            id: result.id,
+            target: node.target,
+            html: node.html,
+            messages: node.any.map((check) => check.message),
+          }))
+        ),
+      screenshot: path.relative(process.cwd(), accessibilityScreenshot).replaceAll('\\', '/'),
+    });
+
     if (index === 0) {
-      const screenSelect = dialog.getByLabel('Direction preview screen');
-      const canvas = dialog.locator('.tess-screen');
       await screenSelect.selectOption({ label: 'Coordination Overview' });
       await expect(canvas).toContainText('Example response updates');
       await expect(canvas).toContainText('Sample request queued for review');
@@ -136,7 +209,6 @@ test('community emergency response composes, edits, persists, and exports honest
           { exact: true }
         )
       ).toBeVisible();
-
       await screenSelect.selectOption({ label: 'Shelter & Hub Capacity' });
       await expect(canvas).toContainText('Example coastal shelter');
       await expect(canvas).toContainText('Capacity not connected');
@@ -274,6 +346,7 @@ test('community emergency response composes, edits, persists, and exports honest
     route: page.url(),
     viewport: page.viewportSize(),
     directions: snapshots,
+    accessibilityChecks,
     selectedProjectId,
     editPersistedAcrossReload: true,
     manifestExportMatchesSavedProject: true,
