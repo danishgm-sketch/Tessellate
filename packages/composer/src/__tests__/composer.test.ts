@@ -48,10 +48,11 @@ describe('Product Archetypes (18 Categories)', () => {
   });
 
   it('interprets marine fieldwork as a mobile survey and evidence workflow', () => {
-    const { productModel } = interpretProductBrief({
+    const interpreted = interpretProductBrief({
       description:
         'A marine biology field atlas for 12 survey crews: offline transects, species evidence, permit workflows, and a calm review queue.',
     });
+    const productModel = interpreted.productModel;
     const serialized = JSON.stringify(productModel).toLowerCase();
     const screens = productModel.likelyScreens.map((screen) => screen.name);
 
@@ -73,6 +74,80 @@ describe('Product Archetypes (18 Categories)', () => {
     expect(serialized).toContain('offline-field-capture');
     expect(serialized).not.toContain('millions of verified profiles');
     expect(serialized).not.toContain('automated monitoring triggers');
+  });
+
+  it('specializes adult language learning without classroom or pressure-based defaults', () => {
+    const interpreted = interpretProductBrief({
+      description:
+        'An offline-first Spanish learning app for adults with dyslexia who study in 10-minute sessions. Include clear progress, adjustable text spacing, audio pronunciation, short speaking practice, and downloadable lessons for commutes with no mobile signal.',
+    });
+    const productModel = interpreted.productModel;
+    const serialized = JSON.stringify(productModel).toLowerCase();
+
+    expect(productModel.productArchetypes[0]?.tag).toBe('education');
+    expect(interpreted.inferredAssumptions[0]).toBe('Your brief points to: Language Learning.');
+    expect(productModel.primaryAudience).toContain('dyslexia-friendly reading controls');
+    expect(productModel.mobileImportance).toBe(100);
+    expect(productModel.entities.map((entity) => entity.name)).toEqual([
+      'Language Course',
+      'Learning Unit',
+      'Vocabulary Item',
+      'Practice Attempt',
+    ]);
+    expect(productModel.likelyScreens.map((screen) => screen.name)).toEqual([
+      'Today',
+      'Practice Session',
+      'Vocabulary Review',
+      'Offline Library',
+    ]);
+    expect(productModel.jobsToBeDone).toEqual([
+      'Start a short Spanish practice session',
+      'Download selected lessons before a commute without mobile signal',
+      'Review vocabulary with adjustable reading and audio controls',
+    ]);
+    expect(serialized).toContain('downloadable-offline-lessons');
+    expect(serialized).toContain('dyslexia-friendly-text-controls');
+    expect(serialized).not.toMatch(/gradebook|essays|claim xp|certification catalog/);
+  });
+
+  it('keeps general language learning within the broad education archetype', () => {
+    const { inferredAssumptions, productModel } = interpretProductBrief({
+      description:
+        'A language-learning app guides learners through vocabulary practice, listening lessons, and spaced review sessions.',
+    });
+
+    expect(inferredAssumptions[0]).toBe('Your brief points to: Education Product.');
+    expect(productModel.likelyScreens.map((screen) => screen.name)).toEqual([
+      'Learning Path',
+      'Lesson Classroom',
+      'Course Catalog',
+    ]);
+  });
+
+  it('marks unsupported language-learning controls as missing screen roles', () => {
+    const { productModel } = interpretProductBrief({
+      description:
+        'An offline-first Spanish learning app for adults with dyslexia who study in 10-minute sessions. Include clear progress, adjustable text spacing, audio pronunciation, short speaking practice, and downloadable lessons for commutes with no mobile signal.',
+    });
+    const screens = planScreenGraph(productModel).screenGraph.groups.flatMap((group) => group.screens);
+
+    expect(screens.find((screen) => screen.name === 'Today')?.requiredRoles).toEqual([
+      'overview-header',
+      'language-progress-summary',
+      'activity-feed',
+    ]);
+    expect(screens.find((screen) => screen.name === 'Practice Session')?.requiredRoles).toEqual([
+      'overview-header',
+      'pronunciation-audio',
+      'speaking-practice',
+      'dyslexia-friendly-reading-controls',
+    ]);
+    expect(screens.find((screen) => screen.name === 'Vocabulary Review')?.requiredRoles).toContain(
+      'vocabulary-review'
+    );
+    expect(screens.find((screen) => screen.name === 'Offline Library')?.requiredRoles).toContain(
+      'offline-lesson-downloads'
+    );
   });
 
   it('keeps employee experience separate from hiring while respecting explicit overrides', () => {

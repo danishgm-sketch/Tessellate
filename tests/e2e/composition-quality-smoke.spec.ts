@@ -1162,3 +1162,102 @@ function collectNodes(node: AuditNode, output: AuditNode[] = []): AuditNode[] {
   for (const child of node.children) collectNodes(child, output);
   return output;
 }
+
+test('advanced Compose accessibility floor has an accessible name and remains usable at mobile width', async ({
+  page,
+}, testInfo) => {
+  const evidenceDirectory = path.resolve('quality/evidence/AUD-519');
+  fs.mkdirSync(evidenceDirectory, { recursive: true });
+  const runtime = {
+    consoleErrors: [] as string[],
+    uncaughtExceptions: [] as string[],
+    failedRequests: [] as string[],
+    badResponses: [] as Array<{ url: string; status: number }>,
+  };
+  page.on('console', (message) => {
+    if (message.type() === 'error') runtime.consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => runtime.uncaughtExceptions.push(error.message));
+  page.on('requestfailed', (request) => runtime.failedRequests.push(request.url()));
+  page.on('response', (response) => {
+    if (response.status() >= 400) {
+      runtime.badResponses.push({ url: response.url(), status: response.status() });
+    }
+  });
+
+  await page.goto('/compose');
+  await expect(page.getByTestId('catalog-status')).toContainText('Catalogue ready');
+  await page.getByRole('button', { name: 'Advanced Constraints & Devices' }).click();
+
+  const accessibilityFloor = page.getByRole('combobox', { name: 'Accessibility Floor' });
+  await expect(accessibilityFloor).toHaveValue('AA');
+  await accessibilityFloor.selectOption('AAA');
+  await expect(accessibilityFloor).toHaveValue('AAA');
+  await accessibilityFloor.scrollIntoViewIfNeeded();
+  const expandedControlsScreenshot = path.join(
+    evidenceDirectory,
+    `compose-accessibility-floor-expanded-${testInfo.project.name}.png`
+  );
+  await page.screenshot({ path: expandedControlsScreenshot, animations: 'disabled' });
+  await testInfo.attach('compose-accessibility-floor-expanded-controls', {
+    path: expandedControlsScreenshot,
+    contentType: 'image/png',
+  });
+
+  const devices = page.getByRole('group', { name: 'Target Devices' });
+  const desktop = devices.getByRole('button', { name: 'Desktop' });
+  const tablet = devices.getByRole('button', { name: 'Tablet' });
+  const mobile = devices.getByRole('button', { name: 'Mobile' });
+  if ((await desktop.getAttribute('aria-pressed')) === 'true') await desktop.click();
+  if ((await tablet.getAttribute('aria-pressed')) === 'true') await tablet.click();
+  await expect(desktop).toHaveAttribute('aria-pressed', 'false');
+  await expect(tablet).toHaveAttribute('aria-pressed', 'false');
+  await expect(mobile).toHaveAttribute('aria-pressed', 'true');
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(accessibilityFloor).toBeVisible();
+  const responsive = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    document: document.documentElement.scrollWidth,
+  }));
+  expect(responsive.document).toBeLessThanOrEqual(responsive.viewport);
+  await accessibilityFloor.scrollIntoViewIfNeeded();
+  expect(runtime.consoleErrors).toEqual([]);
+  expect(runtime.uncaughtExceptions).toEqual([]);
+  expect(runtime.failedRequests).toEqual([]);
+  expect(runtime.badResponses).toEqual([]);
+  const mobileTargetScreenshot = path.join(
+    evidenceDirectory,
+    `compose-accessibility-floor-mobile-target-${testInfo.project.name}.png`
+  );
+  await page.screenshot({ path: mobileTargetScreenshot, animations: 'disabled' });
+  await testInfo.attach('compose-accessibility-floor-mobile-target', {
+    path: mobileTargetScreenshot,
+    contentType: 'image/png',
+  });
+  fs.writeFileSync(
+    path.join(evidenceDirectory, `compose-accessibility-floor-${testInfo.project.name}.json`),
+    `${JSON.stringify(
+      {
+        project: testInfo.project.name,
+        accessibleName: 'Accessibility Floor',
+        initialFloor: 'AA',
+        selectedFloor: await accessibilityFloor.inputValue(),
+        targetDevices: {
+          desktop: await desktop.getAttribute('aria-pressed'),
+          tablet: await tablet.getAttribute('aria-pressed'),
+          mobile: await mobile.getAttribute('aria-pressed'),
+        },
+        responsive,
+        screenshots: {
+          expandedControls: path.relative(process.cwd(), expandedControlsScreenshot).replaceAll('\\', '/'),
+          mobileTarget: path.relative(process.cwd(), mobileTargetScreenshot).replaceAll('\\', '/'),
+        },
+        runtime,
+      },
+      null,
+      2
+    )}\n`,
+    'utf8'
+  );
+});

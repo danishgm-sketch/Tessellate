@@ -123,6 +123,18 @@ function resolveBestResourceForRole(
     (res) => isResourceComposerEligible(res) && resourceMatchesRole(res, semanticRole)
   );
 
+  if (candidates.length === 0) {
+    return {
+      resource: null,
+      ref: undefined,
+      diagnostic: {
+        code: 'UNRESOLVED_REQUIRED_ROLE',
+        role: semanticRole,
+        reason: `No composer-eligible catalogue resource provides the required role "${semanticRole}".`,
+      },
+    };
+  }
+
   // 2. Filter by hard constraints — STRICT FAIL CLOSED
   const validCandidates: ResourceManifest[] = [];
   const rejectedReasons: string[] = [];

@@ -18,6 +18,7 @@ function workspaceBrand(entityName?: string): string {
 
 export function resolveWorkspaceBrand(product: ProductModel, briefDescription = ''): string {
   const employee = product.entities.some((entity) => entity.name === 'Employee');
+  const isLanguageLearning = product.requiredCapabilities.includes('short-session-learning');
   const primaryArchetype = product.productArchetypes[0]?.tag ?? '';
   const community = /community|neighborhood/i.test(
     `${product.primaryAudience} ${product.primaryObjective}`
@@ -29,6 +30,7 @@ export function resolveWorkspaceBrand(product: ProductModel, briefDescription = 
     );
 
   if (employee) return 'People & Co';
+  if (isLanguageLearning) return 'Language Learning';
   if (community) return 'Example Community';
   if (tradingTerminal) return 'Market Workspace';
   return workspaceBrand(product.entities[0]?.name);
@@ -48,6 +50,7 @@ export function bindResourceContent(
   projectBrand?: string
 ): Record<string, unknown> {
   const employee = product.entities.some((entity) => entity.name === 'Employee');
+  const isLanguageLearning = product.requiredCapabilities.includes('short-session-learning');
   const primaryArchetype = product.productArchetypes[0]?.tag ?? '';
   const isRealEstate = primaryArchetype === 'real-estate';
   const isMarketplaceListings =
@@ -439,6 +442,24 @@ export function bindResourceContent(
   const events =
     role === 'message-thread'
       ? conversationExamples
+      : isLanguageLearning && role === 'activity-feed'
+        ? [
+            {
+              time: 'Example · 0–3 min',
+              title: 'Choose one small learning goal',
+              desc: 'Example only. Personal progress and lesson completion are not connected.',
+            },
+            {
+              time: 'Example · 3–7 min',
+              title: 'Listen and practise a phrase',
+              desc: 'Example only. Pronunciation audio and speaking practice are not connected.',
+            },
+            {
+              time: 'Example · 7–10 min',
+              title: 'Review what you learned',
+              desc: 'Example only. Vocabulary and offline progress are not stored.',
+            },
+          ]
       : employee && isEmployeeEngagementScreen
         ? [
             {
@@ -526,7 +547,9 @@ export function bindResourceContent(
         'progress-stepper': 'Welcome milestones',
         'value-proposition': 'Made for everyday employee experiences',
       }
-    : isReturnsPortal
+    : isLanguageLearning
+      ? { 'activity-feed': 'Example 10-minute practice' }
+      : isReturnsPortal
       ? {
           'metric-cards': 'Return overview',
           'activity-feed': 'Return progress',

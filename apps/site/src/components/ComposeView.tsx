@@ -546,8 +546,11 @@ export function ComposeView() {
 
               {/* Accessibility Floor */}
               <div>
-                <span className="text-xs font-bold">Accessibility Floor</span>
+                <label htmlFor="accessibility-floor" className="text-xs font-bold">
+                  Accessibility Floor
+                </label>
                 <select
+                  id="accessibility-floor"
                   value={accessibilityFloor}
                   onChange={(e) => setAccessibilityFloor(e.target.value as 'A' | 'AA' | 'AAA')}
                   className="mt-2 w-full rounded border border-[#D9D6CF] bg-white p-1.5 text-xs dark:border-[#272C34] dark:bg-[#171B21]"
@@ -818,6 +821,9 @@ function DirectionCard({
   onOpen: (manifest: ProjectManifest) => void;
 }) {
   const { direction, manifest } = output;
+  const unresolvedRequiredRoleCount = new Set(
+    output.diagnostics?.map((diagnostic) => diagnostic.role) ?? []
+  ).size;
   const primaryScreen = manifest.screens.find(screen=>screen.slug==='/overview') ?? manifest.screens[0];
   const [previewOpen,setPreviewOpen] = useState(false);
   const [previewScreen,setPreviewScreen] = useState(primaryScreen?.id ?? '');
@@ -875,6 +881,16 @@ function DirectionCard({
             {direction.rationale}
           </p>
         </div>
+
+        {unresolvedRequiredRoleCount > 0 && (
+          <p
+            data-testid={`direction-diagnostics-summary-${number}`}
+            role="status"
+            className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-950 dark:border-amber-700 dark:bg-amber-950/30 dark:text-amber-100"
+          >
+            {unresolvedRequiredRoleCount} required interface {unresolvedRequiredRoleCount === 1 ? 'role has' : 'roles have'} no eligible resource in the current catalogue.
+          </p>
+        )}
 
         {/* Telemetry metadata */}
         <div className="grid grid-cols-2 gap-2 rounded-xl bg-[#FAF9F6] p-2.5 text-[11px] dark:bg-[#0B0D10]">

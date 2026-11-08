@@ -60,6 +60,58 @@ describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
     );
   });
 
+  it('fails unavailable language-learning capabilities closed instead of substituting task boards', () => {
+    const result = composeProjectPipeline(
+      {
+        description:
+          'An offline-first Spanish learning app for adults with dyslexia who study in 10-minute sessions. Include clear progress, adjustable text spacing, audio pronunciation, short speaking practice, and downloadable lessons for commutes with no mobile signal.',
+      },
+      { catalogResources: loadTestCatalog(), seed: 'offline-language-learning' }
+    );
+    const expectedUnresolved = [
+      'dyslexia-friendly-reading-controls',
+      'dyslexia-friendly-reading-controls',
+      'language-progress-summary',
+      'offline-lesson-downloads',
+      'pronunciation-audio',
+      'speaking-practice',
+      'vocabulary-review',
+    ];
+
+    for (const output of [result.directionA, result.directionB, result.directionC]) {
+      expect(output.diagnostics?.map((diagnostic) => diagnostic.role).sort()).toEqual(
+        expectedUnresolved
+      );
+      const practice = nodesForScreen(output.manifest, 'Practice Session');
+      expect(practice.some((node) => node.resourceRef?.slug === 'kanban-board')).toBe(false);
+      for (const role of [
+        'pronunciation-audio',
+        'speaking-practice',
+        'dyslexia-friendly-reading-controls',
+      ]) {
+        const missingRole = practice.find((node) => node.semanticRole === role);
+        expect(missingRole?.props.unresolvedRequiredRole).toBe(true);
+        expect(missingRole?.resourceRef).toBeUndefined();
+      }
+
+      const todayTimeline = nodesForScreen(output.manifest, 'Today').find(
+        (node) => node.semanticRole === 'activity-feed'
+      );
+      const events = todayTimeline?.props.events as Array<{
+        time: string;
+        title: string;
+        desc: string;
+      }>;
+      expect(todayTimeline?.props.title).toBe('Example 10-minute practice');
+      expect(events?.map((event) => event.time)).toEqual([
+        'Example · 0–3 min',
+        'Example · 3–7 min',
+        'Example · 7–10 min',
+      ]);
+      expect(events?.map((event) => event.desc).join(' ')).toMatch(/not connected|not stored/i);
+    }
+  });
+
   it('routes employee marketing actions to their stated destinations', () => {
     const manifest = composeEmployeeExperience();
     const hero = nodesForScreen(manifest, 'Marketing Home').find((node) => node.semanticRole === 'hero');

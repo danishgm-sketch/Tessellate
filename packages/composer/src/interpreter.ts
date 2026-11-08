@@ -20,6 +20,7 @@ import {
   specialiseDeveloperTools,
   specialiseEcommerce,
   specialiseFintechTrading,
+  specialiseLanguageLearning,
   specialiseMedia,
   specialiseMarketplace,
   specialiseMarineFieldResearch,
@@ -111,15 +112,18 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   const primaryTag = detectedArchetypes[0]?.tag ?? 'saas';
   const definition = getProductArchetype(primaryTag);
   const archetypeDef = definition
-    ? specialiseMarineFieldResearch(
-        specialiseDeveloperTools(
-          specialiseAi(
-            specialiseTravel(
-              specialiseMedia(
-                specialiseConsumer(
-                  specialiseEcommerce(
-                    specialiseMarketplace(
-                      specialiseFintechTrading(specialisePeopleOperations(definition, text), text),
+    ? specialiseLanguageLearning(
+        specialiseMarineFieldResearch(
+          specialiseDeveloperTools(
+            specialiseAi(
+              specialiseTravel(
+                specialiseMedia(
+                  specialiseConsumer(
+                    specialiseEcommerce(
+                      specialiseMarketplace(
+                        specialiseFintechTrading(specialisePeopleOperations(definition, text), text),
+                        text
+                      ),
                       text
                     ),
                     text
@@ -234,12 +238,6 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   }
 
   // 4. Jobs To Be Done (JTBD)
-  const jobsToBeDone: string[] = [
-    `Authenticate and access ${archetypeDef?.name ?? 'workspace'}`,
-    `Review the overview and priority actions`,
-    `Create, update, and manage records`,
-  ];
-
   const defaultWorkflows = (
     archetypeDef?.defaultWorkflows ?? [
       {
@@ -259,9 +257,20 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     return true;
   });
 
-  if (archetypeDef) {
-    for (const wf of defaultWorkflows) {
-      jobsToBeDone.push(wf.name);
+  const hasSpecializedLearningWorkflows = archetypeDef?.requiredCapabilities.includes(
+    'short-session-learning'
+  );
+  const jobsToBeDone: string[] = [
+    `Authenticate and access ${archetypeDef?.name ?? 'workspace'}`,
+    'Review the overview and priority actions',
+    'Create, update, and manage records',
+  ];
+
+  if (hasSpecializedLearningWorkflows) {
+    jobsToBeDone.splice(0, jobsToBeDone.length, ...defaultWorkflows.map((workflow) => workflow.name));
+  } else if (archetypeDef) {
+    for (const workflow of defaultWorkflows) {
+      jobsToBeDone.push(workflow.name);
     }
   }
 

@@ -2261,3 +2261,144 @@ export function specialiseMarineFieldResearch(
     forbiddenPatterns: ['ephemeral-data-loss', 'unverified-species-identification'],
   };
 }
+
+/** Replace classroom defaults with a focused adult language-practice workflow. */
+export function specialiseLanguageLearning(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  if (
+    base.id !== 'education' ||
+    !/\b(?:language[- ]learning|language practice|foreign[- ]language|learn(?:ing)?\s+(?:a\s+|new\s+)?language|(?:Spanish|French|German|Italian|Portuguese|Mandarin|Japanese|Arabic)\s+(?:learning|practice|lessons?|course))\b/i.test(
+      text
+    ) ||
+    !/\b(?:adult|dyslexia|offline|no (?:mobile )?signal|speaking practice|pronunciation|adjustable text|short sessions?|commute)\b/i.test(
+      text
+    )
+  ) {
+    return base;
+  }
+
+  const language =
+    text.match(/\b(?:Spanish|French|German|Italian|Portuguese|Mandarin|Japanese|Arabic)\b/i)?.[0]
+      ?.replace(/^./, (initial) => initial.toLocaleUpperCase()) ?? 'target-language';
+
+  return {
+    ...base,
+    name: 'Language Learning',
+    description:
+      'Short, practical language-practice sessions with readable study material and learner-controlled progress.',
+    primaryAudience: `Adult ${language} learners, including people who benefit from dyslexia-friendly reading controls`,
+    primaryObjective:
+      `Build useful ${language} vocabulary and speaking confidence through short listening and practice sessions`,
+    userSophistication: 40,
+    trustRequirement: 80,
+    informationComplexity: 45,
+    dataDensity: 35,
+    collaborationLevel: 25,
+    transactionCriticality: 15,
+    navigationComplexity: 38,
+    mobileImportance: 98,
+    defaultEntities: [
+      {
+        name: 'Language Course',
+        description: 'A learner-selected language and proficiency path',
+        fields: ['id', 'language', 'level', 'learningGoal'],
+      },
+      {
+        name: 'Learning Unit',
+        description: 'A short lesson with audio, vocabulary, and a practice goal',
+        fields: ['id', 'courseId', 'topic', 'estimatedMinutes', 'offlineAvailability'],
+      },
+      {
+        name: 'Vocabulary Item',
+        description: 'A word or phrase with its meaning and pronunciation audio',
+        fields: ['id', 'term', 'translation', 'pronunciationAudio', 'reviewState'],
+      },
+      {
+        name: 'Practice Attempt',
+        description: 'A listening or speaking exercise and its learner-visible feedback',
+        fields: ['id', 'unitId', 'exerciseType', 'completedAt', 'feedback'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'start-short-language-practice',
+        name: `Start a short ${language} practice session`,
+        steps: [
+          'resume-learning-path',
+          'choose-a-short-session',
+          'listen-to-pronunciation',
+          'practice-speaking',
+          'review-progress',
+        ],
+      },
+      {
+        id: 'prepare-lessons-for-offline-use',
+        name: 'Download selected lessons before a commute without mobile signal',
+        steps: [
+          'choose-learning-units',
+          'check-storage-needs',
+          'download-selected-lessons',
+          'open-available-offline-lessons',
+        ],
+      },
+      {
+        id: 'review-vocabulary',
+        name: 'Review vocabulary with adjustable reading and audio controls',
+        steps: [
+          'open-saved-vocabulary',
+          'adjust-text-spacing',
+          'listen-to-pronunciation',
+          'review-word-meaning',
+        ],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Today',
+        screenType: 'dashboard',
+        purpose:
+          `Resume a short ${language} practice session and review progress without pressure-based streaks`,
+        jobs: ['resume-practice', 'review-learning-progress'],
+        required: true,
+      },
+      {
+        name: 'Practice Session',
+        screenType: 'workspace-editor',
+        purpose:
+          'Practice listening and speaking with clear pronunciation audio and dyslexia-friendly text settings',
+        jobs: ['listen-to-pronunciation', 'practice-speaking', 'adjust-text-spacing'],
+        required: true,
+      },
+      {
+        name: 'Vocabulary Review',
+        screenType: 'index-list',
+        purpose: 'Review useful words and phrases with adjustable reading and audio controls',
+        jobs: ['open-saved-vocabulary', 'listen-to-pronunciation', 'review-word-meaning'],
+        required: true,
+      },
+      {
+        name: 'Offline Library',
+        screenType: 'index-list',
+        purpose:
+          'Choose lessons to download and open lessons that are available without a network connection',
+        jobs: ['choose-learning-units', 'download-selected-lessons', 'open-available-offline-lessons'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      'short-session-learning',
+      'audio-pronunciation',
+      'speaking-practice',
+      'dyslexia-friendly-text-controls',
+      'downloadable-offline-lessons',
+    ],
+    forbiddenPatterns: [
+      'pressure-based-streaks',
+      'tiny-dense-reading-layouts',
+      'loss-of-offline-progress',
+      'core-lessons-unavailable-without-signal',
+    ],
+  };
+}

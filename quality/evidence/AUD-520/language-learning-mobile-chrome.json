@@ -1,0 +1,157 @@
+{
+  "brief": "An offline-first Spanish learning app for adults with dyslexia who study in 10-minute sessions. Include clear progress, adjustable text spacing, audio pronunciation, short speaking practice, and downloadable lessons for commutes with no mobile signal.",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "responsive": {
+    "viewport": 390,
+    "document": 390
+  },
+  "directions": [
+    {
+      "number": "01",
+      "screens": [
+        "Today",
+        "Practice Session",
+        "Vocabulary Review",
+        "Offline Library"
+      ],
+      "diagnostics": [
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "language-progress-summary",
+          "reason": "No composer-eligible catalogue resource provides the required role \"language-progress-summary\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "pronunciation-audio",
+          "reason": "No composer-eligible catalogue resource provides the required role \"pronunciation-audio\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "speaking-practice",
+          "reason": "No composer-eligible catalogue resource provides the required role \"speaking-practice\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "dyslexia-friendly-reading-controls",
+          "reason": "No composer-eligible catalogue resource provides the required role \"dyslexia-friendly-reading-controls\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "vocabulary-review",
+          "reason": "No composer-eligible catalogue resource provides the required role \"vocabulary-review\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "dyslexia-friendly-reading-controls",
+          "reason": "No composer-eligible catalogue resource provides the required role \"dyslexia-friendly-reading-controls\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "offline-lesson-downloads",
+          "reason": "No composer-eligible catalogue resource provides the required role \"offline-lesson-downloads\"."
+        }
+      ]
+    },
+    {
+      "number": "02",
+      "screens": [
+        "Today",
+        "Practice Session",
+        "Vocabulary Review",
+        "Offline Library"
+      ],
+      "diagnostics": [
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "language-progress-summary",
+          "reason": "No composer-eligible catalogue resource provides the required role \"language-progress-summary\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "pronunciation-audio",
+          "reason": "No composer-eligible catalogue resource provides the required role \"pronunciation-audio\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "speaking-practice",
+          "reason": "No composer-eligible catalogue resource provides the required role \"speaking-practice\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "dyslexia-friendly-reading-controls",
+          "reason": "No composer-eligible catalogue resource provides the required role \"dyslexia-friendly-reading-controls\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "vocabulary-review",
+          "reason": "No composer-eligible catalogue resource provides the required role \"vocabulary-review\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "dyslexia-friendly-reading-controls",
+          "reason": "No composer-eligible catalogue resource provides the required role \"dyslexia-friendly-reading-controls\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "offline-lesson-downloads",
+          "reason": "No composer-eligible catalogue resource provides the required role \"offline-lesson-downloads\"."
+        }
+      ]
+    },
+    {
+      "number": "03",
+      "screens": [
+        "Today",
+        "Practice Session",
+        "Vocabulary Review",
+        "Offline Library"
+      ],
+      "diagnostics": [
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "language-progress-summary",
+          "reason": "No composer-eligible catalogue resource provides the required role \"language-progress-summary\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "pronunciation-audio",
+          "reason": "No composer-eligible catalogue resource provides the required role \"pronunciation-audio\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "speaking-practice",
+          "reason": "No composer-eligible catalogue resource provides the required role \"speaking-practice\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "dyslexia-friendly-reading-controls",
+          "reason": "No composer-eligible catalogue resource provides the required role \"dyslexia-friendly-reading-controls\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "vocabulary-review",
+          "reason": "No composer-eligible catalogue resource provides the required role \"vocabulary-review\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "dyslexia-friendly-reading-controls",
+          "reason": "No composer-eligible catalogue resource provides the required role \"dyslexia-friendly-reading-controls\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "offline-lesson-downloads",
+          "reason": "No composer-eligible catalogue resource provides the required role \"offline-lesson-downloads\"."
+        }
+      ]
+    }
+  ],
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "badResponses": []
+  }
+}

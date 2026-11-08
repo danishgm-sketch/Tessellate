@@ -80,6 +80,24 @@ function requiredRolesForScreen(
   screenType: string,
   grammarRoles: string[]
 ): string[] {
+  if (productModel.requiredCapabilities.includes('short-session-learning')) {
+    switch (normalizeName(screenName)) {
+      case 'today':
+        return ['overview-header', 'language-progress-summary', 'activity-feed'];
+      case 'practice session':
+        return [
+          'overview-header',
+          'pronunciation-audio',
+          'speaking-practice',
+          'dyslexia-friendly-reading-controls',
+        ];
+      case 'vocabulary review':
+        return ['index-header', 'vocabulary-review', 'dyslexia-friendly-reading-controls'];
+      case 'offline library':
+        return ['index-header', 'offline-lesson-downloads'];
+    }
+  }
+
   const communityActivityStream =
     screenType === 'dashboard' &&
     normalizeName(screenName) === 'activity stream' &&
