@@ -1,0 +1,197 @@
+{
+  "url": "http://127.0.0.1:4321/compose",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "brief": "A neighborhood bicycle repair co-op for eight mechanics and two front-desk volunteers: same-day intake, safety triage for brakes and steering, parts availability, consented repair estimates, and pickup readiness. The shared workbench runs on a counter tablet and desktop. Do not handle payments.",
+  "directions": [
+    {
+      "number": "01",
+      "screens": [
+        "Service Desk",
+        "Repair Intake",
+        "Safety Inspection",
+        "Parts & Estimates",
+        "Pickup & Handover"
+      ],
+      "diagnostics": [
+        "safety-triage-queue",
+        "priority-alerts",
+        "repair-intake-form",
+        "reported-issue-capture",
+        "brake-steering-checklist",
+        "inspection-evidence",
+        "parts-availability",
+        "consented-repair-estimate",
+        "safety-signoff",
+        "pickup-readiness"
+      ],
+      "renderedScreenRoles": [
+        {
+          "screen": "Service Desk",
+          "unresolvedRoles": [
+            "safety-triage-queue",
+            "priority-alerts"
+          ]
+        },
+        {
+          "screen": "Repair Intake",
+          "unresolvedRoles": [
+            "repair-intake-form",
+            "reported-issue-capture"
+          ]
+        },
+        {
+          "screen": "Safety Inspection",
+          "unresolvedRoles": [
+            "brake-steering-checklist",
+            "inspection-evidence"
+          ]
+        },
+        {
+          "screen": "Parts & Estimates",
+          "unresolvedRoles": [
+            "parts-availability",
+            "consented-repair-estimate"
+          ]
+        },
+        {
+          "screen": "Pickup & Handover",
+          "unresolvedRoles": [
+            "safety-signoff",
+            "pickup-readiness"
+          ]
+        }
+      ]
+    },
+    {
+      "number": "02",
+      "screens": [
+        "Service Desk",
+        "Repair Intake",
+        "Safety Inspection",
+        "Parts & Estimates",
+        "Pickup & Handover"
+      ],
+      "diagnostics": [
+        "safety-triage-queue",
+        "priority-alerts",
+        "repair-intake-form",
+        "reported-issue-capture",
+        "brake-steering-checklist",
+        "inspection-evidence",
+        "parts-availability",
+        "consented-repair-estimate",
+        "safety-signoff",
+        "pickup-readiness"
+      ],
+      "renderedScreenRoles": [
+        {
+          "screen": "Service Desk",
+          "unresolvedRoles": [
+            "safety-triage-queue",
+            "priority-alerts"
+          ]
+        },
+        {
+          "screen": "Repair Intake",
+          "unresolvedRoles": [
+            "repair-intake-form",
+            "reported-issue-capture"
+          ]
+        },
+        {
+          "screen": "Safety Inspection",
+          "unresolvedRoles": [
+            "brake-steering-checklist",
+            "inspection-evidence"
+          ]
+        },
+        {
+          "screen": "Parts & Estimates",
+          "unresolvedRoles": [
+            "parts-availability",
+            "consented-repair-estimate"
+          ]
+        },
+        {
+          "screen": "Pickup & Handover",
+          "unresolvedRoles": [
+            "safety-signoff",
+            "pickup-readiness"
+          ]
+        }
+      ]
+    },
+    {
+      "number": "03",
+      "screens": [
+        "Service Desk",
+        "Repair Intake",
+        "Safety Inspection",
+        "Parts & Estimates",
+        "Pickup & Handover"
+      ],
+      "diagnostics": [
+        "safety-triage-queue",
+        "priority-alerts",
+        "repair-intake-form",
+        "reported-issue-capture",
+        "brake-steering-checklist",
+        "inspection-evidence",
+        "parts-availability",
+        "consented-repair-estimate",
+        "safety-signoff",
+        "pickup-readiness"
+      ],
+      "renderedScreenRoles": [
+        {
+          "screen": "Service Desk",
+          "unresolvedRoles": [
+            "safety-triage-queue",
+            "priority-alerts"
+          ]
+        },
+        {
+          "screen": "Repair Intake",
+          "unresolvedRoles": [
+            "repair-intake-form",
+            "reported-issue-capture"
+          ]
+        },
+        {
+          "screen": "Safety Inspection",
+          "unresolvedRoles": [
+            "brake-steering-checklist",
+            "inspection-evidence"
+          ]
+        },
+        {
+          "screen": "Parts & Estimates",
+          "unresolvedRoles": [
+            "parts-availability",
+            "consented-repair-estimate"
+          ]
+        },
+        {
+          "screen": "Pickup & Handover",
+          "unresolvedRoles": [
+            "safety-signoff",
+            "pickup-readiness"
+          ]
+        }
+      ]
+    }
+  ],
+  "responsive": {
+    "viewportWidth": 1440,
+    "documentWidth": 1440
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

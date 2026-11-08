@@ -76,6 +76,58 @@ describe('Product Archetypes (18 Categories)', () => {
     expect(serialized).not.toContain('automated monitoring triggers');
   });
 
+  it('specializes a bicycle repair co-op into consent-aware service operations', () => {
+    const interpreted = interpretProductBrief({
+      description:
+        'A neighborhood bicycle repair co-op for eight mechanics and two front-desk volunteers: same-day intake, safety triage for brakes and steering, parts availability, consented repair estimates, and pickup readiness. The shared workbench runs on a counter tablet and desktop. Do not handle payments.',
+    });
+    const productModel = interpreted.productModel;
+
+    expect(productModel.productArchetypes[0]?.tag).toBe('erp-operations');
+    expect(interpreted.inferredAssumptions[0]).toBe(
+      'Your brief points to: Bicycle Repair Operations.'
+    );
+    expect(productModel.primaryAudience).toContain('bicycle repair co-ops');
+    expect(productModel.mobileImportance).toBe(92);
+    expect(productModel.entities.map((entity) => entity.name)).toEqual([
+      'RepairJob',
+      'Inspection',
+      'Part',
+    ]);
+    expect(productModel.likelyScreens.map((screen) => screen.name)).toEqual([
+      'Service Desk',
+      'Repair Intake',
+      'Safety Inspection',
+      'Parts & Estimates',
+      'Pickup & Handover',
+    ]);
+    expect(productModel.jobsToBeDone).toEqual([
+      'Check in a bicycle and record the rider-reported issue',
+      'Inspect brake and steering safety before assigning repair work',
+      'Confirm estimate consent, check parts, and assign a mechanic',
+      'Verify completed safety checks and prepare a bicycle for pickup',
+    ]);
+    expect(interpreted.inferredAssumptions).not.toContain(
+      'Payment and purchase steps need clear confirmation.'
+    );
+  });
+
+  it('does not infer payment activity from an explicit exclusion', () => {
+    const excluded = interpretProductBrief({
+      description: 'A repair intake tool for a bicycle workshop. Do not handle payments.',
+    });
+    const explicit = interpretProductBrief({
+      description: 'A bicycle repair service with payment processing and checkout.',
+    });
+
+    expect(excluded.inferredAssumptions).not.toContain(
+      'Payment and purchase steps need clear confirmation.'
+    );
+    expect(explicit.inferredAssumptions).toContain(
+      'Payment and purchase steps need clear confirmation.'
+    );
+  });
+
   it('specializes adult language learning without classroom or pressure-based defaults', () => {
     const interpreted = interpretProductBrief({
       description:
@@ -148,6 +200,40 @@ describe('Product Archetypes (18 Categories)', () => {
     expect(screens.find((screen) => screen.name === 'Offline Library')?.requiredRoles).toContain(
       'offline-lesson-downloads'
     );
+  });
+
+  it('marks unsupported bicycle safety, estimate, and pickup controls as missing screen roles', () => {
+    const { productModel } = interpretProductBrief({
+      description:
+        'A neighborhood bicycle repair co-op for mechanics: safety triage for brakes and steering, parts availability, consented repair estimates, and pickup readiness. Do not handle payments.',
+    });
+    const screens = planScreenGraph(productModel).screenGraph.groups.flatMap((group) => group.screens);
+
+    expect(screens.find((screen) => screen.name === 'Service Desk')?.requiredRoles).toEqual([
+      'overview-header',
+      'safety-triage-queue',
+      'priority-alerts',
+    ]);
+    expect(screens.find((screen) => screen.name === 'Repair Intake')?.requiredRoles).toEqual([
+      'entity-header',
+      'repair-intake-form',
+      'reported-issue-capture',
+    ]);
+    expect(screens.find((screen) => screen.name === 'Safety Inspection')?.requiredRoles).toEqual([
+      'entity-header',
+      'brake-steering-checklist',
+      'inspection-evidence',
+    ]);
+    expect(screens.find((screen) => screen.name === 'Parts & Estimates')?.requiredRoles).toEqual([
+      'index-header',
+      'parts-availability',
+      'consented-repair-estimate',
+    ]);
+    expect(screens.find((screen) => screen.name === 'Pickup & Handover')?.requiredRoles).toEqual([
+      'entity-header',
+      'safety-signoff',
+      'pickup-readiness',
+    ]);
   });
 
   it('keeps employee experience separate from hiring while respecting explicit overrides', () => {

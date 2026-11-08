@@ -17,6 +17,7 @@ import { findBlueprintByArchetype, type ProductBlueprint } from './blueprints.js
 import {
   specialiseConsumer,
   specialiseAi,
+  specialiseBicycleRepairOperations,
   specialiseDeveloperTools,
   specialiseEcommerce,
   specialiseFintechTrading,
@@ -114,14 +115,17 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   const archetypeDef = definition
     ? specialiseLanguageLearning(
         specialiseMarineFieldResearch(
-          specialiseDeveloperTools(
-            specialiseAi(
-              specialiseTravel(
-                specialiseMedia(
-                  specialiseConsumer(
-                    specialiseEcommerce(
-                      specialiseMarketplace(
-                        specialiseFintechTrading(specialisePeopleOperations(definition, text), text),
+          specialiseBicycleRepairOperations(
+            specialiseDeveloperTools(
+              specialiseAi(
+                specialiseTravel(
+                  specialiseMedia(
+                    specialiseConsumer(
+                      specialiseEcommerce(
+                        specialiseMarketplace(
+                          specialiseFintechTrading(specialisePeopleOperations(definition, text), text),
+                          text
+                        ),
                         text
                       ),
                       text
@@ -182,6 +186,13 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     /\b(billing|subscriptions?|invoices?|paid plans?|pricing|monetiz(?:e|ation)|monetis(?:e|ation)|charge customers|payment plans?)\b/i.test(
       commercialIntentText
     );
+  const explicitlyExcludesPaymentWork =
+    /\b(?:do not|don't|does not|doesn't|without|no|never|avoid|exclude)\b.{0,48}\b(?:checkout|payments?|payment processing|billing|purchases?)\b/i.test(
+      commercialIntentText
+    );
+  const hasExplicitPaymentIntent =
+    /\b(?:checkout|payments?|payment processing|money transfer)\b/i.test(commercialIntentText) &&
+    !explicitlyExcludesPaymentWork;
   const hasExplicitFundsTransferIntent =
     /\b(?:transfer|send|move|withdraw|deposit)\b.{0,32}\b(?:funds?|money|cash|balances?|accounts?)\b|\b(?:funds?|money|cash)\b.{0,32}\b(?:transfer|send|move|withdraw|deposit)\b/i.test(
       commercialIntentText
@@ -207,7 +218,7 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     assumptions.push('Team collaboration is central to these workflows.');
   }
 
-  if (lower.includes('checkout') || lower.includes('payment') || lower.includes('money transfer')) {
+  if (hasExplicitPaymentIntent) {
     transactionCriticality = Math.min(100, transactionCriticality + 20);
     assumptions.push('Payment and purchase steps need clear confirmation.');
   }
@@ -257,8 +268,8 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     return true;
   });
 
-  const hasSpecializedLearningWorkflows = archetypeDef?.requiredCapabilities.includes(
-    'short-session-learning'
+  const hasSpecializedWorkflowPlan = archetypeDef?.requiredCapabilities.some((capability) =>
+    capability === 'short-session-learning' || capability === 'bicycle-repair-service-workflow'
   );
   const jobsToBeDone: string[] = [
     `Authenticate and access ${archetypeDef?.name ?? 'workspace'}`,
@@ -266,7 +277,7 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     'Create, update, and manage records',
   ];
 
-  if (hasSpecializedLearningWorkflows) {
+  if (hasSpecializedWorkflowPlan) {
     jobsToBeDone.splice(0, jobsToBeDone.length, ...defaultWorkflows.map((workflow) => workflow.name));
   } else if (archetypeDef) {
     for (const workflow of defaultWorkflows) {

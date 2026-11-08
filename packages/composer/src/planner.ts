@@ -80,6 +80,21 @@ function requiredRolesForScreen(
   screenType: string,
   grammarRoles: string[]
 ): string[] {
+  if (productModel.requiredCapabilities.includes('bicycle-repair-service-workflow')) {
+    switch (normalizeName(screenName)) {
+      case 'service desk':
+        return ['overview-header', 'safety-triage-queue', 'priority-alerts'];
+      case 'repair intake':
+        return ['entity-header', 'repair-intake-form', 'reported-issue-capture'];
+      case 'safety inspection':
+        return ['entity-header', 'brake-steering-checklist', 'inspection-evidence'];
+      case 'parts and estimates':
+        return ['index-header', 'parts-availability', 'consented-repair-estimate'];
+      case 'pickup and handover':
+        return ['entity-header', 'safety-signoff', 'pickup-readiness'];
+    }
+  }
+
   if (productModel.requiredCapabilities.includes('short-session-learning')) {
     switch (normalizeName(screenName)) {
       case 'today':

@@ -112,6 +112,72 @@ describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
     }
   });
 
+  it('fails unavailable bicycle repair operations closed instead of implying service controls work', () => {
+    const result = composeProjectPipeline(
+      {
+        description:
+          'A neighborhood bicycle repair co-op for eight mechanics and two front-desk volunteers: same-day intake, safety triage for brakes and steering, parts availability, consented repair estimates, and pickup readiness. The shared workbench runs on a counter tablet and desktop. Do not handle payments.',
+      },
+      { catalogResources: loadTestCatalog(), seed: 'bicycle-repair-coop' }
+    );
+    const domainRoles = [
+      'safety-triage-queue',
+      'priority-alerts',
+      'repair-intake-form',
+      'reported-issue-capture',
+      'brake-steering-checklist',
+      'inspection-evidence',
+      'parts-availability',
+      'consented-repair-estimate',
+      'safety-signoff',
+      'pickup-readiness',
+    ];
+
+    expect(result.productModel.productArchetypes[0]?.tag).toBe('erp-operations');
+    expect(result.productModel.likelyScreens.map((screen) => screen.name)).toEqual([
+      'Service Desk',
+      'Repair Intake',
+      'Safety Inspection',
+      'Parts & Estimates',
+      'Pickup & Handover',
+    ]);
+
+    for (const output of [result.directionA, result.directionB, result.directionC]) {
+      const diagnostics = output.diagnostics?.map((diagnostic) => diagnostic.role) ?? [];
+      expect(diagnostics).toEqual(expect.arrayContaining(domainRoles));
+      expect(output.manifest.screens.map((screen) => screen.name)).toEqual(
+        expect.arrayContaining(result.productModel.likelyScreens.map((screen) => screen.name))
+      );
+
+      for (const screenName of [
+        'Repair Intake',
+        'Safety Inspection',
+        'Parts & Estimates',
+        'Pickup & Handover',
+      ]) {
+        const nodes = nodesForScreen(output.manifest, screenName);
+        const screenRoles = result.screenGraph.groups
+          .flatMap((group) => group.screens)
+          .find((screen) => screen.name === screenName)?.requiredRoles ?? [];
+        for (const role of screenRoles.filter((candidate) => domainRoles.includes(candidate))) {
+          const node = nodes.find((candidate) => candidate.semanticRole === role);
+          expect(node?.props.unresolvedRequiredRole).toBe(true);
+          expect(node?.resourceRef).toBeUndefined();
+        }
+      }
+
+      const safetyHeader = nodesForScreen(output.manifest, 'Safety Inspection').find(
+        (node) => node.semanticRole === 'entity-header'
+      );
+      expect(safetyHeader?.resourceRef?.slug).toBe('entity-profile-header');
+      expect(safetyHeader?.props.title).toBe('Safety Inspection');
+      expect(safetyHeader?.props.subtitle).toMatch(/brake and steering checks/i);
+
+      expect(JSON.stringify(output.manifest).toLowerCase()).not.toContain('project index');
+      expect(JSON.stringify(output.manifest).toLowerCase()).not.toContain('payment confirmation');
+    }
+  });
+
   it('routes employee marketing actions to their stated destinations', () => {
     const manifest = composeEmployeeExperience();
     const hero = nodesForScreen(manifest, 'Marketing Home').find((node) => node.semanticRole === 'hero');

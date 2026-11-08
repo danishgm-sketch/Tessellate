@@ -122,6 +122,126 @@ export function specialisePeopleOperations(
   };
 }
 
+/** Replace warehouse defaults with consent-aware service workflows for bicycle repair co-ops. */
+export function specialiseBicycleRepairOperations(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  const isBicycleRepairService =
+    /\b(?:bicycle|bike|e[- ]?bike)\b/i.test(text) &&
+    /\b(?:repair|service)\b/i.test(text) &&
+    /\b(?:shop|co[- ]?op|cooperative|workshop|mechanics?|service desk)\b/i.test(text);
+
+  if (base.id !== 'erp-operations' || !isBicycleRepairService) return base;
+
+  return {
+    ...base,
+    name: 'Bicycle Repair Operations',
+    description:
+      'Service intake, safety inspection, consented estimates, parts availability, and pickup readiness for bicycle repair workshops.',
+    primaryAudience: 'Mechanics, service advisors, and volunteer coordinators at bicycle repair co-ops',
+    primaryObjective:
+      'Receive bicycles, triage brake and steering safety, confirm repair estimates, reserve available parts, and return each bicycle ready for pickup',
+    userSophistication: 62,
+    trustRequirement: 94,
+    informationComplexity: 72,
+    dataDensity: 68,
+    collaborationLevel: 74,
+    transactionCriticality: 45,
+    navigationComplexity: 68,
+    mobileImportance: 92,
+    defaultEntities: [
+      {
+        name: 'RepairJob',
+        description: 'A bicycle repair request with reported symptoms, safety status, consent, and pickup state',
+        fields: ['id', 'bikeType', 'reportedIssue', 'safetyStatus', 'estimateStatus', 'assignedMechanic', 'partsStatus', 'pickupReady'],
+      },
+      {
+        name: 'Inspection',
+        description: 'Recorded brake and steering checks for a repair job',
+        fields: ['id', 'repairJobId', 'brakeStatus', 'steeringStatus', 'findings', 'inspectedBy', 'inspectedAt'],
+      },
+      {
+        name: 'Part',
+        description: 'A repair part with on-hand and reserved quantities',
+        fields: ['id', 'name', 'stockOnHand', 'reservedQuantity', 'availability'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'intake-bicycle',
+        name: 'Check in a bicycle and record the rider-reported issue',
+        steps: ['record-bike-details', 'capture-reported-symptoms', 'assign-intake-priority'],
+      },
+      {
+        id: 'inspect-bicycle-safety',
+        name: 'Inspect brake and steering safety before assigning repair work',
+        steps: ['inspect-brakes', 'inspect-steering', 'record-safety-findings', 'set-repair-priority'],
+      },
+      {
+        id: 'confirm-repair-estimate',
+        name: 'Confirm estimate consent, check parts, and assign a mechanic',
+        steps: ['prepare-itemized-estimate', 'record-rider-consent', 'reserve-available-parts', 'assign-mechanic'],
+      },
+      {
+        id: 'prepare-bicycle-pickup',
+        name: 'Verify completed safety checks and prepare a bicycle for pickup',
+        steps: ['record-repair-checks', 'verify-safety', 'mark-pickup-ready', 'notify-rider'],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Service Desk',
+        screenType: 'dashboard',
+        purpose: 'Review today’s check-ins, safety-critical repairs, and pickup commitments',
+        jobs: ['review-repair-queue', 'triage-safety-priority'],
+        required: true,
+      },
+      {
+        name: 'Repair Intake',
+        screenType: 'detail-entity',
+        purpose: 'Record the bicycle, rider-reported symptoms, and intake priority',
+        jobs: ['intake-bicycle', 'record-reported-symptoms'],
+        required: true,
+      },
+      {
+        name: 'Safety Inspection',
+        screenType: 'workspace-editor',
+        purpose: 'Document brake and steering checks before repair work is assigned',
+        jobs: ['inspect-bicycle-safety', 'record-safety-findings'],
+        required: true,
+      },
+      {
+        name: 'Parts & Estimates',
+        screenType: 'index-list',
+        purpose: 'Check part availability and record rider consent for a repair estimate',
+        jobs: ['confirm-repair-estimate', 'reserve-available-parts'],
+        required: true,
+      },
+      {
+        name: 'Pickup & Handover',
+        screenType: 'detail-entity',
+        purpose: 'Verify safety checks and mark a completed bicycle ready for pickup',
+        jobs: ['prepare-bicycle-pickup', 'notify-rider'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      'bicycle-repair-service-workflow',
+      'service-intake',
+      'brake-and-steering-safety-inspection',
+      'consented-repair-estimates',
+      'parts-availability',
+      'pickup-readiness',
+    ],
+    forbiddenPatterns: [
+      ...base.forbiddenPatterns,
+      'marking-a-safety-critical-bicycle-ready-without-an-inspection-record',
+      'charging-for-repairs-before-rider-estimate-consent',
+    ],
+  };
+}
+
 /** Separate institutional market tooling from the fintech archetype's banking defaults. */
 export function specialiseFintechTrading(
   base: ArchetypeDefinition,
