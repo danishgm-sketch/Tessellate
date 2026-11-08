@@ -334,6 +334,87 @@ describe('Product Archetypes (18 Categories)', () => {
     expect(generalOperations.inferredAssumptions[0]).toBe('Your brief points to: ERP & Operations.');
   });
 
+  it('specializes volunteer emergency coordination without inventing personal or live-dispatch data', () => {
+    const description =
+      'A volunteer mutual-aid network for a flood-prone coastal town. Coordinate requests for bottled water, charging, blankets, accessible transport, and welfare checks between three shelters and six neighborhood hubs. Needs shared-tablet intake that works during outages, multilingual updates, disability-aware prioritisation, volunteer shift handoffs, and stock visibility. Never collect immigration status, diagnoses, or financial data; no payments or fundraising. Public status should show only aggregated capacity and safe pickup points. Record requests locally for later sync, but do not imply that SMS dispatch, live mapping, or synchronisation works while disconnected.';
+    const matches = detectProductArchetypes(description);
+    const { productModel, inferredAssumptions } = interpretProductBrief({ description });
+    const screens = planScreenGraph(productModel).screenGraph.groups.flatMap((group) => group.screens);
+
+    expect(matches[0]?.tag).toBe('erp-operations');
+    expect(productModel.productArchetypes[0]?.tag).toBe('erp-operations');
+    expect(inferredAssumptions[0]).toBe(
+      'Your brief points to: Community Emergency Response Operations.'
+    );
+    expect(productModel.primaryAudience).toMatch(/volunteer coordinators/i);
+    expect(productModel.primaryObjective).toContain('safe pickup points');
+    expect(productModel.mobileImportance).toBe(98);
+    expect(productModel.entities.map((entity) => entity.name)).toEqual([
+      'ReliefRequest',
+      'HubCapacity',
+      'SupplyStock',
+      'ShiftHandover',
+    ]);
+    expect(productModel.entities[0]?.fields).toEqual([
+      'id',
+      'aidType',
+      'assignedHubId',
+      'manualPriority',
+      'status',
+    ]);
+    expect(productModel.workflows.map((workflow) => workflow.id)).toEqual([
+      'review-aid-requests',
+      'coordinate-shelter-pickup-capacity',
+      'track-relief-supplies',
+      'handover-volunteer-shift',
+      'publish-aggregated-public-status',
+      'reconcile-outage-requests',
+    ]);
+    expect(productModel.likelyScreens.map((screen) => screen.name)).toEqual([
+      'Coordination Overview',
+      'Request Intake & Triage',
+      'Shelter & Hub Capacity',
+      'Supplies & Distribution',
+      'Volunteer Shift Handover',
+      'Public Capacity Status',
+    ]);
+    expect(productModel.requiredCapabilities).toEqual(
+      expect.arrayContaining([
+        'community-emergency-response-workflow',
+        'offline-request-capture-and-reconciliation',
+        'manual-priority-review',
+        'aggregated-public-capacity',
+      ])
+    );
+    expect(screens.find((screen) => screen.name === 'Request Intake & Triage')?.requiredRoles).toEqual([
+      'entity-header',
+      'settings-form',
+      'save-footer',
+    ]);
+    const intakeScreen = screens.find((screen) => screen.name === 'Request Intake & Triage');
+    expect(intakeScreen?.screenType).toBe('workspace-editor');
+    expect(intakeScreen?.slug).toBe('/request-intake-and-triage');
+    expect(screens.find((screen) => screen.name === 'Public Capacity Status')?.requiredRoles).toEqual([
+      'overview-header',
+      'metric-cards',
+      'activity-feed',
+    ]);
+    expect(JSON.stringify(productModel.entities).toLowerCase()).not.toMatch(
+      /immigration|diagnosis|financial|medical|exact address|phone number/
+    );
+    expect(inferredAssumptions).not.toContain(
+      'Payment and purchase steps need clear confirmation.'
+    );
+
+    const routineVolunteerNetwork = interpretProductBrief({
+      description:
+        'A volunteer network that organizes monthly litter cleanups and neighborhood garden events.',
+    });
+    expect(routineVolunteerNetwork.inferredAssumptions[0]).not.toBe(
+      'Your brief points to: Community Emergency Response Operations.'
+    );
+  });
+
   it('does not infer payment activity from an explicit exclusion', () => {
     const excluded = interpretProductBrief({
       description: 'A repair intake tool for a bicycle workshop. Do not handle payments.',

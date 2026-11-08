@@ -458,12 +458,17 @@ export function composeProjectForDirection(options: DirectionCompositionOptions)
   const isPublicLibraryService = productModel.requiredCapabilities.includes(
     'public-library-service-workflow'
   );
-  const productLabel = isPublicLibraryService
-    ? 'Public Library Service'
+  const isCommunityEmergencyResponse = productModel.requiredCapabilities.includes(
+    'community-emergency-response-workflow'
+  );
+  const productLabel = isPublicLibraryService || isCommunityEmergencyResponse
+    ? isPublicLibraryService
+      ? 'Public Library Service'
+      : 'Community Emergency Response'
     : productModel.entities.some((entity) => entity.name === 'Employee')
       ? 'Employee experience'
       : primaryArchetype.toUpperCase();
-  const manifestName = isPublicLibraryService
+  const manifestName = isPublicLibraryService || isCommunityEmergencyResponse
     ? direction.name
     : `${direction.name} — ${productLabel}`;
 

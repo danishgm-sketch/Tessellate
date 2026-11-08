@@ -23,6 +23,7 @@ import {
   specialiseConsumer,
   specialiseAi,
   specialiseBicycleRepairOperations,
+  specialiseCommunityEmergencyOperations,
   specialiseDeveloperTools,
   specialiseEcommerce,
   specialiseFintechTrading,
@@ -156,7 +157,10 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
       )
     : undefined;
   const archetypeDef = specializedDefinition
-    ? specialiseFoodPantryOperations(specializedDefinition, text)
+    ? specialiseCommunityEmergencyOperations(
+        specialiseFoodPantryOperations(specializedDefinition, text),
+        text
+      )
     : undefined;
   const blueprint = findBlueprintByArchetype(primaryTag);
 
@@ -268,7 +272,8 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     capability === 'short-session-learning' ||
     capability === 'bicycle-repair-service-workflow' ||
     capability === 'meal-planning-workflow' ||
-    capability === 'food-pantry-workflow'
+    capability === 'food-pantry-workflow' ||
+    capability === 'community-emergency-response-workflow'
   );
   const jobsToBeDone: string[] = [
     `Authenticate and access ${archetypeDef?.name ?? 'workspace'}`,

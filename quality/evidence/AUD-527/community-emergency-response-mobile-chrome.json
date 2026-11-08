@@ -1,0 +1,107 @@
+{
+  "brief": "A volunteer mutual-aid network for a flood-prone coastal town. Coordinate requests for bottled water, charging, blankets, accessible transport, and welfare checks between three shelters and six neighborhood hubs. Needs shared-tablet intake that works during outages, multilingual updates, disability-aware prioritisation, volunteer shift handoffs, and stock visibility. Never collect immigration status, diagnoses, or financial data; no payments or fundraising. Public status should show only aggregated capacity and safe pickup points. Record requests locally for later sync, but do not imply that SMS dispatch, live mapping, or synchronisation works while disconnected.",
+  "route": "http://127.0.0.1:4321/workbench?project=proj-direction-a-316d396c83e445978b080374b8f48d9bdira#screen-overview",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "directions": [
+    {
+      "direction": "Coordination Desk",
+      "screenNames": [
+        "Coordination Overview",
+        "Request Intake & Triage",
+        "Shelter & Hub Capacity",
+        "Supplies & Distribution",
+        "Volunteer Shift Handover",
+        "Public Capacity Status"
+      ],
+      "resourceCount": 27
+    },
+    {
+      "direction": "Neighbourhood Commons",
+      "screenNames": [
+        "Coordination Overview",
+        "Request Intake & Triage",
+        "Shelter & Hub Capacity",
+        "Supplies & Distribution",
+        "Volunteer Shift Handover",
+        "Public Capacity Status"
+      ],
+      "resourceCount": 27
+    },
+    {
+      "direction": "Field Operations",
+      "screenNames": [
+        "Coordination Overview",
+        "Request Intake & Triage",
+        "Shelter & Hub Capacity",
+        "Supplies & Distribution",
+        "Volunteer Shift Handover",
+        "Public Capacity Status"
+      ],
+      "resourceCount": 27
+    }
+  ],
+  "selectedProjectId": "proj-direction-a-316d396c83e445978b080374b8f48d9bdira",
+  "editPersistedAcrossReload": true,
+  "manifestExportMatchesSavedProject": true,
+  "standaloneZipFiles": [
+    "README.md",
+    "index.html",
+    "package.json",
+    "project.tess.json",
+    "public/favicon.svg",
+    "src/App.tsx",
+    "src/components/AdvancedDataTable.tsx",
+    "src/components/AppHeader.tsx",
+    "src/components/Button.tsx",
+    "src/components/CollapsibleSidebar.tsx",
+    "src/components/DashboardKpiGrid.tsx",
+    "src/components/EntityProfileHeader.tsx",
+    "src/components/FilterBuilder.tsx",
+    "src/components/Input.tsx",
+    "src/components/MetricCard.tsx",
+    "src/components/Timeline.tsx",
+    "src/index.css",
+    "src/main.tsx",
+    "src/screens/CoordinationOverview.tsx",
+    "src/screens/PublicCapacityStatus.tsx",
+    "src/screens/RequestIntakeTriage.tsx",
+    "src/screens/ShelterHubCapacity.tsx",
+    "src/screens/SuppliesDistribution.tsx",
+    "src/screens/VolunteerShiftHandover.tsx",
+    "tsconfig.json",
+    "vite.config.ts"
+  ],
+  "standalonePackageScripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "standaloneExportDisclosures": {
+    "recordRequestHelperText": true,
+    "recordRequestTitle": true,
+    "buttonHelperTextAccessibleDescription": true
+  },
+  "screenshots": [
+    "quality\\evidence\\AUD-527\\community-emergency-directions-mobile-chrome.png",
+    "quality\\evidence\\AUD-527\\community-emergency-workbench-mobile-chrome.png"
+  ],
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "widthChecks": {
+    "compose": {
+      "viewport": 390,
+      "document": 390
+    },
+    "workbench": {
+      "viewport": 390,
+      "document": 390
+    }
+  }
+}

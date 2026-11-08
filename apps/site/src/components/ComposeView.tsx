@@ -242,9 +242,13 @@ export function ComposeView() {
   const { productModel, screenGraph: _screenGraph, inferredAssumptions, directionA, directionB, directionC } = compositionResult;
   const screenPlan = planScreenGraph(productModel);
   const primaryProductType = productModel.productArchetypes[0]?.tag;
-  const productTypeName = productModel.entities.some((entity) => entity.name === 'Employee')
-    ? 'Employee Experience'
-    : archetypes.find((archetype) => archetype.id === primaryProductType)?.name
+  const productTypeName = productModel.requiredCapabilities.includes(
+    'community-emergency-response-workflow'
+  )
+    ? 'Community Emergency Response'
+    : productModel.entities.some((entity) => entity.name === 'Employee')
+      ? 'Employee Experience'
+      : archetypes.find((archetype) => archetype.id === primaryProductType)?.name
       ?? readableRoleLabel(primaryProductType ?? 'Product');
 
   const handleOpenDirection = async (manifest: ProjectManifest) => {
@@ -877,6 +881,9 @@ function DirectionCard({
           <h3 className="text-lg font-bold text-[#111217] dark:text-[#F5F7FA]">
             {direction.name}
           </h3>
+          <p className="mt-1 text-xs font-medium text-[#343840] dark:text-[#D7DCE5]">
+            {direction.tagline}
+          </p>
           <p className="mt-1 text-xs text-[#62666F] dark:text-[#A8AFBA]">
             {direction.rationale}
           </p>

@@ -1,0 +1,40 @@
+{
+  "artifact": "Workbench downloaded standalone React ZIP",
+  "previewUrl": "http://127.0.0.1:4339/",
+  "cleanPnpmInstall": true,
+  "productionBuild": true,
+  "checkedAt": "2026-11-08T16:57:48.364Z",
+  "disclosure": {
+    "disabled": true,
+    "disabledOpacity": "0.6",
+    "disabledCursor": "not-allowed",
+    "titleRendered": true,
+    "helperTextRendered": true,
+    "helperTextLinkedByAriaDescribedBy": true,
+    "accessibleDescriptionMatched": true
+  },
+  "keyboardFocusStyle": {
+    "focusVisible": true,
+    "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 2px, rgb(37, 71, 232) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px"
+  },
+  "desktopWidth": {
+    "viewport": 1440,
+    "document": 1440
+  },
+  "mobileWidth": {
+    "viewport": 390,
+    "document": 390
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "npmInstall": {
+    "cleanInstall": true,
+    "productionBuild": true,
+    "buildCommand": "npm run build",
+    "notes": "npm warned that esbuild had not been approved for install scripts; build succeeded without approving or running that script."
+  }
+}

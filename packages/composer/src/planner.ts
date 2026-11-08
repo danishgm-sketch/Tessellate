@@ -80,6 +80,23 @@ function requiredRolesForScreen(
   screenType: string,
   grammarRoles: string[]
 ): string[] {
+  if (productModel.requiredCapabilities.includes('community-emergency-response-workflow')) {
+    switch (normalizeName(screenName)) {
+      case 'coordination overview':
+        return ['overview-header', 'metric-cards', 'activity-feed'];
+      case 'request intake and triage':
+        return ['entity-header', 'settings-form', 'save-footer'];
+      case 'shelter and hub capacity':
+        return ['index-header', 'filter-bar', 'data-table', 'pagination'];
+      case 'supplies and distribution':
+        return ['index-header', 'filter-bar', 'data-table', 'pagination'];
+      case 'volunteer shift handover':
+        return ['entity-header', 'activity-feed', 'settings-form', 'save-footer'];
+      case 'public capacity status':
+        return ['overview-header', 'metric-cards', 'activity-feed'];
+    }
+  }
+
   if (productModel.requiredCapabilities.includes('food-pantry-workflow')) {
     switch (normalizeName(screenName)) {
       case 'pickup schedule and waitlist':

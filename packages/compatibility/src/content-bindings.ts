@@ -21,6 +21,9 @@ export function resolveWorkspaceBrand(product: ProductModel, briefDescription = 
   const isLanguageLearning = product.requiredCapabilities.includes('short-session-learning');
   const primaryArchetype = product.productArchetypes[0]?.tag ?? '';
   const isPublicLibrary = product.requiredCapabilities.includes('public-library-service-workflow');
+  const isEmergencyResponse = product.requiredCapabilities.includes(
+    'community-emergency-response-workflow'
+  );
   const community = /community|neighborhood/i.test(
     `${product.primaryAudience} ${product.primaryObjective}`
   );
@@ -32,6 +35,7 @@ export function resolveWorkspaceBrand(product: ProductModel, briefDescription = 
 
   if (employee) return 'People & Co';
   if (isPublicLibrary) return 'Community Library';
+  if (isEmergencyResponse) return 'Community Response';
   if (isLanguageLearning) return 'Language Learning';
   if (community) return 'Example Community';
   if (tradingTerminal) return 'Market Workspace';
@@ -53,6 +57,9 @@ export function bindResourceContent(
 ): Record<string, unknown> {
   const employee = product.entities.some((entity) => entity.name === 'Employee');
   const isLanguageLearning = product.requiredCapabilities.includes('short-session-learning');
+  const isEmergencyResponse = product.requiredCapabilities.includes(
+    'community-emergency-response-workflow'
+  );
   const primaryArchetype = product.productArchetypes[0]?.tag ?? '';
   const isRealEstate = primaryArchetype === 'real-estate';
   const isMarketplaceListings =
@@ -150,6 +157,8 @@ export function bindResourceContent(
   };
   const primaryActionLabel = employee
     ? 'Meet your team'
+    : isEmergencyResponse
+      ? 'Review the response plan'
     : isFlightManagement
       ? 'View upcoming flights'
       : isGroundedSupportAssistant
@@ -188,6 +197,8 @@ export function bindResourceContent(
   };
   const preferredTargetPattern = employee
     ? /^teams?$/i
+    : isEmergencyResponse
+      ? /coordination overview|request intake/i
     : isFlightManagement
       ? /journey overview|flight details/i
       : isPublicLibrary
@@ -222,12 +233,18 @@ export function bindResourceContent(
   const secondaryActionHref = secondaryActionScreen
     ? `#${secondaryActionScreen.id}`
     : primaryActionHref;
-  const headline = employee ? 'A better workday starts with people.' : product.primaryObjective;
+  const headline = employee
+    ? 'A better workday starts with people.'
+    : isEmergencyResponse
+      ? 'Coordinate essential aid with clarity.'
+      : product.primaryObjective;
   const isEmployeeTeamsScreen = employee && /^teams$/i.test(screen.name.trim());
   const isEmployeeEngagementScreen = employee && /engagement|feedback|recognition/i.test(screen.name);
   const isEmployeeSettingsScreen = employee && /settings|policy/i.test(screen.name);
   const description = employee
     ? 'Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.'
+    : isEmergencyResponse
+      ? 'Example coordination workspace. Live requests, supply data, mapping, dispatch, and automatic offline sync are not connected.'
     : isReturnsPortal
       ? 'Find a previous purchase, choose eligible items, and follow each return and refund step.'
       : `A workspace for ${product.primaryAudience.toLowerCase()}.`;
@@ -236,6 +253,8 @@ export function bindResourceContent(
     : `Ready to ${primaryActionLabel.toLowerCase()}?`;
   const conversionCtaDescription = employee
     ? 'Help colleagues find their team, support and policies in one clear place.'
+    : isEmergencyResponse
+      ? 'Example only. Live requests, shelter capacity, mapping, dispatch, and offline sync are not connected.'
     : `Continue with ${primaryActionLabel.toLowerCase()} for ${product.primaryAudience.toLowerCase()}.`;
   const footerDescription = employee
     ? 'A people-first home for onboarding, teams and trusted policies.'
@@ -338,11 +357,17 @@ export function bindResourceContent(
       helperText: 'Example search only. Connect your service to search live developer records.',
     },
   };
-  const searchCopy = searchCopyByArchetype[primaryArchetype] ?? {
+  const searchCopy = isEmergencyResponse
+    ? {
+        label: 'Search shelters and neighborhood hubs',
+        placeholder: 'Search hubs and safe pickup points',
+        helperText: 'Example search only. No live shelter map, dispatch, or pickup data is connected.',
+      }
+    : searchCopyByArchetype[primaryArchetype] ?? {
     label: 'Search records',
     placeholder: 'Search records',
     helperText: 'Example search only. Connect your data source to search live records.',
-  };
+      };
   const items = employee
     ? [
         {
@@ -367,6 +392,24 @@ export function bindResourceContent(
           detail: 'Settings & policies',
         },
       ]
+    : isEmergencyResponse
+      ? [
+          {
+            title: 'Shelter and hub capacity',
+            description: 'Example capacity only. No live occupancy or service data is connected.',
+            detail: 'Example status',
+          },
+          {
+            title: 'Water, charging and blankets',
+            description: 'Example supply list. Stock quantities must be entered and checked by a coordinator.',
+            detail: 'Example supplies',
+          },
+          {
+            title: 'Requests awaiting review',
+            description: 'Example queue only. No real aid requests or welfare checks are connected.',
+            detail: 'Example requests',
+          },
+        ]
     : isReturnsPortal
       ? [
           {
@@ -457,6 +500,37 @@ export function bindResourceContent(
   const events =
     role === 'message-thread'
       ? conversationExamples
+      : isEmergencyResponse && role === 'activity-feed'
+        ? screen.name === 'Public Capacity Status'
+          ? [
+              {
+                time: 'Example · Today',
+                title: 'Aggregate status review',
+                desc: 'Example only. No shelter capacity or safe pickup information is connected.',
+              },
+              {
+                time: 'Example · Today',
+                title: 'Safe pickup information',
+                desc: 'Example only. Public status contains no individual requests or welfare checks.',
+              },
+            ]
+          : [
+              {
+                time: 'Example · Today',
+                title: 'Sample request queued for review',
+                desc: 'Example only. No real aid requests or welfare checks are connected.',
+              },
+              {
+                time: 'Example · Today',
+                title: 'Sample supply check',
+                desc: 'Example only. Shelter and hub stock is not connected to live inventory.',
+              },
+              {
+                time: 'Example · Next shift',
+                title: 'Sample volunteer handover',
+                desc: 'Example only. Volunteer schedules, messaging, and dispatch are not connected.',
+              },
+            ]
       : isLanguageLearning && role === 'activity-feed'
         ? [
             {
@@ -562,6 +636,22 @@ export function bindResourceContent(
         'progress-stepper': 'Welcome milestones',
         'value-proposition': 'Made for everyday employee experiences',
       }
+    : isEmergencyResponse
+      ? {
+          'metric-cards': 'Example shelter and hub capacity',
+          'summary-kpis': 'Example shelter and hub capacity',
+          'activity-feed': screen.name === 'Public Capacity Status'
+            ? 'Example public capacity updates'
+            : 'Example response updates',
+          'settings-form': screen.name === 'Volunteer Shift Handover'
+            ? 'Example shift handover'
+            : 'Example aid request intake',
+          'data-table': screen.name === 'Shelter & Hub Capacity'
+            ? 'Example shelter and hub capacity'
+            : screen.name === 'Supplies & Distribution'
+              ? 'Example water, charging, and blanket stock'
+              : 'Example requests awaiting review',
+        }
     : isLanguageLearning
       ? { 'activity-feed': 'Example 10-minute practice' }
       : isReturnsPortal
@@ -587,6 +677,10 @@ export function bindResourceContent(
         };
   const saveFooterLabel = isReturnsPortal
     ? 'Submit return request'
+    : isEmergencyResponse
+      ? screen.name === 'Volunteer Shift Handover'
+        ? 'Save handover preview'
+        : 'Record request preview'
     : isEmployeeSettingsScreen
       ? 'Save preferences'
       : 'Save changes';
@@ -624,7 +718,9 @@ export function bindResourceContent(
               : (titles[role] ?? screen.name),
     brand,
     links,
-    eyebrow: 'Example organisation · sample content',
+    eyebrow: isEmergencyResponse
+      ? 'Example response coordination · sample content'
+      : 'Example organisation · sample content',
     badge: 'EXAMPLE',
     initials,
     headline: role === 'conversion-cta' ? conversionCtaHeadline : headline,
@@ -636,7 +732,11 @@ export function bindResourceContent(
           ? footerDescription
           : description,
     subtitle: screen.purpose,
-    panelTitle: employee ? 'Your first weeks, made clearer' : 'Your workspace',
+    panelTitle: employee
+      ? 'Your first weeks, made clearer'
+      : isEmergencyResponse
+        ? 'Example response coordination'
+        : 'Your workspace',
     panels: items.slice(0, 3).map((item, index) => ({
       id: `panel-${index}`,
       label: item.detail,
@@ -650,7 +750,19 @@ export function bindResourceContent(
     note: 'Example interface · replace sample data with your organisation',
     items,
     events,
-    cards: employee && isEmployeeEngagementScreen
+    cards: isEmergencyResponse
+      ? screen.name === 'Public Capacity Status'
+        ? [
+            { label: 'Shelter and hub capacity', val: '—', status: 'Example only · no live data' },
+            { label: 'Safe pickup points', val: '—', status: 'Example only · review required' },
+            { label: 'Individual requests', val: 'Hidden', status: 'Not shown on public status' },
+          ]
+        : [
+            { label: 'Shelter and hub capacity', val: '—', status: 'Example only · no live data' },
+            { label: 'Supply checks', val: '—', status: 'Manual updates not connected' },
+            { label: 'Requests awaiting review', val: '—', status: 'Example only · no live data' },
+          ]
+      : employee && isEmployeeEngagementScreen
       ? [
           { label: 'Feedback', val: '—', status: 'No connected data' },
           { label: 'Recognition', val: '—', status: 'No connected data' },
@@ -671,7 +783,61 @@ export function bindResourceContent(
           val: '—',
           status: isTradingTerminal ? 'Market data not connected' : 'No connected data',
         })),
-    rows: isEcommerceCatalog
+    rows: isEmergencyResponse && screen.name === 'Shelter & Hub Capacity'
+      ? [
+          {
+            id: 1,
+            name: 'Example coastal shelter',
+            type: 'Safe pickup point and accessible transport · example only',
+            quality: 0,
+            status: 'Service status not connected',
+            displayValue: 'Capacity not connected',
+          },
+          {
+            id: 2,
+            name: 'Example harbor hub',
+            type: 'Safe pickup point and accessible transport · example only',
+            quality: 0,
+            status: 'Service status not connected',
+            displayValue: 'Capacity not connected',
+          },
+          {
+            id: 3,
+            name: 'Example north hub',
+            type: 'Safe pickup point and accessible transport · example only',
+            quality: 0,
+            status: 'Service status not connected',
+            displayValue: 'Capacity not connected',
+          },
+        ]
+      : isEmergencyResponse && screen.name === 'Supplies & Distribution'
+        ? [
+            {
+              id: 1,
+              name: 'Example bottled water',
+              type: 'Manually checked supply · example only',
+              quality: 0,
+              status: 'Stock not connected',
+              displayValue: 'Quantity not connected',
+            },
+            {
+              id: 2,
+              name: 'Example charging access',
+              type: 'Manually checked supply · example only',
+              quality: 0,
+              status: 'Stock not connected',
+              displayValue: 'Quantity not connected',
+            },
+            {
+              id: 3,
+              name: 'Example blankets',
+              type: 'Manually checked supply · example only',
+              quality: 0,
+              status: 'Stock not connected',
+              displayValue: 'Quantity not connected',
+            },
+          ]
+    : isEcommerceCatalog
       ? ['A', 'B', 'C'].map((letter) => ({
           id: letter.charCodeAt(0),
           name: `Example ${ecommerceItemLabel.name} ${letter}`,
@@ -846,7 +1012,11 @@ export function bindResourceContent(
                               ? 'Market data not connected'
                               : 'Details not connected',
                           })),
-    columnLabels: isEmployeeTeamsScreen
+    columnLabels: isEmergencyResponse && screen.name === 'Shelter & Hub Capacity'
+      ? { name: 'Shelter or hub', type: 'Access and pickup', quality: 'Capacity', status: 'Service status' }
+      : isEmergencyResponse && screen.name === 'Supplies & Distribution'
+        ? { name: 'Supply', type: 'Check details', quality: 'Quantity', status: 'Stock status' }
+    : isEmployeeTeamsScreen
       ? { name: 'Team', type: 'Focus', quality: 'Members', status: 'Status' }
       : isEmployeeEngagementScreen
         ? { name: 'Item', type: 'Type', quality: 'Details', status: 'Status' }
@@ -942,7 +1112,11 @@ export function bindResourceContent(
             : role === 'auth-card'
               ? 'Work email'
               : role === 'settings-form'
-                ? isReturnsPortal
+                ? isEmergencyResponse
+                  ? screen.name === 'Volunteer Shift Handover'
+                    ? 'Shift handover notes (preview only)'
+                    : 'Aid type and assigned hub (preview only)'
+                  : isReturnsPortal
                   ? 'Return reason'
                   : isEmployeeSettingsScreen
                     ? 'Policy acknowledgement (preview only)'
@@ -957,6 +1131,8 @@ export function bindResourceContent(
         ? searchCopy.placeholder
         : role === 'message-composer'
           ? 'Write a message…'
+          : role === 'settings-form' && isEmergencyResponse
+            ? 'Preview only — entries are not saved or synced'
           : role === 'settings-form' && isEmployeeSettingsScreen
             ? 'Local preview — not saved'
           : role === 'settings-form' && isReturnsPortal
@@ -969,10 +1145,14 @@ export function bindResourceContent(
           ? 'Example input. Connect a messaging backend to send messages.'
           : role === 'save-footer' && isReturnsPortal
             ? 'Connect a returns service before submitting requests.'
+            : role === 'save-footer' && isEmergencyResponse
+              ? 'Example only. This preview does not store requests or handovers or sync after outages.'
             : role === 'save-footer' && isEmployeeSettingsScreen
               ? 'Connect persistence to save.'
               : role === 'save-footer'
                 ? 'Connect persistence to save changes.'
+          : role === 'settings-form' && isEmergencyResponse
+            ? 'Example field only. Do not enter names, contact details, diagnoses, immigration status, or other personal information. This preview does not save or sync entries.'
           : role === 'settings-form' && isEmployeeSettingsScreen
             ? 'Sample respectful workplace and information security guidance. Replace with approved company text; acknowledgements are not stored in this preview.'
           : role === 'settings-form' && isReturnsPortal
@@ -988,7 +1168,9 @@ export function bindResourceContent(
         : role === 'auth-footer'
           ? 'Authentication backend required'
           : 'Continue',
-    disabled: ['save-footer', 'auth-footer', 'action-controls', 'action-button', 'pagination'].includes(role),
+    disabled:
+      (isEmergencyResponse && role === 'settings-form') ||
+      ['save-footer', 'auth-footer', 'action-controls', 'action-button', 'pagination'].includes(role),
     href: primaryActionHref,
   };
   if (role === 'save-footer' && isReturnsPortal) {
@@ -996,6 +1178,12 @@ export function bindResourceContent(
   }
   if (role === 'save-footer' && isEmployeeSettingsScreen) {
     content.title = 'Connect persistence to save.';
+  }
+  if (role === 'save-footer' && isEmergencyResponse) {
+    content.title = 'Example only. No request or handover is recorded.';
+  }
+  if (role === 'settings-form' && isEmergencyResponse) {
+    content.title = 'Example only. This field is disabled and does not save or sync entries.';
   }
   if (role === 'pagination') {
     content.title = 'Connect a paging data source before navigating additional records.';
@@ -1032,6 +1220,7 @@ export function bindResourceContent(
     role !== 'payment-fields' &&
     role !== 'submit-button' &&
     role !== 'pagination' &&
+    !(isEmergencyResponse && (role === 'settings-form' || role === 'save-footer')) &&
     !(role === 'save-footer' && (isReturnsPortal || isEmployeeSettingsScreen))
   ) {
     content.title = 'Connect the exported application to your backend to enable this action.';

@@ -350,6 +350,49 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     );
   });
 
+  it('preserves visible helper text and accessible descriptions for disabled exported actions', () => {
+    const project: ProjectManifest = structuredClone(testProject);
+    project.screens[0]!.rootNode.children.push({
+      id: 'export-disabled-action-with-explanation',
+      nodeType: 'component',
+      semanticRole: 'action-button',
+      resourceRef: { id: 'res_primitive_button_01', slug: 'button', version: '1.0.0' },
+      props: {
+        children: 'Record request preview',
+        disabled: true,
+        title: 'Example only. No request or handover is recorded.',
+        helperText: 'This preview does not store or submit a request.',
+        'aria-describedby': 'existing-action-context',
+      },
+      slots: {},
+      children: [],
+    });
+
+    const viteTree = generateSourceTree(project);
+    const viteScreen = viteTree['src/screens/Dashboard.tsx'];
+    const viteButton = viteTree['src/components/Button.tsx'];
+    expect(viteScreen).toContain('helperText={"This preview does not store or submit a request."}');
+    expect(viteScreen).toContain('title={"Example only. No request or handover is recorded."}');
+    expect(viteButton).toContain('const descriptionReferences = [ariaDescribedBy, helperText ? helperTextId : undefined]');
+    expect(viteButton).toContain('aria-describedby={descriptionReferences}');
+    expect(viteButton).toContain('<p id={helperTextId}');
+    expect(viteButton).toContain('{helperText}</p>');
+    expect(viteButton).toContain('focus-visible:ring-2');
+    expect(viteButton).toContain('disabled:cursor-not-allowed disabled:opacity-60');
+
+    const nextTree = generateSourceTree(project, { target: 'nextjs' });
+    const nextScreen = nextTree['screens/Dashboard.tsx'];
+    const nextButton = nextTree['components/Button.tsx'];
+    expect(nextScreen).toContain('helperText={"This preview does not store or submit a request."}');
+    expect(nextScreen).toContain('title={"Example only. No request or handover is recorded."}');
+    expect(nextButton).toContain('const descriptionReferences = [ariaDescribedBy, helperText ? helperTextId : undefined]');
+    expect(nextButton).toContain('aria-describedby={descriptionReferences}');
+    expect(nextButton).toContain('<p id={helperTextId}');
+    expect(nextButton).toContain('{helperText}</p>');
+    expect(nextButton).toContain('focus-visible:ring-2');
+    expect(nextButton).toContain('disabled:cursor-not-allowed disabled:opacity-60');
+  });
+
   it('rejects an unsupported resource variant instead of exporting a component fallback style', () => {
     const invalidVariantProject: ProjectManifest = {
       ...testProject,
@@ -472,6 +515,20 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         children: [],
       },
     );
+    screenNavigationProject.screens[0]!.rootNode.children.push({
+      id: 'export-disabled-action-with-description',
+      nodeType: 'component',
+      semanticRole: 'action-button',
+      resourceRef: { id: 'res_primitive_button_01', slug: 'button', version: '1.0.0' },
+      props: {
+        label: 'Request preview unavailable',
+        disabled: true,
+        title: 'Example only. No request is submitted.',
+        helperText: 'This standalone preview does not submit or save requests.',
+      },
+      slots: {},
+      children: [],
+    });
     const sourceTree = generateSourceTree(screenNavigationProject);
 
     // Create a temporary export directory
@@ -583,6 +640,14 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         expect(await page.getByText(`People's "headcount"`, { exact: true }).isVisible()).toBe(true);
         expect(await page.getByText('500 employees', { exact: true }).isVisible()).toBe(true);
         expect(await page.getByRole('button', { name: `Invite "a colleague"`, exact: true }).isVisible()).toBe(true);
+        const disabledPreviewAction = page.getByRole('button', { name: 'Request preview unavailable' });
+        expect(await disabledPreviewAction.isDisabled()).toBe(true);
+        expect(await disabledPreviewAction.getAttribute('title')).toBe('Example only. No request is submitted.');
+        const disabledPreviewDescription = page.getByText('This standalone preview does not submit or save requests.', { exact: true });
+        expect(await disabledPreviewDescription.isVisible()).toBe(true);
+        const disabledPreviewDescriptionId = await disabledPreviewDescription.getAttribute('id');
+        expect(disabledPreviewDescriptionId).toBeTruthy();
+        expect(await disabledPreviewAction.getAttribute('aria-describedby')).toContain(disabledPreviewDescriptionId!);
         expect(await page.getByText('New hires < starting this week & ready', { exact: true }).isVisible()).toBe(true);
         expect(await page.locator('#root script').count()).toBe(0);
         const trackingAction = page.locator('[data-tracking-id="parity-action"]');

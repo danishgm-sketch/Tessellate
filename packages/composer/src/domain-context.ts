@@ -383,6 +383,160 @@ export function specialiseFoodPantryOperations(
   };
 }
 
+/** Specialize anchored disaster-response coordination without implying live integrations. */
+export function specialiseCommunityEmergencyOperations(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  const hasResponseAnchor =
+    /\b(?:mutual[- ]aid(?: network)?|community emergency response|disaster response(?: coordination)?|humanitarian relief(?: coordination)?)\b/i.test(
+      text
+    );
+  const hasFieldContext =
+    /\b(?:shelters?|neighbou?rhood hubs?|relief supplies|evacuation|flood|wildfire|storm|volunteer shifts?|welfare checks?)\b/i.test(
+      text
+    );
+
+  if (base.id !== 'erp-operations' || !hasResponseAnchor || !hasFieldContext) return base;
+
+  return {
+    ...base,
+    name: 'Community Emergency Response Operations',
+    description:
+      'Coordinate aid requests, shelter and hub capacity, supplies, and volunteer handovers while keeping public status aggregated.',
+    primaryAudience: 'Volunteer coordinators, shelter teams, and neighbourhood-hub leads',
+    primaryObjective:
+      'Coordinate essential-aid requests, shelter capacity, safe pickup points, and volunteer handovers with minimal personal data',
+    userSophistication: 52,
+    trustRequirement: 99,
+    informationComplexity: 78,
+    dataDensity: 70,
+    collaborationLevel: 96,
+    transactionCriticality: 30,
+    navigationComplexity: 74,
+    mobileImportance: 98,
+    defaultEntities: [
+      {
+        name: 'ReliefRequest',
+        description: 'An aid type, assigned hub, manually reviewed priority, and status without identity or contact details',
+        fields: ['id', 'aidType', 'assignedHubId', 'manualPriority', 'status'],
+      },
+      {
+        name: 'HubCapacity',
+        description: 'Example service capacity and safe pickup availability for a shelter or neighborhood hub',
+        fields: ['id', 'hubName', 'safePickupPoints', 'accessibleTransportCapacity', 'serviceStatus'],
+      },
+      {
+        name: 'SupplyStock',
+        description: 'A manually checked supply type, quantity, and assigned hub',
+        fields: ['id', 'supplyType', 'quantityAvailable', 'hubId', 'lastUpdatedAt'],
+      },
+      {
+        name: 'ShiftHandover',
+        description: 'Open request count, supply notes, and update time for the next volunteer shift',
+        fields: ['id', 'hubId', 'openRequestCount', 'supplyNotes', 'lastUpdatedAt'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'review-aid-requests',
+        name: 'Review essential-aid requests and manually assign a shelter or neighborhood hub',
+        steps: ['record-minimal-aid-type', 'review-priority-manually', 'assign-safe-hub', 'confirm-request-status'],
+      },
+      {
+        id: 'coordinate-shelter-pickup-capacity',
+        name: 'Coordinate shelter and hub capacity, safe pickup points, and accessible transport',
+        steps: ['review-hub-service-status', 'confirm-safe-pickup-point', 'coordinate-accessible-transport'],
+      },
+      {
+        id: 'track-relief-supplies',
+        name: 'Review manually checked water, charging, and blanket supplies at each hub',
+        steps: ['record-supply-quantity', 'assign-supply-to-hub', 'review-last-checked-time'],
+      },
+      {
+        id: 'handover-volunteer-shift',
+        name: 'Hand over open requests, supply notes, and unresolved work to the next volunteer shift',
+        steps: ['review-open-request-count', 'record-supply-notes', 'confirm-next-shift-handover'],
+      },
+      {
+        id: 'publish-aggregated-public-status',
+        name: 'Share aggregated service capacity and safe pickup points without exposing individual requests',
+        steps: ['aggregate-hub-capacity', 'remove-request-level-details', 'review-public-status-copy'],
+      },
+      {
+        id: 'reconcile-outage-requests',
+        name: 'Review locally recorded requests after an outage; synchronization is not assumed',
+        steps: ['review-locally-recorded-requests', 'check-duplicate-submissions', 'confirm-manual-reconciliation'],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Coordination Overview',
+        screenType: 'dashboard',
+        purpose: 'Review request counts, hub service capacity, supplies, and shift handovers as example data',
+        jobs: ['review-aid-requests', 'coordinate-shelter-pickup-capacity'],
+        required: true,
+      },
+      {
+        name: 'Request Intake & Triage',
+        screenType: 'workspace-editor',
+        purpose: 'Record an aid type and assigned hub for manual priority review using minimal personal data',
+        jobs: ['review-aid-requests', 'reconcile-outage-requests'],
+        required: true,
+      },
+      {
+        name: 'Shelter & Hub Capacity',
+        screenType: 'index-list',
+        purpose: 'Review safe pickup points and accessible transport by shelter or neighborhood hub',
+        jobs: ['coordinate-shelter-pickup-capacity'],
+        required: true,
+      },
+      {
+        name: 'Supplies & Distribution',
+        screenType: 'index-list',
+        purpose: 'Review manually checked water, charging, and blanket quantities at each hub',
+        jobs: ['track-relief-supplies'],
+        required: true,
+      },
+      {
+        name: 'Volunteer Shift Handover',
+        screenType: 'workspace-editor',
+        purpose: 'Pass open requests and supply notes between volunteer shifts',
+        jobs: ['handover-volunteer-shift', 'reconcile-outage-requests'],
+        required: true,
+      },
+      {
+        name: 'Public Capacity Status',
+        screenType: 'dashboard',
+        purpose: 'Show reviewed aggregate capacity and safe pickup points without individual request details',
+        jobs: ['publish-aggregated-public-status'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      'community-emergency-response-workflow',
+      'minimal-aid-request-intake',
+      'privacy-preserving-request-routing',
+      'manual-priority-review',
+      'shelter-hub-capacity-coordination',
+      'accessible-transport-planning',
+      'offline-request-capture-and-reconciliation',
+      'volunteer-shift-handover',
+      'aggregated-public-capacity',
+      'privacy-preserving-public-status',
+    ],
+    forbiddenPatterns: [
+      ...base.forbiddenPatterns,
+      'collecting-immigration-status-or-medical-diagnosis',
+      'publishing-individual-request-or-welfare-check-details',
+      'automated-emergency-eligibility-or-priority-decisions',
+      'claiming-live-sms-dispatch-or-mapping-integrations',
+      'claiming-automatic-offline-synchronization',
+      'payment-or-fundraising-collection',
+    ],
+  };
+}
+
 /** Separate institutional market tooling from the fintech archetype's banking defaults. */
 export function specialiseFintechTrading(
   base: ArchetypeDefinition,
