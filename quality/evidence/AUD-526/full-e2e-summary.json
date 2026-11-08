@@ -1,0 +1,150 @@
+{
+  "capturedAt": "2026-11-08T14:53:42.586Z",
+  "command": "pnpm test:e2e",
+  "environment": "Windows worktree on codex/research-archetype-fit; Astro production preview, production-like local Sites Worker, standalone Vite preview; Chromium desktop and mobile.",
+  "result": "PASS",
+  "projects": [
+    {
+      "name": "Astro desktop and mobile Chromium",
+      "passed": 412,
+      "configuredSkips": 140,
+      "failed": 0
+    },
+    {
+      "name": "Sites Worker desktop Chromium",
+      "passed": 250,
+      "configuredSkips": 11,
+      "failed": 0
+    },
+    {
+      "name": "Sites Worker mobile Chromium",
+      "passed": 215,
+      "configuredSkips": 46,
+      "failed": 0
+    },
+    {
+      "name": "Standalone preview Chromium",
+      "passed": 3,
+      "configuredSkips": 0,
+      "failed": 0
+    }
+  ],
+  "totals": {
+    "passed": 880,
+    "scheduled": 1077,
+    "configuredSkips": 197,
+    "failed": 0
+  },
+  "focusedLibraryJourney": {
+    "command": "tests/e2e/library-service-archetype-fit.spec.ts in Astro desktop/mobile and Sites Worker desktop/mobile",
+    "result": "PASS",
+    "profiles": [
+      {
+        "id": "astroDesktop",
+        "name": "Astro desktop Chromium",
+        "runtime": {
+          "consoleErrors": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "passed": 1,
+        "configuredSkips": 0,
+        "failed": 0,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "composeDocumentWidth": 1440,
+        "workbenchDocumentWidth": 1440,
+        "storedManifestMatchesActive": true,
+        "exportedManifestMatchesActive": true,
+        "composeScreenshot": "quality/evidence/AUD-526/public-library-compose-desktop.png",
+        "workbenchScreenshot": "quality/evidence/AUD-526/public-library-workbench-desktop.png"
+      },
+      {
+        "id": "astroMobile",
+        "name": "Astro mobile Chromium",
+        "runtime": {
+          "consoleErrors": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "passed": 1,
+        "configuredSkips": 0,
+        "failed": 0,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "composeDocumentWidth": 390,
+        "workbenchDocumentWidth": 390,
+        "storedManifestMatchesActive": true,
+        "exportedManifestMatchesActive": true,
+        "composeScreenshot": "quality/evidence/AUD-526/public-library-compose-mobile.png",
+        "workbenchScreenshot": "quality/evidence/AUD-526/public-library-workbench-mobile.png"
+      },
+      {
+        "id": "sitesWorkerDesktop",
+        "name": "Sites Worker desktop Chromium",
+        "runtime": {
+          "consoleErrors": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "passed": 1,
+        "configuredSkips": 0,
+        "failed": 0,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "composeDocumentWidth": 1440,
+        "workbenchDocumentWidth": 1440,
+        "storedManifestMatchesActive": true,
+        "exportedManifestMatchesActive": true,
+        "composeScreenshot": "quality/evidence/AUD-526/public-library-compose-sites-desktop.png",
+        "workbenchScreenshot": "quality/evidence/AUD-526/public-library-workbench-sites-desktop.png"
+      },
+      {
+        "id": "sitesWorkerMobile",
+        "name": "Sites Worker mobile Chromium",
+        "runtime": {
+          "consoleErrors": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "httpErrors": 0
+        },
+        "passed": 1,
+        "configuredSkips": 0,
+        "failed": 0,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "composeDocumentWidth": 390,
+        "workbenchDocumentWidth": 390,
+        "storedManifestMatchesActive": true,
+        "exportedManifestMatchesActive": true,
+        "composeScreenshot": "quality/evidence/AUD-526/public-library-compose-sites-mobile.png",
+        "workbenchScreenshot": "quality/evidence/AUD-526/public-library-workbench-sites-mobile.png"
+      }
+    ],
+    "assertions": [
+      "All three library directions use concise domain-specific names and the visible Community Library preview brand.",
+      "The preview does not expose the internal BookRecord Workspace fallback.",
+      "The Workbench project title is fully rendered at 390px (scrollWidth <= clientWidth).",
+      "The typed project manifest equals both the persisted local record and the validated .tess.json export.",
+      "All eight unavailable library service roles remain explicit; no connected catalogue is claimed."
+    ]
+  },
+  "notes": [
+    "All 324 public catalogue resources rendered at their certified widths in the Sites Worker desktop corpus sweep.",
+    "All 40 Gold resources passed the desktop render/variant and accessibility certification suites.",
+    "The four-profile library regression passes in the full matrix and was also run directly after the identity changes.",
+    "Configured profile skips are not failures."
+  ],
+  "evidence": "quality/evidence/AUD-526/"
+}

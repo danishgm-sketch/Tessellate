@@ -1,4 +1,4 @@
-import type { ArchetypeDefinition } from './archetypes.js';
+import { hasPositiveArchetypeCue, type ArchetypeDefinition } from './archetypes.js';
 
 export function isEmployeeExperienceBrief(text: string): boolean {
   return (
@@ -119,6 +119,421 @@ export function specialisePeopleOperations(
       'policy-acknowledgements',
     ],
     forbiddenPatterns: [],
+  };
+}
+
+/** Replace warehouse defaults with consent-aware service workflows for bicycle repair co-ops. */
+export function specialiseBicycleRepairOperations(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  const isBicycleRepairService =
+    /\b(?:bicycle|bike|e[- ]?bike)\b/i.test(text) &&
+    /\b(?:repair|service)\b/i.test(text) &&
+    /\b(?:shop|co[- ]?op|cooperative|workshop|mechanics?|service desk)\b/i.test(text);
+
+  if (base.id !== 'erp-operations' || !isBicycleRepairService) return base;
+
+  return {
+    ...base,
+    name: 'Bicycle Repair Operations',
+    description:
+      'Service intake, safety inspection, consented estimates, parts availability, and pickup readiness for bicycle repair workshops.',
+    primaryAudience: 'Mechanics, service advisors, and volunteer coordinators at bicycle repair co-ops',
+    primaryObjective:
+      'Receive bicycles, triage brake and steering safety, confirm repair estimates, reserve available parts, and return each bicycle ready for pickup',
+    userSophistication: 62,
+    trustRequirement: 94,
+    informationComplexity: 72,
+    dataDensity: 68,
+    collaborationLevel: 74,
+    transactionCriticality: 45,
+    navigationComplexity: 68,
+    mobileImportance: 92,
+    defaultEntities: [
+      {
+        name: 'RepairJob',
+        description: 'A bicycle repair request with reported symptoms, safety status, consent, and pickup state',
+        fields: ['id', 'bikeType', 'reportedIssue', 'safetyStatus', 'estimateStatus', 'assignedMechanic', 'partsStatus', 'pickupReady'],
+      },
+      {
+        name: 'Inspection',
+        description: 'Recorded brake and steering checks for a repair job',
+        fields: ['id', 'repairJobId', 'brakeStatus', 'steeringStatus', 'findings', 'inspectedBy', 'inspectedAt'],
+      },
+      {
+        name: 'Part',
+        description: 'A repair part with on-hand and reserved quantities',
+        fields: ['id', 'name', 'stockOnHand', 'reservedQuantity', 'availability'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'intake-bicycle',
+        name: 'Check in a bicycle and record the rider-reported issue',
+        steps: ['record-bike-details', 'capture-reported-symptoms', 'assign-intake-priority'],
+      },
+      {
+        id: 'inspect-bicycle-safety',
+        name: 'Inspect brake and steering safety before assigning repair work',
+        steps: ['inspect-brakes', 'inspect-steering', 'record-safety-findings', 'set-repair-priority'],
+      },
+      {
+        id: 'confirm-repair-estimate',
+        name: 'Confirm estimate consent, check parts, and assign a mechanic',
+        steps: ['prepare-itemized-estimate', 'record-rider-consent', 'reserve-available-parts', 'assign-mechanic'],
+      },
+      {
+        id: 'prepare-bicycle-pickup',
+        name: 'Verify completed safety checks and prepare a bicycle for pickup',
+        steps: ['record-repair-checks', 'verify-safety', 'mark-pickup-ready', 'notify-rider'],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Service Desk',
+        screenType: 'dashboard',
+        purpose: 'Review today’s check-ins, safety-critical repairs, and pickup commitments',
+        jobs: ['review-repair-queue', 'triage-safety-priority'],
+        required: true,
+      },
+      {
+        name: 'Repair Intake',
+        screenType: 'detail-entity',
+        purpose: 'Record the bicycle, rider-reported symptoms, and intake priority',
+        jobs: ['intake-bicycle', 'record-reported-symptoms'],
+        required: true,
+      },
+      {
+        name: 'Safety Inspection',
+        screenType: 'workspace-editor',
+        purpose: 'Document brake and steering checks before repair work is assigned',
+        jobs: ['inspect-bicycle-safety', 'record-safety-findings'],
+        required: true,
+      },
+      {
+        name: 'Parts & Estimates',
+        screenType: 'index-list',
+        purpose: 'Check part availability and record rider consent for a repair estimate',
+        jobs: ['confirm-repair-estimate', 'reserve-available-parts'],
+        required: true,
+      },
+      {
+        name: 'Pickup & Handover',
+        screenType: 'detail-entity',
+        purpose: 'Verify safety checks and mark a completed bicycle ready for pickup',
+        jobs: ['prepare-bicycle-pickup', 'notify-rider'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      'bicycle-repair-service-workflow',
+      'service-intake',
+      'brake-and-steering-safety-inspection',
+      'consented-repair-estimates',
+      'parts-availability',
+      'pickup-readiness',
+    ],
+    forbiddenPatterns: [
+      ...base.forbiddenPatterns,
+      'marking-a-safety-critical-bicycle-ready-without-an-inspection-record',
+      'charging-for-repairs-before-rider-estimate-consent',
+    ],
+  };
+}
+
+/** Replace warehouse defaults with privacy-conscious food-pantry operations. */
+export function specialiseFoodPantryOperations(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  const isCommunityFoodPantry =
+    /\b(?:food pantry|food bank|community pantry)\b/i.test(text) &&
+    /\b(?:households?|volunteers?|grocery packs?|emergency parcels?|food safety|chilled stock|expiry dates?|waitlist|pickup instructions?)\b/i.test(
+      text
+    );
+
+  if (base.id !== 'erp-operations' || !isCommunityFoodPantry) return base;
+
+  return {
+    ...base,
+    name: 'Community Food Pantry Operations',
+    description:
+      'Coordinate household pickup, weekly grocery-pack choices, emergency parcels, safe stock rotation, and restricted food-safety escalation.',
+    primaryAudience: 'Households, pantry volunteers, and assigned food-safety coordinators',
+    primaryObjective:
+      'Coordinate weekly grocery-pack choices, same-day emergency parcels, chilled-stock expiry, and clear pickup instructions while collecting only essential household details',
+    userSophistication: 48,
+    trustRequirement: 96,
+    informationComplexity: 66,
+    dataDensity: 58,
+    collaborationLevel: 88,
+    transactionCriticality: 32,
+    navigationComplexity: 64,
+    mobileImportance: 96,
+    defaultEntities: [
+      {
+        name: 'Household Pickup',
+        description: 'A household-selected name, pickup essentials, chosen pack, and collection status',
+        fields: ['id', 'chosenName', 'pickupEssentials', 'packSelection', 'pickupStatus'],
+      },
+      {
+        name: 'Pack Selection',
+        description: 'A household’s choices for a scheduled weekly grocery pack',
+        fields: ['id', 'householdId', 'week', 'chosenItems', 'substitutions', 'status'],
+      },
+      {
+        name: 'Stock Lot',
+        description: 'A pantry item with storage conditions, quantity, and use-by date',
+        fields: ['id', 'itemName', 'storageCondition', 'availableQuantity', 'useByDate'],
+      },
+      {
+        name: 'Restricted Safety Route',
+        description: 'A private coordinator route with a neutral volunteer packing alert',
+        fields: ['id', 'householdId', 'assignedCoordinatorId', 'neutralPackingAlert', 'status'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'schedule-pantry-pickups',
+        name: 'Assign weekly pickup slots, update the waitlist, and issue plain-language instructions',
+        steps: ['review-pickup-capacity', 'offer-pickup-slot', 'update-waitlist', 'prepare-pickup-instructions'],
+      },
+      {
+        id: 'select-weekly-pack',
+        name: 'Record a household’s weekly grocery-pack choices and confirm available substitutions',
+        steps: ['review-pack-options', 'record-household-choices', 'confirm-substitutions'],
+      },
+      {
+        id: 'prepare-emergency-parcel',
+        name: 'Coordinate a same-day emergency parcel using only the chosen name and pickup essentials',
+        steps: ['record-essential-pickup-details', 'prepare-parcel', 'confirm-handoff'],
+      },
+      {
+        id: 'rotate-chilled-stock',
+        name: 'Check chilled-stock expiry, rotate safe items, and flag stock that must be withdrawn',
+        steps: ['review-storage-condition', 'sort-by-use-by-date', 'withdraw-expired-stock'],
+      },
+      {
+        id: 'route-restricted-safety-concern',
+        name: 'Send a neutral packing alert to volunteers and route restricted safety concerns to an assigned coordinator',
+        steps: ['prepare-neutral-packing-alert', 'restrict-safety-details', 'route-safeguarding-concern'],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Pickup Schedule & Waitlist',
+        screenType: 'dashboard',
+        purpose: 'Review pickup capacity, waitlist changes, and same-day parcel priorities',
+        jobs: ['schedule-pantry-pickups', 'review-pickup-capacity', 'triage-emergency-parcels'],
+        required: true,
+      },
+      {
+        name: 'Household Intake & Pickup',
+        screenType: 'detail-entity',
+        purpose: 'Record a chosen name and pickup essentials, then provide clear multilingual instructions',
+        jobs: ['record-essential-pickup-details', 'prepare-pickup-instructions'],
+        required: true,
+      },
+      {
+        name: 'Weekly Pack Choices',
+        screenType: 'detail-entity',
+        purpose: 'Record grocery-pack choices and confirm available substitutions with the household',
+        jobs: ['review-pack-options', 'record-household-choices', 'confirm-substitutions'],
+        required: true,
+      },
+      {
+        name: 'Emergency Parcels',
+        screenType: 'index-list',
+        purpose: 'Coordinate same-day parcels and neutral packing alerts without exposing private notes',
+        jobs: ['triage-emergency-parcels', 'prepare-parcel', 'confirm-handoff'],
+        required: true,
+      },
+      {
+        name: 'Stock & Expiry',
+        screenType: 'index-list',
+        purpose: 'Review chilled stock by storage condition and use-by date before rotation or withdrawal',
+        jobs: ['review-storage-condition', 'sort-by-use-by-date', 'withdraw-expired-stock'],
+        required: true,
+      },
+      {
+        name: 'Food Safety & Safeguarding',
+        screenType: 'detail-entity',
+        purpose: 'Keep allergy details with assigned food-safety coordinators and route safeguarding separately',
+        jobs: ['restrict-safety-details', 'route-safeguarding-concern'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      'food-pantry-workflow',
+      'minimal-household-data-intake',
+      'offline-intake-continuity',
+      'multilingual-pickup-instructions',
+      'expiry-aware-chilled-stock',
+      'coordinator-restricted-allergy-details',
+      'private-safeguarding-route',
+    ],
+    forbiddenPatterns: [
+      ...base.forbiddenPatterns,
+      'collecting-proof-of-immigration-income-or-diagnosis',
+      'showing-private-allergy-notes-to-volunteers',
+      'exposing-safeguarding-case-notes',
+      'payment-or-donation-collection',
+    ],
+  };
+}
+
+/** Specialize anchored disaster-response coordination without implying live integrations. */
+export function specialiseCommunityEmergencyOperations(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  const hasResponseAnchor =
+    /\b(?:mutual[- ]aid(?: network)?|community emergency response|disaster response(?: coordination)?|humanitarian relief(?: coordination)?)\b/i.test(
+      text
+    );
+  const hasFieldContext =
+    /\b(?:shelters?|neighbou?rhood hubs?|relief supplies|evacuation|flood|wildfire|storm|volunteer shifts?|welfare checks?)\b/i.test(
+      text
+    );
+
+  if (base.id !== 'erp-operations' || !hasResponseAnchor || !hasFieldContext) return base;
+
+  return {
+    ...base,
+    name: 'Community Emergency Response Operations',
+    description:
+      'Coordinate aid requests, shelter and hub capacity, supplies, and volunteer handovers while keeping public status aggregated.',
+    primaryAudience: 'Volunteer coordinators, shelter teams, and neighbourhood-hub leads',
+    primaryObjective:
+      'Coordinate essential-aid requests, shelter capacity, safe pickup points, and volunteer handovers with minimal personal data',
+    userSophistication: 52,
+    trustRequirement: 99,
+    informationComplexity: 78,
+    dataDensity: 70,
+    collaborationLevel: 96,
+    transactionCriticality: 30,
+    navigationComplexity: 74,
+    mobileImportance: 98,
+    defaultEntities: [
+      {
+        name: 'ReliefRequest',
+        description: 'An aid type, assigned hub, manually reviewed priority, and status without identity or contact details',
+        fields: ['id', 'aidType', 'assignedHubId', 'manualPriority', 'status'],
+      },
+      {
+        name: 'HubCapacity',
+        description: 'Example service capacity and safe pickup availability for a shelter or neighborhood hub',
+        fields: ['id', 'hubName', 'safePickupPoints', 'accessibleTransportCapacity', 'serviceStatus'],
+      },
+      {
+        name: 'SupplyStock',
+        description: 'A manually checked supply type, quantity, and assigned hub',
+        fields: ['id', 'supplyType', 'quantityAvailable', 'hubId', 'lastUpdatedAt'],
+      },
+      {
+        name: 'ShiftHandover',
+        description: 'Open request count, supply notes, and update time for the next volunteer shift',
+        fields: ['id', 'hubId', 'openRequestCount', 'supplyNotes', 'lastUpdatedAt'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'review-aid-requests',
+        name: 'Review essential-aid requests and manually assign a shelter or neighborhood hub',
+        steps: ['record-minimal-aid-type', 'review-priority-manually', 'assign-safe-hub', 'confirm-request-status'],
+      },
+      {
+        id: 'coordinate-shelter-pickup-capacity',
+        name: 'Coordinate shelter and hub capacity, safe pickup points, and accessible transport',
+        steps: ['review-hub-service-status', 'confirm-safe-pickup-point', 'coordinate-accessible-transport'],
+      },
+      {
+        id: 'track-relief-supplies',
+        name: 'Review manually checked water, charging, and blanket supplies at each hub',
+        steps: ['record-supply-quantity', 'assign-supply-to-hub', 'review-last-checked-time'],
+      },
+      {
+        id: 'handover-volunteer-shift',
+        name: 'Hand over open requests, supply notes, and unresolved work to the next volunteer shift',
+        steps: ['review-open-request-count', 'record-supply-notes', 'confirm-next-shift-handover'],
+      },
+      {
+        id: 'publish-aggregated-public-status',
+        name: 'Share aggregated service capacity and safe pickup points without exposing individual requests',
+        steps: ['aggregate-hub-capacity', 'remove-request-level-details', 'review-public-status-copy'],
+      },
+      {
+        id: 'reconcile-outage-requests',
+        name: 'Review locally recorded requests after an outage; synchronization is not assumed',
+        steps: ['review-locally-recorded-requests', 'check-duplicate-submissions', 'confirm-manual-reconciliation'],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Coordination Overview',
+        screenType: 'dashboard',
+        purpose: 'Review request counts, hub service capacity, supplies, and shift handovers as example data',
+        jobs: ['review-aid-requests', 'coordinate-shelter-pickup-capacity'],
+        required: true,
+      },
+      {
+        name: 'Request Intake & Triage',
+        screenType: 'workspace-editor',
+        purpose: 'Record an aid type and assigned hub for manual priority review using minimal personal data',
+        jobs: ['review-aid-requests', 'reconcile-outage-requests'],
+        required: true,
+      },
+      {
+        name: 'Shelter & Hub Capacity',
+        screenType: 'index-list',
+        purpose: 'Review safe pickup points and accessible transport by shelter or neighborhood hub',
+        jobs: ['coordinate-shelter-pickup-capacity'],
+        required: true,
+      },
+      {
+        name: 'Supplies & Distribution',
+        screenType: 'index-list',
+        purpose: 'Review manually checked water, charging, and blanket quantities at each hub',
+        jobs: ['track-relief-supplies'],
+        required: true,
+      },
+      {
+        name: 'Volunteer Shift Handover',
+        screenType: 'workspace-editor',
+        purpose: 'Pass open requests and supply notes between volunteer shifts',
+        jobs: ['handover-volunteer-shift', 'reconcile-outage-requests'],
+        required: true,
+      },
+      {
+        name: 'Public Capacity Status',
+        screenType: 'dashboard',
+        purpose: 'Show reviewed aggregate capacity and safe pickup points without individual request details',
+        jobs: ['publish-aggregated-public-status'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      'community-emergency-response-workflow',
+      'minimal-aid-request-intake',
+      'privacy-preserving-request-routing',
+      'manual-priority-review',
+      'shelter-hub-capacity-coordination',
+      'accessible-transport-planning',
+      'offline-request-capture-and-reconciliation',
+      'volunteer-shift-handover',
+      'aggregated-public-capacity',
+      'privacy-preserving-public-status',
+    ],
+    forbiddenPatterns: [
+      ...base.forbiddenPatterns,
+      'collecting-immigration-status-or-medical-diagnosis',
+      'publishing-individual-request-or-welfare-check-details',
+      'automated-emergency-eligibility-or-priority-decisions',
+      'claiming-live-sms-dispatch-or-mapping-integrations',
+      'claiming-automatic-offline-synchronization',
+      'payment-or-fundraising-collection',
+    ],
   };
 }
 
@@ -1007,6 +1422,132 @@ export function specialiseTravel(base: ArchetypeDefinition, text: string): Arche
 export function specialiseMedia(base: ArchetypeDefinition, text: string): ArchetypeDefinition {
   if (base.id !== 'media') {
     return base;
+  }
+
+  const isPublicLibrary =
+    ['public library', 'community library', 'book lending library'].some((cue) =>
+      hasPositiveArchetypeCue(text, cue)
+    ) &&
+    [
+      'book catalogue',
+      'book catalog',
+      'reserve books',
+      'hold queue',
+      'branch pickup',
+      'reading circles',
+      'author events',
+      'library branches',
+    ].some((cue) => hasPositiveArchetypeCue(text, cue));
+
+  if (isPublicLibrary) {
+    return {
+      ...base,
+      name: 'Public Library Service',
+      description:
+        'Book discovery, private holds, branch pickup, and community reading programmes for public libraries.',
+      primaryAudience: 'Library members, volunteer librarians, and branch coordinators',
+      primaryObjective:
+        'Help residents discover books, reserve titles for branch pickup, and find local reading programmes while protecting their reading privacy',
+      userSophistication: 38,
+      trustRequirement: 96,
+      informationComplexity: 58,
+      dataDensity: 48,
+      collaborationLevel: 72,
+      transactionCriticality: 18,
+      navigationComplexity: 58,
+      mobileImportance: 96,
+      defaultEntities: [
+        {
+          name: 'BookRecord',
+          description: 'A catalogue title with author, subjects, format, and branch availability',
+          fields: ['id', 'title', 'authors', 'subjects', 'format', 'availabilitySummary'],
+        },
+        {
+          name: 'HoldRequest',
+          description: 'A member’s private request for a title at a selected branch',
+          fields: ['id', 'titleId', 'branchId', 'pickupWindow', 'status'],
+        },
+        {
+          name: 'LibraryBranch',
+          description: 'A local branch with opening hours and accessible services',
+          fields: ['id', 'name', 'openingHours', 'accessibleServices'],
+        },
+        {
+          name: 'LibraryProgramme',
+          description: 'A reading circle or author event with a branch and schedule',
+          fields: ['id', 'title', 'programmeType', 'branchId', 'schedule'],
+        },
+      ],
+      defaultWorkflows: [
+        {
+          id: 'discover-library-items',
+          name: 'Search the book catalogue and review availability by branch',
+          steps: ['search-catalogue', 'review-branch-availability', 'open-title-details'],
+        },
+        {
+          id: 'coordinate-private-holds',
+          name: 'Request a title for pickup and review only the member’s own hold status',
+          steps: ['choose-pickup-branch', 'request-hold', 'review-own-hold-status'],
+        },
+        {
+          id: 'find-reading-programmes',
+          name: 'Find reading circles and local author events by branch and date',
+          steps: ['browse-reading-circles', 'find-author-events', 'review-branch-schedule'],
+        },
+        {
+          id: 'set-reading-accessibility',
+          name: 'Choose accessible reading preferences and review reading-history privacy',
+          steps: ['choose-text-size', 'review-screen-reader-support', 'review-reading-privacy'],
+        },
+      ],
+      recommendedScreens: [
+        {
+          name: 'Catalogue & Branch Availability',
+          screenType: 'search-explore',
+          purpose: 'Search books and compare availability and opening hours across nearby branches',
+          jobs: ['discover-library-items', 'review-branch-availability'],
+          required: true,
+        },
+        {
+          name: 'Holds & Pickup',
+          screenType: 'index-list',
+          purpose: 'Request branch pickup and privately review a member’s own active holds',
+          jobs: ['coordinate-private-holds', 'review-own-hold-status'],
+          required: true,
+        },
+        {
+          name: 'Reading Circles & Events',
+          screenType: 'index-list',
+          purpose: 'Find community reading circles and author events by branch and date',
+          jobs: ['find-reading-programmes', 'review-branch-schedule'],
+          required: true,
+        },
+        {
+          name: 'Accessibility & Privacy',
+          screenType: 'settings',
+          purpose: 'Review reading display preferences, assistive support, and private history controls',
+          jobs: ['set-reading-accessibility', 'review-reading-privacy'],
+          required: true,
+        },
+      ],
+      requiredCapabilities: [
+        'public-library-service-workflow',
+        'book-catalogue-search',
+        'branch-availability-and-hours',
+        'private-hold-requests',
+        'branch-pickup-windows',
+        'reading-circle-and-event-discovery',
+        'accessible-reading-controls',
+        'private-reading-history',
+        'low-bandwidth-catalogue-browsing',
+      ],
+      forbiddenPatterns: [
+        ...base.forbiddenPatterns,
+        'publicly-visible-member-hold-requests',
+        'shared-or-sold-reading-history',
+        'book-purchase-or-payment-assumptions',
+      ],
+    };
   }
 
   if (/\b(?:streaming service|browse films|watchlist|film catalogue)\b/i.test(text)) {
@@ -2062,6 +2603,107 @@ export function specialiseDeveloperTools(
   const selected = profiles.find((profile) => profile.match.test(text));
   return selected ? { ...base, ...selected.context } : base;
 }
+/** Adapt meal-planning language within the existing productivity archetype. */
+export function specialiseMealPlanning(base: ArchetypeDefinition, text: string): ArchetypeDefinition {
+  if (
+    base.id !== 'productivity' ||
+    !['meal planning', 'meal planner', 'weekly meal plan', 'weeknight dinner'].some((cue) =>
+      hasPositiveArchetypeCue(text, cue)
+    ) ||
+    !['recipe', 'shopping list', 'pantry', 'household'].some((cue) => hasPositiveArchetypeCue(text, cue))
+  ) {
+    return base;
+  }
+
+  return {
+    ...base,
+    primaryAudience: 'Adults planning meals and grocery shopping for shared households',
+    primaryObjective:
+      'Plan practical weeknight meals around dietary needs and pantry ingredients, coordinate adult household preferences, and keep a consolidated grocery list usable offline',
+    userSophistication: 45,
+    trustRequirement: 88,
+    informationComplexity: 55,
+    dataDensity: 50,
+    collaborationLevel: 65,
+    transactionCriticality: 30,
+    navigationComplexity: 50,
+    mobileImportance: 100,
+    defaultEntities: [
+      {
+        name: 'WeeklyMealPlan',
+        description: 'A household week plan with dinners, serving counts, and an optional grocery budget target',
+        fields: ['id', 'weekOf', 'mealIds', 'servingCount', 'weeklyGroceryBudget', 'status'],
+      },
+      {
+        name: 'Recipe',
+        description: 'A dinner recipe with editable portions, ingredients, dietary tags, and declared allergens',
+        fields: ['id', 'title', 'servingCount', 'ingredients', 'dietaryTags', 'allergens'],
+      },
+      {
+        name: 'PantryItem',
+        description: 'An available ingredient with quantity and freshness information',
+        fields: ['id', 'name', 'quantity', 'unit', 'useByDate'],
+      },
+      {
+        name: 'ShoppingList',
+        description: 'Missing ingredients consolidated for a week of meals, including offline in-store checks',
+        fields: ['id', 'weekOf', 'items', 'estimatedTotal', 'checkedItemIds', 'lastOfflineUpdate'],
+      },
+      {
+        name: 'MealSuggestion',
+        description: 'An adult household member’s proposed meal and household vote summary',
+        fields: ['id', 'recipeId', 'proposedBy', 'voteCount', 'status'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'plan-weeknight-meals',
+        name: 'Choose five weeknight dinners, adjust portions, and review dietary needs',
+        steps: ['review-household-preferences', 'choose-dinner-recipes', 'adjust-portions', 'confirm-week-plan'],
+      },
+      {
+        id: 'build-shopping-list',
+        name: 'Consolidate missing ingredients, check pantry stock, and shop from an offline-ready list',
+        steps: ['combine-recipe-ingredients', 'subtract-pantry-stock', 'review-budget-target', 'check-items-in-store'],
+      },
+      {
+        id: 'coordinate-meal-suggestions',
+        name: 'Review adult household meal suggestions and votes before confirming the weekly plan',
+        steps: ['review-suggestions', 'compare-votes', 'add-selected-meal'],
+      },
+      {
+        id: 'track-pantry-freshness',
+        name: 'Update pantry quantities and use-by dates to guide the next meal plan',
+        steps: ['check-available-ingredients', 'update-quantities', 'review-use-by-dates'],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Weekly Meal Plan',
+        screenType: 'dashboard',
+        purpose: 'Arrange five weeknight dinners around household preferences and review adult suggestions and votes',
+        jobs: ['choose-dinner-recipes', 'adjust-portions', 'confirm-week-plan'],
+        required: true,
+      },
+      {
+        name: 'Recipes & Dietary Needs',
+        screenType: 'search-explore',
+        purpose: 'Find recipes, edit servings, and review declared allergens and dietary tags',
+        jobs: ['find-recipes', 'adjust-portions', 'review-allergen-labels'],
+        required: true,
+      },
+      {
+        name: 'Shopping List & Pantry',
+        screenType: 'index-list',
+        purpose: 'Consolidate missing groceries, track pantry freshness, and check items while offline in-store',
+        jobs: ['build-shopping-list', 'review-pantry-stock', 'check-items-offline'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [...base.requiredCapabilities, 'meal-planning-workflow'],
+  };
+}
+
 /** Keep community briefs focused on local groups and updates, not photo-story defaults. */
 export function specialiseConsumer(base: ArchetypeDefinition, text: string): ArchetypeDefinition {
   if (
@@ -2132,6 +2774,273 @@ export function specialiseConsumer(base: ArchetypeDefinition, text: string): Arc
       ...base.requiredCapabilities,
       'community-groups',
       'local-event-discovery',
+    ],
+  };
+}
+
+/** Replace OSINT-shaped defaults with field-science workflows for marine surveys. */
+export function specialiseMarineFieldResearch(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  if (
+    base.id !== 'intelligence-research' ||
+    !/\b(?:marine biology|marine ecology|marine fieldwork|oceanographic survey|benthic survey|species survey|transect survey|field atlas)\b/i.test(
+      text
+    )
+  ) {
+    return base;
+  }
+
+  return {
+    ...base,
+    name: 'Marine Field Research',
+    primaryAudience: 'Marine biologists, field survey crews, and permit reviewers',
+    primaryObjective:
+      'Record species observations along survey transects, connect field evidence, and review permit conditions',
+    userSophistication: 70,
+    trustRequirement: 90,
+    informationComplexity: 80,
+    dataDensity: 68,
+    collaborationLevel: 85,
+    transactionCriticality: 35,
+    navigationComplexity: 68,
+    mobileImportance: 95,
+    defaultEntities: [
+      {
+        name: 'Species',
+        description: 'A recorded taxon with identification notes and conservation context',
+        fields: [
+          'id',
+          'scientificName',
+          'commonName',
+          'identificationStatus',
+          'conservationStatus',
+        ],
+      },
+      {
+        name: 'Survey',
+        description: 'A field survey with location, transects, dates, and assigned crew',
+        fields: ['id', 'site', 'transects', 'startDate', 'crew'],
+      },
+      {
+        name: 'Observation',
+        description: 'A field record linking an identified species to a place, time, and evidence',
+        fields: ['id', 'surveyId', 'speciesId', 'location', 'observedAt', 'evidence'],
+      },
+      {
+        name: 'Permit',
+        description: 'A fieldwork permission with jurisdiction, dates, and recorded conditions',
+        fields: ['id', 'jurisdiction', 'validFrom', 'validUntil', 'conditions'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'record-transect-observation',
+        name: 'Record a species observation along a transect and attach field evidence',
+        steps: [
+          'select-survey',
+          'record-location-and-time',
+          'identify-species',
+          'attach-evidence',
+          'save-observation',
+        ],
+      },
+      {
+        id: 'review-survey-permit',
+        name: 'Review permit conditions before assigning fieldwork',
+        steps: ['select-permit', 'check-survey-restrictions', 'confirm-crew-access'],
+      },
+      {
+        id: 'prepare-offline-fieldwork',
+        name: 'Prepare transect records for offline fieldwork and review queued changes after return',
+        steps: [
+          'select-survey-area',
+          'prepare-field-records',
+          'record-offline-observations',
+          'review-pending-changes',
+        ],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Survey Overview',
+        screenType: 'dashboard',
+        purpose:
+          'Review assigned surveys, transects, crew responsibilities, and open permit checks',
+        jobs: ['review-survey-assignments', 'open-transect', 'check-permit-status'],
+        required: true,
+      },
+      {
+        name: 'Field Survey',
+        screenType: 'workspace-editor',
+        purpose:
+          'Capture species observations, location notes, and field evidence along a transect',
+        jobs: ['record-observation', 'attach-field-evidence', 'review-offline-queue'],
+        required: true,
+      },
+      {
+        name: 'Observation Review',
+        screenType: 'index-list',
+        purpose: 'Review and resolve field observations with their linked evidence',
+        jobs: ['filter-observations', 'review-identification', 'resolve-review-item'],
+        required: true,
+      },
+      {
+        name: 'Permits & Protocols',
+        screenType: 'index-list',
+        purpose: 'Check permit validity, survey restrictions, and field protocols',
+        jobs: ['find-permit', 'review-conditions', 'check-validity'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      'field-observation-records',
+      'offline-field-capture',
+      'evidence-provenance-links',
+      'permit-condition-review',
+    ],
+    forbiddenPatterns: ['ephemeral-data-loss', 'unverified-species-identification'],
+  };
+}
+
+/** Replace classroom defaults with a focused adult language-practice workflow. */
+export function specialiseLanguageLearning(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  if (
+    base.id !== 'education' ||
+    !/\b(?:language[- ]learning|language practice|foreign[- ]language|learn(?:ing)?\s+(?:a\s+|new\s+)?language|(?:Spanish|French|German|Italian|Portuguese|Mandarin|Japanese|Arabic)\s+(?:learning|practice|lessons?|course))\b/i.test(
+      text
+    ) ||
+    !/\b(?:adult|dyslexia|offline|no (?:mobile )?signal|speaking practice|pronunciation|adjustable text|short sessions?|commute)\b/i.test(
+      text
+    )
+  ) {
+    return base;
+  }
+
+  const language =
+    text.match(/\b(?:Spanish|French|German|Italian|Portuguese|Mandarin|Japanese|Arabic)\b/i)?.[0]
+      ?.replace(/^./, (initial) => initial.toLocaleUpperCase()) ?? 'target-language';
+
+  return {
+    ...base,
+    name: 'Language Learning',
+    description:
+      'Short, practical language-practice sessions with readable study material and learner-controlled progress.',
+    primaryAudience: `Adult ${language} learners, including people who benefit from dyslexia-friendly reading controls`,
+    primaryObjective:
+      `Build useful ${language} vocabulary and speaking confidence through short listening and practice sessions`,
+    userSophistication: 40,
+    trustRequirement: 80,
+    informationComplexity: 45,
+    dataDensity: 35,
+    collaborationLevel: 25,
+    transactionCriticality: 15,
+    navigationComplexity: 38,
+    mobileImportance: 98,
+    defaultEntities: [
+      {
+        name: 'Language Course',
+        description: 'A learner-selected language and proficiency path',
+        fields: ['id', 'language', 'level', 'learningGoal'],
+      },
+      {
+        name: 'Learning Unit',
+        description: 'A short lesson with audio, vocabulary, and a practice goal',
+        fields: ['id', 'courseId', 'topic', 'estimatedMinutes', 'offlineAvailability'],
+      },
+      {
+        name: 'Vocabulary Item',
+        description: 'A word or phrase with its meaning and pronunciation audio',
+        fields: ['id', 'term', 'translation', 'pronunciationAudio', 'reviewState'],
+      },
+      {
+        name: 'Practice Attempt',
+        description: 'A listening or speaking exercise and its learner-visible feedback',
+        fields: ['id', 'unitId', 'exerciseType', 'completedAt', 'feedback'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'start-short-language-practice',
+        name: `Start a short ${language} practice session`,
+        steps: [
+          'resume-learning-path',
+          'choose-a-short-session',
+          'listen-to-pronunciation',
+          'practice-speaking',
+          'review-progress',
+        ],
+      },
+      {
+        id: 'prepare-lessons-for-offline-use',
+        name: 'Download selected lessons before a commute without mobile signal',
+        steps: [
+          'choose-learning-units',
+          'check-storage-needs',
+          'download-selected-lessons',
+          'open-available-offline-lessons',
+        ],
+      },
+      {
+        id: 'review-vocabulary',
+        name: 'Review vocabulary with adjustable reading and audio controls',
+        steps: [
+          'open-saved-vocabulary',
+          'adjust-text-spacing',
+          'listen-to-pronunciation',
+          'review-word-meaning',
+        ],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Today',
+        screenType: 'dashboard',
+        purpose:
+          `Resume a short ${language} practice session and review progress without pressure-based streaks`,
+        jobs: ['resume-practice', 'review-learning-progress'],
+        required: true,
+      },
+      {
+        name: 'Practice Session',
+        screenType: 'workspace-editor',
+        purpose:
+          'Practice listening and speaking with clear pronunciation audio and dyslexia-friendly text settings',
+        jobs: ['listen-to-pronunciation', 'practice-speaking', 'adjust-text-spacing'],
+        required: true,
+      },
+      {
+        name: 'Vocabulary Review',
+        screenType: 'index-list',
+        purpose: 'Review useful words and phrases with adjustable reading and audio controls',
+        jobs: ['open-saved-vocabulary', 'listen-to-pronunciation', 'review-word-meaning'],
+        required: true,
+      },
+      {
+        name: 'Offline Library',
+        screenType: 'index-list',
+        purpose:
+          'Choose lessons to download and open lessons that are available without a network connection',
+        jobs: ['choose-learning-units', 'download-selected-lessons', 'open-available-offline-lessons'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      'short-session-learning',
+      'audio-pronunciation',
+      'speaking-practice',
+      'dyslexia-friendly-text-controls',
+      'downloadable-offline-lessons',
+    ],
+    forbiddenPatterns: [
+      'pressure-based-streaks',
+      'tiny-dense-reading-layouts',
+      'loss-of-offline-progress',
+      'core-lessons-unavailable-without-signal',
     ],
   };
 }

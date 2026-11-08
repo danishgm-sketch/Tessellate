@@ -5,6 +5,7 @@ import type { ProjectManifest, ProjectNode, ProjectScreen, PartialDesignDNA } fr
 import { normalizeDesignTokens, tokensToCssVariables, MANIFEST_LAYOUT_CSS, nodeLayoutClass, nodeRuntimeVariant } from '@tessellate/renderer';
 import { collectProjectDependencies } from './dependencies.js';
 import { getGoldResourceSource } from './generated-gold-sources.js';
+import { assertRunnableExportable } from './validation.js';
 
 export interface ResolvedResource {
   slug: string;
@@ -61,6 +62,7 @@ function resolveResource(slug: string, semanticRole: string, nodeId: string): Re
  * Vite + React + TypeScript + Tailwind CSS 4 project source tree.
  */
 export function generateViteSourceTree(manifest: ProjectManifest): Record<string, string> {
+  assertRunnableExportable(manifest);
   const files: Record<string, string> = {};
   const slugName = manifest.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'tessellate-app';
 
@@ -178,30 +180,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 `;
 
   // 7. Baseline Component Primitives in src/components/
-  files['src/components/Button.tsx'] = `import React from 'react';
-
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'outline' | 'ghost' | 'quiet' | 'expressive' | 'nocturne';
-  label?: string;
-}
-
-export function Button({ variant = 'primary', label, children, className = '', ...props }: ButtonProps) {
-  const base = "inline-flex items-center justify-center font-medium transition-colors cursor-pointer select-none text-xs px-3.5 py-1.5 rounded-[var(--tess-radius-sm,6px)]";
-  const styles: Record<string, string> = {
-    primary: "bg-[var(--tess-accent-primary,#2547E8)] text-white hover:opacity-90 shadow-xs",
-    outline: "border border-[var(--tess-hairline,#D9D6CF)] text-[var(--tess-ink,#111217)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]",
-    ghost: "text-[var(--tess-ink-secondary,#62666F)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]",
-    quiet: "bg-neutral-900 text-white hover:opacity-90",
-    expressive: "bg-[#2547E8] text-white shadow-md hover:bg-blue-700",
-    nocturne: "bg-[#06B6D4] text-neutral-950 font-bold hover:bg-cyan-400",
-  };
-  return (
-    <button className={\`\${base} \${styles[variant] ?? styles.primary} \${className}\`} {...props}>
-      {label || children}
-    </button>
-  );
-}
-`;
+  files['src/components/Button.tsx'] = BASE_BUTTON_CODE;
 
   files['src/components/MetricCard.tsx'] = `import React from 'react';
 
@@ -271,7 +250,7 @@ export function AppHeader({ title = 'Application', navItems = [] }: AppHeaderPro
       componentName: 'Button',
       fileName: 'Button.tsx',
       code: files['src/components/Button.tsx'],
-      acceptedProps: new Set(['variant', 'label', 'className', 'children', 'disabled', 'onClick', 'type']),
+      acceptedProps: new Set(['variant', 'label', 'className', 'children', 'disabled', 'onClick', 'type', 'title', 'helperText']),
       acceptedVariants: ['quiet', 'expressive', 'nocturne'],
     },
     'metric-card': {
@@ -631,10 +610,13 @@ export const BASE_BUTTON_CODE = `import React from 'react';
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'outline' | 'ghost' | 'quiet' | 'expressive' | 'nocturne';
   label?: string;
+  helperText?: string;
 }
 
-export function Button({ variant = 'primary', label, children, className = '', ...props }: ButtonProps) {
-  const base = "inline-flex items-center justify-center font-medium transition-colors cursor-pointer select-none text-xs px-3.5 py-1.5 rounded-[var(--tess-radius-sm,6px)]";
+export function Button({ variant = 'primary', label, children, className = '', helperText, title, 'aria-describedby': ariaDescribedBy, ...props }: ButtonProps) {
+  const helperTextId = React.useId();
+  const descriptionReferences = [ariaDescribedBy, helperText ? helperTextId : undefined].filter(Boolean).join(' ') || undefined;
+  const base = "inline-flex items-center justify-center font-medium transition-colors cursor-pointer select-none text-xs px-3.5 py-1.5 rounded-[var(--tess-radius-sm,6px)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--tess-accent-primary,#2547E8)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
   const styles: Record<string, string> = {
     primary: "bg-[var(--tess-accent-primary,#2547E8)] text-white hover:opacity-90 shadow-xs",
     outline: "border border-[var(--tess-hairline,#D9D6CF)] text-[var(--tess-ink,#111217)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]",
@@ -644,9 +626,12 @@ export function Button({ variant = 'primary', label, children, className = '', .
     nocturne: "bg-[#06B6D4] text-neutral-950 font-bold hover:bg-cyan-400",
   };
   return (
-    <button className={\`\${base} \${styles[variant] ?? styles.primary} \${className}\`} {...props}>
-      {label || children}
-    </button>
+    <>
+      <button className={\`\${base} \${styles[variant] ?? styles.primary} \${className}\`} {...props} title={title} aria-describedby={descriptionReferences}>
+        {label || children}
+      </button>
+      {helperText && <p id={helperTextId} className="mt-1 text-xs leading-relaxed text-[var(--tess-ink,#111217)]">{helperText}</p>}
+    </>
   );
 }
 `;
@@ -737,6 +722,7 @@ export function generateSourceTree(
 }
 
 export function generateNextJsSourceTree(manifest: ProjectManifest): Record<string, string> {
+  assertRunnableExportable(manifest);
   const files: Record<string, string> = {};
   const slugName = manifest.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'tessellate-app';
 
@@ -884,7 +870,7 @@ export default function RootLayout({
       componentName: 'Button',
       fileName: 'Button.tsx',
       code: files['components/Button.tsx'],
-      acceptedProps: new Set(['variant', 'label', 'className', 'children', 'disabled', 'onClick', 'type']),
+      acceptedProps: new Set(['variant', 'label', 'className', 'children', 'disabled', 'onClick', 'type', 'title', 'helperText']),
       acceptedVariants: ['quiet', 'expressive', 'nocturne'],
     },
     'metric-card': {

@@ -400,6 +400,8 @@ Steps:
 
 No paid remote build worker is required.
 
+The built-in exported `Button` preserves its supported `title` and `helperText` props. It renders helper text beside the control and includes that text in `aria-describedby` while retaining any caller-provided description reference. Exported buttons also provide a visible keyboard-focus ring and distinguish their disabled state. Vite and Next.js exports share the same Button source so their prop handling and interaction styling cannot drift independently.
+
 ## 16. Registry
 
 Build shadcn-compatible registry artefacts from canonical resources.

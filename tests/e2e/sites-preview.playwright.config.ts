@@ -8,6 +8,8 @@ export default defineConfig({
   testMatch: [
     'composition-quality-smoke.spec.ts',
     'compose-workbench-handoff.spec.ts',
+    'community-emergency-response-fit.spec.ts',
+    'library-service-archetype-fit.spec.ts',
     'workbench-page-deletion-integrity.spec.ts',
     'workbench-cross-tab-history-integrity.spec.ts',
     'accessibility-label-semantics-regression.spec.ts',

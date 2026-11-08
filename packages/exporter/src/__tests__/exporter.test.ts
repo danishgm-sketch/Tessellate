@@ -9,7 +9,7 @@ import {
   generateAgentHandoffPackage,
   validatePreExport,
 } from '../index.js';
-import { validProjectFixture, type ProjectManifest } from '@tessellate/schemas';
+import { validProjectFixture, type ProjectManifest, type ProjectNode } from '@tessellate/schemas';
 
 function createTestManifest(): ProjectManifest {
   const manifest = JSON.parse(JSON.stringify(validProjectFixture)) as ProjectManifest;
@@ -348,6 +348,37 @@ describe('Phase 11: Exporter Package', () => {
     const emptyCheck = validatePreExport(noScreens);
     expect(emptyCheck.canExport).toBe(false);
     expect(emptyCheck.errors.some((e) => e.includes('at least one screen'))).toBe(true);
+  });
+
+  it('blocks runnable exports while preserving unresolved roles in manifest and agent handoff exports', () => {
+    const manifest = createTestManifest();
+    const unresolvedRole: ProjectNode = {
+      id: 'node-pickup-capacity-calendar',
+      nodeType: 'section',
+      semanticRole: 'pickup-capacity-calendar',
+      children: [],
+      slots: {},
+      props: { unresolvedRequiredRole: true },
+    };
+    manifest.screens[0]!.rootNode.children.push(unresolvedRole);
+
+    const validation = validatePreExport(manifest);
+    expect(validation.canExport).toBe(false);
+    expect(validation.errors).toContain(
+      'Required interface role "pickup-capacity-calendar" on screen "Overview" is unresolved. Resolve it before generating a runnable application export.'
+    );
+
+    for (const target of ['vite', 'nextjs', 'expo', 'swiftui'] as const) {
+      expect(() => generateSourceTree(manifest, { target })).toThrowError(
+        /Cannot generate a runnable application export: 1 required interface role is unresolved across 1 screen\. Resolve each role before exporting\.\npickup-capacity-calendar — Overview/
+      );
+    }
+
+    expect(generateSourceTree(manifest, { target: 'tokens' })).toBeDefined();
+    expect(exportProjectManifestToJson(manifest)).toContain('"unresolvedRequiredRole": true');
+    expect(generateAgentHandoffPackage(manifest).files['project.tess.json']).toContain(
+      '"unresolvedRequiredRole": true'
+    );
   });
 
   it('generates a Next.js 15 App Router export tree when target is nextjs', () => {

@@ -1,0 +1,27 @@
+{
+  "brief": "A marine biology field atlas for 12 survey crews: offline transects, species evidence, permit workflows, and a calm review queue.",
+  "url": "http://127.0.0.1:4321/compose",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "archetype": "intelligence-research",
+  "specialization": "Marine Field Research",
+  "screens": [
+    "Field Survey",
+    "Observation Review",
+    "Permits & Protocols",
+    "Survey Overview"
+  ],
+  "responsiveState": {
+    "viewportWidth": 390,
+    "documentWidth": 390
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "badResponses": []
+  },
+  "result": "PASS"
+}

@@ -60,6 +60,196 @@ describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
     );
   });
 
+  it('fails unavailable language-learning capabilities closed instead of substituting task boards', () => {
+    const result = composeProjectPipeline(
+      {
+        description:
+          'An offline-first Spanish learning app for adults with dyslexia who study in 10-minute sessions. Include clear progress, adjustable text spacing, audio pronunciation, short speaking practice, and downloadable lessons for commutes with no mobile signal.',
+      },
+      { catalogResources: loadTestCatalog(), seed: 'offline-language-learning' }
+    );
+    const expectedUnresolved = [
+      'dyslexia-friendly-reading-controls',
+      'dyslexia-friendly-reading-controls',
+      'language-progress-summary',
+      'offline-lesson-downloads',
+      'pronunciation-audio',
+      'speaking-practice',
+      'vocabulary-review',
+    ];
+
+    for (const output of [result.directionA, result.directionB, result.directionC]) {
+      expect(output.diagnostics?.map((diagnostic) => diagnostic.role).sort()).toEqual(
+        expectedUnresolved
+      );
+      const practice = nodesForScreen(output.manifest, 'Practice Session');
+      expect(practice.some((node) => node.resourceRef?.slug === 'kanban-board')).toBe(false);
+      for (const role of [
+        'pronunciation-audio',
+        'speaking-practice',
+        'dyslexia-friendly-reading-controls',
+      ]) {
+        const missingRole = practice.find((node) => node.semanticRole === role);
+        expect(missingRole?.props.unresolvedRequiredRole).toBe(true);
+        expect(missingRole?.resourceRef).toBeUndefined();
+      }
+
+      const todayTimeline = nodesForScreen(output.manifest, 'Today').find(
+        (node) => node.semanticRole === 'activity-feed'
+      );
+      const events = todayTimeline?.props.events as Array<{
+        time: string;
+        title: string;
+        desc: string;
+      }>;
+      expect(todayTimeline?.props.title).toBe('Example 10-minute practice');
+      expect(events?.map((event) => event.time)).toEqual([
+        'Example · 0–3 min',
+        'Example · 3–7 min',
+        'Example · 7–10 min',
+      ]);
+      expect(events?.map((event) => event.desc).join(' ')).toMatch(/not connected|not stored/i);
+    }
+  });
+
+  it('fails unavailable bicycle repair operations closed instead of implying service controls work', () => {
+    const result = composeProjectPipeline(
+      {
+        description:
+          'A neighborhood bicycle repair co-op for eight mechanics and two front-desk volunteers: same-day intake, safety triage for brakes and steering, parts availability, consented repair estimates, and pickup readiness. The shared workbench runs on a counter tablet and desktop. Do not handle payments.',
+      },
+      { catalogResources: loadTestCatalog(), seed: 'bicycle-repair-coop' }
+    );
+    const domainRoles = [
+      'safety-triage-queue',
+      'priority-alerts',
+      'repair-intake-form',
+      'reported-issue-capture',
+      'brake-steering-checklist',
+      'inspection-evidence',
+      'parts-availability',
+      'consented-repair-estimate',
+      'safety-signoff',
+      'pickup-readiness',
+    ];
+
+    expect(result.productModel.productArchetypes[0]?.tag).toBe('erp-operations');
+    expect(result.productModel.likelyScreens.map((screen) => screen.name)).toEqual([
+      'Service Desk',
+      'Repair Intake',
+      'Safety Inspection',
+      'Parts & Estimates',
+      'Pickup & Handover',
+    ]);
+
+    for (const output of [result.directionA, result.directionB, result.directionC]) {
+      const diagnostics = output.diagnostics?.map((diagnostic) => diagnostic.role) ?? [];
+      expect(diagnostics).toEqual(expect.arrayContaining(domainRoles));
+      expect(output.manifest.screens.map((screen) => screen.name)).toEqual(
+        expect.arrayContaining(result.productModel.likelyScreens.map((screen) => screen.name))
+      );
+
+      for (const screenName of [
+        'Repair Intake',
+        'Safety Inspection',
+        'Parts & Estimates',
+        'Pickup & Handover',
+      ]) {
+        const nodes = nodesForScreen(output.manifest, screenName);
+        const screenRoles = result.screenGraph.groups
+          .flatMap((group) => group.screens)
+          .find((screen) => screen.name === screenName)?.requiredRoles ?? [];
+        for (const role of screenRoles.filter((candidate) => domainRoles.includes(candidate))) {
+          const node = nodes.find((candidate) => candidate.semanticRole === role);
+          expect(node?.props.unresolvedRequiredRole).toBe(true);
+          expect(node?.resourceRef).toBeUndefined();
+        }
+      }
+
+      const safetyHeader = nodesForScreen(output.manifest, 'Safety Inspection').find(
+        (node) => node.semanticRole === 'entity-header'
+      );
+      expect(safetyHeader?.resourceRef?.slug).toBe('entity-profile-header');
+      expect(safetyHeader?.props.title).toBe('Safety Inspection');
+      expect(safetyHeader?.props.subtitle).toMatch(/brake and steering checks/i);
+
+      expect(JSON.stringify(output.manifest).toLowerCase()).not.toContain('project index');
+      expect(JSON.stringify(output.manifest).toLowerCase()).not.toContain('payment confirmation');
+    }
+  });
+
+  it('fails unavailable pantry privacy and fulfilment controls closed in all three directions', () => {
+    const result = composeProjectPipeline(
+      {
+        description:
+          'An appointment and fulfilment tool for a volunteer-led community food pantry serving 300 households each week. Households choose weekly grocery packs; staff coordinate same-day emergency parcels, chilled stock and expiry dates, multilingual plain-language pickup instructions, and a waitlist. Volunteers use shared tablets, coordinators use desktop, and intake often happens on an unreliable connection. Collect only a household’s chosen name and pickup essentials: do not request proof of immigration, income, medical diagnosis, or payment. Allergy details are visible only to assigned food-safety coordinators; volunteers see a neutral packing alert, not private notes. Provide a separate safeguarding escalation route without exposing case notes. No payments or donations.',
+      },
+      { catalogResources: loadTestCatalog(), seed: 'community-food-pantry' }
+    );
+    const domainRoles = [
+      'pickup-capacity-calendar',
+      'waitlist-queue',
+      'emergency-parcel-priorities',
+      'minimal-household-intake',
+      'chosen-name-only',
+      'offline-intake-continuity',
+      'multilingual-pickup-instructions',
+      'weekly-pack-selection',
+      'pack-substitution-review',
+      'same-day-parcel-queue',
+      'privacy-preserving-packing-alert',
+      'chilled-stock-inventory',
+      'expiry-aware-stock-rotation',
+      'assigned-coordinator-allergy-details',
+      'neutral-volunteer-alert',
+      'private-safeguarding-route',
+      'case-note-confidentiality',
+    ];
+    const expectedScreens = [
+      'Pickup Schedule & Waitlist',
+      'Household Intake & Pickup',
+      'Weekly Pack Choices',
+      'Emergency Parcels',
+      'Stock & Expiry',
+      'Food Safety & Safeguarding',
+    ];
+
+    expect(result.productModel.productArchetypes[0]?.tag).toBe('erp-operations');
+    expect(result.productModel.likelyScreens.map((screen) => screen.name)).toEqual(expectedScreens);
+
+    for (const output of [result.directionA, result.directionB, result.directionC]) {
+      const diagnostics = output.diagnostics?.map((diagnostic) => diagnostic.role) ?? [];
+      expect(diagnostics).toEqual(expect.arrayContaining(domainRoles));
+      expect(output.manifest.screens.map((screen) => screen.name)).toEqual(
+        expect.arrayContaining(expectedScreens)
+      );
+
+      for (const screenName of expectedScreens) {
+        const nodes = nodesForScreen(output.manifest, screenName);
+        const screenRoles = result.screenGraph.groups
+          .flatMap((group) => group.screens)
+          .find((screen) => screen.name === screenName)?.requiredRoles ?? [];
+        const headerRole = screenName === 'Pickup Schedule & Waitlist' ? 'overview-header' :
+          screenName === 'Emergency Parcels' || screenName === 'Stock & Expiry' ? 'index-header' : 'entity-header';
+        const header = nodes.find((node) => node.semanticRole === headerRole);
+
+        expect(header?.props.title).toBe(screenName);
+        expect(header?.resourceRef).toBeDefined();
+        for (const role of screenRoles.filter((candidate) => domainRoles.includes(candidate))) {
+          const node = nodes.find((candidate) => candidate.semanticRole === role);
+          expect(node?.props.unresolvedRequiredRole).toBe(true);
+          expect(node?.resourceRef).toBeUndefined();
+        }
+      }
+
+      const serialized = JSON.stringify(output.manifest).toLowerCase();
+      const productModelSerialized = JSON.stringify(output.manifest.productModel).toLowerCase();
+      expect(serialized).not.toMatch(/account balances|bank statements|money movement|transfer funds/);
+      expect(productModelSerialized).not.toMatch(/proof of immigration|medical diagnosis|income verification/);
+      expect(serialized).not.toContain('payment confirmation');
+    }
+  });
+
   it('routes employee marketing actions to their stated destinations', () => {
     const manifest = composeEmployeeExperience();
     const hero = nodesForScreen(manifest, 'Marketing Home').find((node) => node.semanticRole === 'hero');

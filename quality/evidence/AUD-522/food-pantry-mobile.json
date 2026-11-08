@@ -1,0 +1,2688 @@
+{
+  "url": "http://127.0.0.1:4321/compose",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "brief": "An appointment and fulfilment tool for a volunteer-led community food pantry serving 300 households each week. Households choose weekly grocery packs; staff coordinate same-day emergency parcels, chilled stock and expiry dates, multilingual plain-language pickup instructions, and a waitlist. Volunteers use shared tablets, coordinators use desktop, and intake often happens on an unreliable connection. Collect only a household’s chosen name and pickup essentials: do not request proof of immigration, income, medical diagnosis, or payment. Allergy details are visible only to assigned food-safety coordinators; volunteers see a neutral packing alert, not private notes. Provide a separate safeguarding escalation route without exposing case notes. No payments or donations.",
+  "pageCopy": "Skip to content\nTessellate\nSearch...\n⌘K\nStart building\nProduct Composer\n\nDescribe what your product needs. Tessellate suggests the people, workflows, screens, and visual direction.\n\nLocal product composer\nDescribe the product. Get the interface.\n\nStart with a short brief. Compare three interface directions, then choose one to edit in Workbench.\n\nStart with a sample brief:\nFinancial Intelligence Terminal\nPlayful HR Platform\nLuxury Travel Marketplace\nDeveloper Observability Platform\nMinimalist Personal Finance Tool\nScientific Research Environment\nProduct Description & Objectives\nProduct type (optional)\nAuto-Detect from Brief\nB2B SaaS\nAI Product\nDeveloper Tools\nFintech\nEcommerce\nMarketplace\nAnalytics Platform\nResearch & Intelligence Platform\nCRM & Pipeline\nERP & Operations\nConsumer Productivity\nEducation Product\nCreator Platform\nMedia & Publishing\nTravel & Hospitality\nReal Estate\nRecruitment & People Operations\nConsumer Applications\nDesired Feel / Adjectives\nPrimary Front-End Stack\nReact 19 + Tailwind CSS 4 (V1 Standard)\nVisual Ambition\nSTUNNING (75)\nEssential\nRefined\nStriking\nStunning\nExperimental\nStructural Creativity\nINVENTIVE (55)\nFamiliar\nModern\nInventive\nRadical\nExperimental\nAdvanced Constraints & Devices\nCatalogue ready\nCompose Interface System\nInferred Product Architecture\n\nA product plan drawn from your brief. Review the assumptions before choosing a direction.\n\nReady to review\nASSUMPTIONS TO REVIEW\nYour brief points to: Community Food Pantry Operations.\nLikely audience: Households, pantry volunteers, and assigned food-safety coordinators.\nMain goal: Coordinate weekly grocery-pack choices, same-day emergency parcels, chilled-stock expiry, and clear pickup instructions while collecting only essential household details.\nThe design uses your feel words: “dignified, calm, practical, multilingual, private by default, clear for volunteers on mobile”.\nVisual styling is set to 75/100.\nLayout variation is set to 55/100.\nProduct type\nERP & OPERATIONS\nUser expertise\n48/100\nTrust needs\n96/100\nInformation density\n58/100\nWorkflow complexity\n66/100\nMobile focus\n96/100\nPlanned screens (6)\n\nSuggested screens and navigation, organized around the work each page supports.\n\n6 Required\n0 Optional\nAPPLICATION GROUP\nPickup Schedule & Waitlist\n/pickup-schedule-and-waitlist\nRequired\n\nReview pickup capacity, waitlist changes, and same-day parcel priorities\n\nIncludes: Overview heading, Pickup Capacity Calendar, Waitlist Queue, and 1 more\nHousehold Intake & Pickup\n/household-intake-and-pickups/:id\nRequired\n\nRecord a chosen name and pickup essentials, then provide clear multilingual instructions\n\nIncludes: Entity Header, Minimal Household Intake, Chosen Name Only, and 2 more\nWeekly Pack Choices\n/weekly-pack-choiceses/:id\nRequired\n\nRecord grocery-pack choices and confirm available substitutions with the household\n\nIncludes: Entity Header, Weekly Pack Selection, Pack Substitution Review\nEmergency Parcels\n/emergency-parcels\nRequired\n\nCoordinate same-day parcels and neutral packing alerts without exposing private notes\n\nIncludes: List heading, Same Day Parcel Queue, Privacy Preserving Packing Alert\nStock & Expiry\n/stock-and-expiry\nRequired\n\nReview chilled stock by storage condition and use-by date before rotation or withdrawal\n\nIncludes: List heading, Chilled Stock Inventory, Expiry Aware Stock Rotation\nFood Safety & Safeguarding\n/food-safety-and-safeguardings/:id\nRequired\n\nKeep allergy details with assigned food-safety coordinators and route safeguarding separately\n\nIncludes: Entity Header, Assigned Coordinator Allergy Details, Neutral Volunteer Alert, and 2 more\nThree directions\n\nCompare three approaches: a familiar layout, a more expressive style, and a different workspace arrangement.\n\nDIRECTION 01\nConservative Fit\nCalm Foundation\n\nA dependable starting point with familiar sidebar navigation and clear, predictable controls.\n\n17 required interface roles have no eligible resource in the current catalogue.\n\nNavigation: SIDEBAR\nLayout: Sidebar with cards\nVisual Ambition: 65\nLayout variation: 40\nSCREEN PREVIEW: PICKUP SCHEDULE & WAITLIST\n6 SCREENS\nHousehold Pickup Workspace\n−\nPickup Schedule & Waitlist\nEmergency Parcels\nStock & Expiry\nHP\nPickup Schedule & Waitlist\nEXAMPLE\n\nReview pickup capacity, waitlist changes, and same-day parcel priorities\n\n⚠️\nUnresolved Required Role: pickup-capacity-calendar\n\nNo composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\".\n\n⚠️\nUnresolved Required Role: waitlist-queue\n\nNo composer-eligible catalogue resource provides the required role \"waitlist-queue\".\n\n⚠️\nUnresolved Required Role: emergency-parcel-priorities\n\nNo composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\".\n\nOpen in Workbench\nInspect full preview and DNA\nDIRECTION 02\nExpressive Fit\nExpressive Horizon\n\nA more expressive visual style with lively motion and stronger typography, while keeping familiar navigation and the same tasks.\n\n17 required interface roles have no eligible resource in the current catalogue.\n\nNavigation: TOP NAVIGATION\nLayout: Feature grid\nVisual Ambition: 95\nLayout variation: 55\nSCREEN PREVIEW: PICKUP SCHEDULE & WAITLIST\n6 SCREENS\nHousehold Pickup Workspace\nMenu\nHP\nPickup Schedule & Waitlist\nEXAMPLE\n\nReview pickup capacity, waitlist changes, and same-day parcel priorities\n\n⚠️\nUnresolved Required Role: pickup-capacity-calendar\n\nNo composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\".\n\n⚠️\nUnresolved Required Role: waitlist-queue\n\nNo composer-eligible catalogue resource provides the required role \"waitlist-queue\".\n\n⚠️\nUnresolved Required Role: emergency-parcel-priorities\n\nNo composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\".\n\nOpen in Workbench\nInspect full preview and DNA\nDIRECTION 03\nWorkspace Alternative\nAdaptive Workspace\n\nA different workspace arrangement brings related tasks into a three-column view, with a navigation rail and more information on screen.\n\n17 required interface roles have no eligible resource in the current catalogue.\n\nNavigation: NAVIGATION RAIL\nLayout: Three-column workspace\nVisual Ambition: 85\nLayout variation: 85\nSCREEN PREVIEW: PICKUP SCHEDULE & WAITLIST\n6 SCREENS\nHousehold Pickup Workspace\n−\nPickup Schedule & Waitlist\nEmergency Parcels\nStock & Expiry\nHP\nPickup Schedule & Waitlist\nEXAMPLE\n\nReview pickup capacity, waitlist changes, and same-day parcel priorities\n\n⚠️\nUnresolved Required Role: pickup-capacity-calendar\n\nNo composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\".\n\n⚠️\nUnresolved Required Role: waitlist-queue\n\nNo composer-eligible catalogue resource provides the required role \"waitlist-queue\".\n\n⚠️\nUnresolved Required Role: emergency-parcel-priorities\n\nNo composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\".\n\nOpen in Workbench\nInspect full preview and DNA\nDescribe your product, compare three directions, then continue editing in Workbench.",
+  "directions": [
+    {
+      "number": "01",
+      "screens": [
+        {
+          "id": "screen-overview",
+          "screenNodeId": "screen-overview",
+          "name": "Pickup Schedule & Waitlist",
+          "slug": "/pickup-schedule-and-waitlist",
+          "rootNode": {
+            "id": "root-screen-overview",
+            "nodeType": "layout",
+            "semanticRole": "sidebar-shell",
+            "children": [
+              {
+                "id": "node-screen-overview-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_collapsible_sidebar",
+                  "slug": "collapsible-sidebar",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "horizontal"
+                }
+              },
+              {
+                "id": "container-screen-overview-main",
+                "nodeType": "layout",
+                "semanticRole": "main-content-scroll",
+                "children": [
+                  {
+                    "id": "node-screen-overview-overview-header-2",
+                    "nodeType": "block",
+                    "semanticRole": "overview-header",
+                    "resourceRef": {
+                      "id": "res_blk_entity_profile_header",
+                      "slug": "entity-profile-header",
+                      "version": "1.0.0"
+                    },
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "title": "Pickup Schedule & Waitlist",
+                      "subtitle": "Review pickup capacity, waitlist changes, and same-day parcel priorities",
+                      "badge": "EXAMPLE",
+                      "initials": "HP"
+                    }
+                  },
+                  {
+                    "id": "node-screen-overview-pickup-capacity-calendar-3",
+                    "nodeType": "section",
+                    "semanticRole": "pickup-capacity-calendar",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "pickup-capacity-calendar",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-overview-waitlist-queue-4",
+                    "nodeType": "section",
+                    "semanticRole": "waitlist-queue",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "waitlist-queue",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"waitlist-queue\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-overview-emergency-parcel-priorities-5",
+                    "nodeType": "section",
+                    "semanticRole": "emergency-parcel-priorities",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "emergency-parcel-priorities",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\"."
+                      }
+                    }
+                  }
+                ],
+                "slots": {},
+                "props": {
+                  "layoutFamily": "sidebar-card-grid"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "sidebar"
+            }
+          }
+        },
+        {
+          "id": "screen-household-intake-and-pickup",
+          "screenNodeId": "screen-household-intake-and-pickup",
+          "name": "Household Intake & Pickup",
+          "slug": "/household-intake-and-pickups/:id",
+          "rootNode": {
+            "id": "root-screen-household-intake-and-pickup",
+            "nodeType": "layout",
+            "semanticRole": "sidebar-shell",
+            "children": [
+              {
+                "id": "node-screen-household-intake-and-pickup-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_collapsible_sidebar",
+                  "slug": "collapsible-sidebar",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "horizontal"
+                }
+              },
+              {
+                "id": "container-screen-household-intake-and-pickup-main",
+                "nodeType": "layout",
+                "semanticRole": "main-content-scroll",
+                "children": [
+                  {
+                    "id": "node-screen-household-intake-and-pickup-entity-header-2",
+                    "nodeType": "block",
+                    "semanticRole": "entity-header",
+                    "resourceRef": {
+                      "id": "res_blk_entity_profile_header",
+                      "slug": "entity-profile-header",
+                      "version": "1.0.0"
+                    },
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "title": "Household Intake & Pickup",
+                      "subtitle": "Record a chosen name and pickup essentials, then provide clear multilingual instructions",
+                      "badge": "EXAMPLE",
+                      "initials": "HP"
+                    }
+                  },
+                  {
+                    "id": "node-screen-household-intake-and-pickup-minimal-household-intake-3",
+                    "nodeType": "section",
+                    "semanticRole": "minimal-household-intake",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "minimal-household-intake",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"minimal-household-intake\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-household-intake-and-pickup-chosen-name-only-4",
+                    "nodeType": "section",
+                    "semanticRole": "chosen-name-only",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "chosen-name-only",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"chosen-name-only\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-household-intake-and-pickup-offline-intake-continuity-5",
+                    "nodeType": "section",
+                    "semanticRole": "offline-intake-continuity",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "offline-intake-continuity",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"offline-intake-continuity\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-household-intake-and-pickup-multilingual-pickup-instructions-6",
+                    "nodeType": "section",
+                    "semanticRole": "multilingual-pickup-instructions",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "multilingual-pickup-instructions",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"multilingual-pickup-instructions\"."
+                      }
+                    }
+                  }
+                ],
+                "slots": {},
+                "props": {
+                  "layoutFamily": "sidebar-card-grid"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "sidebar"
+            }
+          }
+        },
+        {
+          "id": "screen-weekly-pack-choices",
+          "screenNodeId": "screen-weekly-pack-choices",
+          "name": "Weekly Pack Choices",
+          "slug": "/weekly-pack-choiceses/:id",
+          "rootNode": {
+            "id": "root-screen-weekly-pack-choices",
+            "nodeType": "layout",
+            "semanticRole": "sidebar-shell",
+            "children": [
+              {
+                "id": "node-screen-weekly-pack-choices-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_collapsible_sidebar",
+                  "slug": "collapsible-sidebar",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "horizontal"
+                }
+              },
+              {
+                "id": "container-screen-weekly-pack-choices-main",
+                "nodeType": "layout",
+                "semanticRole": "main-content-scroll",
+                "children": [
+                  {
+                    "id": "node-screen-weekly-pack-choices-entity-header-2",
+                    "nodeType": "block",
+                    "semanticRole": "entity-header",
+                    "resourceRef": {
+                      "id": "res_blk_entity_profile_header",
+                      "slug": "entity-profile-header",
+                      "version": "1.0.0"
+                    },
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "title": "Weekly Pack Choices",
+                      "subtitle": "Record grocery-pack choices and confirm available substitutions with the household",
+                      "badge": "EXAMPLE",
+                      "initials": "HP"
+                    }
+                  },
+                  {
+                    "id": "node-screen-weekly-pack-choices-weekly-pack-selection-3",
+                    "nodeType": "section",
+                    "semanticRole": "weekly-pack-selection",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "weekly-pack-selection",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"weekly-pack-selection\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-weekly-pack-choices-pack-substitution-review-4",
+                    "nodeType": "section",
+                    "semanticRole": "pack-substitution-review",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "pack-substitution-review",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"pack-substitution-review\"."
+                      }
+                    }
+                  }
+                ],
+                "slots": {},
+                "props": {
+                  "layoutFamily": "sidebar-card-grid"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "sidebar"
+            }
+          }
+        },
+        {
+          "id": "screen-collection-index",
+          "screenNodeId": "screen-collection-index",
+          "name": "Emergency Parcels",
+          "slug": "/emergency-parcels",
+          "rootNode": {
+            "id": "root-screen-collection-index",
+            "nodeType": "layout",
+            "semanticRole": "sidebar-shell",
+            "children": [
+              {
+                "id": "node-screen-collection-index-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_collapsible_sidebar",
+                  "slug": "collapsible-sidebar",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "horizontal"
+                }
+              },
+              {
+                "id": "container-screen-collection-index-main",
+                "nodeType": "layout",
+                "semanticRole": "main-content-scroll",
+                "children": [
+                  {
+                    "id": "node-screen-collection-index-index-header-2",
+                    "nodeType": "block",
+                    "semanticRole": "index-header",
+                    "resourceRef": {
+                      "id": "res_blk_entity_profile_header",
+                      "slug": "entity-profile-header",
+                      "version": "1.0.0"
+                    },
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "title": "Emergency Parcels",
+                      "subtitle": "Coordinate same-day parcels and neutral packing alerts without exposing private notes",
+                      "badge": "EXAMPLE",
+                      "initials": "HP"
+                    }
+                  },
+                  {
+                    "id": "node-screen-collection-index-same-day-parcel-queue-3",
+                    "nodeType": "section",
+                    "semanticRole": "same-day-parcel-queue",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "same-day-parcel-queue",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"same-day-parcel-queue\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-collection-index-privacy-preserving-packing-alert-4",
+                    "nodeType": "section",
+                    "semanticRole": "privacy-preserving-packing-alert",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "privacy-preserving-packing-alert",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"privacy-preserving-packing-alert\"."
+                      }
+                    }
+                  }
+                ],
+                "slots": {},
+                "props": {
+                  "layoutFamily": "sidebar-card-grid"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "sidebar"
+            }
+          }
+        },
+        {
+          "id": "screen-stock-and-expiry",
+          "screenNodeId": "screen-stock-and-expiry",
+          "name": "Stock & Expiry",
+          "slug": "/stock-and-expiry",
+          "rootNode": {
+            "id": "root-screen-stock-and-expiry",
+            "nodeType": "layout",
+            "semanticRole": "sidebar-shell",
+            "children": [
+              {
+                "id": "node-screen-stock-and-expiry-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_collapsible_sidebar",
+                  "slug": "collapsible-sidebar",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "horizontal"
+                }
+              },
+              {
+                "id": "container-screen-stock-and-expiry-main",
+                "nodeType": "layout",
+                "semanticRole": "main-content-scroll",
+                "children": [
+                  {
+                    "id": "node-screen-stock-and-expiry-index-header-2",
+                    "nodeType": "block",
+                    "semanticRole": "index-header",
+                    "resourceRef": {
+                      "id": "res_blk_entity_profile_header",
+                      "slug": "entity-profile-header",
+                      "version": "1.0.0"
+                    },
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "title": "Stock & Expiry",
+                      "subtitle": "Review chilled stock by storage condition and use-by date before rotation or withdrawal",
+                      "badge": "EXAMPLE",
+                      "initials": "HP"
+                    }
+                  },
+                  {
+                    "id": "node-screen-stock-and-expiry-chilled-stock-inventory-3",
+                    "nodeType": "section",
+                    "semanticRole": "chilled-stock-inventory",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "chilled-stock-inventory",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"chilled-stock-inventory\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-stock-and-expiry-expiry-aware-stock-rotation-4",
+                    "nodeType": "section",
+                    "semanticRole": "expiry-aware-stock-rotation",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "expiry-aware-stock-rotation",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"expiry-aware-stock-rotation\"."
+                      }
+                    }
+                  }
+                ],
+                "slots": {},
+                "props": {
+                  "layoutFamily": "sidebar-card-grid"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "sidebar"
+            }
+          }
+        },
+        {
+          "id": "screen-food-safety-and-safeguarding",
+          "screenNodeId": "screen-food-safety-and-safeguarding",
+          "name": "Food Safety & Safeguarding",
+          "slug": "/food-safety-and-safeguardings/:id",
+          "rootNode": {
+            "id": "root-screen-food-safety-and-safeguarding",
+            "nodeType": "layout",
+            "semanticRole": "sidebar-shell",
+            "children": [
+              {
+                "id": "node-screen-food-safety-and-safeguarding-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_collapsible_sidebar",
+                  "slug": "collapsible-sidebar",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "horizontal"
+                }
+              },
+              {
+                "id": "container-screen-food-safety-and-safeguarding-main",
+                "nodeType": "layout",
+                "semanticRole": "main-content-scroll",
+                "children": [
+                  {
+                    "id": "node-screen-food-safety-and-safeguarding-entity-header-2",
+                    "nodeType": "block",
+                    "semanticRole": "entity-header",
+                    "resourceRef": {
+                      "id": "res_blk_entity_profile_header",
+                      "slug": "entity-profile-header",
+                      "version": "1.0.0"
+                    },
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "title": "Food Safety & Safeguarding",
+                      "subtitle": "Keep allergy details with assigned food-safety coordinators and route safeguarding separately",
+                      "badge": "EXAMPLE",
+                      "initials": "HP"
+                    }
+                  },
+                  {
+                    "id": "node-screen-food-safety-and-safeguarding-assigned-coordinator-allergy-details-3",
+                    "nodeType": "section",
+                    "semanticRole": "assigned-coordinator-allergy-details",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "assigned-coordinator-allergy-details",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"assigned-coordinator-allergy-details\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-food-safety-and-safeguarding-neutral-volunteer-alert-4",
+                    "nodeType": "section",
+                    "semanticRole": "neutral-volunteer-alert",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "neutral-volunteer-alert",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"neutral-volunteer-alert\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-food-safety-and-safeguarding-private-safeguarding-route-5",
+                    "nodeType": "section",
+                    "semanticRole": "private-safeguarding-route",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "private-safeguarding-route",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"private-safeguarding-route\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-food-safety-and-safeguarding-case-note-confidentiality-6",
+                    "nodeType": "section",
+                    "semanticRole": "case-note-confidentiality",
+                    "variant": "quiet",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "case-note-confidentiality",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"case-note-confidentiality\"."
+                      }
+                    }
+                  }
+                ],
+                "slots": {},
+                "props": {
+                  "layoutFamily": "sidebar-card-grid"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "sidebar"
+            }
+          }
+        }
+      ],
+      "diagnostics": [
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "pickup-capacity-calendar",
+          "reason": "No composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "waitlist-queue",
+          "reason": "No composer-eligible catalogue resource provides the required role \"waitlist-queue\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "emergency-parcel-priorities",
+          "reason": "No composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "minimal-household-intake",
+          "reason": "No composer-eligible catalogue resource provides the required role \"minimal-household-intake\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "chosen-name-only",
+          "reason": "No composer-eligible catalogue resource provides the required role \"chosen-name-only\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "offline-intake-continuity",
+          "reason": "No composer-eligible catalogue resource provides the required role \"offline-intake-continuity\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "multilingual-pickup-instructions",
+          "reason": "No composer-eligible catalogue resource provides the required role \"multilingual-pickup-instructions\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "weekly-pack-selection",
+          "reason": "No composer-eligible catalogue resource provides the required role \"weekly-pack-selection\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "pack-substitution-review",
+          "reason": "No composer-eligible catalogue resource provides the required role \"pack-substitution-review\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "same-day-parcel-queue",
+          "reason": "No composer-eligible catalogue resource provides the required role \"same-day-parcel-queue\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "privacy-preserving-packing-alert",
+          "reason": "No composer-eligible catalogue resource provides the required role \"privacy-preserving-packing-alert\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "chilled-stock-inventory",
+          "reason": "No composer-eligible catalogue resource provides the required role \"chilled-stock-inventory\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "expiry-aware-stock-rotation",
+          "reason": "No composer-eligible catalogue resource provides the required role \"expiry-aware-stock-rotation\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "assigned-coordinator-allergy-details",
+          "reason": "No composer-eligible catalogue resource provides the required role \"assigned-coordinator-allergy-details\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "neutral-volunteer-alert",
+          "reason": "No composer-eligible catalogue resource provides the required role \"neutral-volunteer-alert\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "private-safeguarding-route",
+          "reason": "No composer-eligible catalogue resource provides the required role \"private-safeguarding-route\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "case-note-confidentiality",
+          "reason": "No composer-eligible catalogue resource provides the required role \"case-note-confidentiality\"."
+        }
+      ],
+      "renderedScreens": [
+        {
+          "id": "screen-overview",
+          "name": "Pickup Schedule & Waitlist",
+          "visibleText": "Household Pickup Workspace\n−\nPickup Schedule & Waitlist\nEmergency Parcels\nStock & Expiry\nHP\nPickup Schedule & Waitlist\nEXAMPLE\n\nReview pickup capacity, waitlist changes, and same-day parcel priorities\n\n⚠️\nUnresolved Required Role: pickup-capacity-calendar\n\nNo composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\".\n\n⚠️\nUnresolved Required Role: waitlist-queue\n\nNo composer-eligible catalogue resource provides the required role \"waitlist-queue\".\n\n⚠️\nUnresolved Required Role: emergency-parcel-priorities\n\nNo composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\".",
+          "visibleHeadings": [
+            "Pickup Schedule & Waitlist"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: pickup-capacity-calendarNo composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\".",
+            "⚠️Unresolved Required Role: waitlist-queueNo composer-eligible catalogue resource provides the required role \"waitlist-queue\".",
+            "⚠️Unresolved Required Role: emergency-parcel-prioritiesNo composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\"."
+          ]
+        },
+        {
+          "id": "screen-household-intake-and-pickup",
+          "name": "Household Intake & Pickup",
+          "visibleText": "Household Pickup Workspace\n−\nPickup Schedule & Waitlist\nEmergency Parcels\nStock & Expiry\nHP\nHousehold Intake & Pickup\nEXAMPLE\n\nRecord a chosen name and pickup essentials, then provide clear multilingual instructions\n\n⚠️\nUnresolved Required Role: minimal-household-intake\n\nNo composer-eligible catalogue resource provides the required role \"minimal-household-intake\".\n\n⚠️\nUnresolved Required Role: chosen-name-only\n\nNo composer-eligible catalogue resource provides the required role \"chosen-name-only\".\n\n⚠️\nUnresolved Required Role: offline-intake-continuity\n\nNo composer-eligible catalogue resource provides the required role \"offline-intake-continuity\".\n\n⚠️\nUnresolved Required Role: multilingual-pickup-instructions\n\nNo composer-eligible catalogue resource provides the required role \"multilingual-pickup-instructions\".",
+          "visibleHeadings": [
+            "Household Intake & Pickup"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: minimal-household-intakeNo composer-eligible catalogue resource provides the required role \"minimal-household-intake\".",
+            "⚠️Unresolved Required Role: chosen-name-onlyNo composer-eligible catalogue resource provides the required role \"chosen-name-only\".",
+            "⚠️Unresolved Required Role: offline-intake-continuityNo composer-eligible catalogue resource provides the required role \"offline-intake-continuity\".",
+            "⚠️Unresolved Required Role: multilingual-pickup-instructionsNo composer-eligible catalogue resource provides the required role \"multilingual-pickup-instructions\"."
+          ]
+        },
+        {
+          "id": "screen-weekly-pack-choices",
+          "name": "Weekly Pack Choices",
+          "visibleText": "Household Pickup Workspace\n−\nPickup Schedule & Waitlist\nEmergency Parcels\nStock & Expiry\nHP\nWeekly Pack Choices\nEXAMPLE\n\nRecord grocery-pack choices and confirm available substitutions with the household\n\n⚠️\nUnresolved Required Role: weekly-pack-selection\n\nNo composer-eligible catalogue resource provides the required role \"weekly-pack-selection\".\n\n⚠️\nUnresolved Required Role: pack-substitution-review\n\nNo composer-eligible catalogue resource provides the required role \"pack-substitution-review\".",
+          "visibleHeadings": [
+            "Weekly Pack Choices"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: weekly-pack-selectionNo composer-eligible catalogue resource provides the required role \"weekly-pack-selection\".",
+            "⚠️Unresolved Required Role: pack-substitution-reviewNo composer-eligible catalogue resource provides the required role \"pack-substitution-review\"."
+          ]
+        },
+        {
+          "id": "screen-collection-index",
+          "name": "Emergency Parcels",
+          "visibleText": "Household Pickup Workspace\n−\nPickup Schedule & Waitlist\nEmergency Parcels\nStock & Expiry\nHP\nEmergency Parcels\nEXAMPLE\n\nCoordinate same-day parcels and neutral packing alerts without exposing private notes\n\n⚠️\nUnresolved Required Role: same-day-parcel-queue\n\nNo composer-eligible catalogue resource provides the required role \"same-day-parcel-queue\".\n\n⚠️\nUnresolved Required Role: privacy-preserving-packing-alert\n\nNo composer-eligible catalogue resource provides the required role \"privacy-preserving-packing-alert\".",
+          "visibleHeadings": [
+            "Emergency Parcels"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: same-day-parcel-queueNo composer-eligible catalogue resource provides the required role \"same-day-parcel-queue\".",
+            "⚠️Unresolved Required Role: privacy-preserving-packing-alertNo composer-eligible catalogue resource provides the required role \"privacy-preserving-packing-alert\"."
+          ]
+        },
+        {
+          "id": "screen-stock-and-expiry",
+          "name": "Stock & Expiry",
+          "visibleText": "Household Pickup Workspace\n−\nPickup Schedule & Waitlist\nEmergency Parcels\nStock & Expiry\nHP\nStock & Expiry\nEXAMPLE\n\nReview chilled stock by storage condition and use-by date before rotation or withdrawal\n\n⚠️\nUnresolved Required Role: chilled-stock-inventory\n\nNo composer-eligible catalogue resource provides the required role \"chilled-stock-inventory\".\n\n⚠️\nUnresolved Required Role: expiry-aware-stock-rotation\n\nNo composer-eligible catalogue resource provides the required role \"expiry-aware-stock-rotation\".",
+          "visibleHeadings": [
+            "Stock & Expiry"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: chilled-stock-inventoryNo composer-eligible catalogue resource provides the required role \"chilled-stock-inventory\".",
+            "⚠️Unresolved Required Role: expiry-aware-stock-rotationNo composer-eligible catalogue resource provides the required role \"expiry-aware-stock-rotation\"."
+          ]
+        },
+        {
+          "id": "screen-food-safety-and-safeguarding",
+          "name": "Food Safety & Safeguarding",
+          "visibleText": "Household Pickup Workspace\n−\nPickup Schedule & Waitlist\nEmergency Parcels\nStock & Expiry\nHP\nFood Safety & Safeguarding\nEXAMPLE\n\nKeep allergy details with assigned food-safety coordinators and route safeguarding separately\n\n⚠️\nUnresolved Required Role: assigned-coordinator-allergy-details\n\nNo composer-eligible catalogue resource provides the required role \"assigned-coordinator-allergy-details\".\n\n⚠️\nUnresolved Required Role: neutral-volunteer-alert\n\nNo composer-eligible catalogue resource provides the required role \"neutral-volunteer-alert\".\n\n⚠️\nUnresolved Required Role: private-safeguarding-route\n\nNo composer-eligible catalogue resource provides the required role \"private-safeguarding-route\".\n\n⚠️\nUnresolved Required Role: case-note-confidentiality\n\nNo composer-eligible catalogue resource provides the required role \"case-note-confidentiality\".",
+          "visibleHeadings": [
+            "Food Safety & Safeguarding"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: assigned-coordinator-allergy-detailsNo composer-eligible catalogue resource provides the required role \"assigned-coordinator-allergy-details\".",
+            "⚠️Unresolved Required Role: neutral-volunteer-alertNo composer-eligible catalogue resource provides the required role \"neutral-volunteer-alert\".",
+            "⚠️Unresolved Required Role: private-safeguarding-routeNo composer-eligible catalogue resource provides the required role \"private-safeguarding-route\".",
+            "⚠️Unresolved Required Role: case-note-confidentialityNo composer-eligible catalogue resource provides the required role \"case-note-confidentiality\"."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "02",
+      "screens": [
+        {
+          "id": "screen-overview",
+          "screenNodeId": "screen-overview",
+          "name": "Pickup Schedule & Waitlist",
+          "slug": "/pickup-schedule-and-waitlist",
+          "rootNode": {
+            "id": "root-screen-overview",
+            "nodeType": "layout",
+            "semanticRole": "top-nav-page-canvas",
+            "children": [
+              {
+                "id": "node-screen-overview-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "horizontal"
+                }
+              },
+              {
+                "id": "node-screen-overview-overview-header-2",
+                "nodeType": "block",
+                "semanticRole": "overview-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Pickup Schedule & Waitlist",
+                  "subtitle": "Review pickup capacity, waitlist changes, and same-day parcel priorities",
+                  "badge": "EXAMPLE",
+                  "initials": "HP"
+                }
+              },
+              {
+                "id": "node-screen-overview-pickup-capacity-calendar-3",
+                "nodeType": "section",
+                "semanticRole": "pickup-capacity-calendar",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "pickup-capacity-calendar",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\"."
+                  }
+                }
+              },
+              {
+                "id": "node-screen-overview-waitlist-queue-4",
+                "nodeType": "section",
+                "semanticRole": "waitlist-queue",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "waitlist-queue",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"waitlist-queue\"."
+                  }
+                }
+              },
+              {
+                "id": "node-screen-overview-emergency-parcel-priorities-5",
+                "nodeType": "section",
+                "semanticRole": "emergency-parcel-priorities",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "emergency-parcel-priorities",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\"."
+                  }
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "vertical-flow"
+            }
+          }
+        },
+        {
+          "id": "screen-household-intake-and-pickup",
+          "screenNodeId": "screen-household-intake-and-pickup",
+          "name": "Household Intake & Pickup",
+          "slug": "/household-intake-and-pickups/:id",
+          "rootNode": {
+            "id": "root-screen-household-intake-and-pickup",
+            "nodeType": "layout",
+            "semanticRole": "top-nav-page-canvas",
+            "children": [
+              {
+                "id": "node-screen-household-intake-and-pickup-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "horizontal"
+                }
+              },
+              {
+                "id": "node-screen-household-intake-and-pickup-entity-header-2",
+                "nodeType": "block",
+                "semanticRole": "entity-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Household Intake & Pickup",
+                  "subtitle": "Record a chosen name and pickup essentials, then provide clear multilingual instructions",
+                  "badge": "EXAMPLE",
+                  "initials": "HP"
+                }
+              },
+              {
+                "id": "node-screen-household-intake-and-pickup-minimal-household-intake-3",
+                "nodeType": "section",
+                "semanticRole": "minimal-household-intake",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "minimal-household-intake",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"minimal-household-intake\"."
+                  }
+                }
+              },
+              {
+                "id": "node-screen-household-intake-and-pickup-chosen-name-only-4",
+                "nodeType": "section",
+                "semanticRole": "chosen-name-only",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "chosen-name-only",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"chosen-name-only\"."
+                  }
+                }
+              },
+              {
+                "id": "node-screen-household-intake-and-pickup-offline-intake-continuity-5",
+                "nodeType": "section",
+                "semanticRole": "offline-intake-continuity",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "offline-intake-continuity",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"offline-intake-continuity\"."
+                  }
+                }
+              },
+              {
+                "id": "node-screen-household-intake-and-pickup-multilingual-pickup-instructions-6",
+                "nodeType": "section",
+                "semanticRole": "multilingual-pickup-instructions",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "multilingual-pickup-instructions",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"multilingual-pickup-instructions\"."
+                  }
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "vertical-flow"
+            }
+          }
+        },
+        {
+          "id": "screen-weekly-pack-choices",
+          "screenNodeId": "screen-weekly-pack-choices",
+          "name": "Weekly Pack Choices",
+          "slug": "/weekly-pack-choiceses/:id",
+          "rootNode": {
+            "id": "root-screen-weekly-pack-choices",
+            "nodeType": "layout",
+            "semanticRole": "top-nav-page-canvas",
+            "children": [
+              {
+                "id": "node-screen-weekly-pack-choices-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "horizontal"
+                }
+              },
+              {
+                "id": "node-screen-weekly-pack-choices-entity-header-2",
+                "nodeType": "block",
+                "semanticRole": "entity-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Weekly Pack Choices",
+                  "subtitle": "Record grocery-pack choices and confirm available substitutions with the household",
+                  "badge": "EXAMPLE",
+                  "initials": "HP"
+                }
+              },
+              {
+                "id": "node-screen-weekly-pack-choices-weekly-pack-selection-3",
+                "nodeType": "section",
+                "semanticRole": "weekly-pack-selection",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "weekly-pack-selection",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"weekly-pack-selection\"."
+                  }
+                }
+              },
+              {
+                "id": "node-screen-weekly-pack-choices-pack-substitution-review-4",
+                "nodeType": "section",
+                "semanticRole": "pack-substitution-review",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "pack-substitution-review",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"pack-substitution-review\"."
+                  }
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "vertical-flow"
+            }
+          }
+        },
+        {
+          "id": "screen-collection-index",
+          "screenNodeId": "screen-collection-index",
+          "name": "Emergency Parcels",
+          "slug": "/emergency-parcels",
+          "rootNode": {
+            "id": "root-screen-collection-index",
+            "nodeType": "layout",
+            "semanticRole": "top-nav-page-canvas",
+            "children": [
+              {
+                "id": "node-screen-collection-index-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "horizontal"
+                }
+              },
+              {
+                "id": "node-screen-collection-index-index-header-2",
+                "nodeType": "block",
+                "semanticRole": "index-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Emergency Parcels",
+                  "subtitle": "Coordinate same-day parcels and neutral packing alerts without exposing private notes",
+                  "badge": "EXAMPLE",
+                  "initials": "HP"
+                }
+              },
+              {
+                "id": "node-screen-collection-index-same-day-parcel-queue-3",
+                "nodeType": "section",
+                "semanticRole": "same-day-parcel-queue",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "same-day-parcel-queue",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"same-day-parcel-queue\"."
+                  }
+                }
+              },
+              {
+                "id": "node-screen-collection-index-privacy-preserving-packing-alert-4",
+                "nodeType": "section",
+                "semanticRole": "privacy-preserving-packing-alert",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "privacy-preserving-packing-alert",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"privacy-preserving-packing-alert\"."
+                  }
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "vertical-flow"
+            }
+          }
+        },
+        {
+          "id": "screen-stock-and-expiry",
+          "screenNodeId": "screen-stock-and-expiry",
+          "name": "Stock & Expiry",
+          "slug": "/stock-and-expiry",
+          "rootNode": {
+            "id": "root-screen-stock-and-expiry",
+            "nodeType": "layout",
+            "semanticRole": "top-nav-page-canvas",
+            "children": [
+              {
+                "id": "node-screen-stock-and-expiry-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "horizontal"
+                }
+              },
+              {
+                "id": "node-screen-stock-and-expiry-index-header-2",
+                "nodeType": "block",
+                "semanticRole": "index-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Stock & Expiry",
+                  "subtitle": "Review chilled stock by storage condition and use-by date before rotation or withdrawal",
+                  "badge": "EXAMPLE",
+                  "initials": "HP"
+                }
+              },
+              {
+                "id": "node-screen-stock-and-expiry-chilled-stock-inventory-3",
+                "nodeType": "section",
+                "semanticRole": "chilled-stock-inventory",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "chilled-stock-inventory",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"chilled-stock-inventory\"."
+                  }
+                }
+              },
+              {
+                "id": "node-screen-stock-and-expiry-expiry-aware-stock-rotation-4",
+                "nodeType": "section",
+                "semanticRole": "expiry-aware-stock-rotation",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "expiry-aware-stock-rotation",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"expiry-aware-stock-rotation\"."
+                  }
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "vertical-flow"
+            }
+          }
+        },
+        {
+          "id": "screen-food-safety-and-safeguarding",
+          "screenNodeId": "screen-food-safety-and-safeguarding",
+          "name": "Food Safety & Safeguarding",
+          "slug": "/food-safety-and-safeguardings/:id",
+          "rootNode": {
+            "id": "root-screen-food-safety-and-safeguarding",
+            "nodeType": "layout",
+            "semanticRole": "top-nav-page-canvas",
+            "children": [
+              {
+                "id": "node-screen-food-safety-and-safeguarding-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "horizontal"
+                }
+              },
+              {
+                "id": "node-screen-food-safety-and-safeguarding-entity-header-2",
+                "nodeType": "block",
+                "semanticRole": "entity-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Food Safety & Safeguarding",
+                  "subtitle": "Keep allergy details with assigned food-safety coordinators and route safeguarding separately",
+                  "badge": "EXAMPLE",
+                  "initials": "HP"
+                }
+              },
+              {
+                "id": "node-screen-food-safety-and-safeguarding-assigned-coordinator-allergy-details-3",
+                "nodeType": "section",
+                "semanticRole": "assigned-coordinator-allergy-details",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "assigned-coordinator-allergy-details",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"assigned-coordinator-allergy-details\"."
+                  }
+                }
+              },
+              {
+                "id": "node-screen-food-safety-and-safeguarding-neutral-volunteer-alert-4",
+                "nodeType": "section",
+                "semanticRole": "neutral-volunteer-alert",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "neutral-volunteer-alert",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"neutral-volunteer-alert\"."
+                  }
+                }
+              },
+              {
+                "id": "node-screen-food-safety-and-safeguarding-private-safeguarding-route-5",
+                "nodeType": "section",
+                "semanticRole": "private-safeguarding-route",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "private-safeguarding-route",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"private-safeguarding-route\"."
+                  }
+                }
+              },
+              {
+                "id": "node-screen-food-safety-and-safeguarding-case-note-confidentiality-6",
+                "nodeType": "section",
+                "semanticRole": "case-note-confidentiality",
+                "variant": "expressive",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "unresolvedRequiredRole": true,
+                  "diagnostic": {
+                    "code": "UNRESOLVED_REQUIRED_ROLE",
+                    "role": "case-note-confidentiality",
+                    "reason": "No composer-eligible catalogue resource provides the required role \"case-note-confidentiality\"."
+                  }
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "vertical-flow"
+            }
+          }
+        }
+      ],
+      "diagnostics": [
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "pickup-capacity-calendar",
+          "reason": "No composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "waitlist-queue",
+          "reason": "No composer-eligible catalogue resource provides the required role \"waitlist-queue\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "emergency-parcel-priorities",
+          "reason": "No composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "minimal-household-intake",
+          "reason": "No composer-eligible catalogue resource provides the required role \"minimal-household-intake\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "chosen-name-only",
+          "reason": "No composer-eligible catalogue resource provides the required role \"chosen-name-only\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "offline-intake-continuity",
+          "reason": "No composer-eligible catalogue resource provides the required role \"offline-intake-continuity\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "multilingual-pickup-instructions",
+          "reason": "No composer-eligible catalogue resource provides the required role \"multilingual-pickup-instructions\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "weekly-pack-selection",
+          "reason": "No composer-eligible catalogue resource provides the required role \"weekly-pack-selection\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "pack-substitution-review",
+          "reason": "No composer-eligible catalogue resource provides the required role \"pack-substitution-review\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "same-day-parcel-queue",
+          "reason": "No composer-eligible catalogue resource provides the required role \"same-day-parcel-queue\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "privacy-preserving-packing-alert",
+          "reason": "No composer-eligible catalogue resource provides the required role \"privacy-preserving-packing-alert\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "chilled-stock-inventory",
+          "reason": "No composer-eligible catalogue resource provides the required role \"chilled-stock-inventory\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "expiry-aware-stock-rotation",
+          "reason": "No composer-eligible catalogue resource provides the required role \"expiry-aware-stock-rotation\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "assigned-coordinator-allergy-details",
+          "reason": "No composer-eligible catalogue resource provides the required role \"assigned-coordinator-allergy-details\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "neutral-volunteer-alert",
+          "reason": "No composer-eligible catalogue resource provides the required role \"neutral-volunteer-alert\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "private-safeguarding-route",
+          "reason": "No composer-eligible catalogue resource provides the required role \"private-safeguarding-route\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "case-note-confidentiality",
+          "reason": "No composer-eligible catalogue resource provides the required role \"case-note-confidentiality\"."
+        }
+      ],
+      "renderedScreens": [
+        {
+          "id": "screen-overview",
+          "name": "Pickup Schedule & Waitlist",
+          "visibleText": "Household Pickup Workspace\nMenu\nHP\nPickup Schedule & Waitlist\nEXAMPLE\n\nReview pickup capacity, waitlist changes, and same-day parcel priorities\n\n⚠️\nUnresolved Required Role: pickup-capacity-calendar\n\nNo composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\".\n\n⚠️\nUnresolved Required Role: waitlist-queue\n\nNo composer-eligible catalogue resource provides the required role \"waitlist-queue\".\n\n⚠️\nUnresolved Required Role: emergency-parcel-priorities\n\nNo composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\".",
+          "visibleHeadings": [
+            "Pickup Schedule & Waitlist"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: pickup-capacity-calendarNo composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\".",
+            "⚠️Unresolved Required Role: waitlist-queueNo composer-eligible catalogue resource provides the required role \"waitlist-queue\".",
+            "⚠️Unresolved Required Role: emergency-parcel-prioritiesNo composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\"."
+          ]
+        },
+        {
+          "id": "screen-household-intake-and-pickup",
+          "name": "Household Intake & Pickup",
+          "visibleText": "Household Pickup Workspace\nMenu\nHP\nHousehold Intake & Pickup\nEXAMPLE\n\nRecord a chosen name and pickup essentials, then provide clear multilingual instructions\n\n⚠️\nUnresolved Required Role: minimal-household-intake\n\nNo composer-eligible catalogue resource provides the required role \"minimal-household-intake\".\n\n⚠️\nUnresolved Required Role: chosen-name-only\n\nNo composer-eligible catalogue resource provides the required role \"chosen-name-only\".\n\n⚠️\nUnresolved Required Role: offline-intake-continuity\n\nNo composer-eligible catalogue resource provides the required role \"offline-intake-continuity\".\n\n⚠️\nUnresolved Required Role: multilingual-pickup-instructions\n\nNo composer-eligible catalogue resource provides the required role \"multilingual-pickup-instructions\".",
+          "visibleHeadings": [
+            "Household Intake & Pickup"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: minimal-household-intakeNo composer-eligible catalogue resource provides the required role \"minimal-household-intake\".",
+            "⚠️Unresolved Required Role: chosen-name-onlyNo composer-eligible catalogue resource provides the required role \"chosen-name-only\".",
+            "⚠️Unresolved Required Role: offline-intake-continuityNo composer-eligible catalogue resource provides the required role \"offline-intake-continuity\".",
+            "⚠️Unresolved Required Role: multilingual-pickup-instructionsNo composer-eligible catalogue resource provides the required role \"multilingual-pickup-instructions\"."
+          ]
+        },
+        {
+          "id": "screen-weekly-pack-choices",
+          "name": "Weekly Pack Choices",
+          "visibleText": "Household Pickup Workspace\nMenu\nHP\nWeekly Pack Choices\nEXAMPLE\n\nRecord grocery-pack choices and confirm available substitutions with the household\n\n⚠️\nUnresolved Required Role: weekly-pack-selection\n\nNo composer-eligible catalogue resource provides the required role \"weekly-pack-selection\".\n\n⚠️\nUnresolved Required Role: pack-substitution-review\n\nNo composer-eligible catalogue resource provides the required role \"pack-substitution-review\".",
+          "visibleHeadings": [
+            "Weekly Pack Choices"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: weekly-pack-selectionNo composer-eligible catalogue resource provides the required role \"weekly-pack-selection\".",
+            "⚠️Unresolved Required Role: pack-substitution-reviewNo composer-eligible catalogue resource provides the required role \"pack-substitution-review\"."
+          ]
+        },
+        {
+          "id": "screen-collection-index",
+          "name": "Emergency Parcels",
+          "visibleText": "Household Pickup Workspace\nMenu\nHP\nEmergency Parcels\nEXAMPLE\n\nCoordinate same-day parcels and neutral packing alerts without exposing private notes\n\n⚠️\nUnresolved Required Role: same-day-parcel-queue\n\nNo composer-eligible catalogue resource provides the required role \"same-day-parcel-queue\".\n\n⚠️\nUnresolved Required Role: privacy-preserving-packing-alert\n\nNo composer-eligible catalogue resource provides the required role \"privacy-preserving-packing-alert\".",
+          "visibleHeadings": [
+            "Emergency Parcels"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: same-day-parcel-queueNo composer-eligible catalogue resource provides the required role \"same-day-parcel-queue\".",
+            "⚠️Unresolved Required Role: privacy-preserving-packing-alertNo composer-eligible catalogue resource provides the required role \"privacy-preserving-packing-alert\"."
+          ]
+        },
+        {
+          "id": "screen-stock-and-expiry",
+          "name": "Stock & Expiry",
+          "visibleText": "Household Pickup Workspace\nMenu\nHP\nStock & Expiry\nEXAMPLE\n\nReview chilled stock by storage condition and use-by date before rotation or withdrawal\n\n⚠️\nUnresolved Required Role: chilled-stock-inventory\n\nNo composer-eligible catalogue resource provides the required role \"chilled-stock-inventory\".\n\n⚠️\nUnresolved Required Role: expiry-aware-stock-rotation\n\nNo composer-eligible catalogue resource provides the required role \"expiry-aware-stock-rotation\".",
+          "visibleHeadings": [
+            "Stock & Expiry"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: chilled-stock-inventoryNo composer-eligible catalogue resource provides the required role \"chilled-stock-inventory\".",
+            "⚠️Unresolved Required Role: expiry-aware-stock-rotationNo composer-eligible catalogue resource provides the required role \"expiry-aware-stock-rotation\"."
+          ]
+        },
+        {
+          "id": "screen-food-safety-and-safeguarding",
+          "name": "Food Safety & Safeguarding",
+          "visibleText": "Household Pickup Workspace\nMenu\nHP\nFood Safety & Safeguarding\nEXAMPLE\n\nKeep allergy details with assigned food-safety coordinators and route safeguarding separately\n\n⚠️\nUnresolved Required Role: assigned-coordinator-allergy-details\n\nNo composer-eligible catalogue resource provides the required role \"assigned-coordinator-allergy-details\".\n\n⚠️\nUnresolved Required Role: neutral-volunteer-alert\n\nNo composer-eligible catalogue resource provides the required role \"neutral-volunteer-alert\".\n\n⚠️\nUnresolved Required Role: private-safeguarding-route\n\nNo composer-eligible catalogue resource provides the required role \"private-safeguarding-route\".\n\n⚠️\nUnresolved Required Role: case-note-confidentiality\n\nNo composer-eligible catalogue resource provides the required role \"case-note-confidentiality\".",
+          "visibleHeadings": [
+            "Food Safety & Safeguarding"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: assigned-coordinator-allergy-detailsNo composer-eligible catalogue resource provides the required role \"assigned-coordinator-allergy-details\".",
+            "⚠️Unresolved Required Role: neutral-volunteer-alertNo composer-eligible catalogue resource provides the required role \"neutral-volunteer-alert\".",
+            "⚠️Unresolved Required Role: private-safeguarding-routeNo composer-eligible catalogue resource provides the required role \"private-safeguarding-route\".",
+            "⚠️Unresolved Required Role: case-note-confidentialityNo composer-eligible catalogue resource provides the required role \"case-note-confidentiality\"."
+          ]
+        }
+      ]
+    },
+    {
+      "number": "03",
+      "screens": [
+        {
+          "id": "screen-overview",
+          "screenNodeId": "screen-overview",
+          "name": "Pickup Schedule & Waitlist",
+          "slug": "/pickup-schedule-and-waitlist",
+          "rootNode": {
+            "id": "root-screen-overview",
+            "nodeType": "layout",
+            "semanticRole": "workspace-dock-shell",
+            "children": [
+              {
+                "id": "node-screen-overview-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_collapsible_sidebar",
+                  "slug": "collapsible-sidebar",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "vertical"
+                }
+              },
+              {
+                "id": "container-screen-overview-canvas",
+                "nodeType": "layout",
+                "semanticRole": "workspace-multi-pane",
+                "children": [
+                  {
+                    "id": "node-screen-overview-overview-header-2",
+                    "nodeType": "block",
+                    "semanticRole": "overview-header",
+                    "resourceRef": {
+                      "id": "res_blk_entity_profile_header",
+                      "slug": "entity-profile-header",
+                      "version": "1.0.0"
+                    },
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "title": "Pickup Schedule & Waitlist",
+                      "subtitle": "Review pickup capacity, waitlist changes, and same-day parcel priorities",
+                      "badge": "EXAMPLE",
+                      "initials": "HP"
+                    }
+                  },
+                  {
+                    "id": "node-screen-overview-pickup-capacity-calendar-3",
+                    "nodeType": "section",
+                    "semanticRole": "pickup-capacity-calendar",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "pickup-capacity-calendar",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-overview-waitlist-queue-4",
+                    "nodeType": "section",
+                    "semanticRole": "waitlist-queue",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "waitlist-queue",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"waitlist-queue\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-overview-emergency-parcel-priorities-5",
+                    "nodeType": "section",
+                    "semanticRole": "emergency-parcel-priorities",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "emergency-parcel-priorities",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\"."
+                      }
+                    }
+                  }
+                ],
+                "slots": {},
+                "props": {
+                  "layoutFamily": "tri-column-intelligence"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "split-dock"
+            }
+          }
+        },
+        {
+          "id": "screen-household-intake-and-pickup",
+          "screenNodeId": "screen-household-intake-and-pickup",
+          "name": "Household Intake & Pickup",
+          "slug": "/household-intake-and-pickups/:id",
+          "rootNode": {
+            "id": "root-screen-household-intake-and-pickup",
+            "nodeType": "layout",
+            "semanticRole": "workspace-dock-shell",
+            "children": [
+              {
+                "id": "node-screen-household-intake-and-pickup-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_collapsible_sidebar",
+                  "slug": "collapsible-sidebar",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "vertical"
+                }
+              },
+              {
+                "id": "container-screen-household-intake-and-pickup-canvas",
+                "nodeType": "layout",
+                "semanticRole": "workspace-multi-pane",
+                "children": [
+                  {
+                    "id": "node-screen-household-intake-and-pickup-entity-header-2",
+                    "nodeType": "block",
+                    "semanticRole": "entity-header",
+                    "resourceRef": {
+                      "id": "res_blk_entity_profile_header",
+                      "slug": "entity-profile-header",
+                      "version": "1.0.0"
+                    },
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "title": "Household Intake & Pickup",
+                      "subtitle": "Record a chosen name and pickup essentials, then provide clear multilingual instructions",
+                      "badge": "EXAMPLE",
+                      "initials": "HP"
+                    }
+                  },
+                  {
+                    "id": "node-screen-household-intake-and-pickup-minimal-household-intake-3",
+                    "nodeType": "section",
+                    "semanticRole": "minimal-household-intake",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "minimal-household-intake",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"minimal-household-intake\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-household-intake-and-pickup-chosen-name-only-4",
+                    "nodeType": "section",
+                    "semanticRole": "chosen-name-only",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "chosen-name-only",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"chosen-name-only\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-household-intake-and-pickup-offline-intake-continuity-5",
+                    "nodeType": "section",
+                    "semanticRole": "offline-intake-continuity",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "offline-intake-continuity",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"offline-intake-continuity\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-household-intake-and-pickup-multilingual-pickup-instructions-6",
+                    "nodeType": "section",
+                    "semanticRole": "multilingual-pickup-instructions",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "multilingual-pickup-instructions",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"multilingual-pickup-instructions\"."
+                      }
+                    }
+                  }
+                ],
+                "slots": {},
+                "props": {
+                  "layoutFamily": "tri-column-intelligence"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "split-dock"
+            }
+          }
+        },
+        {
+          "id": "screen-weekly-pack-choices",
+          "screenNodeId": "screen-weekly-pack-choices",
+          "name": "Weekly Pack Choices",
+          "slug": "/weekly-pack-choiceses/:id",
+          "rootNode": {
+            "id": "root-screen-weekly-pack-choices",
+            "nodeType": "layout",
+            "semanticRole": "workspace-dock-shell",
+            "children": [
+              {
+                "id": "node-screen-weekly-pack-choices-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_collapsible_sidebar",
+                  "slug": "collapsible-sidebar",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "vertical"
+                }
+              },
+              {
+                "id": "container-screen-weekly-pack-choices-canvas",
+                "nodeType": "layout",
+                "semanticRole": "workspace-multi-pane",
+                "children": [
+                  {
+                    "id": "node-screen-weekly-pack-choices-entity-header-2",
+                    "nodeType": "block",
+                    "semanticRole": "entity-header",
+                    "resourceRef": {
+                      "id": "res_blk_entity_profile_header",
+                      "slug": "entity-profile-header",
+                      "version": "1.0.0"
+                    },
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "title": "Weekly Pack Choices",
+                      "subtitle": "Record grocery-pack choices and confirm available substitutions with the household",
+                      "badge": "EXAMPLE",
+                      "initials": "HP"
+                    }
+                  },
+                  {
+                    "id": "node-screen-weekly-pack-choices-weekly-pack-selection-3",
+                    "nodeType": "section",
+                    "semanticRole": "weekly-pack-selection",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "weekly-pack-selection",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"weekly-pack-selection\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-weekly-pack-choices-pack-substitution-review-4",
+                    "nodeType": "section",
+                    "semanticRole": "pack-substitution-review",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "pack-substitution-review",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"pack-substitution-review\"."
+                      }
+                    }
+                  }
+                ],
+                "slots": {},
+                "props": {
+                  "layoutFamily": "tri-column-intelligence"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "split-dock"
+            }
+          }
+        },
+        {
+          "id": "screen-collection-index",
+          "screenNodeId": "screen-collection-index",
+          "name": "Emergency Parcels",
+          "slug": "/emergency-parcels",
+          "rootNode": {
+            "id": "root-screen-collection-index",
+            "nodeType": "layout",
+            "semanticRole": "workspace-dock-shell",
+            "children": [
+              {
+                "id": "node-screen-collection-index-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_collapsible_sidebar",
+                  "slug": "collapsible-sidebar",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "vertical"
+                }
+              },
+              {
+                "id": "container-screen-collection-index-canvas",
+                "nodeType": "layout",
+                "semanticRole": "workspace-multi-pane",
+                "children": [
+                  {
+                    "id": "node-screen-collection-index-index-header-2",
+                    "nodeType": "block",
+                    "semanticRole": "index-header",
+                    "resourceRef": {
+                      "id": "res_blk_entity_profile_header",
+                      "slug": "entity-profile-header",
+                      "version": "1.0.0"
+                    },
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "title": "Emergency Parcels",
+                      "subtitle": "Coordinate same-day parcels and neutral packing alerts without exposing private notes",
+                      "badge": "EXAMPLE",
+                      "initials": "HP"
+                    }
+                  },
+                  {
+                    "id": "node-screen-collection-index-same-day-parcel-queue-3",
+                    "nodeType": "section",
+                    "semanticRole": "same-day-parcel-queue",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "same-day-parcel-queue",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"same-day-parcel-queue\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-collection-index-privacy-preserving-packing-alert-4",
+                    "nodeType": "section",
+                    "semanticRole": "privacy-preserving-packing-alert",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "privacy-preserving-packing-alert",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"privacy-preserving-packing-alert\"."
+                      }
+                    }
+                  }
+                ],
+                "slots": {},
+                "props": {
+                  "layoutFamily": "tri-column-intelligence"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "split-dock"
+            }
+          }
+        },
+        {
+          "id": "screen-stock-and-expiry",
+          "screenNodeId": "screen-stock-and-expiry",
+          "name": "Stock & Expiry",
+          "slug": "/stock-and-expiry",
+          "rootNode": {
+            "id": "root-screen-stock-and-expiry",
+            "nodeType": "layout",
+            "semanticRole": "workspace-dock-shell",
+            "children": [
+              {
+                "id": "node-screen-stock-and-expiry-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_collapsible_sidebar",
+                  "slug": "collapsible-sidebar",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "vertical"
+                }
+              },
+              {
+                "id": "container-screen-stock-and-expiry-canvas",
+                "nodeType": "layout",
+                "semanticRole": "workspace-multi-pane",
+                "children": [
+                  {
+                    "id": "node-screen-stock-and-expiry-index-header-2",
+                    "nodeType": "block",
+                    "semanticRole": "index-header",
+                    "resourceRef": {
+                      "id": "res_blk_entity_profile_header",
+                      "slug": "entity-profile-header",
+                      "version": "1.0.0"
+                    },
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "title": "Stock & Expiry",
+                      "subtitle": "Review chilled stock by storage condition and use-by date before rotation or withdrawal",
+                      "badge": "EXAMPLE",
+                      "initials": "HP"
+                    }
+                  },
+                  {
+                    "id": "node-screen-stock-and-expiry-chilled-stock-inventory-3",
+                    "nodeType": "section",
+                    "semanticRole": "chilled-stock-inventory",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "chilled-stock-inventory",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"chilled-stock-inventory\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-stock-and-expiry-expiry-aware-stock-rotation-4",
+                    "nodeType": "section",
+                    "semanticRole": "expiry-aware-stock-rotation",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "expiry-aware-stock-rotation",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"expiry-aware-stock-rotation\"."
+                      }
+                    }
+                  }
+                ],
+                "slots": {},
+                "props": {
+                  "layoutFamily": "tri-column-intelligence"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "split-dock"
+            }
+          }
+        },
+        {
+          "id": "screen-food-safety-and-safeguarding",
+          "screenNodeId": "screen-food-safety-and-safeguarding",
+          "name": "Food Safety & Safeguarding",
+          "slug": "/food-safety-and-safeguardings/:id",
+          "rootNode": {
+            "id": "root-screen-food-safety-and-safeguarding",
+            "nodeType": "layout",
+            "semanticRole": "workspace-dock-shell",
+            "children": [
+              {
+                "id": "node-screen-food-safety-and-safeguarding-navigation-1",
+                "nodeType": "layout",
+                "semanticRole": "navigation",
+                "resourceRef": {
+                  "id": "res_shell_collapsible_sidebar",
+                  "slug": "collapsible-sidebar",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Household Pickup Workspace",
+                  "links": [
+                    {
+                      "label": "Pickup Schedule & Waitlist",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Emergency Parcels",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Stock & Expiry",
+                      "href": "#screen-stock-and-expiry"
+                    }
+                  ],
+                  "orientation": "vertical"
+                }
+              },
+              {
+                "id": "container-screen-food-safety-and-safeguarding-canvas",
+                "nodeType": "layout",
+                "semanticRole": "workspace-multi-pane",
+                "children": [
+                  {
+                    "id": "node-screen-food-safety-and-safeguarding-entity-header-2",
+                    "nodeType": "block",
+                    "semanticRole": "entity-header",
+                    "resourceRef": {
+                      "id": "res_blk_entity_profile_header",
+                      "slug": "entity-profile-header",
+                      "version": "1.0.0"
+                    },
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "title": "Food Safety & Safeguarding",
+                      "subtitle": "Keep allergy details with assigned food-safety coordinators and route safeguarding separately",
+                      "badge": "EXAMPLE",
+                      "initials": "HP"
+                    }
+                  },
+                  {
+                    "id": "node-screen-food-safety-and-safeguarding-assigned-coordinator-allergy-details-3",
+                    "nodeType": "section",
+                    "semanticRole": "assigned-coordinator-allergy-details",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "assigned-coordinator-allergy-details",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"assigned-coordinator-allergy-details\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-food-safety-and-safeguarding-neutral-volunteer-alert-4",
+                    "nodeType": "section",
+                    "semanticRole": "neutral-volunteer-alert",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "neutral-volunteer-alert",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"neutral-volunteer-alert\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-food-safety-and-safeguarding-private-safeguarding-route-5",
+                    "nodeType": "section",
+                    "semanticRole": "private-safeguarding-route",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "private-safeguarding-route",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"private-safeguarding-route\"."
+                      }
+                    }
+                  },
+                  {
+                    "id": "node-screen-food-safety-and-safeguarding-case-note-confidentiality-6",
+                    "nodeType": "section",
+                    "semanticRole": "case-note-confidentiality",
+                    "variant": "nocturne",
+                    "children": [],
+                    "slots": {},
+                    "props": {
+                      "unresolvedRequiredRole": true,
+                      "diagnostic": {
+                        "code": "UNRESOLVED_REQUIRED_ROLE",
+                        "role": "case-note-confidentiality",
+                        "reason": "No composer-eligible catalogue resource provides the required role \"case-note-confidentiality\"."
+                      }
+                    }
+                  }
+                ],
+                "slots": {},
+                "props": {
+                  "layoutFamily": "tri-column-intelligence"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutVariant": "split-dock"
+            }
+          }
+        }
+      ],
+      "diagnostics": [
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "pickup-capacity-calendar",
+          "reason": "No composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "waitlist-queue",
+          "reason": "No composer-eligible catalogue resource provides the required role \"waitlist-queue\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "emergency-parcel-priorities",
+          "reason": "No composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "minimal-household-intake",
+          "reason": "No composer-eligible catalogue resource provides the required role \"minimal-household-intake\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "chosen-name-only",
+          "reason": "No composer-eligible catalogue resource provides the required role \"chosen-name-only\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "offline-intake-continuity",
+          "reason": "No composer-eligible catalogue resource provides the required role \"offline-intake-continuity\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "multilingual-pickup-instructions",
+          "reason": "No composer-eligible catalogue resource provides the required role \"multilingual-pickup-instructions\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "weekly-pack-selection",
+          "reason": "No composer-eligible catalogue resource provides the required role \"weekly-pack-selection\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "pack-substitution-review",
+          "reason": "No composer-eligible catalogue resource provides the required role \"pack-substitution-review\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "same-day-parcel-queue",
+          "reason": "No composer-eligible catalogue resource provides the required role \"same-day-parcel-queue\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "privacy-preserving-packing-alert",
+          "reason": "No composer-eligible catalogue resource provides the required role \"privacy-preserving-packing-alert\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "chilled-stock-inventory",
+          "reason": "No composer-eligible catalogue resource provides the required role \"chilled-stock-inventory\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "expiry-aware-stock-rotation",
+          "reason": "No composer-eligible catalogue resource provides the required role \"expiry-aware-stock-rotation\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "assigned-coordinator-allergy-details",
+          "reason": "No composer-eligible catalogue resource provides the required role \"assigned-coordinator-allergy-details\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "neutral-volunteer-alert",
+          "reason": "No composer-eligible catalogue resource provides the required role \"neutral-volunteer-alert\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "private-safeguarding-route",
+          "reason": "No composer-eligible catalogue resource provides the required role \"private-safeguarding-route\"."
+        },
+        {
+          "code": "UNRESOLVED_REQUIRED_ROLE",
+          "role": "case-note-confidentiality",
+          "reason": "No composer-eligible catalogue resource provides the required role \"case-note-confidentiality\"."
+        }
+      ],
+      "renderedScreens": [
+        {
+          "id": "screen-overview",
+          "name": "Pickup Schedule & Waitlist",
+          "visibleText": "Household Pickup Workspace\n−\nPickup Schedule & Waitlist\nEmergency Parcels\nStock & Expiry\nHP\nPickup Schedule & Waitlist\nEXAMPLE\n\nReview pickup capacity, waitlist changes, and same-day parcel priorities\n\n⚠️\nUnresolved Required Role: pickup-capacity-calendar\n\nNo composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\".\n\n⚠️\nUnresolved Required Role: waitlist-queue\n\nNo composer-eligible catalogue resource provides the required role \"waitlist-queue\".\n\n⚠️\nUnresolved Required Role: emergency-parcel-priorities\n\nNo composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\".",
+          "visibleHeadings": [
+            "Pickup Schedule & Waitlist"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: pickup-capacity-calendarNo composer-eligible catalogue resource provides the required role \"pickup-capacity-calendar\".",
+            "⚠️Unresolved Required Role: waitlist-queueNo composer-eligible catalogue resource provides the required role \"waitlist-queue\".",
+            "⚠️Unresolved Required Role: emergency-parcel-prioritiesNo composer-eligible catalogue resource provides the required role \"emergency-parcel-priorities\"."
+          ]
+        },
+        {
+          "id": "screen-household-intake-and-pickup",
+          "name": "Household Intake & Pickup",
+          "visibleText": "Household Pickup Workspace\n−\nPickup Schedule & Waitlist\nEmergency Parcels\nStock & Expiry\nHP\nHousehold Intake & Pickup\nEXAMPLE\n\nRecord a chosen name and pickup essentials, then provide clear multilingual instructions\n\n⚠️\nUnresolved Required Role: minimal-household-intake\n\nNo composer-eligible catalogue resource provides the required role \"minimal-household-intake\".\n\n⚠️\nUnresolved Required Role: chosen-name-only\n\nNo composer-eligible catalogue resource provides the required role \"chosen-name-only\".\n\n⚠️\nUnresolved Required Role: offline-intake-continuity\n\nNo composer-eligible catalogue resource provides the required role \"offline-intake-continuity\".\n\n⚠️\nUnresolved Required Role: multilingual-pickup-instructions\n\nNo composer-eligible catalogue resource provides the required role \"multilingual-pickup-instructions\".",
+          "visibleHeadings": [
+            "Household Intake & Pickup"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: minimal-household-intakeNo composer-eligible catalogue resource provides the required role \"minimal-household-intake\".",
+            "⚠️Unresolved Required Role: chosen-name-onlyNo composer-eligible catalogue resource provides the required role \"chosen-name-only\".",
+            "⚠️Unresolved Required Role: offline-intake-continuityNo composer-eligible catalogue resource provides the required role \"offline-intake-continuity\".",
+            "⚠️Unresolved Required Role: multilingual-pickup-instructionsNo composer-eligible catalogue resource provides the required role \"multilingual-pickup-instructions\"."
+          ]
+        },
+        {
+          "id": "screen-weekly-pack-choices",
+          "name": "Weekly Pack Choices",
+          "visibleText": "Household Pickup Workspace\n−\nPickup Schedule & Waitlist\nEmergency Parcels\nStock & Expiry\nHP\nWeekly Pack Choices\nEXAMPLE\n\nRecord grocery-pack choices and confirm available substitutions with the household\n\n⚠️\nUnresolved Required Role: weekly-pack-selection\n\nNo composer-eligible catalogue resource provides the required role \"weekly-pack-selection\".\n\n⚠️\nUnresolved Required Role: pack-substitution-review\n\nNo composer-eligible catalogue resource provides the required role \"pack-substitution-review\".",
+          "visibleHeadings": [
+            "Weekly Pack Choices"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: weekly-pack-selectionNo composer-eligible catalogue resource provides the required role \"weekly-pack-selection\".",
+            "⚠️Unresolved Required Role: pack-substitution-reviewNo composer-eligible catalogue resource provides the required role \"pack-substitution-review\"."
+          ]
+        },
+        {
+          "id": "screen-collection-index",
+          "name": "Emergency Parcels",
+          "visibleText": "Household Pickup Workspace\n−\nPickup Schedule & Waitlist\nEmergency Parcels\nStock & Expiry\nHP\nEmergency Parcels\nEXAMPLE\n\nCoordinate same-day parcels and neutral packing alerts without exposing private notes\n\n⚠️\nUnresolved Required Role: same-day-parcel-queue\n\nNo composer-eligible catalogue resource provides the required role \"same-day-parcel-queue\".\n\n⚠️\nUnresolved Required Role: privacy-preserving-packing-alert\n\nNo composer-eligible catalogue resource provides the required role \"privacy-preserving-packing-alert\".",
+          "visibleHeadings": [
+            "Emergency Parcels"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: same-day-parcel-queueNo composer-eligible catalogue resource provides the required role \"same-day-parcel-queue\".",
+            "⚠️Unresolved Required Role: privacy-preserving-packing-alertNo composer-eligible catalogue resource provides the required role \"privacy-preserving-packing-alert\"."
+          ]
+        },
+        {
+          "id": "screen-stock-and-expiry",
+          "name": "Stock & Expiry",
+          "visibleText": "Household Pickup Workspace\n−\nPickup Schedule & Waitlist\nEmergency Parcels\nStock & Expiry\nHP\nStock & Expiry\nEXAMPLE\n\nReview chilled stock by storage condition and use-by date before rotation or withdrawal\n\n⚠️\nUnresolved Required Role: chilled-stock-inventory\n\nNo composer-eligible catalogue resource provides the required role \"chilled-stock-inventory\".\n\n⚠️\nUnresolved Required Role: expiry-aware-stock-rotation\n\nNo composer-eligible catalogue resource provides the required role \"expiry-aware-stock-rotation\".",
+          "visibleHeadings": [
+            "Stock & Expiry"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: chilled-stock-inventoryNo composer-eligible catalogue resource provides the required role \"chilled-stock-inventory\".",
+            "⚠️Unresolved Required Role: expiry-aware-stock-rotationNo composer-eligible catalogue resource provides the required role \"expiry-aware-stock-rotation\"."
+          ]
+        },
+        {
+          "id": "screen-food-safety-and-safeguarding",
+          "name": "Food Safety & Safeguarding",
+          "visibleText": "Household Pickup Workspace\n−\nPickup Schedule & Waitlist\nEmergency Parcels\nStock & Expiry\nHP\nFood Safety & Safeguarding\nEXAMPLE\n\nKeep allergy details with assigned food-safety coordinators and route safeguarding separately\n\n⚠️\nUnresolved Required Role: assigned-coordinator-allergy-details\n\nNo composer-eligible catalogue resource provides the required role \"assigned-coordinator-allergy-details\".\n\n⚠️\nUnresolved Required Role: neutral-volunteer-alert\n\nNo composer-eligible catalogue resource provides the required role \"neutral-volunteer-alert\".\n\n⚠️\nUnresolved Required Role: private-safeguarding-route\n\nNo composer-eligible catalogue resource provides the required role \"private-safeguarding-route\".\n\n⚠️\nUnresolved Required Role: case-note-confidentiality\n\nNo composer-eligible catalogue resource provides the required role \"case-note-confidentiality\".",
+          "visibleHeadings": [
+            "Food Safety & Safeguarding"
+          ],
+          "unresolvedRoles": [
+            "⚠️Unresolved Required Role: assigned-coordinator-allergy-detailsNo composer-eligible catalogue resource provides the required role \"assigned-coordinator-allergy-details\".",
+            "⚠️Unresolved Required Role: neutral-volunteer-alertNo composer-eligible catalogue resource provides the required role \"neutral-volunteer-alert\".",
+            "⚠️Unresolved Required Role: private-safeguarding-routeNo composer-eligible catalogue resource provides the required role \"private-safeguarding-route\".",
+            "⚠️Unresolved Required Role: case-note-confidentialityNo composer-eligible catalogue resource provides the required role \"case-note-confidentiality\"."
+          ]
+        }
+      ]
+    }
+  ],
+  "responsive": {
+    "viewportWidth": 390,
+    "documentWidth": 390
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

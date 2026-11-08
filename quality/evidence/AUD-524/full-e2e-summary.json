@@ -1,0 +1,45 @@
+{
+  "command": "pnpm test:e2e",
+  "result": "PASS",
+  "projects": [
+    {
+      "name": "Astro desktop/mobile Chromium",
+      "passed": 410,
+      "configuredSkips": 140,
+      "failed": 0
+    },
+    {
+      "name": "Sites Worker desktop Chromium",
+      "passed": 249,
+      "configuredSkips": 11,
+      "failed": 0
+    },
+    {
+      "name": "Sites Worker mobile Chromium",
+      "passed": 214,
+      "configuredSkips": 46,
+      "failed": 0
+    },
+    {
+      "name": "Standalone preview Chromium",
+      "passed": 3,
+      "configuredSkips": 0,
+      "failed": 0
+    }
+  ],
+  "totals": {
+    "passed": 876,
+    "scheduled": 1073,
+    "configuredSkips": 197,
+    "failed": 0
+  },
+  "followUp": {
+    "command": "pnpm exec playwright test tests/e2e/meal-planner-archetype-fit.spec.ts --project=desktop-chrome --project=mobile-chrome",
+    "result": "PASS",
+    "passed": 2,
+    "configuredSkips": 0,
+    "failed": 0,
+    "note": "After the full matrix, the meal-planner test was extended through Workbench persistence and .tess.json export; the revised focused desktop/mobile journey passed separately."
+  },
+  "note": "Configured skips are profile skips. The full matrix passed before the meal-planner handoff assertions were appended; those revised assertions then passed in the focused follow-up."
+}

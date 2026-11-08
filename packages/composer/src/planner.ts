@@ -80,6 +80,86 @@ function requiredRolesForScreen(
   screenType: string,
   grammarRoles: string[]
 ): string[] {
+  if (productModel.requiredCapabilities.includes('community-emergency-response-workflow')) {
+    switch (normalizeName(screenName)) {
+      case 'coordination overview':
+        return ['overview-header', 'metric-cards', 'activity-feed'];
+      case 'request intake and triage':
+        return ['entity-header', 'settings-form', 'save-footer'];
+      case 'shelter and hub capacity':
+        return ['index-header', 'filter-bar', 'data-table', 'pagination'];
+      case 'supplies and distribution':
+        return ['index-header', 'filter-bar', 'data-table', 'pagination'];
+      case 'volunteer shift handover':
+        return ['entity-header', 'activity-feed', 'settings-form', 'save-footer'];
+      case 'public capacity status':
+        return ['overview-header', 'metric-cards', 'activity-feed'];
+    }
+  }
+
+  if (productModel.requiredCapabilities.includes('food-pantry-workflow')) {
+    switch (normalizeName(screenName)) {
+      case 'pickup schedule and waitlist':
+        return ['overview-header', 'pickup-capacity-calendar', 'waitlist-queue', 'emergency-parcel-priorities'];
+      case 'household intake and pickup':
+        return ['entity-header', 'minimal-household-intake', 'chosen-name-only', 'offline-intake-continuity', 'multilingual-pickup-instructions'];
+      case 'weekly pack choices':
+        return ['entity-header', 'weekly-pack-selection', 'pack-substitution-review'];
+      case 'emergency parcels':
+        return ['index-header', 'same-day-parcel-queue', 'privacy-preserving-packing-alert'];
+      case 'stock and expiry':
+        return ['index-header', 'chilled-stock-inventory', 'expiry-aware-stock-rotation'];
+      case 'food safety and safeguarding':
+        return ['entity-header', 'assigned-coordinator-allergy-details', 'neutral-volunteer-alert', 'private-safeguarding-route', 'case-note-confidentiality'];
+    }
+  }
+
+  if (productModel.requiredCapabilities.includes('bicycle-repair-service-workflow')) {
+    switch (normalizeName(screenName)) {
+      case 'service desk':
+        return ['overview-header', 'safety-triage-queue', 'priority-alerts'];
+      case 'repair intake':
+        return ['entity-header', 'repair-intake-form', 'reported-issue-capture'];
+      case 'safety inspection':
+        return ['entity-header', 'brake-steering-checklist', 'inspection-evidence'];
+      case 'parts and estimates':
+        return ['index-header', 'parts-availability', 'consented-repair-estimate'];
+      case 'pickup and handover':
+        return ['entity-header', 'safety-signoff', 'pickup-readiness'];
+    }
+  }
+
+  if (productModel.requiredCapabilities.includes('public-library-service-workflow')) {
+    switch (normalizeName(screenName)) {
+      case 'catalogue and branch availability':
+        return ['search-header', 'book-catalogue-search', 'branch-availability-and-hours', 'low-bandwidth-catalogue-browsing'];
+      case 'holds and pickup':
+        return ['index-header', 'private-hold-requests', 'branch-pickup-windows'];
+      case 'reading circles and events':
+        return ['index-header', 'reading-circle-and-event-discovery'];
+      case 'accessibility and privacy':
+        return ['entity-header', 'accessible-reading-controls', 'private-reading-history'];
+    }
+  }
+
+  if (productModel.requiredCapabilities.includes('short-session-learning')) {
+    switch (normalizeName(screenName)) {
+      case 'today':
+        return ['overview-header', 'language-progress-summary', 'activity-feed'];
+      case 'practice session':
+        return [
+          'overview-header',
+          'pronunciation-audio',
+          'speaking-practice',
+          'dyslexia-friendly-reading-controls',
+        ];
+      case 'vocabulary review':
+        return ['index-header', 'vocabulary-review', 'dyslexia-friendly-reading-controls'];
+      case 'offline library':
+        return ['index-header', 'offline-lesson-downloads'];
+    }
+  }
+
   const communityActivityStream =
     screenType === 'dashboard' &&
     normalizeName(screenName) === 'activity stream' &&

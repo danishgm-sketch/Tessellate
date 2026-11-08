@@ -13,15 +13,15 @@ Finish the technically and legally permitted Verso integration first, then
 make Tessellate a coherent, dependable product for interpreting a brief,
 producing materially different interface directions, editing safely, and
 exporting a working application. Reuse the existing shared contracts and
-preserve Verso source identity and rights restrictions. Public distribution
-and certification stay blocked until redistribution rights are documented.
+preserve Verso source identity and rights restrictions. Owner authorization for Tessellate project use and modification is recorded in D-067. Per-item certification and the ordered release gates still apply before publication.
 
 - No major product expansion until the release gates in `PRODUCT_HARDENING.md`
   pass.
 - The owner's external-user-study waiver is recorded as **waived, not passed**;
   simulated perspectives do not count as human sessions.
-- Verso's private/unlicensed status remains a distribution restriction until
-  documented rights authorize redistribution.
+- The owner authorization for project use and modification is recorded in
+  D-067. The private source remains external, and all items still require
+  per-item certification before product inclusion.
 - No silent merge, rights-restricted publication, paid infrastructure, or
   unapproved production Site change. The owner has authorized automatic
   publication of the recommended review version after exact-head CI passes.
@@ -134,4 +134,29 @@ This is a deployed audit checkpoint, not completion of Product Hardening. Route-
 
 PR #13 fixed a schema contract gap: project screens using route aliases such as `overview` and `/OVERVIEW/` are now rejected as duplicates after canonical normalization. The regression failed before the fix. The merged canonical commit is `3cd019803b03282aa43f31d92591c83f2ac0bd85`; exact-head CI passed in [run 42342203265](https://github.com/danishgm-sketch/Tessellate/actions/runs/42342203265) and [run 42342228312](https://github.com/danishgm-sketch/Tessellate/actions/runs/42342228312). The source is live on public Sites v86 (version `appgprj_6acc036de8cc8191a823339566972d85~appgver_5aa4573c693081919a3be7c7e87b922c`, deployment `appgdep_6aeec3ae04e88191ae10a97bec8516dc`) through Sites mirror commit `42b992ac04816eab5d16f20f95516cdd2b5031ed`.
 
-The local release checks passed: catalogue build (324 resources, 40 Gold), 22 typechecks, lint, 1,346 unit tests with one configured skip, `pnpm audit:all`, and E2E (858 passed, 197 configured skips, zero failures). The isolated Sites production build generated 733 pages and the Worker. Deployed Chromium smoke checks at 1440×900 and 390×844 confirmed the homepage, Explore, Compose, Workbench, resource detail and 324-entry catalogue; no console errors, failed network requests, HTTP errors or mobile horizontal overflow were observed. This was a scoped post-deployment smoke check, not a repeat of the full v85 audit and not closure of the remaining issue ledger or ordered hardening programme. D1/R2 remain unbound; Verso redistribution remains blocked by missing written rights.
+The local release checks passed: catalogue build (324 resources, 40 Gold), 22 typechecks, lint, 1,346 unit tests with one configured skip, `pnpm audit:all`, and E2E (858 passed, 197 configured skips, zero failures). The isolated Sites production build generated 733 pages and the Worker. Deployed Chromium smoke checks at 1440×900 and 390×844 confirmed the homepage, Explore, Compose, Workbench, resource detail and 324-entry catalogue; no console errors, failed network requests, HTTP errors or mobile horizontal overflow were observed. This was a scoped post-deployment smoke check, not a repeat of the full v85 audit and not closure of the remaining issue ledger or ordered hardening programme. D1/R2 remain unbound; Verso project use and modification are authorized by D-067; per-item certification remains outstanding.
+
+
+### 2026-11-07 continuation — owner authorization and Compose regressions
+
+The owner confirmed ownership of the private Verso collection and authorized its use and modification for Tessellate without a separate license. D-067 records this direction. The rights question for project use is resolved; the 1,053 modules remain technically uncertified and outside product surfaces until item-level review and the ordered release gates pass.
+
+On this scoped branch, AUD-516 fixes unsupported intelligence-shaped defaults for a marine field-research brief, and AUD-517 fixes screen navigation in the inline Compose direction preview. The exact brief was exercised at 390x844; composer tests pass 118/118, composer/site typechecks pass, the Astro build produces 733 pages, and the targeted browser flow passes 1/1 with zero browser/network failures and no overflow. Evidence is in quality/STEP_39_EVIDENCE.md and quality/evidence/AUD-516/. This local result does not close Step 39 or verify the public Site. The ordered hardening programme remains open.
+
+### 2026-11-08 continuation — duplicate IDs and full E2E verification
+
+AUD-518 fixes repeated label-derived IDs in the inline and dialog previews with React `useId()`, preserving explicit IDs and updating the public registry and Gold export source. The browser regression verifies correct label targeting and independent preview navigation. The focused browser checks passed 10 with 2 configured skips; the complete E2E matrix passed 862 with 197 configured skips and no failures. Lint and `pnpm audit:all` passed, including the release behavior, resource isolation, provenance/licence, security and budget gates. Evidence and per-project counts are in `quality/STEP_39_EVIDENCE.md`.
+
+Exact-head CI passed on implementation commit `985ece50`: both validation workflows passed 862 browser tests, and the 16-point Component Quality & Security Sandbox Audit passed. Run records: [42436708005](https://github.com/danishgm-sketch/Tessellate/actions/runs/42436708005), [42436727640](https://github.com/danishgm-sketch/Tessellate/actions/runs/42436727640), and [42436727616](https://github.com/danishgm-sketch/Tessellate/actions/runs/42436727616). Public Site verification has not run. Step 39 and the release gate remain open; continue with the next incomplete hardening item.
+
+### 2026-11-08 continuation — Compose accessibility and domain-fit regressions
+
+AUD-519 fixes the unnamed Compose Accessibility Floor select. Its label and keyboard controls pass at desktop and mobile widths; four local browser-profile captures report a 390px document width and zero runtime, network, or HTTP errors. AUD-520 fixes the generic Education result for an offline Spanish-learning app for adults with dyslexia. The tailored four-screen plan is specific to the brief, but six unique required roles remain unsupported by the present catalogue and are surfaced in every direction. The example session is disclosed as example content. No nonfunctional audio/offline controls were added.
+
+Implementation commit `e95f057b5e9df8be6b4d4e608b031c9c3c67b550` passes 1,352 tests (one configured skip), all 22 typechecks, lint, the production build, `pnpm audit:all`, and the full E2E matrix (868 passed, 197 configured skips, no failures). The directly recaptured Accessibility Floor flow passed in Astro and Sites Worker desktop/mobile profiles. Evidence is in `quality/evidence/AUD-519/` and `quality/evidence/AUD-520/`. Exact-head CI and public issue-specific verification are pending. The overall goal remains in progress; the product-hardening release gate is not complete.
+
+### 2026-11-08 continuation — bicycle repair Compose fit
+
+A realistic bicycle-repair co-op brief found generic ERP defaults and a blank safety-inspection preview. Commit `ce719d45` adds a focused specialization to the existing operations archetype, a usable inspection heading, explicit no-payment handling, and truthful diagnostics for ten unsupported service roles. All three directions and five planned screens were exercised at desktop and mobile sizes; the focused browser journey passed 2/2. The full local suite passed 1,356 tests (one configured skip), 22 typechecks, lint, `pnpm audit:all`, the 733-page build, and 870 E2E cases with 197 configured skips. Evidence: `quality/evidence/AUD-521/`.
+
+This local improvement does not complete Step 39, the hardening gate, or public verification. Exact-head CI passed in [run 42456673305](https://github.com/danishgm-sketch/Tessellate/actions/runs/42456673305), and the Component Quality Gate Sandbox passed in [run 42456673268](https://github.com/danishgm-sketch/Tessellate/actions/runs/42456673268). Public verification remains pending; no deployment or release was performed. The broader product-quality mission remains active, and verified work is preserved on the scoped PR branch.

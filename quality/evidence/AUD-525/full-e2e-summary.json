@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-11-08T13:46:04Z",
+  "command": "pnpm test:e2e",
+  "environment": "Windows worktree; Astro production preview, local production-like Cloudflare Sites Worker, standalone Vite preview; Chromium desktop 1440x900 and mobile 390x844",
+  "result": "PASS",
+  "sourceBaseCommit": "1fa9a6300be8aa9f6267ae94a24794ddf8e9fcc5",
+  "workingTreeWasDirty": true,
+  "focusedLibraryJourney": {
+    "result": "PASS",
+    "passed": 4,
+    "configuredSkips": 0,
+    "failed": 0,
+    "profiles": [
+      "Astro desktop Chromium",
+      "Astro mobile Chromium",
+      "Sites Worker desktop Chromium",
+      "Sites Worker mobile Chromium"
+    ]
+  },
+  "projects": [
+    {
+      "name": "Astro desktop/mobile Chromium",
+      "passed": 412,
+      "configuredSkips": 140,
+      "failed": 0
+    },
+    {
+      "name": "Sites Worker desktop Chromium",
+      "passed": 250,
+      "configuredSkips": 11,
+      "failed": 0
+    },
+    {
+      "name": "Sites Worker mobile Chromium",
+      "passed": 215,
+      "configuredSkips": 46,
+      "failed": 0
+    },
+    {
+      "name": "Standalone preview Chromium",
+      "passed": 3,
+      "configuredSkips": 0,
+      "failed": 0
+    }
+  ],
+  "totals": {
+    "passed": 880,
+    "scheduled": 1077,
+    "configuredSkips": 197,
+    "failed": 0
+  },
+  "notes": [
+    "The public-library brief was exercised in all four Astro/Sites Worker desktop/mobile profiles as part of the complete matrix.",
+    "Each library run inspected all three directions, selected all four screens in every direction, checked unresolved service roles, followed Direction 01 into Workbench, and verified local persistence and exact .tess.json manifest export.",
+    "All library reports show document width equal to the viewport and zero console errors, uncaught exceptions, failed requests, or HTTP errors.",
+    "Configured profile skips are recorded as skips; no test failures occurred.",
+    "This is local verification only. Exact-head CI and deployed public verification remain pending; no Site update or release was performed."
+  ],
+  "libraryEvidence": [
+    "public-library-desktop.json",
+    "public-library-mobile.json",
+    "public-library-sites-desktop.json",
+    "public-library-sites-mobile.json",
+    "public-library-workbench-desktop.json",
+    "public-library-workbench-desktop.png",
+    "public-library-workbench-mobile.json",
+    "public-library-workbench-mobile.png",
+    "public-library-workbench-sites-desktop.json",
+    "public-library-workbench-sites-desktop.png",
+    "public-library-workbench-sites-mobile.json",
+    "public-library-workbench-sites-mobile.png",
+    "public-library-compose-desktop.png",
+    "public-library-compose-mobile.png",
+    "public-library-compose-sites-desktop.png",
+    "public-library-compose-sites-mobile.png"
+  ]
+}

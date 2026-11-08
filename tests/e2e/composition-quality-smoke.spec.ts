@@ -136,6 +136,15 @@ test('review representative marketplace and community compositions in the real b
     await expect(submit).toBeEnabled();
     await submit.click();
 
+    let inlineMessageInputId: string | null = null;
+    if (item.id === 'MKT-01') {
+      const inlinePreview = page.getByTestId('direction-preview-01');
+      await inlinePreview.getByRole('link', { name: item.screen }).click();
+      const inlineMessageInput = inlinePreview.locator('input[placeholder="Write a message…"]');
+      await expect(inlineMessageInput).toBeVisible();
+      inlineMessageInputId = await inlineMessageInput.getAttribute('id');
+      expect(inlineMessageInputId).toBeTruthy();
+    }
     const directions: Array<Record<string, unknown>> = [];
     for (const number of ['01', '02', '03']) {
       const card = page.locator(`[data-testid="direction-card-${number}"]`);
@@ -218,7 +227,11 @@ test('review representative marketplace and community compositions in the real b
         if (channelsRails.length) {
           expect(nodes.filter((node) => node.semanticRole === 'navigation')).toHaveLength(0);
         }
-        await expect(canvas.getByLabel('Write a message')).toBeVisible();
+        const dialogMessageInput = canvas.getByLabel('Write a message');
+        await expect(dialogMessageInput).toBeVisible();
+        expect(await dialogMessageInput.getAttribute('id')).not.toBe(
+          inlineMessageInputId
+        );
         expect(visibleCopy.toLocaleLowerCase()).toContain('project inquiry');
         expect(visibleCopy.toLocaleLowerCase()).toContain('proposal reply');
         expect(visibleCopy.toLocaleLowerCase()).not.toContain('complete booking');
@@ -811,12 +824,26 @@ test('returns portal brief composes order lookup, return request, and refund sta
   await expect(submit).toBeEnabled();
   await submit.click();
 
+  const inlinePreview = page.getByTestId('direction-preview-01');
+  await inlinePreview.getByRole('link', { name: 'Return Request' }).click();
+  const firstDirectionCard = page.locator('[data-testid="direction-card-01"]');
+  await expect(firstDirectionCard).toContainText('Screen Preview: Return Request');
+  const inlineReturnReason = inlinePreview.locator(
+    'input[placeholder="Describe why these items are being returned"]'
+  );
+  await expect(inlineReturnReason).toBeVisible();
+  const inlineReturnReasonId = await inlineReturnReason.getAttribute('id');
+  expect(inlineReturnReasonId).toBeTruthy();
+
   for (const number of ['01', '02', '03']) {
     const card = page.locator(`[data-testid="direction-card-${number}"]`);
     await expect(card).toBeVisible();
     await card.getByRole('button', { name: 'Inspect full preview and DNA' }).click();
     const dialog = page.getByRole('dialog', { name: new RegExp(`Direction ${number}`) });
     await expect(dialog).toBeVisible();
+    if (number === '01') {
+      await expect(card).toContainText('Screen Preview: Return Request');
+    }
     const details = dialog
       .locator('details')
       .filter({ hasText: 'Design DNA and resource references' });
@@ -854,11 +881,18 @@ test('returns portal brief composes order lookup, return request, and refund sta
     await expect(canvas).toContainText('Order Lookup');
     await expect(canvas).toContainText('Orders and returns');
     await expect(canvas).not.toContainText('Flagship Feature');
+    if (number === '01') {
+      await expect(card).toContainText('Screen Preview: Return Request');
+    }
 
     await screenSelect.selectOption(returnRequest!.id);
     await expect(canvas).toContainText('Return Request');
     await expect(canvas.locator('nav')).toHaveCount(1);
-    await expect(canvas.getByLabel('Return reason')).toBeVisible();
+    const dialogReturnReason = canvas.getByLabel('Return reason');
+    await expect(dialogReturnReason).toBeVisible();
+    expect(await dialogReturnReason.getAttribute('id')).not.toBe(
+      inlineReturnReasonId
+    );
     const disabledSubmit = canvas.getByRole('button', { name: 'Submit return request' });
     await expect(disabledSubmit).toBeDisabled();
     await expect(disabledSubmit).toHaveAttribute(
@@ -1128,3 +1162,102 @@ function collectNodes(node: AuditNode, output: AuditNode[] = []): AuditNode[] {
   for (const child of node.children) collectNodes(child, output);
   return output;
 }
+
+test('advanced Compose accessibility floor has an accessible name and remains usable at mobile width', async ({
+  page,
+}, testInfo) => {
+  const evidenceDirectory = path.resolve('quality/evidence/AUD-519');
+  fs.mkdirSync(evidenceDirectory, { recursive: true });
+  const runtime = {
+    consoleErrors: [] as string[],
+    uncaughtExceptions: [] as string[],
+    failedRequests: [] as string[],
+    badResponses: [] as Array<{ url: string; status: number }>,
+  };
+  page.on('console', (message) => {
+    if (message.type() === 'error') runtime.consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => runtime.uncaughtExceptions.push(error.message));
+  page.on('requestfailed', (request) => runtime.failedRequests.push(request.url()));
+  page.on('response', (response) => {
+    if (response.status() >= 400) {
+      runtime.badResponses.push({ url: response.url(), status: response.status() });
+    }
+  });
+
+  await page.goto('/compose');
+  await expect(page.getByTestId('catalog-status')).toContainText('Catalogue ready');
+  await page.getByRole('button', { name: 'Advanced Constraints & Devices' }).click();
+
+  const accessibilityFloor = page.getByRole('combobox', { name: 'Accessibility Floor' });
+  await expect(accessibilityFloor).toHaveValue('AA');
+  await accessibilityFloor.selectOption('AAA');
+  await expect(accessibilityFloor).toHaveValue('AAA');
+  await accessibilityFloor.scrollIntoViewIfNeeded();
+  const expandedControlsScreenshot = path.join(
+    evidenceDirectory,
+    `compose-accessibility-floor-expanded-${testInfo.project.name}.png`
+  );
+  await page.screenshot({ path: expandedControlsScreenshot, animations: 'disabled' });
+  await testInfo.attach('compose-accessibility-floor-expanded-controls', {
+    path: expandedControlsScreenshot,
+    contentType: 'image/png',
+  });
+
+  const devices = page.getByRole('group', { name: 'Target Devices' });
+  const desktop = devices.getByRole('button', { name: 'Desktop' });
+  const tablet = devices.getByRole('button', { name: 'Tablet' });
+  const mobile = devices.getByRole('button', { name: 'Mobile' });
+  if ((await desktop.getAttribute('aria-pressed')) === 'true') await desktop.click();
+  if ((await tablet.getAttribute('aria-pressed')) === 'true') await tablet.click();
+  await expect(desktop).toHaveAttribute('aria-pressed', 'false');
+  await expect(tablet).toHaveAttribute('aria-pressed', 'false');
+  await expect(mobile).toHaveAttribute('aria-pressed', 'true');
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(accessibilityFloor).toBeVisible();
+  const responsive = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    document: document.documentElement.scrollWidth,
+  }));
+  expect(responsive.document).toBeLessThanOrEqual(responsive.viewport);
+  await accessibilityFloor.scrollIntoViewIfNeeded();
+  expect(runtime.consoleErrors).toEqual([]);
+  expect(runtime.uncaughtExceptions).toEqual([]);
+  expect(runtime.failedRequests).toEqual([]);
+  expect(runtime.badResponses).toEqual([]);
+  const mobileTargetScreenshot = path.join(
+    evidenceDirectory,
+    `compose-accessibility-floor-mobile-target-${testInfo.project.name}.png`
+  );
+  await page.screenshot({ path: mobileTargetScreenshot, animations: 'disabled' });
+  await testInfo.attach('compose-accessibility-floor-mobile-target', {
+    path: mobileTargetScreenshot,
+    contentType: 'image/png',
+  });
+  fs.writeFileSync(
+    path.join(evidenceDirectory, `compose-accessibility-floor-${testInfo.project.name}.json`),
+    `${JSON.stringify(
+      {
+        project: testInfo.project.name,
+        accessibleName: 'Accessibility Floor',
+        initialFloor: 'AA',
+        selectedFloor: await accessibilityFloor.inputValue(),
+        targetDevices: {
+          desktop: await desktop.getAttribute('aria-pressed'),
+          tablet: await tablet.getAttribute('aria-pressed'),
+          mobile: await mobile.getAttribute('aria-pressed'),
+        },
+        responsive,
+        screenshots: {
+          expandedControls: path.relative(process.cwd(), expandedControlsScreenshot).replaceAll('\\', '/'),
+          mobileTarget: path.relative(process.cwd(), mobileTargetScreenshot).replaceAll('\\', '/'),
+        },
+        runtime,
+      },
+      null,
+      2
+    )}\n`,
+    'utf8'
+  );
+});

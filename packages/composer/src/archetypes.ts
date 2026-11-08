@@ -304,7 +304,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
   'intelligence-research': {
     id: 'intelligence-research',
     name: 'Research & Intelligence Platform',
-    description: 'Deep investigative workspaces, evidence graphs, dossier profiles, and market intelligence.',
+    description: 'Research workspaces for examining sources, connecting evidence, and preparing traceable findings.',
     keywords: [
       'intelligence',
       'research',
@@ -332,21 +332,21 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
     transactionCriticality: 65,
     navigationComplexity: 80,
     mobileImportance: 30,
-    primaryObjective: 'Synthesize heterogeneous source evidence into verified intelligence dossiers',
+    primaryObjective: 'Synthesize source evidence into traceable research findings and dossiers',
     defaultEntities: [
-      { name: 'Entity', description: 'Investigated company, person, or asset node', fields: ['id', 'name', 'type', 'riskScore', 'relations'] },
-      { name: 'Evidence', description: 'Verified document, filing, or signal reference', fields: ['id', 'source', 'confidence', 'extractedDate'] },
-      { name: 'Dossier', description: 'Curated dossier binder and synthesis report', fields: ['id', 'title', 'analyst', 'classification'] },
+      { name: 'Entity', description: 'Person, organisation, material, specimen, or other subject being examined', fields: ['id', 'name', 'type', 'relations'] },
+      { name: 'Evidence', description: 'Source document, measurement, image, or dataset with provenance', fields: ['id', 'source', 'confidence', 'collectedAt'] },
+      { name: 'Dossier', description: 'Traceable synthesis of findings linked to their supporting sources', fields: ['id', 'title', 'author', 'updatedAt'] },
     ],
     defaultWorkflows: [
-      { id: 'investigate-entity', name: 'Search entity, map relationship network, and tag evidence', steps: ['global-search', 'expand-relations', 'highlight-findings', 'export-dossier'] },
-      { id: 'configure-watchlist', name: 'Set automated monitoring triggers for entity changes', steps: ['define-alert-rules', 'select-entities', 'choose-cadence'] },
+      { id: 'investigate-entity', name: 'Examine a research subject, trace its relationships, and link supporting evidence', steps: ['search-subject', 'review-relations', 'annotate-evidence', 'prepare-dossier'] },
+      { id: 'review-research', name: 'Review source material and prepare a traceable research synthesis', steps: ['collect-sources', 'assess-provenance', 'link-findings', 'review-dossier'] },
     ],
     recommendedScreens: [
-      { name: 'Research Terminal', screenType: 'workspace-editor', purpose: 'Three-pane entity investigation workspace', jobs: ['expand-graph', 'annotate-evidence'], required: true },
-      { name: 'Entity Index', screenType: 'search-explore', purpose: 'Global search across millions of verified profiles', jobs: ['faceted-lookup', 'filter-by-jurisdiction'], required: true },
-      { name: 'Dossier Reader', screenType: 'detail-entity', purpose: 'Published long-form report with linked evidence footnotes', jobs: ['read-synthesis', 'verify-citations'], required: true },
-      { name: 'Watchlists & Alerts', screenType: 'index-list', purpose: 'Active signal alerts and entity delta log', jobs: ['triage-alerts', 'mute-notifications'], required: false },
+      { name: 'Research Terminal', screenType: 'workspace-editor', purpose: 'Research workspace for examining subjects, relationships, and source material', jobs: ['review-relations', 'annotate-evidence'], required: true },
+      { name: 'Entity Index', screenType: 'search-explore', purpose: 'Search and filter the subjects and records included in the research project', jobs: ['faceted-lookup', 'filter-records'], required: true },
+      { name: 'Dossier Reader', screenType: 'detail-entity', purpose: 'Read a research synthesis with links to supporting evidence', jobs: ['read-synthesis', 'review-citations'], required: true },
+      { name: 'Saved Research', screenType: 'index-list', purpose: 'Return to saved subjects, sources, and open review tasks', jobs: ['open-saved-research', 'resume-review'], required: false },
     ],
     requiredCapabilities: ['three-pane-layout', 'evidence-provenance-links', 'high-contrast-readability'],
     forbiddenPatterns: ['unverifiable-ai-summaries-without-citations', 'ephemeral-data-loss'],
@@ -393,7 +393,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
     id: 'erp-operations',
     name: 'ERP & Operations',
     description: 'Supply chain management, asset inventory, procurement, and field work orders.',
-    keywords: ['erp', 'operations', 'inventory', 'supply chain', 'warehouse', 'procurement', 'logistics', 'work orders'],
+    keywords: ['erp', 'operations', 'inventory', 'supply chain', 'warehouse', 'procurement', 'logistics', 'work orders', 'bicycle repair', 'bike repair', 'bicycle workshop', 'bike workshop', 'mutual aid network', 'disaster response coordination', 'humanitarian relief coordination'],
     primaryAudience: 'Operations controllers, plant managers, and procurement officers',
     userSophistication: 70,
     trustRequirement: 92,
@@ -603,7 +603,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
     id: 'real-estate',
     name: 'Real Estate',
     description: 'Property listings, mortgage calculators, interactive floorplans, and agent inquiries.',
-    keywords: ['real estate', 'property', 'homes', 'realtor', 'mortgage', 'listing', 'floorplan', 'rent', 'buy'],
+    keywords: ['real estate', 'property', 'homes', 'apartment', 'rental', 'tenant', 'realtor', 'mortgage', 'listing', 'floorplan', 'rent', 'buy'],
     primaryAudience: 'Home buyers, renters, property developers, and real estate brokers',
     userSophistication: 55,
     trustRequirement: 95,
@@ -718,27 +718,94 @@ const ARCHETYPE_PRIMARY_SIGNALS: Record<string, string[]> = {
   ecommerce: ['e-commerce', 'ecommerce', 'online store', 'online shopping', 'shopping cart', 'product catalog', 'storefront', 'returns portal', 'checkout', 'retail'],
   marketplace: ['marketplace', 'two-sided platform', 'two-sided marketplace', 'buyers and sellers', 'seller marketplace', 'booking marketplace', 'independent suppliers'],
   analytics: ['analytics', 'business intelligence', 'business-intelligence', 'data visualization', 'experiment analysis', 'cohort analysis', 'metrics dashboard', 'kpi', 'warehouse tables', 'saved reports'],
-  'intelligence-research': ['research platform', 'scientific research', 'climate science', 'field research', 'literature review', 'evidence dossier', 'intelligence research', 'investigative research', 'investigative newsroom', 'research analyst', 'provenance'],
+  'intelligence-research': ['research platform', 'scientific research', 'climate science', 'field research', 'literature review', 'evidence dossier', 'intelligence research', 'investigative research', 'investigative newsroom', 'research analyst', 'provenance', 'osint', 'clinical trial', 'policy research', 'materials research', 'laboratory research', 'marine biology', 'marine ecology', 'marine fieldwork', 'oceanographic survey', 'species survey', 'transect survey', 'field atlas', 'benthic survey'],
   crm: ['crm', 'customer relationship', 'customer relationship management', 'sales pipeline', 'sales crm', 'customer success', 'account management', 'renewal management', 'contact management'],
-  'erp-operations': ['erp', 'enterprise resource planning', 'supply chain', 'manufacturing', 'facilities management', 'field service', 'work order', 'work-order', 'inventory management', 'procurement', 'warehouse operations', 'maintenance operations', 'production facilities'],
-  productivity: ['productivity app', 'task management', 'note-taking', 'notes app', 'personal planner', 'to-do', 'todo app', 'habit journal', 'daily journal', 'personal knowledge base', 'agenda planner'],
+  'erp-operations': ['erp', 'enterprise resource planning', 'supply chain', 'manufacturing', 'facilities management', 'field service', 'work order', 'work-order', 'inventory management', 'procurement', 'warehouse operations', 'maintenance operations', 'production facilities', 'food pantry', 'food bank', 'bicycle repair', 'bike repair', 'bicycle workshop', 'bike workshop', 'repair shop management', 'mutual aid network', 'community emergency response', 'disaster response coordination', 'humanitarian relief coordination'],
+  productivity: ['productivity app', 'task management', 'note-taking', 'notes app', 'personal planner', 'to-do', 'todo app', 'habit journal', 'daily journal', 'personal knowledge base', 'agenda planner', 'meal planning', 'meal planner', 'weekly meal plan'],
   education: ['education platform', 'learning platform', 'learning management system', 'lms', 'online course', 'cohort learning', 'classroom', 'course catalog', 'lesson classroom'],
   creator: ['creator platform', 'creator economy', 'independent creator', 'creator tools', 'newsletter platform', 'subscriber membership', 'digital illustration', 'artist portfolio'],
-  media: ['media platform', 'newsroom', 'news publication', 'digital magazine', 'journalism', 'public radio', 'radio service', 'episode archive', 'editorial publication', 'broadcast service'],
+  media: ['media platform', 'newsroom', 'news publication', 'digital magazine', 'journalism', 'public radio', 'radio service', 'episode archive', 'editorial publication', 'broadcast service', 'public library', 'community library', 'book lending library'],
   travel: ['travel service', 'travel planning', 'trip planner', 'trip-planning', 'travel itinerary', 'hotel booking', 'flight booking', 'destination guide', 'travelers', 'hospitality'],
-  'real-estate': ['real estate', 'real-estate', 'home search', 'home-search', 'property management', 'property listing', 'commercial leasing', 'residential manager', 'mortgage', 'realtor', 'realty'],
+  'real-estate': ['real estate', 'real-estate', 'rental platform', 'apartment rental', 'tenant portal', 'home search', 'home-search', 'property management', 'property listing', 'commercial leasing', 'residential manager', 'mortgage', 'realtor', 'realty'],
   recruitment: ['recruitment', 'recruiting', 'talent acquisition', 'applicant tracking', 'candidate pipeline', 'candidate portal', 'hiring workspace', 'interview panel'],
   consumer: ['consumer app', 'consumer application', 'social network', 'social app', 'neighborhood social', 'community app', 'social feed', 'mobile-first consumer'],
 };
 
+const NEGATION_CUE = /\b(?:no|without|not|never|avoid|avoids|avoided|excluding|exclude|excludes|excluded|don't|doesn't|didn't|won't|can't|isn't|aren't|shouldn't|mustn't)\b/gi;
+const NEGATION_SCOPE_BREAK = /[.!?;]|\b(?:but|however|yet|although|except|unless|instead)\b/gi;
+const COORDINATED_PREDICATE = /\b(?:and|or)\s+(?:(?:also|still|now)\s+)?(?:(?:we|they|it|this|our|their|users?|members?|customers?|households?|the\s+app|the\s+product|the\s+platform)\s+)?(?:can|could|will|would|must|should|may|might|do|does|did|have|has|had|are|is|was|were|support|supports|offer|offers|include|includes|provide|provides|process|processes|track|tracks|transfer|transfers|handle|handles|use|uses|manage|manages)\b/i;
+
+function isNegatedKeywordOccurrence(normalizedText: string, matchIndex: number): boolean {
+  // In offline/field contexts, “no mobile signal” describes the network
+  // environment around a mobile user, rather than excluding mobile use.
+  if (/^mobile\s+(?:signal|coverage)\b/i.test(normalizedText.slice(matchIndex))) {
+    return false;
+  }
+
+  const textBeforeMatch = normalizedText.slice(0, matchIndex);
+  let scopeStart = 0;
+
+  for (const boundary of textBeforeMatch.matchAll(NEGATION_SCOPE_BREAK)) {
+    scopeStart = (boundary.index ?? 0) + boundary[0].length;
+  }
+
+  const scopePrefix = textBeforeMatch.slice(scopeStart);
+  let latestNegationEnd = -1;
+
+  for (const cue of scopePrefix.matchAll(NEGATION_CUE)) {
+    const cueIndex = cue.index ?? 0;
+    const beforeCue = scopePrefix.slice(0, cueIndex).trimEnd();
+    const afterCue = scopePrefix.slice(cueIndex + cue[0].length).trimStart();
+    const isCounterexample = /^(?:only|just|merely|solely|limited to|more than|less than|fewer than|without|excluding|exclude|excluded)\b/i.test(afterCue);
+    const isDoubleNegative = /\bnot$/i.test(beforeCue) && /^(?:without|excluding|exclude|excluded)\b/i.test(afterCue);
+
+    if (isCounterexample || isDoubleNegative) continue;
+    latestNegationEnd = cueIndex + cue[0].length;
+  }
+
+  if (latestNegationEnd < 0) return false;
+
+  const afterLatestNegation = scopePrefix.slice(latestNegationEnd);
+  return !COORDINATED_PREDICATE.test(afterLatestNegation);
+}
+
 function matchesKeyword(normalizedText: string, keyword: string): boolean {
   const normalizedKeyword = keyword.toLowerCase().replace(/[-_]+/g, ' ');
   const escaped = normalizedKeyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  return new RegExp(`\\b${escaped}\\b`, 'i').test(normalizedText);
+  const matcher = new RegExp('\\b' + escaped + '\\b', 'gi');
+
+  for (const match of normalizedText.matchAll(matcher)) {
+    if (match.index !== undefined && !isNegatedKeywordOccurrence(normalizedText, match.index)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+export function hasPositiveArchetypeCue(briefText: string, cue: string): boolean {
+  const normalizedText = briefText.toLowerCase().replace(/[-_]+/g, ' ');
+  return matchesKeyword(normalizedText, cue);
+}
+
+export function hasPositivePatternMatch(briefText: string, pattern: RegExp): boolean {
+  const normalizedText = briefText.toLowerCase().replace(/[-_]+/g, ' ');
+  const matcher = new RegExp(pattern.source, pattern.flags.replace(/[gy]/g, '') + 'g');
+
+  for (const match of normalizedText.matchAll(matcher)) {
+    if (match.index !== undefined && !isNegatedKeywordOccurrence(normalizedText, match.index)) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 const MIN_SECONDARY_ARCHETYPE_SCORE = 28;
 const MIN_SECONDARY_ARCHETYPE_SHARE = 0.45;
+// Research terms such as "evidence" are common outside intelligence products;
+// require two cues unless a high-information research phrase anchors the brief.
+const MIN_UNANCHORED_RESEARCH_SCORE = 16;
 
 /**
  * Detects matching product archetypes from a natural language text brief.
@@ -783,9 +850,23 @@ export function detectProductArchetypes(
     return [{ tag: 'saas', weight: 80 }];
   }
 
-  const topScore = entries[0][1];
+  const primaryEntries = entries.filter(([tag, score]) => {
+    if (tag !== 'intelligence-research') return true;
+    const hasResearchAnchor = (ARCHETYPE_PRIMARY_SIGNALS[tag] ?? []).some((signal) =>
+      matchesKeyword(normalized, signal)
+    );
+    return hasResearchAnchor || score >= MIN_UNANCHORED_RESEARCH_SCORE;
+  });
+
+  if (primaryEntries.length === 0 || !primaryEntries[0]) {
+    return [{ tag: 'saas', weight: 80 }];
+  }
+
+  const primaryTag = primaryEntries[0][0];
+  const topScore = primaryEntries[0][1];
   return entries
-    .filter(([, score], index) => index === 0 || (score >= MIN_SECONDARY_ARCHETYPE_SCORE && score >= topScore * MIN_SECONDARY_ARCHETYPE_SHARE))
+    .filter(([tag, score]) => tag === primaryTag || (score >= MIN_SECONDARY_ARCHETYPE_SCORE && score >= topScore * MIN_SECONDARY_ARCHETYPE_SHARE))
+    .sort(([tagA, scoreA], [tagB, scoreB]) => tagA === primaryTag ? -1 : tagB === primaryTag ? 1 : scoreB - scoreA)
     .slice(0, 3)
     .map(([tag, score]) => ({
       tag,

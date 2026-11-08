@@ -656,3 +656,11 @@ documented and covered by header and browser tests.
 **Security impact:** The healthcheck runs as the existing unprivileged container user, signals only its own container, stores only bounded timestamps locally, and never reads provider secrets. No CSP, API authentication, or preview-isolation policy changes.
 **Evidence:** `apps/laptop-backend/healthcheck.test.ts`, `quality/evidence/step-37/aud448-docker-recovery.mjs`, and `quality/evidence/step-37/aud448-docker-recovery.json`. The deterministic test reproduces a single unhealthy episode and confirms one restart leads to a healthy second boot. The initiating reason for the original Wrangler failure remains unknown.
 **Status:** Implemented and verified in a disposable local Docker container; live laptop services remain available.
+
+### D-067 — Record owner authorization for the private Verso collection
+
+**Date:** 2026-11-07
+**Context:** The private Verso inventory identifies its source as UNLICENSED. The owner confirmed the collection is their own work, contributed for Tessellate, and authorized its use and modification without requiring a separate license.
+**Decision:** Treat that owner statement as authorization for Tessellate project use and modification, including later product integration subject to the ordered hardening gates. Do not treat the statement as per-item technical certification: every resource still needs validated provenance, manifest metadata, responsive/accessibility checks, and export and runtime review. Replace the obsolete documentation claim that owner redistribution rights remain unresolved; keep the private source itself outside repository commits and Sites mirrors until the ordinary resource-certification and release process admits the content.
+**Evidence:** Owner confirmation in the Codex conversation on 2026-11-07: "it is my own private made collection i contributed for this project, no license needed, do what you want with amend/modify however you see fit".
+**Status:** Owner authorization recorded; the 1,053 items remain uncertified for public product inclusion.
