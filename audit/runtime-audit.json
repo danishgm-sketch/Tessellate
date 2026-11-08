@@ -25071,7 +25071,7 @@
       "screenshot": "quality/evidence/AUD-522/food-pantry-screen-screen-food-safety-and-safeguarding-desktop.png",
       "console": [],
       "network": [],
-      "fixCommit": "pending",
+      "fixCommit": "1fa9a6300be8aa9f6267ae94a24794ddf8e9fcc5",
       "status": "fixed-local-verified",
       "localVerification": {
         "red": "Before the specialization, the exact brief resolved to Fintech and displayed bank-account content.",
@@ -25181,7 +25181,7 @@
       "screenshot": "quality/evidence/AUD-523/unresolved-roles-export-blocked-desktop.png",
       "console": [],
       "network": [],
-      "fixCommit": "pending",
+      "fixCommit": "1fa9a6300be8aa9f6267ae94a24794ddf8e9fcc5",
       "status": "fixed-local-verified",
       "localVerification": {
         "red": "Unresolved required roles were represented in project nodes but were not an export-blocking validation error.",
@@ -25278,7 +25278,7 @@
       "screenshot": "quality/evidence/AUD-524/meal-planner-compose-desktop.png",
       "console": [],
       "network": [],
-      "fixCommit": "pending",
+      "fixCommit": "1fa9a6300be8aa9f6267ae94a24794ddf8e9fcc5",
       "status": "fixed-local-verified",
       "localVerification": {
         "red": "The exact brief resolved to Fintech and proposed account/transaction screens despite explicit financial exclusions.",
@@ -25453,11 +25453,267 @@
         "telemetry": "All four Compose and four Workbench reports at 1440x900 and 390x844 show document width equal to viewport width, zero console errors, zero uncaught exceptions, zero failed requests, and zero HTTP errors. The typed active manifest equals its persisted local record and validated .tess.json export. The full E2E matrix includes this scenario in Astro and Sites Worker desktop/mobile profiles.",
         "publicVerification": "PENDING (no Site update or deployment)"
       }
+    },
+    {
+      "id": "AUD-526",
+      "severity": "medium",
+      "route": "/compose → /workbench",
+      "category": "content and usability",
+      "viewport": "1440x900, 390x844",
+      "title": "Public-library preview exposed an internal entity name and truncated its mobile project title",
+      "expected": "A public-library project should show a domain-appropriate preview brand, keep the selected direction recognizable in Workbench, and render its title without clipping on a 390px viewport.",
+      "actual": "The Media preview brand fell back to the internal entity key BookRecord (shown as “BookRecord Workspace”). Workbench appended the long “Public Library Service” archetype label to the generic direction name, so the mobile title truncated to “Calm Foundation — Public Lib…”.",
+      "rootCause": "The content-brand resolver had no public-library identity and used an entity-key fallback. Appending the archetype suffix made the domain-specific title too long for the narrow Workbench toolbar.",
+      "reproduction": [
+        "Open /compose and enter the rural public-library brief recorded in quality/evidence/AUD-526/public-library-desktop.json.",
+        "Inspect all three direction previews and follow Direction 01 into Workbench at desktop and mobile sizes.",
+        "Before the fix, the preview showed the internal BookRecord Workspace name and the 390px toolbar truncated the generic project title."
+      ],
+      "affectedCode": [
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/direction-generator.ts",
+        "packages/compatibility/src/compose-pipeline.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/library-service-archetype-fit.spec.ts",
+        "docs/COMPOSITION_ENGINE.md",
+        "docs/PRODUCT_HARDENING.md",
+        "quality/STEP_39_EVIDENCE.md"
+      ],
+      "screenshot": "quality/evidence/AUD-526/public-library-compose-sites-desktop.png",
+      "console": [],
+      "network": [],
+      "fixCommit": "5e3bbceaa8aa79f3ca6d6336308b52a8d7669945",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "red": "The preview exposed BookRecord Workspace and Workbench displayed the generic direction plus Public Library Service suffix, visibly truncating the selected project title on mobile.",
+        "green": "Public-library service compositions now use the Community Library preview brand and the concise direction names Community Catalogue, Reading Commons, and Branch Network. The manifest keeps the chosen direction name without an archetype suffix. The mobile browser asserts scrollWidth <= clientWidth on the title. The manifest survives local persistence and validates identically to its .tess.json export; unavailable service roles stay explicit.",
+        "focusedCommand": "pnpm exec playwright test tests/e2e/library-service-archetype-fit.spec.ts; pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/library-service-archetype-fit.spec.ts",
+        "focusedProjects": [
+          {
+            "id": "astroDesktop",
+            "name": "Astro desktop Chromium",
+            "runtime": {
+              "consoleErrors": 0,
+              "uncaughtExceptions": 0,
+              "failedRequests": 0,
+              "httpErrors": 0
+            },
+            "passed": 1,
+            "configuredSkips": 0,
+            "failed": 0,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "composeDocumentWidth": 1440,
+            "workbenchDocumentWidth": 1440,
+            "storedManifestMatchesActive": true,
+            "exportedManifestMatchesActive": true,
+            "composeScreenshot": "quality/evidence/AUD-526/public-library-compose-desktop.png",
+            "workbenchScreenshot": "quality/evidence/AUD-526/public-library-workbench-desktop.png"
+          },
+          {
+            "id": "astroMobile",
+            "name": "Astro mobile Chromium",
+            "runtime": {
+              "consoleErrors": 0,
+              "uncaughtExceptions": 0,
+              "failedRequests": 0,
+              "httpErrors": 0
+            },
+            "passed": 1,
+            "configuredSkips": 0,
+            "failed": 0,
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "composeDocumentWidth": 390,
+            "workbenchDocumentWidth": 390,
+            "storedManifestMatchesActive": true,
+            "exportedManifestMatchesActive": true,
+            "composeScreenshot": "quality/evidence/AUD-526/public-library-compose-mobile.png",
+            "workbenchScreenshot": "quality/evidence/AUD-526/public-library-workbench-mobile.png"
+          },
+          {
+            "id": "sitesWorkerDesktop",
+            "name": "Sites Worker desktop Chromium",
+            "runtime": {
+              "consoleErrors": 0,
+              "uncaughtExceptions": 0,
+              "failedRequests": 0,
+              "httpErrors": 0
+            },
+            "passed": 1,
+            "configuredSkips": 0,
+            "failed": 0,
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "composeDocumentWidth": 1440,
+            "workbenchDocumentWidth": 1440,
+            "storedManifestMatchesActive": true,
+            "exportedManifestMatchesActive": true,
+            "composeScreenshot": "quality/evidence/AUD-526/public-library-compose-sites-desktop.png",
+            "workbenchScreenshot": "quality/evidence/AUD-526/public-library-workbench-sites-desktop.png"
+          },
+          {
+            "id": "sitesWorkerMobile",
+            "name": "Sites Worker mobile Chromium",
+            "runtime": {
+              "consoleErrors": 0,
+              "uncaughtExceptions": 0,
+              "failedRequests": 0,
+              "httpErrors": 0
+            },
+            "passed": 1,
+            "configuredSkips": 0,
+            "failed": 0,
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "composeDocumentWidth": 390,
+            "workbenchDocumentWidth": 390,
+            "storedManifestMatchesActive": true,
+            "exportedManifestMatchesActive": true,
+            "composeScreenshot": "quality/evidence/AUD-526/public-library-compose-sites-mobile.png",
+            "workbenchScreenshot": "quality/evidence/AUD-526/public-library-workbench-sites-mobile.png"
+          }
+        ],
+        "totals": {
+          "passed": 4,
+          "configuredSkips": 0,
+          "failed": 0
+        },
+        "fullPlaywrightMatrix": {
+          "astroDesktopAndMobile": {
+            "passed": 412,
+            "configuredSkips": 140
+          },
+          "sitesWorkerDesktop": {
+            "passed": 250,
+            "configuredSkips": 11
+          },
+          "sitesWorkerMobile": {
+            "passed": 215,
+            "configuredSkips": 46
+          },
+          "standalonePreview": {
+            "passed": 3,
+            "configuredSkips": 0
+          },
+          "totals": {
+            "passed": 880,
+            "scheduled": 1077,
+            "configuredSkips": 197,
+            "failed": 0
+          }
+        },
+        "screenshots": [
+          "quality/evidence/AUD-526/full-e2e-summary.json",
+          "quality/evidence/AUD-526/public-library-compose-desktop.png",
+          "quality/evidence/AUD-526/public-library-compose-mobile.png",
+          "quality/evidence/AUD-526/public-library-compose-sites-desktop.png",
+          "quality/evidence/AUD-526/public-library-compose-sites-mobile.png",
+          "quality/evidence/AUD-526/public-library-desktop.json",
+          "quality/evidence/AUD-526/public-library-mobile.json",
+          "quality/evidence/AUD-526/public-library-sites-desktop.json",
+          "quality/evidence/AUD-526/public-library-sites-mobile.json",
+          "quality/evidence/AUD-526/public-library-workbench-desktop.json",
+          "quality/evidence/AUD-526/public-library-workbench-desktop.png",
+          "quality/evidence/AUD-526/public-library-workbench-mobile.json",
+          "quality/evidence/AUD-526/public-library-workbench-mobile.png",
+          "quality/evidence/AUD-526/public-library-workbench-sites-desktop.json",
+          "quality/evidence/AUD-526/public-library-workbench-sites-desktop.png",
+          "quality/evidence/AUD-526/public-library-workbench-sites-mobile.json",
+          "quality/evidence/AUD-526/public-library-workbench-sites-mobile.png"
+        ],
+        "telemetry": "All eight Compose and Workbench reports at 1440x900 and 390x844 show document width equal to viewport width, zero console errors, zero uncaught exceptions, zero failed requests, and zero HTTP errors. The active manifest equals its persisted local record and validated .tess.json export. The project title has no rendered text clipping at 390px.",
+        "publicVerification": "PENDING (no Site update or deployment)"
+      }
     }
   ],
-  "generatedAt": "08 November 2026 13:53:34",
+  "generatedAt": "08 November 2026 14:59:46",
   "latestDeploymentEvidence": "quality/evidence/AUD-514/deployed-v89-runtime.json",
   "latestLocalQualityRun": {
+    "capturedAt": "2026-11-08T14:59:46.891Z",
+    "command": "pnpm test; pnpm typecheck; pnpm lint; pnpm audit:all; pnpm test:e2e; post-documentation pnpm build; four-profile AUD-526 Compose-to-Workbench regression",
+    "environment": "Windows worktree on codex/research-archetype-fit; Astro production preview, production-like local Sites Worker, standalone Vite preview; Chromium desktop and mobile.",
+    "result": "PASS",
+    "sourceBranch": "codex/research-archetype-fit",
+    "sourceBase": "bc85dffaa6ab014b4998494b9c7ea32d73b35a70",
+    "sourceCommit": "5e3bbceaa8aa79f3ca6d6336308b52a8d7669945",
+    "workingTreeWasDirty": true,
+    "changesUnderTest": [
+      "AUD-526: apply a library-specific preview brand and concise direction/manifest names; assert mobile title rendering, persistence, and exact manifest export.",
+      "Record the owner-authorized Verso project-use boundary accurately while retaining item-level provenance and certification gates."
+    ],
+    "commandResults": {
+      "frozenInstall": "NOT RUN (lockfile unchanged)",
+      "unitAndIntegrationTests": "PASS (95 files; 1,366 passed; 1 configured skip on isolated full-suite rerun)",
+      "typecheck": "PASS (22 workspace packages)",
+      "lint": "PASS",
+      "behaviorAndSecurityAudit": "PASS (16/16 behavioral gates; 324/324 resource isolation; 324/324 licence/provenance; zero security, secret, or isolation violations; no known dependency advisories)",
+      "bundleBudgets": "PASS (homepage 99.44 KB gzip; Explore 178.87 KB; Compose 259.08 KB; Workbench 76.17 KB; catalogue 113.13 KB)",
+      "productionBuild": "PASS (733 Astro routes and Sites Worker artifact; existing large-chunk and ineffective dynamic-import warnings)",
+      "playwright": "PASS (880 passed; 197 configured profile skips; 0 failures)",
+      "focusedLibraryJourney": "PASS (4/4; Astro and Sites Worker desktop/mobile; zero browser/network errors or overflow)",
+      "exactHeadCi": "PENDING (CI has not run for implementation commit)",
+      "publicVerification": "PENDING (no Site update or deployment)"
+    },
+    "projects": [
+      {
+        "name": "Astro desktop/mobile Chromium",
+        "passed": 412,
+        "configuredSkips": 140,
+        "failed": 0
+      },
+      {
+        "name": "Sites Worker desktop Chromium",
+        "passed": 250,
+        "configuredSkips": 11,
+        "failed": 0
+      },
+      {
+        "name": "Sites Worker mobile Chromium",
+        "passed": 215,
+        "configuredSkips": 46,
+        "failed": 0
+      },
+      {
+        "name": "Standalone preview Chromium",
+        "passed": 3,
+        "configuredSkips": 0,
+        "failed": 0
+      }
+    ],
+    "totals": {
+      "passed": 880,
+      "scheduled": 1077,
+      "configuredSkips": 197,
+      "failed": 0
+    },
+    "notes": [
+      "The complete local browser matrix passed across Astro, production-like Sites Worker desktop/mobile, and standalone preview. The four-profile public-library journey is included and also passed directly.",
+      "The Sites Worker desktop matrix mounted all 324 public catalogue resources at certified widths; the 40-resource Gold render/variant and accessibility certifications passed.",
+      "The first parallel unit-suite invocation recorded one intermittent unrelated laptop-backend healthcheck status; an isolated full-suite rerun passed all tests without a code change.",
+      "Configured browser-profile skips are not failures. Existing large-chunk and ineffective dynamic-import warnings remain; configured bundle budgets pass.",
+      "Exact-head CI and public verification remain pending; no Site update, deployment, or release was performed."
+    ],
+    "evidence": "quality/evidence/AUD-526/, quality/evidence/AUD-526/full-e2e-summary.json, quality/STEP_39_EVIDENCE.md",
+    "exactHeadCi": {
+      "commit": "5e3bbceaa8aa79f3ca6d6336308b52a8d7669945",
+      "ciRun": null,
+      "componentQualityGateRun": null,
+      "result": "PENDING",
+      "unitTestsPassed": null,
+      "playwrightPassed": null,
+      "playwrightConfiguredSkips": null
+    }
+  },
+  "previousLocalQualityRun": {
     "capturedAt": "2026-11-08T13:53:34Z",
     "command": "pnpm test; pnpm typecheck; pnpm lint; pnpm audit:all; pnpm test:e2e; four-profile AUD-525 Compose-to-Workbench regression; post-commit pnpm build; four-profile documentation-index regression",
     "environment": "Windows worktree on codex/research-archetype-fit; Astro production preview, production-like local Sites Worker, standalone Vite preview; Chromium desktop and mobile",
@@ -25536,7 +25792,7 @@
       "playwrightConfiguredSkips": null
     }
   },
-  "previousLocalQualityRun": {
+  "priorLocalQualityRun": {
     "capturedAt": "2026-11-08T11:46:27Z",
     "command": "pnpm test; pnpm typecheck; pnpm lint; pnpm audit:all; pnpm test:e2e; focused AUD-523 pantry export and AUD-524 meal-planner browser regressions",
     "environment": "Windows worktree; local Astro production build and production-like Sites Worker artifact; Chromium desktop and emulated mobile; standalone Vite preview",
@@ -25614,73 +25870,5 @@
       "playwrightPassed": null,
       "playwrightConfiguredSkips": null
     }
-  },
-  "priorLocalQualityRun": {
-    "capturedAt": "2026-11-08T04:58:30Z",
-    "command": "pnpm test; pnpm typecheck; pnpm lint; pnpm audit:all; pnpm test:e2e; focused Accessibility Floor captures in four browser profiles",
-    "environment": "Windows worktree; local Astro production build and production-like Sites Worker artifact; Chromium desktop and emulated mobile; standalone Vite preview",
-    "result": "PASS",
-    "sourceBranch": "codex/research-archetype-fit",
-    "sourceBase": "d89f0068a187a7c29a54f498bf5445891cedd529",
-    "sourceCommit": "e95f057b5e9df8be6b4d4e608b031c9c3c67b550",
-    "workingTreeWasDirty": true,
-    "changesUnderTest": [
-      "Compose Accessibility Floor select now has an associated visible label and accessible name.",
-      "The Education archetype narrowly specializes explicit adult/offline/language-learning needs into four screens and domain workflows.",
-      "Unsupported language-learning roles are surfaced as visible unresolved diagnostics; example timeline content is identified honestly.",
-      "Regression coverage exercises general-education non-overfit, planning, no-Kanban substitution, diagnostics, and desktop/mobile user flows."
-    ],
-    "commandResults": {
-      "frozenInstall": "NOT RUN in this iteration",
-      "catalogueBuild": "PASS through pnpm audit:all (324 canonical resources; 40 Gold resources)",
-      "typecheck": "PASS (22 workspace packages)",
-      "lint": "PASS",
-      "unitAndIntegrationTests": "PASS (95 files; 1,352 passed; 1 configured skip)",
-      "behavioralAndSecurityAudit": "PASS (16/16 core-fidelity behavior checks; 324/324 resource isolation; 324/324 license/provenance; zero security/secret/isolation violations; no known dependency vulnerabilities)",
-      "bundleBudgets": "PASS (homepage, Explore, Compose, Workbench, and search index)",
-      "productionBuild": "PASS (733 Astro pages and Sites Worker artifact)",
-      "playwright": "PASS (868 passed; 197 configured profile skips; 0 failures)",
-      "focusedAccessibilityCapture": "PASS (4 browser profiles; 4 passed; 0 skips; 0 failures)"
-    },
-    "projects": [
-      {
-        "name": "Astro desktop/mobile Chromium",
-        "passed": 402,
-        "configuredSkips": 140,
-        "failed": 0
-      },
-      {
-        "name": "Sites Worker desktop Chromium",
-        "passed": 249,
-        "configuredSkips": 11,
-        "failed": 0
-      },
-      {
-        "name": "Sites Worker mobile Chromium",
-        "passed": 214,
-        "configuredSkips": 46,
-        "failed": 0
-      },
-      {
-        "name": "Standalone preview Chromium",
-        "passed": 3,
-        "configuredSkips": 0,
-        "failed": 0
-      }
-    ],
-    "totals": {
-      "passed": 868,
-      "configuredSkips": 197,
-      "failed": 0,
-      "scheduled": 1065
-    },
-    "notes": [
-      "The first full unit run found and caught a change in generic Jobs To Be Done output; the implementation was narrowed to the language-learning specialization and the showcase consistency regression passed before the full suite was rerun.",
-      "The full local E2E matrix completed without failures. The 324-resource responsive Sites Worker certification and Gold resource accessibility/variant/state suites passed where enabled by the profiles.",
-      "The accessibility-floor follow-up saved expanded and mobile-target screenshots plus per-profile JSON; all four targeted browser profiles passed with document width equal to the 390px viewport.",
-      "The core-fidelity audit is not the ordered Product Hardening release gate. Exact-head CI and issue-specific public Site verification remain pending; no deployment was made.",
-      "Playwright emitted existing NO_COLOR/FORCE_COLOR environment warnings; these did not affect the results."
-    ],
-    "evidence": "quality/evidence/AUD-519/ and quality/evidence/AUD-520/"
   }
 }
