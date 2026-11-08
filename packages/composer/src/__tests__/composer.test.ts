@@ -79,6 +79,75 @@ describe('Product Archetypes (18 Categories)', () => {
     ).toBe('real-estate');
   });
 
+  it('classifies a public library service without treating lending as commerce', () => {
+    const brief =
+      'A mobile-first public library service for rural towns. Residents search the shared book catalogue, reserve books for branch pickup, join reading circles, and find local author events. Volunteers coordinate opening hours and hold queues across three branches. Make browsing work on weak connections, provide large text and screen-reader friendly controls, and keep member reading history private. No book sales, purchases, payments, bank accounts, bill pay, or financial dashboards.';
+
+    const matches = detectProductArchetypes(brief);
+    expect(matches[0]?.tag).toBe('media');
+    expect(matches.some(({ tag }) => tag === 'ecommerce' || tag === 'fintech')).toBe(false);
+
+    const { productModel } = interpretProductBrief({ description: brief });
+    expect(productModel.primaryAudience.toLowerCase()).toContain('library members');
+    expect(productModel.primaryObjective.toLowerCase()).toContain('reserve titles');
+    expect(productModel.entities.map(({ name }) => name)).toEqual([
+      'BookRecord',
+      'HoldRequest',
+      'LibraryBranch',
+      'LibraryProgramme',
+    ]);
+    expect(productModel.workflows.map(({ id }) => id)).toEqual([
+      'discover-library-items',
+      'coordinate-private-holds',
+      'find-reading-programmes',
+      'set-reading-accessibility',
+    ]);
+    expect(productModel.likelyScreens.map(({ name }) => name)).toEqual([
+      'Catalogue & Branch Availability',
+      'Holds & Pickup',
+      'Reading Circles & Events',
+      'Accessibility & Privacy',
+    ]);
+    const screenGraph = planScreenGraph(productModel).screenGraph;
+    const rolesByScreen = new Map(
+      screenGraph.groups.flatMap((group) =>
+        group.screens.map((screen) => [screen.name, screen.requiredRoles] as const)
+      )
+    );
+    expect(rolesByScreen.get('Catalogue & Branch Availability')).toEqual(
+      expect.arrayContaining([
+        'book-catalogue-search',
+        'branch-availability-and-hours',
+        'low-bandwidth-catalogue-browsing',
+      ])
+    );
+    expect(rolesByScreen.get('Holds & Pickup')).toEqual(
+      expect.arrayContaining(['private-hold-requests', 'branch-pickup-windows'])
+    );
+    expect(rolesByScreen.get('Reading Circles & Events')).toContain(
+      'reading-circle-and-event-discovery'
+    );
+    expect(rolesByScreen.get('Accessibility & Privacy')).toEqual(
+      expect.arrayContaining(['accessible-reading-controls', 'private-reading-history'])
+    );
+    expect(productModel.trustRequirement).toBe(96);
+    expect(productModel.transactionCriticality).toBe(18);
+    expect(productModel.mobileImportance).toBe(100);
+    expect(JSON.stringify(productModel).toLowerCase()).not.toMatch(
+      /account balances|transaction history|money movement|purchase-item|checkout|payment-complete/
+    );
+  });
+
+  it('does not specialize software client libraries as public library services', () => {
+    const brief =
+      'A developer portal publishes a client library release with version notes, API examples, and installation instructions.';
+    const result = interpretProductBrief({ description: brief });
+    expect(result.productModel.productArchetypes[0]?.tag).toBe('developer-tools');
+    expect(result.productModel.likelyScreens.map(({ name }) => name)).not.toContain(
+      'Catalogue & Branch Availability'
+    );
+  });
+
   it('specializes household meal planning without inventing financial operations', () => {
     const interpreted = interpretProductBrief({
       description:

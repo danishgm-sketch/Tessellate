@@ -724,7 +724,7 @@ const ARCHETYPE_PRIMARY_SIGNALS: Record<string, string[]> = {
   productivity: ['productivity app', 'task management', 'note-taking', 'notes app', 'personal planner', 'to-do', 'todo app', 'habit journal', 'daily journal', 'personal knowledge base', 'agenda planner', 'meal planning', 'meal planner', 'weekly meal plan'],
   education: ['education platform', 'learning platform', 'learning management system', 'lms', 'online course', 'cohort learning', 'classroom', 'course catalog', 'lesson classroom'],
   creator: ['creator platform', 'creator economy', 'independent creator', 'creator tools', 'newsletter platform', 'subscriber membership', 'digital illustration', 'artist portfolio'],
-  media: ['media platform', 'newsroom', 'news publication', 'digital magazine', 'journalism', 'public radio', 'radio service', 'episode archive', 'editorial publication', 'broadcast service'],
+  media: ['media platform', 'newsroom', 'news publication', 'digital magazine', 'journalism', 'public radio', 'radio service', 'episode archive', 'editorial publication', 'broadcast service', 'public library', 'community library', 'book lending library'],
   travel: ['travel service', 'travel planning', 'trip planner', 'trip-planning', 'travel itinerary', 'hotel booking', 'flight booking', 'destination guide', 'travelers', 'hospitality'],
   'real-estate': ['real estate', 'real-estate', 'rental platform', 'apartment rental', 'tenant portal', 'home search', 'home-search', 'property management', 'property listing', 'commercial leasing', 'residential manager', 'mortgage', 'realtor', 'realty'],
   recruitment: ['recruitment', 'recruiting', 'talent acquisition', 'applicant tracking', 'candidate pipeline', 'candidate portal', 'hiring workspace', 'interview panel'],

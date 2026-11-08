@@ -112,6 +112,19 @@ function requiredRolesForScreen(
     }
   }
 
+  if (productModel.requiredCapabilities.includes('public-library-service-workflow')) {
+    switch (normalizeName(screenName)) {
+      case 'catalogue and branch availability':
+        return ['search-header', 'book-catalogue-search', 'branch-availability-and-hours', 'low-bandwidth-catalogue-browsing'];
+      case 'holds and pickup':
+        return ['index-header', 'private-hold-requests', 'branch-pickup-windows'];
+      case 'reading circles and events':
+        return ['index-header', 'reading-circle-and-event-discovery'];
+      case 'accessibility and privacy':
+        return ['entity-header', 'accessible-reading-controls', 'private-reading-history'];
+    }
+  }
+
   if (productModel.requiredCapabilities.includes('short-session-learning')) {
     switch (normalizeName(screenName)) {
       case 'today':

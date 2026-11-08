@@ -127,6 +127,17 @@ community-pantry plans are examples; their explicit operations do not create
 financial workflows, and unsupported roles continue to block executable
 exports.
 
+Public and community libraries specialize within the existing Media archetype
+only when an explicit library anchor is supported by catalogue, holds, branch,
+or reading-programme language. Lending and reservations do not imply Ecommerce
+or Fintech. The deterministic plan keeps member holds and reading history
+private, emphasizes accessible and low-bandwidth use, and leaves catalogue,
+branch availability, hold, event, reading-control, and privacy capabilities
+unresolved when no eligible resource exists. Those requirements remain in the
+manifest, and executable export stays blocked until each required role is
+resolved; catalogue search copy must identify the library example rather than
+reuse newsroom language.
+
 ### AI interpretation
 
 If provider configured, send compact structured prompt and require JSON matching `ProductModel` schema.

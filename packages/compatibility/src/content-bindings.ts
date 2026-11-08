@@ -101,12 +101,14 @@ export function bindResourceContent(
     primaryArchetype === 'media' && product.entities.some((entity) => entity.name === 'Programme');
   const isNewsroom =
     primaryArchetype === 'media' && product.entities.some((entity) => entity.name === 'Story Assignment');
+  const isPublicLibrary = product.requiredCapabilities.includes('public-library-service-workflow');
   const isLocalJournalism =
     primaryArchetype === 'media' &&
     !isFilmStreaming &&
     !isMagazineProduct &&
     !isRadioProduct &&
-    !isNewsroom;
+    !isNewsroom &&
+    !isPublicLibrary;
   const isGroundedSupportAssistant =
     primaryArchetype === 'ai' &&
     product.entities.some((entity) => entity.name === 'Knowledge Source');
@@ -150,6 +152,8 @@ export function bindResourceContent(
       ? 'View upcoming flights'
       : isGroundedSupportAssistant
         ? 'Ask a support question'
+        : isPublicLibrary
+          ? 'Browse the book catalogue'
         : isRadioProduct
           ? 'Listen to live radio'
           : isMagazineProduct
@@ -184,6 +188,8 @@ export function bindResourceContent(
     ? /^teams?$/i
     : isFlightManagement
       ? /journey overview|flight details/i
+      : isPublicLibrary
+        ? /catalogue and branch availability/i
       : isFilmStreaming
         ? /film catalogue|film detail|watchlist/i
         : isGroundedSupportAssistant
@@ -253,7 +259,14 @@ export function bindResourceContent(
         ? 'Example search only. Connect a music catalogue to search licensed releases.'
         : 'Example search only. Connect a product catalogue to search live inventory.',
     },
-    media: isFilmStreaming
+    media: isPublicLibrary
+      ? {
+          label: 'Search the book catalogue',
+          placeholder: 'Search titles, authors, or subjects',
+          helperText:
+            'Example search only. Connect the library catalogue to search current titles and branch availability.',
+        }
+      : isFilmStreaming
       ? {
           label: 'Search films',
           placeholder: 'Search films and collections',

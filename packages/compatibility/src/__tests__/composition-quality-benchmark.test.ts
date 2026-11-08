@@ -370,6 +370,41 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
     }
   });
 
+  it('binds library catalogue copy and exposes unavailable service roles', () => {
+    const result = composeProjectPipeline(
+      {
+        description:
+          'A mobile-first public library service for rural towns. Residents search the shared book catalogue, reserve books for branch pickup, join reading circles, and find local author events. Volunteers coordinate opening hours and hold queues across three branches. Make browsing work on weak connections, provide large text and screen-reader friendly controls, and keep member reading history private. No book sales, purchases, payments, bank accounts, bill pay, or financial dashboards.',
+      },
+      { catalogResources: catalog, seed: 'public-library-content-binding' }
+    );
+    const expectedRoles = [
+      'book-catalogue-search',
+      'branch-availability-and-hours',
+      'low-bandwidth-catalogue-browsing',
+      'private-hold-requests',
+      'branch-pickup-windows',
+      'reading-circle-and-event-discovery',
+      'accessible-reading-controls',
+      'private-reading-history',
+    ];
+
+    expect(result.productModel.productArchetypes[0]?.tag).toBe('media');
+    for (const direction of [result.directionA, result.directionB, result.directionC]) {
+      const nodes = direction.manifest.screens.flatMap((screen) => collectNodes(screen.rootNode));
+      const search = nodes.find((node) => node.semanticRole === 'search-header');
+      expect(search?.props.label).toBe('Search the book catalogue');
+      expect(search?.props.placeholder).toBe('Search titles, authors, or subjects');
+      expect(search?.props.helperText).toMatch(/connect the library catalogue/i);
+      expect(JSON.stringify(direction.manifest)).not.toMatch(/local reporting|newsroom catalogue/i);
+      for (const role of expectedRoles) {
+        const missing = nodes.find((node) => node.semanticRole === role);
+        expect(missing?.props.unresolvedRequiredRole).toBe(true);
+        expect(missing?.resourceRef).toBeUndefined();
+      }
+    }
+  });
+
   for (const brief of briefs) {
     it(`${brief.id} composes three semantically coherent, resolvable directions`, () => {
       const result = composeProjectPipeline(

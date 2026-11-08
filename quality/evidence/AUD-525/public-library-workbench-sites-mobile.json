@@ -1,0 +1,48 @@
+{
+  "url": "http://127.0.0.1:4323/workbench?project=proj-direction-a-57ce0e257d3a4fd296837101ecf2caa2dira#screen-catalogue-and-branch-availability",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "projectId": "proj-direction-a-57ce0e257d3a4fd296837101ecf2caa2dira",
+  "storedManifestMatchesActive": true,
+  "exportedManifestMatchesActive": true,
+  "entities": [
+    "BookRecord",
+    "HoldRequest",
+    "LibraryBranch",
+    "LibraryProgramme"
+  ],
+  "workflows": [
+    "discover-library-items",
+    "coordinate-private-holds",
+    "find-reading-programmes",
+    "set-reading-accessibility"
+  ],
+  "screens": [
+    "Catalogue & Branch Availability",
+    "Holds & Pickup",
+    "Reading Circles & Events",
+    "Accessibility & Privacy"
+  ],
+  "unresolvedRoles": [
+    "book-catalogue-search",
+    "branch-availability-and-hours",
+    "low-bandwidth-catalogue-browsing",
+    "private-hold-requests",
+    "branch-pickup-windows",
+    "reading-circle-and-event-discovery",
+    "accessible-reading-controls",
+    "private-reading-history"
+  ],
+  "responsive": {
+    "viewportWidth": 390,
+    "documentWidth": 390
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

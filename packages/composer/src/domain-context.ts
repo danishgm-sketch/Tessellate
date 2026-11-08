@@ -1270,6 +1270,132 @@ export function specialiseMedia(base: ArchetypeDefinition, text: string): Archet
     return base;
   }
 
+  const isPublicLibrary =
+    ['public library', 'community library', 'book lending library'].some((cue) =>
+      hasPositiveArchetypeCue(text, cue)
+    ) &&
+    [
+      'book catalogue',
+      'book catalog',
+      'reserve books',
+      'hold queue',
+      'branch pickup',
+      'reading circles',
+      'author events',
+      'library branches',
+    ].some((cue) => hasPositiveArchetypeCue(text, cue));
+
+  if (isPublicLibrary) {
+    return {
+      ...base,
+      name: 'Public Library Service',
+      description:
+        'Book discovery, private holds, branch pickup, and community reading programmes for public libraries.',
+      primaryAudience: 'Library members, volunteer librarians, and branch coordinators',
+      primaryObjective:
+        'Help residents discover books, reserve titles for branch pickup, and find local reading programmes while protecting their reading privacy',
+      userSophistication: 38,
+      trustRequirement: 96,
+      informationComplexity: 58,
+      dataDensity: 48,
+      collaborationLevel: 72,
+      transactionCriticality: 18,
+      navigationComplexity: 58,
+      mobileImportance: 96,
+      defaultEntities: [
+        {
+          name: 'BookRecord',
+          description: 'A catalogue title with author, subjects, format, and branch availability',
+          fields: ['id', 'title', 'authors', 'subjects', 'format', 'availabilitySummary'],
+        },
+        {
+          name: 'HoldRequest',
+          description: 'A member’s private request for a title at a selected branch',
+          fields: ['id', 'titleId', 'branchId', 'pickupWindow', 'status'],
+        },
+        {
+          name: 'LibraryBranch',
+          description: 'A local branch with opening hours and accessible services',
+          fields: ['id', 'name', 'openingHours', 'accessibleServices'],
+        },
+        {
+          name: 'LibraryProgramme',
+          description: 'A reading circle or author event with a branch and schedule',
+          fields: ['id', 'title', 'programmeType', 'branchId', 'schedule'],
+        },
+      ],
+      defaultWorkflows: [
+        {
+          id: 'discover-library-items',
+          name: 'Search the book catalogue and review availability by branch',
+          steps: ['search-catalogue', 'review-branch-availability', 'open-title-details'],
+        },
+        {
+          id: 'coordinate-private-holds',
+          name: 'Request a title for pickup and review only the member’s own hold status',
+          steps: ['choose-pickup-branch', 'request-hold', 'review-own-hold-status'],
+        },
+        {
+          id: 'find-reading-programmes',
+          name: 'Find reading circles and local author events by branch and date',
+          steps: ['browse-reading-circles', 'find-author-events', 'review-branch-schedule'],
+        },
+        {
+          id: 'set-reading-accessibility',
+          name: 'Choose accessible reading preferences and review reading-history privacy',
+          steps: ['choose-text-size', 'review-screen-reader-support', 'review-reading-privacy'],
+        },
+      ],
+      recommendedScreens: [
+        {
+          name: 'Catalogue & Branch Availability',
+          screenType: 'search-explore',
+          purpose: 'Search books and compare availability and opening hours across nearby branches',
+          jobs: ['discover-library-items', 'review-branch-availability'],
+          required: true,
+        },
+        {
+          name: 'Holds & Pickup',
+          screenType: 'index-list',
+          purpose: 'Request branch pickup and privately review a member’s own active holds',
+          jobs: ['coordinate-private-holds', 'review-own-hold-status'],
+          required: true,
+        },
+        {
+          name: 'Reading Circles & Events',
+          screenType: 'index-list',
+          purpose: 'Find community reading circles and author events by branch and date',
+          jobs: ['find-reading-programmes', 'review-branch-schedule'],
+          required: true,
+        },
+        {
+          name: 'Accessibility & Privacy',
+          screenType: 'settings',
+          purpose: 'Review reading display preferences, assistive support, and private history controls',
+          jobs: ['set-reading-accessibility', 'review-reading-privacy'],
+          required: true,
+        },
+      ],
+      requiredCapabilities: [
+        'public-library-service-workflow',
+        'book-catalogue-search',
+        'branch-availability-and-hours',
+        'private-hold-requests',
+        'branch-pickup-windows',
+        'reading-circle-and-event-discovery',
+        'accessible-reading-controls',
+        'private-reading-history',
+        'low-bandwidth-catalogue-browsing',
+      ],
+      forbiddenPatterns: [
+        ...base.forbiddenPatterns,
+        'publicly-visible-member-hold-requests',
+        'shared-or-sold-reading-history',
+        'book-purchase-or-payment-assumptions',
+      ],
+    };
+  }
+
   if (/\b(?:streaming service|browse films|watchlist|film catalogue)\b/i.test(text)) {
     return {
       ...base,
