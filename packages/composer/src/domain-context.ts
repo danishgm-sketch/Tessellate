@@ -2135,3 +2135,129 @@ export function specialiseConsumer(base: ArchetypeDefinition, text: string): Arc
     ],
   };
 }
+
+/** Replace OSINT-shaped defaults with field-science workflows for marine surveys. */
+export function specialiseMarineFieldResearch(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  if (
+    base.id !== 'intelligence-research' ||
+    !/\b(?:marine biology|marine ecology|marine fieldwork|oceanographic survey|benthic survey|species survey|transect survey|field atlas)\b/i.test(
+      text
+    )
+  ) {
+    return base;
+  }
+
+  return {
+    ...base,
+    name: 'Marine Field Research',
+    primaryAudience: 'Marine biologists, field survey crews, and permit reviewers',
+    primaryObjective:
+      'Record species observations along survey transects, connect field evidence, and review permit conditions',
+    userSophistication: 70,
+    trustRequirement: 90,
+    informationComplexity: 80,
+    dataDensity: 68,
+    collaborationLevel: 85,
+    transactionCriticality: 35,
+    navigationComplexity: 68,
+    mobileImportance: 95,
+    defaultEntities: [
+      {
+        name: 'Species',
+        description: 'A recorded taxon with identification notes and conservation context',
+        fields: [
+          'id',
+          'scientificName',
+          'commonName',
+          'identificationStatus',
+          'conservationStatus',
+        ],
+      },
+      {
+        name: 'Survey',
+        description: 'A field survey with location, transects, dates, and assigned crew',
+        fields: ['id', 'site', 'transects', 'startDate', 'crew'],
+      },
+      {
+        name: 'Observation',
+        description: 'A field record linking an identified species to a place, time, and evidence',
+        fields: ['id', 'surveyId', 'speciesId', 'location', 'observedAt', 'evidence'],
+      },
+      {
+        name: 'Permit',
+        description: 'A fieldwork permission with jurisdiction, dates, and recorded conditions',
+        fields: ['id', 'jurisdiction', 'validFrom', 'validUntil', 'conditions'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'record-transect-observation',
+        name: 'Record a species observation along a transect and attach field evidence',
+        steps: [
+          'select-survey',
+          'record-location-and-time',
+          'identify-species',
+          'attach-evidence',
+          'save-observation',
+        ],
+      },
+      {
+        id: 'review-survey-permit',
+        name: 'Review permit conditions before assigning fieldwork',
+        steps: ['select-permit', 'check-survey-restrictions', 'confirm-crew-access'],
+      },
+      {
+        id: 'prepare-offline-fieldwork',
+        name: 'Prepare transect records for offline fieldwork and review queued changes after return',
+        steps: [
+          'select-survey-area',
+          'prepare-field-records',
+          'record-offline-observations',
+          'review-pending-changes',
+        ],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Survey Overview',
+        screenType: 'dashboard',
+        purpose:
+          'Review assigned surveys, transects, crew responsibilities, and open permit checks',
+        jobs: ['review-survey-assignments', 'open-transect', 'check-permit-status'],
+        required: true,
+      },
+      {
+        name: 'Field Survey',
+        screenType: 'workspace-editor',
+        purpose:
+          'Capture species observations, location notes, and field evidence along a transect',
+        jobs: ['record-observation', 'attach-field-evidence', 'review-offline-queue'],
+        required: true,
+      },
+      {
+        name: 'Observation Review',
+        screenType: 'index-list',
+        purpose: 'Review and resolve field observations with their linked evidence',
+        jobs: ['filter-observations', 'review-identification', 'resolve-review-item'],
+        required: true,
+      },
+      {
+        name: 'Permits & Protocols',
+        screenType: 'index-list',
+        purpose: 'Check permit validity, survey restrictions, and field protocols',
+        jobs: ['find-permit', 'review-conditions', 'check-validity'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      'field-observation-records',
+      'offline-field-capture',
+      'evidence-provenance-links',
+      'permit-condition-review',
+    ],
+    forbiddenPatterns: ['ephemeral-data-loss', 'unverified-species-identification'],
+  };
+}

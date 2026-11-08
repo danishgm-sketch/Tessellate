@@ -32,8 +32,7 @@ now has 268 deployed-verified closures and 132 fixes awaiting deployed verificat
 the only nonclosed High; AUD-515 remains locally fixed and is not yet deployed-verified.
 
 The v87 sweep remains the latest broad public route/flagship audit, not a full re-audit of every
-control. The complete hardening release gate remains open. Verso source remains `UNLICENSED` and
-excluded from redistribution; human usability sessions are owner-waived, not passed.
+control. The complete hardening release gate remains open. Verso owner authorization for project use and modification was confirmed on 2026-11-07; per-item product certification remains outstanding; human usability sessions are owner-waived, not passed.
 
 ### 2026-11-07 continuation — Step 5 screen-route contract
 
@@ -682,3 +681,18 @@ The ledger now contains 511 findings: 0 Critical, 91 High, 391 Medium, and 29 Lo
 The v81 Site was revisited across all 31 public routes at desktop and mobile. The exact flagship employee-experience journey passed at both viewports, and all three actual direction previews settled without unresolved resources. The ten Beta tools were audited at both widths through 41 passing browser cases; 21 cases were skipped by their configured viewport profiles. Axe reported zero violations, with color-contrast incomplete on some complex content; the CSP blocked Axe's injected inline styles, and the product CSP was not loosened. Direction A first exposed AUD-511: internal resource slugs appeared in the accessible lazy-load status. The shared renderer fix now uses neutral accessible messages for both Suspense and offscreen deferred-resource loading; its regression failed before the change and passed after it. Full local checks and exact-head GitHub CI passed. The v82 issue-specific recheck reproduced the loading window in the live Compose UI at 1440×900 and 390×844; five statuses read “Loading interface element…” and contained no slugs, all three directions settled to five resources each, and browser/network errors were zero. Screenshots and reports are in `quality/evidence/step-45/public-v82-followup-2026-11-06/`. Full manual contrast checks, the remaining deployed finding backlog, and the RC gate are still open.
 
 Verso remains local-only: the 1,053-module private inventory passed schema projection and isolated rendering, but no written redistribution rights exist. Public catalogue, Gold runtime, Sites, CLI/MCP, and export integration remain blocked. The existing local preview integration is not a licence or certification of functional parity. See `quality/VERSO_LOCAL_INTEGRATION_EVIDENCE.md`, `quality/VERSO_NATIVE_FIT_MAP.md`, and `quality/evidence/step-45/public-v82-followup-2026-11-06/REVIEW.md`.
+
+
+### 2026-11-07 continuation — AUD-516/AUD-517 and Verso owner authorization
+
+The first incomplete hardening item remains Step 39. This local iteration added AUD-516 for unsupported intelligence-shaped Compose copy on a marine field-research brief and AUD-517 for inline direction-preview links that changed the URL without changing the rendered screen. Both regressions now pass on the local Astro production build at 390x844. Focused composer tests pass 118/118, the composer and site typechecks pass, and the production build generates 733 pages. Public verification and exact-head CI remain pending; Step 39 is not complete.
+
+### 2026-11-08 continuation — AUD-518 and full local browser matrix
+
+AUD-518 fixes duplicate DOM IDs when the same labeled Input is present in the inline Compose preview and full-preview dialog. The shared resource now generates a unique React ID unless an explicit ID is supplied; the registry and Gold export source use the same implementation. Browser regressions also verify the two previews maintain independent screen selections.
+
+The focused browser checks passed 10 cases with 2 configured skips. The full `pnpm test:e2e` matrix passed 862 cases with 197 configured skips and zero failures across Astro desktop/mobile, Sites Worker desktop/mobile, and standalone preview. `pnpm lint` and `pnpm audit:all` passed, including all 16 behavioral release-gate checks, 324 resource-isolation and provenance/licence checks, bundle budgets, zero security/secrets/isolation violations, and no known dependency vulnerabilities. The Sites Worker production artifact was rebuilt before E2E. Existing large-chunk and ineffective-dynamic-import warnings remain.
+
+AUD-516 through AUD-518 are fixed and locally verified on this branch; no exact-head CI or public Site verification has run, and no deployment is claimed. The first incomplete item remains Step 39, which is still open for the complete language/copy review and issue-specific hosted checks. Continue in order after this scoped fix.
+
+The owner confirmed on 2026-11-07 that the private Verso collection is their own work, contributed for Tessellate, and may be used and modified for the project without a separate license. This resolves the owner-rights question for project use; it does not certify resource quality or technical compatibility. The 1,053 inventory items remain outside the public product until they pass the normal item-level manifest, provenance, responsive, accessibility, runtime, export, and release gates. D-067 records the authorization. No Verso source or derivative was added in this iteration. Step 45 and Step 48 remain open.

@@ -821,7 +821,19 @@ function DirectionCard({
   const primaryScreen = manifest.screens.find(screen=>screen.slug==='/overview') ?? manifest.screens[0];
   const [previewOpen,setPreviewOpen] = useState(false);
   const [previewScreen,setPreviewScreen] = useState(primaryScreen?.id ?? '');
+  const [inlinePreviewScreen,setInlinePreviewScreen] = useState(primaryScreen?.id ?? '');
   const closePreview=useCallback(()=>setPreviewOpen(false),[]);
+  const selectLinkedScreen=useCallback((
+    event: React.MouseEvent<HTMLDivElement>,
+    selectScreen: (screenId: string) => void
+  ) => {
+    const anchor=(event.target as HTMLElement).closest('a[href^="#"]');
+    const screenId=anchor?.getAttribute('href')?.slice(1);
+    if(screenId && manifest.screens.some(screen=>screen.id===screenId)) {
+      event.preventDefault();
+      selectScreen(screenId);
+    }
+  },[manifest.screens]);
 
 
   return (
@@ -895,7 +907,7 @@ function DirectionCard({
         {/* Real Scaled Project Preview */}
         <div className="rounded-xl border border-[#D9D6CF]/70 bg-[#FAF9F6] p-3 dark:border-[#272C34] dark:bg-[#0B0D10]">
           <div className="flex items-center justify-between text-[10px] font-bold uppercase text-[var(--text-muted)]">
-            <span>Screen Preview: {primaryScreen?.name ?? 'Overview'}</span>
+            <span>Screen Preview: {manifest.screens.find(screen=>screen.id===inlinePreviewScreen)?.name ?? primaryScreen?.name ?? 'Overview'}</span>
             <span>{manifest.screens.length} Screens</span>
           </div>
 
@@ -903,12 +915,10 @@ function DirectionCard({
             data-testid={`direction-preview-${number}`}
             aria-label={`Direction ${number} preview`} role="region" tabIndex={0} className="mt-2 relative h-72 w-full overflow-auto rounded-lg border border-[#D9D6CF] bg-white shadow-inner dark:border-[#272C34] dark:bg-[#0B0D10]"
           >
-            <div
-              className="w-full"
-            >
+            <div className="w-full" onClickCapture={event=>selectLinkedScreen(event,setInlinePreviewScreen)}>
               <ManifestRenderer
                 manifest={manifest}
-                activeScreenId={primaryScreen?.id}
+                activeScreenId={inlinePreviewScreen}
               />
             </div>
           </div>
@@ -932,7 +942,7 @@ function DirectionCard({
         <button type="button" onClick={()=>setPreviewOpen(true)} className="underline py-2 text-sm">Inspect full preview and DNA</button>
         <Dialog open={previewOpen} onClose={closePreview} title={`Direction ${number}: ${direction.name}`} className="max-w-[1400px] max-h-[92vh] overflow-auto">
           <label className="block mb-4">Screen <select aria-label="Direction preview screen" className="border p-2" value={previewScreen} onChange={event=>setPreviewScreen(event.target.value)}>{manifest.screens.map(screen=><option key={screen.id} value={screen.id}>{screen.name}</option>)}</select></label>
-          <div onClickCapture={event=>{const anchor=(event.target as HTMLElement).closest('a[href^="#"]');const id=anchor?.getAttribute('href')?.slice(1);if(id && manifest.screens.some(screen=>screen.id===id)){event.preventDefault();setPreviewScreen(id);}}}><ManifestRenderer manifest={manifest} activeScreenId={previewScreen}/></div>
+          <div onClickCapture={event=>selectLinkedScreen(event,setPreviewScreen)}><ManifestRenderer manifest={manifest} activeScreenId={previewScreen}/></div>
           <details className="mt-4"><summary>Design DNA and resource references</summary><pre tabIndex={0} className="text-xs overflow-auto">{JSON.stringify({id:manifest.id,dna:manifest.designDNA,navigation:manifest.navigation,grammar:direction.primaryGrammarId,screens:manifest.screens,diagnostics:output.diagnostics},null,2)}</pre></details>
         </Dialog>
       </div>

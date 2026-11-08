@@ -149,3 +149,98 @@ test('specialized ecommerce, flight, and film briefs keep their domain workflows
   expect(runtime.failedRequests).toEqual([]);
   expect(runtime.badResponses).toEqual([]);
 });
+
+test('marine field research preview navigation changes screens in place on mobile', async ({
+  page,
+}, testInfo) => {
+  test.setTimeout(90_000);
+  const evidenceDirectory = process.env.TESSLLATE_STEP45_EVIDENCE_DIR
+    ? path.resolve(process.env.TESSLLATE_STEP45_EVIDENCE_DIR)
+    : testInfo.outputPath('marine-field-preview');
+  mkdirSync(evidenceDirectory, { recursive: true });
+  const runtime = {
+    consoleErrors: [] as string[],
+    uncaughtExceptions: [] as string[],
+    failedRequests: [] as string[],
+    badResponses: [] as Array<{ url: string; status: number }>,
+  };
+  page.on('console', (message) => {
+    if (message.type() === 'error') runtime.consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => runtime.uncaughtExceptions.push(error.message));
+  page.on('requestfailed', (request) => runtime.failedRequests.push(request.url()));
+  page.on('response', (response) => {
+    if (response.status() >= 400) {
+      runtime.badResponses.push({ url: response.url(), status: response.status() });
+    }
+  });
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/compose');
+  await expect(page.getByTestId('catalog-status')).toContainText('Catalogue ready');
+  await page.locator('#description').fill(
+    'A marine biology field atlas for 12 survey crews: offline transects, species evidence, permit workflows, and a calm review queue.'
+  );
+  await page.getByTestId('compose-submit-btn').click();
+
+  await expect(page.getByText('Your brief points to: Marine Field Research.')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Planned screens (4)' })).toBeVisible();
+  const preview = page.getByTestId('direction-preview-01');
+  const directionCard = page.getByTestId('direction-card-01');
+  await expect(preview).toBeVisible();
+  const checkedScreens: string[] = [];
+
+  for (const screenName of [
+    'Field Survey',
+    'Observation Review',
+    'Permits & Protocols',
+    'Survey Overview',
+  ]) {
+    await preview.getByRole('link', { name: screenName }).click();
+    await expect(preview.getByRole('heading', { name: screenName })).toBeVisible();
+    await expect(preview.getByTestId('resource-loading')).toHaveCount(0, { timeout: 30_000 });
+    await expect(directionCard).toContainText(`Screen Preview: ${screenName}`);
+    await expect(page).not.toHaveURL(/#screen-/);
+    checkedScreens.push(screenName);
+    if (screenName === 'Field Survey') {
+      await expect(
+        preview.getByText('Capture species observations, location notes, and field evidence along a transect')
+      ).toBeVisible();
+      const screenshotPath = path.join(
+        evidenceDirectory,
+        'compose-marine-field-preview-mobile-390x844.png'
+      );
+      await directionCard.screenshot({ path: screenshotPath, animations: 'disabled' });
+      await testInfo.attach('marine-field-preview-mobile', {
+        path: screenshotPath,
+        contentType: 'image/png',
+      });
+    }
+  }
+
+  const responsiveState = await page.evaluate(() => ({
+    viewportWidth: window.innerWidth,
+    documentWidth: document.documentElement.scrollWidth,
+  }));
+  expect(responsiveState.viewportWidth).toBe(390);
+  expect(responsiveState.documentWidth).toBeLessThanOrEqual(responsiveState.viewportWidth);
+  expect(runtime.consoleErrors).toEqual([]);
+  expect(runtime.uncaughtExceptions).toEqual([]);
+  expect(runtime.failedRequests).toEqual([]);
+  expect(runtime.badResponses).toEqual([]);
+  writeFileSync(
+    path.join(evidenceDirectory, 'compose-marine-field-preview-mobile.json'),
+    `${JSON.stringify({
+      brief: 'A marine biology field atlas for 12 survey crews: offline transects, species evidence, permit workflows, and a calm review queue.',
+      url: page.url(),
+      viewport: page.viewportSize(),
+      archetype: 'intelligence-research',
+      specialization: 'Marine Field Research',
+      screens: checkedScreens,
+      responsiveState,
+      runtime,
+      result: 'PASS',
+    }, null, 2)}\n`,
+    'utf8'
+  );
+});

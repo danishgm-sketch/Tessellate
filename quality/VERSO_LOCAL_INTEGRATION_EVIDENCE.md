@@ -37,3 +37,9 @@ The two local applications were started on loopback only (127.0.0.1). The curren
 Axe reported zero violations and one incomplete color-contrast check; no contrast certification is claimed. The representative WebGL resource produced four Chromium GPU-driver warnings about a GPU stall during ReadPixels screenshot/readback. No module failed, but this is retained as a performance observation and does not certify GPU-heavy resources. The full JSON report, private inventory/projection, and two screenshots remain outside Git under the owner-local temporary evidence directory; only this aggregate report is committed. The inventory and projection scripts each passed their seven-file focused suite (25 tests total) on the current branch.
 
 This revalidation confirms private local discovery and rendering only. It neither resolves redistribution rights nor certifies resource accessibility, performance, responsive behavior, or export fidelity. The earlier out-of-repository source boundary and no-public-copy rule remain unchanged.
+
+## Owner authorization update — 2026-11-07
+
+The owner confirmed that this is their own private collection, contributed for Tessellate, and authorized its use and modification for the project without a separate license. This supersedes the earlier unresolved-rights statements for project use and modification (D-067). The local inspection evidence above remains unchanged: none of the 1,053 items is technically certified for public catalogue, Gold runtime, Workbench, registry, CLI/MCP, or export inclusion. Each item still needs the normal provenance, manifest, responsive, accessibility, runtime, export, and release review. The source and generated projection remain outside the repository.
+
+This authorization update changes no integration boundary or hardening gate by itself.

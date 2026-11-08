@@ -22,6 +22,7 @@ import {
   specialiseFintechTrading,
   specialiseMedia,
   specialiseMarketplace,
+  specialiseMarineFieldResearch,
   specialisePeopleOperations,
   specialiseTravel,
 } from './domain-context.js';
@@ -110,14 +111,17 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   const primaryTag = detectedArchetypes[0]?.tag ?? 'saas';
   const definition = getProductArchetype(primaryTag);
   const archetypeDef = definition
-    ? specialiseDeveloperTools(
-        specialiseAi(
-          specialiseTravel(
-            specialiseMedia(
-              specialiseConsumer(
-                specialiseEcommerce(
-                  specialiseMarketplace(
-                    specialiseFintechTrading(specialisePeopleOperations(definition, text), text),
+    ? specialiseMarineFieldResearch(
+        specialiseDeveloperTools(
+          specialiseAi(
+            specialiseTravel(
+              specialiseMedia(
+                specialiseConsumer(
+                  specialiseEcommerce(
+                    specialiseMarketplace(
+                      specialiseFintechTrading(specialisePeopleOperations(definition, text), text),
+                      text
+                    ),
                     text
                   ),
                   text

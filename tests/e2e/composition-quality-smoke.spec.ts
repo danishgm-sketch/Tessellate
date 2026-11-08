@@ -136,6 +136,15 @@ test('review representative marketplace and community compositions in the real b
     await expect(submit).toBeEnabled();
     await submit.click();
 
+    let inlineMessageInputId: string | null = null;
+    if (item.id === 'MKT-01') {
+      const inlinePreview = page.getByTestId('direction-preview-01');
+      await inlinePreview.getByRole('link', { name: item.screen }).click();
+      const inlineMessageInput = inlinePreview.locator('input[placeholder="Write a message…"]');
+      await expect(inlineMessageInput).toBeVisible();
+      inlineMessageInputId = await inlineMessageInput.getAttribute('id');
+      expect(inlineMessageInputId).toBeTruthy();
+    }
     const directions: Array<Record<string, unknown>> = [];
     for (const number of ['01', '02', '03']) {
       const card = page.locator(`[data-testid="direction-card-${number}"]`);
@@ -218,7 +227,11 @@ test('review representative marketplace and community compositions in the real b
         if (channelsRails.length) {
           expect(nodes.filter((node) => node.semanticRole === 'navigation')).toHaveLength(0);
         }
-        await expect(canvas.getByLabel('Write a message')).toBeVisible();
+        const dialogMessageInput = canvas.getByLabel('Write a message');
+        await expect(dialogMessageInput).toBeVisible();
+        expect(await dialogMessageInput.getAttribute('id')).not.toBe(
+          inlineMessageInputId
+        );
         expect(visibleCopy.toLocaleLowerCase()).toContain('project inquiry');
         expect(visibleCopy.toLocaleLowerCase()).toContain('proposal reply');
         expect(visibleCopy.toLocaleLowerCase()).not.toContain('complete booking');
@@ -811,12 +824,26 @@ test('returns portal brief composes order lookup, return request, and refund sta
   await expect(submit).toBeEnabled();
   await submit.click();
 
+  const inlinePreview = page.getByTestId('direction-preview-01');
+  await inlinePreview.getByRole('link', { name: 'Return Request' }).click();
+  const firstDirectionCard = page.locator('[data-testid="direction-card-01"]');
+  await expect(firstDirectionCard).toContainText('Screen Preview: Return Request');
+  const inlineReturnReason = inlinePreview.locator(
+    'input[placeholder="Describe why these items are being returned"]'
+  );
+  await expect(inlineReturnReason).toBeVisible();
+  const inlineReturnReasonId = await inlineReturnReason.getAttribute('id');
+  expect(inlineReturnReasonId).toBeTruthy();
+
   for (const number of ['01', '02', '03']) {
     const card = page.locator(`[data-testid="direction-card-${number}"]`);
     await expect(card).toBeVisible();
     await card.getByRole('button', { name: 'Inspect full preview and DNA' }).click();
     const dialog = page.getByRole('dialog', { name: new RegExp(`Direction ${number}`) });
     await expect(dialog).toBeVisible();
+    if (number === '01') {
+      await expect(card).toContainText('Screen Preview: Return Request');
+    }
     const details = dialog
       .locator('details')
       .filter({ hasText: 'Design DNA and resource references' });
@@ -854,11 +881,18 @@ test('returns portal brief composes order lookup, return request, and refund sta
     await expect(canvas).toContainText('Order Lookup');
     await expect(canvas).toContainText('Orders and returns');
     await expect(canvas).not.toContainText('Flagship Feature');
+    if (number === '01') {
+      await expect(card).toContainText('Screen Preview: Return Request');
+    }
 
     await screenSelect.selectOption(returnRequest!.id);
     await expect(canvas).toContainText('Return Request');
     await expect(canvas.locator('nav')).toHaveCount(1);
-    await expect(canvas.getByLabel('Return reason')).toBeVisible();
+    const dialogReturnReason = canvas.getByLabel('Return reason');
+    await expect(dialogReturnReason).toBeVisible();
+    expect(await dialogReturnReason.getAttribute('id')).not.toBe(
+      inlineReturnReasonId
+    );
     const disabledSubmit = canvas.getByRole('button', { name: 'Submit return request' });
     await expect(disabledSubmit).toBeDisabled();
     await expect(disabledSubmit).toHaveAttribute(

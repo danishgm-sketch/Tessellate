@@ -42,6 +42,39 @@ describe('Product Archetypes (18 Categories)', () => {
     expect(fintechMatches[0]?.tag).toBe('fintech');
   });
 
+  it('does not promote one generic evidence cue to a product archetype', () => {
+    expect(detectProductArchetypes('A general app for tracking evidence in a review queue.')[0]?.tag).toBe('saas');
+    expect(detectProductArchetypes('A trip planner that keeps evidence for each booking.')[0]?.tag).toBe('travel');
+  });
+
+  it('interprets marine fieldwork as a mobile survey and evidence workflow', () => {
+    const { productModel } = interpretProductBrief({
+      description:
+        'A marine biology field atlas for 12 survey crews: offline transects, species evidence, permit workflows, and a calm review queue.',
+    });
+    const serialized = JSON.stringify(productModel).toLowerCase();
+    const screens = productModel.likelyScreens.map((screen) => screen.name);
+
+    expect(productModel.productArchetypes[0]?.tag).toBe('intelligence-research');
+    expect(productModel.primaryAudience).toContain('Marine biologists');
+    expect(productModel.mobileImportance).toBe(95);
+    expect(productModel.entities.map((entity) => entity.name)).toEqual([
+      'Species',
+      'Survey',
+      'Observation',
+      'Permit',
+    ]);
+    expect(screens).toEqual([
+      'Survey Overview',
+      'Field Survey',
+      'Observation Review',
+      'Permits & Protocols',
+    ]);
+    expect(serialized).toContain('offline-field-capture');
+    expect(serialized).not.toContain('millions of verified profiles');
+    expect(serialized).not.toContain('automated monitoring triggers');
+  });
+
   it('keeps employee experience separate from hiring while respecting explicit overrides', () => {
     const employeeMatches = detectProductArchetypes(
       'Employee experience platform for colleagues, teams, onboarding and workplace policies.'

@@ -19,7 +19,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       formAction?: string;
     };
     void ignoredFormAction;
-    const inputId = id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
+    const generatedId = React.useId();
+    const inputId =
+      id || (label ? 'tess-input-' + generatedId.replace(/[^a-zA-Z0-9_-]/g, '') : undefined);
 
     let borderTheme =
       'border-neutral-300 focus:border-neutral-900 focus:ring-neutral-900 bg-white text-neutral-900';
