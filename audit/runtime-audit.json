@@ -24946,11 +24946,165 @@
         ],
         "telemetry": "Desktop and mobile browser reports show no horizontal overflow, console errors, uncaught exceptions, failed requests, or HTTP errors. Each of the three directions displays the six unsupported roles in visible diagnostics; preview content is labeled as an example."
       }
+    },
+    {
+      "id": "AUD-521",
+      "severity": "medium",
+      "route": "/compose",
+      "category": "content",
+      "viewport": "1440x900, 390x844",
+      "title": "Bicycle repair co-op brief inherited generic operations defaults and hid an unsupported safety screen",
+      "expected": "The plan should reflect bicycle intake, brake and steering safety, consented estimates, parts availability, and pickup readiness. Explicit payment exclusions should remain respected, and unsupported service operations should be visible as unresolved requirements.",
+      "actual": "The brief initially received generic operations assumptions. The tailored result now plans five service screens in all three directions. Safety Inspection renders its real title and purpose through an existing entity-header resource; ten unavailable service roles remain visibly unresolved in each direction. No payment workflow or fake service controls are added.",
+      "rootCause": "The ERP & Operations archetype recognized bicycle repair as an operations domain but had no narrow bicycle-service specialization. Its domain screens also required only unavailable bicycle-specific roles, so Safety Inspection rendered blank instead of showing the available semantic heading resource.",
+      "reproduction": [
+        "Open /compose and enter: A neighborhood bicycle repair co-op for eight mechanics and two front-desk volunteers: same-day intake, safety triage for brakes and steering, parts availability, consented repair estimates, and pickup readiness. The shared workbench runs on a counter tablet and desktop. Do not handle payments.",
+        "Inspect all three generated directions and their Service Desk, Repair Intake, Safety Inspection, Parts & Estimates, and Pickup & Handover screens.",
+        "Confirm the Safety Inspection title and purpose render, all ten unsupported roles appear as diagnostics, and no payment or purchase-confirmation assumption is introduced."
+      ],
+      "affectedCode": [
+        "packages/composer/src/archetypes.ts",
+        "packages/composer/src/domain-context.ts",
+        "packages/composer/src/interpreter.ts",
+        "packages/composer/src/planner.ts",
+        "packages/composer/src/__tests__/composer.test.ts",
+        "packages/compatibility/src/__tests__/compose-pipeline.test.ts",
+        "tests/e2e/bicycle-repair-brief-fit.spec.ts"
+      ],
+      "screenshot": "quality/evidence/AUD-521/bicycle-repair-screen-workspace-desktop.png",
+      "console": [],
+      "network": [],
+      "fixCommit": "ce719d45",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "red": "The exact brief used generic ERP defaults, and the Safety Inspection preview had no rendered header because all required roles were unavailable.",
+        "green": "A narrowly triggered bicycle-service specialization produces five domain screens and four workflows. The safety screen uses the existing entity-header resource for title and purpose. All ten unsupported service roles remain explicitly unresolved in all three directions, and an explicit payment exclusion suppresses the payment assumption.",
+        "focusedCommand": "pnpm exec playwright test tests/e2e/bicycle-repair-brief-fit.spec.ts --project=desktop-chrome --project=mobile-chrome",
+        "focusedProjects": {
+          "astroDesktop": {
+            "passed": 1,
+            "configuredSkips": 0
+          },
+          "astroMobile": {
+            "passed": 1,
+            "configuredSkips": 0
+          },
+          "totals": {
+            "passed": 2,
+            "configuredSkips": 0,
+            "failed": 0
+          }
+        },
+        "fullMatrix": {
+          "astroDesktopAndMobile": {
+            "passed": 404,
+            "configuredSkips": 140
+          },
+          "sitesWorkerDesktop": {
+            "passed": 249,
+            "configuredSkips": 11
+          },
+          "sitesWorkerMobile": {
+            "passed": 214,
+            "configuredSkips": 46
+          },
+          "standalonePreview": {
+            "passed": 3,
+            "configuredSkips": 0
+          },
+          "totals": {
+            "passed": 870,
+            "configuredSkips": 197,
+            "failed": 0
+          }
+        },
+        "screenshots": [
+          "quality/evidence/AUD-521/bicycle-repair-desktop.json",
+          "quality/evidence/AUD-521/bicycle-repair-mobile.json",
+          "quality/evidence/AUD-521/bicycle-repair-screen-collection-index-desktop.png",
+          "quality/evidence/AUD-521/bicycle-repair-screen-collection-index-mobile.png",
+          "quality/evidence/AUD-521/bicycle-repair-screen-overview-desktop.png",
+          "quality/evidence/AUD-521/bicycle-repair-screen-overview-mobile.png",
+          "quality/evidence/AUD-521/bicycle-repair-screen-pickup-and-handover-desktop.png",
+          "quality/evidence/AUD-521/bicycle-repair-screen-pickup-and-handover-mobile.png",
+          "quality/evidence/AUD-521/bicycle-repair-screen-repair-intake-desktop.png",
+          "quality/evidence/AUD-521/bicycle-repair-screen-repair-intake-mobile.png",
+          "quality/evidence/AUD-521/bicycle-repair-screen-workspace-desktop.png",
+          "quality/evidence/AUD-521/bicycle-repair-screen-workspace-mobile.png"
+        ],
+        "telemetry": "At 1440x900 and 390x844, document width equals viewport width. Both reports record zero console errors, uncaught exceptions, failed requests, and HTTP errors."
+      }
     }
   ],
-  "generatedAt": "2026-11-08T04:58:30Z",
+  "generatedAt": "2026-11-08T06:45:42Z",
   "latestDeploymentEvidence": "quality/evidence/AUD-514/deployed-v89-runtime.json",
   "latestLocalQualityRun": {
+    "capturedAt": "2026-11-08T06:45:42Z",
+    "command": "pnpm test; pnpm typecheck; pnpm lint; pnpm audit:all; pnpm test:e2e; focused bicycle-repair Compose browser test",
+    "environment": "Windows worktree; local Astro production build and production-like Sites Worker artifact; Chromium desktop and emulated mobile; standalone Vite preview",
+    "result": "PASS",
+    "sourceBranch": "codex/research-archetype-fit",
+    "sourceBase": "cf552d0d4df2ed2ca3d184f06645c7dab8ddba55",
+    "sourceCommit": "ce719d45",
+    "workingTreeWasDirty": true,
+    "changesUnderTest": [
+      "Specialize concrete bicycle repair co-op briefs within the existing ERP & Operations archetype.",
+      "Plan intake, safety inspection, consented estimate, parts, and pickup workflows without inferring payments when excluded.",
+      "Render the Safety Inspection screen heading and purpose with an existing entity-header resource while surfacing unavailable service roles as unresolved.",
+      "Add composer and compatibility regressions plus desktop/mobile Compose browser evidence for all three directions."
+    ],
+    "commandResults": {
+      "frozenInstall": "NOT RUN (lockfile unchanged)",
+      "focusedBrowserRegression": "PASS (2 passed; desktop and mobile)",
+      "typecheck": "PASS (22 workspace packages)",
+      "lint": "PASS",
+      "unitAndIntegrationTests": "PASS (95 files; 1,356 passed; 1 configured skip)",
+      "behavioralAndSecurityAudit": "PASS (16/16 behavior gates; 324/324 resource isolation; 324/324 license/provenance; zero security, secret, or isolation violations; no known dependency vulnerabilities)",
+      "bundleBudgets": "PASS (homepage, Explore, Compose, Workbench, and search index)",
+      "productionBuild": "PASS (733 Astro pages and Sites Worker artifact; existing large-chunk and ineffective-dynamic-import warnings)",
+      "playwright": "PASS (870 passed; 197 configured profile skips; 0 failures)"
+    },
+    "projects": [
+      {
+        "name": "Astro desktop/mobile Chromium",
+        "passed": 404,
+        "configuredSkips": 140,
+        "failed": 0
+      },
+      {
+        "name": "Sites Worker desktop Chromium",
+        "passed": 249,
+        "configuredSkips": 11,
+        "failed": 0
+      },
+      {
+        "name": "Sites Worker mobile Chromium",
+        "passed": 214,
+        "configuredSkips": 46,
+        "failed": 0
+      },
+      {
+        "name": "Standalone preview Chromium",
+        "passed": 3,
+        "configuredSkips": 0,
+        "failed": 0
+      }
+    ],
+    "totals": {
+      "passed": 870,
+      "configuredSkips": 197,
+      "failed": 0,
+      "scheduled": 1067
+    },
+    "notes": [
+      "The focused bicycle-repair journey passed in Astro desktop and mobile profiles. It exercised three directions, all five planned screens, visible unresolved-role diagnostics, screen selection, and rendered screen identity.",
+      "Desktop (1440px) and mobile (390px) reports show document width equal to viewport width and zero console errors, uncaught exceptions, failed requests, or HTTP errors.",
+      "The full local Playwright matrix passed all four groups. Configured profile skips are exclusions, not failures.",
+      "This run does not complete the ordered Product Hardening gate. Exact-head GitHub CI and public issue-specific verification are pending; no deployment or release was made."
+    ],
+    "evidence": "quality/evidence/AUD-521/ and quality/STEP_39_EVIDENCE.md"
+  },
+  "previousLocalQualityRun": {
     "capturedAt": "2026-11-08T04:58:30Z",
     "command": "pnpm test; pnpm typecheck; pnpm lint; pnpm audit:all; pnpm test:e2e; focused Accessibility Floor captures in four browser profiles",
     "environment": "Windows worktree; local Astro production build and production-like Sites Worker artifact; Chromium desktop and emulated mobile; standalone Vite preview",
@@ -25017,70 +25171,6 @@
       "Playwright emitted existing NO_COLOR/FORCE_COLOR environment warnings; these did not affect the results."
     ],
     "evidence": "quality/evidence/AUD-519/ and quality/evidence/AUD-520/"
-  },
-  "previousLocalQualityRun": {
-    "capturedAt": "2026-11-06T20:53:08.000Z",
-    "command": "pnpm install --frozen-lockfile; pnpm build:catalog; pnpm typecheck; pnpm lint; pnpm test; pnpm audit:all; pnpm test:e2e",
-    "environment": "Windows laptop; local Astro production build and production-like Sites Worker; Chromium desktop and emulated mobile; standalone Vite preview",
-    "result": "PASS",
-    "sourceBranch": "codex/surprise-net-change-audit",
-    "sourceBase": "30596834a5d44fa06968e19aa556a6c0e77aa785",
-    "workingTreeWasDirty": true,
-    "changesUnderTest": [
-      "Desktop Workbench startup and lazy toolbar fallbacks reserve the measured 89px toolbar height.",
-      "Lazy resource Suspense fallbacks reserve semantic-role heights.",
-      "Added a desktop cold-load and delayed-Gold-resource CLS browser regression with retained screenshots and telemetry.",
-      "Mobile gold-resource failure coverage now scrolls deferred content into view before asserting its rendered heading."
-    ],
-    "commandResults": {
-      "frozenInstall": "PASS (23 workspace projects current)",
-      "catalogueBuild": "PASS (324 canonical resources; 40 Gold resources)",
-      "typecheck": "PASS (22 packages)",
-      "lint": "PASS",
-      "unitAndIntegrationTests": "PASS (95 files; 1,344 passed; 1 skipped)",
-      "behavioralAndSecurityAudit": "PASS (16 behavioral gates; resource isolation; licence/provenance; secret/security and dependency audits; bundle budgets)",
-      "productionBuild": "PASS (733 Astro pages; existing large-preview-chunk and ineffective-dynamic-import warnings)",
-      "playwright": "PASS (856 passed; 197 configured profile skips; 0 failures)"
-    },
-    "projects": [
-      {
-        "name": "Astro desktop/mobile Chromium",
-        "passed": 396,
-        "configuredSkips": 140,
-        "failed": 0
-      },
-      {
-        "name": "Sites Worker desktop Chromium",
-        "passed": 246,
-        "configuredSkips": 11,
-        "failed": 0
-      },
-      {
-        "name": "Sites Worker mobile Chromium",
-        "passed": 211,
-        "configuredSkips": 46,
-        "failed": 0
-      },
-      {
-        "name": "Standalone preview Chromium",
-        "passed": 3,
-        "configuredSkips": 0,
-        "failed": 0
-      }
-    ],
-    "totals": {
-      "passed": 856,
-      "configuredSkips": 197,
-      "failed": 0,
-      "scheduled": 1053
-    },
-    "notes": [
-      "The initial full E2E attempt had two mobile catalogue-readiness timeouts; each passed in isolation, passed five repeated isolated runs, and passed in two subsequent complete mobile Sites runs. The final uninterrupted pnpm test:e2e run passed all four stages.",
-      "The Sites desktop regression measured 0.008507266482338821 cold CLS and 0.00783578371484911 CLS with three Gold chunks delayed. Mobile Workbench CLS measured 0.01260137495815051 in first-load, reload, and injected-failure cases.",
-      "The 324-resource responsive render certification and Gold variant/accessibility certification passed on Sites desktop. Configured profile skips are exclusions, not failures.",
-      "Node emitted the existing NO_COLOR/FORCE_COLOR environment warning in Playwright processes; it did not affect test results."
-    ],
-    "evidence": "audit/evidence/step-47/AUD-512/local-after/"
   },
   "priorLocalQualityRun": {
     "capturedAt": "2026-11-03T20:34:29.000Z",
