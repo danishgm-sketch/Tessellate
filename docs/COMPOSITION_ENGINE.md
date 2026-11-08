@@ -189,6 +189,10 @@ Each screen node contains:
 
 The planner preserves the interpreter's recommended screen names, types, purposes, jobs, and required flags. It derives route suggestions from screen semantics and the ProductModel's entities, validates route uniqueness, groups by screen grammar, and connects the public entry to application destinations. It does not append a generic dashboard, sign-in, settings, documentation, or entity-detail screen when the ProductModel did not recommend one. If an explicit required-screen constraint cannot be matched to a recommendation or supported screen class, planning fails with an actionable error.
 
+### Community emergency response specialization
+
+Keep this in the existing ERP & Operations archetype. Apply the specialization only when a mutual-aid, community-emergency, disaster-response, or humanitarian-relief anchor appears together with operational context such as shelters, neighborhood hubs, relief supplies, evacuation, severe weather, volunteer shifts, or welfare checks. The plan covers coordination overview, minimal aid-request intake, shelter/hub capacity, supplies, volunteer handover, and aggregated public status. It can describe manual reconciliation after an outage as a requirement, but must not imply that local persistence, synchronization, SMS dispatch, live mapping, or emergency prioritisation is implemented. Public status stays aggregate-only; do not introduce identity, contact, immigration, diagnosis, payment, or fundraising fields. Unsupported operational roles remain explicit instead of being replaced with generic forms or fictitious controls.
+
 ### Example
 
 For research/intelligence:
