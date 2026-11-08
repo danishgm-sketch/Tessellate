@@ -24824,11 +24824,201 @@
         },
         "note": "The Sites Worker artifact was rebuilt before the full matrix. Exact-head CI passed implementation commit 985ece50fd51498e7f014c17db6604d8d1f588ff in validation runs 42436708005 and 42436727640; the 16-point Component Quality & Security Sandbox Audit passed in run 42436727616. Issue-specific public verification remains pending."
       }
+    },
+    {
+      "id": "AUD-519",
+      "severity": "medium",
+      "route": "/compose",
+      "category": "accessibility",
+      "viewport": "1440x900, 390x844",
+      "title": "Compose Accessibility Floor setting had no accessible name",
+      "expected": "The visible Accessibility Floor label should be associated with the select so the control has a useful name for keyboard and assistive-technology users.",
+      "actual": "The title was rendered as a span; the select could not be located by its accessible name. It is now a label associated with the accessibility-floor select.",
+      "rootCause": "The setting title used a visually styled span instead of an associated label element.",
+      "reproduction": [
+        "Open /compose and expand Advanced Constraints & Devices.",
+        "Before the fix, query the select by the accessible name Accessibility Floor; no named combobox is found.",
+        "After the fix, query the combobox by name, confirm AA, select AAA, and verify the target-device group remains operable at 390x844."
+      ],
+      "affectedCode": [
+        "apps/site/src/components/ComposeView.tsx",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "screenshot": "quality/evidence/AUD-519/compose-accessibility-floor-expanded-desktop-chrome.png",
+      "console": [],
+      "network": [],
+      "fixCommit": "e95f057b5e9df8be6b4d4e608b031c9c3c67b550",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "red": "The visible title was not associated with the select, so accessible-name lookup could not identify the control.",
+        "green": "The browser regression locates Accessibility Floor by role and name, checks the AA default and AAA selection, toggles target devices to mobile-only, and verifies a 390px document width at 390px viewport.",
+        "focusedCommand": "pnpm exec playwright test tests/e2e/composition-quality-smoke.spec.ts --project=desktop-chrome --project=mobile-chrome --grep \"advanced Compose accessibility floor\"; pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts --project=sites-chromium --project=sites-mobile-chromium --grep \"advanced Compose accessibility floor\"",
+        "focusedProjects": {
+          "astroDesktopAndMobile": {
+            "passed": 2,
+            "configuredSkips": 0
+          },
+          "sitesWorkerDesktopAndMobile": {
+            "passed": 2,
+            "configuredSkips": 0
+          },
+          "totals": {
+            "passed": 4,
+            "configuredSkips": 0,
+            "failed": 0
+          }
+        },
+        "screenshots": [
+          "quality/evidence/AUD-519/compose-accessibility-floor-desktop-chrome.json",
+          "quality/evidence/AUD-519/compose-accessibility-floor-mobile-chrome.json",
+          "quality/evidence/AUD-519/compose-accessibility-floor-sites-chromium.json",
+          "quality/evidence/AUD-519/compose-accessibility-floor-sites-mobile-chromium.json",
+          "quality/evidence/AUD-519/compose-accessibility-floor-expanded-desktop-chrome.png",
+          "quality/evidence/AUD-519/compose-accessibility-floor-mobile-target-desktop-chrome.png",
+          "quality/evidence/AUD-519/compose-accessibility-floor-expanded-mobile-chrome.png",
+          "quality/evidence/AUD-519/compose-accessibility-floor-mobile-target-mobile-chrome.png",
+          "quality/evidence/AUD-519/compose-accessibility-floor-expanded-sites-chromium.png",
+          "quality/evidence/AUD-519/compose-accessibility-floor-mobile-target-sites-chromium.png",
+          "quality/evidence/AUD-519/compose-accessibility-floor-expanded-sites-mobile-chromium.png",
+          "quality/evidence/AUD-519/compose-accessibility-floor-mobile-target-sites-mobile-chromium.png"
+        ],
+        "telemetry": "All four profile reports record viewport and document width 390px after the compact-width step, with zero console errors, uncaught exceptions, failed requests, or HTTP errors."
+      }
+    },
+    {
+      "id": "AUD-520",
+      "severity": "medium",
+      "route": "/compose",
+      "category": "content",
+      "viewport": "1440x900, 390x844",
+      "title": "Education defaults did not fit an offline language-learning brief",
+      "expected": "A language-learning plan should reflect the learner, practice duration, reading needs, and offline requirement; unsupported capabilities should be disclosed rather than presented as working.",
+      "actual": "The adult dyslexia-friendly offline Spanish-learning brief inherited generic classroom defaults and a Kanban practice preview. It now produces four language-learning screens and reports six unique required roles that have no eligible catalogue resource.",
+      "rootCause": "The Education interpretation did not specialize for the stated language-learning objective and learner constraints, while generic screen roles allowed a Kanban board to stand in for unsupported practice capabilities.",
+      "reproduction": [
+        "Open /compose and enter: An offline-first Spanish learning app for adults with dyslexia who study in 10-minute sessions. Include clear progress, adjustable text spacing, audio pronunciation, short speaking practice, and downloadable lessons for commutes with no mobile signal.",
+        "Before the fix, inspect the generic education/classroom plan and practice preview.",
+        "After the fix, inspect all three directions and the Today, Practice Session, Vocabulary Review, and Offline Library screens.",
+        "Confirm missing-role warnings are visible and the example timeline does not claim that audio, speech, learner progress, reading controls, vocabulary review, or offline downloads are functional."
+      ],
+      "affectedCode": [
+        "packages/composer/src/domain-context.ts",
+        "packages/composer/src/interpreter.ts",
+        "packages/composer/src/planner.ts",
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/compose-pipeline.ts",
+        "apps/site/src/components/ComposeView.tsx",
+        "packages/composer/src/__tests__/composer.test.ts",
+        "packages/compatibility/src/__tests__/compose-pipeline.test.ts",
+        "tests/e2e/domain-workflow-composition-audit.spec.ts"
+      ],
+      "screenshot": "quality/evidence/AUD-520/language-learning-compose-directions-desktop-chrome.png",
+      "console": [],
+      "network": [],
+      "fixCommit": "e95f057b5e9df8be6b4d4e608b031c9c3c67b550",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "red": "The exact brief produced generic classroom/course defaults and a Kanban-shaped practice board without language-specific audio, speaking, reading, progress, vocabulary, or offline capability evidence.",
+        "green": "A narrowly triggered specialization produces Today, Practice Session, Vocabulary Review, and Offline Library across three directions. Six unique missing roles are disclosed in each direction, the timeline is marked as example content, and the general Education interpretation benchmark remains unspecialized.",
+        "focusedCommand": "pnpm exec playwright test tests/e2e/domain-workflow-composition-audit.spec.ts --project=desktop-chrome --project=mobile-chrome --grep \"adult offline language learning\"",
+        "focusedProjects": {
+          "astroDesktopAndMobile": {
+            "passed": 2,
+            "configuredSkips": 0
+          },
+          "totals": {
+            "passed": 2,
+            "configuredSkips": 0,
+            "failed": 0
+          }
+        },
+        "screenshots": [
+          "quality/evidence/AUD-520/language-learning-desktop-chrome.json",
+          "quality/evidence/AUD-520/language-learning-mobile-chrome.json",
+          "quality/evidence/AUD-520/language-learning-compose-directions-desktop-chrome.png",
+          "quality/evidence/AUD-520/language-learning-compose-directions-mobile-chrome.png",
+          "quality/evidence/AUD-520/language-learning-practice-direction-01-desktop-chrome.png",
+          "quality/evidence/AUD-520/language-learning-practice-direction-01-mobile-chrome.png",
+          "quality/evidence/AUD-520/language-learning-practice-direction-02-desktop-chrome.png",
+          "quality/evidence/AUD-520/language-learning-practice-direction-02-mobile-chrome.png",
+          "quality/evidence/AUD-520/language-learning-practice-direction-03-desktop-chrome.png",
+          "quality/evidence/AUD-520/language-learning-practice-direction-03-mobile-chrome.png"
+        ],
+        "telemetry": "Desktop and mobile browser reports show no horizontal overflow, console errors, uncaught exceptions, failed requests, or HTTP errors. Each of the three directions displays the six unsupported roles in visible diagnostics; preview content is labeled as an example."
+      }
     }
   ],
-  "generatedAt": "2026-11-08T02:48:32.906Z",
+  "generatedAt": "2026-11-08T04:58:30Z",
   "latestDeploymentEvidence": "quality/evidence/AUD-514/deployed-v89-runtime.json",
   "latestLocalQualityRun": {
+    "capturedAt": "2026-11-08T04:58:30Z",
+    "command": "pnpm test; pnpm typecheck; pnpm lint; pnpm audit:all; pnpm test:e2e; focused Accessibility Floor captures in four browser profiles",
+    "environment": "Windows worktree; local Astro production build and production-like Sites Worker artifact; Chromium desktop and emulated mobile; standalone Vite preview",
+    "result": "PASS",
+    "sourceBranch": "codex/research-archetype-fit",
+    "sourceBase": "d89f0068a187a7c29a54f498bf5445891cedd529",
+    "sourceCommit": "e95f057b5e9df8be6b4d4e608b031c9c3c67b550",
+    "workingTreeWasDirty": true,
+    "changesUnderTest": [
+      "Compose Accessibility Floor select now has an associated visible label and accessible name.",
+      "The Education archetype narrowly specializes explicit adult/offline/language-learning needs into four screens and domain workflows.",
+      "Unsupported language-learning roles are surfaced as visible unresolved diagnostics; example timeline content is identified honestly.",
+      "Regression coverage exercises general-education non-overfit, planning, no-Kanban substitution, diagnostics, and desktop/mobile user flows."
+    ],
+    "commandResults": {
+      "frozenInstall": "NOT RUN in this iteration",
+      "catalogueBuild": "PASS through pnpm audit:all (324 canonical resources; 40 Gold resources)",
+      "typecheck": "PASS (22 workspace packages)",
+      "lint": "PASS",
+      "unitAndIntegrationTests": "PASS (95 files; 1,352 passed; 1 configured skip)",
+      "behavioralAndSecurityAudit": "PASS (16/16 core-fidelity behavior checks; 324/324 resource isolation; 324/324 license/provenance; zero security/secret/isolation violations; no known dependency vulnerabilities)",
+      "bundleBudgets": "PASS (homepage, Explore, Compose, Workbench, and search index)",
+      "productionBuild": "PASS (733 Astro pages and Sites Worker artifact)",
+      "playwright": "PASS (868 passed; 197 configured profile skips; 0 failures)",
+      "focusedAccessibilityCapture": "PASS (4 browser profiles; 4 passed; 0 skips; 0 failures)"
+    },
+    "projects": [
+      {
+        "name": "Astro desktop/mobile Chromium",
+        "passed": 402,
+        "configuredSkips": 140,
+        "failed": 0
+      },
+      {
+        "name": "Sites Worker desktop Chromium",
+        "passed": 249,
+        "configuredSkips": 11,
+        "failed": 0
+      },
+      {
+        "name": "Sites Worker mobile Chromium",
+        "passed": 214,
+        "configuredSkips": 46,
+        "failed": 0
+      },
+      {
+        "name": "Standalone preview Chromium",
+        "passed": 3,
+        "configuredSkips": 0,
+        "failed": 0
+      }
+    ],
+    "totals": {
+      "passed": 868,
+      "configuredSkips": 197,
+      "failed": 0,
+      "scheduled": 1065
+    },
+    "notes": [
+      "The first full unit run found and caught a change in generic Jobs To Be Done output; the implementation was narrowed to the language-learning specialization and the showcase consistency regression passed before the full suite was rerun.",
+      "The full local E2E matrix completed without failures. The 324-resource responsive Sites Worker certification and Gold resource accessibility/variant/state suites passed where enabled by the profiles.",
+      "The accessibility-floor follow-up saved expanded and mobile-target screenshots plus per-profile JSON; all four targeted browser profiles passed with document width equal to the 390px viewport.",
+      "The core-fidelity audit is not the ordered Product Hardening release gate. Exact-head CI and issue-specific public Site verification remain pending; no deployment was made.",
+      "Playwright emitted existing NO_COLOR/FORCE_COLOR environment warnings; these did not affect the results."
+    ],
+    "evidence": "quality/evidence/AUD-519/ and quality/evidence/AUD-520/"
+  },
+  "previousLocalQualityRun": {
     "capturedAt": "2026-11-06T20:53:08.000Z",
     "command": "pnpm install --frozen-lockfile; pnpm build:catalog; pnpm typecheck; pnpm lint; pnpm test; pnpm audit:all; pnpm test:e2e",
     "environment": "Windows laptop; local Astro production build and production-like Sites Worker; Chromium desktop and emulated mobile; standalone Vite preview",
@@ -24892,7 +25082,7 @@
     ],
     "evidence": "audit/evidence/step-47/AUD-512/local-after/"
   },
-  "previousLocalQualityRun": {
+  "priorLocalQualityRun": {
     "capturedAt": "2026-11-03T20:34:29.000Z",
     "command": "pnpm test:e2e",
     "environment": "Clean local E2E sequence across Astro preview, production-like Sites Worker desktop/mobile, and isolated preview application",
@@ -24958,69 +25148,5 @@
       "evidence": "quality/evidence/step-39/public-v75-fixes-2026-11-03/local-regression-with-screenshots.log",
       "screenshots": "quality/evidence/step-39/public-v75-fixes-2026-11-03/after/"
     }
-  },
-  "priorLocalQualityRun": {
-    "capturedAt": "2026-11-06T14:09:57.000Z",
-    "command": "pnpm install --frozen-lockfile; pnpm build:catalog; pnpm typecheck; pnpm lint; pnpm test; pnpm audit:all; pnpm test:e2e",
-    "environment": "Windows Sites source checkout; isolated local pnpm dependency store; Astro, production-like Sites Worker desktop/mobile, and standalone Vite preview",
-    "result": "PASS",
-    "sourceBranch": "codex/surprise-net-change-audit",
-    "sourceBase": "8620d98061919d75c66d89d73bf2efc348ac11f9",
-    "workingTreeWasDirty": true,
-    "changesUnderTest": [
-      "Resource detail preview retains aria-busy and a visible loading state until the isolated renderer sends READY or ERROR.",
-      "PreviewHost sends READY only after the selected resource component has loaded.",
-      "Added delayed-resource and chunk-failure browser regressions for Sites desktop and mobile."
-    ],
-    "commandResults": {
-      "frozenInstall": "PASS",
-      "catalogueBuild": "PASS (324 canonical resources; 40 Gold resources)",
-      "typecheck": "PASS (22 packages)",
-      "lint": "PASS",
-      "unitAndIntegrationTests": "PASS (95 files; 1,343 passed; 1 skipped)",
-      "behavioralAndSecurityAudit": "PASS (16 behavioral gates; resource isolation; licence/provenance; secret/security and dependency audits; bundle budgets)",
-      "productionBuild": "PASS (733 static pages; existing large-preview-chunk and ineffective-dynamic-import warnings)",
-      "playwright": "PASS (854 passed; 191 configured profile skips; 0 failures)"
-    },
-    "projects": [
-      {
-        "name": "Astro Chromium",
-        "passed": 396,
-        "configuredSkips": 136,
-        "failed": 0
-      },
-      {
-        "name": "Sites Worker desktop Chromium",
-        "passed": 244,
-        "configuredSkips": 11,
-        "failed": 0
-      },
-      {
-        "name": "Sites Worker mobile Chromium",
-        "passed": 211,
-        "configuredSkips": 44,
-        "failed": 0
-      },
-      {
-        "name": "Standalone preview Chromium",
-        "passed": 3,
-        "configuredSkips": 0,
-        "failed": 0
-      }
-    ],
-    "totals": {
-      "passed": 854,
-      "configuredSkips": 191,
-      "failed": 0,
-      "scheduled": 1045
-    },
-    "notes": [
-      "The new resource-detail loading regression passed in both Sites Worker viewport profiles, with separate tests for delayed readiness and chunk failure.",
-      "The public v80 reproduction failed before the fix as expected; local tests pass, but deployment verification remains pending.",
-      "Axe instrumentation emitted blocked inline-style messages under the strict CSP; they were recorded separately from application telemetry and no CSP changes were made.",
-      "Configured profile skips are explicit test-profile exclusions, not failures."
-    ],
-    "evidence": "quality/evidence/step-45/public-v80-followup-2026-11-06/resource-detail-preview-loading/report.json",
-    "sourceCommit": "ed868cc79f9678e9104e6efde592c4623e2855e0"
   }
 }
