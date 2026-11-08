@@ -1,4 +1,4 @@
-import type { ArchetypeDefinition } from './archetypes.js';
+import { hasPositiveArchetypeCue, type ArchetypeDefinition } from './archetypes.js';
 
 export function isEmployeeExperienceBrief(text: string): boolean {
   return (
@@ -238,6 +238,147 @@ export function specialiseBicycleRepairOperations(
       ...base.forbiddenPatterns,
       'marking-a-safety-critical-bicycle-ready-without-an-inspection-record',
       'charging-for-repairs-before-rider-estimate-consent',
+    ],
+  };
+}
+
+/** Replace warehouse defaults with privacy-conscious food-pantry operations. */
+export function specialiseFoodPantryOperations(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  const isCommunityFoodPantry =
+    /\b(?:food pantry|food bank|community pantry)\b/i.test(text) &&
+    /\b(?:households?|volunteers?|grocery packs?|emergency parcels?|food safety|chilled stock|expiry dates?|waitlist|pickup instructions?)\b/i.test(
+      text
+    );
+
+  if (base.id !== 'erp-operations' || !isCommunityFoodPantry) return base;
+
+  return {
+    ...base,
+    name: 'Community Food Pantry Operations',
+    description:
+      'Coordinate household pickup, weekly grocery-pack choices, emergency parcels, safe stock rotation, and restricted food-safety escalation.',
+    primaryAudience: 'Households, pantry volunteers, and assigned food-safety coordinators',
+    primaryObjective:
+      'Coordinate weekly grocery-pack choices, same-day emergency parcels, chilled-stock expiry, and clear pickup instructions while collecting only essential household details',
+    userSophistication: 48,
+    trustRequirement: 96,
+    informationComplexity: 66,
+    dataDensity: 58,
+    collaborationLevel: 88,
+    transactionCriticality: 32,
+    navigationComplexity: 64,
+    mobileImportance: 96,
+    defaultEntities: [
+      {
+        name: 'Household Pickup',
+        description: 'A household-selected name, pickup essentials, chosen pack, and collection status',
+        fields: ['id', 'chosenName', 'pickupEssentials', 'packSelection', 'pickupStatus'],
+      },
+      {
+        name: 'Pack Selection',
+        description: 'A household’s choices for a scheduled weekly grocery pack',
+        fields: ['id', 'householdId', 'week', 'chosenItems', 'substitutions', 'status'],
+      },
+      {
+        name: 'Stock Lot',
+        description: 'A pantry item with storage conditions, quantity, and use-by date',
+        fields: ['id', 'itemName', 'storageCondition', 'availableQuantity', 'useByDate'],
+      },
+      {
+        name: 'Restricted Safety Route',
+        description: 'A private coordinator route with a neutral volunteer packing alert',
+        fields: ['id', 'householdId', 'assignedCoordinatorId', 'neutralPackingAlert', 'status'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'schedule-pantry-pickups',
+        name: 'Assign weekly pickup slots, update the waitlist, and issue plain-language instructions',
+        steps: ['review-pickup-capacity', 'offer-pickup-slot', 'update-waitlist', 'prepare-pickup-instructions'],
+      },
+      {
+        id: 'select-weekly-pack',
+        name: 'Record a household’s weekly grocery-pack choices and confirm available substitutions',
+        steps: ['review-pack-options', 'record-household-choices', 'confirm-substitutions'],
+      },
+      {
+        id: 'prepare-emergency-parcel',
+        name: 'Coordinate a same-day emergency parcel using only the chosen name and pickup essentials',
+        steps: ['record-essential-pickup-details', 'prepare-parcel', 'confirm-handoff'],
+      },
+      {
+        id: 'rotate-chilled-stock',
+        name: 'Check chilled-stock expiry, rotate safe items, and flag stock that must be withdrawn',
+        steps: ['review-storage-condition', 'sort-by-use-by-date', 'withdraw-expired-stock'],
+      },
+      {
+        id: 'route-restricted-safety-concern',
+        name: 'Send a neutral packing alert to volunteers and route restricted safety concerns to an assigned coordinator',
+        steps: ['prepare-neutral-packing-alert', 'restrict-safety-details', 'route-safeguarding-concern'],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Pickup Schedule & Waitlist',
+        screenType: 'dashboard',
+        purpose: 'Review pickup capacity, waitlist changes, and same-day parcel priorities',
+        jobs: ['schedule-pantry-pickups', 'review-pickup-capacity', 'triage-emergency-parcels'],
+        required: true,
+      },
+      {
+        name: 'Household Intake & Pickup',
+        screenType: 'detail-entity',
+        purpose: 'Record a chosen name and pickup essentials, then provide clear multilingual instructions',
+        jobs: ['record-essential-pickup-details', 'prepare-pickup-instructions'],
+        required: true,
+      },
+      {
+        name: 'Weekly Pack Choices',
+        screenType: 'detail-entity',
+        purpose: 'Record grocery-pack choices and confirm available substitutions with the household',
+        jobs: ['review-pack-options', 'record-household-choices', 'confirm-substitutions'],
+        required: true,
+      },
+      {
+        name: 'Emergency Parcels',
+        screenType: 'index-list',
+        purpose: 'Coordinate same-day parcels and neutral packing alerts without exposing private notes',
+        jobs: ['triage-emergency-parcels', 'prepare-parcel', 'confirm-handoff'],
+        required: true,
+      },
+      {
+        name: 'Stock & Expiry',
+        screenType: 'index-list',
+        purpose: 'Review chilled stock by storage condition and use-by date before rotation or withdrawal',
+        jobs: ['review-storage-condition', 'sort-by-use-by-date', 'withdraw-expired-stock'],
+        required: true,
+      },
+      {
+        name: 'Food Safety & Safeguarding',
+        screenType: 'detail-entity',
+        purpose: 'Keep allergy details with assigned food-safety coordinators and route safeguarding separately',
+        jobs: ['restrict-safety-details', 'route-safeguarding-concern'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      'food-pantry-workflow',
+      'minimal-household-data-intake',
+      'offline-intake-continuity',
+      'multilingual-pickup-instructions',
+      'expiry-aware-chilled-stock',
+      'coordinator-restricted-allergy-details',
+      'private-safeguarding-route',
+    ],
+    forbiddenPatterns: [
+      ...base.forbiddenPatterns,
+      'collecting-proof-of-immigration-income-or-diagnosis',
+      'showing-private-allergy-notes-to-volunteers',
+      'exposing-safeguarding-case-notes',
+      'payment-or-donation-collection',
     ],
   };
 }
@@ -2182,6 +2323,107 @@ export function specialiseDeveloperTools(
   const selected = profiles.find((profile) => profile.match.test(text));
   return selected ? { ...base, ...selected.context } : base;
 }
+/** Adapt meal-planning language within the existing productivity archetype. */
+export function specialiseMealPlanning(base: ArchetypeDefinition, text: string): ArchetypeDefinition {
+  if (
+    base.id !== 'productivity' ||
+    !['meal planning', 'meal planner', 'weekly meal plan', 'weeknight dinner'].some((cue) =>
+      hasPositiveArchetypeCue(text, cue)
+    ) ||
+    !['recipe', 'shopping list', 'pantry', 'household'].some((cue) => hasPositiveArchetypeCue(text, cue))
+  ) {
+    return base;
+  }
+
+  return {
+    ...base,
+    primaryAudience: 'Adults planning meals and grocery shopping for shared households',
+    primaryObjective:
+      'Plan practical weeknight meals around dietary needs and pantry ingredients, coordinate adult household preferences, and keep a consolidated grocery list usable offline',
+    userSophistication: 45,
+    trustRequirement: 88,
+    informationComplexity: 55,
+    dataDensity: 50,
+    collaborationLevel: 65,
+    transactionCriticality: 30,
+    navigationComplexity: 50,
+    mobileImportance: 100,
+    defaultEntities: [
+      {
+        name: 'WeeklyMealPlan',
+        description: 'A household week plan with dinners, serving counts, and an optional grocery budget target',
+        fields: ['id', 'weekOf', 'mealIds', 'servingCount', 'weeklyGroceryBudget', 'status'],
+      },
+      {
+        name: 'Recipe',
+        description: 'A dinner recipe with editable portions, ingredients, dietary tags, and declared allergens',
+        fields: ['id', 'title', 'servingCount', 'ingredients', 'dietaryTags', 'allergens'],
+      },
+      {
+        name: 'PantryItem',
+        description: 'An available ingredient with quantity and freshness information',
+        fields: ['id', 'name', 'quantity', 'unit', 'useByDate'],
+      },
+      {
+        name: 'ShoppingList',
+        description: 'Missing ingredients consolidated for a week of meals, including offline in-store checks',
+        fields: ['id', 'weekOf', 'items', 'estimatedTotal', 'checkedItemIds', 'lastOfflineUpdate'],
+      },
+      {
+        name: 'MealSuggestion',
+        description: 'An adult household member’s proposed meal and household vote summary',
+        fields: ['id', 'recipeId', 'proposedBy', 'voteCount', 'status'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'plan-weeknight-meals',
+        name: 'Choose five weeknight dinners, adjust portions, and review dietary needs',
+        steps: ['review-household-preferences', 'choose-dinner-recipes', 'adjust-portions', 'confirm-week-plan'],
+      },
+      {
+        id: 'build-shopping-list',
+        name: 'Consolidate missing ingredients, check pantry stock, and shop from an offline-ready list',
+        steps: ['combine-recipe-ingredients', 'subtract-pantry-stock', 'review-budget-target', 'check-items-in-store'],
+      },
+      {
+        id: 'coordinate-meal-suggestions',
+        name: 'Review adult household meal suggestions and votes before confirming the weekly plan',
+        steps: ['review-suggestions', 'compare-votes', 'add-selected-meal'],
+      },
+      {
+        id: 'track-pantry-freshness',
+        name: 'Update pantry quantities and use-by dates to guide the next meal plan',
+        steps: ['check-available-ingredients', 'update-quantities', 'review-use-by-dates'],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Weekly Meal Plan',
+        screenType: 'dashboard',
+        purpose: 'Arrange five weeknight dinners around household preferences and review adult suggestions and votes',
+        jobs: ['choose-dinner-recipes', 'adjust-portions', 'confirm-week-plan'],
+        required: true,
+      },
+      {
+        name: 'Recipes & Dietary Needs',
+        screenType: 'search-explore',
+        purpose: 'Find recipes, edit servings, and review declared allergens and dietary tags',
+        jobs: ['find-recipes', 'adjust-portions', 'review-allergen-labels'],
+        required: true,
+      },
+      {
+        name: 'Shopping List & Pantry',
+        screenType: 'index-list',
+        purpose: 'Consolidate missing groceries, track pantry freshness, and check items while offline in-store',
+        jobs: ['build-shopping-list', 'review-pantry-stock', 'check-items-offline'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [...base.requiredCapabilities, 'meal-planning-workflow'],
+  };
+}
+
 /** Keep community briefs focused on local groups and updates, not photo-story defaults. */
 export function specialiseConsumer(base: ArchetypeDefinition, text: string): ArchetypeDefinition {
   if (

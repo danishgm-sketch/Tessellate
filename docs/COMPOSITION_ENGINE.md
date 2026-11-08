@@ -97,8 +97,19 @@ Archetype selection gives high-information domain phrases more weight than broad
 cues such as “workspace”, “stream” or “order”. Supporting keywords can refine a
 match, but a secondary archetype is emitted only when it has corroborating
 weight (at least 28 points and 45% of the leading score). Hyphenated phrases
-are normalized before matching. The 0–100 weights are relative deterministic
-ranking signals, not calibrated probabilities.
+are normalized before matching. Phrase cues use explicit token boundaries; an
+ambiguous generic plural suffix was removed after the verb “stores” caused a false
+Ecommerce match. The 0–100 weights are relative deterministic ranking signals,
+not calibrated probabilities.
+
+Explicitly negated archetype cues are excluded from ranking through the next
+sentence, clause, or contrast marker. Coordinated positive predicates begin a
+new signal within that span; common limiting constructions such as “not only”
+and “no more than” are not exclusions. “No mobile signal” is treated as an
+offline field condition rather than an exclusion of mobile use. These rules are
+bounded lexical heuristics: they do not parse arbitrary sentence structure, so
+the interpreter must keep exposing assumptions and passing adversarial briefs
+through the classifier regression suite.
 
 ProductModel metric priors and forbidden-pattern defaults come from the
 selected archetype definition. A matching blueprint may still shape downstream
@@ -107,6 +118,14 @@ archetype’s trust, collaboration, navigation or mobile assumptions. Fiscal
 transaction elevation is limited to explicit payment, checkout or money
 transfer language; operational work orders and procurement requests are not
 treated as financial transactions.
+
+When an existing archetype has a narrowly defined, high-signal domain match,
+the interpreter may replace its generic entities, workflows, objectives, and
+screen recommendations with that validated domain plan. It retains the existing
+archetype identifier and adds no new route or archetype. The meal-planning and
+community-pantry plans are examples; their explicit operations do not create
+financial workflows, and unsupported roles continue to block executable
+exports.
 
 ### AI interpretation
 

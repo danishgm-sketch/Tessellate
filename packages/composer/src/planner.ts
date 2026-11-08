@@ -80,6 +80,23 @@ function requiredRolesForScreen(
   screenType: string,
   grammarRoles: string[]
 ): string[] {
+  if (productModel.requiredCapabilities.includes('food-pantry-workflow')) {
+    switch (normalizeName(screenName)) {
+      case 'pickup schedule and waitlist':
+        return ['overview-header', 'pickup-capacity-calendar', 'waitlist-queue', 'emergency-parcel-priorities'];
+      case 'household intake and pickup':
+        return ['entity-header', 'minimal-household-intake', 'chosen-name-only', 'offline-intake-continuity', 'multilingual-pickup-instructions'];
+      case 'weekly pack choices':
+        return ['entity-header', 'weekly-pack-selection', 'pack-substitution-review'];
+      case 'emergency parcels':
+        return ['index-header', 'same-day-parcel-queue', 'privacy-preserving-packing-alert'];
+      case 'stock and expiry':
+        return ['index-header', 'chilled-stock-inventory', 'expiry-aware-stock-rotation'];
+      case 'food safety and safeguarding':
+        return ['entity-header', 'assigned-coordinator-allergy-details', 'neutral-volunteer-alert', 'private-safeguarding-route', 'case-note-confidentiality'];
+    }
+  }
+
   if (productModel.requiredCapabilities.includes('bicycle-repair-service-workflow')) {
     switch (normalizeName(screenName)) {
       case 'service desk':

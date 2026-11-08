@@ -1,0 +1,37 @@
+{
+  "command": "pnpm test:e2e",
+  "result": "PASS",
+  "projects": [
+    {
+      "passed": 406,
+      "configuredSkips": 140,
+      "failed": 0,
+      "name": "Astro desktop/mobile Chromium"
+    },
+    {
+      "passed": 249,
+      "configuredSkips": 11,
+      "failed": 0,
+      "name": "Sites Worker desktop Chromium"
+    },
+    {
+      "passed": 214,
+      "configuredSkips": 46,
+      "failed": 0,
+      "name": "Sites Worker mobile Chromium"
+    },
+    {
+      "passed": 3,
+      "configuredSkips": 0,
+      "failed": 0,
+      "name": "Standalone preview Chromium"
+    }
+  ],
+  "totals": {
+    "passed": 872,
+    "scheduled": 1069,
+    "configuredSkips": 197,
+    "failed": 0
+  },
+  "note": "The food-pantry browser regression is included in Astro desktop/mobile."
+}

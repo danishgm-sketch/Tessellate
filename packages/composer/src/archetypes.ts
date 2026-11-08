@@ -603,7 +603,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
     id: 'real-estate',
     name: 'Real Estate',
     description: 'Property listings, mortgage calculators, interactive floorplans, and agent inquiries.',
-    keywords: ['real estate', 'property', 'homes', 'realtor', 'mortgage', 'listing', 'floorplan', 'rent', 'buy'],
+    keywords: ['real estate', 'property', 'homes', 'apartment', 'rental', 'tenant', 'realtor', 'mortgage', 'listing', 'floorplan', 'rent', 'buy'],
     primaryAudience: 'Home buyers, renters, property developers, and real estate brokers',
     userSophistication: 55,
     trustRequirement: 95,
@@ -720,21 +720,85 @@ const ARCHETYPE_PRIMARY_SIGNALS: Record<string, string[]> = {
   analytics: ['analytics', 'business intelligence', 'business-intelligence', 'data visualization', 'experiment analysis', 'cohort analysis', 'metrics dashboard', 'kpi', 'warehouse tables', 'saved reports'],
   'intelligence-research': ['research platform', 'scientific research', 'climate science', 'field research', 'literature review', 'evidence dossier', 'intelligence research', 'investigative research', 'investigative newsroom', 'research analyst', 'provenance', 'osint', 'clinical trial', 'policy research', 'materials research', 'laboratory research', 'marine biology', 'marine ecology', 'marine fieldwork', 'oceanographic survey', 'species survey', 'transect survey', 'field atlas', 'benthic survey'],
   crm: ['crm', 'customer relationship', 'customer relationship management', 'sales pipeline', 'sales crm', 'customer success', 'account management', 'renewal management', 'contact management'],
-  'erp-operations': ['erp', 'enterprise resource planning', 'supply chain', 'manufacturing', 'facilities management', 'field service', 'work order', 'work-order', 'inventory management', 'procurement', 'warehouse operations', 'maintenance operations', 'production facilities', 'bicycle repair', 'bike repair', 'bicycle workshop', 'bike workshop', 'repair shop management'],
-  productivity: ['productivity app', 'task management', 'note-taking', 'notes app', 'personal planner', 'to-do', 'todo app', 'habit journal', 'daily journal', 'personal knowledge base', 'agenda planner'],
+  'erp-operations': ['erp', 'enterprise resource planning', 'supply chain', 'manufacturing', 'facilities management', 'field service', 'work order', 'work-order', 'inventory management', 'procurement', 'warehouse operations', 'maintenance operations', 'production facilities', 'food pantry', 'food bank', 'bicycle repair', 'bike repair', 'bicycle workshop', 'bike workshop', 'repair shop management'],
+  productivity: ['productivity app', 'task management', 'note-taking', 'notes app', 'personal planner', 'to-do', 'todo app', 'habit journal', 'daily journal', 'personal knowledge base', 'agenda planner', 'meal planning', 'meal planner', 'weekly meal plan'],
   education: ['education platform', 'learning platform', 'learning management system', 'lms', 'online course', 'cohort learning', 'classroom', 'course catalog', 'lesson classroom'],
   creator: ['creator platform', 'creator economy', 'independent creator', 'creator tools', 'newsletter platform', 'subscriber membership', 'digital illustration', 'artist portfolio'],
   media: ['media platform', 'newsroom', 'news publication', 'digital magazine', 'journalism', 'public radio', 'radio service', 'episode archive', 'editorial publication', 'broadcast service'],
   travel: ['travel service', 'travel planning', 'trip planner', 'trip-planning', 'travel itinerary', 'hotel booking', 'flight booking', 'destination guide', 'travelers', 'hospitality'],
-  'real-estate': ['real estate', 'real-estate', 'home search', 'home-search', 'property management', 'property listing', 'commercial leasing', 'residential manager', 'mortgage', 'realtor', 'realty'],
+  'real-estate': ['real estate', 'real-estate', 'rental platform', 'apartment rental', 'tenant portal', 'home search', 'home-search', 'property management', 'property listing', 'commercial leasing', 'residential manager', 'mortgage', 'realtor', 'realty'],
   recruitment: ['recruitment', 'recruiting', 'talent acquisition', 'applicant tracking', 'candidate pipeline', 'candidate portal', 'hiring workspace', 'interview panel'],
   consumer: ['consumer app', 'consumer application', 'social network', 'social app', 'neighborhood social', 'community app', 'social feed', 'mobile-first consumer'],
 };
 
+const NEGATION_CUE = /\b(?:no|without|not|never|avoid|avoids|avoided|excluding|exclude|excludes|excluded|don't|doesn't|didn't|won't|can't|isn't|aren't|shouldn't|mustn't)\b/gi;
+const NEGATION_SCOPE_BREAK = /[.!?;]|\b(?:but|however|yet|although|except|unless|instead)\b/gi;
+const COORDINATED_PREDICATE = /\b(?:and|or)\s+(?:(?:also|still|now)\s+)?(?:(?:we|they|it|this|our|their|users?|members?|customers?|households?|the\s+app|the\s+product|the\s+platform)\s+)?(?:can|could|will|would|must|should|may|might|do|does|did|have|has|had|are|is|was|were|support|supports|offer|offers|include|includes|provide|provides|process|processes|track|tracks|transfer|transfers|handle|handles|use|uses|manage|manages)\b/i;
+
+function isNegatedKeywordOccurrence(normalizedText: string, matchIndex: number): boolean {
+  // In offline/field contexts, “no mobile signal” describes the network
+  // environment around a mobile user, rather than excluding mobile use.
+  if (/^mobile\s+(?:signal|coverage)\b/i.test(normalizedText.slice(matchIndex))) {
+    return false;
+  }
+
+  const textBeforeMatch = normalizedText.slice(0, matchIndex);
+  let scopeStart = 0;
+
+  for (const boundary of textBeforeMatch.matchAll(NEGATION_SCOPE_BREAK)) {
+    scopeStart = (boundary.index ?? 0) + boundary[0].length;
+  }
+
+  const scopePrefix = textBeforeMatch.slice(scopeStart);
+  let latestNegationEnd = -1;
+
+  for (const cue of scopePrefix.matchAll(NEGATION_CUE)) {
+    const cueIndex = cue.index ?? 0;
+    const beforeCue = scopePrefix.slice(0, cueIndex).trimEnd();
+    const afterCue = scopePrefix.slice(cueIndex + cue[0].length).trimStart();
+    const isCounterexample = /^(?:only|just|merely|solely|limited to|more than|less than|fewer than|without|excluding|exclude|excluded)\b/i.test(afterCue);
+    const isDoubleNegative = /\bnot$/i.test(beforeCue) && /^(?:without|excluding|exclude|excluded)\b/i.test(afterCue);
+
+    if (isCounterexample || isDoubleNegative) continue;
+    latestNegationEnd = cueIndex + cue[0].length;
+  }
+
+  if (latestNegationEnd < 0) return false;
+
+  const afterLatestNegation = scopePrefix.slice(latestNegationEnd);
+  return !COORDINATED_PREDICATE.test(afterLatestNegation);
+}
+
 function matchesKeyword(normalizedText: string, keyword: string): boolean {
   const normalizedKeyword = keyword.toLowerCase().replace(/[-_]+/g, ' ');
   const escaped = normalizedKeyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  return new RegExp(`\\b${escaped}\\b`, 'i').test(normalizedText);
+  const matcher = new RegExp('\\b' + escaped + '\\b', 'gi');
+
+  for (const match of normalizedText.matchAll(matcher)) {
+    if (match.index !== undefined && !isNegatedKeywordOccurrence(normalizedText, match.index)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+export function hasPositiveArchetypeCue(briefText: string, cue: string): boolean {
+  const normalizedText = briefText.toLowerCase().replace(/[-_]+/g, ' ');
+  return matchesKeyword(normalizedText, cue);
+}
+
+export function hasPositivePatternMatch(briefText: string, pattern: RegExp): boolean {
+  const normalizedText = briefText.toLowerCase().replace(/[-_]+/g, ' ');
+  const matcher = new RegExp(pattern.source, pattern.flags.replace(/[gy]/g, '') + 'g');
+
+  for (const match of normalizedText.matchAll(matcher)) {
+    if (match.index !== undefined && !isNegatedKeywordOccurrence(normalizedText, match.index)) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 const MIN_SECONDARY_ARCHETYPE_SCORE = 28;

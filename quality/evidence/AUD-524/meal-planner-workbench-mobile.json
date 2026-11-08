@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:4321/workbench?project=proj-direction-a-f753ad9b1a0f4b728a47f59ae1f2f8d2dira#screen-overview",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "projectId": "proj-direction-a-f753ad9b1a0f4b728a47f59ae1f2f8d2dira",
+  "storedManifestMatchesActive": true,
+  "exportedManifestMatchesActive": true,
+  "entities": [
+    "WeeklyMealPlan",
+    "Recipe",
+    "PantryItem",
+    "ShoppingList",
+    "MealSuggestion"
+  ],
+  "workflows": [
+    "plan-weeknight-meals",
+    "build-shopping-list",
+    "coordinate-meal-suggestions",
+    "track-pantry-freshness"
+  ],
+  "screens": [
+    "Weekly Meal Plan",
+    "Recipes & Dietary Needs",
+    "Shopping List & Pantry"
+  ],
+  "responsive": {
+    "viewportWidth": 390,
+    "documentWidth": 390
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

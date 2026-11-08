@@ -5,6 +5,7 @@ import type { ProjectManifest, ProjectNode, ProjectScreen, PartialDesignDNA } fr
 import { normalizeDesignTokens, tokensToCssVariables, MANIFEST_LAYOUT_CSS, nodeLayoutClass, nodeRuntimeVariant } from '@tessellate/renderer';
 import { collectProjectDependencies } from './dependencies.js';
 import { getGoldResourceSource } from './generated-gold-sources.js';
+import { assertRunnableExportable } from './validation.js';
 
 export interface ResolvedResource {
   slug: string;
@@ -61,6 +62,7 @@ function resolveResource(slug: string, semanticRole: string, nodeId: string): Re
  * Vite + React + TypeScript + Tailwind CSS 4 project source tree.
  */
 export function generateViteSourceTree(manifest: ProjectManifest): Record<string, string> {
+  assertRunnableExportable(manifest);
   const files: Record<string, string> = {};
   const slugName = manifest.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'tessellate-app';
 
@@ -737,6 +739,7 @@ export function generateSourceTree(
 }
 
 export function generateNextJsSourceTree(manifest: ProjectManifest): Record<string, string> {
+  assertRunnableExportable(manifest);
   const files: Record<string, string> = {};
   const slugName = manifest.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'tessellate-app';
 

@@ -42,9 +42,80 @@ describe('Product Archetypes (18 Categories)', () => {
     expect(fintechMatches[0]?.tag).toBe('fintech');
   });
 
+  it('treats explicitly excluded domain cues as negative evidence', () => {
+    const mealPlannerMatches = detectProductArchetypes(
+      'A mobile-first meal-planning app for busy households. Plan weeknight dinners, shopping lists, and pantry freshness. No bank accounts, payments, transfers, transaction history, bill pay, or financial dashboards.'
+    );
+    expect(mealPlannerMatches[0]?.tag).toBe('productivity');
+    expect(mealPlannerMatches.some(({ tag }) => tag === 'fintech')).toBe(false);
+
+    const mixedIntentMatches = detectProductArchetypes(
+      'A fintech treasury platform transfers funds between business bank accounts. No ecommerce checkout. It also supports corporate card payments.'
+    );
+    expect(mixedIntentMatches[0]?.tag).toBe('fintech');
+    expect(mixedIntentMatches.some(({ tag }) => tag === 'ecommerce')).toBe(false);
+  });
+
+  it('does not treat not-only or quantified-limit phrases as negated domain evidence', () => {
+    expect(detectProductArchetypes('Not only a fintech wallet but also an expense app for card payments.')[0]?.tag).toBe('fintech');
+    expect(detectProductArchetypes('A fintech trading account that executes no more than 50 transfers each day.')[0]?.tag).toBe('fintech');
+  });
+
   it('does not promote one generic evidence cue to a product archetype', () => {
     expect(detectProductArchetypes('A general app for tracking evidence in a review queue.')[0]?.tag).toBe('saas');
     expect(detectProductArchetypes('A trip planner that keeps evidence for each booking.')[0]?.tag).toBe('travel');
+  });
+
+  it('does not confuse plural verbs with ecommerce or generic rentals with SaaS', () => {
+    expect(
+      detectProductArchetypes(
+        'A reading organizer stores saved articles, groups them into lists, and helps a reader resume where they stopped.'
+      )[0]?.tag
+    ).toBe('productivity');
+    expect(
+      detectProductArchetypes(
+        'A rental platform helps tenants inspect apartment details, check lease terms, ask a property manager questions, and request a tour.'
+      )[0]?.tag
+    ).toBe('real-estate');
+  });
+
+  it('specializes household meal planning without inventing financial operations', () => {
+    const interpreted = interpretProductBrief({
+      description:
+        'A mobile-first meal-planning app for busy households of 2–5 people. Plan five weeknight dinners from dietary preferences and pantry ingredients, create consolidated shopping lists, let adult household members suggest and vote on meals, track pantry freshness, and set optional weekly grocery budgets. No bank accounts, payments, transfers, transaction history, bill pay, or financial dashboards. Lists must work offline in a grocery store and sync across adults. Recipes need editable portions, clear allergen labels, and large-text controls; adults manage household membership.',
+    });
+    const { productModel } = interpreted;
+
+    expect(productModel.productArchetypes[0]?.tag).toBe('productivity');
+    expect(productModel.primaryAudience).toContain('Adults planning meals');
+    expect(productModel.primaryObjective).toContain('consolidated grocery list usable offline');
+    expect(productModel.entities.map((entity) => entity.name)).toEqual([
+      'WeeklyMealPlan',
+      'Recipe',
+      'PantryItem',
+      'ShoppingList',
+      'MealSuggestion',
+    ]);
+    expect(productModel.workflows.map((workflow) => workflow.id)).toEqual([
+      'plan-weeknight-meals',
+      'build-shopping-list',
+      'coordinate-meal-suggestions',
+      'track-pantry-freshness',
+    ]);
+    expect(productModel.likelyScreens.map((screen) => screen.name)).toEqual([
+      'Weekly Meal Plan',
+      'Recipes & Dietary Needs',
+      'Shopping List & Pantry',
+    ]);
+    expect(productModel.jobsToBeDone).toEqual(productModel.workflows.map((workflow) => workflow.name));
+    expect(productModel.trustRequirement).toBe(88);
+    expect(productModel.transactionCriticality).toBe(30);
+    expect(productModel.mobileImportance).toBe(100);
+    expect(interpreted.inferredAssumptions).not.toContain(
+      'The brief calls for strong trust and compliance cues.'
+    );
+    expect(productModel.workflows.map((workflow) => workflow.id)).not.toContain('transfer-funds');
+    expect(productModel.likelyScreens.map((screen) => screen.name)).not.toContain('Transaction History');
   });
 
   it('interprets marine fieldwork as a mobile survey and evidence workflow', () => {
@@ -110,6 +181,88 @@ describe('Product Archetypes (18 Categories)', () => {
     expect(interpreted.inferredAssumptions).not.toContain(
       'Payment and purchase steps need clear confirmation.'
     );
+  });
+
+  it('specializes community food pantries without importing finance or sensitive intake fields', () => {
+    const description =
+      'An appointment and fulfilment tool for a volunteer-led community food pantry serving 300 households each week. Households choose weekly grocery packs; staff coordinate same-day emergency parcels, chilled stock and expiry dates, multilingual plain-language pickup instructions, and a waitlist. Volunteers use shared tablets, coordinators use desktop, and intake often happens on an unreliable connection. Collect only a household’s chosen name and pickup essentials: do not request proof of immigration, income, medical diagnosis, or payment. Allergy details are visible only to assigned food-safety coordinators; volunteers see a neutral packing alert, not private notes. Provide a separate safeguarding escalation route without exposing case notes. No payments or donations.';
+    const interpreted = interpretProductBrief({ description });
+    const productModel = interpreted.productModel;
+    const screens = planScreenGraph(productModel).screenGraph.groups.flatMap((group) => group.screens);
+    const businessModelText = JSON.stringify({
+      audience: productModel.primaryAudience,
+      objective: productModel.primaryObjective,
+      entities: productModel.entities,
+      workflows: productModel.workflows,
+      screens: productModel.likelyScreens,
+    }).toLowerCase();
+
+    expect(productModel.productArchetypes).toEqual([{ tag: 'erp-operations', weight: 100 }]);
+    expect(interpreted.inferredAssumptions[0]).toBe(
+      'Your brief points to: Community Food Pantry Operations.'
+    );
+    expect(productModel.primaryAudience).toContain('pantry volunteers');
+    expect(productModel.mobileImportance).toBe(96);
+    expect(productModel.entities.map((entity) => entity.name)).toEqual([
+      'Household Pickup',
+      'Pack Selection',
+      'Stock Lot',
+      'Restricted Safety Route',
+    ]);
+    expect(productModel.entities[0]?.fields).toEqual([
+      'id',
+      'chosenName',
+      'pickupEssentials',
+      'packSelection',
+      'pickupStatus',
+    ]);
+    expect(productModel.likelyScreens.map((screen) => screen.name)).toEqual([
+      'Pickup Schedule & Waitlist',
+      'Household Intake & Pickup',
+      'Weekly Pack Choices',
+      'Emergency Parcels',
+      'Stock & Expiry',
+      'Food Safety & Safeguarding',
+    ]);
+    expect(productModel.workflows.map((workflow) => workflow.id)).toEqual([
+      'schedule-pantry-pickups',
+      'select-weekly-pack',
+      'prepare-emergency-parcel',
+      'rotate-chilled-stock',
+      'route-restricted-safety-concern',
+    ]);
+    expect(productModel.requiredCapabilities).toEqual(
+      expect.arrayContaining([
+        'minimal-household-data-intake',
+        'offline-intake-continuity',
+        'multilingual-pickup-instructions',
+        'coordinator-restricted-allergy-details',
+        'private-safeguarding-route',
+      ])
+    );
+    expect(screens.find((screen) => screen.name === 'Household Intake & Pickup')?.requiredRoles).toEqual([
+      'entity-header',
+      'minimal-household-intake',
+      'chosen-name-only',
+      'offline-intake-continuity',
+      'multilingual-pickup-instructions',
+    ]);
+    expect(screens.find((screen) => screen.name === 'Food Safety & Safeguarding')?.requiredRoles).toEqual([
+      'entity-header',
+      'assigned-coordinator-allergy-details',
+      'neutral-volunteer-alert',
+      'private-safeguarding-route',
+      'case-note-confidentiality',
+    ]);
+    expect(businessModelText).not.toMatch(/bank account|transaction|money movement|income|immigration|diagnosis|case notes/);
+    expect(interpreted.inferredAssumptions).not.toContain(
+      'Payment and purchase steps need clear confirmation.'
+    );
+
+    const generalOperations = interpretProductBrief({
+      description: 'An inventory and warehouse operations tool for a small manufacturing team.',
+    });
+    expect(generalOperations.inferredAssumptions[0]).toBe('Your brief points to: ERP & Operations.');
   });
 
   it('does not infer payment activity from an explicit exclusion', () => {

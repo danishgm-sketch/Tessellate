@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete. PR review findings AUD-419–AUD-444 have named post-fix regression coverage; this record does not claim every regression ran red before its fix. The AUD-438 cross-tab history regression additionally passes in a real local Sites Worker browser at desktop and mobile sizes. Exact-head CI and applicable deployed verification remain pending. Public Axe evidence also found two unsupported ARIA label semantics (AUD-445 and AUD-446), now fixed locally and awaiting published verification. Public v70 route re-audit evidence is quality/evidence/step-45/public-v70-reaudit-2026-11-01/. Axe scan-time CSP console events are isolated to the sandboxed preview frames while Axe analyzes them; ordinary route navigation was clean, and the existing strict CSP remains unchanged. A separately discovered PR review issue AUD-447 reproduced an Undo recovery failure under simulated localStorage quota exhaustion; its regression fails against the pre-fix source and passes with the generation-based journal fix. Exact-head CI and public Site verification are pending. Public Sites v71 serves canonical commit 7ac7783de83e175ac410055da736b2218e2ba213 via Sites source 0bce228a4fbd5fedad02a3186cd6af62690d8405. The 31-route public-shell sweep passed 31/31 routes at 1440x900 and 390x844 (62 route captures), with zero HTTP failures, browser console errors, uncaught exceptions, failed requests, horizontal overflow, screenshot instrumentation warnings, Axe violations, or unsupported-ARIA incomplete results; 11 color-contrast checks remain Axe-incomplete. The full employee-experience flagship flow passed on desktop and mobile, including Direction C selection, locks, recomposition, replacement, Surprise Me, Undo/Redo and manifest/ZIP export; the desktop standalone export was clean-installed, built and browsed. AUD-443 and AUD-445 through AUD-447 now have issue-specific public v71 verification. AUD-419 remains locally verified only: the public backend health endpoint truthfully reports that the laptop backend is unconfigured, and no provider credentials were sent or persisted. The broader hardening programme remains incomplete. On 2026-11-01, local Docker inspection found the Tessellate API and host containers running but unhealthy. Restarting the existing API, then the dependent host, restored API HTTP 200, Docker health, and a fresh heartbeat without rebuilding images or touching MGI containers. AUD-448 records this medium local-runtime defect; its initiating cause remains unknown and it is open for root-cause investigation. AUD-449 records a public v71 responsive-collapse mismatch reproduced at 390x844; its keyboard and touch responsive fix passes in local Sites Worker desktop/mobile profiles across seven widths and awaits deployed recheck. AUD-450 and AUD-451 are locally fixed pending deployment; AUD-452 is confirmed as cold mobile Workbench CLS 0.5028 on public v72; the local cold-load, reload and partial-resource-failure regressions pass after a fail-fast preload race fix, and deployed verification remains pending; AUD-453 is locally fixed pending deployment. AUD-454 reproduces in the local production-like Sites Worker and passes the same direct-preview navigation journey at desktop/mobile after the bounded opaque-parent message fix; deployed verification remains pending. AUD-455 records the confirmation sentence spacing defect visible in the AUD-454 after screenshot; explicit spacing and an exact browser text assertion are included, with deployed verification pending. Public v73 was independently checked with a clean mobile browser under prefers-reduced-motion; that trace found a shared renderer transition defect (AUD-464), reproduced by a new red-to-green Workbench browser regression. The local fix now disables transitions and animations for screen content under system or explicit reduced-motion settings; the issue remains open pending the same public Site check. On 2026-11-03 the full pnpm test:e2e matrix passed 785 tests with 186 configured profile skips and zero failures across Astro, Sites Worker desktop/mobile, and standalone preview. The fixed reduced-motion and preview error recovery regressions pass locally; public verification is pending. AUD-465 records a variable constrained-network Explore preview delay (9,250ms initial, 7,994ms pre-fix repeat) with a 5,382ms post-fix repeat; hosted recheck remains pending. Public Sites v74 issue-specific verification closed AUD-464 and AUD-465 from canonical commit 75276e8078e908b8258fa3d2cba629d71b85cd60; this does not repeat the full v71 route/flagship audit or close the broader hardening gate. Public v74 follow-up then closed AUD-450 (accessible name), AUD-451 (mobile preview menu touch/keyboard), AUD-452 (cold resource CLS) and AUD-456 (delayed mobile startup handoff) using issue-specific deployed regressions; the full route audit was not repeated. AUD-419 remains locally verified only because the optional laptop backend/provider path is intentionally unconfigured and no credential/tunnel was used. After the v74 rechecks, the latest pnpm test:e2e run passed 786 tests with 189 configured profile skips and zero failures across Astro desktop/mobile, Sites Worker desktop/mobile, and standalone preview. pnpm audit:all passed all 16 behavioral gates, 324 resource isolation and provenance checks, route budgets, security/secret checks, and dependency audit. A 2026-11-03 public v74 copy sweep visited all 324 detail routes at desktop and mobile and rendered 1,944 variants; it recorded five findings (AUD-466–AUD-470) and a working empty-workspace callback. Local fixes await exact-version deployed verification. Public v75 detail/preview audit captured 13 high-risk resources at 1440x900 and 390x844; 21 additional defects AUD-471–AUD-491 are locally corrected and await deployed verification. Public v75 live resource evidence adds AUD-492 (360px data-terminal header readability) and AUD-493 (Expressive variant visual distinction); local regressions and screenshots are captured, with deployed verification pending. Public Sites v78 is live from canonical commit 3e889d0ca68345c5ccf5ef767c3c05ebc07716ca via Sites source mirror e6387f7ff8e1080a5a4c191cf00faef813719a3d. AUD-495 passed the same visible Workbench regression after deployment: the hero rendered Quiet before Surprise Me and Nocturne afterward, and status matched quiet to nocturne. Three transition cycles matched, with zero browser console messages, zero failed requests, and zero HTTP errors. The broader product hardening programme remains incomplete. The AUD-495 v78 repeat also passed at 1440x900: Quiet changed to Nocturne and the visible status matched. Its paired desktop captures are recorded alongside the 390x844 mobile pair. Public Sites v79 manual resource review found four serious accessibility defects (AUD-506–AUD-509): three preview color-contrast failures and one unnamed, non-keyboard-focusable horizontal table region. Each was reproduced with Axe before source changes; app console, uncaught exception, network and HTTP error telemetry was zero. Fixes and browser regressions are local; issue closure awaits exact-source deployed v80 verification. Public Sites v80 closed AUD-506–AUD-509 after the same desktop/mobile resource audit returned 16/16 HTTP 200, zero Axe violations, zero app runtime/network failures, zero overflow, and a live keyboard-scroll check moved the cohort table 40px with ArrowRight. Public v81 full route/flagship/tool re-audit completed 2026-11-06, then public v82 verified the AUD-511 neutral loading feedback at desktop and mobile. The 31-route/flagship/tool broad sweep remains the v81 baseline; the v82 follow-up is issue-specific. Public v82 desktop tracing found AUD-512, a cold Workbench layout shift above budget. The locally fixed desktop toolbar and resource loading reservations now pass the dedicated Sites Worker regression; deployed verification is pending. Local AUD-516 and AUD-517 findings cover domain-specific Compose interpretation and inline direction preview navigation; both are fixed and locally verified, pending applicable release checks. AUD-518 records duplicate Input ids when the same resource is rendered in inline and dialog previews; the local fix and browser regression pass.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62, v63 and v64 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed additional content findings. CLI/MCP copy claims have separate local client-process verification. AUD-405 was reproduced on public v62, fixed, and closed after the same regression passed on public v63 at desktop and mobile. AUD-406 was reproduced on public v63, fixed, and closed after the same keyboard/accessibility regression passed on public v64 at desktop and mobile on both resource-detail route families. AUD-378, AUD-381, AUD-382, and AUD-392 were closed after public v64 desktop/mobile browser and export verification. The broader hardening programme and 324-resource manual copy review remain incomplete. AUD-407 was fixed and closed after the same keyboard regression passed on public Site v65 at desktop and mobile viewports. AUD-408 records a CI route-audit instrumentation false positive; request-origin tracking now distinguishes expected cross-route ERR_ABORTED cancellations from actual failures, locally verified. Public v68 replaced v67 from canonical commit 82f944a6dc5a1eaac6337120d5f3e8e1717b2592; the employee Compose-to-Direction-C handoff and locked Surprise Me mutation were re-audited in hosted Chrome and AUD-410/AUD-411 closed; the deployed Gold chunk-failure recovery and manifest-export regression also passed on desktop/mobile and closed AUD-412. AUD-416 records a separate old-tab asset-hash 404 during deployment rollover; reload recovered it and fresh v68 sessions were clean. AUD-414/AUD-415 also closed after desktop/mobile Lighthouse Accessibility 100 checks with no failed audits. AUD-387 closed-local-verified after a targeted D1 integration rerun passed 36/36; Sites D1 remains unbound. AUD-418 was fixed at canonical commit 3916b7eead3455a91a33d3cd6694a30c4a5cc659 and closed after the persisted-project overlap regression passed on public Sites v70 at desktop/tablet sizes; five delayed cold-load repeats and a 390x844 Compose-to-Workbench mobile smoke also passed. Public v70 serves that canonical commit through Sites source mirror ba8a446b055443473bb062020c72c6ace8636039 with D1/R2 unprovisioned. The overall product hardening programme remains incomplete. PR review findings AUD-419–AUD-444 have named post-fix regression coverage; this record does not claim every regression ran red before its fix. The AUD-438 cross-tab history regression additionally passes in a real local Sites Worker browser at desktop and mobile sizes. Exact-head CI and applicable deployed verification remain pending. Public Axe evidence also found two unsupported ARIA label semantics (AUD-445 and AUD-446), now fixed locally and awaiting published verification. Public v70 route re-audit evidence is quality/evidence/step-45/public-v70-reaudit-2026-11-01/. Axe scan-time CSP console events are isolated to the sandboxed preview frames while Axe analyzes them; ordinary route navigation was clean, and the existing strict CSP remains unchanged. A separately discovered PR review issue AUD-447 reproduced an Undo recovery failure under simulated localStorage quota exhaustion; its regression fails against the pre-fix source and passes with the generation-based journal fix. Exact-head CI and public Site verification are pending. Public Sites v71 serves canonical commit 7ac7783de83e175ac410055da736b2218e2ba213 via Sites source 0bce228a4fbd5fedad02a3186cd6af62690d8405. The 31-route public-shell sweep passed 31/31 routes at 1440x900 and 390x844 (62 route captures), with zero HTTP failures, browser console errors, uncaught exceptions, failed requests, horizontal overflow, screenshot instrumentation warnings, Axe violations, or unsupported-ARIA incomplete results; 11 color-contrast checks remain Axe-incomplete. The full employee-experience flagship flow passed on desktop and mobile, including Direction C selection, locks, recomposition, replacement, Surprise Me, Undo/Redo and manifest/ZIP export; the desktop standalone export was clean-installed, built and browsed. AUD-443 and AUD-445 through AUD-447 now have issue-specific public v71 verification. AUD-419 remains locally verified only: the public backend health endpoint truthfully reports that the laptop backend is unconfigured, and no provider credentials were sent or persisted. The broader hardening programme remains incomplete. On 2026-11-01, local Docker inspection found the Tessellate API and host containers running but unhealthy. Restarting the existing API, then the dependent host, restored API HTTP 200, Docker health, and a fresh heartbeat without rebuilding images or touching MGI containers. AUD-448 records this medium local-runtime defect; its initiating cause remains unknown and it is open for root-cause investigation. AUD-449 records a public v71 responsive-collapse mismatch reproduced at 390x844; its keyboard and touch responsive fix passes in local Sites Worker desktop/mobile profiles across seven widths and awaits deployed recheck. AUD-450 and AUD-451 are locally fixed pending deployment; AUD-452 is confirmed as cold mobile Workbench CLS 0.5028 on public v72; the local cold-load, reload and partial-resource-failure regressions pass after a fail-fast preload race fix, and deployed verification remains pending; AUD-453 is locally fixed pending deployment. AUD-454 reproduces in the local production-like Sites Worker and passes the same direct-preview navigation journey at desktop/mobile after the bounded opaque-parent message fix; deployed verification remains pending. AUD-455 records the confirmation sentence spacing defect visible in the AUD-454 after screenshot; explicit spacing and an exact browser text assertion are included, with deployed verification pending. Public v73 was independently checked with a clean mobile browser under prefers-reduced-motion; that trace found a shared renderer transition defect (AUD-464), reproduced by a new red-to-green Workbench browser regression. The local fix now disables transitions and animations for screen content under system or explicit reduced-motion settings; the issue remains open pending the same public Site check. On 2026-11-03 the full pnpm test:e2e matrix passed 785 tests with 186 configured profile skips and zero failures across Astro, Sites Worker desktop/mobile, and standalone preview. The fixed reduced-motion and preview error recovery regressions pass locally; public verification is pending. AUD-465 records a variable constrained-network Explore preview delay (9,250ms initial, 7,994ms pre-fix repeat) with a 5,382ms post-fix repeat; hosted recheck remains pending. Public Sites v74 issue-specific verification closed AUD-464 and AUD-465 from canonical commit 75276e8078e908b8258fa3d2cba629d71b85cd60; this does not repeat the full v71 route/flagship audit or close the broader hardening gate. Public v74 follow-up then closed AUD-450 (accessible name), AUD-451 (mobile preview menu touch/keyboard), AUD-452 (cold resource CLS) and AUD-456 (delayed mobile startup handoff) using issue-specific deployed regressions; the full route audit was not repeated. AUD-419 remains locally verified only because the optional laptop backend/provider path is intentionally unconfigured and no credential/tunnel was used. After the v74 rechecks, the latest pnpm test:e2e run passed 786 tests with 189 configured profile skips and zero failures across Astro desktop/mobile, Sites Worker desktop/mobile, and standalone preview. pnpm audit:all passed all 16 behavioral gates, 324 resource isolation and provenance checks, route budgets, security/secret checks, and dependency audit. A 2026-11-03 public v74 copy sweep visited all 324 detail routes at desktop and mobile and rendered 1,944 variants; it recorded five findings (AUD-466–AUD-470) and a working empty-workspace callback. Local fixes await exact-version deployed verification. Public v75 detail/preview audit captured 13 high-risk resources at 1440x900 and 390x844; 21 additional defects AUD-471–AUD-491 are locally corrected and await deployed verification. Public v75 live resource evidence adds AUD-492 (360px data-terminal header readability) and AUD-493 (Expressive variant visual distinction); local regressions and screenshots are captured, with deployed verification pending. Public Sites v78 is live from canonical commit 3e889d0ca68345c5ccf5ef767c3c05ebc07716ca via Sites source mirror e6387f7ff8e1080a5a4c191cf00faef813719a3d. AUD-495 passed the same visible Workbench regression after deployment: the hero rendered Quiet before Surprise Me and Nocturne afterward, and status matched quiet to nocturne. Three transition cycles matched, with zero browser console messages, zero failed requests, and zero HTTP errors. The broader product hardening programme remains incomplete. The AUD-495 v78 repeat also passed at 1440x900: Quiet changed to Nocturne and the visible status matched. Its paired desktop captures are recorded alongside the 390x844 mobile pair. Public Sites v79 manual resource review found four serious accessibility defects (AUD-506–AUD-509): three preview color-contrast failures and one unnamed, non-keyboard-focusable horizontal table region. Each was reproduced with Axe before source changes; app console, uncaught exception, network and HTTP error telemetry was zero. Fixes and browser regressions are local; issue closure awaits exact-source deployed v80 verification. Public Sites v80 closed AUD-506–AUD-509 after the same desktop/mobile resource audit returned 16/16 HTTP 200, zero Axe violations, zero app runtime/network failures, zero overflow, and a live keyboard-scroll check moved the cohort table 40px with ArrowRight. Public v81 full route/flagship/tool re-audit completed 2026-11-06, then public v82 verified the AUD-511 neutral loading feedback at desktop and mobile. The 31-route/flagship/tool broad sweep remains the v81 baseline; the v82 follow-up is issue-specific. Public v82 desktop tracing found AUD-512, a cold Workbench layout shift above budget. The locally fixed desktop toolbar and resource loading reservations now pass the dedicated Sites Worker regression; deployed verification is pending. Local AUD-516 and AUD-517 findings cover domain-specific Compose interpretation and inline direction preview navigation; both are fixed and locally verified, pending applicable release checks. AUD-518 records duplicate Input ids when the same resource is rendered in inline and dialog previews; the local fix and browser regression pass. On 2026-11-08 local work fixed AUD-522 pantry brief interpretation, AUD-523 unresolved-role runnable export behavior, and AUD-524 meal-planner interpretation/negative-cue handling. The current full local E2E matrix passed 876 with 197 configured skips; the post-matrix extended meal-planner Workbench persistence/export regression passed separately in both desktop and mobile profiles. These findings remain local-only; exact-head CI, public verification, and the broader hardening gate are pending.",
   "entries": [
     {
       "id": "AUD-001",
@@ -25043,40 +25043,347 @@
         "playwrightPassed": 870,
         "playwrightConfiguredSkips": 197
       }
+    },
+    {
+      "id": "AUD-522",
+      "severity": "medium",
+      "route": "/compose",
+      "category": "content",
+      "viewport": "1440x900, 390x844",
+      "title": "Community food pantry brief was classified as personal finance",
+      "expected": "The plan should reflect household pickup, weekly grocery-pack choices, emergency parcels, chilled-stock expiry, accessible multilingual instructions, unreliable connectivity, and restricted safety/safeguarding handling. It must not infer finance from excluded payment or sensitive-data terms.",
+      "actual": "The initial plan selected Fintech and proposed Account Balances, Transaction History, and Security & 2FA. It now selects ERP & Operations with a narrow Community Food Pantry Operations specialization, six domain screens, and five workflows. Household fields are limited to chosen name and pickup essentials. Seventeen unsupported pantry-specific roles remain explicit unresolved diagnostics in all directions; no fake controls are added.",
+      "rootCause": "The high-information archetype vocabulary had no food pantry/food bank anchor. A generic payment keyword inside an exclusion could therefore become the only positive match, and ERP & Operations had no community pantry specialization.",
+      "reproduction": [
+        "Open /compose and enter the exact brief stored in quality/evidence/AUD-522/food-pantry-desktop.json.",
+        "Review the inferred audience, objective, six planned screens, and all three directions.",
+        "Inspect each screen, confirm chosen-name/pickup-essential data minimization and restricted safety routes, and verify every unavailable pantry role remains unresolved rather than simulated."
+      ],
+      "affectedCode": [
+        "packages/composer/src/archetypes.ts",
+        "packages/composer/src/domain-context.ts",
+        "packages/composer/src/interpreter.ts",
+        "packages/composer/src/planner.ts",
+        "packages/composer/src/__tests__/composer.test.ts",
+        "packages/compatibility/src/__tests__/compose-pipeline.test.ts",
+        "tests/e2e/food-pantry-brief-fit.spec.ts"
+      ],
+      "screenshot": "quality/evidence/AUD-522/food-pantry-screen-screen-food-safety-and-safeguarding-desktop.png",
+      "console": [],
+      "network": [],
+      "fixCommit": "pending",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "red": "Before the specialization, the exact brief resolved to Fintech and displayed bank-account content.",
+        "green": "The brief resolves to ERP & Operations and produces the pantry-specific audience, objectives, entities, workflows, and six screens. Sensitive proof/diagnosis fields and payment workflows are not introduced. All 17 unsupported roles stay unresolved across all three directions.",
+        "focusedCommand": "pnpm exec playwright test tests/e2e/food-pantry-brief-fit.spec.ts --grep 'unresolved roles stay explicit' --project=desktop-chrome --project=mobile-chrome",
+        "focusedProjects": {
+          "astroDesktop": {
+            "passed": 1,
+            "configuredSkips": 0
+          },
+          "astroMobile": {
+            "passed": 1,
+            "configuredSkips": 0
+          },
+          "totals": {
+            "passed": 2,
+            "configuredSkips": 0,
+            "failed": 0
+          }
+        },
+        "unitTests": "PASS (95 files; 1,358 passed; 1 configured skip)",
+        "typecheck": "PASS (22 workspace packages)",
+        "lint": "PASS",
+        "auditAndBuild": "PASS (16/16 release-gate behavior checks; 324/324 resource-isolation and provenance/licence checks; zero security/isolation/dependency findings; bundle budgets pass; 733 Astro pages and Sites Worker artifact built)",
+        "fullPlaywrightMatrix": {
+          "command": "pnpm test:e2e",
+          "result": "PASS",
+          "projects": [
+            {
+              "name": "Astro desktop/mobile Chromium",
+              "passed": 410,
+              "configuredSkips": 140,
+              "failed": 0
+            },
+            {
+              "name": "Sites Worker desktop Chromium",
+              "passed": 249,
+              "configuredSkips": 11,
+              "failed": 0
+            },
+            {
+              "name": "Sites Worker mobile Chromium",
+              "passed": 214,
+              "configuredSkips": 46,
+              "failed": 0
+            },
+            {
+              "name": "Standalone preview Chromium",
+              "passed": 3,
+              "configuredSkips": 0,
+              "failed": 0
+            }
+          ],
+          "totals": {
+            "passed": 876,
+            "configuredSkips": 197,
+            "failed": 0,
+            "scheduled": 1073
+          },
+          "evidence": "quality/evidence/AUD-524/full-e2e-summary.json"
+        },
+        "screenshots": [
+          "quality/evidence/AUD-522/food-pantry-desktop.json",
+          "quality/evidence/AUD-522/food-pantry-mobile.json",
+          "quality/evidence/AUD-522/food-pantry-compose-desktop.png",
+          "quality/evidence/AUD-522/food-pantry-compose-mobile.png",
+          "quality/evidence/AUD-522/food-pantry-screen-screen-overview-desktop.png",
+          "quality/evidence/AUD-522/food-pantry-screen-screen-overview-mobile.png",
+          "quality/evidence/AUD-522/food-pantry-screen-screen-household-intake-and-pickup-desktop.png",
+          "quality/evidence/AUD-522/food-pantry-screen-screen-household-intake-and-pickup-mobile.png",
+          "quality/evidence/AUD-522/food-pantry-screen-screen-weekly-pack-choices-desktop.png",
+          "quality/evidence/AUD-522/food-pantry-screen-screen-weekly-pack-choices-mobile.png",
+          "quality/evidence/AUD-522/food-pantry-screen-screen-collection-index-desktop.png",
+          "quality/evidence/AUD-522/food-pantry-screen-screen-collection-index-mobile.png",
+          "quality/evidence/AUD-522/food-pantry-screen-screen-stock-and-expiry-desktop.png",
+          "quality/evidence/AUD-522/food-pantry-screen-screen-stock-and-expiry-mobile.png",
+          "quality/evidence/AUD-522/food-pantry-screen-screen-food-safety-and-safeguarding-desktop.png",
+          "quality/evidence/AUD-522/food-pantry-screen-screen-food-safety-and-safeguarding-mobile.png"
+        ],
+        "telemetry": "Both browser reports show document width equal to viewport width and zero console errors, uncaught exceptions, failed requests, and HTTP errors."
+      }
+    },
+    {
+      "id": "AUD-523",
+      "severity": "medium",
+      "route": "/workbench",
+      "category": "export",
+      "viewport": "1440x900, 390x844",
+      "title": "Runnable exports allowed unresolved required interface roles to become blank output",
+      "expected": "Runnable source exports must fail clearly while required interface roles are unresolved. Manifest and agent-handoff exports must preserve those requirements for completion.",
+      "actual": "The community pantry project had 17 unresolved roles across six screens. ZIP export now fails with an accessible summary and expandable role list; .tess.json remains exportable with all 17 unresolved roles intact.",
+      "rootCause": "Pre-export inspection recorded missing resources as warnings and did not promote the canonical unresolvedRequiredRole marker to a runnable-export error. The Workbench surfaced a generic export failure and the mobile menu could extend outside the viewport.",
+      "reproduction": [
+        "Compose the community food pantry brief in quality/evidence/AUD-522/food-pantry-desktop.json.",
+        "Open a direction in Workbench at desktop and mobile widths.",
+        "Attempt ZIP export, inspect the accessible error details, then export .tess.json and count unresolvedRequiredRole nodes."
+      ],
+      "affectedCode": [
+        "packages/exporter/src/validation.ts",
+        "packages/exporter/src/source-tree.ts",
+        "packages/exporter/src/targets/expo-native.ts",
+        "packages/exporter/src/targets/swiftui.ts",
+        "packages/workbench/src/components/TopToolbar.tsx",
+        "packages/exporter/src/__tests__/exporter.test.ts",
+        "tests/e2e/food-pantry-brief-fit.spec.ts"
+      ],
+      "screenshot": "quality/evidence/AUD-523/unresolved-roles-export-blocked-desktop.png",
+      "console": [],
+      "network": [],
+      "fixCommit": "pending",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "red": "Unresolved required roles were represented in project nodes but were not an export-blocking validation error.",
+        "green": "Runnable exporters now reject unresolved required roles with affected screens and roles; the accessible Workbench error exposes details and manifest export preserves the unresolved markers.",
+        "focusedCommand": "pnpm exec playwright test tests/e2e/food-pantry-brief-fit.spec.ts --grep 'unresolved roles stay explicit' --project=desktop-chrome --project=mobile-chrome",
+        "focusedProjects": {
+          "astroDesktop": {
+            "passed": 1,
+            "configuredSkips": 0
+          },
+          "astroMobile": {
+            "passed": 1,
+            "configuredSkips": 0
+          },
+          "totals": {
+            "passed": 2,
+            "configuredSkips": 0,
+            "failed": 0
+          }
+        },
+        "fullPlaywrightMatrix": {
+          "command": "pnpm test:e2e",
+          "result": "PASS",
+          "projects": [
+            {
+              "name": "Astro desktop/mobile Chromium",
+              "passed": 410,
+              "configuredSkips": 140,
+              "failed": 0
+            },
+            {
+              "name": "Sites Worker desktop Chromium",
+              "passed": 249,
+              "configuredSkips": 11,
+              "failed": 0
+            },
+            {
+              "name": "Sites Worker mobile Chromium",
+              "passed": 214,
+              "configuredSkips": 46,
+              "failed": 0
+            },
+            {
+              "name": "Standalone preview Chromium",
+              "passed": 3,
+              "configuredSkips": 0,
+              "failed": 0
+            }
+          ],
+          "totals": {
+            "passed": 876,
+            "configuredSkips": 197,
+            "failed": 0,
+            "scheduled": 1073
+          },
+          "evidence": "quality/evidence/AUD-524/full-e2e-summary.json"
+        },
+        "unitTests": "PASS (95 files; 1,363 passed; 1 configured skip)",
+        "typecheck": "PASS (22 workspace packages)",
+        "lint": "PASS",
+        "screenshots": [
+          "quality/evidence/AUD-523/unresolved-roles-export-blocked-desktop.png",
+          "quality/evidence/AUD-523/unresolved-roles-export-blocked-mobile.png",
+          "quality/evidence/AUD-523/unresolved-roles-export-desktop.json",
+          "quality/evidence/AUD-523/unresolved-roles-export-mobile.json"
+        ],
+        "telemetry": "Desktop and mobile reports show no console errors, uncaught exceptions, failed requests, or HTTP errors; mobile export menu fits the viewport.",
+        "publicVerification": "PENDING; no deployment or release was performed."
+      }
+    },
+    {
+      "id": "AUD-524",
+      "severity": "medium",
+      "route": "/compose",
+      "category": "content",
+      "viewport": "1440x900, 390x844",
+      "title": "Meal-planner brief with explicit financial exclusions was classified as Fintech",
+      "expected": "Compose should select Consumer Productivity; plan a weekly meal planner around recipes, dietary needs, shared suggestions, pantry freshness, and offline grocery shopping; and exclude banking, transfers, billing, payments, and finance screens.",
+      "actual": "The initial brief selected Fintech and generated financial screens. It now selects Consumer Productivity with a narrow meal-planning specialization and three domain screens. The chosen direction opens in Workbench, persists, and round-trips through validated .tess.json export with the exact typed entities, workflows, and screens.",
+      "rootCause": "Explicitly negated financial vocabulary could still contribute positive archetype and capability signals. Generic phrase suffix matching also let the verb “stores” falsely match Ecommerce, while rental-platform context could tie with generic SaaS.",
+      "reproduction": [
+        "Open /compose and enter the exact shared-household meal-planner brief in quality/evidence/AUD-524/meal-planner-desktop.json.",
+        "Inspect the selected archetype, inferred screens and three directions; confirm no finance workflows or screens appear.",
+        "Open Direction 01 in Workbench, reload/read local persisted project state, and export .tess.json; compare the validated export to the active manifest."
+      ],
+      "affectedCode": [
+        "packages/composer/src/archetypes.ts",
+        "packages/composer/src/domain-context.ts",
+        "packages/composer/src/interpreter.ts",
+        "packages/composer/src/__tests__/composer.test.ts",
+        "tests/e2e/meal-planner-archetype-fit.spec.ts",
+        "docs/COMPOSITION_ENGINE.md"
+      ],
+      "screenshot": "quality/evidence/AUD-524/meal-planner-compose-desktop.png",
+      "console": [],
+      "network": [],
+      "fixCommit": "pending",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "red": "The exact brief resolved to Fintech and proposed account/transaction screens despite explicit financial exclusions.",
+        "green": "The brief resolves to Consumer Productivity, plans the named meal workflows/screens, and carries the exact product model through Workbench persistence and validated manifest export.",
+        "composerBenchmarks": "PASS (237/237)",
+        "focusedCommand": "pnpm exec playwright test tests/e2e/meal-planner-archetype-fit.spec.ts --project=desktop-chrome --project=mobile-chrome",
+        "focusedProjects": {
+          "desktop": {
+            "passed": 1,
+            "configuredSkips": 0
+          },
+          "mobile": {
+            "passed": 1,
+            "configuredSkips": 0
+          },
+          "totals": {
+            "passed": 2,
+            "configuredSkips": 0,
+            "failed": 0
+          }
+        },
+        "fullPlaywrightMatrix": {
+          "command": "pnpm test:e2e",
+          "result": "PASS",
+          "projects": [
+            {
+              "name": "Astro desktop/mobile Chromium",
+              "passed": 410,
+              "configuredSkips": 140,
+              "failed": 0
+            },
+            {
+              "name": "Sites Worker desktop Chromium",
+              "passed": 249,
+              "configuredSkips": 11,
+              "failed": 0
+            },
+            {
+              "name": "Sites Worker mobile Chromium",
+              "passed": 214,
+              "configuredSkips": 46,
+              "failed": 0
+            },
+            {
+              "name": "Standalone preview Chromium",
+              "passed": 3,
+              "configuredSkips": 0,
+              "failed": 0
+            }
+          ],
+          "totals": {
+            "passed": 876,
+            "configuredSkips": 197,
+            "failed": 0,
+            "scheduled": 1073
+          },
+          "evidence": "quality/evidence/AUD-524/full-e2e-summary.json",
+          "followUp": "The revised Workbench handoff assertions ran afterward in the focused 2/2 profile rerun."
+        },
+        "unitTests": "PASS (95 files; 1,363 passed; 1 configured skip)",
+        "typecheck": "PASS (22 workspace packages)",
+        "lint": "PASS",
+        "auditAndBuild": "PASS (16/16 behavior gates; 324/324 isolation and provenance/licence checks; zero security, secret, or isolation findings; bundle budgets pass; production build pass). Existing large-chunk warning remains.",
+        "workbenchDesktop": "quality/evidence/AUD-524/meal-planner-workbench-desktop.json",
+        "workbenchMobile": "quality/evidence/AUD-524/meal-planner-workbench-mobile.json",
+        "telemetry": "Desktop 1440x900 and mobile 390x844 reports show document width equals viewport and no console errors, uncaught exceptions, failed requests, or HTTP errors.",
+        "publicVerification": "PENDING; no deployment or release was performed."
+      }
     }
   ],
-  "generatedAt": "2026-11-08T07:30:48Z",
+  "generatedAt": "2026-11-08T11:46:27Z",
   "latestDeploymentEvidence": "quality/evidence/AUD-514/deployed-v89-runtime.json",
   "latestLocalQualityRun": {
-    "capturedAt": "2026-11-08T06:45:42Z",
-    "command": "pnpm test; pnpm typecheck; pnpm lint; pnpm audit:all; pnpm test:e2e; focused bicycle-repair Compose browser test",
+    "capturedAt": "2026-11-08T11:46:27Z",
+    "command": "pnpm test; pnpm typecheck; pnpm lint; pnpm audit:all; pnpm test:e2e; focused AUD-523 pantry export and AUD-524 meal-planner browser regressions",
     "environment": "Windows worktree; local Astro production build and production-like Sites Worker artifact; Chromium desktop and emulated mobile; standalone Vite preview",
     "result": "PASS",
     "sourceBranch": "codex/research-archetype-fit",
-    "sourceBase": "cf552d0d4df2ed2ca3d184f06645c7dab8ddba55",
-    "sourceCommit": "ce719d4526d43fc46470a617f475a2e8866d5601",
+    "sourceBase": "0778a90966b9f9ce5baaaacfb8f6ea14e845651a",
+    "sourceCommit": "0778a90966b9f9ce5baaaacfb8f6ea14e845651a",
     "workingTreeWasDirty": true,
     "changesUnderTest": [
-      "Specialize concrete bicycle repair co-op briefs within the existing ERP & Operations archetype.",
-      "Plan intake, safety inspection, consented estimate, parts, and pickup workflows without inferring payments when excluded.",
-      "Render the Safety Inspection screen heading and purpose with an existing entity-header resource while surfacing unavailable service roles as unresolved.",
-      "Add composer and compatibility regressions plus desktop/mobile Compose browser evidence for all three directions."
+      "AUD-522: specialize pantry briefs and preserve privacy while surfacing unsupported roles.",
+      "AUD-523: block runnable exports until required roles are resolved; preserve manifest and handoff export.",
+      "AUD-524: honor explicitly negated cues, specialize meal planning within Consumer Productivity, and retain classifier benchmark behavior."
     ],
     "commandResults": {
       "frozenInstall": "NOT RUN (lockfile unchanged)",
-      "focusedBrowserRegression": "PASS (2 passed; desktop and mobile)",
+      "composerBenchmarks": "PASS (237/237)",
+      "unitAndIntegrationTests": "PASS (95 files; 1,363 passed; 1 configured skip)",
       "typecheck": "PASS (22 workspace packages)",
       "lint": "PASS",
-      "unitAndIntegrationTests": "PASS (95 files; 1,356 passed; 1 configured skip)",
-      "behavioralAndSecurityAudit": "PASS (16/16 behavior gates; 324/324 resource isolation; 324/324 license/provenance; zero security, secret, or isolation violations; no known dependency vulnerabilities)",
-      "bundleBudgets": "PASS (homepage, Explore, Compose, Workbench, and search index)",
-      "productionBuild": "PASS (733 Astro pages and Sites Worker artifact; existing large-chunk and ineffective-dynamic-import warnings)",
-      "playwright": "PASS (870 passed; 197 configured profile skips; 0 failures)"
+      "behavioralAndSecurityAudit": "PASS (16/16 behavior gates; 324/324 resource isolation; 324/324 license/provenance; zero security, secret, or isolation violations; no known dependency advisories)",
+      "bundleBudgets": "PASS (homepage 99.44 KB gzip; Explore 178.87 KB; Compose 257.88 KB; Workbench 76.16 KB; catalogue 113.13 KB)",
+      "productionBuild": "PASS (733 Astro routes and Sites Worker artifact; existing large-chunk warning)",
+      "playwright": "PASS (876 passed; 197 configured profile skips; 0 failures)",
+      "focusedPantryExportRegression": "PASS (2 passed; desktop and mobile)",
+      "focusedMealPlannerWorkbenchRoundTrip": "PASS (2 passed; desktop and mobile; exact typed model persisted and exported)",
+      "exactHeadCi": "PENDING (current working tree has not run exact-head CI)",
+      "publicVerification": "PENDING (no deployment or Site update)"
     },
     "projects": [
       {
         "name": "Astro desktop/mobile Chromium",
-        "passed": 404,
+        "passed": 410,
         "configuredSkips": 140,
         "failed": 0
       },
@@ -25100,26 +25407,27 @@
       }
     ],
     "totals": {
-      "passed": 870,
+      "passed": 876,
+      "scheduled": 1073,
       "configuredSkips": 197,
-      "failed": 0,
-      "scheduled": 1067
+      "failed": 0
     },
     "notes": [
-      "The focused bicycle-repair journey passed in Astro desktop and mobile profiles. It exercised three directions, all five planned screens, visible unresolved-role diagnostics, screen selection, and rendered screen identity.",
-      "Desktop (1440px) and mobile (390px) reports show document width equal to viewport width and zero console errors, uncaught exceptions, failed requests, or HTTP errors.",
-      "The full local Playwright matrix passed all four groups. Configured profile skips are exclusions, not failures.",
-      "Exact-head GitHub CI passed on 55a00a168d1b9339078086dd2196e065365ced36 in run 42456673305; the Component Quality Gate Sandbox passed in run 42456673268. Public issue-specific verification remains pending; no deployment or release was made."
+      "The full Playwright matrix completed without failures across Astro, production-like Sites Worker desktop/mobile, and standalone preview.",
+      "The meal-planner Workbench persistence and .tess.json equality assertions were appended after the full matrix and passed in a separate focused 2/2 rerun.",
+      "The Sites Worker run certified all catalogue resources at enabled responsive widths; configured profile skips are not failures.",
+      "Existing Astro output includes a large-chunk size warning; configured bundle budgets pass.",
+      "Exact-head CI, issue-specific public checks, and Step 39 release-gate completion are pending; no deployment or release was performed."
     ],
-    "evidence": "quality/evidence/AUD-521/ and quality/STEP_39_EVIDENCE.md",
+    "evidence": "quality/evidence/AUD-522/, quality/evidence/AUD-523/, quality/evidence/AUD-524/, quality/STEP_39_EVIDENCE.md",
     "exactHeadCi": {
-      "commit": "55a00a168d1b9339078086dd2196e065365ced36",
-      "ciRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/42456673305",
-      "componentQualityGateRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/42456673268",
-      "result": "PASS",
-      "unitTestsPassed": 1357,
-      "playwrightPassed": 870,
-      "playwrightConfiguredSkips": 197
+      "commit": "0778a90966b9f9ce5baaaacfb8f6ea14e845651a",
+      "ciRun": null,
+      "componentQualityGateRun": null,
+      "result": "PENDING",
+      "unitTestsPassed": null,
+      "playwrightPassed": null,
+      "playwrightConfiguredSkips": null
     }
   },
   "previousLocalQualityRun": {

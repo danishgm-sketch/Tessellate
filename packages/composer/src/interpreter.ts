@@ -12,7 +12,12 @@ import {
   applyVisualAmbition,
   applyStructuralCreativity,
 } from '@tessellate/dna';
-import { detectProductArchetypes, getProductArchetype } from './archetypes.js';
+import {
+  detectProductArchetypes,
+  getProductArchetype,
+  hasPositiveArchetypeCue,
+  hasPositivePatternMatch,
+} from './archetypes.js';
 import { findBlueprintByArchetype, type ProductBlueprint } from './blueprints.js';
 import {
   specialiseConsumer,
@@ -21,8 +26,10 @@ import {
   specialiseDeveloperTools,
   specialiseEcommerce,
   specialiseFintechTrading,
+  specialiseFoodPantryOperations,
   specialiseLanguageLearning,
   specialiseMedia,
+  specialiseMealPlanning,
   specialiseMarketplace,
   specialiseMarineFieldResearch,
   specialisePeopleOperations,
@@ -112,7 +119,7 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   const detectedArchetypes = detectProductArchetypes(text, input.archetypeOverride);
   const primaryTag = detectedArchetypes[0]?.tag ?? 'saas';
   const definition = getProductArchetype(primaryTag);
-  const archetypeDef = definition
+  const specializedDefinition = definition
     ? specialiseLanguageLearning(
         specialiseMarineFieldResearch(
           specialiseBicycleRepairOperations(
@@ -121,9 +128,12 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
                 specialiseTravel(
                   specialiseMedia(
                     specialiseConsumer(
-                      specialiseEcommerce(
-                        specialiseMarketplace(
-                          specialiseFintechTrading(specialisePeopleOperations(definition, text), text),
+                      specialiseMealPlanning(
+                        specialiseEcommerce(
+                          specialiseMarketplace(
+                            specialiseFintechTrading(specialisePeopleOperations(definition, text), text),
+                            text
+                          ),
                           text
                         ),
                         text
@@ -144,6 +154,9 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
         ),
         text
       )
+    : undefined;
+  const archetypeDef = specializedDefinition
+    ? specialiseFoodPantryOperations(specializedDefinition, text)
     : undefined;
   const blueprint = findBlueprintByArchetype(primaryTag);
 
@@ -180,40 +193,33 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   let mobileImportance = archetypeDef?.mobileImportance ?? blueprint.priors.mobileImportance;
 
   // Nuanced keyword tuning
-  const lower = text.toLowerCase();
   const commercialIntentText = `${text} ${input.objective ?? ''}`;
-  const hasExplicitBillingIntent =
-    /\b(billing|subscriptions?|invoices?|paid plans?|pricing|monetiz(?:e|ation)|monetis(?:e|ation)|charge customers|payment plans?)\b/i.test(
-      commercialIntentText
-    );
-  const explicitlyExcludesPaymentWork =
-    /\b(?:do not|don't|does not|doesn't|without|no|never|avoid|exclude)\b.{0,48}\b(?:checkout|payments?|payment processing|billing|purchases?)\b/i.test(
-      commercialIntentText
-    );
-  const hasExplicitPaymentIntent =
-    /\b(?:checkout|payments?|payment processing|money transfer)\b/i.test(commercialIntentText) &&
-    !explicitlyExcludesPaymentWork;
-  const hasExplicitFundsTransferIntent =
-    /\b(?:transfer|send|move|withdraw|deposit)\b.{0,32}\b(?:funds?|money|cash|balances?|accounts?)\b|\b(?:funds?|money|cash)\b.{0,32}\b(?:transfer|send|move|withdraw|deposit)\b/i.test(
-      commercialIntentText
-    );
-  if (lower.includes('developer') || lower.includes('engineer') || lower.includes('terminal')) {
+  const hasPositiveSignal = (...cues: string[]) =>
+    cues.some((cue) => hasPositiveArchetypeCue(text, cue));
+  const hasExplicitBillingIntent = hasPositivePatternMatch(
+    commercialIntentText,
+    /\b(billing|subscriptions?|invoices?|paid plans?|pricing|monetiz(?:e|ation)|monetis(?:e|ation)|charge customers|payment plans?)\b/i
+  );
+  const hasExplicitPaymentIntent = hasPositivePatternMatch(
+    commercialIntentText,
+    /\b(?:checkout|payments?|payment processing|money transfer)\b/i
+  );
+  const hasExplicitFundsTransferIntent = hasPositivePatternMatch(
+    commercialIntentText,
+    /\b(?:transfer|send|move|withdraw|deposit)\b.{0,32}\b(?:funds?|money|cash|balances?|accounts?)\b|\b(?:funds?|money|cash)\b.{0,32}\b(?:transfer|send|move|withdraw|deposit)\b/i
+  );
+  if (hasPositiveSignal('developer', 'engineer', 'terminal')) {
     userSophistication = Math.min(100, userSophistication + 15);
     dataDensity = Math.min(100, dataDensity + 10);
     assumptions.push('The interface is planned for experienced technical users, with more information visible at once.');
   }
 
-  if (
-    lower.includes('bank') ||
-    lower.includes('security') ||
-    lower.includes('compliance') ||
-    lower.includes('confidential')
-  ) {
+  if (hasPositiveSignal('bank', 'banking', 'security', 'compliance', 'confidential')) {
     trustRequirement = Math.min(100, trustRequirement + 15);
     assumptions.push('The brief calls for strong trust and compliance cues.');
   }
 
-  if (lower.includes('team') || lower.includes('collaborat') || lower.includes('multiplayer')) {
+  if (hasPositiveSignal('team', 'collaborate', 'collaboration', 'collaborative', 'multiplayer')) {
     collaborationLevel = Math.min(100, collaborationLevel + 20);
     assumptions.push('Team collaboration is central to these workflows.');
   }
@@ -223,27 +229,17 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     assumptions.push('Payment and purchase steps need clear confirmation.');
   }
 
-  if (
-    lower.includes('analytics') ||
-    lower.includes('scientific') ||
-    lower.includes('telemetry') ||
-    lower.includes('dataset')
-  ) {
+  if (hasPositiveSignal('analytics', 'scientific', 'telemetry', 'dataset')) {
     informationComplexity = Math.min(100, informationComplexity + 15);
     assumptions.push('The product needs to make dense information easier to understand.');
   }
 
-  if (lower.includes('nested') || lower.includes('hierarchy') || lower.includes('multi-level')) {
+  if (hasPositiveSignal('nested', 'hierarchy', 'multi-level')) {
     navigationComplexity = Math.min(100, navigationComplexity + 15);
     assumptions.push('People may need clear ways to move between multiple levels of information.');
   }
 
-  if (
-    lower.includes('mobile') ||
-    lower.includes('ios') ||
-    lower.includes('android') ||
-    lower.includes('phone')
-  ) {
+  if (hasPositiveSignal('mobile', 'ios', 'android', 'phone')) {
     mobileImportance = Math.min(100, mobileImportance + 20);
     assumptions.push('Mobile use matters, so touch-friendly controls are included.');
   }
@@ -269,7 +265,10 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   });
 
   const hasSpecializedWorkflowPlan = archetypeDef?.requiredCapabilities.some((capability) =>
-    capability === 'short-session-learning' || capability === 'bicycle-repair-service-workflow'
+    capability === 'short-session-learning' ||
+    capability === 'bicycle-repair-service-workflow' ||
+    capability === 'meal-planning-workflow' ||
+    capability === 'food-pantry-workflow'
   );
   const jobsToBeDone: string[] = [
     `Authenticate and access ${archetypeDef?.name ?? 'workspace'}`,
