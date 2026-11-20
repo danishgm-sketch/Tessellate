@@ -32,8 +32,40 @@ now has 268 deployed-verified closures and 132 fixes awaiting deployed verificat
 the only nonclosed High; AUD-515 remains locally fixed and is not yet deployed-verified.
 
 The v87 sweep remains the latest broad public route/flagship audit, not a full re-audit of every
-control. The complete hardening release gate remains open. Verso source remains `UNLICENSED` and
-excluded from redistribution; human usability sessions are owner-waived, not passed.
+control. The complete hardening release gate remains open. On 2026-11-07, the owner confirmed that
+the privately authored Verso collection was contributed for Tessellate and authorized its use,
+modification, and redistribution as part of the public product. This resolves the former owner-
+permission blocker for owner-authored work; the source package still declares `UNLICENSED` and
+`private`, and this project-specific authorization is not a general public open-source license or
+clearance for any separately identified third-party material. No Verso item has passed Tessellate's
+per-resource manifest, provenance, accessibility, responsive, performance, reduced-motion, and
+export review. The current feature freeze therefore keeps the source outside public artifacts until
+the ordered hardening gate allows resource integration. Human usability sessions are owner-waived,
+not passed. Decision: D-067.
+
+### 2026-11-07 local municipal-water composition review
+
+A realistic public drinking-water utility brief exposed a generic-composition gap: the initial
+preview had no outage, repair, water-quality clearance, or resident-update workflows. The existing
+ERP archetype now specializes clear water-utility field-response briefs while preserving the same
+manifest and resource pipeline. All three directions carry five screens, domain workflows, safety
+constraints, disconnected sample metrics/records, and explicit prototype limitations. This adds no
+route, resource, backend binding, paid service, or export target and has not been deployed.
+
+Desktop (1440×900) and mobile (390×844) Sites Worker browser runs passed the visible Compose flow,
+all three directions, all five screens, keyboard selection and Escape dismissal, required-resource
+resolution, truthful disconnected-data copy, and preview overflow checks. Both reported zero console
+errors, uncaught exceptions, failed requests, and HTTP errors. Evidence is in
+`quality/evidence/step-39/water-utility-local-2026-11-07/`. Vitest passed 1,356 tests with one
+configured skip; all 22 workspace typechecks, lint, and the 16/16 `audit:all` gates passed. The
+Astro desktop/mobile E2E phase passed 402 with 140 configured skips, Sites Worker mobile passed 214
+with 46 skips, and standalone preview passed 3/3. The Sites Worker desktop profile had four
+timing/loading failures (245 passed, 11 skips); each failed case passed individually on retry. One
+ordered reproduction of the 324-resource sweep had an unsettled
+`/_astro/manifest.3vTMqesi.js` request for `multi-series-line-chart`; ten repeated seven-width runs
+of that resource passed, as did the downstream timing cases in sequence. The full browser matrix
+remains imperfect and this asset-load instability remains under investigation. Steps 39 and 48
+remain open; this local review is not deployed or release evidence.
 
 ### 2026-11-07 continuation — Step 5 screen-route contract
 
@@ -65,11 +97,11 @@ The latest full local quality run passes frozen install, catalogue generation, 2
 
 The 512-item runtime ledger has 0 Critical, 91 High, 392 Medium, and 29 Low findings: 265 deployed-verified, 133 awaiting deployed verification, 99 locally verified, 9 historical closures, 2 local closures, 2 legacy fixed records, and 2 documented Sites limitations. AUD-496–AUD-509 are closed on v80, AUD-510 on v81, and AUD-511 on v82. AUD-512 is fixed and locally verified but awaits the same deployed cold-load recheck. AUD-419 is the only nonclosed High item: optional BYO-provider forwarding remains unverified on the public Site because its laptop host/provider endpoint is intentionally not configured there. Step 39 (language/copy) and Step 48 (release) remain open, as do the broader ordered hardening gates.
 
-Verso's local owner-only adapter has exercised 1,053/1,053 modules through the canonical schema and isolated preview runtime. The source declares UNLICENSED; all items remain outside public catalogue, Gold runtime, Workbench, registry, CLI/MCP and exports until rights and item-level certification are documented. Sites D1/R2 remain unprovisioned; no paid service or secret was added, and the £20/month cap, local-first behavior and strict preview CSP remain unchanged. See [v78 audit evidence](../quality/evidence/step-45/public-v78-reaudit/ROUTE_AUDIT.md) and [Verso local integration evidence](../quality/VERSO_LOCAL_INTEGRATION_EVIDENCE.md).
+Verso's local owner-only adapter has exercised 1,053/1,053 modules through the canonical schema and isolated preview runtime. The owner has authorized use, modification, and redistribution of owner-authored material in Tessellate (D-067); the source package still declares `UNLICENSED` and `private`. No entry has passed item-level certification, and the current feature freeze keeps every item outside the public catalogue, Gold runtime, Workbench, registry, CLI/MCP, Sites, and exports until the ordered release gate permits integration. Sites D1/R2 remain unprovisioned; no paid service or secret was added, and the £20/month cap, local-first behavior and strict preview CSP remain unchanged. See [v78 audit evidence](../quality/evidence/step-45/public-v78-reaudit/ROUTE_AUDIT.md) and [Verso local integration evidence](../quality/VERSO_LOCAL_INTEGRATION_EVIDENCE.md).
 
 ## Verso integration boundary
 
-The local-only integration is complete for inspection: 1,053/1,053 private modules have canonical manifest projections and render in the separate preview origin. A capability map routes the broad functional families through existing Tessellate resources, schemas, Workbench, tools, CLI/MCP contracts, and export surfaces. This is a functional fit map, not per-component parity or a claim that private components entered Tessellate's public product. The package remains `private` and `UNLICENSED`; 0/1,053 entries have documented public redistribution clearance. Keep the source and projection outside Git and Sites. Public adoption remains blocked until written rights cover the specific implementation and its upstream lineage, followed by normal resource and Gold certification. The existing adapter and evidence are in `quality/PRIVATE_VERSO_LOCAL_PREVIEW.md`, `quality/VERSO_NATIVE_FIT_MAP.md`, and `quality/VERSO_LOCAL_INTEGRATION_EVIDENCE.md`.
+The local-only integration is complete for inspection: 1,053/1,053 private modules have canonical manifest projections and render in the separate preview origin. A capability map routes the broad functional families through existing Tessellate resources, schemas, Workbench, tools, CLI/MCP contracts, and export surfaces. This is a functional fit map, not per-component parity or a claim that private components entered Tessellate's public product. The owner's 2026-11-07 authorization resolves the previous project-permission blocker for owner-authored material; the package remains `private` and `UNLICENSED`, and 0/1,053 entries have passed per-resource certification. Keep the source and projection outside Git and Sites. Public integration remains blocked by the active feature freeze and normal resource/Gold review, including item-level provenance and quality checks. The existing adapter and evidence are in `quality/PRIVATE_VERSO_LOCAL_PREVIEW.md`, `quality/VERSO_NATIVE_FIT_MAP.md`, and `quality/VERSO_LOCAL_INTEGRATION_EVIDENCE.md`.
 
 ## Historical release evidence (2026-11-03)
 

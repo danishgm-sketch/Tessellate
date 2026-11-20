@@ -1,26 +1,34 @@
 # Verso capability fit in Tessellate
 
-**Status:** capability mapping; not a licence grant, resource certification, or claim of complete component parity.
+**Status:** capability mapping; the owner has authorized use, modification, and redistribution of owner-authored Verso material in Tessellate (D-067). This is not resource certification or a claim of complete component parity.
 
-**Scope:** translate the useful functional roles found during the owner-only Verso inventory into Tessellate's existing resource, manifest, editor, tool, and agent surfaces. Do not copy source, expressive design, component names, demo copy, or upstream brands into the public product.
+**Scope:** translate useful functional roles and selected owner-authored patterns from the Verso inventory into Tessellate's existing resource, manifest, editor, tool, and agent surfaces after the release gate permits resource integration. Exclude any independently identified third-party code, assets, or brands without item-specific clearance.
 
 ## Eligibility and evidence boundary
 
-The private source inventory contains 1,053 resource entries. Its package declares
-`UNLICENSED` and `private`; the available lineage/provenance records do not grant
-redistribution rights. Therefore **0 entries are currently cleared for inclusion**
-in Tessellate's public catalogue, Gold runtime, Workbench registry, CLI/MCP
-distribution, browser export, or Sites build. The local isolated preview is an
-inspection aid only. Its 1,053/1,053 render result says nothing about licensing,
-functional equivalence, accessibility certification, or export eligibility.
+The private source inventory contains 1,053 resource entries. Its package still
+declares `UNLICENSED` and `private`. On 2026-11-07, the owner confirmed that this
+is their own privately authored collection contributed for Tessellate and
+authorized its use, modification, and redistribution as part of Tessellate; the
+prior owner-permission blocker is resolved for owner-authored work. The owner's
+README describes new code and copy inspired by studied ideas and states that no
+source code or copy was copied. This project-specific authorization is not a
+general public open-source license and does not clear any independently
+identified third-party code or asset. **0 entries have passed Tessellate's
+per-resource certification for public integration** in the catalogue, Gold
+runtime, Workbench registry, CLI/MCP distribution, browser export, or Sites
+build. The active hardening feature freeze also remains in force. The local
+isolated preview is an inspection aid only; rendering all entries says nothing
+about functional equivalence, accessibility certification, performance, or
+export eligibility.
 
-The integration path for ineligible material is to express general user needs
-through Tessellate's own contracts and independently authored resources. The
-Tessellate examples below are existing catalogue assets; they are **not** asserted
-to be derivatives or one-to-one replacements for any private source item. Their
-licence, provenance, and runtime status remain those in the canonical Tessellate
-catalogue. A family-level fit is not proof that every behavior in that family is
-already implemented.
+Until a Verso item passes per-resource certification, express its general user
+need through Tessellate's existing contracts and independently authored
+resources. The Tessellate examples below are existing catalogue assets; they are
+**not** asserted to be derivatives or one-to-one replacements for any private
+source item. Their licence, provenance, and runtime status remain those in the
+canonical Tessellate catalogue. A family-level fit is not proof that every
+behavior in that family is already implemented.
 
 ## Functional-family fit
 
@@ -41,7 +49,7 @@ or per-item parity claims.
 | Marketing sections and complete page examples | 396 (378 + 18) | Sections, Pages, Blueprints, Showcases, `ProjectManifest` | Strong for product/page hierarchy; no one-to-one visual or behavioral parity is asserted. |
 | Multi-part compositions with shared state | 24 | `ScreenGraph`, `ProjectManifest`, validated Workbench mutations | Strong for state represented by Tessellate contracts; no private state implementation is imported. |
 | Authoring instruments | 24 | The existing ten `/tools` surfaces and Workbench | Partial. Existing tools cover selected jobs; they do not represent one-to-one equivalents for every instrument. |
-| **Total component entries** | **1,053** |  | **All source entries are accounted for at this aggregate level; none are cleared for redistribution.** |
+| **Total component entries** | **1,053** |  | **All source entries are accounted for at this aggregate level; none have passed per-resource product certification.** |
 
 The separate 20-document Scribe kit is not included in the component total. Its
 general authoring jobs map to Tessellate's existing public documentation, CLI,
@@ -50,9 +58,11 @@ and MCP contracts. No Scribe text or source-specific recipe is transferred.
 The counts above were checked against the current owner-supplied source README.
 They are useful for coverage accounting only: they do not prove that a given
 source item maps to a particular Tessellate resource, that a behavior is
-implemented, or that the item is licensed. The source package remains private
-and `UNLICENSED`; public eligibility remains 0/1,053 until written rights cover
-each implementation and its lineage.
+implemented, or that the item passed resource certification. The owner
+authorization resolves project permission for owner-authored work; public
+eligibility remains 0/1,053 until the ordered hardening gate permits integration
+and each item passes its manifest, provenance, accessibility, responsive,
+reduced-motion, performance, and export checks.
 
 | Functional family | Existing Tessellate home | Existing examples / status | Fit and remaining limit |
 | --- | --- | --- | --- |
@@ -94,13 +104,14 @@ The private source has a safe inspection boundary and all 1,053 component
 entries now have an aggregate functional-role destination in Tessellate's
 existing architecture. **This is not a claim that the entries have been
 individually integrated, that every behavior is implemented, that the mapping
-is one-to-one, or that any private entry is eligible for public redistribution.**
+is one-to-one, or that any private entry has passed per-resource product
+certification for public integration.**
 No private code, component identifier, description, or design expression is
 added to the product by this document. The current next action is product
 hardening of the existing Tessellate surfaces, in the ordered programme; new
 resource work remains subject to its feature-freeze and release gates.
 
-Evidence: `quality/PRIVATE_VERSO_LOCAL_PREVIEW.md`,
+Evidence: D-067; `quality/PRIVATE_VERSO_LOCAL_PREVIEW.md`,
 `quality/VERSO_LOCAL_INTEGRATION_EVIDENCE.md`, the source package's `UNLICENSED`
 metadata, and the canonical catalogue/Gold registry. The inventory and source
 projections stay outside the Tessellate repository.

@@ -2062,15 +2062,15 @@ export function specialiseDeveloperTools(
   const selected = profiles.find((profile) => profile.match.test(text));
   return selected ? { ...base, ...selected.context } : base;
 }
-/** Keep community briefs focused on local groups and updates, not photo-story defaults. */
+/** Keep local community briefs focused on resident needs, not generic media sharing. */
 export function specialiseConsumer(base: ArchetypeDefinition, text: string): ArchetypeDefinition {
   if (
     base.id !== 'consumer' ||
-    !/\b(neighborhood social|community app|hobby groups?|shared interests?)\b/i.test(text)
+    !/\b(?:neighbou?rhood social|community app|hobby groups?|shared interests?|mutual[ -]aid)\b/i.test(text)
   ) {
     return base;
   }
-  return {
+  const localCommunity: ArchetypeDefinition = {
     ...base,
     primaryAudience:
       'Everyday consumers, residents, hobby-group members, and nearby community members',
@@ -2132,6 +2132,502 @@ export function specialiseConsumer(base: ArchetypeDefinition, text: string): Arc
       ...base.requiredCapabilities,
       'community-groups',
       'local-event-discovery',
+    ],
+  };
+
+  if (!/\bmutual[ -]aid\b/i.test(text)) return localCommunity;
+
+  return {
+    ...localCommunity,
+    name: 'Neighbourhood Mutual Aid',
+    primaryAudience:
+      'Residents, volunteer coordinators, and trusted community moderators',
+    primaryObjective:
+      'Coordinate consent-based local assistance, practical community events, sourced notices with clear expiry, and safe moderation while exposing only the minimum personal information needed',
+    userSophistication: 55,
+    trustRequirement: 96,
+    informationComplexity: 74,
+    dataDensity: 58,
+    collaborationLevel: 94,
+    transactionCriticality: 72,
+    navigationComplexity: 68,
+    mobileImportance: 100,
+    defaultEntities: [
+      {
+        name: 'Resident',
+        description:
+          'A verified community member represented by selected neighbourhood and language preferences',
+        fields: ['id', 'selectedNeighbourhood', 'preferredLanguage', 'verificationStatus'],
+      },
+      {
+        name: 'Mutual Aid Request',
+        description:
+          'A request for practical local help with a selected audience and consent-controlled contact',
+        fields: [
+          'id',
+          'category',
+          'neighbourhood',
+          'createdAt',
+          'status',
+          'visibility',
+          'consentState',
+        ],
+      },
+      {
+        name: 'Volunteer Offer',
+        description:
+          'A resident offer of help with a service category, approximate area, and availability',
+        fields: ['id', 'serviceCategory', 'neighbourhood', 'availability', 'consentState', 'status'],
+      },
+      {
+        name: 'Community Event',
+        description:
+          'A local event with an approximate area, schedule, and accessibility information',
+        fields: ['id', 'title', 'neighbourhood', 'startsAt', 'accessibilityNotes', 'status'],
+      },
+      {
+        name: 'Safety Notice',
+        description:
+          'A sourced local notice with an area, publication time, and expiry time',
+        fields: ['id', 'area', 'summary', 'source', 'publishedAt', 'expiresAt'],
+      },
+      {
+        name: 'Moderation Report',
+        description:
+          'A resident-submitted report with a reason, review state, and resolution history',
+        fields: ['id', 'reason', 'submittedAt', 'reviewStatus', 'resolution'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'publish-consent-based-help-request',
+        name: 'Share a local help request with a chosen audience',
+        steps: [
+          'Choose a request category and approximate neighbourhood',
+          'Select who may see the request and what information is included',
+          'Keep direct contact details hidden until both residents consent',
+          'Update the request status when help is arranged',
+        ],
+      },
+      {
+        id: 'coordinate-volunteer-offer',
+        name: 'Coordinate a volunteer offer without exposing private contact details',
+        steps: [
+          'Review a volunteer offer and its available times',
+          'Match the offer to a request in the selected neighbourhood',
+          'Ask both residents to consent before sharing contact details',
+          'Close the request when the residents confirm the outcome',
+        ],
+      },
+      {
+        id: 'moderate-community-safety-report',
+        name: 'Review a safety report and keep the resolution traceable',
+        steps: [
+          'Receive a resident safety report',
+          'Limit report details to authorised moderators',
+          'Review the report and record a reasoned outcome',
+          'Resolve or escalate it and retain an access history',
+        ],
+      },
+      {
+        id: 'expire-local-safety-notice',
+        name: 'Publish a sourced local notice with a clear expiry',
+        steps: [
+          'Verify the notice source and approximate area',
+          'Publish the summary with its timestamp and expiry',
+          'Review the source when conditions change',
+          'Mark the notice expired when it is no longer current',
+        ],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Neighbourhood Updates',
+        screenType: 'dashboard',
+        purpose:
+          'A chronological, resident-selected view of local notices, help requests, volunteer offers, and events',
+        jobs: ['review-local-updates', 'find-nearby-help', 'check-safety-notices'],
+        required: true,
+      },
+      {
+        name: 'Community Help Board',
+        screenType: 'index-list',
+        purpose:
+          'Find and coordinate help requests and volunteer offers by category and approximate neighbourhood',
+        jobs: ['review-help-request', 'offer-volunteer-help', 'coordinate-consent'],
+        required: true,
+      },
+      {
+        name: 'Local Events & Skills',
+        screenType: 'index-list',
+        purpose:
+          'Discover local events and skill swaps with language and accessibility details',
+        jobs: ['find-community-event', 'share-skill-offer', 'check-accessibility'],
+        required: true,
+      },
+      {
+        name: 'Safety & Moderation',
+        screenType: 'index-list',
+        purpose:
+          'Review authorised safety reports, document decisions, and expire outdated notices',
+        jobs: ['review-safety-report', 'record-moderation-outcome', 'expire-notice'],
+        required: true,
+      },
+      {
+        name: 'Privacy & Languages',
+        screenType: 'settings',
+        purpose:
+          'Choose preferred language, neighbourhood visibility, notification detail, and contact-sharing consent',
+        jobs: ['set-language-preference', 'control-neighbourhood-visibility', 'review-contact-consent'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      'community-groups',
+      'local-event-discovery',
+      'consent-based-contact-sharing',
+      'community-moderation-queue',
+      'minimal-location-precision',
+      'language-preferences',
+      'expiring-local-notices',
+      'offline-draft-mode',
+      'reduced-motion-support',
+    ],
+    forbiddenPatterns: [
+      ...localCommunity.forbiddenPatterns,
+      'direct-contact-shared-without-mutual-consent',
+      'exact-home-address-in-public-feed',
+      'unverified-identity-presented-as-verified',
+      'sensitive-request-details-visible-to-unselected-audience',
+      'algorithmic-feed-without-resident-control',
+      'stale-safety-notice-presented-as-current',
+      'moderation-report-visible-to-unauthorised-residents',
+    ],
+  };
+}
+
+/** Keep hazardous offshore maintenance briefs operational and safety-led. */
+export function specialiseOffshoreWindOperations(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  const offshoreWind = /\b(?:offshore wind|wind farm|wind turbine)\b/i.test(text);
+  const operationalWork =
+    /\b(?:maintenance|work orders?|permit(?:s)? to work|lockout\s*\/\s*tagout|loto|sea conditions?|turbines?|technicians?|crew dispatch|incident escalation)\b/i.test(
+      text
+    );
+
+  if (base.id !== 'erp-operations' || !offshoreWind || !operationalWork) return base;
+
+  return {
+    ...base,
+    name: 'Offshore Wind Operations',
+    primaryAudience:
+      'Offshore technicians, control-room operators, maintenance coordinators, and health and safety leads',
+    primaryObjective:
+      'Keep offshore turbines safe and available by coordinating maintenance windows, sea conditions, permits to work, verified energy isolation, and incident escalation',
+    userSophistication: 80,
+    trustRequirement: 99,
+    informationComplexity: 90,
+    dataDensity: 84,
+    collaborationLevel: 90,
+    transactionCriticality: 99,
+    navigationComplexity: 85,
+    mobileImportance: 95,
+    defaultEntities: [
+      {
+        name: 'Turbine',
+        description:
+          'An offshore turbine with its operational status, inspection history, and location',
+        fields: ['id', 'site', 'status', 'lastInspection', 'activeWorkOrder'],
+      },
+      {
+        name: 'Work Order',
+        description:
+          'A maintenance or inspection task linked to a turbine, crew, and access window',
+        fields: ['id', 'turbineId', 'scope', 'priority', 'crewId', 'status'],
+      },
+      {
+        name: 'Permit to Work',
+        description:
+          'An authorisation record for a defined work scope and verified energy isolation',
+        fields: ['id', 'workOrderId', 'isolationStatus', 'approver', 'validUntil', 'status'],
+      },
+      {
+        name: 'Crew',
+        description: 'A field crew with role, competency, shift, and vessel assignment',
+        fields: ['id', 'members', 'competencies', 'shift', 'vesselId'],
+      },
+      {
+        name: 'Sea Condition',
+        description: 'A forecast and observed sea condition used to assess access windows',
+        fields: ['id', 'site', 'observedAt', 'forecastWindow', 'accessStatus'],
+      },
+      {
+        name: 'Incident',
+        description:
+          'A safety or operational incident with crew accountability and escalation history',
+        fields: ['id', 'site', 'severity', 'reportedAt', 'responseOwner', 'status'],
+      },
+      {
+        name: 'Spare Part',
+        description: 'A maintenance part with turbine compatibility and stock location',
+        fields: ['id', 'partNumber', 'compatibleTurbines', 'quantity', 'location'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'dispatch-offshore-work-order',
+        name: 'Plan a maintenance window and dispatch a competent crew',
+        steps: [
+          'Review turbine status and inspection scope',
+          'Check sea conditions and vessel access window',
+          'Verify crew competency and shift coverage',
+          'Dispatch the work order and track completion',
+        ],
+      },
+      {
+        id: 'authorise-permit-to-work',
+        name: 'Verify energy isolation and authorise a permit to work',
+        steps: [
+          'Review the work scope and affected equipment',
+          'Apply lockout/tagout to identified energy sources',
+          'Independently verify isolation and record evidence',
+          'Approve the permit and monitor its expiry',
+        ],
+      },
+      {
+        id: 'escalate-offshore-incident',
+        name: 'Account for the crew and escalate an offshore incident',
+        steps: [
+          'Raise a safety or operational incident',
+          'Account for affected crew members',
+          'Escalate to the control room and response lead',
+          'Keep a time-stamped response record',
+        ],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Turbine Operations',
+        screenType: 'dashboard',
+        purpose:
+          'Fleet status, sea-condition access windows, active work orders, permits requiring action, crew coverage, and unresolved incidents',
+        jobs: ['review-fleet-status', 'check-access-window', 'triage-safety-alerts'],
+        required: true,
+      },
+      {
+        name: 'Work Orders',
+        screenType: 'workspace-editor',
+        purpose:
+          'Schedule turbine maintenance and inspections by work scope, crew, vessel, and access window',
+        jobs: ['schedule-maintenance', 'dispatch-crew', 'sign-off-work'],
+        required: true,
+      },
+      {
+        name: 'Permits to Work',
+        screenType: 'index-list',
+        purpose:
+          'Review work scopes, verify lockout/tagout isolation, and track permit approval and expiry',
+        jobs: ['verify-energy-isolation', 'approve-permit', 'monitor-permit-expiry'],
+        required: true,
+      },
+      {
+        name: 'Incident Response',
+        screenType: 'index-list',
+        purpose:
+          'Account for affected crews, escalate to the control room, and maintain a traceable response record',
+        jobs: ['account-for-crew', 'escalate-incident', 'record-response'],
+        required: true,
+      },
+      {
+        name: 'Crew & Vessel Dispatch',
+        screenType: 'workspace-editor',
+        purpose:
+          'Match qualified crews and vessels to work orders, shifts, and forecast access windows',
+        jobs: ['check-competency', 'assign-vessel', 'coordinate-shifts'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      ...base.requiredCapabilities,
+      'offline-work-order-drafts',
+      'permit-to-work',
+      'lockout-tagout-verification',
+      'incident-escalation',
+      'weather-window-planning',
+      'crew-competency-check',
+      'glove-friendly-controls',
+    ],
+    forbiddenPatterns: [
+      ...base.forbiddenPatterns,
+      'safety-state-distinguished-by-colour-alone',
+      'unverified-energy-isolation-approval',
+      'stale-weather-window-presented-as-current',
+      'offline-work-presented-as-synchronised',
+      'emergency-escalation-hidden-in-secondary-navigation',
+    ],
+  };
+}
+
+/** Keep public drinking-water service response distinct from generic inventory ERP. */
+export function specialiseMunicipalWaterOperations(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  const waterUtility =
+    /\b(?:water utility|water authority|water network|water distribution utility|drinking[- ]water utility|wastewater utility)\b/i.test(
+      text
+    );
+  const operationalResponse =
+    /\b(?:field crews?|dispatchers?|burst mains?|planned outages?|service outages?|repair crews?|network isolation|water[- ]quality clearance|service restoration|resident updates?|water main repairs?|leak repairs?)\b/i.test(
+      text
+    );
+
+  if (
+    base.id !== 'erp-operations' ||
+    base.name !== 'ERP & Operations' ||
+    !waterUtility ||
+    !operationalResponse
+  ) {
+    return base;
+  }
+
+  return {
+    ...base,
+    name: 'Public Water Operations',
+    description: 'Public water network incident response, qualified field repair, service clearance, and resident communication.',
+    primaryAudience:
+      'Network controllers, water-quality reviewers, field technicians, dispatchers, and resident communications teams',
+    primaryObjective:
+      'Restore public water service safely by coordinating network incidents, controlled isolation, qualified repairs, documented water-quality clearance, and accessible outage updates',
+    userSophistication: 74,
+    trustRequirement: 99,
+    informationComplexity: 84,
+    dataDensity: 78,
+    collaborationLevel: 94,
+    transactionCriticality: 99,
+    navigationComplexity: 83,
+    mobileImportance: 98,
+    defaultEntities: [
+      {
+        name: 'Water Network Asset',
+        description: 'A water main, valve, treatment works, or other network asset with a district and service state',
+        fields: ['id', 'assetType', 'district', 'location', 'serviceStatus', 'lastInspected'],
+      },
+      {
+        name: 'Service Incident',
+        description: 'A service interruption with a verified network location, affected area, and response status',
+        fields: ['id', 'assetId', 'affectedArea', 'reportedAt', 'severity', 'status'],
+      },
+      {
+        name: 'Work Order',
+        description: 'A repair task linked to an incident, network asset, qualified crew, and isolation record',
+        fields: ['id', 'incidentId', 'assetId', 'crewId', 'isolationStatus', 'status'],
+      },
+      {
+        name: 'Field Crew',
+        description: 'A field team with recorded competencies, shift coverage, and assigned repair equipment',
+        fields: ['id', 'members', 'competencies', 'shift', 'equipment', 'dispatchStatus'],
+      },
+      {
+        name: 'Water Quality Clearance',
+        description: 'A reviewed water-quality record for a defined sampling location, time, and test method',
+        fields: ['id', 'sampleLocation', 'sampledAt', 'testMethod', 'reviewer', 'status'],
+      },
+      {
+        name: 'Resident Notice',
+        description: 'A service update with an affected area, next-update time, accessible formats, and review status',
+        fields: ['id', 'affectedArea', 'issuedAt', 'nextUpdateAt', 'formats', 'approvalStatus'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'respond-to-water-service-incident',
+        name: 'Triage a water service interruption and dispatch a qualified repair crew',
+        steps: [
+          'Review the service report and verify the affected network asset',
+          'Confirm the affected streets and the current service impact',
+          'Assign a crew with the required recorded competencies',
+          'Verify isolation and record repair progress against the work order',
+        ],
+      },
+      {
+        id: 'clear-water-service-restoration',
+        name: 'Review water quality evidence before returning service',
+        steps: [
+          'Record the sampling location, collection time, and approved test method',
+          'Route results to an authorised water-quality reviewer',
+          'Record the evidence, decision, reviewer, and timestamp',
+          'Return service only after the responsible utility confirms its clearance procedure',
+        ],
+      },
+      {
+        id: 'prepare-resident-outage-update',
+        name: 'Prepare an accessible update for residents in an affected area',
+        steps: [
+          'Confirm the affected area and describe the known service impact',
+          'State the next update time without inventing a restoration estimate',
+          'Check accessible and translated formats required by the utility',
+          'Submit the notice to an authorised communications reviewer',
+        ],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Network Operations',
+        screenType: 'dashboard',
+        purpose: 'Review network incidents, affected service areas, qualified crew coverage, and outstanding water-quality clearances',
+        jobs: ['review-network-status', 'triage-service-incidents', 'monitor-clearance-status'],
+        required: true,
+      },
+      {
+        name: 'Outage & Incident Queue',
+        screenType: 'index-list',
+        purpose: 'Prioritise reported outages by verified asset, affected area, response state, and next action',
+        jobs: ['triage-outage', 'confirm-affected-area', 'assign-response-owner'],
+        required: true,
+      },
+      {
+        name: 'Repair Work Orders',
+        screenType: 'workspace-editor',
+        purpose: 'Coordinate repair scope, recorded crew competencies, isolation evidence, and offline field drafts',
+        jobs: ['review-repair-scope', 'dispatch-qualified-crew', 'record-isolation-and-progress'],
+        required: true,
+      },
+      {
+        name: 'Water Quality Clearance',
+        screenType: 'index-list',
+        purpose: 'Review sampling records and authorised water-quality decisions before service restoration',
+        jobs: ['inspect-sample-record', 'review-test-evidence', 'record-clearance-decision'],
+        required: true,
+      },
+      {
+        name: 'Resident Updates',
+        screenType: 'workspace-editor',
+        purpose: 'Prepare accessible service notices with verified affected areas and a clear next-update time',
+        jobs: ['draft-outage-notice', 'check-accessible-formats', 'request-authorised-review'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      ...base.requiredCapabilities,
+      'water-network-incident-triage',
+      'outage-area-verification',
+      'qualified-crew-dispatch',
+      'isolation-verification',
+      'water-quality-clearance',
+      'accessible-resident-notices',
+      'offline-field-drafts',
+    ],
+    forbiddenPatterns: [
+      ...base.forbiddenPatterns,
+      'service-restoration-without-authorised-clearance',
+      'unverified-water-quality-marked-safe',
+      'stale-outage-update-presented-as-current',
+      'offline-field-draft-presented-as-synchronised',
+      'safety-state-distinguished-by-colour-alone',
+      'unreviewed-resident-notice-presented-as-published',
     ],
   };
 }
