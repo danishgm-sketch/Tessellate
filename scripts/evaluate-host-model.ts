@@ -1,5 +1,5 @@
 import { spawnSync } from 'node:child_process';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import { tryDeterministicCommandMatch } from '../packages/workbench/src/ai/ai-service.js';
@@ -22,7 +22,7 @@ interface BenchmarkCase {
 }
 
 const root = process.cwd();
-const casesPath = path.join(root, 'quality/evidence/step-32/model-benchmark-cases.json');
+const casesPath = path.join(root, 'quality/benchmarks/model-benchmark-cases.json');
 const outputPath = path.resolve(process.argv[2] ?? 'quality/evidence/step-32/model-evaluation.json');
 const benchmark = JSON.parse(readFileSync(casesPath, 'utf8')) as Record<string, unknown>;
 const python = process.env.PYTHON ?? 'python';
@@ -139,5 +139,6 @@ const report = {
   disposition: 'LAB: evidence is diagnostic; no quality promotion is implied.',
   cases: raw,
 };
+mkdirSync(path.dirname(outputPath), { recursive: true });
 writeFileSync(outputPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
 process.stdout.write(`${JSON.stringify({ output: path.relative(root, outputPath).replaceAll('\\', '/'), trainingExamples: report.trainingExamples, splits })}\n`);
