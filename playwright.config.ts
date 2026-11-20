@@ -12,6 +12,7 @@ export default defineConfig({
     '**/live-*-v*.spec.ts',
     '**/gold-resource-certification.spec.ts',
     '**/preview-unknown-resource-regression.spec.ts',
+    '**/preview-resource-loading.spec.ts',
     '**/preview-reduced-motion.spec.ts',
     '**/sites-preview-csp.spec.ts',
     // The live v25 CSP/security probes require the Sites Worker response headers

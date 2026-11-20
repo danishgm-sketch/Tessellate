@@ -8,11 +8,15 @@ import {
   type PreviewResizeMessage,
   type PreviewErrorMessage,
 } from '@tessellate/catalog/protocol';
-import { BrowserNodeRenderer as NodeRenderer } from '@tessellate/renderer/browser';
+import {
+  BrowserPreviewNodeRenderer as NodeRenderer,
+  getBrowserPreviewBaseRenderer,
+} from '@tessellate/renderer/browser-preview';
 import { loadPrivateVersoResource, PrivateVersoProvider } from 'virtual:tessellate-private-verso';
 import 'virtual:tessellate-private-verso.css';
+import buttonManifest from '../../../../resources/primitives/button/manifest.json';
 import { resolvePreviewParentOrigin } from '../lib/preview-parent-origin';
-import { filterPrivatePreviewActionProps } from '../lib/preview-action-props';
+import { filterPreviewActionProps } from '../lib/preview-action-props';
 
 function readChangeValue(input: unknown): unknown {
   if (typeof input !== 'object' || input === null || !('target' in input)) return input;
@@ -27,8 +31,16 @@ function readChangeValue(input: unknown): unknown {
   return 'value' in control ? control.value : input;
 }
 
-const resourceManifests=import.meta.glob<{default:{name?:string;preview:{defaultProps?:Record<string,unknown>}}}>('../../../../resources/**/manifest.json');
-const resourceModules=import.meta.glob<Record<string,unknown>>('../../../../resources/**/index.tsx');
+const resourceManifests=import.meta.glob<{default:{name?:string;preview:{defaultProps?:Record<string,unknown>}}}>([
+  '../../../../resources/**/manifest.json',
+  '!../../../../resources/primitives/button/manifest.json',
+]);
+const resourceModules=import.meta.glob<Record<string,unknown>>([
+  '../../../../resources/**/index.tsx',
+  '!../../../../resources/primitives/button/index.tsx',
+]);
+const BUTTON_RESOURCE_IDS = new Set([buttonManifest.slug, buttonManifest.id]);
+const BUTTON_ACTION_PROPS = new Set(['onClick']);
 function isResourceComponent(value:unknown):value is React.ComponentType<Record<string,unknown>> {return typeof value==='function' || (typeof value==='object' && value!==null && '$$typeof' in value && (value.$$typeof===Symbol.for('react.forward_ref') || value.$$typeof===Symbol.for('react.memo')));}
 
 function getParentOrigin(): string | null {
@@ -79,12 +91,17 @@ export default function PreviewHost() {
         }
         return;
       }
+      const isButtonResource = BUTTON_RESOURCE_IDS.has(resourceId);
+      const baseComponent = isButtonResource ? getBrowserPreviewBaseRenderer(resourceId) : undefined;
       const loader=Object.entries(resourceModules).find(([modulePath])=>modulePath.endsWith(`/${resourceId}/index.tsx`))?.[1];
-      if(!loader)throw new Error(`Unknown resource: ${resourceId}`);
+      if(!loader && !baseComponent)throw new Error(`Unknown resource: ${resourceId}`);
       const metadataLoader=Object.entries(resourceManifests).find(([modulePath])=>modulePath.endsWith(`/${resourceId}/manifest.json`))?.[1];
-      const [module,metadata]=await Promise.all([loader(),metadataLoader?.()]);
+      const [module,metadata]=await Promise.all([
+        loader?.(),
+        baseComponent ? Promise.resolve({default:buttonManifest}) : metadataLoader?.(),
+      ]);
       if(!disposed){setProps(metadata?.default.preview.defaultProps??{});setResourceName(metadata?.default.name??fallbackName);}
-      const exported=Object.entries(module).find(([name,value])=>/^[A-Z]/.test(name) && isResourceComponent(value))?.[1];
+      const exported=baseComponent ?? Object.entries(module ?? {}).find(([name,value])=>/^[A-Z]/.test(name) && isResourceComponent(value))?.[1];
       if(!isResourceComponent(exported))throw new Error('Resource has no valid React component export.');
       if(!disposed)setComponent(()=>exported);
     };
@@ -252,7 +269,7 @@ export default function PreviewHost() {
       setActionStatus('Example action confirmed.');
     },
     onPageChange: (currentPage: number) => setProps(previous => ({ ...previous, currentPage })),
-    ...(['button', 'icon-button', 'tag-chip', 'split-button'].includes(resourceId) ? { onClick } : {}),
+    ...([buttonManifest.slug, buttonManifest.id, 'icon-button', 'tag-chip', 'split-button'].includes(resourceId) ? { onClick } : {}),
     onCtaClick: () => setActionStatus('Start action previewed.'),
     onLaunch: () => setActionStatus('Launch action previewed.'),
     onOpen: () => setActionStatus('Open action previewed.'),
@@ -278,8 +295,10 @@ export default function PreviewHost() {
   const interactiveProps = {
     ...props,
     ...(isPrivateVerso
-      ? filterPrivatePreviewActionProps(previewActionProps, privatePropNames)
-      : previewActionProps),
+      ? filterPreviewActionProps(previewActionProps, privatePropNames)
+      : BUTTON_RESOURCE_IDS.has(resourceId)
+        ? filterPreviewActionProps(previewActionProps, BUTTON_ACTION_PROPS)
+        : previewActionProps),
   };
   const available = Boolean(component);
 
@@ -296,13 +315,21 @@ export default function PreviewHost() {
     }
 
     return (
-      <div role="alert" aria-live="assertive" className="flex min-h-screen items-center justify-center bg-white p-6 text-sm text-neutral-800">
-        Preview failed: {loadError}. The original source remains available; no substitute component is rendered.
-      </div>
+      <main className="min-h-screen">
+        <div role="alert" aria-live="assertive" className="flex min-h-screen items-center justify-center bg-white p-6 text-sm text-neutral-800">
+          Preview failed: {loadError}. The original source remains available; no substitute component is rendered.
+        </div>
+      </main>
     );
   }
 
-  if(!available || !component) return <div role="status" className="p-6">Loading the actual resource…</div>;
+  if(!available || !component) {
+    return (
+      <main className="min-h-screen">
+        <div role="status" className="p-6">Loading the actual resource…</div>
+      </main>
+    );
+  }
 
   const deviceStyles: Record<PreviewDevice, string> = {
     desktop: 'w-full',
@@ -316,7 +343,7 @@ export default function PreviewHost() {
     </div>
   );
   return (
-    <div
+    <main
       ref={containerRef}
       className={`min-h-screen w-full transition-colors ${
         reducedMotion ? 'motion-reduce:transition-none' : ''
@@ -332,6 +359,6 @@ export default function PreviewHost() {
           </PrivateVersoProvider>
         ) : previewContent}
       </div>
-    </div>
+    </main>
   );
 }
