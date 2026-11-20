@@ -6,9 +6,11 @@ export targets, model architectures, catalogue categories, labs, archetypes,
 MCP product areas, marketplace systems, hosting architectures or Workbench modes.
 Every change must improve reliability, usefulness or coherence of existing work.
 
-Canonical integration candidate: `consolidation/product-hardening`. `main` remains
-the protected released branch until a reviewed PR with green CI is merged.
-Legacy branches are evidence/reference, never parallel sources of product truth.
+`main` is the single protected canonical branch; work proceeds through short-lived scoped PR branches with green CI and resolved review threads. Legacy integration/experimental branches have been consolidated into `main` or archived via git tag (`D-068`), and `docs/ULTIMATE_VISION.md` captures the post-hardening public launch roadmap.
+
+### 2026-11-20 repository cleanup and ultimate product vision
+
+Consolidated open hardening PRs `#18` (domain-brief specializations and secondary action screen target fix), `#19` (isolated preview runtime splitting, landmark/contrast fixes, and test config separation), and `#20` (brief fidelity, truthful runnable-export validation, and Nocturne/light/dark contrast hardening) into one green candidate off `main`. Removed 1.69 GB (16,226 obsolete tracked evidence/dump entries under `quality/evidence/` and `audit/evidence/`) while keeping markdown summaries, git history, relocated test/benchmark fixtures (`packages/cli/src/__tests__/fixtures/verify-installed-cli.mjs` and `quality/benchmarks/model-benchmark-cases.json`), and `.gitignore` coverage for locally generated runtime artifacts (`D-068`). Added `docs/ULTIMATE_VISION.md` defining the public launch roadmap inside the £0–£8/month target (£20/month hard cap). Steps `39`, `45`, and `48` remain open until the full release-candidate verification and owner approval complete.
 
 
 ## Current release evidence (2026-11-07)

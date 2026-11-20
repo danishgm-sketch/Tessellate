@@ -7,7 +7,7 @@ test('documentation index links to canonical repository contracts', async ({ pag
 
   expect(response?.status()).toBe(200);
   const documentationLinks = page.getByRole('navigation', { name: 'Documentation' }).getByRole('link');
-  await expect(documentationLinks).toHaveCount(16);
+  await expect(documentationLinks).toHaveCount(17);
   await expect(page.locator('a[href="/docs/grand-goal-progress/"]')).toHaveCount(0);
   const internalProgressDocument = await page.request.get('/docs/grand-goal-progress/');
   expect(internalProgressDocument.status()).toBe(404);
@@ -18,6 +18,7 @@ test('documentation index links to canonical repository contracts', async ({ pag
     'design-system',
     'product-spec',
     'quality-security',
+    'ultimate-vision',
     'workbench-spec',
   ]) {
     await expect(page.locator(`a[href="/docs/${slug}/"]`)).toBeVisible();
@@ -31,7 +32,7 @@ test('documentation index links to canonical repository contracts', async ({ pag
   await mkdir(evidenceDirectory, { recursive: true });
   const screenshot = path.join(evidenceDirectory, `${testInfo.project.name}-after.png`);
   await page.goto('/docs/');
-  await expect(page.getByRole('navigation', { name: 'Documentation' }).getByRole('link')).toHaveCount(16);
+  await expect(page.getByRole('navigation', { name: 'Documentation' }).getByRole('link')).toHaveCount(17);
   await page.screenshot({ path: screenshot, fullPage: true });
   await writeFile(path.join(evidenceDirectory, `${testInfo.project.name}-after.json`), `${JSON.stringify({
     capturedAt: new Date().toISOString(),

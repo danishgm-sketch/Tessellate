@@ -666,3 +666,17 @@ documented and covered by header and browser tests.
 **Product impact:** The prior owner-permission blocker is resolved for owner-authored work. No resource is yet certified for the public catalogue, Gold runtime, Workbench, registry, CLI/MCP, Sites, or exports. The current implementation remains local-only and uses no added service or spend.
 **Evidence:** Owner's written confirmation on 2026-11-07; the owner-provided Verso source README; `quality/VERSO_LOCAL_INTEGRATION_EVIDENCE.md`; and `quality/VERSO_NATIVE_FIT_MAP.md`.
 **Status:** Owner authorization recorded; per-resource review and hardening release gates remain open (1,053 items remain uncertified for public product inclusion).
+
+### D-068 — Consolidate to single `main` branch, untrack 1.69 GB raw evidence dumps, and adopt `docs/ULTIMATE_VISION.md`
+
+**Date:** 2026-11-20
+**Context:** Over 30 stale branches and worktrees and 1.69 GB (16,000+ tracked raw screenshot/JSON/archive files) under `quality/evidence/` and `audit/evidence/` slowed checkouts, broke default Win32 checkouts without global long-path flags, and split active fixes across unmerged PRs `#18`, `#19`, `#20`, `#3`, `#4`, and experimental `claude/new-session-1e6729`.
+**Decision:**
+1. Integrate verified fixes and improvements from open hardening PRs `#18`, `#19`, and `#20` cleanly into protected `main` via PR with green CI, then remove stale local/remote branches and worktrees so `main` is the sole canonical branch.
+2. Preserve unmerged experimental Contract v2 work from `claude/new-session-1e6729` (commit `fa663bfa`) via annotated git tag `archive/claude-contract-v2` rather than force-merging incompatible changes or discarding reference history.
+3. Relocate the only source-referenced test/benchmark assets (`packages/cli/src/__tests__/fixtures/verify-installed-cli.mjs` and `quality/benchmarks/model-benchmark-cases.json`), untrack raw dumps under `quality/evidence/` and `audit/evidence/` from `HEAD` (keeping git history intact without history rewrite), gitignore those directories for local test runs, and retain all markdown evidence summaries (`quality/STEP_*.md`, `audit/RUNTIME_AUDIT.md`).
+4. Adopt `docs/ULTIMATE_VISION.md` as the post-hardening public product ambition charter within existing cost (£0–£8/month goal, £20/month hard ceiling), open-source, security-isolation, accessibility, and stack boundaries.
+**Alternatives rejected:** Rewriting shared git history via filter-repo (unnecessary force-push hazard); leaving fragmented long-lived branches (`consolidation/product-hardening`, `codex/*`); discarding unmerged `claude/new-session-1e6729` reference ideas without tagging; relaxing hardening gates for the vision roadmap.
+**Cost impact:** £0 additional; avoids recurring runner/checkout bloat.
+**Security impact:** Preserves strict preview isolation, secret-exclusion audits (which gracefully skip missing local evidence dirs), and protected `main` CI checks.
+**Status:** Adopted and implemented on `repository_cleanup_ultimate_vision` for PR merge into `main`.

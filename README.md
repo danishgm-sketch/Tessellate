@@ -4,7 +4,7 @@ Tessellate composes editable product interfaces from a brief, a shared resource 
 
 ## Current status: product hardening
 
-Product expansion is frozen. The owner-directed [hardening programme](docs/PRODUCT_HARDENING.md) governs work in order, beginning with source consolidation and a green baseline. The integration candidate is `consolidation/product-hardening`; `main` is protected and changes require a PR and passing CI. Previous build-order checkmarks are historical records, not current production certification.
+Product expansion is frozen until the owner-directed [hardening programme](docs/PRODUCT_HARDENING.md) release gate passes. Development now lands cleanly on protected `main` through scoped PR branches with passing CI; legacy integration and experimental branches have been consolidated or archived (`D-068`). Beyond the release gate, [the ultimate product vision](docs/ULTIMATE_VISION.md) defines the public-launch target and post-v1.0 roadmap. Previous build-order checkmarks are historical records, not current production certification.
 
 [Source reconciliation](docs/CONSOLIDATION.md) explains which fixes are retained from main, the deployed audit and the laptop backend. No broad branch merge or new architecture is implied. The feature inventory, certification matrix and capability tiers follow after the baseline passes.
 
@@ -70,6 +70,6 @@ Infrastructure target: £0–£8/month, with an absolute pre-commercial £20/mon
 
 ## Working contracts
 
-Read [AGENTS.md](AGENTS.md), then its mandatory specification sequence before implementation. The current programme takes precedence over the historical feature-build order. The principal specifications are [product](docs/PRODUCT_SPEC.md), [architecture](docs/ARCHITECTURE.md), [data contracts](docs/DATA_CONTRACTS.md), [composition](docs/COMPOSITION_ENGINE.md), [Workbench](docs/WORKBENCH_SPEC.md), [design](docs/DESIGN_SYSTEM.md), [quality/security](docs/QUALITY_SECURITY.md), [deployment/cost](docs/DEPLOYMENT_COST.md) and [decisions](docs/DECISIONS.md).
+Read [AGENTS.md](AGENTS.md), then its mandatory specification sequence before implementation. The current programme takes precedence over the historical feature-build order. The principal specifications are [product](docs/PRODUCT_SPEC.md), [ultimate vision](docs/ULTIMATE_VISION.md), [architecture](docs/ARCHITECTURE.md), [data contracts](docs/DATA_CONTRACTS.md), [composition](docs/COMPOSITION_ENGINE.md), [Workbench](docs/WORKBENCH_SPEC.md), [design](docs/DESIGN_SYSTEM.md), [quality/security](docs/QUALITY_SECURITY.md), [deployment/cost](docs/DEPLOYMENT_COST.md) and [decisions](docs/DECISIONS.md).
 
 Preserve the calm editorial public shell and the dense design-instrument Workbench described in [reference directions](design/REFERENCE_DIRECTIONS.md). No new major features until the programme's final release gate passes.
