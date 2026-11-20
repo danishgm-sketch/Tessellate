@@ -1,5 +1,6 @@
 import type { ProjectManifest } from '@tessellate/schemas';
 import { normalizeDesignTokens } from '@tessellate/renderer';
+import { assertRunnableExportable } from '../validation.js';
 
 function sanitizeName(str: string): string {
   const clean = str.replace(/[^a-zA-Z0-9]/g, ' ').trim();
@@ -12,6 +13,7 @@ function tsString(value: string): string {
 }
 
 export function generateExpoNativeSourceTree(manifest: ProjectManifest): Record<string, string> {
+  assertRunnableExportable(manifest);
   const files: Record<string, string> = {};
   const norm = normalizeDesignTokens(manifest.designDNA);
   const slug = manifest.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'tessellate-native';

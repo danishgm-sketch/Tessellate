@@ -97,8 +97,19 @@ Archetype selection gives high-information domain phrases more weight than broad
 cues such as “workspace”, “stream” or “order”. Supporting keywords can refine a
 match, but a secondary archetype is emitted only when it has corroborating
 weight (at least 28 points and 45% of the leading score). Hyphenated phrases
-are normalized before matching. The 0–100 weights are relative deterministic
-ranking signals, not calibrated probabilities.
+are normalized before matching. Phrase cues use explicit token boundaries; an
+ambiguous generic plural suffix was removed after the verb “stores” caused a false
+Ecommerce match. The 0–100 weights are relative deterministic ranking signals,
+not calibrated probabilities.
+
+Explicitly negated archetype cues are excluded from ranking through the next
+sentence, clause, or contrast marker. Coordinated positive predicates begin a
+new signal within that span; common limiting constructions such as “not only”
+and “no more than” are not exclusions. “No mobile signal” is treated as an
+offline field condition rather than an exclusion of mobile use. These rules are
+bounded lexical heuristics: they do not parse arbitrary sentence structure, so
+the interpreter must keep exposing assumptions and passing adversarial briefs
+through the classifier regression suite.
 
 ProductModel metric priors and forbidden-pattern defaults come from the
 selected archetype definition. A matching blueprint may still shape downstream
@@ -107,6 +118,25 @@ archetype’s trust, collaboration, navigation or mobile assumptions. Fiscal
 transaction elevation is limited to explicit payment, checkout or money
 transfer language; operational work orders and procurement requests are not
 treated as financial transactions.
+
+When an existing archetype has a narrowly defined, high-signal domain match,
+the interpreter may replace its generic entities, workflows, objectives, and
+screen recommendations with that validated domain plan. It retains the existing
+archetype identifier and adds no new route or archetype. The meal-planning and
+community-pantry plans are examples; their explicit operations do not create
+financial workflows, and unsupported roles continue to block executable
+exports.
+
+Public and community libraries specialize within the existing Media archetype
+only when an explicit library anchor is supported by catalogue, holds, branch,
+or reading-programme language. Lending and reservations do not imply Ecommerce
+or Fintech. The deterministic plan keeps member holds and reading history
+private, emphasizes accessible and low-bandwidth use, and leaves catalogue,
+branch availability, hold, event, reading-control, and privacy capabilities
+unresolved when no eligible resource exists. Those requirements remain in the
+manifest, and executable export stays blocked until each required role is
+resolved; catalogue search copy must identify the library example rather than
+reuse newsroom language.
 
 ### AI interpretation
 
@@ -158,6 +188,10 @@ Each screen node contains:
 - device relevance.
 
 The planner preserves the interpreter's recommended screen names, types, purposes, jobs, and required flags. It derives route suggestions from screen semantics and the ProductModel's entities, validates route uniqueness, groups by screen grammar, and connects the public entry to application destinations. It does not append a generic dashboard, sign-in, settings, documentation, or entity-detail screen when the ProductModel did not recommend one. If an explicit required-screen constraint cannot be matched to a recommendation or supported screen class, planning fails with an actionable error.
+
+### Community emergency response specialization
+
+Keep this in the existing ERP & Operations archetype. Apply the specialization only when a mutual-aid, community-emergency, disaster-response, or humanitarian-relief anchor appears together with operational context such as shelters, neighborhood hubs, relief supplies, evacuation, severe weather, volunteer shifts, or welfare checks. The plan covers coordination overview, minimal aid-request intake, shelter/hub capacity, supplies, volunteer handover, and aggregated public status. It can describe manual reconciliation after an outage as a requirement, but must not imply that local persistence, synchronization, SMS dispatch, live mapping, or emergency prioritisation is implemented. Public status stays aggregate-only; do not introduce identity, contact, immigration, diagnosis, payment, or fundraising fields. Unsupported operational roles remain explicit instead of being replaced with generic forms or fictitious controls.
 
 ### Example
 
@@ -340,6 +374,8 @@ Direction generation is deterministic by default using controlled divergence.
 - maintain content/jobs/constraints.
 
 Names are selected from a controlled vocabulary by archetype/personality combination. AI may propose better names and rationale but does not alter structural facts unless validated.
+
+A narrowly recognized product capability may select a domain-specific name pack while preserving the three direction types and their product jobs. Public-library service directions use **Community Catalogue**, **Reading Commons**, and **Branch Network**, with a **Community Library** preview brand. Their project manifests retain the concise direction name so the Workbench title stays fully readable on narrow screens.
 
 ## 8. Composition grammar
 

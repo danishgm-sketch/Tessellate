@@ -123,6 +123,18 @@ function resolveBestResourceForRole(
     (res) => isResourceComposerEligible(res) && resourceMatchesRole(res, semanticRole)
   );
 
+  if (candidates.length === 0) {
+    return {
+      resource: null,
+      ref: undefined,
+      diagnostic: {
+        code: 'UNRESOLVED_REQUIRED_ROLE',
+        role: semanticRole,
+        reason: `No composer-eligible catalogue resource provides the required role "${semanticRole}".`,
+      },
+    };
+  }
+
   // 2. Filter by hard constraints — STRICT FAIL CLOSED
   const validCandidates: ResourceManifest[] = [];
   const rejectedReasons: string[] = [];
@@ -443,11 +455,27 @@ export function composeProjectForDirection(options: DirectionCompositionOptions)
   }
 
   const manifestId = `proj-${direction.id}-${String(seed).replace(/[^a-z0-9]/gi, '')}`;
+  const isPublicLibraryService = productModel.requiredCapabilities.includes(
+    'public-library-service-workflow'
+  );
+  const isCommunityEmergencyResponse = productModel.requiredCapabilities.includes(
+    'community-emergency-response-workflow'
+  );
+  const productLabel = isPublicLibraryService || isCommunityEmergencyResponse
+    ? isPublicLibraryService
+      ? 'Public Library Service'
+      : 'Community Emergency Response'
+    : productModel.entities.some((entity) => entity.name === 'Employee')
+      ? 'Employee experience'
+      : primaryArchetype.toUpperCase();
+  const manifestName = isPublicLibraryService || isCommunityEmergencyResponse
+    ? direction.name
+    : `${direction.name} — ${productLabel}`;
 
   const manifest: ProjectManifest = {
     schemaVersion: '1.0.0',
     id: manifestId,
-    name: `${direction.name} — ${productModel.entities.some((entity) => entity.name === 'Employee') ? 'Employee experience' : primaryArchetype.toUpperCase()}`,
+    name: manifestName,
     description: options.briefDescription ?? direction.rationale,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),

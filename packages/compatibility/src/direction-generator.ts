@@ -73,6 +73,36 @@ const DIRECTION_NAMES: Record<
   },
 };
 
+const PUBLIC_LIBRARY_DIRECTION_NAMES: (typeof DIRECTION_NAMES)['default'] = {
+  conservative: {
+    name: 'Community Catalogue',
+    tagline: 'Clear book discovery, branch availability, and private holds.',
+  },
+  expressive: {
+    name: 'Reading Commons',
+    tagline: 'An inviting editorial view of books and local reading programmes.',
+  },
+  structural: {
+    name: 'Branch Network',
+    tagline: 'A connected view of collections, branch services, and events.',
+  },
+};
+
+const COMMUNITY_EMERGENCY_DIRECTION_NAMES: (typeof DIRECTION_NAMES)['default'] = {
+  conservative: {
+    name: 'Coordination Desk',
+    tagline: 'Clear requests, hub capacity, supply checks, and shift handovers.',
+  },
+  expressive: {
+    name: 'Neighbourhood Commons',
+    tagline: 'An approachable view of safe pickup points and shared capacity.',
+  },
+  structural: {
+    name: 'Field Operations',
+    tagline: 'A compact workspace for requests, supplies, and volunteer handovers.',
+  },
+};
+
 /**
  * Deterministically generates exactly three distinct product directions:
  * - Direction A: Conservative Fit (closest to baseline, familiar grammar, high a11y/perf priority)
@@ -88,7 +118,17 @@ export function generateDirections(input: DirectionGenerationInput): DirectionGe
   const rng = new SeededRandom(seed);
 
   const primaryArch = productModel.productArchetypes[0]?.tag ?? 'saas';
-  const namePack = DIRECTION_NAMES[primaryArch] ?? DIRECTION_NAMES['default']!;
+  const isPublicLibrary = productModel.requiredCapabilities.includes(
+    'public-library-service-workflow'
+  );
+  const isCommunityEmergencyResponse = productModel.requiredCapabilities.includes(
+    'community-emergency-response-workflow'
+  );
+  const namePack = isCommunityEmergencyResponse
+    ? COMMUNITY_EMERGENCY_DIRECTION_NAMES
+    : isPublicLibrary
+      ? PUBLIC_LIBRARY_DIRECTION_NAMES
+      : (DIRECTION_NAMES[primaryArch] ?? DIRECTION_NAMES['default']!);
 
   // 1. DIRECTION A: Conservative Fit
   const dnaA: DesignDNA = {
@@ -109,8 +149,9 @@ export function generateDirections(input: DirectionGenerationInput): DirectionGe
     type: 'conservative',
     name: namePack.conservative.name,
     tagline: namePack.conservative.tagline,
-    rationale:
-      'A dependable starting point with familiar sidebar navigation and clear, predictable controls.',
+    rationale: isCommunityEmergencyResponse
+      ? 'A clear review sequence keeps requests, hub capacity, supply checks, and handovers easy to follow.'
+      : 'A dependable starting point with familiar sidebar navigation and clear, predictable controls.',
     dna: {...dnaA,navigationModel:navModelA},
     navigationModel: navModelA,
     primaryGrammarId: grammarA.id,
@@ -150,8 +191,9 @@ export function generateDirections(input: DirectionGenerationInput): DirectionGe
     type: 'expressive',
     name: namePack.expressive.name,
     tagline: namePack.expressive.tagline,
-    rationale:
-      'A more expressive visual style with lively motion and stronger typography, while keeping familiar navigation and the same tasks.',
+    rationale: isCommunityEmergencyResponse
+      ? 'A more welcoming public-service direction makes safe pickup guidance and shared capacity easier to scan.'
+      : 'A more expressive visual style with lively motion and stronger typography, while keeping familiar navigation and the same tasks.',
     dna: {...dnaB,navigationModel:navModelB},
     navigationModel: navModelB,
     primaryGrammarId: grammarB.id,
@@ -196,8 +238,9 @@ export function generateDirections(input: DirectionGenerationInput): DirectionGe
     type: 'structural-alternative',
     name: namePack.structural.name,
     tagline: namePack.structural.tagline,
-    rationale:
-      'A different workspace arrangement brings related tasks into a three-column view, with a navigation rail and more information on screen.',
+    rationale: isCommunityEmergencyResponse
+      ? 'A denser operations view brings request review, supply checks, and shift handovers close together.'
+      : 'A different workspace arrangement brings related tasks into a three-column view, with a navigation rail and more information on screen.',
     dna: {...dnaC,navigationModel:navModelC},
     navigationModel: navModelC,
     primaryGrammarId: grammarC.id,
