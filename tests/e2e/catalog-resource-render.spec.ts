@@ -732,8 +732,10 @@ test('canonical /r resource detail route preserves title, preview, and responsiv
   }
 
   expect(errors, `Canonical resource route browser errors: ${errors.join('\n')}`).toEqual([]);
+  const reportPath = path.resolve(process.cwd(), 'audit/evidence/step-06/results/canonical-resource-route.json');
+  mkdirSync(path.dirname(reportPath), { recursive: true });
   await import('node:fs/promises').then(({ writeFile }) => writeFile(
-    path.resolve(process.cwd(), 'audit/evidence/step-06/results/canonical-resource-route.json'),
+    reportPath,
     JSON.stringify({ route: `/r/${slug}/`, errors, results }, null, 2),
   ));
 });
@@ -825,8 +827,10 @@ test('marketing CTA header reflows without overflow in compact resource previews
   expect(errors, `Browser errors: ${errors.join('\n')}`).toEqual([]);
   expect(failedRequests, `Failed requests: ${failedRequests.join('\n')}`).toEqual([]);
   expect(httpErrors, `HTTP errors: ${httpErrors.join('\n')}`).toEqual([]);
+  const reportPath = path.resolve(process.cwd(), 'audit/evidence/step-06/results/marketing-nav-cta-responsive.json');
+  mkdirSync(path.dirname(reportPath), { recursive: true });
   await import('node:fs/promises').then(({ writeFile }) => writeFile(
-    path.resolve(process.cwd(), 'audit/evidence/step-06/results/marketing-nav-cta-responsive.json'),
+    reportPath,
     JSON.stringify({ route: '/resources/marketing-nav-cta/', status: response?.status() ?? null, errors, warnings, failedRequests, httpErrors, results }, null, 2),
   ));
 });

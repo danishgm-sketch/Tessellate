@@ -315,7 +315,7 @@ export default function PreviewHost() {
     }
 
     return (
-      <main className="min-h-screen">
+      <main className="min-h-screen" aria-label={`${resourceName} preview error`}>
         <div role="alert" aria-live="assertive" className="flex min-h-screen items-center justify-center bg-white p-6 text-sm text-neutral-800">
           Preview failed: {loadError}. The original source remains available; no substitute component is rendered.
         </div>
@@ -325,7 +325,7 @@ export default function PreviewHost() {
 
   if(!available || !component) {
     return (
-      <main className="min-h-screen">
+      <main className="min-h-screen" aria-label={`${resourceName} preview loading`}>
         <div role="status" className="p-6">Loading the actual resource…</div>
       </main>
     );
@@ -345,6 +345,7 @@ export default function PreviewHost() {
   return (
     <main
       ref={containerRef}
+      aria-label={`${resourceName} preview`}
       className={`min-h-screen w-full transition-colors ${
         reducedMotion ? 'motion-reduce:transition-none' : ''
       }`}
