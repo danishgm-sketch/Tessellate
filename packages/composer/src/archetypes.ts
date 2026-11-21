@@ -746,7 +746,11 @@ const NEGATION_CUE = /\b(?:no|without|not|never|avoid|avoids|avoided|excluding|e
 const NEGATION_SCOPE_BREAK = /[.!?;]|\b(?:but|however|yet|although|except|unless|instead)\b/gi;
 const COORDINATED_PREDICATE = /\b(?:and|or)\s+(?:(?:also|still|now)\s+)?(?:(?:we|they|it|this|our|their|users?|members?|customers?|households?|the\s+app|the\s+product|the\s+platform)\s+)?(?:can|could|will|would|must|should|may|might|do|does|did|have|has|had|are|is|was|were|support|supports|offer|offers|include|includes|provide|provides|process|processes|track|tracks|transfer|transfers|handle|handles|use|uses|manage|manages)\b/i;
 
-function isNegatedKeywordOccurrence(normalizedText: string, matchIndex: number): boolean {
+function isNegatedKeywordOccurrence(
+  normalizedText: string,
+  matchIndex: number,
+  rawLowerText: string = normalizedText
+): boolean {
   // In offline/field contexts, “no mobile signal” describes the network
   // environment around a mobile user, rather than excluding mobile use.
   if (/^mobile\s+(?:signal|coverage)\b/i.test(normalizedText.slice(matchIndex))) {
@@ -771,6 +775,25 @@ function isNegatedKeywordOccurrence(normalizedText: string, matchIndex: number):
     const isDoubleNegative = /\bnot$/i.test(beforeCue) && /^(?:without|excluding|exclude|excluded)\b/i.test(afterCue);
 
     if (isCounterexample || isDoubleNegative) continue;
+
+    // Hyphen- or underscore-joined compounds such as "no-code" or "no-payment"
+    // negate at most the tokens inside the compound modifier, never the rest of the clause.
+    const absCueEnd = scopeStart + cueIndex + cue[0].length;
+    const rawCharAfterCue = rawLowerText[absCueEnd];
+    if (rawCharAfterCue === '-' || rawCharAfterCue === '_') {
+      const compoundTail = rawLowerText.slice(absCueEnd).match(/^(?:[-_]+[a-z0-9]+)+/i);
+      const compoundEnd = absCueEnd + (compoundTail ? compoundTail[0].length : 0);
+      if (matchIndex >= compoundEnd) continue;
+    }
+
+    if (
+      cue[0].toLowerCase() === 'no' &&
+      /^code\s+\S/i.test(afterCue) &&
+      !/^code\b/i.test(normalizedText.slice(matchIndex))
+    ) {
+      continue;
+    }
+
     latestNegationEnd = cueIndex + cue[0].length;
   }
 
@@ -780,13 +803,17 @@ function isNegatedKeywordOccurrence(normalizedText: string, matchIndex: number):
   return !COORDINATED_PREDICATE.test(afterLatestNegation);
 }
 
-function matchesKeyword(normalizedText: string, keyword: string): boolean {
+function matchesKeyword(
+  normalizedText: string,
+  keyword: string,
+  rawLowerText: string = normalizedText
+): boolean {
   const normalizedKeyword = keyword.toLowerCase().replace(/[-_]+/g, ' ');
   const escaped = normalizedKeyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const matcher = new RegExp('\\b' + escaped + '\\b', 'gi');
 
   for (const match of normalizedText.matchAll(matcher)) {
-    if (match.index !== undefined && !isNegatedKeywordOccurrence(normalizedText, match.index)) {
+    if (match.index !== undefined && !isNegatedKeywordOccurrence(normalizedText, match.index, rawLowerText)) {
       return true;
     }
   }
@@ -795,16 +822,18 @@ function matchesKeyword(normalizedText: string, keyword: string): boolean {
 }
 
 export function hasPositiveArchetypeCue(briefText: string, cue: string): boolean {
-  const normalizedText = briefText.toLowerCase().replace(/[-_]+/g, ' ');
-  return matchesKeyword(normalizedText, cue);
+  const rawLower = briefText.toLowerCase();
+  const normalizedText = rawLower.replace(/[-_]/g, ' ');
+  return matchesKeyword(normalizedText, cue, rawLower);
 }
 
 export function hasPositivePatternMatch(briefText: string, pattern: RegExp): boolean {
-  const normalizedText = briefText.toLowerCase().replace(/[-_]+/g, ' ');
+  const rawLower = briefText.toLowerCase();
+  const normalizedText = rawLower.replace(/[-_]/g, ' ');
   const matcher = new RegExp(pattern.source, pattern.flags.replace(/[gy]/g, '') + 'g');
 
   for (const match of normalizedText.matchAll(matcher)) {
-    if (match.index !== undefined && !isNegatedKeywordOccurrence(normalizedText, match.index)) {
+    if (match.index !== undefined && !isNegatedKeywordOccurrence(normalizedText, match.index, rawLower)) {
       return true;
     }
   }
@@ -833,20 +862,21 @@ export function detectProductArchetypes(
     return [{ tag: 'saas', weight: 100 }];
   }
 
-  const normalized = briefText.toLowerCase().replace(/[-_]+/g, ' ');
+  const rawLower = briefText.toLowerCase();
+  const normalized = rawLower.replace(/[-_]/g, ' ');
   const scores: Record<string, number> = {};
 
   for (const [key, arch] of Object.entries(PRODUCT_ARCHETYPES)) {
     let score = 0;
     const primarySignals = ARCHETYPE_PRIMARY_SIGNALS[key] ?? [];
-    const matchedPrimarySignals = primarySignals.filter((signal) => matchesKeyword(normalized, signal));
+    const matchedPrimarySignals = primarySignals.filter((signal) => matchesKeyword(normalized, signal, rawLower));
 
     // Specific language is stronger evidence than a collection of generic
     // cues. Multi-word signals receive a small additional weight.
     score += matchedPrimarySignals.reduce((total, signal) => total + (signal.includes(' ') || signal.includes('-') ? 60 : 48), 0);
 
     for (const kw of arch.keywords) {
-      if (!matchedPrimarySignals.includes(kw) && matchesKeyword(normalized, kw)) score += kw.includes(' ') ? 16 : 8;
+      if (!matchedPrimarySignals.includes(kw) && matchesKeyword(normalized, kw, rawLower)) score += kw.includes(' ') ? 16 : 8;
     }
 
     if (score > 0) {
@@ -864,7 +894,7 @@ export function detectProductArchetypes(
   const primaryEntries = entries.filter(([tag, score]) => {
     if (tag !== 'intelligence-research') return true;
     const hasResearchAnchor = (ARCHETYPE_PRIMARY_SIGNALS[tag] ?? []).some((signal) =>
-      matchesKeyword(normalized, signal)
+      matchesKeyword(normalized, signal, rawLower)
     );
     return hasResearchAnchor || score >= MIN_UNANCHORED_RESEARCH_SCORE;
   });

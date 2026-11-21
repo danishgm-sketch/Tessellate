@@ -43,6 +43,8 @@ try {
     finalFileAcl = @{ owner = 'full-control'; system = 'full-control'; builtInUsers = 'no-access' }
     test = 'scripts/tests/Test-LaptopSecretAcl.ps1'
   } | ConvertTo-Json -Depth 5
+  $evidenceDirectory = Split-Path -Path $evidencePath -Parent
+  New-Item -ItemType Directory -Path $evidenceDirectory -Force | Out-Null
   [IO.File]::WriteAllText($evidencePath, $evidence + "`n", (New-Object Text.UTF8Encoding $false))
 
   Write-Output 'PASS: existing secret file ACL is restricted to the owner and SYSTEM.'

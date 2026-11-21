@@ -14,6 +14,7 @@ import {
   getGoldenBrief,
   getAllGoldenBriefs,
 } from '../index.js';
+import { hasPositiveArchetypeCue } from '../archetypes.js';
 
 describe('Product Archetypes (18 Categories)', () => {
   it('defines all 18 product archetypes', () => {
@@ -689,5 +690,21 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
       expect(screenIds).toContain(edge.fromScreenId);
       expect(screenIds).toContain(edge.toScreenId);
     }
+  });
+
+  it('scopes hyphenated compound modifiers like no-code without negating following archetype cues', () => {
+    const marketplaceMatches = detectProductArchetypes('A no-code marketplace for buyers and sellers');
+    expect(marketplaceMatches[0]?.tag).toBe('marketplace');
+
+    const ecommerceMatches = detectProductArchetypes('A no-code ecommerce storefront for independent shops');
+    expect(ecommerceMatches[0]?.tag).toBe('ecommerce');
+
+    expect(hasPositiveArchetypeCue('A no-payment bicycle repair co-op', 'payment')).toBe(false);
+    expect(hasPositiveArchetypeCue('A no-payment bicycle repair co-op', 'bicycle')).toBe(true);
+
+    const mealPlannerMatches = detectProductArchetypes(
+      'A shared meal planner with no payments, transfers, or banking'
+    );
+    expect(mealPlannerMatches[0]?.tag).toBe('productivity');
   });
 });
