@@ -755,6 +755,11 @@ const AUDIENCE_RELATIVE_PROHIBITION =
   /^\s*(?:allowed|permitted|able|supposed|meant|expected|intended|eligible|authorized|authorised)\b/i;
 const AUDIENCE_PURPOSE_TRANSITION =
   /,|\bto\s+(?:build|create|design|manage|track|plan|organize|organise|coordinate|run|use|browse|book|schedule|explore|handle|review|analyze|analyse|access)\b/i;
+const AVOID_CUE = /^avoid(?:s|ed)?$/i;
+const AVOID_INSTRUMENTAL_TRANSITION =
+  /\b(?:by|using|through|via)\b|\bwith\s+(?:a|an|the|our|this|your)\b/i;
+const AVOIDED_UI_SURFACE =
+  /\b(?:app|application|platform|portal|dashboard|tool|site|storefront|workflow|workflows|screen|screens|page|pages|feature|features|module|modules|widget|widgets|checkout|billing|banking|finance|fintech|payment|payments|transfer|transfers)\b/i;
 
 function isNegatedKeywordOccurrence(
   normalizedText: string,
@@ -820,12 +825,21 @@ function isNegatedKeywordOccurrence(
     isRelativeAudienceNegation &&
     !AUDIENCE_RELATIVE_PROHIBITION.test(afterLatestNegation) &&
     AUDIENCE_PURPOSE_TRANSITION.test(afterLatestNegation);
+  const avoidTransitionMatch = AVOID_CUE.test(latestNegationCue)
+    ? afterLatestNegation.match(AVOID_INSTRUMENTAL_TRANSITION)
+    : null;
+  const endedByAvoidSolution =
+    Boolean(avoidTransitionMatch) &&
+    !AVOIDED_UI_SURFACE.test(
+      afterLatestNegation.slice(0, avoidTransitionMatch?.index ?? 0)
+    );
 
   return !(
     endedByCoordinatedPredicate ||
     endedByOptionalPrerequisite ||
     endedByClauseTransition ||
-    endedByAudienceClause
+    endedByAudienceClause ||
+    endedByAvoidSolution
   );
 }
 

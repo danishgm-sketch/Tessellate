@@ -1,39 +1,89 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export type TabWorkspaceNavVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface TabWorkspaceNavProps {
   variant?: TabWorkspaceNavVariant;
   activeId?: string;
+  onSelectTab?: (id: string) => void;
+  onCloseTab?: (id: string) => void;
 }
 
-export function TabWorkspaceNav({ variant = 'quiet', activeId = '1' }: TabWorkspaceNavProps) {
-  let bar = 'bg-neutral-100 border-b border-neutral-200';
-  let activeTab = 'bg-white text-neutral-900 border-r border-l border-neutral-200';
+const INITIAL_TABS = [
+  { id: '1', name: 'Dashboard.tsx' },
+  { id: '2', name: 'tokens.css' },
+  { id: '3', name: 'schema.json' },
+];
+
+export function TabWorkspaceNav({
+  variant = 'quiet',
+  activeId = '1',
+  onSelectTab,
+  onCloseTab,
+}: TabWorkspaceNavProps) {
+  const [openTabs, setOpenTabs] = useState(INITIAL_TABS);
+  const [selectedId, setSelectedId] = useState(activeId);
+
+  let bar = 'bg-neutral-100 border-b border-neutral-200 text-neutral-800';
+  let activeTab = 'bg-white text-neutral-900 border-r border-l border-neutral-200 font-semibold';
   if (variant === 'nocturne') {
     bar = 'bg-[#0B0D10] border-b border-[#2E3440] text-white';
-    activeTab = 'bg-[#11141B] text-white border-r border-l border-[#2E3440]';
+    activeTab = 'bg-[#11141B] text-white border-r border-l border-[#2E3440] font-semibold';
   }
 
-  const tabs = [
-    { id: '1', name: 'Dashboard.tsx' },
-    { id: '2', name: 'tokens.css' },
-    { id: '3', name: 'schema.json' },
-  ];
-
   return (
-    <div className={`w-full flex items-center h-10 px-2 overflow-x-auto text-xs ${bar}`}>
-      {tabs.map((t) => (
-        <div
-          key={t.id}
-          className={`h-full flex items-center gap-2 px-3 cursor-pointer ${
-            t.id === activeId ? activeTab : 'opacity-60 hover:opacity-100'
-          }`}
+    <nav aria-label="Workspace file tabs" className={`w-full flex items-center h-10 px-2 overflow-x-auto text-xs ${bar}`}>
+      {openTabs.length === 0 ? (
+        <button
+          type="button"
+          onClick={() => {
+            setOpenTabs(INITIAL_TABS);
+            setSelectedId('1');
+          }}
+          className="px-3 py-1 rounded border text-xs font-medium"
         >
-          <span>{t.name}</span>
-          <button type="button" className="opacity-40 hover:opacity-100 text-[10px]">✕</button>
-        </div>
-      ))}
-    </div>
+          Restore example tabs
+        </button>
+      ) : (
+        openTabs.map((t) => {
+          const isCurrent = t.id === selectedId;
+          return (
+            <div
+              key={t.id}
+              className={`h-full flex items-center gap-1 px-2 ${
+                isCurrent ? activeTab : 'opacity-80 hover:opacity-100'
+              }`}
+            >
+              <button
+                type="button"
+                aria-current={isCurrent ? 'page' : undefined}
+                onClick={() => {
+                  setSelectedId(t.id);
+                  onSelectTab?.(t.id);
+                }}
+                className="px-1.5 py-1 rounded text-xs"
+              >
+                {t.name}
+              </button>
+              <button
+                type="button"
+                aria-label={`Close ${t.name}`}
+                onClick={() => {
+                  const nextTabs = openTabs.filter((item) => item.id !== t.id);
+                  setOpenTabs(nextTabs);
+                  if (t.id === selectedId && nextTabs[0]) {
+                    setSelectedId(nextTabs[0].id);
+                  }
+                  onCloseTab?.(t.id);
+                }}
+                className="px-1 py-0.5 rounded opacity-75 hover:opacity-100 text-xs"
+              >
+                ✕
+              </button>
+            </div>
+          );
+        })
+      )}
+    </nav>
   );
 }

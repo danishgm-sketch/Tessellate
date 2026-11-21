@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
 import {
   isParentToPreviewMessage,
   type PreviewNavigationRequestMessage,
@@ -66,6 +66,8 @@ export default function PreviewHost() {
   const [props, setProps] = useState<Record<string, unknown>>({});
   const [reducedMotion, setReducedMotion] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const previewRootRef = useRef<HTMLDivElement>(null);
+  const [hasInnerMain, setHasInnerMain] = useState<boolean>(false);
   const parentOrigin = getParentOrigin();
 
   useEffect(()=>{
@@ -77,6 +79,7 @@ export default function PreviewHost() {
     let disposed=false;setComponent(null);setLoadError('');
     setIsPrivateVerso(false);
     setPrivatePropNames(new Set());
+    setHasInnerMain(false);
     const fallbackName = resourceId.replace(/-/g, ' ');
     setResourceName(fallbackName);
     const load = async () => {
@@ -248,6 +251,23 @@ export default function PreviewHost() {
     return () => observer.disconnect();
   }, [resourceId, variant, theme, component, parentOrigin]);
 
+  useLayoutEffect(() => {
+    const root = previewRootRef.current;
+    if (!root) {
+      setHasInnerMain(false);
+      return;
+    }
+    const innerMain = root.querySelector('main, [role="main"]');
+    setHasInnerMain(Boolean(innerMain));
+    if (
+      innerMain &&
+      !innerMain.hasAttribute('aria-label') &&
+      !innerMain.hasAttribute('aria-labelledby')
+    ) {
+      innerMain.setAttribute('aria-label', `${resourceName} preview`);
+    }
+  }, [component, resourceId, resourceName, variant]);
+
   const onChange = (input: unknown) => {
     const value=readChangeValue(input);
     setProps(previous=>({...previous,...(resourceId==='checkbox'||resourceId==='switch'?{checked:value}:resourceId==='multi-select'?{selected:value}:resourceId==='tabs'?{activeId:value}:{value})}));
@@ -338,14 +358,15 @@ export default function PreviewHost() {
   };
 
   const previewContent = (
-    <div className="tess-screen @container">
+    <div ref={previewRootRef} className="tess-screen @container">
       <NodeRenderer node={{id:`preview-${resourceId}`,nodeType:'component',semanticRole:'resource-preview',resourceRef:{id:resourceId,slug:resourceId,version:'1.0.0'},variant,props:interactiveProps,slots:{},children:[]}} context={{viewport:device,reducedMotion,designDNA:{visualMode:theme},customComponents:{[resourceId]:component}}}/>
     </div>
   );
   return (
-    <main
+    <div
       ref={containerRef}
-      aria-label={`${resourceName} preview`}
+      role={hasInnerMain ? undefined : 'main'}
+      aria-label={hasInnerMain ? undefined : `${resourceName} preview`}
       className={`min-h-screen w-full transition-colors ${
         reducedMotion ? 'motion-reduce:transition-none' : ''
       }`}
@@ -360,6 +381,6 @@ export default function PreviewHost() {
           </PrivateVersoProvider>
         ) : previewContent}
       </div>
-    </main>
+    </div>
   );
 }

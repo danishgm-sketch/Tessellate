@@ -754,5 +754,53 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
     expect(
       hasPositiveArchetypeCue('A tool for users who are not allowed to transfer money.', 'transfer')
     ).toBe(false);
+
+    const avoidStockoutsErp = detectProductArchetypes(
+      'Avoid stockouts with an inventory management and procurement dashboard.'
+    );
+    expect(avoidStockoutsErp[0]?.tag).toBe('erp-operations');
+    expect(
+      hasPositiveArchetypeCue(
+        'Avoid stockouts with an inventory management and procurement dashboard.',
+        'inventory management'
+      )
+    ).toBe(true);
+    expect(
+      hasPositiveArchetypeCue(
+        'Avoid stockouts with an inventory management and procurement dashboard.',
+        'procurement'
+      )
+    ).toBe(true);
+    expect(
+      hasPositiveArchetypeCue(
+        'Avoid stockouts with an inventory management and procurement dashboard.',
+        'stockouts'
+      )
+    ).toBe(false);
+
+    const avoidDelaysErp = detectProductArchetypes(
+      'Help warehouses avoid delays by using work-order scheduling and crew dispatch.'
+    );
+    expect(avoidDelaysErp[0]?.tag).toBe('erp-operations');
+
+    const avoidOverbookingTravel = detectProductArchetypes(
+      'Avoid overbooking via real-time hotel booking and itinerary tools.'
+    );
+    expect(avoidOverbookingTravel[0]?.tag).toBe('travel');
+
+    expect(hasPositiveArchetypeCue('Avoid payments and transfers.', 'payments')).toBe(false);
+    expect(hasPositiveArchetypeCue('Avoid payments and transfers.', 'transfers')).toBe(false);
+
+    const avoidBankingPortal = detectProductArchetypes(
+      'Avoid banking dashboards with a payment portal.'
+    );
+    expect(avoidBankingPortal.some((entry) => entry.tag === 'fintech')).toBe(false);
+    expect(
+      hasPositiveArchetypeCue('Avoid banking dashboards with a payment portal.', 'payment')
+    ).toBe(false);
+
+    expect(
+      hasPositiveArchetypeCue('Avoid workflows using payment APIs.', 'payment')
+    ).toBe(false);
   });
 });
