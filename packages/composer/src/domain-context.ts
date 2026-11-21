@@ -1,4 +1,8 @@
-import { hasPositiveArchetypeCue, type ArchetypeDefinition } from './archetypes.js';
+import {
+  hasPositiveArchetypeCue,
+  hasPositivePatternMatch,
+  type ArchetypeDefinition,
+} from './archetypes.js';
 
 export function isEmployeeExperienceBrief(text: string): boolean {
   return (
@@ -128,9 +132,9 @@ export function specialiseBicycleRepairOperations(
   text: string
 ): ArchetypeDefinition {
   const isBicycleRepairService =
-    /\b(?:bicycle|bike|e[- ]?bike)\b/i.test(text) &&
-    /\b(?:repair|service)\b/i.test(text) &&
-    /\b(?:shop|co[- ]?op|cooperative|workshop|mechanics?|service desk)\b/i.test(text);
+    hasPositivePatternMatch(text, /\b(?:bicycle|bike|e[- ]?bike)\b/i) &&
+    hasPositivePatternMatch(text, /\b(?:repair|service)\b/i) &&
+    hasPositivePatternMatch(text, /\b(?:shop|co[- ]?op|cooperative|workshop|mechanics?|service desk)\b/i);
 
   if (base.id !== 'erp-operations' || !isBicycleRepairService) return base;
 
@@ -248,9 +252,10 @@ export function specialiseFoodPantryOperations(
   text: string
 ): ArchetypeDefinition {
   const isCommunityFoodPantry =
-    /\b(?:food pantry|food bank|community pantry)\b/i.test(text) &&
-    /\b(?:households?|volunteers?|grocery packs?|emergency parcels?|food safety|chilled stock|expiry dates?|waitlist|pickup instructions?)\b/i.test(
-      text
+    hasPositivePatternMatch(text, /\b(?:food pantry|food bank|community pantry)\b/i) &&
+    hasPositivePatternMatch(
+      text,
+      /\b(?:households?|volunteers?|grocery packs?|emergency parcels?|food safety|chilled stock|expiry dates?|waitlist|pickup instructions?)\b/i
     );
 
   if (base.id !== 'erp-operations' || !isCommunityFoodPantry) return base;
@@ -388,14 +393,14 @@ export function specialiseCommunityEmergencyOperations(
   base: ArchetypeDefinition,
   text: string
 ): ArchetypeDefinition {
-  const hasResponseAnchor =
-    /\b(?:mutual[- ]aid(?: network)?|community emergency response|disaster response(?: coordination)?|humanitarian relief(?: coordination)?)\b/i.test(
-      text
-    );
-  const hasFieldContext =
-    /\b(?:shelters?|neighbou?rhood hubs?|relief supplies|evacuation|flood|wildfire|storm|volunteer shifts?|welfare checks?)\b/i.test(
-      text
-    );
+  const hasResponseAnchor = hasPositivePatternMatch(
+    text,
+    /\b(?:mutual[- ]aid(?: network)?|community emergency response|disaster response(?: coordination)?|humanitarian relief(?: coordination)?)\b/i
+  );
+  const hasFieldContext = hasPositivePatternMatch(
+    text,
+    /\b(?:shelters?|neighbou?rhood hubs?|relief supplies|evacuation|flood|wildfire|storm|volunteer shifts?|welfare checks?)\b/i
+  );
 
   if (base.id !== 'erp-operations' || !hasResponseAnchor || !hasFieldContext) return base;
 
@@ -2953,11 +2958,14 @@ export function specialiseOffshoreWindOperations(
   base: ArchetypeDefinition,
   text: string
 ): ArchetypeDefinition {
-  const offshoreWind = /\b(?:offshore wind|wind farm|wind turbine)\b/i.test(text);
-  const operationalWork =
-    /\b(?:maintenance|work orders?|permit(?:s)? to work|lockout\s*\/\s*tagout|loto|sea conditions?|turbines?|technicians?|crew dispatch|incident escalation)\b/i.test(
-      text
-    );
+  const offshoreWind = hasPositivePatternMatch(
+    text,
+    /\b(?:offshore wind|wind farm|wind turbine)\b/i
+  );
+  const operationalWork = hasPositivePatternMatch(
+    text,
+    /\b(?:maintenance|work orders?|permit(?:s)? to work|lockout\s*\/\s*tagout|loto|sea conditions?|turbines?|technicians?|crew dispatch|incident escalation)\b/i
+  );
 
   if (base.id !== 'erp-operations' || !offshoreWind || !operationalWork) return base;
 
@@ -3117,14 +3125,14 @@ export function specialiseMunicipalWaterOperations(
   base: ArchetypeDefinition,
   text: string
 ): ArchetypeDefinition {
-  const waterUtility =
-    /\b(?:water utility|water authority|water network|water distribution utility|drinking[- ]water utility|wastewater utility)\b/i.test(
-      text
-    );
-  const operationalResponse =
-    /\b(?:field crews?|dispatchers?|burst mains?|planned outages?|service outages?|repair crews?|network isolation|water[- ]quality clearance|service restoration|resident updates?|water main repairs?|leak repairs?)\b/i.test(
-      text
-    );
+  const waterUtility = hasPositivePatternMatch(
+    text,
+    /\b(?:water utility|water authority|water network|water distribution utility|drinking[- ]water utility|wastewater utility)\b/i
+  );
+  const operationalResponse = hasPositivePatternMatch(
+    text,
+    /\b(?:field crews?|dispatchers?|burst mains?|planned outages?|service outages?|repair crews?|network isolation|water[- ]quality clearance|service restoration|resident updates?|water main repairs?|leak repairs?)\b/i
+  );
 
   if (
     base.id !== 'erp-operations' ||
@@ -3281,8 +3289,9 @@ export function specialiseMarineFieldResearch(
 ): ArchetypeDefinition {
   if (
     base.id !== 'intelligence-research' ||
-    !/\b(?:marine biology|marine ecology|marine fieldwork|oceanographic survey|benthic survey|species survey|transect survey|field atlas)\b/i.test(
-      text
+    !hasPositivePatternMatch(
+      text,
+      /\b(?:marine biology|marine ecology|marine fieldwork|oceanographic survey|benthic survey|species survey|transect survey|field atlas)\b/i
     )
   ) {
     return base;
@@ -3407,11 +3416,13 @@ export function specialiseLanguageLearning(
 ): ArchetypeDefinition {
   if (
     base.id !== 'education' ||
-    !/\b(?:language[- ]learning|language practice|foreign[- ]language|learn(?:ing)?\s+(?:a\s+|new\s+)?language|(?:Spanish|French|German|Italian|Portuguese|Mandarin|Japanese|Arabic)\s+(?:learning|practice|lessons?|course))\b/i.test(
-      text
+    !hasPositivePatternMatch(
+      text,
+      /\b(?:language[- ]learning|language practice|foreign[- ]language|learn(?:ing)?\s+(?:a\s+|new\s+)?language|(?:Spanish|French|German|Italian|Portuguese|Mandarin|Japanese|Arabic)\s+(?:learning|practice|lessons?|course))\b/i
     ) ||
-    !/\b(?:adult|dyslexia|offline|no (?:mobile )?signal|speaking practice|pronunciation|adjustable text|short sessions?|commute)\b/i.test(
-      text
+    !hasPositivePatternMatch(
+      text,
+      /\b(?:adult|dyslexia|offline|no (?:mobile )?signal|speaking practice|pronunciation|adjustable text|short sessions?|commute)\b/i
     )
   ) {
     return base;

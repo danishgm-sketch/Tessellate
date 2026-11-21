@@ -745,6 +745,8 @@ const ARCHETYPE_PRIMARY_SIGNALS: Record<string, string[]> = {
 const NEGATION_CUE = /\b(?:no|without|not|never|avoid|avoids|avoided|excluding|exclude|excludes|excluded|don't|doesn't|didn't|won't|can't|isn't|aren't|shouldn't|mustn't)\b/gi;
 const NEGATION_SCOPE_BREAK = /[.!?;]|\b(?:but|however|yet|although|except|unless|instead)\b/gi;
 const COORDINATED_PREDICATE = /\b(?:and|or)\s+(?:(?:also|still|now)\s+)?(?:(?:we|they|it|this|our|their|users?|members?|customers?|households?|the\s+app|the\s+product|the\s+platform)\s+)?(?:can|could|will|would|must|should|may|might|do|does|did|have|has|had|are|is|was|were|support|supports|offer|offers|include|includes|provide|provides|process|processes|track|tracks|transfer|transfers|handle|handles|use|uses|manage|manages)\b/i;
+const PREREQUISITE_NEGATION_END =
+  /(?:^\s*\S[^,;:.!?]*\b(?:is|are|was|were)\s+(?:required|needed|necessary|mandatory)\b|\b(?:required|needed|necessary|mandatory)\s+(?:to\s+\w+|for\b))/i;
 
 function isNegatedKeywordOccurrence(
   normalizedText: string,
@@ -786,21 +788,16 @@ function isNegatedKeywordOccurrence(
       if (matchIndex >= compoundEnd) continue;
     }
 
-    if (
-      cue[0].toLowerCase() === 'no' &&
-      /^code\s+\S/i.test(afterCue) &&
-      !/^code\b/i.test(normalizedText.slice(matchIndex))
-    ) {
-      continue;
-    }
-
     latestNegationEnd = cueIndex + cue[0].length;
   }
 
   if (latestNegationEnd < 0) return false;
 
   const afterLatestNegation = scopePrefix.slice(latestNegationEnd);
-  return !COORDINATED_PREDICATE.test(afterLatestNegation);
+  return (
+    !COORDINATED_PREDICATE.test(afterLatestNegation) &&
+    !PREREQUISITE_NEGATION_END.test(afterLatestNegation)
+  );
 }
 
 function matchesKeyword(

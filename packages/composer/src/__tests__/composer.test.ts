@@ -706,5 +706,28 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
       'A shared meal planner with no payments, transfers, or banking'
     );
     expect(mealPlannerMatches[0]?.tag).toBe('productivity');
+
+    const excludedCodeList = detectProductArchetypes(
+      'A shared meal planner with no code editor, payments, or banking'
+    );
+    expect(excludedCodeList.some((entry) => entry.tag === 'fintech')).toBe(false);
+    expect(
+      hasPositiveArchetypeCue(
+        'A shared meal planner with no code editor, payments, or banking',
+        'payments'
+      )
+    ).toBe(false);
+
+    const noAccountMarketplace = detectProductArchetypes(
+      'No account is required to use this marketplace for buyers and sellers.'
+    );
+    expect(noAccountMarketplace[0]?.tag).toBe('marketplace');
+
+    const excludedRepairErp = interpretProductBrief({
+      description:
+        'A warehouse operations and procurement system. Do not include bicycle repair shop workflows.',
+    });
+    expect(excludedRepairErp.productModel.productArchetypes[0]?.tag).toBe('erp-operations');
+    expect(excludedRepairErp.productModel.entities.some((e) => e.name === 'RepairJob')).toBe(false);
   });
 });
