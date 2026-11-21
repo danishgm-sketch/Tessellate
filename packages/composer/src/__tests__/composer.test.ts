@@ -729,5 +729,30 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
     });
     expect(excludedRepairErp.productModel.productArchetypes[0]?.tag).toBe('erp-operations');
     expect(excludedRepairErp.productModel.entities.some((e) => e.name === 'RepairJob')).toBe(false);
+
+    const excludedRequiredForList = detectProductArchetypes(
+      'A shared meal planner. Do not include workflows required for payments or banking.'
+    );
+    expect(excludedRequiredForList.some((entry) => entry.tag === 'fintech')).toBe(false);
+    expect(
+      hasPositiveArchetypeCue(
+        'A shared meal planner. Do not include workflows required for payments or banking.',
+        'payments'
+      )
+    ).toBe(false);
+
+    const withoutCarsTravel = detectProductArchetypes(
+      'For people without cars, build a travel itinerary planner.'
+    );
+    expect(withoutCarsTravel[0]?.tag).toBe('travel');
+
+    const nonDevErp = detectProductArchetypes(
+      'A tool for people who are not developers to manage warehouse operations and procurement.'
+    );
+    expect(nonDevErp[0]?.tag).toBe('erp-operations');
+
+    expect(
+      hasPositiveArchetypeCue('A tool for users who are not allowed to transfer money.', 'transfer')
+    ).toBe(false);
   });
 });

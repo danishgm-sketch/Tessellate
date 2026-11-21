@@ -746,7 +746,15 @@ const NEGATION_CUE = /\b(?:no|without|not|never|avoid|avoids|avoided|excluding|e
 const NEGATION_SCOPE_BREAK = /[.!?;]|\b(?:but|however|yet|although|except|unless|instead)\b/gi;
 const COORDINATED_PREDICATE = /\b(?:and|or)\s+(?:(?:also|still|now)\s+)?(?:(?:we|they|it|this|our|their|users?|members?|customers?|households?|the\s+app|the\s+product|the\s+platform)\s+)?(?:can|could|will|would|must|should|may|might|do|does|did|have|has|had|are|is|was|were|support|supports|offer|offers|include|includes|provide|provides|process|processes|track|tracks|transfer|transfers|handle|handles|use|uses|manage|manages)\b/i;
 const PREREQUISITE_NEGATION_END =
-  /(?:^\s*\S[^,;:.!?]*\b(?:is|are|was|were)\s+(?:required|needed|necessary|mandatory)\b|\b(?:required|needed|necessary|mandatory)\s+(?:to\s+\w+|for\b))/i;
+  /^\s*\S[^,;:.!?]*\b(?:is|are|was|were)\s+(?:not\s+)?(?:required|needed|necessary|mandatory)\b/i;
+const PASSIVE_PREDICATE_REQUIRED =
+  /^\s*(?:required|needed|necessary|mandatory)\s+(?:to\s+\w+|for\b)/i;
+const CLAUSE_REQUEST_TRANSITION =
+  /,\s*(?:(?:build|create|design|develop|make|craft|prepare|generate|compose|launch|manage|organize|organise|coordinate|schedule|plan|provide|deliver|run)\s+(?:a|an|the|this|your|our)\b|(?:we|they|it|users?|customers?|members?|teams?|buyers?|sellers?|riders?|readers?|patients?|students?)\s+(?:can|could|will|would|should|want\s+to|need\s+to|use)\b)/i;
+const AUDIENCE_RELATIVE_PROHIBITION =
+  /^\s*(?:allowed|permitted|able|supposed|meant|expected|intended|eligible|authorized|authorised)\b/i;
+const AUDIENCE_PURPOSE_TRANSITION =
+  /,|\bto\s+(?:build|create|design|manage|track|plan|organize|organise|coordinate|run|use|browse|book|schedule|explore|handle|review|analyze|analyse|access)\b/i;
 
 function isNegatedKeywordOccurrence(
   normalizedText: string,
@@ -768,6 +776,8 @@ function isNegatedKeywordOccurrence(
 
   const scopePrefix = textBeforeMatch.slice(scopeStart);
   let latestNegationEnd = -1;
+  let latestNegationBeforeCue = '';
+  let latestNegationCue = '';
 
   for (const cue of scopePrefix.matchAll(NEGATION_CUE)) {
     const cueIndex = cue.index ?? 0;
@@ -789,14 +799,33 @@ function isNegatedKeywordOccurrence(
     }
 
     latestNegationEnd = cueIndex + cue[0].length;
+    latestNegationBeforeCue = beforeCue;
+    latestNegationCue = cue[0];
   }
 
   if (latestNegationEnd < 0) return false;
 
   const afterLatestNegation = scopePrefix.slice(latestNegationEnd);
-  return (
-    !COORDINATED_PREDICATE.test(afterLatestNegation) &&
-    !PREREQUISITE_NEGATION_END.test(afterLatestNegation)
+  const endedByCoordinatedPredicate = COORDINATED_PREDICATE.test(afterLatestNegation);
+  const endedByOptionalPrerequisite =
+    PREREQUISITE_NEGATION_END.test(afterLatestNegation) ||
+    (/\b(?:is|are|was|were)$/i.test(latestNegationBeforeCue) &&
+      PASSIVE_PREDICATE_REQUIRED.test(afterLatestNegation));
+  const endedByClauseTransition = CLAUSE_REQUEST_TRANSITION.test(afterLatestNegation);
+  const isRelativeAudienceNegation =
+    /\b(?:who|that)\s+(?:are|is|was|were)$/i.test(latestNegationBeforeCue) ||
+    (/\b(?:who|that)$/i.test(latestNegationBeforeCue) &&
+      /^(?:aren't|isn't|wasn't|weren't)$/i.test(latestNegationCue));
+  const endedByAudienceClause =
+    isRelativeAudienceNegation &&
+    !AUDIENCE_RELATIVE_PROHIBITION.test(afterLatestNegation) &&
+    AUDIENCE_PURPOSE_TRANSITION.test(afterLatestNegation);
+
+  return !(
+    endedByCoordinatedPredicate ||
+    endedByOptionalPrerequisite ||
+    endedByClauseTransition ||
+    endedByAudienceClause
   );
 }
 
