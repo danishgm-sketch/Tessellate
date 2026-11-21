@@ -2,9 +2,9 @@
 
 This file is the authoritative operating contract for any autonomous coding agent working in this repository.
 
-## Current programme — 2026-10-16
+## Current programme — 2026-11-20
 
-Follow `docs/PRODUCT_HARDENING.md` in order. No major features until its release gate passes. Work on `consolidation/product-hardening` or scoped PR branches; never develop or commit directly on `main`. Main is protected and substantial changes require a PR with passing CI. Do not bypass protection. Historical BUILD_ORDER checkmarks do not override the owner's hardening programme.
+Follow `docs/PRODUCT_HARDENING.md` in order. No major features until its release gate passes; post-hardening public product expansion follows `docs/ULTIMATE_VISION.md`. Work on short-lived scoped PR branches off `main`; never develop or commit directly on `main`. Main is protected and substantial changes require a PR with passing CI. Do not bypass protection. Historical BUILD_ORDER checkmarks do not override the owner's hardening programme.
 
 ## 0. Owner intent
 

@@ -327,8 +327,10 @@ test('Gold data resources handle empty states, large datasets, long content, and
   expect(diagnostics.failedRequests).toEqual([]);
   expect(diagnostics.httpErrors).toEqual([]);
 
+  const reportPath = path.resolve(process.cwd(), 'audit/evidence/step-06/results/gold-resource-states-final.json');
+  mkdirSync(path.dirname(reportPath), { recursive: true });
   writeFileSync(
-    path.resolve(process.cwd(), 'audit/evidence/step-06/results/gold-resource-states-final.json'),
+    reportPath,
     JSON.stringify(
       {
         schemaVersion: '1.0.0',

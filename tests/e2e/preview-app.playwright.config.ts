@@ -5,7 +5,11 @@ const previewAppBaseUrl = `http://127.0.0.1:${previewAppPort}`;
 
 export default defineConfig({
   testDir: '.',
-  testMatch: ['preview-unknown-resource-regression.spec.ts', 'preview-reduced-motion.spec.ts'],
+  testMatch: [
+    'preview-unknown-resource-regression.spec.ts',
+    'preview-reduced-motion.spec.ts',
+    'preview-resource-loading.spec.ts',
+  ],
   fullyParallel: false,
   workers: 1,
   reporter: 'list',

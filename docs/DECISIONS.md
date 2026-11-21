@@ -656,3 +656,27 @@ documented and covered by header and browser tests.
 **Security impact:** The healthcheck runs as the existing unprivileged container user, signals only its own container, stores only bounded timestamps locally, and never reads provider secrets. No CSP, API authentication, or preview-isolation policy changes.
 **Evidence:** `apps/laptop-backend/healthcheck.test.ts`, `quality/evidence/step-37/aud448-docker-recovery.mjs`, and `quality/evidence/step-37/aud448-docker-recovery.json`. The deterministic test reproduces a single unhealthy episode and confirms one restart leads to a healthy second boot. The initiating reason for the original Wrangler failure remains unknown.
 **Status:** Implemented and verified in a disposable local Docker container; live laptop services remain available.
+
+### D-067 — Record owner authorization for the private Verso collection
+
+**Date:** 2026-11-07
+**Context:** Existing hardening records treated the owner-local Verso collection as ineligible for public use because its package metadata says `UNLICENSED` and `private`, and no written redistribution permission had been recorded. The owner confirmed in writing that this is their own privately authored collection contributed for Tessellate ("it is my own private made collection i contributed for this project, no license needed, do what you want with amend/modify however you see fit") and authorized us to use, amend, modify, and redistribute it as part of this project.
+**Decision:** Treat the owner's instruction as project-specific permission to use, modify, and redistribute owner-authored Verso material in Tessellate, including later product integration subject to the ordered hardening gates. Keep the source package's original `UNLICENSED`/`private` metadata intact; this permission does not assign a general public open-source license or clear any independently identified third-party code, assets, marks, or copied material. Keep Verso source and projections outside public repository commits and Sites mirrors until the ordered release gate permits resource integration and each item passes canonical manifest, provenance, accessibility, responsiveness, reduced-motion, performance, and export review. Continue using the isolated owner-local preview for inspection.
+**Alternatives rejected:** Treating the chat authorization as a standard package license; claiming that rendering all modules certifies public eligibility; bypassing the product feature freeze or per-resource quality gates.
+**Product impact:** The prior owner-permission blocker is resolved for owner-authored work. No resource is yet certified for the public catalogue, Gold runtime, Workbench, registry, CLI/MCP, Sites, or exports. The current implementation remains local-only and uses no added service or spend.
+**Evidence:** Owner's written confirmation on 2026-11-07; the owner-provided Verso source README; `quality/VERSO_LOCAL_INTEGRATION_EVIDENCE.md`; and `quality/VERSO_NATIVE_FIT_MAP.md`.
+**Status:** Owner authorization recorded; per-resource review and hardening release gates remain open (1,053 items remain uncertified for public product inclusion).
+
+### D-068 — Consolidate to single `main` branch, untrack 1.69 GB raw evidence dumps, and adopt `docs/ULTIMATE_VISION.md`
+
+**Date:** 2026-11-20
+**Context:** Over 30 stale branches and worktrees and 1.69 GB (16,000+ tracked raw screenshot/JSON/archive files) under `quality/evidence/` and `audit/evidence/` slowed checkouts, broke default Win32 checkouts without global long-path flags, and split active fixes across unmerged PRs `#18`, `#19`, `#20`, `#3`, `#4`, and experimental `claude/new-session-1e6729`.
+**Decision:**
+1. Integrate verified fixes and improvements from open hardening PRs `#18`, `#19`, and `#20` cleanly into protected `main` via PR with green CI, then remove stale local/remote branches and worktrees so `main` is the sole canonical branch.
+2. Preserve unmerged experimental Contract v2 work from `claude/new-session-1e6729` (commit `fa663bfa`) via annotated git tag `archive/claude-contract-v2` rather than force-merging incompatible changes or discarding reference history.
+3. Relocate the only source-referenced test/benchmark assets (`packages/cli/src/__tests__/fixtures/verify-installed-cli.mjs` and `quality/benchmarks/model-benchmark-cases.json`), untrack raw dumps under `quality/evidence/` and `audit/evidence/` from `HEAD` (keeping git history intact without history rewrite), gitignore those directories for local test runs, and retain all markdown evidence summaries (`quality/STEP_*.md`, `audit/RUNTIME_AUDIT.md`).
+4. Adopt `docs/ULTIMATE_VISION.md` as the post-hardening public product ambition charter within existing cost (£0–£8/month goal, £20/month hard ceiling), open-source, security-isolation, accessibility, and stack boundaries.
+**Alternatives rejected:** Rewriting shared git history via filter-repo (unnecessary force-push hazard); leaving fragmented long-lived branches (`consolidation/product-hardening`, `codex/*`); discarding unmerged `claude/new-session-1e6729` reference ideas without tagging; relaxing hardening gates for the vision roadmap.
+**Cost impact:** £0 additional; avoids recurring runner/checkout bloat.
+**Security impact:** Preserves strict preview isolation, secret-exclusion audits (which gracefully skip missing local evidence dirs), and protected `main` CI checks.
+**Status:** Adopted and implemented on `repository_cleanup_ultimate_vision` for PR merge into `main`.

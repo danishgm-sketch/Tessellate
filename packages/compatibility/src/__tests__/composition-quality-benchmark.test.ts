@@ -370,6 +370,108 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
     }
   });
 
+  it('binds library catalogue copy and exposes unavailable service roles', () => {
+    const result = composeProjectPipeline(
+      {
+        description:
+          'A mobile-first public library service for rural towns. Residents search the shared book catalogue, reserve books for branch pickup, join reading circles, and find local author events. Volunteers coordinate opening hours and hold queues across three branches. Make browsing work on weak connections, provide large text and screen-reader friendly controls, and keep member reading history private. No book sales, purchases, payments, bank accounts, bill pay, or financial dashboards.',
+      },
+      { catalogResources: catalog, seed: 'public-library-content-binding' }
+    );
+    const expectedRoles = [
+      'book-catalogue-search',
+      'branch-availability-and-hours',
+      'low-bandwidth-catalogue-browsing',
+      'private-hold-requests',
+      'branch-pickup-windows',
+      'reading-circle-and-event-discovery',
+      'accessible-reading-controls',
+      'private-reading-history',
+    ];
+    const directions = [result.directionA, result.directionB, result.directionC];
+
+    expect(result.productModel.productArchetypes[0]?.tag).toBe('media');
+    expect(directions.map(({ manifest }) => manifest.name)).toEqual([
+      'Community Catalogue',
+      'Reading Commons',
+      'Branch Network',
+    ]);
+    for (const direction of directions) {
+      expect(direction.manifest.brand?.name).toBe('Community Library');
+      const nodes = direction.manifest.screens.flatMap((screen) => collectNodes(screen.rootNode));
+      const search = nodes.find((node) => node.semanticRole === 'search-header');
+      expect(search?.props.label).toBe('Search the book catalogue');
+      expect(search?.props.placeholder).toBe('Search titles, authors, or subjects');
+      expect(search?.props.helperText).toMatch(/connect the library catalogue/i);
+      expect(JSON.stringify(direction.manifest)).not.toMatch(/local reporting|newsroom catalogue/i);
+      for (const role of expectedRoles) {
+        const missing = nodes.find((node) => node.semanticRole === role);
+        expect(missing?.props.unresolvedRequiredRole).toBe(true);
+        expect(missing?.resourceRef).toBeUndefined();
+      }
+    }
+  });
+
+  it('composes an honest community emergency coordination workspace', () => {
+    const result = composeProjectPipeline(
+      {
+        description:
+          'A volunteer mutual-aid network for a flood-prone coastal town. Coordinate requests for bottled water, charging, blankets, accessible transport, and welfare checks between three shelters and six neighborhood hubs. Needs shared-tablet intake that works during outages, multilingual updates, disability-aware prioritisation, volunteer shift handoffs, and stock visibility. Never collect immigration status, diagnoses, or financial data; no payments or fundraising. Public status should show only aggregated capacity and safe pickup points. Record requests locally for later sync, but do not imply that SMS dispatch, live mapping, or synchronisation works while disconnected.',
+      },
+      { catalogResources: catalog, seed: 'community-emergency-response-fit' }
+    );
+    const screens = result.screenGraph.groups.flatMap((group) => group.screens);
+    const expectedScreenNames = [
+      'Coordination Overview',
+      'Request Intake & Triage',
+      'Shelter & Hub Capacity',
+      'Supplies & Distribution',
+      'Volunteer Shift Handover',
+      'Public Capacity Status',
+    ];
+    const directions = [result.directionA, result.directionB, result.directionC];
+
+    expect(result.productModel.productArchetypes[0]?.tag).toBe('erp-operations');
+    expect(screens.map((screen) => screen.name)).toEqual(expect.arrayContaining(expectedScreenNames));
+    expect(screens.map((screen) => screen.name)).not.toEqual(
+      expect.arrayContaining(['Marketing Home', 'Overview Dashboard', 'Projects Index'])
+    );
+    expect(directions.map(({ manifest }) => manifest.name)).toEqual([
+      'Coordination Desk',
+      'Neighbourhood Commons',
+      'Field Operations',
+    ]);
+
+    for (const direction of directions) {
+      expect(direction.manifest.brand?.name).toBe('Community Response');
+      expect(direction.manifest.productModel.requiredCapabilities).toContain(
+        'community-emergency-response-workflow'
+      );
+      const nodes = direction.manifest.screens.flatMap((screen) => collectNodes(screen.rootNode));
+      const serializedNodes = JSON.stringify(nodes);
+      expect(serializedNodes).toMatch(/Example response updates/i);
+      expect(serializedNodes).toMatch(/Example only/i);
+      expect(serializedNodes).toMatch(/No real aid requests or welfare checks are connected/i);
+      expect(serializedNodes).not.toMatch(/dispatch has been sent|live shelter map is connected|automatically synced/i);
+
+      for (const role of [
+        'metric-cards',
+        'activity-feed',
+        'settings-form',
+        'save-footer',
+        'data-table',
+        'filter-bar',
+        'pagination',
+      ]) {
+        const requirement = nodes.find(
+          (node) => node.semanticRole === role && node.props.unresolvedRequiredRole === true
+        );
+        expect(requirement, `${direction.manifest.name}: ${role} is resolved`).toBeUndefined();
+        expect(nodes.some((node) => node.semanticRole === role && node.resourceRef)).toBe(true);
+      }
+    }
+  });
+
   for (const brief of briefs) {
     it(`${brief.id} composes three semantically coherent, resolvable directions`, () => {
       const result = composeProjectPipeline(

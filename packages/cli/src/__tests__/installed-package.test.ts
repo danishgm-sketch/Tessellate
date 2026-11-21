@@ -5,7 +5,7 @@ import * as path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
-const script = fileURLToPath(new URL('../../../../quality/evidence/step-26/verify-installed-cli.mjs', import.meta.url));
+const script = fileURLToPath(new URL('./fixtures/verify-installed-cli.mjs', import.meta.url));
 const tempDirs: string[] = [];
 
 afterEach(() => {

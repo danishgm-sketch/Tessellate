@@ -17,7 +17,7 @@
     ],
     "primaryAudience": "Research analysts, investigative journalists, and risk officers",
     "userSophistication": 85,
-    "primaryObjective": "Synthesize heterogeneous source evidence into verified intelligence dossiers",
+    "primaryObjective": "Synthesize source evidence into traceable research findings and dossiers",
     "secondaryObjectives": [
       "Ensure high accessibility standards",
       "Maintain responsive layout across devices"
@@ -26,60 +26,60 @@
       "Authenticate and access Research & Intelligence Platform",
       "Review the overview and priority actions",
       "Create, update, and manage records",
-      "Search entity, map relationship network, and tag evidence",
-      "Set automated monitoring triggers for entity changes"
+      "Examine a research subject, trace its relationships, and link supporting evidence",
+      "Review source material and prepare a traceable research synthesis"
     ],
     "entities": [
       {
         "name": "Entity",
-        "description": "Investigated company, person, or asset node",
+        "description": "Person, organisation, material, specimen, or other subject being examined",
         "fields": [
           "id",
           "name",
           "type",
-          "riskScore",
           "relations"
         ]
       },
       {
         "name": "Evidence",
-        "description": "Verified document, filing, or signal reference",
+        "description": "Source document, measurement, image, or dataset with provenance",
         "fields": [
           "id",
           "source",
           "confidence",
-          "extractedDate"
+          "collectedAt"
         ]
       },
       {
         "name": "Dossier",
-        "description": "Curated dossier binder and synthesis report",
+        "description": "Traceable synthesis of findings linked to their supporting sources",
         "fields": [
           "id",
           "title",
-          "analyst",
-          "classification"
+          "author",
+          "updatedAt"
         ]
       }
     ],
     "workflows": [
       {
         "id": "investigate-entity",
-        "name": "Search entity, map relationship network, and tag evidence",
+        "name": "Examine a research subject, trace its relationships, and link supporting evidence",
         "steps": [
-          "global-search",
-          "expand-relations",
-          "highlight-findings",
-          "export-dossier"
+          "search-subject",
+          "review-relations",
+          "annotate-evidence",
+          "prepare-dossier"
         ]
       },
       {
-        "id": "configure-watchlist",
-        "name": "Set automated monitoring triggers for entity changes",
+        "id": "review-research",
+        "name": "Review source material and prepare a traceable research synthesis",
         "steps": [
-          "define-alert-rules",
-          "select-entities",
-          "choose-cadence"
+          "collect-sources",
+          "assess-provenance",
+          "link-findings",
+          "review-dossier"
         ]
       }
     ],
@@ -94,9 +94,9 @@
       {
         "name": "Research Terminal",
         "screenType": "workspace-editor",
-        "purpose": "Three-pane entity investigation workspace",
+        "purpose": "Research workspace for examining subjects, relationships, and source material",
         "jobs": [
-          "expand-graph",
+          "review-relations",
           "annotate-evidence"
         ],
         "required": true
@@ -104,30 +104,30 @@
       {
         "name": "Entity Index",
         "screenType": "search-explore",
-        "purpose": "Global search across millions of verified profiles",
+        "purpose": "Search and filter the subjects and records included in the research project",
         "jobs": [
           "faceted-lookup",
-          "filter-by-jurisdiction"
+          "filter-records"
         ],
         "required": true
       },
       {
         "name": "Dossier Reader",
         "screenType": "detail-entity",
-        "purpose": "Published long-form report with linked evidence footnotes",
+        "purpose": "Read a research synthesis with links to supporting evidence",
         "jobs": [
           "read-synthesis",
-          "verify-citations"
+          "review-citations"
         ],
         "required": true
       },
       {
-        "name": "Watchlists & Alerts",
+        "name": "Saved Research",
         "screenType": "index-list",
-        "purpose": "Active signal alerts and entity delta log",
+        "purpose": "Return to saved subjects, sources, and open review tasks",
         "jobs": [
-          "triage-alerts",
-          "mute-notifications"
+          "open-saved-research",
+          "resume-review"
         ],
         "required": false
       }
@@ -236,7 +236,7 @@
     ]
   },
   "screenGraph": {
-    "id": "graph-intelligence-research-mff2kf",
+    "id": "graph-intelligence-research-hy5iyf",
     "groups": [
       {
         "id": "group-app",
@@ -247,9 +247,9 @@
             "name": "Research Terminal",
             "slug": "/research-terminal",
             "screenType": "workspace-editor",
-            "purpose": "Three-pane entity investigation workspace",
+            "purpose": "Research workspace for examining subjects, relationships, and source material",
             "jobs": [
-              "expand-graph",
+              "review-relations",
               "annotate-evidence"
             ],
             "required": true,
@@ -259,7 +259,6 @@
               "Entity.id",
               "Entity.name",
               "Entity.type",
-              "Entity.riskScore",
               "Entity.relations"
             ],
             "requiredRoles": [
@@ -283,10 +282,10 @@
             "name": "Entity Index",
             "slug": "/entity-index",
             "screenType": "search-explore",
-            "purpose": "Global search across millions of verified profiles",
+            "purpose": "Search and filter the subjects and records included in the research project",
             "jobs": [
               "faceted-lookup",
-              "filter-by-jurisdiction"
+              "filter-records"
             ],
             "required": true,
             "navigationVisibility": "primary",
@@ -295,7 +294,6 @@
               "Entity.id",
               "Entity.name",
               "Entity.type",
-              "Entity.riskScore",
               "Entity.relations"
             ],
             "requiredRoles": [
@@ -319,10 +317,10 @@
             "name": "Dossier Reader",
             "slug": "/dossiers/:id",
             "screenType": "detail-entity",
-            "purpose": "Published long-form report with linked evidence footnotes",
+            "purpose": "Read a research synthesis with links to supporting evidence",
             "jobs": [
               "read-synthesis",
-              "verify-citations"
+              "review-citations"
             ],
             "required": true,
             "navigationVisibility": "secondary",
@@ -331,11 +329,11 @@
               "Evidence.id",
               "Evidence.source",
               "Evidence.confidence",
-              "Evidence.extractedDate",
+              "Evidence.collectedAt",
               "Dossier.id",
               "Dossier.title",
-              "Dossier.analyst",
-              "Dossier.classification"
+              "Dossier.author",
+              "Dossier.updatedAt"
             ],
             "requiredRoles": [
               "entity-header",
@@ -356,13 +354,13 @@
           },
           {
             "id": "screen-collection-index",
-            "name": "Watchlists & Alerts",
-            "slug": "/watchlists-and-alerts",
+            "name": "Saved Research",
+            "slug": "/saved-research",
             "screenType": "index-list",
-            "purpose": "Active signal alerts and entity delta log",
+            "purpose": "Return to saved subjects, sources, and open review tasks",
             "jobs": [
-              "triage-alerts",
-              "mute-notifications"
+              "open-saved-research",
+              "resume-review"
             ],
             "required": false,
             "navigationVisibility": "primary",
@@ -371,7 +369,6 @@
               "Entity.id",
               "Entity.name",
               "Entity.type",
-              "Entity.riskScore",
               "Entity.relations"
             ],
             "requiredRoles": [
@@ -411,7 +408,7 @@
         "id": "edge-screen-workspace-to-screen-collection-index",
         "fromScreenId": "screen-workspace",
         "toScreenId": "screen-collection-index",
-        "label": "Watchlists & Alerts"
+        "label": "Saved Research"
       }
     ]
   },
@@ -450,7 +447,7 @@
                   "href": "#screen-entity-index"
                 },
                 {
-                  "label": "Watchlists & Alerts",
+                  "label": "Saved Research",
                   "href": "#screen-collection-index"
                 }
               ],
@@ -478,20 +475,21 @@
                   "title": "Research Terminal",
                   "columns": [
                     {
-                      "title": "Search entity, map relationship network, and tag evidence",
+                      "title": "Examine a research subject, trace its relationships, and link supporting evidence",
                       "tasks": [
-                        "Global search",
-                        "Expand relations",
-                        "Highlight findings",
-                        "Export dossier"
+                        "Search subject",
+                        "Review relations",
+                        "Annotate evidence",
+                        "Prepare dossier"
                       ]
                     },
                     {
-                      "title": "Set automated monitoring triggers for entity changes",
+                      "title": "Review source material and prepare a traceable research synthesis",
                       "tasks": [
-                        "Define alert rules",
-                        "Select entities",
-                        "Choose cadence"
+                        "Collect sources",
+                        "Assess provenance",
+                        "Link findings",
+                        "Review dossier"
                       ]
                     }
                   ]
@@ -511,7 +509,7 @@
                 "slots": {},
                 "props": {
                   "title": "Research Terminal",
-                  "subtitle": "Three-pane entity investigation workspace",
+                  "subtitle": "Research workspace for examining subjects, relationships, and source material",
                   "badge": "EXAMPLE",
                   "initials": "EW"
                 }
@@ -563,7 +561,7 @@
                   "href": "#screen-entity-index"
                 },
                 {
-                  "label": "Watchlists & Alerts",
+                  "label": "Saved Research",
                   "href": "#screen-collection-index"
                 }
               ],
@@ -627,7 +625,7 @@
                     {
                       "id": 1,
                       "name": "Example Entity",
-                      "type": "Investigated company, person, or asset node",
+                      "type": "Person, organisation, material, specimen, or other subject being examined",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
@@ -635,7 +633,7 @@
                     {
                       "id": 2,
                       "name": "Example Evidence",
-                      "type": "Verified document, filing, or signal reference",
+                      "type": "Source document, measurement, image, or dataset with provenance",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
@@ -643,7 +641,7 @@
                     {
                       "id": 3,
                       "name": "Example Dossier",
-                      "type": "Curated dossier binder and synthesis report",
+                      "type": "Traceable synthesis of findings linked to their supporting sources",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
@@ -704,7 +702,7 @@
                   "href": "#screen-entity-index"
                 },
                 {
-                  "label": "Watchlists & Alerts",
+                  "label": "Saved Research",
                   "href": "#screen-collection-index"
                 }
               ],
@@ -730,7 +728,7 @@
                 "slots": {},
                 "props": {
                   "title": "Dossier Reader",
-                  "subtitle": "Published long-form report with linked evidence footnotes",
+                  "subtitle": "Read a research synthesis with links to supporting evidence",
                   "badge": "EXAMPLE",
                   "initials": "EW"
                 }
@@ -759,7 +757,7 @@
                       "href": "#screen-entity-index"
                     },
                     {
-                      "label": "Watchlists & Alerts",
+                      "label": "Saved Research",
                       "href": "#screen-collection-index"
                     }
                   ]
@@ -783,7 +781,7 @@
                     {
                       "id": 1,
                       "name": "Example Entity",
-                      "type": "Investigated company, person, or asset node",
+                      "type": "Person, organisation, material, specimen, or other subject being examined",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
@@ -791,7 +789,7 @@
                     {
                       "id": 2,
                       "name": "Example Evidence",
-                      "type": "Verified document, filing, or signal reference",
+                      "type": "Source document, measurement, image, or dataset with provenance",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
@@ -799,7 +797,7 @@
                     {
                       "id": 3,
                       "name": "Example Dossier",
-                      "type": "Curated dossier binder and synthesis report",
+                      "type": "Traceable synthesis of findings linked to their supporting sources",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
@@ -827,7 +825,7 @@
                 "slots": {},
                 "props": {
                   "title": "Dossier Reader",
-                  "subtitle": "Published long-form report with linked evidence footnotes",
+                  "subtitle": "Read a research synthesis with links to supporting evidence",
                   "badge": "EXAMPLE",
                   "initials": "EW"
                 }
@@ -848,8 +846,8 @@
     {
       "id": "screen-collection-index",
       "screenNodeId": "screen-collection-index",
-      "name": "Watchlists & Alerts",
-      "slug": "/watchlists-and-alerts",
+      "name": "Saved Research",
+      "slug": "/saved-research",
       "rootNode": {
         "id": "root-screen-collection-index",
         "nodeType": "layout",
@@ -879,7 +877,7 @@
                   "href": "#screen-entity-index"
                 },
                 {
-                  "label": "Watchlists & Alerts",
+                  "label": "Saved Research",
                   "href": "#screen-collection-index"
                 }
               ],
@@ -904,8 +902,8 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Watchlists & Alerts",
-                  "subtitle": "Active signal alerts and entity delta log",
+                  "title": "Saved Research",
+                  "subtitle": "Return to saved subjects, sources, and open review tasks",
                   "badge": "EXAMPLE",
                   "initials": "EW"
                 }
@@ -937,12 +935,12 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Watchlists & Alerts",
+                  "title": "Saved Research",
                   "rows": [
                     {
                       "id": 1,
                       "name": "Example Entity",
-                      "type": "Investigated company, person, or asset node",
+                      "type": "Person, organisation, material, specimen, or other subject being examined",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
@@ -950,7 +948,7 @@
                     {
                       "id": 2,
                       "name": "Example Evidence",
-                      "type": "Verified document, filing, or signal reference",
+                      "type": "Source document, measurement, image, or dataset with provenance",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
@@ -958,7 +956,7 @@
                     {
                       "id": 3,
                       "name": "Example Dossier",
-                      "type": "Curated dossier binder and synthesis report",
+                      "type": "Traceable synthesis of findings linked to their supporting sources",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
@@ -1017,7 +1015,7 @@
         "targetScreenId": "screen-entity-index"
       },
       {
-        "label": "Watchlists & Alerts",
+        "label": "Saved Research",
         "targetScreenId": "screen-collection-index"
       }
     ],

@@ -63,14 +63,33 @@ test('major product surfaces fit and retain their primary content at every requi
   const runtimeBySurface = new Map<string, SurfaceRuntime>();
   const requestSurface = new WeakMap<import('@playwright/test').Request, string>();
   let activeSurface = '';
+  let activeViewport = viewports[0];
+  const routeByPath = new Map(surfaces.map((route) => [new URL(route, 'http://tessellate.local').pathname, route]));
   const onRequest = (request: import('@playwright/test').Request) => {
-    if (activeSurface) requestSurface.set(request, activeSurface);
+    if (!activeSurface) return;
+
+    // Main-document navigations belong to the route being opened. Requests
+    // from an existing document belong to the route that is still committed,
+    // even during the short interval before page.goto() starts the next one.
+    try {
+      if (request.isNavigationRequest() && request.frame() === page.mainFrame()) {
+        requestSurface.set(request, activeSurface);
+        return;
+      }
+    } catch {
+      // A detached frame can lose its navigation context while the page moves
+      // between routes. Fall back to the committed top-level URL below.
+    }
+
+    const committedRoute = routeByPath.get(new URL(page.url()).pathname);
+    requestSurface.set(request, committedRoute ? `${activeViewport.width}:${committedRoute}` : activeSurface);
   };
   page.on('request', onRequest);
   const evidenceDir = path.resolve(process.cwd(), `quality/evidence/step-36/${testInfo.project.name}`);
   mkdirSync(evidenceDir, { recursive: true });
 
   for (const viewport of viewports) {
+    activeViewport = viewport;
     await page.setViewportSize(viewport);
     for (const route of surfaces) {
       const surfaceKey = `${viewport.width}:${route}`;

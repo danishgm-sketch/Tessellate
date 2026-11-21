@@ -35,6 +35,36 @@ function composeEmployeeExperience() {
   ).directionC.manifest;
 }
 
+const offshoreWindBrief =
+  'A field safety intelligence and equipment maintenance platform for a 1,200-person offshore wind operator. Dispatch crews across three time zones. Technicians use rugged tablets with intermittent connectivity; control room teams manage turbine status, sea conditions, permits to work, lockout/tagout, and incident escalation.';
+
+const municipalWaterBrief =
+  'A public drinking-water utility operations workspace helps field crews and control-room dispatchers respond to burst mains and planned outages across three districts. Teams need to locate affected streets, assign qualified repair crews, verify isolation and water-quality clearance before service returns, and prepare accessible resident updates. Technicians use phones with intermittent connectivity. This is an offline product prototype with sample data only.';
+
+const mutualAidBrief =
+  'A mobile-first neighbourhood social and mutual-aid app for 30,000 residents in a dense city. Verified residents share local updates, organise cleanup events and skill swaps, ask neighbours for help, and follow street-by-street notices. Volunteer moderators handle reports and privacy controls. Users have limited data plans; motion should be optional and every action accessible.';
+
+function composeOffshoreWind() {
+  return composeProjectPipeline(
+    { description: offshoreWindBrief },
+    { catalogResources: loadTestCatalog(), seed: 'offshore-wind-safety-preview' }
+  );
+}
+
+function composeMunicipalWater() {
+  return composeProjectPipeline(
+    { description: municipalWaterBrief },
+    { catalogResources: loadTestCatalog(), seed: 'municipal-water-response-preview' }
+  );
+}
+
+function composeMutualAid() {
+  return composeProjectPipeline(
+    { description: mutualAidBrief },
+    { catalogResources: loadTestCatalog(), seed: 'neighbourhood-mutual-aid-preview' }
+  );
+}
+
 function nodesForScreen(manifest: ReturnType<typeof composeEmployeeExperience>, screenName: string) {
   const screen = manifest.screens.find((item) => item.name === screenName);
   if (!screen) throw new Error(`Missing ${screenName} screen`);
@@ -48,6 +78,201 @@ function nodesForScreen(manifest: ReturnType<typeof composeEmployeeExperience>, 
 }
 
 describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
+  it('keeps a neighbourhood mutual-aid project private, local, and truthful in every direction', () => {
+    const result = composeMutualAid();
+    const manifests = [
+      result.directionA.manifest,
+      result.directionB.manifest,
+      result.directionC.manifest,
+    ];
+
+    expect(result.directionA.diagnostics).toEqual([]);
+    expect(result.directionB.diagnostics).toEqual([]);
+    expect(result.directionC.diagnostics).toEqual([]);
+
+    for (const manifest of manifests) {
+      expect(manifest.brand?.name).toBe('Neighbourhood Commons');
+      const updates = nodesForScreen(manifest, 'Neighbourhood Updates');
+      const metrics = updates.find((node) => node.semanticRole === 'metric-cards');
+      const cards = metrics?.props.cards as Array<{ label: string; status: string }>;
+      expect(cards.map((card) => card.label)).toEqual(
+        expect.arrayContaining([
+          'Open help requests',
+          'Volunteer offers',
+          'Local events',
+          'Safety notices',
+        ])
+      );
+      expect(cards.every((card) => card.status === 'No connected data')).toBe(true);
+      expect(JSON.stringify(updates).toLocaleLowerCase()).not.toMatch(/algorithmic|published media/);
+      expect(JSON.stringify(updates)).toMatch(/contact details hidden|contact details stay private/i);
+
+      const helpBoard = nodesForScreen(manifest, 'Community Help Board');
+      const helpTable = helpBoard.find((node) => node.semanticRole === 'data-table');
+      const helpRows = helpTable?.props.rows as Array<{ status: string; displayValue: string }>;
+      expect(helpRows.every((row) => row.status === 'Help service not connected')).toBe(true);
+      expect(helpRows.every((row) => /contact hidden until mutual consent/i.test(row.displayValue))).toBe(
+        true
+      );
+
+      const moderation = nodesForScreen(manifest, 'Safety & Moderation');
+      const moderationTable = moderation.find((node) => node.semanticRole === 'data-table');
+      const moderationRows = moderationTable?.props.rows as Array<{ displayValue: string }>;
+      expect(moderationRows.every((row) => /no resident details/i.test(row.displayValue))).toBe(true);
+
+      const privacy = nodesForScreen(manifest, 'Privacy & Languages');
+      expect(JSON.stringify(privacy)).toMatch(/language|contact|neighbourhood|consent/i);
+      const entityFields = manifest.productModel.entities
+        .flatMap((entity) => entity.fields ?? [])
+        .join(' ')
+        .toLocaleLowerCase();
+      expect(entityFields).not.toMatch(/homeaddress|streetaddress|dateofbirth|phone(number)?|personalemail/);
+      const screenCopy = manifest.screens
+        .flatMap((screen) => nodesForScreen(manifest, screen.name))
+        .map((node) => JSON.stringify(node.props))
+        .join(' ')
+        .toLocaleLowerCase();
+      expect(screenCopy).not.toMatch(/published media|algorithmic/);
+    }
+
+    expect(
+      result.screenGraph.groups.flatMap((group) => group.screens.map((screen) => screen.name))
+    ).toEqual(
+      expect.arrayContaining([
+        'Neighbourhood Updates',
+        'Community Help Board',
+        'Local Events & Skills',
+        'Safety & Moderation',
+        'Privacy & Languages',
+      ])
+    );
+  });
+
+  it('carries safety-critical offshore operations into all three real previews', () => {
+    const result = composeOffshoreWind();
+    const manifests = [
+      result.directionA.manifest,
+      result.directionB.manifest,
+      result.directionC.manifest,
+    ];
+
+    expect(result.directionA.diagnostics).toEqual([]);
+    expect(result.directionB.diagnostics).toEqual([]);
+    expect(result.directionC.diagnostics).toEqual([]);
+
+    for (const manifest of manifests) {
+      expect(manifest.brand?.name).toBe('Wind Operations');
+      const nodes = nodesForScreen(manifest, 'Turbine Operations');
+      const metricCards = nodes.find((node) => node.semanticRole === 'metric-cards');
+      const cards = metricCards?.props.cards as Array<{ label: string; status: string }>;
+
+      expect(cards.map((card) => card.label.toLocaleLowerCase())).toEqual(
+        expect.arrayContaining([
+          'fleet availability',
+          'active work orders',
+          'permits awaiting approval',
+          'unresolved incidents',
+          'crew coverage',
+          'safe access windows',
+        ])
+      );
+      expect(cards).toHaveLength(6);
+      expect(cards.every((card) => card.status === 'No connected data')).toBe(true);
+      expect(nodes.map((node) => JSON.stringify(node.props).toLocaleLowerCase()).join(' ')).toMatch(
+        /weather|sea condition/
+      );
+
+      const permitTable = nodesForScreen(manifest, 'Permits to Work').find(
+        (node) => node.semanticRole === 'data-table'
+      );
+      expect(permitTable?.props.columnLabels).toMatchObject({
+        name: 'permit to work',
+        quality: 'Verification',
+      });
+      const permitRows = permitTable?.props.rows as Array<{ name: string; status: string }>;
+      expect(permitRows.every((row) => row.name.startsWith('Example permit to work'))).toBe(true);
+      expect(permitRows.every((row) => row.status === 'Permit service not connected')).toBe(true);
+    }
+
+    expect(
+      result.screenGraph.groups.flatMap((group) => group.screens.map((screen) => screen.name))
+    ).toEqual(expect.arrayContaining(['Permits to Work', 'Incident Response', 'Crew & Vessel Dispatch']));
+  });
+
+  it('carries municipal water response into all three real previews', () => {
+    const result = composeMunicipalWater();
+    const manifests = [
+      result.directionA.manifest,
+      result.directionB.manifest,
+      result.directionC.manifest,
+    ];
+    const requiredScreens = [
+      'Network Operations',
+      'Outage & Incident Queue',
+      'Repair Work Orders',
+      'Water Quality Clearance',
+      'Resident Updates',
+    ];
+
+    expect(result.directionA.diagnostics).toEqual([]);
+    expect(result.directionB.diagnostics).toEqual([]);
+    expect(result.directionC.diagnostics).toEqual([]);
+
+    for (const manifest of manifests) {
+      expect(manifest.brand?.name).toBe('Water Network Operations');
+
+      const dashboard = nodesForScreen(manifest, 'Network Operations');
+      const metricCards = dashboard.find((node) => node.semanticRole === 'metric-cards');
+      const cards = metricCards?.props.cards as Array<{ label: string; status: string }>;
+
+      expect(cards.map((card) => card.label)).toEqual([
+        'Open service incidents',
+        'Affected service areas',
+        'Crews available to dispatch',
+        'Repairs awaiting review',
+        'Water-quality clearances',
+        'Resident updates due',
+      ]);
+      expect(cards.every((card) => card.status === 'No connected data')).toBe(true);
+
+      for (const [screenName, recordName, status] of [
+        ['Outage & Incident Queue', 'Example service incident', 'Incident service not connected'],
+        ['Water Quality Clearance', 'Example water-quality clearance', 'Clearance service not connected'],
+      ] as const) {
+        const table = nodesForScreen(manifest, screenName).find(
+          (node) => node.semanticRole === 'data-table'
+        );
+        const rows = table?.props.rows as Array<{ name: string; status: string }>;
+
+        expect(rows, `${screenName} should contain a bound example record table`).toBeDefined();
+        expect(rows.every((row) => row.name.startsWith(recordName))).toBe(true);
+        expect(rows.every((row) => row.status === status)).toBe(true);
+      }
+
+      const repairNodes = nodesForScreen(manifest, 'Repair Work Orders');
+      const repairInspector = repairNodes.find((node) => node.semanticRole === 'inspector-panel');
+      expect(repairNodes.some((node) => node.semanticRole === 'canvas-viewport')).toBe(true);
+      expect(repairInspector?.props.subtitle).toMatch(/crew competencies, isolation evidence/i);
+      expect(repairInspector?.props.subtitle).toMatch(
+        /Example prototype; utility systems and records are not connected/
+      );
+
+      const residentNodes = nodesForScreen(manifest, 'Resident Updates');
+      const residentInspector = residentNodes.find((node) => node.semanticRole === 'inspector-panel');
+      expect(residentNodes.some((node) => node.semanticRole === 'canvas-viewport')).toBe(true);
+      expect(residentInspector?.props.subtitle).toMatch(
+        /accessible service notices with verified affected areas and a clear next-update time/i
+      );
+      expect(residentInspector?.props.subtitle).toMatch(
+        /Example prototype; utility systems and records are not connected/
+      );
+    }
+
+    expect(
+      result.screenGraph.groups.flatMap((group) => group.screens.map((screen) => screen.name))
+    ).toEqual(expect.arrayContaining(requiredScreens));
+  });
+
   it('keeps resource navigation branding identical to the project brand', () => {
     const manifest = composeEmployeeExperience();
     const brandedNodes = manifest.screens.flatMap((screen) => nodesForScreen(manifest, screen.name))
@@ -58,6 +283,246 @@ describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
     expect(brandedNodes.map((node) => node.props.brand)).toEqual(
       brandedNodes.map(() => manifest.brand?.name)
     );
+  });
+
+  it('routes specialised marketing secondary CTAs to their advertised operational screens', () => {
+    const cases = [
+      {
+        description: offshoreWindBrief,
+        seed: 'offshore-wind-marketing-cta',
+        expectedLabel: 'Check work orders',
+        expectedTarget: 'Work Orders',
+      },
+      {
+        description: mutualAidBrief,
+        seed: 'mutual-aid-marketing-cta',
+        expectedLabel: 'See local events',
+        expectedTarget: 'Local Events & Skills',
+      },
+      {
+        description: municipalWaterBrief,
+        seed: 'municipal-water-marketing-cta',
+        expectedLabel: 'Review water-quality clearances',
+        expectedTarget: 'Water Quality Clearance',
+      },
+    ];
+
+    for (const item of cases) {
+      const result = composeProjectPipeline(
+        {
+          description: item.description,
+          requiredScreens: ['marketing'],
+        },
+        { catalogResources: loadTestCatalog(), seed: item.seed }
+      );
+      const manifest = result.directionC.manifest;
+      const graphMarketing = result.screenGraph.groups
+        .flatMap((group) => group.screens)
+        .find((screen) => screen.screenType === 'marketing');
+      const marketingScreen = manifest.screens.find(
+        (screen) => screen.screenNodeId === graphMarketing?.id
+      );
+      expect(marketingScreen, `Expected marketing screen for ${item.seed}`).toBeDefined();
+      const hero = nodesForScreen(manifest, marketingScreen!.name).find(
+        (node) => node.semanticRole === 'hero'
+      );
+      const secondary = hero?.props.secondaryCta as { label: string; href: string };
+      const targetScreen = manifest.screens.find((screen) => `#${screen.id}` === secondary.href);
+
+      expect(secondary.label).toBe(item.expectedLabel);
+      expect(targetScreen?.name).toBe(item.expectedTarget);
+      expect(targetScreen?.id).not.toBe(marketingScreen!.id);
+    }
+  });
+
+  it('fails unavailable language-learning capabilities closed instead of substituting task boards', () => {
+    const result = composeProjectPipeline(
+      {
+        description:
+          'An offline-first Spanish learning app for adults with dyslexia who study in 10-minute sessions. Include clear progress, adjustable text spacing, audio pronunciation, short speaking practice, and downloadable lessons for commutes with no mobile signal.',
+      },
+      { catalogResources: loadTestCatalog(), seed: 'offline-language-learning' }
+    );
+    const expectedUnresolved = [
+      'dyslexia-friendly-reading-controls',
+      'dyslexia-friendly-reading-controls',
+      'language-progress-summary',
+      'offline-lesson-downloads',
+      'pronunciation-audio',
+      'speaking-practice',
+      'vocabulary-review',
+    ];
+
+    for (const output of [result.directionA, result.directionB, result.directionC]) {
+      expect(output.diagnostics?.map((diagnostic) => diagnostic.role).sort()).toEqual(
+        expectedUnresolved
+      );
+      const practice = nodesForScreen(output.manifest, 'Practice Session');
+      expect(practice.some((node) => node.resourceRef?.slug === 'kanban-board')).toBe(false);
+      for (const role of [
+        'pronunciation-audio',
+        'speaking-practice',
+        'dyslexia-friendly-reading-controls',
+      ]) {
+        const missingRole = practice.find((node) => node.semanticRole === role);
+        expect(missingRole?.props.unresolvedRequiredRole).toBe(true);
+        expect(missingRole?.resourceRef).toBeUndefined();
+      }
+
+      const todayTimeline = nodesForScreen(output.manifest, 'Today').find(
+        (node) => node.semanticRole === 'activity-feed'
+      );
+      const events = todayTimeline?.props.events as Array<{
+        time: string;
+        title: string;
+        desc: string;
+      }>;
+      expect(todayTimeline?.props.title).toBe('Example 10-minute practice');
+      expect(events?.map((event) => event.time)).toEqual([
+        'Example · 0–3 min',
+        'Example · 3–7 min',
+        'Example · 7–10 min',
+      ]);
+      expect(events?.map((event) => event.desc).join(' ')).toMatch(/not connected|not stored/i);
+    }
+  });
+
+  it('fails unavailable bicycle repair operations closed instead of implying service controls work', () => {
+    const result = composeProjectPipeline(
+      {
+        description:
+          'A neighborhood bicycle repair co-op for eight mechanics and two front-desk volunteers: same-day intake, safety triage for brakes and steering, parts availability, consented repair estimates, and pickup readiness. The shared workbench runs on a counter tablet and desktop. Do not handle payments.',
+      },
+      { catalogResources: loadTestCatalog(), seed: 'bicycle-repair-coop' }
+    );
+    const domainRoles = [
+      'safety-triage-queue',
+      'priority-alerts',
+      'repair-intake-form',
+      'reported-issue-capture',
+      'brake-steering-checklist',
+      'inspection-evidence',
+      'parts-availability',
+      'consented-repair-estimate',
+      'safety-signoff',
+      'pickup-readiness',
+    ];
+
+    expect(result.productModel.productArchetypes[0]?.tag).toBe('erp-operations');
+    expect(result.productModel.likelyScreens.map((screen) => screen.name)).toEqual([
+      'Service Desk',
+      'Repair Intake',
+      'Safety Inspection',
+      'Parts & Estimates',
+      'Pickup & Handover',
+    ]);
+
+    for (const output of [result.directionA, result.directionB, result.directionC]) {
+      const diagnostics = output.diagnostics?.map((diagnostic) => diagnostic.role) ?? [];
+      expect(diagnostics).toEqual(expect.arrayContaining(domainRoles));
+      expect(output.manifest.screens.map((screen) => screen.name)).toEqual(
+        expect.arrayContaining(result.productModel.likelyScreens.map((screen) => screen.name))
+      );
+
+      for (const screenName of [
+        'Repair Intake',
+        'Safety Inspection',
+        'Parts & Estimates',
+        'Pickup & Handover',
+      ]) {
+        const nodes = nodesForScreen(output.manifest, screenName);
+        const screenRoles = result.screenGraph.groups
+          .flatMap((group) => group.screens)
+          .find((screen) => screen.name === screenName)?.requiredRoles ?? [];
+        for (const role of screenRoles.filter((candidate) => domainRoles.includes(candidate))) {
+          const node = nodes.find((candidate) => candidate.semanticRole === role);
+          expect(node?.props.unresolvedRequiredRole).toBe(true);
+          expect(node?.resourceRef).toBeUndefined();
+        }
+      }
+
+      const safetyHeader = nodesForScreen(output.manifest, 'Safety Inspection').find(
+        (node) => node.semanticRole === 'entity-header'
+      );
+      expect(safetyHeader?.resourceRef?.slug).toBe('entity-profile-header');
+      expect(safetyHeader?.props.title).toBe('Safety Inspection');
+      expect(safetyHeader?.props.subtitle).toMatch(/brake and steering checks/i);
+
+      expect(JSON.stringify(output.manifest).toLowerCase()).not.toContain('project index');
+      expect(JSON.stringify(output.manifest).toLowerCase()).not.toContain('payment confirmation');
+    }
+  });
+
+  it('fails unavailable pantry privacy and fulfilment controls closed in all three directions', () => {
+    const result = composeProjectPipeline(
+      {
+        description:
+          'An appointment and fulfilment tool for a volunteer-led community food pantry serving 300 households each week. Households choose weekly grocery packs; staff coordinate same-day emergency parcels, chilled stock and expiry dates, multilingual plain-language pickup instructions, and a waitlist. Volunteers use shared tablets, coordinators use desktop, and intake often happens on an unreliable connection. Collect only a household’s chosen name and pickup essentials: do not request proof of immigration, income, medical diagnosis, or payment. Allergy details are visible only to assigned food-safety coordinators; volunteers see a neutral packing alert, not private notes. Provide a separate safeguarding escalation route without exposing case notes. No payments or donations.',
+      },
+      { catalogResources: loadTestCatalog(), seed: 'community-food-pantry' }
+    );
+    const domainRoles = [
+      'pickup-capacity-calendar',
+      'waitlist-queue',
+      'emergency-parcel-priorities',
+      'minimal-household-intake',
+      'chosen-name-only',
+      'offline-intake-continuity',
+      'multilingual-pickup-instructions',
+      'weekly-pack-selection',
+      'pack-substitution-review',
+      'same-day-parcel-queue',
+      'privacy-preserving-packing-alert',
+      'chilled-stock-inventory',
+      'expiry-aware-stock-rotation',
+      'assigned-coordinator-allergy-details',
+      'neutral-volunteer-alert',
+      'private-safeguarding-route',
+      'case-note-confidentiality',
+    ];
+    const expectedScreens = [
+      'Pickup Schedule & Waitlist',
+      'Household Intake & Pickup',
+      'Weekly Pack Choices',
+      'Emergency Parcels',
+      'Stock & Expiry',
+      'Food Safety & Safeguarding',
+    ];
+
+    expect(result.productModel.productArchetypes[0]?.tag).toBe('erp-operations');
+    expect(result.productModel.likelyScreens.map((screen) => screen.name)).toEqual(expectedScreens);
+
+    for (const output of [result.directionA, result.directionB, result.directionC]) {
+      const diagnostics = output.diagnostics?.map((diagnostic) => diagnostic.role) ?? [];
+      expect(diagnostics).toEqual(expect.arrayContaining(domainRoles));
+      expect(output.manifest.screens.map((screen) => screen.name)).toEqual(
+        expect.arrayContaining(expectedScreens)
+      );
+
+      for (const screenName of expectedScreens) {
+        const nodes = nodesForScreen(output.manifest, screenName);
+        const screenRoles = result.screenGraph.groups
+          .flatMap((group) => group.screens)
+          .find((screen) => screen.name === screenName)?.requiredRoles ?? [];
+        const headerRole = screenName === 'Pickup Schedule & Waitlist' ? 'overview-header' :
+          screenName === 'Emergency Parcels' || screenName === 'Stock & Expiry' ? 'index-header' : 'entity-header';
+        const header = nodes.find((node) => node.semanticRole === headerRole);
+
+        expect(header?.props.title).toBe(screenName);
+        expect(header?.resourceRef).toBeDefined();
+        for (const role of screenRoles.filter((candidate) => domainRoles.includes(candidate))) {
+          const node = nodes.find((candidate) => candidate.semanticRole === role);
+          expect(node?.props.unresolvedRequiredRole).toBe(true);
+          expect(node?.resourceRef).toBeUndefined();
+        }
+      }
+
+      const serialized = JSON.stringify(output.manifest).toLowerCase();
+      const productModelSerialized = JSON.stringify(output.manifest.productModel).toLowerCase();
+      expect(serialized).not.toMatch(/account balances|bank statements|money movement|transfer funds/);
+      expect(productModelSerialized).not.toMatch(/proof of immigration|medical diagnosis|income verification/);
+      expect(serialized).not.toContain('payment confirmation');
+    }
   });
 
   it('routes employee marketing actions to their stated destinations', () => {

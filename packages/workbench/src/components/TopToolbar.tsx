@@ -45,10 +45,41 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
   const [titleValue, setTitleValue] = useState(manifest.name);
   const [isCheckpointsOpen, setIsCheckpointsOpen] = useState(false);
   const [isExportOpen, setIsExportOpen] = useState(false);
+  const [mobileExportMenuStyle, setMobileExportMenuStyle] = useState<React.CSSProperties>();
   const [isImporting, setIsImporting] = useState(false);
   const [manifestImportStatus, setManifestImportStatus] = useState('');
   const [exportStatus, setExportStatus] = useState('');
   const manifestInputRef = useRef<HTMLInputElement>(null);
+  const exportButtonRef = useRef<HTMLButtonElement>(null);
+
+  const toggleExportMenu = () => {
+    if (isExportOpen) {
+      setIsExportOpen(false);
+      setMobileExportMenuStyle(undefined);
+      return;
+    }
+
+    if (window.matchMedia('(max-width: 639px)').matches) {
+      const trigger = exportButtonRef.current?.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const estimatedMenuHeight = Math.min(320, viewportHeight * 0.7);
+      let top = (trigger?.bottom ?? 64) + 8;
+      if (top + estimatedMenuHeight > viewportHeight - 12) {
+        top = Math.max(12, (trigger?.top ?? viewportHeight - 12) - estimatedMenuHeight - 8);
+      }
+      setMobileExportMenuStyle({
+        position: 'fixed',
+        left: 12,
+        right: 12,
+        top,
+        width: 'auto',
+        maxHeight: Math.max(120, Math.min(viewportHeight * 0.7, viewportHeight - top - 12)),
+      });
+    } else {
+      setMobileExportMenuStyle(undefined);
+    }
+    setIsExportOpen(true);
+  };
 
   const modes: WorkbenchMode[] = ['structure', 'style', 'motion', 'content', 'audit'];
 
@@ -171,7 +202,24 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
       data-testid="top-toolbar"
       className="dark min-h-14 shrink-0 px-3 py-2 gap-2 flex-wrap border-b border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] flex items-center justify-between select-none z-30 relative"
     >
-      {actionError && <p role="alert" className="w-full text-sm">{actionError}</p>}
+      {actionError && (() => {
+        const [summary, ...details] = actionError.split('\n');
+        return (
+          <div role="alert" className="w-full text-sm">
+            <p>{summary}</p>
+            {details.length > 0 && (
+              <details className="mt-1 max-w-full">
+                <summary className="w-fit cursor-pointer rounded-sm text-xs underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#879DFF]">
+                  Review {details.length} unresolved roles
+                </summary>
+                <ul className="mt-1 max-h-32 list-inside list-disc space-y-0.5 overflow-y-auto break-words pl-2 text-xs text-[#D7DCE5]">
+                  {details.map((detail, index) => <li key={`${index}-${detail}`}>{detail}</li>)}
+                </ul>
+              </details>
+            )}
+          </div>
+        );
+      })()}
       {exportStatus && <p role="status" data-testid="export-status" className="w-full text-xs">{exportStatus}</p>}
       {manifestImportStatus && <p role="status" data-testid="manifest-import-status" className="w-full text-xs">{manifestImportStatus}</p>}
       {/* Left Cluster: Brand, Title, Save Status */}
@@ -358,8 +406,9 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
         {/* Export Dropdown */}
         <div className="relative">
           <button
+            ref={exportButtonRef}
             aria-expanded={isExportOpen} data-testid="export-button"
-            onClick={() => setIsExportOpen(!isExportOpen)}
+            onClick={toggleExportMenu}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2547E8] dark:bg-[#6782FF] text-white dark:text-[#0B0D10] text-xs font-semibold hover:opacity-90 shadow-xs transition-opacity"
             title="Export project"
           >
@@ -371,7 +420,8 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
           {isExportOpen && (
             <div
               data-testid="export-menu"
-              className="fixed left-3 right-3 mt-2 w-auto sm:absolute sm:left-auto sm:right-0 sm:w-64 rounded-xl border border-[#D9D6CF] bg-white p-1.5 shadow-lg dark:border-[#272C34] dark:bg-[#171B21] z-50 text-xs"
+              style={mobileExportMenuStyle}
+              className={`${mobileExportMenuStyle ? '' : 'absolute right-0 top-full mt-2 w-64'} max-h-[70vh] overflow-y-auto rounded-xl border border-[#D9D6CF] bg-white p-1.5 shadow-lg dark:border-[#272C34] dark:bg-[#171B21] z-50 text-xs`}
             >
               <input
                 ref={manifestInputRef}

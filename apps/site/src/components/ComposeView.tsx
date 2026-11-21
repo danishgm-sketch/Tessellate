@@ -242,9 +242,13 @@ export function ComposeView() {
   const { productModel, screenGraph: _screenGraph, inferredAssumptions, directionA, directionB, directionC } = compositionResult;
   const screenPlan = planScreenGraph(productModel);
   const primaryProductType = productModel.productArchetypes[0]?.tag;
-  const productTypeName = productModel.entities.some((entity) => entity.name === 'Employee')
-    ? 'Employee Experience'
-    : archetypes.find((archetype) => archetype.id === primaryProductType)?.name
+  const productTypeName = productModel.requiredCapabilities.includes(
+    'community-emergency-response-workflow'
+  )
+    ? 'Community Emergency Response'
+    : productModel.entities.some((entity) => entity.name === 'Employee')
+      ? 'Employee Experience'
+      : archetypes.find((archetype) => archetype.id === primaryProductType)?.name
       ?? readableRoleLabel(primaryProductType ?? 'Product');
 
   const handleOpenDirection = async (manifest: ProjectManifest) => {
@@ -546,8 +550,11 @@ export function ComposeView() {
 
               {/* Accessibility Floor */}
               <div>
-                <span className="text-xs font-bold">Accessibility Floor</span>
+                <label htmlFor="accessibility-floor" className="text-xs font-bold">
+                  Accessibility Floor
+                </label>
                 <select
+                  id="accessibility-floor"
                   value={accessibilityFloor}
                   onChange={(e) => setAccessibilityFloor(e.target.value as 'A' | 'AA' | 'AAA')}
                   className="mt-2 w-full rounded border border-[#D9D6CF] bg-white p-1.5 text-xs dark:border-[#272C34] dark:bg-[#171B21]"
@@ -818,10 +825,25 @@ function DirectionCard({
   onOpen: (manifest: ProjectManifest) => void;
 }) {
   const { direction, manifest } = output;
+  const unresolvedRequiredRoleCount = new Set(
+    output.diagnostics?.map((diagnostic) => diagnostic.role) ?? []
+  ).size;
   const primaryScreen = manifest.screens.find(screen=>screen.slug==='/overview') ?? manifest.screens[0];
   const [previewOpen,setPreviewOpen] = useState(false);
   const [previewScreen,setPreviewScreen] = useState(primaryScreen?.id ?? '');
+  const [inlinePreviewScreen,setInlinePreviewScreen] = useState(primaryScreen?.id ?? '');
   const closePreview=useCallback(()=>setPreviewOpen(false),[]);
+  const selectLinkedScreen=useCallback((
+    event: React.MouseEvent<HTMLDivElement>,
+    selectScreen: (screenId: string) => void
+  ) => {
+    const anchor=(event.target as HTMLElement).closest('a[href^="#"]');
+    const screenId=anchor?.getAttribute('href')?.slice(1);
+    if(screenId && manifest.screens.some(screen=>screen.id===screenId)) {
+      event.preventDefault();
+      selectScreen(screenId);
+    }
+  },[manifest.screens]);
 
 
   return (
@@ -859,10 +881,23 @@ function DirectionCard({
           <h3 className="text-lg font-bold text-[#111217] dark:text-[#F5F7FA]">
             {direction.name}
           </h3>
+          <p className="mt-1 text-xs font-medium text-[#343840] dark:text-[#D7DCE5]">
+            {direction.tagline}
+          </p>
           <p className="mt-1 text-xs text-[#62666F] dark:text-[#A8AFBA]">
             {direction.rationale}
           </p>
         </div>
+
+        {unresolvedRequiredRoleCount > 0 && (
+          <p
+            data-testid={`direction-diagnostics-summary-${number}`}
+            role="status"
+            className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-950 dark:border-amber-700 dark:bg-amber-950/30 dark:text-amber-100"
+          >
+            {unresolvedRequiredRoleCount} required interface {unresolvedRequiredRoleCount === 1 ? 'role has' : 'roles have'} no eligible resource in the current catalogue.
+          </p>
+        )}
 
         {/* Telemetry metadata */}
         <div className="grid grid-cols-2 gap-2 rounded-xl bg-[#FAF9F6] p-2.5 text-[11px] dark:bg-[#0B0D10]">
@@ -895,7 +930,7 @@ function DirectionCard({
         {/* Real Scaled Project Preview */}
         <div className="rounded-xl border border-[#D9D6CF]/70 bg-[#FAF9F6] p-3 dark:border-[#272C34] dark:bg-[#0B0D10]">
           <div className="flex items-center justify-between text-[10px] font-bold uppercase text-[var(--text-muted)]">
-            <span>Screen Preview: {primaryScreen?.name ?? 'Overview'}</span>
+            <span>Screen Preview: {manifest.screens.find(screen=>screen.id===inlinePreviewScreen)?.name ?? primaryScreen?.name ?? 'Overview'}</span>
             <span>{manifest.screens.length} Screens</span>
           </div>
 
@@ -903,12 +938,10 @@ function DirectionCard({
             data-testid={`direction-preview-${number}`}
             aria-label={`Direction ${number} preview`} role="region" tabIndex={0} className="mt-2 relative h-72 w-full overflow-auto rounded-lg border border-[#D9D6CF] bg-white shadow-inner dark:border-[#272C34] dark:bg-[#0B0D10]"
           >
-            <div
-              className="w-full"
-            >
+            <div className="w-full" onClickCapture={event=>selectLinkedScreen(event,setInlinePreviewScreen)}>
               <ManifestRenderer
                 manifest={manifest}
-                activeScreenId={primaryScreen?.id}
+                activeScreenId={inlinePreviewScreen}
               />
             </div>
           </div>
@@ -932,7 +965,7 @@ function DirectionCard({
         <button type="button" onClick={()=>setPreviewOpen(true)} className="underline py-2 text-sm">Inspect full preview and DNA</button>
         <Dialog open={previewOpen} onClose={closePreview} title={`Direction ${number}: ${direction.name}`} className="max-w-[1400px] max-h-[92vh] overflow-auto">
           <label className="block mb-4">Screen <select aria-label="Direction preview screen" className="border p-2" value={previewScreen} onChange={event=>setPreviewScreen(event.target.value)}>{manifest.screens.map(screen=><option key={screen.id} value={screen.id}>{screen.name}</option>)}</select></label>
-          <div onClickCapture={event=>{const anchor=(event.target as HTMLElement).closest('a[href^="#"]');const id=anchor?.getAttribute('href')?.slice(1);if(id && manifest.screens.some(screen=>screen.id===id)){event.preventDefault();setPreviewScreen(id);}}}><ManifestRenderer manifest={manifest} activeScreenId={previewScreen}/></div>
+          <div onClickCapture={event=>selectLinkedScreen(event,setPreviewScreen)}><ManifestRenderer manifest={manifest} activeScreenId={previewScreen}/></div>
           <details className="mt-4"><summary>Design DNA and resource references</summary><pre tabIndex={0} className="text-xs overflow-auto">{JSON.stringify({id:manifest.id,dna:manifest.designDNA,navigation:manifest.navigation,grammar:direction.primaryGrammarId,screens:manifest.screens,diagnostics:output.diagnostics},null,2)}</pre></details>
         </Dialog>
       </div>
