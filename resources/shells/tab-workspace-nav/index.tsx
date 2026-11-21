@@ -5,6 +5,7 @@ export type TabWorkspaceNavVariant = 'quiet' | 'expressive' | 'nocturne';
 export interface TabWorkspaceNavProps {
   variant?: TabWorkspaceNavVariant;
   activeId?: string;
+  defaultActiveId?: string;
   onSelectTab?: (id: string) => void;
   onCloseTab?: (id: string) => void;
 }
@@ -17,12 +18,14 @@ const INITIAL_TABS = [
 
 export function TabWorkspaceNav({
   variant = 'quiet',
-  activeId = '1',
+  activeId,
+  defaultActiveId = '1',
   onSelectTab,
   onCloseTab,
 }: TabWorkspaceNavProps) {
   const [openTabs, setOpenTabs] = useState(INITIAL_TABS);
-  const [selectedId, setSelectedId] = useState(activeId);
+  const [uncontrolledId, setUncontrolledId] = useState(defaultActiveId);
+  const selectedId = activeId ?? uncontrolledId;
 
   let bar = 'bg-neutral-100 border-b border-neutral-200 text-neutral-800';
   let activeTab = 'bg-white text-neutral-900 border-r border-l border-neutral-200 font-semibold';
@@ -38,7 +41,9 @@ export function TabWorkspaceNav({
           type="button"
           onClick={() => {
             setOpenTabs(INITIAL_TABS);
-            setSelectedId('1');
+            if (activeId === undefined) {
+              setUncontrolledId(defaultActiveId);
+            }
           }}
           className="px-3 py-1 rounded border text-xs font-medium"
         >
@@ -58,7 +63,9 @@ export function TabWorkspaceNav({
                 type="button"
                 aria-current={isCurrent ? 'page' : undefined}
                 onClick={() => {
-                  setSelectedId(t.id);
+                  if (activeId === undefined) {
+                    setUncontrolledId(t.id);
+                  }
                   onSelectTab?.(t.id);
                 }}
                 className="px-1.5 py-1 rounded text-xs"
@@ -71,8 +78,8 @@ export function TabWorkspaceNav({
                 onClick={() => {
                   const nextTabs = openTabs.filter((item) => item.id !== t.id);
                   setOpenTabs(nextTabs);
-                  if (t.id === selectedId && nextTabs[0]) {
-                    setSelectedId(nextTabs[0].id);
+                  if (activeId === undefined && t.id === selectedId && nextTabs[0]) {
+                    setUncontrolledId(nextTabs[0].id);
                   }
                   onCloseTab?.(t.id);
                 }}

@@ -5,18 +5,21 @@ export type ProjectSwitcherVariant = 'quiet' | 'expressive' | 'nocturne';
 export interface ProjectSwitcherProps {
   variant?: ProjectSwitcherVariant;
   currentProject?: string;
+  defaultProject?: string;
   projects?: string[];
   onSelectProject?: (project: string) => void;
 }
 
 export function ProjectSwitcher({
   variant = 'quiet',
-  currentProject = 'Example Workspace',
+  currentProject,
+  defaultProject = 'Example Workspace',
   projects = ['Example Workspace', 'Design System', 'Documentation Site'],
   onSelectProject,
 }: ProjectSwitcherProps) {
   const [open, setOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(currentProject);
+  const [uncontrolledProject, setUncontrolledProject] = useState(defaultProject);
+  const selectedProject = currentProject ?? uncontrolledProject;
 
   let theme = 'hover:bg-neutral-100 text-neutral-800';
   let menuTheme = 'bg-white border-neutral-200 text-neutral-900';
@@ -53,7 +56,9 @@ export function ProjectSwitcher({
               role="option"
               aria-selected={project === selectedProject}
               onClick={() => {
-                setSelectedProject(project);
+                if (currentProject === undefined) {
+                  setUncontrolledProject(project);
+                }
                 setOpen(false);
                 onSelectProject?.(project);
               }}

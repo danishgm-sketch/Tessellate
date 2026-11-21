@@ -5,15 +5,18 @@ export type AppSidebarCompactVariant = 'quiet' | 'expressive' | 'nocturne';
 export interface AppSidebarCompactProps {
   variant?: AppSidebarCompactVariant;
   activeId?: string;
+  defaultActiveId?: string;
   onSelectItem?: (id: string) => void;
 }
 
 export function AppSidebarCompact({
   variant = 'quiet',
-  activeId = 'home',
+  activeId,
+  defaultActiveId = 'home',
   onSelectItem,
 }: AppSidebarCompactProps) {
-  const [selectedId, setSelectedId] = useState(activeId);
+  const [uncontrolledId, setUncontrolledId] = useState(defaultActiveId);
+  const selectedId = activeId ?? uncontrolledId;
 
   let theme = 'bg-white border-r border-neutral-200 text-neutral-800';
   let active = 'bg-neutral-100 text-neutral-900';
@@ -46,7 +49,9 @@ export function AppSidebarCompact({
               title={it.label}
               aria-current={isCurrent ? 'page' : undefined}
               onClick={() => {
-                setSelectedId(it.id);
+                if (activeId === undefined) {
+                  setUncontrolledId(it.id);
+                }
                 onSelectItem?.(it.id);
               }}
               className={`h-10 w-full rounded-lg flex items-center justify-center text-sm transition-colors ${

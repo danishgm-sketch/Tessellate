@@ -167,3 +167,119 @@ test('interactive Step 39 resources expose accessible names, labels, and honest 
     expect(axe.violations, `${item.slug} failed label/button-name Axe rules`).toEqual([]);
   }
 });
+
+test('navigation selection props remain reactive when updated by a host after mount', async ({
+  page,
+}) => {
+  await page.route('**/__test-controlled-host__', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'text/html; charset=utf-8',
+      body: '<!doctype html><html lang="en"><body></body></html>',
+    })
+  );
+  await page.goto('/__test-controlled-host__');
+
+  const cases = [
+    {
+      slug: 'app-sidebar-compact',
+      firstProps: { activeId: 'dna' },
+      firstCheck: async (frame: ReturnType<typeof page.frameLocator>) => {
+        await expect(frame.getByRole('button', { name: 'Design DNA' })).toHaveAttribute(
+          'aria-current',
+          'page'
+        );
+        await expect(frame.getByRole('button', { name: 'Home' })).not.toHaveAttribute(
+          'aria-current',
+          'page'
+        );
+      },
+      secondProps: { activeId: 'export' },
+      secondCheck: async (frame: ReturnType<typeof page.frameLocator>) => {
+        await expect(frame.getByRole('button', { name: 'Export' })).toHaveAttribute(
+          'aria-current',
+          'page'
+        );
+        await expect(frame.getByRole('button', { name: 'Design DNA' })).not.toHaveAttribute(
+          'aria-current',
+          'page'
+        );
+      },
+    },
+    {
+      slug: 'tab-workspace-nav',
+      firstProps: { activeId: '2' },
+      firstCheck: async (frame: ReturnType<typeof page.frameLocator>) => {
+        await expect(frame.getByRole('button', { name: 'tokens.css', exact: true })).toHaveAttribute(
+          'aria-current',
+          'page'
+        );
+      },
+      secondProps: { activeId: '3' },
+      secondCheck: async (frame: ReturnType<typeof page.frameLocator>) => {
+        await expect(frame.getByRole('button', { name: 'schema.json', exact: true })).toHaveAttribute(
+          'aria-current',
+          'page'
+        );
+        await expect(
+          frame.getByRole('button', { name: 'tokens.css', exact: true })
+        ).not.toHaveAttribute('aria-current', 'page');
+      },
+    },
+    {
+      slug: 'project-switcher',
+      firstProps: { currentProject: 'Design System' },
+      firstCheck: async (frame: ReturnType<typeof page.frameLocator>) => {
+        await expect(frame.getByRole('button', { name: /Design System/i })).toBeVisible();
+      },
+      secondProps: { currentProject: 'Documentation Site' },
+      secondCheck: async (frame: ReturnType<typeof page.frameLocator>) => {
+        await expect(frame.getByRole('button', { name: /Documentation Site/i })).toBeVisible();
+      },
+    },
+    {
+      slug: 'workspace-switcher',
+      firstProps: { currentWorkspace: 'Starter Lab' },
+      firstCheck: async (frame: ReturnType<typeof page.frameLocator>) => {
+        await expect(frame.getByRole('button', { name: /Starter Lab/i })).toBeVisible();
+      },
+      secondProps: { currentWorkspace: 'Example Workspace' },
+      secondCheck: async (frame: ReturnType<typeof page.frameLocator>) => {
+        await expect(frame.getByRole('button', { name: /Example Workspace/i })).toBeVisible();
+      },
+    },
+  ];
+
+  for (const item of cases) {
+    await page.evaluate((slug) => {
+      document.body.innerHTML = '';
+      const iframe = document.createElement('iframe');
+      iframe.id = 'controlled-host-frame';
+      iframe.src = `/?resource=${slug}`;
+      iframe.style.width = '1024px';
+      iframe.style.height = '400px';
+      document.body.appendChild(iframe);
+    }, item.slug);
+
+    const frame = page.frameLocator('#controlled-host-frame');
+    await expect(frame.locator('.tess-screen')).toBeVisible({ timeout: 15_000 });
+
+    await page.evaluate((props) => {
+      const iframe = document.getElementById('controlled-host-frame') as HTMLIFrameElement | null;
+      iframe?.contentWindow?.postMessage(
+        { type: 'TESSELLATE_PREVIEW_UPDATE', props },
+        window.location.origin
+      );
+    }, item.firstProps);
+    await item.firstCheck(frame);
+
+    await page.evaluate((props) => {
+      const iframe = document.getElementById('controlled-host-frame') as HTMLIFrameElement | null;
+      iframe?.contentWindow?.postMessage(
+        { type: 'TESSELLATE_PREVIEW_UPDATE', props },
+        window.location.origin
+      );
+    }, item.secondProps);
+    await item.secondCheck(frame);
+  }
+});

@@ -14,7 +14,7 @@ import {
   getGoldenBrief,
   getAllGoldenBriefs,
 } from '../index.js';
-import { hasPositiveArchetypeCue } from '../archetypes.js';
+import { hasPositiveArchetypeCue, hasPositivePatternMatch } from '../archetypes.js';
 
 describe('Product Archetypes (18 Categories)', () => {
   it('defines all 18 product archetypes', () => {
@@ -802,5 +802,27 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
     expect(
       hasPositiveArchetypeCue('Avoid workflows using payment APIs.', 'payment')
     ).toBe(false);
+
+    expect(hasPositiveArchetypeCue('Avoid using payment APIs.', 'payment')).toBe(false);
+    expect(
+      hasPositiveArchetypeCue('Avoid using artificial intelligence.', 'artificial intelligence')
+    ).toBe(false);
+    expect(hasPositiveArchetypeCue('Avoid ever using payment APIs.', 'payment')).toBe(false);
+    expect(
+      hasPositivePatternMatch('Avoid using payment APIs.', /\bpayment\b/i)
+    ).toBe(false);
+
+    const avoidUsingPaymentsBrief = interpretProductBrief({
+      description:
+        'A neighborhood tool-lending library for scheduling drill and saw loans. Avoid using payment APIs or artificial intelligence.',
+    });
+    expect(
+      avoidUsingPaymentsBrief.productModel.productArchetypes.some(
+        (entry) => entry.tag === 'fintech' || entry.tag === 'ai'
+      )
+    ).toBe(false);
+    expect(avoidUsingPaymentsBrief.inferredAssumptions).not.toContain(
+      'Payment and purchase steps need clear confirmation.'
+    );
   });
 });

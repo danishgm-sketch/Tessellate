@@ -758,6 +758,8 @@ const AUDIENCE_PURPOSE_TRANSITION =
 const AVOID_CUE = /^avoid(?:s|ed)?$/i;
 const AVOID_INSTRUMENTAL_TRANSITION =
   /\b(?:by|using|through|via)\b|\bwith\s+(?:a|an|the|our|this|your)\b/i;
+const AVOIDED_MODIFIER_ONLY =
+  /^(?:ever|always|directly|indirectly|manually|automatically|explicitly|implicitly|actively|passively|simply|merely|just|only|actually|strictly|completely|entirely|totally|accidentally|unintentionally|repeatedly|constantly|continuously|frequently|regularly|silently|blindly|prematurely|unnecessarily|currently|still|also|even|really|truly|generally|usually|often|typically|potentially|possibly|probably|maybe|perhaps)(?:\s+(?:ever|always|directly|indirectly|manually|automatically|explicitly|implicitly|actively|passively|simply|merely|just|only|actually|strictly|completely|entirely|totally|accidentally|unintentionally|repeatedly|constantly|continuously|frequently|regularly|silently|blindly|prematurely|unnecessarily|currently|still|also|even|really|truly|generally|usually|often|typically|potentially|possibly|probably|maybe|perhaps))*$/i;
 const AVOIDED_UI_SURFACE =
   /\b(?:app|application|platform|portal|dashboard|tool|site|storefront|workflow|workflows|screen|screens|page|pages|feature|features|module|modules|widget|widgets|checkout|billing|banking|finance|fintech|payment|payments|transfer|transfers)\b/i;
 
@@ -828,11 +830,16 @@ function isNegatedKeywordOccurrence(
   const avoidTransitionMatch = AVOID_CUE.test(latestNegationCue)
     ? afterLatestNegation.match(AVOID_INSTRUMENTAL_TRANSITION)
     : null;
+  const beforeAvoidTransition = avoidTransitionMatch
+    ? afterLatestNegation.slice(0, avoidTransitionMatch.index ?? 0).trim()
+    : '';
+  const hasAvoidedOutcome =
+    /[a-z0-9]/i.test(beforeAvoidTransition) &&
+    !AVOIDED_MODIFIER_ONLY.test(beforeAvoidTransition);
   const endedByAvoidSolution =
     Boolean(avoidTransitionMatch) &&
-    !AVOIDED_UI_SURFACE.test(
-      afterLatestNegation.slice(0, avoidTransitionMatch?.index ?? 0)
-    );
+    hasAvoidedOutcome &&
+    !AVOIDED_UI_SURFACE.test(beforeAvoidTransition);
 
   return !(
     endedByCoordinatedPredicate ||

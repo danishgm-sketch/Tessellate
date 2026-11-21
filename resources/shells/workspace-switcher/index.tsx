@@ -4,17 +4,26 @@ export type WorkspaceSwitcherVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface WorkspaceSwitcherProps {
   variant?: WorkspaceSwitcherVariant;
+  currentWorkspace?: string;
   workspaces?: string[];
   onSelectWorkspace?: (name: string) => void;
 }
 
 export function WorkspaceSwitcher({
   variant = 'quiet',
+  currentWorkspace,
   workspaces = ['Example Workspace', 'Starter Lab'],
   onSelectWorkspace,
 }: WorkspaceSwitcherProps) {
   const [open, setOpen] = useState(false);
-  const [selectedWorkspace, setSelectedWorkspace] = useState(workspaces[0] ?? 'Example Workspace');
+  const [uncontrolledWorkspace, setUncontrolledWorkspace] = useState(
+    workspaces[0] ?? 'Example Workspace'
+  );
+  const selectedWorkspace =
+    currentWorkspace ??
+    (workspaces.includes(uncontrolledWorkspace)
+      ? uncontrolledWorkspace
+      : (workspaces[0] ?? 'Example Workspace'));
 
   let theme = 'bg-white border border-neutral-200 text-neutral-900';
   let menuTheme = 'border-neutral-200 bg-white text-neutral-900';
@@ -50,7 +59,9 @@ export function WorkspaceSwitcher({
               role="option"
               aria-selected={name === selectedWorkspace}
               onClick={() => {
-                setSelectedWorkspace(name);
+                if (currentWorkspace === undefined) {
+                  setUncontrolledWorkspace(name);
+                }
                 setOpen(false);
                 onSelectWorkspace?.(name);
               }}
