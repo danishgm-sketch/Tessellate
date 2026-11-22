@@ -809,6 +809,28 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
     expect(
       hasPositivePatternMatch('Avoid apps using payment APIs.', /\bpayment\b/i)
     ).toBe(false);
+    expect(hasPositiveArchetypeCue('Avoid integrating with a payment API.', 'payment')).toBe(false);
+    expect(
+      hasPositiveArchetypeCue('Avoid sharing data with a payment provider.', 'payment')
+    ).toBe(false);
+    expect(
+      hasPositiveArchetypeCue('Avoid data sharing with a payment provider.', 'payment')
+    ).toBe(false);
+    expect(
+      hasPositiveArchetypeCue('Avoid any integration with a payment API.', 'payment')
+    ).toBe(false);
+    expect(
+      hasPositivePatternMatch('Avoid integrating with a payment API.', /\bpayment\b/i)
+    ).toBe(false);
+    expect(
+      hasPositivePatternMatch('Avoid sharing data with a payment provider.', /\bpayment\b/i)
+    ).toBe(false);
+    expect(
+      hasPositiveArchetypeCue(
+        'Avoid shipping delays with an inventory management dashboard.',
+        'inventory management'
+      )
+    ).toBe(true);
 
     expect(hasPositiveArchetypeCue('Avoid using payment APIs.', 'payment')).toBe(false);
     expect(
