@@ -755,6 +755,21 @@ const AUDIENCE_RELATIVE_PROHIBITION =
   /^\s*(?:allowed|permitted|able|supposed|meant|expected|intended|eligible|authorized|authorised)\b/i;
 const AUDIENCE_PURPOSE_TRANSITION =
   /,|\bto\s+(?:build|create|design|manage|track|plan|organize|organise|coordinate|run|use|browse|book|schedule|explore|handle|review|analyze|analyse|access)\b/i;
+const AVOID_CUE = /^avoid(?:s|ed)?$/i;
+const AVOID_INSTRUMENTAL_TRANSITION =
+  /\b(?:by|using|through|via)\b|\bwith\s+(?:a|an|the|our|this|your)\b/i;
+const AVOIDED_MODIFIER_TOKEN =
+  '(?:ever|always|directly|indirectly|manually|automatically|explicitly|implicitly|actively|passively|simply|merely|just|only|actually|strictly|completely|entirely|totally|accidentally|unintentionally|repeatedly|constantly|continuously|frequently|regularly|silently|blindly|prematurely|unnecessarily|currently|still|also|even|really|truly|generally|usually|often|typically|potentially|possibly|probably|maybe|perhaps)';
+const AVOIDED_MODIFIER_ONLY = new RegExp(
+  `^${AVOIDED_MODIFIER_TOKEN}(?:\\s+${AVOIDED_MODIFIER_TOKEN})*$`,
+  'i'
+);
+const AVOIDED_FAILURE_GERUND =
+  /^(?:overbooking|overselling|overstocking|understocking|overcrowding|overcharging|underbilling|churning|bottlenecking|backlogging|spamming|flooding|stalling|crashing|hanging|freezing|leaking|dropping|missing|losing|duplicating)$/i;
+const AVOIDED_FAILURE_HEAD_NOUN =
+  /\b(?:delays?|errors?|failures?|mistakes?|issues?|problems?|outages?|stockouts?|bottlenecks?|gaps?|losses?|overruns?|conflicts?|collisions?|disruptions?|shortages?|downtime|churn|waste|spoilage|backlogs?|defects?|incidents?|accidents?|risks?|hazards?|breaches?)\b/i;
+const AVOIDED_UI_SURFACE =
+  /\b(?:apps?|applications?|platforms?|portals?|dashboards?|tools?|sites?|storefronts?|workflows?|screens?|pages?|features?|modules?|widgets?|systems?|products?|interfaces?|flows?|integrations?|connections?|sync(?:hronization|hronisation)?|apis?|providers?|gateways?|services?|vendors?|checkouts?|billing|banking|finance|fintech|payments?|transfers?)\b/i;
 
 function isNegatedKeywordOccurrence(
   normalizedText: string,
@@ -820,12 +835,34 @@ function isNegatedKeywordOccurrence(
     isRelativeAudienceNegation &&
     !AUDIENCE_RELATIVE_PROHIBITION.test(afterLatestNegation) &&
     AUDIENCE_PURPOSE_TRANSITION.test(afterLatestNegation);
+  const avoidTransitionMatch = AVOID_CUE.test(latestNegationCue)
+    ? afterLatestNegation.match(AVOID_INSTRUMENTAL_TRANSITION)
+    : null;
+  const beforeAvoidTransition = avoidTransitionMatch
+    ? afterLatestNegation.slice(0, avoidTransitionMatch.index ?? 0).trim()
+    : '';
+  const avoidGerundTokens =
+    beforeAvoidTransition
+      .replace(/\bdouble\s+booking\b/gi, '')
+      .match(/\b[a-z]{3,}ing\b/gi) ?? [];
+  const isAvoidedActionGerund =
+    avoidGerundTokens.some((token) => !AVOIDED_FAILURE_GERUND.test(token)) &&
+    !AVOIDED_FAILURE_HEAD_NOUN.test(beforeAvoidTransition);
+  const hasAvoidedOutcome =
+    /[a-z0-9]/i.test(beforeAvoidTransition) &&
+    !AVOIDED_MODIFIER_ONLY.test(beforeAvoidTransition) &&
+    !isAvoidedActionGerund;
+  const endedByAvoidSolution =
+    Boolean(avoidTransitionMatch) &&
+    hasAvoidedOutcome &&
+    !AVOIDED_UI_SURFACE.test(beforeAvoidTransition);
 
   return !(
     endedByCoordinatedPredicate ||
     endedByOptionalPrerequisite ||
     endedByClauseTransition ||
-    endedByAudienceClause
+    endedByAudienceClause ||
+    endedByAvoidSolution
   );
 }
 

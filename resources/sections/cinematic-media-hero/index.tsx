@@ -8,6 +8,8 @@ export interface CinematicMediaHeroProps {
   title?: string;
   subtitle?: string;
   mediaUrl?: string;
+  onPrimaryAction?: () => void;
+  onSecondaryAction?: () => void;
 }
 
 export function CinematicMediaHero({
@@ -16,20 +18,23 @@ export function CinematicMediaHero({
   title = 'The Architecture of Absolute Coherence',
   subtitle = 'A unified resource universe where components, layouts, and Design DNA behave as mathematical invariants.',
   mediaUrl,
+  onPrimaryAction,
+  onSecondaryAction,
 }: CinematicMediaHeroProps) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [actionNote, setActionNote] = useState('');
 
   let glow = 'from-neutral-700/20 via-transparent to-transparent';
-  let accent = 'text-neutral-400';
+  let accent = 'text-neutral-300';
   let frameBorder = 'border-neutral-800';
 
   if (variant === 'expressive') {
     glow = 'from-blue-600/30 via-indigo-900/20 to-transparent';
-    accent = 'text-blue-400 font-semibold';
+    accent = 'text-blue-300 font-semibold';
     frameBorder = 'border-blue-500/30 shadow-[0_0_40px_rgba(37,71,232,0.15)]';
   } else if (variant === 'nocturne') {
     glow = 'from-cyan-500/20 via-blue-950/20 to-transparent';
-    accent = 'text-cyan-400 font-mono';
+    accent = 'text-cyan-300 font-mono';
     frameBorder = 'border-cyan-500/30 shadow-[0_0_50px_rgba(6,182,212,0.12)]';
   }
 
@@ -42,7 +47,7 @@ export function CinematicMediaHero({
 
       <div className="max-w-5xl mx-auto text-center relative z-10 flex flex-col items-center">
         <span className={`text-xs tracking-[0.25em] mb-6 uppercase inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 ${accent}`}>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse motion-reduce:animate-none" />
           {eyebrow}
         </span>
 
@@ -50,7 +55,7 @@ export function CinematicMediaHero({
           {title}
         </h1>
 
-        <p className="text-base sm:text-lg text-neutral-400 max-w-2xl mb-10 leading-relaxed">
+        <p className="text-base sm:text-lg text-neutral-300 max-w-2xl mb-10 leading-relaxed">
           {subtitle}
         </p>
 
@@ -68,14 +73,15 @@ export function CinematicMediaHero({
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center relative bg-gradient-to-br from-neutral-900 via-black to-neutral-950">
               {/* Cinematic Simulated Shimmer / Ambient Motion */}
-              <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.03)_50%,transparent_75%)] bg-[length:250%_250%] animate-[shimmer_8s_infinite_linear]" />
+              <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.03)_50%,transparent_75%)] bg-[length:250%_250%] animate-[shimmer_8s_infinite_linear] motion-reduce:animate-none" />
 
               {/* Central Theatrical Indicator */}
               <button
                 type="button"
                 onClick={() => setIsPlaying(!isPlaying)}
+                aria-pressed={isPlaying}
                 className="relative z-10 w-16 h-16 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md flex items-center justify-center transition-all group-hover:scale-105 cursor-pointer"
-                aria-label={isPlaying ? 'Pause film' : 'Play film'}
+                aria-label={isPlaying ? 'Pause media preview' : 'Play media preview'}
               >
                 {isPlaying ? (
                   <span className="w-4 h-4 flex gap-1 justify-center items-center">
@@ -86,28 +92,47 @@ export function CinematicMediaHero({
                   <span className="w-0 h-0 border-y-[8px] border-y-transparent border-l-[14px] border-l-white ml-1" />
                 )}
               </button>
-              <span className="relative z-10 mt-3 text-xs font-mono text-neutral-400 uppercase tracking-widest">
-                {isPlaying ? 'Playback Active' : 'Cinematic Trailer // 4K 60FPS'}
+              <span className="relative z-10 mt-3 text-xs font-mono text-neutral-300 uppercase tracking-widest">
+                {isPlaying ? 'Preview playback toggled on' : 'Example media preview'}
               </span>
             </div>
           )}
 
           {/* Lower HUD Overlay */}
-          <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 to-transparent flex items-center justify-between text-[11px] font-mono text-neutral-400">
-            <span>TC 00:01:24:12</span>
-            <span>PRORES 4444 XQ // RECSPEC 2.2</span>
+          <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 to-transparent flex items-center justify-between text-xs font-mono text-neutral-300">
+            <span>Sample preview viewport</span>
+            <span>Local preview only</span>
           </div>
         </div>
 
         {/* Primary Action Row */}
         <div className="flex flex-col sm:flex-row gap-4">
-          <button type="button" className="px-8 py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-colors shadow-lg">
+          <button
+            type="button"
+            onClick={() => {
+              onPrimaryAction?.();
+              setActionNote('Preview only: connect a host route to open the platform.');
+            }}
+            className="px-8 py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-colors shadow-lg"
+          >
             Enter Platform
           </button>
-          <button type="button" className="px-8 py-3.5 rounded-full border border-neutral-700 bg-white/5 text-white font-medium text-sm hover:bg-white/10 transition-colors">
+          <button
+            type="button"
+            onClick={() => {
+              onSecondaryAction?.();
+              setActionNote('Preview only: connect a host route or document link for the whitepaper.');
+            }}
+            className="px-8 py-3.5 rounded-full border border-neutral-700 bg-white/5 text-white font-medium text-sm hover:bg-white/10 transition-colors"
+          >
             Read Whitepaper
           </button>
         </div>
+        {actionNote && (
+          <p role="status" className="mt-4 text-xs text-neutral-300">
+            {actionNote}
+          </p>
+        )}
       </div>
     </section>
   );

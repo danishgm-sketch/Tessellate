@@ -14,7 +14,7 @@ import {
   getGoldenBrief,
   getAllGoldenBriefs,
 } from '../index.js';
-import { hasPositiveArchetypeCue } from '../archetypes.js';
+import { hasPositiveArchetypeCue, hasPositivePatternMatch } from '../archetypes.js';
 
 describe('Product Archetypes (18 Categories)', () => {
   it('defines all 18 product archetypes', () => {
@@ -754,5 +754,104 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
     expect(
       hasPositiveArchetypeCue('A tool for users who are not allowed to transfer money.', 'transfer')
     ).toBe(false);
+
+    const avoidStockoutsErp = detectProductArchetypes(
+      'Avoid stockouts with an inventory management and procurement dashboard.'
+    );
+    expect(avoidStockoutsErp[0]?.tag).toBe('erp-operations');
+    expect(
+      hasPositiveArchetypeCue(
+        'Avoid stockouts with an inventory management and procurement dashboard.',
+        'inventory management'
+      )
+    ).toBe(true);
+    expect(
+      hasPositiveArchetypeCue(
+        'Avoid stockouts with an inventory management and procurement dashboard.',
+        'procurement'
+      )
+    ).toBe(true);
+    expect(
+      hasPositiveArchetypeCue(
+        'Avoid stockouts with an inventory management and procurement dashboard.',
+        'stockouts'
+      )
+    ).toBe(false);
+
+    const avoidDelaysErp = detectProductArchetypes(
+      'Help warehouses avoid delays by using work-order scheduling and crew dispatch.'
+    );
+    expect(avoidDelaysErp[0]?.tag).toBe('erp-operations');
+
+    const avoidOverbookingTravel = detectProductArchetypes(
+      'Avoid overbooking via real-time hotel booking and itinerary tools.'
+    );
+    expect(avoidOverbookingTravel[0]?.tag).toBe('travel');
+
+    expect(hasPositiveArchetypeCue('Avoid payments and transfers.', 'payments')).toBe(false);
+    expect(hasPositiveArchetypeCue('Avoid payments and transfers.', 'transfers')).toBe(false);
+
+    const avoidBankingPortal = detectProductArchetypes(
+      'Avoid banking dashboards with a payment portal.'
+    );
+    expect(avoidBankingPortal.some((entry) => entry.tag === 'fintech')).toBe(false);
+    expect(
+      hasPositiveArchetypeCue('Avoid banking dashboards with a payment portal.', 'payment')
+    ).toBe(false);
+
+    expect(
+      hasPositiveArchetypeCue('Avoid workflows using payment APIs.', 'payment')
+    ).toBe(false);
+    expect(hasPositiveArchetypeCue('Avoid apps using payment APIs.', 'payment')).toBe(false);
+    expect(
+      hasPositiveArchetypeCue('Avoid dashboards using artificial intelligence.', 'artificial intelligence')
+    ).toBe(false);
+    expect(
+      hasPositivePatternMatch('Avoid apps using payment APIs.', /\bpayment\b/i)
+    ).toBe(false);
+    expect(hasPositiveArchetypeCue('Avoid integrating with a payment API.', 'payment')).toBe(false);
+    expect(
+      hasPositiveArchetypeCue('Avoid sharing data with a payment provider.', 'payment')
+    ).toBe(false);
+    expect(
+      hasPositiveArchetypeCue('Avoid data sharing with a payment provider.', 'payment')
+    ).toBe(false);
+    expect(
+      hasPositiveArchetypeCue('Avoid any integration with a payment API.', 'payment')
+    ).toBe(false);
+    expect(
+      hasPositivePatternMatch('Avoid integrating with a payment API.', /\bpayment\b/i)
+    ).toBe(false);
+    expect(
+      hasPositivePatternMatch('Avoid sharing data with a payment provider.', /\bpayment\b/i)
+    ).toBe(false);
+    expect(
+      hasPositiveArchetypeCue(
+        'Avoid shipping delays with an inventory management dashboard.',
+        'inventory management'
+      )
+    ).toBe(true);
+
+    expect(hasPositiveArchetypeCue('Avoid using payment APIs.', 'payment')).toBe(false);
+    expect(
+      hasPositiveArchetypeCue('Avoid using artificial intelligence.', 'artificial intelligence')
+    ).toBe(false);
+    expect(hasPositiveArchetypeCue('Avoid ever using payment APIs.', 'payment')).toBe(false);
+    expect(
+      hasPositivePatternMatch('Avoid using payment APIs.', /\bpayment\b/i)
+    ).toBe(false);
+
+    const avoidUsingPaymentsBrief = interpretProductBrief({
+      description:
+        'A neighborhood tool-lending library for scheduling drill and saw loans. Avoid using payment APIs or artificial intelligence.',
+    });
+    expect(
+      avoidUsingPaymentsBrief.productModel.productArchetypes.some(
+        (entry) => entry.tag === 'fintech' || entry.tag === 'ai'
+      )
+    ).toBe(false);
+    expect(avoidUsingPaymentsBrief.inferredAssumptions).not.toContain(
+      'Payment and purchase steps need clear confirmation.'
+    );
   });
 });

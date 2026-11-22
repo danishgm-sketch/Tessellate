@@ -49,3 +49,56 @@ test('cohort matrix scroll region is named and keyboard reachable on mobile', as
   }));
   expect(dimensions.scrollWidth).toBeGreaterThan(dimensions.clientWidth);
 });
+
+test('shell and control previews preserve single main landmarks, labeled fields, and interactive controls', async ({
+  page,
+}) => {
+  const slugs = [
+    'settings-shell',
+    'documentation-shell',
+    'organization-settings',
+    'app-sidebar-compact',
+  ] as const;
+
+  for (const slug of slugs) {
+    const consoleErrors: string[] = [];
+    const uncaughtExceptions: string[] = [];
+    const onConsole = (message: { type: () => string; text: () => string }) => {
+      if (message.type() === 'error') consoleErrors.push(message.text());
+    };
+    const onPageError = (error: Error) => uncaughtExceptions.push(error.message);
+    page.on('console', onConsole);
+    page.on('pageerror', onPageError);
+
+    const response = await page.goto(`/r/${slug}/`, { waitUntil: 'domcontentloaded' });
+    expect(response?.status()).toBe(200);
+    const preview = page.frameLocator('iframe[title$=" live preview"]');
+    await expect(preview.locator('.tess-screen')).toBeVisible({ timeout: 15_000 });
+    await expect(preview.getByRole('main')).toHaveCount(1);
+    await expect(
+      preview.locator(
+        'main main, main [role="main"], [role="main"] main, [role="main"] [role="main"]'
+      )
+    ).toHaveCount(0);
+
+    if (slug === 'organization-settings') {
+      await expect(preview.getByLabel('Organization Name')).toBeVisible();
+      await preview.getByRole('button', { name: 'Update Organization' }).click();
+      await expect(preview.getByRole('status')).toContainText(
+        'Preview only: organization settings updated locally; no backend is connected.'
+      );
+    }
+
+    if (slug === 'app-sidebar-compact') {
+      const layers = preview.getByRole('button', { name: 'Layers' });
+      await expect(layers).toBeVisible();
+      await layers.click();
+      await expect(layers).toHaveAttribute('aria-current', 'page');
+    }
+
+    expect(consoleErrors).toEqual([]);
+    expect(uncaughtExceptions).toEqual([]);
+    page.off('console', onConsole);
+    page.off('pageerror', onPageError);
+  }
+});
