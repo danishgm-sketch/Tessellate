@@ -39,6 +39,7 @@ export function SearchInput({
       className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm focus-within:ring-1 transition-all ${theme} ${className}`}
     >
       <svg
+        aria-hidden="true"
         className="w-4 h-4 opacity-50 shrink-0"
         fill="none"
         viewBox="0 0 24 24"
@@ -54,13 +55,22 @@ export function SearchInput({
       <input
         type="search"
         value={value}
+        aria-label={
+          safeRest['aria-label'] ??
+          (safeRest['aria-labelledby'] ? undefined : 'Search resources')
+        }
         className="w-full bg-transparent outline-none placeholder:text-neutral-400 text-sm"
         placeholder="Search resources..."
         {...safeRest}
       />
       {value && onClear ? (
-        <button type="button" onClick={onClear} className="opacity-60 hover:opacity-100 text-xs">
-          ✕
+        <button
+          type="button"
+          onClick={onClear}
+          aria-label="Clear search"
+          className="opacity-75 hover:opacity-100 text-xs rounded p-0.5 focus-visible:ring-2 focus-visible:ring-[#2547E8] focus-visible:outline-none"
+        >
+          <span aria-hidden="true">✕</span>
         </button>
       ) : shortcut ? (
         <kbd className="hidden sm:inline-block rounded border border-neutral-200 dark:border-neutral-700 px-1.5 py-0.5 text-[10px] font-mono text-neutral-500">

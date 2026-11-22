@@ -33,7 +33,7 @@ export function TextPathArc({
     <div className={`p-8 md:p-12 rounded-xl border max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 transition-colors ${containerBg}`}>
       {/* SVG Circular text badge */}
       <div className="shrink-0 relative w-44 h-44 flex items-center justify-center">
-        <svg viewBox="0 0 200 200" className="w-full h-full animate-[spin_20s_linear_infinite]">
+        <svg viewBox="0 0 200 200" className="w-full h-full animate-[spin_20s_linear_infinite] motion-reduce:animate-none">
           <path
             id={`circle-path-${variant}`}
             d="M 100, 100 m -65, 0 a 65,65 0 1,1 130,0 a 65,65 0 1,1 -130,0"

@@ -53,7 +53,7 @@ export function ProgressiveLoader({
       </div>
 
       <p className="text-xs text-neutral-500 font-mono flex items-center gap-2">
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+        <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse motion-reduce:animate-none" />
         {currentStep}
       </p>
       {children}

@@ -30,7 +30,7 @@ export function AnimatedGradientLine({ variant = 'quiet' }: AnimatedGradientLine
 
       <div className="relative w-full h-px bg-neutral-200 dark:bg-neutral-800 overflow-hidden">
         <div
-          className={`absolute top-0 bottom-0 w-48 bg-gradient-to-r ${gradientClass} animate-[move-horizontal_3s_ease-in-out_infinite]`}
+          className={`absolute top-0 bottom-0 w-48 bg-gradient-to-r ${gradientClass} animate-[move-horizontal_3s_ease-in-out_infinite] motion-reduce:animate-none!`}
           style={{ animation: 'moveBeam 3s ease-in-out infinite' }}
         />
         <style>{`

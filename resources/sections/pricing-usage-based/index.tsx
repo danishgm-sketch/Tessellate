@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 export type PricingUsageBasedVariant = 'quiet' | 'expressive' | 'nocturne';
 
@@ -7,6 +7,7 @@ export interface PricingUsageBasedProps {
 }
 
 export function PricingUsageBased({ variant = 'quiet' }: PricingUsageBasedProps) {
+  const unitsId = useId();
   const [units, setUnits] = useState(50);
 
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
@@ -30,11 +31,12 @@ export function PricingUsageBased({ variant = 'quiet' }: PricingUsageBasedProps)
 
         <div className={`w-full p-8 rounded-2xl border max-w-xl transition-all ${card}`}>
           <div className="flex justify-between items-center mb-6">
-            <span className="text-xs font-semibold">Monthly usage:</span>
+            <label htmlFor={unitsId} className="text-xs font-semibold">Monthly usage:</label>
             <span className="font-mono font-bold text-lg">{units}k runs</span>
           </div>
 
           <input
+            id={unitsId}
             type="range"
             min={10}
             max={200}

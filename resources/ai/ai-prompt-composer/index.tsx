@@ -11,6 +11,7 @@ export function AIPromptComposer({ variant = 'quiet', onExecute }: AIPromptCompo
   const [text, setText] = useState('');
   const [attachedFiles, setAttachedFiles] = useState(['tokens.css', 'workbench.ts']);
   const executeHelpId = useId();
+  const promptId = useId();
 
   const cardBg =
     variant === 'nocturne'
@@ -21,6 +22,16 @@ export function AIPromptComposer({ variant = 'quiet', onExecute }: AIPromptCompo
 
   const removeFile = (f: string) => {
     setAttachedFiles(attachedFiles.filter((item) => item !== f));
+  };
+
+  const addContextFile = () => {
+    let candidate = 'spec.md';
+    let index = 2;
+    while (attachedFiles.includes(candidate)) {
+      candidate = `spec-${index}.md`;
+      index += 1;
+    }
+    setAttachedFiles([...attachedFiles, candidate]);
   };
 
   const estimatedTokens = Math.round(text.length / 4) + attachedFiles.length * 120;
@@ -47,18 +58,30 @@ export function AIPromptComposer({ variant = 'quiet', onExecute }: AIPromptCompo
             className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[var(--tess-radius-md,8px)] text-xs font-mono bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
           >
             <span>📄 {f}</span>
-            <button onClick={() => removeFile(f)} className="hover:text-rose-500">×</button>
+            <button
+              type="button"
+              onClick={() => removeFile(f)}
+              aria-label={`Remove ${f}`}
+              className="hover:text-rose-500 rounded px-0.5 focus-visible:ring-2 focus-visible:ring-[#2547E8] focus-visible:outline-none"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
           </span>
         ))}
         <button
-          onClick={() => setAttachedFiles([...attachedFiles, 'spec.md'])}
+          type="button"
+          onClick={addContextFile}
           className="text-xs px-2 py-1 rounded border border-dashed border-neutral-300 dark:border-neutral-700 text-[var(--tess-ink-muted,#62666F)] hover:border-neutral-400"
         >
           + Add Context
         </button>
       </div>
 
+      <label htmlFor={promptId} className="sr-only">
+        Prompt instructions
+      </label>
       <textarea
+        id={promptId}
         rows={4}
         value={text}
         onChange={(e) => setText(e.target.value)}

@@ -26,7 +26,7 @@ export function PageSkeleton({ variant = 'quiet', children }: PageSkeletonProps)
     <div
       role="status"
       aria-label="Loading page content"
-      className={`p-6 md:p-8 rounded-xl border max-w-4xl mx-auto space-y-6 animate-pulse transition-colors ${containerBg}`}
+      className={`p-6 md:p-8 rounded-xl border max-w-4xl mx-auto space-y-6 animate-pulse motion-reduce:animate-none transition-colors ${containerBg}`}
     >
       {/* Header bar shimmer */}
       <div className="flex items-center justify-between pb-4 border-b border-neutral-200/20">

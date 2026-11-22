@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 export type FaqSearchableVariant = 'quiet' | 'expressive' | 'nocturne';
 
@@ -7,6 +7,7 @@ export interface FaqSearchableProps {
 }
 
 export function FaqSearchable({ variant = 'quiet' }: FaqSearchableProps) {
+  const searchId = useId();
   const [query, setQuery] = useState('');
 
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
@@ -35,12 +36,16 @@ export function FaqSearchable({ variant = 'quiet' }: FaqSearchableProps) {
       <div className="max-w-3xl mx-auto">
         <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Search Help & FAQ</h2>
 
+        <label htmlFor={searchId} className="sr-only">
+          Filter help questions
+        </label>
         <input
+          id={searchId}
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Filter questions..."
-          className={`w-full p-3 rounded-xl border text-sm mb-8 outline-none ${inputBorder}`}
+          className={`w-full p-3 rounded-xl border text-sm mb-8 outline-none focus-visible:ring-2 focus-visible:ring-[#2547E8] ${inputBorder}`}
         />
 
         <div className="space-y-4">

@@ -26,7 +26,7 @@ export function DashboardSkeleton({ variant = 'quiet', children }: DashboardSkel
     <div
       role="status"
       aria-label="Loading dashboard metrics"
-      className={`p-6 @md:p-8 rounded-[var(--tess-radius-xl,8px)] border max-w-4xl mx-auto space-y-6 animate-pulse transition-colors ${containerBg}`}
+      className={`p-6 @md:p-8 rounded-[var(--tess-radius-xl,8px)] border max-w-4xl mx-auto space-y-6 animate-pulse motion-reduce:animate-none transition-colors ${containerBg}`}
     >
       {/* 4 Metric cards */}
       <div className="grid grid-cols-2 @md:grid-cols-4 gap-4">

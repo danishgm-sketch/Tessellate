@@ -27,7 +27,7 @@ export function TableSkeleton({ rows = 5, variant = 'quiet', children }: TableSk
     <div
       role="status"
       aria-label="Loading table rows"
-      className={`p-6 rounded-xl border max-w-4xl mx-auto space-y-4 animate-pulse transition-colors ${containerBg}`}
+      className={`p-6 rounded-xl border max-w-4xl mx-auto space-y-4 animate-pulse motion-reduce:animate-none transition-colors ${containerBg}`}
     >
       {/* Table Header */}
       <div className="grid grid-cols-4 gap-4 pb-3 border-b border-neutral-200/20">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 export type CtaSplitVariant = 'quiet' | 'expressive' | 'nocturne';
 
@@ -7,7 +7,9 @@ export interface CtaSplitProps {
 }
 
 export function CtaSplit({ variant = 'quiet' }: CtaSplitProps) {
+  const emailId = useId();
   const [email, setEmail] = useState('');
+  const [statusMessage, setStatusMessage] = useState('');
 
   let bg = 'bg-white text-neutral-900 border-neutral-200';
   let inputBorder = 'border-neutral-300';
@@ -33,19 +35,37 @@ export function CtaSplit({ variant = 'quiet' }: CtaSplitProps) {
           </p>
         </div>
 
-        <form onSubmit={(e) => { e.preventDefault(); setEmail(''); }} className="flex gap-3">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="colleague@domain.com"
-            required
-            className={`w-full p-3 rounded-lg border text-xs sm:text-sm outline-none ${inputBorder}`}
-          />
-          <button type="submit" className={`px-6 py-3 rounded-lg text-xs font-semibold whitespace-nowrap uppercase tracking-wider transition-all ${btn}`}>
-            Subscribe
-          </button>
-        </form>
+        <div className="space-y-2">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              setEmail('');
+              setStatusMessage('Preview only: no mailing list is connected.');
+            }}
+            className="flex gap-3"
+          >
+            <label htmlFor={emailId} className="sr-only">
+              Email address
+            </label>
+            <input
+              id={emailId}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="colleague@domain.com"
+              required
+              className={`w-full p-3 rounded-lg border text-xs sm:text-sm outline-none focus-visible:ring-2 focus-visible:ring-[#2547E8] ${inputBorder}`}
+            />
+            <button type="submit" className={`px-6 py-3 rounded-lg text-xs font-semibold whitespace-nowrap uppercase tracking-wider transition-all ${btn}`}>
+              Subscribe
+            </button>
+          </form>
+          {statusMessage && (
+            <p role="status" className="text-xs opacity-75">
+              {statusMessage}
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );

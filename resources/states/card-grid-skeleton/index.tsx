@@ -27,7 +27,7 @@ export function CardGridSkeleton({ count = 3, variant = 'quiet', children }: Car
     <div
       role="status"
       aria-label="Loading card grid"
-      className={`p-6 md:p-8 rounded-xl border max-w-4xl mx-auto space-y-4 animate-pulse transition-colors ${containerBg}`}
+      className={`p-6 md:p-8 rounded-xl border max-w-4xl mx-auto space-y-4 animate-pulse motion-reduce:animate-none transition-colors ${containerBg}`}
     >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {Array.from({ length: count }).map((_, idx) => (

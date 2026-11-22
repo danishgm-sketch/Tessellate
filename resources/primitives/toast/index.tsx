@@ -33,13 +33,20 @@ export function Toast({
 
   return (
     <div className={`flex items-start gap-3 rounded-xl border p-4 max-w-sm ${card}`}>
-      <span className={`mt-1 h-2 w-2 rounded-full shrink-0 ${dot}`} />
+      <span aria-hidden="true" className={`mt-1 h-2 w-2 rounded-full shrink-0 ${dot}`} />
       <div className="flex-1 space-y-0.5 text-xs">
         <p className="font-semibold">{title}</p>
         {description && <p className="text-neutral-500 leading-relaxed">{description}</p>}
       </div>
       {onDismiss && (
-        <button type="button" onClick={onDismiss} className="text-xs opacity-50 hover:opacity-100">✕</button>
+        <button
+          type="button"
+          onClick={onDismiss}
+          aria-label="Dismiss notification"
+          className="text-xs opacity-75 hover:opacity-100 rounded p-0.5 focus-visible:ring-2 focus-visible:ring-[#2547E8] focus-visible:outline-none"
+        >
+          <span aria-hidden="true">✕</span>
+        </button>
       )}
     </div>
   );

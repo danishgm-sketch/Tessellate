@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "index.tsx",
-      "content": "import React from 'react';\n\nexport type SkeletonVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SkeletonProps {\n  variant?: SkeletonVariant;\n  className?: string;\n}\n\nexport function Skeleton({ variant = 'quiet', className = 'h-4 w-full' }: SkeletonProps) {\n  let theme = 'bg-neutral-200';\n  if (variant === 'expressive') theme = 'bg-neutral-200/80';\n  if (variant === 'nocturne') theme = 'bg-neutral-800';\n\n  return (\n    <div className={`animate-pulse rounded-md ${theme} ${className}`} />\n  );\n}\n",
+      "content": "import React from 'react';\n\nexport type SkeletonVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SkeletonProps {\n  variant?: SkeletonVariant;\n  className?: string;\n}\n\nexport function Skeleton({ variant = 'quiet', className = 'h-4 w-full' }: SkeletonProps) {\n  let theme = 'bg-neutral-200';\n  if (variant === 'expressive') theme = 'bg-neutral-200/80';\n  if (variant === 'nocturne') theme = 'bg-neutral-800';\n\n  return (\n    <div className={`animate-pulse motion-reduce:animate-none rounded-md ${theme} ${className}`} />\n  );\n}\n",
       "type": "registry:ui",
       "target": "components/ui/index.tsx"
     },

@@ -29,10 +29,10 @@ export function BeamGrid({ variant = 'quiet', children }: BeamGridProps) {
 
       {/* Traveling beam lines */}
       <div className="absolute inset-x-0 top-1/4 h-[1px] pointer-events-none overflow-hidden">
-        <div className={`w-48 h-full bg-gradient-to-r ${beamGradient} animate-pulse blur-[1px]`} style={{ transform: 'translateX(30%)' }} />
+        <div className={`w-48 h-full bg-gradient-to-r ${beamGradient} animate-pulse motion-reduce:animate-none blur-[1px]`} style={{ transform: 'translateX(30%)' }} />
       </div>
       <div className="absolute inset-y-0 left-1/3 w-[1px] pointer-events-none overflow-hidden">
-        <div className={`w-full h-48 bg-gradient-to-b ${beamGradient} animate-pulse blur-[1px]`} style={{ transform: 'translateY(20%)' }} />
+        <div className={`w-full h-48 bg-gradient-to-b ${beamGradient} animate-pulse motion-reduce:animate-none blur-[1px]`} style={{ transform: 'translateY(20%)' }} />
       </div>
 
       <div className="relative z-10 max-w-md space-y-1">

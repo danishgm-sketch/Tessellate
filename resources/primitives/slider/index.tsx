@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 export type SliderVariant = 'quiet' | 'expressive' | 'nocturne';
 
@@ -21,6 +21,7 @@ export function Slider({
   step = 1,
   onChange,
 }: SliderProps) {
+  const sliderId = useId();
   let accent = 'accent-neutral-900';
   if (variant === 'expressive') accent = 'accent-[#2547E8]';
   if (variant === 'nocturne') accent = 'accent-white';
@@ -28,12 +29,18 @@ export function Slider({
   return (
     <div className="w-full space-y-2">
       <div className="flex justify-between items-center text-xs">
-        {label && <span className="font-semibold text-neutral-700 dark:text-neutral-300">{label}</span>}
+        {label && (
+          <label htmlFor={sliderId} className="font-semibold text-neutral-700 dark:text-neutral-300">
+            {label}
+          </label>
+        )}
         <span className="font-mono text-neutral-500">{value}</span>
       </div>
       <div className="relative flex items-center">
         <input
+          id={sliderId}
           type="range"
+          aria-label={!label ? 'Value' : undefined}
           min={min}
           max={max}
           step={step}

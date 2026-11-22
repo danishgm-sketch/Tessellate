@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 export type PricingCalculatorShellVariant = 'quiet' | 'expressive' | 'nocturne';
 
@@ -7,6 +7,7 @@ export interface PricingCalculatorShellProps {
 }
 
 export function PricingCalculatorShell({ variant = 'quiet' }: PricingCalculatorShellProps) {
+  const teamSizeId = useId();
   const [teamSize, setTeamSize] = useState(5);
 
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
@@ -30,11 +31,12 @@ export function PricingCalculatorShell({ variant = 'quiet' }: PricingCalculatorS
 
         <div className={`w-full max-w-lg p-8 rounded-2xl border transition-all ${card}`}>
           <div className="flex justify-between items-center mb-4">
-            <span className="text-xs font-semibold">Team members:</span>
+            <label htmlFor={teamSizeId} className="text-xs font-semibold">Team members:</label>
             <span className="font-mono font-bold text-lg">{teamSize} seats</span>
           </div>
 
           <input
+            id={teamSizeId}
             type="range"
             min={1}
             max={50}

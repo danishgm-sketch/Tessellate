@@ -36,11 +36,17 @@ export function CommandMenu({
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 bg-black/40 backdrop-blur-xs p-4">
       <div className="fixed inset-0" onClick={onClose} />
-      <div className={`relative w-full max-w-lg rounded-xl border overflow-hidden z-10 ${theme}`}>
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Command menu"
+        className={`relative w-full max-w-lg rounded-xl border overflow-hidden z-10 ${theme}`}
+      >
         <div className="flex items-center px-4 py-3 border-b border-inherit">
           <input
             autoFocus
             type="text"
+            aria-label="Search commands"
             className="w-full bg-transparent text-sm outline-none placeholder:text-neutral-400"
             placeholder="Type a command or search..."
             value={query}

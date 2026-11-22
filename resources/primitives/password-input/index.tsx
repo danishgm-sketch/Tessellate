@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 export type PasswordInputVariant = 'quiet' | 'expressive' | 'nocturne';
 
@@ -16,6 +16,7 @@ export function PasswordInput({
   label = 'Password',
   error,
   className = '',
+  id,
   ...rest
 }: PasswordInputProps) {
   // Password inputs never submit to caller-provided destinations.
@@ -23,6 +24,8 @@ export function PasswordInput({
     formAction?: string;
   };
   void ignoredFormAction;
+  const generatedId = useId();
+  const inputId = id ?? generatedId;
   const [show, setShow] = useState(false);
 
   let theme = 'border-neutral-300 focus-within:border-neutral-900 bg-white text-neutral-900';
@@ -35,7 +38,7 @@ export function PasswordInput({
   return (
     <div className="w-full space-y-1.5">
       {label && (
-        <label className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300">
+        <label htmlFor={inputId} className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300">
           {label}
         </label>
       )}
@@ -43,7 +46,13 @@ export function PasswordInput({
         className={`flex items-center rounded-lg border px-3 py-2 text-sm focus-within:ring-1 transition-all ${theme} ${className}`}
       >
         <input
+          id={inputId}
           type={show ? 'text' : 'password'}
+          aria-label={
+            !label && !safeRest['aria-label'] && !safeRest['aria-labelledby']
+              ? 'Password'
+              : safeRest['aria-label']
+          }
           className="w-full bg-transparent outline-none placeholder:text-neutral-400 text-sm"
           {...safeRest}
         />

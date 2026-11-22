@@ -32,10 +32,10 @@ export function GeographicMap({ variant = 'quiet' }: GeographicMapProps) {
     <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h4 className="text-sm font-semibold tracking-tight">Global Edge Network</h4>
-          <p className="text-xs text-neutral-500">Active points of presence and edge latency</p>
+          <h4 className="text-sm font-semibold tracking-tight">Global Edge Network (Example)</h4>
+          <p className="text-xs text-neutral-500">Illustrative edge presence map (sample latency values only)</p>
         </div>
-        <span className="text-xs font-mono font-medium text-emerald-500">6 Regions Healthy</span>
+        <span className="text-xs font-mono font-medium text-emerald-600 dark:text-emerald-400">6 Sample Regions</span>
       </div>
 
       <div className="relative w-full overflow-hidden">
@@ -83,7 +83,7 @@ export function GeographicMap({ variant = 'quiet' }: GeographicMapProps) {
                 className="cursor-pointer"
               >
                 <circle cx={r.x} cy={r.y} r={isHovered ? 8 : 5} fill={pinColor} />
-                <circle cx={r.x} cy={r.y} r={isHovered ? 14 : 10} fill={pinColor} fillOpacity="0.25" className="animate-pulse" />
+                <circle cx={r.x} cy={r.y} r={isHovered ? 14 : 10} fill={pinColor} fillOpacity="0.25" className="animate-pulse motion-reduce:animate-none" />
                 {isHovered && (
                   <g>
                     <rect x={r.x - 50} y={r.y - 30} width="100" height="22" rx="4" fill="#000" />
