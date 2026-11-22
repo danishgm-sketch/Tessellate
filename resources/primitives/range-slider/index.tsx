@@ -33,6 +33,7 @@ export function RangeSlider({
       <div className="grid grid-cols-2 gap-4">
         <input
           type="range"
+          aria-label={`${label ?? 'Range'} minimum`}
           min={min}
           max={high}
           value={low}
@@ -41,6 +42,7 @@ export function RangeSlider({
         />
         <input
           type="range"
+          aria-label={`${label ?? 'Range'} maximum`}
           min={low}
           max={max}
           value={high}

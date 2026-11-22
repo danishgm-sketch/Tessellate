@@ -33,8 +33,8 @@ export function ProcessingQueuedState({
 
   return (
     <div className={`p-8 md:p-12 rounded-xl border max-w-4xl mx-auto text-center space-y-4 transition-colors ${containerBg}`}>
-      <div className={`w-12 h-12 mx-auto rounded-xl flex items-center justify-center border text-xl animate-pulse ${badgeColor}`}>
-        ⏳
+      <div className={`w-12 h-12 mx-auto rounded-xl flex items-center justify-center border text-xl animate-pulse motion-reduce:animate-none ${badgeColor}`}>
+        <span aria-hidden="true">⏳</span>
       </div>
 
       <div className="space-y-1">

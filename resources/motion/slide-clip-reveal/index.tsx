@@ -52,6 +52,7 @@ export function SlideClipReveal({ variant = 'quiet' }: SlideClipRevealProps) {
 
       <input
         type="range"
+        aria-label="Comparison reveal position"
         min="0"
         max="100"
         value={sliderPos}

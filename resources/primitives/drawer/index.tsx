@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 export type DrawerVariant = 'quiet' | 'expressive' | 'nocturne';
 
@@ -19,6 +19,7 @@ export function Drawer({
   children,
   position = 'right',
 }: DrawerProps) {
+  const titleId = useId();
   if (!open) return null;
 
   let theme = 'bg-white border-neutral-200 text-neutral-900 shadow-2xl';
@@ -30,10 +31,22 @@ export function Drawer({
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-black/30 backdrop-blur-2xs">
       <div className="fixed inset-0" onClick={onClose} />
-      <div className={`fixed top-0 bottom-0 w-full max-w-md p-6 overflow-y-auto ${posClass} ${theme}`}>
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        className={`fixed top-0 bottom-0 w-full max-w-md p-6 overflow-y-auto ${posClass} ${theme}`}
+      >
         <div className="flex items-center justify-between pb-4 border-b border-inherit">
-          <h2 className="text-base font-semibold">{title}</h2>
-          <button type="button" onClick={onClose} className="text-sm opacity-60 hover:opacity-100">✕</button>
+          <h2 id={titleId} className="text-base font-semibold">{title}</h2>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close drawer"
+            className="text-sm opacity-75 hover:opacity-100 rounded p-1 focus-visible:ring-2 focus-visible:ring-[#2547E8] focus-visible:outline-none"
+          >
+            <span aria-hidden="true">✕</span>
+          </button>
         </div>
         <div className="py-4 text-sm">{children}</div>
       </div>

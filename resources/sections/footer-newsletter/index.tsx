@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 export type FooterNewsletterVariant = 'quiet' | 'expressive' | 'nocturne';
 
@@ -7,7 +7,9 @@ export interface FooterNewsletterProps {
 }
 
 export function FooterNewsletter({ variant = 'quiet' }: FooterNewsletterProps) {
+  const emailId = useId();
   const [email, setEmail] = useState('');
+  const [statusMessage, setStatusMessage] = useState('');
 
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
   let inputBorder = 'border-neutral-300';
@@ -31,19 +33,35 @@ export function FooterNewsletter({ variant = 'quiet' }: FooterNewsletterProps) {
           Weekly dispatches on computational aesthetics, autonomous composition, and Design DNA.
         </p>
 
-        <form onSubmit={(e) => { e.preventDefault(); setEmail(''); }} className="w-full max-w-md flex gap-2 mb-4">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            setEmail('');
+            setStatusMessage('Preview only: no mailing list is connected.');
+          }}
+          className="w-full max-w-md flex gap-2 mb-3"
+        >
+          <label htmlFor={emailId} className="sr-only">
+            Email address
+          </label>
           <input
+            id={emailId}
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="colleague@domain.com"
             required
-            className={`w-full p-2.5 rounded-lg border text-xs sm:text-sm outline-none ${inputBorder}`}
+            className={`w-full p-2.5 rounded-lg border text-xs sm:text-sm outline-none focus-visible:ring-2 focus-visible:ring-[#2547E8] ${inputBorder}`}
           />
           <button type="submit" className={`px-5 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all ${btn}`}>
             Join
           </button>
         </form>
+        {statusMessage && (
+          <p role="status" className="text-xs opacity-75 mb-3">
+            {statusMessage}
+          </p>
+        )}
 
         <p className="text-[11px] opacity-60">Zero spam. Pure front-end engineering signal. Unsubscribe at any time.</p>
       </div>

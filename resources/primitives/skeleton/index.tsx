@@ -13,6 +13,6 @@ export function Skeleton({ variant = 'quiet', className = 'h-4 w-full' }: Skelet
   if (variant === 'nocturne') theme = 'bg-neutral-800';
 
   return (
-    <div className={`animate-pulse rounded-md ${theme} ${className}`} />
+    <div className={`animate-pulse motion-reduce:animate-none rounded-md ${theme} ${className}`} />
   );
 }

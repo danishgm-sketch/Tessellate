@@ -50,7 +50,7 @@ export function MonospaceDataHeadline({
       <div className="text-xl md:text-3xl font-bold tracking-tight flex items-center gap-3">
         <span className={promptSymbol}>$</span>
         <span>{commandText}</span>
-        <span className={`w-2.5 h-6 animate-pulse ${variant === 'nocturne' ? 'bg-cyan-400' : 'bg-neutral-800 dark:bg-neutral-200'}`} />
+        <span aria-hidden="true" className={`w-2.5 h-6 animate-pulse motion-reduce:animate-none ${variant === 'nocturne' ? 'bg-cyan-400' : 'bg-neutral-800 dark:bg-neutral-200'}`} />
       </div>
 
       <p className="text-xs text-neutral-500 font-sans leading-relaxed">

@@ -36,7 +36,7 @@ export function AnimatedBorderTrace({ variant = 'quiet' }: AnimatedBorderTracePr
             stroke={strokeColor}
             strokeWidth="1.5"
             strokeDasharray="80 300"
-            className="animate-[spin_4s_linear_infinite]"
+            className="animate-[spin_4s_linear_infinite] motion-reduce:animate-none"
           />
         </svg>
 

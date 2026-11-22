@@ -35,7 +35,7 @@ export function InlineSpinner({
   return (
     <div className={`p-6 md:p-8 rounded-xl border max-w-4xl mx-auto flex items-center gap-3 transition-colors ${containerBg}`}>
       <svg
-        className={`animate-spin shrink-0 ${sizeClasses} ${spinnerColor}`}
+        className={`animate-spin motion-reduce:animate-none shrink-0 ${sizeClasses} ${spinnerColor}`}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"

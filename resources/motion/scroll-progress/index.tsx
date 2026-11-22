@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 export type ScrollProgressVariant = 'quiet' | 'expressive' | 'nocturne';
 
@@ -7,6 +7,7 @@ export interface ScrollProgressProps {
 }
 
 export function ScrollProgress({ variant = 'quiet' }: ScrollProgressProps) {
+  const scrollId = useId();
   const [progress, setProgress] = useState(65);
 
   const cardBg =
@@ -41,8 +42,9 @@ export function ScrollProgress({ variant = 'quiet' }: ScrollProgressProps) {
       </div>
 
       <div className="flex items-center gap-3 pt-2">
-        <span className="text-xs text-neutral-400 font-mono">Simulate Scroll:</span>
+        <label htmlFor={scrollId} className="text-xs text-neutral-500 font-mono">Simulate Scroll:</label>
         <input
+          id={scrollId}
           type="range"
           min="0"
           max="100"

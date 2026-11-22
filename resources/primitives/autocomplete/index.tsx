@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 export type AutocompleteVariant = 'quiet' | 'expressive' | 'nocturne';
 
@@ -19,6 +19,7 @@ export function Autocomplete({
   onChange,
   placeholder = 'Type something...',
 }: AutocompleteProps) {
+  const inputId = useId();
   const [active, setActive] = useState(false);
   const matches = suggestions.filter((s) => s.toLowerCase().startsWith(value.toLowerCase()) && s.toLowerCase() !== value.toLowerCase());
 
@@ -28,10 +29,16 @@ export function Autocomplete({
 
   return (
     <div className="relative w-full space-y-1.5">
-      {label && <label className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300">{label}</label>}
+      {label && (
+        <label htmlFor={inputId} className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300">
+          {label}
+        </label>
+      )}
       <input
+        id={inputId}
         type="text"
-        className={`w-full rounded-lg border px-3 py-2 text-sm outline-none ${theme}`}
+        aria-label={!label ? placeholder : undefined}
+        className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-[#2547E8] ${theme}`}
         value={value}
         onChange={(e) => {
           onChange(e.target.value);

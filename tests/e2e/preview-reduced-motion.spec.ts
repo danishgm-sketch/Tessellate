@@ -1,3 +1,4 @@
+import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -67,4 +68,79 @@ test('preview app applies and restores its reduced-motion state', async ({ page 
   });
   await expect.poll(() => preview.locator('html').getAttribute('data-tessellate-reduced-motion')).toBeNull();
   await expect.poll(() => card.evaluate((element) => getComputedStyle(element).transitionDuration)).toBe('0.3s');
+});
+
+test('reduced motion disables continuous animations across hardened animated resources', async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+
+  const animatedResources = [
+    'beam-grid',
+    'geographic-map',
+    'animated-border-trace',
+    'animated-gradient-line',
+    'dashboard-skeleton',
+    'inline-spinner',
+    'monospace-data-headline',
+    'text-path-arc',
+  ];
+
+  for (const slug of animatedResources) {
+    await page.goto(`/?resource=${slug}&variant=quiet`);
+    await expect(page.locator('.tess-screen')).toBeVisible({ timeout: 15_000 });
+
+    const runningAnimations = await page.locator('.tess-screen [class*="animate-"]').evaluateAll(
+      (elements) =>
+        elements
+          .map((el) => ({
+            className: typeof el.className === 'string' ? el.className : el.getAttribute('class') ?? '',
+            animationName: getComputedStyle(el).animationName,
+          }))
+          .filter((entry) => entry.animationName !== 'none')
+    );
+
+    expect(
+      runningAnimations,
+      `${slug} still ran continuous CSS animations under prefers-reduced-motion: reduce`
+    ).toEqual([]);
+  }
+});
+
+test('hardened form and interactive resources pass Axe label and button-name checks in preview', async ({
+  page,
+}) => {
+  const slugs = [
+    'ai-prompt-composer',
+    'entity-search',
+    'messaging-thread',
+    'scroll-progress',
+    'slide-clip-reveal',
+    'cta-split',
+    'faq-searchable',
+    'footer-newsletter',
+    'pricing-calculator-shell',
+    'pricing-usage-based',
+    'search-input',
+    'password-input',
+    'range-slider',
+    'slider',
+    'combobox',
+    'autocomplete',
+  ];
+
+  for (const slug of slugs) {
+    await page.goto(`/?resource=${slug}&variant=quiet`);
+    await expect(page.locator('.tess-screen')).toBeVisible({ timeout: 15_000 });
+
+    const axe = await new AxeBuilder({ page })
+      .withRules(['label', 'button-name'])
+      .analyze();
+    expect(axe.violations, `${slug} failed Axe label/button-name checks`).toEqual([]);
+  }
+
+  await page.goto('/?resource=cta-split&variant=quiet');
+  await page.getByLabel('Email address').fill('team@example.com');
+  await page.getByRole('button', { name: 'Subscribe' }).click();
+  await expect(page.getByRole('status')).toContainText('Preview only: no mailing list is connected.');
 });
