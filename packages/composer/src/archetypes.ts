@@ -761,7 +761,7 @@ const AVOID_INSTRUMENTAL_TRANSITION =
 const AVOIDED_MODIFIER_ONLY =
   /^(?:ever|always|directly|indirectly|manually|automatically|explicitly|implicitly|actively|passively|simply|merely|just|only|actually|strictly|completely|entirely|totally|accidentally|unintentionally|repeatedly|constantly|continuously|frequently|regularly|silently|blindly|prematurely|unnecessarily|currently|still|also|even|really|truly|generally|usually|often|typically|potentially|possibly|probably|maybe|perhaps)(?:\s+(?:ever|always|directly|indirectly|manually|automatically|explicitly|implicitly|actively|passively|simply|merely|just|only|actually|strictly|completely|entirely|totally|accidentally|unintentionally|repeatedly|constantly|continuously|frequently|regularly|silently|blindly|prematurely|unnecessarily|currently|still|also|even|really|truly|generally|usually|often|typically|potentially|possibly|probably|maybe|perhaps))*$/i;
 const AVOIDED_UI_SURFACE =
-  /\b(?:app|application|platform|portal|dashboard|tool|site|storefront|workflow|workflows|screen|screens|page|pages|feature|features|module|modules|widget|widgets|checkout|billing|banking|finance|fintech|payment|payments|transfer|transfers)\b/i;
+  /\b(?:apps?|applications?|platforms?|portals?|dashboards?|tools?|sites?|storefronts?|workflows?|screens?|pages?|features?|modules?|widgets?|systems?|products?|interfaces?|flows?|checkouts?|billing|banking|finance|fintech|payments?|transfers?)\b/i;
 
 function isNegatedKeywordOccurrence(
   normalizedText: string,

@@ -802,6 +802,13 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
     expect(
       hasPositiveArchetypeCue('Avoid workflows using payment APIs.', 'payment')
     ).toBe(false);
+    expect(hasPositiveArchetypeCue('Avoid apps using payment APIs.', 'payment')).toBe(false);
+    expect(
+      hasPositiveArchetypeCue('Avoid dashboards using artificial intelligence.', 'artificial intelligence')
+    ).toBe(false);
+    expect(
+      hasPositivePatternMatch('Avoid apps using payment APIs.', /\bpayment\b/i)
+    ).toBe(false);
 
     expect(hasPositiveArchetypeCue('Avoid using payment APIs.', 'payment')).toBe(false);
     expect(
